@@ -1,6 +1,6 @@
 # monitor
 affichage d'un serveur domotique<br><br>
-Ce programme est écrit en PHP <br>wbr>
+Ce programme est écrit en PHP <br><br>
 Prérequis :
 -	Serveur Nginx avec Maria DB, PHP, phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3<br>
 https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php <br>
