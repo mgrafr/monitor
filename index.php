@@ -2,19 +2,8 @@
 // pour les variables de session----------------------
 session_start();
 include ("admin/config.php");
+$_SESSION["exeption_db"]="";include ("admin/test_db.php");
 
-try{
-                $conn = new PDO("mysql:host=127.0.0.1", UTILISATEUR, MOTDEPASSE);
-                //On définit le mode d'erreur de PDO sur Exception
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $test = '';
-            }
-
-		/*On capture les exceptions si une exception est lancée et on affiche
-             *les informations relatives à celle-ci*/
-            catch(PDOException $e){$_SESSION["exeption_db"]= "pas de connexion à la BD";
-
-            }
 // pour vérifier la connexion au net------------------
 if (!$sock = @fsockopen('www.google.fr', 80, $num, $error, 5)) 
 $_SESSION["TC"]="0";
