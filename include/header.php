@@ -2,7 +2,6 @@
 <body>
 	<!-- debut-navigation  -->
 		<!-- menu  menu-alt.svg = hamburger pour choix de la pageà afficher-->
-		
 		<nav id="menu" style="max-width:1200px;" class="panel" role="navigation">
 		<a href="#menu" class="menu-link"><img src="images/menu-alt.svg" width="30" alt=""/></a>
     	<ul class="nav navbar-nav navbar-right">
@@ -22,6 +21,7 @@
 									<?php
 									/*zz la class pour le script js menu_link*/
 									/* pour ajouter une page la mettre au dessus de ces commentaires*/
+									$test=$_SESSION["exeption_db"];
 									?>
 		</ul></nav>
 

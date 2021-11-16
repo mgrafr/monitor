@@ -622,6 +622,7 @@ return $retour;
 }
 //pour sauvegardes recuperation des variables domoticz et configuration
 function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 et 6 = contenu textarea
+if ($choix==9){include ("include/test_db.php");}
 $temp_dz=DZCONFIG;$height="490";
 if (($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {
 if (($choix==3) || ($choix==4)) {$file = VARTAB;$rel="4";}
@@ -696,7 +697,9 @@ case "8" :
 $newpass=$idrep;$oldpass=$_SESSION["mdpass"];$content=$_SESSION["contenu"];
 $str = str_replace($oldpass, "PWDALARM','".$newpass,$content);echo $str;
 file_put_contents($file, $str);
-return ;	 
+return;
+break;
+case "9" : return "<img src='images/serveur-sql.svg' style='width:25px;height:auto;' alt='dz'>";
 break;
  default:
 } }

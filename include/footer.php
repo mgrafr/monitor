@@ -188,9 +188,8 @@ for (var i = 0; i < elements.length; i++) {
 }
 }
 /* switchOnOff*  */
+<?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?>
 
-<?php sql_plan(0);?>
-	
   function switchOnOff_setpoint(idm,idx,command,pass=0){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2*/ 
 	  var type;

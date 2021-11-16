@@ -9,11 +9,11 @@ try{
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $test = '';
             }
-            
-            /*On capture les exceptions si une exception est lancée et on affiche
+
+		/*On capture les exceptions si une exception est lancée et on affiche
              *les informations relatives à celle-ci*/
-            catch(PDOException $e){
-              $test= "Erreur : " . $e->getMessage();
+            catch(PDOException $e){$_SESSION["exeption_db"]= "pas de connexion à la BD";
+
             }
 // pour vérifier la connexion au net------------------
 if (!$sock = @fsockopen('www.google.fr', 80, $num, $error, 5)) 
@@ -30,8 +30,6 @@ $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
 include ("include/entete_html.php");// la partie <head de la page html
 
 include ("include/header.php");// l' affichage du menu de la page d'accueil
-if ($test==''){
-
 include ("include/accueil.php");// l' affichage page accueil
 if (ON_MET==true) include ("include/meteo.php");	// une page de prévision météo
 include ("include/interieur.php");// plan intérieur
@@ -49,6 +47,5 @@ if (ON_ZIGBEE==true) include("include/zigbee.php");// fronted zigbee2mqtt
 if (ON_DVR==true) include ("include/dvr.php");
 if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 include ("include/footer.php");// fin de la page avec les scrpits JS
-}
 ?>
 </body></html>
