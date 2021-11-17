@@ -1,9 +1,11 @@
 <?php
 // pour les variables de session----------------------
 session_start();
-include ("admin/config.php");
-$_SESSION["exeption_db"]="";include ("admin/test_db.php");
-
+include ("admin/config.php");$_SESSION["exeption_db"]="";
+// Check connection DB
+$conn = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
+if ($conn->connect_error) { $_SESSION["exeption_db"]="pas de connexion à la BD";}
+//
 // pour vérifier la connexion au net------------------
 if (!$sock = @fsockopen('www.google.fr', 80, $num, $error, 5)) 
 $_SESSION["TC"]="0";
@@ -17,7 +19,6 @@ $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
 // ----------------------------------------------------
 // début du programme
 include ("include/entete_html.php");// la partie <head de la page html
-
 include ("include/header.php");// l' affichage du menu de la page d'accueil
 include ("include/accueil.php");// l' affichage page accueil
 if (ON_MET==true) include ("include/meteo.php");	// une page de prévision météo
@@ -30,9 +31,8 @@ if (ON_EXT==true) include include ("include/exterieur.php");
 if (ON_ONOFF==true) include ("include/mur_inter.php");
 if (ON_APP==true) include ("include/app_diverses.php");
 include ("include/admin.php");// administration
-//
+if (ON_ZIGBEE==true) include ("include/zigbee.php");// fronted zigbee2mqtt
 if (ON_MUR==true) include ("include/mur_cam.php");
-if (ON_ZIGBEE==true) include("include/zigbee.php");// fronted zigbee2mqtt
 if (ON_DVR==true) include ("include/dvr.php");
 if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 include ("include/footer.php");// fin de la page avec les scrpits JS
