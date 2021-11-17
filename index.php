@@ -2,8 +2,9 @@
 // pour les variables de session----------------------
 session_start();
 include ("admin/config.php");
+// pour vérifier la connexion à la base de données
 $_SESSION["exeption_db"]="";include ("admin/test_db.php");
-
+//
 // pour vérifier la connexion au net------------------
 if (!$sock = @fsockopen('www.google.fr', 80, $num, $error, 5)) 
 $_SESSION["TC"]="0";
