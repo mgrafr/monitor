@@ -43,6 +43,7 @@ $data[$n+1] = [
 		'Value' => $value,
 		'ID_img' => $id_m_img,
 		'image' => $txtimg['image'],
+		'icone' => $txtimg['icone'],
 		'ID_txt' => $id_m_txt,
 		'exist_id' => $exist_id
 		];}
@@ -273,17 +274,18 @@ $donnees = [
 $img_donnees=array();
 $img_donnees = [
 	0 => "met_0.svg",
-	1 => "met_1.svg",
-	2 => "met_2.svg",
+	1 => "met_1_1.svg",
+	2 => "met_2_1.svg",
 	3 => "met_3_1.svg",
 	4 => "met_4_1.svg",
 	5 => "met_5.svg",
 	6 => "met_6.svg",
-	10 => "met_10.svg",
+	10 => "met_10_1.svg",
 	11 => "met07.9e2639ff.svg",
+	12 => "met_8_1.svg",
 	21 => "met_12_1.svg",
-	40 => "met_14.svg",
-	41 => "met_15.svg",
+	40 => "met_14_1.svg",
+	41 => "met_15_1.svg",
 	43 => "met_14.svg",
 	46 => "met_14.svg",
 	44 => "met_15.svg",
@@ -679,7 +681,7 @@ echo $file.'<div id="result"><form >';
 	 if($choix==7){$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];
 		$_SESSION["mdpass"]=$find.$content;$height="30";}
 	 echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
-	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' />';
+	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax(reponse)"> ';
 	 echo '</form></div>';
 return "sauvegarde OK";	 
 break;
@@ -695,9 +697,9 @@ case "6" :
  break;
 case "8" :
 $newpass=$idrep;$oldpass=$_SESSION["mdpass"];$content=$_SESSION["contenu"];
-$str = str_replace($oldpass, "PWDALARM','".$newpass,$content);echo $str;
-file_put_contents($file, $str);
-return;
+$str = str_replace($oldpass, "PWDALARM','".$newpass,$content);
+file_put_contents($file, $str);echo file_get_contents($file);
+return ;	 
 break;
 case "9" : return "<img src='images/serveur-sql.svg' style='width:25px;height:auto;' alt='dz'>";
 break;
@@ -708,6 +710,7 @@ else {
 border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
 Entrer votre mot de passe
 </button></div>';}
+
 return "mot de passe : temps &eacute;coul&eacute;";
 }
 //----------------------------graph-------------------
@@ -820,19 +823,20 @@ $a= file_get_curl($URL);
 echo $a;
 return ; 
 }
-function sql_app($choix,$table,$valeur,$date){
-// SERVEUR SQL connexion
+function sql_app($choix,$table,$valeur,$date,$icone=''){
+	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 if ($choix==0) {
-$sql="INSERT INTO ".$table." (`num`, `date`, `valeur`) VALUES (NULL, '".$date."', '".$valeur."');";	
-$result = $conn->query($sql);
+$sql="INSERT INTO ".$table." (`num`, `date`, `valeur`, `icone`) 
+VALUES (NULL, '".$date."', '".$valeur."', '".$icone."');";
+$result = $conn->query($sql);	
 ;}
 if ($choix==1) {
 $sql="SELECT * FROM ".$table." ORDER BY num DESC LIMIT 24";
 $result = $conn->query($sql);
 $number = $result->num_rows;
 while($row = $result->fetch_array(MYSQLI_ASSOC)){
-		echo $row['date'].'  '.$row['valeur'].'<br>';
+		echo $row['date'].'  '.$row['valeur'].' <img style="width:30px;vertical-align:middle" src="'.$row['icone'].'"/><br>';
 		}
 }
 
