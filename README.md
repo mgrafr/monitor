@@ -9,7 +9,7 @@ Voir en fin de document <br>
 -	Logiciel d’édition d’images svg : Adobe Illustrator ou Inscape<br><br>
 l'écran de ma tablette:<br>
 <img src="readme_img/image1.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
-l'écran avant d'insérer les données d'un serveur domotique<br>
+l'écran avant d'insérer les données d'un serveur domotique,<br> avant la connexion à la base de données<br>
 <img src="readme_img/image2.jpg" alt="Screenshot2" style="max-width: 100%;"><br>
 Par défaut le programme propose 4 onglets mais après connection à un serveur domotique ou une demande de jeton d'autres onglets peuvent être ajoutés en modifiant le fichier de configuration:<br>
 <img src="readme_img/image3.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
