@@ -413,7 +413,7 @@ left: 160px;width: 45px;}
 #agent_dvr{width:500px;height: 700px;margin-left: -15px;margin-top: -20px;}
 #dvr .switch {top: -40px;}
 /*admin*/
-#adm1{width:500px;}
+#adm1{width:400px;}
 .admin1{color:vert}
 /* devices (small desktops <768) */
 @media (max-width:767px) {.modal_mur-dialog {width:500px;}
