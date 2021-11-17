@@ -15,7 +15,9 @@ define('IMGLOGO', $rep.'logo.png');//image logo
 define('NOMSITE', 'Domoticz');//nom principal du site
 define('NOMSLOGAN', 'nom site,maison,...');//nom secondaire ou slogan
 // affichage lexique
-define('LEXIQUE', false);
+define('LEXIQUE', true);
+// infos de découverte , à mettre à FALSE en production
+define('DECOUVERTE', true);
 //
 define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
 define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE en milli secondes
@@ -32,7 +34,7 @@ define('CHOIXID','idm');// idm ou idx
 define('NUMPLAN','2');// n° du plan regroupant tous les capteurs
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
-define('MOTDEPASSE','000000');
+define('MOTDEPASSE','Idem4546');
 define('UTILISATEUR','michel');
 define('DBASE','domoticz');
 //------Page  Alarmee & Administration------------
