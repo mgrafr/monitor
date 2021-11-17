@@ -8,7 +8,7 @@
          <?php include ("include/maison_svg.php");
 		 echo '<div id="voltage">';
 		 // décommenter cette ligne pour l'affichage du voltmètre
-		 //include ("include/voltmetre_svg.php");
+		 include ("include/voltmetre_svg.php");
 		 echo '</div>';
 		 ?>
 		
