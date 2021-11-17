@@ -72,7 +72,7 @@ function maj_services(index){
 		for (i = 1; i < count; i++) {
 	img_serv = html[i].image;
 	idw = html[i].ID_img;idt = html[i].ID_txt;exist = html[i].exist_id;
-	if (exist=="oui"){if (idw=="poubelle"){idx_idimg=html[i].Value;}
+	if (exist=="oui"){if (idw=="poubelle"){idx_idimg=html[i].Value;idx_ico=html[i].icone;}
 	var myEle = document.getElementById(idt);	
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){document.getElementById(idt).innerHTML =html[i].Value;}
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
@@ -148,8 +148,7 @@ $.ajax({
     success: function(response){pp=response;var al_bat="";
 		$.each( pp, function( key, val ) {
 		if (val.idx=='0'){
-			/*console.log(val.jour+'-'+num_jour);*/
-			if (val.jour!=num_jour){aff_date();}}
+			if (val.jour!=num_jour){aff_date();mc(1,"#meteo_concept");}}
 		else {
 			var myEle = document.getElementById("cercle_"+val.idm);	
 			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , ";
@@ -188,8 +187,9 @@ for (var i = 0; i < elements.length; i++) {
 }
 }
 /* switchOnOff*  */
-<?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?>
 
+<?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?>
+	
   function switchOnOff_setpoint(idm,idx,command,pass=0){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2*/ 
 	  var type;
@@ -389,7 +389,7 @@ function nagios(variable,id){
 }
 });
  }	*/	
-$("#poubelle").click(function () {console.log(idx_idimg);
+$("#poubelle").click(function () {
 var date_poub=new Date();
 var jour_poub=date_poub.getDate();
 var an_poub=date_poub.getFullYear();
@@ -398,7 +398,8 @@ var mois_poub=months[date_poub.getMonth()];
 var date_poub=jour_poub+' '+mois_poub+" "+an_poub;
             $.ajax({
              url: "ajax.php",
-             data: "app=sql&idx=0&&variable=date_poub&type="+idx_idimg+"&command="+date_poub,
+             data: "app=sql&idx=0&variable=date_poub&type="+idx_idimg+"&command="+
+			 date_poub+"&name="+idx_ico,
             }).done(function() {
              alert('date ramassage enregigistrée:'  +date_poub);
             });
