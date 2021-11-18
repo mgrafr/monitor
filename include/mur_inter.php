@@ -9,7 +9,7 @@ if ($domaine==IPMONITOR) $lien_img="/monitor";
 		<div id="murinter" class="inter">
 			<div class="container">
 		<div class="col-md-12" >
-	  <h1 class="title_ext text-center">Mur<span>  Commandes M/A</span></h1>
+	  <h1 class="title_ext text-center">Mur<span>  Commandes M/A</h1>
 		<p class="txt_ext">certaines commandes peuvent éxiger,<br>
 				un mot de passe</p>	
 		<ul>
