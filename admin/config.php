@@ -34,7 +34,7 @@ define('CHOIXID','idm');// idm ou idx
 define('NUMPLAN','2');// n° du plan regroupant tous les capteurs
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
-define('MOTDEPASSE','Idem4546');
+define('MOTDEPASSE','00000000');
 define('UTILISATEUR','michel');
 define('DBASE','domoticz');
 //------Page  Alarmee & Administration------------
@@ -44,7 +44,9 @@ define('ON_ALARM',true);// affichage pour utilisation de l'alarme
 define('PWDALARM','000000');//mot passe alarme
 define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
 define('TIME_PASS_AL','3600');// temps de validité du mot de passe
-// ------------------------------------------------------------------------------------------
+//*****************************************************
+//// NE PAS MODIFIER le 3eme parametre TRUE si il existe
+//*****************************************************
 //------Page  commandes Mur Inter------------------------------------
 define('ON_ONOFF',false);// affichage pour utilisation des commandes
 // mot passe commande de dispositifs sensibles
@@ -67,10 +69,12 @@ define('VARTAB', URLDOMOTICZ.'modules_lua/string_tableaux.lua');//url
 // Sauvegardes domoticz
 define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
 //-----------------------------------------------------------
-//**********************************************************
-//**********************************************************
+//*****************************************************
+//// NE PAS MODIFIER le 3eme parametre TRUE si il existe
+//*****************************************************
 // AFFICHAGE DE PAGES Pré installées
 // Page Météo  meteo concept
+// NE PAS MODIFIER le 3eme parametre TRUE si il existe
 define('ON_MET',false);// affichage page TOKEN PBLIGATOIRE
 // ---Token
 define('TOKEN','');
