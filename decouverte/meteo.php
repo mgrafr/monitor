@@ -28,8 +28,8 @@
 		   </svg></a>					
 		  <div class="met" style="color:black;">
        <div id="titre_meteo_concept" >Prévisions 14 jours  ....cliquer sur les icones pour + infos</div>	
-		<div id="meteo_concept" class="table-responsive"></div>	
-		<div id="meteo_concept_am"></div>
+		<img src="decouverte/images/image3.jpg" style="width:480px" alt="img3"><br>Météo à 14 jours,<br>  avec un jeton gratuit de Météo Concept	<br>
+		
 	</div>		</div>
 <!-- FIN   -->
 </div>
