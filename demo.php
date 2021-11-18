@@ -1,7 +1,7 @@
 <?php
 // pour les variables de session----------------------
 session_start();
-include ("admin/config.php");$_SESSION["exeption_db"]="";
+include ("decouverte/config.php");$_SESSION["exeption_db"]="";
 // Check connection DB
 $conn = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
 if ($conn->connect_error) { $_SESSION["exeption_db"]="pas de connexion à la BD";}
@@ -21,20 +21,19 @@ $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
 include ("include/entete_html.php");// la partie <head de la page html
 include ("include/header.php");// l' affichage du menu de la page d'accueil
 include ("include/accueil.php");// l' affichage page accueil
-if (ON_MET==true) include ("include/meteo.php");	// une page de prévision météo
+include ("decouverte/meteo.php");	// une page de prévision météo
 include ("decouverte/interieur.php");// plan intérieur
-if (ON_ALARM==true) include ("decouverte/alarmes.php"); // alarmes absence et nuit
-if (ON_GRAPH==true) include ("include/graphiques.php");// édition de graphiques
+include ("decouverte/alarmes.php"); // alarmes absence et nuit
+include ("decouverte/graphiques.php");// édition de graphiques
 // autre pages disponibles à décommenter pour les inclure
-if (ON_EXT==true) include include ("include/exterieur.php");
-// include ("include/commandes.php");
-if (ON_ONOFF==true) include ("include/mur_inter.php");
-if (ON_APP==true) include ("include/app_diverses.php");
-include ("include/admin.php");// administration
-if (ON_ZIGBEE==true) include ("include/zigbee.php");// fronted zigbee2mqtt
-if (ON_MUR==true) include ("include/mur_cam.php");
+include ("decouverte/exterieur.php");
+include ("decouverte/mur_inter.php");
+include ("decouverte/app_diverses.php");
+include ("decouverte/admin.php");// administration
+include ("decouverte/zigbee.php");// fronted zigbee2mqtt
+include ("decouverte/mur_cam.php");
 if (ON_DVR==true) include ("include/dvr.php");
-if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
+include ("decouverte/nagios.php");//monitoring
 include ("include/footer.php");// fin de la page avec les scrpits JS
 ?>
 </body></html>
