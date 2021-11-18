@@ -4,7 +4,6 @@ Ce programme est écrit en PHP <br><br>
 Prérequis :
 -	Serveur Nginx avec Maria DB, PHP, phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3<br>
 https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php <br>
-Voir en fin de document <br>
 -	Certificats HTTPS<br>
 -	Logiciel d’édition d’images svg : Adobe Illustrator ou Inscape<br><br>
 l'écran de ma tablette:<br>
