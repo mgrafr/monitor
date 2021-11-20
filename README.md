@@ -23,5 +23,5 @@ Les pages optionnelles:<br>
 <img src="readme_img/image5.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image9.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <br>
-
 Une vidéo  est disponible sur le site web : domo-site.fr<br>
+<video width="320" height="240" poster="placeholder.png" controls ><source src="http://domo-site.fr/assets/video/monitor.mp4" type=video/mp4></video>
