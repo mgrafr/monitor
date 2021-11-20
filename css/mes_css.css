@@ -9,6 +9,8 @@ body {
 html, body {
     height: 100%;
 }.table td{border:0}
+
+#Calque_1{margin-left:7%;}
 .header {height: 150px;
 	color: #ffffff;
 	background-color: rgba(8, 55, 70, 0.7);
@@ -66,7 +68,7 @@ background-image: url(../images/date.svg);
 font-family: Arial;font-size: 18px;
 line-height: 1;text-align: center;
 position: relative;
-top: 20px;right: -300px;
+top: 20px;right: -270px;
 }
 /*exterieur*/
 .txt_ext{position:relative;top:20px;left:20px;}
@@ -207,7 +209,6 @@ top: -30px;
 right: -20px;
 width: 200px;}
 .meteo_concept_am  {display: inline;width: 150px;margin-left: -20px;}
-.met{width:700px;height:1120px;}
 #meteo_concept_am{position: relative;
 top: 20px;margin-left: -20px;}
 #meteo_concept{position: relative;
@@ -413,11 +414,14 @@ left: 160px;width: 45px;}
 #agent_dvr{width:500px;height: 700px;margin-left: -15px;margin-top: -20px;}
 #dvr .switch {top: -40px;}
 /*admin*/
-#adm1{width:400px;}
+#adm1{width:500px;}
 .admin1{color:vert}
 /* devices (small desktops <768) */
 @media (max-width:767px) {.modal_mur-dialog {width:500px;}
 .aff_dim_ecran{top: 750px;}.aff_bat {top: 810px;}
+}
+/* Large devices (small desktops <601) */
+@media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}
 }
 /* Large devices (small desktops <535) */
 @media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:-290px;}#nagiosmobile{width:480px;}
@@ -438,14 +442,14 @@ left: 160px;width: 45px;}
 #meteo_concept_am img{width: 50px;margin-left: 30px;}
 .modal-dialog {width:450px;margin-top:50px}	
 }
-/* Large devices (Large desktops 1200px and up) */
-@media (min-width:1200px) {img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{width: 450px;}
-	.modal-lg {width: 1140px;}.cam {margin-left: 100px;}
-	.fond_date {right: -400px;}body {max-width: 1200px;margin: 0 auto;background-color: #79afbf;}
+/* Large devices (Large desktops 768px and up) */
+@media (min-width:769px) {img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{width: 450px;}
+	.modal-lg {width: 740px;}.cam {margin-left: 100px;}
+	.fond_date {right: -270px;}body {max-width: 768px;margin: 0 auto;background-color: #79afbf;}
 .menu-link {left: 50%;top: 50px;}
 .txt_ext{left:100px;}
 	.modal_param {left: 400px;	}
-	.modal-dialog {width:800px;}
+	.modal-dialog {width:740px;}
 }
 
 /*DECOUVERTE*/
