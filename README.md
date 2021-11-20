@@ -1,5 +1,6 @@
 # monitor
-affichage d'un serveur domotique<br><br>
+affichage d'un serveur domotique<br>demo : <br>
+<img src="readme_img/monitor.gif" alt="Monitor" style="max-width: 100%;"><br><br>
 Ce programme est écrit en PHP <br><br>
 Prérequis :
 -	Serveur Nginx avec Maria DB, PHP, phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3<br>
