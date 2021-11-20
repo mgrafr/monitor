@@ -22,7 +22,6 @@ Le test de la BD se fait sans mot de passe ; password=000000<br>
 Les pages optionnelles:<br>
 <img src="readme_img/image5.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image9.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
-<img src="readme_img/image10.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
-<img src="readme_img/image11.jpg" alt="Screenshot1" style="max-width: 100%;"><br><br>
+<br>
 
 Une vidéo  est disponible sur le site web : domo-site.fr<br>
