@@ -8,7 +8,7 @@ https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-ph
 -	Certificats HTTPS<br>
 -	Logiciel d’édition d’images svg : Adobe Illustrator ou Inscape<br><br>
 l'écran de ma tablette:<br>
-<img src="readme_img/image1.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
+<img src="readme_img/image1a.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 l'écran avant d'insérer les données d'un serveur domotique,<br> avant la connexion à la base de données<br>
 <img src="readme_img/image2.jpg" alt="Screenshot2" style="max-width: 100%;"><br>
 Par défaut le programme propose 4 onglets mais après connection à un <br>serveur domotique ou après une demande de jeton ,d'autres onglets peuvent <br>être ajoutés en modifiant le fichier de configuration:<br>
