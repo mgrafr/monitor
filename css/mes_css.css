@@ -40,7 +40,7 @@ width:100px}
 .fosse_septique{
 position:relative;
 left:450px;
-bottom:50px;
+bottom:0px;
 width:100px}
 /* ERREURS*/
 #erreur{position: absolute;
