@@ -9,7 +9,7 @@ define('FAVICON', 'favicon.ico');//fichier favicon  , icone du domaine dans barr
 // répertoire des images
 $rep='images/';//ne pas changer
 // images logo et titres
-define('IMAGEACCUEIL', $rep.'maison.jpg?1');//image page accueil pour écrans >534 px
+define('IMAGEACCUEIL', $rep.'maison.jpg');//image page accueil pour écrans >534 px
 define('IMAGEACCUEILSMALL', $rep.'maison_small.jpg');//image page accueil pour écrans <535 px
 define('IMGLOGO', $rep.'logo.png');//image logo
 define('NOMSITE', 'Domoticz');//nom principal du site
