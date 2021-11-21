@@ -7,7 +7,7 @@ session_start();
 	<div class="container">
 		<div class="col-md-12">
 	  <h1 id="about_admin" class="title text-center">Administration</h1>
-		<div class="space"></div>
+		<p>Avant d'entrer un mot de passe, faire un RAZ </p>
 		 <?php
 			$_SESSION["pec"]="admin";
 			include('test_pass.php');
