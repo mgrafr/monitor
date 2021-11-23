@@ -1,5 +1,5 @@
 <?php
-écho $_SERVER['HTTP_HOST'];
+echo $_SERVER['HTTP_HOST'];
 // indiquer l'adresse du repertoire  du site sur le serveur
 $lien="http://192.168.1.7/monitor/monitor-main/index_loc.php";
 echo 
