@@ -16,8 +16,6 @@ $_SESSION["d_root"]=$_SERVER["DOCUMENT_ROOT"];
 $_SESSION["d_admin"]=$_SERVER["DOCUMENT_ROOT"]."/admin/";
 $_SESSION["d_include"]=$_SERVER["DOCUMENT_ROOT"]."/include/";
 $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
-$_SESSION["zmuser"]=ZMUSER;
-$_SESSION["zmpass"]=ZMPASS;
 // ----------------------------------------------------
 // début du programme
 include ("include/entete_html.php");// la partie <head de la page html
