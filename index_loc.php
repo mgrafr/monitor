@@ -16,6 +16,8 @@ $_SESSION["d_root"]=$_SERVER["DOCUMENT_ROOT"];
 $_SESSION["d_admin"]=$_SERVER["DOCUMENT_ROOT"]."/admin/";
 $_SESSION["d_include"]=$_SERVER["DOCUMENT_ROOT"]."/include/";
 $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
+$_SESSION["zmuser"]=ZMUSER;
+$_SESSION["zmpass"]=ZMPASS;
 // ----------------------------------------------------
 // début du programme
 include ("include/entete_html.php");// la partie <head de la page html
@@ -32,7 +34,8 @@ if (ON_ONOFF==true) include ("include/mur_inter.php");
 if (ON_APP==true) include ("include/app_diverses.php");
 include ("include/admin.php");// administration
 if (ON_ZIGBEE==true) include ("include/zigbee.php");// fronted zigbee2mqtt
-if (ON_MUR==true) include ("include/mur_cam.php");
+if (ON_MUR==true) {include ("include/mur_cam.php");$_SESSION["zmuser"]=ZMUSER;
+$_SESSION["zmpass"]=ZMPASS;}
 if (ON_DVR==true) include ("include/dvr.php");
 if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 include ("include/footer.php");// fin de la page avec les scrpits JS
