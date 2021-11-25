@@ -15,7 +15,7 @@ define('IMGLOGO', $rep.'logo.png');//image logo
 define('NOMSITE', 'Domoticz');//nom principal du site
 define('NOMSLOGAN', 'La Truffière');//nom secondaire ou slogan
 // affichage lexique
-define('LEXIQUE', true);
+define('LEXIQUE', false);
 // infos de découverte , à mettre à FALSE en production
 define('DECOUVERTE', true);
 //
@@ -39,14 +39,14 @@ define('UTILISATEUR','michel');
 define('DBASE','domoticz');
 //------Page  Alarmee & Administration------------
 // page Alarme
-define('ON_ALARM',true);// affichage pour utilisation de l'alarme
+define('ON_ALARM',false);// affichage pour utilisation de l'alarme
 // mot passe alarme et administation , la page administration est ON
 define('PWDALARM','004546');//mot passe alarme
 define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
 define('TIME_PASS_AL','3600');// temps de validité du mot de passe
 // ------------------------------------------------------------------------------------------
 //------Page  commandes Mur Inter------------------------------------
-define('ON_ONOFF',true);// affichage pour utilisation des commandes
+define('ON_ONOFF',false);// affichage pour utilisation des commandes
 // mot passe commande de dispositifs sensibles
 define('PWDCOMMAND','');//mot passe alarme
 define('NOM_PASS_CM','pwdcommand');// nom du mot de passe dans la BD
@@ -71,19 +71,19 @@ define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
 //**********************************************************
 // AFFICHAGE DE PAGES Pré installées
 // Page Météo  meteo concept
-define('ON_MET',true);// affichage page TOKEN PBLIGATOIRE
+define('ON_MET',false);// affichage page TOKEN PBLIGATOIRE
 // ---Token
 define('TOKEN','2fce16877b45b86ba110ef2cdbf8d0e437563395f7a8ab2961919a7065ea2cd0&insee=24454');
 //-----------------------------------------------------------------------------------------------
 // Page App diverses , log dz , nagios , sql
-define('ON_APP',true);// mise en service page extérieur
+define('ON_APP',false);// mise en service page extérieur
 // Page exterieur jardin plan extérieur
-define('ON_EXT',true);// mise en service page extérieur
+define('ON_EXT',false);// mise en service page extérieur
 // Page graphiques
-define('ON_GRAPH',true);// mise en service page graphique
+define('ON_GRAPH',false);// mise en service page graphique
 // Page MUR de Caméras-------------------------------------------
 // utilisation du mur :true sinon false , Nom du mur , nb caméras
-define('ON_MUR',true);// mise en service MUR
+define('ON_MUR',false);// mise en service MUR
 define('NOMMUR','La Truffiere');// nom du mur
 define('NBCAM','6');// nombre caméras
 // Zoneminder
@@ -94,12 +94,12 @@ define('ZMPASS','Idem4546');// pour mur_cameras.php
 define('TIMEAPI','3400');//suivant la valeur indiquée dans zoneminder
 //---------------------------------------------------------------------
 // Page zigbee2mqtt
-define('ON_ZIGBEE',true);// mise en service Zigbee
+define('ON_ZIGBEE',false);// mise en service Zigbee
 define('IPZIGBEE', 'http://192.168.1.42:8084');//ip:port
 define('URLZIGBEE', 'https://zigbee.la-truffiere.ovh');//url
 // Page Monitoring
 //Nagios
-define('ON_NAGIOS',true);// mise en service Monitoring
+define('ON_NAGIOS',false);// mise en service Monitoring
 define('IPNAGIOS', '192.168.1.8/nagios');//ip/dossier
 define('URLNAGIOS', 'https://monitoring.la-truffiere.ovh/nagios/');
 define('NAUSER', 'nagiosadmin');
