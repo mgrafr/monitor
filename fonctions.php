@@ -627,9 +627,10 @@ return $retour;
 //pour sauvegardes recuperation des variables domoticz et configuration
 function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 et 6 = contenu textarea
 if ($choix==9){include ("include/test_db.php");}
-$temp_dz=DZCONFIG;$height="490";
+$height="490";$time = time();
 if (($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {
 if (($choix==3) || ($choix==4)) {$file = VARTAB;$rel="4";}
+if (($choix==10) || ($choix==11)) {$file = VARTAB;$rel="11";}
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
 if (($choix!=4) && ($choix!=6) && ($choix!=8)) {echo '<p><img id="bouton_close" onclick="yajax('.$idrep.')"  
@@ -677,8 +678,7 @@ case "5" :
 case "7" :
 echo $file.'<div id="result"><form >';
      $content = file_get_contents($file);
-	 $time = time();
-	 if($choix==3){ file_put_contents($temp_dz.'.bak.'.$time, $content);}
+	 if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	 
 	 else {file_put_contents($file.'.bak.'.$time, $content);}
 	 if($choix==7){$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];
 		$_SESSION["mdpass"]=$find.$content;$height="30";}
@@ -688,7 +688,7 @@ echo $file.'<div id="result"><form >';
 return "sauvegarde OK";	 
 break;
 case "4" :$content=$idrep;
-file_put_contents($temp_dz, $content);
+file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz
 $retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
 break;
@@ -704,6 +704,14 @@ file_put_contents($file, $str);echo file_get_contents($file);
 return ;	 
 break;
 case "9" : return "<img src='images/serveur-sql.svg' style='width:25px;height:auto;' alt='dz'>";
+break;
+case "10" : $content=sql_app(2,"cameras","modect",1,$icone='');file_put_contents(DZCONFIG.'.bak.'.$time, $content);echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
+	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
+	 echo '</form></div>';return "sauvegarde ".DZCONFIG."OK";	
+case "11" :$content=$idrep;
+file_put_contents(DZCONFIG, $content);
+// mise à jour par domoticz met à 2 upload
+$retour=maj_variable("22","upload","2","2");echo "variable Dz à jour : ".$retour['status'];	 
 break;
  default:
 } }
@@ -841,9 +849,21 @@ while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		echo $row['date'].'  '.$row['valeur'].' <img style="width:30px;vertical-align:middle" src="'.$row['icone'].'"/><br>';
 		}
 }
-
+if ($choix==2) {// modect pour dz ----- 2,"cameras","modect",1,$icone=''
+$sql="SELECT * FROM `cameras` WHERE `modect` = 1 ";
+$result = $conn->query($sql);$i=0;
+$number = $result->num_rows;if ($number>0) {
+	$cont="cam_modect = {";
+while($row = $result->fetch_array(MYSQLI_ASSOC)){
+		$content = $cont.$row['id_zm'];
+		$i++;if ($number>$i) {$content=$content.",";}
+}
+$content = $content."}";
+}
+else echo "pas de cameras modect";
+}
 $conn->close();
-return;}
+return $content;}
 
 
 ?>
