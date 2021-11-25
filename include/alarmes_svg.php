@@ -19,8 +19,7 @@
 	.st201{fill:#595959;}
 	.st202{fill:#010101;}
 	.st203{fill:#00FFFF;}
-	.st33{font-family:'ArialMT';}
-	.st5{font-size:16px;}
+	.st183{font-size:16px;}
 	.st204{fill:#4D4D4D;}
 	.st205{fill:#008000;}
 	.st206{fill:#0500B4;}
@@ -49,7 +48,7 @@
    d="M73.6,100.1h351.5c0.3,0,0.5,0.2,0.5,0.5v142.4c0,0.3-0.2,0.5-0.5,0.5H73.6  c-0.3,0-0.5-0.2-0.5-0.5V100.7C73,100.4,73.3,100.1,73.6,100.1z" />
 <text
    transform="matrix(1 0 0 1 203.261 32.8262)"
-   class="st4 st5"
+   class="st4 st183"
    id="text841">ALARME</text>
 
 
