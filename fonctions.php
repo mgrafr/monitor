@@ -855,7 +855,8 @@ $result = $conn->query($sql);$i=0;
 $number = $result->num_rows;if ($number>0) {
 	$cont="cam_modect = {";
 while($row = $result->fetch_array(MYSQLI_ASSOC)){
-		$content = $cont.$row['id_zm'];
+		//$content = $cont.$row['id_zm'];
+		$content = $cont.'['.$row["id_zm"].']='.$row['url'];
 		$i++;if ($number>$i) {$content=$content.",";}
 }
 $content = $content."}";
