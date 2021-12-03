@@ -25,8 +25,9 @@ var text1="";var larg = (document.body.clientWidth);
 var haut = (document.body.clientHeight);
 document.getElementById('largeur').innerHTML =larg;	
 document.getElementById('hauteur').innerHTML =haut;	
-	if (larg<535){ $(".banner-image").backstretch('<?php echo IMAGEACCUEILSMALL;?>');}
-	else { $(".banner-image").backstretch('<?php echo IMAGEACCUEIL;?>');}
+$(".banner-image").backstretch({ width: 768, url: "<?php echo IMAGEACCUEIL?>" },
+            { width: 534, url: "<?php echo IMAGEACCUEILSMALL;?>" });
+	
 /*----------------------------------------------------*/	
 var base_url=window.location.href;
 var arret_mur;var arret_zoom;
@@ -404,7 +405,15 @@ var date_poub=jour_poub+' '+mois_poub+" "+an_poub;
              alert('date ramassage enregigistrée:'  +date_poub);
             });
         });
-
+$("#zm").click(function () {
+          $.ajax({
+             url: "ajax.php",
+             data: "app=sql&idx=3&variable=cameras&type=modect&command=1",
+			 success: function(data) { 
+             alert("liste de caméras enregistrées \nen modect dans SQL\n"+data);
+            }
+        });
+		});
 });
 /*----------fin document-------------------------------*/
 	
