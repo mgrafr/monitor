@@ -849,14 +849,15 @@ while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		echo $row['date'].'  '.$row['valeur'].' <img style="width:30px;vertical-align:middle" src="'.$row['icone'].'"/><br>';
 		}
 }
-if ($choix==2) {// modect pour dz ----- 2,"cameras","modect",1,$icone=''
+if ($choix==2 || $choix==3) {// modect pour dz ----- 2,"cameras","modect",1,$icone=''
 $sql="SELECT * FROM `cameras` WHERE `modect` = 1 ";
 $result = $conn->query($sql);$i=0;
 $number = $result->num_rows;if ($number>0) {
 	$cont="cam_modect = {";
 while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		//$content = $cont.$row['id_zm'];
-		$content = $cont.'['.$row["id_zm"].']='.$row['url'];
+if ($choix==2){	$content = $cont.'['.$row["id_zm"].']='.$row['url'];}
+if ($choix==3){	$content = $cont.$row["id_zm"];}
 		$i++;if ($number>$i) {$content=$content.",";}
 }
 $content = $content."}";
