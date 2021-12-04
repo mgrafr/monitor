@@ -1469,7 +1469,7 @@
    style="display:inline;stroke-width:5">
 	 <circle
        style="fill:#008000;fill-opacity:1;stroke-width:1.42952"
-       id="coul_al_absence" 
+       id="coul_al_nuit" 
 	   rel="66"
        r="22"
        cy="92.2"
