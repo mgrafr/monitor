@@ -472,17 +472,18 @@ $post=[
    'pass' => ZMPASS,
     ];
 $ckfile	= "cookies.txt";
-$out=file_post_curl($url,$ckfile,$post);
+//$out=file_post_curl($url,$ckfile,$post);
 //solution batch   décocher les 2 lines suivantes et cocher celle ci-dessus
-//$oot=' curl -XPOST -d "user='.ZMUSER.'&pass='.ZMPASS.'" -c '.$ckfile.' '.$url;
-//$out=exec($oot);
+$oot=' curl -XPOST -c cookies.txt -d "user='.ZMUSER.'&pass='.ZMPASS.'&stateful=1" '.$url;
+$out=exec($oot);
 //------------------
-$out = json_decode($out,true);echo $out;
-$token = $out['credentials'];
+$out = json_decode($out,true);//echo $out;
+$token = $out['access_token'];
 $_SESSION['time_auth_zm']=time()+TIMEAPI;
 $_SESSION['auth_zm']=$token;echo $token;
 }
 else {$token=$_SESSION['auth_zm'];}
+file_put_contents('admin/token.txt',$_SESSION['auth_zm']);
 return $token;
 }
 
@@ -562,7 +563,7 @@ else {
 	// Récupérer jeton
 $token = token_zm();
 $ncam=$idzm;
-$url=ZMURL.'/api/monitors/'.$ncam.'.json?'.$token;
+$url=ZMURL.'/api/monitors/'.$ncam.'.json?token='.$token;
 $out=file_get_curl($url); 
 //-------solution batch----décocher les 2 lines suivantes et cocher celle ci-dessus
 //$oot='curl '.$url;
