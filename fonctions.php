@@ -160,9 +160,9 @@ else echo "pas d'id_dz";
 /* fonction qui permet de switcher un interrupteur dans Domoticz 
 et de modifier une température de consigne
 */
-function switchOnOff_setpoint($idx,$valeur,$type,$pass=0){$auth=9;
+function switchOnOff_setpoint($idx,$valeur,$type,$pass="0"){$auth=9;
 // exemple : http://192.168.1.75:8082/json.htm?type=command&param=udevice&idx=84&nvalue=Off&svalue=2
-if ($pass==0) {$auth=0;}
+if ($pass=="0") {$auth=0;}
 if ((($pass==NOM_PASS_CM)&&($_SESSION['passwordc']==PWDCOMMAND))&&($_SESSION['timec']>time())) {$auth=1;}
 if (($pass==NOM_PASS_AL)&&($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$auth=2;}
 if ($auth<3){
@@ -174,7 +174,7 @@ if ($auth<3){
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
-else {$result['status']="acces interdit";}
+else {$result['status']="acces interdit".$auth;}
 return $result;
 												 }
 /*POUR METEO CONCEPT*/
