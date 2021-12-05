@@ -483,7 +483,10 @@ $_SESSION['time_auth_zm']=time()+TIMEAPI;
 $_SESSION['auth_zm']=$token;echo $token;
 }
 else {$token=$_SESSION['auth_zm'];}
-file_put_contents('admin/token.txt',$_SESSION['auth_zm']);
+$zm_cle = array (
+'token' => $_SESSION['auth_zm']);
+$cle=json_encode($zm_cle);	
+file_put_contents('admin/token.json',$cle);
 return $token;
 }
 
