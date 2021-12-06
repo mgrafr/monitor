@@ -1,3 +1,4 @@
+--
 --alarme--alarme.lua
 --
 
@@ -6,17 +7,15 @@ function modect_cam(mode)
     json = (loadfile "/home/michel/domoticz/scripts/lua/JSON.lua")()
        local config = assert(io.popen('/usr/bin/curl http://192.168.1.7/monitor/admin/token.json'))
        local blocjson = config:read('*a')
-        config:close()
-        --print (blocjson)
-        local jsonValeur = json:decode(blocjson)
-        cle = jsonValeur.token
-        for k,v in pairs(cam_modect) do 
-        print(v)--pour essai
-        --curl -XGET  https://yourserver/zm/api/monitors.json?token=<access_token>"Monitor[Function]=Modect&Monitor[Enabled]=1"
-        command='/usr/bin/curl -XPOST http://192.168.1.9/zm/api/monitors/'..v..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]=1"'
-        print(command)
-        os.execute(command) 
-        print ("camera "..tostring(k).."activée :"..tostring(mode));
+       config:close()
+       local jsonValeur = json:decode(blocjson)
+       cle = jsonValeur.token
+       for k,v in pairs(cam_modect) do 
+            --print(k)--pour essai
+            command='/usr/bin/curl -XPOST http://192.168.1.9/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
+            print(command)
+            os.execute(command) 
+            print ("camera "..tostring(k).."activée :"..tostring(mode));
         end
 end
 --
@@ -75,7 +74,7 @@ end
 	        modect_cam('Modect') -- si alarme activé : mode camera=Modect
 	      	commandArray['Modect']='On'
 	    end 
-	    -- activation manuelle Modect
+        -- activation manuelle Modect
 	    if (otherdevices['Modect'] == 'On' and  uservariables['ma-alarme']=="0" and  uservariables['modect']=="0") then  
 	      	modect_cam('Modect')
 	      	commandArray['Variable:modect'] = '1'
@@ -83,7 +82,8 @@ end
 	    elseif (otherdevices['Modect'] == 'Off'  and uservariables['ma-alarme']=="0" and uservariables['modect']=="1") then 
 	       modect_cam('Monitor')
 	       commandArray['Variable:modect'] = '0'
-        end 
+    end 
+    --
 -- alarme absence - 
         if (uservariables['ma-alarme']=="1")  then 
             if ((devicechanged['porte entree']) == 'Open')  then 
