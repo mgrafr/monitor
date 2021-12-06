@@ -7,14 +7,14 @@ session_start();
 			<div class="container">
 		<div class="col-md-12">
 	  <h1 id="titre_alarme" class="title text-center">Alarme</span></h1>
-		<div id="message" class="space">
+		<div id="message">
 			  <?php
 					include('test_pass.php');
 					include ("alarmes_svg.php");
 			  ?>
 				</div>
 				</div>
- </div></div><svg version="1.1" id="zm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+ </div><svg version="1.1" id="zm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 326 18" style="width:500px" xml:space="preserve">
 <style type="text/css">
 	.st208{fill:#03A8F3;}
@@ -22,7 +22,7 @@ session_start();
 </style><a id="zm" href="#alarmes">
 <rect x="0.9" y="-0.7" class="st208" width="31.2" height="18.8"/>
 <text transform="matrix(1 0 0 1 5.4312 13.3434)" class="st203 st33 st207">Z M</text></a>
-</svg> <p style="position: relative;top: -190px;left: 100px;">Pour afficher la liste des caméras déclarées Modect<br>et pour demander un jeton pour Modect</p>
+</svg> <p class="zm">Pour afficher la liste des caméras déclarées Modect<br>et pour demander un jeton pour Modect</p></div>
  <div class="modal" role="dialog" id="pwdalarm">
                         
 		    <div id="verif_mpa" >
@@ -42,7 +42,7 @@ session_start();
         <input type="button" value="envoi" id="enter" class="pinButton enter"/>
       </form>
     </div>
-</div><
+</div>
 <script>
 document.getElementById('tspan7024').innerHTML=jour;
 document.getElementById('console1').innerHTML=text1;
