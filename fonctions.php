@@ -857,11 +857,11 @@ if ($choix==2 || $choix==3) {// modect pour dz ----- 2,"cameras","modect",1,$ico
 $sql="SELECT * FROM `cameras` WHERE `modect` = 1 ";
 $result = $conn->query($sql);$i=0;
 $number = $result->num_rows;if ($number>0) {
-	$cont="cam_modect = {";
+	$content="cam_modect = {";
 while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		//$content = $cont.$row['id_zm'];
-if ($choix==2){	$content = $cont.'['.$row["id_zm"].']='.$row['url'];}
-if ($choix==3){	$content = $cont.$row["id_zm"];}
+if ($choix==2){	$content = $content.'['.$row["id_zm"].']="'.$row['url'].'"';}
+if ($choix==3){	$content = $content.$row["id_zm"];}
 		$i++;if ($number>$i) {$content=$content.",";}
 }
 $content = $content."}";
