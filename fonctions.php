@@ -864,11 +864,12 @@ if ($choix==2){	$content = $content.'['.$row["id_zm"].']="'.$row['url'].'"';}
 if ($choix==3){	$content = $content.$row["id_zm"];}
 		$i++;if ($number>$i) {$content=$content.",";}
 }
-$content = $content."}";
+$content = $content."}";if ($choix==3) token_zm();
 }
 else echo "pas de cameras modect";
 }
 $conn->close();
+
 return $content;}
 
 
