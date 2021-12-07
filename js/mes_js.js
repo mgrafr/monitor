@@ -1,4 +1,5 @@
  /*----------------script pour admin---*/
+ 
 function wajax(content,rel){
 $.post('ajax.php', {app:'adminp', variable:rel, command:content}).done(function(response){
       alert("succès");
@@ -31,9 +32,9 @@ $(document).ready(function () {
   });
   $("#enter").click(function () {
     pwd = input_value.val();mdp(pwd,2,'not');
-	$('#d_btn_a').hide();$('#pwdalarm').hide();
-	$('#d_btn_aa,#mp1,#mp2').hide();$('#pwdalarm,#btn_aa').hide();
-	$('#admin1').show();
+	$('#d_btn_alarm').hide();$('#pwdalarm').hide();
+	$('#d_btn_admin,#mp1,#mp2').hide();$('#btn_admin').hide();
+	$('#admin1').show();$('#console1').text("pwd:OK");
   });
   /*$('#enter').on('click', function() {$('pwdalarm').empty();*/
 	/*
