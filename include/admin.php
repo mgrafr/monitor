@@ -8,6 +8,10 @@ session_start();
 		<div class="col-md-12">
 	  <h1 id="about_admin" class="title text-center">Administration</h1>
 		<p>Avant d'entrer un mot de passe, faire un RAZ </p>
+		<div id="d_btn_admin" style="display:none;"><button type="button" id="btn_admin" style="background-color: #4d4d4d;
+border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
+Entrer votre mot de passe 
+</button></div>
 		 <?php
 			$_SESSION["pec"]="admin";
 			include('test_pass.php');
@@ -25,12 +29,6 @@ session_start();
 
 </div>
 	</div>
-<div id="d_btn_admin" style="display:none;"><button type="button" id="btn_admin" style="background-color: #4d4d4d;
-border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
-Entrer votre mot de passe 
-</button></div>	
-	
-	
 		</div> 
  
 <!-- section Titre de la  Page admin-->
