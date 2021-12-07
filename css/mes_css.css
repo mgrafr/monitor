@@ -299,6 +299,12 @@ height: auto;}
   100% { opacity:1; }
 }
 /*alarme*/
+#d_btn_alarm,#d_btn_admin{position: absolute;left: 50px;}
+#d_btn_admin{top: 200px;}
+#d_btn_alarm{top: 140px;}
+#ecran{margin-top: 50px}
+
+;
 .form_al {
   width: 200px;
   margin: 5px auto;
