@@ -7,7 +7,7 @@ session_start();
 			<div class="container">
 		<div class="col-md-12">
 	  <h1 id="titre_alarme" class="title text-center">Alarme</span></h1>
-		<div id="message">
+		<div id="ecran">
 			  <?php
 					include('test_pass.php');
 					include ("alarmes_svg.php");
@@ -22,7 +22,13 @@ session_start();
 </style><a id="zm" href="#alarmes">
 <rect x="0.9" y="-0.7" class="st208" width="31.2" height="18.8"/>
 <text transform="matrix(1 0 0 1 5.4312 13.3434)" class="st203 st33 st207">Z M</text></a>
-</svg> <p class="zm">Pour afficher la liste des caméras déclarées Modect<br>et pour demander un jeton pour Modect</p></div>
+</svg> <p class="zm">Pour afficher la liste des caméras déclarées Modect<br>et pour demander un jeton pour Modect</p>
+
+<div id="d_btn_alarm" style="display:none;"><button type="button" id="btn_alarm" style="background-color: #4d4d4d;
+border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
+Entrer votre mot de passe 
+</button></div>	
+</div>
  <div class="modal" role="dialog" id="pwdalarm">
                         
 		    <div id="verif_mpa" >
