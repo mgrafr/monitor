@@ -11,6 +11,7 @@ $(id1).hide();}
 /*Minimal Virtual Keypad
 ---------------------------*/
 $(document).ready(function () {
+  var result=1;
   const input_value = $("#password");
   var pwd,nameid;
   //disable input from typing
@@ -31,10 +32,14 @@ $(document).ready(function () {
     input_value.val("");
   });
   $("#enter").click(function () {
-    pwd = input_value.val();mdp(pwd,2,'not');
-	$('#d_btn_alarm').hide();$('#pwdalarm').hide();
-	$('#d_btn_admin,#mp1,#mp2').hide();$('#btn_admin').hide();
-	$('#admin1').show();$('#console1').text("pwd:OK");
+    pwd = input_value.val();result=mdp(pwd,2,'not');console.log(result);
+	if (result==1){
+	$('#pwdalarm').hide();
+	$('#mp1,#mp2').hide();$('#d_btn_a').hide();
+	$('#admin1').show();$('#console1').text("pwd:OK");}
+	else {$('#d_btn_a').show();$('#pwdalarm').hide();
+	$('#console1').text("pwd:absent");
+	$('#mp1,#mp2').show();}
   });
   /*$('#enter').on('click', function() {$('pwdalarm').empty();*/
 	/*
@@ -52,7 +57,7 @@ function mdp(passw,command,nameid){
     url: "ajax.php",
     data: "app=mdp&variable="+passw+"&command="+command,
     success: function(html){
-		if (html!="OK") {document.getElementById(nameid).innerHTML =html;}
+		if (html!="OK") {document.getElementById(nameid).innerHTML = html;result=0;}
 				
 	       } });
 };	
