@@ -299,20 +299,19 @@ height: auto;}
   100% { opacity:1; }
 }
 /*alarme*/
-#d_btn_alarm,#d_btn_admin{position: absolute;left: 50px;}
-#d_btn_admin{top: 110px;}
-#d_btn_alarm{top: 50px;}
+#d_btn_a{position: absolute;left: 50px;}
+#d_btn_a{top: 80px;}
 #ecran{margin-top: 50px}
-
-;
+#pwdalarm{text-align: center;width: 200px;left:200px;margin: 0 auto;position: fixed;top: 500px;background-color: rgb(89, 89, 89);height: 180px;}
+.close_clavier{font-size: 24px;position: relative;top: 0px;left: 80px;color: white;} 
 .form_al {
   width: 200px;
   margin: 5px auto;
   background: #595959;
-  padding: 35px 25px;
+  padding: 10px 25px;
   text-align: center;
   box-shadow: 0px 5px 5px -0px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;position: relative;
+  border-radius: 5px;position: fixed;
 top: 480px;
 }
 /*graphiques-------*/
