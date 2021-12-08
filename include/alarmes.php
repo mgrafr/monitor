@@ -1,15 +1,10 @@
 <?php
 session_start();
 ?>
-<div class="modal" style="text-align: center;
-    width: 200px;left:200px;
-    margin: 0 auto;
-    position: fixed;
-    top: 500px;background-color: rgb(89, 89, 89);
-    height: 180px;" role="dialog" id="pwdalarm">
+<div class="modal" role="dialog" id="pwdalarm">
                         
-		    <div id="verif_mpa" style="text-align: center;margin-top:15px">
-		    <form class="form_al">
+		    
+		    <form class="form_al"><span class="close_clavier">x</span>
         <input type="password" style="max-width: 140px;" id="password" /></br>
         <input type="button" value="1" id="1" class="pinButton calc"/>
         <input type="button" value="2" id="2" class="pinButton calc"/>
@@ -24,7 +19,7 @@ session_start();
         <input type="button" value="0" id="0 " class="pinButton calc"/>
         <input type="button" value="envoi" id="enter" class="pinButton enter"/>
       </form>
-    </div>
+  
 </div>
 <!-- section Alarmes start -->
 <!-- ================ -->
@@ -33,12 +28,12 @@ session_start();
 		<div class="col-md-12">
 	  <h1 id="titre_alarme" class="title text-center">Alarme</span></h1>
 		<div id="ecran">
-		<div id="d_btn_alarm" style="display:none;"><button type="button" id="btn_alarm" style="background-color: #4d4d4d;
-border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
+		 <div id="d_btn_al" style="display:none;"><a style="background-color: #605b5dde;color:white;
+border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  href="#admin">
 Entrer votre mot de passe 
-</button></div>		
+</a></div>		
 			  <?php
-					include('test_pass.php');
+					//include('test_pass.php');
 					include ("alarmes_svg.php");
 			  ?>
 				</div>
@@ -54,8 +49,3 @@ Entrer votre mot de passe
 </svg> <p class="zm">Pour afficher la liste des caméras déclarées Modect<br>et pour demander un jeton pour Modect</p>
 </div>
  
-<script>
-document.getElementById('tspan7024').innerHTML=jour;
-document.getElementById('console1').innerHTML=text1;
-document.getElementById('not').innerHTML="";
-</script>

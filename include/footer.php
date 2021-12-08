@@ -16,7 +16,7 @@ require("fonctions.php");
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script>
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
-<script src="js/mes_js.js?1"></script>
+<script src="js/mes_js.js?12"></script>
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 <script>
@@ -27,7 +27,9 @@ document.getElementById('largeur').innerHTML =larg;
 document.getElementById('hauteur').innerHTML =haut;	
 $(".banner-image").backstretch({ width: 768, url: "<?php echo IMAGEACCUEIL?>" },
             { width: 534, url: "<?php echo IMAGEACCUEILSMALL;?>" });
-	
+$('.close_clavier').click(function(){
+  $("#btn_a").trigger("click");
+});	
 /*----------------------------------------------------*/	
 var base_url=window.location.href;
 var arret_mur;var arret_zoom;
@@ -414,6 +416,7 @@ $("#zm").click(function () {
             }
         });
 		});
+		
 });
 /*----------fin document-------------------------------*/
 	
