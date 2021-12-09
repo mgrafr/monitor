@@ -720,10 +720,8 @@ break;
  default:
 } }
 else {	
- echo '<div id="d_btn_a"><button type="button" id="btn_a" style="background-color: #4d4d4d;
-border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
-Entrer votre mot de passe 
-</button></div>';}
+ echo '<script>$("#d_btn_a").show();</script>
+Entrer votre mot de passe ';}
 
 return "mot de passe : temps &eacute;coul&eacute;";
 }
