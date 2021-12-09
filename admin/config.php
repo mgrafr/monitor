@@ -1,7 +1,7 @@
 <?php
 // NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
 //general monitor
-define('URLMONITOR', 'monitor.la-truffiere.ovh');//domaine
+define('URLMONITOR', 'monitor.xxxxxxx.ovh');//domaine
 define('IPMONITOR', '192.168.1.7');//ip 
 define('MONCONFIG', 'admin/config.php');//fichier config 
 define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
@@ -13,7 +13,7 @@ define('IMAGEACCUEIL', $rep.'maison.jpg');//image page accueil pour écrans >534
 define('IMAGEACCUEILSMALL', $rep.'maison_small.jpg');//image page accueil pour écrans <535 px
 define('IMGLOGO', $rep.'logo.png');//image logo
 define('NOMSITE', 'Domoticz');//nom principal du site
-define('NOMSLOGAN', 'La Truffière');//nom secondaire ou slogan
+define('NOMSLOGAN', 'Bonjour');//nom secondaire ou slogan
 // affichage lexique
 define('LEXIQUE', false);
 // infos de découverte , à mettre à FALSE en production
@@ -34,14 +34,14 @@ define('CHOIXID','idm');// idm ou idx
 define('NUMPLAN','2');// n° du plan regroupant tous les capteurs
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
-define('MOTDEPASSE','Idem4546');
+define('MOTDEPASSE','00000000');
 define('UTILISATEUR','michel');
 define('DBASE','domoticz');
 //------Page  Alarmee & Administration------------
 // page Alarme
 define('ON_ALARM',false);// affichage pour utilisation de l'alarme
 // mot passe alarme et administation , la page administration est ON
-define('PWDALARM','004546');//mot passe alarme
+define('PWDALARM','000000');//mot passe alarme
 define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
 define('TIME_PASS_AL','3600');// temps de validité du mot de passe
 // ------------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
 // Page Météo  meteo concept
 define('ON_MET',false);// affichage page TOKEN PBLIGATOIRE
 // ---Token
-define('TOKEN','2fce16877b45b86ba110ef2cdbf8d0e437563395f7a8ab2961919a7065ea2cd0&insee=24454');
+define('TOKEN','YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
 //-----------------------------------------------------------------------------------------------
 // Page App diverses , log dz , nagios , sql
 define('ON_APP',false);// mise en service page extérieur
@@ -84,26 +84,26 @@ define('ON_GRAPH',false);// mise en service page graphique
 // Page MUR de Caméras-------------------------------------------
 // utilisation du mur :true sinon false , Nom du mur , nb caméras
 define('ON_MUR',false);// mise en service MUR
-define('NOMMUR','La Truffiere');// nom du mur
-define('NBCAM','6');// nombre caméras
+define('NOMMUR','Mon Mur');// nom du mur
+define('NBCAM','1');// nombre caméras
 // Zoneminder
 define('ZMURL','http://192.168.1.9/zm');//IP/zm
 define('ZMURLTLS','https:zoneminder.la-truffiere.ovh');// sous domaine
-define('ZMUSER','michel');// pour mur_cameras.php
-define('ZMPASS','Idem4546');// pour mur_cameras.php
+define('ZMUSER','moi');// pour mur_cameras.php
+define('ZMPASS','000000');// pour mur_cameras.php
 define('TIMEAPI','3400');//suivant la valeur indiquée dans zoneminder
 //---------------------------------------------------------------------
 // Page zigbee2mqtt
 define('ON_ZIGBEE',false);// mise en service Zigbee
 define('IPZIGBEE', 'http://192.168.1.42:8084');//ip:port
-define('URLZIGBEE', 'https://zigbee.la-truffiere.ovh');//url
+define('URLZIGBEE', 'https://zigbee.zzzzzzzzz.ovh');//url
 // Page Monitoring
 //Nagios
 define('ON_NAGIOS',false);// mise en service Monitoring
 define('IPNAGIOS', '192.168.1.8/nagios');//ip/dossier
-define('URLNAGIOS', 'https://monitoring.la-truffiere.ovh/nagios/');
+define('URLNAGIOS', 'https://monitoring.zzzzzzzzz.ovh/nagios/');
 define('NAUSER', 'nagiosadmin');
-define('NAPASS', 'Idem4546');
+define('NAPASS', '00000000');
 //Page Mur de Caméras avec Agent DVR
 //Agent DVR
 define('ON_DVR',false);// mise en service agent DVR
