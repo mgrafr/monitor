@@ -31,7 +31,7 @@ $(document).ready(function () {
   $("#clear").click(function () {
     input_value.val("");
   });
-  $("#enter").click(function () {
+  $("#enter").click(function () {result=1;
     pwd = input_value.val();result=mdp(pwd,2,'not');console.log(result);
 	if (result==1){
 	$('#pwdalarm').hide();
