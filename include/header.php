@@ -1,10 +1,10 @@
-
 <body>
 	<!-- debut-navigation  -->
 		<!-- menu  menu-alt.svg = hamburger pour choix de la pageà afficher-->
-		<div it="top" class"wrap push"><a href="#menu" class="menu-link"><img src="images/menu-alt.svg" width="30" alt=""/></a></div>
+		
 		<nav id="menu" style="max-width:1200px;" class="panel" role="navigation">
-		  	<ul class="nav navbar-nav navbar-right">
+		<a href="#menu" class="menu-link"><img src="images/menu-alt.svg" width="30" alt=""/></a>
+    	<ul class="nav navbar-nav navbar-right">
 									<li class="zz active"><a href="#header">Accueil</a></li> 
 									<?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
 									<li class="zz"><a href="#interieur">Intérieur</a></li>
@@ -77,6 +77,6 @@ jour=today;
 <?php
 if (LEXIQUE==true) include("lexique.php");
 else include("lexique_no.php");
-?>		
+?>				
 				
 				<!-- header end -->
