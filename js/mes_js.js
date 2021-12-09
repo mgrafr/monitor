@@ -31,15 +31,15 @@ $(document).ready(function () {
   $("#clear").click(function () {
     input_value.val("");
   });
-  $("#enter").click(function () {result=1;
+  $("#enter").click(function () {
     pwd = input_value.val();result=mdp(pwd,2,'not');console.log(result);
 	if (result==1){
-	$('#pwdalarm').hide();
+	$('#pwdalarm').hide();$('#info_admin').hide();
 	$('#mp1,#mp2').hide();$('#d_btn_a').hide();
 	$('#admin1').show();$('#console1').text("pwd:OK");}
 	else {$('#d_btn_a').show();$('#pwdalarm').hide();
 	$('#console1').text("pwd:absent");
-	$('#mp1,#mp2').show();}
+	$('#mp1,#mp2').show();}$('#info_admin').show();
   });
   /*$('#enter').on('click', function() {$('pwdalarm').empty();*/
 	/*
@@ -58,7 +58,7 @@ function mdp(passw,command,nameid){
     data: "app=mdp&variable="+passw+"&command="+command,
     success: function(html){
 		if (html!="OK") {document.getElementById(nameid).innerHTML = html;result=0;}
-				
+		else {result=1;}		
 	       } });
 };	
   });
