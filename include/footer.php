@@ -16,7 +16,7 @@ require("fonctions.php");
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script>
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
-<script src="js/mes_js.js?12"></script>
+<script src="js/mes_js.js?13"></script>
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 <script>
