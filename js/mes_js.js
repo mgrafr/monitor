@@ -1,7 +1,6 @@
  /*----------------script pour admin---*/
- 
 function wajax(content,rel){
-$.post('ajax.php', {app:'adminp', variable:rel, command:content}).done(function(response){
+$.post('ajax.php', {appp:'adminp', variable:rel, command:content}).done(function(response){
       alert("succès");
       $("#result").html(response);
 });}
@@ -11,7 +10,6 @@ $(id1).hide();}
 /*Minimal Virtual Keypad
 ---------------------------*/
 $(document).ready(function () {
-  var result=1;
   const input_value = $("#password");
   var pwd,nameid;
   //disable input from typing
@@ -32,14 +30,8 @@ $(document).ready(function () {
     input_value.val("");
   });
   $("#enter").click(function () {
-    pwd = input_value.val();result=mdp(pwd,2,'not');console.log(result);
-	if (result==1){
-	$('#pwdalarm').hide();$('#info_admin').hide();
-	$('#mp1,#mp2').hide();$('#d_btn_a').hide();
-	$('#admin1').show();$('#console1').text("pwd:OK");}
-	else {$('#d_btn_a').show();$('#pwdalarm').hide();
-	$('#console1').text("pwd:absent");
-	$('#mp1,#mp2').show();}$('#info_admin').show();
+    pwd = input_value.val();rep=mdp(pwd,2,'not');
+	$('#info_admin').show();
   });
   /*$('#enter').on('click', function() {$('pwdalarm').empty();*/
 	/*
@@ -49,18 +41,32 @@ nameid: id pour affichage texte
 clique:bouton #btn_c ou #verif_mpa
 vide :modal #d_btn_c ou #d_btn_a
 */	  
-	
+function maj_mdp(rep){	
+if (rep==0){
+	$('#pwdalarm').hide();$('#info_admin').hide();
+	$('#mp1,#mp2').hide();$('#d_btn_a').hide();$('#d_btn_al').hide();
+	$('#admin1').show();$('#console1').text("pwd:OK");}
+	else {$('#d_btn_a').show();$('#pwdalarm').hide();
+	$('#console1').text("pwd:absent");
+	$('#mp1,#mp2').show();}
+console.log(rep);
+}
  /*--------------------------------------------------------------*/	
 function mdp(passw,command,nameid){
   $.ajax({
-    type: "POST",
+    method: "POST",
     url: "ajax.php",
-    data: "app=mdp&variable="+passw+"&command="+command,
-    success: function(html){
-		if (html!="OK") {document.getElementById(nameid).innerHTML = html;result=0;}
-		else {result=1;}		
-	       } });
-};	
+	dataType: "json",
+    data: {appp:"mdp",
+	variable:passw,
+	command:command
+	},
+    success: function(response){res=response.statut;document.getElementById(nameid).innerHTML = res;console.log(res);
+			if (res!="OK") {rep=1;}
+else {rep=0;} maj_mdp(rep);},
+	error: function(){alert("erreur");}
+	});
+return rep;}	
   });
 
 
