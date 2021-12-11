@@ -16,12 +16,12 @@ require("fonctions.php");
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script>
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
-<script src="js/mes_js.js?13"></script>
+<script src="js/mes_js.js?94"></script>
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 <script>
 /*-------affiche l'image de la page accueil---------------------------------------*/	
-var text1="";var larg = (document.body.clientWidth);
+var text1="";var larg = (document.body.clientWidth);var rep=9;
 var haut = (document.body.clientHeight);
 document.getElementById('largeur').innerHTML =larg;	
 document.getElementById('hauteur').innerHTML =haut;	
