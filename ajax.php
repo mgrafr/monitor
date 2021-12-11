@@ -2,7 +2,7 @@
 require ("fonctions.php");
 $retour=array();
 //POST-------------------
-$appp = isset($_POST['app']) ? $_POST['app'] : '';
+$appp = isset($_POST['appp']) ? $_POST['appp'] : '';
 $variablep = isset($_POST['variable']) ? $_POST['variable'] : '';
 $commandp = isset($_POST['command']) ? $_POST['command'] : '';
 //GET----------------------
@@ -27,13 +27,13 @@ else if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour
 else if ($app=="infos_nagios") {api_nagios($variable);}
 //else if ($app=="app_nagios") {app_nagios($variable);}
 //else if ($app=="mur_zm") {mur_zm($variable,$command);}
-else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command);}//$choix,$table,$valeur,$date
+else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo json_encode($retour);}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}
 else if ($app=="admin") {$retour=admin($variable,$command);echo json_encode($retour);}	//$command=fenetre(administration footer	
 //  autres fonctions php-----------------------------------Z
-else if ($appp=="mdp") {mdp($variablep,$commandp);}
+else if ($appp=="mdp") {$retour=mdp($variablep,$commandp);echo json_encode($retour);}
 else if ($appp=="adminp") {$retour=admin($variablep,$commandp);} // $command = content	(mes_js.js) & ("#adm1") fonctions.php
 //
-else echo "erreur";
+else echo "erreur ajax";
 
 ?>

@@ -382,17 +382,20 @@ function mdp($mdp,$page_pass){// 1=commandes , 2=alarmes
 //if ($_SESSION["pec"]=="admin"){echo "azerty";$page_pass=3;}
 switch	($page_pass) {
 case "1":
-if ($mdp==PWDCOMMAND) {echo "OK";$_SESSION['passwordc']=$mdp;}
-else {echo "entrer le mot de passe";}		
+if ($mdp==PWDCOMMAND) {$mp="OK";$_SESSION['passwordc']=$mdp;}
+else {$mp="entrer le mot de passe";}		
 break;
 case "2":
-if ($mdp==PWDALARM) {echo "OK";$_SESSION['passworda']=$mdp;$_SESSION['time']=time()+TIME_PASS_AL;}
-else {echo "pasword non valide";}			
+if ($mdp==PWDALARM) {$mp="OK";$_SESSION['passworda']=$mdp;$_SESSION['time']=time()+TIME_PASS_AL;}
+else {$mp="pasword non valide";}			
 break;		
 default:
-echo "erreur";
+$mp="erreur";
 }
-}
+$info=[	
+		'statut' => $mp
+	];
+return $info;}
 
 //METEO FRANCE PLUIE previsions 1 heure
 function app_met($choix){
@@ -704,7 +707,11 @@ case "6" :
 case "8" :
 $newpass=$idrep;$oldpass=$_SESSION["mdpass"];$content=$_SESSION["contenu"];
 $str = str_replace($oldpass, "PWDALARM','".$newpass,$content);
-file_put_contents($file, $str);echo file_get_contents($file);
+file_put_contents($file, $str);echo '<div id="reload" style="display:block;"><a style="background-color: #605b5dde;color:white;
+border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  onclick="location.reload();
+return false;">
+redemarrer 
+</a></div>';//echo file_get_contents($file);
 return ;	 
 break;
 case "9" : return "<img src='images/serveur-sql.svg' style='width:25px;height:auto;' alt='dz'>";
