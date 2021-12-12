@@ -28,7 +28,7 @@ session_start();
 		<div class="col-md-12">
 	  <h1 id="titre_alarme" class="title text-center">Alarme</span></h1>
 		<div id="ecran">
-		 <div id="d_btn_al" style="display:none;"><a style="background-color: #605b5dde;color:white;
+		 <div id="d_btn_al" ><a style="background-color: #605b5dde;color:white;
 border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  href="#admin">
 Entrer votre mot de passe 
 </a></div>		
