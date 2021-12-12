@@ -727,7 +727,7 @@ break;
  default:
 } }
 else {	
- echo '<script>$("#d_btn_a").show();</script>
+ echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
 Entrer votre mot de passe ';}
 
 return "mot de passe : temps &eacute;coul&eacute;";
