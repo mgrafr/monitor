@@ -30,7 +30,7 @@ $(document).ready(function () {
     input_value.val("");
   });
   $("#enter").click(function () {
-    pwd = input_value.val();rep=mdp(pwd,2,'not');
+    pwd = input_value.val();mdp(pwd,2,'not');
 	$('#info_admin').show();
   });
   /*$('#enter').on('click', function() {$('pwdalarm').empty();*/
@@ -44,7 +44,9 @@ vide :modal #d_btn_c ou #d_btn_a
 function maj_mdp(rep){	
 if (rep==0){
 	$('#pwdalarm').hide();$('#info_admin').hide();
-	$('#mp1,#mp2').hide();$('#d_btn_a').hide();$('#d_btn_al').hide();
+	$('#mp1,#mp2').hide();$('#d_btn_a').hide();
+	$('#d_btn_al').hide();$('#reponse1').hide();
+	$('#reponse').hide();
 	$('#admin1').show();$('#console1').text("pwd:OK");}
 	else {$('#d_btn_a').show();$('#pwdalarm').hide();
 	$('#console1').text("pwd:absent");
@@ -66,7 +68,7 @@ function mdp(passw,command,nameid){
 else {rep=0;} maj_mdp(rep);},
 	error: function(){alert("erreur");}
 	});
-return rep;}	
+}	
   });
 
 
