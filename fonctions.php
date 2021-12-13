@@ -727,10 +727,10 @@ break;
  default:
 } }
 else {	
- echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
-Entrer votre mot de passe ';}
+ //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
+$retour='Entrer votre mot de passe ';}
 
-return "mot de passe : temps &eacute;coul&eacute;";
+return $retour; 
 }
 //----------------------------graph-------------------
 function graph($device,$periode){
