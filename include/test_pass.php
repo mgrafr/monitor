@@ -9,7 +9,7 @@ echo '<script>text1="";</script>';
    			  if ($tt==0){
 				  echo "<script>text1='pwd:absent';document.getElementById('d_btn_a').style.display = 'block';document.getElementById('d_btn_al').style.display = 'block';
 			  </script>";}
-			  else {echo "<script>document.getElementById('info_admin').style.display = 'none';</script>";}
+			  else {echo "<script>document.getElementById('info_admin').style.display = 'none';document.getElementById('d_btn_a').style.display = 'none';document.getElementById('d_btn_al').style.display = 'none';</script>";}
 				  echo "<script>
 				document.getElementById('tspan7024').innerHTML=jour;
 				document.getElementById('console1').innerHTML=text1;
