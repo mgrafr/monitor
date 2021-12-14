@@ -16,12 +16,12 @@ require("fonctions.php");
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script>
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
-<script src="js/mes_js.js?94"></script>
+<script src="js/mes_js.js?3"></script>
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 <script>
 /*-------affiche l'image de la page accueil---------------------------------------*/	
-var text1="";var larg = (document.body.clientWidth);var rep=9;
+var text1="";var larg = (document.body.clientWidth);
 var haut = (document.body.clientHeight);
 document.getElementById('largeur').innerHTML =larg;	
 document.getElementById('hauteur').innerHTML =haut;	
@@ -151,7 +151,8 @@ $.ajax({
     success: function(response){pp=response;var al_bat="";
 		$.each( pp, function( key, val ) {
 		if (val.idx=='0'){
-			if (val.jour!=num_jour){aff_date();mc(1,"#meteo_concept");}}
+			if (val.jour!=num_jour){aff_date();
+			document.getElementById('tspan7024').innerHTML=jour;mc(1,"#meteo_concept");}}
 		else {
 			var myEle = document.getElementById("cercle_"+val.idm);	
 			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , ";
@@ -205,7 +206,9 @@ for (var i = 0; i < elements.length; i++) {
     	url: "ajax.php",
     	data: "app=OnOff&device="+idx+"&command="+command+"&type="+type+"&name="+pass,
     	success: function(response){qq=response;
-			if (qq['status']!="OK")alert(qq['status']);
+			if (qq['status']!="OK"){//alert(qq['status']);
+			document.getElementById("d_btn_a").style.display = "block";
+			document.getElementById("d_btn_al").style.display = "block";}
 			else maj_devices(<?php echo NUMPLAN;?>);
 			}
       });  }
@@ -250,7 +253,9 @@ $.ajax({
                         dataType: 'text', 
 						data: "app=admin&variable="+choix_admin+"&command="+fenetre,
                         success: function(data) { 
-                        document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";}, 
+                        document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
+						if (data=="Entrer votre mot de passe"){document.getElementById("d_btn_a").style.display = "block";document.getElementById("d_btn_al").style.display = "block";}
+						}, 
                         error: function() { 
                           alert('La requête n\'a pas abouti'); 
                         } 
