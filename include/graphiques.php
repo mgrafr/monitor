@@ -29,6 +29,7 @@ Merci de cocher vos préférences:<br><ul style="background-color: aquamarine;">
 <li><input type="radio" name="devices" value="temp_cuisine"> temp cuisine</li>
 <li><input type="radio" name="devices" value="temp_meteo"> temp meteo</li>
 <li><input type="radio" name="devices" value="temp_cave"> temp cave</li>
+<li><input type="radio" name="devices" value="temp_cellier"> temp cellier</li>
 <li><input type="radio" name="devices" value="temp_cuis_ete"> temp cuisine d'été</li><br>
 <li><input type="radio" checked="checked" name="variables" value="24"> dernieres 24H</li>
 <li><input type="radio" name="variables" value="48"> dernieres 48H</li>
