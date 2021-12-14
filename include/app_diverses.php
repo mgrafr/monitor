@@ -17,6 +17,8 @@ if ($domaine==IPMONITOR) $lien_img="/monitor";
 		<p class="txt_app"><input type="button" rel="4" style="margin-left: 60px;" class="btn_appd" value="afficher fichier log erreur"></p>
 		<img src="<?php echo $lien_img;?>/images/nagios.png" style="width:100px;height:auto;margin:10px 0 10px 100px" alt="dz">
 		<p class="txt_app"><input type="button" rel="hostlist" style="margin-left: 60px;" class="btn_appd" value="afficher hosts Nagios"></p>
+		<img src="<?php echo $lien_img;?>/images/serveur-sql.svg" style="width:40px;height:auto;margin:0 0 10px 118px" alt="dz">
+		<p class="txt_app"><input type="button" rel="sql" title="date_poub" style="margin-left: 60px;" class="btn_appd" value="afficher historique poubelles"></p>
 		</form>
 </div>
 </div>
