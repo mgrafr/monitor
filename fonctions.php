@@ -174,7 +174,7 @@ if ($auth<3){
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
-else {$result['status']="acces interdit".$auth;}
+else {$result['status']="acces interdit";}
 return $result;
 												 }
 /*POUR METEO CONCEPT*/
@@ -728,7 +728,7 @@ break;
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
-$retour='Entrer votre mot de passe ';}
+$retour='Entrer votre mot de passe';}
 
 return $retour; 
 }
