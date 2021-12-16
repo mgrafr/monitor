@@ -50,6 +50,8 @@ if (rep==0){
 	$('#admin1').show();$('#console1').text("pwd:OK");}
 	else {$('#d_btn_a').show();$('#pwdalarm').hide();
 	$('#console1').text("pwd:absent");
+	/*document.getElementById("d_btn_al").style.display = "block";
+	document.getElementById("d_btn_a").style.display = "block";*/
 	$('#mp1,#mp2').show();}
 console.log(rep);
 }
