@@ -633,14 +633,16 @@ return $retour;
 }
 //pour sauvegardes recuperation des variables domoticz et configuration
 function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 et 6 = contenu textarea
-if ($choix==9){include ("include/test_db.php");}
-$height="490";$time = time();
-if (($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {
+$height="490";$pawd=0;
+if ($choix==9){$height="200";include ("include/test_db.php");$pawd=1;}
+$time = time();
+if (($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$pawd=1;}
+if ($pawd==1){
 if (($choix==3) || ($choix==4)) {$file = VARTAB;$rel="4";}
 if (($choix==10) || ($choix==11)) {$file = VARTAB;$rel="11";}
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
-if (($choix!=4) && ($choix!=6) && ($choix!=8)) {echo '<p><img id="bouton_close" onclick="yajax('.$idrep.')"  
+if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 switch ($choix) {
     case "1":
@@ -661,7 +663,7 @@ $data[$n] = [
 			];
 $n++;}	
 $fp = fopen(FICVARDZ.'.json', 'w+'); fwrite($fp, json_encode($data)); fclose($fp);		
-return $data;
+return;
 break;
     case "2":
 	$filename = FICVARDZ.'.json';
@@ -674,11 +676,11 @@ $idx=$lect_var["idx"];
 $value = $lect_var['Value'];
 $name = $lect_var['Name'];
 $type = $lect_var['Type'];
-$L=URLDOMOTICZ."json.htm?type=command&param=adduservariable&vname=az".$name."vtype=".$type."&vvalue=".$value;
+//$L=URLDOMOTICZ."json.htm?type=command&param=adduservariable&vname=az".$name."vtype=".$type."&vvalue=".$value;
 $data[$n] =[	
 			'xxx' => $idx,Z];
 $n++;}
-return $data;	
+return ;	
 break;
 case "3" :
 case "5" :
@@ -714,23 +716,23 @@ redemarrer
 </a></div>';//echo file_get_contents($file);
 return ;	 
 break;
-case "9" : return "<img src='images/serveur-sql.svg' style='width:25px;height:auto;' alt='dz'>";
+case "9" : echo "<img src='images/serveur-sql.svg' style='width:25px;height:auto;' alt='dz'>";return; 
 break;
 case "10" : $content=sql_app(2,"cameras","modect",1,$icone='');file_put_contents(DZCONFIG.'.bak.'.$time, $content);echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
 	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
 	 echo '</form></div>';return "sauvegarde ".DZCONFIG."OK";	
-case "11" :$content=$idrep;
+case "11" :$content=$idrep;$height="100";echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';
 file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz met à 2 upload
-$retour=maj_variable("22","upload","2","2");echo "variable Dz à jour : ".$retour['status'];	 
+$retour=maj_variable("22","upload","2","2");echo  '<textarea id="adm1" style="height:'.$height.'px;" name="command" >variable Dz à jour : '.$retour["status"].'</textarea>'; return;
 break;
  default:
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
-$retour='Entrer votre mot de passe';}
+echo "Entrer votre mot de passe";return;}
+return $data;
 
-return $retour; 
 }
 //----------------------------graph-------------------
 function graph($device,$periode){

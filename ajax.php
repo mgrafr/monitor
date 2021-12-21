@@ -29,7 +29,7 @@ else if ($app=="infos_nagios") {api_nagios($variable);}
 //else if ($app=="mur_zm") {mur_zm($variable,$command);}
 else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo json_encode($retour);}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}
-else if ($app=="admin") {$retour=admin($variable,$command);echo json_encode($retour);}	//$command=fenetre(administration footer	
+else if ($app=="admin") {admin($variable,$command);}	//$command=fenetre(administration footer	
 //  autres fonctions php-----------------------------------Z
 else if ($appp=="mdp") {$retour=mdp($variablep,$commandp);echo json_encode($retour);}
 else if ($appp=="adminp") {$retour=admin($variablep,$commandp);} // $command = content	(mes_js.js) & ("#adm1") fonctions.php
