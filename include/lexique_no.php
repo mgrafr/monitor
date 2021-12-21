@@ -7,7 +7,7 @@
 			 <p style="margin-left:10px">Larg/Haut de l'écran :<span id="largeur"></span>/<span id="hauteur"></span></p>
 			
 			 <p style="margin-left:10px">Pour utiliser le lexique par défaut , modifiez la configuration .
-			 <br>ou pou créer un lexique personnel modifiez cette page :/admin/lexique_no.php</p>
+			 <br>ou pour créer un lexique personnel modifiez cette page :/admin/lexique_no.php</p>
 			 
 			 			 </div>
      
