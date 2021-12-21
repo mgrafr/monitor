@@ -1,11 +1,16 @@
  /*----------------script pour admin---*/
-function wajax(content,rel){
-$.post('ajax.php', {appp:'adminp', variable:rel, command:content}).done(function(response){
-      alert("succès");
-      $("#result").html(response);
+function wajax(content,rel){alert(content+"   "+rel);
+$("btclose").remove();$("reponse1").empty();  
+$("#adm1").empty();
+$.post('ajax.php', {appp:'adminp', variable:rel, command:content}).done(function(response){console.log(response);
+       $("#reponse1").html(response);
 });}
 function yajax(id1){
 $(id1).hide();}
+function remplace(id2,content2){
+$(id2).text(content2);
+}
+
 
 /*Minimal Virtual Keypad
 ---------------------------*/
@@ -48,7 +53,8 @@ if (rep==0){
 	$('#d_btn_al').hide();$('#reponse1').hide();
 	$('#reponse').hide();
 	$('#admin1').show();$('#console1').text("pwd:OK");}
-	else {$('#d_btn_a').show();$('#pwdalarm').hide();
+	else {$('#d_btn_a').show();
+	$('#pwdalarm').hide();
 	$('#console1').text("pwd:absent");
 	/*document.getElementById("d_btn_al").style.display = "block";
 	document.getElementById("d_btn_a").style.display = "block";*/
