@@ -26,7 +26,8 @@
 </g>
 
 		   </svg></a>					
-		         <div id="titre_meteo_concept" >Prévisions 14 jours  ....cliquer sur les icones pour + infos</div>	
+		  
+       <div id="titre_meteo_concept" >Prévisions 14 jours  ....cliquer sur les icones pour + infos</div>	
 		<div id="meteo_concept" class="table-responsive"></div>	
 		<div id="meteo_concept_am"></div>
 			</div>
