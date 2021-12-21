@@ -298,7 +298,8 @@ height: auto;}
   40%   {opacity:0; }
   100% { opacity:1; }
 }
-/*alarme*/
+/*alarme admin*/
+#reponse1 {background-color: beige;position:relative;top:-230px;display:none;width=450px;left:0;height:auto;width:510px}
 #info_admin{margin-left:10px;display:block;}
 #d_btn_a , #d_btn_al{display:block;position: absolute;left: 50px;background-color: #4d4d4d;color:white;
 border-color: #e0e3e6;border-radius: 0.55rem}
