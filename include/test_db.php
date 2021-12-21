@@ -1,6 +1,6 @@
-<textarea id="adm1" style="height:'.$height.'px;" name="command" >
 <?php
-echo "test....BD<br>";
+echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >';
+echo "test....BD: ";
 // Create connection
 $con = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE);
 // Check connection

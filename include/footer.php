@@ -246,20 +246,22 @@ $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert
 /*-----administration-------------------------------- */
 $(".admin1").click(function() {var choix_admin =$(this).attr('rel');console.log(choix_admin);
 var fenetre =$(this).attr('title');
-
+if (choix_admin==2) {if ( !confirm( "ATTENTION modifie les variables Domoticz" ) ) {return;}} 
+	
 $.ajax({ 
                         type: 'GET', 
                         url: 'ajax.php', 
                         dataType: 'text', 
 						data: "app=admin&variable="+choix_admin+"&command="+fenetre,
-                        success: function(data) { 
-                        document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
-						if (data=="Entrer votre mot de passe"){document.getElementById("d_btn_a").style.display = "block";document.getElementById("d_btn_al").style.display = "block";}
-						}, 
-                        error: function() { 
+                        success: function(data) {$(fenetre).empty();
+						document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
+						if (data=='Entrer votre mot de passe'){document.getElementById("d_btn_a").style.display = "block";
+						document.getElementById("d_btn_al").style.display = "block";}
+							},
+						error: function() { 
                           alert('La requête n\'a pas abouti'); 
                         } 
-                      }); 
+}); 
 });	
 
 /*------------------------------------------------------------------------*/	
