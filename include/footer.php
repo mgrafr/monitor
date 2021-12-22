@@ -255,7 +255,7 @@ $.ajax({
 						data: "app=admin&variable="+choix_admin+"&command="+fenetre,
                         success: function(data) {$(fenetre).empty();
 						document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
-						if (data=='Entrer votre mot de passe'){document.getElementById("d_btn_a").style.display = "block";
+						if (data[3]=='E'){document.getElementById("d_btn_a").style.display = "block";
 						document.getElementById("d_btn_al").style.display = "block";}
 							},
 						error: function() { 
