@@ -4,7 +4,7 @@
 		
 		<nav id="menu" style="max-width:1200px;" class="panel" role="navigation">
 		<a href="#menu" class="menu-link"><img src="images/menu-alt.svg" width="30" alt=""/></a>
-    	<ul class="nav navbar-nav navbar-right">
+    	<ul class="nav navbar-nav navbar-right" style="color: #adafb1;">
 									<li class="zz active"><a href="#header">Accueil</a></li> 
 									<?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
 									<li class="zz"><a href="#interieur">Intérieur</a></li>
