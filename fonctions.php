@@ -402,17 +402,19 @@ function app_met($choix){
 $img_icones = VARDOMOTICZ_IMG;$test ="pas de pluie"; $info=array();	
 switch ($choix) {
     case "1"://----ce n' est plus du Json mais du HTML-----------------------------------------------------
-		$url="http://meteo.orange.fr/meteo/fragments/rain/city/24454";
+		$url="https://www.lameteoagricole.net/meteo-heure-par-heure/Saint-Martin-de-Gurson-24610.html";
 		$strResult = implode("",file($url));
-		$tab = explode('<span class="text-raining-umbrella">',$strResult);
-		$t=$tab[1];$tab = explode('</span>',$t);$t1=$tab[0];// test_pluie
-		$tab = explode('<div class="city-cell very-big">',$t);
-		$t=$tab[1];$tab = explode('</div>',$t);$t2=$tab[0];//date actualisation
-		$t4=stristr($t1, 'p');$t3 = str_split($t4, 3);
-		 if ($t3[0]=="pas"){$info['test_pluie']=$test;$im="pas_pluie";}
+		$maj = explode('<div class="fond2"',$strResult);$t=$maj[1];$maj = explode('Dernière',$t);$t=$maj[1];$maj = explode('</i>',$t);
+		$tab = explode('width="63">',$strResult);
+		$t=$tab[193];$ta= explode('<span style="color:#000000">',$t);$t=$ta[1];$ta= explode('</span>',$t);$pluiemm=$ta[0];
+		$t=$tab[73];$ta = explode('</td>',$t);$date=$ta[0];
+		$t=$tab[1];$ta = explode('</td>',$t);$jour=$ta[0];
+		$t=$tab[241];$ta = explode('</td>',$t);$pourcent=$ta[0];// test_pluie
+		$t=$tab[145];$ta = explode('<br /><i>',$t);$temp=$ta[0];
+		 if ($pourcent=="0%"){$info['test_pluie']=$test;$im="pas_pluie";}
 		 else {$im="pluie";}
-		$info['titre']=$t1; $txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
-		$info['maj']=$t2;
+		$info['titre']=$maj[0]; $txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
+		$info['maj']=$date;$info['jour']=$jour;$info['pourcent']=$pourcent;$info['temp']=$temp;$info['mm']=$pluiemm;
 	break;
     case "2":		
 		$url="https://rpcache-aa.meteofrance.com/internet2018client/2.0/nowcast/rain?lat=44.952602&lon=-0.107691&token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
@@ -731,7 +733,7 @@ break;
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
 echo "Entrer votre mot de passe";return;}
-return $data;
+return ;
 
 }
 //----------------------------graph-------------------
