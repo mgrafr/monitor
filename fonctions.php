@@ -739,7 +739,7 @@ foreach($retour  as $R=>$D){
 }
 echo "fin";return;
 break;
-case "13" : $retour=devices_plan(2) ;echo "var $idx=new Array();<br>";
+case "13" : $retour=devices_plan(2) ;echo "var \$idx=new Array();<br>";
 foreach($retour  as $R=>$D){
   foreach($D as $key=>$Value){
 	
