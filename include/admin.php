@@ -21,8 +21,11 @@ Entrer votre mot de passe
 		<a class="admin1" href="#admin" rel="2" title="reponse1" >création variables domoticz depuis fichier json(var_dz.json)</a><br>
 		<a class="admin1" href="#admin" rel="3" title="reponse1" >Configuation variables dz maj_services</a><br>
 		<a class="admin1" href="#admin" rel="10" title="reponse1" >Configuation modect dz alarmes</a><br>
-		<a class="admin1" href="#admin" rel="5" title="reponse1" >Configuation monitor</a></p>
+		<a class="admin1" href="#admin" rel="12" title="reponse1" >Créer fichier idx/nom Domoticz , LISTE</a><br>
+		<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier idx/nom Domoticz , TABLEAU zigbee</a><br>
+		<a class="admin1" href="#admin" rel="5" title="reponse1" >Configuation monitor</a><br><br>
 		<a class="admin1" href="#admin" rel="9" title="reponse1" >Test Base de données</a></p>
+		
 <div id="reponse1"></div>
 
 
