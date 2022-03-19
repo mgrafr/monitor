@@ -117,6 +117,7 @@ if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat
 	'Name' => $lect_device["Name"],
    	'Update' => $lect_device["LastUpdate"],
 	'idm' => $periph['idm'],
+	'materiel' => $periph['materiel'],
 	'maj_js' => $periph['maj_js'],	
 	'ID1' => $periph['id1_html'],
 	'ID2' => $periph['id2_html'],
@@ -399,7 +400,7 @@ return $info;}
 
 //METEO FRANCE PLUIE previsions 1 heure
 function app_met($choix){
-$img_icones = VARDOMOTICZ_IMG;$test ="pas de pluie"; $info=array();	
+$test ="pas de pluie"; $info=array();	
 switch ($choix) {
     case "1"://----ce n' est plus du Json mais du HTML-----------------------------------------------------
 		$url="https://www.lameteoagricole.net/meteo-heure-par-heure/Saint-Martin-de-Gurson-24610.html";
@@ -646,6 +647,8 @@ if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
+if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <br>";}
+
 switch ($choix) {
     case "1":
 $L=URLDOMOTICZ."json.htm?type=command&param=getuservariables";
@@ -678,7 +681,7 @@ $idx=$lect_var["idx"];
 $value = $lect_var['Value'];
 $name = $lect_var['Name'];
 $type = $lect_var['Type'];
-//$L=URLDOMOTICZ."json.htm?type=command&param=adduservariable&vname=az".$name."vtype=".$type."&vvalue=".$value;
+$L=URLDOMOTICZ."json.htm?type=command&param=adduservariable&vname=az".$name."vtype=".$type."&vvalue=".$value;
 $data[$n] =[	
 			'xxx' => $idx,Z];
 $n++;}
@@ -727,6 +730,25 @@ case "11" :$content=$idrep;$height="100";echo '<p id="btclose"><img id="bouton_c
 file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz met à 2 upload
 $retour=maj_variable("22","upload","2","2");echo  '<textarea id="adm1" style="height:'.$height.'px;" name="command" >variable Dz à jour : '.$retour["status"].'</textarea>'; return;
+break;
+case "12" : $retour=devices_plan(2) ;
+foreach($retour  as $R=>$D){
+  foreach($D as $key=>$Value){
+		if ($key=="idx" ) echo "  ".$key." = ".$Value."   ";
+		if ($key=="Name" ) echo "  ".$key." = ".$Value."<br>";}
+}
+echo "fin";return;
+break;
+case "13" : $retour=devices_plan(2) ;echo "var $idx=new Array();<br>";
+foreach($retour  as $R=>$D){
+  foreach($D as $key=>$Value){
+	
+  	if ($key=="idx" ) $val_idx=$Value;	
+	if ($key=="Name" )$val_name=$Value;
+	if ($key=="materiel" )$val_mat=$Value;  } 
+if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'Idx["'.$val_name.'"]="'.$val_idx.'";<br>';	
+	}
+echo "//********************";return;
 break;
  default:
 } }
