@@ -739,14 +739,14 @@ foreach($retour  as $R=>$D){
 }
 echo "fin";return;
 break;
-case "13" : $retour=devices_plan(2) ;echo "var \$idx=new Array();<br>";
+case "13" : $retour=devices_plan(2) ;echo "var \$idx=new Array[];<br>";
 foreach($retour  as $R=>$D){
   foreach($D as $key=>$Value){
 	
   	if ($key=="idx" ) $val_idx=$Value;	
 	if ($key=="Name" )$val_name=$Value;
 	if ($key=="materiel" )$val_mat=$Value;  } 
-if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'Idx["'.$val_name.'"]="'.$val_idx.'";<br>';	
+if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'idx["'.$val_name.'"]="'.$val_idx.'";<br>';	
 	}
 echo "//********************";return;
 break;
