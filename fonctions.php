@@ -143,11 +143,11 @@ function sql_plan($t){
 // SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
  if ($t!=0) {
-	$sql="SELECT * FROM `dispositifs` WHERE `idx` = ".$t ;
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `idx` = ".$t ;
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();return $row;}
 else if ($t==0) {
-	$sql="SELECT * FROM `dispositifs` WHERE `maj_js` LIKE '%onoff%' " ;
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `maj_js` LIKE '%onoff%' " ;
 	$result = $conn->query($sql);//echo "/*";
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
