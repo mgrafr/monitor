@@ -13,6 +13,7 @@
 									<?php if (ON_GRAPH==true) echo '<li class="zz"><a href="#graphiques">Graphiques</a></li>';?>
 									<?php if (ON_ONOFF==true) echo '<li class="zz"><a href="#murinter">Mur On/Off</a></li>';?>
 									<?php if (ON_ZIGBEE==true) echo '<li class="zz"><a href="#zigbee">Zigbee2mqtt</a></li>';?>
+									<?php if (ON_ZWAVE==true) echo '<li class="zz"><a href="#zwave">Zwavejs2mqtt</a></li>';?>
 									<?php if (ON_MUR==true) echo '<li class="zz"><a href="#murcam">Mur cameras</a></li>';?>
 									<?php if (ON_DVR==true) echo '<li class="zz"><a href="#dvr">Mur DVR</a></li>';?>
 									<?php if (ON_NAGIOS==true) echo '<li class="zz"><a href="#nagios">Monitoring</a></li>';?>
