@@ -171,7 +171,7 @@ a:link, a:visited {
 .modal-dialog {width:650px;margin: 0 auto;margin-top:50px}
 
 #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,
-#murinter,#app_diverses,#graphiques,#admin, #zigbee, #dvr, #nagios{
+#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios{
     width: 100%;
     height: 1120px;padding: 80px 0;
     min-height: 100%;
@@ -180,7 +180,7 @@ a:link, a:visited {
     top: 350px;z-index:-20;overflow: auto;
 }
 #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
-#app_diverses,#admin, #zigbee, #dvr, #nagios{
+#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios{
     background-color: aquamarine;}
 #meteo {
 	background-color: #4f9ff4;}
@@ -406,8 +406,8 @@ top: 480px;
     left: 50%;
 }
 
-/*zigbee2mqtt & ngiosmobile   (----------------*/
-#zbmqtt {width:750px;margin-top:-50px;height: 700px;}
+/*zigbee2mqtt zwavejs2mqtt & ngiosmobile   (----------------*/
+#zbmqtt,#zwmqtt {margin-top:-40px;width: 100%;height: 800px;}
 #nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
 #nagiosapp{width: 750px;height: 700px;position: relative;
 top: -70px;}
