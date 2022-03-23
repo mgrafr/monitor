@@ -32,6 +32,7 @@ if (ON_ONOFF==true) include ("include/mur_inter.php");
 if (ON_APP==true) include ("include/app_diverses.php");
 include ("include/admin.php");// administration
 if (ON_ZIGBEE==true) include ("include/zigbee.php");// fronted zigbee2mqtt
+if (ON_ZWAVE==true) include ("include/zwave.php");// webUI zwavejs2mqtt
 if (ON_MUR==true) {include ("include/mur_cam.php");$_SESSION["zmuser"]=ZMUSER;
 $_SESSION["zmpass"]=ZMPASS;}
 if (ON_DVR==true) include ("include/dvr.php");
