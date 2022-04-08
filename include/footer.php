@@ -111,7 +111,7 @@ function maj_variable(idx,name,valeur,type){
 /*--------------------------------------------------------------*/	
 
 /*-----meteo France prev 1 H-------------------------------------------------------*/
-pluie("1");var echeance;var prev_pluie;var texte_pluie;//var tc=<?php echo $_SESSION["TC"];?>;
+pluie("2");var echeance;var prev_pluie;var texte_pluie;//var tc=<?php echo $_SESSION["TC"];?>;
 function pluie(idx){//var tc=TestConnection_js();
   $.ajax({
     type: "GET",
@@ -130,10 +130,10 @@ function pluie(idx){//var tc=TestConnection_js();
 		else {document.getElementById("pluie").style.display = "block";
 			  document.getElementById('pluie').innerHTML ='<img src="'+img_pluie+'" alt="pluie">';
 			texte_pluie=titre; 
-			document.getElementById('txt_pluie').innerHTML ='<a href="#accueil">'+maj+'</a>';
+			document.getElementById('txt_pluie').innerHTML ='<a href="#accueil">'+maj+':'+titre+'</a>';
 			document.getElementById("txt_pluie").style.display = "block";}
 	}  } });
-	 setTimeout(pluie, 3600000, 1);   
+	 setTimeout(pluie, 3600000, 2);   
  };	
  /*------lecture des indfos de l'alerte pluie----------------------------------------*/
  $("#txt_pluie").click( function() { alert(texte_pluie); });
@@ -186,7 +186,7 @@ setTimeout(maj_devices, 180000, <?php echo NUMPLAN;?>);
 function class_name(cn,coul){
 var elements = document.getElementsByClassName(cn);//console.log('eww',elements)
 for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];//console.log(element);
+    var element = elements[i];console.log(element);
     element.style=coul;
 }
 }
@@ -246,7 +246,7 @@ $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert
 /*-----administration-------------------------------- */
 $(".admin1").click(function() {var choix_admin =$(this).attr('rel');console.log(choix_admin);
 var fenetre =$(this).attr('title');
-if (choix_admin==2) {if ( !confirm( "ATTENTION modifie les variables Domoticz" ) ) {return;}} 
+if (choix_admin==2) {if ( !confirm( "ATTENTION modifie les variables Domoticz\n Pour une nouvelle installation modifier l'IP de domotiz\n (URLDOMOTICZ dans configuration monitor)" ) ) {return;}} 
 	
 $.ajax({ 
                         type: 'GET', 
