@@ -420,7 +420,7 @@ switch ($choix) {
     case "2":		
 		$url="https://rpcache-aa.meteofrance.com/internet2018client/2.0/nowcast/rain?lat=44.952602&lon=-0.107691&token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
 		$json_string = file_get_curl($url);$result = json_decode($json_string,true);
-		$info['maj']=$result['update_time'];
+		$info['maj']=substr($result['update_time'],11,8);
 		$json=$result['properties']['forecast'];
 		$n=0;	
 		while (isset($json[$n]['time']))
@@ -430,8 +430,8 @@ switch ($choix) {
 		 $info[$n]['rain_intensity_description']=$json[$n]['rain_intensity_description'];
 		$n++;
 		}
-		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']="";$im="pas_pluie";}
-		else {$info['test_pluie']=$test;$info['titre']="Prévision de pluie";$im="pluie";}
+		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']=$json[0]['rain_intensity_description'];$im="pas_pluie";}
+		else {$info['test_pluie']=$test;$info['titre']="prévision 15 minutes: ".$json[0]['rain_intensity_description'];$im="pluie";}
 		$txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
 		break;
 	default:
