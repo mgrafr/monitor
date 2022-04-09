@@ -425,13 +425,13 @@ switch ($choix) {
 		$n=0;	
 		while (isset($json[$n]['time']))
 		{$info[$n]['rain_intensity']=$json[$n]['rain_intensity'];
-		if ($json[$n]['rain_intensity'] >1) {$test="pluie";}
+		if ($json[$n]['rain_intensity'] >1) {$test="pluie";$id_test_pluie=$n;}
 		 $info[$n]['time']=$json[$n]['time'];
 		 $info[$n]['rain_intensity_description']=$json[$n]['rain_intensity_description'];
 		$n++;
 		}
 		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']=$json[0]['rain_intensity_description'];$im="pas_pluie";}
-		else {$info['test_pluie']=$test;$info['titre']="prévision 15 minutes: ".$json[0]['rain_intensity_description'];$im="pluie";}
+		else {$info['test_pluie']=$test;$info['titre']="prévision : ".$json[$id_test_pluie]['rain_intensity_description'];$im="pluie";}
 		$txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
 		break;
 	default:
