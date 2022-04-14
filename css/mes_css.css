@@ -35,7 +35,7 @@ vertical-align: middle;}
 .poubelles{
 position:relative;
 left:550px;
-top: -500px;
+top: -600px;
 width:100px}
 .fosse_septique{
 position:relative;
@@ -201,7 +201,7 @@ a:link, a:visited {
 }
 .banner-caption {
 	position: absolute;
-	top: 50%;
+	top: 30%;
 	width: 100%;
 	z-index: 2;
 }
@@ -240,6 +240,8 @@ top: 250px;
 width: 100px;
 height: auto;
 right: 40px;}
+#pluie{position: fixed;
+top: 150px;}
 #pluie img{width:80px;}
 #txt_pluie{position: relative;
 top: -70px;color:red;
@@ -250,7 +252,7 @@ left: 20px;}
 .aff_anni{position: relative;
 width: 70px;
 right: 140px;height: auto;
-bottom: 480px;
+bottom: 700px;
 left: 180px;}
 #aff_anni{width: 70px;}
 #prenom{color: #f0e8e8;}
@@ -440,12 +442,12 @@ left: 160px;width: 45px;}
 /* Large devices (small desktops <535) */
 @media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:-290px;}#nagiosmobile{width:480px;}
 .poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}
-.fosse_septique{left:300px;}.aff_anni{bottom: 320px;}#fosse{bottom:-120px;}
+.fosse_septique{left:300px;}#fosse{bottom:-120px;}.aff_anni{bottom: 540px;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}
 .fond_date {right: -60px;}
 .colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}
 .banner {height:724px;}
-.banner-caption {top: 30%;}
+.banner-caption {top: 25%;}
 .image_met{width:50px;margin-left: 0;}
 .icone_vent {width: 40px;
     margin-left: 10px;
