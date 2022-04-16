@@ -235,13 +235,11 @@ margin: -15px 0 0 50px;}
     Top: 820px;
     left: 50px;
 }
-.aff_pluie{position: absolute;
-top: 250px;
+.aff_pluie{position: relative;
+top: -700px;
 width: 100px;
 height: auto;
-right: 40px;}
-#pluie{position: fixed;
-top: 150px;}
+left: 380px;}
 #pluie img{width:80px;}
 #txt_pluie{position: relative;
 top: -70px;color:red;
