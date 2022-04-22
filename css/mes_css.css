@@ -235,11 +235,11 @@ margin: -15px 0 0 50px;}
     Top: 820px;
     left: 50px;
 }
-.aff_pluie{position: relative;
-top: -700px;
-width: 100px;
-height: auto;
-left: 380px;}
+.aff_pluie{position: absolute;
+    top: 150px;
+    width: 100px;
+    height: auto;
+    left: 600px;}
 #pluie img{width:80px;}
 #txt_pluie{position: relative;
 top: -70px;color:red;
@@ -440,7 +440,7 @@ left: 160px;width: 45px;}
 /* Large devices (small desktops <535) */
 @media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:-290px;}#nagiosmobile{width:480px;}
 .poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}
-.fosse_septique{left:300px;}#fosse{bottom:-120px;}.aff_anni{bottom: 320px;}
+.fosse_septique{left:300px;}#fosse{bottom:-120px;}.aff_anni{bottom: 320px;}.aff_pluie{left: 390px;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}
 .fond_date {right: -60px;}
 .colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}
