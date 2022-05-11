@@ -437,7 +437,7 @@ var nom;
 	"idx :" +pp[nom].idx+"<br>"+
 	"Nom :" +pp[nom].Name+"<br>"+
 	"t° :"+pp[nom].temp+"<br>"+
-	"ID :" +pp[nom].ID+"<br>"+
+	"ID :" +(pp[nom].ID).substring(0, 32)+"<br>"+
 	"batterie :" +pp[nom].bat+"<br>"+
 	"humidité :" +pp[nom].hum+"<br>"+
 	"update :" +pp[nom].update+"<br>"+
