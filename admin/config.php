@@ -22,9 +22,9 @@ define('DECOUVERTE', true);
 define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
 define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE en milli secondes
 // caméras et VTO DAHUA
-define('DHPASSVTO','a1234567');
+define('DHPASSVTO','xxxxxxxx');
 define('DHUSER','michel');
-define('DHPASS','Idem4546');
+define('DHPASS','xxxxxxx');
 // --------------------------------------------------------------------------------------------
 // choix ID pour l'affichage des infos des dispositifs
 // idx : idx de Domoticz    idm : idm de monitor (dans ce cas la table "dispositifs" 
