@@ -172,6 +172,7 @@ $.ajax({
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_OFF);}}	
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
+				//if ((val.maj_js=="etat") && ((val.Data).substring(0, 11)=="Set Level: ")){var pourcent=(val.Data).split(" ");var height = document.getElementById(val.ID1).style.height;console.log(val.ID1,height); document.getElementById(val.ID1).style.height= height+"px";}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 		}}
 			else {document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
@@ -186,7 +187,7 @@ setTimeout(maj_devices, 180000, <?php echo NUMPLAN;?>);
 function class_name(cn,coul){
 var elements = document.getElementsByClassName(cn);//console.log('eww',elements)
 for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];console.log(element);
+    var element = elements[i];//console.log(element);
     element.style=coul;
 }
 }
