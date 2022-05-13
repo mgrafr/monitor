@@ -23234,7 +23234,7 @@
    style="fill:black;fill-opacity:0"
    xlink:href="#interieur"
    onclick="popup_device(31)"
-   id="volet_bureau"
+   id="volet_bureau_plan"
    width="35.472649"
    height="47.77776"
    x="107.32688"
