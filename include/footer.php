@@ -196,16 +196,19 @@ for (var i = 0; i < elements.length; i++) {
 <?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?>
 	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
-	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2*/ 
-	  var type;
+	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
+	  var type;var level=0;
 	  if ((command=="On")||(command=="Off")){type=2;}
+	  if (command.substring(0, 11)=="Set Level: "){type=3;}
 	  else {type=1;}
 	  if (pp[idm].Data == "On") {command="Off";}
+	  if (pp[idm].Data == "Open") {command="Set Level";level=100;}
+	  if (pp[idm].Data == "closed") {command="Set Level";level=0;}
 	  $.ajax({
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
-    	data: "app=OnOff&device="+idx+"&command="+command+"&type="+type+"&name="+pass,
+    	data: "app=OnOff&device="+idx+"&command="+command+"&type="+type+"variable="+level+"&name="+pass,
     	success: function(response){qq=response;
 			if (qq['status']!="OK"){//alert(qq['status']);
 			document.getElementById("d_btn_a").style.display = "block";
