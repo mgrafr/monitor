@@ -163,7 +163,8 @@ $.ajax({
 				if (myEle) {myEle.style = "fill-opacity: 0";}		
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {
 				if (val.maj_js=="temp") document.getElementById(val.ID1).innerHTML=val.Data;
-					if ((val.maj_js=="control" || val.maj_js=="onoff") && ((val.Data=="On") || (val.Data=="Open")|| (val.Data).substring(0, 11)=="Set Level: ")){
+				if ((val.maj_js=="onoff") && (((val.Data).substring(0, 11)=="Set Level: ") || (val.Data=="Open"))) {val.Data="On"}
+				if ((val.maj_js=="control" || val.maj_js=="onoff") && (val.Data=="On")){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_ON);}}			
