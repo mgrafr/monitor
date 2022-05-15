@@ -146,13 +146,14 @@ $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `idx` = ".$t ;
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();return $row;}
-else if ($t==0) {
+else if ($t==0) {$commande="On";
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `maj_js` LIKE '%onoff%' " ;
 	$result = $conn->query($sql);//echo "/*";
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
 		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
-		$s=$s.'").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","On","'.$row['pass'].'");});';
+		if ($row['maj_js']=="onoff+stop") {$commande="Open";}
+		$s=$s.'").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';
 		echo $s."\r\n" ;}
 	//echo "*/";
 	return;}
@@ -161,7 +162,7 @@ else echo "pas d'id_dz";
 /* fonction qui permet de switcher un interrupteur dans Domoticz 
 et de modifier une température de consigne
 */
-function switchOnOff_setpoint($idx,$valeur,$type,$pass="0"){$auth=9;
+function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;
 // exemple : http://192.168.1.75:8082/json.htm?type=command&param=udevice&idx=84&nvalue=Off&svalue=2
 //                                   /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
 if ($pass=="0") {$auth=0;}
@@ -174,7 +175,7 @@ if ($auth<3){
 	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
 	$json=URLDOMOTICZ.'json.htm?type=command&param='.$json1;
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
-	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur.'&level='.$type;}
+	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur.'&level='.$level;}
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}

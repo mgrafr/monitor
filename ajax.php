@@ -16,7 +16,7 @@ $type = isset($_GET['type']) ? $_GET['type'] : '';
 //
 if ($app=="aff_th") {$retour= status_devices($device,'Temp','Humidity');echo json_encode($retour); }
 else if ($app=="devices_plan") {$retour=devices_plan($variable);echo json_encode($retour); }
-else if ($app=="OnOff") {$retour=switchOnOff_setpoint($device,$command,$type,$name);echo json_encode($retour); }
+else if ($app=="OnOff") {$retour=switchOnOff_setpoint($device,$command,$type,$variable,$name);echo json_encode($retour); }
 else if ($app=="meteo_concept") {echo $retour=meteo_concept($variable); }
 else if ($app=="upload_img") {$retour = upload_img($variable);echo json_encode($retour); }
 else if ($app=="upload_conf_img") {cam_config($name,$command,$variable,$idx,$type); }
