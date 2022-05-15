@@ -117,6 +117,7 @@ if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat
 	'Name' => $lect_device["Name"],
    	'Update' => $lect_device["LastUpdate"],
 	'idm' => $periph['idm'],
+	'materiel' => $periph['materiel'],
 	'maj_js' => $periph['maj_js'],	
 	'ID1' => $periph['id1_html'],
 	'ID2' => $periph['id2_html'],
@@ -142,11 +143,11 @@ function sql_plan($t){
 // SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
  if ($t!=0) {
-	$sql="SELECT * FROM `dispositifs` WHERE `idx` = ".$t ;
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `idx` = ".$t ;
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();return $row;}
 else if ($t==0) {
-	$sql="SELECT * FROM `dispositifs` WHERE `maj_js` LIKE '%onoff%' " ;
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `maj_js` LIKE '%onoff%' " ;
 	$result = $conn->query($sql);//echo "/*";
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
@@ -162,6 +163,7 @@ et de modifier une température de consigne
 */
 function switchOnOff_setpoint($idx,$valeur,$type,$pass="0"){$auth=9;
 // exemple : http://192.168.1.75:8082/json.htm?type=command&param=udevice&idx=84&nvalue=Off&svalue=2
+//                                   /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
 if ($pass=="0") {$auth=0;}
 if ((($pass==NOM_PASS_CM)&&($_SESSION['passwordc']==PWDCOMMAND))&&($_SESSION['timec']>time())) {$auth=1;}
 if (($pass==NOM_PASS_AL)&&($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$auth=2;}
@@ -171,6 +173,8 @@ if ($auth<3){
 	// $type=2 .....ON/OFF
 	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
 	$json=URLDOMOTICZ.'json.htm?type=command&param='.$json1;
+	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
+	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur.'&level='.$type;}
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
@@ -399,36 +403,38 @@ return $info;}
 
 //METEO FRANCE PLUIE previsions 1 heure
 function app_met($choix){
-$img_icones = VARDOMOTICZ_IMG;$test ="pas de pluie"; $info=array();	
+$test ="pas de pluie"; $info=array();	
 switch ($choix) {
     case "1"://----ce n' est plus du Json mais du HTML-----------------------------------------------------
-		$url="http://meteo.orange.fr/meteo/fragments/rain/city/24454";
+		$url="https://www.lameteoagricole.net/meteo-heure-par-heure/Saint-Martin-de-Gurson-24610.html";
 		$strResult = implode("",file($url));
-		$tab = explode('<span class="text-raining-umbrella">',$strResult);
-		$t=$tab[1];$tab = explode('</span>',$t);$t1=$tab[0];// test_pluie
-		$tab = explode('<div class="city-cell very-big">',$t);
-		$t=$tab[1];$tab = explode('</div>',$t);$t2=$tab[0];//date actualisation
-		$t4=stristr($t1, 'p');$t3 = str_split($t4, 3);
-		 if ($t3[0]=="pas"){$info['test_pluie']=$test;$im="pas_pluie";}
+		$maj = explode('<div class="fond2"',$strResult);$t=$maj[1];$maj = explode('Dernière',$t);$t=$maj[1];$maj = explode('</i>',$t);
+		$tab = explode('width="63">',$strResult);
+		$t=$tab[193];$ta= explode('<span style="color:#000000">',$t);$t=$ta[1];$ta= explode('</span>',$t);$pluiemm=$ta[0];
+		$t=$tab[73];$ta = explode('</td>',$t);$date=$ta[0];
+		$t=$tab[1];$ta = explode('</td>',$t);$jour=$ta[0];
+		$t=$tab[241];$ta = explode('</td>',$t);$pourcent=$ta[0];// test_pluie
+		$t=$tab[145];$ta = explode('<br /><i>',$t);$temp=$ta[0];
+		 if ($pourcent=="0%"){$info['test_pluie']=$test;$im="pas_pluie";}
 		 else {$im="pluie";}
-		$info['titre']=$t1; $txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
-		$info['maj']=$t2;
+		$info['titre']=$maj[0]; $txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
+		$info['maj']=$date;$info['jour']=$jour;$info['pourcent']=$pourcent;$info['temp']=$temp;$info['mm']=$pluiemm;
 	break;
     case "2":		
 		$url="https://rpcache-aa.meteofrance.com/internet2018client/2.0/nowcast/rain?lat=44.952602&lon=-0.107691&token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
 		$json_string = file_get_curl($url);$result = json_decode($json_string,true);
-		$info['maj']=$result['update_time'];
+		$info['maj']=substr($result['update_time'],11,8);
 		$json=$result['properties']['forecast'];
 		$n=0;	
 		while (isset($json[$n]['time']))
 		{$info[$n]['rain_intensity']=$json[$n]['rain_intensity'];
-		if ($json[$n]['rain_intensity'] >1) {$test="pluie";}
+		if ($json[$n]['rain_intensity'] >1) {$test="pluie";$id_test_pluie=$n;}
 		 $info[$n]['time']=$json[$n]['time'];
 		 $info[$n]['rain_intensity_description']=$json[$n]['rain_intensity_description'];
 		$n++;
 		}
-		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']="";$im="pas_pluie";}
-		else {$info['test_pluie']=$test;$info['titre']="Prévision de pluie";$im="pluie";}
+		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']=$json[0]['rain_intensity_description'];$im="pas_pluie";}
+		else {$info['test_pluie']=$test;$info['titre']="prévision : ".$json[$id_test_pluie]['rain_intensity_description'];$im="pluie";}
 		$txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
 		break;
 	default:
@@ -644,6 +650,8 @@ if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
+if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <br>";}
+
 switch ($choix) {
     case "1":
 $L=URLDOMOTICZ."json.htm?type=command&param=getuservariables";
@@ -676,7 +684,7 @@ $idx=$lect_var["idx"];
 $value = $lect_var['Value'];
 $name = $lect_var['Name'];
 $type = $lect_var['Type'];
-//$L=URLDOMOTICZ."json.htm?type=command&param=adduservariable&vname=az".$name."vtype=".$type."&vvalue=".$value;
+$L=URLDOMOTICZ."json.htm?type=command&param=adduservariable&vname=az".$name."vtype=".$type."&vvalue=".$value;
 $data[$n] =[	
 			'xxx' => $idx,Z];
 $n++;}
@@ -726,12 +734,31 @@ file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz met à 2 upload
 $retour=maj_variable("22","upload","2","2");echo  '<textarea id="adm1" style="height:'.$height.'px;" name="command" >variable Dz à jour : '.$retour["status"].'</textarea>'; return;
 break;
+case "12" : $retour=devices_plan(2) ;
+foreach($retour  as $R=>$D){
+  foreach($D as $key=>$Value){
+		if ($key=="idx" ) echo "  ".$key." = ".$Value."   ";
+		if ($key=="Name" ) echo "  ".$key." = ".$Value."<br>";}
+}
+echo "fin";return;
+break;
+case "13" : $retour=devices_plan(2) ;echo "var idx=[];<br>";
+foreach($retour  as $R=>$D){
+  foreach($D as $key=>$Value){
+	
+  	if ($key=="idx" ) $val_idx=$Value;	
+	if ($key=="Name" )$val_name=$Value;
+	if ($key=="materiel" )$val_mat=$Value;  } 
+if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'idx["'.$val_name.'"]="'.$val_idx.'";<br>';	
+	}
+echo "//********************";return;
+break;
  default:
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
 echo "Entrer votre mot de passe";return;}
-return $data;
+return ;
 
 }
 //----------------------------graph-------------------
