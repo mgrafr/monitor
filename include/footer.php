@@ -149,7 +149,7 @@ $.ajax({
     url: "ajax.php",
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
-		$.each( pp, function( key, val ) {
+		$.each( pp, function( key, val ) {vol=0;
 		if (val.idx=='0'){
 			if (val.jour!=num_jour){aff_date();
 			document.getElementById('tspan7024').innerHTML=jour;mc(1,"#meteo_concept");}}
@@ -163,11 +163,13 @@ $.ajax({
 				if (myEle) {myEle.style = "fill-opacity: 0";}		
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {
 				if (val.maj_js=="temp") document.getElementById(val.ID1).innerHTML=val.Data;pos=val.Data;
-				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {pos="On"}
+				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {vol=1;pos="On";var pourcent = (val.Data).split(" ");}
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && (pos=="On")){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
-						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_ON);}}			
+						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_ON);if (vol==1){var h=document.getElementById(val.ID1).getAttribute("height");
+							console.log("h="+h);document.getElementById(val.ID1).setAttribute("height",parseInt((h*pourcent[2])/100)+"px");}
+							}}			
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((val.Data=="Off") || (val.Data=="Closed"))){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
