@@ -162,13 +162,13 @@ $.ajax({
 			else 
 				if (myEle) {myEle.style = "fill-opacity: 0";}		
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {
-				if (val.maj_js=="temp") document.getElementById(val.ID1).innerHTML=val.Data;
-				if ((val.maj_js=="onoff") && (((val.Data).substring(0, 11)=="Set Level: ") || (val.Data=="Open"))) {val.Data="On"}
-				if ((val.maj_js=="control" || val.maj_js=="onoff") && (val.Data=="On")){
+				if (val.maj_js=="temp") document.getElementById(val.ID1).innerHTML=val.Data;pos=val.Data;
+				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {pos="On"}
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && (pos=="On")){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_ON);}}			
-				if ((val.maj_js=="control" || val.maj_js=="onoff") && ((val.Data=="Off") || (val.Data=="Closed"))){//console.log(val.ID1,val.idm);
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((val.Data=="Off") || (val.Data=="Closed"))){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_OFF);}}	
@@ -199,7 +199,7 @@ for (var i = 0; i < elements.length; i++) {
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
 	  var type;var level=0;
 	  if ((command=="On")||(command=="Off")){type=2;}
-	  if (command.substring(0, 11)=="Set Level: "){type=3;}
+	  else if (command.substring(0, 11)=="Set Level: "){type=3;}
 	  else {type=1;}
 	  if (pp[idm].Data == "On") {command="Off";}
 	  if (pp[idm].Data == "Open") {command="Set Level";level=100;}
@@ -208,7 +208,7 @@ for (var i = 0; i < elements.length; i++) {
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
-    	data: "app=OnOff&device="+idx+"&command="+command+"&type="+type+"variable="+level+"&name="+pass,
+    	data: "app=OnOff&device="+idx+"&command="+command+"&type="+type+"&variable="+level+"&name="+pass,
     	success: function(response){qq=response;
 			if (qq['status']!="OK"){//alert(qq['status']);
 			document.getElementById("d_btn_a").style.display = "block";
