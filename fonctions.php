@@ -101,7 +101,7 @@ while (isset($parsed_json['result'][$n])==true)
 {
 $lect_device = $parsed_json['result'][$n];  
 $t=$lect_device["idx"];$periph=array();
-$periph=sql_plan($t);$bat="";
+$periph=sql_plan($t);$bat="";if ($periph['idm']=="") {$periph['idm']="NULL";}
 if (CHOIXID=='idm') {$t=$periph['idm'];}
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
@@ -152,6 +152,7 @@ else if ($t==0) {$commande="On";
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
 		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
+		$s1=$s.'").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';
 		if ($row['maj_js']=="onoff+stop") {$commande="Open";}
 		$s=$s.'").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';
 		echo $s."\r\n" ;}
