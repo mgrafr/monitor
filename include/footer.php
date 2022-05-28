@@ -169,7 +169,7 @@ $.ajax({
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_ON);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");console.log("h="+h);
-							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(100-pcent)/100)));}
+							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((pos=="Off") || (pos=="Closed"))){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
@@ -178,7 +178,7 @@ $.ajax({
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 		}}
-			else {document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
+			else if (val.idm!="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
 		}});
 		if (al_bat!=""){document.getElementById("erreur_interieur").innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;}
 					}
@@ -202,7 +202,7 @@ for (var i = 0; i < elements.length; i++) {
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
 	  var type;var level=0;
 	  if ((command=="On")||(command=="Off")){type=2;}
-	  else if (command.substring(0, 11)=="Set Level: "){type=3;}
+	  else if (command=="Open"){type=3;}
 	  else {type=1;}
 	  if (pp[idm].Data == "On") {command="Off";}
 	  if (pp[idm].Data == "Open") {command="Set Level";level=100;}
