@@ -17,7 +17,7 @@ la 1ere semaine est celle ayant au moins 4 jours sur la nouvelle année
 -- return 1=mon 7=sun
 --
 -- chargement fichier contenant les variable de configuration
-package.path = package.path..";/home/michel/domoticz/www/modules_lua/?.lua"
+package.path = package.path..";www/modules_lua/?.lua"
 require 'string_tableaux'
 --
 function getYearBeginDayOfWeek(tm)
@@ -87,32 +87,52 @@ local time = string.sub(os.date("%X"), 1, 5)
 local day = os.date("%A")
 local jour = os.date("%d") --jour du mois [01-31]
 local mois = os.date("%m") --mois en cours
+local jour_mois = jour.."-"..mois
 -- passage à 0 heure 
-if (time == "00:05"  or time == "00:15") then 
+if (time == "00:05"  or time == "11:12") then 
     commandArray['Variable:anniversaires'] = "0";
     commandArray['Variable:fosse septique'] = "0";
-end 
+    -- exclusion ou ajout dates poubelles ,
+    for k,v in pairs(e_poubelles) do 
+      if (jour_mois==k) then 
+        if (v == "g") then jour_poubelle_grise = "";  
+		elseif (v == "j") then jour_poubelle_jaune = "";
+		end
+      end    
+    end
+	for k,v in pairs(a_poubelles) do 
+      if (jour_mois==k) then 
+		if (v == "g") then jour_poubelle_grise = day;
+		elseif (v == "j") then jour_poubelle_jaune = day;
+		end
+	  end    
+    end  
+end
+
+
+
 -------------------------------------------------------------
-if ((time == "00:10") and (uservariables['poubelles']=="ordures_ménagères" )) then commandArray['Variable:poubelles'] = "poubelle_grise_vide"  
+if ((time == "06:50") and (uservariables['poubelles']=="ordures_ménagères" )) then commandArray['Variable:poubelles'] = "poubelle_grise_vide"  
 end
 if ((time == "00:10") and (uservariables['fosse_septique']=="fosse septique" )) then commandArray['Variable:fosse_septique'] = "0"  
 end
 if ((time == "09:30") and (uservariables['poubelles']=="poubelle_grise_vide" )) then commandArray['Variable:poubelles'] = "0"  
 end
-if ((time == "00:10") and (uservariables['poubelles']=="poubelle_jaune" )) then commandArray['Variable:poubelles'] = "poubelle_jaune_vide"      
+if ((time == "00:10") and (uservariables['poubelles']=="poubelle_recyclables" )) then commandArray['Variable:poubelles'] = "poubelle_jaune_vide"      
 end  
 if ((time == "09:10") and (uservariables['poubelles']=="poubelle_jaune_vide" )) then commandArray['Variable:poubelles'] = "0"  
 end
 --
 if  (( day == jour_poubelle_grise ) and (time == "17:00")) then commandArray['Variable:poubelles'] = "ordures_ménagères"
 		-- poubelle  la variable passe à "poubelle_grise" .
-	commandArray['Variable:not_tv_poubelle'] = "1"	
+	commandArray['Variable:not_tv_poubelle'] = "1"
+	commandArray['Variable:not_poubelles'] = "1"
 	 print (time,day, "mettre les poubelles ordures ménagères");
 	 -- envoi notification via free
 		os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=12812620&pass=2FQTMM7x42kspr&msg=poubelle' >> /home/michel/OsExecute.log 2>&1")
 		end
 --
-if ( day == jour_poubelle_jaune and (time == "18:38")) then 
+if ( day == jour_poubelle_jaune and (time == "17:00")) then 
     print ("-----"..time,day);
 	-- récupérer numéro de la semaine actuelle
 	useDate = os.time()	-- os.time{year=2015,month=9,day=30} -- il est possible de préciser la date
@@ -121,10 +141,10 @@ if ( day == jour_poubelle_jaune and (time == "18:38")) then
 	pair_impair_semaine = weekNum%2 -- resultat =0 ou 1
 	-- L' %opérateur (modulo) produit le reste de la division du premier argument par le second 
 	print(os.date("%A %d/%m/%Y",useDate)..": week number:"..tostring(weekNum))
-	if (pair_impair_semaine==semaine_poub_jaune) then commandArray['Variable:poubelles'] = "poubelle_jaune"
+	if (pair_impair_semaine==semaine_poub_jaune) then commandArray['Variable:poubelles'] = "poubelle_recyclables"
 			-- poubelle jaune la variable passe à  "poubelle_jaune"
-	commandArray['Variable:not_tv_poubelle'] = "1"		
-	 print (time,day, "mettre les poubelles recyclabes");
+	commandArray['Variable:not_tv_poubelle'] = "1"
+    print (time,day, "mettre les poubelles recyclabes");
 		-- envoi notification via free
 		os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=12812620&pass=2FQTMM7x42kspr&msg=poubelle' >> /home/michel/OsExecute.log 2>&1")
 		
@@ -136,15 +156,14 @@ end
         commandArray['Variable:not_tv_fosse'] = "1" -- notification télé
  end  
 -- anniversaires ,
-if (time == "01:12")  then
-local anni = jour.."-"..mois
+if (time == "01:30")  then
+local jour_mois = jour.."-"..mois
     for k,v in pairs(anniversaires) do 
      -- print(v)--pour essai     
-        if (anni==k) then  commandArray['Variable:anniversaires'] = v;
+        if (jour_mois==k) then  commandArray['Variable:anniversaires'] = v;
           print(v)  
+        end
     end
-end
-
 end
  
 return commandArray 
