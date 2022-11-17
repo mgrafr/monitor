@@ -18,7 +18,7 @@
 									<?php if (ON_DVR==true) echo '<li class="zz"><a href="#dvr">Mur DVR</a></li>';?>
 									<?php if (ON_NAGIOS==true) echo '<li class="zz"><a href="#nagios">Monitoring</a></li>';?>
 									<?php if (ON_APP==true) echo '<li class="zz"><a href="#app_diverses">App</a></li>';?>
-									<?php if (ON_SPA==true) echo '<li class="zz"><a href="#spa">App</a></li>';?>
+									<?php if (ON_SPA==true) echo '<li class="zz"><a href="#spa">SPA</a></li>';?>
 									<li class="zz"><a href="#admin">Administration</a></li>
 									<?php
 									/*zz la class pour le script js menu_link*/
