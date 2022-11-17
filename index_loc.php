@@ -37,6 +37,7 @@ if (ON_MUR==true) {include ("include/mur_cam.php");$_SESSION["zmuser"]=ZMUSER;
 $_SESSION["zmpass"]=ZMPASS;}
 if (ON_DVR==true) include ("include/dvr.php");
 if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
+if (ON_SPA==true) include ("include/spa.php");//monitoring
 include ("include/test_pass.php");// verif du mot de passe
 include ("include/footer.php");// fin de la page avec les scrpits JS
 ?>
