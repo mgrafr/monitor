@@ -162,8 +162,8 @@ $.ajax({
 			else 
 				if (myEle) {myEle.style = "fill-opacity: 0";}		
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {
-				if (val.maj_js=="temp") document.getElementById(val.ID1).innerHTML=val.Data;pos=val.Data;
-			if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {vol=1;pos="On";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
+				if (val.maj_js=="temp" || val.maj_js=="data") document.getElementById(val.ID1).innerHTML=val.Data;pos=val.Data;
+				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {vol=1;pos="On";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && (pos=="On")){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
@@ -194,6 +194,11 @@ for (var i = 0; i < elements.length; i++) {
     element.style=coul;
 }
 }
+/* volets roulants*/
+
+$('.closeBtn').on('click', function () {
+      $('.popup_vr').fadeOut(300);
+    });
 /* switchOnOff*  */
 
 <?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?>
