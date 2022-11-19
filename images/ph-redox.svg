@@ -70,10 +70,10 @@
 </g>
 <text transform="matrix(1 0 0 1 41.4414 27.3308)" class="spa11 spa2 spa3">MESURE PH-REDOX-TEMPERATURES-DEBIT</text>
 <text transform="matrix(1 0 0 1 19.522 221.5869)" class="spa11 spa2 spa12">NodeMcu esp8266</text>
-<text id="ph" transform="matrix(1 0 0 1 89.1308 60.6138)" class="spa2 spa13">ph</text>
+<text id="ph" transform="matrix(1 0 0 1 84 60.6138)" class="spa2 spa13">ph</text>
 <text id="orp" transform="matrix(1 0 0 1 203.2178 60.6026)" class="spa2 spa13">orp</text>
-<text id="temp_eau" transform="matrix(1 -8.293536e-03 8.293536e-03 1 94.6664 106.4827)" class="spa2 spa14">temp</text>
+<text id="temp_eau" transform="matrix(1 -8.293536e-03 8.293536e-03 1 90 106.4827)" class="spa2 spa14">temp</text>
 <text id="temp_air" transform="matrix(1.1896 0 0 1 208.5146 103.9736)" class="spa2 spa15">temp</text>
-<text id="debit" transform="matrix(1 0 0 1 171.2572 150.1799)" class="spa2 spa13">m3/h</text>
+<text id="debit" transform="matrix(1 0 0 1 160 150.1799)" class="spa2 spa13">m3/h</text>
 <text transform="matrix(1.0326 0 0 1 58 99.6831)" class="spa2 spa16">Eau </text>
 </svg>
