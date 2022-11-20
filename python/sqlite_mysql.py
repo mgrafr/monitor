@@ -7,7 +7,7 @@ total_arg = len(sys.argv)
 if (total_arg>0) : 
     x= str(sys.argv[1])
     temp = x.split('#') 
-    table="temp_"+temp[0]
+    table=temp[0]
     val1=temp[1]
     val=temp[2]+" "+temp[3]
     print(table)
