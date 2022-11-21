@@ -17,7 +17,7 @@
 	.spa11{fill:#FFFFFF;}
 	.spa12{font-size:9px;}
 	.spa13{font-size:15px;}
-	.spa14{font-size:15.0005px;}
+	
 	
 </style>
 <g>
@@ -52,8 +52,8 @@
 </g>
 <text id="ph" transform="matrix(1 0 0 1 84 62)" class="spa2 spa13">ph</text>
 <text id="orp" transform="matrix(1 0 0 1 203 62)" class="spa2 spa13">orp</text>
-<text id="temp_eau" transform="matrix(1 -8.293536e-03 8.293536e-03 1 90 109)" class="spa2 spa14">temp</text>
-<text id="temp_air" transform="matrix(1.1896 0 0 1 208.5146 107)" class="spa2 spa14">temp</text>
+<text id="temp_eau" transform="matrix(1 0 0 1 90 109)" class="spa2 spa13">temp1spa</text>
+<text id="temp_air" transform="matrix(1 0 0 1 205 107)" class="spa2 spa13">temp2spa</text>
 <text id="debit" transform="matrix(1 0 0 1 160 150.1799)" class="spa2 spa13">m3/h</text>
 <text transform="matrix(1.0326 0 0 1 54 107)" class="spa2 spa3">Eau </text>
 </g>
@@ -64,13 +64,13 @@
 		s22.4,24,50,24s50-10.7,50-24S196.6,183,169,183L169,183z"/>
 </g>
 <g>
-	<g id="ecran_suivant_" transform="matrix(0,-1,1,0,28.57143,680.00001)">
+	<g id="ecran_suivant_" onclick="next_ecran(1)" transform="matrix(0,-1,1,0,28.57143,680.00001)">
 		<path id="e_suiv" d="M493,147.5c0,0.1-19.5,39-19.5,39c-0.1-0.1-19.5-39-19.5-39s4.4,1.9,9.8,4.2l9.7,4.2l9.7-4.2
 			C488.5,149.3,492.9,147.4,493,147.5C493,147.4,493,147.4,493,147.5z"/>
 	</g>
 </g>
 <g>
-	<g id="ecran_precedent_" transform="matrix(0,-1,1,0,28.57143,680.00001)">
+	<g id="ecran_precedent_" onclick="next_ecran(-1)" transform="matrix(0,-1,1,0,28.57143,680.00001)">
 		<path id="e_prec" d="M493.4,134.2c0-0.1-19.5-39-19.5-39c-0.1,0.1-19.5,39-19.5,39s4.4-1.9,9.8-4.2l9.7-4.2l9.7,4.2
 			C489,132.4,493.4,134.3,493.4,134.2C493.4,134.3,493.4,134.2,493.4,134.2z"/>
 	</g>
@@ -79,3 +79,4 @@
 <text transform="matrix(1 0 0 1 19.522 221.5869)" class="spa11 spa2 spa12">NodeMcu esp8266</text>
 
 </svg>
+
