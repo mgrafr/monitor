@@ -15,6 +15,7 @@
 	.spa11{fill:#FFFFFF;}
 	.spa12{font-size:9px;}
 	.spa13{font-size:15px;}
+	.spa14{fill:#FFFB00;}
 	
 	
 </style>
@@ -48,8 +49,8 @@
 	<rect x="155.6" y="136.6" class="spa9" width="61" height="20"/>
 	<path d="M216.1,137.1v19h-60v-19H216.1 M217.1,136.1h-62v21h62V136.1L217.1,136.1z"/>
 </g>
-<text id="ph" transform="matrix(1 0 0 1 84 62)" class="spa2 spa13">ph</text>
-<text id="orp" transform="matrix(1 0 0 1 203 62)" class="spa2 spa13">orp</text>
+<text id="acide" transform="matrix(1 0 0 1 84 62)" class="spa2 spa13">ph</text>
+<text id="redox" transform="matrix(1 0 0 1 203 62)" class="spa2 spa13">orp</text>
 <text id="temp_eau" transform="matrix(1 0 0 1 90 107)" class="spa2 spa13">temp1spa</text>
 <text id="temp_air" transform="matrix(1 0 0 1 205 107)" class="spa2 spa13">temp2spa</text>
 <text id="debit" transform="matrix(1 0 0 1 160 150.1799)" class="spa2 spa13">m3/h</text>
