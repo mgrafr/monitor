@@ -15,9 +15,9 @@
 num_ecran=0;valph="";valorp="";valtemp1spa="";m3="";
 	function next_ecran(num_ec){
 num_ecran=num_ecran+num_ec;
-	if (num_ecran>2) {num_ecran=1;}
+	if (num_ecran>=2) {num_ecran=1;}
 	if (num_ecran<0) {num_ecran=0;}
-	console.log(num_ec);
+	console.log(num_ecran);
 	
 	
 if (num_ecran==0) {url_ec="http://192.168.1.7/monitor/include/ph-redox_svg.php";

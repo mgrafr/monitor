@@ -50,7 +50,7 @@
 </g>
 <text id="ph" transform="matrix(1 0 0 1 84 62)" class="spa2 spa13">ph</text>
 <text id="orp" transform="matrix(1 0 0 1 203 62)" class="spa2 spa13">orp</text>
-<text id="temp_eau" transform="matrix(1 0 0 1 90 109)" class="spa2 spa13">temp1spa</text>
+<text id="temp_eau" transform="matrix(1 0 0 1 90 107)" class="spa2 spa13">temp1spa</text>
 <text id="temp_air" transform="matrix(1 0 0 1 205 107)" class="spa2 spa13">temp2spa</text>
 <text id="debit" transform="matrix(1 0 0 1 160 150.1799)" class="spa2 spa13">m3/h</text>
 <text transform="matrix(1.0326 0 0 1 54 107)" class="spa2 spa3">Eau </text>
