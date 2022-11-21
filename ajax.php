@@ -25,6 +25,7 @@ else if ($app=="services") {$retour= status_variables($variable);echo json_encod
 else if ($app=="maj_var") {$retour=maj_variable($idx,$name,$variable,$type);echo json_encode($retour);}
 else if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour);}
 else if ($app=="infos_nagios") {api_nagios($variable);}
+else if ($app=="ecran_spa") {echo file_get_curl($variable);}
 //else if ($app=="app_nagios") {app_nagios($variable);}
 //else if ($app=="mur_zm") {mur_zm($variable,$command);}
 else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo json_encode($retour);}//$choix,$table,$valeur,$date,$icone
