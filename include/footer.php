@@ -16,7 +16,7 @@ require("fonctions.php");
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script>
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
-<script src="js/mes_js.js?3"></script>
+<script src="js/mes_js.js?4"></script>
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 <script>
@@ -435,6 +435,21 @@ $("#zm").click(function () {
             }
         });
 		});
+
+
+graph_spa("ph_spa","text_svg");
+function graph_spa(device,variable){
+  $.ajax({
+    type: "GET",
+    url: "ajax.php",
+    data: "app=graph&device="+device+"&variable="+variable,
+    success: function(html){
+	document.getElementById('graphic_ph').innerHTML =html;
+	  
+      } });
+};
+			
+
 		
 });
 /*----------fin document-------------------------------*/

@@ -11,6 +11,7 @@
 </div>
 
   </div>
+
 <script>
 num_ecran=0;nb_ecran=<?php echo NB_ECRAN_SPA;?>;
 	function next_ecran(num_ec){
@@ -26,5 +27,4 @@ document.getElementById(div_prec).style.display="none";document.getElementById(d
 </script>
 		
 
-			
 

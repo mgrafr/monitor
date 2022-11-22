@@ -58,16 +58,13 @@
 </g>
 <g id="ecran1" style="display:none">
 		<rect x="43" y="36.5" class="spa14" width="256.7" height="145.9"/>
-	<path d="M299,37.1V182H43.6V37.1H299 M300.3,36h-258v147h258V36L300.3,36z"/>
 	
-	<text transform="matrix(1 0 0 1 83.5654 130.1042)" class="st2 st3 st4">  </text>
 <text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Mesures de PH :</text>
+	<g id="graphic_ph" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>	
 </g>
 <g id="ecran2" style="display:none">
 		<rect x="43" y="36.5" class="spa6" width="256.7" height="145.9"/>
-	<path d="M299,37.1V182H43.6V37.1H299 M300.3,36h-258v147h258V36L300.3,36z"/>
 	
-	<text transform="matrix(1 0 0 1 83.5654 130.1042)" class="st2 st3 st4">  </text>
 <text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Mesures de Redox :</text>
 </g>	
 <g>
