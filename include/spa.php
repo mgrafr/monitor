@@ -12,55 +12,17 @@
 
   </div>
 <script>
-num_ecran=0;valph="";valorp="";valtemp1spa="";m3="";
-	function next_ecran(num_ec){console.log(num_ec);
-num_ecran=num_ecran+num_ec;
-	if (num_ecran>=2) {num_ecran=1;}
-	if (num_ecran<0) {num_ecran=0;}
-	console.log(num_ecran);
+num_ecran=0;nb_ecran=<?php echo NB_ECRAN_SPA;?>;
+	function next_ecran(num_ec){
+	num_actuel=num_ecran;num_ecran=num_ecran+num_ec;
+	if (num_ecran>=nb_ecran || num_ecran<0) {num_ecran=0;}
+	div_suiv="ecran"+num_ecran;div_prec="ecran"+num_actuel;
+								
+								console.log(div_suiv+"   "+div_prec);
 	
-	
-if (num_ecran==0) {url_ec="http://192.168.1.7/monitor/include/ph-redox0_svg.php";
-				  }							
- if (num_ecran==1) {url_ec="http://192.168.1.7/monitor/include/ph-redox1_svg.php";
-				  }
-console.log("ec="+url_ec);	
- $.ajax({
-	type: "GET",
-    url: "ajax.php",
-    data: "app=ecran_spa&variable="+url_ec,
-    success: function(data){$("#ecran1").empty();
-			$("#ecran1").html(data);maj_dev(<?php echo NUMPLAN;?>);
-			}				
-});
-	console.log("num_ecran="+num_ecran+"  "+valph);
-	
+document.getElementById(div_prec).style.display="none";document.getElementById(div_suiv).style.display="block";				  
 }	
-function maj_dev(plan){
-$.ajax({
-    type: "GET",
-    dataType: "json",
-    url: "ajax.php",
-    data: "app=devices_plan&variable="+plan,
-    success: function(response){pp=response;var al_bat="";
-		$.each( pp, function( key, val ) {
-		
-		
-			
-			
-			
-					
-			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {
-				if (val.maj_js=="temp" || val.maj_js=="data") document.getElementById(val.ID1).innerHTML=val.Data;pos=val.Data;
-				}
-					
-			else if (val.idm!="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
-		
-		
-					
-}});
-}
-});}
+
 </script>
 		
 
