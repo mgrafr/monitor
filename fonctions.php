@@ -152,9 +152,9 @@ else if ($t==0) {$commande="On";
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
 		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
-		$s1=$s.'").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';
-		if ($row['maj_js']=="onoff+stop") {$commande="Open";}
-		$s=$s.'").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';
+		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);})';}
+       	else {$sl='").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';}
+		$s=$s.$sl;
 		echo $s."\r\n" ;}
 	//echo "*/";
 	return;}
@@ -766,9 +766,13 @@ return ;
 //----------------------------graph-------------------
 function graph($device,$periode){
 require("include/export_tab_sqli.php") ;	
-	if ($periode=="infos_bd"){	echo "liste : 20 dernieres valeurs<br>";
+	if ($periode=="infos_bd"){	echo "liste : 20 dernieres valeurs<br>";$k=0;
 		for ($i=$number-20; $i<$number; $i++)
-		{echo $xdate[$i]." = ".$yvaleur[$i]."<br>";}return;}
+		{
+			echo $xdate[$i]." = ".$yvaleur[$i]."<br>";}return;}
+	if ($periode=="text_svg"){	
+		for ($i=$number-10; $i<$number; $i++)
+		{$k=$k+1;$ccc=10*$k;echo '<text transform="matrix(1 0 0 1 0 '.$ccc.')" class="spa2 spa3">'.$xdate[$i].'='.$yvaleur[$i].'</text>';}return;}
 	else {
 	require_once ('jpgraph/jpgraph.php');
 	require_once ('jpgraph/jpgraph_line.php');
