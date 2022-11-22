@@ -115,7 +115,8 @@ define('ON_DVR',false);// mise en service agent DVR
 define('IPDVR', 'http://192.168.1.50:8090');
 define('URLDVR', 'https://DOMAINE.ovh');
 //SPA
-define('ON_SPA',false);// mise en service SPA
+define('ON_SPA',true);// mise en service SPA
+define('NB_ECRAN_SPA',3);// mise en service SPA
 //----------------------------------------------------------------
 
 ?>
