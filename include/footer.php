@@ -282,7 +282,7 @@ $('#btn_graph').on('click', function() {
 var device = $('input[name=devices]:checked').val();
 var variable = $('input[name=variables]:checked').val();
 $("#btn_g").trigger("click");
-graph(device,variable);
+graph(device,variable,"graphic");
         });
 /*--------------fin graphiques------------------------*/
 /*zoom*/
