@@ -437,18 +437,9 @@ $("#zm").click(function () {
 		});
 
 
-graph_spa("ph_spa","text_svg","graphic_ph");
-graph_spa("orp_spa","text_svg","graphic_orp");	
-function graph_spa(device,variable,idspa){
-  $.ajax({
-    type: "GET",
-    url: "ajax.php",
-    data: "app=graph&device="+device+"&variable="+variable,
-    success: function(html){
-	document.getElementById(idspa).innerHTML =html;
-	  
-      } });
-};
+
+
+
 			
 
 		
