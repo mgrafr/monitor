@@ -58,7 +58,8 @@
 </g>
 <g id="ecran1" style="display:none">
 		<rect x="43" y="36.5" class="spa14" width="256.7" height="145.9"/>
-	
+				
+
 <text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Mesures de PH :</text>
 	<g id="graphic_ph" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>	
 </g>
@@ -66,6 +67,7 @@
 		<rect x="43" y="36.5" class="spa6" width="256.7" height="145.9"/>
 	
 <text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Mesures de Redox :</text>
+<g id="graphic_orp" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>		
 </g>	
 <g>
 	<ellipse class="spa10" cx="169" cy="207" rx="49.5" ry="23.5"/>
@@ -74,13 +76,13 @@
 		s22.4,24,50,24s50-10.7,50-24S196.6,183,169,183L169,183z"/>
 </g>
 <g>
-	<g id="ecran_suivant_" onclick="next_ecran(1)" transform="matrix(0,-1,1,0,28.57143,680.00001)">
+	<g id="ecran_suivant_" xlink:href="#spa" onclick="next_ecran(1)" transform="matrix(0,-1,1,0,28.57143,680.00001)">
 		<path id="e_suiv" d="M493,147.5c0,0.1-19.5,39-19.5,39c-0.1-0.1-19.5-39-19.5-39s4.4,1.9,9.8,4.2l9.7,4.2l9.7-4.2
 			C488.5,149.3,492.9,147.4,493,147.5C493,147.4,493,147.4,493,147.5z"/>
 	</g>
 </g>
 <g>
-	<g id="ecran_precedent_" onclick="next_ecran(-1)" transform="matrix(0,-1,1,0,28.57143,680.00001)">
+	<g id="ecran_precedent_" xlink:href="#spa" onclick="next_ecran(-1)" transform="matrix(0,-1,1,0,28.57143,680.00001)">
 		<path id="e_prec" d="M493.4,134.2c0-0.1-19.5-39-19.5-39c-0.1,0.1-19.5,39-19.5,39s4.4-1.9,9.8-4.2l9.7-4.2l9.7,4.2
 			C489,132.4,493.4,134.3,493.4,134.2C493.4,134.3,493.4,134.2,493.4,134.2z"/>
 	</g>

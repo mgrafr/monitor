@@ -21,8 +21,12 @@ num_ecran=0;nb_ecran=<?php echo NB_ECRAN_SPA;?>;
 								
 								console.log(div_suiv+"   "+div_prec);
 	
-document.getElementById(div_prec).style.display="none";document.getElementById(div_suiv).style.display="block";				  
+document.getElementById(div_prec).style.display="none";document.getElementById(div_suiv).style.display="block";
+if (num_ecran==1) {graph('ph_spa','text_svg','graphic_ph');}
+if (num_ecran==2) {graph('orp_spa','text_svg','graphic_orp');}			
 }	
+
+	
 
 </script>
 		

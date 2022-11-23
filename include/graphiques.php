@@ -43,13 +43,13 @@ Merci de cocher vos préférences:<br><ul style="background-color: aquamarine;">
   </div>     
 <!-- section graphiquesfin-->
 <script>
-function graph(device,variable){
+function graph(device,variable,idgraph){
   $.ajax({
     type: "GET",
     url: "ajax.php",
     data: "app=graph&device="+device+"&variable="+variable,
-    success: function(html){$('#graphic').empty();
-	document.getElementById('graphic').innerHTML =html;
+    success: function(html){$('#'+idgraph).empty();
+	document.getElementById(idgraph).innerHTML =html;
 	  
       } });
 };</script>
