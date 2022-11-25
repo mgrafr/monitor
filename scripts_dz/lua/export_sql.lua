@@ -15,7 +15,7 @@ time    = os.date("%X");
 datetime = year.."-"..month.."-"..day.." "..time;
 
 function envoi_fab(don)
-	print ("maj temp:"..don);
+	print ("maj valeur:"..don);
         local command = "/bin/bash userdata/scripts/bash/./fabric.sh"..don.." > /home/michel/fab.log 2>&1";
         os.execute(command);
         --txt="michel";os.execute("python3 scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
@@ -25,15 +25,30 @@ function round(num,numDecimal)
   return math.floor(num * mult + 0.5) / mult
  end
 commandArray = {}
-
+t = {};
 for deviceName,deviceValue in pairs(devicechanged) do
     if (deviceName=='temp pir salon') then 
 	    libelle="temp_salon";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
         envoi_fab(don)
     elseif (deviceName=='PH_Spa') then
-        local ph=round(deviceValue, 1)
-	    libelle="ph_spa";don=" "..libelle.."#"..ph.."#"..datetime
-	    envoi_fab(don)    
+        local mesure=round(deviceValue, 1)
+	    libelle="ph_spa";don=" "..libelle.."#"..mesure.."#"..datetime
+	    envoi_fab(don)
+	 elseif (deviceName=='Redox_Spa') then
+        local mesure=round(deviceValue, 1)
+	    libelle="orp_spa";don=" "..libelle.."#"..mesure.."#"..datetime
+	    envoi_fab(don)
+	 elseif (deviceName=='Temp-eau_SPA') then
+        local mesure=round(deviceValue, 1)
+	    libelle="temp_spa";don=" "..libelle.."#"..mesure.."#"..datetime
+	    envoi_fab(don)   
+	 elseif (deviceName=='Debit_filtration_SPA') then
+	    print ("debit:"..deviceValue);c=0;
+	    for i in string.gmatch(deviceValue,"[^;]+") do
+        t[c]=i;c=c+1;
+        end
+	    libelle="debit_spa";don=" "..libelle.."#"..t[0].."#"..datetime
+	    envoi_fab(don)   
     elseif (deviceName=='temp pir ar cuisine') then 
 	    libelle="temp_cuisine";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
         envoi_fab(don)
