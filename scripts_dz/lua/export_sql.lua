@@ -1,4 +1,3 @@
---
 --[[
 ****************]]
 --
@@ -27,7 +26,8 @@ function round(num,numDecimal)
 commandArray = {}
 t = {};
 for deviceName,deviceValue in pairs(devicechanged) do
-    if (deviceName=='temp pir salon') then 
+    if (deviceName=='pir salon') then
+        print ("temp_salon:"..deviceValue);
 	    libelle="temp_salon";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
         envoi_fab(don)
     elseif (deviceName=='PH_Spa') then
