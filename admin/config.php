@@ -116,7 +116,14 @@ define('IPDVR', 'http://192.168.1.50:8090');
 define('URLDVR', 'https://DOMAINE.ovh');
 //SPA
 define('ON_SPA',true);// mise en service SPA
-define('NB_ECRAN_SPA',3);// mise en service SPA
+define('NB_ECRAN_SPA',6);
+define('ECRANSPA', array(
+    0 => "ph",// si nb ecran >=2
+    1 => "orp",// si nb ecran >=3 
+    2 => "debit", //débit en M3 // si nb ecran >=4
+	3 => "temp", //si nb ecran >=5
+	4 => "temp_ext", //si nb ecran >=6
+	));
 //----------------------------------------------------------------
 
 ?>
