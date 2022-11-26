@@ -68,6 +68,24 @@
 	
 <text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Mesures de Redox :</text>
 <g id="graphic_orp" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>		
+</g>
+<g id="ecran3" style="display:none">
+		<rect x="43" y="36.5" class="spa9" width="256.7" height="145.9"/>
+	
+<text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Mesures de Débit :</text>
+<g id="graphic_debit" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>		
+</g>
+<g id="ecran4" style="display:none">
+		<rect x="43" y="36.5" class="spa7" width="256.7" height="145.9"/>
+	
+<text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Températures de l'eau :</text>
+<g id="graphic_temp" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>		
+</g>
+<g id="ecran5" style="display:none">
+		<rect x="43" y="36.5" class="spa8" width="256.7" height="145.9"/>
+	
+<text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Températures de l'air :</text>
+<g id="graphic_temp_ext" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>		
 </g>	
 <g>
 	<ellipse class="spa10" cx="169" cy="207" rx="49.5" ry="23.5"/>
