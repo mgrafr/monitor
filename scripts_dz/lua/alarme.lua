@@ -1,10 +1,10 @@
 --
---alarme--alarme.lua
+-- alarme--alarme.lua
 --
 
 --
 function modect_cam(mode)
-    json = (loadfile "/home/michel/domoticz/scripts/lua/JSON.lua")()
+    json = (loadfile "scripts/lua/JSON.lua")()
        local config = assert(io.popen('/usr/bin/curl http://192.168.1.7/monitor/admin/token.json'))
        local blocjson = config:read('*a')
        config:close()
@@ -20,10 +20,12 @@ function modect_cam(mode)
 end
 --
 -- chargement fichier contenant les variable de configuration
-package.path = package.path..";/home/michel/domoticz/www/modules_lua/?.lua"
+package.path = package.path..";www/modules_lua/?.lua"
 require 'string_modect'
 
 commandArray = {}
+
+  --- txt="michel";os.execute("python3 scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
 local time = string.sub(os.date("%X"), 1, 5)
 local sirene=0
 -- Alarme auto
@@ -31,8 +33,8 @@ if ((time == "23:00") and (otherdevices['al_nuit_auto'] == 'On')) then commandAr
 elseif ((time == "06:00") and (otherdevices['al_nuit_auto'] == 'On')) then commandArray['alarme_nuit'] = "Off"
 end
 function alerte_gsm(txt)
-f = io.open("/home/michel/domoticz/scripts/python/aldz.py", "w")
-env="#!/usr/bin/env python3.7"
+f = io.open("userdata/scripts/python/aldz.py", "w")
+env="#!/usr/bin/env python3"
 f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'")
 f:close()
 end
@@ -42,12 +44,12 @@ function notifications(txt)
         elseif  (txt== "2") then txt="alarme_presence_interieure"    
         elseif  (txt== "3") then txt="PI4_Hors_Service" 
         elseif  (txt== "4") then txt="alarme_absence_activee" 
-        elseif  (txt== "5") then txt="alarme absence_désactivee" 
+        elseif  (txt== "5") then txt="alarme_absence_desactivee" 
         elseif  (txt== "6") then txt="test_gsm_alarme"     
         end
         os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=12812620&pass=2FQTMM7x42kspr&msg="..txt.."' >> /home/michel/OsExecute1.log 2>&1")
-        os.execute("python3 /home/michel/domoticz/scripts/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
-        -- commandArray['Variable:alarme_gsm'] =txt;
+        os.execute("python3 /opt/domoticz/userdata/scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
+        -- commandArray['Variable:alarme_gsm'] = txt;
         alerte_gsm(txt)
         
 end
@@ -71,7 +73,7 @@ end
 		end
 -- activation de la detection par les cameras
 	    if ((otherdevices['Modect'] == 'Off') and  (uservariables['ma-alarme']=="1")) then
-	        modect_cam('Modect') -- si alarme activé : mode camera=Modect
+	        modect_cam('Modect') -- si alarme absence activé : mode camera=Modect
 	      	commandArray['Modect']='On'
 	    end 
         -- activation manuelle Modect
