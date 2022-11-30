@@ -86,6 +86,11 @@ end
 	       commandArray['Variable:modect'] = '0'
     end 
     --
+-- activation sirène
+    if (otherdevices['activation-sirene'] == 'On') then print("aa")
+        commandArray['Variable:activation-sir-txt']="désactiver";
+    else commandArray['Variable:activation-sir-txt']="activer" 
+    end    
 -- alarme absence - 
         if (uservariables['ma-alarme']=="1")  then 
             if ((devicechanged['porte entree']) == 'Open')  then 
@@ -122,8 +127,9 @@ end
 		        print ("porte ouverte");commandArray['Variable:porte-ouverte'] = "sejour"; local sirene=1
             end
             --mise en service sirene
-            if (sirene==1) then 
-                --commandArray['sirene_ma']='On'
+            if (sirene==1) then commandArray['ma_sirene']='On';
+            end 
+            if ((otherdevices['ma_sirene'] == 'On') and (otherdevices['activation-sirene'] == 'On')) then commandArray['Sirene-switch']='On';
             end    
         else commandArray['Variable:alarme'] = "0";
         end
