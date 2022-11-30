@@ -23,6 +23,7 @@
 	.st204{fill:#4D4D4D;}
 	.st205{fill:#008000;}
 	.st206{fill:#0500B4;}
+	
 </style>
 
 <g
@@ -1040,6 +1041,7 @@
        id="patha5937" /><path
        style="fill:#585858;stroke:none"
        d="m 54,216 c 0.5451,1.635 0.3648,1.455 2,2 -0.5451,-1.635 -0.3648,-1.455 -2,-2 z"
+
        id="patha5939" /><path
        style="fill:#a5a5a5;stroke:none"
        d="m 149,216 1,1 -1,-1 m -105,1 1,1 -1,-1 m 115,0 1,1 z"
@@ -1394,43 +1396,43 @@
    ry="10.9825" /><g
    id="g1963"
    style="display:inline;stroke-width:5.39447"
-   transform="matrix(0.70032416,0,0,0.70093461,58.588238,120.26187)"><ellipse
+   transform="matrix(0.6875,0,0,0.6875,54.207293,95.240667)"><circle
      style="fill:#000000;fill-opacity:1;stroke-width:1.42952"
      id="patha1945"
-     ry="32"
-     rx="32"
      cy="92"
-     cx="68" /></g><a
+     cx="68"
+     r="32" /></g><a
    id="a2332"
-   xlink:href="#alarmes"><title
+   xlink:href="#alarmes"
+   transform="matrix(0.97357513,0,0,0.97272723,-3.236266,-21.205433)"><title
      id="title2337">alarme absence</title><g
      transform="matrix(0.70032416,0,0,0.70093461,59.11765,120.26187)"
-     style="display:inline;stroke-width:5"><title
+     style="display:inline;stroke-width:5"
+     id="g1710"><title
        id="title2330">alarme absense</title><circle
        style="fill:#008000;fill-opacity:1;stroke-width:1.42952"
-       id="coul_al_absence" 
-	   rel="66"
+       id="coul_al_absence"
+       rel="66"
        r="22"
-       cy="92.2"
+       cy="92.199997"
        cx="68"
        inkscape:transform-center-x="7.5595238"
        inkscape:transform-center-y="15.119048" /></g></a><g
    id="g2319"
-   transform="translate(-0.92865784,-22.287787)"><g
+   transform="matrix(0.98168825,0,0,0.98083329,1.5473043,-19.181705)"><g
      id="g2314"><g
        id="g1963-0"
        style="display:inline;stroke-width:5"
-       transform="matrix(0.70032416,0,0,0.70093461,110,120)"><ellipse
+       transform="matrix(0.70032416,0,0,0.70093461,110,120)"><circle
          style="fill:#000000;fill-opacity:1;stroke-width:1.42952"
          id="patha1945-9"
-         ry="32"
-         rx="32"
          cy="92"
-         cx="68" /></g></g></g><a
+         cx="68"
+         r="32" /></g></g></g><a
    xlink:href="#alarmes"
    id="a1820"
-   transform="matrix(1,0,0,0.90966693,-0.92865781,-6.9297459)"
-   inkscape:transform-center-y="2.5343088">
+   transform="matrix(0.97357513,0,0,0.97272723,2.8293534,-18.003459)"
+   inkscape:transform-center-y="2.709988">
 	 <title
    id="title2310">alarme nuit</title>
 	 <g
@@ -1438,32 +1440,32 @@
    transform="matrix(0.70032416,0,0,0.70093461,110,120)"
    style="display:inline;stroke-width:5">
 	 <circle
-       style="fill:#008000;fill-opacity:1;stroke-width:1.42952"
-       id="coul_al_nuit" 
-	   rel="66"
-       r="22"
-       cy="92.2"
-       cx="68"
-       inkscape:transform-center-x="7.5595238"
-       inkscape:transform-center-y="15.119048" />
+   style="fill:#008000;fill-opacity:1;stroke-width:1.42952"
+   id="coul_al_nuit"
+   rel="66"
+   r="22"
+   cy="92.199997"
+   cx="68"
+   inkscape:transform-center-x="7.5595238"
+   inkscape:transform-center-y="15.119048" />
 	   </g></a><g
    id="g1963-5"
-   style="display:inline;fill:#aa4400;stroke-width:5.39448"
-   transform="matrix(0.70032416,0,0,0.70093461,170.93219,102)"><ellipse
-     style="fill:#aa4400;fill-opacity:1;stroke-width:1.42953"
+   style="display:inline;fill:#ff0000;stroke-width:5.39448"
+   transform="matrix(0.6875,0,0,0.6875,171.39386,102.80608)"><circle
+     style="fill:#ff0000;fill-opacity:1;stroke-width:1.42953"
      id="patha1945-7"
-     ry="32"
-     rx="32"
      cy="92"
-     cx="68" /></g><a
+     cx="68"
+     r="32" /></g><a
    id="a2379"
    xlink:href="#alarmes"
-   style="fill:#008000"><g
+   style="fill:#008000"
+   transform="matrix(0.97357513,0,0,0.97272723,4.9722411,3.3319864)"><g
      id="sirene_al"
      transform="matrix(0.70032416,0,0,0.70093461,171.4616,102)"
-     style="display:inline;stroke-width:5.39448;fill:#008000"><title
+     style="display:inline;fill:#008000;stroke-width:5.39448"><title
        id="title2377">sirene alarme</title><circle
-       style="fill-opacity:1;stroke-width:1.42953;fill:#008000"
+       style="fill:#008000;fill-opacity:1;stroke-width:1.42953"
        id="coul_sirene1"
        r="22"
        cy="93"
@@ -2243,13 +2245,16 @@
      x="153.47516"
      y="219.28011"
      style="stroke-width:0.52718">auto</tspan></text>
-<a href="#alarmes" style="fill:#00FFFF;opacity:1"><ellipse
-      id="gsm"
-	style="fill: rgb(0,255,255);" 
-   cx="252.59492"
-   cy="212.66266"
-   rx="13.103371"
-   ry="21.46129" /></ellipse>
+<a
+   href="#alarmes"
+   style="fill:#00FFFF;opacity:1"
+   id="a1979"><ellipse
+     id="gsm"
+     style="fill: rgb(0,255,255);"
+     cx="252.59492"
+     cy="212.66266"
+     rx="13.103371"
+     ry="21.46129" /></a>
 <g
    id="g4440"
    transform="matrix(1.0088652,0,0,0.87024741,1.3139259,23.776235)">
@@ -4349,5 +4354,51 @@
    class="st206"
    d="m 248.3,240.3 0.2,0.2 z"
    id="path4438" />
-</g></a>
-	 </svg>
+</g><a
+   xlink:href="#alarmes" id="sirene_off" ><g
+   transform="matrix(0.00234477,0,0,-0.00266485,85.253568,219.81814)"
+  
+   stroke="none"
+   id="g2578"
+   style="fill:red"><path
+     d="m 6201,11240 c -41,-10 -113,-37 -160,-61 -70,-35 -105,-62 -187,-144 -61,-60 -124,-134 -157,-185 C 5612,10718 5016,9668 2735,5635 1942,4233 1021,2603 688,2015 355,1426 71,917 57,884 -22,697 -15,490 76,325 91,297 140,239 184,195 275,105 361,56 490,20 l 76,-20 5879,2 5880,3 81,27 c 363,124 494,499 304,878 -21,43 -899,1580 -1951,3417 -1052,1836 -2308,4029 -2791,4873 -484,844 -909,1580 -946,1635 -118,177 -268,311 -419,373 -125,52 -272,64 -402,32 z M 7808,7830 C 8601,6447 9827,4307 10532,3075 L 11815,835 9103,832 c -1492,-1 -3934,-1 -5427,0 l -2715,3 1666,2945 c 3188,5637 3725,6583 3734,6572 4,-4 655,-1139 1447,-2522 z"
+     id="path2572"
+     style="fill:#ff0000" /><path
+     d="m 6290,7874 c -14,-3 -61,-14 -104,-25 -390,-98 -706,-474 -706,-837 0,-46 22,-254 50,-461 27,-207 113,-857 190,-1446 201,-1535 199,-1517 216,-1581 42,-165 141,-297 271,-361 67,-33 86,-38 168,-41 152,-7 246,30 348,136 99,105 144,224 176,464 11,84 61,462 111,841 49,378 131,996 180,1375 50,378 100,756 111,840 24,182 25,305 4,387 -82,323 -360,599 -693,686 -75,20 -266,33 -322,23 z"
+     id="path2574"
+     style="fill:#ff0000" /><path
+     d="m 6322,2739 c -345,-44 -594,-371 -552,-726 20,-166 86,-301 204,-410 114,-107 237,-160 391,-170 187,-11 336,47 475,187 134,134 192,273 193,465 1,116 -13,183 -58,280 -120,261 -379,409 -653,374 z"
+     id="path2576"
+     style="fill:#ff0000" /></g>
+	<path
+       d="m 93.945483,205.3569 c 3.354649,-6.71408 6.159527,-12.27261 6.233057,-12.35228 0.131,-0.14194 12.28681,23.95369 12.28681,24.35533 0,0.1124 -5.53932,0.20438 -12.30961,0.20438 H 87.846121 Z m 7.415297,10.34071 c 1.39286,-1.39286 -0.10376,-4.1395 -1.70818,-3.13491 -0.998002,0.62489 -1.156208,2.61142 -0.260153,3.26663 0.926883,0.67776 1.175493,0.66112 1.968333,-0.13172 z m 0.45418,-7.61674 c 1.00604,-7.26176 1.00612,-7.37307 0.006,-8.53533 -0.72965,-0.84827 -1.14191,-1.01481 -1.987056,-0.80269 -1.81246,0.4549 -2.045681,1.45632 -1.5071,6.47127 0.67108,6.24871 0.708276,6.36553 1.980016,6.2181 1.00244,-0.11621 1.08496,-0.29963 1.50774,-3.35135 z"
+	id="act-sir" rel="36"	  
+	style="fill:#ffaaaa;stroke-width:0.403551" 
+	/></a><text
+   xml:space="preserve"
+   style="font-size:8px;line-height:1.25;font-family:sans-serif"
+   x="83.131561"
+   y="229.21712"
+   id="act-sir-txt"><tspan
+     sodipodi:role="line"
+     x="83.131561"
+     y="229.21712"
+     id="tspan2630">txt</tspan></text><text
+   xml:space="preserve"
+   style="font-size:8px;line-height:1.25;font-family:sans-serif;"
+   x="83.53511"
+   y="236.88458"
+   id="text2636"><tspan
+     sodipodi:role="line"
+     id="act-txt"
+     x="83.53511"
+     y="236.88458">la sirene</tspan></text><text
+   xml:space="preserve"
+   style="font-size:8px;line-height:1.25;font-family:sans-serif;"
+   x="364.81033"
+   y="308.31317"
+   id="text2640"><tspan
+     sodipodi:role="line"
+     id="tspan2638"
+     x="364.81033"
+     y="308.31317">version 1.0.2</tspan></text></svg>

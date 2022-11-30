@@ -221,7 +221,7 @@ $('.closeBtn').on('click', function () {
 			if (qq['status']!="OK"){//alert(qq['status']);
 			document.getElementById("d_btn_a").style.display = "block";
 			document.getElementById("d_btn_al").style.display = "block";}
-			else maj_devices(<?php echo NUMPLAN;?>);
+			else maj_devices(<?php echo NUMPLAN;?>);maj_services(0);
 			}
       });  }
 /*---------------------------------------------------------------------------------------------*/
