@@ -7,7 +7,7 @@
 		<div class="space"></div>
          <?php include ("include/maison_svg.php");?>
 		 <div id="voltage"><?php include ("include/voltmetre_svg.php");?></div>
-		<div id="pression"><?php include ("include/chaudiere_svg.php");?></div>
+		<div id="bar_pression"><?php include ("include/chaudiere_svg.php");?></div>
 <div class="modal" id="camera">
   <div class="modal-dialog" style="height:auto">
     <div class="modal-content">
