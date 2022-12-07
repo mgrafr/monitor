@@ -1,4 +1,3 @@
---
 -- alarme--alarme.lua
 --
 
@@ -45,14 +44,20 @@ function notifications(txt)
         elseif  (txt== "3") then txt="PI4_Hors_Service" 
         elseif  (txt== "4") then txt="alarme_absence_activee" 
         elseif  (txt== "5") then txt="alarme_absence_desactivee" 
-        elseif  (txt== "6") then txt="test_gsm_alarme"     
+        elseif  (txt== "6") then txt="test_gsm_alarme"
+        elseif  (txt== "7") then txt="alarme_manque_pression"    
         end
         os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=12812620&pass=2FQTMM7x42kspr&msg="..txt.."' >> /home/michel/OsExecute1.log 2>&1")
         os.execute("python3 /opt/domoticz/userdata/scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
-        -- commandArray['Variable:alarme_gsm'] = txt;
+       
         alerte_gsm(txt)
         
 end
+-- alarme manque pression chaudière
+        if (uservariables['pression-chaudiere']=="manque_pression") then 
+				notifications("7");print ("alarme manque pression déclenchée");
+				commandArray['Variable:pression-chaudiere'] = "pression_basse"
+		end	
 -- test GSM
         if (otherdevices['Test_GSM'] == 'On') then commandArray['Test_GSM']='Off'
 			notifications("6");print ("Test GSM");
