@@ -5,13 +5,9 @@
 		<div class="col-md-12">
 	  <h1 id="about" class="title text-center">Dispositifs<span> installés<br>à l'intérieur</span></h1>
 		<div class="space"></div>
-         <?php include ("include/maison_svg.php");
-		 echo '<div id="voltage">';
-		 // décommenter cette ligne pour l'affichage du voltmètre
-		 include ("include/voltmetre_svg.php");
-		 echo '</div>';
-		 ?>
-		
+         <?php include ("include/maison_svg.php");?>
+		 <div id="voltage"><?php include ("include/voltmetre_svg.php");?></div>
+		<div id="pression"><?php include ("include/chaudiere_svg.php");?></div>
 <div class="modal" id="camera">
   <div class="modal-dialog" style="height:auto">
     <div class="modal-content">

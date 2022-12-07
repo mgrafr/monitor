@@ -93,6 +93,7 @@
 	.st34{font-size:24px;}
 	.st35{font-size:26.58px;}
 	.st36{font-size:22.55px;}
+	.st36a{font-size:20px;}
 	.st37{fill:#CBCBCB;}
 	.st38{fill:#5E5E5E;}
 	.st39{fill:#444444;}
@@ -241,6 +242,8 @@
 	.st182{fill:none;stroke:#000000;}
 	.st183{fill:#ebe1da;}
 	.st184{fill:rgb(0 0 0 );}
+	.st185{fill:#35EBFF;}
+	
 </style>
 <sodipodi:namedview
    bordercolor="#666666"
