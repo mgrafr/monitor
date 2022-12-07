@@ -255,11 +255,16 @@ left: 180px;}
 #aff_anni{width: 70px;}
 #prenom{color: #f0e8e8;}
 /*pression chaudière*/
-#pression{position: relative;top: -800px;}
-#pression_chaud{width:500px}
+#bar_pression {
+    position: relative;
+    top: -770px;
+    width: 100px;
+    left: 500px;
+}
+#pression_chaud{width:60px}
 .pression_chaud{position: relative;
-top: -450px;
-left: -200px;}
+top: -460px;
+left: 200px;}
 /*ping PI4*/
 #ping_pi4{position: relative;top: -85px;
 left: 410px;
@@ -479,7 +484,7 @@ left: 160px;width: 45px;}
 .poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}
 .fosse_septique{left:300px;}#fosse{bottom:-120px;}.aff_anni{bottom: 80px;}.aff_pluie{left: 390px;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}
-.fond_date {right: -60px;}
+.fond_date {right: -60px;}#pression_chaud{width:50px}.pression_chaud{top: -305px;left: 200px;}
 .colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}
 .banner {height:724px;}
 .banner-caption {top: 25%;}
@@ -491,13 +496,13 @@ left: 160px;width: 45px;}
 .vtemp {margin-left: 15px;top: -70px;}
 #meteo_concept_am {top: -100px;display: inline;width: 50px;}
 #meteo_concept_am img{width: 50px;margin-left: 30px;}
-.modal-dialog {width:450px;margin-top:50px}#pression{top: -530px;left: -30px;}
+.modal-dialog {width:450px;margin-top:50px}#bar_pression{top: -530px;left: 300px;width:80px}
 }
 /* Large devices (Large desktops 768px and up) */
-@media (min-width:769px) {img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{width: 450px;}
+@media (min-width:768px) {img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{width: 450px;}
 	.modal-lg {width: 740px;}.cam {margin-left: 100px;}
 	.fond_date {right: -270px;}body {max-width: 768px;margin: 0 auto;background-color: #79afbf;}
-.menu-link {left: 50%;top: 50px;}#pression {left: -20px;}
+.menu-link {left: 50%;top: 50px;}#bar_pression{top: -750px;left: 450px;}
 .txt_ext{left:100px;}
 	.modal_param {left: 400px;	}
 	.modal-dialog {width:740px;}
