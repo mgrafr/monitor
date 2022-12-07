@@ -1,7 +1,9 @@
+--
 --[[
 ****************]]
 --
-
+package.path = package.path..";www/modules_lua/?.lua"
+require 'datas'
 --xxx="michel"; os.execute("python3 scripts/python/pushover.py "..xxx.." > /home/michel/fab.log 2>&1");
 year 	= tonumber(os.date("%Y"));
 month 	= os.date("%m");
@@ -13,6 +15,11 @@ weekday = tonumber(os.date("%w"));
 time    = os.date("%X");
 datetime = year.."-"..month.."-"..day.." "..time;
 
+function write_datas(data)
+f = io.open("www/modules_lua/datas.lua", "w")
+f:write("pression="..data)
+f:close()
+end
 function envoi_fab(don)
 	print ("maj valeur:"..don);
         local command = "/bin/bash userdata/scripts/bash/./fabric.sh"..don.." > /home/michel/fab.log 2>&1";
@@ -25,11 +32,24 @@ function round(num,numDecimal)
  end
 commandArray = {}
 t = {};
+
 for deviceName,deviceValue in pairs(devicechanged) do
     if (deviceName=='pir salon') then
         print ("temp_salon:"..deviceValue);
 	    libelle="temp_salon";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
         envoi_fab(don)
+    elseif (deviceName=='pression_chaudière') then 
+        pressionch=tonumber(deviceValue);
+        print ("pression_chaudiere:"..pressionch.."--"..pression);
+        if (pression~=pressionch) then 
+            libelle="pression_chaudiere";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
+            envoi_fab(don) 
+            write_datas(tonumber(deviceValue))
+            if (pression<1) then commandArray['Variable:pression-chaudiere'] = "manque_pression";  print("pression basse")
+            else commandArray['Variable:pression-chaudiere']="ras"    
+            end
+        end
+        
     elseif (deviceName=='PH_Spa') then
         local mesure=round(deviceValue, 1)
 	    libelle="ph_spa";don=" "..libelle.."#"..mesure.."#"..datetime
