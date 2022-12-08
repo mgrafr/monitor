@@ -790,7 +790,7 @@ $datax=$xdate;
 $graph = new Graph(700,500);
 $graph->SetMargin(40,70,30,70); 
 $graph-> title->SetFont(FF_DV_SANSSERIF ,FS_BOLD);
-$graph->title->Set('températures : '.$device);
+$graph->title->Set('Table SQL : '.$device);
  $graph->SetScale("datlin");
 // Use hour:minute format for the labels
 // Mise de x-axis avec un format php sql
