@@ -7,7 +7,7 @@ error_reporting(-1);
 		<div id="graphiques" class="graphiques">
 			<div class="container">
 				<div class="title_g">
-	  <h1> Graphiques<br><span>de températures</span></h1></div>
+	  <h1> Graphiques<br><span>de températures, pression, ..</span></h1></div>
 			 <div class="row" style="margin-top:60px;">
 			<!-- Button to Open the Modal -->
   <div><button type="button" id="btn_g" class="btn btn-primary" data-toggle="modal" data-target="#choix_graph">
@@ -30,7 +30,9 @@ Merci de cocher vos préférences:<br><ul style="background-color: aquamarine;">
 <li><input type="radio" name="devices" value="temp_meteo"> temp meteo</li>
 <li><input type="radio" name="devices" value="temp_cave"> temp cave</li>
 <li><input type="radio" name="devices" value="temp_cellier"> temp cellier</li>
-<li><input type="radio" name="devices" value="temp_cuis_ete"> temp cuisine d'été</li><br>
+<li><input type="radio" name="devices" value="temp_cuis_ete"> temp cuisine d'été</li>
+<li><input type="radio" name="devices" value="pression_chaudiere"> pression eau chaudière</li><br>
+		
 <li><input type="radio" checked="checked" name="variables" value="24"> dernieres 24H</li>
 <li><input type="radio" name="variables" value="48"> dernieres 48H</li>
 <li><input type="radio" name="variables" value="7"> derniere semaine</li>
