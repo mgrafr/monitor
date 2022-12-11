@@ -93,7 +93,8 @@
 	.st34{font-size:24px;}
 	.st35{font-size:26.58px;}
 	.st36{font-size:22.55px;}
-	.st36a{font-size:16px;}
+	.st36a{font-size:16px;}.st36b{font-size: 10px;
+    font-weight: 700;rgb(41 48 66);}
 	.st37{fill:#CBCBCB;}
 	.st38{fill:#5E5E5E;}
 	.st39{fill:#444444;}
