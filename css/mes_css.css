@@ -10,7 +10,7 @@ html, body {
     height: 100%;
 }.table td{border:0}
 
-#Calque_1{margin-top:7%;}
+#Calque_1{margin-top:12%;}
 .header {height: 150px;
 	color: #ffffff;
 	background-color: rgba(8, 55, 70, 0.7);
@@ -207,6 +207,10 @@ a:link, a:visited {
 }
 .zz{margin-left: 10px;}
 /*interieur*/
+#th_ext_cuis{position: relative;
+    top: -780px;
+    left: 200px;
+	width: 50px;}
 #voltage{position: absolute;
 top: -30px;
 right: -20px;
@@ -493,7 +497,8 @@ left: 160px;width: 45px;}
     margin-left: 10px;
     margin-top: -60px;}
 .vvent {margin-left: 15px;top: -50px;}
-.vtemp {margin-left: 15px;top: -70px;}
+	.vtemp {margin-left: 15px;top: -70px;}#th_ext_cuis{top: -565px;left: 130px;}
+    
 #meteo_concept_am {top: -100px;display: inline;width: 50px;}
 #meteo_concept_am img{width: 50px;margin-left: 30px;}
 .modal-dialog {width:450px;margin-top:50px}#bar_pression{top: -530px;left: 300px;width:80px}
