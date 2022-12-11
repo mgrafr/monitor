@@ -107,6 +107,7 @@ if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non con
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
 if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
 if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
+if ($periph['car_max_id1']<99) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}	
 	$data[$t] = ['choixid' => CHOIXID,
 	'idx' => $lect_device["idx"],
 	 'temp' => $lect_device["Temp"],
