@@ -29,11 +29,14 @@ commandArray = {}
 local time = string.sub(os.date("%X"), 1, 5)
 local sirene=0
 -- Alarme auto
- commandArray['Variable:alarme'] = "alarme_nuit"; 
-if ((time == "23:00") and (otherdevices['al_nuit_auto'] == 'On')) then commandArray['alarme_nuit'] = "On" 
-elseif ((time == "06:00") and (otherdevices['al_nuit_auto'] == 'On')) then 
-    commandArray['alarme_nuit'] = "Off";commandArray['Variable:alarme'] = "alarme_auto"; 
-end
+if (otherdevices['al_nuit_auto'] == 'On') then commandArray['Variable:alarme'] = "alarme_auto";
+    if (time > "22:59" and time < "06:00" and otherdevices['alarme_nuit'] == 'Off') then
+        commandArray['alarme_nuit'] = "On"; commandArray['Variable:alarme'] = "alarme_nuit";
+    elseif (time > "05:59" and time < "22:59" and otherdevices['alarme_nuit'] == 'On') then 
+        commandArray['alarme_nuit'] = "Off";
+    end
+else commandArray['Variable:alarme'] = "0";    
+end    
 function alerte_gsm(txt)
 f = io.open("userdata/scripts/python/aldz.py", "w")
 env="#!/usr/bin/env python3"
@@ -127,13 +130,13 @@ end
 		-- fin alarme absence
 --alarme nuit
         if ((otherdevices['alarme_nuit'] == 'On') and  (uservariables['ma-alarme']=="0") and test_portes()==0) then commandArray['Variable:ma-alarme'] = "2"  
-			print ("alarme activée");
+			print ("alarme activée");commandArray['Variable:alarme'] = "alarme_nuit"; 
 		end
 		if ((otherdevices['alarme_nuit'] == 'Off') and  (uservariables['ma-alarme']=="2")) then commandArray['Variable:ma-alarme'] = "0" 
 		  commandArray['Variable:alarme'] = "0";  
 		 print ("alarme désactivée");commandArray['Variable:porte-ouverte'] ="0";
         end
-        if (uservariables['ma-alarme']=="2")  then 	commandArray['Variable:alarme'] = "alarme_nuit"; 
+        if (uservariables['ma-alarme']=="2")  then 
             if ((devicechanged['porte entree']) == 'Open')  then 
 		        print ("porte ouverte");commandArray['Variable:porte-ouverte'] = "entrée" ;local sirene=1
 		    elseif ((devicechanged['porte cuisine']) == 'Open') then 
@@ -147,7 +150,6 @@ end
             end 
             if ((otherdevices['ma_sirene'] == 'On') and (otherdevices['activation-sirene'] == 'On')) then commandArray['Sirene-switch']='On';
             end    
-        else commandArray['Variable:alarme'] = "0";
         end
  -- fin alarme nuit 
  -- raz variables de notification intrusion et porte ouverte
