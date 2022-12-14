@@ -29,8 +29,10 @@ commandArray = {}
 local time = string.sub(os.date("%X"), 1, 5)
 local sirene=0
 -- Alarme auto
+ commandArray['Variable:alarme'] = "alarme_nuit"; 
 if ((time == "23:00") and (otherdevices['al_nuit_auto'] == 'On')) then commandArray['alarme_nuit'] = "On" 
-elseif ((time == "06:00") and (otherdevices['al_nuit_auto'] == 'On')) then commandArray['alarme_nuit'] = "Off"
+elseif ((time == "06:00") and (otherdevices['al_nuit_auto'] == 'On')) then 
+    commandArray['alarme_nuit'] = "Off";commandArray['Variable:alarme'] = "alarme_auto"; 
 end
 function alerte_gsm(txt)
 f = io.open("userdata/scripts/python/aldz.py", "w")
