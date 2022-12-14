@@ -1,3 +1,4 @@
+--
 -- alarme--alarme.lua
 --
 
@@ -95,9 +96,17 @@ end
     if (otherdevices['activation-sirene'] == 'On') then print("aa")
         commandArray['Variable:activation-sir-txt']="désactiver";
     else commandArray['Variable:activation-sir-txt']="activer" 
-    end    
+    end 
+-- test avant mise en service alarme 
+function test_portes()
+ if (otherdevices['porte entree'] == 'Open' or otherdevices['Porte fenetre sejour'] == 'Open' or otherdevices['porte cuisine'] == 'Open') then
+     test=1
+ else test=0; 
+ end
+print('test='..test);return test;
+end
 -- alarme absence - 
-        if (uservariables['ma-alarme']=="1")  then 
+        if (uservariables['ma-alarme']=="1" and test_portes()==0)  then 
             if ((devicechanged['porte entree']) == 'Open')  then 
 		     notifications("1");commandArray['Variable:porte-ouverte'] = "porte ouverte entrée" 
 		    elseif ((devicechanged['porte cuisine']) == 'Open') then 
@@ -115,7 +124,7 @@ end
 		
 		-- fin alarme absence
 --alarme nuit
-        if ((otherdevices['alarme_nuit'] == 'On') and  (uservariables['ma-alarme']=="0")) then commandArray['Variable:ma-alarme'] = "2"  
+        if ((otherdevices['alarme_nuit'] == 'On') and  (uservariables['ma-alarme']=="0") and test_portes()==0) then commandArray['Variable:ma-alarme'] = "2"  
 			print ("alarme activée");
 		end
 		if ((otherdevices['alarme_nuit'] == 'Off') and  (uservariables['ma-alarme']=="2")) then commandArray['Variable:ma-alarme'] = "0" 
