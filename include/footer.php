@@ -360,7 +360,7 @@ else {urllog="erreur";}
 
   }); 
 });
-/*---popup boite_lettres-----------------------------------*/
+/*---popup boite_lettres---pression chaudière--------------------------------*/
 var bl=0;var modalContainer = document.createElement('div');
 modalContainer.setAttribute('id', 'modal_bl');
 var customBox = document.createElement('div');
@@ -369,10 +369,17 @@ customBox.className = 'custom-box';
 document.getElementById('confirm-box').addEventListener('click', function() {
     customBox.innerHTML = '<p>Confirmation de la relève du courrier</p>';
     customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
-    customBox.innerHTML += '<button id="modal-close">Annuler</button>';
+    customBox.innerHTML += '<button id="modal-close">Annuler</button>';ch=0;
    modalShow();
  //console.log(bl);
 });
+document.getElementById('annul_pression').addEventListener('click', function() {
+    customBox.innerHTML = '<p>annulation de l\'alarme pression</p>';
+    customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
+    customBox.innerHTML += '<button id="modal-close">Annuler</button>';ch=1;
+   modalShow();
+ //console.log(bl);
+});	
 function modalShow() {
     modalContainer.appendChild(customBox);
     document.body.appendChild(modalContainer);
@@ -397,7 +404,8 @@ function modalClose(bl) {
         modalContainer.removeChild(modalContainer.firstChild);
     }
     document.body.removeChild(modalContainer);
-	 console.log(bl);if (bl==1) {maj_variable(19,"boite_lettres","0",2);maj_services(0);bl=0;}  
+	 console.log(bl);if ((bl==1) && (ch==0)) {maj_variable(19,"boite_lettres","0",2);maj_services(0);bl=0;}  
+	if ((bl==1) && (ch==1)) {maj_variable(28,"pression-chaudiere","ras",2);maj_services(0);bl=0;}  
 }
 /*------------------------------------------*/
 /*nagios("","#nagiosapp");

@@ -18,8 +18,8 @@
 
 
 			</div>
-<div class="pression_chaud"><img id="pression_chaud" src=""/></div>
-<div class="poubelles"><img id="poubelle" src=""/></div>
+<div class="pression_chaud"><a href="#" id="annul_pression"><img id="pression_chaud" src=""/></a></div>
+<div class="poubelles"><img id="poubelle" onclick="info_poubelles(1)" src=""/></div>
 <div class="aff_pluie" >
 	<div id="pluie" ></div><div id="txt_pluie"></div>  </div>
 <div class="aff_anni" ><img id="aff_anni" src="" alt="anni" /><div id="prenom"></div></div>
