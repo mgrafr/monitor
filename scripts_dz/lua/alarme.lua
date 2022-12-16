@@ -5,15 +5,15 @@
 -- les capteurs d'ouverture et de présence DEVICE CHANGED
 -- {capteur,etat,modif variable,contenu variable,notification,alarme}   alarme 0=absence et nuit 1=absence seulement 
 local a1={'porte entree','Open','Variable:porte-ouverte','porte ouverte entrée','1','0'};
-local a2={'porte cuisine','Open','Variable:porte-ouverte','porte ouverte cuisine','1','0'};--AA[2]=a2;
-local a3={'Porte fenetre sejour','Open','Variable:porte-ouverte','fenetre ouverte sejour','1','0'};--A[3]=a3;
+local a2={'porte cuisine','Open','Variable:porte-ouverte','porte ouverte cuisine','1','0'};
+local a3={'Porte fenetre sejour','Open','Variable:porte-ouverte','fenetre ouverte sejour','1','0'};
 local a4={'pir salon','On','Variable:intrusion','intrusion salon','2','1'};
 local a5={'pir cuisine','On','Variable:intrusion','intrusion cuisine','2','1'};
 local A={a1,a2,a3,a4,a5};
 --
 -- listes variables  et other devices 
 -- {choix, voir  les alarmes 
-local b1={'1','pression-chaudiere','pression_basse','','','Variable:pression-chaudiere','pression_basse','7'};-- pression
+local b1={'1','','','pression-chaudiere','pression_basse','Variable:pression-chaudiere','pression_basse','7'};-- pression
 local b2={'2','Test_GSM','On','','','','','6'}; -- test GSM
 local b3={'3','Ping_pi4','Off','pi-alarme','0','Variable:pi-alarme','pi_hs','3'}; -- alarme pi4 HS
 local b4={'3','Ping_pi4','On','pi-alarme','pi_hs','Variable:pi-alarme','0','8'}; -- alarme pi4 ok
@@ -86,7 +86,7 @@ end
 -- alarmes manque pression chaudière , test gsm, alarme ping PI4 , alarme absence ,detection par les cameras
         for k1, v in ipairs(B) do
                 if (v[1]=='1') then 
-                    if (uservariables[v[2]]==v[3]) then commandArray[v[6]] = v[7];notifications(v[8]);print(v[8]);    
+                    if (uservariables[v[4]]==v[5]) then commandArray[v[6]] = v[7];notifications(v[8]);print(v[8]);    
                     end
                 elseif (v[1]=='2') then 
                     if (otherdevices[v[2]]==v[3]) then notifications(v[8]);print(v[8]);         
