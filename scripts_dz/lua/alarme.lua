@@ -1,6 +1,6 @@
 --
 -- alarme--alarme.lua
---
+-- version 2.0.0
 -- listes des dispositifs
 -- les capteurs d'ouverture et de présence DEVICE CHANGED
 -- {capteur,etat,modif variable,contenu variable,notification,alarme}   alarme 0=absence et nuit 1=absence seulement 
@@ -51,11 +51,11 @@ commandArray = {}
 local time = string.sub(os.date("%X"), 1, 5)
 local sirene=0
 -- Alarme auto
-if (otherdevices['al_nuit_auto'] == 'On') then commandArray['Variable:alarme'] = "alarme_auto";
+if (otherdevices['al_nuit_auto'] == 'On') then 
     if (((time > "22:59" and time < "24:00") or (time >= "00:00" and time < "06:00")) and otherdevices['alarme_nuit'] == 'Off') then
         commandArray['alarme_nuit'] = "On"; commandArray['Variable:alarme'] = "alarme_nuit";
     elseif (time > "05:59" and time < "22:59" and otherdevices['alarme_nuit'] == 'On') then 
-        commandArray['alarme_nuit'] = "Off";
+        commandArray['alarme_nuit'] = "Off";commandArray['Variable:alarme'] = "alarme_auto";
     end
 else commandArray['Variable:alarme'] = "0";    
 end    
@@ -173,9 +173,12 @@ end
         if (uservariables['ma-alarme']=="2")  then 
             for k1, v in ipairs(A) do
                 if ((devicechanged[v[1]] == v[2]) and (v[6]==0)) then 
-        	    notifications(v[5]);commandArray[v[3]] = v[4] ;local sirene=1
+        	    notifications(v[5]);commandArray[v[3]] = v[4] ;local sirene=1;local lampes=1;
         	    end
-            end
+        end
+            --allumer lampes
+            if (lampes==1) then commandArray['lampe_salon']='On';
+            end    
             --mise en service sirene
             if (sirene==1) then commandArray['ma_sirene']='On';
             end 
