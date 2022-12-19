@@ -14,7 +14,7 @@ return {
           --end 
         if(domoticz.devices('al_nuit_auto').state == "On" and item.isTimer ) then 
                 domoticz.devices('alarme_nuit').switchOn();print('al_nuit=ON')
-        else domoticz.devices('alarme_nuit').switchOff();print('al_nuit=OFF')   
+        else domoticz.devices('alarme_nuit').switchOff();print('al_nuit=OFF'); domoticz.variables('alarme').set("alarme_auto");  
         end  
 	end
 }
