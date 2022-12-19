@@ -19,18 +19,6 @@ function modect_cam(mode)
         end
 end
 --
-function notifications(txt)
-        if (txt== "1") then txt="alarme_porte_ouverte"
-        elseif  (txt== "2") then txt="alarme_presence_interieure"    
-        elseif  (txt== "4") then txt="alarme_absence_activee" 
-        elseif  (txt== "5") then txt="alarme_absence_desactivee" 
-        end
-
-        os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=12812620&pass=2FQTMM7x42kspr&msg="..txt.."' >> /home/michel/OsExecute1.log 2>&1")
-        os.execute("python3 /opt/domoticz/userdata/scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
-       
-        alerte_gsm(txt)
-end
 -- chargement fichier contenant les variable de configuration
 package.path = package.path..";www/modules_lua/?.lua"
 require 'string_modect'
@@ -38,12 +26,12 @@ require 'string_modect'
 -- listes des dispositifs
 -- les capteurs d'ouverture et de présence DEVICE CHANGED
 -- {capteur,etat,modif variable,contenu variable,notification,alarme}   alarme 0=absence et nuit 1=absence seulement 
-local a1={'porte entree','Open','Variable:porte-ouverte','porte ouverte entrée','1','0'};
-local a2={'porte cuisine','Open','Variable:porte-ouverte','porte ouverte cuisine','1','0'};
-local a3={'Porte fenetre sejour','Open','Variable:porte-ouverte','fenetre ouverte sejour','1','0'};
-local a4={'pir salon','On','Variable:intrusion','intrusion salon','2','1'};
-local a5={'pir cuisine','On','Variable:intrusion','intrusion cuisine','2','1'};
-local A1={a1,a2,a3,a4,a5};local A2={a1,a2,a3};
+local a1={'porte entree','Open','porte-ouverte','porte_ouverte_entree'};
+local a2={'porte ar cuisine','Open','porte-ouverte','porte_ouverte_cuisine'};
+local a3={'Porte fenetre sejour','Open',':porte-ouverte','fenetre_ouverte_sejour'};
+local a4={'temp_pir_salon_motion','On','intrusion','intrusion_salon'};
+local a5={'temp_pir ar cuisine_motion','On','intrusion','intrusion_cuisine'};
+local A1={a1,a2,a3,a4,a5};local A2={a1,a2};
 --
 
 --
@@ -52,41 +40,43 @@ sirene=0
 --
 return {
 	on = {
-		variables = {
-			'modect',
-		    'ma-alarme',
-		}
+	
+		devices = {
+			'temp_pir ar cuisine_motion',
+		    'temp_pir_salon_motion',
+		    'porte entree',
+		    'porte ar cuisine'
+				}
 	},
-	execute = function(domoticz, variable)
-	    domoticz.log('Variable ' .. variable.name .. ' was changed', domoticz.LOG_INFO)
-	    if (variables('modect').changed)  then modect_cam(variables('modect').value);
-        end
+	execute = function(domoticz, device)
+	   	    domoticz.log('Variable ' .. device.name .. ' was changed', domoticz.LOG_INFO)
+	 
         -- alarme absence - 
         if (domoticz.variables('ma-alarme').value == "1") then 
-            for k1, v in ipairs(a1) do
-                if (domoticz.device(v[1]).changed == v[2])  then 
-        	   domoticz.variables(v[3]).set(v[4]);
+            for k, v in ipairs(A1) do 
+                if (device.name == (A1[k][1]) and device.state == A1[k][2] ) then 
+        	        domoticz.variables(A1[k][3]).set(A1[k][4]);
         	    end
             end
         end
-        -- alarme nuit
-        if (domoticz.variables('ma-alarme').value == "2") then
-            for k1, v in ipairs(a2) do
-                if (domoticz.device(v[1]).changed == v[2])  then 
-        	    domoticz.variables(v[3]).set(v[4]);lampes=1;sirene=1
-        	    end
+--      -- alarme nuit
+        if (domoticz.variables('ma-alarme').value == "2") then 
+            for k, v in ipairs(A2) do 
+               if (device.name == (A2[k][1]) and device.state == A2[k][2] ) then 
+        	   domoticz.variables(A2[k][3]).set(A2[k][4]);
+        	   end
             end
-            --allumer lampes
-                if (lampes==1) then devices('lampe_salon').switchOn();
-                end    
-            --mise en service sirene
-                if (sirene==1) then devices('ma_sirene').switchOn();sirene="2"
-                end 
-                if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('Sirene-switch').switchOn();sirene="3"
-                end    
-            
- -- fin alarme nuit         
-        end       
+--            --allumer lampes
+          --      if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
+      --          end    
+        --mise en service sirene
+            if (sirene==1) then devices('ma_sirene').switchOn();sirene="2"
+            end 
+            if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('Sirene-switch').switchOn();sirene="3"
+            end    
+        end            
+        -- fin alarme nuit         
+         
 
 end
 }

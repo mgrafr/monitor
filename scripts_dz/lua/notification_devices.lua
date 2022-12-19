@@ -28,7 +28,7 @@ return {
 			'alarme_nuit',
 			'Modect',
 			'activation-sirene',
-			'raz-dz'
+			'raz_dz'
 		}
 	},
  
@@ -78,7 +78,7 @@ return {
             else domoticz.variables('activation-sir-txt').set("activer");
             end           
             -- raz variables de notification intrusion et porte ouverte
-            if (device.name == 'raz-dz' and  device.state=='On') then
+            if (device.name == 'raz_dz' and  device.state=='On') then domoticz.devices('raz_dz').switchOff();
                 domoticz.variables('intrusion').set("0");domoticz.variables('porte-ouverte').set("0");
             end
        
