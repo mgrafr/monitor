@@ -1,4 +1,4 @@
- -- script notifications_devices
+  -- script notifications_devices
 function envoi_mail(txt)
 os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=12812620&pass=2FQTMM7x42kspr&msg="..txt.."' >> /home/michel/OsExecute1.log 2>&1")
 os.execute("python3 /opt/domoticz/userdata/scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
@@ -60,7 +60,9 @@ return {
              if (device.name == 'alarme_nuit' and  device.state=='On' and  domoticz.variables('ma-alarme').value=="0") then 
                 domoticz.variables('ma-alarme').set("2"); txt='alarme_nuit_activee';alerte_gsm(txt);domoticz.variables('alarme').set("alarme_nuit"); 	
 	         elseif (device.name == 'alarme_nuit' and  device.state=='Off' and  domoticz.variables('ma-alarme').value=="2") then
-                domoticz.variables('ma-alarme').set("0"); txt='alarme_nuit_desactivee';alerte_gsm(txt);domoticz.variables('alarme').set("0"); 
+                domoticz.variables('ma-alarme').set("0"); txt='alarme_nuit_desactivee';alerte_gsm(txt);
+                    if (domoticz.variables('alarme').value~='alarme_auto') then domoticz.variables('alarme').set("0");
+                    end
           	end	
             -- activation de la detection par les cameras
 	        if (device.name == 'Modect' and  device.state=='Off' and  domoticz.variables('ma-alarme').value=="1") then 
