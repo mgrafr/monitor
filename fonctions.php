@@ -107,7 +107,8 @@ if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non con
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
 if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
 if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
-if ($periph['car_max_id1']<99) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}	
+if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);}	
+if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}	
 	$data[$t] = ['choixid' => CHOIXID,
 	'idx' => $lect_device["idx"],
 	 'temp' => $lect_device["Temp"],
@@ -913,5 +914,14 @@ $conn->close();
 
 return $content;}
 
+function pour_data($nc,$l_device){
+switch ($nc) {
+    case 1:	
+$l_dev= explode(";",$l_device);$l_device=$l_dev[4]/1000;
+return $l_device;
+break;
+default:
 
+}				
+}
 ?>
