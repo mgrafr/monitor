@@ -207,6 +207,9 @@ a:link, a:visited {
 }
 .zz{margin-left: 10px;}
 /*interieur*/
+#linky{position: relative;top: -250px;
+    left: 600px;
+    width: 60px;}
 #th_ext_cuis{position: relative;
     top: -780px;
     left: 200px;
@@ -435,7 +438,7 @@ img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9
 /*-alarme--------------*/
 #zm{position:relative;top:10px;left:20px}
 .zminder{margin-left: 80px;}
-#alarme_nuit{position:relative;top:-670px;
+#alarme_nuit{position:relative;top:-460px;
 left: 170px;width: 40px;}
 /*popup volet roulant */
 .popup {
@@ -495,7 +498,7 @@ left: 170px;width: 40px;}
 .fond_date {right: -60px;}#pression_chaud{width:50px}.pression_chaud{top: -305px;left: 200px;}
 .colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}
 	.banner {height:724px;}h1, .h1 {font-size: 2rem;}
-.banner-caption {top: 25%;}
+	.banner-caption {top: 25%;}#linky{top: -200px;left: 400px;}
 .image_met{width:50px;margin-left: 0;}
 .icone_vent {width: 40px;
     margin-left: 10px;
@@ -512,7 +515,7 @@ left: 170px;width: 40px;}
 	.modal-lg {width: 740px;}.cam {margin-left: 100px;}
 	.fond_date {right: -270px;}body {max-width: 768px;margin: 0 auto;background-color: #79afbf;}
 .menu-link {left: 50%;top: 50px;}#bar_pression{top: -750px;left: 450px;}
-	.txt_ext{left:100px;}.modal {left: -300px;}
+	.txt_ext{left:100px;}.modal {left: -100px;}
 	.modal_param {left: 400px;	}
 	.modal-dialog {width:740px;}
 }
