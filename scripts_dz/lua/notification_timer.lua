@@ -1,26 +1,23 @@
 -- notifications_timer
+
+local time = string.sub(os.date("%X"), 1, 5)
 return {
     on = {
         timer = {
-             'at 23:00-06:00',
+             'at 16:25',
+             'at 16:30',
         }
     },
     execute = function(domoticz, item)
-        domoticz.log('The rule that triggered the event was: ' .. item.trigger)
-        --if (domoticz.variables('boite_lettres').value ~= "0") then 
-                --domoticz.variables('boite_lettres').set('0')
-                 --local command = "/home/michel/domoticz/scripts/python/mqtt.py esp/in/boite_lettres valeur 0   >> /home/michel/esp.log 2>&1" ;
-                 --os.execute(command);    
-          --end 
-        if (item.isTimer) then
+        domoticz.log('alarme nuit: ' .. item.trigger)
+        if (time=='16:25') then
             if(domoticz.devices('al_nuit_auto').state == "On")  then 
                 domoticz.devices('alarme_nuit').switchOn();print('al_nuit=ON')
-                end
-        else 
-            if(domoticz.devices('al_nuit_auto').state == "On")  then 
-               domoticz.devices('alarme_nuit').switchOff();print('al_nuit=OFF'); domoticz.variables('alarme').set("alarme_auto");
             end
-               
-        end  
+        elseif (time=='16:30') then    
+            if(domoticz.devices('al_nuit_auto').state == "On")  then 
+                domoticz.devices('alarme_nuit').switchOff();domoticz.variables('alarme').set("alarme_auto");print('al_nuit=OFF')    
+            end  
+	    end
 	end
 }
