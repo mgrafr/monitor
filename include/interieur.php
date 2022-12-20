@@ -24,6 +24,7 @@
      </div>
 </div>
 	</div><p id="erreur_interieur" ></p>
+	<div id="linky"><?php include ('linky_svg.php');?></div>
 		</div>       
 <!-- section interieur fin-->
 <!-- popup #interieur #exterieur-->
