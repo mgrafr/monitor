@@ -12,9 +12,15 @@ return {
                  --local command = "/home/michel/domoticz/scripts/python/mqtt.py esp/in/boite_lettres valeur 0   >> /home/michel/esp.log 2>&1" ;
                  --os.execute(command);    
           --end 
-        if(domoticz.devices('al_nuit_auto').state == "On" and item.isTimer ) then 
+        if (item.isTimer) then
+            if(domoticz.devices('al_nuit_auto').state == "On")  then 
                 domoticz.devices('alarme_nuit').switchOn();print('al_nuit=ON')
-        else domoticz.devices('alarme_nuit').switchOff();print('al_nuit=OFF'); domoticz.variables('alarme').set("alarme_auto");  
+                end
+        else 
+            if(domoticz.devices('al_nuit_auto').state == "On")  then 
+               domoticz.devices('alarme_nuit').switchOff();print('al_nuit=OFF'); domoticz.variables('alarme').set("alarme_auto");
+            end
+               
         end  
 	end
 }
