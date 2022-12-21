@@ -24,8 +24,8 @@ Entrer votre mot de passe
 		<a class="admin1" href="#admin" rel="12" title="reponse1" >Créer fichier idx/nom Domoticz , LISTE</a><br>
 		<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier idx/nom Domoticz , TABLEAU zigbee</a><br>
 		<a class="admin1" href="#admin" rel="5" title="reponse1" >Configuation monitor</a><br><br>
-		<a class="admin1" href="#admin" rel="9" title="reponse1" >Test Base de données</a></p>
-		
+		<a class="admin1" href="#admin" rel="9" title="reponse1" >Test Base de données</a><br>
+		<a class="admin1" href="#admin" rel="14" title="reponse1" >Sauvegarde Base de données</a></p>
 <div id="reponse1"></div>
 
 
