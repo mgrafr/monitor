@@ -16,7 +16,8 @@ return {
             end
         elseif (time=='06:00') then    
             if(domoticz.devices('al_nuit_auto').state == "On")  then 
-                domoticz.devices('alarme_nuit').switchOff();domoticz.variables('alarme').set("alarme_auto");print('al_nuit=OFF')    
+                domoticz.variables('alarme').set('alarme_auto');
+                domoticz.devices('alarme_nuit').switchOff();print('al_nuit=OFF')    
             end  
 	    end
 	end
