@@ -757,6 +757,8 @@ if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'idx["'.$val_name.'"]="'.$va
 	}
 echo "//********************";return;
 break;
+case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
+break;		
  default:
 } }
 else {	
