@@ -11,7 +11,7 @@ if (total_arg>0) :
     champ=temp[1]
     val1=temp[2]
     val=temp[3]+" "+temp[4]
-if (len(x)==7) :
+if (len(temp)==7) :
     champ2=temp[5]
     val2=temp[6]
 try:
@@ -28,7 +28,7 @@ try:
         cursor.execute("select database();")
         record = cursor.fetchone()
         print("You're connected to database: ", record)
-        if (len(x)==7) :
+        if (len(temp)==7) :
             query = "INSERT INTO "+table+" (date,"+champ+","+champ2+") VALUES(%>
             values = (val, val1, val2)
         else :
