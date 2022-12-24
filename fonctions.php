@@ -768,7 +768,8 @@ return ;
 
 }
 //----------------------------graph-------------------
-function graph($device,$periode){
+function graph($device,$periode){$champ="valeur";
+	$devic=explode('-',$device);$device=$devic[0];if ($devic[1] and $devic[1]!="") $champ=$devic[1];
 require("include/export_tab_sqli.php") ;	
 	if ($periode=="infos_bd"){	echo "liste : 20 dernieres valeurs<br>";$k=0;
 		for ($i=$number-20; $i<$number; $i++)
