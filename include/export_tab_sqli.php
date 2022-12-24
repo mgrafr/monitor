@@ -29,12 +29,12 @@ $hj=$periode;
 if ($hj=="infos_bd" || $hj=="text_svg") {$hj="";}// modif nov 2022
 elseif (($hj=="24") || ($hj=="48")) {$hj=$hj." H";}
 else {$hj=$hj." J";}
-if ($result->num_rows > 0) {if ($periode!="text_svg") {echo "table : ".$device." ".$hj."<br>";}
+if ($result->num_rows > 0) {if ($periode!="text_svg") {echo "table : ".$device." champ :".$champ." ".$hj."<br>";}
     // output data of each row
     while($row = $result->fetch_assoc()) {
         if($periode=="infos_bd" || $periode=="text_svg"){$xdate[]= $row["date"];}//modif 2022
 		else {$xdate[]= strtotime($row["date"]);}
-		$yvaleur[]=$row["valeur"];
+		$yvaleur[]=$row[$champ];
     }
 	} 
 	else {echo "0 results";}

@@ -32,7 +32,7 @@ Merci de cocher vos préférences:<br><ul style="background-color: aquamarine;">
 <li><input type="radio" name="devices" value="temp_cellier"> temp cellier</li>
 <li><input type="radio" name="devices" value="temp_cuis_ete"> temp cuisine d'été</li>
 <li><input type="radio" name="devices" value="pression_chaudiere"> pression eau chaudière</li>
-<li><input type="radio" name="devices" value="pmax"> puissance max électrique</li><br>		
+<li><input type="radio" name="devices" value="energie-valeur"> puissance max électrique</li><br>		
 		
 <li><input type="radio" checked="checked" name="variables" value="24"> dernieres 24H</li>
 <li><input type="radio" name="variables" value="48"> dernieres 48H</li>
