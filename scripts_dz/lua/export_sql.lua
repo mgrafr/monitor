@@ -30,11 +30,19 @@ function round(num,numDecimal)
    local mult = 10^(numDecimal or 0)
   return math.floor(num * mult + 0.5) / mult
  end
+function Split(s, delimiter)
+    result = {};
+    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+        table.insert(result, match);
+    end
+    return result;
+end 
+ 
 commandArray = {}
 t = {};
 -- libelle=table#champ
--- si 2 champs , ajouter ..'#'..libelle2 après datetime 
--- exemple "don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime..'#'..libelle2
+-- si 2 champs , ajouter ..'#champ2#"..split_str[2] après datetime.. 
+-- exemple "don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime.."#champ2#"..split_str[2]
 for deviceName,deviceValue in pairs(devicechanged) do
     if (deviceName=='temp_pir_salon_temperature_air') then
         print ("temp_salon:"..deviceValue);
@@ -51,9 +59,9 @@ for deviceName,deviceValue in pairs(devicechanged) do
             else commandArray['Variable:pression-chaudiere']="ras"    
             end
         end
-     elseif (deviceName=='truffiere - Linky 16267727923561') then
-        --local mesure=round(deviceValue, 1)
-	    libelle="pmax#valeur";don=" "..libelle.."#"..mesure.."#"..datetime
+     elseif (deviceName=='truffiere - Linky 16267727923561') then print('linky'..tostring(deviceValue))
+        split_str = Split(tostring(deviceValue), ";")
+	    libelle="energie#conso";don=" "..libelle.."#"..split_str[1].."#"..datetime.."#pmax#"..split_str[5]; print("energie"..don);
 	    envoi_fab(don)    
     elseif (deviceName=='PH_Spa') then
         local mesure=round(deviceValue, 1)
