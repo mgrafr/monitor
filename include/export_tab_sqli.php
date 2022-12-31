@@ -6,7 +6,7 @@ date_default_timezone_set('UTC');
 $today = new datetime();
 $t=time();
 if ($periode!="text_svg") {echo(date("Y-m-d",$t))."<br>";}
-$period=$today->modify('-1 days')->format('Y-m-d H:i:s');// hier format datetime sql
+$period=$today->modify('-7 days')->format('Y-m-d H:i:s');// hier format datetime sql
 if (($periode==48)|| ($periode=="infos_bd")){$period=$today->modify('-2 days')->format('Y-m-d H:i:s');echo $period;}
 elseif ($periode==7) {$period=$today->modify('-7 days')->format('Y-m-d H:i:s');}//semaine derniere
 elseif ($periode==31) {$period=$today->modify('-1 month')->format('Y-m-d H:i:s');}//mois précédent
