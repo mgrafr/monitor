@@ -793,7 +793,7 @@ $datay=$yvaleur;
 $datax=$xdate;
  // Création du graphique
 $graph = new Graph(700,500);
-$graph->SetMargin(40,70,30,70); 
+$graph->SetMargin(60,70,30,60); 
 $graph-> title->SetFont(FF_DV_SANSSERIF ,FS_BOLD);
 $graph->title->Set('Table SQL : '.$device);
  $graph->SetScale("datlin");
