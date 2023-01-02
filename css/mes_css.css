@@ -438,7 +438,7 @@ img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9
 /*-alarme--------------*/
 #zm{position:relative;top:10px;left:20px}
 .zminder{margin-left: 80px;}
-#alarme_nuit{position:relative;top:-460px;
+#alarme_nuit{position:absolute;top:815px;
 left: 170px;width: 40px;}
 /*popup volet roulant */
 .popup {
@@ -494,7 +494,7 @@ left: 170px;width: 40px;}
     max-width: 600px;}.modal_param {left: 300px;}
 }
 /* Large devices (small desktops <535) */
-@media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:-305px;}#nagiosmobile{width:480px;}
+@media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:580px;}#nagiosmobile{width:480px;}
 .poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}
 .fosse_septique{left:300px;}#fosse{bottom:-120px;}.aff_anni{bottom: 80px;}.aff_pluie{left: 390px;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}
