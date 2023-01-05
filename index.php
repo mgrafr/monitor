@@ -2,7 +2,7 @@
 echo '<!DOCTYPE html><html><body style="background-color: cornsilk;">';
 
 $rep="/"; $domaine=$_SERVER['HTTP_HOST'];
-if (substr($domaine, 0, -2)=="192.168.1" || substr($domaine, 0, -2)=="192.168.1.");
+if (substr($domaine, 0, -2)=="192.168.1" || substr($domaine, 0, -2)=="192.168.1.") $rep="/monitor/";
 echo '
 <script>
 var larg = screen.width;
