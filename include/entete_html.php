@@ -7,11 +7,11 @@
 		<!-- Mobile Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Favicon  racine du site -->
-		<link rel="shortcut icon" href="<?php if ($_SERVER['HTTP_HOST']=='192.168.1.7') echo '/monitor'.FAVICON;else echo FAVICON; ?>">
+		<link rel="shortcut icon" href="<?php if (substr($_SERVER['HTTP_HOST'], 0, 7)=="192.168") echo '/monitor'.FAVICON;else echo FAVICON; ?>">
 		<!-- mes css  dossier css -->
 		<link href="bootstrap/css/bootstrap.css?2" rel="stylesheet">
 		<link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
-		<link href="css/mes_css.css?8" rel="stylesheet">
+		<link href="css/mes_css.css?9" rel="stylesheet">
 		
 		<!-- icones  racine du site -->
 		<link rel="apple-touch-icon" href="iphone-icon.png"/>
