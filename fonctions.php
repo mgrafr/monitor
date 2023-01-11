@@ -26,24 +26,29 @@ $idx=$lect_var["idx"];
 $value = $lect_var['Value'];
 $name = $lect_var['Name'];
 $type = $lect_var['Type'];
-$vardz = sql_variable(0,$idx);if ($vardz==null){$exist_id="non" ;}
-else {$exist_id="oui" ;}
-$temp_maj=$vardz['temps_maj'];
-if ($exist_id=="oui") {
+$exist_id="oui";$vardz = sql_variable($idx,0);
+if ($vardz==null){$exist_id="non" ;}
+//if ($exist_id=="oui"){
+$id_m_txt = isset($vardz['id_m_txt']) ? $vardz['id_m_txt'] : '';
+$id_m_img = isset($vardz['id_m_img']) ? $vardz['id_m_img'] : '';
+$temp_maj = isset($vardz['temps_maj']) ? $vardz['temps_maj'] : '';	
+
 if(($temp_maj>$t_maj) && ($value!="0")) {$t_maj=$temp_maj;}
-$txtimg = sql_variable(1,$value);
-$id_m_img = $vardz['id_m_img'];
-if ($vardz['id_m_txt']!=null) {$id_m_txt = $vardz['id_m_txt'];}
-else {$id_m_txt = $value;}}
-if (isset($id_m_img) || isset($id_m_txt)){
+
+$txtimg = sql_variable($value,1);
+	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
+	$icone = isset($txtimg['icone']) ? $txtimg['icone'] : '';
+
+if ($id_m_txt==null) {$id_m_txt = $value;}
+if (isset($id_m_img) && isset($id_m_txt)){
 $data[$n+1] = [	
 		'idx' => $idx,
 		'Type' => $type,
 		'Name' => $name,
 		'Value' => $value,
 		'ID_img' => $id_m_img,
-		'image' => $txtimg['image'],
-		'icone' => $txtimg['icone'],
+		'image' => $image,
+		'icone' => $icone,
 		'ID_txt' => $id_m_txt,
 		'exist_id' => $exist_id
 		];}
@@ -64,7 +69,7 @@ $resultat['status']=$json['status'];
 $resultat['url']=$file;//pour test
 return $resultat;
 }
-function sql_variable($ind=0,$t){
+function sql_variable($t,$ind){
 	$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 	if ($ind==0){$sql="SELECT * FROM `variables_dz` WHERE id_dz ='".$t."' ;" ;}
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
@@ -141,27 +146,8 @@ if ($al_bat==2) $abat="batterie_faible";
 maj_variable(PILES[0],PILES[1],$abat,2);
  return $data;
  }
-function sql_plan($t){
-// SERVEUR SQL connexion
-$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
- if ($t!=0) {
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `idx` = ".$t ;
-	$result = $conn->query($sql);
-	$row = $result->fetch_assoc();return $row;}
-else if ($t==0) {$commande="On";
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `maj_js` LIKE '%onoff%' " ;
-	$result = $conn->query($sql);//echo "/*";
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){
-		if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
-		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
-		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);})';}
-       	else {$sl='").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';}
-		$s=$s.$sl;
-		echo $s."\r\n" ;}
-	//echo "*/";
-	return;}
-else echo "pas d'id_dz";
-}
+include ("include/fonctions_1.php");
+
 /* fonction qui permet de switcher un interrupteur dans Domoticz 
 et de modifier une température de consigne
 */
@@ -421,7 +407,7 @@ switch ($choix) {
 		$t=$tab[145];$ta = explode('<br /><i>',$t);$temp=$ta[0];
 		 if ($pourcent=="0%"){$info['test_pluie']=$test;$im="pas_pluie";}
 		 else {$im="pluie";}
-		$info['titre']=$maj[0]; $txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
+		$info['titre']=$maj[0]; $txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
 		$info['maj']=$date;$info['jour']=$jour;$info['pourcent']=$pourcent;$info['temp']=$temp;$info['mm']=$pluiemm;
 	break;
     case "2":		
@@ -439,7 +425,7 @@ switch ($choix) {
 		}
 		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']=$json[0]['rain_intensity_description'];$im="pas_pluie";}
 		else {$info['test_pluie']=$test;$info['titre']="prévision : ".$json[$id_test_pluie]['rain_intensity_description'];$im="pluie";}
-		$txtimg = sql_variable(1,$im);$info['img_pluie']=$txtimg['image'];
+		$txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
 		break;
 	default:
 	$info['test_pluie']="pas d'infos";
@@ -703,7 +689,7 @@ echo $file.'<div id="result"><form >';
 	 else {file_put_contents($file.'.bak.'.$time, $content);}
 	 if($choix==7){$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];
 		$_SESSION["mdpass"]=$find.$content;$height="30";}
-	 echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
+	 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 100px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
 	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
 	 echo '</form></div>';
 return "sauvegarde OK";	 
@@ -769,10 +755,12 @@ return ;
 }
 //----------------------------graph-------------------
 function graph($device,$periode){$champ="valeur";
-	$devic=explode('-',$device);$device=$devic[0];if ($devic[1] and $devic[1]!="") $champ=$devic[1];
+	$devic=explode('-',$device);$device=$devic[0];$devic[1] = isset($devic[1]) ? $devic[1] : '';
+	if ($devic[1] and $devic[1]!="") $champ=$devic[1];
 require("include/export_tab_sqli.php") ;	
-	if ($periode=="infos_bd"){	echo "liste : 20 dernieres valeurs<br>";$k=0;
-		for ($i=$number-20; $i<$number; $i++)
+	if ($periode=="infos_bd"){	echo "liste : 20 dernieres valeurs ou 14 jours<br>";$k=0;
+		$inumber=$number-20;if ($inumber<=0) {$inumber=0;	echo $number;}				  
+		for ($i=$inumber; $i<$number; $i++)
 		{
 			echo $xdate[$i]." = ".$yvaleur[$i]."<br>";}return;}
 	if ($periode=="text_svg"){	
