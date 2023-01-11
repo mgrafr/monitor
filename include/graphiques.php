@@ -40,7 +40,7 @@ Merci de cocher vos préférences:<br><ul style="background-color: aquamarine;">
 <li><input type="radio" name="variables" value="7"> derniere semaine</li>
 <li><input type="radio" name="variables" value="31"> dernier mois</li>
 <li><input type="radio" name="variables" value="365"> derniere année</li><br>
-<li><input type="radio" name="variables" value="infos_bd">20 dernieres valeurs(ou 7 jours)</li><br>
+<li><input type="radio" name="variables" value="infos_bd">20 dernieres valeurs(ou 14 jours)</li><br>
 <li><input type="button" id="btn_graph" value="OK" /></li></ul>
      	 </div>
      </div>
