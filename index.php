@@ -1,4 +1,5 @@
 <?php
+//session_start();
 echo '<!DOCTYPE html><html><body style="background-color: cornsilk;">';
 
 $rep="/"; $domaine=$_SERVER['HTTP_HOST'];$port=$_SERVER['SERVER_PORT'];
