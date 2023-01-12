@@ -1,8 +1,9 @@
 <?php
 // NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
 //general monitor
-define('URLMONITOR', 'monitor.la-truffiere.ovh');//domaine
-define('IPMONITOR', '192.168.1.7');//ip 
+define('URLMONITOR', 'monitor.la-truffiere.ovh:444');//domaine si port autre 443 
+#define('URLMONITOR', 'monitor.la-truffiere.ovh');//domaine
+define('IPMONITOR', '192.168.1.9');//ip 
 define('MONCONFIG', 'admin/config.php');//fichier config 
 define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
 define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
@@ -86,9 +87,9 @@ define('ON_GRAPH',true);// mise en service page graphique
 // utilisation du mur :true sinon false , Nom du mur , nb caméras
 define('ON_MUR',true);// mise en service MUR
 define('NOMMUR','La Truffiere');// nom du mur
-define('NBCAM','6');// nombre caméras
+define('NBCAM','8');// nombre caméras
 // Zoneminder
-define('ZMURL','http://192.168.1.9/zm');//IP/zm
+define('ZMURL','http://192.168.1.23/zm');//IP/zm
 define('ZMURLTLS','https:zoneminder.la-truffiere.ovh');// sous domaine
 define('ZMUSER','michel');// pour mur_cameras.php
 define('ZMPASS','Idem4546');// pour mur_cameras.php
@@ -106,7 +107,7 @@ define('URLZWAVE', 'https://zwave.la-truffiere.ovh');//url');
 //Nagios
 define('ON_NAGIOS',true);// mise en service Monitoring
 define('IPNAGIOS', '192.168.1.8/nagios');//ip/dossier
-define('URLNAGIOS', 'https://monitoring.la-truffiere.ovh/nagios/');
+define('URLNAGIOS', 'https://monitoring.la-truffiere.ovh:444/nagios/');
 define('NAUSER', 'nagiosadmin');
 define('NAPASS', 'Idem4546');
 //Page Mur de Caméras avec Agent DVR
