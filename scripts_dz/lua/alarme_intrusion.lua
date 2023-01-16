@@ -28,10 +28,10 @@ require 'string_modect'
 -- {capteur,etat,modif variable,contenu variable,notification,alarme}   alarme 0=absence et nuit 1=absence seulement 
 local a1={'porte entree','Open','porte-ouverte','porte_ouverte_entree'};
 local a2={'porte ar cuisine','Open','porte-ouverte','porte_ouverte_cuisine'};
-local a3={'Porte fenetre sejour','Open',':porte-ouverte','fenetre_ouverte_sejour'};
+local a3={'Porte_fenetre','Open',':porte-ouverte','fenetre_ouverte_sejour'};
 local a4={'temp_pir_salon_motion','On','intrusion','intrusion_salon'};
 local a5={'temp_pir ar cuisine_motion','On','intrusion','intrusion_cuisine'};
-local A1={a1,a2,a3,a4,a5};local A2={a1,a2};
+local A1={a1,a2,a3,a4,a5};local A2={a1,a2,a3};
 --
 
 --
@@ -46,6 +46,7 @@ return {
 		    'temp_pir_salon_motion',
 		    'porte entree',
 		    'porte ar cuisine'
+		    'porte_fenetre'
 				}
 	},
 	execute = function(domoticz, device)
