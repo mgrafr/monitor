@@ -24,7 +24,7 @@ return {
 	},
 	execute = function(domoticz, variable)
 	    --domoticz.log('Variable ' .. variable.name .. ' was changed', domoticz.LOG_INFO)
-	            if ((domoticz.variables('pression-chaudiere').changed) and (domoticz.variables('pression-chaudiere').value == "manque_pression")) then  
+	            if (domoticz.variables('pression-chaudiere').value == "manque_pression") then  
 	             txt=tostring(domoticz.variables('pression-chaudiere').value) 
 	             domoticz.variables('pression-chaudiere').set('pression_basse')
 	 	         print("envoi SMS pression-chaudiere")

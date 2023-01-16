@@ -2,8 +2,10 @@
 --[[
 ****************]]
 --
+
 package.path = package.path..";www/modules_lua/?.lua"
 require 'datas'
+data0=pression;data1=d_linky
 --xxx="michel"; os.execute("python3 scripts/python/pushover.py "..xxx.." > /home/michel/fab.log 2>&1");
 year 	= tonumber(os.date("%Y"));
 month 	= os.date("%m");
@@ -15,9 +17,9 @@ weekday = tonumber(os.date("%w"));
 time    = os.date("%X");
 datetime = year.."-"..month.."-"..day.." "..time;
 
-function write_datas(data)
+function write_datas(data0,data1)
 f = io.open("www/modules_lua/datas.lua", "w")
-f:write("pression="..data)
+f:write('pression='..data0..';d_linky='..data1)
 f:close()
 end
 function envoi_fab(don)
@@ -40,6 +42,7 @@ end
  
 commandArray = {}
 t = {};
+--donnees={['pression']='1.2'};write_datas('{["pression"]="'.."1.2"..';}')
 -- libelle=table#champ
 -- si 2 champs , ajouter ..'#champ2#"..split_str[2] après datetime.. 
 -- exemple "don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime.."#champ2#"..split_str[2]
@@ -53,15 +56,18 @@ for deviceName,deviceValue in pairs(devicechanged) do
         print ("pression_chaudiere:"..pressionch.."--"..pression);
         if (pression~=pressionch) then 
             libelle="pression_chaudiere#valeur";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
-            envoi_fab(don) 
-            write_datas(tonumber(deviceValue))
-            if (pression<1) then commandArray['Variable:pression-chaudiere'] = "manque_pression";  print("pression basse")
-            else commandArray['Variable:pression-chaudiere']="ras"    
+            envoi_fab(don)
+            --donnees['pression']=tonumber(deviceValue)
+            write_datas(tonumber(deviceValue),data1)
+            if (pressionch<1 and uservariables['pression-chaudiere']=="ras") then 
+                commandArray['Variable:pression-chaudiere'] = "manque_pression";  print("pression basse")
+            elseif (pressionch<1 and uservariables['pression-chaudiere']~="pression_basse") then 
+                commandArray['Variable:pression-chaudiere']="ras"    
             end
         end
-     elseif (deviceName=='truffiere - Linky 16267727923561') then print('linky'..tostring(deviceValue))
-        split_str = Split(tostring(deviceValue), ";")
-	    libelle="energie#conso";don=" "..libelle.."#"..split_str[1].."#"..datetime.."#pmax#"..split_str[5]; print("energie"..don);
+     elseif (deviceName=='truffiere - Linky 16267727923561' and d_linky~=day) then print('linky'..tostring(deviceValue))
+        split_str = Split(tostring(deviceValue), ";");write_datas(data0,day)
+	    libelle="energie#conso";don=" "..libelle.."#"..tostring(round((tonumber(split_str[1])/1000),1)).."#"..datetime.."#pmax#"..tostring(round((tonumber(split_str[5])/1000),1)); print("energie"..don);
 	    envoi_fab(don)    
     elseif (deviceName=='PH_Spa') then
         local mesure=round(deviceValue, 1)
