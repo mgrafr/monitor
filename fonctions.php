@@ -759,7 +759,7 @@ function graph($device,$periode){$champ="valeur";
 	if ($devic[1] and $devic[1]!="") $champ=$devic[1];
 require("include/export_tab_sqli.php") ;	
 	if ($periode=="infos_bd"){	echo "liste : 20 dernieres valeurs ou 14 jours<br>";$k=0;
-		$inumber=$number-20;if ($inumber<=0) {$inumber=0;	echo $number;}				  
+		$inumber=$number-20;if ($inumber<=0) {$inumber=0;}				  
 		for ($i=$inumber; $i<$number; $i++)
 		{
 			echo $xdate[$i]." = ".$yvaleur[$i]."<br>";}return;}
