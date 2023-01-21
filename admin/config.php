@@ -74,8 +74,12 @@ define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
 // AFFICHAGE DE PAGES Pré installées
 // Page Météo  meteo concept
 define('ON_MET',true);// affichage page TOKEN PBLIGATOIRE
-// ---Token
-define('TOKEN','xxxxxxxxxxxxxxxxxxTOKENxxxxxxxxxxxxxxxxxxx');
+// ---Token & code insee
+define('TOKEN_MC','xxxxxxxxxxxxxxxxxxxxxxxxTOKENxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+define('INSEE','00000');
+// Alertes Pluie de  Météo France
+// Token
+define('TOKEN_MF','__xxxxxxxxxxxxxxxxxTOKENxxxxx__');
 //-----------------------------------------------------------------------------------------------
 // Page App diverses , log dz , nagios , sql
 define('ON_APP',true);// mise en service page extérieur
