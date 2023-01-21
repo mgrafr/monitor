@@ -1,0 +1,6 @@
+liste et infos sur les scripts:
+
+- pushover_img2.sh   : Capture et envoi à Pushover image du portier  snapshot par domoticz
+- pushover_img.sh   : Capture et envoi à Pushover image du portier  snapshot par IP caméra
+- fabric.sh   : envoi de données de Domoticz vers un serveur distant et une BD mySQL
+- pushover.sh   : envoi notification à Pushover
