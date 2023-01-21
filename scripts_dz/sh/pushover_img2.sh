@@ -2,7 +2,7 @@
 
 # envoi image portier à Pushover , version Capture par Domoticz
 jour=$(date +%H:%M:%S)
-wget http://LOGIN:PASSWORD@192.168.1.76:8086/camsnapshot.jpg?idx=1 -O 
+wget http://192.168.1.76:8086/camsnapshot.jpg?idx=1 -O 
 /opt/domoticz/userdata/camsnapshot.jpg
 TITLE="image portier"
 APP_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxx"
