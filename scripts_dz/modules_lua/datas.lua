@@ -1,1 +1,1 @@
-pression=1.63
+pression=1.5;d_linky=21
