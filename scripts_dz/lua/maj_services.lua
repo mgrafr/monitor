@@ -16,9 +16,13 @@ la 1ere semaine est celle ayant au moins 4 jours sur la nouvelle année
 --(tm can be any date and will be forced to 1st of january same year)
 -- return 1=mon 7=sun
 --
--- chargement fichier contenant les variable de configuration
+-- chargement fichier contenant les variables de configuration
 package.path = package.path..";www/modules_lua/?.lua"
 require 'string_tableaux'
+require 'connect'
+local base64 = require'base64'
+local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
+local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg=poubelle' >> /home/michel/OsExecute.log 2>&1"
 --
 function getYearBeginDayOfWeek(tm)
   yearBegin = os.time{year=os.date("*t",tm).year,month=1,day=1}
@@ -82,14 +86,13 @@ end
 ----------------------------------------------------------------------
  
 commandArray = {}
-
 local time = string.sub(os.date("%X"), 1, 5)
 local day = os.date("%A")
 local jour = os.date("%d") --jour du mois [01-31]
 local mois = os.date("%m") --mois en cours
 local jour_mois = jour.."-"..mois
 -- passage à 0 heure 
-if (time == "00:05"  or time == "11:12") then 
+if (time == "00:05"  or time == "17:00") then 
     commandArray['Variable:anniversaires'] = "0";
     commandArray['Variable:fosse septique'] = "0";
     -- exclusion ou ajout dates poubelles ,
@@ -123,13 +126,13 @@ end
 if ((time == "09:10") and (uservariables['poubelles']=="poubelle_jaune_vide" )) then commandArray['Variable:poubelles'] = "0"  
 end
 --
-if  (( day == jour_poubelle_grise ) and (time == "17:00")) then commandArray['Variable:poubelles'] = "ordures_ménagères"
+if  (( day ==  jour_poubelle_grise ) and (time == "17:00")) then commandArray['Variable:poubelles'] = "ordures_ménagères"
 		-- poubelle  la variable passe à "poubelle_grise" .
 	commandArray['Variable:not_tv_poubelle'] = "1"
 	commandArray['Variable:not_poubelles'] = "1"
 	 print (time,day, "mettre les poubelles ordures ménagères");
 	 -- envoi notification via free
-		os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=xxxxxxxxxxxx&pass=yyyyyyyyyyyyyyyy&msg=poubelle' >> /home/michel/OsExecute.log 2>&1")
+		os.execute(sms_free)
 		end
 --
 if ( day == jour_poubelle_jaune and (time == "17:00")) then 
@@ -146,7 +149,7 @@ if ( day == jour_poubelle_jaune and (time == "17:00")) then
 	commandArray['Variable:not_tv_poubelle'] = "1"
     print (time,day, "mettre les poubelles recyclabes");
 		-- envoi notification via free
-		os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=xxxxxxxxxxxxxxxx&pass=yyyyyyyyyyyyyyyyyy&msg=poubelle' >> /home/michel/OsExecute.log 2>&1")
+		os.execute(sms_free)
 		
 		end
 end
