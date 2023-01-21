@@ -1,6 +1,12 @@
-  -- script notifications_devices
+ -- script notifications_devices
+package.path = package.path..";www/modules_lua/?.lua"
+require 'connect'
+local base64 = require'base64'
+local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
+
 function envoi_mail(txt)
-os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=xxxxxxxxxxx&pass=yyyyyyyyyyyyyyyy&msg="..txt.."' >> /home/michel/OsExecute1.log 2>&1")
+local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> /home/michel/OsExecute.log 2>&1"   
+os.execute(sms_free)
 os.execute("python3 /opt/domoticz/userdata/scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
 end
 function alerte_gsm(txt) -- ATTENTION PAS ESPACES pout txt
