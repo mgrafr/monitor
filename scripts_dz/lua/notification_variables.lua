@@ -1,4 +1,13 @@
 -- script notifications_variables
+
+package.path = package.path..";www/modules_lua/?.lua"
+require 'connect'
+local base64 = require'base64'
+local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
+function envoi_mail(txt,fich_log)
+local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> "..rep_log..fich_log.." 2>&1"  
+os.execute(sms_free)
+end
 function alerte_gsm(txt)
 f = io.open("userdata/scripts/python/aldz.py", "w")
 env="#!/usr/bin/env python3"
@@ -40,9 +49,10 @@ return {
           
 	 	    if (domoticz.variables('alarme_bat').changed) then    
 	 	        if (domoticz.variables('alarme_bat').value == "batterie_faible") then 
-	                if domoticz.variables('not_alarme_bat').value == "0" then 
-	            os.execute("curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user=xxxxxxxxxxxx&pass=yyyyyyyyyyyyy&msg=pile faible' >> "..rep_log.."OsExecute1.log 2>&1")	      
-                domoticz.variables('not_alarme_bat').set('1')
+	                if domoticz.variables('not_alarme_bat').value == "0" then
+	                txt="pile faible" ; fich_log="bateries.log"  
+	                envoi_mail(txt,fich_log)
+	                domoticz.variables('not_alarme_bat').set('1')
                     end
                 end 
             end
