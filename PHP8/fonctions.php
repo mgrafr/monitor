@@ -272,8 +272,8 @@ $img_donnees = [
 	2 => "met_2_1.svg",
 	3 => "met_3_1.svg",
 	4 => "met_4_1.svg",
-	5 => "met_5.svg",
-	6 => "met_6.svg",
+	5 => "met_5_1.svg",
+	6 => "met_6_1.svg",
 	10 => "met_10_1.svg",
 	11 => "met07.9e2639ff.svg",
 	12 => "met_8_1.svg",
@@ -289,8 +289,8 @@ $img_donnees = [
 	47 => "met_15.svg",
 	48 => "met_16.svg",
 	70 => "met_23.svg",
+	71 => "met_23_1.svg",
 	100 => "met_12.svg",
-	101 => "met_12.svg",
 	101 => "met_12.svg",
 	103 => "met_11_1.svg",
 	105 => "met_11.svg",
@@ -298,11 +298,11 @@ $img_donnees = [
 	211 => "met_7_1.svg",
 	212 => "met_8.svg",
 	220 => "met_6.svg",
-	
+	231 => "met_22_1.svg",
 ];
 switch ($choix) {
     case 0:
-$url1 = 'https://api.meteo-concept.com/api/forecast/daily/0/period/2?token='.TOKEN;
+$url1 = 'https://api.meteo-concept.com/api/forecast/daily/0/period/2?token='.TOKEN_MC.'&insee='.INSEE;
 $prevam = file_get_curl($url1);
 $forecastam = json_decode($prevam)->forecast;$info=$forecastam->weather;
 if (isset($img_donnees[$info])){$imgtemps=$img_donnees[$info];}
@@ -310,10 +310,13 @@ else {$imgtemps="met_interdit_vert.svg";}
 $resultat='<p>'.$info.'Le temps prévu pour cet après-midi  : '.$donnees[$info].'<img class="meteo_concept_am" src="images/'.$imgtemps.'" alt=""></p>';
 break;
     case 1:		
-$url = 'https://api.meteo-concept.com/api/forecast/daily?insee=24454';
+$url = 'https://api.meteo-concept.com/api/forecast/daily?insee='.INSEE;
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json','X-AUTH-TOKEN:XXXXXXXXXXXXXXXXTOKENXXXXXXXXXXXXXXXXXXXXXX'));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+'Accept: application/json',
+'X-AUTH-TOKEN:'.TOKEN_MC
+));
 curl_setopt($ch, CURLOPT_HEADER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $data = curl_exec($ch);
@@ -411,7 +414,7 @@ switch ($choix) {
 		$info['maj']=$date;$info['jour']=$jour;$info['pourcent']=$pourcent;$info['temp']=$temp;$info['mm']=$pluiemm;
 	break;
     case "2":		
-		$url="https://rpcache-aa.meteofrance.com/internet2018client/2.0/nowcast/rain?lat=44.952602&lon=-0.107691&token=_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+		$url="https://rpcache-aa.meteofrance.com/internet2018client/2.0/nowcast/rain?lat=44.952602&lon=-0.107691&token=".TOKEN_MF;
 		$json_string = file_get_curl($url);$result = json_decode($json_string,true);
 		$info['maj']=substr($result['update_time'],11,8);
 		$json=$result['properties']['forecast'];
@@ -636,9 +639,10 @@ if (($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$pawd=1;}
 if ($pawd==1){
 if (($choix==3) || ($choix==4)) {$file = VARTAB;$rel="4";}
 if (($choix==10) || ($choix==11)) {$file = VARTAB;$rel="11";}
+if (($choix==15) || ($choix==16)) {$file = BASE64;$rel="16";}	
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
-if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
+if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <br>";}
 
@@ -683,6 +687,7 @@ break;
 case "3" :
 case "5" :
 case "7" :
+case "15" :		
 echo $file.'<div id="result"><form >';
      $content = file_get_contents($file);
 	 if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	 
@@ -694,10 +699,14 @@ echo $file.'<div id="result"><form >';
 	 echo '</form></div>';
 return "sauvegarde OK";	 
 break;
-case "4" :$content=$idrep;
+case "4" :
+case "16" :		
+$content=$idrep;
 file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz
-$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
+if ($choix==4){$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];}
+if ($choix==16){$retour=maj_variable("22","upload","3","2");echo "Logins et mots de passe mis à jour : ".$retour['status'];}		
+else {$retour['status'];}		
 break;
 case "6" :
  $content=$idrep;
@@ -744,8 +753,8 @@ if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'idx["'.$val_name.'"]="'.$va
 echo "//********************";return;
 break;
 case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
-break;		
- default:
+break;
+default:
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
@@ -758,8 +767,8 @@ function graph($device,$periode){$champ="valeur";
 	$devic=explode('-',$device);$device=$devic[0];$devic[1] = isset($devic[1]) ? $devic[1] : '';
 	if ($devic[1] and $devic[1]!="") $champ=$devic[1];
 require("include/export_tab_sqli.php") ;	
-	if ($periode=="infos_bd"){	echo "liste : 20 dernieres valeurs ou 7 jours<br>";$k=0;
-		$inumber=$number-20;if ($inumber<=0) {$inumber=0;	echo $inumber;}				  
+	if ($periode=="infos_bd"){	echo "liste : 20 dernieres valeurs ou 14 jours<br>";$k=0;
+		$inumber=$number-20;if ($inumber<=0) {$inumber=0;}				  
 		for ($i=$inumber; $i<$number; $i++)
 		{
 			echo $xdate[$i]." = ".$yvaleur[$i]."<br>";}return;}
