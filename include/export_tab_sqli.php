@@ -6,7 +6,8 @@ date_default_timezone_set('UTC');
 $today = new datetime();
 $t=time();
 if ($periode!="text_svg") {echo(date("Y-m-d",$t))."<br>";}
-$period=$today->modify('-14 days')->format('Y-m-d H:i:s');// hier format datetime sql
+$period=$today->modify('-1 days')->format('Y-m-d H:i:s');// hier format datetime sql
+$period1=$today->modify('-14 days')->format('Y-m-d H:i:s');//
 if ($periode==48){$period=$today->modify('-2 days')->format('Y-m-d H:i:s');}
 elseif ($periode==7) {$period=$today->modify('-7 days')->format('Y-m-d H:i:s');}//semaine derniere
 elseif ($periode==31) {$period=$today->modify('-1 month')->format('Y-m-d H:i:s');}//mois précédent
@@ -21,7 +22,7 @@ if ($conn->connect_error) {
 }
 if ($periode=="text_svg") {echo '<text transform="matrix(1 0 0 1 0 0)" class="spa2 spa3">Connected</text>';}
 else {echo "Connected successfully<br>";}//modif 2022
-if ($periode=="infos_bd") {$sql="SELECT * FROM `".$device."` WHERE `date` >= '".$period."' ORDER BY `date` ASC" ;}
+if ($periode=="infos_bd") {$sql="SELECT * FROM `".$device."` WHERE `date` >= '".$period1."' ORDER BY `date` ASC" ;}
 else {$sql="SELECT * FROM `".$device."` WHERE `date` >= '".$period."'" ;}					   
 $result = $conn->query($sql);
 $number = $result->num_rows;
