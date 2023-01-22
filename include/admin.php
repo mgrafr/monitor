@@ -17,6 +17,7 @@ Entrer votre mot de passe
 						?>
 		<p id="admin1" style="margin-top:100px;display:<?php echo $style1;?>">
 		<a class="admin1" href="#admin" title="reponse1" rel="7">CHANGER de MOT de PASSE</a><br>
+		<a class="admin1" href="#admin" rel="15" title="reponse1" >Mots passe scripts Domoticz(Base64)</a><br>	
 		<a class="admin1" href="#admin" title="reponse1" rel="1">récupération variables domoticz dans fichier json(var_dz.json)</a><br>
 		<a class="admin1" href="#admin" rel="2" title="reponse1" >création variables domoticz depuis fichier json(var_dz.json)</a><br>
 		<a class="admin1" href="#admin" rel="3" title="reponse1" >Configuation variables dz maj_services</a><br>
