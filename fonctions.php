@@ -272,8 +272,8 @@ $img_donnees = [
 	2 => "met_2_1.svg",
 	3 => "met_3_1.svg",
 	4 => "met_4_1.svg",
-	5 => "met_5.svg",
-	6 => "met_6.svg",
+	5 => "met_5_1.svg",
+	6 => "met_6_1.svg",
 	10 => "met_10_1.svg",
 	11 => "met07.9e2639ff.svg",
 	12 => "met_8_1.svg",
@@ -500,12 +500,12 @@ function cam_config($marque,$type,$ip,$cam,$idzm){
 # ====================================================
 if ($marque=='dahua'){$marque=1;echo 'caméra dahua: ';}
 else {$marque=2;echo 'caméra onvif: ';}
-echo $cam." ".$type."<br>";
+echo $cam." ".$type."   ip:".$ip."<br>";
 if ($marque==1){$user=DHUSER;  # username
-				$pass=DHPASS; # password
+				$pass=DHCAMPASS[$ip];  # password
 if ($type=="VTO"){$user="admin";  # VTO
-$pass=DHPASSVTO;}	 			
-echo 'user: '.$user.'  ';
+$pass=DHPASSVTO;}
+//					
 	$action='GetVideoInOptionsConfig';
 # ====== Spécifiez les points de terminaison ======
 
@@ -545,7 +545,7 @@ $e['GetAutoMaintainConfig']   =$configGet."AutoMaintain";
 # ====  Main =====
 
    if(isset($e[$action])){
-     $url="http://".$ip."/cgi-bin/".$e[$action];
+     $url="http://".$ip."/cgi-bin/".$e[$action];//echo $url;
    }else{
       $message="<p>liste des types de config disponibles:</p>".
          "<pre>". print_r(array_keys($e), true). "</pre>";    
@@ -590,8 +590,8 @@ function build_options($url,$user,$pass){
           CURLOPT_URL            => $url,
           CURLOPT_USERPWD        => $user . ":" . $pass,
           CURLOPT_RETURNTRANSFER => true,
-  );
-   $options[CURLOPT_HTTPAUTH]=CURLAUTH_DIGEST;
+	       );
+   $options[CURLOPT_HTTPAUTH]=CURLAUTH_BASIC | CURLAUTH_DIGEST;
    return $options;
 }
 function curl_call($options){
@@ -606,7 +606,7 @@ function curl_call($options){
     }
     // validate HTTP status code (user/password credential issues)
     $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	echo $status_code, $ip, $idx;
+	//echo $status_code, $ip, $idx;
     if ($status_code != 200)
         throw new Exception("Response with Status Code [" . $status_code . "].", 500);
   } catch(Exception $ex) {
@@ -639,9 +639,10 @@ if (($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$pawd=1;}
 if ($pawd==1){
 if (($choix==3) || ($choix==4)) {$file = VARTAB;$rel="4";}
 if (($choix==10) || ($choix==11)) {$file = VARTAB;$rel="11";}
+if (($choix==15) || ($choix==16)) {$file = BASE64;$rel="16";}	
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
-if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
+if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <br>";}
 
@@ -686,6 +687,7 @@ break;
 case "3" :
 case "5" :
 case "7" :
+case "15" :		
 echo $file.'<div id="result"><form >';
      $content = file_get_contents($file);
 	 if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	 
@@ -697,10 +699,14 @@ echo $file.'<div id="result"><form >';
 	 echo '</form></div>';
 return "sauvegarde OK";	 
 break;
-case "4" :$content=$idrep;
+case "4" :
+case "16" :		
+$content=$idrep;
 file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz
-$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
+if ($choix==4){$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];}
+if ($choix==16){$retour=maj_variable("22","upload","3","2");echo "Logins et mots de passe mis à jour : ".$retour['status'];}		
+else {$retour['status'];}		
 break;
 case "6" :
  $content=$idrep;
@@ -747,8 +753,8 @@ if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'idx["'.$val_name.'"]="'.$va
 echo "//********************";return;
 break;
 case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
-break;		
- default:
+break;
+default:
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
