@@ -131,6 +131,8 @@ define('ECRANSPA', array(
 	3 => "temp", //si nb ecran >=5
 	4 => "temp_ext", //si nb ecran >=6
 	));
+// Recettes Cuisine
+define('ON_RECETTES',true);
 //----------------------------------------------------------------
 
 ?>
