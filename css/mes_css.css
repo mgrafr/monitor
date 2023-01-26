@@ -9,8 +9,8 @@ body {
 html, body {
     height: 100%;
 }.table td{border:0}
-
-#Calque_1{margin-top:12%;}
+#menu {width:17em;}
+#maison1{margin-top:12%;}
 .header {height: 150px;
 	color: #ffffff;
 	background-color: rgba(8, 55, 70, 0.7);
@@ -148,7 +148,7 @@ left: -80px;}
 }
 .nav {margin-top: 10px;
 background-color: black;
-height: 220px;
+height: 240px;
 padding-top: 20px;
 font-size: large;}
 .menu-link:link, .menu-link:visited {
@@ -171,7 +171,7 @@ a:link, a:visited {
 .modal-dialog {width:650px;margin: 0 auto;margin-top:50px}
 #Calque_1 {margin-left: 7%;}
 #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,
-#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa{
+#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
     width: 100%;
     height: 1120px;padding: 80px 0;
     min-height: 100%;
@@ -180,7 +180,7 @@ a:link, a:visited {
     top: 350px;z-index:-20;overflow: auto;
 }
 #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
-#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa{
+#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
     background-color: aquamarine;}
 #meteo {
 	background-color: #4f9ff4;}
@@ -211,9 +211,11 @@ a:link, a:visited {
     left: 600px;
     width: 60px;}
 #th_ext_cuis{position: relative;
-    top: -780px;
-    left: 200px;
+    top: -747px;
+    left: 170px;
 	width: 50px;}
+#temp_ext_cuisine{font-size: 8px;
+    color: black;}
 #voltage{position: absolute;
 top: -30px;
 right: -20px;
@@ -338,6 +340,9 @@ border-color: #e0e3e6;border-radius: 0.55rem}
   border-radius: 5px;position: fixed;
 top: 480px;
 }
+/*recettes*/
+.recette{position:relative;top:10px;left:10px;}
+
 /*graphiques-------*/
 #graphic{color:white;}
 .graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
@@ -501,13 +506,13 @@ left: 170px;width: 40px;}
 .fond_date {right: -60px;}#pression_chaud{width:50px}.pression_chaud{top: -305px;}
 .colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}
 	.banner {height:724px;}h1, .h1 {font-size: 2rem;}
-	.banner-caption {top: 25%;}#linky{top: -230px;left: 400px;}
+	.banner-caption {top: 25%;}#linky{top: -220px;left: 380px;}
 .image_met{width:50px;margin-left: 0;}
 .icone_vent {width: 40px;
     margin-left: 10px;
     margin-top: -60px;}
 .vvent {margin-left: 15px;top: -50px;}
-	.vtemp {margin-left: 15px;top: -70px;}#th_ext_cuis{top: -565px;left: 130px;}
+	.vtemp {margin-left: 15px;top: -70px;}#th_ext_cuis{top: -585px;left: 90px;}
     
 #meteo_concept_am {top: -100px;display: inline;width: 50px;}
 #meteo_concept_am img{width: 50px;margin-left: 30px;}
