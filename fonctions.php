@@ -702,6 +702,7 @@ break;
 case "4" :
 case "16" :		
 $content=$idrep;
+echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
 file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz
 if ($choix==4){$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];}
@@ -758,7 +759,7 @@ default:
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
-echo "Entrer votre mot de passe";return;}
+echo "Entrer votre mot de passe";include ('test_pass.php');return;}
 return ;
 
 }
