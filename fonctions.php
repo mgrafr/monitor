@@ -911,6 +911,14 @@ $content = $content."}";if ($choix==3) token_zm();
 }
 else echo "pas de cameras modect";
 }
+if ($choix==4) {
+$sql="SELECT * FROM ".$table." WHERE ".$valeur." = ".$date;
+$result = $conn->query($sql);	
+$number = $result->num_rows;if ($number>0) {
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){$content=$row['recette'];
+	$content = str_replace('$$','',$content);	}
+}
+}
 $conn->close();
 
 return $content;}

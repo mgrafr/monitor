@@ -28,7 +28,7 @@ else if ($app=="infos_nagios") {api_nagios($variable);}
 else if ($app=="ecran_spa") {echo file_get_curl($variable);}
 //else if ($app=="app_nagios") {app_nagios($variable);}
 //else if ($app=="mur_zm") {mur_zm($variable,$command);}
-else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo json_encode($retour);}//$choix,$table,$valeur,$date,$icone
+else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}
 else if ($app=="admin") {admin($variable,$command);}	//$command=fenetre(administration footer	
 //  autres fonctions php-----------------------------------Z
