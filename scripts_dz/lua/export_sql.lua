@@ -5,6 +5,7 @@
 
 package.path = package.path..";www/modules_lua/?.lua"
 require 'datas'
+require 'string_tableaux'
 data0=pression;data1=d_linky
 --xxx="michel"; os.execute("python3 scripts/python/pushover.py "..xxx.." > /home/michel/fab.log 2>&1");
 year 	= tonumber(os.date("%Y"));
@@ -59,13 +60,14 @@ for deviceName,deviceValue in pairs(devicechanged) do
             envoi_fab(don)
             --donnees['pression']=tonumber(deviceValue)
             write_datas(tonumber(deviceValue),data1)
-            if (pressionch<1 and uservariables['pression-chaudiere']=="ras") then 
+            --pression_chaudiere: variable du fichier 'string_tableaux'
+            if (pressionch<pression_chaudiere and uservariables['pression-chaudiere']=="ras") then 
                 commandArray['Variable:pression-chaudiere'] = "manque_pression";  print("pression basse")
-            elseif (pressionch<1 and uservariables['pression-chaudiere']~="pression_basse") then 
+            elseif (pressionch<pression_chaudiere and uservariables['pression-chaudiere']~="pression_basse") then 
                 commandArray['Variable:pression-chaudiere']="ras"    
             end
         end
-     elseif (deviceName=='truffiere - Linky XXXXXXXXXXXXX' and d_linky~=day) then print('linky'..tostring(deviceValue))
+     elseif (deviceName=='truffiere - Linky' and d_linky~=day) then print('linky'..tostring(deviceValue))
         split_str = Split(tostring(deviceValue), ";");write_datas(data0,day)
 	    libelle="energie#conso";don=" "..libelle.."#"..tostring(round((tonumber(split_str[1])/1000),1)).."#"..datetime.."#pmax#"..tostring(round((tonumber(split_str[5])/1000),1)); print("energie"..don);
 	    envoi_fab(don)    
