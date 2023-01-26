@@ -1,6 +1,6 @@
 <?php
 session_start();
-$domaine=$_SESSION["domaine"];echo "AZERTY:".$domaine;
+$domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_zwave=URLZWAVE;
 if ($domaine==IPMONITOR) $lien_zwave=IPZWAVE;
 

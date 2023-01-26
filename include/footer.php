@@ -349,6 +349,8 @@ if ((logapp.length)<2){urllog="ajax.php?app=log_dz&variable="+logapp;titre="log 
 else if (logapp=="hostlist"){urllog="ajax.php?app=infos_nagios&variable="+logapp;titre="Hosts Nagios";}
 else if (logapp=="sql"){var table_sql = $(this).attr('title');
 	urllog="ajax.php?app=sql&idx=1&variable="+table_sql+"&type=&command=";titre="historique poubelles";}
+else if (logapp=="cuisine"){var table_sql = logapp;var numrecette = $(this).attr('title');titre = $(this).attr('alt');
+	urllog="ajax.php?app=sql&idx=4&variable="+table_sql+"&type=id&command="+numrecette;}	
 else {urllog="erreur";}
   $.modalLink.open(urllog, {
   // options here
@@ -458,7 +460,7 @@ $("#zm").click(function () {
 </script><script>
 /*----------------script pour svg---*/
 var nom;
-	function popup_device(nom) {	
+	function popup_device(nom) {
 	if (nom < 10000){if (pp[nom]){
 	var donnees="choixid :" +pp[nom].choixid+"<br>"+
 	"idx :" +pp[nom].idx+"<br>"+
