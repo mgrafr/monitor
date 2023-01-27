@@ -45,7 +45,7 @@ return {
 			'temp_pir ar cuisine_motion',
 		    'temp_pir_salon_motion',
 		    'porte entree',
-		    'porte ar cuisine'
+		    'porte ar cuisine',
 		    'porte_fenetre'
 				}
 	},
