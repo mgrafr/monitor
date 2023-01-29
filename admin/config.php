@@ -20,9 +20,10 @@ define('NOMSLOGAN', 'XXXXXXXXXXXXX');//nom secondaire ou slogan
 define('LEXIQUE', true);
 // infos de découverte , à mettre à FALSE en production
 define('DECOUVERTE', true);
-//
+//interval de maj des fonctions JS maj_services() & maj_devices()
 define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
 define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE en milli secondes
+define('TEMPO_DEVICES', 180000);// en milli secondes
 // caméras et VTO DAHUA
 define('DHPASSVTO','xxxxxxxxxxxx');
 define('DHUSER','xxxxxxxxxxxxx');
