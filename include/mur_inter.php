@@ -1,11 +1,40 @@
 <?php
-//session_start();
+session_start();
 $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="";
 if ($domaine==IPMONITOR) $lien_img="/monitor";
 ?>
 <!-- section Mur OnOff-->
 <!-- ================ -->
+<script>
+// Créer une instance client
+var mess1={
+	command: "switchlight", 
+	idx: 177, 
+	switchcmd: "Set Level",
+	level: 100 
+	};
+var client;
+var host="192.168.1.42";var port=9001;var topic = 'domoticz/in';
+function onConnect(){console.log("onConnect");
+client.subscribe(topic);
+var mesg = JSON.stringify(mess1);					 
+message=new Paho.MQTT.Message(mesg);
+message.destinationName=topic;
+client.send(message);
+maj_devices(<?php echo NUMPLAN;?>)	;				 
+}
+function MQTTconnect(){console.log("MQTT:"+host+"topic:"+topic);
+
+client = new Paho.MQTT.Client(host, port, "clientjs");
+var options={
+	timeout:3,
+	onSuccess:onConnect,
+			};
+client.connect(options);//connect
+}
+
+</script>
 		<div id="murinter" class="inter">
 			<div class="container">
 		<div class="col-md-12" >
@@ -31,11 +60,16 @@ if ($domaine==IPMONITOR) $lien_img="/monitor";
 </div>
 
 </div>
+
+
+
+
 <!-- div containing the popup -->
     <div class="popup" id="popup_vr">
     <div class="popup-content" >
       <h2>Commande OUVERTURE-STOP-FERMETURE</h2>
-      <p><a onclick="python /home/michel/mqtt.py zigbee2mqtt/volet_bureau moving  UP  >> /home/michel/mqtt.log 2>&1">OUVRIR?></a> (ON).</p>
+      <p><a onclick="MQTTconnect(mess1);">OUVRIR?></a> (ON).</p>
+		  
 	  <p>ARRETER </p>
 	  <p>FERMER</p>
       <a class="closeBtn" href="javascript:void(0)">X</a>

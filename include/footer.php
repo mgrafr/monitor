@@ -17,6 +17,7 @@ require("fonctions.php");
 <script src="js/big-Slide.js"></script>
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
 <script src="js/mes_js.js?4"></script>
+<script src="js/mqttws31.js"></script>
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 <script>
@@ -198,7 +199,7 @@ for (var i = 0; i < elements.length; i++) {
 /* volets roulants*/
 
 $('.closeBtn').on('click', function () {
-      $('.popup_vr').fadeOut(300);
+      $('#popup_vr').hide();
     });
 /* switchOnOff*  */
 
