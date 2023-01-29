@@ -11,7 +11,7 @@
 		<!-- mes css  dossier css -->
 		<link href="bootstrap/css/bootstrap.css?2" rel="stylesheet">
 		<link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
-		<link href="css/mes_css.css?1" rel="stylesheet">
+		<link href="css/mes_css.css?15" rel="stylesheet">
 		
 		<!-- icones  racine du site -->
 		<link rel="apple-touch-icon" href="iphone-icon.png"/>

@@ -8,7 +8,7 @@ error_reporting(-1);
 			<div class="container">
 				<div class="title_g">
 	  <h1> Graphiques<br><span>de températures, pression, ..</span></h1></div>
-			 <div class="row" style="margin-top:10px;">
+			 <div class="row row_g">
 			<!-- Button to Open the Modal -->
   <div><button type="button" id="btn_g" class="btn btn-primary" data-toggle="modal" data-target="#choix_graph">
     Choisir paramètres

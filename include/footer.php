@@ -141,6 +141,7 @@ function pluie(idx){//var tc=TestConnection_js();
 /*--------------mise a jour dispositifs PLAN domoticz------*/	
 /*----------------------------------------------------*/	
 var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
+var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
 maj_devices(plan);pp=new Array();
 function maj_devices(plan){
 $.ajax({
@@ -184,7 +185,7 @@ $.ajax({
 					}
 });
 
-setTimeout(maj_devices, 180000, <?php echo NUMPLAN;?>); 
+setTimeout(maj_devices, tempo_dev, plan); 
 }
 /*--------------------------------------*/
 function class_name(cn,coul){
@@ -221,7 +222,7 @@ $('.closeBtn').on('click', function () {
 			if (qq['status']!="OK"){//alert(qq['status']);
 			document.getElementById("d_btn_a").style.display = "block";
 			document.getElementById("d_btn_al").style.display = "block";}
-			else maj_devices(<?php echo NUMPLAN;?>);maj_services(0);
+			else maj_devices(plan);maj_services(0);
 			}
       });  }
 /*---------------------------------------------------------------------------------------------*/

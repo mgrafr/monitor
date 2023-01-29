@@ -1,16 +1,28 @@
 <!-- section recettes start -->
 <!-- ================ -->
 <div id="recettes" >
-	<div class="container">
-		<div class="col-md-12">
-	  <h1 id="about" class="title text-center">Recettes de <span> CUISINE</span></h1>
-		<div class="recette"><img class="btn_appd" rel="cuisine" src="images/pate_pizza.webp" href="#recettes" data-toggle="modal" data-target="#recette" title="1" width="200" height="150" alt="pate à pizza"/>
-		<img class="btn_appd" rel="cuisine" src="images/croque_monsieur.webp" href="#recettes" data-toggle="modal" data-target="#recette" title="2" width="200" height="150" alt="croque-monsieurs"/>
+	<div class="container" style="width:90%">
+		<h3 id="about" class="title text-center">Recettes de <span> CUISINE</span></h3>
+	  		<div class="row mt-3">
+                <!--La classe bg-info ajoute un fond bleu à l'élément-->
+                <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/pate_pizza.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%" title="1" alt="pate à pizza"/></div>
+                <!--La classe bg-warning ajoute un fond jaune à l'élément-->
+                <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/croque_monsieur.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="2" alt="croque-monsieurs"/></div>
+			
+		
+			</div>
+		<div class="row mt-3">
+                <!--La classe bg-info ajoute un fond bleu à l'élément-->
+                <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="2" alt="croque-monsieurs"/></div>
+                <!--La classe bg-warning ajoute un fond jaune à l'élément-->
+                <div class="col bg-recette"></div>
+				
+		
 			</div>
 </div>
 	</div>
 	
-		</div>       
+	      
 
 
 <!-- section recettes fin-->
