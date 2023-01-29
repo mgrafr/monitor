@@ -493,7 +493,8 @@ left: 170px;width: 40px;}
 /* devices (small desktops <768) */
 @media (max-width:767px) {.modal_mur-dialog {width:500px;}
 .fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}
-.pression_chaud {top: -630px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}
+#bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}
+#th_ext_cuis {top: -617px;}
 }
 /* Large devices (small desktops <601) */
 @media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}
