@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 ?>
 <div class="modal" role="dialog" id="pwdalarm">
                         

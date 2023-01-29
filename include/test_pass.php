@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 echo '<script>text1="";</script>';
 			  if (isset($_SESSION['time'])) {$tt=$_SESSION['time'];}
 			  else {$tt=0;echo "<p id='mp1' style='float:left;'>entrer mot de passe - </p>";}
