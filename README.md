@@ -1,7 +1,7 @@
 # monitor
 affichage d'un serveur domotique<br>demo : <br>
 <img src="readme_img/monitor.gif" alt="Monitor" style="max-width: 100%;"><br><br>
-Ce programme est écrit en PHP 7.4 (jpgraph version 4.3.4) & 8.1 (jpgraph 4.4.1 , le dossier PHP8 contient les fichiers modifiés pour 8.1) <br><br>
+Ce programme est écrit en PHP 8 (jpgraph version 4.4.1) <br><br>
 Prérequis :
 -	Serveur Nginx avec Maria DB, PHP, phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3<br>
 https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php <br>
