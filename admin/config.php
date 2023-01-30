@@ -20,6 +20,11 @@ define('NOMSLOGAN', 'XXXXXXXXXXXXX');//nom secondaire ou slogan
 define('LEXIQUE', true);
 // infos de découverte , à mettre à FALSE en production
 define('DECOUVERTE', true);
+// serveur MQTT utilisation d'un serveur (envoi topic depuis monitor)
+define('MQTT', false);//  true si serveur MQTT utilisé par monitor
+define('MQTT_IP', '192.168.1.24');//adresse IP
+define('MQTT_PORT', 9001);// mqtt=1883 websockets=9001
+//--------------------------------------------------
 //interval de maj des fonctions JS maj_services() & maj_devices()
 define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
 define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE en milli secondes
