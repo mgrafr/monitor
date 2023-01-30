@@ -162,9 +162,9 @@ if ($auth<3){
 	if ($type==1){$json1='udevice&idx='.$idx.'&nvalue='.$valeur.'&svalue='.$type;}
 	// $type=2 .....ON/OFF
 	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
-	$json=URLDOMOTICZ.'json.htm?type=command&param='.$json1;
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
-	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur.'&level='.$level;}
+	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
+	$json=URLDOMOTICZ.'json.htm?type=command&param='.$json1;
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
