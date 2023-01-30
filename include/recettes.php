@@ -13,9 +13,9 @@
 			</div>
 		<div class="row mt-3">
                 <!--La classe bg-info ajoute un fond bleu à l'élément-->
-                <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="2" alt="croque-monsieurs"/></div>
+                <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/crepes.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="3" alt="crèpes"/></div>
                 <!--La classe bg-warning ajoute un fond jaune à l'élément-->
-                <div class="col bg-recette"></div>
+                <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="3" alt="croque-monsieurs"/></div>
 				
 		
 			</div>

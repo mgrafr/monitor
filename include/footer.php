@@ -20,6 +20,7 @@ require("fonctions.php");
 <script src="js/mqttws31.js"></script>
 <!-- fin des fichiers script -->
 <!-- scripts-->	
+
 <script>
 /*-------affiche l'image de la page accueil---------------------------------------*/	
 var text1="";var larg = (document.body.clientWidth);
@@ -170,7 +171,8 @@ $.ajax({
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_ON);if (vol==1){
-							var h=document.getElementById(val.ID1).getAttribute("h");console.log("h="+h);
+							var h=document.getElementById(val.ID1).getAttribute("h");
+							console.log("pcent="+pcent+"h="+h);
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((pos=="Off") || (pos=="Closed"))){//console.log(val.ID1,val.idm);
@@ -212,8 +214,9 @@ $('.closeBtn').on('click', function () {
 	  else if (command=="Open"){type=3;}
 	  else {type=1;}
 	  if (pp[idm].Data == "On") {command="Off";}
-	  if (pp[idm].Data == "Open") {command="Set Level";level=100;}
-	  if (pp[idm].Data == "closed") {command="Set Level";level=0;}
+	  else if (pp[idm].Data == "Open") {command="Set Level";level=100;}
+	  else if (pp[idm].Data == "Closed") {command="Set Level";level=0;}
+	  else {alert("erreur");}
 	  $.ajax({
     	type: "GET",
     	dataType: "json",
@@ -227,6 +230,12 @@ $('.closeBtn').on('click', function () {
 			}
       });  }
 /*---------------------------------------------------------------------------------------------*/
+	
+$("#clic_vr").click(function () {
+		var idx = $("#VR").attr('rel');
+		var idm = $("#VR").attr('title');console.log(idx," ",idm);
+		switchOnOff_setpoint(idm,idx,"Open");
+	});
 //
 /*PAGE METEO----Méteo Concept----------------------------------------------
 maj manuelle-MC------------------*/
@@ -344,8 +353,10 @@ function updateImage(camIndex)
 }
 <?php if (ON_MUR==false) echo "*/";?>
 //--------------------------------------
-/*app diverses log-----*/
+/*app diverses log , recettes -----*/
 $(".btn_appd").click(function () {
+	if (larg<768) {lwidth=400;lheight=520;}
+	else {lwidth=600;lheight=600;}
 var logapp = $(this).attr('rel');
 if ((logapp.length)<2){urllog="ajax.php?app=log_dz&variable="+logapp;titre="log domoticz";}
 else if (logapp=="hostlist"){urllog="ajax.php?app=infos_nagios&variable="+logapp;titre="Hosts Nagios";}
@@ -356,8 +367,8 @@ else if (logapp=="cuisine"){var table_sql = logapp;var numrecette = $(this).attr
 else {urllog="erreur";}
   $.modalLink.open(urllog, {
   // options here
-	   height: 500,
-	  width: 400,
+	   height: lheight,
+	  width: lwidth,
 	  title:titre,
 	  showTitle:true,
 	  showClose:true
@@ -495,7 +506,5 @@ var nom;
 	}
 
 
-
-
-	
 </script> 
+

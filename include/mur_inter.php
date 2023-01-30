@@ -6,6 +6,8 @@ if ($domaine==IPMONITOR) $lien_img="/monitor";
 ?>
 <!-- section Mur OnOff-->
 <!-- ================ -->
+
+
 <script>
 // Créer une instance client
 var mess1={
@@ -15,7 +17,7 @@ var mess1={
 	level: 100 
 	};
 var client;
-var host="192.168.1.42";var port=9001;var topic = 'domoticz/in';
+var host='<?php echo MQTT_IP;?>';var port='<?php echo MQTT_PORT;?>';var topic = '<?php echo MQTT_TOPIC;?>';
 function onConnect(){console.log("onConnect");
 client.subscribe(topic);
 var mesg = JSON.stringify(mess1);					 
@@ -61,17 +63,15 @@ client.connect(options);//connect
 
 </div>
 
-
-
-
 <!-- div containing the popup -->
     <div class="popup" id="popup_vr">
-    <div class="popup-content" >
-      <h2>Commande OUVERTURE-STOP-FERMETURE</h2>
-      <p><a onclick="MQTTconnect(mess1);">OUVRIR?></a> (ON).</p>
-		  
+    <div class="popup-content" id="VR" rel="">
+      <h6>Commande OUVERTURE-STOP-FERMETURE</h6>
+      <!--<p><a onclick="MQTTconnect(mess1);">OUVRIR?></a> (ON).</p>-->
+		<p><a id="clic_vr">OUVRIR?></a> (ON).</p>  
 	  <p>ARRETER </p>
 	  <p>FERMER</p>
       <a class="closeBtn" href="javascript:void(0)">X</a>
     </div>
   </div>
+
