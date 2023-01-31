@@ -59,19 +59,18 @@ client.connect(options);//connect
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>/images/lampe_jardin.svg" width="60" height="auto" alt=""/></a></li>
 		</ul>
 </div>
-</div>
-
-</div>
+</div></div>
 
 <!-- div containing the popup -->
     <div class="popup" id="popup_vr">
     <div class="popup-content" id="VR" rel="">
-      <h6>Commande OUVERTURE-STOP-FERMETURE</h6>
+      <h6>Commande OUVERTURE-FERMETURE</h6>
       <!--<p><a onclick="MQTTconnect(mess1);">OUVRIR?></a> (ON).</p>-->
-		<p><a id="clic_vr">OUVRIR?></a> (ON).</p>  
-	  <p>ARRETER </p>
-	  <p>FERMER</p>
-      <a class="closeBtn" href="javascript:void(0)">X</a>
+		<p><a id="clic_vr">ouvert 0................100 fermé</a></p>  
+	  <div id="slider"></div>
+<form>
+<label>commande:<span id="level_vr"></span></label><br>
+		<button type="button" class="btn btn-primary" value="OK"><input  type="button" id="amount" name="" value="">OK</button></form>
+		      <a class="closeBtn" href="javascript:void(0)">X</a>
     </div>
   </div>
-
