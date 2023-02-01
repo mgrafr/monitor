@@ -12,12 +12,14 @@ require("fonctions.php");
 		</footer>
 <!-- footer end -->
 <!-- JavaScript files placées à la fin du document-->	
-<script src="js/jquery-1.12.4.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery-ui.js"></script>
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script>
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
 <script src="js/mes_js.js?4"></script>
-<script src="js/mqttws31.js"></script>
+<?php
+if (MQTT==true) echo '<script src="js/mqttws31.js"></script>';?>	
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 
@@ -206,35 +208,66 @@ $('.closeBtn').on('click', function () {
 /* switchOnOff*  */
 
 <?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?>
-	
+rr=new Array();	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
-	  var type;var level=0;
+	  if (command=="On" ||  command.substring(0, 9)=="Set Level") {
+	  var type;var level;
 	  if ((command=="On")||(command=="Off")){type=2;}
-	  else if (command=="Open"){type=3;}
+	  else if (command.substring(0, 9)=="Set Level") {type=3;var pourcent = command.split(" ");level=pourcent[2];}
 	  else {type=1;}
 	  if (pp[idm].Data == "On") {command="Off";}
-	  else if (pp[idm].Data == "Open") {command="Set Level";level=100;}
-	  else if (pp[idm].Data == "Closed") {command="Set Level";level=0;}
-	  else {alert("erreur");}
-	  $.ajax({
+     								  
+	    $.ajax({
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
     	data: "app=OnOff&device="+idx+"&command="+command+"&type="+type+"&variable="+level+"&name="+pass,
     	success: function(response){qq=response;
-			if (qq['status']!="OK"){//alert(qq['status']);
+			if (qq!=null){
+				if (qq['status']!="OK" ){//alert(qq['status']);
 			document.getElementById("d_btn_a").style.display = "block";
 			document.getElementById("d_btn_al").style.display = "block";}
-			else maj_devices(plan);maj_services(0);
-			}
-      });  }
-/*---------------------------------------------------------------------------------------------*/
+				else {
+					maj_switch(idx,command,level,pp[idm].idm);			
+					//maj_devices(plan);
+					  //maj_services(0);}
+			}}
+      }}); } 
+  else alert("erreur");
+  }
+/*----------------------------------*/
+function maj_switch(idx,command,level,idm){
 	
-$("#clic_vr").click(function () {
+		$.ajax({
+             url: "ajax.php",
+             data: "app=device_id&device="+idx,
+			 success: function(response) { 
+				rr=JSON.parse(response);console.log("data_rr="+rr.Data);
+       
+	
+	console.log("data_pp_av="+pp[idm].Data);
+			 pp[idm].Data=rr.Data;console.log("data_pp_ap="+ pp[idm].Data);
+	sid1=pp[idm].ID1;sid2=pp[idm].ID2;idm=pp[idm];
+		if (command=="On")  {scoul=idm.coul_ON;if (scoull=idm.coullamp_ON!="") scoull=idm.coullamp_ON;}
+		else if (command.substring(0, 9)=="Set Level")  {if (scoull=idm.coullamp_ON!="") scoul=idm.coul_ON;scoull=idm.coullamp_ON;}
+		else if  (command=="Off") {scoul=idm.coul_OFF;if (scoull=idm.coullamp_OFF!="") scoull=idm.coullamp_OFF;}
+		else return;																			  
+	document.getElementById(sid1).style = scoul;
+	if (sid2) {document.getElementById(sid2).style = scoul;}
+	if (idm.class_lamp!="") {class_name(idm.class_lamp,scoull);}
+	if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
+	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));console.log("h="+h+parseInt((h*(level)/100)));}
+	
+	 }});		 
+			 
+			 }
+/*--------------------------------*/	
+$("#amount").click(function () {
 		var idx = $("#VR").attr('rel');
-		var idm = $("#VR").attr('title');console.log(idx," ",idm);
-		switchOnOff_setpoint(idm,idx,"Open");
+		var idm = $("#VR").attr('title');
+	    var command=$("#amount").attr('name');console.log(idx," ",idm,"",command);
+		switchOnOff_setpoint(idm,idx,command);
 	});
 //
 /*PAGE METEO----Méteo Concept----------------------------------------------
@@ -507,4 +540,25 @@ var nom;
 
 
 </script> 
+<script>
+var sliderMin = 0,
+  sliderMax = 100;
 
+$('#slider').slider({
+  step: 1,
+  min: 0,
+  max: 100,
+  value: sliderMin,
+  slide: function(event, ui) {
+    var amount = ui.value;
+    if (amount < sliderMin || amount > sliderMax) {
+      return false;
+    } else {
+      $("#amount").attr("name","Set Level: "+amount);
+	 $("#level_vr").html("Set Level: "+amount+"%");
+    }
+  }
+});
+
+$("#amount").val(sliderMin);
+	</script>
