@@ -26,13 +26,14 @@ else if ($app=="maj_var") {$retour=maj_variable($idx,$name,$variable,$type);echo
 else if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour);}
 else if ($app=="infos_nagios") {api_nagios($variable);}
 else if ($app=="ecran_spa") {echo file_get_curl($variable);}
+else if ($app=="device_id") {$retour=status_devices($device);echo json_encode($retour);}
 //else if ($app=="app_nagios") {app_nagios($variable);}
 //else if ($app=="mur_zm") {mur_zm($variable,$command);}
 else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}
 else if ($app=="admin") {admin($variable,$command);}	//$command=fenetre(administration footer	
 //  autres fonctions php-----------------------------------Z
-else if ($appp=="mdp") {$retour=mdp($variablep,$commandp);echo json_encode($retour);}
+else if ($appp=="mdp") {$retour=mdp($variablep,$commandp);echo $retour;}
 else if ($appp=="adminp") {$retour=admin($variablep,$commandp);} // $command = content	(mes_js.js) & ("#adm1") fonctions.php
 //
 else echo "erreur ajax";

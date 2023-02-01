@@ -81,20 +81,47 @@ function sql_variable($t,$ind){
 	return $row;}
 	}
 ///fonctions utilisées pour les dispositifs		
-function status_devices($device, $info,$info1)
-{$L=URLDOMOTICZ."json.htm?type=devices&rid=".$device;
+function status_devices($device){
+$L=URLDOMOTICZ."json.htm?type=devices&rid=".$device;
 $json_string = file_get_curl($L);
  $parsed_json = json_decode($json_string, true);
-$test_link = "test".$device.".txt";
-$test_data = fopen ($test_link, "w+");
-fwrite ($test_data, print_R($parsed_json, TRUE));
-fclose ($test_data);
-$parsed_json = $parsed_json['result'][0];
-// info
-$resultat=array();
-$resultat[$info] = $parsed_json[$info];
-if (isset($parsed_json[$info1])) $resultat[$info1]= $parsed_json[$info1] ;
-return $resultat;
+//$test_link = "test".$device.".txt";
+//$test_data = fopen ($test_link, "w+");
+//fwrite ($test_data, print_R($parsed_json, TRUE));
+//fclose ($test_data);
+$lect_device = $parsed_json['result'][0];
+$t=$lect_device["idx"];$periph=array();
+$periph=sql_plan($t);$bat="";if ($periph['idm']=="") {$periph['idm']="NULL";}
+if (CHOIXID=='idm') {$t=$periph['idm'];}
+if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
+if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
+if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
+if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
+if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);}	
+if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}	
+	$data = ['choixid' => CHOIXID,
+	'idx' => $lect_device["idx"],
+	 //'temp' => $lect_device["Temp"],
+	//'hum'   => $lect_device["Humidity"],
+//'bat' => $lect_device["BatteryLevel"],
+	 //'ID' => $lect_device["ID"],
+	'Data' => $lect_device["Data"],
+	'Name' => $lect_device["Name"],
+   	//'Update' => $lect_device["LastUpdate"],
+	'idm' => $periph['idm'],
+	'materiel' => $periph['materiel'],
+	'maj_js' => $periph['maj_js'],	
+	'ID1' => $periph['id1_html'],
+	'ID2' => $periph['id2_html'],
+	'coul_ON' => $periph['coul_id1_id2_ON']	,
+	'coul_OFF' => $periph['coul_id1_id2_OFF'],
+	'class_lamp' => $periph['class_lamp'],
+	'coullamp_ON' => $periph['coul_lamp_ON']	,
+	'coullamp_OFF' => $periph['coul_lamp_OFF']	,
+	'type_pass' => $periph['pass'],
+	//'alarm_bat' => $bat
+	];
+return $data;
 }
 //------------------------------------------
 function devices_plan($plan)
