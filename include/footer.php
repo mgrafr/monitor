@@ -109,7 +109,7 @@ function maj_variable(idx,name,valeur,type){
     dataType: "json",
     url: "ajax.php",
     data: "app=maj_var&idx="+idx+"&name="+name+"&variable="+valeur+"&type="+type,
-    success: function(html){if (html.status=="OK"){alert(html.status);maj_services(0);}}
+    success: function(html){if (html.status=="OK"){console.log("maj variable=OK")}}
   });
 	 };	
 /*--------------------------------------------------------------*/	
@@ -230,8 +230,7 @@ rr=new Array();
 			document.getElementById("d_btn_al").style.display = "block";}
 				else {
 					maj_switch(idx,command,level,pp[idm].idm);			
-					//maj_devices(plan);
-					  //maj_services(0);}
+
 			}}
       }}); } 
   else alert("erreur");
@@ -482,7 +481,14 @@ $("#zm").click(function () {
 		});
 
 
-
+var idsp=1;	var_sp(idsp);
+function var_sp(idsp){
+  $.get( "ajax.php?app=data_var&variable=29", function( data ) {
+  var variable_sp = data;
+  if (variable_sp==1){maj_devices(plan);maj_variable(29,"variable_sp",0,2);}
+  });
+setTimeout(var_sp, <?php echo TEMPO_DEVICES_DZ;?>, idsp); 	
+}
 
 
 			
@@ -550,4 +556,5 @@ $('#slider').slider({
 });
 
 $("#amount").val(sliderMin);
+
 	</script>
