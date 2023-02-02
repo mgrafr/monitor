@@ -11,6 +11,15 @@ curl_setopt($curl, CURLOPT_HEADER, 0);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 return curl_exec($curl);
 }
+// valeur d'une variable
+function val_variable($variable){
+$L=URLDOMOTICZ."json.htm?type=command&param=getuservariable&idx=".$variable;
+$json_string = file_get_curl($L);
+$result = json_decode($json_string, true);
+$lect_var = $result['result'][0];
+$value = $lect_var['Value'];	
+return 	$value;
+}
 /*utilisée pour lire les variables de domoticz
 cette fonction permet egalement suivant le contenu de la variable de
 determiner une image qui peut être afficher (poubelles,fosse septique,...*/
@@ -66,7 +75,7 @@ function maj_variable($idx,$name,$valeur,$type){
    $result = file_get_curl($file);
 $json = json_decode($result, true);
 $resultat['status']=$json['status'];
-$resultat['url']=$file;//pour test
+//$resultat['url']=$file;//pour test
 return $resultat;
 }
 function sql_variable($t,$ind){
