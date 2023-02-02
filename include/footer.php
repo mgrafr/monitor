@@ -238,16 +238,7 @@ rr=new Array();
   }
 /*----------------------------------*/
 function maj_switch(idx,command,level,idm){
-	
-		$.ajax({
-             url: "ajax.php",
-             data: "app=device_id&device="+idx,
-			 success: function(response) { 
-				rr=JSON.parse(response);console.log("data_rr="+rr.Data);
-       
-	
-	console.log("data_pp_av="+pp[idm].Data);
-			 pp[idm].Data=rr.Data;console.log("data_pp_ap="+ pp[idm].Data);
+	pp[idm].Data=command;
 	sid1=pp[idm].ID1;sid2=pp[idm].ID2;idm=pp[idm];
 		if (command=="On")  {scoul=idm.coul_ON;if (scoull=idm.coullamp_ON!="") scoull=idm.coullamp_ON;}
 		else if (command.substring(0, 9)=="Set Level")  {if (scoull=idm.coullamp_ON!="") scoul=idm.coul_ON;scoull=idm.coullamp_ON;}
@@ -259,9 +250,7 @@ function maj_switch(idx,command,level,idm){
 	if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
 	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));console.log("h="+h+parseInt((h*(level)/100)));}
 	
-	 }});		 
-			 
-			 }
+	 }
 /*--------------------------------*/	
 $("#amount").click(function () {
 		var idx = $("#VR").attr('rel');
