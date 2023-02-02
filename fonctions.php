@@ -81,14 +81,10 @@ function sql_variable($t,$ind){
 	return $row;}
 	}
 ///fonctions utilisées pour les dispositifs		
-function status_devices($device){
+/*function status_devices($device){
 $L=URLDOMOTICZ."json.htm?type=devices&rid=".$device;
 $json_string = file_get_curl($L);
  $parsed_json = json_decode($json_string, true);
-//$test_link = "test".$device.".txt";
-//$test_data = fopen ($test_link, "w+");
-//fwrite ($test_data, print_R($parsed_json, TRUE));
-//fclose ($test_data);
 $lect_device = $parsed_json['result'][0];
 $t=$lect_device["idx"];$periph=array();
 $periph=sql_plan($t);$bat="";if ($periph['idm']=="") {$periph['idm']="NULL";}
@@ -122,7 +118,7 @@ if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"
 	//'alarm_bat' => $bat
 	];
 return $data;
-}
+}*/
 //------------------------------------------
 function devices_plan($plan)
 {$L=URLDOMOTICZ."json.htm?type=devices&plan=".$plan;
