@@ -41,8 +41,10 @@ return {
  
  execute = function(domoticz, device)
         domoticz.log('device '..device.name..' was changed', domoticz.LOG_INFO)
+            
             if (device.name == 'Ping_pi4' and  device.state=='Off' and domoticz.variables('pi-alarme').value == "0") then 
             domoticz.variables('pi-alarme').set("pi_hs")
+            domoticz.variables('variable_sp').set("1")
             txt='alarme_pi_hs';alerte_gsm(txt)
             elseif (device.name == 'Ping_pi4' and  device.state=='On' and domoticz.variables('pi-alarme').value == "pi_hs") then 
             domoticz.variables('pi-alarme').set("0")
