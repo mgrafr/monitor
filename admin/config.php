@@ -30,7 +30,7 @@ define('MQTT_TOPIC', "domoticz/in");// topic (destinataire)
 define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
 define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE en milli secondes
 define('TEMPO_DEVICES', 180000);// en milli secondes
-define('TEMPO_DEVICES_DZ', 30000);// en milli secondes maj déclenchée par Dz voir doc
+define('TEMPO_DEVICES_DZ', 30000);// en milli secondes(>= 15s) maj déclenchée par Dz voir doc
 // caméras et VTO DAHUA
 define('DHPASSVTO','xxxxxxxxxxxx');
 define('DHUSER','xxxxxxxxxxxxx');
