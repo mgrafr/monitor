@@ -480,14 +480,14 @@ $("#zm").click(function () {
         });
 		});
 
-
-var idsp=1;	var_sp(idsp);
+tempo_devices=<?php echo TEMPO_DEVICES_DZ;?>;
+var idsp=1;if (tempo_devices>14999)	var_sp(idsp);
 function var_sp(idsp){
   $.get( "ajax.php?app=data_var&variable=29", function( data ) {
   var variable_sp = data;
   if (variable_sp==1){maj_devices(plan);maj_variable(29,"variable_sp",0,2);}
   });
-setTimeout(var_sp, <?php echo TEMPO_DEVICES_DZ;?>, idsp); 	
+setTimeout(var_sp, tempo_devices, idsp); 	
 }
 
 
