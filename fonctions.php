@@ -175,10 +175,11 @@ $abat="0";
 if ($al_bat==0) $abat="batterie_forte";
 if ($al_bat==1) $abat="batterie_moyenne";
 if ($al_bat==2) $abat="batterie_faible";
-maj_variable(PILES[0],PILES[1],$abat,2);
+$val_albat=val_variable(PILES[0]);
+if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
  return $data;
  }
-include ("include/fonctions_1.php");
+include ("include/fonctions_1.php");//fonction sql_plan
 
 /* fonction qui permet de switcher un interrupteur dans Domoticz 
 et de modifier une température de consigne
