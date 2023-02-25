@@ -26,3 +26,5 @@ Les pages optionnelles:<br>
 <br>
 Une vidéo  est disponible sur le site web : domo-site.fr<br>
 <video width="320" height="240" poster="placeholder.png" controls ><source src="http://domo-site.fr/assets/video/monitor.mp4" type=video/mp4></video>
+Un pdf de 419 pages à télécharger sur ce dépotwbr<br>
+<img src="readme_img/pdf_monitor.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
