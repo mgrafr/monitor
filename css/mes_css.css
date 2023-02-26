@@ -275,10 +275,11 @@ left: 220px;}
 top: -460px;
 left: 220px;}
 /*medoc*/
-#pilule{width:60px}
+/*#pilule{width:60px}*/
 .pilule{position: relative;
-top: -460px;
-left: 220px;}
+    top: -300px;
+    width: 50px;
+    left: 220px;}
 /*ping PI4*/
 #ping_pi4{position: relative;top: -85px;
 left: 410px;
