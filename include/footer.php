@@ -397,29 +397,16 @@ else {urllog="erreur";}
   }); 
 });
 /*---popup boite_lettres---pression chaudière--médicaments------------------------------*/
-var bl=0;var modalContainer = document.createElement('div');
+var bl=0;var ch=0;var modalContainer = document.createElement('div');
 modalContainer.setAttribute('id', 'modal_bl');
 var customBox = document.createElement('div');
 customBox.className = 'custom-box';
 // Affichage boîte de confirmation
-document.getElementById('confirm-box').addEventListener('click', function() {
-    customBox.innerHTML = '<p>Confirmation de la relève du courrier</p>';
+	$(".confirm a").click(function(){ 
+    var title_confirm=$(this).attr('title');ch=$(this).attr('rel');
+    customBox.innerHTML = '<p>'+title_confirm+'</p>';
     customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
-    customBox.innerHTML += '<button id="modal-close">Annuler</button>';ch=0;
-   modalShow();
- //console.log(bl);
-});
-document.getElementById('annul_pression').addEventListener('click', function() {
-    customBox.innerHTML = '<p>annulation de l\'alarme pression</p>';
-    customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
-    customBox.innerHTML += '<button id="modal-close">Annuler</button>';ch=1;
-   modalShow();
- //console.log(bl);
-});	
-document.getElementById('annul_pilule').addEventListener('click', function() {
-    customBox.innerHTML = '<p>annulation de l\'alerte pilule</p>';
-    customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
-    customBox.innerHTML += '<button id="modal-close">Annuler</button>';ch=2;
+    customBox.innerHTML += '<button id="modal-close">Annuler</button>';
    modalShow();
  //console.log(bl);
 });		
@@ -446,12 +433,11 @@ function modalClose(bl) {
     while (modalContainer.hasChildNodes()) {
         modalContainer.removeChild(modalContainer.firstChild);
     }
-    document.body.removeChild(modalContainer);
-	 console.log(bl);if ((bl==1) && (ch==0)) {maj_variable(19,"boite_lettres","0",2);maj_services(0);bl=0;}  
-	if ((bl==1) && (ch==1)) {maj_variable(28,"pression-chaudiere","ras",2);maj_services(0);bl=0;} 
-	if ((bl==1) && (ch==2)) {maj_variable(30,"pilule_tension","0",2);maj_services(0);bl=0;}
+    document.body.removeChild(modalContainer);var nom_ch=service[ch].Name;
+	 console.log(bl);if (bl==1) {maj_variable(ch,nom_ch,"0",2);maj_services(0);bl=0;ch=0;}  
+	
 }
-/*------------------------------------------*/Z
+/*------------------------------------------*/
 /*nagios("","#nagiosapp");
 function nagios(variable,id){
   $.ajax({

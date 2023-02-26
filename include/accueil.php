@@ -18,8 +18,8 @@
 
 
 			</div>
-<div class="pression_chaud"><a href="#" id="annul_pression"><img id="pression_chaud" src=""/></a></div>
-<div class="pilule"><a href="#" id="annul_pilule"><img id="pilule" src=""/></a></div>
+<div class="confirm pression_chaud"><a href="#" id="annul_pression" rel="28" title="Annulation de l'\alerte pression"><img id="pression_chaud" src=""/></a></div>
+<div class="confirm pilule"><a href="#" id="annul_pilule" rel="30" title="Annulation de l'\alerte pilule michel"><img id="pilule" src=""/></a></div>
 <div class="poubelles"><img id="poubelle" onclick="info_poubelles(1)" src=""/></div>
 <div class="aff_pluie" >
 	<div id="pluie" ></div><div id="txt_pluie"></div>  </div>
@@ -27,6 +27,7 @@
 <div class="aff_al" ><img id="alarme_nuit" src="" alt="alarme" /></div>
 <div class="aff_bat" ><img id="batterie" src="" alt="batterie" /></div>
 <div class="ping_rasp" ><img id="ping_rasp" style="width:40px;height:40px" src="" alt="ping" /></div>
-<div class="bl" ><a href="#" id="confirm-box"><img id="bl" src="" alt="boite_lettres" /></a></div>
+<div class="confirm bl" ><a href="#" id="confirm-box" rel="19" title="courrier récupéré"><img id="bl" src="" alt="boite_lettres" /></a></div>
 <p id="erreur" ></p>
  <!-- accueil end -->
+
