@@ -16,7 +16,7 @@ la 1ere semaine est celle ayant au moins 4 jours sur la nouvelle année
 --(tm can be any date and will be forced to 1st of january same year)
 -- return 1=mon 7=sun
 --
--- chargement fichier contenant les variables de configuration
+-- chargement fichier contenant les variable de configuration
 package.path = package.path..";www/modules_lua/?.lua"
 require 'string_tableaux'
 require 'connect'
@@ -168,5 +168,8 @@ local jour_mois = jour.."-"..mois
         end
     end
 end
- 
+-- medicaments
+if (time == "20:00" )  then
+commandArray['Variable:pilule_tension'] = "pilule_michel"
+end
 return commandArray 

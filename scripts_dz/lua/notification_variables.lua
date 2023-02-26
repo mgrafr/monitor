@@ -28,11 +28,14 @@ return {
 		    'zm_cam',
 		    'pression-chaudiere',
 		    'porte-ouverte',
-		    'intrusion'
+		    'intrusion',
+		    'variable_sp',
+		    'pilule_tension'
 		}
 	},
 	execute = function(domoticz, variable)
 	    --domoticz.log('Variable ' .. variable.name .. ' was changed', domoticz.LOG_INFO)
+	          
 	            if (domoticz.variables('pression-chaudiere').value == "manque_pression") then  
 	             txt=tostring(domoticz.variables('pression-chaudiere').value) 
 	             domoticz.variables('pression-chaudiere').set('pression_basse')
@@ -47,14 +50,15 @@ return {
                  alerte_gsm('alarme_zoneminder_'..txt)
                end
           
-	 	    if (domoticz.variables('alarme_bat').changed) then    
+	 	    if (domoticz.variables('alarme_bat').changed) then 
+	 	    print('alarme bat')
 	 	        if (domoticz.variables('alarme_bat').value == "batterie_faible") then 
 	                if domoticz.variables('not_alarme_bat').value == "0" then
-	                txt="pile faible" ; fich_log="bateries.log"  
-	                envoi_mail(txt,fich_log)
-	                domoticz.variables('not_alarme_bat').set('1')
+	                 txt="pile faible" ; fich_log="bateries.log"  
+	                 envoi_mail(txt,fich_log)
+	                 domoticz.variables('not_alarme_bat').set('1')
                     end
-                end 
+                 end 
             end
             if (domoticz.variables('boite_lettres').changed) then
                 if (domoticz.variables('boite_lettres').value == "0") then 
@@ -70,6 +74,9 @@ return {
                elseif (domoticz.variables('upload').value == "2") then 
                 print("upload string_modect")
                command = rep..'upload_fichier.py string_modect.lua  > '..rep_log..'string_modect.log 2>&1'
+               elseif (domoticz.variables('upload').value == "3") then 
+                print("upload connect")
+               command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1'
                end
                 --print(command);
                os.execute(command);print('maj effectuée');
@@ -85,7 +92,13 @@ return {
 	             print('intrusion')
                  alerte_gsm('alarme_'..txt)
             end
+            if (domoticz.variables('pilule_tension').changed) then 
+                 if (domoticz.variables('pilule_tension').value ~= "0") then 
+	             txt=tostring(domoticz.variables('pilule_tension').value) 
+	             print('médicaments')
+                 alerte_gsm('alerte_'..txt)
+                 end
+            end
     end
    
 }
-
