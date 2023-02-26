@@ -19,6 +19,7 @@
 
 			</div>
 <div class="pression_chaud"><a href="#" id="annul_pression"><img id="pression_chaud" src=""/></a></div>
+<div class="pilule"><a href="#" id="annul_pilule"><img id="pilule" src=""/></a></div>
 <div class="poubelles"><img id="poubelle" onclick="info_poubelles(1)" src=""/></div>
 <div class="aff_pluie" >
 	<div id="pluie" ></div><div id="txt_pluie"></div>  </div>
