@@ -9,7 +9,9 @@ curl_setopt($curl, CURLOPT_TIMEOUT, 30);
 curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
 curl_setopt($curl, CURLOPT_HEADER, 0);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-return curl_exec($curl);
+$retour=curl_exec($curl);
+curl_close($curl);
+return $retour;
 }
 // valeur d'une variable
 function val_variable($variable){
@@ -663,7 +665,7 @@ $retour=curl_exec($curl);
 curl_setopt($curl,CURLOPT_POST,0);
 return $retour;
 }
-//pour sauvegardes recuperation des variables domoticz et configuration
+
 function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 et 6 = contenu textarea
 $height="490";$pawd=0;
 if ($choix==9){$height="200";include ("include/test_db.php");$pawd=1;}
@@ -681,40 +683,11 @@ if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <
 
 switch ($choix) {
     case "1":
-$L=URLDOMOTICZ."json.htm?type=command&param=getuservariables";
-$json_string = file_get_curl($L);
-$result = json_decode($json_string, true);$n=0;
-while (isset($result['result'][$n]))
-{$lect_var = $result['result'][$n];  
-$idx=$lect_var["idx"];
-$value = $lect_var['Value'];
-$name = $lect_var['Name'];
-$type = $lect_var['Type'];
-$data[$n] = [	
-		'idx' => $idx,
-		'Type' => $type,
-		'Name' => $name,
-		'Value' => $value,
-			];
-$n++;}	
-$fp = fopen(FICVARDZ.'.json', 'w+'); fwrite($fp, json_encode($data)); fclose($fp);		
-return;
+// disponoible
+return;		
 break;
     case "2":
-	$filename = FICVARDZ.'.json';
-	$handle = fopen($filename, "r");
-	$contents = fread($handle, filesize($filename));
-	$result = json_decode($contents, true);$n=0;
-	while (isset($result[$n]))
-{$lect_var = $result[$n];  
-$idx=$lect_var["idx"];
-$value = $lect_var['Value'];
-$name = $lect_var['Name'];
-$type = $lect_var['Type'];
-$L=URLDOMOTICZ."json.htm?type=command&param=adduservariable&vname=az".$name."vtype=".$type."&vvalue=".$value;
-$data[$n] =[	
-			'xxx' => $idx,Z];
-$n++;}
+//disonible	
 return ;	
 break;
 case "3" :
@@ -727,7 +700,7 @@ echo $file.'<div id="result"><form >';
 	 else {file_put_contents($file.'.bak.'.$time, $content);}
 	 if($choix==7){$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];
 		$_SESSION["mdpass"]=$find.$content;$height="30";}
-	 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 100px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
+	 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
 	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
 	 echo '</form></div>';
 return "sauvegarde OK";	 
@@ -778,16 +751,19 @@ break;
 case "13" : $retour=devices_plan(2) ;echo "var idx=[];<br>";
 foreach($retour  as $R=>$D){
   foreach($D as $key=>$Value){
-	
+	if ($key=="idm" ) $val_idm=$Value;
   	if ($key=="idx" ) $val_idx=$Value;	
 	if ($key=="Name" )$val_name=$Value;
 	if ($key=="materiel" )$val_mat=$Value;  } 
-if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'idx["'.$val_name.'"]="'.$val_idx.'";<br>';	
+if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'idx["'.$val_name.'"]="'.$val_idx.', idm='.$val_idm.'";<br>';	
 	}
 echo "//********************";return;
 break;
 case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
 break;
+case "17" :include ('include/ajout_var_bd.php');//echo "ajout variable effectuée";
+		return;	
+break;		
 default:
 } }
 else {	
@@ -913,7 +889,7 @@ $a= file_get_curl($URL);
 echo $a;
 return ; 
 }
-function sql_app($choix,$table,$valeur,$date,$icone=''){
+function sql_app($choix,$table,$valeur,$date,$icone='',$val_bd1='',$val_bd2=''){
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 if ($choix==0) {
@@ -952,6 +928,19 @@ $number = $result->num_rows;if ($number>0) {
 	$content = str_replace('$$','',$content);	}
 }
 }
+if ($choix==5) {$sql="INSERT INTO ".$table." (`id_m_img`, `id_m_txt`, `nom_dz`, `id_dz`, `temps_maj`) 
+VALUES ('".$icone."', '".$val_bd1."', '".$date."', '".$valeur."', '".$val_bd2."');";
+//echo $sql;				
+$result = $conn->query($sql);
+$content="mise à jour des tables :<br>- ".$table." ,<br> - ";	
+}
+if ($choix==6) {
+$sql="INSERT INTO ".$table." (`num`, `texte`, `image`, `icone`) 
+VALUES (NULL, '".$date."', '".$valeur."', '".$icone."');";
+//echo $sql;	
+$result = $conn->query($sql);	
+$content=$table."<br> effectuée";		
+;}
 $conn->close();
 
 return $content;}
@@ -965,5 +954,16 @@ break;
 default:
 
 }				
+}
+function ajout_var_bd($idx,$name,$id_img,$id_txt,$texte_bd,$image_bd,$command){echo '<em>valeurs enregistrées</em><br>'.'idx : '.$idx,'<br>','nom dz : '.$name,'<br>','id-image : '.$id_img,'<br>','id-texte : '.$id_txt,'<br>','texte à remplacer:'.$texte_bd,'<br>','image de remplacement:'.$image_bd,'<br>','<br>';
+switch ($command) {
+    case "1":$temps_maj=0;
+$message=sql_app(5,"variable_dz",$idx,$name,$id_img,$id_txt,$temps_maj);	
+$message1=sql_app(6,"text_image",$texte_bd,$image_bd);		
+ echo $message.$message1;
+ break;		
+default;
+return;
+}
 }
 ?>
