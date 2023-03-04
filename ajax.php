@@ -13,6 +13,7 @@ $name = isset($_GET['name']) ? $_GET['name'] : '';
 $variable = isset($_GET['variable']) ? $_GET['variable'] : '';
 $command = isset($_GET['command']) ? $_GET['command'] : '';
 $type = isset($_GET['type']) ? $_GET['type'] : '';
+$table = isset($_GET['table']) ? $_GET['table'] : '';
 //
 if ($app=="aff_th") {$retour= status_devices($device,'Temp','Humidity');echo json_encode($retour); }
 else if ($app=="devices_plan") {$retour=devices_plan($variable);echo json_encode($retour); }
@@ -27,7 +28,7 @@ else if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour
 else if ($app=="infos_nagios") {api_nagios($variable);}
 else if ($app=="ecran_spa") {echo file_get_curl($variable);}
 else if ($app=="data_var") {echo val_variable($variable);}
-//else if ($app=="app_nagios") {app_nagios($variable);}
+else if ($app=="var_bd") {ajout_var_bd($idx,$name,$variable,$device,$type,$table,$command);}
 //else if ($app=="mur_zm") {mur_zm($variable,$command);}
 else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}
