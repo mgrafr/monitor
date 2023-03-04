@@ -290,8 +290,6 @@ $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert
 /*-----administration-------------------------------- */
 $(".admin1").click(function() {var choix_admin =$(this).attr('rel');console.log(choix_admin);
 var fenetre =$(this).attr('title');
-if (choix_admin==2) {if ( !confirm( "ATTENTION modifie les variables Domoticz\n Pour une nouvelle installation modifier l'IP de domotiz\n (URLDOMOTICZ dans configuration monitor)" ) ) {return;}} 
-	
 $.ajax({ 
                         type: 'GET', 
                         url: 'ajax.php', 
@@ -485,8 +483,8 @@ setTimeout(var_sp, tempo_devices, idsp);
 }
 
 
-			
-
+	
+	
 		
 });
 /*----------fin document-------------------------------*/
@@ -550,5 +548,49 @@ $('#slider').slider({
 });
 
 $("#amount").val(sliderMin);
+	
+
+function avby(){ 
+  // On-click button function
+  var idx = document.getElementById("idx").value; 
+  var name  =document.getElementById("name").value;
+	var app  =document.getElementById("app").value;
+	var id_img  =document.getElementById("id_img").value;
+	var id_txt  =document.getElementById("id_txt").value;
+	var texte_bd  =document.getElementById("texte_bd").value;
+	var image_bd  =document.getElementById("image_bd").value;
+	var command  =document.getElementById("command").value;var fenetre="avb";
+     $('#print').html("idx="+idx+"<br><br>nom dz="+name);
+	
+	console.log('azerty'+idx);
+$.ajax({ 
+                        type: 'GET', 
+                        url: 'ajax.php', 
+                        dataType: 'text', 
+						data: "app="+app+"&idx="+idx+"&name="+name+"&variable="+id_img+"&device="+id_txt+"&type="+texte_bd+"&table="+image_bd+"&command="+command,
+                        success: function(data) {$(fenetre).empty();
+						document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
+						
+							},
+						error: function() { 
+                          alert('La requête n\'a pas abouti'); 
+                        } 
+});
+
+
+}
 
 	</script>
+
+<script>
+$('.info_admin').click(function(){
+var rel=$(this).attr('rel');$('#affich_content_info').empty;var info_admin="";
+affich_info_admin(rel);
+});	
+function affich_info_admin(rel){	
+console.log(rel);
+<?php echo "var info_admin = ". $js_info_admin . ";\n";?>
+document.getElementById("affich_content_info").innerHTML = info_admin[rel];
+
+}			
+</script>
