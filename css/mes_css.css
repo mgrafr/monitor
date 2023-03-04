@@ -327,7 +327,16 @@ height: auto;}
   100% { opacity:1; }
 }
 /*alarme admin*/
-#reponse1 {background-color: beige;position:relative;top:-230px;display:none;left:0;height:auto;width:510px}
+#avb{display: block;
+    background-color: #dfdfa1;
+    height: 450px;
+    width: 400px;
+    position: relative;
+    top: -10px;
+    left: 5px;
+}
+#reponse1 {background-color: beige;position:relative;top:-500px;display:none;left:0;height:auto;width:480px}
+#reponse2 {background-color: beige;position: relative;top: -400px;left: 5px;display:block;line-height: 0.2;height:500px;width: 410px;}
 #info_admin{margin-left:10px;display:block;}
 #d_btn_a , #d_btn_al{display:block;position: absolute;left: 50px;background-color: #4d4d4d;color:white;
 border-color: #e0e3e6;border-radius: 0.55rem}
@@ -497,7 +506,7 @@ left: 170px;width: 40px;}
 #agent_dvr{width:500px;height: 700px;margin-left: -15px;margin-top: -20px;}
 #dvr .switch {top: -40px;}
 /*admin*/
-#adm1{width:500px;}
+#adm1{width:475px;}
 .admin1{color:vert}
 
 /*lexique*/
