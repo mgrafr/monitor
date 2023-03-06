@@ -1,7 +1,7 @@
 <?php
 // NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
 //general monitor
-define('URLMONITOR', 'monitor.la-truffiere.ovh');//domaine
+define('URLMONITOR', 'DOMAINE.ovh');//domaine
 define('IPMONITOR', '192.168.1.7');//ip 
 define('MONCONFIG', 'decouverte/config.php');//fichier config 
 define('DZCONFIG', 'decouverte/dz/temp.lua');//fichier temp 
@@ -94,12 +94,12 @@ define('TIMEAPI','3400');//suivant la valeur indiquée dans zoneminder
 // Page zigbee2mqtt
 define('ON_ZIGBEE',TRUE);// mise en service Zigbee
 define('IPZIGBEE', 'http://192.168.1.42:8084');//ip:port
-define('URLZIGBEE', 'https://zigbee.la-truffiere.ovh');//url
+define('URLZIGBEE', 'https://zigbee.XXXXXXXXXXXXX.ovh');//url
 // Page Monitoring
 //Nagios
 define('ON_NAGIOS',TRUE);// mise en service Monitoring
 define('IPNAGIOS', '192.168.1.8/nagios');//ip/dossier
-define('URLNAGIOS', 'https://monitoring.la-truffiere.ovh/nagios/');
+define('URLNAGIOS', 'https://monitoring.xxxxxxxxxxxx.ovh/nagios/');
 define('NAUSER', 'nagiosadmin');
 define('NAPASS', '000000');
 //Page Mur de Caméras avec Agent DVR
