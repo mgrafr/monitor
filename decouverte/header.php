@@ -14,6 +14,10 @@
 									<?php if (ON_ONOFF==true) echo '<li class="zz"><a href="#murinter">Mur On/Off</a></li>';?>
 									<?php if (ON_ZIGBEE==true) echo '<li class="zz"><a href="#zigbee">Zigbee2mqtt</a></li>';?>
 			
+									
+									<?php if (ON_APP==true) echo '<li class="zz"><a href="#app_diverses">App</a></li>';?>
+									<?php if (ON_SPA==true) echo '<li class="zz"><a href="#spa">SPA</a></li>';?>
+									<?php if (ON_RECETTES==true) echo '<li class="zz"><a href="#recettes">Recettes Cuisine</a></li>';?>
 									<li class="zz"><a href="#admin">Administration</a></li>
 									<?php
 									/*zz la class pour le script js menu_link*/
