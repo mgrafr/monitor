@@ -24,7 +24,7 @@ define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE en m
 // caméras et VTO DAHUA
 define('DHPASSVTO','0000000');
 define('DHUSER','michel');
-define('DHPASS','000000');
+define('DHPASS','Idem4546');
 // --------------------------------------------------------------------------------------------
 // choix ID pour l'affichage des infos des dispositifs
 // idx : idx de Domoticz    idm : idm de monitor (dans ce cas la table "dispositifs" 
@@ -34,18 +34,18 @@ define('CHOIXID','idm');// idm ou idx
 define('NUMPLAN','2');// n° du plan regroupant tous les capteurs
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
-define('MOTDEPASSE','00000000');
+define('MOTDEPASSE','Idem4546');
 define('UTILISATEUR','michel');
-define('DBASE','domoticz');
+define('DBASE','monitor');
 //------Page  Alarmee & Administration------------
 // page Alarme
-define('ON_ALARM',true);// affichage pour utilisation de l'alarme
+define('ON_ALARM',false);// affichage pour utilisation de l'alarme
 // mot passe alarme et administation , la page administration est ON
 define('PWDALARM','000000');//mot passe alarme
 define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
 define('TIME_PASS_AL','3600');// temps de validité du mot de passe
 //------Page  commandes Mur Inter------------------------------------
-define('ON_ONOFF',TRUE);// affichage pour utilisation des commandes
+define('ON_ONOFF',FALSE);// affichage pour utilisation des commandes
 // mot passe commande de dispositifs sensibles
 define('PWDCOMMAND','');//mot passe alarme
 define('NOM_PASS_CM','pwdcommand');// nom du mot de passe dans la BD
@@ -69,19 +69,19 @@ define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
 // AFFICHAGE DE PAGES Pré installées
 // Page Météo  meteo concept
 // NE PAS MODIFIER le 3eme parametre TRUE si il existe
-define('ON_MET',TRUE);// affichage page TOKEN PBLIGATOIRE
+define('ON_MET',false);// affichage page TOKEN PBLIGATOIRE
 // ---Token
 define('TOKEN','');
 //-----------------------------------------------------------------------------------------------
 // Page App diverses , log dz , nagios , sql
-define('ON_APP',TRUE);// mise en service page extérieur
+define('ON_APP',FALSE);// mise en service page extérieur
 // Page exterieur jardin plan extérieur
-define('ON_EXT',TRUE);// mise en service page extérieur
+define('ON_EXT',FALSE);// mise en service page extérieur
 // Page graphiques
-define('ON_GRAPH',TRUE);// mise en service page graphique
+define('ON_GRAPH',FALSE);// mise en service page graphique
 // Page MUR de Caméras-------------------------------------------
 // utilisation du mur :true sinon false , Nom du mur , nb caméras
-define('ON_MUR',TRUE);// mise en service MUR
+define('ON_MUR',FALSE);// mise en service MUR
 define('NOMMUR','xxxx');// nom du mur
 define('NBCAM','1');// nombre caméras
 // Zoneminder
@@ -92,14 +92,14 @@ define('ZMPASS','');// pour mur_cameras.php
 define('TIMEAPI','3400');//suivant la valeur indiquée dans zoneminder
 //---------------------------------------------------------------------
 // Page zigbee2mqtt
-define('ON_ZIGBEE',TRUE);// mise en service Zigbee
+define('ON_ZIGBEE',FALSE);// mise en service Zigbee
 define('IPZIGBEE', 'http://192.168.1.42:8084');//ip:port
 define('URLZIGBEE', 'https://zigbee.XXXXXXXXXXXXX.ovh');//url
 // Page Monitoring
 //Nagios
-define('ON_NAGIOS',TRUE);// mise en service Monitoring
+define('ON_NAGIOS',FALSE);// mise en service Monitoring
 define('IPNAGIOS', '192.168.1.8/nagios');//ip/dossier
-define('URLNAGIOS', 'https://monitoring.xxxxxxxxxxxx.ovh/nagios/');
+define('URLNAGIOS', 'https://monitoring.la-truffiere.ovh/nagios/');
 define('NAUSER', 'nagiosadmin');
 define('NAPASS', '000000');
 //Page Mur de Caméras avec Agent DVR
@@ -107,6 +107,18 @@ define('NAPASS', '000000');
 define('ON_DVR',false);// mise en service agent DVR
 define('IPDVR', 'http://192.168.1.50:8090');
 define('URLDVR', 'https://DOMAINE.ovh');
+//SPA
+define('ON_SPA',false);// mise en service SPA
+define('NB_ECRAN_SPA',6);
+define('ECRANSPA', array(
+    0 => "ph",// si nb ecran >=2
+    1 => "orp",// si nb ecran >=3 
+    2 => "debit", //débit en M3 // si nb ecran >=4
+	3 => "temp", //si nb ecran >=5
+	4 => "temp_ext", //si nb ecran >=6
+	));
+// Recettes Cuisine
+define('ON_RECETTES',false);
 //----------------------------------------------------------------
 
 

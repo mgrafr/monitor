@@ -9,8 +9,8 @@ session_start();
 	  <h1 id="titre_alarme" class="title text-center">Alarme<span style="font-size:18px;">..DEMO..</span></h1>
 		<div id="message" class="space">
 			  <?php
-					include('test_pass.php');
-					include ("alarmes_svg.php");
+					include('decouverte/test_pass.php');
+					include ("include/alarmes_svg.php");
 			  ?><p>Des poussoirs virtuels crées dans Domoticz sont nécessaires<br>ainsi qu'un script lua dans évènements<br>voir cette page :<a href="http://domo-site.fr/accueil/dossiers/37" >http://domo-site.fr/accueil/dossiers/37</a><br>
 			  les switches virtuels :<br><img src="decouverte/images/image2.jpg" style="width:370px" alt="img2"><br></p>
 				</div>
