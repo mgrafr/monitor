@@ -13,7 +13,7 @@ require("fonctions.php");
 <!-- footer end -->
 <!-- JavaScript files placées à la fin du document-->	
 <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script>
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
