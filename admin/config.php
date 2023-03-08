@@ -2,7 +2,7 @@
 // NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
 //general monitor
 define('URLMONITOR', 'DOMAINE');//domaine
-define('IPMONITOR', '192.168.1.9');//ip 
+define('IPMONITOR', '');//ip 
 define('MONCONFIG', 'admin/config.php');//fichier config 
 define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
 define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
@@ -31,11 +31,11 @@ define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE en m
 define('TEMPO_DEVICES', 180000);// en milli secondes
 define('TEMPO_DEVICES_DZ', 30000);// en milli secondes (>= 15s) maj déclenchée par Dz voir doc
 // caméras et VTO DAHUA
-#define('DHPASSVTO','a1234567');
-#define('DHCAMPASS', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faible) de l'energie restante  
-#    '192.168.1.107' => 'MOT_PASSE',
-#    '192.168.1.108' => 'MOT_PASSE',
-#    '192.168.1.114' => 'MOT_PASSE'
+define('DHPASSVTO','a1234567');
+define('DHCAMPASS', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faible) de l'energie restante  
+    '192.168.1.107' => 'MOT_PASSE',
+    '192.168.1.108' => 'MOT_PASSE',
+    '192.168.1.114' => 'MOT_PASSE'
 ));
 define('DHUSER','USER');
 //define('DHPASS','MOT_PASSE');
