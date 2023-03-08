@@ -1,1 +1,0 @@
-<iframe src="index_demo.php.html" style="overflow-x : hidden;overflow-y : hidden;margin-left:30%" name="mapage" width="600" height="900"></iframe>
