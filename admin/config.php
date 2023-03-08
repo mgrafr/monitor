@@ -13,8 +13,8 @@ $rep='images/';//ne pas changer
 define('IMAGEACCUEIL', $rep.'maison.webp');//image page accueil pour écrans >534 px
 define('IMAGEACCUEILSMALL', $rep.'maison_small.webp');//image page accueil pour écrans <535 px
 define('IMGLOGO', $rep.'logo.webp');//image logo
-define('NOMSITE', 'Domoticz');//nom principal du site
-define('NOMSLOGAN', 'La Truffière');//nom secondaire ou slogan
+define('NOMSITE', 'nom du site');//nom principal du site
+define('NOMSLOGAN', 'nom secondaire');//nom secondaire ou slogan
 // affichage lexique
 define('LEXIQUE', true);
 // infos de découverte , à mettre à FALSE en production
@@ -38,7 +38,7 @@ define('DHCAMPASS', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (
     '192.168.1.114' => 'MOT_PASSE'
 ));
 define('DHUSER','USER');
-//define('DHPASS','MOT_PASSE');
+define('DHPASS','MOT_PASSE');
 // --------------------------------------------------------------------------------------------
 // choix ID pour l'affichage des infos des dispositifs
 // idx : idx de Domoticz    idm : idm de monitor (dans ce cas la table "dispositifs" 
@@ -53,14 +53,14 @@ define('UTILISATEUR','USER');
 define('DBASE','monitor');
 //------Page  Alarmee & Administration------------
 // page Alarme
-define('ON_ALARM',false);// affichage pour utilisation de l'alarme
+define('ON_ALARM',true);// affichage pour utilisation de l'alarme
 // mot passe alarme et administation , la page administration est ON
 define('PWDALARM','MOT_PASSE');//mot passe alarme
 define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
 define('TIME_PASS_AL','3600');// temps de validité du mot de passe
 // ------------------------------------------------------------------------------------------
 //------Page  commandes Mur Inter------------------------------------
-define('ON_ONOFF',false);// affichage pour utilisation des commandes
+define('ON_ONOFF',true);// affichage pour utilisation des commandes
 // mot passe commande de dispositifs sensibles
 define('PWDCOMMAND','');//mot passe alarme
 define('NOM_PASS_CM','pwdcommand');// nom du mot de passe dans la BD
@@ -74,8 +74,8 @@ define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faib
 ));
 //---------------------------------------
 // Domoticz
-define('IPDOMOTICZ', '192.168.1.76');//ip
-define('URLDOMOTICZ', 'http://192.168.1.76:8086/');//url
+define('IPDOMOTICZ', '');//ip
+define('URLDOMOTICZ', '');//url ex:http://192.168.1.76:8086/
 define('URL_DZ', 'https://domoticz.DOMAINE');//domaine
 define('VARTAB', URLDOMOTICZ.'modules_lua/string_tableaux.lua');//
 define('BASE64', URLDOMOTICZ.'modules_lua/connect.lua');//login et password en Base64
@@ -98,12 +98,12 @@ define('TOKEN_MF','__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__');
 // Page App diverses , log dz , nagios , sql
 define('ON_APP',true);// mise en service page extérieur
 // Page exterieur jardin plan extérieur
-define('ON_EXT',false);// mise en service page extérieur
+define('ON_EXT',true);// mise en service page extérieur
 // Page graphiques
-define('ON_GRAPH',false);// mise en service page graphique
+define('ON_GRAPH',true);// mise en service page graphique
 // Page MUR de Caméras-------------------------------------------
 // utilisation du mur :true sinon false , Nom du mur , nb caméras
-define('ON_MUR',false);// mise en service MUR
+define('ON_MUR',true);// mise en service MUR
 define('NOMMUR','NOM DU MUR');// nom du mur
 define('NBCAM','0');// nombre caméras
 // Zoneminder
@@ -134,15 +134,15 @@ define('ON_DVR',false);// mise en service agent DVR
 define('IPDVR', 'http://192.168.1.50:8090');
 define('URLDVR', 'https://DOMAINE.ovh');
 //SPA
-define('ON_SPA',false);// mise en service SPA
-#define('NB_ECRAN_SPA',6);
-#define('ECRANSPA', array(
-#    0 => "ph",// si nb ecran >=2
-#    1 => "orp",// si nb ecran >=3 
-#    2 => "debit", //débit en M3 // si nb ecran >=4
-#	3 => "temp", //si nb ecran >=5
-#	4 => "temp_ext", //si nb ecran >=6
-#	));
+define('ON_SPA',true);// mise en service SPA
+define('NB_ECRAN_SPA',6);
+define('ECRANSPA', array(
+    0 => "ph",// si nb ecran >=2
+    1 => "orp",// si nb ecran >=3 
+    2 => "debit", //débit en M3 // si nb ecran >=4
+	3 => "temp", //si nb ecran >=5
+	4 => "temp_ext", //si nb ecran >=6
+	));
 // Recettes Cuisine
 define('ON_RECETTES',false);
 //----------------------------------------------------------------
