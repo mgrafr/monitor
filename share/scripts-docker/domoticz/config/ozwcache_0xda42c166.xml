@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Driver xmlns="https://github.com/OpenZWave/open-zwave" version="5" revision="172" home_id="0xda42c166" node_id="1" api_capabilities="8" controller_capabilities="20" poll_interval="60000" poll_interval_between="false">
+    <Node id="1" name="" location="" basic="2" generic="2" specific="1" type="Static PC Controller" listening="true" frequentListening="false" beaming="true" routing="false" max_baud_rate="100000" version="4" configrevision="0" query_stage="Complete">
+        <Neighbors>0,128,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</Neighbors>
+        <Manufacturer id="0" name="Z-Wave (Sigma Designs)">
+            <Product type="1" id="1" name="UZB Z-Wave USB Adapter">
+                <MetaData />
+            </Product>
+        </Manufacturer>
+        <CommandClasses>
+            <CommandClass id="32" name="COMMAND_CLASS_BASIC">
+                <Compatibility />
+                <State>
+                    <AfterMark>true</AfterMark>
+                </State>
+                <Instance index="1" />
+                <Value type="byte" genre="basic" instance="1" index="0" label="Basic" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>Basic status of the node</Help>
+                </Value>
+                <Value type="byte" genre="basic" instance="1" index="1" label="Basic Target" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help></Help>
+                </Value>
+                <Value type="int" genre="basic" instance="1" index="2" label="Basic Duration" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help></Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC">
+                <Compatibility />
+                <State>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="int" genre="system" instance="1" index="0" label="Loaded Config Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Revision of the Config file currently loaded</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="1" label="Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Revision of the Config file on the File System</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="2" label="Latest Available Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Latest Revision of the Config file available for download</Help>
+                </Value>
+            </CommandClass>
+        </CommandClasses>
+    </Node>
+    <Node id="16" name="" location="" basic="4" generic="16" specific="5" roletype="7" devicetype="3840" nodetype="0" type="Siren" listening="false" frequentListening="true" beaming="true" routing="true" max_baud_rate="100000" version="4" configrevision="4" query_stage="Complete">
+        <Neighbors>13,64,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</Neighbors>
+        <Manufacturer id="258" name="Shenzhen Neo Electronics Co Ltd">
+            <Product type="3" id="1088" name="Siren Alarm">
+                <MetaData>
+                    <MetaDataItem name="OzwInfoPage">http://www.openzwave.com/device-database/0258:0088:0003</MetaDataItem>
+                    <MetaDataItem name="ProductPic">images/shenzen_neo/nas-ab01z.png</MetaDataItem>
+                    <MetaDataItem name="Description">Loud alarm sound (up to 105dB) with flashing LED&apos;s when triggered.Mounts anywhere- it&apos;s wireless and 100% battery powered with 1-year battery life (2 CR123A Batteries Included).&#x0A;&#x0A;1.Make sounds and lighting when alarm is triggered&#x0A;&#x0A;2.Compatible with 300 series and 500 series.&#x0A;&#x0A;3.Range:Up to 50m outdoor :Up to 30m indoor&#x0A; &#x0A;4.Standby current :87uA&#x0A;&#x0A;5. Continuous work :1400 times </MetaDataItem>
+                    <MetaDataItem name="ProductManual">https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&amp;filename=Manuals/2171/Siren User Manual Common V3_2.pdf</MetaDataItem>
+                    <MetaDataItem name="InclusionDescription">In the front casing, there is button that is used to carry out include, exclude or reset factory&#x0A;default settings on PCB Board.&#x0A;When power is first supplied, the LED will flash on and off alternately at one second intervals&#x0A;within 5 seconds if the detector has not been added a Z‐Wave network. Please get familiar with&#x0A;the terms below before starting the operations.&#x0A;This product can be included and operated in any Z‐Wave network with other Z‐Wave certified&#x0A;devices from other manufacturers and/or other applications. All non‐battery operated nodes&#x0A;within the network will act as repeaters regardless of vendor to increase reliability of the&#x0A;network.</MetaDataItem>
+                    <MetaDataItem name="ExclusionDescription">1. Remove the siren cover.&#x0A;2. Make sure the siren is powered.&#x0A;3. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or&#x0A;gateway operating manual)&#x0A;4. Press the button three times within 1.5 second, the device will enter inclusion mode. And the&#x0A;LED will flash on and off alternately five times.&#x0A;Note: If siren has not been added to Z‐wave network, the siren will enter inclusion mode&#x0A;automatically when it is powered on. You should let the controller enter into inclusion first&#x0A;before power on the siren in order to run this function.</MetaDataItem>
+                    <MetaDataItem name="ResetDescription">Reset procedure will delete all information on the Z‐Wave network and Z‐Wave controller or&#x0A;Z‐Wave Gateway, and restore the siren to factory default settings.&#x0A;1. Remove the device cover.&#x0A;2. Make sure the siren is powered.&#x0A;3. Press and hold the button for 10 seconds, led will blink once.&#x0A;4. Release the button.&#x0A;&#x0A;Note: to use the reset procedure only when the primary controller is missing or inoperable.</MetaDataItem>
+                    <MetaDataItem name="WakeupDescription">You can press the button once to wake up the device and send wakeup notification to controller. If press successfully, the LED will blink one time</MetaDataItem>
+                    <MetaDataItem name="Name">Siren Alarm </MetaDataItem>
+                    <ChangeLog>
+                        <Entry author="Justin Hammond - Justin@dynam.ac" date="24 May 2019" revision="3">Initial Metadata Import from Z-Wave Alliance Database - https://products.z-wavealliance.org/products/1962/xml</Entry>
+                        <Entry author="Justin Hammond - Justin@dynam.ac" date="02 Jun 2019" revision="4">Updated Metadata Import from Z-Wave Alliance Database - https://products.z-wavealliance.org/products/2171/xml</Entry>
+                    </ChangeLog>
+                </MetaData>
+            </Product>
+        </Manufacturer>
+        <CommandClasses>
+            <CommandClass id="32" name="COMMAND_CLASS_BASIC">
+                <Compatibility>
+                    <Mapping>37</Mapping>
+                </Compatibility>
+                <State>
+                    <CCVersion>1</CCVersion>
+                </State>
+                <Instance index="1" />
+            </CommandClass>
+            <CommandClass id="37" name="COMMAND_CLASS_SWITCH_BINARY">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                </State>
+                <Instance index="1" />
+                <Value type="bool" genre="user" instance="1" index="0" label="Switch" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False">
+                    <Help>Turn On/Off Device</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="90" name="COMMAND_CLASS_DEVICE_RESET_LOCALLY">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>4</StaticRequests>
+                </State>
+                <Instance index="1" />
+            </CommandClass>
+            <CommandClass id="94" name="COMMAND_CLASS_ZWAVEPLUS_INFO">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>6</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="byte" genre="system" instance="1" index="0" label="ZWave+ Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="1">
+                    <Help>ZWave+ Version Supported on the Device</Help>
+                </Value>
+                <Value type="short" genre="system" instance="1" index="1" label="InstallerIcon" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="3840">
+                    <Help>Icon File to use for the Installer Application</Help>
+                </Value>
+                <Value type="short" genre="system" instance="1" index="2" label="UserIcon" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="3840">
+                    <Help>Icon File to use for the User Application</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>4</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="list" genre="config" instance="1" index="1" label="Alarm Music Volume" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="3" vindex="2" size="1">
+                    <Help>&#x0A;                This parameter defines the output volume when siren plays door bell music.&#x0A;                Door Bell music volume is divided into 3 stages&#x0A;            </Help>
+                    <Item label="Low" value="1" />
+                    <Item label="Middle" value="2" />
+                    <Item label="High" value="3" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="2" label="Alarm Music Duration Time" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="255" vindex="2" size="1">
+                    <Help>&#x0A;                This Parameter defines the alarm music duration time when siren receive an alarm sensor notification report or an alarm command from controller.&#x0A;                The duration time is divided into 5 stages.&#x0A;            </Help>
+                    <Item label="Off" value="0" />
+                    <Item label="30 second" value="1" />
+                    <Item label="1 minute" value="2" />
+                    <Item label="5 minute" value="3" />
+                    <Item label="Always on" value="255" />
+                </Value>
+                <Value type="byte" genre="config" instance="1" index="3" label="Door Bell Music Duration Time" units="minute" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="255">
+                    <Help>This parameter defines the door bell music duration time when siren receives a door/window sensor notification report or an alarm command (BASIC_SET = 0x02) from controller.&#x0A;                The door bell music will be played always if this parameter is set to 255.&#x0A;                The door bell music will not be  played if this parameter is set to 0.&#x0A;                Other values are the door bell music playing duration time.</Help>
+                </Value>
+                <Value type="list" genre="config" instance="1" index="4" label="Door Bell Music Volume" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="3" vindex="0" size="1">
+                    <Help>This parameter defines the output volume when siren plays alarm music.&#x0A;                Door Bell music volume is divided into 3 stages</Help>
+                    <Item label="Low" value="1" />
+                    <Item label="Middle" value="2" />
+                    <Item label="High" value="3" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="5" label="Alarm Music Index" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="10" vindex="9" size="1">
+                    <Help>This parameter defines the alarm music index for siren play different music when alarm occurs.&#x0A;                There are 10 different music for user selection</Help>
+                    <Item label="Doorbell" value="1" />
+                    <Item label="Fur Elise" value="2" />
+                    <Item label="Doorbell Extended" value="3" />
+                    <Item label="Alert" value="4" />
+                    <Item label="William Tell" value="5" />
+                    <Item label="Rondo Alla Turca" value="6" />
+                    <Item label="Police Siren" value="7" />
+                    <Item label="Evacuation" value="8" />
+                    <Item label="Beep Beep" value="9" />
+                    <Item label="Beep" value="10" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="6" label="Door Bell Music Index" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="10" vindex="8" size="1">
+                    <Help>This parameter defines the door bell music index for siren play different music when alarm occurs.&#x0A;                There are 10 different music for user selection.</Help>
+                    <Item label="Doorbell" value="1" />
+                    <Item label="Fur Elise" value="2" />
+                    <Item label="Doorbell Extended" value="3" />
+                    <Item label="Alert" value="4" />
+                    <Item label="William Tell" value="5" />
+                    <Item label="Rondo Alla Turca" value="6" />
+                    <Item label="Police Siren" value="7" />
+                    <Item label="Evacuation" value="8" />
+                    <Item label="Beep Beep" value="9" />
+                    <Item label="Beep" value="10" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="7" label="Configure Default Siren On Mode" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="2" vindex="0" size="1">
+                    <Help>This parameter defines the default music index, volume and the duration time for 3 siren on.&#x0A;                This parameter can be selected between ALARM MUSIC and DOOR BELL MUSIC.&#x0A;                The settings for ALARM MUSIC MODE defines by Param #1, #2 and #5.&#x0A;                The settings for DOOR BELL MUSIC MODE defines by Param #3, #4 and #6</Help>
+                    <Item label="Alarm music" value="1" />
+                    <Item label="Door bell music" value="2" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="8" label="Configure Alarm Led Enable" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" vindex="1" size="1">
+                    <Help>This parameter defines the default led enable status when siren is on for ALARM MUSIC MODE</Help>
+                    <Item label="Disable" value="0" />
+                    <Item label="Enable" value="1" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="9" label="Door Bell Led Enable" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" vindex="0" size="1">
+                    <Help>This parameter defines the default led enable status when siren is on for DOOR BELL MUSIC MODE</Help>
+                    <Item label="Disable" value="0" />
+                    <Item label="Enable" value="1" />
+                </Value>
+            </CommandClass>
+            <CommandClass id="113" name="COMMAND_CLASS_NOTIFICATION">
+                <Compatibility />
+                <State>
+                    <CCVersion>8</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>0</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="list" genre="user" instance="1" index="14" label="Siren" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="2">
+                    <Help>Siren Alerts</Help>
+                    <Item label="Clear" value="0" />
+                    <Item label="Active" value="1" />
+                </Value>
+                <Value type="byte" genre="user" instance="1" index="256" label="Previous Event Cleared" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>Previous Event that was sent</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC">
+                <Compatibility />
+                <State>
+                    <CCVersion>2</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>0</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="int" genre="system" instance="1" index="0" label="Loaded Config Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="4">
+                    <Help>Revision of the Config file currently loaded</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="1" label="Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="4">
+                    <Help>Revision of the Config file on the File System</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="2" label="Latest Available Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Latest Revision of the Config file available for download</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="115" name="COMMAND_CLASS_POWERLEVEL">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>4</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="list" genre="system" instance="1" index="0" label="Powerlevel" units="dB" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+                    <Help>Output RF PowerLevel</Help>
+                    <Item label="Normal" value="0" />
+                    <Item label="-1dB" value="1" />
+                    <Item label="-2dB" value="2" />
+                    <Item label="-3dB" value="3" />
+                    <Item label="-4dB" value="4" />
+                    <Item label="-5dB" value="5" />
+                    <Item label="-6dB" value="6" />
+                    <Item label="-7dB" value="7" />
+                    <Item label="-8dB" value="8" />
+                    <Item label="-9dB" value="9" />
+                </Value>
+                <Value type="byte" genre="system" instance="1" index="1" label="Timeout" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>Timeout till the PowerLevel is reset to Normal</Help>
+                </Value>
+                <Value type="button" genre="system" instance="1" index="2" label="Set Powerlevel" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0">
+                    <Help>Apply the Output PowerLevel and Timeout Values</Help>
+                </Value>
+                <Value type="byte" genre="system" instance="1" index="3" label="Test Node" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>Node to Perform a test against</Help>
+                </Value>
+                <Value type="list" genre="system" instance="1" index="4" label="Test Powerlevel" units="dB" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+                    <Help>PowerLevel to use for the Test</Help>
+                    <Item label="Normal" value="0" />
+                    <Item label="-1dB" value="1" />
+                    <Item label="-2dB" value="2" />
+                    <Item label="-3dB" value="3" />
+                    <Item label="-4dB" value="4" />
+                    <Item label="-5dB" value="5" />
+                    <Item label="-6dB" value="6" />
+                    <Item label="-7dB" value="7" />
+                    <Item label="-8dB" value="8" />
+                    <Item label="-9dB" value="9" />
+                </Value>
+                <Value type="short" genre="system" instance="1" index="5" label="Frame Count" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="0">
+                    <Help>How Many Messages to send to the Node for the Test</Help>
+                </Value>
+                <Value type="button" genre="system" instance="1" index="6" label="Test" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0">
+                    <Help>Perform a PowerLevel Test against the a Node</Help>
+                </Value>
+                <Value type="button" genre="system" instance="1" index="7" label="Report" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0">
+                    <Help>Get the results of the latest PowerLevel Test against a Node</Help>
+                </Value>
+                <Value type="list" genre="system" instance="1" index="8" label="Test Status" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+                    <Help>The Current Status of the last PowerNode Test Executed</Help>
+                    <Item label="Failed" value="0" />
+                    <Item label="Success" value="1" />
+                    <Item label="In Progress" value="2" />
+                </Value>
+                <Value type="short" genre="system" instance="1" index="9" label="Acked Frames" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="0">
+                    <Help>Number of Messages successfully Acked by the Target Node</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="128" name="COMMAND_CLASS_BATTERY">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>4</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="byte" genre="user" instance="1" index="0" label="Battery Level" units="%" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="94">
+                    <Help>Current Battery Level</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="133" name="COMMAND_CLASS_ASSOCIATION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>4</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Associations num_groups="3">
+                    <Group index="1" max_associations="5" label="Lifeline" auto="true">
+                        <Node id="1" />
+                    </Group>
+                    <Group index="2" max_associations="5" label="Send Binary Switch Report" auto="false">
+                        <Node id="1" />
+                    </Group>
+                    <Group index="3" max_associations="5" label="Send Notification Report" auto="false" />
+                </Associations>
+            </CommandClass>
+            <CommandClass id="134" name="COMMAND_CLASS_VERSION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>4</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="string" genre="system" instance="1" index="0" label="Library Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="6">
+                    <Help>Z-Wave Library Version</Help>
+                </Value>
+                <Value type="string" genre="system" instance="1" index="1" label="Protocol Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="4.38">
+                    <Help>Z-Wave Protocol Version</Help>
+                </Value>
+                <Value type="string" genre="system" instance="1" index="2" label="Application Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="2.94">
+                    <Help>Application Version</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="135" name="COMMAND_CLASS_INDICATOR">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                </State>
+                <Instance index="1" />
+                <Value type="byte" genre="user" instance="1" index="0" label="Indicator" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>Current Indicator State</Help>
+                </Value>
+            </CommandClass>
+        </CommandClasses>
+    </Node>
+    <Node id="17" name="" location="" basic="4" generic="15" specific="1" roletype="5" devicetype="6912" nodetype="0" type="Basic Repeater Slave" listening="true" frequentListening="false" beaming="true" routing="true" max_baud_rate="100000" version="4" configrevision="5" query_stage="Complete">
+        <Neighbors>8,192,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</Neighbors>
+        <Manufacturer id="86" name="AEON Labs">
+            <Product type="4" id="75" name="ZW117 Range Extender 6">
+                <MetaData>
+                    <MetaDataItem name="OzwInfoPage">http://www.openzwave.com/device-database/0086:0075:0104</MetaDataItem>
+                    <MetaDataItem name="ProductPic">images/aeotec/zw117.png</MetaDataItem>
+                    <MetaDataItem name="Description">Aeotec Range Extender is a Z-Wave mesh network repeater which can extend the range of communication between Z-Wave products and assist other devices to reach each other in your Z-Wave network. &#x0A;The Range Extender can also communicate securely via AES 128 wireless Z-Wave commands and supports Over-The-Air (OTA) firmware upgrades.&#x0A;</MetaDataItem>
+                    <MetaDataItem name="ProductManual">https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&amp;filename=Manuals/1998/Range Extender 6 manual.pdf</MetaDataItem>
+                    <MetaDataItem name="InclusionDescription">Turn the primary controller of Z-Wave network into inclusion mode, press the Z-Wave Button on Range Extender 6.</MetaDataItem>
+                    <MetaDataItem name="ExclusionDescription">Turn the primary controller of Z-Wave network into exclusion mode, press  the Z-Wave Button on Range Extender 6.</MetaDataItem>
+                    <MetaDataItem name="ResetDescription">Press and hold the Z-Wave Button for 20 seconds and then release it.&#x0A;Use this procedure only in the event that your primary network controller is missing or inoperable.</MetaDataItem>
+                    <MetaDataItem name="Name">Range Extender 6</MetaDataItem>
+                    <ChangeLog>
+                        <Entry author="Justin Hammond - Justin@dynam.ac" date="24 May 2019" revision="3">Initial Metadata Import from Z-Wave Alliance Database - https://products.z-wavealliance.org/products/1966/xml</Entry>
+                        <Entry author="Justin Hammond - Justin@dynam.ac" date="24 May 2019" revision="4">Updated Metadata Import from Z-Wave Alliance Database - https://products.z-wavealliance.org/products/1994/xml</Entry>
+                        <Entry author="Justin Hammond - Justin@dynam.ac" date="24 May 2019" revision="5">Updated Metadata Import from Z-Wave Alliance Database - https://products.z-wavealliance.org/products/1998/xml</Entry>
+                    </ChangeLog>
+                </MetaData>
+            </Product>
+        </Manufacturer>
+        <CommandClasses>
+            <CommandClass id="32" name="COMMAND_CLASS_BASIC">
+                <Compatibility>
+                    <GetSupported>false</GetSupported>
+                </Compatibility>
+                <State />
+                <Instance index="1" />
+                <Value type="byte" genre="basic" instance="1" index="0" label="Basic" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>Basic status of the node</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="90" name="COMMAND_CLASS_DEVICE_RESET_LOCALLY">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                </State>
+                <Instance index="1" />
+            </CommandClass>
+            <CommandClass id="94" name="COMMAND_CLASS_ZWAVEPLUS_INFO">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="byte" genre="system" instance="1" index="0" label="ZWave+ Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>ZWave+ Version Supported on the Device</Help>
+                </Value>
+                <Value type="short" genre="system" instance="1" index="1" label="InstallerIcon" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="0">
+                    <Help>Icon File to use for the Installer Application</Help>
+                </Value>
+                <Value type="short" genre="system" instance="1" index="2" label="UserIcon" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="0">
+                    <Help>Icon File to use for the User Application</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                </State>
+                <Value type="list" genre="config" instance="1" index="82" label="LED when the Range Extender relays Z-Wave message" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" vindex="0" size="1">
+                    <Help>Set the default status of the LED when the Range Extender relays Z-Wave message.</Help>
+                    <Item label="On for 2 seconds" value="0" />
+                    <Item label="Off" value="1" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="200" label="Partner ID" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" vindex="0" size="1">
+                    <Help>Partner ID</Help>
+                    <Item label="Aeon Labs Standard (Default)" value="0" />
+                    <Item label="Others" value="1" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="252" label="Configuration Locked" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="1" vindex="0" size="1">
+                    <Help>Enable/disable Configuration Locked</Help>
+                    <Item label="Disable" value="0" />
+                    <Item label="Enable" value="1" />
+                </Value>
+                <Value type="short" genre="config" instance="1" index="254" label="Device tag" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="65535" value="0">
+                    <Help>Device tag.</Help>
+                </Value>
+                <Value type="list" genre="config" instance="1" index="255" label="Reset To Factory Defaults" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="4">
+                    <Help>Reset to factory defaults</Help>
+                    <Item label="Reset to factory default setting" value="0" />
+                    <Item label="Normal" value="1" />
+                    <Item label="Reset to factory default setting and removed from the z-wave network" value="1431655765" />
+                </Value>
+            </CommandClass>
+            <CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC">
+                <Compatibility />
+                <State>
+                    <StaticRequests>0</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="int" genre="system" instance="1" index="0" label="Loaded Config Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="5">
+                    <Help>Revision of the Config file currently loaded</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="1" label="Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="5">
+                    <Help>Revision of the Config file on the File System</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="2" label="Latest Available Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Latest Revision of the Config file available for download</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="133" name="COMMAND_CLASS_ASSOCIATION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+                <Associations num_groups="2">
+                    <Group index="1" max_associations="5" label="Lifeline" auto="true" />
+                    <Group index="2" max_associations="5" label="Retransmit" auto="false" />
+                </Associations>
+            </CommandClass>
+            <CommandClass id="134" name="COMMAND_CLASS_VERSION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <StaticRequests>0</StaticRequests>
+                </State>
+            </CommandClass>
+            <CommandClass id="152" name="COMMAND_CLASS_SECURITY">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                </State>
+                <Instance index="1" />
+                <Value type="bool" genre="system" instance="1" index="0" label="Secured" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False">
+                    <Help>Is Communication with Device Encrypted</Help>
+                </Value>
+            </CommandClass>
+        </CommandClasses>
+    </Node>
+    <Node id="18" name="" location="" basic="4" generic="16" specific="1" roletype="5" devicetype="1792" nodetype="0" type="Binary Power Switch" listening="true" frequentListening="false" beaming="true" routing="true" max_baud_rate="100000" version="4" configrevision="2" query_stage="Complete">
+        <Neighbors>0,128,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</Neighbors>
+        <Manufacturer id="258" name="Shenzhen Neo Electronics Co Ltd">
+            <Product type="200" id="1027" name="NAS-WR01ZE Power plug 12A">
+                <MetaData>
+                    <MetaDataItem name="OzwInfoPage">http://www.openzwave.com/device-database/0258:1027:0200</MetaDataItem>
+                    <MetaDataItem name="ProductPic">images/shenzen_neo/nas-wr01ze.png</MetaDataItem>
+                    <MetaDataItem name="Description">This product can be included and operated in any Z‐Wave network with other Z‐Wave certified devices from other manufacturers and/or other applications. All non‐battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.&#x0A;&#x0A;In the front casing, there is button that is used to carry out include, exclude or reset factory default settings on PCB Board.&#x0A;&#x0A;When power is first supplied, the LED will flash on and off with yellow alternately every 1 second intervals within 5 seconds if the detector has not been added a Z‐Wave network, otherwise the LED will flash on and off 5 times with cyan alternately every 300 millisecond. Please get familiar with the terms below before starting the operations.&#x0A;&#x0A;This Plug has function that remembers the relay states, the plug will turn on after power up next time if the plug is turn on before the power cut‐off.</MetaDataItem>
+                    <MetaDataItem name="InclusionDescription">Add the Device (Smart Plug) to Z‐Wave Network&#x0A;1.Make sure the sensor is powered. &#x0A;2.Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual) &#x0A;3.Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds. </MetaDataItem>
+                    <MetaDataItem name="ExclusionDescription">Delete the Device (Smart Plug) from Z‐Wave Network&#x0A;1.Make sure the sensor is powered. &#x0A;2.Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual) &#x0A;3.Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.  </MetaDataItem>
+                    <MetaDataItem name="ResetDescription">Note:  to use the reset procedure only when the primary controller is missing or inoperable.&#x0A;Restore the Device (Smart Plug) to Factory Default Settings&#x0A;&#x0A;Reset procedure will delete all information on the Z‐Wave network and Z‐Wave controller or Z‐Wave Gateway, and restore the sensor to factory default settings.&#x0A;1.Make sure the sensor is powered. &#x0A;&#x0A;2.Press and hold the button more than 10 seconds until the LED blink with red color. &#x0A;&#x0A;3.Release the button. </MetaDataItem>
+                    <MetaDataItem name="WakeupDescription">this power plug is connected to power, not battery powered</MetaDataItem>
+                    <MetaDataItem name="Name">Smart Power Plug </MetaDataItem>
+                    <ChangeLog>
+                        <Entry author="David Burrows - david@burrows.org" date="19 Aug 2020" revision="2">Added metadata, and added US version (type 0100) that is branded &quot;Power Plug&quot; with no model number displayed. There is no matching Z-Wave Alliance database entry.</Entry>
+                    </ChangeLog>
+                </MetaData>
+            </Product>
+        </Manufacturer>
+        <CommandClasses>
+            <CommandClass id="32" name="COMMAND_CLASS_BASIC">
+                <Compatibility>
+                    <Mapping>37</Mapping>
+                </Compatibility>
+                <State />
+                <Instance index="1" />
+            </CommandClass>
+            <CommandClass id="37" name="COMMAND_CLASS_SWITCH_BINARY">
+                <Compatibility />
+                <State />
+                <Instance index="1" />
+                <Value type="bool" genre="user" instance="1" index="0" label="Switch" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False">
+                    <Help>Turn On/Off Device</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="39" name="COMMAND_CLASS_SWITCH_ALL">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                </State>
+                <Instance index="1" />
+                <Value type="list" genre="system" instance="1" index="0" label="Switch All" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+                    <Help>Switch All Devices On/Off</Help>
+                    <Item label="Disabled" value="0" />
+                    <Item label="Off Enabled" value="1" />
+                    <Item label="On Enabled" value="2" />
+                    <Item label="On and Off Enabled" value="255" />
+                </Value>
+            </CommandClass>
+            <CommandClass id="90" name="COMMAND_CLASS_DEVICE_RESET_LOCALLY">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                </State>
+                <Instance index="1" />
+            </CommandClass>
+            <CommandClass id="94" name="COMMAND_CLASS_ZWAVEPLUS_INFO">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="byte" genre="system" instance="1" index="0" label="ZWave+ Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="1">
+                    <Help>ZWave+ Version Supported on the Device</Help>
+                </Value>
+                <Value type="short" genre="system" instance="1" index="1" label="InstallerIcon" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="1792">
+                    <Help>Icon File to use for the Installer Application</Help>
+                </Value>
+                <Value type="short" genre="system" instance="1" index="2" label="UserIcon" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="1792">
+                    <Help>Icon File to use for the User Application</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="108" name="COMMAND_CLASS_SUPERVISION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                </State>
+                <Instance index="1" />
+            </CommandClass>
+            <CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                </State>
+                <Value type="list" genre="config" instance="1" index="1" label="Remember Relay ON/OFF status" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
+                    <Help>&#x0A;        This parameter defined the relay status if remember or not.&#x0A;        If remembered, the plug will restore the relay status last power off when the plug supply power next time.&#x0A;      </Help>
+                    <Item label="Disable" value="0" />
+                    <Item label="Enable" value="1" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="2" label="Button On/Off" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
+                    <Help>&#x0A;        This parameter defines the button on/off function is enabled or not on the top of the wall plug.&#x0A;        If enabled, users can turn on and off the wall plug by pressing the button on the top of the wall plug.&#x0A;        If disabled, the wall plug cannot be turned on and off by pressing the button.&#x0A;      </Help>
+                    <Item label="Disable" value="0" />
+                    <Item label="Enable" value="1" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="3" label="Led Display" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
+                    <Help>&#x0A;        This parameter defines the LED indication Function ON/OFF.&#x0A;        If disabled, then LED indication Function and will always be turn-off, while enabled means LED Function is on.&#x0A;      </Help>
+                    <Item label="Disable" value="0" />
+                    <Item label="Enable" value="1" />
+                </Value>
+                <Value type="list" genre="config" instance="1" index="4" label="Configure Plug Time switch Function" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+                    <Help>&#x0A;        This parameter defines the timer function Enable/Disable.&#x0A;        If disabled, then time switch function is not available.&#x0A;        The time period will be defined in parameter #5.&#x0A;        If enabled, and when turn the plug relay on, the timer in plug start run with time period defined in parameter #5 and the plug will turn the relay off.&#x0A;      </Help>
+                    <Item label="Disable" value="0" />
+                    <Item label="Enable" value="1" />
+                </Value>
+                <Value type="short" genre="config" instance="1" index="5" label="Configure Time switch Period" units="minute" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="32767" value="120">
+                    <Help>&#x0A;        This parameter defines the time period that plug time switch off. This parameter can be configured 0 - 32767(in minutes).&#x0A;        If Parameter #4 is enabled, and relay is turn-on, the relay will be turn-off after delay this parameter.&#x0A;      </Help>
+                </Value>
+                <Value type="list" genre="config" instance="1" index="6" label="Send Meter Report" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
+                    <Help>&#x0A;        This parameter defines Disable/Enable meter report measure data to controller.&#x0A;        When device is detected an OCP event or the relay turned on or turned off, device still will report all meter values once if this configuration is disabled. &#x0A;      </Help>
+                    <Item label="Disable" value="0" />
+                    <Item label="Enable" value="1" />
+                </Value>
+                <Value type="short" genre="config" instance="1" index="7" label="Meter Report Interval" units="second" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="30" max="32767" value="300">
+                    <Help>This parameter defines interval time (30-32767 seconds) that Meter report data to main controller .</Help>
+                </Value>
+                <Value type="byte" genre="config" instance="1" index="8" label="Configure maximum over-load current" units="Ampere" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="16" value="16">
+                    <Help>&#x0A;        This parameter defines maximum current (in Amperes) the plug can provide to load that be connected to plug.&#x0A;        If the current consumed by load is greater than maximum current, the plug will cut off power, and send NOTIFICATION_EVENT_POWER_MANAGEMENT_OVER_LOAD_DETECTED to associated devices in lifeline. Red Led will blink every seconds until current is normal (less than Parameter #8).&#x0A;        You must remove the loader and turn on the Plug (press the button once) to enable current monitor and clear NOTIFICATION ALARM. This parameter value must be great than #10.&#x0A;        If user set this parameter to default by Configure CC, the parameter #10 will be set to default value.&#x0A;      </Help>
+                </Value>
+                <Value type="short" genre="config" instance="1" index="9" label="Configure power report" units="cA" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="1600" value="50">
+                    <Help>&#x0A;        This parameter defines by how much power consumed must change to be reported to the Z-Wave Controller or Z-Wave Gateway, in centiAmperes (1-1600). If the rate of power consumed change ratio is greater than this parameter, the plug will report the results, voltage, current, power and energy, that plug measure to Z-Wave Controller or Z-Wave Gateway&#x0A;        The changed value = [Value] x 0.01A&#x0A;      </Help>
+                </Value>
+                <Value type="byte" genre="config" instance="1" index="10" label="Configure maximum Alarm current" units="Ampere" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="16" value="13">
+                    <Help>&#x0A;        This parameter defines maximum current (in Amperes), if the current plug provide to load is greater than this parameter, the plug will send over-current notification to the controller and the LED will turn RED, but plug cannot cut-off power. This parameter value must be less than parameter #8.&#x0A;        If user set this parameter to default by Configure CC, the parameter #8 will be set to default value.&#x0A;      </Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC">
+                <Compatibility />
+                <State>
+                    <InNif>true</InNif>
+                    <StaticRequests>0</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="int" genre="system" instance="1" index="0" label="Loaded Config Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="2">
+                    <Help>Revision of the Config file currently loaded</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="1" label="Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="2">
+                    <Help>Revision of the Config file on the File System</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="2" label="Latest Available Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Latest Revision of the Config file available for download</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="115" name="COMMAND_CLASS_POWERLEVEL">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                </State>
+                <Instance index="1" />
+                <Value type="list" genre="system" instance="1" index="0" label="Powerlevel" units="dB" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+                    <Help>Output RF PowerLevel</Help>
+                    <Item label="Normal" value="0" />
+                    <Item label="-1dB" value="1" />
+                    <Item label="-2dB" value="2" />
+                    <Item label="-3dB" value="3" />
+                    <Item label="-4dB" value="4" />
+                    <Item label="-5dB" value="5" />
+                    <Item label="-6dB" value="6" />
+                    <Item label="-7dB" value="7" />
+                    <Item label="-8dB" value="8" />
+                    <Item label="-9dB" value="9" />
+                </Value>
+                <Value type="byte" genre="system" instance="1" index="1" label="Timeout" units="seconds" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>Timeout till the PowerLevel is reset to Normal</Help>
+                </Value>
+                <Value type="button" genre="system" instance="1" index="2" label="Set Powerlevel" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0">
+                    <Help>Apply the Output PowerLevel and Timeout Values</Help>
+                </Value>
+                <Value type="byte" genre="system" instance="1" index="3" label="Test Node" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+                    <Help>Node to Perform a test against</Help>
+                </Value>
+                <Value type="list" genre="system" instance="1" index="4" label="Test Powerlevel" units="dB" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+                    <Help>PowerLevel to use for the Test</Help>
+                    <Item label="Normal" value="0" />
+                    <Item label="-1dB" value="1" />
+                    <Item label="-2dB" value="2" />
+                    <Item label="-3dB" value="3" />
+                    <Item label="-4dB" value="4" />
+                    <Item label="-5dB" value="5" />
+                    <Item label="-6dB" value="6" />
+                    <Item label="-7dB" value="7" />
+                    <Item label="-8dB" value="8" />
+                    <Item label="-9dB" value="9" />
+                </Value>
+                <Value type="short" genre="system" instance="1" index="5" label="Frame Count" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="0">
+                    <Help>How Many Messages to send to the Node for the Test</Help>
+                </Value>
+                <Value type="button" genre="system" instance="1" index="6" label="Test" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0">
+                    <Help>Perform a PowerLevel Test against the a Node</Help>
+                </Value>
+                <Value type="button" genre="system" instance="1" index="7" label="Report" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0">
+                    <Help>Get the results of the latest PowerLevel Test against a Node</Help>
+                </Value>
+                <Value type="list" genre="system" instance="1" index="8" label="Test Status" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+                    <Help>The Current Status of the last PowerNode Test Executed</Help>
+                    <Item label="Failed" value="0" />
+                    <Item label="Success" value="1" />
+                    <Item label="In Progress" value="2" />
+                </Value>
+                <Value type="short" genre="system" instance="1" index="9" label="Acked Frames" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-32768" max="32767" value="0">
+                    <Help>Number of Messages successfully Acked by the Target Node</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="133" name="COMMAND_CLASS_ASSOCIATION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Associations num_groups="3">
+                    <Group index="1" max_associations="5" label="Lifeline" auto="true" />
+                    <Group index="2" max_associations="5" label="Over-load current" auto="false" />
+                    <Group index="3" max_associations="5" label="Send Notification" auto="false" />
+                </Associations>
+            </CommandClass>
+            <CommandClass id="134" name="COMMAND_CLASS_VERSION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="string" genre="system" instance="1" index="0" label="Library Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="Unknown">
+                    <Help>Z-Wave Library Version</Help>
+                </Value>
+                <Value type="string" genre="system" instance="1" index="1" label="Protocol Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="Unknown">
+                    <Help>Z-Wave Protocol Version</Help>
+                </Value>
+                <Value type="string" genre="system" instance="1" index="2" label="Application Version" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="Unknown">
+                    <Help>Application Version</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="152" name="COMMAND_CLASS_SECURITY">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <InNif>true</InNif>
+                </State>
+                <Instance index="1" />
+                <Value type="bool" genre="system" instance="1" index="0" label="Secured" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False">
+                    <Help>Is Communication with Device Encrypted</Help>
+                </Value>
+            </CommandClass>
+        </CommandClasses>
+    </Node>
+    <Node id="19" name="" location="" basic="0" generic="0" specific="0" type="" listening="true" frequentListening="false" beaming="false" routing="false" max_baud_rate="0" version="0" configrevision="0" query_stage="Complete">
+        <Neighbors>0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</Neighbors>
+        <Manufacturer id="0" name="Unknown: id=0000">
+            <Product type="0" id="0" name="Unknown: type=0000, id=0000">
+                <MetaData />
+            </Product>
+        </Manufacturer>
+        <CommandClasses>
+            <CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC">
+                <Compatibility />
+                <State>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="int" genre="system" instance="1" index="0" label="Loaded Config Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Revision of the Config file currently loaded</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="1" label="Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Revision of the Config file on the File System</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="2" label="Latest Available Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Latest Revision of the Config file available for download</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="134" name="COMMAND_CLASS_VERSION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+            </CommandClass>
+        </CommandClasses>
+    </Node>
+    <Node id="26" name="" location="" basic="0" generic="0" specific="0" type="" listening="true" frequentListening="false" beaming="false" routing="false" max_baud_rate="0" version="0" configrevision="0" query_stage="Complete">
+        <Neighbors>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</Neighbors>
+        <Manufacturer id="0" name="Unknown: id=0000">
+            <Product type="0" id="0" name="Unknown: type=0000, id=0000">
+                <MetaData />
+            </Product>
+        </Manufacturer>
+        <CommandClasses>
+            <CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC">
+                <Compatibility />
+                <State>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+                <Instance index="1" />
+                <Value type="int" genre="system" instance="1" index="0" label="Loaded Config Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Revision of the Config file currently loaded</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="1" label="Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Revision of the Config file on the File System</Help>
+                </Value>
+                <Value type="int" genre="system" instance="1" index="2" label="Latest Available Config File Revision" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                    <Help>Latest Revision of the Config file available for download</Help>
+                </Value>
+            </CommandClass>
+            <CommandClass id="134" name="COMMAND_CLASS_VERSION">
+                <Compatibility />
+                <State>
+                    <CCVersion>1</CCVersion>
+                    <StaticRequests>2</StaticRequests>
+                </State>
+            </CommandClass>
+        </CommandClasses>
+    </Node>
+</Driver>
