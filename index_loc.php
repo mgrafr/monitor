@@ -1,14 +1,11 @@
 <?php
 session_start();
-$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
 // pour les variables de session----------------------
-//session_start();
-$_SESSION["exeption_db"]="";
-include ("admin/config.php");$_SESSION["exeption_db"]="";
-
+$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]="";
+include ("admin/config.php");
 // Check connection DB
 mysqli_report(MYSQLI_REPORT_OFF);
-$conn = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
+$conn = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, 'monitor');
 //if ($conn) echo "pas de BD : ".DBASE	;	
 if ($conn->connect_error) { $_SESSION["exeption_db"]="pas de connexion à la BD";}
 				   
