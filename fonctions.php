@@ -81,6 +81,7 @@ $resultat['status']=$json['status'];
 return $resultat;
 }
 function sql_variable($t,$ind){
+	if ($_SESSION["exeption_db"]=="pas de connexion à la BD") return ;
 	$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 	if ($ind==0){$sql="SELECT * FROM `variables_dz` WHERE id_dz ='".$t."' ;" ;}
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
@@ -448,7 +449,7 @@ switch ($choix) {
 		$info['titre']=$maj[0]; $txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
 		$info['maj']=$date;$info['jour']=$jour;$info['pourcent']=$pourcent;$info['temp']=$temp;$info['mm']=$pluiemm;
 	break;
-    case "2":		
+    case "2":
 		$url="https://rpcache-aa.meteofrance.com/internet2018client/2.0/nowcast/rain?lat=44.952602&lon=-0.107691&token=".TOKEN_MF;
 		$json_string = file_get_curl($url);$result = json_decode($json_string,true);
 		$info['maj']=substr($result['update_time'],11,8);
@@ -774,6 +775,7 @@ return ;
 }
 //----------------------------graph-------------------
 function graph($device,$periode){$champ="valeur";
+	if ($_SESSION["exeption_db"]=!"") echo "pas de tables enregistrées dans la bd";return ;							 
 	$devic=explode('-',$device);$device=$devic[0];$devic[1] = isset($devic[1]) ? $devic[1] : '';
 	if ($devic[1] and $devic[1]!="") $champ=$devic[1];
 require("include/export_tab_sqli.php") ;	
