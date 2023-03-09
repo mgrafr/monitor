@@ -117,11 +117,11 @@ echo '<?php phpinfo(); ?>' > /usr/share/nginx/html/info.php
 echo "LEMP INSTALLER: Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
 xxx=$(hostname -I)
-ip4=$(echo $xxx | cut -d '-' -f 1)
-echo "ip="$Ip4
-sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${xx}/g" /usr/share/nginx/html/monitor/admin/config.php 
-sed -i "s/USER_BD/${xx}/g" /usr/share/nginx/html/monitor/admin/config.php
-sed -i "s/define('MOTDEPASSE','MOT_PASSE/define('MOTDEPASSE', '${xx}/g" /usr/share/nginx/html/monitor/admin/config.php 
+ip4=$(echo $xxx | cut -d ' ' -f 1)
+echo "ip="$ip4
+sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/nginx/html/monitor/admin/config.php 
+sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
+sed -i "s/define('MOTDEPASSE', 'MOT_PASSE/define('MOTDEPASSE', '${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
 echo "LEMP :configuration complete"
 
 
