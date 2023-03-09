@@ -2,7 +2,7 @@
 // NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
 //general monitor
 define('URLMONITOR', 'DOMAINE');//domaine
-define('IPMONITOR', '');//ip 
+define('IPMONITOR', 'ip');//ip 
 define('MONCONFIG', 'admin/config.php');//fichier config 
 define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
 define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
@@ -48,8 +48,8 @@ define('CHOIXID','idm');// idm ou idx
 define('NUMPLAN','2');// n° du plan regroupant tous les capteurs
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
-define('MOTDEPASSE','MOT_PASSE');
-define('UTILISATEUR','USER');
+define('IPMONITOR', 'MOT_PASSE');
+define('UTILISATEUR','USER_BD');
 define('DBASE','monitor');
 //------Page  Alarmee & Administration------------
 // page Alarme
