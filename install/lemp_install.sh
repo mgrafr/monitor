@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+export LANG=C.UTF8
 # Ce script installe LEMP sur Ubuntu Debian 11.
 echo "Ce script installera automatiquement LEMP fonctionnelle . Vous devez être connecté à Internet "
 
