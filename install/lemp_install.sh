@@ -54,8 +54,8 @@ expect "Reload privilege tables now?"
 send "y\r"
 echo "Maria db création de la base monitor."
 mysql -uroot  -e "CREATE DATABASE monitor CHARACTER SET UTF8;"
-mysql -uroot  -e 'GRANT ALL ON *.* TO $maria_name @localhost IDENTIFIED BY $mp'
-mysql -uroot  -e "GRANT ALL PRIVILEGES ON $maria_name .* TO $maria_name@'%';"
+mysql -uroot  -e "CREATE USER ${maria_name}@'%' IDENTIFIED BY ${mp};"
+mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO ${maria_name}@'%';"
 mysql -uroot  -e "flush privileges";
 echo "Installer NGINX"
 apt-get install nginx apache2-utils mlocate  -y
