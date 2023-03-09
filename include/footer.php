@@ -127,7 +127,9 @@ function pluie(idx){//var tc=TestConnection_js();
 		var titre = html.titre; 
 		prev_pluie= html.prev_pluie;
 		test_pluie = html.test_pluie;
-		var img_pluie = html.img_pluie;//if (tc==0) img_pluie="images/panne_web.jpg";
+		if (html.img_pluie == null){ var img_pluie = "images/parapluie_ferme.svg";}
+		else var img_pluie = html.img_pluie;
+		//if (tc==0) img_pluie="images/panne_web.jpg";
 		if(test_pluie=="pas de pluie"){texte_pluie=titre; 
 									   document.getElementById("pluie").style.display = "block";document.getElementById('pluie').innerHTML ='<img src="'+img_pluie+'" alt="pluie">';
 									   document.getElementById("txt_pluie").style.display = "none";}
@@ -207,7 +209,7 @@ $('.closeBtn').on('click', function () {
     });
 /* switchOnOff*  */
 
-<?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?>
+<?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD" &&  DECOUVERTE!=true)   {sql_plan(0);}	?>
 rr=new Array();	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
