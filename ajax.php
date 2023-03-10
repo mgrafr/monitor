@@ -16,9 +16,11 @@ $type = isset($_GET['type']) ? $_GET['type'] : '';
 $table = isset($_GET['table']) ? $_GET['table'] : '';
 //
 if ($app=="aff_th") {$retour= status_devices($device,'Temp','Humidity');echo json_encode($retour); }
-else if ($app=="devices_plan") {$retour=devices_plan($variable);echo json_encode($retour); }
+else if ($app=="devices_plan") {if (DECOUVERTE==true) {include('include/json_demo/devices_plan_json.php');return;}
+								else {$retour=devices_plan($variable);echo json_encode($retour); }}
 else if ($app=="OnOff") {$retour=switchOnOff_setpoint($device,$command,$type,$variable,$name);echo json_encode($retour); }
-else if ($app=="meteo_concept") {echo $retour=meteo_concept($variable); }
+else if ($app=="meteo_concept") {if (DECOUVERTE==true) {include('include/json_demo/meteo_concept_json.php');return;}
+								else {echo $retour=meteo_concept($variable); }}
 else if ($app=="upload_img") {$retour = upload_img($variable);echo json_encode($retour); }
 else if ($app=="upload_conf_img") {cam_config($name,$command,$variable,$idx,$type); }
 else if ($app=="graph") {graph($device,$variable);}	
