@@ -48,7 +48,7 @@ define('CHOIXID','idm');// idm ou idx
 define('NUMPLAN','2');// n° du plan regroupant tous les capteurs
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
-define('IPMONITOR', 'MOT_PASSE');
+define('MOTDEPASSE', 'PASS_BD');
 define('UTILISATEUR','USER_BD');
 define('DBASE','monitor');
 //------Page  Alarmee & Administration------------
