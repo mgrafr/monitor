@@ -55,7 +55,7 @@ define('DBASE','monitor');
 // page Alarme
 define('ON_ALARM',true);// affichage pour utilisation de l'alarme
 // mot passe alarme et administation , la page administration est ON
-define('PWDALARM','MOT_PASSE');//mot passe alarme
+define('PWDALARM','1234');//mot passe alarme
 define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
 define('TIME_PASS_AL','3600');// temps de validité du mot de passe
 // ------------------------------------------------------------------------------------------
