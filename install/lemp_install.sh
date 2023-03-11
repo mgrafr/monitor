@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-export LANG=C.UTF8
 # Ce script installe LEMP sur Ubuntu Debian 11.
 echo "Ce script installera automatiquement LEMP fonctionnelle . Vous devez être connecté à Internet "
 
@@ -55,8 +54,10 @@ expect "Reload privilege tables now?"
 send "y\r"
 echo "Maria db création de la base monitor."
 mysql -uroot  -e "CREATE DATABASE monitor CHARACTER SET UTF8;"
-mysql -uroot  -e "CREATE USER ${maria_name}@'%' IDENTIFIED BY ${mp};"
-mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO ${maria_name}@'%';"
+echo "Création de l'utilisateur : "$maria_name
+mysql -uroot  -e "CREATE USER '${maria_name}'@'%' IDENTIFIED BY '${mp}'; "
+echo "fournir tous les privilèges à " $maria_name
+mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO '${maria_name}'@'%';"
 mysql -uroot  -e "flush privileges";
 echo "Installer NGINX"
 apt-get install nginx apache2-utils mlocate  -y
@@ -106,8 +107,9 @@ mkdir /www
 ln -s /usr/share/nginx/html/  /www/
 echo "installation de Monitor:"
 git clone https://github.com/mgrafr/monitor.git /usr/share/nginx/html/monitor
-echo "importer la table text_image"
+echo "importer les tables text_image et dispositifs"
 mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
+mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de default.conf"
 cp /usr/share/nginx/html/monitor/share/nginx/default.conf /etc/nginx/conf.d
@@ -122,7 +124,7 @@ ip4=$(echo $xxx | cut -d ' ' -f 1)
 echo "ip="$ip4
 sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/nginx/html/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
-sed -i "s/define('MOTDEPASSE', 'MOT_PASSE/define('MOTDEPASSE', '${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
+sed -i "s/PASS_BD/${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
 echo "LEMP :configuration complete"
 
 
