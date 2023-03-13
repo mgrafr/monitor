@@ -12,7 +12,7 @@ echo '<div id="avb" style="line-height: normal;">
   <p style="font-size:14px"> <em>texte -> image</em><p><br>
   <span style="margin-left: 10px;">Texte : <input type="text" style="width:200px;margin-left: 10px;"  id="texte_bd" ></span><br>
    <span style="margin-left: 10px;">Image :<input type="text" style="width:200px;margin-left:9px;" id="image_bd" ></span><br>
- <button type="button" onclick="avby(0)" id="bouton_avb" style="width:100px;height:30px">Envoi</button>  
+ <button type="button" onclick="adby(2)" id="bouton_avb" style="width:100px;height:30px">Envoi</button>  
 </div>';
 
 

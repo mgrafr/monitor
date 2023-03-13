@@ -299,7 +299,7 @@ $.ajax({
 						data: "app=admin&variable="+choix_admin+"&command="+fenetre,
                         success: function(data) {$(fenetre).empty();
 						document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
-						if (data[3]=='Entrer votre mot de passe'){document.getElementById("d_btn_a").style.display = "block";
+						if (data[3]=='Entrer votre mot de passe' || data[4]=='Entrer votre mot de passe' ){document.getElementById("d_btn_a").style.display = "block";
 						document.getElementById("d_btn_al").style.display = "block";}
 							},
 						error: function() { 
@@ -486,7 +486,6 @@ setTimeout(var_sp, tempo_devices, idsp);
 
 
 	
-	
 		
 });
 /*----------fin document-------------------------------*/
@@ -552,7 +551,15 @@ $('#slider').slider({
 $("#amount").val(sliderMin);
 	
 
-function avby(){ 
+
+/*--------------------------------------------------*/
+ 
+/*------------------------------------------*/
+	
+	
+	
+	
+	function avby(){ 
   // On-click button function
   var idx = document.getElementById("idx").value; 
   var name  =document.getElementById("name").value;
@@ -594,5 +601,63 @@ console.log(rel);
 <?php echo "var info_admin = ". $js_info_admin . ";\n";?>
 document.getElementById("affich_content_info").innerHTML = info_admin[rel];
 
-}			
+}
+	
+	
+	
+function adby(choix) {
+   
+	switch (choix) {
+  case 1:
+	var formData = {
+      app:  $("#app").val(),
+	 command:  $("#command").val(),	
+	 type : $("input[name=type]:checked").val(),	
+	name :  $("#name").val(),
+      idx: $("#idx").val(),
+      idm: $("#idm").val(),
+	var1: $("#var1").val(),
+	var2: $("#var2").val(),
+	coula : $("#coula").val(),
+	coulb : $("#coulb").val(),
+	table :	$("input[name=type_mat]:checked").val(),
+	class : $("#class").val(),
+	var3 : $("#coulc").val(),
+	var4 : $("#could").val(),		
+	variable :	$("input[name=variable]:checked").val(),
+	var5 : $("#fx").val(),
+	var6 : $("#car").val(),		
+    };
+break;				
+ case 2: var fenetre="adb";
+		var formData = {
+	app:  $("#app").val(),		
+ 	idx : $("#idx").val(), 
+  	name :  $("#name").val(),
+	
+	id_img :  $("#id_img").val(),
+	id_txt :  $("#id_txt").val(),
+	texte_bd  :  $("texte_bd").val(),
+	image_bd :  $("#image_bd").val(),
+	 command:  $("#command").val(),
+	};		var fenetre="avb";
+     $('#print').html("idx="+idx+"<br><br>nom dz="+name);			
+break;
+default:
+break;	
+	}
+    $.ajax({
+      type: "GET",
+      url: "ajax.php",
+      data: formData,
+      dataType: "html",
+	success:function (data) {$('#'+fenetre).empty();
+		document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
+      	console.log(data);},
+		error: function() { 
+                          alert('La requête n\'a pas abouti'); 
+                        } 
+    });
+  }	
+	
 </script>
