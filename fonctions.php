@@ -133,7 +133,8 @@ return $data;
 }*/
 //------------------------------------------
 function devices_plan($plan)
-{$L=URLDOMOTICZ."json.htm?type=devices&plan=".$plan;
+{
+	$L=URLDOMOTICZ."json.htm?type=devices&plan=".$plan;
  $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
 $n=0;$al_bat=0;
@@ -764,7 +765,10 @@ case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return
 break;
 case "17" :include ('include/ajout_var_bd.php');//echo "ajout variable effectuée";
 		return;	
-break;		
+break;	
+case "18" :include ('include/ajout_dev_bd.php');//echo "ajout variable effectuée";
+		return;	
+break;			
 default:
 } }
 else {	
@@ -943,6 +947,7 @@ VALUES (NULL, '".$date."', '".$valeur."', '".$icone."');";
 $result = $conn->query($sql);	
 $content=$table."<br> effectuée";		
 ;}
+
 $conn->close();
 
 return $content;}
@@ -957,15 +962,38 @@ default:
 
 }				
 }
-function ajout_var_bd($idx,$name,$id_img,$id_txt,$texte_bd,$image_bd,$command){echo '<em>valeurs enregistrées</em><br>'.'idx : '.$idx,'<br>','nom dz : '.$name,'<br>','id-image : '.$id_img,'<br>','id-texte : '.$id_txt,'<br>','texte à remplacer:'.$texte_bd,'<br>','image de remplacement:'.$image_bd,'<br>','<br>';
-switch ($command) {
-    case "1":$temps_maj=0;
-$message=sql_app(5,"variable_dz",$idx,$name,$id_img,$id_txt,$temps_maj);	
-$message1=sql_app(6,"text_image",$texte_bd,$image_bd);		
- echo $message.$message1;
- break;		
-default;
-return;
+//----------------------------------------
+function mysql_app($data){
+	// SERVEUR SQL connexion
+$choix=$data["command"];
+$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
+if ($conn -> connect_errno) {
+  echo "Failed to connect to MySQL: " . $conn -> connect_error;
+  exit();
+}	
+switch ($choix) {
+    case "1":
+echo '<em>valeurs enregistrées</em><br>'.'idx : '.$data["idx"].'<br>nom dz : '.$data['name'].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br>texte à remplacer:'.$data["texte_bd"].'image de remplacement:'.$data["image_bd"].'<br>','<br>';
+$temps_maj=0;
+//$message=sql_app(5,"variable_dz",$idx,$name,$id_img,$id_txt,$temps_maj);	
+//$message1=sql_app(6,"text_image",$texte_bd,$image_bd);		
+ //echo $message.$message1;		
+return;		
+break;
+    case "2":
+$sql="INSERT INTO `dispositifs` (`num`, `nom_dz`, `idx`, `idm`, `materiel`, `node`, `maj_js`, `id1_html`, `car_max_id1`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `doc`, `observations`) VALUES (NULL, '".$data['name']."', '".$data["idx"]."', '".$data["idm"]."', '".$data["table"]."', '0' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '', '');";		
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
 }
+//
+echo '<em>valeurs enregistrées</em><br>'.'type : '.$data["type"].'<br>,idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
+//	
+break;
+default:
 }
+$conn->close();
+
+return;}
 ?>
