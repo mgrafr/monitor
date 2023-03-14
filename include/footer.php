@@ -477,8 +477,8 @@ $("#zm").click(function () {
 tempo_devices=<?php echo TEMPO_DEVICES_DZ;?>;
 var idsp=1;if (tempo_devices>14999)	var_sp(idsp);
 function var_sp(idsp){
-  $.get( "ajax.php?app=data_var&variable=29", function( data ) {
-  var variable_sp = data;
+  $.get( "ajax.php?app=data_var&variable=29", function(datas) {
+  var variable_sp = datas;
   if (variable_sp==1){maj_devices(plan);maj_variable(29,"variable_sp",0,2);}
   });
 setTimeout(var_sp, tempo_devices, idsp); 	
@@ -559,36 +559,7 @@ $("#amount").val(sliderMin);
 	
 	
 	
-	function avby(){ 
-  // On-click button function
-  var idx = document.getElementById("idx").value; 
-  var name  =document.getElementById("name").value;
-	var app  =document.getElementById("app").value;
-	var id_img  =document.getElementById("id_img").value;
-	var id_txt  =document.getElementById("id_txt").value;
-	var texte_bd  =document.getElementById("texte_bd").value;
-	var image_bd  =document.getElementById("image_bd").value;
-	var command  =document.getElementById("command").value;var fenetre="avb";
-     $('#print').html("idx="+idx+"<br><br>nom dz="+name);
 	
-	console.log('azerty'+idx);
-$.ajax({ 
-                        type: 'GET', 
-                        url: 'ajax.php', 
-                        dataType: 'text', 
-						data: "app="+app+"&idx="+idx+"&name="+name+"&variable="+id_img+"&device="+id_txt+"&type="+texte_bd+"&table="+image_bd+"&command="+command,
-                        success: function(data) {$(fenetre).empty();
-						document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
-						
-							},
-						error: function() { 
-                          alert('La requête n\'a pas abouti'); 
-                        } 
-});
-
-
-}
-
 	</script>
 
 <script>

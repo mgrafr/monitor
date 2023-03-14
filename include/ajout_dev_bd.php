@@ -3,7 +3,7 @@
 
 
 
-<div id="adb" style="line-height: normal;"><p><span style="color:red">*</span>champ requis</p>	
+<div id="adb" style="line-height: normal;font-size: 14px;"><p><span style="color:red">*</span>champ requis</p>	
 <p style="font-size:14px"> <strong>Domoticz</strong><br><em>type de mise à jour JS</em><span style="color:red">&nbsp;&nbsp;* </span></p>
 <input type="hidden"id="app" value="dev_bd">
 <input type="radio" name="type" value="control"> control
@@ -28,8 +28,8 @@
 <span style="margin-left: 5px;">, off: <input type="text" style="width:100px;margin-left:9px;" id="could"  value=" " ><br>																		<span style="margin-left: 10px;">mot de passe : <input type="radio" name="variable" value="alarme"> alarme & admin
 <input type="radio" name="variable" value="commandes"> commandes
 <input type="radio" name="variable" value"non"> NON<br>
-	<span style="margin-left: 10px;">f() : <textarea id="fx" name="fx" rows="4" cols="50"></textarea><br>
-		car max :<input type="text" style="width:100px;margin-left:9px;" id="car"  value="99"><br>	<br><br><br>
+	<span style="margin-left: 10px;">f() : <input type="number" style="width:30px;margin-left:9px;" id="fx"  value="0" ><em style="color:red">&nbsp;&nbsp;max 2 car </em>, car max :
+	<input type="text" style="width:30px;margin-left:9px;" id="car"  value="99"><br><br><br>
 <button type="button" onclick="adby(2)" style="width:50px;height:30px">Envoi</button>  
 </div>
 
