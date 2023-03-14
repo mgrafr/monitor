@@ -1,4 +1,4 @@
-<a href="fonctions.php">fonctions</a><?php
+<?php
 session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 require('admin/config.php');
