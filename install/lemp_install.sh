@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 # Ce script installe LEMP sur Ubuntu Debian 11.
 echo "Ce script installera automatiquement LEMP fonctionnelle . Vous devez être connecté à Internet "
-
 #Comment this section out and jump down to the next section to set your own defaults for a truly unattended install...
 echo "Avant de commencer l’installation, veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL:"
 echo "indiquer le nom de l'utilisateur de Maria db : "
@@ -33,25 +32,21 @@ apt-get install mariadb-server -y
 echo "démarrage et activation du service"
 systemctl start mariadb
 systemctl enable mariadb
-
-echo "securiser MariaDB :"
-spawn /usr/local/mysql/bin/mysql_secure_installation
-expect "Enter current password for root (enter for none):"
-send "$mp\r"
-expect "Set root password?"
-send "n\r"
-#expect "New password:"
-#send "\r"
-#expect "Re-enter new password:"
-#send "password\r"
-expect "Remove anonymous users?"
-send "y\r"
-expect "Disallow root login remotely?"
-send "y\r"
-expect "Remove test database and access to it?"
-send "y\r"
-expect "Reload privilege tables now?"
-send "y\r"
+echo "------------------------------------------------------"
+echo "securiser MariaDB : définir le Mot de passe pour Root"
+read root_pwd
+mysql -sfu  -e "UPDATE mysql.user SET Password=PASSWORD('${root_pwd}') WHERE User='root';"
+echo "-- supprimer les utilisateurs anonymes"
+mysql -sfu  -e "DELETE FROM mysql.user WHERE User='';"
+echo "-- supprimer les fonctionnalités root distantes"
+mysql -sfu  -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
+echo "-- supprimer le 'test' de la base de données"
+mysql -sfu  -e "DROP DATABASE IF EXISTS test;"
+echo "-- s'assurer qu'il n'existe pas des autorisations persistantes"
+mysql -sfu  -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
+mysql -sfu  -e "FLUSH PRIVILEGES;"
+echo "MariaDB est maintenant sécurisée"
+echo "----------------------------------------------------"
 echo "Maria db création de la base monitor."
 mysql -uroot  -e "CREATE DATABASE monitor CHARACTER SET UTF8;"
 echo "Création de l'utilisateur : "$maria_name
@@ -59,6 +54,7 @@ mysql -uroot  -e "CREATE USER '${maria_name}'@'%' IDENTIFIED BY '${mp}'; "
 echo "fournir tous les privilèges à " $maria_name
 mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO '${maria_name}'@'%';"
 mysql -uroot  -e "flush privileges";
+echo "----------------------------------------------------"
 echo "Installer NGINX"
 apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
@@ -109,6 +105,7 @@ echo "installation de Monitor:"
 git clone https://github.com/mgrafr/monitor.git /usr/share/nginx/html/monitor
 echo "importer les tables text_image et dispositifs"
 mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
+mysql -root monitor < /www/html/monitor/bd_sql/variables_dz.sql
 mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de default.conf"
