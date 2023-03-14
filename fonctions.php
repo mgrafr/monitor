@@ -972,28 +972,33 @@ if ($conn -> connect_errno) {
   exit();
 }	
 switch ($choix) {
-    case "1":
-echo '<em>valeurs enregistrées</em><br>'.'idx : '.$data["idx"].'<br>nom dz : '.$data['name'].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br>texte à remplacer:'.$data["texte_bd"].'image de remplacement:'.$data["image_bd"].'<br>','<br>';
-$temps_maj=0;
-//$message=sql_app(5,"variable_dz",$idx,$name,$id_img,$id_txt,$temps_maj);	
-//$message1=sql_app(6,"text_image",$texte_bd,$image_bd);		
- //echo $message.$message1;		
-return;		
+	case "1":
+echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';
+//
+$sql="INSERT INTO `variables_dz` (`num`, `id_m_img`, `id_m_txt`, `nom_dz`, `id_dz`, `temps_maj`) VALUES (NULL, '".$data['id_img']."', '".$data['id_txt']."', '".$data['name']."', '".$data['idx']."', '0');";
+maj_query($conn,$sql);		
+echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';
+//
+$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
+maj_query($conn,$sql);			
 break;
     case "2":
 $sql="INSERT INTO `dispositifs` (`num`, `nom_dz`, `idx`, `idm`, `materiel`, `node`, `maj_js`, `id1_html`, `car_max_id1`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `doc`, `observations`) VALUES (NULL, '".$data['name']."', '".$data["idx"]."', '".$data["idm"]."', '".$data["table"]."', '0' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '', '');";		
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
 //
 echo '<em>valeurs enregistrées</em><br>'.'type : '.$data["type"].'<br>,idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
-//	
+//
+maj_query($conn,$sql);			
 break;
 default:
 }
-$conn->close();
-
+$conn->close();		
 return;}
+//----------------------------------------
+function maj_query($conn,$sql){
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully<br>";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}	
+}
 ?>
