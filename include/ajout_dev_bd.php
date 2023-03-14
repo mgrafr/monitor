@@ -30,7 +30,7 @@
 <input type="radio" name="variable" value"non"> NON<br>
 	<span style="margin-left: 10px;">f() : <textarea id="fx" name="fx" rows="4" cols="50"></textarea><br>
 		car max :<input type="text" style="width:100px;margin-left:9px;" id="car"  value="99"><br>	<br><br><br>
-<button type="button" onclick="adby(1)" style="width:50px;height:30px">Envoi</button>  
+<button type="button" onclick="adby(2)" style="width:50px;height:30px">Envoi</button>  
 </div>
 
 <script>	 

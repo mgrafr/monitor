@@ -606,9 +606,22 @@ document.getElementById("affich_content_info").innerHTML = info_admin[rel];
 	
 	
 function adby(choix) {
-   
-	switch (choix) {
-  case 1:
+switch (choix) {
+	case 1: 
+	var fenetre="avb";
+	var formData = {
+	app:  $("#app").val(),		
+ 	idx : $("#idx").val(), 
+  	name :  $("#name").val(),
+	id_img :  $("#id_img").val(),
+	id_txt :  $("#id_txt").val(),
+	texte_bd  : $("#texte_bd").val(),
+	image_bd :  $("#image_bd").val(),
+	 command:  $("#command").val(),
+	};
+     break;			
+  case 2:
+	var fenetre="adb";	
 	var formData = {
       app:  $("#app").val(),
 	 command:  $("#command").val(),	
@@ -629,21 +642,7 @@ function adby(choix) {
 	var6 : $("#car").val(),		
     };
 break;				
- case 2: var fenetre="adb";
-		var formData = {
-	app:  $("#app").val(),		
- 	idx : $("#idx").val(), 
-  	name :  $("#name").val(),
-	
-	id_img :  $("#id_img").val(),
-	id_txt :  $("#id_txt").val(),
-	texte_bd  :  $("texte_bd").val(),
-	image_bd :  $("#image_bd").val(),
-	 command:  $("#command").val(),
-	};		var fenetre="avb";
-     $('#print').html("idx="+idx+"<br><br>nom dz="+name);			
-break;
-default:
+ default:
 break;	
 	}
     $.ajax({
