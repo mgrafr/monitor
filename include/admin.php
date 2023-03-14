@@ -31,7 +31,8 @@ Entrer votre mot de passe
 		<a class="admin1" href="#admin" rel="17" title="reponse2" >Enregistrer Variable DZ dans SQL&nbsp;&nbsp;</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=0 style="width:25px;display:inline;"></a><br>
 		<a class="admin1" href="#admin" rel="18" title="reponse2" >Enregistrer Dispositifs DZ dans SQL&nbsp;&nbsp;</a>
-		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=7 style="width:25px;display:inline;"></a></p>		
+		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=7 style="width:25px;display:inline;"></a><br><br>
+			<a href="http://<?php echo IPMONITOR;?>/phpmyadmin" target="_blank"><img src="images/PhpMyAdmin_logo.svg" style="width:80px" alt=""/></a></p>		
 <div id="reponse1"></div>
 <div id="reponse2" style="height:auto"></div>
 
