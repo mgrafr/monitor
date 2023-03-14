@@ -978,9 +978,8 @@ echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$da
 $sql="INSERT INTO `variables_dz` (`num`, `id_m_img`, `id_m_txt`, `nom_dz`, `id_dz`, `temps_maj`) VALUES (NULL, '".$data['id_img']."', '".$data['id_txt']."', '".$data['name']."', '".$data['idx']."', '0');";
 maj_query($conn,$sql);		
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';
-//
-$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
-maj_query($conn,$sql);			
+if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
+maj_query($conn,$sql);}			
 break;
     case "2":
 $sql="INSERT INTO `dispositifs` (`num`, `nom_dz`, `idx`, `idm`, `materiel`, `node`, `maj_js`, `id1_html`, `car_max_id1`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `doc`, `observations`) VALUES (NULL, '".$data['name']."', '".$data["idx"]."', '".$data["idm"]."', '".$data["table"]."', '0' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '', '');";		
