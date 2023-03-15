@@ -25,9 +25,10 @@
 <input type="radio" name="type_mat" value="autres"> autres<br>
 <span style="margin-left: 10px;">Class (lampes) : <input type="text" style="width:200px;margin-left:9px;" id="class"  value=" " ><br>
 <span style="margin-left: 10px;">Couleur lampes : on <input type="text" style="width:100px;margin-left:9px;" id="coulc"  value=" " >
-<span style="margin-left: 5px;">, off: <input type="text" style="width:100px;margin-left:9px;" id="could"  value=" " ><br>																		<span style="margin-left: 10px;">mot de passe : <input type="radio" name="variable" value="alarme"> alarme & admin
-<input type="radio" name="variable" value="commandes"> commandes
-<input type="radio" name="variable" value"non"> NON<br>
+<span style="margin-left: 5px;">, off: <input type="text" style="width:100px;margin-left:9px;" id="could"  value=" " ><br>
+<span style="margin-left: 10px;">mot de passe : <input type="radio" name="mot_pass" value="alarme"> alarme & admin
+<input type="radio" name="mot_pass" value="commandes"> commandes
+<input type="radio" name="mot_pass" value"non"> NON<br>
 	<span style="margin-left: 10px;">f() : <input type="number" style="width:30px;margin-left:9px;" id="fx"  value="0" ><em style="color:red">&nbsp;&nbsp;max 2 car </em>, car max :
 	<input type="text" style="width:30px;margin-left:9px;" id="car"  value="99"><br><br><br>
 <button type="button" onclick="adby(2)" style="width:50px;height:30px">Envoi</button>  
