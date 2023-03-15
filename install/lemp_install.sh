@@ -9,8 +9,8 @@ echo "Utilisateur maria db  enregistré"
 echo "Mot de passe pour "$maria_name
 read -s mp
 echo "Veuillez confirmer le mot de passe :"
-read -s pq
 while [ $mp != $pq ]; do
+read -s pq
        echo "Le mot de passe ne correspond pas, veuillez réessayer:"
        read -s pq
 done
@@ -35,16 +35,16 @@ systemctl enable mariadb
 echo "------------------------------------------------------"
 echo "securiser MariaDB : définir le Mot de passe pour Root"
 read root_pwd
-mysql -sfu  -e "UPDATE mysql.user SET Password=PASSWORD('${root_pwd}') WHERE User='root';"
+mysql -sfu root p$root_pwd -e "UPDATE mysql.user SET Password=PASSWORD('${root_pwd}') WHERE User='root';"
 echo "-- supprimer les utilisateurs anonymes"
-mysql -sfu  -e "DELETE FROM mysql.user WHERE User='';"
+mysql -sfu root p$root_pwd -e "DELETE FROM mysql.user WHERE User='';"
 echo "-- supprimer les fonctionnalités root distantes"
-mysql -sfu  -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
+mysql -sfu root p$root_pwd -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
 echo "-- supprimer le 'test' de la base de données"
-mysql -sfu  -e "DROP DATABASE IF EXISTS test;"
+mysql -sfu root p$root_pwd -e "DROP DATABASE IF EXISTS test;"
 echo "-- s'assurer qu'il n'existe pas des autorisations persistantes"
-mysql -sfu  -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
-mysql -sfu  -e "FLUSH PRIVILEGES;"
+mysql -sfu root p$root_pwd -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
+mysql -sfu root p$root_pwd -e "FLUSH PRIVILEGES;"
 echo "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
 echo "Maria db création de la base monitor."
@@ -90,10 +90,8 @@ apt install php-bz2 php-tcpdf php-phpmyadmin-shapefile php-twig-i18n-extension
 apt-get install -t bullseye-backports phpmyadmin
 echo "Creer un lien symbolique depuis les fichiers d'installation vers le repertoire des pages PHP"
 ln -s /usr/share/phpmyadmin /usr/share/nginx/html
-
 echo "LEMP : Adjustement php listen"
 #sed -i 's/listen = 127.0.0.1:9000/listen=/var/run/php/php-fpm.sock/g' /etc/php/8.2/fpm/pool.d/www.conf
-cp * /etc/nginx/conf.d
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
 echo "LEMP : redemarrage php"
@@ -110,7 +108,7 @@ mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de default.conf"
 cp /usr/share/nginx/html/monitor/share/nginx/default.conf /etc/nginx/conf.d
-sed -i "s/server_name /server_name $server/g" /etc/nginx/conf.d/default.conf
+sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/default.conf
 #sed -i 's/index index.html index.htm/index index.php index.html index.htm/g' /etc/nginx/sites-available/default
 echo "LEMP : Creating a php-info page"
 echo '<?php phpinfo(); ?>' > /usr/share/nginx/html/info.php
