@@ -209,7 +209,7 @@ $('.closeBtn').on('click', function () {
     });
 /* switchOnOff*  */
 
-<?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD" &&  DECOUVERTE!=true)   {sql_plan(0);}	?>
+<?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan(0);}	?>
 rr=new Array();	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
@@ -608,7 +608,7 @@ switch (choix) {
 	class : $("#class").val(),
 	var3 : $("#coulc").val(),
 	var4 : $("#could").val(),		
-	variable :	$("input[name=variable]:checked").val(),
+	variable :	$("input[name=mot_pass]:checked").val(),
 	var5 : $("#fx").val(),
 	var6 : $("#car").val(),		
     };
