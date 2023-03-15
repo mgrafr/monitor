@@ -73,12 +73,12 @@ define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faib
 	20
 ));
 //---------------------------------------
-// Domoticz
-define('IPDOMOTICZ', '');//ip
-define('URLDOMOTICZ', '');//url ex:http://192.168.1.76:8086/
-define('URL_DZ', 'https://domoticz.DOMAINE');//domaine
-define('VARTAB', URLDOMOTICZ.'modules_lua/string_tableaux.lua');//
-define('BASE64', URLDOMOTICZ.'modules_lua/connect.lua');//login et password en Base64
+// Domoticz ou ha
+define('IPDOMOTIC', '');//ip
+define('URLDOMOTIC', '');//url ex:http://192.168.1.76:8086/
+define('DOMDOMOTIC', 'https://sous.DOMAINE');//sous.domaine
+define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//pour DZ
+define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64 pour DZ
 //-----------------------------------------------------------
 // Sauvegardes domoticz
 define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
