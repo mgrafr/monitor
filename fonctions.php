@@ -779,7 +779,7 @@ return ;
 }
 //----------------------------graph-------------------
 function graph($device,$periode){$champ="valeur";
-	if ($_SESSION["exeption_db"]=!"") echo "pas de tables enregistrées dans la bd";return ;							 
+	if ($_SESSION["exeption_db"]=="pas de connexion à la BD") {echo "pas de tables enregistrées dans la bd";return ;}							 
 	$devic=explode('-',$device);$device=$devic[0];$devic[1] = isset($devic[1]) ? $devic[1] : '';
 	if ($devic[1] and $devic[1]!="") $champ=$devic[1];
 require("include/export_tab_sqli.php") ;	
