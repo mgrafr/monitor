@@ -5,9 +5,8 @@ $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]="";
 include ("admin/config.php");
 // Check connection DB
 mysqli_report(MYSQLI_REPORT_OFF);
-$conn = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, 'monitor');
-//if ($conn) echo "pas de BD : ".DBASE	;	
-if ($conn->connect_error) { $_SESSION["exeption_db"]="pas de connexion à la BD";}
+$conn = @new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
+if (!$conn) {echo "pas de BD : ".DBASE	; $_SESSION["exeption_db"]="pas de connexion à la BD"; }
 				   
 //
 // pour vérifier la connexion au net------------------
