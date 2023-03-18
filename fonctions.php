@@ -3,6 +3,19 @@ session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 require('admin/config.php');
 // remplace file_get_contents qui ne fonctionne pas toujours
+function file_http_curl($L){
+$ch = curl_init($L);	
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI3NzE0ZGY2ZDRlZmU0ZWQzYmI4MmI5YTRmN2NlM2UxYSIsImlhdCI6MTY3ODg4ODc1MSwiZXhwIjoxOTk0MjQ4NzUxfQ.UvvrBR60YRqHGqeYZV76nChlWoS1pW-evPJTP4Fcg2k"));
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+$result = curl_exec($ch);
+curl_close($ch);
+return $result;
+	
+}
+
 function file_get_curl($L){	
 $curl = curl_init($L);
 curl_setopt($curl, CURLOPT_TIMEOUT, 30);
@@ -15,7 +28,7 @@ return $retour;
 }
 // valeur d'une variable
 function val_variable($variable){
-$L=URLDOMOTICZ."json.htm?type=command&param=getuservariable&idx=".$variable;
+$L=URLDOMOTIC."json.htm?type=command&param=getuservariable&idx=".$variable;
 $json_string = file_get_curl($L);
 $result = json_decode($json_string, true);
 $lect_var = $result['result'][0];
@@ -26,7 +39,7 @@ return 	$value;
 cette fonction permet egalement suivant le contenu de la variable de
 determiner une image qui peut être afficher (poubelles,fosse septique,...*/
 function status_variables($xx){
-$L=URLDOMOTICZ."json.htm?type=command&param=getuservariables";
+$L=URLDOMOTIC."json.htm?type=command&param=getuservariables";
 $json_string = file_get_curl($L);
 $result = json_decode($json_string, true);
 $n=0;$vardz=array();$txtimg=array();$t_maj="0";
@@ -73,7 +86,7 @@ $data[0] = [
  return $data;  
 }
 function maj_variable($idx,$name,$valeur,$type){
-	$file=URLDOMOTICZ.'json.htm?type=command&param=updateuservariable&idx='.$idx.'&vname='.$name.'&vtype='.$type.'&vvalue='.$valeur;
+	$file=URLDOMOTIC.'json.htm?type=command&param=updateuservariable&idx='.$idx.'&vname='.$name.'&vtype='.$type.'&vvalue='.$valeur;
    $result = file_get_curl($file);
 $json = json_decode($result, true);
 $resultat['status']=$json['status'];
@@ -83,9 +96,9 @@ return $resultat;
 function sql_variable($t,$ind){
 	if ($_SESSION["exeption_db"]=="pas de connexion à la BD") return ;
 	$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
-	if ($ind==0){$sql="SELECT * FROM `variables_dz` WHERE id_dz ='".$t."' ;" ;}
+	if ($ind==0){$sql="SELECT * FROM `variables` WHERE id_var='".$t."' ;" ;}
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
-	if ($ind==2){$sql="SELECT * FROM `variables_dz` ORDER BY `id_dz` DESC;" ;}
+	if ($ind==2){$sql="SELECT * FROM `variables` ORDER BY `id_var` DESC;" ;}
 	$result = $conn->query($sql);
 	$row_cnt = $result->num_rows;
 	if ($row_cnt==0) {return  null;}
@@ -94,7 +107,7 @@ function sql_variable($t,$ind){
 	}
 ///fonctions utilisées pour les dispositifs		
 /*function status_devices($device){
-$L=URLDOMOTICZ."json.htm?type=devices&rid=".$device;
+$L=URLDOMOTIC."json.htm?type=devices&rid=".$device;
 $json_string = file_get_curl($L);
  $parsed_json = json_decode($json_string, true);
 $lect_device = $parsed_json['result'][0];
@@ -131,16 +144,40 @@ if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"
 	];
 return $data;
 }*/
-//------------------------------------------
+//----POUR HA--------------------------------------
+function devices_zone($zone){
+$L="http://192.168.1.5:8123/api/states";	
+$json_string=file_http_curl($L);$n=0;$ha=array();//echo $json_string;
+$lect_device = json_decode($json_string);
+foreach ($lect_device as $xxx){
+	
+	$ha[$n]['idx'] = $xxx->{'entity_id'};
+	$ha[$n]['statut'] = $xxx->{'state'};
+	$tmp = $xxx->{'attributes'}->{'node_Name'};if ($tmp) $ha[$n]['Name']; 
+	$ha[$n]['Update']  = substr($xxx->{'last_updated'},0, 19);  
+	$tmp=$xxx->{'attributes'}->{'unit_of_measurement'};if ($tmp) $ha[$n]['unite'] = $tmp;
+	$tmp=$xxx->{'attributes'}->{'node_Location'};if ($tmp) $ha[$n]['description'] = $tmp;
+	$tmp=$xxx->{'attributes'}->{'value'};if ($tmp) {$ha[$n]['value'] = $tmp;$ha[$n]['Data'] = $tmp;}
+	$tmp=$xxx->{'attributes'}->{'temperature'};if ($tmp) $ha[$n]['temp'] = $tmp;
+	$tmp=$xxx->{'attributes'}->{'humidity'};if ($tmp) $ha[$n]['humidity'] = $tmp;
+	$tmp=$xxx->{'attributes'}->{'pressure'};if ($tmp) $ha[$n]['pression'] = $tmp;
+	$tmp=$xxx->{'attributes'}->{'forecast'}->{'friendly_name'};if ($tmp) $ha[$n]['Name'] = $tmp;
+	$tmp=$xxx->{'attributes'}->{'temperature'};if ($tmp) {$ha[$n]['Data']=$xxx->{'attributes'}->{'temperature'}.' '.$xxx->{'attributes'}->{'temperature_unit'}.' , '.$xxx->{'attributes'}->{'humidity'}. '% ,'.$xxx->{'attributes'}->{'pressure'}.' '.$xxx->{'attributes'}->{'pressure_unit'};}
+		$n++;
+	$tmp=$xxx->{'attributes'}->{'device_class'};if ($tmp) $ha[$n]['device_class'] = $tmp;
+}
+
+return $ha;}
+//-------POUR DZ------------------------------------
 function devices_plan($plan)
 {
-	$L=URLDOMOTICZ."json.htm?type=devices&plan=".$plan;
+	$L=URLDOMOTIC."json.htm?type=devices&plan=".$plan;
  $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
-$n=0;$al_bat=0;
-while (isset($parsed_json['result'][$n])==true)
+$n=0;$al_bat=0;$parsed_json = $parsed_json['result'];
+while (isset($parsed_json[$n])==true)
 {
-$lect_device = $parsed_json['result'][$n];  
+$lect_device = $parsed_json[$n];  
 $t=$lect_device["idx"];$periph=array();
 $periph=sql_plan($t);$bat="";if ($periph['idm']=="") {$periph['idm']="NULL";}
 if (CHOIXID=='idm') {$t=$periph['idm'];}
@@ -149,12 +186,17 @@ if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]=
 if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
 if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
 if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);}	
-if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}	
+if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
+	
+	
+	
 	$data[$t] = ['choixid' => CHOIXID,
 	'idx' => $lect_device["idx"],
-	 'temp' => $lect_device["Temp"],
+	'deviceType' => $lect_device["SwitchType"],	
+	'emplacement' => $lect_device["description"],					 
+	'temp' => $lect_device["Temp"],
 	'hum'   => $lect_device["Humidity"],
-'bat' => $lect_device["BatteryLevel"],
+	'bat' => $lect_device["BatteryLevel"],
 	 'ID' => $lect_device["ID"],
 	'Data' => $lect_device["Data"],
 	'Name' => $lect_device["Name"],
@@ -201,7 +243,7 @@ if ($auth<3){
 	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
 	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
-	$json=URLDOMOTICZ.'json.htm?type=command&param='.$json1;
+	$json=URLDOMOTIC.'json.htm?type=command&param='.$json1;
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
@@ -858,7 +900,7 @@ echo 'fin';
 }
 //
 function log_dz($log){
-$L=URLDOMOTICZ."json.htm?type=command&param=getlog&laztlogtime=0&loglevel=".$log;
+$L=URLDOMOTIC."json.htm?type=command&param=getlog&laztlogtime=0&loglevel=".$log;
 $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
 $parsed_json = $parsed_json['result'];
@@ -934,7 +976,7 @@ $number = $result->num_rows;if ($number>0) {
 	$content = str_replace('$$','',$content);	}
 }
 }
-if ($choix==5) {$sql="INSERT INTO ".$table." (`id_m_img`, `id_m_txt`, `nom_dz`, `id_dz`, `temps_maj`) 
+if ($choix==5) {$sql="INSERT INTO ".$table." (`id_m_img`, `id_m_txt`, `nom_var`, `id_var`, `temps_maj`) 
 VALUES ('".$icone."', '".$val_bd1."', '".$date."', '".$valeur."', '".$val_bd2."');";
 //echo $sql;				
 $result = $conn->query($sql);
@@ -975,16 +1017,16 @@ switch ($choix) {
 	case "1":
 echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';
 //
-$sql="INSERT INTO `variables_dz` (`num`, `id_m_img`, `id_m_txt`, `nom_dz`, `id_dz`, `temps_maj`) VALUES (NULL, '".$data['id_img']."', '".$data['id_txt']."', '".$data['name']."', '".$data['idx']."', '0');";
+$sql="INSERT INTO `variables` (`num`, `id_m_img`, `id_m_txt`, `nom_var`, `id_var`, `temps_maj`) VALUES (NULL, '".$data['id_img']."', '".$data['id_txt']."', '".$data['name']."', '".$data['idx']."', '0');";
 maj_query($conn,$sql);		
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';
 if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
 maj_query($conn,$sql);}			
 break;
     case "2":
-$sql="INSERT INTO `dispositifs` (`num`, `nom_dz`, `idx`, `idm`, `materiel`, `node`, `maj_js`, `id1_html`, `car_max_id1`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `doc`, `observations`) VALUES (NULL, '".$data['name']."', '".$data["idx"]."', '".$data["idm"]."', '".$data["table"]."', '0' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '', '');";		
+$sql="INSERT INTO `dispositifs` (`num`, `nom appareil`, `nom_dz`, `idx`, `ID`, `idm`, `materiel`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["idm"]."', '".$data["table"]."', '0' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
 //
-echo '<em>valeurs enregistrées</em><br>'.'type : '.$data["type"].'<br>,idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
+echo '<em>valeurs enregistrées</em><br>'.'nom : '.$data["nom"].''.'type : '.$data["type"].'<br>,idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
 //
 maj_query($conn,$sql);			
 break;
