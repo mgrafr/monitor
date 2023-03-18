@@ -595,11 +595,13 @@ switch (choix) {
 	var fenetre="adb";	
 	var formData = {
       app:  $("#app").val(),
-	 command:  $("#command").val(),	
+	 command:  $("#command").val(),
+	 nom :  $("#nom").val(),	
 	 type : $("input[name=type]:checked").val(),	
-	name :  $("#name").val(),
-      idx: $("#idx").val(),
-      idm: $("#idm").val(),
+	 name :  $("#name").val(),
+     idx: $("#idx").val(),
+	ID: $("deviceididx").val(),	
+    idm: $("#idm").val(),
 	var1: $("#var1").val(),
 	var2: $("#var2").val(),
 	coula : $("#coula").val(),
