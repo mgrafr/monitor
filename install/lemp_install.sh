@@ -32,10 +32,18 @@ apt-get install mariadb-server -y
 echo "démarrage et activation du service"
 systemctl start mariadb
 systemctl enable mariadb
-echo "------------------------------------------------------"
+echo "----------------------------------------------------"
+echo "Maria db création de la base monitor."
+mysql -uroot  -e "CREATE DATABASE monitor CHARACTER SET UTF8;"
+echo "Création de l'utilisateur : "$maria_name
+mysql -uroot  -e "CREATE USER '${maria_name}'@'%' IDENTIFIED BY '${mp}'; "
+echo "fournir tous les privilèges à " $maria_name
+mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO '${maria_name}'@'%';"
+mysql -uroot  -e "flush privileges";
+echo "----------------------------------------------------"
 echo "securiser MariaDB : définir le Mot de passe pour Root"
 read root_pwd
-mysql -sfu --user='root' --password='$root_pwd' -e "UPDATE mysql.user SET Password=PASSWORD('${root_pwd}') WHERE User='root';"
+mysql -sfu --user='root' --password='$root_pwd' --database="$database" -e "UPDATE mysql.user SET Password=PASSWORD('${root_pwd}') WHERE User='root';"
 echo "-- supprimer les utilisateurs anonymes"
 mysql -sfu --user='root' --password='$root_pwd' -e "DELETE FROM mysql.user WHERE User='';"
 echo "-- supprimer les fonctionnalités root distantes"
@@ -45,15 +53,8 @@ mysql -sfu --user='root' --password='$root_pwd' -e "DROP DATABASE IF EXISTS test
 echo "-- s'assurer qu'il n'existe pas des autorisations persistantes"
 mysql -sfu --user='root' --password='$root_pwd' -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
 mysql -sfu --user='root' --password='$root_pwd' -e "FLUSH PRIVILEGES;"
-echo "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
-echo "Maria db création de la base monitor."
-mysql -uroot  -e "CREATE DATABASE monitor CHARACTER SET UTF8;"
-echo "Création de l'utilisateur : "$maria_name
-mysql -uroot  -e "CREATE USER '${maria_name}'@'%' IDENTIFIED BY '${mp}'; "
-echo "fournir tous les privilèges à " $maria_name
-mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO '${maria_name}'@'%';"
-mysql -uroot  -e "flush privileges";
+echo "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
 echo "Installer NGINX"
 apt-get install nginx apache2-utils mlocate  -y
