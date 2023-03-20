@@ -29,8 +29,8 @@ require 'string_modect'
 local a1={'porte entree','Open','porte-ouverte','porte_ouverte_entree'};
 local a2={'porte ar cuisine','Open','porte-ouverte','porte_ouverte_cuisine'};
 local a3={'Porte_fenetre','Open',':porte-ouverte','fenetre_ouverte_sejour'};
-local a4={'temp_pir_salon_motion','On','intrusion','intrusion_salon'};
-local a5={'temp_pir ar cuisine_motion','On','intrusion','intrusion_cuisine'};
+local a4={'pir_salon_motion','On','intrusion','intrusion_salon'};
+local a5={'pir ar cuisine_motion','On','intrusion','intrusion_cuisine'};
 local A1={a1,a2,a3,a4,a5};local A2={a1,a2,a3};
 --
 
@@ -42,8 +42,8 @@ return {
 	on = {
 	
 		devices = {
-			'temp_pir ar cuisine_motion',
-		    'temp_pir_salon_motion',
+			'pir ar cuisine_motion',
+		    'pir_salon_motion',
 		    'porte entree',
 		    'porte ar cuisine',
 		    'porte_fenetre'

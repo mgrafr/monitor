@@ -48,7 +48,7 @@ t = {};
 -- si 2 champs , ajouter ..'#champ2#"..split_str[2] après datetime.. 
 -- exemple "don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime.."#champ2#"..split_str[2]
 for deviceName,deviceValue in pairs(devicechanged) do
-    if (deviceName=='temp_pir_salon_temperature_air') then
+    if (deviceName=='pir_salon_temp') then
         print ("temp_salon:"..deviceValue);
 	    libelle="temp_salon#valeur";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
         envoi_fab(don)
@@ -64,7 +64,8 @@ for deviceName,deviceValue in pairs(devicechanged) do
             if (pressionch<pression_chaudiere and uservariables['pression-chaudiere']=="ras") then 
                 commandArray['Variable:pression-chaudiere'] = "manque_pression";  print("pression basse")
             elseif (pressionch<pression_chaudiere and uservariables['pression-chaudiere']~="pression_basse") then 
-                commandArray['Variable:pression-chaudiere']="ras"    
+                commandArray['Variable:pression-chaudiere']="erreur" 
+            elseif (pressionch>=pression_chaudiere) then commandArray['Variable:pression-chaudiere']="ras"   
             end
         end
      elseif (deviceName=='truffiere - Linky' and d_linky~=day) then print('linky'..tostring(deviceValue))
@@ -90,7 +91,7 @@ for deviceName,deviceValue in pairs(devicechanged) do
         end
 	    libelle="debit_spa#valeur";don=" "..libelle.."#"..t[0].."#"..datetime
 	    envoi_fab(don)   
-    elseif (deviceName=='temp pir ar cuisine') then 
+    elseif (deviceName=='pir ar cuisine') then 
 	    libelle="temp_cuisine#valeur";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
         envoi_fab(don)
     elseif (deviceName=='THB_Temperature') then 
