@@ -6,7 +6,7 @@ require('admin/config.php');
 function file_http_curl($L){
 $ch = curl_init($L);	
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI3NzE0ZGY2ZDRlZmU0ZWQzYmI4MmI5YTRmN2NlM2UxYSIsImlhdCI6MTY3ODg4ODc1MSwiZXhwIjoxOTk0MjQ4NzUxfQ.UvvrBR60YRqHGqeYZV76nChlWoS1pW-evPJTP4Fcg2k"));
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -52,12 +52,11 @@ $name = $lect_var['Name'];
 $type = $lect_var['Type'];
 $exist_id="oui";$vardz = sql_variable($idx,0);
 if ($vardz==null){$exist_id="non" ;}
-//if ($exist_id=="oui"){
-$id_m_txt = isset($vardz['id_m_txt']) ? $vardz['id_m_txt'] : '';
-$id_m_img = isset($vardz['id_m_img']) ? $vardz['id_m_img'] : '';
-$temp_maj = isset($vardz['temps_maj']) ? $vardz['temps_maj'] : '';	
+$id_m_txt = isset($vardz['id2html']) ? $vardz['id2_html'] : '';
+$id_m_img = isset($vardz['id1_html']) ? $vardz['id1_html'] : '';
+//$temp_maj = isset($vardz['temps_maj']) ? $vardz['temps_maj'] : '';	
 
-if(($temp_maj>$t_maj) && ($value!="0")) {$t_maj=$temp_maj;}
+//if(($temp_maj>$t_maj) && ($value!="0")) {$t_maj=$temp_maj;}
 
 $txtimg = sql_variable($value,1);
 	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
@@ -96,13 +95,24 @@ return $resultat;
 function sql_variable($t,$ind){
 	if ($_SESSION["exeption_db"]=="pas de connexion à la BD") return ;
 	$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
-	if ($ind==0){$sql="SELECT * FROM `variables` WHERE id_var='".$t."' ;" ;}
+	if ($ind==0){$sql="SELECT * FROM `dispositifs` WHERE (idx='".$t."' AND maj_js='variable') ;" ;}
+	if ($ind==2){$sql="SELECT * FROM `dispositifs` WHERE maj_js='variable';" ;}
+	//if ($ind==0){$sql="SELECT * FROM `variables` WHERE id_var='".$t."' ;" ;}
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
-	if ($ind==2){$sql="SELECT * FROM `variables` ORDER BY `id_var` DESC;" ;}
+	//if ($ind==2){$sql="SELECT * FROM `variables` ORDER BY `id_var` DESC;" ;}
 	$result = $conn->query($sql);
 	$row_cnt = $result->num_rows;
 	if ($row_cnt==0) {return  null;}
+	if 	($ind==2) {$n=0;
+		while ($ligne = $result->fetch_assoc()) {
+			$retour[$n]['idx'] = $ligne['idx'];
+			$retour[$n]['nom_dz'] = $ligne['nom_dz'];
+			$retour[$n]['id_img'] = $ligne['id1_html'];
+			$retour[$n]['id_txt'] = $ligne['id2_html'];
+			$n++;
+		}return $retour;}
 	else {$row = $result->fetch_assoc();
+	
 	return $row;}
 	}
 ///fonctions utilisées pour les dispositifs		
@@ -168,10 +178,17 @@ foreach ($lect_device as $xxx){
 }
 
 return $ha;}
+function devices_id($deviceid){//echo "zertyu";return;
+	 $L="http://192.168.1.5:8123/api/template";$post="";
+//$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
+$json_string=file_http_curl($L);$n=0;$ha=array();echo $json_string;
+//$lect_device = json_decode($json_string);
+	
+	return;}
 //-------POUR DZ------------------------------------
 function devices_plan($plan)
 {
-	$L=URLDOMOTIC."json.htm?type=devices&plan=".$plan;
+$L=URLDOMOTIC."json.htm?type=devices&plan=".$plan;
  $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
 $n=0;$al_bat=0;$parsed_json = $parsed_json['result'];
@@ -810,6 +827,13 @@ case "17" :include ('include/ajout_var_bd.php');//echo "ajout variable effectué
 break;	
 case "18" :include ('include/ajout_dev_bd.php');//echo "ajout variable effectuée";
 		return;	
+break;	
+case "19" : $retour=sql_variable("",2) ;$n=0;
+		while ($retour[$n]['idx']){
+	echo "idx : <span style='color:red'>".$retour[$n]['idx']."</span>   nom :<span style='color:green'>".$retour[$n]['nom_dz']."</span>   id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>   id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span><br>";		
+		echo "--------------------------------<br>";
+			$n++;}
+		return;	
 break;			
 default:
 } }
@@ -1017,16 +1041,16 @@ switch ($choix) {
 	case "1":
 echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';
 //
-$sql="INSERT INTO `variables` (`num`, `id_m_img`, `id_m_txt`, `nom_var`, `id_var`, `temps_maj`) VALUES (NULL, '".$data['id_img']."', '".$data['id_txt']."', '".$data['name']."', '".$data['idx']."', '0');";
+$sql="INSERT INTO `dispositifs` (`num`, `nom appareil`, `nom_dz`, `idx`, `ID`, `idm`, `materiel`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `doc`, `observations`) VALUES (NULL, '".$data['nom']."', ".$data['name']."','".$data["idx"]."','".$data["ID"]."', '', '', '".$data['id_img']."', ' ', NULL, '".$data['id_txt']."', '', '', '', '', '', '0', '', '');";
 maj_query($conn,$sql);		
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';
 if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
 maj_query($conn,$sql);}			
 break;
     case "2":
-$sql="INSERT INTO `dispositifs` (`num`, `nom appareil`, `nom_dz`, `idx`, `ID`, `idm`, `materiel`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["idm"]."', '".$data["table"]."', '0' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
+$sql="INSERT INTO `dispositifs` (`num`, `nom appareil`, `nom_dz`, `idx`, `ID`, `idm`, `materiel`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["table"]."', '0' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
 //
-echo '<em>valeurs enregistrées</em><br>'.'nom : '.$data["nom"].''.'type : '.$data["type"].'<br>,idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
+echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>type : '.$data["type"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
 //
 maj_query($conn,$sql);			
 break;
