@@ -104,7 +104,6 @@ echo "installation de Monitor:"
 git clone https://github.com/mgrafr/monitor.git /usr/share/nginx/html/monitor
 echo "importer les tables text_image et dispositifs"
 mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
-mysql -root monitor < /www/html/monitor/bd_sql/variables.sql
 mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de default.conf"
