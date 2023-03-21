@@ -3,7 +3,7 @@ function sql_plan($t){
 // SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
  if ($t!=0) {
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `idx` = ".$t ;
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE (`idx` = ".$t." AND maj_js!='variable');";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();return $row;}
 else if ($t==0) {$commande="On";

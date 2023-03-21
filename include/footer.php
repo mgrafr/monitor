@@ -14,15 +14,14 @@ require("fonctions.php");
 <!-- JavaScript files placées à la fin du document-->	
 <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-		<script src="js/jquery.backstretch.min.js"></script>
-<script src="js/big-Slide.js"></script>
-<script src="bootstrap/bootstrap-switch-button.js?2"></script>
+		<script src="js/jquery.backstretch.min.js"></script> <script src="bootstrap/bootstrap-switch-button.js?2"></script>
 <script src="js/mes_js.js?4"></script>
 <?php
 if (MQTT==true) echo '<script src="js/mqttws31.js"></script>';?>	
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 
+<script src="js/mes_js.js?4"></script>
 <script>
 /*-------affiche l'image de la page accueil---------------------------------------*/	
 var text1="";var larg = (document.body.clientWidth);
@@ -584,6 +583,8 @@ switch (choix) {
 	app:  $("#app").val(),		
  	idx : $("#idx").val(), 
   	name :  $("#name").val(),
+	nom :  $("#nom").val(),	
+	ID: $("deviceid").val(),	
 	id_img :  $("#id_img").val(),
 	id_txt :  $("#id_txt").val(),
 	texte_bd  : $("#texte_bd").val(),
@@ -600,7 +601,7 @@ switch (choix) {
 	 type : $("input[name=type]:checked").val(),	
 	 name :  $("#name").val(),
      idx: $("#idx").val(),
-	ID: $("deviceididx").val(),	
+	ID: $("deviceid").val(),	
     idm: $("#idm").val(),
 	var1: $("#var1").val(),
 	var2: $("#var2").val(),

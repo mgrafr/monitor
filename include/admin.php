@@ -20,7 +20,9 @@ Entrer votre mot de passe
 		<a class="admin1" href="#admin" rel="10" title="reponse1" >Configuation modect dz alarmes</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=4 style="width:25px;display:inline;"></a><br>
 		<a class="admin1" href="#admin" rel="12" title="reponse1" >Créer fichier idx/nom Domoticz , LISTE</a>
-		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=3 style="width:25px;display:inline;"></a><br>	
+		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=3 style="width:25px;display:inline;"></a><br>
+		<a class="admin1" href="#admin" rel="19" title="reponse1" >LISTE variables</a>
+		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=8 style="width:25px;display:inline;"></a><br>		
 		<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier idx/nom Domoticz , TABLEAU zigbee</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>
 		<a class="admin1" href="#admin" rel="5" title="reponse1" >Configuation monitor</a>
