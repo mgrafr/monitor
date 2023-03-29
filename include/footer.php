@@ -14,14 +14,15 @@ require("fonctions.php");
 <!-- JavaScript files placées à la fin du document-->	
 <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-		<script src="js/jquery.backstretch.min.js"></script> <script src="bootstrap/bootstrap-switch-button.js?2"></script>
-<script src="js/mes_js.js?4"></script>
+		<script src="js/jquery.backstretch.min.js"></script>
+<script src="js/big-Slide.js"></script> 
+<script src="bootstrap/bootstrap-switch-button.js?2"></script>
+<script src="js/mes_js.js"></script>
 <?php
 if (MQTT==true) echo '<script src="js/mqttws31.js"></script>';?>	
 <!-- fin des fichiers script -->
 <!-- scripts-->	
 
-<script src="js/mes_js.js?4"></script>
 <script>
 /*-------affiche l'image de la page accueil---------------------------------------*/	
 var text1="";var larg = (document.body.clientWidth);
@@ -71,7 +72,7 @@ function maj_services(index){
     type: "GET",
     dataType: "json",
     url: "ajax.php",
-    data: "app=services&variable="+index,
+    data: "app=services&variable=0",
     success: function(html){service=html;var count = Object.keys(html).length;
 		if (html){int_maj=html[0].interval_maj;
 		var i, idw,img_serv ,txt_serv = "";
@@ -83,7 +84,7 @@ function maj_services(index){
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){document.getElementById(idt).innerHTML =html[i].Value;}
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){document.getElementById(idt).innerHTML ="";}*/
-	if ((img_serv!="pas image")&&(img_serv!=null)){//console.log(img_serv);
+	if ((img_serv!="pas image")&&(img_serv!=null)){console.log("image="+img_serv);
 		if (idw!=""){if (document.getElementById(idw)){
 			if (img_serv=="none"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
@@ -94,7 +95,10 @@ function maj_services(index){
 	}						}
 		
 	
-	} } }
+	} } },
+						error: function() { 
+                          alert('La requête n\'a pas abouti'); 
+                        } 
   });if (int_maj>0){timemaj=time_maj_al;}	
 		else {timemaj=time_maj}	 
   setTimeout(maj_services, timemaj, 0); 
@@ -580,28 +584,28 @@ switch (choix) {
 	case 1: 
 	var fenetre="avb";
 	var formData = {
-	app:  $("#app").val(),		
+	app :  $("#app").val(),		
  	idx : $("#idx").val(), 
-  	name :  $("#name").val(),
-	nom :  $("#nom").val(),	
-	ID: $("deviceid").val(),	
-	id_img :  $("#id_img").val(),
-	id_txt :  $("#id_txt").val(),
-	texte_bd  : $("#texte_bd").val(),
-	image_bd :  $("#image_bd").val(),
-	 command:  $("#command").val(),
+  	name : $("#name").val(),
+	nom : $("#nom").val(),	
+	ID : $("#ha_id").val(),	
+	id_img : $("#id_img").val(),
+	id_txt : $("#id_txt").val(),
+	texte_bd : $("#texte_bd").val(),
+	image_bd : $("#image_bd").val(),
+	 command : $("#command").val(),
 	};
      break;			
   case 2:
 	var fenetre="adb";	
 	var formData = {
-      app:  $("#app").val(),
-	 command:  $("#command").val(),
-	 nom :  $("#nom").val(),	
-	 type : $("input[name=type]:checked").val(),	
-	 name :  $("#name").val(),
-     idx: $("#idx").val(),
-	ID: $("deviceid").val(),	
+    app:  $("#app").val(),
+	command:  $("#command").val(),
+	nom :  $("#nom").val(),	
+	type : $("input[name=type]:checked").val(),	
+	name :  $("#name").val(),
+    idx: $("#idx").val(),
+	ID : $("#ha_id").val(),
     idm: $("#idm").val(),
 	var1: $("#var1").val(),
 	var2: $("#var2").val(),
@@ -611,7 +615,7 @@ switch (choix) {
 	class : $("#class").val(),
 	var3 : $("#coulc").val(),
 	var4 : $("#could").val(),		
-	variable :	$("input[name=mot_pass]:checked").val(),
+	variable : $("input[name=mot_pass]:checked").val(),
 	var5 : $("#fx").val(),
 	var6 : $("#car").val(),		
     };

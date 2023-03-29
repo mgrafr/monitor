@@ -7,7 +7,7 @@ echo '<div id="avb" style="line-height: normal;"><span style="color:red">*</span
  <span style="margin-left: 10px;">Nom  :<input type="text" style="width:200px;margin-left: 3px;" id="name" value=" " ></span><br>
  <p style="font-size:14px"> <strong>Home Assistant</strong><p>
  <input type="hidden" id="app"  value="var_bd"><input type="hidden" id="command"  value="1">
- <span style="margin-left: 10px;">device ID : <input type="text" style="width:200px;margin-left:10px;" value=" " id="deviceid" ></span><span style="color:red">&nbsp;&nbsp;* </span><br>
+ <span style="margin-left: 10px;">device ID : <input type="text" style="width:200px;margin-left:10px;" value=" " id="ha_id" ></span><span style="color:red">&nbsp;&nbsp;* </span><br>
  <span style="margin-left: 10px;">Nom usuel :<input type="text" style="width:200px;margin-left: 3px;" id="nom" value=" " ></span><br>
   <p style="font-size:14px"> <strong>Base de données SQL</strong><p>
   <span style="margin-left: 10px;">Id Image : <input type="text" style="width:120px;"  id="id_img" value=" " ></span><br>
