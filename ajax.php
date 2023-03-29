@@ -27,7 +27,7 @@ else if ($app=="meteo_concept") {if (DECOUVERTE==true) {include('include/json_de
 else if ($app=="upload_img") {$retour = upload_img($variable);echo json_encode($retour); }
 else if ($app=="upload_conf_img") {cam_config($name,$command,$variable,$idx,$type); }
 else if ($app=="graph") {graph($device,$variable);}	
-else if ($app=="services") {$retour= status_variables($variable);echo json_encode($retour); }
+else if ($app=="services") {$retour= status_variables('1');echo json_encode($retour); }
 else if ($app=="maj_var") {$retour=maj_variable($idx,$name,$variable,$type);echo json_encode($retour);}
 else if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour);}
 else if ($app=="infos_nagios") {api_nagios($variable);}
@@ -35,8 +35,8 @@ else if ($app=="ecran_spa") {echo file_get_curl($variable);}
 else if ($app=="data_var") {echo val_variable($variable);}
 else if ($app=="dev_bd" || $app=="var_bd") {mysql_app($_GET);}
 else if ($app=="ha" || $appp=="ha" ) {$retour=devices_zone($device);echo json_encode($retour);}
-else if ($app=="haid") devices_id($device);//echo json_encode($retour);}
-//else if ($app=="mur_zm") {mur_zm($variable,$command);}
+else if ($app=="haid") {$retour=status_variables('1');echo json_encode($retour);}
+
 else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}
 else if ($app=="admin") {admin($variable,$command);}	//$command=fenetre(administration footer	
