@@ -109,7 +109,6 @@ echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de default.conf"
 cp /usr/share/nginx/html/monitor/share/nginx/default.conf /etc/nginx/conf.d
 sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/default.conf
-#sed -i 's/index index.html index.htm/index index.php index.html index.htm/g' /etc/nginx/sites-available/default
 echo "LEMP : Creating a php-info page"
 echo '<?php phpinfo(); ?>' > /usr/share/nginx/html/info.php
 echo "LEMP INSTALLER: Redemarrage NGINX une derniere fois..."
