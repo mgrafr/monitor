@@ -4,7 +4,7 @@
 define('URLMONITOR', 'DOMAINE');//domaine
 define('IPMONITOR', 'ip');//ip 
 define('MONCONFIG', 'admin/config.php');//fichier config 
-define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
+define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp domoticz
 define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
 define('DISPOSITIFS', 'dispositifs');
 // répertoire des images
@@ -73,12 +73,16 @@ define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faib
 	20
 ));
 //---------------------------------------
-// Domoticz ou ha
-define('IPDOMOTIC', '');//ip
+// Domoticz ou ha 
+define('IPDOMOTIC', '');//ip 1er serveur Domotique
 define('URLDOMOTIC', '');//url ex:http://192.168.1.76:8086/
-define('DOMDOMOTIC', 'https://sous.DOMAINE');//sous.domaine
-define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//pour DZ
-define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64 pour DZ
+define('DOMDOMOTIC', 'https://domoticz.DOMAINE');//domaine
+define('IPDOMOTIC1', '');//ip 2emme serveur Domotique
+define('URLDOMOTIC1', '');//url ex:http://192.168.1.5:8123/
+define('DOMDOMOTIC1', 'https://ha.DOMAINE');//domaine
+//*************************Pour Domoticz
+define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//
+define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64
 //-----------------------------------------------------------
 // Sauvegardes domoticz
 define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
