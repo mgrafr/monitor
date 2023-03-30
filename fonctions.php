@@ -827,10 +827,10 @@ echo "//********************";return;
 break;
 case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
 break;
-case "17" :include ('include/ajout_var_bd.php');//echo "ajout variable effectuée";
+case "17" :include ('include/ajout_var_bd.php');//echo "ajout variable effectué";
 		return;	
 break;	
-case "18" :include ('include/ajout_dev_bd.php');//echo "ajout variable effectuée";
+case "18" :include ('include/ajout_dev_bd.php');//echo "ajout dispositifs effectué";
 		return;	
 break;	
 case "19" : $retour=sql_variable("",2) ;$n=0;
@@ -1005,19 +1005,8 @@ $number = $result->num_rows;if ($number>0) {
 	$content = str_replace('$$','',$content);	}
 }
 }
-if ($choix==5) {$sql="INSERT INTO dispositifs (`nom_dz`) 
-VALUES ('".$valeur."');";echo "azerty";
-//echo $sql;				
-$result = $conn->query($sql);
-$content="mise à jour des tables :<br>-dispositifs ,<br> - ";	
-}
-if ($choix==6) {
-$sql="INSERT INTO ".$table." (`num`, `texte`, `image`, `icone`) 
-VALUES (NULL, '".$date."', '".$valeur."', '".$icone."');";
-//echo $sql;	
-$result = $conn->query($sql);	
-$content=$table."<br> effectuée";		
-;}
+
+
 
 $conn->close();
 
