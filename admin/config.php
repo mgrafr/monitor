@@ -44,8 +44,8 @@ define('DHPASS','MOT_PASSE');
 // idx : idx de Domoticz    idm : idm de monitor (dans ce cas la table "dispositifs" 
 // de la DB "domoticz" est obligatoire mais en cas de problème il faudra renommer tous les dispositifs 
 // dans monitor au lieu de la DB
-define('CHOIXID','idm');// idm ou idx
-define('NUMPLAN','2');// n° du plan regroupant tous les capteurs
+define('CHOIXID','idm');// DZ:idm ou idx ; HA : idm uniquement
+define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
 define('MOTDEPASSE', 'PASS_BD');
