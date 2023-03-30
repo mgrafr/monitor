@@ -24,6 +24,7 @@ echo "LEMP : Debut de l installation"
 echo "mise a jour "
 apt-get update
 echo "Python est normalement installe, pour installer des module , installation de PIP"
+apt-get install sudo
 apt-get install python3-pip
 apt-get install curl
 apt-get install git
@@ -43,16 +44,15 @@ mysql -uroot  -e "flush privileges";
 echo "----------------------------------------------------"
 echo "securiser MariaDB : définir le Mot de passe pour Root"
 read root_pwd
-mysql -sfu --user='root' --password='$root_pwd' --database="$database" -e "UPDATE mysql.user SET Password=PASSWORD('${root_pwd}') WHERE User='root';"
-echo "-- supprimer les utilisateurs anonymes"
-mysql -sfu --user='root' --password='$root_pwd' -e "DELETE FROM mysql.user WHERE User='';"
+mysql --user="root" --password="$root_pwd" --database="monitor" --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
+mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.user WHERE User='';"
 echo "-- supprimer les fonctionnalités root distantes"
-mysql -sfu --user='root' --password='$root_pwd' -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
+mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
 echo "-- supprimer le 'test' de la base de données"
-mysql -sfu --user='root' --password='$root_pwd' -e "DROP DATABASE IF EXISTS test;"
+mysql --user="root" --password="$root_pwd"  -e "DROP DATABASE IF EXISTS test;"
 echo "-- s'assurer qu'il n'existe pas des autorisations persistantes"
-mysql -sfu --user='root' --password='$root_pwd' -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
-mysql -sfu --user='root' --password='$root_pwd' -e "FLUSH PRIVILEGES;"
+mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
+mysql --user="root" --password="$root_pwd"  -e "FLUSH PRIVILEGES;"
 echo "----------------------------------------------------"
 echo "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
