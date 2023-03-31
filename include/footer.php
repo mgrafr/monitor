@@ -212,7 +212,7 @@ $('.closeBtn').on('click', function () {
     });
 /* switchOnOff*  */
 
-<?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan(0);}	?>
+<?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	?>
 rr=new Array();	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 

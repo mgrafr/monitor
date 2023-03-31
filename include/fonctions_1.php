@@ -2,11 +2,18 @@
 function sql_plan($t){
 // SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
- if ($t!=0) {
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE (`idx` = ".$t." AND maj_js!='variable');";
+ if (($t!='0')  && (strlen($t) < 4)) {
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$t' AND maj_js <> 'variable';";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();return $row;}
-else if ($t==0) {$commande="On";
+else if ($t!='0'  && strlen($t) > 3) {
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$t' AND maj_js <> 'variable';";
+		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
+		$row = $result->fetch_assoc();
+	return $row;}
+else if ($t=='0') {$commande="On";
+if (IPDOMOTIC1 == ""){echo "<!-- ha -->";}
+if (IPDOMOTIC != ""){
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `maj_js` LIKE '%onoff%' " ;
 	$result = $conn->query($sql);//echo "/*";
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){
@@ -16,8 +23,8 @@ else if ($t==0) {$commande="On";
        	else {$sl='").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';}
 		$s=$s.$sl;
 		echo $s."\r\n" ;}
-	//echo "*/";
-	return;}
+//echo "*/";}
+	}return;}
 else echo "pas d'id_dz";
 }
 ?>
