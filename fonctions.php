@@ -2,12 +2,13 @@
 session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 require('admin/config.php');
+include ("include/fonctions_1.php");//fonction sql_plan
 // remplace file_get_contents qui ne fonctionne pas toujours
 function file_http_curl($L){      
      
 
 $ch = curl_init($L);	
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI3NzE0ZGY2ZDRlZmU0ZWQzYmI4MmI5YTRmN2NlM2UxYSIsImlhdCI6MTY3ODg4ODc1MSwiZXhwIjoxOTk0MjQ4NzUxfQ.UvvrBR60YRqHGqeYZV76nChlWoS1pW-evPJTP4Fcg2k"));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , "Authorization: Bearer ".TOKENDOMOTIC1));
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS,'');
@@ -52,7 +53,7 @@ $p=count($result);
 }	
 if (IPDOMOTIC1==""){
 $n=0;		
- $M="http://192.168.1.5:8123/api/states/sensor.liste_var";
+ $M=URLDOMOTIC1."api/states/sensor.liste_var";
 $json_string1=file_http_curl($M);//echo $json_string1;
 $parsed_json1 = json_decode($json_string1, true);
 $json_string1 = $parsed_json1['state'];$json_string1=str_replace("\n\n","",$json_string1);
@@ -150,11 +151,11 @@ function sql_variable($t,$ind){
 
 //----POUR HA--------------------------------------
 function devices_zone($zone){
-$L="http://192.168.1.5:8123/api/states";	
+$L=URLDOMOTIC1."api/states";	
 $json_string=file_http_curl($L);$n=0;$ha=array();//echo $json_string;
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
-	
+	$ha[$n]['Description'] = "HA";
 	$ha[$n]['idx'] = $xxx->{'entity_id'};
 	$ha[$n]['statut'] = $xxx->{'state'};
 	$tmp = $xxx->{'attributes'}->{'node_Name'};if ($tmp) $ha[$n]['Name']; 
@@ -173,7 +174,7 @@ foreach ($lect_device as $xxx){
 
 return $ha;}
 function devices_id($deviceid){//echo "zertyu";return;
-	 $L="http://192.168.1.5:8123/api/states/sensor.liste_var";
+	 $L=URLDOMOTIC1."api/states/".$deviceid;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
 $json_string=file_http_curl($L);$n=0;$ha=array();//echo $json_string;
 $parsed_json = json_decode($json_string, true);
@@ -190,18 +191,31 @@ while ($json_string[$n]!=""	){//echo $json_string[$n];
 	$n++;}
 	
 	return $ha;}
-//-------POUR DZ------------------------------------
-function devices_plan($plan)
-{
+//-------POUR DZ- et HA -----------------------------------
+function devices_plan($plan){
+$n=0;$al_bat=0;$p=0;	
+	if (IPDOMOTIC!=""){		
 $L=URLDOMOTIC."json.htm?type=devices&plan=".$plan;
- $json_string = file_get_curl($L);
+$json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
-$n=0;$al_bat=0;$parsed_json = $parsed_json['result'];
-while (isset($parsed_json[$n])==true)
-{
-$lect_device = $parsed_json[$n];  
-$t=$lect_device["idx"];$periph=array();
-$periph=sql_plan($t);$bat="";if ($periph['idm']=="") {$periph['idm']="NULL";}
+$parsed_json = $parsed_json['result'];
+$p=count($parsed_json);		
+	}
+if (IPDOMOTIC1!=""){$result=devices_zone(0);//
+	while ($result[$n]!=""	){//echo $json_string1[$n];
+	
+	$parsed_json[$p]=$result[$n];
+	$n++;$p++;}
+	}
+$n=0;
+while (isset($parsed_json[$n])==true) {
+$lect_device = $parsed_json[$n];
+$t=$lect_device["idx"];//$t1=$lect_device["Description"];//ha 
+$periph=array();
+$periph=sql_plan($t);
+//if ($periph) echo json_encode($periph);	
+$bat="";
+if ($periph['idm']=="") {$periph['idm']="NULL";}
 if (CHOIXID=='idm') {$t=$periph['idm'];}
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
@@ -247,8 +261,6 @@ $val_albat=val_variable(PILES[0]);
 if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
  return $data;
  }
-include ("include/fonctions_1.php");//fonction sql_plan
-
 /* fonction qui permet de switcher un interrupteur dans Domoticz 
 et de modifier une température de consigne
 */
