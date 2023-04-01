@@ -83,7 +83,9 @@ define('TOKENDOMOTIC', '');//TOKEN ou BEARER
 define('IPDOMOTIC1', '192.168.1.5');//ip 2emme serveur Domotique
 define('URLDOMOTIC1', 'http://192.168.1.5:8123/');//url ex:http://192.168.1.5:8123/
 define('DOMDOMOTIC1', 'https://ha.la-truffiere.ovh');//domaine
-define('TOKENDOMOTIC1', '');//TOKEN ou BEARER
+define('TOKENDOMOTIC1', array(
+    'Content-Type : application/json',
+	'Authorization : Bearer ENTRER LE TOKEN ICI'));//TOKEN ou BEARER
 //*************************Pour Domoticz
 define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//
 define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64
