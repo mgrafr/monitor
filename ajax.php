@@ -35,7 +35,7 @@ else if ($app=="ecran_spa") {echo file_get_curl($variable);}
 else if ($app=="data_var") {echo val_variable($variable);}
 else if ($app=="dev_bd" || $app=="var_bd") {mysql_app($_GET);}
 else if ($app=="ha" || $appp=="ha" ) {$retour=devices_zone($device);echo json_encode($retour);}
-else if ($app=="haid") {$retour=status_variables('1');echo json_encode($retour);}
+else if ($app=="haid") {$retour=devices_id($device,$command);echo json_encode($retour);}
 
 else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}

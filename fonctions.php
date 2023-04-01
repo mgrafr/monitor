@@ -4,14 +4,16 @@ session_start();
 require('admin/config.php');
 include ("include/fonctions_1.php");//fonction sql_plan
 // remplace file_get_contents qui ne fonctionne pas toujours
-function file_http_curl($L){      
-     
+function file_http_curl($L,$mode,$post){  
+//$header=TOKENDOMOTIC1;	
+$header=array('Content-Type: application/json' , "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI3NzE0ZGY2ZDRlZmU0ZWQzYmI4MmI5YTRmN2NlM2UxYSIsImlhdCI6MTY3ODg4ODc1MSwiZXhwIjoxOTk0MjQ4NzUxfQ.UvvrBR60YRqHGqeYZV76nChlWoS1pW-evPJTP4Fcg2k");   
 
 $ch = curl_init($L);	
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , "Authorization: Bearer ".TOKENDOMOTIC1));
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+if ($mode==1) curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+if ($mode==2) curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS,'');
+curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
@@ -173,22 +175,14 @@ foreach ($lect_device as $xxx){
 }
 
 return $ha;}
-function devices_id($deviceid){//echo "zertyu";return;
-	 $L=URLDOMOTIC1."api/states/".$deviceid;
+function devices_id($deviceid,$command){$post="";
+	 if ($command=='etat'){$api="api/states/".$deviceid;$mode=1;}
+	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
+	if ($command=='on'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
+	$L=URLDOMOTIC1.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
-$json_string=file_http_curl($L);$n=0;$ha=array();//echo $json_string;
-$parsed_json = json_decode($json_string, true);
-$json_string = $parsed_json['state'];$json_string=str_replace("\n\n","",$json_string);
-$json_string=explode(',',$json_string);
-while ($json_string[$n]!=""	){//echo $json_string[$n];
-	$varha=explode('=',$json_string[$n]);
-	$ha[$n]=[
-		'Name' => $varha[0],
-		'Value'=> $varha[1],
-		'Type'=> $varha[1],
-	];
-//echo $varha[0].'<br>'. $varha[1].'<br>';
-	$n++;}
+$ha=file_http_curl($L,$mode,$post);$n=0;//echo $json_string;
+
 	
 	return $ha;}
 //-------POUR DZ- et HA -----------------------------------
