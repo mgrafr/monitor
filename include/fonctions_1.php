@@ -1,6 +1,5 @@
 <?php
-function sql_plan($t){
-// SERVEUR SQL connexion
+function sql_plan($t){// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
  if (($t!='0')  && (strlen($t) < 4)) {
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$t' AND maj_js <> 'variable';";
@@ -12,7 +11,7 @@ else if ($t!='0'  && strlen($t) > 3) {
 		$row = $result->fetch_assoc();
 	return $row;}
 else if ($t=='0') {$commande="On";
-if (IPDOMOTIC1 == ""){echo "<!-- ha -->";}
+if (IPDOMOTIC1 != ""){echo "<!-- ha -->";}
 if (IPDOMOTIC != ""){
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE `maj_js` LIKE '%onoff%' " ;
 	$result = $conn->query($sql);//echo "/*";

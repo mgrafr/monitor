@@ -270,6 +270,8 @@ mc(1,"#meteo_concept");mc(0,"#meteo_concept_am");});
 /*--------------------------------*/
 mc(1,"#meteo_concept");
 mc(0,"#meteo_concept_am");
+mc(2,"#temp_ext");	
+	setTimeout(pluie, 3600000, 2);
 function mc(variable,id){
   $.ajax({
     type: "GET",
@@ -279,6 +281,7 @@ function mc(variable,id){
             $(id).html(data);
 }
 });
+setTimeout(mc, 1800000, 2,"#temp_ext");	
  };
  /*-------------------------------------*/
 $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert("Zoneminder non installé");}
