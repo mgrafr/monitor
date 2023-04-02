@@ -45,7 +45,7 @@ return 	$value;
 cette fonction permet egalement suivant le contenu de la variable de
 determiner une image qui peut être afficher (poubelles,fosse septique,...*/
 function status_variables($xx){
-$p=0;	
+$p=0;$n=0;	
 if(IPDOMOTIC != ""){
 $L=URLDOMOTIC."json.htm?type=command&param=getuservariables";
 $json_string = file_get_curl($L);
@@ -79,17 +79,17 @@ $lect_var = $result[$n];
 $idx = isset($lect_var["idx"]) ? $lect_var["idx"] : '';
 $ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';	
 $value = $lect_var['Value'];
-$name = $lect_var['Name'];$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
+$name = $lect_var['Name'];//$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
 $type = $lect_var['Type'];
 	if ($type=="HA") {$a='ID';} 
 	else {$a='idx';}
-$exist_id="oui";$vardz = sql_variable($$a,0);
+$exist_id="oui";$vardz = sql_variable($idx,0);//$aa
 if ($vardz==null){$exist_id="non" ;}
 $id_m_txt = isset($vardz['id2_html']) ? $vardz['id2_html'] : '';
 $id_m_img = isset($vardz['id1_html']) ? $vardz['id1_html'] : '';
-//$temp_maj = isset($vardz['temps_maj']) ? $vardz['temps_maj'] : '';	
+$temp_maj = isset($vardz['temps_maj']) ? $vardz['temps_maj'] : '';	
 
-//if(($temp_maj>$t_maj) && ($value!="0")) {$t_maj=$temp_maj;}
+if(($temp_maj>$t_maj) && ($value!="0")) {$t_maj=$temp_maj;}
 
 $txtimg = sql_variable($value,1);
 	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
@@ -177,6 +177,7 @@ foreach ($lect_device as $xxx){
 return $ha;}
 function devices_id($deviceid,$command){$post="";
 	 if ($command=='etat'){$api="api/states/".$deviceid;$mode=1;}
+	if ($command=='service'){$api="api/services";$mode=1;}									
 	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
 	if ($command=='on'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
 	$L=URLDOMOTIC1.$api;
@@ -195,7 +196,7 @@ $parsed_json = json_decode($json_string, true);
 $parsed_json = $parsed_json['result'];
 $p=count($parsed_json);		
 	}
-if (IPDOMOTIC1!=""){$result=devices_zone(0);//
+if (IPDOMOTIC1==""){$result=devices_zone(0);//
 	while ($result[$n]!=""	){//echo $json_string1[$n];
 	
 	$parsed_json[$p]=$result[$n];
@@ -408,6 +409,16 @@ $img_donnees = [
 	231 => "met_22_1.svg",
 ];
 switch ($choix) {
+ case 2:
+$url2 = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&token='.TOKEN_MC.'&insee='.INSEE;
+//$url2 = 'https://api.meteo-concept.com/api/forecast/nextHours?token='.TOKEN_MC.'&insee='.INSEE;		
+$prevam = file_get_curl($url2);//echo $prevam;return;
+$forecastam = json_decode($prevam);$info=array();
+		//$info['time']=$forecastam[0]->observation->time;
+		$info['temp']=$forecastam[0]->observation->temperature->value;
+		$info['hPa']=$forecastam[0]->observation->atmospheric_pressure->value;
+return json_encode($info);
+		break;		
     case 0:
 $url1 = 'https://api.meteo-concept.com/api/forecast/daily/0/period/2?token='.TOKEN_MC.'&insee='.INSEE;
 $prevam = file_get_curl($url1);
@@ -525,17 +536,17 @@ switch ($choix) {
 		$json_string = file_get_curl($url);$result = json_decode($json_string,true);
 		$info['maj']=substr($result['update_time'],11,8);
 		$json=$result['properties']['forecast'];
-		$n=0;	
+		$n=0;
 		while (isset($json[$n]['time']))
 		{$info[$n]['rain_intensity']=$json[$n]['rain_intensity'];
 		if ($json[$n]['rain_intensity'] >1) {$test="pluie";$id_test_pluie=$n;}
 		 $info[$n]['time']=$json[$n]['time'];
 		 $info[$n]['rain_intensity_description']=$json[$n]['rain_intensity_description'];
-		$n++;
+		$n++; 
 		}
 		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']=$json[0]['rain_intensity_description'];$im="pas_pluie";}
 		else {$info['test_pluie']=$test;$info['titre']="prévision : ".$json[$id_test_pluie]['rain_intensity_description'];$im="pluie";}
-		$txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
+		//$txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
 		break;
 	default:
 	$info['test_pluie']="pas d'infos";
