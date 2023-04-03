@@ -5,11 +5,11 @@ require('admin/config.php');
 include ("include/fonctions_1.php");//fonction sql_plan
 // remplace file_get_contents qui ne fonctionne pas toujours
 function file_http_curl($L,$mode,$post){  
-//$header=TOKENDOMOTIC1;	
+//$header1="Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI3NzE0ZGY2ZDRlZmU0ZWQzYmI4MmI5YTRmN2NlM2UxYSIsImlhdCI6MTY3ODg4ODc1MSwiZXhwIjoxOTk0MjQ4NzUxfQ.UvvrBR60YRqHGqeYZV76nChlWoS1pW-evPJTP4Fcg2k";	
 $header=array('Content-Type: application/json' , "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI3NzE0ZGY2ZDRlZmU0ZWQzYmI4MmI5YTRmN2NlM2UxYSIsImlhdCI6MTY3ODg4ODc1MSwiZXhwIjoxOTk0MjQ4NzUxfQ.UvvrBR60YRqHGqeYZV76nChlWoS1pW-evPJTP4Fcg2k");   
 
 $ch = curl_init($L);	
-curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $header   );
 if ($mode==1) curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 if ($mode==2) curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -53,14 +53,16 @@ $resultat = json_decode($json_string, true);
 $result=$resultat['result'];
 $p=count($result);
 }	
-if (IPDOMOTIC1==""){
-$n=0;		
+if (IPDOMOTIC1!=""){
+$n=0;$mode=1;$post="";		
  $M=URLDOMOTIC1."api/states/sensor.liste_var";
-$json_string1=file_http_curl($M);//echo $json_string1;
+$json_string1=file_http_curl($M,$mode,$post);
+
 $parsed_json1 = json_decode($json_string1, true);
 $json_string1 = $parsed_json1['state'];$json_string1=str_replace("\n\n","",$json_string1);
 $json_string1=explode(',',$json_string1);
-while ($json_string1[$n]!=""	){//echo $json_string1[$n];
+
+	while ($json_string1[$n]!=""	){
 	$varha=explode('=',$json_string1[$n]);
 		$ha=[
 		'ID' => $varha[0],
@@ -79,11 +81,11 @@ $lect_var = $result[$n];
 $idx = isset($lect_var["idx"]) ? $lect_var["idx"] : '';
 $ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';	
 $value = $lect_var['Value'];
-$name = $lect_var['Name'];//$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
+$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
 $type = $lect_var['Type'];
 	if ($type=="HA") {$a='ID';} 
 	else {$a='idx';}
-$exist_id="oui";$vardz = sql_variable($idx,0);//$aa
+$exist_id="oui";$vardz = sql_variable($aa,0);
 if ($vardz==null){$exist_id="non" ;}
 $id_m_txt = isset($vardz['id2_html']) ? $vardz['id2_html'] : '';
 $id_m_img = isset($vardz['id1_html']) ? $vardz['id1_html'] : '';
@@ -153,8 +155,8 @@ function sql_variable($t,$ind){
 
 //----POUR HA--------------------------------------
 function devices_zone($zone){
-$L=URLDOMOTIC1."api/states";	
-$json_string=file_http_curl($L);$n=0;$ha=array();//echo $json_string;
+$L=URLDOMOTIC1."api/states";$post="";$mode=1;	
+$json_string=file_http_curl($L,$mode,$post);$n=0;$ha=array();//echo $json_string;
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
 	$ha[$n]['Description'] = "HA";
@@ -196,7 +198,7 @@ $parsed_json = json_decode($json_string, true);
 $parsed_json = $parsed_json['result'];
 $p=count($parsed_json);		
 	}
-if (IPDOMOTIC1==""){$result=devices_zone(0);//
+if (IPDOMOTIC1!=""){$result=devices_zone(0);$n=0;//
 	while ($result[$n]!=""	){//echo $json_string1[$n];
 	
 	$parsed_json[$p]=$result[$n];
@@ -205,7 +207,7 @@ if (IPDOMOTIC1==""){$result=devices_zone(0);//
 $n=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
-$t=$lect_device["idx"];//$t1=$lect_device["Description"];//ha 
+$t=$lect_device["idx"];//echo $t;
 $periph=array();
 $periph=sql_plan($t);
 //if ($periph) echo json_encode($periph);	
