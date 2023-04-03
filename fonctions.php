@@ -3,13 +3,17 @@ session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 require('admin/config.php');
 include ("include/fonctions_1.php");//fonction sql_plan
-// remplace file_get_contents qui ne fonctionne pas toujours
-function file_http_curl($L,$mode,$post){  
-//$header1="Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI3NzE0ZGY2ZDRlZmU0ZWQzYmI4MmI5YTRmN2NlM2UxYSIsImlhdCI6MTY3ODg4ODc1MSwiZXhwIjoxOTk0MjQ4NzUxfQ.UvvrBR60YRqHGqeYZV76nChlWoS1pW-evPJTP4Fcg2k";	
-$header=array('Content-Type: application/json' , "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI3NzE0ZGY2ZDRlZmU0ZWQzYmI4MmI5YTRmN2NlM2UxYSIsImlhdCI6MTY3ODg4ODc1MSwiZXhwIjoxOTk0MjQ4NzUxfQ.UvvrBR60YRqHGqeYZV76nChlWoS1pW-evPJTP4Fcg2k");   
 
+function file_http_curl($L,$mode,$post){  
+/* set the content type json */
+    $headers = [];
+    $headers[] = 'Content-Type:application/json';
+    $token =TOKEN_DOM1; 
+	$headers[] = "Authorization: Bearer ".$token;	
+	
+	
 $ch = curl_init($L);	
-curl_setopt($ch, CURLOPT_HTTPHEADER, $header   );
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers   );
 if ($mode==1) curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 if ($mode==2) curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -20,7 +24,7 @@ curl_close($ch);
 return $result;
 	
 }
-
+// remplace file_get_contents qui ne fonctionne pas toujours
 function file_get_curl($L){	
 $curl = curl_init($L);
 curl_setopt($curl, CURLOPT_TIMEOUT, 30);
@@ -83,16 +87,15 @@ $ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';
 $value = $lect_var['Value'];
 $name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
 $type = $lect_var['Type'];
-	if ($type=="HA") {$a='ID';} 
-	else {$a='idx';}
-$exist_id="oui";$vardz = sql_variable($aa,0);
+if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,0);} 
+			else {$a='idx';$vardz = sql_variable($$a,0);}
+$exist_id="oui";
 if ($vardz==null){$exist_id="non" ;}
 $id_m_txt = isset($vardz['id2_html']) ? $vardz['id2_html'] : '';
 $id_m_img = isset($vardz['id1_html']) ? $vardz['id1_html'] : '';
-$temp_maj = isset($vardz['temps_maj']) ? $vardz['temps_maj'] : '';	
-
-if(($temp_maj>$t_maj) && ($value!="0")) {$t_maj=$temp_maj;}
-
+//$temp_maj = isset($vardz['temps_maj']) ? $vardz['temps_maj'] : '';	
+//if(($temp_maj>$t_maj) && ($value!="0")) {$t_maj=$temp_maj;}
+//
 $txtimg = sql_variable($value,1);
 	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
 	$icone = isset($txtimg['icone']) ? $txtimg['icone'] : '';
@@ -133,6 +136,7 @@ function sql_variable($t,$ind){
 	if ($_SESSION["exeption_db"]=="pas de connexion à la BD") return ;
 	$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 	if ($ind==0){$sql="SELECT * FROM `dispositifs` WHERE (idx='".$t."' AND maj_js='variable') ;" ;}
+	if ($ind==3){$sql="SELECT * FROM `dispositifs` WHERE (ID='".$t."' AND maj_js='variable') ;" ;}
 	if ($ind==2){$sql="SELECT * FROM `dispositifs` WHERE maj_js='variable';" ;}
 	//if ($ind==0){$sql="SELECT * FROM `variables` WHERE id_var='".$t."' ;" ;}
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
