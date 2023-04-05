@@ -184,8 +184,8 @@ return $ha;}
 function devices_id($deviceid,$command){$post="";
 	 if ($command=='etat'){$api="api/states/".$deviceid;$mode=1;}
 	if ($command=='service'){$api="api/services";$mode=1;}									
-	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
-	if ($command=='on'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
+	 if ($command=='off'){$api="api/services/switch/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
+	if ($command=='on'){$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
 	$L=URLDOMOTIC1.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
 $ha=file_http_curl($L,$mode,$post);$n=0;//echo $json_string;
@@ -193,6 +193,8 @@ $ha=file_http_curl($L,$mode,$post);$n=0;//echo $json_string;
 	
 	return $ha;}
 //-------POUR DZ- et HA -----------------------------------
+// pour DZ specific IDX : /json.htm?type=devices&rid=IDX
+//
 function devices_plan($plan){
 $n=0;$al_bat=0;$p=0;	
 	if (IPDOMOTIC!=""){		
@@ -211,6 +213,7 @@ if (IPDOMOTIC1!=""){$result=devices_zone(0);$n=0;//
 $n=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
+$description = isset($lect_var["Description"]) ? $lect_var["Description"] : '';	
 $t=$lect_device["idx"];//echo $t;
 $periph=array();
 $periph=sql_plan($t);
@@ -415,10 +418,22 @@ $img_donnees = [
 	231 => "met_22_1.svg",
 ];
 switch ($choix) {
- case 2:
-$url2 = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&token='.TOKEN_MC.'&insee='.INSEE;
+// prev indice UV : https://api.meteo-concept.com/api/forecast/uv/daily/0		
+// ephéméride : https://api.meteo-concept.com/api/ephemeride/1		
+ case 3://prévision horaire
+$url = 'https://api.meteo-concept.com/api/forecast/nextHours?&token='.TOKEN_MC.'&insee='.INSEE;
+$prevam = file_get_curl($url);
+$forecast = json_decode($prevam);$info=array();
+		$forecasth=$forecast->forecast[0];
+		$info['temp']=$forecasth->temp2m;
+		$info['hum']=$forecasth->rh2m;
+		$info['Data']=$info['temp'].'°  '.$info['hum'].'%';
+return json_encode($info);
+		break;		
+	case 2:// relevé temps réel station la pus proche (40Km)
+$url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&token='.TOKEN_MC.'&insee='.INSEE;
 //$url2 = 'https://api.meteo-concept.com/api/forecast/nextHours?token='.TOKEN_MC.'&insee='.INSEE;		
-$prevam = file_get_curl($url2);//echo $prevam;return;
+$prevam = file_get_curl($url);//echo $prevam;return;
 $forecastam = json_decode($prevam);$info=array();
 		//$info['time']=$forecastam[0]->observation->time;
 		$info['temp']=$forecastam[0]->observation->temperature->value;
@@ -1082,7 +1097,7 @@ return;}
 function maj_query($conn,$sql){
 $result = $conn->query($sql);					   
 if ($result !== FALSE) {
-  echo "New record created successfully<br>";
+  echo "New record created successfully<br>";$sql="UPDATE dispositifs set idx=trim(idx);";maj_query($conn,$sql);$sql="UPDATE dispositifs set idm=trim(idm);";maj_query($conn,$sql);		
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }	
