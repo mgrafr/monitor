@@ -8,7 +8,7 @@
 						<div class="txtcenter col-md-12" >
 						<h2 class="text-centre">Température<span style="color:cyan"> Extérieure</span></h2>
 						<p class="taille18 text-centre">En ce moment , il fait :<span id="temp_ext" ></span></p>
-
+						<p class="text-centre">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
 						</div>
 					</div>
 				</div>
