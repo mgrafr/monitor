@@ -211,7 +211,16 @@ $('.closeBtn').on('click', function () {
       $('#popup_vr').hide();
     });
 /* switchOnOff*  */
-
+	
+function turnonoff(idm,ID,command,pass="0"){
+	if (pp[idm].Data == "On") {command="Off";}
+	else {command="On";}
+	
+	
+	return;}
+	
+	
+	
 <?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	?>
 rr=new Array();	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
@@ -270,18 +279,19 @@ mc(1,"#meteo_concept");mc(0,"#meteo_concept_am");});
 /*--------------------------------*/
 mc(1,"#meteo_concept");
 mc(0,"#meteo_concept_am");
-mc(2,"#temp_ext");	
-	setTimeout(pluie, 3600000, 2);
+mc(3,"#temp_ext");	//pour la T° locale 
+setTimeout(pluie, 3600000, 2);
 function mc(variable,id){
   $.ajax({
     type: "GET",
     url: "ajax.php",
     data: "app=meteo_concept&variable="+variable,
     success: function(data){
-            $(id).html(data);
+        if (variable==3 || variable==2) $(id).html(data.data);
+		else $(id).html(data.data);
 }
 });
-setTimeout(mc, 1800000, 2,"#temp_ext");	
+setTimeout(mc, 1800000, 3,"#temp_ext");//pour la T° locale tt 30mn	
  };
  /*-------------------------------------*/
 $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert("Zoneminder non installé");}
