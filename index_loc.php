@@ -6,7 +6,7 @@ include ("admin/config.php");
 // Check connection DB
 mysqli_report(MYSQLI_REPORT_OFF);
 $conn = @new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
-if (!$conn) {echo "pas de BD : ".DBASE	; $_SESSION["exeption_db"]="pas de connexion à la BD"; }
+if (!$conn) {echo "pas de BD : ".DBASE	;} //$_SESSION["exeption_db"]="pas de connexion à la BD"; }
 				   
 //
 // pour vérifier la connexion au net------------------
@@ -33,7 +33,9 @@ if (ON_EXT==true) include include ("include/exterieur.php");
 // include ("include/commandes.php");
 if (ON_ONOFF==true) include ("include/mur_inter.php");
 if (ON_APP==true) include ("include/app_diverses.php");
-include ("include/admin.php");// administration
+// administration
+include ("include/admin.php");
+include ("include/test_pass.php");// verif du mot de passe
 if (ON_ZIGBEE==true) include ("include/zigbee.php");// fronted zigbee2mqtt
 if (ON_ZWAVE==true) include ("include/zwave.php");// webUI zwavejs2mqtt
 if (ON_MUR==true) {include ("include/mur_cam.php");$_SESSION["zmuser"]=ZMUSER;
@@ -42,7 +44,7 @@ if (ON_DVR==true) include ("include/dvr.php");
 if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 if (ON_SPA==true) include ("include/spa.php");//spa
 if (ON_RECETTES==true) include ("include/recettes.php");//monitoring
-include ("include/test_pass.php");// verif du mot de passe
+
 include ("include/footer.php");// fin de la page avec les scrpits JS
 
 ?>
