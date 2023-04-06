@@ -184,8 +184,18 @@ return $ha;}
 function devices_id($deviceid,$command){$post="";
 	 if ($command=='etat'){$api="api/states/".$deviceid;$mode=1;}
 	if ($command=='service'){$api="api/services";$mode=1;}									
-	 if ($command=='off'){$api="api/services/switch/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
-	if ($command=='on'){$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
+	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
+	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
+	$L=URLDOMOTIC1.$api;
+//$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
+$ha=file_http_curl($L,$mode,$post);$n=0;//echo $json_string;
+
+	
+	return $ha;}
+
+function turnonoff($deviceid,$command,$idm){$post="";
+	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
+	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
 	$L=URLDOMOTIC1.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
 $ha=file_http_curl($L,$mode,$post);$n=0;//echo $json_string;
@@ -1097,9 +1107,13 @@ return;}
 function maj_query($conn,$sql){
 $result = $conn->query($sql);					   
 if ($result !== FALSE) {
-  echo "New record created successfully<br>";$sql="UPDATE dispositifs set idx=trim(idx);";maj_query($conn,$sql);$sql="UPDATE dispositifs set idm=trim(idm);";maj_query($conn,$sql);		
+  echo "New record created successfully<br>";	
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
-}	
+}
+$sql="UPDATE dispositifs set idx=trim(idx);";$res = $conn->query($sql);
+$sql="UPDATE dispositifs set idm=trim(idm);";$res = $conn->query($sql);
+$sql="UPDATE dispositifs set ID=trim(ID);";$res = $conn->query($sql);	
+echo "suppression des espaces effectué." ;	
 return;}
 ?>
