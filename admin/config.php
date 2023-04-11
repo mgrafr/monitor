@@ -74,7 +74,7 @@ define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faib
 ));
 //---------------------------------------
 // Serveurs Domoticz ou HA
-define('IPDOMOTIC', ''');//ip 1er serveur Domotique
+define('IPDOMOTIC', 'ip');//ip 1er serveur Domotique
 define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
 define('DOMDOMOTIC', 'https://domoticz.DOMAINE.ovh');//domaine
 define('TOKENDOMOTIC', 'ENTRER LE TOKEN ICI');//TOKEN ou BEARER
