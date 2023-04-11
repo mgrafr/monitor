@@ -212,15 +212,6 @@ $('.closeBtn').on('click', function () {
     });
 /* switchOnOff*  */
 	
-function turnonoff(idm,ID,command,pass="0"){
-	if (pp[idm].Data == "On") {command="Off";}
-	else {command="On";}
-	
-	
-	return;}
-	
-	
-	
 <?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	?>
 rr=new Array();	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
@@ -249,6 +240,31 @@ rr=new Array();
       }}); } 
   else alert("erreur");
   }
+	
+	
+function turnonoff(idm,idx,command,pass="0"){console.log(idm);
+	if (pp[idm].Data == "On") {command="Off";}
+	else {command="On";}
+											 
+	$.ajax({
+    	type: "GET",
+    	dataType: "application/x-www-form-urlencoded",
+    	url: "ajax.php",
+    	data: "app=turn&device="+idx+"&command="+command+"&name="+pass,
+    	success: function(response){qq=response;
+			if (qq!=null){
+				if (qq['status']!="OK" ){//alert(qq['status']);
+			document.getElementById("d_btn_a").style.display = "block";
+			document.getElementById("d_btn_al").style.display = "block";}
+				else {
+					maj_switch(ID,command,level,pp[idm].idm);			
+
+			}}
+      }});
+	
+	}	
+	
+	
 /*----------------------------------*/
 function maj_switch(idx,command,level,idm){
 	pp[idm].Data=command;

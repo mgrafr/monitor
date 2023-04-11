@@ -13,28 +13,17 @@ else if ($t!='0'  && strlen($t) > 3) {
 else if ($t=='0') {//$commande="On";
 				   
 				   
-if (IPDOMOTIC1 != ""){echo "<!-- ha -->";echo  "<!---------->";
+if (IPDOMOTIC1 != ""){
 	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%onoff%' AND `ID` <> '');";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'turnonoff','ha');				  
-	/*if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
-	if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
-	if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['ID'].'");})';}
-	else {$sl='").click(function(){turnonoff("'.$row['idm'].'","'.$row['ID'].'","'.$commande.'","'.$row['idm'].'");});';}		  
-	$s=$s.$sl;
-		echo $s."\r\n" ;*/}				  
+	}				  
 					 }
-if (IPDOMOTIC != ""){echo "<!-- dz -->";echo  "<!---------->";
+if (IPDOMOTIC != ""){
 	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%onoff%' AND `idx` <> '');";
 	$result = $conn->query($sql);//echo "/*";
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switchOnOff_setpoint','dz');
-		/*if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
-		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
-		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
-       	else {$sl='").click(function(){switchOnOff_setpoint("'.$row['idm'].'","'.$row['idx'].'","'.$commande.'","'.$row['pass'].'");});';}		
-		$s=$s.$sl;
-		echo $s."\r\n" ;*/}
-//echo "*/";}
+		}
 	}
 	
 return;}
