@@ -28,7 +28,8 @@ else if ($app=="meteo_concept") {if (DECOUVERTE==true) {include('include/json_de
 else if ($app=="upload_img") {$retour = upload_img($variable);echo json_encode($retour); }
 else if ($app=="upload_conf_img") {cam_config($name,$command,$variable,$idx,$type); }
 else if ($app=="graph") {graph($device,$variable);}	
-else if ($app=="services") {$retour= status_variables('1');echo json_encode($retour); }
+else if ($app=="services") {if (DECOUVERTE==true) {include('include/json_demo/service_json.php');return;}
+else {$retour= status_variables('1');echo json_encode($retour); }}
 else if ($app=="maj_var") {$retour=maj_variable($idx,$name,$variable,$type);echo json_encode($retour);}
 else if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour);}
 else if ($app=="infos_nagios") {api_nagios($variable);}
