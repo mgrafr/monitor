@@ -21,6 +21,7 @@ $table = isset($_GET['table']) ? $_GET['table'] : '';
 if ($app=="aff_th") {$retour= status_devices($device,'Temp','Humidity');echo json_encode($retour); }
 else if ($app=="devices_plan") {if (DECOUVERTE==true) {include('include/json_demo/devices_plan_json.php');return;}
 								else {$retour=devices_plan($variable);echo json_encode($retour); }}
+else if ($app=="turn") {$retour=devices_id($device,$command);echo json_encode($retour); }
 else if ($app=="OnOff") {$retour=switchOnOff_setpoint($device,$command,$type,$variable,$name);echo json_encode($retour); }
 else if ($app=="meteo_concept") {if (DECOUVERTE==true) {include('include/json_demo/meteo_concept_json.php');return;}
 								else {echo $retour=meteo_concept($variable); }}
@@ -41,9 +42,11 @@ else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo
 else if ($app=="log_dz") {log_dz($variable);}
 else if ($app=="admin") {admin($variable,$command);}	//$command=fenetre(administration footer	
 //  autres fonctions php-----------------------------------Z
+else if ($appp=="turn") {return "azerty";$retour=turnonoff($variablep,$commandp);echo json_encode($retour);}
 else if ($appp=="mdp") {$retour=mdp($variablep,$commandp);echo json_encode($retour);}
 else if ($appp=="adminp") {$retour=admin($variablep,$commandp);} // $command = content	(mes_js.js) & ("#adm1") fonctions.php
 //
 else echo "erreur ajax...".$app.$appp;
+//
 
 ?>

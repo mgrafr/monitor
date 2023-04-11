@@ -165,12 +165,12 @@ $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
 	$ha[$n]['Description'] = "HA";
 	$ha[$n]['idx'] = $xxx->{'entity_id'};
-	$ha[$n]['statut'] = $xxx->{'state'};
+	$ha[$n]['Data'] = $xxx->{'state'};//modif 1
 	$tmp = $xxx->{'attributes'}->{'node_Name'};if ($tmp) $ha[$n]['Name']; 
 	$ha[$n]['Update']  = substr($xxx->{'last_updated'},0, 19);  
 	$tmp=$xxx->{'attributes'}->{'unit_of_measurement'};if ($tmp) $ha[$n]['unite'] = $tmp;
 	$tmp=$xxx->{'attributes'}->{'node_Location'};if ($tmp) $ha[$n]['description'] = $tmp;
-	$tmp=$xxx->{'attributes'}->{'value'};if ($tmp) {$ha[$n]['value'] = $tmp;$ha[$n]['Data'] = $tmp;}
+	$tmp=$xxx->{'attributes'}->{'value'};if ($tmp) {$ha[$n]['value'] = $tmp;}//$ha[$n]['Data'] = $tmp;}//modif 1
 	$tmp=$xxx->{'attributes'}->{'temperature'};if ($tmp) $ha[$n]['temp'] = $tmp;
 	$tmp=$xxx->{'attributes'}->{'humidity'};if ($tmp) $ha[$n]['humidity'] = $tmp;
 	$tmp=$xxx->{'attributes'}->{'pressure'};if ($tmp) $ha[$n]['pression'] = $tmp;
@@ -193,12 +193,12 @@ $ha=file_http_curl($L,$mode,$post);$n=0;//echo $json_string;
 	
 	return $ha;}
 
-function turnonoff($deviceid,$command,$idm){$post="";
+function turnonoff($deviceid,$command){$post="";
 	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
-	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
+	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=1;}									
 	$L=URLDOMOTIC1.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
-$ha=file_http_curl($L,$mode,$post);$n=0;//echo $json_string;
+$ha=file_http_curl($L,$mode,$post);//echo $json_string;
 
 	
 	return $ha;}
