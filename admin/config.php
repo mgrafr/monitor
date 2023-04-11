@@ -1,8 +1,7 @@
 <?php
 // NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
 //general monitor
-define('URLMONITOR', 'monitorDOMAINE.ovh');//domaine si port autre 443 
-#define('URLMONITOR', 'monitor.la-truffiere.ovh');//domaine
+define('URLMONITOR', 'monitor.DOMAINE.ovh');//domaine si port autre 443 
 define('IPMONITOR', 'ip');//ip 
 define('MONCONFIG', 'admin/config.php');//fichier config 
 define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
