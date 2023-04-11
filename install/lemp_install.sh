@@ -42,9 +42,11 @@ echo "fournir tous les privilèges à " $maria_name
 mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO '${maria_name}'@'%';"
 mysql -uroot  -e "flush privileges";
 echo "----------------------------------------------------"
-echo "securiser MariaDB : définir le Mot de passe pour Root"
+echo "securiser MariaDB : "
 read root_pwd
-mysql --user="root" --password="$root_pwd" --database="monitor" --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
+#mysql --user="root" --password="$root_pwd" --database="monitor" --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
+mysql --user="root" --database="monitor" -e  "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$root_pwd');"
+mysql --user="root"  -e "UPDATE user SET plugin='mysql_native_password' WHERE User='root';"
 mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.user WHERE User='';"
 echo "-- supprimer les fonctionnalités root distantes"
 mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
