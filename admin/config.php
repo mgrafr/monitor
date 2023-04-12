@@ -18,7 +18,7 @@ define('NOMSLOGAN', 'nom secondaire');//nom secondaire ou slogan
 // affichage lexique
 define('LEXIQUE', true);
 // infos de découverte , à mettre à FALSE en production
-define('DECOUVERTE', false);
+define('DECOUVERTE', true);
 // serveur MQTT utilisation d'un serveur (envoi topic depuis monitor)
 define('MQTT', false);//  true si serveur MQTT utilisé par monitor
 define('MQTT_IP', '192.168.1.24');//adresse IP
