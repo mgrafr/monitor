@@ -3,7 +3,7 @@
 echo "Ce script installera automatiquement LEMP fonctionnelle . Vous devez être connecté à Internet "
 #Comment this section out and jump down to the next section to set your own defaults for a truly unattended install...
 echo "Avant de commencer l’installation, veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL:"
-echo "indiquer le nom de l'utilisateur de Maria db : "
+echo "indiquer le nom de l'utilisateur de Maria db et monitor : "
 read maria_name
 echo "Utilisateur maria db  enregistré"
 echo "Mot de passe pour "$maria_name
@@ -42,13 +42,11 @@ echo "fournir tous les privilèges à " $maria_name
 mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO '${maria_name}'@'%';"
 mysql -uroot  -e "flush privileges";
 echo "----------------------------------------------------"
-echo "securiser MariaDB : entrer mot de passe ROOT"
+echo "securiser MariaDB : Entrer Mot de passe ROOT"
 read root_pwd
-echo "Enregistrement du mot de passe"
+#mysql --user="root" --password="$root_pwd" --database="monitor" --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
 mysql --user="root" --database="monitor" -e  "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$root_pwd');"
-echo "le mot de passe est désormais obligatoire pour ROOT"
-mysql --user="root"  -e "UPDATE user SET plugin='mysql_native_password' WHERE User='root';"
-echo "suppression des utilisateurs vides
+mysql --user="root" --database="monitor" -e "UPDATE user SET plugin='mysql_native_password' WHERE User='root';"
 mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.user WHERE User='';"
 echo "-- supprimer les fonctionnalités root distantes"
 mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
@@ -105,25 +103,37 @@ echo "creer lien symbolique des pages PHP vers /www"
 mkdir /www
 ln -s /usr/share/nginx/html/  /www/
 echo "installation de Monitor:"
+xxx=$(hostname -I)
+ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git /usr/share/nginx/html/monitor
 echo "importer les tables text_image et dispositifs"
 mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
 mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de default.conf"
-cp /usr/share/nginx/html/monitor/share/nginx/default.conf /etc/nginx/conf.d
+cp /usr/share/nginx/html/monitor/share/nginx/monitor.conf /etc/nginx/conf.d
 sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/default.conf
 echo "LEMP : Creating a php-info page"
 echo '<?php phpinfo(); ?>' > /usr/share/nginx/html/info.php
-echo "LEMP INSTALLER: Redemarrage NGINX une derniere fois..."
+echo "LEMP est installé" 
+echo "Voulez vous créer un certificat auto-signé"
+echo "pour utiliser monitor en local en https ? O ou N"
+read choix_ssl
+if [ "$choix_ssl" = "Y" ]
+then
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+wget https://github.com/mgrafr/monitor/tree/main/share/nginx/ssl
+cp ssl/selfsigned.conf /etc/nginx/snippets/selfsigned.conf
+cp ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
+sed -i "s/###//g" /etc/nginx/conf.d/monitor/monitor.conf
+fi
+echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
-xxx=$(hostname -I)
-ip4=$(echo $xxx | cut -d ' ' -f 1)
-echo "ip="$ip4
+echo "ip du serveur = "$ip4
 sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/nginx/html/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
 echo "LEMP :configuration complete"
-
 
 exit
