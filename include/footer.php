@@ -295,7 +295,7 @@ mc(1,"#meteo_concept");mc(0,"#meteo_concept_am");});
 /*--------------------------------*/
 mc(1,"#meteo_concept");
 mc(0,"#meteo_concept_am");
-mc(3,"#temp_ext");	//pour la T° locale 
+//mc(3,"#temp_ext");	//pour la T° locale 
 setTimeout(pluie, 3600000, 2);
 function mc(variable,id){
   $.ajax({
@@ -304,10 +304,10 @@ function mc(variable,id){
     data: "app=meteo_concept&variable="+variable,
     success: function(data){
         if (variable==3 || variable==2) $(id).html(data.data);
-		else $(id).html(data.data);
+		else $(id).html(data);
 }
 });
-setTimeout(mc, 1800000, 3,"#temp_ext");//pour la T° locale tt 30mn	
+//setTimeout(mc, 1800000, 3,"#temp_ext");//pour la T° locale tt 30mn	
  };
  /*-------------------------------------*/
 $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert("Zoneminder non installé");}
