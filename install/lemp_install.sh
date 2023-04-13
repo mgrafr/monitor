@@ -110,9 +110,9 @@ echo "importer les tables text_image et dispositifs"
 mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
 mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
 echo "LEMP : Configurer NGINX"
-echo "LEMP : Création de default.conf"
+echo "LEMP : Création de monitor.conf"
 cp /usr/share/nginx/html/monitor/share/nginx/monitor.conf /etc/nginx/conf.d
-sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/default.conf
+sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/monitor.conf
 echo "LEMP : Creating a php-info page"
 echo '<?php phpinfo(); ?>' > /usr/share/nginx/html/info.php
 echo "LEMP est installé" 
@@ -126,7 +126,7 @@ sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 wget https://github.com/mgrafr/monitor/tree/main/share/nginx/ssl
 cp ssl/selfsigned.conf /etc/nginx/snippets/selfsigned.conf
 cp ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
-sed -i "s/###//g" /etc/nginx/conf.d/monitor/monitor.conf
+sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
