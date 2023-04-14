@@ -188,20 +188,20 @@ function devices_id($deviceid,$command){$post="";
 	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
 	$L=URLDOMOTIC1.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
-$ha=file_http_curl($L,$mode,$post);$n=0;//echo $json_string;
+$ha=file_http_curl($L,$mode,$post);//echo $json_string;
 
 	
 	return $ha;}
 
-function turnonoff($deviceid,$command){$post="";
+/*function turnonoff($deviceid,$command){$post="";
 	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
-	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=1;}									
+	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
 	$L=URLDOMOTIC1.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
 $ha=file_http_curl($L,$mode,$post);//echo $json_string;
 
 	
-	return $ha;}
+	return $ha;}*/
 //-------POUR DZ- et HA -----------------------------------
 // pour DZ specific IDX : /json.htm?type=devices&rid=IDX
 //
@@ -577,7 +577,7 @@ switch ($choix) {
 		}
 		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']=$json[0]['rain_intensity_description'];$im="pas_pluie";}
 		else {$info['test_pluie']=$test;$info['titre']="prévision : ".$json[$id_test_pluie]['rain_intensity_description'];$im="pluie";}
-		$txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
+		//$txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
 		break;
 	default:
 	$info['test_pluie']="pas d'infos";
@@ -780,14 +780,14 @@ curl_setopt($curl,CURLOPT_POST,0);
 return $retour;
 }
 
-function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 et 6 = contenu textarea
+function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 , 6 , 11 ,16 = contenu textarea
 $height="490";$pawd=0;
 if ($choix==9){$height="200";include ("include/test_db.php");$pawd=1;}
 $time = time();
 if (($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$pawd=1;}
 if ($pawd==1){
 if (($choix==3) || ($choix==4)) {$file = VARTAB;$rel="4";}
-if (($choix==10) || ($choix==11)) {$file = VARTAB;$rel="11";}
+if (($choix==10) || ($choix==11)) {$file = CONF_MODECT;$rel="11";}
 if (($choix==15) || ($choix==16)) {$file = BASE64;$rel="16";}	
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
@@ -849,7 +849,7 @@ break;
 case "10" : $content=sql_app(2,"cameras","modect",1,$icone='');file_put_contents(DZCONFIG.'.bak.'.$time, $content);echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
 	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
 	 echo '</form></div>';return "sauvegarde ".DZCONFIG."OK";	
-case "11" :$content=$idrep;$height="100";echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';
+case "11" :$content=$idrep;$height="100";echo $idrep.'<br><p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';
 file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz met à 2 upload
 $retour=maj_variable("22","upload","2","2");echo  '<textarea id="adm1" style="height:'.$height.'px;" name="command" >variable Dz à jour : '.$retour["status"].'</textarea>'; return;
@@ -1031,6 +1031,7 @@ while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		}
 }
 if ($choix==2 || $choix==3) {// modect pour dz ----- 2,"cameras","modect",1,$icone=''
+if (table_ok($conn,"cameras")===TRUE){	
 $sql="SELECT * FROM `cameras` WHERE `modect` = 1 ";
 $result = $conn->query($sql);$i=0;
 $number = $result->num_rows;if ($number>0) {
@@ -1044,6 +1045,8 @@ if ($choix==3){	$content = $content.$row["id_zm"];}
 $content = $content."}";if ($choix==3) token_zm();
 }
 else echo "pas de cameras modect";
+}
+else {return "table cameras inexistante";}
 }
 if ($choix==4) {
 $sql="SELECT * FROM ".$table." WHERE ".$valeur." = ".$date;
@@ -1116,4 +1119,19 @@ $sql="UPDATE dispositifs set idm=trim(idm);";$res = $conn->query($sql);
 $sql="UPDATE dispositifs set ID=trim(ID);";$res = $conn->query($sql);	
 echo "suppression des espaces effectué." ;	
 return;}
+// verifier que la table existe
+function table_ok($conn,$table){
+        $query = "SHOW TABLES FROM ".DBASE;
+        $runQuery = $conn->query($query);
+        
+        $tables = array();
+        while($row = mysqli_fetch_row($runQuery)){
+            $tables[] = $row[0];
+        }
+        
+        if(in_array($table, $tables)){
+            return TRUE;
+        }
+    }
+
 ?>
