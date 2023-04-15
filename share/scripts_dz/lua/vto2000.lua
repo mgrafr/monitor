@@ -1,6 +1,7 @@
 --vto2000 Dahua exploiter le changement de valeur d' une variable 
 -- pour signaler l' appui sur le portier video vto2000
---
+-- ATTENTION PORT=8086 , en cas de modification modifier le script pushover_img.sh
+-- l'IP est reconnue automatique en cas de modification de serveur
 
 commandArray = {}
 --
