@@ -13,7 +13,7 @@ Entrer votre mot de passe
 </button></div>
 		<p id="admin1" style="margin-top:100px;display:<?php echo $style1;?>">
 		<a class="admin1" href="#admin" title="reponse1" rel="7">CHANGER de MOT de PASSE</a><br>
-		<a class="admin1" href="#admin" rel="15" title="reponse1" >Mots passe scripts Domoticz(Base64)</a>
+		<a class="admin1" href="#admin" rel="15" title="reponse1" >Mots passe cryptés(Base64) et IP réseau</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=6 style="width:25px;display:inline;"></a><br>	
 		<a class="admin1" href="#admin" rel="3" title="reponse1" >Configuation variables dz maj_services</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=5 style="width:25px;display:inline;"></a><br>
