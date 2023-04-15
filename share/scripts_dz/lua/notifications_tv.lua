@@ -2,6 +2,12 @@
 -- variable nb_not_tv = 2
 --
 --
+package.path = package.path..";www/modules_lua/?.lua"
+-- pour notification_lg ip tv et ip dz
+require 'connect'
+local iptv=ip_tv;
+local ipdz=ip_domoticz;
+print (iptv.." "..ipdz) 
 commandArray = {}
 local time = string.sub(os.date("%X"), 1, 5)
 
@@ -9,7 +15,7 @@ local time = string.sub(os.date("%X"), 1, 5)
 --
 local idx="7";-- idx de la variable not_tv_ok
 function notification()
-		os.execute("echo 'Idem4546' |sudo -S node /home/michel/notification_lg.js "..texte.." "..idx.." not_tv_ok 2 1  >> /home/michel/poubelle.log 2>&1");
+		os.execute("node userdata/scripts/js/notification_lg.js "..texte.." "..idx.." not_tv_ok 2 1 "..iptv.." "..ipdz.." >> /home/michel/tv.log 2>&1");
         print(time.."..  maj notification");
 end
 --
