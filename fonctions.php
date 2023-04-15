@@ -181,27 +181,37 @@ foreach ($lect_device as $xxx){
 }
 
 return $ha;}
+//
 function devices_id($deviceid,$command){$post="";
-	 if ($command=='etat'){$api="api/states/".$deviceid;$mode=1;}
-	if ($command=='service'){$api="api/services";$mode=1;}									
-	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
-	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
-	$L=URLDOMOTIC1.$api;
+	$mat=explode('.',$deviceid);$mat=$mat[0];
+switch ($command) {
+case "etat" :		
+	$api="api/states/".$deviceid;$mode=1;	
+break;
+case "service" :
+	$api="api/services";$mode=1;	
+break;
+case "on" :
+	$mode=2;	
+	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}	
+	if ($mat=="switch") {$api="api/services/switch/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}
+		
+break;
+case "off" :
+	$mode=2;	
+	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
+	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
+break;	
+default:
+}								
+$L=URLDOMOTIC1.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
 $ha=file_http_curl($L,$mode,$post);//echo $json_string;
+$data = json_decode($ha, true);
+$data['resultat']="OK";										
+										
+return json_encode($data);}
 
-	
-	return $ha;}
-
-/*function turnonoff($deviceid,$command){$post="";
-	 if ($command=='off'){$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}
-	if ($command=='on'){$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';$mode=2;}									
-	$L=URLDOMOTIC1.$api;
-//$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
-$ha=file_http_curl($L,$mode,$post);//echo $json_string;
-
-	
-	return $ha;}*/
 //-------POUR DZ- et HA -----------------------------------
 // pour DZ specific IDX : /json.htm?type=devices&rid=IDX
 //
@@ -826,7 +836,7 @@ echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src=
 file_put_contents(DZCONFIG, $content);
 // mise à jour par domoticz
 if ($choix==4){$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];}
-if ($choix==16){$retour=maj_variable("22","upload","3","2");echo "Logins et mots de passe mis à jour : ".$retour['status'];}		
+if ($choix==16){$retour=maj_variable("22","upload","3","2");echo "Logins , mots de passe ou IPs mis à jour : ".$retour['status'];}		
 else {$retour['status'];}		
 break;
 case "6" :
@@ -892,7 +902,7 @@ default:
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
-echo "Entrer votre mot de passe";include ('test_pass.php');return;}
+echo "Entrer votre mot de passe";include ('include/test_pass.php');return;}
 return ;
 
 }
