@@ -8,7 +8,8 @@ import sys
 topic= str(sys.argv[1])
 etat= str(sys.argv[2]) 
 valeur= str(sys.argv[3]) 
-MQTT_HOST = "192.168.1.42"
+server_mqtt= str(sys.argv[4]) 
+MQTT_HOST = server_mqtt
 MQTT_PORT = 1883
 MQTT_KEEPALIVE_INTERVAL = 45
 MQTT_TOPIC = topic
