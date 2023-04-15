@@ -243,25 +243,29 @@ rr=new Array();
 	
 	
 function turnonoff(idm,idx,command,pass="0"){console.log(idm);
-	if (pp[idm].Data == "On") {command="Off";}
-	else {command="On";}
+	if (pp[idm].Data == "On" || pp[idm].Data == "on") {command="off";}
+	else {command="on";}
 											 
 	$.ajax({
     	type: "GET",
-    	dataType: "application/x-www-form-urlencoded",
+    	dataType: "json",
     	url: "ajax.php",
     	data: "app=turn&device="+idx+"&command="+command+"&name="+pass,
     	success: function(response){qq=response;
-			if (qq!=null){
-				if (qq['status']!="OK" ){//alert(qq['status']);
-			document.getElementById("d_btn_a").style.display = "block";
-			document.getElementById("d_btn_al").style.display = "block";}
-				else {
-					maj_switch(ID,command,level,pp[idm].idm);			
-
-			}}
-      }});
-	
+			
+				if (qq.resultat != "OK" ){
+					alert("erreur");}
+				else { $.ajax({
+    	type: "GET",
+    	dataType: "json",
+    	url: "ajax.php",
+    	data: "app=turn&device="+idx+"&command=etat&name="+pass,
+    	success: function(response){qq=response;
+		}});}
+  }
+      });
+	var level="";command=qq.state;										 
+	maj_switch(idx,command,level,idm);
 	}	
 	
 	
@@ -269,9 +273,9 @@ function turnonoff(idm,idx,command,pass="0"){console.log(idm);
 function maj_switch(idx,command,level,idm){
 	pp[idm].Data=command;
 	sid1=pp[idm].ID1;sid2=pp[idm].ID2;idm=pp[idm];
-		if (command=="On")  {scoul=idm.coul_ON;if (scoull=idm.coullamp_ON!="") scoull=idm.coullamp_ON;}
+		if (command=="On" || command=="on")  {scoul=idm.coul_ON;if (scoull=idm.coullamp_ON!="") scoull=idm.coullamp_ON;}
 		else if (command.substring(0, 9)=="Set Level")  {if (scoull=idm.coullamp_ON!="") scoul=idm.coul_ON;scoull=idm.coullamp_ON;}
-		else if  (command=="Off") {scoul=idm.coul_OFF;if (scoull=idm.coullamp_OFF!="") scoull=idm.coullamp_OFF;}
+		else if  (command=="Off"  || command=="off" ) {scoul=idm.coul_OFF;if (scoull=idm.coullamp_OFF!="") scoull=idm.coullamp_OFF;}
 		else return;																			  
 	document.getElementById(sid1).style = scoul;
 	if (sid2) {document.getElementById(sid2).style = scoul;}
