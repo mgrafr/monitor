@@ -4,10 +4,10 @@ require 'connect'
 local base64 = require'base64'
 local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 
-function envoi_mail(txt)
-local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> /home/michel/OsExecute.log 2>&1"   
-os.execute(sms_free)
-os.execute("python3 /opt/domoticz/userdata/scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
+function send_sms(txt)
+-- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> /home/michel/free.log 2>&1"   
+-- os.execute(sms_free)
+os.execute('/bin/bash userdata/scripts/bash/./pushover.sh '..txt..' >>  /opt/domoticz/userdata/push3.log 2>&1');
 end
 function alerte_gsm(txt) -- ATTENTION PAS ESPACES pout txt
 f = io.open("userdata/scripts/python/aldz.py", "w")
@@ -51,8 +51,9 @@ return {
             txt='alarme_PI_de_nouveau_OK';alerte_gsm(txt);envoi_mail(txt)
             end
             --
-            if (device.name == 'Test_GSM' and  device.state=='On') then
-            txt='Test_GSM_OK';alerte_gsm(txt);envoi_mail(txt)
+            if (device.name == 'Test_GSM' and  device.state=='On') then print ("test_gsm")
+            txt='Test_GSM_OK';alerte_gsm(txt)
+            send_sms(txt)
             end
             -- alarme auto
             if (device.name == 'al_nuit_auto' and  device.state=='On') then txt='alarme_nuit_auto_activee';alerte_gsm(txt); domoticz.variables('alarme').set("alarme_auto");
