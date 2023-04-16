@@ -3,14 +3,12 @@
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
 require 'connect'
-local ip_mon=ip_monitor
-local mqtt=ip_mqtt
 local base64 = require'base64'
-local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
+--local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 function envoi_mail(txt,fich_log)
 -- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> "..rep_log..fich_log.." 2>&1"  
 -- os.execute(sms_free)
-print("essai")
+print("free résilié")
 end
 function alerte_gsm(txt)
 f = io.open("userdata/scripts/python/aldz.py", "w")
@@ -67,20 +65,20 @@ return {
             if (domoticz.variables('boite_lettres').changed) then
                 if (domoticz.variables('boite_lettres').value == "0") then 
                 print("topic envoyé : esp/in/boite_lettres")
-                 local command = "scripts/python/mqtt.py esp/in/boite_lettres valeur 0 '..ip_mqtt..'  >> "..rep_log.."esp.log 2>&1" ;
+                 local command = "scripts/python/mqtt.py esp/in/boite_lettres valeur 0  >> "..rep_log.."esp.log 2>&1" ;
                  os.execute(command);    
                 end 
             end 
             if ((domoticz.variables('upload').changed) and (domoticz.variables('upload').value ~= "0")) then
                 if (domoticz.variables('upload').value == "1") then 
                 print("upload string_tableaux");
-               command = rep..'upload_fichier.py string_tableaux.lua '..ip_mon..' > '..rep_log..'string_tableaux.log 2>&1'
+               command = rep..'upload_fichier.py string_tableaux.lua   > '..rep_log..'string_tableaux.log 2>&1'
                elseif (domoticz.variables('upload').value == "2") then 
                 print("upload string_modect")
-               command = rep..'upload_fichier.py string_modect.lua '..ip_mon..' > '..rep_log..'string_modect.log 2>&1'
+               command = rep..'upload_fichier.py string_modect.lua   > '..rep_log..'string_modect.log 2>&1'
                elseif (domoticz.variables('upload').value == "3") then 
                 print("upload connect")
-               command = rep..'upload_fichier.py connect.lua '..ip_mon..' > '..rep_log..'connect.log 2>&1'
+               command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1'
                fich=""
                for line in io.lines( "/opt/domoticz/www/modules_lua/connect.lua" ) do 
                 fich=fich..tostring(line).."\n"
@@ -114,3 +112,4 @@ return {
     end
    
 }
+
