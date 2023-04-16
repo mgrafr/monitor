@@ -36,7 +36,7 @@ local A1={a1,a2,a3,a4,a5};local A2={a1,a2,a3};
 
 --
 local time = string.sub(os.date("%X"), 1, 5)
-sirene=0
+sirene=0;lampe=0
 --
 return {
 	on = {
@@ -46,7 +46,9 @@ return {
 		    'pir_salon_motion',
 		    'porte entree',
 		    'porte ar cuisine',
-		    'porte_fenetre'
+		    'porte_fenetre',
+		    'ma_sirene',
+		    'activation-sirene'
 				}
 	},
 	execute = function(domoticz, device)
@@ -64,16 +66,16 @@ return {
         if (domoticz.variables('ma-alarme').value == "2") then 
             for k, v in ipairs(A2) do 
                if (device.name == (A2[k][1]) and device.state == A2[k][2] ) then 
-        	   domoticz.variables(A2[k][3]).set(A2[k][4]);
+        	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;
         	   end
             end
 --            --allumer lampes
-          --      if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
-      --          end    
+            if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
+            end    
         --mise en service sirene
             if (sirene==1) then devices('ma_sirene').switchOn();sirene="2"
             end 
-            if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('Sirene-switch').switchOn();sirene="3"
+            if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('sirene_switch').switchOn();sirene="3"
             end    
         end            
         -- fin alarme nuit         
