@@ -66,7 +66,7 @@ return {
         if (domoticz.variables('ma-alarme').value == "2") then 
             for k, v in ipairs(A2) do 
                if (device.name == (A2[k][1]) and device.state == A2[k][2] ) then 
-        	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;
+        	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
         	   end
             end
 --            --allumer lampes
