@@ -87,7 +87,7 @@ $ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';
 $value = $lect_var['Value'];
 $name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
 $type = $lect_var['Type'];
-if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,0);} 
+if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,3);} 
 			else {$a='idx';$vardz = sql_variable($$a,0);}
 $exist_id="oui";
 if ($vardz==null){$exist_id="non" ;}
