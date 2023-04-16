@@ -3,13 +3,14 @@
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
 require 'connect'
-local ip_mon=ip_monitor;print (ip_mon);
-local mqtt=ip_mqtt;print (mqtt);
+local ip_mon=ip_monitor
+local mqtt=ip_mqtt
 local base64 = require'base64'
 local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 function envoi_mail(txt,fich_log)
-local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> "..rep_log..fich_log.." 2>&1"  
-os.execute(sms_free)
+-- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> "..rep_log..fich_log.." 2>&1"  
+-- os.execute(sms_free)
+print("essai")
 end
 function alerte_gsm(txt)
 f = io.open("userdata/scripts/python/aldz.py", "w")
@@ -80,6 +81,14 @@ return {
                elseif (domoticz.variables('upload').value == "3") then 
                 print("upload connect")
                command = rep..'upload_fichier.py connect.lua '..ip_mon..' > '..rep_log..'connect.log 2>&1'
+               fich=""
+               for line in io.lines( "/opt/domoticz/www/modules_lua/connect.lua" ) do 
+                fich=fich..tostring(line).."\n"
+                end
+                f = io.open("userdata/scripts/python/connect.py", "w")
+                env="#!/usr/bin/env python3"
+                f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
+                f:close()
                end
                 --print(command);
                os.execute(command);print('maj effectuée');
