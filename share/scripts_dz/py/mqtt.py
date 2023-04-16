@@ -4,12 +4,12 @@
 import paho.mqtt.client as mqtt
 import json
 import sys
+from connect import ip_mqtt
 # Define Variables
 topic= str(sys.argv[1])
 etat= str(sys.argv[2]) 
 valeur= str(sys.argv[3]) 
-server_mqtt= str(sys.argv[4]) 
-MQTT_HOST = server_mqtt
+MQTT_HOST = ip_mqtt
 MQTT_PORT = 1883
 MQTT_KEEPALIVE_INTERVAL = 45
 MQTT_TOPIC = topic
