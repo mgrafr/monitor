@@ -587,7 +587,7 @@ switch ($choix) {
 		}
 		if ($test=="pas de pluie") {$info['test_pluie']=$test;$info['titre']=$json[0]['rain_intensity_description'];$im="pas_pluie";}
 		else {$info['test_pluie']=$test;$info['titre']="prévision : ".$json[$id_test_pluie]['rain_intensity_description'];$im="pluie";}
-		//$txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
+		$txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
 		break;
 	default:
 	$info['test_pluie']="pas d'infos";
