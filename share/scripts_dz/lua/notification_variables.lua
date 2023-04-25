@@ -3,6 +3,7 @@
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
 require 'connect'
+local json = require("json");
 local base64 = require'base64'
 --local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 function envoi_mail(txt,fich_log)
@@ -32,7 +33,8 @@ return {
 		    'porte-ouverte',
 		    'intrusion',
 		    'variable_sp',
-		    'pilule_tension'
+		    'pilule_tension' ,
+		    'sms'
 		}
 	},
 	execute = function(domoticz, variable)
@@ -72,26 +74,32 @@ return {
             if ((domoticz.variables('upload').changed) and (domoticz.variables('upload').value ~= "0")) then
                 if (domoticz.variables('upload').value == "1") then 
                 print("upload string_tableaux");
-               command = rep..'upload_fichier.py string_tableaux.lua   > '..rep_log..'string_tableaux.log 2>&1'
-               elseif (domoticz.variables('upload').value == "2") then 
+                command = rep..'upload_fichier.py string_tableaux.lua   > '..rep_log..'string_tableaux.log 2>&1'
+                elseif (domoticz.variables('upload').value == "2") then 
                 print("upload string_modect")
-               command = rep..'upload_fichier.py string_modect.lua   > '..rep_log..'string_modect.log 2>&1'
-               elseif (domoticz.variables('upload').value == "3") then 
+                command = rep..'upload_fichier.py string_modect.lua   > '..rep_log..'string_modect.log 2>&1'
+                elseif (domoticz.variables('upload').value == "3") then 
                 print("upload connect")
-               command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1'
-               fich=""
-               for line in io.lines( "/opt/domoticz/www/modules_lua/connect.lua" ) do 
-                fich=fich..tostring(line).."\n"
+                command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1'
                 end
-                f = io.open("userdata/scripts/python/connect.py", "w")
-                env="#!/usr/bin/env python3"
-                f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
-                f:close()
-               end
-                --print(command);
-               os.execute(command);print('maj effectuée');
-               domoticz.variables('upload').set('0')   
-            end 
+                os.execute(command);print('maj effectuée');
+                domoticz.variables('upload').set('0')   
+                    if (domoticz.variables('upload').value == "3") then
+                        fich="";jt='{' 
+                        for line in io.lines( "/opt/domoticz/www/modules_lua/connect.lua" ) do 
+                        fich=fich..tostring(line).."\n"
+                        jt=jt..tostring(line)..','
+                    end
+                    jt=jt.."x=''}"
+                    f = io.open("userdata/scripts/python/connect.py", "w")
+                    env="#!/usr/bin/env python3"
+                    f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
+                    f = io.open("userdata/scripts/js/connect.json", "w")
+                    f:write(json.encode(jt))
+                    f:close()
+                    end
+            end
+               
             if (domoticz.variables('porte-ouverte').changed) then  
 	             txt=tostring(domoticz.variables('porte-ouverte').value) 
 	             print("porte-ouverte")
@@ -109,7 +117,17 @@ return {
                  alerte_gsm('alerte_'..txt)
                  end
             end
+            if (domoticz.variables('sms').changed) then 
+                 if (domoticz.variables('sms').value == "reboot_pi") then 
+	             txt=tostring(domoticz.variables('sms').value) 
+	             domoticz.variables('sms').set('0')   
+	             print('sms'..txt)
+                 local command = '/usr/bin/ssh michel:Idem4546@192.168.1.8  -t bash "sudo reboot"  >> '..rep_log..'sms.log 2>&1' ;
+                 os.execute(command);    
+                 end
+            end
     end
    
 }
+
 
