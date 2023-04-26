@@ -3,7 +3,6 @@
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
 require 'connect'
-local json = require("json");
 local base64 = require'base64'
 --local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 function envoi_mail(txt,fich_log)
@@ -81,23 +80,22 @@ return {
                 elseif (domoticz.variables('upload').value == "3") then 
                 print("upload connect")
                 command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1'
-                end
                 os.execute(command);print('maj effectuée');
                 domoticz.variables('upload').set('0')   
                     if (domoticz.variables('upload').value == "3") then
-                        fich="";jt='{' 
+                        fich="";local jt='';
                         for line in io.lines( "/opt/domoticz/www/modules_lua/connect.lua" ) do 
-                        fich=fich..tostring(line).."\n"
-                        jt=jt..tostring(line)..','
+                        fich=fich..tostring(line).."\n" 
+                        jt=jt..line..';\n'
                     end
-                    jt=jt.."x=''}"
                     f = io.open("userdata/scripts/python/connect.py", "w")
                     env="#!/usr/bin/env python3"
                     f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
-                    f = io.open("userdata/scripts/js/connect.json", "w")
-                    f:write(json.encode(jt))
+                    f = io.open("userdata/scripts/js/connect.js", "w")
+                    f:write(jt)
                     f:close()
                     end
+                end
             end
                
             if (domoticz.variables('porte-ouverte').changed) then  
