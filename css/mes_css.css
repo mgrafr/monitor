@@ -507,8 +507,10 @@ left: 170px;width: 40px;}
 #dvr .switch {top: -40px;}
 /*admin*/
 #adm1{width:475px;}
-.admin1{color:vert}
-
+.admin1{color:vert;margin-left:70px}
+#admin3{position: relative;top: -80px;}
+#admin4{position: relative;
+    top: -100px;}
 /*lexique*/
 .lex_txt{margin-left:10px;margin-bottom:0.3rem}
 
