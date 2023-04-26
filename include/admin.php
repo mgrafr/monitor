@@ -11,9 +11,13 @@ session_start();
 		<div id="d_btn_a" ><button type="button" id="btn_a" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
 Entrer votre mot de passe 
 </button></div>
-		<p id="admin1" style="margin-top:100px;display:<?php echo $style1;?>">
-		<a class="admin1" href="#admin" title="reponse1" rel="7">CHANGER de MOT de PASSE</a><br>
-		<a class="admin1" href="#admin" rel="15" title="reponse1" >Mots passe cryptés(Base64) et IP réseau</a>
+		<p id="admin2" style="margin-top:100px;display:<?php echo $style1;//voir test_pass.php?>">
+		<img src="images/logo.webp" style="position:relative;top:-30px;left:-20px;width:50px" alt="logo"/></p>
+		<p id="admin3"><a class="admin1" href="#admin" title="reponse1" rel="7">CHANGER de MOT de PASSE</a><br>
+		<a class="admin1" href="#admin" rel="5" title="reponse1" >Configuation monitor</a>
+		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=1 style="width:25px;display:inline;"></a></p>
+		<p id="admin4"><img src="images/dz.webp" style="position:relative;top:0px;left:-10px;width:35px" alt="logo"/>
+		<a class="admin1" href="#admin" rel="15" style="margin-left:30px" title="reponse1" >Mots passe cryptés(Base64) et IP réseau</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=6 style="width:25px;display:inline;"></a><br>	
 		<a class="admin1" href="#admin" rel="3" title="reponse1" >Configuation variables dz maj_services</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=5 style="width:25px;display:inline;"></a><br>
@@ -25,8 +29,7 @@ Entrer votre mot de passe
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=8 style="width:25px;display:inline;"></a><br>		
 		<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier idx/nom Domoticz , TABLEAU zigbee</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>
-		<a class="admin1" href="#admin" rel="5" title="reponse1" >Configuation monitor</a>
-		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=1 style="width:25px;display:inline;"></a><br>
+		
 			<img src="images/serveur-sql.svg" style="width:30px"><br>
 		<a class="admin1" href="#admin" rel="9" title="reponse1" >Test Base de données</a><br>
 		<a class="admin1" href="#admin" rel="14" title="reponse1" >Sauvegarde Base de données</a><br>
