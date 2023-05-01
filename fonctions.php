@@ -897,7 +897,10 @@ case "19" : $retour=sql_variable("",2) ;$n=0;
 		echo "--------------------------------<br>";
 			$n++;}
 		return;	
-break;			
+break;
+case "20" :include ('include/reboot.php'); echo "reboot Raspberry";
+return;	
+break;					
 default:
 } }
 else {	
@@ -1143,5 +1146,8 @@ function table_ok($conn,$table){
             return TRUE;
         }
     }
-
+function reboot(){
+$output = shell_exec('ssh michel:Idem4546@192.168.1.8  -t bash "sudo reboot"  >> /home/michel/sms.log 2>&1');	
+	
+}
 ?>
