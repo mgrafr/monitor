@@ -20,6 +20,10 @@ echo "indiquer le domaine ou simplement 'monitor'"
 read server_name
 echo "Server name enregistré"
 #server_name = "monitor"
+echo "voulez vous installer ssh2 dans PHP ?"
+echo "SSH2 est nécessaire pour effectuer des commandes bash sur des serveurs distants;"
+echo "par exemple rebooter un PC distant ,.....repondre O(oui) ou N(non)"
+read choix_ssh2
 echo "LEMP : Debut de l installation"
 echo "mise a jour "
 apt-get update
@@ -99,6 +103,12 @@ rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
 echo "LEMP : redemarrage php"
 service php8.2-fpm restart
+if [ "$choix_ssh2" = "Y" ]
+then
+echo "installation de php8.2-ssh2"
+apt install php8.2-ssh2
+echo "installation terminée de ssh2"
+fi
 echo "creer lien symbolique des pages PHP vers /www"
 mkdir /www
 ln -s /usr/share/nginx/html/  /www/
@@ -119,7 +129,7 @@ echo "LEMP est installé"
 echo "Voulez vous créer un certificat auto-signé"
 echo "pour utiliser monitor en local en https ? O ou N"
 read choix_ssl
-if [ "$choix_ssl" = "Y" ]
+if [ "$choix_ssl" = "O" ]
 then
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
