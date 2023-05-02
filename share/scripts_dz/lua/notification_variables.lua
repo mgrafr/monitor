@@ -32,8 +32,7 @@ return {
 		    'porte-ouverte',
 		    'intrusion',
 		    'variable_sp',
-		    'pilule_tension' ,
-		    'sms'
+		    'pilule_tension'
 		}
 	},
 	execute = function(domoticz, variable)
@@ -115,17 +114,7 @@ return {
                  alerte_gsm('alerte_'..txt)
                  end
             end
-            if (domoticz.variables('sms').changed) then 
-                 if (domoticz.variables('sms').value == "reboot_pi") then 
-	             txt=tostring(domoticz.variables('sms').value) 
-	             domoticz.variables('sms').set('0')   
-	             print('sms'..txt)
-                 local command = '/usr/bin/ssh michel:Idem4546@192.168.1.8  -t bash "sudo reboot"  >> '..rep_log..'sms.log 2>&1' ;
-                 os.execute(command);    
-                 end
-            end
+           
     end
    
 }
-
-
