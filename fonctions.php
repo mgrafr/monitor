@@ -801,6 +801,7 @@ if (($choix==10) || ($choix==11)) {$file = CONF_MODECT;$rel="11";}
 if (($choix==15) || ($choix==16)) {$file = BASE64;$rel="16";}	
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
+if ($choix==21 ) {$mode="scp_r";include ('include/ssh_scp.php');$file= $local_path.$file_name; echo "copy de  msmtprc";}	
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <br>";}
@@ -898,9 +899,15 @@ case "19" : $retour=sql_variable("",2) ;$n=0;
 			$n++;}
 		return;	
 break;
-case "20" :include ('include/reboot.php'); echo "reboot Raspberry";
+case "20" :$mode="ssh";include ('include/ssh_scp.php'); echo "reboot Raspberry";
 return;	
-break;					
+break;
+case "21" :
+return;	
+break;
+case "22" :$mode="scp_s";include ('include/ssh_scp.php'); echo "copy de  msmtprc";
+return;	
+break;		
 default:
 } }
 else {	
