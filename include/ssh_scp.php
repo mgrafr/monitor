@@ -10,7 +10,7 @@ $stream = ssh2_exec($connection, 'bash "/var/www/html/./reboot.sh"  >> /home/mic
 break;
     case "scp_r":
 $remote_file_name="/etc/msmtprc";$file_name="msmtprc";
-$local_path="/var/www/html/monitor/scripts/";		
+$local_path=MSMTPRC_LOC_PATH;		
 if (!@ssh2_scp_recv($connection,$remote_file_name, $local_path.$file_name));
 {    $errors= error_get_last();if ($errors['message']=="")$errors['message']="pas d'erreur"; 
     echo "<br>TEST ERROR: ".$errors['type'];
