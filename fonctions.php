@@ -801,8 +801,9 @@ if (($choix==10) || ($choix==11)) {$file = CONF_MODECT;$rel="11";}
 if (($choix==15) || ($choix==16)) {$file = BASE64;$rel="16";}	
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
-if ($choix==21 ) {$mode="scp_r";include ('include/ssh_scp.php');$file= $local_path.$file_name; echo "copy de  msmtprc";}	
-if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
+if ($choix==21 ) {$mode="scp_r";include ('include/ssh_scp.php');$file= MSMTPRC_LOC_PATH."msmtprc"; echo "copy de  msmtprc";$rel="22";}	
+//if ($choix==22 ) {$rel="22";//$file= MSMTPRC;
+if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <br>";}
 
@@ -818,7 +819,8 @@ break;
 case "3" :
 case "5" :
 case "7" :
-case "15" :		
+case "15" :
+//case "21" :		
 echo $file.'<div id="result"><form >';
      $content = file_get_contents($file);
 	 if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	 
@@ -831,7 +833,8 @@ echo $file.'<div id="result"><form >';
 return "sauvegarde OK";	 
 break;
 case "4" :
-case "16" :		
+case "16" :
+//case "22" :		
 $content=$idrep;
 echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
 file_put_contents(DZCONFIG, $content);
@@ -902,10 +905,7 @@ break;
 case "20" :$mode="ssh";include ('include/ssh_scp.php'); echo "reboot Raspberry";
 return;	
 break;
-case "21" :
-return;	
-break;
-case "22" :$mode="scp_s";include ('include/ssh_scp.php'); echo "copy de  msmtprc";
+case "23" :$mode="scp_s";include ('include/ssh_scp.php'); echo "copy de  msmtprc";
 return;	
 break;		
 default:
