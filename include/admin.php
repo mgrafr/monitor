@@ -31,7 +31,7 @@ Entrer votre mot de passe
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>
 		<img src="images/rpi.webp" style="width:30px" alt="rpi">
 			<a class="admin1" href="#admin" rel="20" style="margin-left:35px" title="reponse1" >Reboot Raspberry</a><br>
-			<a class="admin1" href="#admin" rel="21" style="margin-left:35px" title="reponse1" >msmtprc</a><br>	
+			<a class="admin1" href="#admin" rel="21" style="margin-left:70px" title="reponse1" >msmtprc (config envoi mail)</a><br>	
 			<img src="images/serveur-sql.svg" style="width:30px"><br>
 		<a class="admin1" href="#admin" rel="9" title="reponse1" >Test Base de données</a><br>
 		<a class="admin1" href="#admin" rel="14" title="reponse1" >Sauvegarde Base de données</a><br>
