@@ -801,9 +801,13 @@ if (($choix==10) || ($choix==11)) {$file = CONF_MODECT;$rel="11";}
 if (($choix==15) || ($choix==16)) {$file = BASE64;$rel="16";}	
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
-if ($choix==21 ) {$mode="scp_r";include ('include/ssh_scp.php');$file= MSMTPRC_LOC_PATH."msmtprc"; echo "copy de  msmtprc";$rel="22";}
-if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }	
-if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
+if ($choix==21 ) {$ip=IPRPI;$mode="scp_r";$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
+				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de  msmtprc";$rel="22";}
+if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
+if ($choix==23 ) {$ip=IPDOMOTIC;$mode="scp_r";$remote_file_name="/opt/domoticz/config/scripts/python/connect.py";$file_name="connect.py";$local_path="/home/michel/";
+				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de connect.py depuis dz";$rel="24";}	
+if ($choix==24 ) {$file_name="connect.py";$local_path="/home/michel/";$file= $local_path.$file_name; }
+if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) ) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <br>";}
 
@@ -820,7 +824,8 @@ case "3" :
 case "5" :
 case "7" :
 case "15" :
-case "21" :		
+case "21" :	
+case "23" :			
 echo $file.'<div id="result"><form >';
      $content = file_get_contents($file);
 	 if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	 
@@ -843,11 +848,14 @@ if ($choix==16){$retour=maj_variable("22","upload","3","2");echo "Logins , mots 
 else {$retour['status'];}		
 break;
 case "6" :
-case "22":	
+case "22":
+case "24":		
  $content=$idrep;
  file_put_contents($file, $content);
-if ($choix==22){$mode="scp_s";include ('include/ssh_scp.php');
-	echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/>maj config msmtprc</p>';}		
+if ($choix==22){$mode="scp_s";$ip=IPRPI;$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
+				include ('include/ssh_scp.php');echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/>maj config msmtprc</p>';}	
+if ($choix==24){$ip=IPRPI;$remote_file_name="/home/michel/connect.py";$file_name="connect.py";$local_path="/home/michel/";	
+		$mode="scp_s";include ('include/ssh_scp.php'); echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "copy de  connect.py";}		
  return;
  break;
 case "8" :
@@ -904,14 +912,10 @@ case "19" : $retour=sql_variable("",2) ;$n=0;
 			$n++;}
 		return;	
 break;
-case "20" :$mode="ssh";include ('include/ssh_scp.php'); echo "reboot Raspberry";
+case "20" :$mode="ssh";include ('include/ssh_scp.php');  echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "reboot Raspberry";
 return;	
-case "22" :
-		$mode="scp_s";include ('include/ssh_scp.php'); echo "copy de  msmtprc";
-return;	
-break;			
-break;
-case "23" :$mode="scp_s";include ('include/ssh_scp.php'); echo "copy de  msmtprc";
+break;		
+case "25" :
 return;	
 break;		
 default:
