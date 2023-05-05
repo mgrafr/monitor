@@ -1,7 +1,7 @@
 <?php
-$remote_file_name="/etc/msmtprc";$file_name="msmtprc";
-$local_path=MSMTPRC_LOC_PATH;	
-$connection = ssh2_connect('192.168.1.8', 22);
+//$remote_file_name="/etc/msmtprc";$file_name="msmtprc";
+//$local_path=MSMTPRC_LOC_PATH;	
+$connection = ssh2_connect($ip, 22);
 if (ssh2_auth_password($connection, 'michel', 'Idem4546')) {
   echo "Authentication Successful!\n";
   //envoi de la commande
