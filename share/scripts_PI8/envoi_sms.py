@@ -18,7 +18,7 @@ while n<nb_arg:
     n=n+1
 
 
-message = ('AT+SMSSEND=0670065886,'+message+'\r\n').encode('utf-8')
+message = ('AT+SMSSEND=06xxxxxxxx,'+message+'\r\n').encode('utf-8')
 phone=serial.Serial(port="/dev/ttyAMA1",baudrate=115200,timeout=2)
 phone.write(b'+++')
 time.sleep(2)
