@@ -5,7 +5,7 @@ import time,serial,requests
 from connect import ip_domoticz, port_domoticz
 # voir la doc pour connect.py
 ip_domoticz=ip_domoticz+":"+port_domoticz+"/"
-se_domoticz="http:localhost:"+port_domoticz+"/"
+se_domoticz="http://localhost:"+port_domoticz+"/"
 def convert_to_string(buf):
     try:
         tt =  buf.decode('utf-8').strip()
