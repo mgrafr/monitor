@@ -18,8 +18,8 @@ try:
     connection = mysql.connector.connect(
           host = "127.0.0.1",
           user = "michel",
-          password = "Idem4546",
-          database = "domoticz")
+          password = "MOT_PASSE",
+          database = "monitor")
 
     if connection.is_connected():
         db_Info = connection.get_server_info()
