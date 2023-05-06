@@ -3,8 +3,8 @@
 ### Pour SMS Free
 CURL=/usr/bin/curl
 URL=https://smsapi.free-mobile.fr/sendmsg
-PASS=2FQTMM7x42kspr
-USER=12812620
+PASS=xxxxxxxxxxxxxxxxx
+USER=xxxxxxxxxxx
 # notification
 not="$*"
 # envoi SMS Free
