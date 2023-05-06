@@ -6,7 +6,7 @@ import importlib
 import aldz as b
 
  
-ser = Serial("/dev/ttyAMA0", 115200)
+ser = Serial("/dev/ttyUSB0", 115200)
 
 #ser = Serial("/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0", 115200)
 
@@ -31,6 +31,7 @@ def raz_dz():
 print('start')
 #url_gsm = 'http://127.0.0.1:8082/json.htm?type=command&param=getuservariable&idx=23'
 #effacer le tampon série pour supprimer le courrier indésirable et le bruit
+# url fournie par pi connecté au modem
 ser.flush()
 while True:
         b = importlib.reload(b)
