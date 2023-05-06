@@ -5,14 +5,14 @@
 --
 function modect_cam(mode)
     json = (loadfile "scripts/lua/JSON.lua")()
-       local config = assert(io.popen('/usr/bin/curl http://192.168.1.9/monitor/admin/token.json'))
+       local config = assert(io.popen('/usr/bin/curl http://'..ip_monitor..'/monitor/admin/token.json'))
        local blocjson = config:read('*a')
        config:close()
        local jsonValeur = json:decode(blocjson)
        cle = jsonValeur.token
        for k,v in pairs(cam_modect) do 
             --print(k)--pour essai
-            command='/usr/bin/curl -XPOST http://192.168.1.23/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
+            command='/usr/bin/curl -XPOST http://'..ip_zoneminder..'/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
             print(command)
             os.execute(command) 
             print ("camera "..tostring(k).."activée :"..tostring(mode));
@@ -22,6 +22,7 @@ end
 -- chargement fichier contenant les variable de configuration
 package.path = package.path..";www/modules_lua/?.lua"
 require 'string_modect'
+require 'connect'
 --
 -- listes des dispositifs
 -- les capteurs d'ouverture et de présence DEVICE CHANGED
