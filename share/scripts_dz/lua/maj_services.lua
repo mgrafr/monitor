@@ -132,7 +132,7 @@ if  (( day ==  jour_poubelle_grise ) and (time == "17:00")) then commandArray['V
 	commandArray['Variable:not_poubelles'] = "1"
 	 print (time,day, "mettre les poubelles ordures ménagères");
 	 -- envoi notification via free
-		os.execute(sms_free)
+		--os.execute(sms_free) résilié
 		end
 --
 if ( day == jour_poubelle_jaune and (time == "17:00")) then 
@@ -149,7 +149,7 @@ if ( day == jour_poubelle_jaune and (time == "17:00")) then
 	commandArray['Variable:not_tv_poubelle'] = "1"
     print (time,day, "mettre les poubelles recyclabes");
 		-- envoi notification via free
-		os.execute(sms_free)
+		--os.execute(sms_free) résilié
 		
 		end
 end
