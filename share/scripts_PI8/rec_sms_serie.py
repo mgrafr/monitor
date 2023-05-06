@@ -3,8 +3,11 @@
 
 import time,serial,requests
 from periphery import Serial
-ip_domoticz="http://192.168.1.76:8086/"
-se_domoticz="http://localhost:8086/"
+# voir la doc pour le fichier connect.py
+from connect import ip_domoticz, port_domoticz
+
+ip_domoticz=ip_domoticz+":"+port_domoticz+"/"
+se_domoticz="http://LOGIN:PASSWORD@localhost:"+port_domoticz+"/"
 def convert_to_string(buf):
     try:
         tt =  buf.decode('utf-8').strip()
@@ -17,7 +20,7 @@ def convert_to_string(buf):
         return bytes(tmp).decode('utf-8').strip()
 
 def not_reception(content):
-    message = ('AT+SMSSEND=0670065886,'+content+'\r\n').encode('utf-8')
+    message = ('AT+SMSSEND=06xxxxxxxx,'+content+'\r\n').encode('utf-8')
     phone.write(b'+++')
     time.sleep(2)
     phone.write(b'AT+VER\r\n')
