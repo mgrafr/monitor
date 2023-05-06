@@ -804,7 +804,7 @@ if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
 if ($choix==21 ) {$ip=IPRPI;$mode="scp_r";$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de  msmtprc";$rel="22";}
 if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
-if ($choix==23 ) {$ip=IPDOMOTIC;$mode="scp_r";$remote_file_name="/opt/domoticz/config/scripts/python/connect.py";$file_name="connect.py";$local_path="/home/michel/";
+if ($choix==23 ) {$ip=IPDOMOTIC;$mode="scp_r";$remote_file_name="/opt/domoticz/config/scripts/python/connect.py";$file_name="connect.py";$local_path="/var/www/html/monitor/python/";
 				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de connect.py depuis dz";$rel="24";}	
 if ($choix==24 ) {$file_name="connect.py";$local_path="/home/michel/";$file= $local_path.$file_name; }
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) ) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
@@ -854,7 +854,7 @@ case "24":
  file_put_contents($file, $content);
 if ($choix==22){$mode="scp_s";$ip=IPRPI;$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				include ('include/ssh_scp.php');echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/>maj config msmtprc</p>';}	
-if ($choix==24){$ip=IPRPI;$remote_file_name="/home/michel/connect.py";$file_name="connect.py";$local_path="/home/michel/";	
+if ($choix==24){$ip=IPRPI;$remote_file_name="/home/michel/connect.py";$file_name="connect.py";$local_path="/var/www/html/monitor/python/";	
 		$mode="scp_s";include ('include/ssh_scp.php'); echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "copy de  connect.py";}		
  return;
  break;
