@@ -20,9 +20,10 @@ la 1ere semaine est celle ayant au moins 4 jours sur la nouvelle année
 package.path = package.path..";www/modules_lua/?.lua"
 require 'string_tableaux'
 require 'connect'
+adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local base64 = require'base64'
-local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
-local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg=poubelle' >> /home/michel/OsExecute.log 2>&1"
+-- local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
+-- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg=poubelle' >> /home/michel/OsExecute.log 2>&1"
 --
 function getYearBeginDayOfWeek(tm)
   yearBegin = os.time{year=os.date("*t",tm).year,month=1,day=1}
@@ -133,6 +134,7 @@ if  (( day ==  jour_poubelle_grise ) and (time == "17:00")) then commandArray['V
 	 print (time,day, "mettre les poubelles ordures ménagères");
 	 -- envoi notification via free
 		--os.execute(sms_free) résilié
+	commandArray['SendEmail']='poubelles#ménagères#'..adresse_mail
 		end
 --
 if ( day == jour_poubelle_jaune and (time == "17:00")) then 
@@ -150,6 +152,7 @@ if ( day == jour_poubelle_jaune and (time == "17:00")) then
     print (time,day, "mettre les poubelles recyclabes");
 		-- envoi notification via free
 		--os.execute(sms_free) résilié
+	commandArray['SendEmail']='poubelles#recyclabes#'..adresse_mail	
 		
 		end
 end
@@ -171,5 +174,6 @@ end
 -- medicaments
 if (time == "20:00" )  then
 commandArray['Variable:pilule_tension'] = "pilule_michel"
+commandArray['SendEmail']='poubelles#recyclabes#'..adresse_mail
 end
 return commandArray 
