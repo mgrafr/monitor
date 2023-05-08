@@ -3,12 +3,12 @@
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
 require 'connect'
+adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local base64 = require'base64'
 --local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
-function envoi_mail(txt,fich_log)
+function envoi_email(txt,fich_log)
 -- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> "..rep_log..fich_log.." 2>&1"  
 -- os.execute(sms_free)
-print("free résilié")
 end
 function alerte_gsm(txt)
 f = io.open("userdata/scripts/python/aldz.py", "w")
@@ -42,7 +42,7 @@ return {
 	             txt=tostring(domoticz.variables('pression-chaudiere').value) 
 	             domoticz.variables('pression-chaudiere').set('pression_basse')
 	 	         print("envoi SMS pression-chaudiere")
-                 alerte_gsm('alarme_'..txt)
+                 alerte_gsm('alarme_'..txt);domoticz.email('Alarme_bat',txt,adresse_mail) 
                end
 	        
 	           if ((domoticz.variables('zm_cam').changed) and (domoticz.variables('zm_cam').value ~= "0")) then  
@@ -57,7 +57,8 @@ return {
 	 	        if (domoticz.variables('alarme_bat').value == "batterie_faible") then 
 	                if domoticz.variables('not_alarme_bat').value == "0" then
 	                 txt="pile faible" ; fich_log="bateries.log"  
-	                 envoi_mail(txt,fich_log)
+	                 --envoi_email(txt,fich_log)
+                     domoticz.email('Alarme_bat',txt,adresse_mail) 
 	                 domoticz.variables('not_alarme_bat').set('1')
                     end
                  end 
