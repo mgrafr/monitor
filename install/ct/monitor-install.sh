@@ -4,7 +4,7 @@
 # Author: tteck (tteckster)
 # License: MIT
 # https://github.com/tteck/Proxmox/raw/main/LICENSE
-source install.func
+source <(curl -s https://raw.githubusercontent.com/mgrafr/monitor/main/install/ct/install.func)
 #source /dev/stdin <<< "$FUNCTIONS_FILE_PATH"
 color
 verb_ip6
