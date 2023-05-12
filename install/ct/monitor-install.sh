@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # Copyright (c) 2021-2023 tteck
 # Author: tteck (tteckster)
