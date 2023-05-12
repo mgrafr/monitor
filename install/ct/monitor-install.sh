@@ -3,7 +3,7 @@
 # Author: tteck (tteckster)
 # License: MIT
 # https://github.com/tteck/Proxmox/raw/main/LICENSE
-echo "debut monitor update"
+
 color(){
   YW=$(echo "\033[33m")
   BL=$(echo "\033[36m")
@@ -20,7 +20,7 @@ color(){
   HOLD="-"
 }
 
-verb_ip6(){ echo "verb_ip6"
+verb_ip6(){ 
   if [ "$VERBOSE" = "yes" ]; then
     set -x
     STD=""
@@ -94,6 +94,19 @@ root() {
   if ! getent shadow root | grep -q "^root:[^\!*]"; then
     customize
   fi
+}
+msg_info() {
+  local msg="$1"
+  echo -ne " ${HOLD} ${YW}${msg}..."
+}
+msg_ok() {
+  local msg="$1"
+  echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
+}
+
+msg_error() {
+  local msg="$1"
+  echo -e "${BFR} ${CROSS} ${RD}${msg}${CL}"
 }
 echo "maj conteneur: " $CTID 
 color
