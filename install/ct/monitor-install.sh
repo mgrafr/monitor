@@ -21,7 +21,7 @@ color() {
   HOLD="-"
 }
 
-verb_ip6() {
+verb_ip6() { echo "verb_ip6"
   if [ "$VERBOSE" = "yes" ]; then
     set -x
     STD=""
@@ -96,6 +96,7 @@ root() {
     customize
   fi
 }
+echo "maj conteneur: " $CTID 
 color
 verb_ip6
 catch_errors
