@@ -5,7 +5,7 @@
 # License: MIT
 # https://github.com/tteck/Proxmox/raw/main/LICENSE
 
-color() {
+color(){
   YW=$(echo "\033[33m")
   BL=$(echo "\033[36m")
   RD=$(echo "\033[01;31m")
@@ -17,11 +17,11 @@ color() {
   RETRY_EVERY=3
   CM="${GN}✓${CL}"
   CROSS="${RD}✗${CL}"
-  BFR="\\r\\033[K"
+  #BFR="\\r\\033[K"
   HOLD="-"
 }
 
-verb_ip6() { echo "verb_ip6"
+verb_ip6(){ echo "verb_ip6"
   if [ "$VERBOSE" = "yes" ]; then
     set -x
     STD=""
@@ -32,7 +32,7 @@ verb_ip6() { echo "verb_ip6"
     $STD sysctl -p
   fi
 }
-catch_errors() {
+catch_errors(){
   set -Eeuo pipefail
   trap 'error_handler $LINENO "$BASH_COMMAND"' ERR
 }
