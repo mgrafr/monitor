@@ -4,7 +4,7 @@
 # Author: tteck (tteckster)
 # License: MIT
 # https://github.com/tteck/Proxmox/raw/main/LICENSE
-
+echo "debut monitor update"
 color(){
   YW=$(echo "\033[33m")
   BL=$(echo "\033[36m")
