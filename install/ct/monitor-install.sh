@@ -16,7 +16,7 @@ color(){
   RETRY_EVERY=3
   CM="${GN}✓${CL}"
   CROSS="${RD}✗${CL}"
-  #BFR="\\r\\033[K"
+  BFR="\\r\\033[K"
   HOLD="-"
 }
 
