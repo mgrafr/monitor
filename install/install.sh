@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source <(curl -s https://raw.githubusercontent.com/tteck/Proxmox/main/misc/build.func)
+
 # Copyright (c) 2021-2023 tteck
 # Author: tteck (tteckster)
 # License: MIT
 # https://github.com/tteck/Proxmox/raw/main/LICENSE
-
+source <(curl -s https://raw.githubusercontent.com/mgrafr/monitor/main/install/ct/build.func)
 function header_info {
 clear
 cat <<"EOF"
@@ -18,7 +18,7 @@ EOF
 }
 header_info
 echo -e "Loading..."
-APP="Debian"
+APP="Monitor"
 var_disk="2"
 var_cpu="2"
 var_ram="1024"
@@ -30,7 +30,7 @@ catch_errors
 
 function default_settings() {
   CT_TYPE="1"
-  PW=""
+  PW=$PASS
   CT_ID=$NEXTID
   HN=$NSAPP
   DISK_SIZE="$var_disk"
@@ -45,17 +45,15 @@ function default_settings() {
   NS=""
   MAC=""
   VLAN=""
-  SSH="no"
+  SSH="yes"
   VERB="no"
   echo_default
 }
 
 function update_script() {
-header_info
-if [[ ! -d /var ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
-msg_info "Updating $APP LXC"
-apt-get update &>/dev/null
-apt-get -y upgrade &>/dev/null
+apt-get update 
+apt-get -y upgrade 
+
 msg_ok "Updated $APP LXC"
 exit
 }
@@ -63,14 +61,5 @@ exit
 start
 build_container
 description
-dpkg-reconfigure locales 
-echo "indiquer le nom de l'utilisateur du conteneur LXC : "
-read lxc_user
-adduser  $lxc_user
-apt install sudo
-usermod -aG sudo $lxc_user
-echo "Utilisateur enregistré................."
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/lemp_install.sh
-chmod 777 lemp_install.sh
-./lemp_install.sh
+
 msg_ok "Completed Successfully!\n"
