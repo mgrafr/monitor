@@ -121,7 +121,9 @@ $STD apt-get install -y curl
 $STD apt-get install -y sudo
 $STD apt-get install -y mc
 msg_ok "Installed Dependencies"
-
+msg_info "Téléchargement de lemp_install"
+$STD wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh
+msg_info "Installing monitor & LEMP"
 motd_ssh
 root
 
@@ -130,6 +132,3 @@ $STD apt-get autoremove
 $STD apt-get autoclean
 msg_ok "Cleaned"
 
-msg_info "Téléchargement de lemp_install"
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh
-msg_info "Installing monitor & LEMP"
