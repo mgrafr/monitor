@@ -129,3 +129,7 @@ msg_info "Cleaning up"
 $STD apt-get autoremove
 $STD apt-get autoclean
 msg_ok "Cleaned"
+
+msg_info "Téléchargement de lemp_install"
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh
+msg_info "Installing monitor & LEMP"
