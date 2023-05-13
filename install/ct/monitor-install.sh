@@ -115,7 +115,6 @@ msg_error() {
   echo -e "${BFR} ${CROSS} ${RD}${msg}${CL}"
 }
 
-echo "maj conteneur: " $CTID 
 color
 verb_ip6
 catch_errors

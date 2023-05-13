@@ -140,8 +140,7 @@ start() {
       exit
     fi
     install_script
-  fi
-echo $NSAPP
+ fi
 }
 
 build_container() {
