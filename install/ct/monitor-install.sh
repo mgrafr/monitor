@@ -120,7 +120,7 @@ $STD apt-get install -y mc
 msg_ok "Installed Dependencies"
 
 msg_info "Téléchargement de lemp_install"
-$STD wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh
+$STD lxc-attach -n "$CTID" -- bash -c "$(wget -qLO - https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh)" || exit
 msg_info "Installing monitor & LEMP"
 
 motd_ssh
