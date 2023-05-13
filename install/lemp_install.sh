@@ -3,10 +3,12 @@
 echo "Ce script installera automatiquement LEMP fonctionnelle . Vous devez être connecté à Internet "
 #Comment this section out and jump down to the next section to set your own defaults for a truly unattended install...
 echo "Avant de commencer l’installation, veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL:"
-echo "indiquer le nom de l'utilisateur de Maria db et monitor : "
+echo "indiquer le nom de l'utilisateur systeme : "
 read maria_name
-echo "Utilisateur maria db  enregistré"
-echo "Mot de passe pour "$maria_name
+adduser $maria_name 
+usermod -aG sudo $maria_name
+echo "Utilisateur système enregistré et ajouté au groupe SUDO"
+echo "Mot de passe de " $maria_name pour mariaDB et Monitor
 read -s mp
 echo "Veuillez confirmer le mot de passe :"
 while [ $mp != $pq ]; do
@@ -14,7 +16,7 @@ read -s pq
        echo "Le mot de passe ne correspond pas, veuillez réessayer:"
        read -s pq
 done
-echo "Mot de passe MYSQL ROOT enregistré"
+echo "Mot de passe MYSQL et Monitor enregistré "
 echo "enregistrer nom du serveur"
 echo "indiquer le domaine ou simplement 'monitor'"
 read server_name
