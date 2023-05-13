@@ -35,6 +35,16 @@ catch_errors(){
   set -Eeuo pipefail
   trap 'error_handler $LINENO "$BASH_COMMAND"' ERR
 }
+error_handler() {
+  local exit_code="$?"
+  local line_number="$1"
+  local command="$2"
+  local error_message="${RD}[ERROR]${CL} in line ${RD}$line_number${CL}: exit code ${RD}$exit_code${CL}: while executing command ${YW}$command${CL}"
+  echo -e "\n$error_message"
+  if [[ "$line_number" -eq 22 ]]; then
+    echo -e "The silent function has suppressed the error, run the script with verbose mode enabled, which will provide more detailed output.\n"
+  fi
+}
 setting_up_container() {
   msg_info "Setting up Container OS"
   sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
