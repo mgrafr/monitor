@@ -90,7 +90,7 @@ echo_default() {
   echo -e "${DGN}Allocated Ram ${BGN}$var_ram${CL}"
   echo -e "${DGN}Using Bridge: ${BGN}vmbr0${CL}"
   echo -e "${DGN}Using Static IP Address: ${BGN}dhcp${CL}"
-  echo -e "${DGN}Using Gateway Address: ${BGN}Default${CL}"
+  echo -e "${DGN}Using Gateway Address: ${BGN}$PASSERELLE${CL}"
   echo -e "${DGN}Disable IPv6: ${BGN}No${CL}"
   echo -e "${DGN}Using Interface MTU Size: ${BGN}Default${CL}"
   echo -e "${DGN}Using DNS Search Domain: ${BGN}Host${CL}"
@@ -114,8 +114,10 @@ exit-script() {
 
 
 install_script() {
-echo "MOT DE  PASSE ROOT"
+echo "indiquer MOT DE  PASSE ROOT"
 read PASS
+echo "indiquer IP Passerelle routeur"
+read PASSERELLE
   ssh_check
   arch_check
   pve_check
