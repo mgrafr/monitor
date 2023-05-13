@@ -90,11 +90,7 @@ motd_ssh() {
     systemctl restart sshd
   fi
 }
-root() {
-  if ! getent shadow root | grep -q "^root:[^\!*]"; then
-    customize
-  fi
-}
+
 msg_info() {
   local msg="$1"
   echo -ne " ${HOLD} ${YW}${msg}..."
@@ -108,6 +104,7 @@ msg_error() {
   local msg="$1"
   echo -e "${BFR} ${CROSS} ${RD}${msg}${CL}"
 }
+
 echo "maj conteneur: " $CTID 
 color
 verb_ip6
@@ -121,11 +118,13 @@ $STD apt-get install -y curl
 $STD apt-get install -y sudo
 $STD apt-get install -y mc
 msg_ok "Installed Dependencies"
+
 msg_info "Téléchargement de lemp_install"
 $STD wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh
 msg_info "Installing monitor & LEMP"
+
 motd_ssh
-root
+
 
 msg_info "Cleaning up"
 $STD apt-get autoremove
