@@ -122,7 +122,7 @@ else
 fi
 PASSERELLE=$(whiptail --title "indiquer IP Passerelle routeur" --inputbox "Entrer lP" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
-fi
+
   ssh_check
   arch_check
   pve_check
