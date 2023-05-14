@@ -35,16 +35,6 @@ catch_errors(){
   set -Eeuo pipefail
   trap 'error_handler $LINENO "$BASH_COMMAND"' ERR
 }
-error_handler() {
-  local exit_code="$?"
-  local line_number="$1"
-  local command="$2"
-  local error_message="${RD}[ERROR]${CL} in line ${RD}$line_number${CL}: exit code ${RD}$exit_code${CL}: while executing command ${YW}$command${CL}"
-  echo -e "\n$error_message"
-  if [[ "$line_number" -eq 22 ]]; then
-    echo -e "The silent function has suppressed the error, run the script with verbose mode enabled, which will provide more detailed output.\n"
-  fi
-}
 setting_up_container() {
   msg_info "Setting up Container OS"
   sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
@@ -100,7 +90,11 @@ motd_ssh() {
     systemctl restart sshd
   fi
 }
-
+root() {
+  if ! getent shadow root | grep -q "^root:[^\!*]"; then
+    customize
+  fi
+}
 msg_info() {
   local msg="$1"
   echo -ne " ${HOLD} ${YW}${msg}..."
@@ -114,7 +108,7 @@ msg_error() {
   local msg="$1"
   echo -e "${BFR} ${CROSS} ${RD}${msg}${CL}"
 }
-
+echo "maj conteneur: " $CTID 
 color
 verb_ip6
 catch_errors
@@ -128,16 +122,12 @@ $STD apt-get install -y sudo
 $STD apt-get install -y mc
 msg_ok "Installed Dependencies"
 
-msg_info "Téléchargement de lemp_install"
-$STD wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh
-msg_info "Installing monitor & LEMP"
-$STD pct exec  "$CTID" -- bash -c "chmod 777 lemp_install.sh"
-$STD pct exec  "$CTID" -- bash -c "./lemp_install.sh"
-motd_ssh
 
+
+motd_ssh
+root
 
 msg_info "Cleaning up"
 $STD apt-get autoremove
 $STD apt-get autoclean
 msg_ok "Cleaned"
-
