@@ -1,22 +1,20 @@
 #!/usr/bin/bash
 # Ce script installe LEMP sur Ubuntu Debian 11.
-echo "Ce script installera automatiquement LEMP fonctionnelle . Vous devez être connecté à Internet "
+echo "Ce script installera automatiquement LEMP fonctionnelle . "
 #Comment this section out and jump down to the next section to set your own defaults for a truly unattended install...
-echo "Avant de commencer l’installation, veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL:"
-echo "indiquer le nom de l'utilisateur systeme : "
-read maria_name
-adduser $maria_name 
+echo "Avant de commencer l’installation, veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL & Monitor:"
+maria_name=$(whiptail --title "Utilisateur MariaDB et Monitor" --inputbox "Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+ msg_ok "Utlisateur enregistré : "$maria_name
+fi 
 usermod -aG sudo $maria_name
-echo "Utilisateur système enregistré et ajouté au groupe SUDO"
-echo "Mot de passe de " $maria_name pour mariaDB et Monitor
-read -s mp
-echo "Veuillez confirmer le mot de passe :"
-while [ $mp != $pq ]; do
-read -s pq
-       echo "Le mot de passe ne correspond pas, veuillez réessayer:"
-       read -s pq
-done
-echo "Mot de passe MYSQL et Monitor enregistré "
+msg_ok "Utilisateur "$maria_name "enregistré et ajouté au groupe SUDO"
+PASS=$(whiptail --title "Mot Passe MariaDB et Monitor" --passwordbox "Entrer le mot de passe pour $maria_name" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+ msg_ok "Mot de passe enregistré pour "$maria_name
+fi
 echo "enregistrer nom du serveur"
 echo "indiquer le domaine ou simplement 'monitor'"
 read server_name
