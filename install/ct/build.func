@@ -114,8 +114,13 @@ exit-script() {
 
 
 install_script() {
-echo "indiquer MOT DE  PASSE ROOT"
-read PASS
+PASS=$(whiptail --title "Password Box" --passwordbox "Entrer le mot de passe ROOT" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+    echo "Votre mot de passe est : " $PASS
+else
+    echo "Vous avez annulez"
+fi
 echo "indiquer IP Passerelle routeur"
 read PASSERELLE
   ssh_check
