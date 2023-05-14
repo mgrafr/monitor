@@ -129,7 +129,7 @@ $STD apt-get install -y mc
 msg_ok "Installed Dependencies"
 
 msg_info "Téléchargement de lemp_install"
-$STD pct exec  "$CTID" -- bash -c "$(wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh)"
+$STD pct exec  "$CTID" -- bash -c "wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh)"
 msg_info "Installing monitor & LEMP"
 $STD pct exec  "$CTID" -- bash -c "chmod 777 lemp_install.sh"
 $STD pct exec  "$CTID" -- bash -c "./lemp_install.sh"
