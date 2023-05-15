@@ -97,7 +97,7 @@ echo_default() {
   echo -e "${DGN}Using DNS Server Address: ${BGN}Host${CL}"
   echo -e "${DGN}Using MAC Address: ${BGN}Default${CL}"
   echo -e "${DGN}Using VLAN Tag: ${BGN}Default${CL}"
-  echo -e "${DGN}Enable Root SSH Access: ${BGN}No${CL}"
+  echo -e "${DGN}Enable Root SSH Access: ${BGN}Yes${CL}"
   if [[ "$APP" == "Docker" || "$APP" == "Umbrel" || "$APP" == "CasaOS" || "$APP" == "Home Assistant" ]]; then
     echo -e "${DGN}Enable Fuse Overlayfs (ZFS): ${BGN}No${CL}"
   fi
