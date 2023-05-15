@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 # Ce script installe LEMP sur Ubuntu Debian 11.
+
+color() {
+ BL=$(echo "\033[36m")
+ BGN=$(echo "\033[4;92m")
+ DGN=$(echo "\033[32m")
+ CL=$(echo "\033[m")
+ }
 whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer automatiquement LEMP fonctionnelle.\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
 - le nom du domaine (par defaut monitor)\n\
@@ -35,7 +42,7 @@ echo "LEMP : Debut de l installation"
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
 #apt-get install sudo
 #apt-get install python3-pip
-apt-get install curl
+#apt-get install curl
 #apt-get install git
 echo "Installation de maria db"
 apt-get install mariadb-server -y
@@ -149,6 +156,26 @@ echo "ip du serveur = "$ip4
 sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/nginx/html/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
-echo "LEMP :configuration complete"
 
+echo_config() {
+  echo -e "${DGN} Distribution: ${BGN}$var_os${CL}"
+  echo -e "${DGN} $var_os Version: ${BGN}$var_version${CL}"
+  echo -e "${DGN} Type de Conteneur: ${BGN}$CT_TYPE${CL}"
+  echo -e "${DGN} Mot passe Root : ${BGN}$PW${CL}"
+  echo -e "${DGN} Conteneur ID: ${BGN}$NEXTID${CL}"
+  echo -e "${DGN} Conteneur, nom: ${BGN}$NSAPP${CL}"
+  echo -e "${DGN} Taille du disque: ${BGN}$var_disk${CL}${DGN}GB${CL}"
+  echo -e "${DGN} Coeurs alloués ${BGN}$var_cpu${CL}"
+  echo -e "${DGN} Mémoire allouée ${BGN}$var_ram${CL}"
+  echo -e "${DGN} Bridge réseau: ${BGN}vmbr0${CL}"
+  echo -e "${DGN}IP stat ou dyn: ${BGN}dhcp${CL}"
+  echo -e "${DGN} Addresse passerelle: ${BGN}$PASSERELLE${CL}"
+  echo -e "${DGN} IPv6: ${BGN}No${CL}"
+  echo -e "${DGN Accès Root SSH : ${BGN}No${CL}"
+  echo -e "${DGN}Utilisateur Mariadb & monitor: ${BGN}$maria_name${CL}"
+  echo -e "${DGN}Mot passe ROOT Mariadb : ${BGN}$root_pwd${CL}"
+  echo -e "${DGN}Choix pour SSH : ${BGN}$choix_ssh2${CL}"
+  echo -e "${DGN}Cerificat auto-signé : ${BGN}$choix_ssl${CL}"
+  echo -e "${BL}LEMP & monitor :configuration complete${CL}"}
+  echo_config
 exit

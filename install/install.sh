@@ -8,12 +8,12 @@ source <(curl -s https://raw.githubusercontent.com/mgrafr/monitor/main/install/c
 function header_info {
 clear
 cat <<"EOF"
-    ____       __    _           
-   / __ \___  / /_  (_)___ _____ 
-  / / / / _ \/ __ \/ / __ `/ __ \
- / /_/ /  __/ /_/ / / /_/ / / / /
-/_____/\___/_.___/_/\__,_/_/ /_/ 
-                                 
+    _______               __ 
+   / __  _ \_________  (_)/ /_ __________
+  / / / / / / __  / __ \/ / __// __  / __|
+ / / / / / / /_/ / / / / / /__/ /_/ / / 
+/_/ /_/ /_/_____/_/ /_/_/____/_____/_/
+                                                   
 EOF
 }
 header_info
@@ -38,7 +38,7 @@ function default_settings() {
   RAM_SIZE="$var_ram"
   BRG="vmbr0"
   NET=dhcp
-  GATE=""
+  GATE=$PASSERELLE
   DISABLEIP6="no"
   MTU=""
   SD=""
@@ -60,6 +60,10 @@ exit
 
 start
 build_container
-description
-
+msg_info "Téléchargement de lemp_install"
+pct exec $CTID -- bash -c "wget -P /root https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh" 
+msg_ok "Téléchargement de lemp_install dans /root"
+pct exec  $CTID -- bash -c "chmod 777 /root/lemp_install.sh"
+pct exec  $CTID -- bash -c "/root/./lemp_install.sh"
+msg_info "Installation de LEMP"
 msg_ok "Completed Successfully!\n"
