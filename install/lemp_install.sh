@@ -1,37 +1,42 @@
 #!/usr/bin/bash
 # Ce script installe LEMP sur Ubuntu Debian 11.
-echo "Ce script installera automatiquement LEMP fonctionnelle . "
-#Comment this section out and jump down to the next section to set your own defaults for a truly unattended install...
-echo "Avant de commencer l’installation, veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL & Monitor:"
-maria_name=$(whiptail --title "Utilisateur MariaDB et Monitor" --inputbox "Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
+whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer automatiquement LEMP fonctionnelle.\nVous devrez indiquer\n
+- un utilisateur et son mot de pase\n\
+- le nom du domaine (par defaut monitor)\n\
+- si vous voulez installer PHP-SSH2\n\
+- le mot de passe ROOT pour Maria DB\n\
+- si vous voulez créer un certificat auto-signé" 15 60
+maria_name=$(whiptail --title "Utilisateur MariaDB et Monitor" --inputbox "veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL & Monitor\n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
- msg_ok "Utlisateur enregistré : "$maria_name
+echo "Utlisateur enregistré : "$maria_name
+else
+maria_name=monitor
+echo "Par défaut, utlisateur enregistré : "$maria_name
 fi 
+adduser $maria_name
 usermod -aG sudo $maria_name
-msg_ok "Utilisateur "$maria_name "enregistré et ajouté au groupe SUDO"
-PASS=$(whiptail --title "Mot Passe MariaDB et Monitor" --passwordbox "Entrer le mot de passe pour $maria_name" 10 60 3>&1 1>&2 2>&3)
+echo "Utilisateur "$maria_name "enregistré et ajouté au groupe SUDO"
+server=$(whiptail --title "nom du serveur domotique" --inputbox "indiquer le domaine ou simplement 'monitor'"  10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
- msg_ok "Mot de passe enregistré pour "$maria_name
-fi
-echo "enregistrer nom du serveur"
-echo "indiquer le domaine ou simplement 'monitor'"
-read server_name
-echo "Server name enregistré"
+ server_name=$server
+ else server_name="monitor"
+fi 
+echo "serveur enregistré:" $server_name
 #server_name = "monitor"
-echo "voulez vous installer ssh2 dans PHP ?"
-echo "SSH2 est nécessaire pour effectuer des commandes bash sur des serveurs distants;"
-echo "par exemple rebooter un PC distant ,.....repondre O(oui) ou N(non)"
-read choix_ssh2
+ssh2=$(whiptail --title "PHP-SSH2" --checklist \
+"Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant" 15 60 4 \
+"PHP sans SSH2" "par defaut " ON \
+"PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
 echo "LEMP : Debut de l installation"
-echo "mise a jour "
-apt-get update
-echo "Python est normalement installe, pour installer des module , installation de PIP"
-apt-get install sudo
-apt-get install python3-pip
+#echo "mise a jour "
+#apt-get update
+#echo "Python est normalement installe, pour installer des module , installation de PIP"
+#apt-get install sudo
+#apt-get install python3-pip
 apt-get install curl
-apt-get install git
+#apt-get install git
 echo "Installation de maria db"
 apt-get install mariadb-server -y
 echo "démarrage et activation du service"
@@ -103,7 +108,7 @@ rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
 echo "LEMP : redemarrage php"
 service php8.2-fpm restart
-if [ "$choix_ssh2" = "Y" ]
+if [ "$ssh2" = "PHP avec SSH2" ]
 then
 echo "installation de php8.2-ssh2"
 apt install php8.2-ssh2
