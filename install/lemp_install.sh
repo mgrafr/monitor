@@ -43,14 +43,14 @@ whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer 
 maria_name=$(whiptail --title "Utilisateur MariaDB et Monitor" --inputbox "veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL & Monitor\n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
-echo "Utlisateur enregistré : "$maria_name
+info "Utlisateur enregistré : "$maria_name
 else
 maria_name=monitor
-echo "Par défaut, utlisateur enregistré : "$maria_name
+info "Par défaut, utlisateur enregistré : "$maria_name
 fi 
 adduser $maria_name
 usermod -aG sudo $maria_name
-echo "Utilisateur "$maria_name "enregistré et ajouté au groupe SUDO"
+info "Utilisateur "$maria_name "enregistré et ajouté au groupe SUDO"
 server=$(whiptail --title "nom du serveur domotique" --inputbox "indiquer le domaine ou simplement 'monitor'"  10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
@@ -70,7 +70,7 @@ apt-get update
 apt-get upgrade
 echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
-dpkg-reconfigure locales 
+ 
 apt-get install sudo
 apt-get install python3-pip
 apt-get install curl
