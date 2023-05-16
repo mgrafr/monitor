@@ -37,14 +37,13 @@ ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 "PHP sans SSH2" "par defaut " ON \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
 echo "LEMP : Debut de l installation"
-#echo "mise a jour "
-apt-get update
-apt-get upgrade
+info "mise a jour "
+#apt-get update
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
-apt-get install sudo
+#apt-get install sudo
 #apt-get install python3-pip
-apt-get install curl
-apt-get install git
+#apt-get install curl
+#apt-get install git
 echo "Installation de maria db"
 apt-get install mariadb-server -y
 echo "démarrage et activation du service"
@@ -141,8 +140,11 @@ echo '<?php phpinfo(); ?>' > /usr/share/nginx/html/info.php
 echo "LEMP est installé" 
 echo "Voulez vous créer un certificat auto-signé"
 echo "pour utiliser monitor en local en https ? O ou N"
-read choix_ssl
-if [ "$choix_ssl" = "O" ]
+choix_ssl=$(whiptail --title "certificat auto-signé" --checklist \
+"voulez vous installer un certificat ato signé ?\n pour utiliser monitor en local en https" 15 60 4 \
+"Pas de certificat  " "par defaut " ON \
+"creer un certificat" "voir la doc" OFF 3>&1 1>&2 2>&3)
+if [ "$choix_ssl" = "creer un certificat" ]
 then
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
@@ -158,25 +160,5 @@ sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/ngin
 sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
 
-echo_config() {
-  echo -e "${DGN} Distribution: ${BGN}$var_os${CL}"
-  echo -e "${DGN} $var_os Version: ${BGN}$var_version${CL}"
-  echo -e "${DGN} Type de Conteneur: ${BGN}$CT_TYPE${CL}"
-  echo -e "${DGN} Mot passe Root : ${BGN}$PW${CL}"
-  echo -e "${DGN} Conteneur ID: ${BGN}$NEXTID${CL}"
-  echo -e "${DGN} Conteneur, nom: ${BGN}$NSAPP${CL}"
-  echo -e "${DGN} Taille du disque: ${BGN}$var_disk${CL}${DGN}GB${CL}"
-  echo -e "${DGN} Coeurs alloués ${BGN}$var_cpu${CL}"
-  echo -e "${DGN} Mémoire allouée ${BGN}$var_ram${CL}"
-  echo -e "${DGN} Bridge réseau: ${BGN}vmbr0${CL}"
-  echo -e "${DGN}IP stat ou dyn: ${BGN}dhcp${CL}"
-  echo -e "${DGN} Addresse passerelle: ${BGN}$PASSERELLE${CL}"
-  echo -e "${DGN} IPv6: ${BGN}No${CL}"
-  echo -e "${DGN Accès Root SSH : ${BGN}No${CL}"
-  echo -e "${DGN}Utilisateur Mariadb & monitor: ${BGN}$maria_name${CL}"
-  echo -e "${DGN}Mot passe ROOT Mariadb : ${BGN}$root_pwd${CL}"
-  echo -e "${DGN}Choix pour SSH : ${BGN}$choix_ssh2${CL}"
-  echo -e "${DGN}Cerificat auto-signé : ${BGN}$choix_ssl${CL}"
-  echo -e "${BL}LEMP & monitor :configuration complete${CL}"}
-  echo_config
+
 exit
