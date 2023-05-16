@@ -29,12 +29,14 @@ color() {
   echo -e "$TEXT"
 }
 CHECKMARK='\033[0;32m\xE2\x9C\x94\033[0m' 
-STD="silent"
+STD=""
 function info() {
   local REASON="$1"
   local FLAG="\e[36m[INFO]\e[39m"
   msg "$FLAG $REASON"
 } 
+export LC_CTYPE=fr_FR.UTF-8
+export LC_ALL=fr_FR.UTF-8
 whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer automatiquement LEMP fonctionnelle.\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
 - le nom du domaine (par defaut monitor)\n\
@@ -73,10 +75,10 @@ echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
  
 $STD apt-get install sudo
-apt-get install python3-pip
-apt-get install curl
-apt-get install git
-info "Installation de maria db"
+$STD apt-get install python3-pip
+$STD apt-get install curl
+$STD apt-get install git
+msg_ok "Installation de maria db"
 apt-get install mariadb-server -y
 echo "démarrage et activation du service"
 systemctl start mariadb
