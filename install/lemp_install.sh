@@ -16,7 +16,15 @@ color() {
  BGN=$(echo "\033[4;92m")
  DGN=$(echo "\033[32m")
  CL=$(echo "\033[m")
+ BFR="\\r\\033[K"
+ GN=$(echo "\033[1;92m")
+ CM="${GN}✓${CL}"
  }
+ msg_ok() {
+  local msg="$1"
+  echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
+}
+ 
 CHECKMARK='\033[0;32m\xE2\x9C\x94\033[0m' 
 function info() {
   local REASON="$1"
@@ -180,7 +188,7 @@ fi
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
 header_info
-echo "ip du serveur = "$ip4
+msg_ok "ip du serveur = $ip4"
 sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/nginx/html/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
