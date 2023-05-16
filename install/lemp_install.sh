@@ -29,6 +29,7 @@ color() {
   echo -e "$TEXT"
 }
 CHECKMARK='\033[0;32m\xE2\x9C\x94\033[0m' 
+STD="silent"
 function info() {
   local REASON="$1"
   local FLAG="\e[36m[INFO]\e[39m"
@@ -66,12 +67,12 @@ ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 color
 info "LEMP : Debut de l installation"
 info "mmaj debian ,installation de sudo curl git pip"
-apt-get update 
-apt-get upgrade
+$STD apt-get update 
+$STD apt-get upgrade
 echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
  
-apt-get install sudo
+$STD apt-get install sudo
 apt-get install python3-pip
 apt-get install curl
 apt-get install git
