@@ -36,7 +36,7 @@ if [ $exitstatus = 0 ]; then
  server_name=$server
  else server_name="monitor"
 fi 
-echo "serveur enregistré:" $server_name
+info "serveur enregistré:" $server_name
 #server_name = "monitor"
 ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 "Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant" 15 60 4 \
