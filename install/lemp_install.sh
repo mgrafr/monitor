@@ -66,7 +66,7 @@ ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 color
 info "LEMP : Debut de l installation"
 info "mmaj debian ,installation de sudo curl git pip"
-apt-get update
+apt-get update 
 apt-get upgrade
 echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
