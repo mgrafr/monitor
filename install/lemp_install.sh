@@ -35,8 +35,7 @@ function info() {
   local FLAG="\e[36m[INFO]\e[39m"
   msg "$FLAG $REASON"
 } 
-export LC_CTYPE=fr_FR.UTF-8
-export LC_ALL=fr_FR.UTF-8
+dpkg-reconfigure locales
 whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer automatiquement LEMP fonctionnelle.\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
 - le nom du domaine (par defaut monitor)\n\
