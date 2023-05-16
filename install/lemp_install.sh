@@ -24,7 +24,10 @@ color() {
   local msg="$1"
   echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
 }
- 
+ function msg() {
+  local TEXT="$1"
+  echo -e "$TEXT"
+}
 CHECKMARK='\033[0;32m\xE2\x9C\x94\033[0m' 
 function info() {
   local REASON="$1"
