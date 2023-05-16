@@ -1,6 +1,16 @@
 #!/usr/bin/bash
 # Ce script installe LEMP sur Ubuntu Debian 11.
-
+function header_info {
+clear
+cat <<"EOF"
+    _______                 _
+   / __  _ \___________ ( )/ /_ __________
+  / / / / / / __  / ___\/ / __// __  / __|
+ / / / / / / /_/ / / / / / /__/ /_/ / / 
+/_/ /_/ /_/_____/_/ /_/_/____/_____/_/
+                                                   
+EOF
+}
 color() {
  BL=$(echo "\033[36m")
  BGN=$(echo "\033[4;92m")
@@ -35,19 +45,21 @@ exitstatus=$?
 if [ $exitstatus = 0 ]; then
  server_name=$server
  else server_name="monitor"
-fi 
+fi
 info "serveur enregistré:" $server_name
 #server_name = "monitor"
 ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 "Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant" 15 60 4 \
 "PHP sans SSH2" "par defaut " ON \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
+color
 info "LEMP : Debut de l installation"
 info "mmaj debian ,installation de sudo curl git pip"
 apt-get update
 apt-get upgrade
 echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
+dpkg-reconfigure locales 
 apt-get install sudo
 apt-get install python3-pip
 apt-get install curl
@@ -66,8 +78,12 @@ echo "fournir tous les privilèges à " $maria_name
 mysql -uroot  -e "GRANT ALL PRIVILEGES ON *.* TO '${maria_name}'@'%';"
 mysql -uroot  -e "flush privileges";
 echo "----------------------------------------------------"
-echo "securiser MariaDB : Entrer Mot de passe ROOT"
-read root_pwd
+root_pwd=$(whiptail --title "securiser MariaDB" --passwordbox "Entrer le mot de passe ROOT" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+ info "Mot de passe enregistré"
+fi
+info "securisation de mariaDB effectuée"
 #mysql --user="root" --password="$root_pwd" --database="monitor" --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
 mysql --user="root" --database="monitor" -e  "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$root_pwd');"
 mysql --user="root" --database="monitor" -e "UPDATE user SET plugin='mysql_native_password' WHERE User='root';"
@@ -163,10 +179,9 @@ sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
+header_info
 echo "ip du serveur = "$ip4
 sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/nginx/html/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
-
-
 exit
