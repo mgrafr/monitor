@@ -38,12 +38,13 @@ ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
 echo "LEMP : Debut de l installation"
 #echo "mise a jour "
-#apt-get update
+apt-get update
+apt-get upgrade
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
-#apt-get install sudo
+apt-get install sudo
 #apt-get install python3-pip
-#apt-get install curl
-#apt-get install git
+apt-get install curl
+apt-get install git
 echo "Installation de maria db"
 apt-get install mariadb-server -y
 echo "démarrage et activation du service"
