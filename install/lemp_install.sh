@@ -7,6 +7,12 @@ color() {
  DGN=$(echo "\033[32m")
  CL=$(echo "\033[m")
  }
+CHECKMARK='\033[0;32m\xE2\x9C\x94\033[0m' 
+function info() {
+  local REASON="$1"
+  local FLAG="\e[36m[INFO]\e[39m"
+  msg "$FLAG $REASON"
+} 
 whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer automatiquement LEMP fonctionnelle.\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
 - le nom du domaine (par defaut monitor)\n\
@@ -36,15 +42,17 @@ ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 "Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant" 15 60 4 \
 "PHP sans SSH2" "par defaut " ON \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
-echo "LEMP : Debut de l installation"
-info "mise a jour "
-#apt-get update
+info "LEMP : Debut de l installation"
+info "mmaj debian ,installation de sudo curl git pip"
+apt-get update
+apt-get upgrade
+echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
-#apt-get install sudo
-#apt-get install python3-pip
-#apt-get install curl
-#apt-get install git
-echo "Installation de maria db"
+apt-get install sudo
+apt-get install python3-pip
+apt-get install curl
+apt-get install git
+info "Installation de maria db"
 apt-get install mariadb-server -y
 echo "démarrage et activation du service"
 systemctl start mariadb
