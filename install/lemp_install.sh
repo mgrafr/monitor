@@ -42,7 +42,7 @@ whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer 
 - si vous voulez installer PHP-SSH2\n\
 - le mot de passe ROOT pour Maria DB\n\
 - si vous voulez créer un certificat auto-signé" 15 60
-maria_name=$(whiptail --title "Utilisateur MariaDB et Monitor" --inputbox "veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL & Monitor\n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
+maria_name=$(whiptail --title "Utilisateur MariaDB PMA et Monitor" --inputbox "veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL & Monitor\n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
 info "Utlisateur enregistré : "$maria_name
@@ -124,7 +124,6 @@ ufw allow ssh
 ufw allow http
 ufw allow https
 ufw enable
-
 echo "Installation de  php8"
 echo "Au cas ou apache2 serait actif sur le systeme:"
 systemctl disable --now apache2
@@ -139,14 +138,14 @@ apt-get install php8.2 php8.2-fpm php8.2-cli php-mysql php-zip php-curl php-xml 
 echo "Activer le demarrage"
 systemctl enable php8.2-fpm
 info "Installation de PHPMYADMIN"
-echo "installation du référentiel"
-echo "deb http://deb.debian.org/debian bullseye-backports main" > /etc/apt/sources.list.d/bullseye-backports.list
-apt-get update && apt-get -t buster-backports install iptables
-apt-get install php-bz2 php-tcpdf php-phpmyadmin-shapefile php-twig-i18n-extension
-apt-get install -t bullseye-backports phpmyadmin
-echo "Creer un lien symbolique depuis les fichiers d'installation vers le repertoire des pages PHP"
-ln -s /usr/share/phpmyadmin /usr/share/nginx/html
-echo "LEMP : Adjustement php listen"
+DATA="$(wget https://www.phpmyadmin.net/home_page/version.txt -q -O-)"
+URL="$(echo $DATA | cut -d ' ' -f 3)"
+VERSION="$(echo $DATA | cut -d ' ' -f 1)"
+wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
+tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
+mv phpMyAdmin-*/ /usr/share/nginx/html/phpMyAdmin
+sudo mkdir -p /var/www/phpmyadmin/tmp
+#echo "LEMP : Adjustement php listen"
 #sed -i 's/listen = 127.0.0.1:9000/listen=/var/run/php/php-fpm.sock/g' /etc/php/8.2/fpm/pool.d/www.conf
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
