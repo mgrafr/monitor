@@ -138,11 +138,11 @@ echo "Installation de PHP 8.2"
 apt-get install php8.2 php8.2-fpm php8.2-cli php-mysql php-zip php-curl php-xml php-gd php-json php-bcmath php-mbstring php-apcu -y
 echo "Activer le demarrage"
 systemctl enable php8.2-fpm
-echo "Installer PHPMYADMIN"
+info "Installation de PHPMYADMIN"
 echo "installation du référentiel"
 echo "deb http://deb.debian.org/debian bullseye-backports main" > /etc/apt/sources.list.d/bullseye-backports.list
 apt-get update && apt-get -t buster-backports install iptables
-apt install php-bz2 php-tcpdf php-phpmyadmin-shapefile php-twig-i18n-extension
+apt-get install php-bz2 php-tcpdf php-phpmyadmin-shapefile php-twig-i18n-extension
 apt-get install -t bullseye-backports phpmyadmin
 echo "Creer un lien symbolique depuis les fichiers d'installation vers le repertoire des pages PHP"
 ln -s /usr/share/phpmyadmin /usr/share/nginx/html
