@@ -36,13 +36,13 @@ function info() {
   msg "$FLAG $REASON"
 } 
 dpkg-reconfigure locales
-whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer automatiquement LEMP fonctionnelle.\nVous devrez indiquer\n
+whiptail --title "intallation de LEMP PMA et Monitor" --msgbox "Ce script installe automatiquement LEMP fonctionnelle.\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
 - le nom du domaine (par defaut monitor)\n\
 - si vous voulez installer PHP-SSH2\n\
 - le mot de passe ROOT pour Maria DB\n\
 - si vous voulez créer un certificat auto-signé" 15 60
-maria_name=$(whiptail --title "Utilisateur MariaDB PMA et Monitor" --inputbox "veuillez entrer un utlisateur et son MOT de PASSE pour MYSQL PMA & Monitor\n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
+maria_name=$(whiptail --title "Création d'un utilisateur " --inputbox "veuillez entrer un utlisateur et son MOT de PASSE \n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
 info "Utlisateur enregistré : "$maria_name
@@ -78,12 +78,18 @@ $STD apt-get install python3-pip
 $STD apt-get install curl
 $STD apt-get install git
 msg_ok "Installation de maria db"
+sleep 3
 apt-get install mariadb-server -y
 echo "démarrage et activation du service"
 systemctl start mariadb
 systemctl enable mariadb
 echo "----------------------------------------------------"
-echo "Maria db création de la base monitor."
+msg_ok "Maria db création de la base monitor."
+mp=$(whiptail --title "MariaDB mot de passe Utilisateur" --passwordbox "Entrer le mot de passe MariaDB pour $maria_name" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+ info "Mot de passe enregistré"
+fi
 mysql -uroot  -e "CREATE DATABASE monitor CHARACTER SET UTF8;"
 echo "Création de l'utilisateur : "$maria_name
 mysql -uroot  -e "CREATE USER '${maria_name}'@'%' IDENTIFIED BY '${mp}'; "
@@ -94,8 +100,9 @@ echo "----------------------------------------------------"
 root_pwd=$(whiptail --title "securiser MariaDB" --passwordbox "Entrer le mot de passe ROOT" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
- info "Mot de passe enregistré"
+ info "Mot de passe root pour $maria_name enregistré"
 fi
+
 info "securisation de mariaDB effectuée"
 #mysql --user="root" --password="$root_pwd" --database="monitor" --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
 mysql --user="root" --database="monitor" -e  "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$root_pwd');"
@@ -109,14 +116,16 @@ echo "-- s'assurer qu'il n'existe pas des autorisations persistantes"
 mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
 mysql --user="root" --password="$root_pwd"  -e "FLUSH PRIVILEGES;"
 echo "----------------------------------------------------"
-echo "MariaDB est maintenant sécurisée"
+msg_ok "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
-echo "Installer NGINX"
+msg_ok "Installation de NGINX"
+sleep 3
 apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
 systemctl start nginx
 
-echo "Installer le pare-feu :"
+msg_ok "Installation du pare-feu :"
+sleep "
 apt-get install ufw
 ufw default deny incoming
 ufw default allow outgoing
@@ -124,7 +133,8 @@ ufw allow ssh
 ufw allow http
 ufw allow https
 ufw enable
-echo "Installation de  php8"
+msg_ok "Installation de  php8"
+sleep "
 echo "Au cas ou apache2 serait actif sur le systeme:"
 systemctl disable --now apache2
 echo "Installer les dependances "
@@ -137,7 +147,8 @@ echo "Installation de PHP 8.2"
 apt-get install php8.2 php8.2-fpm php8.2-cli php-mysql php-zip php-curl php-xml php-gd php-json php-bcmath php-mbstring php-apcu -y
 echo "Activer le demarrage"
 systemctl enable php8.2-fpm
-info "Installation de PHPMYADMIN"
+msg_ok "Installation de PHPMYADMIN"
+sleep 3
 DATA="$(wget https://www.phpmyadmin.net/home_page/version.txt -q -O-)"
 URL="$(echo $DATA | cut -d ' ' -f 3)"
 VERSION="$(echo $DATA | cut -d ' ' -f 1)"
@@ -153,14 +164,15 @@ echo "LEMP : redemarrage php"
 service php8.2-fpm restart
 if [ "$ssh2" = "PHP avec SSH2" ]
 then
-echo "installation de php8.2-ssh2"
+msg_ok "installation de php8.2-ssh2"
 apt install php8.2-ssh2
 echo "installation terminée de ssh2"
 fi
 echo "creer lien symbolique des pages PHP vers /www"
 mkdir /www
 ln -s /usr/share/nginx/html/  /www/
-echo "installation de Monitor:"
+msg_ok "installation de Monitor:"
+sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git /usr/share/nginx/html/monitor
@@ -193,6 +205,7 @@ echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
 header_info
 msg_ok "ip du serveur = $ip4"
+msg_ok "nom de l'utilisateur mariadb & monitor = $maria_name"
 sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/nginx/html/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
