@@ -16,6 +16,18 @@ color() {
  DGN=$(echo "\033[32m")
  CL=$(echo "\033[m")
  }
+echo_config() {
+ echo -e "${DGN}Distribution: ${BGN}$OSTYPE${CL}"
+ echo -e "${DGN}Version de $OSTYPE : ${BGN}$OSVERSION${CL}"
+ echo -e "${DGN}Type Container(1=privilégié): ${BGN}$privilegie${CL}"
+ echo -e "${DGN}Mot de Passe ROOT: ${BGN}$PW${CL}"
+ echo -e "${DGN}Using Hostname: ${BGN}$HOSTNAME${CL}"
+ echo -e "${DGN}Capacité du disque: ${BGN}$DISK_SIZE${CL}${DGN}GB${CL}"
+ echo -e "${DGN}Coeurs alloués ${BGN}$nb_cores${CL}"
+ echo -e "${DGN}Mémoire allouée ${BGN}$var_cpu${CL}"
+ echo -e "${DGN}Bridge: ${BGN}vmbr0${CL}"
+ echo -e "${DGN}IP statique ou DHCP: ${BGN}DHCP${CL}"
+} 
 pve_check() {
   if [ $(pveversion | grep -c "pve-manager/7\.[0-9]") -eq 0 ]; then
     echo -e "${CROSS} This version of Proxmox Virtual Environment is not supported"
@@ -164,7 +176,7 @@ DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
 
 echo -e "${CHECKMARK} \e[1;92m Creating LXC Container... \e[0m"
-DISK_SIZE=32G
+DISK_SIZE=16G
 pvesm alloc $STORAGE $CTID $DISK $DISK_SIZE --format ${DISK_FORMAT:-raw} >/dev/null
 if [ "$STORAGE_TYPE" == "zfspool" ]; then
   warn "Some containers may not work properly due to ZFS not supporting 'fallocate'."
@@ -174,8 +186,11 @@ fi
 ARCH=$(dpkg --print-architecture)
 HOSTNAME=monitor
 TEMPLATE_STRING="local:vztmpl/${TEMPLATE}"
-pct create $CTID $TEMPLATE_STRING -arch $ARCH -features nesting=1 -password $PW \
-  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=dhcp -onboot 1 -cores 2 -memory 2048\
+var_cpu=2048
+nb_cores=2
+privilegie=1
+pct create $CTID $TEMPLATE_STRING -arch $ARCH -features nesting=$privilegie -password $PW \
+  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=dhcp -onboot 1 -cores $nb_cores -memory $var_cpu\
   -ostype $OSTYPE -rootfs $ROOTFS,size=$DISK_SIZE -storage $STORAGE >/dev/null
 
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
@@ -184,8 +199,10 @@ pct unmount $CTID && unset MOUNT
 
 echo -e "${CHECKMARK} \e[1;92m Starting LXC Container... \e[0m"
 pct start $CTID
+echo -e "${CHECKMARK} \e[1;92m Installation de LEMP... \e[0m"
 pct push $CTID lemp_install.sh /lemp_install.sh -perms 755
-pct exec $CTID /lemp_install.sh
+pct exec $CTID /lemp_install.sh 
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created a Jellyfin LXC Container to $CTID at IP Address ${IP}"
+info "Le Conteneur LXC $CTID a été crée pour monitor, son adresse IP est :${IP}"
+echo_config

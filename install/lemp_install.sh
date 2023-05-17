@@ -143,7 +143,7 @@ URL="$(echo $DATA | cut -d ' ' -f 3)"
 VERSION="$(echo $DATA | cut -d ' ' -f 1)"
 wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
 tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
-mv phpMyAdmin-*/ /usr/share/nginx/html/phpMyAdmin
+mv phpMyAdmin-*/ /usr/share/nginx/html/phpmyadmin
 sudo mkdir -p /var/www/phpmyadmin/tmp
 #echo "LEMP : Adjustement php listen"
 #sed -i 's/listen = 127.0.0.1:9000/listen=/var/run/php/php-fpm.sock/g' /etc/php/8.2/fpm/pool.d/www.conf
