@@ -42,7 +42,7 @@ whiptail --title "intallation de LEMP et Monitor" --msgbox "Ce script installer 
 - si vous voulez installer PHP-SSH2\n\
 - le mot de passe ROOT pour Maria DB\n\
 - si vous voulez créer un certificat auto-signé" 15 60
-maria_name=$(whiptail --title "Utilisateur MariaDB PMA et Monitor" --inputbox "veuillez entrer un utlisateur et son MOT de PASSE  pour MYSQL & Monitor\n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
+maria_name=$(whiptail --title "Utilisateur MariaDB PMA et Monitor" --inputbox "veuillez entrer un utlisateur et son MOT de PASSE pour MYSQL PMA & Monitor\n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
 info "Utlisateur enregistré : "$maria_name
