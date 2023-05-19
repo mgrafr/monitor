@@ -141,7 +141,7 @@ elif [ $((${#STORAGE_MENU[@]}/3)) -eq 1 ]; then
 else
   while [ -z "${STORAGE:+x}" ]; do
     STORAGE=$(whiptail --title "Storage Pools" --radiolist \
-    "Which storage pool you would like to use for the container?\n\n" \
+    "Quel pool de stockage voulez-vous utiliser pour ce conteneur?\n\n" \
     16 $(($MSG_MAX_LENGTH + 23)) 6 \
     "${STORAGE_MENU[@]}" 3>&1 1>&2 2>&3) || exit
   done
@@ -151,15 +151,15 @@ info "Using '$STORAGE' for Storage Location."
 CTID=$(pvesh get /cluster/nextid)
 info "Container ID is $CTID."
 
-echo -e "${CHECKMARK} \e[1;92m Mise à jour de la liste des modèles LXC... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Updating LXC Template List... \e[0m"
 pveam update >/dev/null
-echo -e "${CHECKMARK} \e[1;92m Téléchargement du modèle LXC... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Downloading LXC Template... \e[0m"
 OSTYPE=debian
 OSVERSION=${OSTYPE}-11
 mapfile -t TEMPLATES < <(pveam available -section system | sed -n "s/.*\($OSVERSION.*\)/\1/p" | sort -t - -k 2 -V)
 TEMPLATE="${TEMPLATES[-1]}"
 pveam download local $TEMPLATE >/dev/null ||
-  die "Un problème est survenu lors du téléchargement du modèle LXC."
+  die "A problem occured while downloading the LXC template."
 
 STORAGE_TYPE=$(pvesm status -storage $STORAGE | awk 'NR>1 {print $2}')
 case $STORAGE_TYPE in
@@ -175,11 +175,11 @@ esac
 DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
 
-echo -e "${CHECKMARK} \e[1;92m Création du conteneur LXC... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Creating LXC Container... \e[0m"
 DISK_SIZE=16G
 pvesm alloc $STORAGE $CTID $DISK $DISK_SIZE --format ${DISK_FORMAT:-raw} >/dev/null
 if [ "$STORAGE_TYPE" == "zfspool" ]; then
-  warn "Certains conteneurs peuvent ne pas fonctionner correctement car ZFS ne prend pas en charge « fallocate »."
+  warn "Some containers may not work properly due to ZFS not supporting 'fallocate'."
 else
   mkfs.ext4 $(pvesm path $ROOTFS) &>/dev/null
 fi
@@ -197,10 +197,9 @@ MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
 ln -fs $(readlink /etc/localtime) ${MOUNT}/etc/localtime
 pct unmount $CTID && unset MOUNT
 
-echo -e "${CHECKMARK} \e[1;92m Démarrage du conteneur LXC... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Starting LXC Container... \e[0m"
 pct start $CTID
 echo -e "${CHECKMARK} \e[1;92m Installation de LEMP... \e[0m"
-sleep 3
 pct push $CTID lemp_install.sh /lemp_install.sh -perms 755
 pct exec $CTID /lemp_install.sh 
 
