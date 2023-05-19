@@ -203,8 +203,7 @@ sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
-chown -R $maria_name:$maria_name /usr/share/nginx/html
-chmod -R 770 /usr/share/nginx/html
+chmod -R 775 /usr/share/nginx/html
 echo -e "
     _______                 _
    / __  _ \___________ ( )/ /_ __________
