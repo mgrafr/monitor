@@ -189,7 +189,7 @@ echo "LEMP est installé"
 echo "Voulez vous créer un certificat auto-signé"
 echo "pour utiliser monitor en local en https ? O ou N"
 choix_ssl=$(whiptail --title "certificat auto-signé" --checklist \
-"voulez vous installer un certificat ato signé ?\n pour utiliser monitor en local en https" 15 60 4 \
+"voulez vous installer un certificat auto signé ?\n pour utiliser monitor en local en https" 15 60 4 \
 "Pas de certificat  " "par defaut " ON \
 "creer un certificat" "voir la doc" OFF 3>&1 1>&2 2>&3)
 if [ "$choix_ssl" = "creer un certificat" ]
