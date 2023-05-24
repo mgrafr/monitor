@@ -1,8 +1,7 @@
 #!/bin/bash
 jour=$(date +%H:%M:%S)
-xxx=$(hostname -I)
-ip4=$(echo $xxx | cut -d ' ' -f 1)
-wget  http://$ip4:8086/camsnapshot.jpg?idx=1 -O /opt/domoticz/config/camsnapshot.jpg
+
+wget  http://$1:8086/camsnapshot.jpg?idx=1 -O /opt/domoticz/config/camsnapshot.jpg
 
 TITLE="image portier"
 APP_TOKEN="axxxxxxxxxxxxxxxxxxxxa"
