@@ -46,9 +46,10 @@ Entrer votre mot de passe
 
 </div>
 	</div>
-		</div> 
-<p id="notify" style="color:darkblue" href="#admin">inter</p>
-<p id="yyyessai" style="color:darkblue" href="#admin">inter1</p>
+		</div>
+<!--pour essai home Assistant -->
+<p id="notify" style="color:darkblue;display:none" href="#admin">inter</p>
+<p id="yyyessai" style="color:darkblue;display:none" href="#admin">inter1</p>
  <?php
 
 include('info_admin.php');
