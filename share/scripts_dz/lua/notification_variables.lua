@@ -42,7 +42,7 @@ return {
 	             txt=tostring(domoticz.variables('pression-chaudiere').value) 
 	             domoticz.variables('pression-chaudiere').set('pression_basse')
 	 	         print("envoi SMS pression-chaudiere")
-                 alerte_gsm('alarme_'..txt);domoticz.email('Alarme_bat',txt,adresse_mail) 
+                 alerte_gsm('alarme_'..txt);domoticz.email('Alarme_pression_chaudiere',txt,adresse_mail) 
                end
 	        
 	           if ((domoticz.variables('zm_cam').changed) and (domoticz.variables('zm_cam').value ~= "0")) then  
