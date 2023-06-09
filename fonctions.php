@@ -431,10 +431,12 @@ $img_donnees = [
 	101 => "met_12.svg",
 	103 => "met_11_1.svg",
 	105 => "met_11.svg",
+	140 => "met_10_2.svg",
 	210 => "met_6.svg",
 	211 => "met_7_1.svg",
 	212 => "met_8.svg",
 	220 => "met_6.svg",
+	222 => "met_8_2.svg",
 	231 => "met_22_1.svg",
 ];
 switch ($choix) {
