@@ -7,6 +7,7 @@ from periphery import Serial
 from connect import ip_domoticz, port_domoticz
 
 ip_domoticz=ip_domoticz+":"+port_domoticz+"/"
+#remplacer LOGIN & PASSWORD
 se_domoticz="http://LOGIN:PASSWORD@localhost:"+port_domoticz+"/"
 def convert_to_string(buf):
     try:
@@ -91,20 +92,20 @@ while True:
         line = convert_to_string(line)
         #print(line) #pour essai
         params=line.split('#')
-        if params[0] and (params[0]=='smsip' or params[0]=='smsse' or params[0]=='alon' or params[0]=='aloff'):
+        if params[0] and (params[0]=='smsip' or params[0]=='smsse' or params[0]=='Alon' or params[0]=='Aloff'):
             if params[0]=="smsip":
                 domoticz=ip_domoticz
                 ip_se=1
             if params[0]=="smsse":
                 domoticz=se_domoticz
                 ip_se=2
-            if params[0]=="alon":
+            if params[0]=="Alon":
                 domoticz=ip_domoticz
                 ip_se=1
                 params[1]= 41
                 params[2]='switch'
                 params[3]='On'
-            if params[0]=="aloff":
+            if params[0]=="Aloff":
                 domoticz=ip_domoticz
                 ip_se=1
                 params[1]= 41
@@ -117,7 +118,6 @@ while True:
                 name = params[2]
                 print('name:'+name)
             if params[3]:
-             if params[3]:
                 value = params[3]
                 print('valeur:'+value)
             if (id!="none" and name!="none" and value!="none"):
