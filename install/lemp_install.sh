@@ -82,6 +82,7 @@ $STD apt-get install curl
 $STD apt-get install git
 msg_ok "Installation de maria db"
 sleep 3
+echo -e "${CHECKMARK} \e[1;92m Debut installation de Maria DB.\e[0m"
 apt-get install mariadb-server -y
 echo "démarrage et activation du service"
 systemctl start mariadb
