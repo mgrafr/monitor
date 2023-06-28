@@ -132,6 +132,7 @@ chemin="/var/www/html"
 wget https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/install/debian.sh
 chmod +x debian.sh
 ./ debian.sh
+fi
 msg_ok "Installation du pare-feu :"
 sleep "
 apt-get install ufw
