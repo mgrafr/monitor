@@ -121,7 +121,7 @@ echo "----------------------------------------------------"
 msg_ok "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
 msg_ok "Installation de NGINX ou Nginx Proxy Manager"
-if [ "$nginxx"="ON" ]; then
+if [ "$nginx"="ON" ]; then
 chemin="/usr/share/nginx/html/"
 sleep 3
 apt-get install nginx apache2-utils mlocate  -y
