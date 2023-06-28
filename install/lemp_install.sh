@@ -121,13 +121,19 @@ echo "----------------------------------------------------"
 msg_ok "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
 msg_ok "Installation de NGINX ou Nginx Proxy Manager"
-if [ "$nginx"="ON" ]; then
+if [ "$nginx"="NGINX" ]; then
+echo $nginx"----------------------------------------------------"
+msg_ok "Installation de NGINX"
+echo "----------------------------------------------------"
 chemin="/usr/share/nginx/html/"
 sleep 3
 apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
 systemctl start nginx
 else 
+echo $nginx"----------------------------------------------------"
+msg_ok "Installation de Nginx Proxy Manager"
+echo "----------------------------------------------------"
 chemin="/var/www/html"
 wget https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/install/debian.sh
 chmod +x debian.sh
