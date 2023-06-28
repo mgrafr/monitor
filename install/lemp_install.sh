@@ -65,7 +65,10 @@ ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 "Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant" 15 60 4 \
 "PHP sans SSH2" "par defaut " ON \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
-color
+nginx=$(whiptail --title "choix pour NGINX" --checklist \
+"Comment voulez vous installer NGINX ?\n version classique ou Nginx Proxy Manager" 15 60 4 \
+"NGINX" "par defaut " NGINX \
+"Nginx Proxy Manager" NPM 3>&1 1>&2 2>&3)
 info "LEMP : Debut de l installation"
 info "mmaj debian ,installation de sudo curl git pip"
 $STD apt-get update 
@@ -119,6 +122,8 @@ echo "----------------------------------------------------"
 msg_ok "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
 msg_ok "Installation de NGINX"
+# https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/install/debian.sh
+
 sleep 3
 apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
