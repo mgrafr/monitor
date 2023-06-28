@@ -135,9 +135,9 @@ echo $nginx"----------------------------------------------------"
 msg_ok "Installation de Nginx Proxy Manager"
 echo "----------------------------------------------------"
 chemin="/var/www/html"
-wget https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/install/debian.sh
-chmod +x debian.sh
-./ debian.sh
+wget  https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/setup.sh
+chmod +x setup.sh
+./ setup.sh
 fi
 msg_ok "Installation du pare-feu :"
 sleep "
