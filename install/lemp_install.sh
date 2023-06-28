@@ -40,6 +40,7 @@ whiptail --title "intallation de LEMP PMA et Monitor" --msgbox "Ce script instal
 - un utilisateur et son mot de pase\n\
 - le nom du domaine (par defaut monitor)\n\
 - si vous voulez installer PHP-SSH2\n\
+- si vous voulez installer Nginx Proxy Manager\n\
 - le mot de passe ROOT pour Maria DB\n\
 - si vous voulez créer un certificat auto-signé" 15 60
 maria_name=$(whiptail --title "Création d'un utilisateur " --inputbox "veuillez entrer un utlisateur et son MOT de PASSE \n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
