@@ -67,15 +67,14 @@ ssh2=$(whiptail --title "PHP-SSH2" --checklist \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
 nginx=$(whiptail --title "choix pour NGINX" --checklist \
 "Comment voulez vous installer NGINX ?\n version classique ou Nginx Proxy Manager" 15 60 4 \
-"NGINX" "par defaut " NGINX \
-"Nginx Proxy Manager" NPM 3>&1 1>&2 2>&3)
+"NGINX" "par defaut " ON \
+"Nginx Proxy Manager" " " OFF 3>&1 1>&2 2>&3)
 info "LEMP : Debut de l installation"
 info "mmaj debian ,installation de sudo curl git pip"
 $STD apt-get update 
 $STD apt-get upgrade
 echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
- 
 $STD apt-get install sudo
 $STD apt-get install python3-pip
 $STD apt-get install curl
@@ -121,14 +120,18 @@ mysql --user="root" --password="$root_pwd"  -e "FLUSH PRIVILEGES;"
 echo "----------------------------------------------------"
 msg_ok "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
-msg_ok "Installation de NGINX"
-# https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/install/debian.sh
-
+msg_ok "Installation de NGINX ou Nginx Proxy Manager"
+if [ "$nginxx"="ON" ]; then
+chemin="/usr/share/nginx/html/"
 sleep 3
 apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
 systemctl start nginx
-
+else 
+chemin="/var/www/html"
+wget https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/install/debian.sh
+chmod +x debian.sh
+./ debian.sh
 msg_ok "Installation du pare-feu :"
 sleep "
 apt-get install ufw
@@ -180,16 +183,16 @@ msg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
-git clone https://github.com/mgrafr/monitor.git /usr/share/nginx/html/monitor
+git clone https://github.com/mgrafr/monitor.git $chemin/monitor
 echo "importer les tables text_image et dispositifs"
 mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
 mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
-cp /usr/share/nginx/html/monitor/share/nginx/monitor.conf /etc/nginx/conf.d
+cp $chemin/monitor/share/nginx/monitor.conf /etc/nginx/conf.d
 sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/monitor.conf
 echo "LEMP : Creating a php-info page"
-echo '<?php phpinfo(); ?>' > /usr/share/nginx/html/info.php
+echo '<?php phpinfo(); ?>' > $chemin/info.php
 echo "LEMP est installé" 
 echo "Voulez vous créer un certificat auto-signé"
 echo "pour utiliser monitor en local en https ? O ou N"
@@ -220,7 +223,7 @@ echo -e "
 header_info
 msg_ok "ip du serveur = $ip4"
 msg_ok "nom de l'utilisateur mariadb & monitor = $maria_name"
-sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" /usr/share/nginx/html/monitor/admin/config.php 
-sed -i "s/USER_BD/${maria_name}/g" /usr/share/nginx/html/monitor/admin/config.php
-sed -i "s/PASS_BD/${mp}/g" /usr/share/nginx/html/monitor/admin/config.php
+sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" $chemin/monitor/admin/config.php 
+sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
+sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
 exit
