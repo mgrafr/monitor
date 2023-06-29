@@ -1,129 +1,92 @@
 #!/usr/bin/env bash
 
-TEMPDIR=$(mktemp -d)
-TEMPLOG="$TEMPDIR/tmplog"
-TEMPERR="$TEMPDIR/tmperr"
-LASTCMD=""
-WGETOPT="-t 1 -T 15 -q"
-DEVDEPS="git build-essential libffi-dev libssl-dev python3-dev"
-NPMURL="https://github.com/NginxProxyManager/nginx-proxy-manager"
+# Copyright (c) 2021-2023 tteck
+# Author: tteck (tteckster)
+# License: MIT
+# https://github.com/tteck/Proxmox/raw/main/LICENSE
 
-cd $TEMPDIR
-touch $TEMPLOG
+source /dev/stdin <<<"$FUNCTIONS_FILE_PATH"
+color
+verb_ip6
+catch_errors
+setting_up_container
+network_check
+update_os
 
-# Helpers
-log() { 
-  logs=$(cat $TEMPLOG | sed -e "s/34/32/g" | sed -e "s/info/success/g");
-  clear && printf "\033c\e[3J$logs\n\e[34m[info] $*\e[0m\n" | tee $TEMPLOG;
-}
-runcmd() { 
-  LASTCMD=$(grep -n "$*" "$0" | sed "s/[[:blank:]]*runcmd//");
-  if [[ "$#" -eq 1 ]]; then
-    eval "$@" 2>$TEMPERR;
-  else
-    $@ 2>$TEMPERR;
-  fi
-}
-trapexit() {
-  status=$?
-  
-  if [[ $status -eq 0 ]]; then
-    logs=$(cat $TEMPLOG | sed -e "s/34/32/g" | sed -e "s/info/success/g")
-    clear && printf "\033c\e[3J$logs\n";
-  elif [[ -s $TEMPERR ]]; then
-    logs=$(cat $TEMPLOG | sed -e "s/34/31/g" | sed -e "s/info/error/g")
-    err=$(cat $TEMPERR | sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g' | rev | cut -d':' -f1 | rev | cut -d' ' -f2-) 
-    clear && printf "\033c\e[3J$logs\e[33m\n$0: line $LASTCMD\n\e[33;2;3m$err\e[0m\n"
-  else
-    printf "\e[33muncaught error occurred\n\e[0m"
-  fi
-  
-  # Cleanup
-  apt-get remove --purge -y $DEVDEPS -qq &>/dev/null
-  apt-get autoremove -y -qq &>/dev/null
-  apt-get clean
-  rm -rf $TEMPDIR
-  rm -rf /root/.cache
-}
+msg_info "Installing Dependencies"
+$STD apt-get update
+$STD apt-get -y install \
+  sudo \
+  mc \
+  curl \
+  gnupg \
+  make \
+  gcc \
+  g++ \
+  ca-certificates \
+  apache2-utils \
+  logrotate \
+  build-essential \
+  git
+msg_ok "Installed Dependencies"
 
-# Check for previous install
-if [ -f /lib/systemd/system/npm.service ]; then
-  log "Stopping services"
-  systemctl stop openresty
-  systemctl stop npm
-  
-  # Cleanup for new install
-  log "Cleaning old files"
-  rm -rf /app \
-  /var/www/html \
-  /etc/nginx \
-  /var/log/nginx \
-  /var/lib/nginx \
-  /var/cache/nginx &>/dev/null
-fi
+msg_info "Updating Python"
+$STD apt-get install -y \
+  python3 \
+  python3-dev \
+  python3-pip \
+  python3-venv \
+  python3-cffi \
+  python3-certbot \
+  python3-certbot-dns-cloudflare
 
-# Install dependencies
-log "Installing dependencies"
-runcmd apt-get update
-export DEBIAN_FRONTEND=noninteractive
-runcmd 'apt-get install -y --no-install-recommends $DEVDEPS gnupg openssl ca-certificates apache2-utils logrotate'
+$STD python3 -m venv /opt/certbot/
+msg_ok "Updated Python"
 
-# Install Python
-log "Installing python"
-runcmd apt-get install -y -q --no-install-recommends python3 python3-distutils python3-venv
-python3 -m venv /opt/certbot/
-export PATH=/opt/certbot/bin:$PATH
-grep -qo "/opt/certbot" /etc/environment || echo "$PATH" > /etc/environment
-# Install certbot and python dependancies
-runcmd wget -qO - https://bootstrap.pypa.io/get-pip.py | python -
-if [ "$(getconf LONG_BIT)" = "32" ]; then
-  runcmd pip install --no-cache-dir -U cryptography==3.3.2
-fi
-runcmd pip install --no-cache-dir cffi certbot
+VERSION="$(awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release)"
 
-# Install openresty
-log "Installing openresty"
-wget -O /usr/share/keyrings/openresty-archive-keyring.gpg  https://openresty.org/package/pubkey.gpg 
-echo "deb [signed-by=/usr/share/keyrings/openresty-archive-keyring.gpg] https://openresty.org/package/pubkey.gpg | sudo tee /etc/apt/sources.list.d/openresty.list
-runcmd apt-get update && apt-get install -y -q --no-install-recommends openresty
+msg_info "Installing Openresty"
+wget -qO - https://openresty.org/package/pubkey.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/openresty-archive-keyring.gpg
+echo -e "deb http://openresty.org/package/debian bullseye openresty" >/etc/apt/sources.list.d/openresty.list
+$STD apt-get update
+$STD apt-get -y install openresty
+msg_ok "Installed Openresty"
 
-# Install nodejs
-log "Installing nodejs"
-runcmd apt install nodejs npm -y
-#runcmd wget -qO - https://deb.nodesource.com/setup_16.x | bash -
-#runcmd apt-get install -y -q --no-install-recommends nodejs
-runcmd npm install --global yarn
+msg_info "Installing Node.js"
+$STD bash <(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh)
+. ~/.bashrc
+$STD nvm install 16.20.1
+ln -sf /root/.nvm/versions/node/v16.20.1/bin/node /usr/bin/node
+msg_ok "Installed Node.js"
 
-# Get latest version information for nginx-proxy-manager
-log "Checking for latest NPM release"
-runcmd 'wget $WGETOPT -O ./_latest_release $NPMURL/releases/latest'
-_latest_version=$(cat ./_latest_release | grep -Po '(?<=expanded_assets/v)[^"]+')
+msg_info "Installing Yarn"
+$STD npm install --global yarn
+msg_ok "Installed Yarn"
 
-# Download nginx-proxy-manager source
-log "Downloading NPM v$_latest_version"
-runcmd 'wget $WGETOPT -c $NPMURL/archive/refs/tags/v2.10.3.tar.gz -O - | tar -xz'
-cd ./nginx-proxy-manager/archive/refs/tags/v2.10.3
+RELEASE=$(curl -s https://api.github.com/repos/NginxProxyManager/nginx-proxy-manager/releases/latest |
+  grep "tag_name" |
+  awk '{print substr($2, 3, length($2)-4) }')
 
-log "Setting up enviroment"
-# Crate required symbolic links
+msg_info "Downloading Nginx Proxy Manager v${RELEASE}"
+wget -q https://codeload.github.com/NginxProxyManager/nginx-proxy-manager/tar.gz/v${RELEASE} -O - | tar -xz
+cd ./nginx-proxy-manager-${RELEASE}
+msg_ok "Downloaded Nginx Proxy Manager v${RELEASE}"
+
+msg_info "Setting up Enviroment"
 ln -sf /usr/bin/python3 /usr/bin/python
-ln -sf /opt/certbot/bin/pip /usr/bin/pip
-ln -sf /opt/certbot/bin/certbot /usr/bin/certbot
+ln -sf /usr/bin/certbot /opt/certbot/bin/certbot
 ln -sf /usr/local/openresty/nginx/sbin/nginx /usr/sbin/nginx
 ln -sf /usr/local/openresty/nginx/ /etc/nginx
 
-# Update NPM version in package.json files
-sed -i "s+0.0.0+$_latest_version+g" backend/package.json
-sed -i "s+0.0.0+$_latest_version+g" frontend/package.json
+sed -i "s+0.0.0+${RELEASE}+g" backend/package.json
+sed -i "s+0.0.0+${RELEASE}+g" frontend/package.json
 
-# Fix nginx config files for use with openresty defaults
 sed -i 's+^daemon+#daemon+g' docker/rootfs/etc/nginx/nginx.conf
 NGINX_CONFS=$(find "$(pwd)" -type f -name "*.conf")
 for NGINX_CONF in $NGINX_CONFS; do
   sed -i 's+include conf.d+include /etc/nginx/conf.d+g' "$NGINX_CONF"
 done
 
-# Copy runtime files
 mkdir -p /var/www/html /etc/nginx/logs
 cp -r docker/rootfs/var/www/html/* /var/www/html/
 cp -r docker/rootfs/etc/nginx/* /etc/nginx/
@@ -132,56 +95,54 @@ cp docker/rootfs/etc/logrotate.d/nginx-proxy-manager /etc/logrotate.d/nginx-prox
 ln -sf /etc/nginx/nginx.conf /etc/nginx/conf/nginx.conf
 rm -f /etc/nginx/conf.d/dev.conf
 
-# Create required folders
 mkdir -p /tmp/nginx/body \
-/run/nginx \
-/data/nginx \
-/data/custom_ssl \
-/data/logs \
-/data/access \
-/data/nginx/default_host \
-/data/nginx/default_www \
-/data/nginx/proxy_host \
-/data/nginx/redirection_host \
-/data/nginx/stream \
-/data/nginx/dead_host \
-/data/nginx/temp \
-/var/lib/nginx/cache/public \
-/var/lib/nginx/cache/private \
-/var/cache/nginx/proxy_temp
+  /run/nginx \
+  /data/nginx \
+  /data/custom_ssl \
+  /data/logs \
+  /data/access \
+  /data/nginx/default_host \
+  /data/nginx/default_www \
+  /data/nginx/proxy_host \
+  /data/nginx/redirection_host \
+  /data/nginx/stream \
+  /data/nginx/dead_host \
+  /data/nginx/temp \
+  /var/lib/nginx/cache/public \
+  /var/lib/nginx/cache/private \
+  /var/cache/nginx/proxy_temp
 
 chmod -R 777 /var/cache/nginx
 chown root /tmp/nginx
 
-# Dynamically generate resolvers file, if resolver is IPv6, enclose in `[]`
-# thanks @tfmm
-echo resolver "$(awk 'BEGIN{ORS=" "} $1=="nameserver" {print ($2 ~ ":")? "["$2"]": $2}' /etc/resolv.conf);" > /etc/nginx/conf.d/include/resolvers.conf
+echo resolver "$(awk 'BEGIN{ORS=" "} $1=="nameserver" {print ($2 ~ ":")? "["$2"]": $2}' /etc/resolv.conf);" >/etc/nginx/conf.d/include/resolvers.conf
 
-# Generate dummy self-signed certificate.
 if [ ! -f /data/nginx/dummycert.pem ] || [ ! -f /data/nginx/dummykey.pem ]; then
-  log "Generating dummy SSL certificate"
-  runcmd 'openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 -subj "/O=Nginx Proxy Manager/OU=Dummy Certificate/CN=localhost" -keyout /data/nginx/dummykey.pem -out /data/nginx/dummycert.pem'
+  openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 -subj "/O=Nginx Proxy Manager/OU=Dummy Certificate/CN=localhost" -keyout /data/nginx/dummykey.pem -out /data/nginx/dummycert.pem &>/dev/null
 fi
 
-# Copy app files
 mkdir -p /app/global /app/frontend/images
 cp -r backend/* /app
 cp -r global/* /app/global
+wget -q "https://github.com/just-containers/s6-overlay/releases/download/v3.1.5.0/s6-overlay-noarch.tar.xz"
+wget -q "https://github.com/just-containers/s6-overlay/releases/download/v3.1.5.0/s6-overlay-x86_64.tar.xz"
+tar -C / -Jxpf s6-overlay-noarch.tar.xz
+tar -C / -Jxpf s6-overlay-x86_64.tar.xz
+msg_ok "Set up Enviroment"
 
-# Build the frontend
-log "Building frontend"
+msg_info "Building Frontend"
 cd ./frontend
 export NODE_ENV=development
-runcmd yarn install --network-timeout=30000
-runcmd yarn build
+$STD yarn install --network-timeout=30000
+$STD yarn build
 cp -r dist/* /app/frontend
 cp -r app-images/* /app/frontend/images
+msg_ok "Built Frontend"
 
-# Initialize backend
-log "Initializing backend"
-rm -rf /app/config/default.json &>/dev/null
+msg_info "Initializing Backend"
+rm -rf /app/config/default.json
 if [ ! -f /app/config/production.json ]; then
-cat << 'EOF' > /app/config/production.json
+  cat <<'EOF' >/app/config/production.json
 {
   "database": {
     "engine": "knex-native",
@@ -197,11 +158,11 @@ EOF
 fi
 cd /app
 export NODE_ENV=development
-runcmd yarn install --network-timeout=30000
+$STD yarn install --network-timeout=30000
+msg_ok "Initialized Backend"
 
-# Create NPM service
-log "Creating NPM service"
-cat << 'EOF' > /lib/systemd/system/npm.service
+msg_info "Creating Service"
+cat <<'EOF' >/lib/systemd/system/npm.service
 [Unit]
 Description=Nginx Proxy Manager
 After=network.target
@@ -210,7 +171,7 @@ Wants=openresty.service
 [Service]
 Type=simple
 Environment=NODE_ENV=production
-ExecStartPre=-/bin/mkdir -p /tmp/nginx/body /data/letsencrypt-acme-challenge
+ExecStartPre=-mkdir -p /tmp/nginx/body /data/letsencrypt-acme-challenge
 ExecStart=/usr/bin/node index.js --abort_on_uncaught_exception --max_old_space_size=250
 WorkingDirectory=/app
 Restart=on-failure
@@ -218,18 +179,20 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 EOF
-systemctl daemon-reload
-systemctl enable npm
+msg_ok "Created Service"
 
-# Start services
-log "Starting services"
-runcmd systemctl start openresty
-runcmd systemctl start npm
+motd_ssh
+customize
 
-IP=$(hostname -I | cut -f1 -d ' ')
-log "Installation complete
+msg_info "Starting Services"
+sed -i 's/user npm/user root/g; s/^pid/#pid/g' /usr/local/openresty/nginx/conf/nginx.conf
+sed -i 's/include-system-site-packages = false/include-system-site-packages = true/g' /opt/certbot/pyvenv.cfg
+$STD systemctl enable --now openresty
+$STD systemctl enable --now npm
+msg_ok "Started Services"
 
-\e[0mNginx Proxy Manager should be reachable at the following URL.
-
-      http://${IP}:81
-"
+msg_info "Cleaning up"
+rm -rf ../nginx-proxy-manager-* s6-overlay-noarch.tar.xz s6-overlay-x86_64.tar.xz
+$STD apt-get autoremove
+$STD apt-get autoclean
+msg_ok "Cleaned"
