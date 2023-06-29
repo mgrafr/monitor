@@ -142,7 +142,7 @@ chmod +x setup.sh
 ./ setup.sh
 fi
 msg_ok "Installation du pare-feu :"
-sleep "
+sleep 3
 apt-get install ufw
 ufw default deny incoming
 ufw default allow outgoing
