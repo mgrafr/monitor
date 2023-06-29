@@ -236,7 +236,7 @@ echo -e "
 header_info
 msg_ok "ip du serveur = $ip4"
 msg_ok "nom de l'utilisateur mariadb & monitor = $maria_name"
-sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" $chemin/monitor/admin/config.php 
-sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
-sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
+#sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" $chemin/monitor/admin/config.php 
+#sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
+#sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
 exit
