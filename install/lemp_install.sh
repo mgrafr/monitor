@@ -132,6 +132,8 @@ sleep 3
 apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
 systemctl start nginx
+echo "Au cas ou apache2 serait actif sur le systeme:"
+systemctl disable --now apache2
 else 
 echo $nginx"----------------------------------------------------"
 msg_ok "Installation de Nginx Proxy Manager"
@@ -150,10 +152,10 @@ ufw allow ssh
 ufw allow http
 ufw allow https
 ufw enable
+echo -e "${CHECKMARK} \e[1;92m Le pare-feu a été installé.\e[0m"
 msg_ok "Installation de  php8"
 sleep "
-echo "Au cas ou apache2 serait actif sur le systeme:"
-systemctl disable --now apache2
+
 echo "Installer les dependances "
 apt-get install ca-certificates apt-transport-https software-properties-common 
 wget curl lsb-release
