@@ -1,9 +1,6 @@
 set -euo pipefail
 trap trapexit EXIT SIGTERM
 
-DISTRO_ID=$(cat /etc/*-release | grep -w ID | cut -d= -f2 | tr -d '"')
-DISTRO_CODENAME=$(cat /etc/*-release | grep -w VERSION_CODENAME | cut -d= -f2 | tr -d '"')
-
 TEMPDIR=$(mktemp -d)
 TEMPLOG="$TEMPDIR/tmplog"
 TEMPERR="$TEMPDIR/tmperr"
@@ -87,13 +84,8 @@ runcmd pip install --no-cache-dir cffi certbot
 
 # Install openresty
 log "Installing openresty"
-wget -qO - https://openresty.org/package/pubkey.gpg | apt-key add -
-_distro_release=$(wget $WGETOPT "http://openresty.org/package/$DISTRO_ID/dists/" -O - | grep -o "$DISTRO_CODENAME" | head -n1 || true)
-if [ $DISTRO_ID = "ubuntu" ]; then
-  echo "deb [trusted=yes] http://openresty.org/package/$DISTRO_ID ${_distro_release:-focal} main" | tee /etc/apt/sources.list.d/openresty.list
-else
-  echo "deb [trusted=yes] http://openresty.org/package/$DISTRO_ID ${_distro_release:-bullseye} openresty" | tee /etc/apt/sources.list.d/openresty.list
-fi
+wget -O /usr/share/keyrings/openresty-archive-keyring.gpg  https://openresty.org/package/pubkey.gpg 
+echo "deb [signed-by=/usr/share/keyrings/openresty-archive-keyring.gpg] https://openresty.org/package/pubkey.gpg | sudo tee /etc/apt/sources.list.d/openresty.list
 runcmd apt-get update && apt-get install -y -q --no-install-recommends openresty
 
 # Install nodejs
