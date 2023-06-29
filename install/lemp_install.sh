@@ -141,7 +141,7 @@ echo "----------------------------------------------------"
 chemin="/var/www/html"
 wget  https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/setup.sh
 chmod +x setup.sh
-./ setup.sh
+./setup.sh
 fi
 echo -e "${CHECKMARK} \e[1;92m NPM a été installé.\e[0m"
 sleep 3
