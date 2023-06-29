@@ -143,6 +143,8 @@ wget  https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-prox
 chmod +x setup.sh
 ./ setup.sh
 fi
+echo -e "${CHECKMARK} \e[1;92m NPM a été installé.\e[0m"
+sleep 3
 msg_ok "Installation du pare-feu :"
 sleep 3
 apt-get install ufw
@@ -155,13 +157,13 @@ ufw enable
 echo -e "${CHECKMARK} \e[1;92m Le pare-feu a été installé.\e[0m"
 msg_ok "Installation de  php8"
 sleep 3
-echo "Installer les dependances "
+#echo "Installer les dependances "
 apt-get install ca-certificates apt-transport-https software-properties-common 
-apt-get install curl lsb-release
+# apt-get install curl lsb-release
 echo "Ajouter le depot pour PHP 8.2 :"
-# curl -sSL https://packages.sury.org/php/README.txt | bash -x
-# apt-get update
-echo -e "${CHECKMARK} \e[1;92m curl & lsb-release installés.\e[0m"
+curl -sSL https://packages.sury.org/php/README.txt | bash -x
+apt-get update
+echo -e "${CHECKMARK} \e[1;92m Dépendances installeés.\e[0m"
 echo "Installation de PHP 8.2"
 apt-get install php8.2 php8.2-fpm php8.2-cli php-mysql php-zip php-curl php-xml php-gd php-json php-bcmath php-mbstring php-apcu -y
 echo "Activer le demarrage"
