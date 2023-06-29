@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+la#!/usr/bin/env bash
 function header_info {
 clear
 cat <<"EOF"
@@ -151,9 +151,9 @@ info "Using '$STORAGE' for Storage Location."
 CTID=$(pvesh get /cluster/nextid)
 info "Container ID is $CTID."
 
-echo -e "${CHECKMARK} \e[1;92m Updating LXC Template List... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m MAJ de la liste des Template LXC... \e[0m"
 pveam update >/dev/null
-echo -e "${CHECKMARK} \e[1;92m Downloading LXC Template... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Téléchargement du Template Debian 12... \e[0m"
 OSTYPE=debian
 OSVERSION=${OSTYPE}-12
 mapfile -t TEMPLATES < <(pveam available -section system | sed -n "s/.*\($OSVERSION.*\)/\1/p" | sort -t - -k 2 -V)
@@ -175,7 +175,7 @@ esac
 DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
 
-echo -e "${CHECKMARK} \e[1;92m Creating LXC Container... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Creation du Conteneur LXC ... \e[0m"
 DISK_SIZE=16G
 pvesm alloc $STORAGE $CTID $DISK $DISK_SIZE --format ${DISK_FORMAT:-raw} >/dev/null
 if [ "$STORAGE_TYPE" == "zfspool" ]; then
@@ -197,7 +197,7 @@ MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
 ln -fs $(readlink /etc/localtime) ${MOUNT}/etc/localtime
 pct unmount $CTID && unset MOUNT
 
-echo -e "${CHECKMARK} \e[1;92m Starting LXC Container... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Démarrage du conteneur LXC ... \e[0m"
 pct start $CTID
 echo -e "${CHECKMARK} \e[1;92m Installation de LEMP... \e[0m"
 pct push $CTID lemp_install.sh /lemp_install.sh -perms 755
