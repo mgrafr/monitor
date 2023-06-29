@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# modification du script de tteck
 # Copyright (c) 2021-2023 tteck
 # Author: tteck (tteckster)
 # License: MIT
