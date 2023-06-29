@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
-trap trapexit EXIT SIGTERM
 
 TEMPDIR=$(mktemp -d)
 TEMPLOG="$TEMPDIR/tmplog"
