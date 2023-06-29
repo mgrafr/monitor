@@ -75,14 +75,15 @@ info "mmaj debian ,installation de sudo curl git pip"
 $STD apt-get update 
 $STD apt-get upgrade
 echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
+sleep 3
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
 $STD apt-get install sudo
 $STD apt-get install python3-pip
 $STD apt-get install curl
 $STD apt-get install git
 msg_ok "Installation de maria db"
-sleep 3
 echo -e "${CHECKMARK} \e[1;92m Debut installation de Maria DB.\e[0m"
+sleep 3
 apt-get install mariadb-server -y
 echo "démarrage et activation du service"
 systemctl start mariadb
