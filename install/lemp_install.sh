@@ -138,7 +138,7 @@ else
 echo $nginx"----------------------------------------------------"
 msg_ok "Installation de Nginx Proxy Manager"
 echo "----------------------------------------------------"
-chemin="/var/www/html"
+chemin="/usr/local/openresty/nginx/html/"
 TMP=/tmp/npm_install.sh
 URL=https://raw.githubusercontent.com/mgrafr/monitor/main/install
 rm -rf $TMP
