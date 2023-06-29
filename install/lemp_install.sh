@@ -123,7 +123,7 @@ echo "----------------------------------------------------"
 msg_ok "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
 msg_ok "Installation de NGINX ou Nginx Proxy Manager"
-if [ "$nginx"="NGINX" ]; then
+if [ $nginx="NGINX" ]; then
 echo $nginx"----------------------------------------------------"
 msg_ok "Installation de NGINX"
 echo "----------------------------------------------------"
