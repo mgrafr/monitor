@@ -139,9 +139,12 @@ echo $nginx"----------------------------------------------------"
 msg_ok "Installation de Nginx Proxy Manager"
 echo "----------------------------------------------------"
 chemin="/var/www/html"
-wget  https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager/setup.sh
-chmod +x setup.sh
-./setup.sh
+TMP=/tmp/npm_install.sh
+URL=https://raw.githubusercontent.com/mgrafr/monitor/main/install
+rm -rf $TMP
+wget -O "$TMP" "$URL/npm.sh"
+chmod +x "$TMP"
+sh "$TMP"
 fi
 echo -e "${CHECKMARK} \e[1;92m NPM a été installé.\e[0m"
 sleep 3
