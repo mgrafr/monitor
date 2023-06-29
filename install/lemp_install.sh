@@ -145,7 +145,7 @@ else
 echo $nginx"----------------------------------------------------"
 msg_ok "Installation de Nginx Proxy Manager"
 echo "----------------------------------------------------"
-chemin="/usr/local/openresty/nginx/html/"
+chemin="/var/www/html/"
 msg_info "Installing Dependencies"
 apt-get -y install \
   gnupg \
@@ -344,7 +344,7 @@ URL="$(echo $DATA | cut -d ' ' -f 3)"
 VERSION="$(echo $DATA | cut -d ' ' -f 1)"
 wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
 tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
-mv phpMyAdmin-*/ /usr/share/nginx/html/phpmyadmin
+mv phpMyAdmin-*/ "$chemin"phpmyadmin
 sudo mkdir -p /var/www/phpmyadmin/tmp
 #echo "LEMP : Adjustement php listen"
 #sed -i 's/listen = 127.0.0.1:9000/listen=/var/run/php/php-fpm.sock/g' /etc/php/8.2/fpm/pool.d/www.conf
@@ -360,7 +360,7 @@ echo "installation terminée de ssh2"
 fi
 echo "creer lien symbolique des pages PHP vers /www"
 mkdir /www
-ln -s /usr/share/nginx/html/  /www/
+ln -s $chemin  /www/
 msg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
