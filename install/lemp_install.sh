@@ -72,7 +72,7 @@ $STD apt-get upgrade
 echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 sleep 3
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
-msg_info "Updating Python"
+msg_ok "Updating Python"
 $STD apt-get install -y \
   sudo curl git \
   python3-pip \
@@ -125,7 +125,9 @@ apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
 systemctl start nginx
 echo "Au cas ou apache2 serait actif sur le systeme:"
+if [ -f /etc/systemd/system/apache2.service]; then
 systemctl disable --now apache2
+fi
 echo -e "${CHECKMARK} \e[1;92m NGINX a été installé.\e[0m"
 sleep 3
 msg_ok "Installation du pare-feu :"
@@ -142,7 +144,6 @@ msg_ok "Installation de  php8"
 sleep 3
 #echo "Installer les dependances "
 apt-get install ca-certificates apt-transport-https software-properties-common 
-# apt-get install curl lsb-release
 echo "Ajouter le depot pour PHP 8.2 :"
 curl -sSL https://packages.sury.org/php/README.txt | bash -x
 apt-get update
