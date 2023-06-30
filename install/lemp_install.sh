@@ -162,7 +162,7 @@ VERSION="$(echo $DATA | cut -d ' ' -f 1)"
 wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
 tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
 mv phpMyAdmin-*/ $chemin/phpmyadmin
-sudo mkdir -p $chemin/phpmyadmin/tmp
+mkdir -p $chemin/phpmyadmin/tmp
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 #echo "LEMP : Adjustement php listen"
 #sed -i 's/listen = 127.0.0.1:9000/listen=/var/run/php/php-fpm.sock/g' /etc/php/8.2/fpm/pool.d/www.conf
@@ -178,18 +178,19 @@ echo "installation terminée de ssh2"
 fi
 echo "creer lien symbolique des pages PHP vers /www"
 mkdir /www
-ln -s $chemin  /www
+ln -s $chemin/  /www
 msg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
+
 echo "importer les tables text_image et dispositifs"
 mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
 mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
-cp $chemin/monitor/share/nginx/monitor.conf /etc/nginx/conf.d
+cp $chemin/monitor/share/nginx/monitor.conf /etc/nginx/conf.d/
 sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/monitor.conf
 echo "LEMP : Creating a php-info page"
 echo '<?php phpinfo(); ?>' > $chemin/info.php
