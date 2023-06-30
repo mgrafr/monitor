@@ -74,7 +74,8 @@ sleep 3
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
 msg_ok "Updating Python"
 $STD apt-get install -y \
-  sudo curl git \
+  sudo curl \
+  git \
   python3-pip \
 msg_ok "Installation de maria db"
 echo -e "${CHECKMARK} \e[1;92m Debut installation de Maria DB.\e[0m"
@@ -145,7 +146,6 @@ sleep 3
 #echo "Installer les dependances "
 apt-get install ca-certificates apt-transport-https software-properties-common 
 echo "Ajouter le depot pour PHP 8.2 :"
-curl -sSL https://packages.sury.org/php/README.txt | bash -x
 apt-get update
 echo -e "${CHECKMARK} \e[1;92m Dépendances installées.\e[0m"
 echo "Installation de PHP 8.2"
