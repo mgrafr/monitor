@@ -73,10 +73,7 @@ echo -e "${CHECKMARK} \e[1;92m Debian a ete mis à jour.\e[0m"
 sleep 3
 #echo "Python est normalement installe, pour installer des module , installation de PIP"
 msg_ok "Updating Python"
-$STD apt-get install -y \
-  sudo curl \
-  git \
-  python3-pip \
+$STD apt-get install sudo curl git python3-pip -y 
 msg_ok "Installation de maria db"
 echo -e "${CHECKMARK} \e[1;92m Debut installation de Maria DB.\e[0m"
 sleep 3
