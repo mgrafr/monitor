@@ -189,7 +189,7 @@ echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
 cp $chemin/monitor/share/nginx/monitor.conf /etc/nginx/conf.d/
 sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/monitor.conf
-sed -i "s/server{ /server{ ${ip4}/g" /etc/nginx/conf.d/monitor.conf
+sed -i "s/xxxipxxx{ /${ip4}/g" /etc/nginx/conf.d/monitor.conf
 echo "LEMP : Creating a php-info page"
 echo '<?php phpinfo(); ?>' > $chemin/info.php
 echo "LEMP est installé" 
