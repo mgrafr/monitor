@@ -146,7 +146,7 @@ else
     "${STORAGE_MENU[@]}" 3>&1 1>&2 2>&3) || exit
   done
 fi
-info "Using '$STORAGE' for Storage Location."
+info "Utilisation de'$STORAGE' pour stocker le conteneur."
 
 CTID=$(pvesh get /cluster/nextid)
 info "Container ID is $CTID."
