@@ -123,7 +123,7 @@ apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
 systemctl start nginx
 echo "Au cas ou apache2 serait actif sur le systeme:"
-if [ -f /etc/systemd/system/apache2.service]; then
+if [ -f "/etc/systemd/system/apache2.service" ]; then
 systemctl disable --now apache2
 fi
 echo -e "${CHECKMARK} \e[1;92m NGINX a été installé.\e[0m"
