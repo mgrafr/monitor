@@ -31,7 +31,7 @@ serv=$(whiptail --title "installation de monitor" --checklist \
 "Quel derveur utilisez-vous ?\n Apache2 ou Nginx" 15 60 4 \
 "Nginx" "par defaut " ON \
 "Apache2" "" OFF \
-"autre" "installation dans /home" OFF 3>&1 1>&2 2>&3)
+"autre" "installation dans home" OFF 3>&1 1>&2 2>&3)
 if [$serv="Nginx"] ; then
 chemin="/usr/share/nginx/html"
 if [$serv="Apache2"] ; then
