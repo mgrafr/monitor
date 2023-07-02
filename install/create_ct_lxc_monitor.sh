@@ -118,7 +118,7 @@ function load_module() {
 TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
-wget -qL https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_install.sh
+wget -qL https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
 
 load_module overlay
 
