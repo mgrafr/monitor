@@ -4,7 +4,7 @@
 // voir la documentation --- si RPI faire maj Automatique
 //general monitor
 define('URLMONITOR', 'monitor.DOMAINE.ovh');//domaine si port autre 443 
-define('IPMONITOR', 'ip');//ip 
+define('IPMONITOR', 'ipmonitor');//ip 
 define('MONCONFIG', 'admin/config.php');//fichier config 
 define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
 define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
