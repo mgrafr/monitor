@@ -24,7 +24,7 @@ Les pages optionnelles:<br>
 <img src="readme_img/image5.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image9.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image10.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
-<img src="readme_img/imag11.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
+<img src="readme_img/image11.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image12.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image13.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image14.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
