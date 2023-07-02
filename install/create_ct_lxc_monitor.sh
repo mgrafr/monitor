@@ -1,4 +1,4 @@
-la#!/usr/bin/env bash
+#!/usr/bin/env bash
 function header_info {
 clear
 cat <<"EOF"
