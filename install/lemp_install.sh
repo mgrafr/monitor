@@ -210,7 +210,7 @@ sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
-chmod -R 775 /usr/share/nginx/html
+chmod -R 777 /usr/share/nginx/html
 echo -e "
     _______                 _
    / __  _ \___________ ( )/ /_ __________
@@ -222,7 +222,7 @@ echo -e "
 header_info
 msg_ok "ip du serveur = $ip4"
 msg_ok "nom de l'utilisateur mariadb & monitor = $maria_name"
-#sed -i "s/define('IPMONITOR', 'ip/define('IPMONITOR', '${ip4}/g" $chemin/monitor/admin/config.php 
+#sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
 #sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
 #sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
 exit
