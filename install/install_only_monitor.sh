@@ -27,25 +27,31 @@ msg_txt "Updated conteneur LXC"
 exit
 }
 echo réperoire pour installer monitor
-serv=$(whiptail --title "installation de monitor" --checklist \
-"Quel derveur utilisez-vous ?\n Apache2 ou Nginx" 15 60 4 \
-"Nginx" "par defaut " ON \
-"Apache2" "" OFF \
-"autre" "installation dans home" OFF 3>&1 1>&2 2>&3)
-if [$serv="Nginx"] ; then
-chemin="/usr/share/nginx/html"
-if [$serv="Apache2"] ; then
-chemin="/www/html";
-if [$serv="autre"] ; then
-chemin="/home";
+chemin=$(whiptail --title "installation de monitor" --radiolist  \
+"Quel chemin pour monitor ?\n Apache2 ou Nginx ou autre" 15 60 4 \
+"/usr/share/nginx/html" "Nginx  " ON \
+"/www/html" "            Apache2" OFF \
+"/tmp" "                 autre" OFF  3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi le chemin : $chemin"
+else
+echo "Vous avez annulé  "
 fi
+echo "  chargement de monitor"
+msg_txt "installation de Monitor dans : $chemin"
+sleep 1
+xxx=$(hostname -I)
+ip4=$(echo "$xxx" | cut -d ' ' -f 1)
+echo "$chemin"
+sleep 3
 msg_txt "Téléchargement de monitor"
 msg_txt "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
-# une base de dionnées Maria ou mysql doit être installé
+# une base de données Maria ou mysql doit être installé
 # echo "importer les tables text_image et dispositifs"
 
 
