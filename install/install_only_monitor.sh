@@ -30,8 +30,8 @@ echo réperoire pour installer monitor
 chemin=$(whiptail --title "installation de monitor" --radiolist  \
 "Quel chemin pour monitor ?\n Apache2 ou Nginx ou autre" 15 60 4 \
 "/usr/share/nginx/html" "Nginx  " ON \
-"/www/html" "            Apache2" OFF \
-"/tmp" "                 autre" OFF  3>&1 1>&2 2>&3)
+"/www/html"              "Apache2" OFF \
+"/tmp"                   "autre" OFF  3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
    echo "Vous avez choisi le chemin : $chemin"
