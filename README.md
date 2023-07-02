@@ -23,8 +23,8 @@ Le test de la BD se fait sans mot de passe ; password=000000<br>
 Les pages optionnelles:<br>
 <img src="readme_img/image5.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image9.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
-<br> <strong>installation:</strong> en bash <br>- installation complète dans un conteneur LXC Proxmox: create_ct_lxc_monitor.sh<br>- installation uniquement de monitor: install_only_monitor<br>- installation seulement de LEMP + Monitor : lemp_monitor.sh<br>
+<br> <strong>installation:</strong> en bash <br>- installation complète dans un conteneur LXC Proxmox: create_ct_lxc_monitor.sh<br>- installation uniquement de monitor: install_only_monitor<br>- installation seulement de LEMP + Monitor : lemp_monitorinstall.sh<br>
 <br><br>
 <video width="320" height="240" poster="placeholder.png" controls ><source src="http://domo-site.fr/assets/video/monitor.mp4" type=video/mp4></video>
-Un pdf de 419 pages à télécharger sur ce dépôt<br>
+Un pdf de 517 pages à télécharger sur ce dépôt<br>
 <img src="readme_img/pdf_monitor.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
