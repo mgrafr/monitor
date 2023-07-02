@@ -61,10 +61,15 @@ if [ $exitstatus = 0 ]; then
 fi
 info "serveur enregistré:" $server_name
 #server_name = "monitor"
-ssh2=$(whiptail --title "PHP-SSH2" --checklist \
+ssh2=$(whiptail --title "PHP-SSH2" --radiolist \
 "Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant" 15 60 4 \
 "PHP sans SSH2" "par defaut " ON \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi  : $ssh2"
+else
+echo "Vous avez annulé  "
+fi
 info "LEMP : Debut de l installation"
 info "mmaj debian ,installation de sudo curl git pip"
 $STD apt-get update 
@@ -195,10 +200,15 @@ echo '<?php phpinfo(); ?>' > $chemin/info.php
 echo "LEMP est installé" 
 echo "Voulez vous créer un certificat auto-signé"
 echo "pour utiliser monitor en local en https ? O ou N"
-choix_ssl=$(whiptail --title "certificat auto-signé" --checklist \
+choix_ssl=$(whiptail --title "certificat auto-signé" --radiolist \
 "voulez vous installer un certificat auto signé ?\n pour utiliser monitor en local en https" 15 60 4 \
 "Pas de certificat  " "par defaut " ON \
 "creer un certificat" "voir la doc" OFF 3>&1 1>&2 2>&3)
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi  : $choix_ssl"
+else
+echo "Vous avez annulé  "
+fi
 if [ "$choix_ssl" = "creer un certificat" ]
 then
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
