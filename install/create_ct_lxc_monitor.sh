@@ -149,7 +149,7 @@ fi
 info "Utilisation de'$STORAGE' pour stocker le conteneur."
 
 CTID=$(pvesh get /cluster/nextid)
-info "Container ID is $CTID."
+info "ID du conteneur : $CTID."
 
 echo -e "${CHECKMARK} \e[1;92m MAJ de la liste des Template LXC... \e[0m"
 pveam update >/dev/null
