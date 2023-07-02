@@ -200,7 +200,7 @@ pct unmount $CTID && unset MOUNT
 echo -e "${CHECKMARK} \e[1;92m Démarrage du conteneur LXC ... \e[0m"
 pct start $CTID
 echo -e "${CHECKMARK} \e[1;92m Installation de LEMP... \e[0m"
-pct push $CTID lemp_install.sh /lemp_install.sh -perms 755
+pct push $CTID lemp_monitor_install.sh /lemp_install.sh -perms 755
 pct exec $CTID /lemp_install.sh 
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
