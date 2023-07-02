@@ -15,7 +15,7 @@ header_info
 
 
 
- msg_ok() {
+ msg_txt() {
   local msg="$1"
   echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
 }
@@ -23,14 +23,14 @@ function update_script() {
 apt-get update 
 apt-get -y upgrade 
 apt install git 
-msg_ok "Updated conteneur LXC"
+msg_txt "Updated conteneur LXC"
 exit
 }
 echo réperoire pour installer monitor
 read chemin
 
-msg_info "Téléchargement de monitor"
-msg_ok "installation de Monitor:"
+msg_txt "Téléchargement de monitor"
+msg_txt "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
@@ -48,9 +48,9 @@ echo -e "
 ...proposé par : https://github.com/mgrafr/monitor\n" >/etc/motd
           
 header_info
-msg_ok "ip du serveur = $ip4"
+msg_txt "ip du serveur = $ip4"
 
 #sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
 
 exit
-msg_ok "Completed Successfully!\n"
+msg_txt "Completed Successfully!\n"
