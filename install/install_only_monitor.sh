@@ -15,7 +15,10 @@ header_info
 
 
 
-
+ msg_ok() {
+  local msg="$1"
+  echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
+}
 function update_script() {
 apt-get update 
 apt-get -y upgrade 
