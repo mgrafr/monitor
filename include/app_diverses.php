@@ -3,7 +3,7 @@ session_start();
 $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="";
 if ($domaine==IPMONITOR) $lien_img="/monitor";
-else $lien_img="/monitor";
+
 ?>
 <!-- section App diverses start -->
 <!-- ================ -->
