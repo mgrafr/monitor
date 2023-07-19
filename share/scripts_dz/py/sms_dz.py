@@ -1,18 +1,32 @@
 #!/usr/bin/env python3.9 -*- coding: utf-8 -*-
 
 import requests , time ,json, os, chardet, shutil
-from periphery import Serial 
+from periphery import Serial
 import importlib
 import aldz as b
+import connect as num
 
- 
 ser = Serial("/dev/ttyUSB0", 115200)
 
 #ser = Serial("/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0", 115200)
-
+if 'num.tel1':
+    num1=num.tel1
+    print(num1)
+else:
+    num1=""
+if 'num.tel2':
+    num2=num.tel2
+    print(num2)
+else:
+    num2=""
+if 'num.tel3':
+    num3=num.tel3
+    print(num3)
+else:
+    num3=""
 def envoi_sms(message):
     bmessage = message.encode('utf-8')
-    ser.write(bmessage) 
+    ser.write(bmessage)
 
 def com_dz(url):
     response = requests.get(url)
@@ -22,7 +36,7 @@ def com_dz(url):
         envoi_sms(message)
     else:
         print('URL absente')
-        envoi_sms('url_absente') 
+        envoi_sms('url_absente')
 def raz_dz():
     src=r'/opt/domoticz/config/scripts/python/aldz.bak.py'
     des=r'/opt/domoticz/config/scripts/python/aldz.py'
@@ -37,12 +51,25 @@ while True:
         b = importlib.reload(b)
         message=b.x
         print(message)
-        if message != "0" :
-            envoi_sms(message)
-            raz_dz()
+        if (message != "0" and num.tel1 != ""):
+            message1=message+" "+num.tel1
+            print(num.tel1)
+            print(message1)
+            envoi_sms(message1)
+            time.sleep(10)
+            if (message != "0" and num.tel2 != ""):
+                message2=message+" "+num.tel2
+                print(num.tel2)
+                envoi_sms(message2)
+                time.sleep(10)
+                if (message != "0" and num.tel3 != ""):
+                    message3=message+" "+num.tel3
+                    envoi_sms(message3)
+        raz_dz()
         url = ser.read(128, 0.5).decode(errors='ignore')
         if url:
             print(url)
             com_dz(url)
         time.sleep(10)
+
 
