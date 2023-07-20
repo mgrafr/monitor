@@ -1,5 +1,5 @@
 -- script notifications_variables
-
+-- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
 require 'connect'
@@ -14,6 +14,7 @@ function alerte_gsm(txt)
 f = io.open("userdata/scripts/python/aldz.py", "w")
 env="#!/usr/bin/env python3"
 f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'")
+--f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\ntel='"..tel1.."'")
 f:close()
 end
 -- repertoire du script python
@@ -42,14 +43,14 @@ return {
 	             txt=tostring(domoticz.variables('pression-chaudiere').value) 
 	             domoticz.variables('pression-chaudiere').set('pression_basse')
 	 	         print("envoi SMS pression-chaudiere")
-                 alerte_gsm('alarme_'..txt);domoticz.email('Alarme_pression_chaudiere',txt,adresse_mail) 
+                 alerte_gsm('alarmeù'..txt);domoticz.email('Alarme pression chaudiere',txt,adresse_mail) 
                end
 	        
 	           if ((domoticz.variables('zm_cam').changed) and (domoticz.variables('zm_cam').value ~= "0")) then  
 	             txt=tostring(domoticz.variables('zm_cam').value) 
 	             domoticz.variables('zm_cam').set('0')
 	 	         print("envoi SMS alarme zm")
-                 alerte_gsm('alarme_zoneminder_'..txt)
+                 alerte_gsm('alarme_zoneminderù'..txt)
                end
           
 	 	    if (domoticz.variables('alarme_bat').changed) then 
@@ -85,6 +86,8 @@ return {
                     if (domoticz.variables('upload').value == "3") then
                         fich="";local jt='';
                         for line in io.lines( "/opt/domoticz/www/modules_lua/connect.lua" ) do 
+                        line = line:gsub("%}", "]");line = line:gsub("%{", "[")
+                        --print(line)
                         fich=fich..tostring(line).."\n" 
                         jt=jt..line..';\n'
                     end
@@ -101,18 +104,18 @@ return {
             if (domoticz.variables('porte-ouverte').changed) then  
 	             txt=tostring(domoticz.variables('porte-ouverte').value) 
 	             print("porte-ouverte")
-                 alerte_gsm('alarme_'..txt)
+                 alerte_gsm('alarmeù'..txt)
             end
             if (domoticz.variables('intrusion').changed) then  
 	             txt=tostring(domoticz.variables('intrusion').value) 
 	             print('intrusion')
-                 alerte_gsm('alarme_'..txt)
+                 alerte_gsm('alarmeù'..txt)
             end
             if (domoticz.variables('pilule_tension').changed) then 
                  if (domoticz.variables('pilule_tension').value ~= "0") then 
 	             txt=tostring(domoticz.variables('pilule_tension').value) 
 	             print('médicaments')
-                 alerte_gsm('alerte_'..txt)
+                 alerte_gsm('alerteù'..txt)
                  end
             end
            
