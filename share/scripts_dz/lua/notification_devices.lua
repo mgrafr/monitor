@@ -1,20 +1,20 @@
   -- script notifications_devices
+ -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 require 'connect'
 adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local base64 = require'base64'
-local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
+--local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 
 
 function send_sms(txt)
--- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> /home/michel/free.log 2>&1"   
--- os.execute(sms_free)
 os.execute('/bin/bash userdata/scripts/bash/./pushover.sh '..txt..' >>  /opt/domoticz/userdata/push3.log 2>&1');
 end
 function alerte_gsm(txt) -- ATTENTION PAS ESPACES pout txt
 f = io.open("userdata/scripts/python/aldz.py", "w")
 env="#!/usr/bin/env python3"
 f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'")
+--f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\ntel='"..tel1.."'")
 f:close()
 print(txt)
 end
@@ -47,31 +47,33 @@ return {
             if (device.name == 'Ping_pi4' and  device.state=='Off' and domoticz.variables('pi-alarme').value == "0") then 
             domoticz.variables('pi-alarme').set("pi_hs")
             domoticz.variables('variable_sp').set("1")
-            txt='alarme_pi_hs';alerte_gsm(txt);domoticz.email('Alarme',txt,adresse_mail) 
+            txt='alarmeùpiùhs';obj='alarme pi hs'alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
             elseif (device.name == 'Ping_pi4' and  device.state=='On' and domoticz.variables('pi-alarme').value == "pi_hs") then 
             domoticz.variables('pi-alarme').set("0")
-            txt='alarme_PI_de_nouveau_OK';alerte_gsm(txt);domoticz.email('Alarme',txt,adresse_mail) 
+            txt='alarmeùPIùdeùnouveauùOK';obj='alarme PI de nouveau OK'alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
             end
             --
             if (device.name == 'Test_GSM' and  device.state=='On') then print ("test_gsm")
-            txt='Test_GSM_OK';alerte_gsm(txt)
-            domoticz.email('Alarme',txt,adresse_mail)    
+            txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
+            obj='Test GSM OK'domoticz.email('Alarme',txt,adresse_mail)    
             end
             -- alarme auto
             if (device.name == 'al_nuit_auto' and  device.state=='On') then txt='alarme_nuit_auto_activee';alerte_gsm(txt); domoticz.variables('alarme').set("alarme_auto");
-            elseif (device.name == 'al_nuit_auto' and  device.state=='Off') then txt='alarme_nuit_auto_desactivee';alerte_gsm(txt);domoticz.variables('alarme').set("0");
+            elseif (device.name == 'al_nuit_auto' and  device.state=='Off') then txt='alarmeùnuitùautoùdesactivee';alerte_gsm(txt);domoticz.variables('alarme').set("0");
             end
             -- alarme absence _activation
              if (device.name == 'alarme_absence' and  device.state=='On' and  domoticz.variables('ma-alarme').value=="0") then
-                domoticz.variables('ma-alarme').set("1"); txt='alarme_absence_activee';alerte_gsm(txt) 	
+                domoticz.variables('ma-alarme').set("1"); txt='alarmeùabsenceùactivee';obj='alarme absence activee';alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
 	         elseif (device.name == 'alarme_absence' and  device.state=='Off' and  domoticz.variables('ma-alarme').value=="1") then
-                domoticz.variables('ma-alarme').set("0"); txt='alarme_absence_desactivee';alerte_gsm(txt)
+                domoticz.variables('ma-alarme').set("0"); txt='alarmeùabsenceùdesactivee';obj='alarme absence desactivee';
+                alerte_gsm(txt);alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
           	end	
 	        -- alarme nuit_activation
              if (device.name == 'alarme_nuit' and  device.state=='On' and  domoticz.variables('ma-alarme').value=="0") then 
-                domoticz.variables('ma-alarme').set("2"); txt='alarme_nuit_activee';alerte_gsm(txt);domoticz.variables('alarme').set("alarme_nuit"); 	
+                domoticz.variables('ma-alarme').set("2"); txt='alarmeùnuitùactivee';obj='alarme_nuit_activee';
+                alerte_gsm(txt);domoticz.variables('alarme').set("alarme_nuit"); 	
 	         elseif (device.name == 'alarme_nuit' and  device.state=='Off' and  domoticz.variables('ma-alarme').value=="2") then
-                domoticz.variables('ma-alarme').set("0"); txt='alarme_nuit_desactivee';alerte_gsm(txt);
+                domoticz.variables('ma-alarme').set("0"); txt='alarmeùnuitùdesactivee';obj='alarme_nuit_desactivee';alerte_gsm(txt);
                     if (domoticz.variables('alarme').value~='alarme_auto') then domoticz.variables('alarme').set("0");
                     end
           	end	
