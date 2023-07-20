@@ -9,21 +9,12 @@ import connect as num
 ser = Serial("/dev/ttyUSB0", 115200)
 
 #ser = Serial("/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0", 115200)
-if 'num.tel1':
-    num1=num.tel1
-    print(num1)
+if num.tel:
+    num=num.tel
+    print(num)
 else:
-    num1=""
-if 'num.tel2':
-    num2=num.tel2
-    print(num2)
-else:
-    num2=""
-if 'num.tel3':
-    num3=num.tel3
-    print(num3)
-else:
-    num3=""
+    num=""
+
 def envoi_sms(message):
     bmessage = message.encode('utf-8')
     ser.write(bmessage)
@@ -51,20 +42,16 @@ while True:
         b = importlib.reload(b)
         message=b.x
         print(message)
-        if (message != "0" and num.tel1 != ""):
-            message1=message+" "+num.tel1
-            print(num.tel1)
-            print(message1)
-            envoi_sms(message1)
-            time.sleep(10)
-            if (message != "0" and num.tel2 != ""):
-                message2=message+" "+num.tel2
-                print(num.tel2)
-                envoi_sms(message2)
-                time.sleep(10)
-                if (message != "0" and num.tel3 != ""):
-                    message3=message+" "+num.tel3
-                    envoi_sms(message3)
+        n=0
+        if message != "0":
+            while n < len(num):
+                if num[n] and num[n]!="":
+                    sms=message+" "+num[n]
+                    print(num[n])
+                    print(sms)
+                    envoi_sms(sms)
+                    n=n+1
+                    time.sleep(5)
         raz_dz()
         url = ser.read(128, 0.5).decode(errors='ignore')
         if url:
