@@ -13,13 +13,14 @@
 					</div>
 				</div>
 
-<div><img id="fosse" class="fosse_septique" src=""/></div>
+
 						</div>
 
 
 			</div>
 <div class="confirm pression_chaud"><a href="#" id="annul_pression" rel="28" title="Annulation de l'\alerte pression"><img id="pression_chaud" src=""/></a></div>
 <div class="confirm pilule"><a href="#" id="annul_pilule" rel="30" title="Annulation de l'\alerte pilule michel"><img id="pilule" src=""/></a></div>
+<div class="confirm"><a href="#" id="annul_fosse" rel="2" title="Annulation de l'\alerte fosse septique"><img id="fosse" class="fosse_septique" src=""/></a></div>
 <div class="poubelles"><img id="poubelle" onclick="info_poubelles(1)" src=""/></div>
 <div class="aff_pluie" >
 	<div id="pluie" ><img id="pl" src="" alt="pluie" /></div><div id="txt_pluie"></div>  </div>

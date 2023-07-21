@@ -432,7 +432,7 @@ else {urllog="erreur";}
 
   }); 
 });
-/*---popup boite_lettres---pression chaudière--médicaments------------------------------*/
+/*---popup boite_lettres---pression chaudière--médicaments-fosse septique-----------------------------*/
 var bl=0;var ch=0;var modalContainer = document.createElement('div');
 modalContainer.setAttribute('id', 'modal_bl');
 var customBox = document.createElement('div');
