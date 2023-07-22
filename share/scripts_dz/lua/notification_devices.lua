@@ -1,4 +1,4 @@
-  -- script notifications_devices
+   -- script notifications_devices version  2.1.3
  -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 require 'connect'
@@ -13,7 +13,7 @@ end
 function alerte_gsm(txt) -- ATTENTION PAS ESPACES pout txt
 f = io.open("userdata/scripts/python/aldz.py", "w")
 env="#!/usr/bin/env python3"
-f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'")
+f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\npriority=1")
 --f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\ntel='"..tel1.."'")
 f:close()
 print(txt)
@@ -55,7 +55,7 @@ return {
             --
             if (device.name == 'Test_GSM' and  device.state=='On') then print ("test_gsm")
             txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
-            obj='Test GSM OK'domoticz.email('Alarme',txt,adresse_mail)    
+            obj='Test GSM OK'domoticz.email('Alarme',obj,adresse_mail)    
             end
             -- alarme auto
             if (device.name == 'al_nuit_auto' and  device.state=='On') then txt='alarme_nuit_auto_activee';alerte_gsm(txt); domoticz.variables('alarme').set("alarme_auto");

@@ -1,4 +1,4 @@
--- script notifications_variables
+-- script notifications_variables version 2.1.3
 -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
@@ -13,7 +13,7 @@ end
 function alerte_gsm(txt)
 f = io.open("userdata/scripts/python/aldz.py", "w")
 env="#!/usr/bin/env python3"
-f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'")
+f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\npriority=1")
 --f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\ntel='"..tel1.."'")
 f:close()
 end
