@@ -14,7 +14,13 @@ if num.tel:
     print(num)
 else:
     num=""
-
+if b.priority:
+    urgence=b.priority
+    if urgence==0:
+        urgence=len(num)
+    print(urgence)
+else:
+    num=""
 def envoi_sms(message):
     bmessage = message.encode('utf-8')
     ser.write(bmessage)
@@ -44,7 +50,7 @@ while True:
         print(message)
         n=0
         if message != "0":
-            while n < len(num):
+            while n < urgence:
                 if num[n] and num[n]!="":
                     sms=message+" "+num[n]
                     print(num[n])
