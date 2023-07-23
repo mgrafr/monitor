@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+<!-- -->
 <!-- section administration -->
 <!-- ================ -->
 <div id="admin">
@@ -11,6 +12,9 @@ session_start();
 		<div id="d_btn_a" ><button type="button" id="btn_a" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
 Entrer votre mot de passe 
 </button></div>
+<?php
+include ("include/test_pass.php");// verif du mot de passe
+?>			
 		<p id="admin2" style="margin-top:100px;display:<?php echo $style1;//voir test_pass.php?>">
 		<img src="images/logo.webp" style="position:relative;top:-30px;left:-20px;width:50px" alt="logo"/></p>
 		<p id="admin3"><a class="admin1" href="#admin" title="reponse1" rel="7">CHANGER de MOT de PASSE</a><br>
