@@ -33,7 +33,9 @@ return {
 		    'porte-ouverte',
 		    'intrusion',
 		    'variable_sp',
-		    'pilule_tension'
+		    'pilule_tension',
+		    'sms',
+		    'pi-alarme'
 		}
 	},
 	execute = function(domoticz, variable)
@@ -83,22 +85,23 @@ return {
                 command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1'
                 os.execute(command);print('maj effectuée');
                 domoticz.variables('upload').set('0')   
-                    if (domoticz.variables('upload').value == "3") then
+                    --if (domoticz.variables('upload').value == "3") then
                         fich="";local jt='';
                         for line in io.lines( "/opt/domoticz/www/modules_lua/connect.lua" ) do 
                         line = line:gsub("%}", "]");line = line:gsub("%{", "[")
                         --print(line)
                         fich=fich..tostring(line).."\n" 
                         jt=jt..line..';\n'
-                    end
+                        end
                     f = io.open("userdata/scripts/python/connect.py", "w")
                     env="#!/usr/bin/env python3"
                     f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
                     f = io.open("userdata/scripts/js/connect.js", "w")
                     f:write(jt)
                     f:close()
-                    end
+                    --end
                 end
+                domoticz.variables('sms').set("1")
             end
                
             if (domoticz.variables('porte-ouverte').changed) then  
@@ -118,7 +121,20 @@ return {
                  alerte_gsm('alerteù'..txt)
                  end
             end
-           
+            if (domoticz.variables('sms').changed) then 
+                 if (domoticz.variables('sms').value ~= "0") then 
+	             domoticz.variables('variable_sp').set('2')
+	             print('variable_sp')
+                 end
+            end
+            if (domoticz.variables('pi-alarme').changed) then 
+                 if (domoticz.variables('pi-alarme').value ~= "0") then
+                 txt=tostring(domoticz.variables('alarme').value)     
+	             elseif (domoticz.variables('pi-alarme').value == "0") then
+	             txt='PI_NORMAL'
+	             alerte_gsm('alerteù'..txt)
+                 end
+            end
     end
    
 }
