@@ -1,2 +1,3 @@
 #!/usr/bin/env python3 -*- coding: utf-8 -*-
-x='azerty'
+x='0'
+priority=0
