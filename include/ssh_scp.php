@@ -1,4 +1,7 @@
 <?php
+if ($type==1) {$commande='bash "/var/www/html/./reboot.sh"  >> /home/michel/sms.log 2>&1';$mode="ssh";}
+if ($type==2) {$commande='bash "/home/'.USERDOMOTIC.'/./'.$command.'.sh"  >> /home/'.USERDOMOTIC.'/ctl.log 2>&1';$mode="ssh";}
+
 //$remote_file_name="/etc/msmtprc";$file_name="msmtprc";
 //$local_path=MSMTPRC_LOC_PATH;	
 $connection = ssh2_connect($ip, 22);
@@ -7,7 +10,8 @@ if (ssh2_auth_password($connection, 'michel', 'Idem4546')) {
   //envoi de la commande
 switch ($mode) {
     case "ssh":
-$stream = ssh2_exec($connection, 'bash "/var/www/html/./reboot.sh"  >> /home/michel/sms.log 2>&1');
+$stream = ssh2_exec($connection, $commande);
+echo $commande;		
 break;
     case "scp_r":
 if (!@ssh2_scp_recv($connection,$remote_file_name, $local_path.$file_name))
