@@ -81,7 +81,8 @@ function maj_services(index){
 	idw = html[i].ID_img;idt = html[i].ID_txt;exist = html[i].exist_id;name_var=html[i].Name;
 	if (exist=="oui"){
 		if (idw=="poubelle"){idx_idimg=html[i].Value;idx_ico=html[i].icone;}
-		if (idw=="#shell") {id_var=html[i].idx;v_var=html[i].Value;
+		if (idw=="#shell")  {id_var=html[i].idx;v_var=html[i].Value;
+			if (v_var!="0")  {					 
 		var type=2;
 		if (idt="dz") var ipdz="<?php echo IPDOMOTIC;?>";
 		else  var ipdz="<?php echo IPDOMOTIC1;?>";
@@ -92,7 +93,7 @@ function maj_services(index){
   			});maj_variable(id_var,"BASH",0,2);
 			
 		
-		}	
+		}	}
 	var myEle = document.getElementById(idt);	
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){document.getElementById(idt).innerHTML =html[i].Value;}
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
