@@ -213,12 +213,12 @@ $data['resultat']="OK";
 return json_encode($data);}
 
 //-------POUR DZ- et HA -----------------------------------
-// pour DZ specific IDX : /json.htm?type=devices&rid=IDX
+// pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
 //
 function devices_plan($plan){
 $n=0;$al_bat=0;$p=0;	
 	if (IPDOMOTIC!=""){		
-$L=URLDOMOTIC."json.htm?type=devices&plan=".$plan;
+$L=URLDOMOTIC."json.htm?type=command&param=getdevices&plan=".$plan;
 $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
 $parsed_json = $parsed_json['result'];
