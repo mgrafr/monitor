@@ -10850,13 +10850,13 @@ sudo nano /etc/fstab
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. |image1| image:: media/image1.png
+.. |image1| image:: Doc/media/image1.png
    :width: 0.27917in
    :height: 0.27917in
-.. |image2| image:: media/image2.png
+.. |image2| image:: Doc/media/image2.png
    :width: 0.64583in
    :height: 0.61389in
-.. |image3| image:: media/image82.png
+.. |image3| image:: Doc/media/image82.png
    :width: 3.08333in
    :height: 0.30139in
 .. |image4| image:: media/image177.png
