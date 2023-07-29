@@ -10850,144 +10850,144 @@ sudo nano /etc/fstab
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. |image1| image:: vertopal_6e277aed43794de08da7229da055806a/media/image1.png
+.. |image1| image:: media/image1.png
    :width: 0.27917in
    :height: 0.27917in
-.. |image2| image:: vertopal_6e277aed43794de08da7229da055806a/media/image2.png
+.. |image2| image:: media/image2.png
    :width: 0.64583in
    :height: 0.61389in
-.. |image3| image:: vertopal_6e277aed43794de08da7229da055806a/media/image82.png
+.. |image3| image:: media/image82.png
    :width: 3.08333in
    :height: 0.30139in
-.. |image4| image:: vertopal_6e277aed43794de08da7229da055806a/media/image177.png
+.. |image4| image:: media/image177.png
    :width: 0.6875in
    :height: 0.61389in
-.. |image5| image:: vertopal_6e277aed43794de08da7229da055806a/media/image259.png
+.. |image5| image:: media/image259.png
    :width: 0.54306in
    :height: 0.11389in
-.. |image6| image:: vertopal_6e277aed43794de08da7229da055806a/media/image259.png
+.. |image6| image:: media/image259.png
    :width: 0.54167in
    :height: 0.11389in
-.. |image7| image:: vertopal_6e277aed43794de08da7229da055806a/media/image261.png
+.. |image7| image:: media/image261.png
    :width: 1.78194in
    :height: 1.75972in
-.. |image8| image:: vertopal_6e277aed43794de08da7229da055806a/media/image274.png
+.. |image8| image:: media/image274.png
    :width: 1.98056in
    :height: 2.36389in
-.. |image9| image:: vertopal_6e277aed43794de08da7229da055806a/media/image275.png
+.. |image9| image:: media/image275.png
    :width: 3.88194in
    :height: 1.72083in
-.. |image10| image:: vertopal_6e277aed43794de08da7229da055806a/media/image333.png
+.. |image10| image:: media/image333.png
    :width: 1.84444in
    :height: 1.59306in
-.. |image11| image:: vertopal_6e277aed43794de08da7229da055806a/media/image334.png
+.. |image11| image:: media/image334.png
    :width: 3.28056in
    :height: 0.82222in
-.. |image12| image:: vertopal_6e277aed43794de08da7229da055806a/media/image336.png
+.. |image12| image:: media/image336.png
    :width: 6.26111in
    :height: 4.0625in
-.. |image13| image:: vertopal_6e277aed43794de08da7229da055806a/media/image351.png
+.. |image13| image:: media/image351.png
    :width: 0.96805in
    :height: 0.375in
-.. |image14| image:: vertopal_6e277aed43794de08da7229da055806a/media/image382.png
+.. |image14| image:: media/image382.png
    :width: 0.97361in
    :height: 0.81111in
-.. |image15| image:: vertopal_6e277aed43794de08da7229da055806a/media/image383.png
+.. |image15| image:: media/image383.png
    :width: 0.97083in
    :height: 0.91528in
-.. |image16| image:: vertopal_6e277aed43794de08da7229da055806a/media/image384.png
+.. |image16| image:: media/image384.png
    :width: 0.96805in
    :height: 1.29167in
-.. |image17| image:: vertopal_6e277aed43794de08da7229da055806a/media/image445.png
+.. |image17| image:: media/image445.png
    :width: 1.54306in
    :height: 1.6875in
-.. |image18| image:: vertopal_6e277aed43794de08da7229da055806a/media/image471.png
+.. |image18| image:: media/image471.png
    :width: 1.125in
    :height: 1.53055in
-.. |image19| image:: vertopal_6e277aed43794de08da7229da055806a/media/image481.png
+.. |image19| image:: media/image481.png
    :width: 2.46389in
    :height: 1.41528in
-.. |image20| image:: vertopal_6e277aed43794de08da7229da055806a/media/image482.png
+.. |image20| image:: media/image482.png
    :width: 3.24028in
    :height: 1.19861in
-.. |image21| image:: vertopal_6e277aed43794de08da7229da055806a/media/image526.png
+.. |image21| image:: media/image526.png
    :width: 2.1875in
    :height: 0.24028in
-.. |image22| image:: vertopal_6e277aed43794de08da7229da055806a/media/image527.png
+.. |image22| image:: media/image527.png
    :width: 3.50972in
    :height: 0.27083in
-.. |image23| image:: vertopal_6e277aed43794de08da7229da055806a/media/image614.png
+.. |image23| image:: media/image614.png
    :width: 0.52083in
    :height: 0.67778in
-.. |image24| image:: vertopal_6e277aed43794de08da7229da055806a/media/image721.png
+.. |image24| image:: media/image721.png
    :width: 0.89306in
    :height: 0.9666in
-.. |image25| image:: vertopal_6e277aed43794de08da7229da055806a/media/image722.png
+.. |image25| image:: media/image722.png
    :width: 0.89583in
    :height: 0.96875in
-.. |image26| image:: vertopal_6e277aed43794de08da7229da055806a/media/image723.png
+.. |image26| image:: media/image723.png
    :width: 6.5in
    :height: 0.29081in
-.. |image27| image:: vertopal_6e277aed43794de08da7229da055806a/media/image724.png
+.. |image27| image:: media/image724.png
    :width: 6.34722in
    :height: 9.5in
-.. |image28| image:: vertopal_6e277aed43794de08da7229da055806a/media/image725.png
+.. |image28| image:: media/image725.png
    :width: 6.49583in
    :height: 4.36944in
-.. |image29| image:: vertopal_6e277aed43794de08da7229da055806a/media/image729.png
+.. |image29| image:: media/image729.png
    :width: 6.30139in
    :height: 2.82222in
-.. |image30| image:: vertopal_6e277aed43794de08da7229da055806a/media/image730.png
+.. |image30| image:: media/image730.png
    :width: 6.49583in
    :height: 1.27917in
-.. |image31| image:: vertopal_6e277aed43794de08da7229da055806a/media/image738.png
+.. |image31| image:: media/image738.png
    :width: 6.26806in
    :height: 3.55556in
-.. |image32| image:: vertopal_6e277aed43794de08da7229da055806a/media/image744.png
+.. |image32| image:: media/image744.png
    :width: 6.26806in
    :height: 1.80694in
-.. |image33| image:: vertopal_6e277aed43794de08da7229da055806a/media/image745.png
+.. |image33| image:: media/image745.png
    :width: 6.26806in
    :height: 5.675in
-.. |image34| image:: vertopal_6e277aed43794de08da7229da055806a/media/image748.png
+.. |image34| image:: media/image748.png
    :width: 6.26806in
    :height: 1.95694in
-.. |image35| image:: vertopal_6e277aed43794de08da7229da055806a/media/image750.png
+.. |image35| image:: media/image750.png
    :width: 6.26806in
    :height: 2.40417in
-.. |image36| image:: vertopal_6e277aed43794de08da7229da055806a/media/image753.png
+.. |image36| image:: media/image753.png
    :width: 6.26528in
    :height: 0.99861in
-.. |image37| image:: vertopal_6e277aed43794de08da7229da055806a/media/image756.png
+.. |image37| image:: media/image756.png
    :width: 3.04444in
    :height: 2.61528in
-.. |image38| image:: vertopal_6e277aed43794de08da7229da055806a/media/image757.png
+.. |image38| image:: media/image757.png
    :width: 2.90694in
    :height: 2.08333in
-.. |image39| image:: vertopal_6e277aed43794de08da7229da055806a/media/image758.png
+.. |image39| image:: media/image758.png
    :width: 6.26806in
    :height: 5.58194in
-.. |image40| image:: vertopal_6e277aed43794de08da7229da055806a/media/image760.png
+.. |image40| image:: media/image760.png
    :width: 6.30139in
    :height: 4.30694in
-.. |image41| image:: vertopal_6e277aed43794de08da7229da055806a/media/image762.png
+.. |image41| image:: media/image762.png
    :width: 6.26806in
    :height: 0.82917in
-.. |image42| image:: vertopal_6e277aed43794de08da7229da055806a/media/image767.png
+.. |image42| image:: media/image767.png
    :width: 5.94722in
    :height: 7.52083in
-.. |image43| image:: vertopal_6e277aed43794de08da7229da055806a/media/image770.png
+.. |image43| image:: media/image770.png
    :width: 6.26806in
    :height: 2.62639in
-.. |image44| image:: vertopal_6e277aed43794de08da7229da055806a/media/image776.png
+.. |image44| image:: media/image776.png
    :width: 6.30139in
    :height: 2.99306in
-.. |image45| image:: vertopal_6e277aed43794de08da7229da055806a/media/image810.png
+.. |image45| image:: media/image810.png
    :width: 0.47917in
    :height: 0.45833in
-.. |image46| image:: vertopal_6e277aed43794de08da7229da055806a/media/image810.png
+.. |image46| image:: media/image810.png
    :width: 0.47917in
    :height: 0.45833in
-.. |image47| image:: vertopal_6e277aed43794de08da7229da055806a/media/image972.png
+.. |image47| image:: media/image972.png
    :width: 4.11528in
    :height: 1.47778in
