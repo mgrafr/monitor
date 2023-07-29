@@ -307,14 +307,14 @@
      install.sh :
    | wget
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image3.png
+   .. image:: media/image3.webp
       :width: 6.3in
       :height: 1.83472in
 
    Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
    chmod +x create_ct_lxc_monitor.sh
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image4.png
+   .. image:: media/image4.webp
       :width: 3.42778in
       :height: 0.30278in
 
@@ -330,75 +330,75 @@
 
    **Installation :** ./create_ct_lxc_monitor.sh
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image5.png
+   .. image:: media/image5.webp
       :width: 3.42778in
       :height: 0.3125in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image6.png
+   .. image:: media/image6.webp
       :width: 4.21944in
       :height: 1.08333in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image7.png
+   .. image:: media/image7.webp
       :width: 5.60556in
       :height: 2.02083in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image8.png
+.. image:: media/image8.webp
    :width: 5.66806in
    :height: 1.77083in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image9.png
+.. image:: media/image9.webp
    :width: 5.77222in
    :height: 2.875in
 
 Choisir le langage UTF-8 : fr_FR.UTF-8
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image10.png
+.. image:: media/image10.webp
    :width: 6.30139in
    :height: 5.00694in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image11.png
+.. image:: media/image11.webp
    :width: 5.78333in
    :height: 2.33333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image12.png
+.. image:: media/image12.webp
    :width: 5.80278in
    :height: 2.80278in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image13.png
+.. image:: media/image13.webp
    :width: 5.75139in
    :height: 1.89583in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image14.png
+.. image:: media/image14.webp
    :width: 6.30139in
    :height: 5.84583in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image15.png
+.. image:: media/image15.webp
    :width: 5.63611in
    :height: 1.83333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image16.png
+.. image:: media/image16.webp
    :width: 5.69861in
    :height: 2.77083in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image17.png
+.. image:: media/image17.webp
    :width: 5.82222in
    :height: 5.10417in
 
 Sécuriser Maria DB, mot passe root
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image18.png
+.. image:: media/image18.webp
    :width: 5.86528in
    :height: 1.99028in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image19.png
+.. image:: media/image19.webp
    :width: 6.05278in
    :height: 2.37083in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image20.png
+.. image:: media/image20.webp
    :width: 6.05278in
    :height: 2.08333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image21.png
+.. image:: media/image21.webp
    :width: 6.07361in
    :height: 1.9375in
 
@@ -412,23 +412,23 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
   0.1.3*
 | Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image22.png
+.. image:: media/image22.webp
    :width: 2.60555in
    :height: 1.25972in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image23.png
+.. image:: media/image23.webp
    :width: 5.62639in
    :height: 2.75in
 
 TAB, ENTER
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image24.png
+.. image:: media/image24.webp
    :width: 5.05278in
    :height: 3.8125in
 
 **Vérifications en cas de problèmes :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image25.png
+.. image:: media/image25.webp
    :width: 2.42778in
    :height: 2.1625in
 
@@ -437,7 +437,7 @@ des droits :**
 
 chmod -R 777 /www/html/\*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image26.png
+.. image:: media/image26.webp
    :width: 2.84444in
    :height: 0.29167in
 
@@ -445,30 +445,30 @@ MySQL :
 
 mysql -u root
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image27.png
+.. image:: media/image27.webp
    :width: 5.80278in
    :height: 4.07361in
 
 | phpMyAdmin :
 | Accès par monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image28.png
+.. image:: media/image28.webp
    :width: 3.03194in
    :height: 4.30278in
 
 Ou en ajoutant l’adresse dans le navigateur :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image29.png
+.. image:: media/image29.webp
    :width: 3.13611in
    :height: 3.4in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image30.png
+.. image:: media/image30.webp
    :width: 4.83333in
    :height: 2.5375in
 
 Les tables installées lors de l’installation :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image31.png
+.. image:: media/image31.webp
    :width: 2.14722in
    :height: 1.01111in
 
@@ -477,7 +477,7 @@ Les tables installées lors de l’installation :
 | **Installer auparavant un système Debian 12 ou supérieur**
 | Télécharger le script : lemp_monitor_install.sh,
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image32.png
+.. image:: media/image32.webp
    :width: 6.30139in
    :height: 0.20555in
 
@@ -485,7 +485,7 @@ Les tables installées lors de l’installation :
      lemp_monitor_install.sh
    | Lancer le script : ./lemp_monitor_install.sh
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image33.png
+   .. image:: media/image33.webp
       :width: 3.32361in
       :height: 0.42639in
 
@@ -502,7 +502,7 @@ Les tables installées lors de l’installation :
 | Installation :
 | - Soit télécharger et extraire le fichier :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image34.png
+   .. image:: media/image34.webp
       :width: 3.3125in
       :height: 2.98333in
 
@@ -513,11 +513,11 @@ Les tables installées lors de l’installation :
 
    Et apprès avoir rendu exécutable le fichier, le lancer :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image35.png
+   .. image:: media/image35.webp
       :width: 6.3in
       :height: 1.87361in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image36.png
+   .. image:: media/image36.webp
       :width: 2.85278in
       :height: 0.32222in
 
@@ -531,11 +531,11 @@ Les tables installées lors de l’installation :
    Si un répertoire « monitor » existe déjà sur le chemin choisi
    (précédente installation), le supprimer
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image37.png
+   .. image:: media/image37.webp
       :width: 5.70694in
       :height: 2.65694in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image38.png
+   .. image:: media/image38.webp
       :width: 4.15556in
       :height: 1.3125in
 
@@ -552,28 +552,28 @@ Pour cela soit :
 
    - Utiliser la fonction du programme
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image39.png
+   .. image:: media/image39.webp
       :width: 3.55139in
       :height: 4.39861in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image40.png
+   .. image:: media/image40.webp
       :width: 3.58472in
       :height: 3.96806in
 
    - Modifier le fichier /admin/config.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image41.png
+.. image:: media/image41.webp
    :width: 5.41528in
    :height: 1.05278in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image42.png
+.. image:: media/image42.webp
    :width: 5.41667in
    :height: 0.71944in
 
 Pour utiliser Domoticz ou Home Assistant ou les 2 : Indiquer l‘ IP et le
 port
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image43.png
+.. image:: media/image43.webp
    :width: 6.30139in
    :height: 1.37639in
 
@@ -593,7 +593,7 @@ port
   /etc/ssl/private/nginx-
 | selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image44.png
+.. image:: media/image44.webp
    :width: 5.81528in
    :height: 3.61389in
 
@@ -626,14 +626,14 @@ normalement car il faudrait saisir la phrase secrète à chaque démarrage.
 Les deux fichiers créés sont placés dans les sous-répertoires appropriés
 du répertoire /etc/ssl
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image45.png
+.. image:: media/image45.webp
    :width: 3.67778in
    :height: 0.54167in
 
 | **Confidentialité persistante**
 | sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image46.png
+.. image:: media/image46.webp
    :width: 6.30139in
    :height: 3.40417in
 
@@ -650,7 +650,7 @@ C’est assez long
 | ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
 | ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image47.png
+   .. image:: media/image47.webp
       :width: 4.5in
       :height: 0.84306in
 
@@ -694,7 +694,7 @@ Ctrl X, Enter, ctrl X
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image48.png
+.. image:: media/image48.webp
    :width: 6.30139in
    :height: 4.54861in
 
@@ -727,14 +727,14 @@ monitor.conf
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image49.png
+.. image:: media/image49.webp
    :width: 6.30139in
    :height: 4.54028in
 
 | Vérifier la config
 | sudo nginx -t
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image50.png
+.. image:: media/image50.webp
    :width: 6.30139in
    :height: 0.9375in
 
@@ -743,7 +743,7 @@ monitor.conf
   certificats auto-signés
 | sudo systemctl restart nginx
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image51.png
+.. image:: media/image51.webp
    :width: 2.59444in
    :height: 0.29167in
 
@@ -752,7 +752,7 @@ monitor.conf
    | Pour modifier l’image, les titres et slogan de la page d’accueil :
      **voir ce paragraphe**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image52.png
+   .. image:: media/image52.webp
       :width: 4.64722in
       :height: 5.67778in
 
@@ -766,28 +766,28 @@ monitor.conf
 
    **A la place OpenWeatherMap peut être utilisé :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image53.png
+   .. image:: media/image53.webp
       :width: 6.3in
       :height: 5.03056in
 
    | Pour la météo actuelle laisser les curseurs en rouge
    | **Le dispositif :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image54.png
+   .. image:: media/image54.webp
       :width: 4.09444in
       :height: 1.44861in
 
    **Création d’un plan :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image55.png
+   .. image:: media/image55.webp
       :width: 4.10417in
       :height: 4.44722in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image56.png
+   .. image:: media/image56.webp
       :width: 4.77083in
       :height: 1.38056in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image57.png
+   .. image:: media/image57.webp
       :width: 5.22222in
       :height: 4.92639in
 
@@ -797,15 +797,15 @@ monitor.conf
 | **Ajoutons ces données qans la base SQL , soit avec phpmyadmin ou plus
   simplement avec l’appli :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image58.png
+.. image:: media/image58.webp
    :width: 3.11528in
    :height: 4.65139in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image59.png
+   .. image:: media/image59.webp
       :width: 2.96389in
       :height: 2.9in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image60.png
+.. image:: media/image60.webp
    :width: 4.78194in
    :height: 0.77083in
 
@@ -820,7 +820,7 @@ enregistrer le dispositif et*
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image61.png
+.. image:: media/image61.webp
    :width: 6.30139in
    :height: 1.06111in
 
@@ -831,17 +831,17 @@ enregistrer le dispositif et*
 
 *fonctions.php ->function meteo_concept($choix)*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image62.png
+.. image:: media/image62.webp
    :width: 6.30139in
    :height: 1.27222in
 
 *footer.php*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image63.png
+.. image:: media/image63.webp
    :width: 4.20972in
    :height: 2.47917in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image64.png
+.. image:: media/image64.webp
    :width: 5.05278in
    :height: 1.0625in
 
@@ -849,29 +849,29 @@ enregistrer le dispositif et*
 
    La météo est installée lors de l’installation du programme :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image65.png
+   .. image:: media/image65.webp
       :width: 2.41667in
       :height: 3.69861in
 
    Enregistrement du dispositif :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image66.png
+   .. image:: media/image66.webp
       :width: 2.67917in
       :height: 3.6875in
 
    Affichage sue la page d’accueil :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image67.png
+   .. image:: media/image67.webp
       :width: 2.44722in
       :height: 3.30833in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image68.png
+   .. image:: media/image68.webp
       :width: 4.09444in
       :height: 1.38472in
 
    Les données json de ce dispositif :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image69.png
+   .. image:: media/image69.webp
       :width: 3.28194in
       :height: 3.26667in
 
@@ -879,13 +879,13 @@ enregistrer le dispositif et*
 
    Extrait du fichier /inclue/accueil.php
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image70.png
+   .. image:: media/image70.webp
       :width: 6.3in
       :height: 1.73611in
 
    *L’ID html est ici « temp_ext »*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image71.png
+   .. image:: media/image71.webp
       :width: 3.69306in
       :height: 3.81111in
 
@@ -897,7 +897,7 @@ différent)
 
    Connexion en local : IP/phpMyAdmin
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image72.png
+   .. image:: media/image72.webp
       :width: 3.12361in
       :height: 3.39028in
 
@@ -907,13 +907,13 @@ configuration /admin/config.php
 **Elles ont été créées lors de l’installation automatique, pour
 l’installation manuelle :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image73.png
+.. image:: media/image73.webp
    :width: 3.325in
    :height: 1.04583in
 
 En cas d ‘absence de base de données ou de mauvais paramétrages :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image74.png
+   .. image:: media/image74.webp
       :width: 5.42639in
       :height: 2.07361in
 
@@ -934,7 +934,7 @@ l’intermédiaire de la BD « Domoticz » ; tables :
 
 Ex :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image75.png
+.. image:: media/image75.webp
    :width: 2.25139in
    :height: 2.47917in
 
@@ -942,17 +942,17 @@ Ex :
 | Pour un texte contenu dans une variable Domoticz correspond une image
   ou 0 ou « none »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image76.png
+.. image:: media/image76.webp
    :width: 6.22917in
    :height: 4.39583in
 
 Table « dispositifs», ne sont concernés que les champs :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image77.png
+.. image:: media/image77.webp
    :width: 3.57361in
    :height: 3.58333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image78.png
+.. image:: media/image78.webp
    :width: 6.30139in
    :height: 3.35278in
 
@@ -961,7 +961,7 @@ Table « dispositifs», ne sont concernés que les champs :
   enregistrement (num par exemple) afin de pouvoir éditer les
   enregistrements*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image79.png
+.. image:: media/image79.webp
    :width: 6.49583in
    :height: 0.55833in
 
@@ -976,19 +976,19 @@ passer par monitor.
 
 Dans Domoticz, créer une variable avec les données ci-dessous :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image80.png
+.. image:: media/image80.webp
    :width: 6.30139in
    :height: 0.41667in
 
 Dans SQL :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image81.png
+.. image:: media/image81.webp
    :width: 3.63611in
    :height: 1.89583in
 
 Ou par Monitor : |image3|
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image83.png
+   .. image:: media/image83.webp
       :width: 3.3125in
       :height: 4.05556in
 
@@ -1004,7 +1004,7 @@ Ou par Monitor : |image3|
 
 +-----------------------------------------------------------------------+
 |    .                                                                  |
-| . image:: vertopal_6e277aed43794de08da7229da055806a/media/image84.png |
+| . image:: media/image84.webp |
 |       :width: 5.78194in                                               |
 |       :height: 2.09444in                                              |
 |                                                                       |
@@ -1012,7 +1012,7 @@ Ou par Monitor : |image3|
 |    | Extrait du fichier :                                             |
 |                                                                       |
 |    .                                                                  |
-| . image:: vertopal_6e277aed43794de08da7229da055806a/media/image85.png |
+| . image:: media/image85.webp |
 |       :width: 6.3in                                                   |
 |       :height: 1.95139in                                              |
 |                                                                       |
@@ -1023,7 +1023,7 @@ Ou par Monitor : |image3|
 |      dz ou ha->exécution du fichier Bash                              |
 |                                                                       |
 |    .                                                                  |
-| . image:: vertopal_6e277aed43794de08da7229da055806a/media/image86.png |
+| . image:: media/image86.webp |
 |       :width: 4.54167in                                               |
 |       :height: 0.55278in                                              |
 |                                                                       |
@@ -1037,7 +1037,7 @@ Ou par Monitor : |image3|
 | Idx : id de la variable du serveur domotique(dz)
 | ex : idx de Domoticz
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image87.png
+.. image:: media/image87.webp
    :width: 4.23055in
    :height: 1.34444in
 
@@ -1045,7 +1045,7 @@ Ou par Monitor : |image3|
 | ID : id de la variable (ha)
 | Ex : Home Assistant, nom essai, ID input_text.essai
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image88.png
+.. image:: media/image88.webp
    :width: 3.64583in
    :height: 1.81389in
 
@@ -1054,7 +1054,7 @@ Ou par Monitor : |image3|
 | Installation des tables : lors de l’installation automatique, elles
   sont installées, sinon télécharger le référentiel :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image89.png
+.. image:: media/image89.webp
    :width: 3.22917in
    :height: 2.93194in
 
@@ -1079,7 +1079,7 @@ Ou par Monitor : |image3|
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image90.png
+.. image:: media/image90.webp
    :width: 5.31389in
    :height: 1.30278in
 
@@ -1092,11 +1092,11 @@ n’enregistre pas le type de matériel)
 
 Table « dispositifs »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image91.png
+.. image:: media/image91.webp
    :width: 5.04306in
    :height: 6.82361in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image92.png
+.. image:: media/image92.webp
    :width: 6.30139in
    :height: 4.78611in
 
@@ -1110,7 +1110,7 @@ générés automatiquement à partir des données de cette table.
   enregistrement (num par exemple) afin de pouvoir éditer les
   enregistrements*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image79.png
+.. image:: media/image79.webp
    :width: 6.49583in
    :height: 0.55833in
 
@@ -1137,11 +1137,11 @@ maj_js : types de mise à jour java script
      où seules des mesures de températures étaient exploitées….il est
      préférable d’utiliser « data »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image93.png
+.. image:: media/image93.webp
    :width: 6.14583in
    :height: 0.56389in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image94.png
+.. image:: media/image94.webp
    :width: 5.41806in
    :height: 0.34444in
 
@@ -1150,13 +1150,13 @@ maj_js : types de mise à jour java script
    | - popup //ouverture d’une fenêtre (commandes particulières)
      oexemple des scripts générés automatiquement
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image95.png
+   .. image:: media/image95.webp
       :width: 5.60833in
       :height: 2.56667in
 
    Dans footer.php
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image96.png
+   .. image:: media/image96.webp
       :width: 3.11528in
       :height: 1.09305in
 
@@ -1185,7 +1185,7 @@ maj_js : types de mise à jour java script
 | Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs
   ……………ha :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image97.png
+.. image:: media/image97.webp
    :width: 5.60556in
    :height: 1.39583in
 
@@ -1196,7 +1196,7 @@ maj_js : types de mise à jour java script
 | Si l’on utilise Zoneminder, il est nécessaire d’assurer la
   correspondance des Numéros de dispositifs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image98.png
+.. image:: media/image98.webp
    :width: 6.26111in
    :height: 2.20833in
 
@@ -1213,13 +1213,13 @@ téléchargement : cameras.sql
 
 Enregistrements de températures, tension ,…..
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image99.png
+.. image:: media/image99.webp
    :width: 5.89722in
    :height: 1.47917in
 
 Exemple pour une table temp_meteo :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image100.png
+.. image:: media/image100.webp
    :width: 5.17778in
    :height: 3.25in
 
@@ -1231,13 +1231,13 @@ Téléchargement de temp_meteo.sql
 
 **0.4\_ Le serveur http de NGINX :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image101.png
+.. image:: media/image101.webp
    :width: 3.19861in
    :height: 2.15555in
 
 **Configuration : /admin/config.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image102.png
+.. image:: media/image102.webp
    :width: 2.10556in
    :height: 2.57361in
 
@@ -1260,7 +1260,7 @@ Extrait du fichier, fichier complet :
 |      pour écrans >534 px                                              |
 |    | define('IMAGEACCUEILSMALL', $rep.'maison_small.jpg');//image     |
 |      page accueil pour écrans <535 px define('IMGLOGO',               |
-|      $rep.'logo.png');//image logo                                    |
+|      $rep.'logo.webp');//image logo                                    |
 |    | define('NOMSITE', 'Domoticz');//nom principal du site            |
 |    | define('NOMSLOGAN', xxxxxx');//nom secondaire ou slogan          |
 |    | //                                                               |
@@ -1269,14 +1269,14 @@ Extrait du fichier, fichier complet :
 
 **Les fichiers à la racine du site :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image103.png
+.. image:: media/image103.webp
    :width: 3.48055in
    :height: 1.66667in
 
    - ajax.php : appels ajax depuis javascript, explications dans les
    divers paragraphes
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image104.png
+.. image:: media/image104.webp
    :width: 6.26806in
    :height: 6.56667in
 
@@ -1295,38 +1295,38 @@ Extrait du fichier, fichier complet :
 
    **Le fichier index.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image105.png
+.. image:: media/image105.webp
    :width: 5.92639in
    :height: 1.9375in
 
    **Le fichier index_loc.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image106.png
+.. image:: media/image106.webp
    :width: 5.95833in
    :height: 6.5625in
 
 | **0.5\_ Le Framework Bootstrap**
 | Pour des mises en page faciles, des fenêtres modales ,…..
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image107.png
+.. image:: media/image107.webp
    :width: 2.81389in
    :height: 3.70833in
 
 **0.6\_ Les styles CSS**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image108.png
+.. image:: media/image108.webp
    :width: 3.23055in
    :height: 2.38611in
 
 Un extrait :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image109.png
+.. image:: media/image109.webp
    :width: 4.36528in
    :height: 4.28194in
 
 Les Media queries pour les différents écrans
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image110.png
+.. image:: media/image110.webp
    :width: 6.26806in
    :height: 5.34167in
 
@@ -1345,7 +1345,7 @@ Les Media queries pour les différents écrans
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image111.png
+.. image:: media/image111.webp
    :width: 1.29306in
    :height: 0.45833in
 
@@ -1354,7 +1354,7 @@ avec perte et sans perte pour les images du Web
 
 Les caméras sont au format jpg :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image112.png
+.. image:: media/image112.webp
    :width: 3.07361in
    :height: 4.97917in
 
@@ -1368,26 +1368,26 @@ Ils sont regroupés dans le dossier « include », sauf
 
    - /jpgraph
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image113.png
+.. image:: media/image113.webp
    :width: 3.34444in
    :height: 4.09444in
 
 **Affichage de graphique avec jpgraph**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image114.png
+.. image:: media/image114.webp
    :width: 2.76111in
    :height: 4.05278in
 
 | **0.9\_ Les fichiers javascript**
 | Avec jQuery
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image115.png
+.. image:: media/image115.webp
    :width: 2.11528in
    :height: 3.25in
 
 **Les scripts python**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image116.png
+.. image:: media/image116.webp
    :width: 3.05278in
    :height: 2.69722in
 
@@ -1413,11 +1413,11 @@ Ils sont regroupés dans le dossier « include », sauf
 
    - Le remplacement des piles pour les capteurs concernés
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image117.png
+.. image:: media/image117.webp
    :width: 5.53194in
    :height: 7.46944in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image118.png
+.. image:: media/image118.webp
    :width: 4.95972in
    :height: 1.67639in
 
@@ -1426,7 +1426,7 @@ Pour afficher cette page, les fichiers nécessaires en jaune
 **1.1– Configuration :/admin.config.php Il faut fournir un minimum de
 renseignements : 1.1.1 -Adresse IP , domaine, favicon de monitor,**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image119.png
+.. image:: media/image119.webp
    :width: 5.00139in
    :height: 1.5625in
 
@@ -1436,11 +1436,11 @@ copie de la table dispositifs (« dispositifs » par défaut), il est
 possible de préparer le transfert ; ici la table dispositifs a été
 renommer Dispositifs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image120.png
+.. image:: media/image120.webp
    :width: 3.71944in
    :height: 0.51111in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image121.png
+.. image:: media/image121.webp
    :width: 2.49028in
    :height: 1.75in
 
@@ -1453,11 +1453,11 @@ renommer Dispositifs
 |      accueil pour écrans >534 px define('IMAGEACCUEILSMALL',          |
 |      'images/maison_small.webp');//image page accueil pour écrans     |
 |      <535 px                                                          |
-|    | define('IMGLOGO', 'images/logo.png');//image logo                |
+|    | define('IMGLOGO', 'images/logo.webp');//image logo                |
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image122.png
+.. image:: media/image122.webp
    :width: 5.77222in
    :height: 0.64583in
 
@@ -1479,7 +1479,7 @@ renommer Dispositifs
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image123.png
+.. image:: media/image123.webp
    :width: 5.55278in
    :height: 0.85417in
 
@@ -1488,11 +1488,11 @@ renommer Dispositifs
 L’intervalle de mise à jour pour les services (poubelles, anniversaires,
 …) : il est de ½ heure (1800000 milli secondes), il peut être changé
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image124.png
+.. image:: media/image124.webp
    :width: 6.30139in
    :height: 0.87917in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image125.png
+.. image:: media/image125.webp
    :width: 6.26806in
    :height: 0.625in
 
@@ -1503,19 +1503,19 @@ pour indiquer à monitor d’effectuer une mise à jour, ici toutes les 30
 secondes rafraichissement des dispositifs si par exemple un PIR, un
 contact de porte qui sont déclaré prioritaire dans DZ passent à ON
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image126.png
+.. image:: media/image126.webp
    :width: 6.29167in
    :height: 1.82361in
 
 La fonction JS :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image127.png
+.. image:: media/image127.webp
    :width: 6.01111in
    :height: 1.51111in
 
 La fonction PHP qui récupère la valeur de la variable :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image128.png
+.. image:: media/image128.webp
    :width: 5.92778in
    :height: 1.41667in
 
@@ -1527,19 +1527,19 @@ La fonction PHP qui récupère la valeur de la variable :
   plan qui regroupe les dispositifs sur Domoticz est nécessaire : noter
   le N° du plan
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image129.png
+.. image:: media/image129.webp
    :width: 5.43889in
    :height: 1.19861in
 
 Paramètres de la base de données :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image130.png
+.. image:: media/image130.webp
    :width: 2.79305in
    :height: 0.91667in
 
 Paramètres pour Domoticz :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image131.png
+.. image:: media/image131.webp
    :width: 6.26806in
    :height: 1.12639in
 
@@ -1557,7 +1557,7 @@ Le programme démarre avec 11 pages :
 
    Par défaut « admin »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image132.png
+.. image:: media/image132.webp
    :width: 5.95972in
    :height: 1.375in
 
@@ -1596,7 +1596,7 @@ Le programme démarre avec 11 pages :
 
    **extrait , le fichier complet :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image133.png
+   .. image:: media/image133.webp
       :width: 4.65694in
       :height: 4.77639in
 
@@ -1605,21 +1605,21 @@ Le programme démarre avec 11 pages :
    | Principales fonctions :
    | - fonction status_variables($xx)
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image134.png
+.. image:: media/image134.webp
    :width: 4.6875in
    :height: 3.33333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image135.png
+.. image:: media/image135.webp
    :width: 6.30139in
    :height: 6.51944in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image136.png
+.. image:: media/image136.webp
    :width: 6.30139in
    :height: 6.81667in
 
 **API HA pour récupérer les valeurs des dispositifs**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image137.png
+.. image:: media/image137.webp
    :width: 6.30139in
    :height: 3.18472in
 
@@ -1628,29 +1628,29 @@ et pour lire les tables
 
 variables_dz et text_image SQL
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image138.png
+.. image:: media/image138.webp
    :width: 6.32222in
    :height: 3.85417in
 
 API Domoticz pour les devices :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image139.png
+.. image:: media/image139.webp
    :width: 6.30139in
    :height: 6.14444in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image140.png
+.. image:: media/image140.webp
    :width: 6.30139in
    :height: 3.94583in
 
    Maj de la date dans la fonction devices_plan($plan)
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image141.png
+   .. image:: media/image141.webp
       :width: 5.08333in
       :height: 2.08333in
 
    **Extrait ajax.php , sur github le fichier complet :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image142.png
+.. image:: media/image142.webp
    :width: 5.57083in
    :height: 4.73472in
 
@@ -1660,7 +1660,7 @@ API Domoticz pour les devices :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image143.png |
+|  image:: media/image143.webp |
 |       :width: 5.08333in                                               |
 |       :height: 6.83333in                                              |
 +=======================================================================+
@@ -1673,13 +1673,13 @@ API Domoticz pour les devices :
    | **1.2.3 b**- le fichier mes_js.js : scripts principaux , fichier
      complet :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image144.png
+   .. image:: media/image144.webp
       :width: 6.26806in
       :height: 4.65139in
 
    **1.2.3 b.1 fenêtre modale modallink**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image145.png
+   .. image:: media/image145.webp
       :width: 4.99028in
       :height: 4.125in
 
@@ -1689,19 +1689,19 @@ API Domoticz pour les devices :
 
    **p**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image146.png
+.. image:: media/image146.webp
    :width: 6.26806in
    :height: 4.18056in
 
 Le HTML du navigateur :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image147.png
+.. image:: media/image147.webp
    :width: 5.62639in
    :height: 0.90694in
 
 **1.3.2 Test de la base de données, test_db.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image148.png
+.. image:: media/image148.webp
    :width: 6.26806in
    :height: 2.55972in
 
@@ -1711,17 +1711,17 @@ sont ajoutées automatiquement au menu
 | Extrait du fichier, le fichier
 | complet :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image149.png
+.. image:: media/image149.webp
    :width: 6.26806in
    :height: 2.59722in
 
 Pour modifier la largeur, Du menu :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image150.png
+.. image:: media/image150.webp
    :width: 5.19861in
    :height: 2.47917in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image151.png
+.. image:: media/image151.webp
    :width: 6.26111in
    :height: 6.94861in
 
@@ -1729,17 +1729,17 @@ Pour modifier la largeur, Du menu :
 
 Le HTML:
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image152.png
+.. image:: media/image152.webp
    :width: 6.30139in
    :height: 4.14861in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image153.png
+.. image:: media/image153.webp
    :width: 5.18889in
    :height: 5.04167in
 
    **1.3.5 les scripts JavaScript, dans la page footer.php :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image154.png
+   .. image:: media/image154.webp
       :width: 6.26806in
       :height: 5.74722in
 
@@ -1748,21 +1748,21 @@ Le HTML:
 La fonction pour le rafraichissement des données à partir d’un
 changement d’état d’un dispositif dans Domoticz
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image155.png
+.. image:: media/image155.webp
    :width: 6.05278in
    :height: 1.625in
 
 Dans les scripts lua :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image156.png
+.. image:: media/image156.webp
    :width: 3.93889in
    :height: 1.02083in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image157.png
+.. image:: media/image157.webp
    :width: 5.78194in
    :height: 0.5625in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image158.png
+.. image:: media/image158.webp
    :width: 6.30139in
    :height: 0.50417in
 
@@ -1770,7 +1770,7 @@ La variable
 
    *1.3.5.2 Quelques infos supplémentaires :*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image159.png
+.. image:: media/image159.webp
    :width: 5.58472in
    :height: 3.1875in
 
@@ -1779,7 +1779,7 @@ long
 
 .substring(0, 11)=="Set Level: ajouté le 15/5/2022
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image160.png
+.. image:: media/image160.webp
    :width: 6.26806in
    :height: 1.65278in
 
@@ -1789,7 +1789,7 @@ La fonction maj_variable modifie la valeur d’une variable.
    La fonction maj_devices(plan) récupère les données des dispositifs Un
    exemple avec set ou get Attribute
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image161.png
+.. image:: media/image161.webp
    :width: 6.26806in
    :height: 5.30972in
 
@@ -1800,24 +1800,24 @@ Voir le *paragraphe concernant les volets*
   connexion à la BD") {sql_plan(0);}?> » crée pour chaque dispositif
   on/off le script correspondant à partir de la BD
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image162.png
+.. image:: media/image162.webp
    :width: 5.57361in
    :height: 2.19861in
 
 Le HTML :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image163.png
+.. image:: media/image163.webp
    :width: 6.26111in
    :height: 4.77083in
 
 | maj_sevices()
 | Copie d’écran le jour de l’entretien de la fosse septique
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image164.png
+.. image:: media/image164.webp
    :width: 5.36806in
    :height: 6.77778in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image165.png
+.. image:: media/image165.webp
    :width: 6.27083in
    :height: 7.19861in
 
@@ -1873,7 +1873,7 @@ Pour info cette autre solution :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image166.png
+.. image:: media/image166.webp
    :width: 6.26806in
    :height: 6.71528in
 
@@ -1884,17 +1884,17 @@ la base de Données Maria DB,
 
 La table dispositifs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image167.png
+.. image:: media/image167.webp
    :width: 6.30139in
    :height: 2.1125in
 
 La table d’équivalence texte ->images : text_image
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image168.png
+.. image:: media/image168.webp
    :width: 3.66805in
    :height: 6.63611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image169.png
+.. image:: media/image169.webp
    :width: 3.52222in
    :height: 0.90694in
 
@@ -1902,11 +1902,11 @@ Pour les Anniversaires, il faut entrer chaque prénom ou nom dans la base
 de données, ces noms correspondent à ceux du script LUA décrit ci-après
 :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image170.png
+.. image:: media/image170.webp
    :width: 6.49583in
    :height: 0.72917in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image171.png
+.. image:: media/image171.webp
    :width: 5.51111in
    :height: 2.25972in
 
@@ -1915,7 +1915,7 @@ de données, ces noms correspondent à ceux du script LUA décrit ci-après
   suffit d’ajouter un ID dans accueil.php et de renseigner la base de
   données
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image172.png
+.. image:: media/image172.webp
    :width: 6.49583in
    :height: 4.1625in
 
@@ -1930,24 +1930,24 @@ fichier est choisi par la
 
 configuration) :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image173.png
+.. image:: media/image173.webp
    :width: 2.41806in
    :height: 0.32222in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image174.png
+.. image:: media/image174.webp
    :width: 5.14583in
    :height: 2.59861in
 
 | Les fenêtres qui affichent les infos :
 | - Lexique.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image175.png
+.. image:: media/image175.webp
    :width: 4.84722in
    :height: 4.92639in
 
    - Lexique_no.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image176.png
+.. image:: media/image176.webp
    :width: 5.5625in
    :height: 3.59167in
 
@@ -1955,21 +1955,21 @@ Pour ne pas utiliser de lexique et donc de supprimer l’icône : |image4|
 
    - Supprimer ou mettre en commentaire
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image178.png
+.. image:: media/image178.webp
    :width: 4.24028in
    :height: 3.83889in
 
 **1.4.2 La température extérieure (valable pour d’autres dispositifs)
 :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image179.png
+.. image:: media/image179.webp
    :width: 4.56389in
    :height: 2.61528in
 
 Le fichier Json reçu par monitor après une demande de la fonction
 devices(plan):
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image180.png
+.. image:: media/image180.webp
    :width: 2.98055in
    :height: 3.70833in
 
@@ -1997,23 +1997,23 @@ Variables Domoticz :
 
 *les 2 variables not_tv_\* : pour le script notifications_tv.lua*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image181.png
+.. image:: media/image181.webp
    :width: 6.5in
    :height: 1.56667in
 
 .
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image182.png
+.. image:: media/image182.webp
    :width: 2.96944in
    :height: 4.22917in
 
 Le fichier LUA
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image183.png
+.. image:: media/image183.webp
    :width: 3.19861in
    :height: 1.52083in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image184.png
+.. image:: media/image184.webp
    :width: 5.88611in
    :height: 2.35417in
 
@@ -2030,7 +2030,7 @@ fichier, voir ci-dessous 1.8.1
 
 Dans Log :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image185.png
+.. image:: media/image185.webp
    :width: 6.1625in
    :height: 0.68472in
 
@@ -2052,20 +2052,20 @@ Exemple le fichier
 /home/USER/domoticz/www/modules_lua/string_tableaux.lua, affichage dans
 monitor
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image186.png
+.. image:: media/image186.webp
    :width: 4.32361in
    :height: 3.9375in
 
 Utilisation dans dz event pour une maj depuis monitor, voir le
 paragraphe « administration »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image187.png
+.. image:: media/image187.webp
    :width: 5.96944in
    :height: 1.8125in
 
 On place le fichier string_tableaux.lua dans ce répertoire
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image188.png
+.. image:: media/image188.webp
    :width: 4.18889in
    :height: 2.04167in
 
@@ -2080,15 +2080,15 @@ Dans le script LUA, on appelle ce fichier, en ayant indiqué le chemin :
 
 Le script maj_services devient :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image189.png
+.. image:: media/image189.webp
    :width: 5.60556in
    :height: 0.99028in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image190.png
+.. image:: media/image190.webp
    :width: 4.80278in
    :height: 2.05139in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image191.png
+.. image:: media/image191.webp
    :width: 6.26806in
    :height: 3.57361in
 
@@ -2097,7 +2097,7 @@ Le script maj_services devient :
 
 **Extrait du fichier maj_services modifié**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image192.png
+.. image:: media/image192.webp
    :width: 6.26806in
    :height: 1.21806in
 
@@ -2107,13 +2107,13 @@ Le script maj_services devient :
 
 https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_variables.lua
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image193.png
+.. image:: media/image193.webp
    :width: 6.26806in
    :height: 4.87222in
 
 Le script DZEvent : notifications_devices :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image194.png
+.. image:: media/image194.webp
    :width: 6.26806in
    :height: 4.60833in
 
@@ -2147,42 +2147,42 @@ notification-timer.lua :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image195.png
+.. image:: media/image195.webp
    :width: 5.75139in
    :height: 3.55278in
 
 | **1.5.2 Liens avec Home Assistant**
 | **1.5.2.1 Exemple d’un ON OFF sur un interrupteur virtuel**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image196.png
+   .. image:: media/image196.webp
       :width: 4.58333in
       :height: 2.00972in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image197.png
+   .. image:: media/image197.webp
       :width: 3.97083in
       :height: 2.72917in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image198.png
+   .. image:: media/image198.webp
       :width: 4.06528in
       :height: 1.55278in
 
 Réponse de l’API sur l’état :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image199.png
+.. image:: media/image199.webp
    :width: 6.30139in
    :height: 0.68611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image200.png
+.. image:: media/image200.webp
    :width: 5.69861in
    :height: 2.88611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image201.png
+.. image:: media/image201.webp
    :width: 6.30139in
    :height: 0.86806in
 
 **La fonction PHP**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image202.png
+.. image:: media/image202.webp
    :width: 6.30139in
    :height: 3.42778in
 
@@ -2192,29 +2192,29 @@ la commande
 footer.php : départ de la commande avec le script créé automatiquement
 depuis la base de données
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image203.png
+.. image:: media/image203.webp
    :width: 6.30139in
    :height: 1.04861in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image204.png
+.. image:: media/image204.webp
    :width: 5.84444in
    :height: 4.19861in
 
 ajax.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image205.png
+.. image:: media/image205.webp
    :width: 6.30139in
    :height: 0.4875in
 
 La fonction PHP ci-dessus retourne pour les capteurs binaires :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image206.png
+.. image:: media/image206.webp
    :width: 3.40694in
    :height: 2.27083in
 
 En plus clair :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image207.png
+.. image:: media/image207.webp
    :width: 4.73056in
    :height: 3.5625in
 
@@ -2224,7 +2224,7 @@ d’état.
 
 Pour faire des essais à partir d’un navigateur :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image208.png
+.. image:: media/image208.webp
    :width: 6.30139in
    :height: 0.98611in
 
@@ -2264,19 +2264,19 @@ Il faut au préalable ajouter une table dans la base de données
 +-----------------------------------+-----------------------------------+
 | Les 2 icones svg                  |    .. im                          |
 |                                   | age:: vertopal_6e277aed43794de08d |
-|                                   | a7229da055806a/media/image209.png |
+|                                   | a7229da055806a/media/image209.webp |
 |                                   |       :width: 1.59306in           |
 |                                   |       :height: 0.83333in          |
 +===================================+===================================+
 +-----------------------------------+-----------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image210.png
+.. image:: media/image210.webp
    :width: 6.26111in
    :height: 2.46806in
 
 La page d’accueil :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image211.png
+.. image:: media/image211.webp
    :width: 6.26806in
    :height: 3.86389in
 
@@ -2313,20 +2313,20 @@ La page d’accueil :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image212.png
+.. image:: media/image212.webp
    :width: 6.26111in
    :height: 6.40694in
 
    **Dans ajax.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image213.png
+.. image:: media/image213.webp
    :width: 6.26111in
    :height: 0.64583in
 
 | **Dans fonctions .php**
 | On ajoute la fonction :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image214.png
+.. image:: media/image214.webp
    :width: 6.26806in
    :height: 3.20694in
 
@@ -2358,19 +2358,19 @@ La page d’accueil :
 
 Et pour ajouter l’icône au fichier json concernant les variables :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image215.png
+.. image:: media/image215.webp
    :width: 5.54306in
    :height: 5.91667in
 
 Le json :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image216.png
+   .. image:: media/image216.webp
       :width: 3.84444in
       :height: 2.125in
 
 Avec phpMyAdmin :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image217.png
+.. image:: media/image217.webp
    :width: 5.50139in
    :height: 1.24028in
 
@@ -2378,7 +2378,7 @@ Les enregistrements sont sauvegardés, pour afficher l’historique des
 dates, voir le *paragraphe 11* concernant les app diverses (l’affichage
 log de dz et Nagios, …)
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image218.png
+.. image:: media/image218.webp
    :width: 5.48056in
    :height: 2.70833in
 
@@ -2386,19 +2386,19 @@ log de dz et Nagios, …)
 | Au-delà de 12 pages il faut étendre en largeur le menu ; il faut aussi
   le descendre de 50 px pour ne pas cacher le menu hamburger
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image219.png
+.. image:: media/image219.webp
    :width: 5.48056in
    :height: 2.67639in
 
 Modification à apporter au fichier **: /js/big-Slide.js** :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image220.png
+.. image:: media/image220.webp
    :width: 3.29305in
    :height: 3.59444in
 
 Pour descendre le menu : modifier la class .nav dans **css/mes_css.css**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image221.png
+.. image:: media/image221.webp
    :width: 3.52222in
    :height: 1.1875in
 
@@ -2434,66 +2434,66 @@ en ligne avec par exemple :
 | On délimite le terrain en traçant un rectangle et en choisissant la
   couleur
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image222.png
+   .. image:: media/image222.webp
       :width: 5in
       :height: 3.76111in
 
 On construit les murs extérieurs de la même façon ; on peut ajuster
 l’épaisseur en utilisant la barre supérieure
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image223.png
+   .. image:: media/image223.webp
       :width: 4.63889in
       :height: 4.50694in
 
    Pour modifier les objets :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image224.png
+   .. image:: media/image224.webp
       :width: 5.84444in
       :height: 3.4875in
 
    Toujours avec un rectangle, on ajoute les pièces
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image225.png
+   .. image:: media/image225.webp
       :width: 6.02917in
       :height: 4.07361in
 
    On peut faire du copier/coller
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image226.png
+   .. image:: media/image226.webp
       :width: 4.25in
       :height: 4.29861in
 
 Pour regrouper des objets de même couleur ou d’un même ensemble :
 GROUPER
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image227.png
+   .. image:: media/image227.webp
       :width: 4.27222in
       :height: 4.89583in
 
    Pour dégrouper :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image228.png
+   .. image:: media/image228.webp
       :width: 3.64583in
       :height: 4.52083in
 
    Pour les textes
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image229.png
+   .. image:: media/image229.webp
       :width: 4.02083in
       :height: 3.81667in
 
    | Améliorer l’emplacement des ouvertures :
    | On reste dégroupé et on trace un rectangle autour des murs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image230.png
+.. image:: media/image230.webp
    :width: 5.36944in
    :height: 4.15556in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image231.png
+.. image:: media/image231.webp
    :width: 5.31389in
    :height: 3.19722in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image232.png
+   .. image:: media/image232.webp
       :width: 5.19028in
       :height: 2.86528in
 
@@ -2503,56 +2503,56 @@ style mais celles indiquées sont afficher dans les navigateurs.
 Pour ajouter des class pour gérer les changements de couleur dans
 monitor pour certains dispositifs :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image233.png
+   .. image:: media/image233.webp
       :width: 5.5in
       :height: 5.53889in
 
    On donne un nom à cette classe :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image234.png
+   .. image:: media/image234.webp
       :width: 5.38194in
       :height: 3.90556in
 
    L’objet avec la class :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image235.png
+   .. image:: media/image235.webp
       :width: 3.69861in
       :height: 4.79167in
 
    Lans le fichier .svg
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image236.png
+   .. image:: media/image236.webp
       :width: 3.09306in
       :height: 3.45139in
 
    Remarque :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image237.png
+   .. image:: media/image237.webp
       :width: 5.44861in
       :height: 3.72222in
 
    On ajoute aussi une class aux textes
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image238.png
+   .. image:: media/image238.webp
       :width: 4.28194in
       :height: 5.14861in
 
    La feuille de style complète pour le plan
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image239.png
+   .. image:: media/image239.webp
       :width: 2.19861in
       :height: 2.54167in
 
    L’image est centrée au milieu du calque , on la déplace à l’angle
    droit haut
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image240.png
+   .. image:: media/image240.webp
       :width: 5.54167in
       :height: 3.24028in
 
    On fait correspondre l’image avec la page
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image241.png
+   .. image:: media/image241.webp
       :width: 5.38611in
       :height: 3.69861in
 
@@ -2565,7 +2565,7 @@ entièrement dans le fichier HTML.
 
 **Avant nettoyage :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image242.png
+.. image:: media/image242.webp
    :width: 4.99028in
    :height: 6.68194in
 
@@ -2577,7 +2577,7 @@ entièrement dans le fichier HTML.
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image243.png
+.. image:: media/image243.webp
    :width: 5.46944in
    :height: 1.60417in
 
@@ -2586,17 +2586,17 @@ entièrement dans le fichier HTML.
 Affichage dans monitor (on peut ajouter une marge pour centrer l’image)
 534x720 : tablette chinoise
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image244.png
+.. image:: media/image244.webp
    :width: 4.49028in
    :height: 4.54722in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image245.png
+.. image:: media/image245.webp
    :width: 4.53194in
    :height: 4.0625in
 
 PC : 1200x612
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image246.png
+.. image:: media/image246.webp
    :width: 6.26806in
    :height: 4.6625in
 
@@ -2611,11 +2611,11 @@ le spécifie, comme ci-dessous ;
 Il est impératif pour retrouver facilement les objets d’ajouter les id à
 la construction.
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image247.png
+   .. image:: media/image247.webp
       :width: 4.96944in
       :height: 5.68056in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image248.png
+   .. image:: media/image248.webp
       :width: 6.3in
       :height: 1.78194in
 
@@ -2626,13 +2626,13 @@ Dans Inkscape, lors de la construction, il est possible d’ajouter du
 javascript, avec AI, il faut l’ajouter avec un éditeur de texte ou
 dreamweaver.
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image249.png
+   .. image:: media/image249.webp
       :width: 6.3in
       :height: 2.60556in
 
    Attention aux styles après construction :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image250.png
+   .. image:: media/image250.webp
       :width: 5.91667in
       :height: 1.83333in
 
@@ -2643,29 +2643,29 @@ dreamweaver.
 
 avec une conversion png->svg
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image251.png
+   .. image:: media/image251.webp
       :width: 5.44861in
       :height: 7.5125in
 
    **2.1.2 – 2eme solution pour le plan, conversion en ligne**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image252.png
+   .. image:: media/image252.webp
       :width: 4.00972in
       :height: 3.5375in
 
-**Mon fichier floorplan.png**
+**Mon fichier floorplan.webp**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image253.png
+.. image:: media/image253.webp
    :width: 5.53194in
    :height: 5.59306in
 
 **Conversion avec Autotracer :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image254.png
+.. image:: media/image254.webp
    :width: 4.67778in
    :height: 4.1875in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image255.png
+.. image:: media/image255.webp
    :width: 5.00139in
    :height: 4.9375in
 
@@ -2674,15 +2674,15 @@ avec une conversion png->svg
 Les textes transformés ne sont pas toujours lisibles, il faut modifier
 le plan, on ajoute des rectangles de la même couleur :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image256.png
+.. image:: media/image256.webp
    :width: 2.48056in
    :height: 1.3125in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image257.png
+   .. image:: media/image257.webp
       :width: 2.00972in
       :height: 1.09444in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image258.png
+.. image:: media/image258.webp
    :width: 6.26806in
    :height: 4.275in
 
@@ -2699,7 +2699,7 @@ début
 
    |image5|\ |image6|
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image260.png
+   .. image:: media/image260.webp
       :width: 2.19722in
       :height: 2.675in
 
@@ -2714,25 +2714,25 @@ début
   javascript remplacé par la température enregistrée par le dispositif
 | Importer l’icone
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image262.png
+.. image:: media/image262.webp
    :width: 3.63611in
    :height: 2.94861in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image263.png
+.. image:: media/image263.webp
    :width: 6.26806in
    :height: 4.49444in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image264.png
+.. image:: media/image264.webp
    :width: 5.35556in
    :height: 5.23889in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image265.png
+.. image:: media/image265.webp
    :width: 5.24028in
    :height: 3.53194in
 
 Redimensionner l’(les)objet(s) :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image266.png
+.. image:: media/image266.webp
    :width: 3.06389in
    :height: 2.08333in
 
@@ -2744,7 +2744,7 @@ Ajouter un texte « tmp » par exemple pour l’affichage de la température
 ; ce texte sera remplacé par la valeur de la température ; les
 détecteurs de présence peuvent souvent enregistrer la température.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image267.png
+.. image:: media/image267.webp
    :width: 5.12639in
    :height: 3.95833in
 
@@ -2753,37 +2753,37 @@ Pour les dispositifs et les textes, ajouter un ID :
 Avec Inkscape, il est possible d’ajouter facilement un ID lors de la
 construction de l’image
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image268.png
+.. image:: media/image268.webp
    :width: 5.67778in
    :height: 6.08333in
 
 La couleur de l’objet :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image269.png
+.. image:: media/image269.webp
    :width: 6.26806in
    :height: 4.41528in
 
 Avec Adobe Illustrator :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image270.png
+.. image:: media/image270.webp
    :width: 6.03194in
    :height: 3.84444in
 
 Enregistrer le fichier, j’ai choisi « interieur.svg », le nom de ma page
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image271.png
+.. image:: media/image271.webp
    :width: 6.26806in
    :height: 1.17361in
 
 Pour les textes c’est la même façon de procéder
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image272.png
+.. image:: media/image272.webp
    :width: 5.25139in
    :height: 4.16667in
 
 Aperçu d’une image avec de nombreux dispositifs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image273.png
+.. image:: media/image273.webp
    :width: 5.20972in
    :height: 5.125in
 
@@ -2800,7 +2800,7 @@ Dans les paramètres de l’objet on a ajouté :
    Un href, un id, un titre et un onclick avec un id (idm ou idx) ;
    option choisie dans /admin/config.php
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image276.png
+   .. image:: media/image276.webp
       :width: 3.53194in
       :height: 0.35417in
 
@@ -2810,13 +2810,13 @@ Comme il n’existe pas d’idx Domoticz, nous réserverons la plage >= 10
 000 pour cela ; cette valeur peut être modifiée, voir le paragraphe
 2.2.1
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image277.png
+.. image:: media/image277.webp
    :width: 6.26111in
    :height: 1.84305in
 
    La base de données :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image278.png
+   .. image:: media/image278.webp
       :width: 6.26806in
       :height: 0.50972in
 
@@ -2825,7 +2825,7 @@ Comme il n’existe pas d’idx Domoticz, nous réserverons la plage >= 10
 Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué
 au *§2.1.1* ou les 2 ou 3 premières lignes (AI) :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image279.png
+.. image:: media/image279.webp
    :width: 6.19861in
    :height: 0.61389in
 
@@ -2834,7 +2834,7 @@ interieur_svg.php (utilisé ici)
 
 Récupérer dans Domoticz les noms et les idx des dispositifs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image280.png
+.. image:: media/image280.webp
    :width: 6.26111in
    :height: 0.88472in
 
@@ -2843,42 +2843,42 @@ enregistrer ces données ; si c’est une première installation de monitor,
 idm peut être le même qu’idx ; dans l’exemple ci-dessous idm est
 différent après une réinstallation de Domoticz.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image281.png
+.. image:: media/image281.webp
    :width: 6.26111in
    :height: 1.01111in
 
 Autre exemple :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image282.png
+.. image:: media/image282.webp
    :width: 6.26806in
    :height: 3.53056in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image283.png
+.. image:: media/image283.webp
    :width: 6.26111in
    :height: 3.42778in
 
 Que fait le script javascript qui gère les dispositifs :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image284.png
+.. image:: media/image284.webp
    :width: 6.26111in
    :height: 5.66667in
 
 L’appel ajax : appelle la fonction PHP devices_plan($variable), la
 variable est le N° du Plan
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image285.png
+.. image:: media/image285.webp
    :width: 6.26806in
    :height: 0.19444in
 
 La fonction PHP :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image286.png
+.. image:: media/image286.webp
    :width: 6.21944in
    :height: 6.8125in
 
 Le Json renvoyé :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image287.png
+.. image:: media/image287.webp
    :width: 3.77222in
    :height: 5.33333in
 
@@ -2895,14 +2895,14 @@ mais avec une icône où une seule partie est colorée comme pour
 l’ouverture de porte, ii est facile, avec F12 d’inspecter la partie de
 l’icône qui nous intéresse et de rajouter un ID dans le <path concerné :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image288.png
+.. image:: media/image288.webp
    :width: 6.26806in
    :height: 3.91528in
 
 C’est alors cet ID qu’il faudra entrer pour le dispositif dans la Base
 de données SQL.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image289.png
+.. image:: media/image289.webp
    :width: 6.21944in
    :height: 0.49028in
 
@@ -2912,21 +2912,21 @@ pour ajouter un ID ;
 
 Sur AI il faudra souvent modifier légèrement l’ID
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image290.png
+.. image:: media/image290.webp
    :width: 6.26111in
    :height: 2.20833in
 
 **2.3.1 Pour afficher le statut complet du dispositif :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image291.png
+.. image:: media/image291.webp
    :width: 4.85556in
    :height: 5.35417in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image292.png
+   .. image:: media/image292.webp
       :width: 3.59444in
       :height: 3.375in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image293.png
+   .. image:: media/image293.webp
       :width: 3.11528in
       :height: 3.41667in
 
@@ -2936,7 +2936,7 @@ Sur AI il faudra souvent modifier légèrement l’ID
   aussi des ID >= à 10000 leur sont attribués ; cette valeur peut être
   modifiée en modifiant le programme qui suit.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image294.png
+.. image:: media/image294.webp
    :width: 5.53194in
    :height: 6.65694in
 
@@ -2944,37 +2944,37 @@ Cette fonction est activée par un onclick que l’on ajoute dans l’image ;
 par contre la BD n’est pas nécessaire pour cet affichage, à condition
 que le onclick possède comme id l’idx de Domoticz.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image295.png
+.. image:: media/image295.webp
    :width: 6.00139in
    :height: 1.03194in
 
 Avec Inkscape ce onclick peut être ajouter lors de la construction, avec
 AI il faut l’ajouter manuellement comme ci-dessus :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image296.png
+.. image:: media/image296.webp
    :width: 4.43889in
    :height: 4.11528in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image297.png
+.. image:: media/image297.webp
    :width: 4.09167in
    :height: 4.18889in
 
 Pour indiquer que l’élément est cliquable, comme pour le HTML, on ajoute
 une balise <a ; non nécessaire surtout pour les tablettes.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image298.png
+.. image:: media/image298.webp
    :width: 6.26111in
    :height: 1.95833in
 
 Ou lors de la construction avec Inkscape :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image299.png
+.. image:: media/image299.webp
    :width: 6.26806in
    :height: 3.68611in
 
 Où :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image300.png
+.. image:: media/image300.webp
    :width: 2.99028in
    :height: 2.30139in
 
@@ -2983,14 +2983,14 @@ Où :
 Pour les caméras génériques chinoises, pour les configurer : Internet
 explorer est le seul navigateur qui permet d’afficher Net Surveillance
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image301.png
+.. image:: media/image301.webp
    :width: 4.85417in
    :height: 3.70278in
 
 La table « cameras » dans la base de données SQL a été remplie, voir le
 paragraphe concernant la base de données au début de ce document
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image302.png
+.. image:: media/image302.webp
    :width: 6.26667in
    :height: 1.15555in
 
@@ -3000,11 +3000,11 @@ Pour retrouver l’ID Zoneminder pour toutes les cameras :
 
 Dans un navigateur : IP DE ZONEMINDER/zm/api/monitor.json
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image303.png
+   .. image:: media/image303.webp
       :width: 4.07361in
       :height: 2.69861in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image304.png
+   .. image:: media/image304.webp
       :width: 4.41528in
       :height: 4.86111in
 
@@ -3018,20 +3018,20 @@ Voir paragraphe 2.1.2 : ajout dans l’image du plan
 Voir paragraphe 2.3 : fichier PHP de la page avec les fenêtres modales
 **La modale pour la fenêtre de l’image :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image305.png
+.. image:: media/image305.webp
    :width: 5.4375in
    :height: 2.51389in
 
 C’est la fonction PHP « upload_img($idx) » appelée par ajax qui renvoi
 l’image de la caméra
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image306.png
+.. image:: media/image306.webp
    :width: 5.84444in
    :height: 5.16667in
 
 Le script JS dans footer.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image307.png
+.. image:: media/image307.webp
    :width: 6.26806in
    :height: 4.70556in
 
@@ -3042,7 +3042,7 @@ Le script JS dans footer.php :
 | Le fichier de configuration admin/config.php :
 | Si Zoneminder est utilisé
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image308.png
+.. image:: media/image308.webp
    :width: 6.20833in
    :height: 2.54167in
 
@@ -3053,21 +3053,21 @@ Le script JS dans footer.php :
 |    Dans options/système                                               |
 |                                                                       |
 | ..                                                                    |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image309.png |
+|  image:: media/image309.webp |
 |    :width: 5.07222in                                                  |
 |    :height: 1.30833in                                                 |
 |                                                                       |
 |    Réponse avec opt_use_auth coché :                                  |
 |                                                                       |
 | ..                                                                    |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image310.png |
+|  image:: media/image310.webp |
 |    :width: 5.16528in                                                  |
 |    :height: 1.71944in                                                 |
 |                                                                       |
 |    Réponse avec opt_use_auth décoché :                                |
 |                                                                       |
 | ..                                                                    |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image311.png |
+|  image:: media/image311.webp |
 |    :width: 5.10417in                                                  |
 |    :height: 1.86111in                                                 |
 |                                                                       |
@@ -3084,34 +3084,34 @@ dans la modale de
 
 l’image : voir également paragraphe 2.3
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image312.png
+.. image:: media/image312.webp
    :width: 4.10833in
    :height: 0.7125in
 
 Les script JS, dans footer.php et dans mes_js.js : *Dans footer.php :*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image313.png
+.. image:: media/image313.webp
    :width: 6.26806in
    :height: 2.55139in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image314.png
+.. image:: media/image314.webp
    :width: 6.26806in
    :height: 1.54722in
 
 *Dans mes_js.js :*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image315.png
+.. image:: media/image315.webp
    :width: 5.83333in
    :height: 6.67083in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image316.png
+   .. image:: media/image316.webp
       :width: 3.90556in
       :height: 4.89583in
 
 Le fichier ajax.php et Le script PHP, function
 cam_config($marque,$type,$ip,$cam,$idzm), (dans fonctions.php)
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image317.png
+.. image:: media/image317.webp
    :width: 6.26806in
    :height: 0.45833in
 
@@ -3119,7 +3119,7 @@ Extrait de la fonction cam_config du fichier :
 
 Pour caméras DAHUA :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image318.png
+.. image:: media/image318.webp
    :width: 5.13611in
    :height: 6.03472in
 
@@ -3160,20 +3160,20 @@ Dahua :
 | curl_easy_setopt(curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC \|
   CURLAUTH_DIGEST);
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image319.png
+.. image:: media/image319.webp
    :width: 6.07361in
    :height: 2.88472in
 
 Pour caméras onvif autres :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image320.png
+.. image:: media/image320.webp
    :width: 6.26806in
    :height: 5.13333in
 
    Comme le token peut être utile dans d’autres pages création d’une
    fonction pour cela :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image321.png
+.. image:: media/image321.webp
    :width: 6.26806in
    :height: 3.50555in
 
@@ -3189,19 +3189,19 @@ variable dans la base de
 
    Table « dispositifs » : variables
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image322.png
+   .. image:: media/image322.webp
       :width: 5.28194in
       :height: 2.13611in
 
    Table « text_image » :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image323.png
+   .. image:: media/image323.webp
       :width: 6.26111in
       :height: 1.33333in
 
    **accueil.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image324.png
+.. image:: media/image324.webp
    :width: 6.26806in
    :height: 1.20833in
 
@@ -3212,7 +3212,7 @@ variable dans la base de
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image325.png |
+|  image:: media/image325.webp |
 |       :width: 2.55in                                                  |
 |       :height: 0.8375in                                               |
 +=======================================================================+
@@ -3228,21 +3228,21 @@ décrite ici ;
 Dans un cadre jaune, ce qui devra être ajouté, le reste ayant déjà été
 créé (variables Domoticz et SQL, images svg, …
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image326.png
+.. image:: media/image326.webp
    :width: 6.26111in
    :height: 2.78056in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image327.png
+.. image:: media/image327.webp
    :width: 4.25139in
    :height: 1.02083in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image328.png
+.. image:: media/image328.webp
    :width: 4.63472in
    :height: 2.85in
 
 Variables Domoticz :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image329.png
+   .. image:: media/image329.webp
       :width: 6.01944in
       :height: 1.23611in
 
@@ -3250,7 +3250,7 @@ Variables Domoticz :
 |    La notification de batterie faible, par SMS :                      |
 |                                                                       |
 | ..                                                                    |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image330.png |
+|  image:: media/image330.webp |
 |    :width: 5.99028in                                                  |
 |    :height: 3.6125in                                                  |
 +=======================================================================+
@@ -3267,7 +3267,7 @@ Variables Domoticz :
 | ..                                                                    |
 |                                                                       |
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image331.png |
+|  image:: media/image331.webp |
 |       :width: 4.24028in                                               |
 |       :height: 5.15694in                                              |
 +=======================================================================+
@@ -3277,7 +3277,7 @@ Variables Domoticz :
 
    Sur la page d’accueil
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image332.png
+   .. image:: media/image332.webp
       :width: 1.85694in
       :height: 1.12639in
 
@@ -3285,7 +3285,7 @@ Variables Domoticz :
 
    |image10| |image11|
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image335.png
+.. image:: media/image335.webp
    :width: 3.94861in
    :height: 4.60417in
 
@@ -3310,7 +3310,7 @@ Ce cercle visible selon l’état de la batterie est ajouté au plan :
 |    css :                                                              |
 |                                                                       |
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image337.png |
+|  image:: media/image337.webp |
 |       :width: 3.78472in                                               |
 |       :height: 2.08194in                                              |
 +=======================================================================+
@@ -3321,19 +3321,19 @@ Ce cercle visible selon l’état de la batterie est ajouté au plan :
    Les valeurs sont définies dans le fichier de configuration
    /admin/config.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image338.png
+.. image:: media/image338.webp
    :width: 6.26806in
    :height: 1.07639in
 
    La fonction javascript : function maj_devices(plan) :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image339.png
+.. image:: media/image339.webp
    :width: 6.26111in
    :height: 2.1875in
 
 **2.3 4 Le contrôle de la tension d’alimentation :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image340.png
+.. image:: media/image340.webp
    :width: 5.49028in
    :height: 2.88472in
 
@@ -3347,23 +3347,23 @@ inutiles).
 
 On ajoute aussi un ID
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image341.png
+.. image:: media/image341.webp
    :width: 6.26806in
    :height: 1.56528in
 
 Le dispositif Domoticz :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image342.png
+.. image:: media/image342.webp
    :width: 4.03194in
    :height: 1.21944in
 
 La base de données SQL :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image343.png
+.. image:: media/image343.webp
    :width: 6.26806in
    :height: 0.59444in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image344.png
+.. image:: media/image344.webp
    :width: 1.38472in
    :height: 0.75in
 
@@ -3371,7 +3371,7 @@ La base de données SQL :
   un autre texte ; pour cela il faut modifier le script JS
 | Le script JS dans le fichier footer.php, déjà vu précédemment :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image345.png
+.. image:: media/image345.webp
    :width: 6.26806in
    :height: 1.07639in
 
@@ -3380,29 +3380,29 @@ La base de données SQL :
   maison, les lampe de jardin
 | **2.3.6 ajouter un capteur de T° extérieur Zigbee**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image346.png
+.. image:: media/image346.webp
    :width: 5.51111in
    :height: 3.36528in
 
 **2.3.6.1 Le capteur dans Domoticz :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image347.png
+.. image:: media/image347.webp
    :width: 3.95972in
    :height: 1.28194in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image348.png
+.. image:: media/image348.webp
    :width: 3.58472in
    :height: 0.69722in
 
 *Dans le plan de Domoticz :*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image349.png
+.. image:: media/image349.webp
    :width: 2.59444in
    :height: 1.60417in
 
 **2.3.6.2 Le capteur dans la BD :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image350.png
+.. image:: media/image350.webp
    :width: 6.26806in
    :height: 0.3625in
 
@@ -3431,17 +3431,17 @@ On a choisi de limiter le nb de caractère à 4, à l’origine : |image13|
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image352.png
+.. image:: media/image352.webp
    :width: 6.26806in
    :height: 2.09305in
 
 Le fichier Json
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image353.png
+.. image:: media/image353.webp
    :width: 3.48055in
    :height: 4.10417in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image354.png
+.. image:: media/image354.webp
    :width: 3.94861in
    :height: 4.85833in
 
@@ -3471,7 +3471,7 @@ Le fichier Json
 
 En Bleu du contenu optionnel
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image355.png
+.. image:: media/image355.webp
    :width: 6.26111in
    :height: 2.66667in
 
@@ -3481,41 +3481,41 @@ fenêtres sont ajoutées.
 
 Le menu :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image356.png
+.. image:: media/image356.webp
    :width: 5.16806in
    :height: 2.1875in
 
 Le fichier interieur .php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image357.png
+.. image:: media/image357.webp
    :width: 6.26111in
    :height: 5.21806in
 
 Le fichier index_loc.php : pour info, en général ne pas modifier ce
 fichier
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image358.png
+.. image:: media/image358.webp
    :width: 5.94861in
    :height: 4.03194in
 
 Le fichier include/header.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image359.png
+.. image:: media/image359.webp
    :width: 6.26111in
    :height: 1.24028in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image360.png
+.. image:: media/image360.webp
    :width: 4.16805in
    :height: 4.85417in
 
 | CSS : css/mes_css.css
 | Le style existe déjà pour toutes les pages , pour les modifier :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image361.png
+.. image:: media/image361.webp
    :width: 5.91806in
    :height: 2.1875in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image362.png
+.. image:: media/image362.webp
    :width: 5.53194in
    :height: 7.49167in
 
@@ -3523,7 +3523,7 @@ Le fichier include/header.php :
 
 Pour les PIR, les capteurs d’ouverture, pour le changement de couleur :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image363.png
+.. image:: media/image363.webp
    :width: 6.26806in
    :height: 8.17222in
 
@@ -3540,13 +3540,13 @@ avec plusieurs valeurs tels que température+ Humidité température
 
 **Un script dz : séparation_valeurs.lua**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image364.png
+.. image:: media/image364.webp
    :width: 6.26806in
    :height: 4.325in
 
 Depuis Domoticz 2021.1
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image365.png
+.. image:: media/image365.webp
    :width: 4.69861in
    :height: 2.45833in
 
@@ -3558,40 +3558,40 @@ Depuis Domoticz 2021.1
 | Cette page n’a PAS DE LIAISON AVEC DOMOTICZ
 | Voir également le site
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image366.png
+.. image:: media/image366.webp
    :width: 6.26806in
    :height: 2.70972in
 
 L’API est gratuite chez Météo Concept mais il faut s’enregistrer pour
 obtenir une clé Le PHP : dans fonctions.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image367.png
+.. image:: media/image367.webp
    :width: 5.91806in
    :height: 5.72917in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image368.png
+.. image:: media/image368.webp
    :width: 6.26111in
    :height: 2.91667in
 
 Le JS dans footer.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image369.png
+.. image:: media/image369.webp
    :width: 4.70972in
    :height: 3.125in
 
 Pour la mise à jour auto chaque matin :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image370.png
+.. image:: media/image370.webp
    :width: 6.16667in
    :height: 2.32222in
 
 Le HTML : la page meteo.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image371.png
+.. image:: media/image371.webp
    :width: 5.46944in
    :height: 7.53333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image372.png
+.. image:: media/image372.webp
    :width: 6.25in
    :height: 3.72917in
 
@@ -3599,52 +3599,52 @@ Il faut ajouter la page au site ; la procédure est toujours la même : :
 dans config.php, Mettre la variable à « true » ; **il faut au préalable
 demander un token gratuit.**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image373.png
+.. image:: media/image373.webp
    :width: 5.30278in
    :height: 0.85417in
 
 Dans header.php, l’affichage dans le menu est alors automatique.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image374.png
+.. image:: media/image374.webp
    :width: 6.24028in
    :height: 0.9375in
 
 La page meteo.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image375.png
+.. image:: media/image375.webp
    :width: 6.26111in
    :height: 5.3125in
 
 Les css : en plus du style pour la page :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image376.png
+.. image:: media/image376.webp
    :width: 4.04305in
    :height: 0.70833in
 
 Les icones :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image377.png
+.. image:: media/image377.webp
    :width: 5.63611in
    :height: 3.63611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image378.png
+.. image:: media/image378.webp
    :width: 5.52222in
    :height: 5.14583in
 
 | **3.2\_ La Météo à 1 heure de Météo France :**
 | Ne fait pas partie de la page météo : affichage sur la page d’accueil
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image379.png
+.. image:: media/image379.webp
    :width: 5.46944in
    :height: 3.625in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image380.png
+.. image:: media/image380.webp
    :width: 6.17778in
    :height: 5.20833in
 
 accueil.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image381.png
+.. image:: media/image381.webp
    :width: 5.55278in
    :height: 1in
 
@@ -3655,7 +3655,7 @@ Les icones svg « pluie imminente » et « pas de pluie » :
 |                 |                 |                 | vertopal_6e277a |
 |                 |                 |                 | ed43794de08da72 |
 |                 |                 |                 | 29da055806a/med |
-|                 |                 |                 | ia/image385.png |
+|                 |                 |                 | ia/image385.webp |
 |                 |                 |                 |                 |
 |                 |                 |                 | :width: 0.625in |
 |                 |                 |                 |       :he       |
@@ -3665,13 +3665,13 @@ Les icones svg « pluie imminente » et « pas de pluie » :
 
 **Footer.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image386.png
+.. image:: media/image386.webp
    :width: 6.30139in
    :height: 4.01667in
 
 PHP : ajax.php et fonction PHP « app_met($choix) » ajax.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image387.png
+.. image:: media/image387.webp
    :width: 6.26806in
    :height: 0.36111in
 
@@ -3689,20 +3689,20 @@ Dans fonctions.php :
    | Indiquer Commune-Code postal
    | - (2) par météo France et son API avec un Token
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image388.png
+.. image:: media/image388.webp
    :width: 6.26806in
    :height: 5.23194in
 
 La base de données : correspondance texte – image, la table
 **text_image**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image389.png
+.. image:: media/image389.webp
    :width: 6.26806in
    :height: 1.35417in
 
 Voir le site
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image390.png
+.. image:: media/image390.webp
    :width: 6.26111in
    :height: 2.09444in
 
@@ -3716,17 +3716,17 @@ OpenWeatherMap,
 c’est français et plus facile d’utilisation, nombreux exemple sur le
 site web Méteoconcept
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image391.png
+.. image:: media/image391.webp
    :width: 6.30139in
    :height: 2.73333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image392.png
+.. image:: media/image392.webp
    :width: 5.77222in
    :height: 1.1875in
 
 **4.\_ La page du plan extérieur**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image393.png
+.. image:: media/image393.webp
    :width: 5.63611in
    :height: 7.49167in
 
@@ -3742,7 +3742,7 @@ Illustrateur)**, il est impératif de les renommer.
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image394.png |
+|  image:: media/image394.webp |
 |       :width: 3.55139in                                               |
 |       :height: 3.24444in                                              |
 |                                                                       |
@@ -3750,7 +3750,7 @@ Illustrateur)**, il est impératif de les renommer.
 |    ne sont pas nombreux : les modifier manuellement.                  |
 |                                                                       |
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image395.png |
+|  image:: media/image395.webp |
 |       :width: 5.96111in                                               |
 |       :height: 1.60417in                                              |
 |                                                                       |
@@ -3766,7 +3766,7 @@ Illustrateur)**, il est impératif de les renommer.
 
 Nettoyage : Ces lignes ne servent à rien : les enlever
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image396.png
+   .. image:: media/image396.webp
       :width: 2.51111in
       :height: 0.98056in
 
@@ -3790,15 +3790,15 @@ avec l’extension
 | Pour les caméras une fenêtre modale, identique à celle de
   interieur.php, (aux ID près) est ajouter sur la page
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image397.png
+.. image:: media/image397.webp
    :width: 5.26111in
    :height: 5.52639in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image398.png
+.. image:: media/image398.webp
    :width: 6.02222in
    :height: 3.55278in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image399.png
+.. image:: media/image399.webp
    :width: 5.54306in
    :height: 5.46944in
 
@@ -3806,18 +3806,18 @@ avec l’extension
 
 Apres avoir téléchargé une image svg ajouter les icones au plan
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image400.png
+.. image:: media/image400.webp
    :width: 4.27083in
    :height: 2.9875in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image401.png
+   .. image:: media/image401.webp
       :width: 2.41667in
       :height: 1.85139in
 
 Pour commander les lampes : un interrupteur virtuel dans Domoticz ou un
 interrupteur réel (Zigbee ou Zwave) avec son double dans Domoticz
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image402.png
+.. image:: media/image402.webp
    :width: 4.15694in
    :height: 1.45833in
 
@@ -3826,11 +3826,11 @@ du chapitre « mur ON/OFF »
 
 La table « dispositifs » SQL :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image403.png
+.. image:: media/image403.webp
    :width: 4.77222in
    :height: 0.83333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image404.png
+.. image:: media/image404.webp
    :width: 6.26806in
    :height: 0.70833in
 
@@ -3839,14 +3839,14 @@ navigateur et F12 c’est le plus simple car une class pour la couleur
 existe déjà, il suffit d’ajouter la class choisie ; dans l’attribut
 class, il faut séparer les class avec un espace.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image405.png
+.. image:: media/image405.webp
    :width: 5.13611in
    :height: 1.99861in
 
 La fonction maj_devices, déjà décrite pour les IDs des dispositifs, la
 partie du script consacrée aux lampes :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image406.png
+.. image:: media/image406.webp
    :width: 6.1875in
    :height: 4.34444in
 
@@ -3861,7 +3861,7 @@ fonction « class_name »
 Il suffit, comme pour toutes les pages optionnelles ne mettre la
 variable à « true » :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image407.png
+.. image:: media/image407.webp
    :width: 5.48889in
    :height: 0.64444in
 
@@ -3870,7 +3870,7 @@ variable à « true » :
 Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du
 script python avec les codes retenus pour l’alarme. *$ 18.4*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image408.png
+.. image:: media/image408.webp
    :width: 5.64444in
    :height: 5.56389in
 
@@ -3894,25 +3894,25 @@ Les boutons poussoir marche/arrêt pour les commandes :
 | -Dans ce tuto : lampe_salon (lampe commandée par le 433MHz avec une
   interface Sonoff modifié, voir le site domo-site.fr
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image409.png
+   .. image:: media/image409.webp
       :width: 4.44861in
       :height: 2.625in
 
    Pour le test sirène : un interrupteur « PUSH »
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image410.png
+   .. image:: media/image410.webp
       :width: 4.68889in
       :height: 1.75in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image411.png
+   .. image:: media/image411.webp
       :width: 6.5in
       :height: 0.51111in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image412.png
+   .. image:: media/image412.webp
       :width: 6.26806in
       :height: 0.45in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image413.png
+   .. image:: media/image413.webp
       :width: 6.26806in
       :height: 0.5in
 
@@ -3921,19 +3921,19 @@ Les boutons poussoir marche/arrêt pour les commandes :
    dispositifs pour récupérer les données avec un seul appel à l’API
    json
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image414.png
+   .. image:: media/image414.webp
       :width: 5.26111in
       :height: 4.39444in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image415.png
+   .. image:: media/image415.webp
       :width: 6.26806in
       :height: 0.21111in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image416.png
+   .. image:: media/image416.webp
       :width: 4.05278in
       :height: 0.57222in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image417.png
+   .. image:: media/image417.webp
       :width: 5.55278in
       :height: 4.65694in
 
@@ -3941,7 +3941,7 @@ Les boutons poussoir marche/arrêt pour les commandes :
 
    - ma-alarme :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image418.png
+   .. image:: media/image418.webp
       :width: 4.51944in
       :height: 1.61389in
 
@@ -3956,7 +3956,7 @@ Les boutons poussoir marche/arrêt pour les commandes :
 
    une notification en page d’accueil ou autre …)
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image419.png
+   .. image:: media/image419.webp
       :width: 6.26667in
       :height: 0.77222in
 
@@ -3971,25 +3971,25 @@ Les boutons poussoir marche/arrêt pour les commandes :
    | - activation-sir-txt, texte activation de la sirène : *activer ou
      désactiver*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image420.png
+   .. image:: media/image420.webp
       :width: 6.5in
       :height: 0.85694in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image421.png
+   .. image:: media/image421.webp
       :width: 6.26806in
       :height: 0.2875in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image422.png
+   .. image:: media/image422.webp
       :width: 6.26806in
       :height: 0.84306in
 
 Notifications : notifications_devices.lua
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image423.png
+.. image:: media/image423.webp
    :width: 3.94861in
    :height: 2.88611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image424.png
+.. image:: media/image424.webp
    :width: 6.26806in
    :height: 5.11111in
 
@@ -3999,7 +3999,7 @@ Notifications : notifications_devices.lua
   mots
 | Script notifications_variables.lua, lignes concernées :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image425.png
+.. image:: media/image425.webp
    :width: 6.05278in
    :height: 1.52083in
 
@@ -4037,7 +4037,7 @@ Script notifications_timer.lua, lignes concernées :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image426.png
+.. image:: media/image426.webp
    :width: 6.26806in
    :height: 3.77361in
 
@@ -4048,40 +4048,40 @@ fonctionne que pour ON ; else avec isTimer ne fonctionne pas.
 
 Ajout du script « alarme_intrusion.lua dans évènements de Domoticz :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image427.png
+.. image:: media/image427.webp
    :width: 6.26806in
    :height: 5.37361in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image428.png
+.. image:: media/image428.webp
    :width: 6.26806in
    :height: 4.22778in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image429.png
+.. image:: media/image429.webp
    :width: 6.26806in
    :height: 6.00694in
 
 | **Pour activer ou désactiver la sirène :**
 | Pour les textes : notifications_devices.lua
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image430.png
+.. image:: media/image430.webp
    :width: 6.26806in
    :height: 0.69722in
 
 Pour l’activation ou la désactivation :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image431.png
+.. image:: media/image431.webp
    :width: 6.26806in
    :height: 1.48055in
 
 Pour allumer des lampes :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image432.png
+.. image:: media/image432.webp
    :width: 5.41806in
    :height: 1.625in
 
 Pour ajouter des dispositifs :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image433.png
+.. image:: media/image433.webp
    :width: 6.21944in
    :height: 2.91667in
 
@@ -4126,7 +4126,7 @@ Et
 
 Résumé des scripts Domoticz concernés :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image434.png
+.. image:: media/image434.webp
    :width: 6.26806in
    :height: 4.45139in
 
@@ -4139,11 +4139,11 @@ automatiquement.
 
 Dans les autres cas Modect peut être activé manuellement.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image435.png
+.. image:: media/image435.webp
    :width: 4.22917in
    :height: 3.63472in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image436.png
+.. image:: media/image436.webp
    :width: 4.70972in
    :height: 4.47917in
 
@@ -4153,35 +4153,35 @@ Dans les autres cas Modect peut être activé manuellement.
 
    Dans fonctions.php :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image437.png
+   .. image:: media/image437.webp
       :width: 6.26806in
       :height: 3.91667in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image438.png
+   .. image:: media/image438.webp
       :width: 6.26806in
       :height: 5.73333in
 
    Le format du fichier est json pour une exploitation facile avec
    Domoticz **5.1.1.2 le script lua :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image439.png
+   .. image:: media/image439.webp
       :width: 6.26806in
       :height: 3.18611in
 
    Le fichier string_modect est écrit automatiquement dans «
    administration »
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image440.png
+   .. image:: media/image440.webp
       :width: 3.3125in
       :height: 2.54861in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image441.png
+   .. image:: media/image441.webp
       :width: 4.35694in
       :height: 2.75972in
 
    Le choix des caméras se fait dans la BD :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image442.png
+   .. image:: media/image442.webp
       :width: 2.76111in
       :height: 2.8125in
 
@@ -4192,11 +4192,11 @@ couleur, pas besoin de onclick, il n’y a que des dispositifs virtuels.
 
 La construction de la page est identique à celle du plan intérieur.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image443.png
+.. image:: media/image443.webp
    :width: 6.26806in
    :height: 3.59583in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image444.png
+   .. image:: media/image444.webp
       :width: 5.03194in
       :height: 4.1375in
 
@@ -4208,7 +4208,7 @@ téléchargées ; l’icône png de Domoticz a été convertie en svg.
 | |image17|             |    .. image           |    .. image           |
 |                       | :: vertopal_6e277aed4 | :: vertopal_6e277aed4 |
 |                       | 3794de08da7229da05580 | 3794de08da7229da05580 |
-|                       | 6a/media/image446.png | 6a/media/image447.png |
+|                       | 6a/media/image446.webp | 6a/media/image447.webp |
 |                       |                       |                       |
 |                       |     :width: 1.05278in |     :width: 0.84444in |
 |                       |                       |                       |
@@ -4218,11 +4218,11 @@ téléchargées ; l’icône png de Domoticz a été convertie en svg.
 
 On ajoute des zones de textes pour la date, les messages ,….
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image448.png
+.. image:: media/image448.webp
    :width: 5.28194in
    :height: 6.25in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image449.png
+.. image:: media/image449.webp
    :width: 4.50139in
    :height: 1.16667in
 
@@ -4231,7 +4231,7 @@ On enregistre l’image dans un fichier PHP, comme indiqué au paragraphe
 
 On peut aussi ajouter les ID avec F12 du navigateur
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image450.png
+.. image:: media/image450.webp
    :width: 5.94861in
    :height: 1.4375in
 
@@ -4243,7 +4243,7 @@ On peut aussi ajouter les ID avec F12 du navigateur
 Un extrait concernant le bouton « activation/désactivation de la sirène
 »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image451.png
+.. image:: media/image451.webp
    :width: 6.26806in
    :height: 4.91389in
 
@@ -4254,29 +4254,29 @@ Un extrait concernant le bouton « activation/désactivation de la sirène
   : « pwdalarm » pour limiter l’accès ;(cette valeur peut être modifiée
   dans config.php)
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image452.png
+.. image:: media/image452.webp
    :width: 6.26111in
    :height: 1.83333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image453.png
+.. image:: media/image453.webp
    :width: 6.26806in
    :height: 0.28611in
 
 Comme on peut le voir pour l’alarme absence il a été préféré l’ID du
 cercle à l’ID de Inkscape
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image454.png
+.. image:: media/image454.webp
    :width: 5.77222in
    :height: 1.01111in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image455.png
+.. image:: media/image455.webp
    :width: 6.26806in
    :height: 3.03472in
 
 Il est aussi possible de renommer l’ID du cercle. **Partie concernant
 les variables**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image456.png
+.. image:: media/image456.webp
    :width: 6.19861in
    :height: 4.25972in
 
@@ -4284,7 +4284,7 @@ les variables**
 
 **alarme.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image457.png
+.. image:: media/image457.webp
    :width: 5.10139in
    :height: 6.14583in
 
@@ -4325,51 +4325,51 @@ les variables**
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image458.png
+.. image:: media/image458.webp
    :width: 6.26806in
    :height: 1.87639in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image459.png
+.. image:: media/image459.webp
    :width: 5.85417in
    :height: 6.00972in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image460.png
+.. image:: media/image460.webp
    :width: 3.52083in
    :height: 2.07361in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image461.png
+   .. image:: media/image461.webp
       :width: 4.77222in
       :height: 1.34444in
 
 Le fichier config.php gère les mots de passe de l’alarme et de la
 commande des dispositifs (on/off)
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image462.png
+.. image:: media/image462.webp
    :width: 5.78194in
    :height: 1.74028in
 
 Dans fonctions.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image463.png
+.. image:: media/image463.webp
    :width: 5.19861in
    :height: 2.77083in
 
 Le script qui commande les poussoirs M/A
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image464.png
+.. image:: media/image464.webp
    :width: 6.26111in
    :height: 3.13611in
 
 **5.5- Le Javascript, dans footer.php et mes_js.js** Les scripts pour
 les mots de passe, dans mes_js.js
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image465.png
+.. image:: media/image465.webp
    :width: 6.20833in
    :height: 4.40556in
 
 Et le script pour le clavier affiché dans administration
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image466.png
+.. image:: media/image466.webp
    :width: 4.58472in
    :height: 4.40694in
 
@@ -4378,11 +4378,11 @@ Et le script pour le clavier affiché dans administration
 | l’utilisation du mot de passe, le bouton « Entrer votre mot de passe »
   apparait lors d’un click.
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image467.png
+   .. image:: media/image467.webp
       :width: 3.51111in
       :height: 2.57361in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image468.png
+   .. image:: media/image468.webp
       :width: 5.57361in
       :height: 3.4375in
 
@@ -4391,7 +4391,7 @@ Et le script pour le clavier affiché dans administration
 
    Le script pour afficher une modale « modalink »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image469.png
+.. image:: media/image469.webp
    :width: 5.92778in
    :height: 3.54167in
 
@@ -4399,7 +4399,7 @@ Et le script pour le clavier affiché dans administration
 | Il ne reste qu’à :
 | - Ajouter cette page dans config.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image470.png
+.. image:: media/image470.webp
    :width: 2.38472in
    :height: 0.42778in
 
@@ -4409,7 +4409,7 @@ Et le script pour le clavier affiché dans administration
 
 **5.7- Affichage d’une icône sur la page d’accueil :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image472.png
+   .. image:: media/image472.webp
       :width: 3.94722in
       :height: 5.32222in
 
@@ -4418,17 +4418,17 @@ fonction auto n’a pas été choisie
 
 **css**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image473.png
+.. image:: media/image473.webp
    :width: 4.05278in
    :height: 0.59444in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image474.png
+.. image:: media/image474.webp
    :width: 6.5in
    :height: 0.21528in
 
 **accueil.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image475.png
+.. image:: media/image475.webp
    :width: 6.26806in
    :height: 1.43194in
 
@@ -4436,24 +4436,24 @@ fonction auto n’a pas été choisie
 
 Quand l’alarme nuit est activée, son contenu :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image476.png
+.. image:: media/image476.webp
    :width: 6.26806in
    :height: 0.52083in
 
 **La table text_images** : correspondance entre le texte et l’image
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image477.png
+.. image:: media/image477.webp
    :width: 6.26111in
    :height: 0.50972in
 
 **La table variables_dz** : la variable existe déjà, vérifier l’ID pour
 l’icone
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image478.png
+.. image:: media/image478.webp
    :width: 6.5in
    :height: 0.34306in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image479.png
+.. image:: media/image479.webp
    :width: 5.57361in
    :height: 4.99028in
 
@@ -4480,7 +4480,7 @@ On ajoute un bouton avec Inkscape ; pour cela :
 
    PHP.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image480.png
+.. image:: media/image480.webp
    :width: 6.26806in
    :height: 4.59167in
 
@@ -4494,11 +4494,11 @@ On ajoute un bouton avec Inkscape ; pour cela :
 
    On ajout le switch au plan
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image483.png
+   .. image:: media/image483.webp
       :width: 5.69722in
       :height: 1.9875in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image484.png
+   .. image:: media/image484.webp
       :width: 5.06389in
       :height: 2.99028in
 
@@ -4547,7 +4547,7 @@ Le script lua notification_devices.lua :
 
 Log :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image485.png
+.. image:: media/image485.webp
    :width: 6.26806in
    :height: 0.8125in
 
@@ -4555,34 +4555,34 @@ Log :
 
 Pour cela on met à jour la table « dispositifs »
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image486.png
+   .. image:: media/image486.webp
       :width: 6.00972in
       :height: 3.67778in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image487.png
+   .. image:: media/image487.webp
       :width: 3.49028in
       :height: 2.10417in
 
 Comme pour tous les switch la commande a été ajoutée automatiquement sur
 la page HTML :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image488.png
+.. image:: media/image488.webp
    :width: 6.26111in
    :height: 1.57222in
 
 **En page d’accueil**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image489.png
+.. image:: media/image489.webp
    :width: 4.65694in
    :height: 3.51111in
 
 La table text_image :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image490.png
+.. image:: media/image490.webp
    :width: 4.41805in
    :height: 0.46944in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image491.png
+   .. image:: media/image491.webp
       :width: 0.58333in
       :height: 0.79167in
 
@@ -4593,14 +4593,14 @@ L’image : L’image :
 | **Dans Domoticz**
 | - Création d’une variable
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image492.png
+.. image:: media/image492.webp
    :width: 6.22917in
    :height: 0.91667in
 
    - Modification légère du script dz pour modifier la valeur de la
    variable en cas d’intrusion :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image493.png
+.. image:: media/image493.webp
    :width: 5.57361in
    :height: 1.65555in
 
@@ -4612,19 +4612,19 @@ L’image : L’image :
    | Une fois le SMS envoyé, on utilise l’API pour remettre à Zéro la
      variable.
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image494.png
+   .. image:: media/image494.webp
       :width: 4.86528in
       :height: 4.61389in
 
    On simplifie le script avec 2 fonctions :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image495.png
+   .. image:: media/image495.webp
       :width: 5.5in
       :height: 7.11528in
 
 Emplacement du script :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image496.png
+   .. image:: media/image496.webp
       :width: 2.47917in
       :height: 3.25in
 
@@ -4632,11 +4632,11 @@ Emplacement du script :
 
    On simule un intru en modifiant manuellement la variable :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image497.png
+.. image:: media/image497.webp
    :width: 6.26806in
    :height: 0.84305in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image498.png
+   .. image:: media/image498.webp
       :width: 3.60417in
       :height: 2.60417in
 
@@ -4657,7 +4657,7 @@ Emplacement du script :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image499.png
+.. image:: media/image499.webp
    :width: 4.06389in
    :height: 0.50972in
 
@@ -4665,68 +4665,68 @@ On fait une copie de ce fichier : aldz.bak.py : ce fichier remplacera le
 fichier original pour remettre à 0 la variable et cesser d’envoyer des
 messages.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image500.png
+.. image:: media/image500.webp
    :width: 3.24028in
    :height: 1.875in
 
 Dans Domoticz, pas besoin de créer une variable, simplement modifier le
 fichier aldz.py pour inclure à la variable x, le texte du SMS
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image501.png
+.. image:: media/image501.webp
    :width: 5.99028in
    :height: 2.64583in
 
 Attention : si modem Ebyte, pas d’espaces et accents Le fichier sms_dz
 est modifié (simplifié) :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image502.png
+.. image:: media/image502.webp
    :width: 6.26111in
    :height: 6.02083in
 
 **5.8.2.3- Option supplémentaire : le test de l’envoi de SMS**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image503.png
+.. image:: media/image503.webp
    :width: 5.10417in
    :height: 3.37361in
 
 L’image de l’alarme : on ajoute,
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image504.png
+.. image:: media/image504.webp
    :width: 6.26111in
    :height: 2.51111in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image505.png
+.. image:: media/image505.webp
    :width: 6.26806in
    :height: 1.66944in
 
 Domoticz : on ajoute un interrupteur virtuel
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image506.png
+.. image:: media/image506.webp
    :width: 6.26806in
    :height: 0.45972in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image507.png
+.. image:: media/image507.webp
    :width: 3.45972in
    :height: 1.1875in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image508.png
+.. image:: media/image508.webp
    :width: 4.18889in
    :height: 1.5in
 
 On ajoute le dispositif au plan :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image509.png
+.. image:: media/image509.webp
    :width: 4.6875in
    :height: 4.06667in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image510.png
+.. image:: media/image510.webp
    :width: 4.68889in
    :height: 3.79167in
 
 On ajoute qq lignes de script dans évènements dz
 **notifications_devices.lua**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image511.png
+.. image:: media/image511.webp
    :width: 6.26806in
    :height: 3.29028in
 
@@ -4734,11 +4734,11 @@ On ajoute qq lignes de script dans évènements dz
   n’accepte pas les espaces texte)
 | Dans la BD :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image512.png
+.. image:: media/image512.webp
    :width: 6.26806in
    :height: 0.83333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image513.png
+.. image:: media/image513.webp
    :width: 1.96944in
    :height: 0.30278in
 
@@ -4749,7 +4749,7 @@ footer.php
 
 Le script est ajouté automatiquement à partir des données de la BD
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image514.png
+.. image:: media/image514.webp
    :width: 6.26111in
    :height: 1.96806in
 
@@ -4758,7 +4758,7 @@ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour de
 devices_plan() au plus tard : 3minutes par défaut mais modifiable dans
 config.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image515.png
+.. image:: media/image515.webp
    :width: 4.80278in
    :height: 3.17639in
 
@@ -4767,19 +4767,19 @@ config.php
 Cette liste est établie automatiquement avec une fonction dans «
 administration »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image516.png
+.. image:: media/image516.webp
    :width: 3.86528in
    :height: 3.25in
 
 **Ajout d’une icone**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image517.png
+.. image:: media/image517.webp
    :width: 4.26111in
    :height: 3.38194in
 
 alarmes.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image518.png
+.. image:: media/image518.webp
    :width: 6.26111in
    :height: 3.33333in
 
@@ -4801,17 +4801,17 @@ alarmes.php :
 Dans footer.php , on appelle la fonction php sql_app() qui est déjà
 utilisé dans « administration »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image519.png
+.. image:: media/image519.webp
    :width: 6.26806in
    :height: 1.60972in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image520.png
+.. image:: media/image520.webp
    :width: 6.02222in
    :height: 5.9375in
 
 Affichage :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image521.png
+.. image:: media/image521.webp
    :width: 4.77083in
    :height: 4.19722in
 
@@ -4827,13 +4827,13 @@ Version 2.1.0 réécrite en DzVent avec :
 
    - Le script principal de l’alarme
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image522.png
+.. image:: media/image522.webp
    :width: 5.67639in
    :height: 5.88472in
 
 **6. – GRAHIQUES & BASE DE DONNEES**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image523.png
+.. image:: media/image523.webp
    :width: 6.26806in
    :height: 6.42778in
 
@@ -4843,11 +4843,11 @@ Voir ces pages pour installer les scripts :
 
    -
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image524.png
+.. image:: media/image524.webp
    :width: 6.26806in
    :height: 1.80694in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image525.png
+.. image:: media/image525.webp
    :width: 6.26806in
    :height: 2.29028in
 
@@ -4873,24 +4873,24 @@ Voir ces pages pour installer les scripts :
 | Ce caractère est utilisé comme séparateur pour l’indication de
   l’ensemble table-champ pour les graphiques
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image528.png
+.. image:: media/image528.webp
    :width: 6.26806in
    :height: 0.54167in
 
 En absence de champ c’est le champ « valeur » qui est utilisé sinon :
 Value= « <TABLE>-<CHAMP> »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image529.png
+.. image:: media/image529.webp
    :width: 1.95972in
    :height: 4.40694in
 
 Avec 2 champs ou 3 champs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image530.png
+.. image:: media/image530.webp
    :width: 2.33333in
    :height: 2.50417in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image531.png
+   .. image:: media/image531.webp
       :width: 3.77083in
       :height: 1.97083in
 
@@ -4919,7 +4919,7 @@ des capteurs de température Onoff).
 Pour utiliser des données de la base SQL, il faut au préalable les avoir
 enregistrées depuis Domoticz : c’est le rôle de la bibliothèque fabric
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image532.png
+.. image:: media/image532.webp
    :width: 6.19861in
    :height: 1.23889in
 
@@ -4927,17 +4927,17 @@ Une fois crée un premier enregistrement pour une température dans la
 base, il suffira pour un nouvel enregistrement d’une autre t° d’ajouter
 dans le script LUA « évènement /export_sql » cette T°
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image533.png
+.. image:: media/image533.webp
    :width: 6.26806in
    :height: 6.12917in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image534.png
+.. image:: media/image534.webp
    :width: 6.26806in
    :height: 6.00278in
 
 Pour limiter le nb d’enregistrements :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image535.png
+.. image:: media/image535.webp
    :width: 5.93889in
    :height: 2.74028in
 
@@ -4945,14 +4945,14 @@ Dans cet exemple, il a été créer 3 variables qui permettent des
 enregistrements dans la BD à chaque changement de valeurs limité au
 degré.:
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image536.png
+.. image:: media/image536.webp
    :width: 4.98056in
    :height: 0.73889in
 
 **Le script fabric.sh,** installé ici dans le répertoire « scripts » de
 Domoticz
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image537.png
+.. image:: media/image537.webp
    :width: 2.66805in
    :height: 1.82361in
 
@@ -4974,17 +4974,17 @@ Pour tester le script, il est plus facile de travailler dans le
 répertoire USER, c’est l’objet de la création du lien symbolique vers le
 dossier python de Domoticz
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image538.png
+.. image:: media/image538.webp
    :width: 6.26111in
    :height: 0.46944in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image539.png
+.. image:: media/image539.webp
    :width: 5.70972in
    :height: 2.52083in
 
 **Le script fabfile.py**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image540.png
+.. image:: media/image540.webp
    :width: 3.18889in
    :height: 2.15694in
 
@@ -5016,7 +5016,7 @@ dossier python de Domoticz
    est appelé, il n’écoute pas en permanence si des données sont
    envoyées**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image541.png
+   .. image:: media/image541.webp
       :width: 5.65694in
       :height: 3.32222in
 
@@ -5103,7 +5103,7 @@ dossier python de Domoticz
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image542.png
+.. image:: media/image542.webp
    :width: 6.26806in
    :height: 7.46528in
 
@@ -5111,51 +5111,51 @@ dossier python de Domoticz
 
 Le cache pour jpgraph est présent :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image543.png
+.. image:: media/image543.webp
    :width: 2.13611in
    :height: 2.02083in
 
 Jpgraph est installé à la racine de monitor
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image544.png
+.. image:: media/image544.webp
    :width: 2.24028in
    :height: 2.20833in
 
 **6.4.1 la page graphique.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image545.png
+.. image:: media/image545.webp
    :width: 6.26806in
    :height: 7.61111in
 
 - css
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image546.png
+.. image:: media/image546.webp
    :width: 5.44861in
    :height: 1.0625in
 
 **6.4.2 la fonction graph,** dans fonctions.php et appelée par ajax.php
 **ajax.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image547.png
+.. image:: media/image547.webp
    :width: 4.62639in
    :height: 0.3125in
 
 **fonctions.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image548.png
+.. image:: media/image548.webp
    :width: 5.95833in
    :height: 3.19722in
 
 Accès base de données :export_tab_sqli.php et traitement des données par
 la BD
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image549.png
+.. image:: media/image549.webp
    :width: 6.17778in
    :height: 5.10417in
 
 Suite de graph()
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image550.png
+.. image:: media/image550.webp
    :width: 6.26806in
    :height: 9.11111in
 
@@ -5167,21 +5167,21 @@ Voir la documentation sur jpgraph :
      header.php (en général ne pas modifier),
    | Mettre la variable à « true » dans config.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image551.png
+.. image:: media/image551.webp
    :width: 6.26111in
    :height: 2.00972in
 
 **6.4.4 copies d’écran :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image552.png
+   .. image:: media/image552.webp
       :width: 4.23889in
       :height: 5.74167in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image553.png
+   .. image:: media/image553.webp
       :width: 4.42639in
       :height: 3.63889in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image554.png
+.. image:: media/image554.webp
    :width: 5.57361in
    :height: 5.02083in
 
@@ -5190,21 +5190,21 @@ Voir la documentation sur jpgraph :
 | Pour éviter des problèmes de capacité mémoire, vider le cache
   périodiquement avec CRON : **crontab -e**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image555.png
+.. image:: media/image555.webp
    :width: 3.45972in
    :height: 0.24028in
 
 | Avec nano ou vim :
 | **0 12 \* \* \* sync; echo 3 > /proc/sys/vm/drop_caches**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image556.png
+.. image:: media/image556.webp
    :width: 6.30139in
    :height: 3.36389in
 
 Ici la mémoire sera libérée des données cache et tampontous les jours à
 12H ; plus d’ infos :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image557.png
+.. image:: media/image557.webp
    :width: 5.58472in
    :height: 7.45972in
 
@@ -5216,54 +5216,54 @@ les autres sans en supprimer**
 
 **Voir la page :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image558.png
+.. image:: media/image558.webp
    :width: 6.26806in
    :height: 1.66667in
 
 **7.1- les pages index_loc.php, header.php, entete_html.php**
 Index_loc.php : en général, ne pas modifier
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image559.png
+.. image:: media/image559.webp
    :width: 5.60556in
    :height: 0.54167in
 
 **config.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image560.png
+.. image:: media/image560.webp
    :width: 5.94861in
    :height: 2.125in
 
 **header.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image561.png
+.. image:: media/image561.webp
    :width: 5.93889in
    :height: 2.30139in
 
 **entete_html.php :** pour le switch
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image562.png
+.. image:: media/image562.webp
    :width: 6.26806in
    :height: 0.80139in
 
 **7.2- la page de monitor : mur_cam.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image563.png
+.. image:: media/image563.webp
    :width: 6.26111in
    :height: 6.3125in
 
 Le script du bouton On/Off , dans footer :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image564.png
+.. image:: media/image564.webp
    :width: 5.44861in
    :height: 0.72917in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image565.png
+.. image:: media/image565.webp
    :width: 6.05278in
    :height: 0.9375in
 
 **mur_cameras.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image566.png
+.. image:: media/image566.webp
    :width: 6.26111in
    :height: 0.99028in
 
@@ -5287,7 +5287,7 @@ On va donc pour remédier à ce problème :
 
    -
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image567.png
+.. image:: media/image567.webp
    :width: 6.26111in
    :height: 0.40694in
 
@@ -5295,7 +5295,7 @@ On va donc pour remédier à ce problème :
 trouver dans mur_cam.php**. (ZMURL dans mur_cam.php et non dans
 mur_cameras.php)\ **;**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image568.png
+.. image:: media/image568.webp
    :width: 6.26806in
    :height: 0.97639in
 
@@ -5303,7 +5303,7 @@ mur_cameras.php)\ **;**
 
 Le Zoom Bootstrap :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image569.png
+.. image:: media/image569.webp
    :width: 6.26806in
    :height: 4.91528in
 
@@ -5312,11 +5312,11 @@ Le Zoom Bootstrap :
 | rafraichissement des images n’a lieu que si le bouton est sur ON ; par
   contre même sur OFF le zoom d’une caméra est opérationnel
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image570.png
+.. image:: media/image570.webp
    :width: 4.67778in
    :height: 3.725in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image571.png
+.. image:: media/image571.webp
    :width: 5.60556in
    :height: 5.33472in
 
@@ -5325,13 +5325,13 @@ comme l’accès se fait en local (sur le réseau 192.168.1.x) et enregistre
 une image, sur le serveur, chaque 100ms pour recréer une vidéo, l’accès
 distant en https est assuré.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image572.png
+.. image:: media/image572.webp
    :width: 5.89722in
    :height: 3.78056in
 
 **7.4- Ajouter une caméra**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image573.png
+.. image:: media/image573.webp
    :width: 5.00139in
    :height: 0.89583in
 
@@ -5339,13 +5339,13 @@ Il suffit d’indiquer dans /admin/config.php le nb de caméras
 
 **8.- MUR de COMMANDES ON/OFF**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image574.png
+.. image:: media/image574.webp
    :width: 5.50139in
    :height: 7.59306in
 
 Les lampes :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image575.png
+.. image:: media/image575.webp
    :width: 6.26806in
    :height: 5.30139in
 
@@ -5353,19 +5353,19 @@ Les lampes :
 
 Index_loc.php en général ne pas modifier
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image576.png
+.. image:: media/image576.webp
    :width: 4.68889in
    :height: 0.5625in
 
 header.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image577.png
+.. image:: media/image577.webp
    :width: 6.49583in
    :height: 2.47639in
 
 mes_css.css
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image578.png
+.. image:: media/image578.webp
    :width: 5.34306in
    :height: 2.18056in
 
@@ -5373,26 +5373,26 @@ mes_css.css
 | Effectuée par une fonction PHP à partir de la base de données Dans le
   fichier footer.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image579.png
+.. image:: media/image579.webp
    :width: 6.26806in
    :height: 0.6875in
 
 Extrait de la page html pour des commandes pour Domoticz et Home
 Assistant:
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image580.png
+.. image:: media/image580.webp
    :width: 6.30139in
    :height: 2.43056in
 
 Le PHP :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image581.png
+.. image:: media/image581.webp
    :width: 6.30139in
    :height: 6.40278in
 
 **8.2- mur_inter.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image582.png
+.. image:: media/image582.webp
    :width: 6.26806in
    :height: 3.19028in
 
@@ -5400,30 +5400,30 @@ Le PHP :
 | L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande
   également en zigbee l’éclairage du jardin :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image583.png
+.. image:: media/image583.webp
    :width: 3.76389in
    :height: 1.23194in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image584.png
+.. image:: media/image584.webp
    :width: 3.84028in
    :height: 1.57639in
 
 **Domoticz**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image585.png
+.. image:: media/image585.webp
    :width: 6.37917in
    :height: 0.42361in
 
 **Les capteurs virtuels sont mis à jour par MQTT et node-red depuis
 zigbee2mqtt** Les script node-red : envoi vers domoticz/in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image586.png
+.. image:: media/image586.webp
    :width: 3.80278in
    :height: 8.82083in
 
 La réponse de Domoticz
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image587.png
+.. image:: media/image587.webp
    :width: 4.14444in
    :height: 2.225in
 
@@ -5436,7 +5436,7 @@ La réponse de Domoticz
   l’éclairage du jardin si l’interrupteur « lampe_ext_entree » est
   actionné
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image588.png
+.. image:: media/image588.webp
    :width: 6.5in
    :height: 2.30139in
 
@@ -5503,45 +5503,45 @@ en Unix s’il a été créé
 
 avec **Notepad++**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image589.png
+.. image:: media/image589.webp
    :width: 6.26806in
    :height: 3.16805in
 
 Pour convertir le fichier en Unix : dos2unix CHEMIN/NOM DU FICHIER
 Attention aussi aux autorisations
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image590.png
+.. image:: media/image590.webp
    :width: 3.26111in
    :height: 2.68611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image591.png
+.. image:: media/image591.webp
    :width: 4.65in
    :height: 6.79306in
 
 Le plan : l’interrupteur est ajouté
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image592.png
+.. image:: media/image592.webp
    :width: 5.32361in
    :height: 4.47917in
 
 | **exterieur.php**
 | **css pour svg**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image593.png
+.. image:: media/image593.webp
    :width: 5.08472in
    :height: 0.60417in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image594.png
+.. image:: media/image594.webp
    :width: 5.80278in
    :height: 1.25139in
 
 Les lampes concernées en gris
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image595.png
+.. image:: media/image595.webp
    :width: 5.47778in
    :height: 4.83611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image596.png
+.. image:: media/image596.webp
    :width: 4.81111in
    :height: 3.36111in
 
@@ -5550,7 +5550,7 @@ Les lampes concernées en gris
 un idm est nécessaire pour le tableau json en retour de la fonction «
 device_plan ». Pour afficher les propriétés de l’appareil
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image597.png
+.. image:: media/image597.webp
    :width: 6.26806in
    :height: 6.08611in
 
@@ -5562,11 +5562,11 @@ mise à jour**
 
 **instantanée**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image598.png
+.. image:: media/image598.webp
    :width: 6.26806in
    :height: 5.28472in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image599.png
+.. image:: media/image599.webp
    :width: 6.30139in
    :height: 3.07222in
 
@@ -5575,41 +5575,41 @@ mise à jour**
 
 DOMOTICZ :Capteur virtuel :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image600.png
+.. image:: media/image600.webp
    :width: 6.5in
    :height: 0.42361in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image601.png
+.. image:: media/image601.webp
    :width: 5.23056in
    :height: 3.09306in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image602.png
+.. image:: media/image602.webp
    :width: 4.81111in
    :height: 4.19861in
 
 Le script python :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image603.png
+.. image:: media/image603.webp
    :width: 5.62639in
    :height: 2.49028in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image604.png
+.. image:: media/image604.webp
    :width: 5.71944in
    :height: 1.60417in
 
 **Mur_inter.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image605.png
+.. image:: media/image605.webp
    :width: 6.26806in
    :height: 2.90417in
 
 Base de données :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image606.png
+.. image:: media/image606.webp
    :width: 6.49583in
    :height: 0.65833in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image607.png
+.. image:: media/image607.webp
    :width: 2.78472in
    :height: 1.50417in
 
@@ -5617,23 +5617,23 @@ Base de données :
 
 *Dans Domoticz :*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image608.png
+.. image:: media/image608.webp
    :width: 4.25972in
    :height: 1.41111in
 
 On ajoute le matériel au plan qui regroupe tous les matériels
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image609.png
+.. image:: media/image609.webp
    :width: 5.70417in
    :height: 4.82222in
 
 On le place sur le plan :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image610.png
+.. image:: media/image610.webp
    :width: 5.1625in
    :height: 7.0625in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image611.png
+.. image:: media/image611.webp
    :width: 2.80278in
    :height: 2.40139in
 
@@ -5641,46 +5641,46 @@ On le place sur le plan :
 
 mur_inter.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image612.png
+.. image:: media/image612.webp
    :width: 6.26111in
    :height: 2.19722in
 
 Exemple : Image lampe_bureau.svg
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image613.png
+.. image:: media/image613.webp
    :width: 0.85556in
    :height: 0.80278in
 
 Image lampe: |image23|
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image615.png
+.. image:: media/image615.webp
    :width: 6.06389in
    :height: 8.10556in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image616.png
+.. image:: media/image616.webp
    :width: 5.35556in
    :height: 6.58333in
 
 La base de données « monitor » (aussi appelée domoticz), table
 dispositifs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image617.png
+.. image:: media/image617.webp
    :width: 6.26111in
    :height: 6.20833in
 
 Résultat :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image618.png
+.. image:: media/image618.webp
    :width: 2.82361in
    :height: 1.65694in
 
 **8.2.4 - Exemple volet roulant** :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image619.png
+   .. image:: media/image619.webp
       :width: 2.775in
       :height: 1.63611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image620.png
+.. image:: media/image620.webp
    :width: 4.86528in
    :height: 5.25in
 
@@ -5691,20 +5691,20 @@ Zigbee2mqtt.*
 Domoticz, mettre à TRUE le paramètre spécifique concernant cet
 interrupteur, dans le fronted de zigbee2mqtt
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image621.png
+.. image:: media/image621.webp
    :width: 6.26806in
    :height: 2.41528in
 
 Pour utiliser le Javascript (comme pour le plan) il ne faut pas charger
 l’image par son nom mais l’incorporer dans un fichier PHP.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image622.png
+.. image:: media/image622.webp
    :width: 6.26806in
    :height: 1.26806in
 
 L’image svg :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image623.png
+.. image:: media/image623.webp
    :width: 6.30139in
    :height: 2.50139in
 
@@ -5720,24 +5720,24 @@ l’image.
 
 Le plan :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image624.png
+.. image:: media/image624.webp
    :width: 5.84444in
    :height: 2.51111in
 
 Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle
 :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image625.png
+.. image:: media/image625.webp
    :width: 5.44861in
    :height: 0.80278in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image626.png
+.. image:: media/image626.webp
    :width: 4.56389in
    :height: 3.96944in
 
 Ci-dessous le dispositif concerné dans Domoticz
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image627.png
+.. image:: media/image627.webp
    :width: 4.14722in
    :height: 3.05139in
 
@@ -5747,27 +5747,27 @@ lampes l’ouverture ou la fermeture des volets :
 
 Dans la BD
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image628.png
+.. image:: media/image628.webp
    :width: 6.26806in
    :height: 0.4in
 
 Dans le plan on indique simplement si les volets sont fermés ou ouverts
 (même partiellement :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image629.png
+.. image:: media/image629.webp
    :width: 2.18889in
    :height: 1.63611in
 
 Le fichier footer.php, la fonction maj_devices_plan () modifiée :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image630.png
+.. image:: media/image630.webp
    :width: 6.26806in
    :height: 5.53611in
 
 L’ouverture est Open ou les 12 premiers caractères sont « Set Level : »
 La fermeture est Closed
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image631.png
+.. image:: media/image631.webp
    :width: 2.49028in
    :height: 1.47917in
 
@@ -5783,13 +5783,13 @@ Height de l’image sera suivant le % d’ouverture sera modifiée dans le
 Dom, c’est pourquoi on crée un attribut h qui est le reflet du height
 d’origine
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image632.png
+.. image:: media/image632.webp
    :width: 6.30139in
    :height: 2.725in
 
 Le volume d’ouverture est indiqué dans Data : Set Level : VALEUR en %
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image633.png
+.. image:: media/image633.webp
    :width: 3.84167in
    :height: 4.11528in
 
@@ -5808,13 +5808,13 @@ Dans footer.php :
 | pourcent[2]))/100));
 | Résultat :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image634.png
+.. image:: media/image634.webp
    :width: 1.99028in
    :height: 1.63611in
 
 La fonction complète maj_devices(plan) dans footer.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image635.png
+.. image:: media/image635.webp
    :width: 6.26806in
    :height: 3.90417in
 
@@ -5823,20 +5823,20 @@ La fonction complète maj_devices(plan) dans footer.php
   pour pouvoir cliquer n’importe où sur l’image, il suffit d’ajouter un
   rectangle incolore comme déjà indiqué dans ce paragraphe :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image636.png
+.. image:: media/image636.webp
    :width: 6.30139in
    :height: 1.05694in
 
 On ajoute l’id de ce rectangle dans la base de données :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image637.png
+.. image:: media/image637.webp
    :width: 6.26806in
    :height: 0.3375in
 
 Comme pour les commandes onoff , les scripts des commandes onoff+stop
 sont écrits automatiquement par la fonction **function sql_plan($t) ;**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image638.png
+.. image:: media/image638.webp
    :width: 6.30139in
    :height: 1.04167in
 
@@ -5846,23 +5846,23 @@ fait afin d’ouvrir une fenêtre pour des données complémentaires
 
 Le wiki de Domoticz concernant ces commandes :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image639.png
+.. image:: media/image639.webp
    :width: 6.30139in
    :height: 1.73611in
 
 **La fonction PHP :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image640.png
+.. image:: media/image640.webp
    :width: 6.26806in
    :height: 2.83333in
 
 La fenêtre complémentaire :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image641.png
+.. image:: media/image641.webp
    :width: 4.40694in
    :height: 4.78194in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image642.png
+.. image:: media/image642.webp
    :width: 5.55278in
    :height: 2.36528in
 
@@ -5870,19 +5870,19 @@ La fenêtre complémentaire :
   fermeture **8.2.4.3 le script JS**
 | **8.2.4.3.1 avec Ajax et PHP, dans footer.php**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image643.png
+   .. image:: media/image643.webp
       :width: 6.3in
       :height: 1.17222in
 
    Ci-dessus, on récupère idx idm et la commande
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image644.png
+   .. image:: media/image644.webp
       :width: 6.3in
       :height: 3.20278in
 
    Mise à jour instantanée :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image645.png
+   .. image:: media/image645.webp
       :width: 5.45833in
       :height: 2.33333in
 
@@ -5892,33 +5892,33 @@ La fenêtre complémentaire :
      bibliothèque ci-dessous paho-mqtt*
    | https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image646.png
+.. image:: media/image646.webp
    :width: 6.30139in
    :height: 2.54722in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image647.png
+   .. image:: media/image647.webp
       :width: 6.3in
       :height: 4.74306in
 
    *Ce fichier est chargé automatiquement si MQTT est à true*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image648.png
+   .. image:: media/image648.webp
       :width: 6.3in
       :height: 1.55in
 
    *Dans config :*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image649.png
+   .. image:: media/image649.webp
       :width: 5.46944in
       :height: 0.90555in
 
    *Le mème commande par MQTT*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image650.png
+   .. image:: media/image650.webp
       :width: 6.3in
       :height: 3.37639in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image651.png
+   .. image:: media/image651.webp
       :width: 6.21944in
       :height: 2.96806in
 
@@ -5935,14 +5935,14 @@ La fenêtre complémentaire :
 
    **La commande :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image652.png
+   .. image:: media/image652.webp
       :width: 5.44861in
       :height: 1.20833in
 
 | **9. – Dispositifs Zigbee**
 | **Avec zigbee2mqtt**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image653.png
+.. image:: media/image653.webp
    :width: 5.58472in
    :height: 7.58472in
 
@@ -5950,23 +5950,23 @@ Affichage du Frontend de Zigbee2mqtt
 
 Voir la page du site consacrée à frontend : **la page zigbee.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image654.png
+.. image:: media/image654.webp
    :width: 6.26806in
    :height: 3.70139in
 
    Le fichier admin/config.php :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image655.png
+   .. image:: media/image655.webp
       :width: 6.325in
       :height: 1.9375in
 
    Le fichier index_loc.php : pour info, ne pas modifier
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image656.png
+   .. image:: media/image656.webp
       :width: 6.04583in
       :height: 1.18889in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image657.png
+   .. image:: media/image657.webp
       :width: 6.26806in
       :height: 0.64583in
 
@@ -5976,11 +5976,11 @@ Voir la page du site consacrée à frontend : **la page zigbee.php**
 
    Voir page domo-site :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image658.png
+.. image:: media/image658.webp
    :width: 6.26806in
    :height: 1.6375in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image659.png
+.. image:: media/image659.webp
    :width: 6.5in
    :height: 1.05556in
 
@@ -5991,19 +5991,19 @@ Voir la page du site consacrée à frontend : **la page zigbee.php**
 
 Exemple de fichier .conf avant de demander un certificat cerbot :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image660.png
+.. image:: media/image660.webp
    :width: 6.01111in
    :height: 4.40694in
 
 Demande de certificat :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image661.png
+   .. image:: media/image661.webp
       :width: 4.76111in
       :height: 0.22917in
 
 Le fichier modifié par cerbot lors de la demande de certificat
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image662.png
+.. image:: media/image662.webp
    :width: 6.26111in
    :height: 6.6875in
 
@@ -6012,7 +6012,7 @@ Le fichier modifié par cerbot lors de la demande de certificat
    **Avec zwavejs2mqtt,** installé sous docker donc redémarrage
    automatique
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image663.png
+   .. image:: media/image663.webp
       :width: 5.75139in
       :height: 6.95833in
 
@@ -6023,25 +6023,25 @@ Le fichier modifié par cerbot lors de la demande de certificat
 
 d’info
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image664.png
+   .. image:: media/image664.webp
       :width: 6.26806in
       :height: 2.47639in
 
    Le fichier admin/config.php :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image665.png
+   .. image:: media/image665.webp
       :width: 5.52222in
       :height: 0.85417in
 
    Le fichier index_loc.php : pour info, ne pas modifier
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image666.png
+.. image:: media/image666.webp
    :width: 6.26806in
    :height: 0.31528in
 
    Les styles :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image667.png
+   .. image:: media/image667.webp
       :width: 5.55278in
       :height: 0.85417in
 
@@ -6109,18 +6109,18 @@ d’info
    | L’app Nagios PC est installée sur un Raspberry 4 8Go, celui qui
      gère également les sauvegardes et la com GSM
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image668.png
+   .. image:: media/image668.webp
       :width: 5.375in
       :height: 7.24167in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image669.png
+.. image:: media/image669.webp
    :width: 5.59444in
    :height: 7.56389in
 
 Nagios effectue le monitoring des VM Proxmox avec un plugin : voir le
 site domo-site.fr
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image670.png
+.. image:: media/image670.webp
    :width: 6.26806in
    :height: 1.6625in
 
@@ -6129,13 +6129,13 @@ liens local et distant,
 
 **config.php** :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image671.png
+.. image:: media/image671.webp
    :width: 6.26806in
    :height: 0.76389in
 
 **css** :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image672.png
+.. image:: media/image672.webp
    :width: 5.91111in
    :height: 0.79306in
 
@@ -6143,20 +6143,20 @@ liens local et distant,
 
 Index_loc.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image673.png
+.. image:: media/image673.webp
    :width: 6.26806in
    :height: 1.06528in
 
 header.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image674.png
+.. image:: media/image674.webp
    :width: 6.5in
    :height: 2.73333in
 
 | **nagios.php**
 | on ajoute une iframe :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image675.png
+.. image:: media/image675.webp
    :width: 6.19861in
    :height: 3.46944in
 
@@ -6169,11 +6169,11 @@ header.php
 | Voir paragraphe 9, un exemple de configuration avant de faire une
   demande de certificat ; le fichier.conf sera mis à jour par Cerbot
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image676.png
+.. image:: media/image676.webp
    :width: 2.05278in
    :height: 0.375in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image677.png
+.. image:: media/image677.webp
    :width: 6.1875in
    :height: 8.84444in
 
@@ -6182,7 +6182,7 @@ header.php
 Dans le fichier , **/usr/local/nagios/share/main.php ,** supprimer les
 lignes suivantes
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image678.png
+.. image:: media/image678.webp
    :width: 6.26806in
    :height: 6.00278in
 
@@ -6192,22 +6192,22 @@ lignes suivantes
    sur ce modèle, avec l’utilisation de modalink pour afficher ces
    données :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image679.png
+.. image:: media/image679.webp
    :width: 6.30139in
    :height: 5.15694in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image680.png
+.. image:: media/image680.webp
    :width: 4.66667in
    :height: 3.975in
 
 Les fichiers header.php ont été modifié , voir les exemples précédents.
 Le fichier **app_diverses.php** :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image681.png
+.. image:: media/image681.webp
    :width: 6.04167in
    :height: 3.63611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image682.png
+.. image:: media/image682.webp
    :width: 5.57361in
    :height: 7.52222in
 
@@ -6227,7 +6227,7 @@ Le fichier **app_diverses.php** :
 |    | <div class="col-md-12">                                          |
 |    | <h1 class="title_ext text-center">App<span>                      |
 |      diverses</span></h1><br> <img src="<?php echo                    |
-|      $lien_img;?>/images/dz.png"                                      |
+|      $lien_img;?>/images/dz.webp"                                      |
 |    | style="width:50px;height:auto;margin:10px 0 10px 120px"          |
 |      alt="dz">                                                        |
 |    | <form2>                                                          |
@@ -6240,7 +6240,7 @@ Le fichier **app_diverses.php** :
 |    | <p class="txt_app"><input type="button" rel="4"                  |
 |      style="margin-left: 60px;" class="btn_appd" value="afficher      |
 |      fichier log erreur"></p>                                         |
-|    | <img src="<?php echo $lien_img;?>/images/nagios.png"             |
+|    | <img src="<?php echo $lien_img;?>/images/nagios.webp"             |
 |    | style="width:100px;height:auto;margin:10px 0 10px 100px"         |
 |      alt="dz">                                                        |
 |    | <p class="txt_app"><input type="button" rel="hostlist"           |
@@ -6256,32 +6256,32 @@ Le fichier **app_diverses.php** :
 
 **footer.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image683.png
+.. image:: media/image683.webp
    :width: 5.90694in
    :height: 2.91667in
 
 Fonctions.php , les fonctions log_dz() et app_nagios()
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image684.png
+.. image:: media/image684.webp
    :width: 5.78194in
    :height: 2.23333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image685.png
+.. image:: media/image685.webp
    :width: 5.75833in
    :height: 1.09305in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image686.png
+   .. image:: media/image686.webp
       :width: 4.21806in
       :height: 5.68611in
 
 | **12.1 AJOUT SQL**
 | **12.1.1 Edition de l’historique du ramassage des poubelles**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image687.png
+   .. image:: media/image687.webp
       :width: 4.28194in
       :height: 5.42639in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image688.png
+   .. image:: media/image688.webp
       :width: 4.84444in
       :height: 7.23056in
 
@@ -6290,7 +6290,7 @@ Le fichier **app_diverses.php** :
 Une icône est téléchargée ou celle du fichier image (celle-ci-dessus)
 est utilisée
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image689.png
+.. image:: media/image689.webp
    :width: 6.26806in
    :height: 2.25972in
 
@@ -6305,13 +6305,13 @@ est utilisée
 
 Le fichier fonctions.php : la fonction déjà vu au §1.6.1
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image690.png
+.. image:: media/image690.webp
    :width: 5.94861in
    :height: 3.35417in
 
    **Dernière modification : le fichier footer.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image691.png
+.. image:: media/image691.webp
    :width: 6.26111in
    :height: 2.38611in
 
@@ -6333,21 +6333,21 @@ Extrait modifié :
 **12.1.2 Ajout d’une icône à l’historique des poubelles** Dans la BD :
 on ajoute une colonne pour l’icône : - dans date_poub et dans text_img
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image692.png
+.. image:: media/image692.webp
    :width: 5.20972in
    :height: 1.61528in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image693.png
+.. image:: media/image693.webp
    :width: 5.77222in
    :height: 3.29167in
 
 footer.php ;
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image694.png
+.. image:: media/image694.webp
    :width: 6.26806in
    :height: 2.19722in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image695.png
+.. image:: media/image695.webp
    :width: 5.31389in
    :height: 2.50972in
 
@@ -6355,19 +6355,19 @@ footer.php ;
 | pour que maj_services (footer.php) récupère le chemin de l’icône la
   fonction sql_app doit envoyer la donnée
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image696.png
+.. image:: media/image696.webp
    :width: 4.63611in
    :height: 6.11944in
 
 Pour la restitution de l’historique :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image697.png
+.. image:: media/image697.webp
    :width: 5.38611in
    :height: 3.49028in
 
 Résultat
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image698.png
+.. image:: media/image698.webp
    :width: 4.57361in
    :height: 2.1875in
 
@@ -6384,30 +6384,30 @@ Résultat
 | -                                 |    npm install superagent         |
 +-----------------------------------+-----------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image699.png
+.. image:: media/image699.webp
    :width: 4.40694in
    :height: 2.8125in
 
 Les variables à ajouter :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image700.png
+.. image:: media/image700.webp
    :width: 5.46806in
    :height: 1.3875in
 
 Le script : notifications_tv.lua à ajouter à Domoticz->Evènements :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image701.png
+.. image:: media/image701.webp
    :width: 1.91806in
    :height: 0.6875in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image702.png
+.. image:: media/image702.webp
    :width: 6.49583in
    :height: 5.90139in
 
 Les valeurs transmises par dz au script dans l’ordre : texte, idx,
 vtype, vvalue
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image703.png
+.. image:: media/image703.webp
    :width: 6.49583in
    :height: 1.29722in
 
@@ -6416,50 +6416,50 @@ vtype, vvalue
 | Voir le dossier
 | Essai avec la console :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image704.png
+.. image:: media/image704.webp
    :width: 6.08333in
    :height: 2.4125in
 
 | **13.2 Portier Dahua VTO 2000 et VTO 2022 13.2.1 VTO 2000A**
 | Voir les pages
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image705.png
+.. image:: media/image705.webp
    :width: 6.26806in
    :height: 1.63194in
 
 Et :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image706.png
+.. image:: media/image706.webp
    :width: 6.26806in
    :height: 2.03056in
 
 Domoticz , on crée une variable « sonnette »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image707.png
+.. image:: media/image707.webp
    :width: 6.5in
    :height: 0.41389in
 
 **Le script LUA :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image708.png
+.. image:: media/image708.webp
    :width: 5.44861in
    :height: 2.07361in
 
 | pushover_img.sh
 | Après passage sous docker modification du script
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image709.png
+.. image:: media/image709.webp
    :width: 6.12639in
    :height: 2.75972in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image710.png
+.. image:: media/image710.webp
    :width: 6.26806in
    :height: 2.03472in
 
 **En utilisant connect.lua,** pour éviter une mise à jour si changement
 d’IP : connect.lua :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image711.png
+.. image:: media/image711.webp
    :width: 3.00139in
    :height: 1.4375in
 
@@ -6484,44 +6484,44 @@ Dans DZ :
 | wget http://$1:8086/camsnapshot.jpg?idx=1 -O
   /opt/domoticz/userdata/camsnapshot.jpg **asterisk**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image712.png
+.. image:: media/image712.webp
    :width: 4.68889in
    :height: 5.78194in
 
 **VTO2000A**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image713.png
+.. image:: media/image713.webp
    :width: 3.01806in
    :height: 3.26944in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image714.png
+.. image:: media/image714.webp
    :width: 6.26806in
    :height: 4.38333in
 
 | **VTO2000A**
 | **configTools** →\ **VDPConfig**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image715.png
+   .. image:: media/image715.webp
       :width: 5.36389in
       :height: 3.90278in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image716.png
+   .. image:: media/image716.webp
       :width: 2.91667in
       :height: 2.79028in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image717.png
+   .. image:: media/image717.webp
       :width: 5.16528in
       :height: 2.0875in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image718.png
+   .. image:: media/image718.webp
       :width: 5.24861in
       :height: 1.88472in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image719.png
+   .. image:: media/image719.webp
       :width: 5.69722in
       :height: 4.01944in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image713.png
+   .. image:: media/image713.webp
       :width: 2.84306in
       :height: 3.08194in
 
@@ -6535,7 +6535,7 @@ Dans DZ :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image720.png |
+|  image:: media/image720.webp |
 |       :width: 4.33333in                                               |
 |       :height: 5.75972in                                              |
 +=======================================================================+
@@ -6627,7 +6627,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image726.png |
+|  image:: media/image726.webp |
 |       :width: 4.08055in                                               |
 |       :height: 3.86528in                                              |
 +=======================================================================+
@@ -6639,7 +6639,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image727.png |
+|  image:: media/image727.webp |
 |       :width: 2.94722in                                               |
 |       :height: 2.95556in                                              |
 +=======================================================================+
@@ -6650,7 +6650,7 @@ Le fichier accueil.php :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image728.png
+.. image:: media/image728.webp
    :width: 6.5in
    :height: 0.41944in
 
@@ -6679,7 +6679,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image731.png |
+|  image:: media/image731.webp |
 |       :width: 4.12639in                                               |
 |       :height: 5.58333in                                              |
 +=======================================================================+
@@ -6735,7 +6735,7 @@ Le fichier accueil.php :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image732.png
+.. image:: media/image732.webp
    :width: 6.5in
    :height: 3.24306in
 
@@ -6743,7 +6743,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image733.png |
+|  image:: media/image733.webp |
 |       :width: 4.175in                                                 |
 |       :height: 4.04028in                                              |
 +=======================================================================+
@@ -6761,7 +6761,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image734.png |
+|  image:: media/image734.webp |
 |       :width: 3.49028in                                               |
 |       :height: 0.625in                                                |
 +=======================================================================+
@@ -6769,7 +6769,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image735.png |
+|  image:: media/image735.webp |
 |       :width: 4.48055in                                               |
 |       :height: 0.6875in                                               |
 +=======================================================================+
@@ -6786,7 +6786,7 @@ Le fichier accueil.php :
 +-----------------------------------+-----------------------------------+
 |    -                              |    .. im                          |
 |                                   | age:: vertopal_6e277aed43794de08d |
-|                                   | a7229da055806a/media/image736.png |
+|                                   | a7229da055806a/media/image736.webp |
 |                                   |       :width: 5.28056in           |
 |                                   |       :height: 4.25278in          |
 |                                   |                                   |
@@ -6801,7 +6801,7 @@ Le fichier accueil.php :
 |                                   |                                   |
 |                                   |    .. im                          |
 |                                   | age:: vertopal_6e277aed43794de08d |
-|                                   | a7229da055806a/media/image737.png |
+|                                   | a7229da055806a/media/image737.webp |
 |                                   |       :width: 6.26667in           |
 |                                   |       :height: 1.96389in          |
 +===================================+===================================+
@@ -6815,7 +6815,7 @@ Le fichier accueil.php :
 +-----------------------------------+-----------------------------------+
 |    .. im                          |                                   |
 | age:: vertopal_6e277aed43794de08d |                                   |
-| a7229da055806a/media/image739.png |                                   |
+| a7229da055806a/media/image739.webp |                                   |
 |       :width: 5.71944in           |                                   |
 |       :height: 2.09305in          |                                   |
 +===================================+===================================+
@@ -6831,7 +6831,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image740.png |
+|  image:: media/image740.webp |
 |       :width: 6.09444in                                               |
 |       :height: 4.30972in                                              |
 +=======================================================================+
@@ -6844,7 +6844,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image741.png |
+|  image:: media/image741.webp |
 |       :width: 1.48889in                                               |
 |       :height: 2.13194in                                              |
 +=======================================================================+
@@ -6869,7 +6869,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image742.png |
+|  image:: media/image742.webp |
 |       :width: 4.98056in                                               |
 |       :height: 6.63611in                                              |
 +=======================================================================+
@@ -6887,7 +6887,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image743.png |
+|  image:: media/image743.webp |
 |       :width: 5.20972in                                               |
 |       :height: 2.11528in                                              |
 +=======================================================================+
@@ -7014,7 +7014,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image746.png |
+|  image:: media/image746.webp |
 |       :width: 3.66805in                                               |
 |       :height: 1.11528in                                              |
 +=======================================================================+
@@ -7027,7 +7027,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image747.png |
+|  image:: media/image747.webp |
 |       :width: 4.30278in                                               |
 |       :height: 3.72917in                                              |
 +=======================================================================+
@@ -7045,7 +7045,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image749.png |
+|  image:: media/image749.webp |
 |       :width: 3.08333in                                               |
 |       :height: 3.025in                                                |
 +=======================================================================+
@@ -7068,7 +7068,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image751.png |
+|  image:: media/image751.webp |
 |       :width: 2.57361in                                               |
 |       :height: 1.54861in                                              |
 +=======================================================================+
@@ -7076,7 +7076,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image752.png |
+|  image:: media/image752.webp |
 |       :width: 3.93611in                                               |
 |       :height: 1.34167in                                              |
 +=======================================================================+
@@ -7097,7 +7097,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image754.png |
+|  image:: media/image754.webp |
 |       :width: 4.86528in                                               |
 |       :height: 1.57222in                                              |
 +=======================================================================+
@@ -7112,7 +7112,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image755.png |
+|  image:: media/image755.webp |
 |       :width: 4.34444in                                               |
 |       :height: 1.58333in                                              |
 +=======================================================================+
@@ -7158,7 +7158,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image759.png |
+|  image:: media/image759.webp |
 |       :width: 3.83194in                                               |
 |       :height: 2.57778in                                              |
 +=======================================================================+
@@ -7227,7 +7227,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image761.png |
+|  image:: media/image761.webp |
 |       :width: 5.29306in                                               |
 |       :height: 2.20833in                                              |
 +=======================================================================+
@@ -7292,7 +7292,7 @@ Le fichier accueil.php :
 +-----------------------------------+-----------------------------------+
 |    .. im                          |                                   |
 | age:: vertopal_6e277aed43794de08d |                                   |
-| a7229da055806a/media/image763.png |                                   |
+| a7229da055806a/media/image763.webp |                                   |
 |       :width: 5.26111in           |                                   |
 |       :height: 2.64583in          |                                   |
 +===================================+===================================+
@@ -7302,14 +7302,14 @@ Le fichier accueil.php :
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image764.png
+   .. image:: media/image764.webp
       :width: 6.26667in
       :height: 4.30972in
 
 +-----------------------------------+-----------------------------------+
 |    -                              |    .. im                          |
 |                                   | age:: vertopal_6e277aed43794de08d |
-|                                   | a7229da055806a/media/image765.png |
+|                                   | a7229da055806a/media/image765.webp |
 |                                   |       :width: 5.35278in           |
 |                                   |       :height: 5.4875in           |
 |                                   |                                   |
@@ -7323,7 +7323,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image766.png |
+|  image:: media/image766.webp |
 |       :width: 4.62917in                                               |
 |       :height: 3.29722in                                              |
 +=======================================================================+
@@ -7344,7 +7344,7 @@ Le fichier accueil.php :
 
    Pour afficher comme ci-dessus une image plutôt qu’un texte,
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image768.png
+.. image:: media/image768.webp
    :width: 6.26806in
    :height: 0.68333in
 
@@ -7359,7 +7359,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image769.png |
+|  image:: media/image769.webp |
 |       :width: 3.12639in                                               |
 |       :height: 1.76111in                                              |
 +=======================================================================+
@@ -7400,7 +7400,7 @@ Le fichier accueil.php :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image771.png
+.. image:: media/image771.webp
    :width: 6.5in
    :height: 0.63472in
 
@@ -7448,7 +7448,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image772.png |
+|  image:: media/image772.webp |
 |       :width: 4.62639in                                               |
 |       :height: 0.75in                                                 |
 +=======================================================================+
@@ -7461,7 +7461,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image773.png |
+|  image:: media/image773.webp |
 |       :width: 4.31389in                                               |
 |       :height: 1.15694in                                              |
 +=======================================================================+
@@ -7473,7 +7473,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image774.png |
+|  image:: media/image774.webp |
 |       :width: 5.03194in                                               |
 |       :height: 5.1875in                                               |
 +=======================================================================+
@@ -7487,7 +7487,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image775.png |
+|  image:: media/image775.webp |
 |       :width: 4.05278in                                               |
 |       :height: 1.26111in                                              |
 +=======================================================================+
@@ -7512,7 +7512,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image777.png |
+|  image:: media/image777.webp |
 |       :width: 4.5in                                                   |
 |       :height: 5.86528in                                              |
 +=======================================================================+
@@ -7575,7 +7575,7 @@ Le fichier accueil.php :
 
 +-----------------------------------------------------------------------+
 |    ..                                                                 |
-|  image:: vertopal_6e277aed43794de08da7229da055806a/media/image778.png |
+|  image:: media/image778.webp |
 |       :width: 5.46944in                                               |
 |       :height: 7.39722in                                              |
 +=======================================================================+
@@ -7644,7 +7644,7 @@ Le fichier accueil.php :
 
 La BD :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image779.png
+.. image:: media/image779.webp
    :width: 6.26806in
    :height: 0.4875in
 
@@ -7652,7 +7652,7 @@ La BD :
 
 Data concerne 6 éléments
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image780.png
+.. image:: media/image780.webp
    :width: 4.55278in
    :height: 4.15694in
 
@@ -7661,7 +7661,7 @@ Data concerne 6 éléments
 | Explode renvoie un tableau de chaînes, chacune étant une sous-chaîne
   limitée par un séparateur, ici un point-virgule.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image781.png
+.. image:: media/image781.webp
    :width: 6.26806in
    :height: 1.83611in
 
@@ -7699,55 +7699,55 @@ on se sert du jour (day) et on modifie la fonction write_datas ()
 utilisée pour le capteur de pression (fichier avec 2 valeurs au lieu
 d’une)
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image782.png
+.. image:: media/image782.webp
    :width: 6.26806in
    :height: 5.06806in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image783.png
+.. image:: media/image783.webp
    :width: 2.48056in
    :height: 0.95833in
 
 Dans Monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image784.png
+.. image:: media/image784.webp
    :width: 6.26806in
    :height: 5.58333in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image785.png
+.. image:: media/image785.webp
    :width: 5.10556in
    :height: 5.96944in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image786.png
+.. image:: media/image786.webp
    :width: 5.52222in
    :height: 6.47917in
 
 Pour ajouter un historique de la consommation :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image787.png
+.. image:: media/image787.webp
    :width: 6.26806in
    :height: 1.49861in
 
 **14 ADMINISTRATION**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image788.png
+.. image:: media/image788.webp
    :width: 6.30139in
    :height: 6.9875in
 
 **14.1- fichiers communs à toutes les pages : css**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image789.png
+.. image:: media/image789.webp
    :width: 5.86389in
    :height: 1.45in
 
 **Index_loc.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image790.png
+.. image:: media/image790.webp
    :width: 6.26806in
    :height: 1.39167in
 
 **header.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image791.png
+.. image:: media/image791.webp
    :width: 4.35417in
    :height: 2.29028in
 
@@ -7755,43 +7755,43 @@ Affichage obligatoire dans le menu
 
 **ajax.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image792.png
+.. image:: media/image792.webp
    :width: 6.26806in
    :height: 0.46805in
 
 **admin/config.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image793.png
+.. image:: media/image793.webp
    :width: 4.67778in
    :height: 1.39583in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image131.png
+.. image:: media/image131.webp
    :width: 6.26806in
    :height: 1.12639in
 
 **Extrait de la fonction admin de fonctions.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image794.png
+.. image:: media/image794.webp
    :width: 6.07917in
    :height: 5.22917in
 
 **14.2- admin.php, test_db.php et backup_bd**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image795.png
+   .. image:: media/image795.webp
       :width: 4.68611in
       :height: 3.97917in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image796.png
+   .. image:: media/image796.webp
       :width: 4.22917in
       :height: 0.60417in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image797.png
+   .. image:: media/image797.webp
       :width: 4.36389in
       :height: 2.88611in
 
 **admin.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image798.png
+.. image:: media/image798.webp
    :width: 6.30139in
    :height: 5.11667in
 
@@ -7809,26 +7809,26 @@ Types :
 
 **Le fichier info_admin.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image799.png
+.. image:: media/image799.webp
    :width: 6.30139in
    :height: 4.57222in
 
 **Le fichier test_db.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image800.png
+.. image:: media/image800.webp
    :width: 6.26806in
    :height: 2.1125in
 
 | **Le fichier backup_db.php**
 | Pour la sauvegarde de la BD :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image801.png
+.. image:: media/image801.webp
    :width: 6.30139in
    :height: 6.28472in
 
 Résultat :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image802.png
+.. image:: media/image802.webp
    :width: 4.21944in
    :height: 3.25in
 
@@ -7837,29 +7837,29 @@ Résultat :
 Pour la fonction mdp() et le clavier(*Minimal Virtual Keypad*), voir le
 *§5.5*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image803.png
+.. image:: media/image803.webp
    :width: 3.43889in
    :height: 0.89583in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image804.png
+.. image:: media/image804.webp
    :width: 6.26806in
    :height: 3.00417in
 
 **14.4- fonctions PHP :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image805.png
+.. image:: media/image805.webp
    :width: 6.30139in
    :height: 2.34167in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image806.png
+.. image:: media/image806.webp
    :width: 6.30139in
    :height: 7.39444in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image807.png
+.. image:: media/image807.webp
    :width: 6.30139in
    :height: 6.02778in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image808.png
+.. image:: media/image808.webp
    :width: 6.30139in
    :height: 0.49583in
 
@@ -7868,7 +7868,7 @@ Pour la fonction mdp() et le clavier(*Minimal Virtual Keypad*), voir le
 *il suffit d’ajouter ces lignes au script node-red pour récupérer l’idx
 de Domoticz à partir du nom*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image809.png
+.. image:: media/image809.webp
    :width: 6.26806in
    :height: 3.15417in
 
@@ -7896,13 +7896,13 @@ distant.
 
 La variable |image45|
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image811.png
+.. image:: media/image811.webp
    :width: 6.26806in
    :height: 0.72083in
 
 Le script :|image46|
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image812.png
+.. image:: media/image812.webp
    :width: 6.26806in
    :height: 5.79306in
 
@@ -7934,45 +7934,45 @@ Les fonctions wajax() et yajax() dans mes_js.js
 +===================================+===================================+
 +-----------------------------------+-----------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image813.png
+.. image:: media/image813.webp
    :width: 6.26806in
    :height: 2.05833in
 
 Le fichier temporaire dans monitor pour Domoticz :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image814.png
+.. image:: media/image814.webp
    :width: 3.32361in
    :height: 3.35417in
 
 **14.6 - Copies d’écran :**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image815.png
+   .. image:: media/image815.webp
       :width: 3.94861in
       :height: 5.32361in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image816.png
+   .. image:: media/image816.webp
       :width: 3.65694in
       :height: 3.95833in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image817.png
+   .. image:: media/image817.webp
       :width: 3.6875in
       :height: 5.025in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image818.png
+.. image:: media/image818.webp
    :width: 5.48056in
    :height: 3.5625in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image819.png
+   .. image:: media/image819.webp
       :width: 4.80278in
       :height: 3.99028in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image820.png
+   .. image:: media/image820.webp
       :width: 4.96944in
       :height: 6.67778in
 
    **Fichier des mots de passe et login en base64 , des ip réseau**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image821.png
+.. image:: media/image821.webp
    :width: 5.29306in
    :height: 2.61528in
 
@@ -7985,7 +7985,7 @@ L’ip de monitor dans ce fichier permet, en cas de changement de l’IP de
 ne pas avoir à modifier les scripts. C’est également valable pour tous
 les serveurs
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image822.png
+.. image:: media/image822.webp
    :width: 5.05139in
    :height: 2in
 
@@ -7994,7 +7994,7 @@ les serveurs
 Un double de connect.lua est enregistré au format python pour les script
 écrit dans ce langage
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image823.png
+.. image:: media/image823.webp
    :width: 6.19861in
    :height: 3.63472in
 
@@ -8006,35 +8006,35 @@ RPI
 
 Pour cela le fichier admin/config.php doit posséder l’IP du serveur :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image824.png
+.. image:: media/image824.webp
    :width: 4.89722in
    :height: 0.95833in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image825.png
+.. image:: media/image825.webp
    :width: 4.44861in
    :height: 1.11528in
 
 La page admin.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image826.png
+.. image:: media/image826.webp
    :width: 6.30139in
    :height: 0.65in
 
 fonctions.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image827.png
+.. image:: media/image827.webp
    :width: 6.30139in
    :height: 0.59722in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image828.png
+.. image:: media/image828.webp
    :width: 6.30139in
    :height: 2.56111in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image829.png
+.. image:: media/image829.webp
    :width: 6.30139in
    :height: 1.95139in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image830.png
+.. image:: media/image830.webp
    :width: 4.19861in
    :height: 1.625in
 
@@ -8042,7 +8042,7 @@ Cette commande utilise SSH2 et SCP , voir le *§ 14.10*
 
    **:connect.js**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image831.png
+   .. image:: media/image831.webp
       :width: 2.59444in
       :height: 2.49722in
 
@@ -8061,28 +8061,28 @@ Concerne :
 
    **string_tableau.lua**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image832.png
+.. image:: media/image832.webp
    :width: 3.89722in
    :height: 2.77083in
 
 Dans config.php de monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image833.png
+.. image:: media/image833.webp
    :width: 5.53333in
    :height: 0.85417in
 
 Le fichier temporaire dans monitor, le répertoire « dz » est à créer
 avec les autorisations pour écrire
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image834.png
+.. image:: media/image834.webp
    :width: 5.29722in
    :height: 0.54861in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image835.png
+.. image:: media/image835.webp
    :width: 3.37639in
    :height: 2.91667in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image836.png
+.. image:: media/image836.webp
    :width: 3.59444in
    :height: 3.19583in
 
@@ -8090,32 +8090,32 @@ Dans fonctions.php :
 
 function admin($choix,$idrep) :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image837.png
+.. image:: media/image837.webp
    :width: 6.30139in
    :height: 3.24583in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image838.png
+.. image:: media/image838.webp
    :width: 6.26111in
    :height: 2.00972in
 
 Maj par dz : on met à 1,2 ou 3 la variable upload et dz se charge
 d’importer le fichier
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image839.png
+.. image:: media/image839.webp
    :width: 6.30139in
    :height: 1.30556in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image840.png
+.. image:: media/image840.webp
    :width: 4.86528in
    :height: 2.6875in
 
 Le script *lua utilisé* :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image841.png
+.. image:: media/image841.webp
    :width: 5.55278in
    :height: 0.66667in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image842.png
+.. image:: media/image842.webp
    :width: 6.30139in
    :height: 5.08194in
 
@@ -8156,13 +8156,13 @@ Le script python : upload_fichier.py
 C’est pour la raison ci-dessous que l’adresse ip de monitor se trouve
 dans le fichier « connect.lua »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image843.png
+.. image:: media/image843.webp
    :width: 5.83333in
    :height: 1.58333in
 
 La fonction actuelle :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image844.png
+.. image:: media/image844.webp
    :width: 4.81389in
    :height: 2.13611in
 
@@ -8170,13 +8170,13 @@ La fonction actuelle :
 variable ip_monitor,** il faut ajouter le répertoire vide
 **\__INIT__.py**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image845.png
+.. image:: media/image845.webp
    :width: 5.39722in
    :height: 0.89583in
 
 **string_modect.lua**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image846.png
+.. image:: media/image846.webp
    :width: 4.66667in
    :height: 6.0875in
 
@@ -8184,45 +8184,45 @@ variable ip_monitor,** il faut ajouter le répertoire vide
   poubelles, la fosse septique, les anniversaires, …
 | La variable est mise à 2, voir le script lua :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image847.png
+.. image:: media/image847.webp
    :width: 4.17778in
    :height: 2.23889in
 
 **admin.php :**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image848.png
+.. image:: media/image848.webp
    :width: 6.26806in
    :height: 1.42222in
 
 Affichage :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image849.png
+.. image:: media/image849.webp
    :width: 3.83333in
    :height: 5.10833in
 
 **fonctions.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image850.png
+.. image:: media/image850.webp
    :width: 6.26806in
    :height: 2.675in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image851.png
+.. image:: media/image851.webp
    :width: 6.26806in
    :height: 2.975in
 
 MODECT Affichage dans admin.php mais aussi dans alarmes.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image852.png
+.. image:: media/image852.webp
    :width: 5.54306in
    :height: 3.125in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image853.png
+.. image:: media/image853.webp
    :width: 5.17778in
    :height: 4.53194in
 
 **alarm.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image854.png
+.. image:: media/image854.webp
    :width: 6.26806in
    :height: 1.60694in
 
@@ -8273,7 +8273,7 @@ MODECT Affichage dans admin.php mais aussi dans alarmes.php
 
 **footer.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image855.png
+.. image:: media/image855.webp
    :width: 6.26806in
    :height: 1.64028in
 
@@ -8282,54 +8282,54 @@ variables et dispositifs**
 
 admin.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image856.png
+.. image:: media/image856.webp
    :width: 6.30139in
    :height: 0.39583in
 
 footer.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image857.png
+.. image:: media/image857.webp
    :width: 6.30139in
    :height: 2.48889in
 
 fonction.php : admin()
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image858.png
+.. image:: media/image858.webp
    :width: 6.30139in
    :height: 4.62361in
 
 Affichage monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image859.png
+.. image:: media/image859.webp
    :width: 4.30278in
    :height: 5.94861in
 
 footer.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image860.png
+.. image:: media/image860.webp
    :width: 6.14583in
    :height: 7.69861in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image861.png
+.. image:: media/image861.webp
    :width: 6.30139in
    :height: 2.78472in
 
 ajax.php puis fonctions.php : mysql_app()
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image862.png
+.. image:: media/image862.webp
    :width: 6.19583in
    :height: 4.58333in
 
 Monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image863.png
+.. image:: media/image863.webp
    :width: 5.00139in
    :height: 3.77083in
 
 **14.9 Explications concernant l’affichage des infos de la page
 admin.php**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image864.png
+.. image:: media/image864.webp
    :width: 4.03194in
    :height: 3.39583in
 
@@ -8347,7 +8347,7 @@ on ajoute pour les lignes concernées :
 rel correspond au n° de l’élément dans la table du
 fichier:info_admin.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image865.png
+.. image:: media/image865.webp
    :width: 6.30139in
    :height: 5.25139in
 
@@ -8369,7 +8369,7 @@ Pour cela on utilise le paquet php8.2-ssh2
 
 sudo apt install php8.2-ssh2
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image866.png
+.. image:: media/image866.webp
    :width: 6.30139in
    :height: 0.85833in
 
@@ -8379,13 +8379,13 @@ Sur le pi, soit une commande sudo reboot, soit un script qui effectue la
 commande ; j’ai choisi cette dernière solution car il suffit de modifier
 ce fichier pour faire d’autres commandes.:
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image867.png
+.. image:: media/image867.webp
    :width: 2.36528in
    :height: 0.69861in
 
 La fonction PHP (ssh_scp.php) :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image868.png
+.. image:: media/image868.webp
    :width: 6.30139in
    :height: 3.99306in
 
@@ -8393,13 +8393,13 @@ Comme pour toutes les autres commandes « Administration » les scripts JS
 et ajax existent déjà, il suffit d’ajouter l’appel de la fonction
 ci-dessus dans admin.php :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image869.png
+.. image:: media/image869.webp
    :width: 6.30139in
    :height: 1.00139in
 
 La fonction PHP admin() appelle la fonction ssh_scp.php
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image870.png
+.. image:: media/image870.webp
    :width: 6.30139in
    :height: 1.73333in
 
@@ -8420,17 +8420,17 @@ Comme pour le reboot ci-dessus, le processus est le même mais plusieurs
 
    fonctions.php , admin()
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image871.png
+   .. image:: media/image871.webp
       :width: 5.95694in
       :height: 2.1875in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image872.png
+   .. image:: media/image872.webp
       :width: 6.3in
       :height: 3.84444in
 
 **Exemple de fichier /etc/msmtprc**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image873.png
+.. image:: media/image873.webp
    :width: 4.68889in
    :height: 7.02083in
 
@@ -8447,7 +8447,7 @@ variables,**\ il faut ajouter
 
 le répertoire vide **\__INIT__.py**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image874.png
+.. image:: media/image874.webp
    :width: 3.71944in
    :height: 1.0625in
 
@@ -8456,17 +8456,17 @@ d’un changement de serveur**
 
 **Exemple ( fichier rec_sms_serie.py)**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image875.png
+.. image:: media/image875.webp
    :width: 6.00139in
    :height: 2.48889in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image876.png
+.. image:: media/image876.webp
    :width: 5.59444in
    :height: 4.84444in
 
 connect.py
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image877.png
+.. image:: media/image877.webp
    :width: 4.42778in
    :height: 1.59444in
 
@@ -8475,59 +8475,59 @@ connect.py
 | **15.1- ajout d’un dispositif**
 | **Ajout d’un contact de porte supplémentaire**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image878.png
+.. image:: media/image878.webp
    :width: 3.98055in
    :height: 1.35417in
 
 Dans Domoticz le dispositif est ajouté au plan :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image879.png
+.. image:: media/image879.webp
    :width: 3.62639in
    :height: 2.125in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image880.png
+.. image:: media/image880.webp
    :width: 5.50139in
    :height: 6.16667in
 
 | **15.1.1- Modifier l’image :**
 | - On effectue (avec Notepad par exemple) une sauvegarde de l’image :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image881.png
+   .. image:: media/image881.webp
       :width: 6.26111in
       :height: 3.74028in
 
    - Avec Inkscape, ouvrir l’image
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image882.png
+   .. image:: media/image882.webp
       :width: 3.70972in
       :height: 1.61528in
 
    Faire un copier/coller d’un dispositif existant ou importer une icone
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image883.png
+   .. image:: media/image883.webp
       :width: 3.18889in
       :height: 1.84306in
 
 Placer l’icône et renseigner l’ID
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image884.png
+   .. image:: media/image884.webp
       :width: 1.40694in
       :height: 1.67639in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image885.png
+   .. image:: media/image885.webp
       :width: 5.23056in
       :height: 5.75in
 
    Pour la couleur :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image886.png
+   .. image:: media/image886.webp
       :width: 5.71944in
       :height: 4.26111in
 
    Sauvegarder l’image dans le fichier PHP d’origine, en supprimant la
    ligne XML
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image887.png
+   .. image:: media/image887.webp
       :width: 6.26806in
       :height: 3.85in
 
@@ -8535,7 +8535,7 @@ Placer l’icône et renseigner l’ID
 
    Insérer le dispositif dans la table « dispositifs_dz »
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image888.png
+   .. image:: media/image888.webp
       :width: 6.26806in
       :height: 0.60417in
 
@@ -8547,17 +8547,17 @@ Placer l’icône et renseigner l’ID
    Ce n’est pas important, il faut ouvrir de toute façon cette image
    pour ajouter un cercle clignotant pour la gestion de la pile.
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image889.png
+   .. image:: media/image889.webp
       :width: 4.11528in
       :height: 1.77083in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image890.png
+   .. image:: media/image890.webp
       :width: 3.03056in
       :height: 3.39583in
 
    On peut vérifier que l’iD pour la couleur est bien présent
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image891.png
+.. image:: media/image891.webp
    :width: 5.83333in
    :height: 0.78194in
 
@@ -8567,17 +8567,17 @@ Placer l’icône et renseigner l’ID
 
    Voir paragraphe 2.2.3
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image892.png
+   .. image:: media/image892.webp
       :width: 6.26806in
       :height: 3.95556in
 
    Avec F12 du navigateur ajuster la position :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image893.png
+   .. image:: media/image893.webp
       :width: 2.96944in
       :height: 1.625in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image894.png
+   .. image:: media/image894.webp
       :width: 2.79305in
       :height: 1.17639in
 
@@ -8587,7 +8587,7 @@ Placer l’icône et renseigner l’ID
 Zwave et Zigbee sous docker également, avec la reconnaissance
 automatique MQTT
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image895.png
+.. image:: media/image895.webp
    :width: 6.26806in
    :height: 2.37639in
 
@@ -8599,19 +8599,19 @@ la base de données : « dispositifs ».
 Pour préparer le travail, faire une copie de la table « dispositifs en
 l’exportant
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image896.png
+.. image:: media/image896.webp
    :width: 6.08472in
    :height: 2.05278in
 
 Modifier le fichier exporté :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image897.png
+.. image:: media/image897.webp
    :width: 4.08472in
    :height: 4.32361in
 
 Importer la nouvelle table
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image898.png
+.. image:: media/image898.webp
    :width: 6.26806in
    :height: 2.54306in
 
@@ -8621,11 +8621,11 @@ monitor.
 Dans le fichier de configuration, modifier le nom de la table et la
 nouvelle IP de Domoticz :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image899.png
+.. image:: media/image899.webp
    :width: 5.54306in
    :height: 1.5625in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image900.png
+.. image:: media/image900.webp
    :width: 5.95972in
    :height: 1.10417in
 
@@ -8638,13 +8638,13 @@ programme**
 
    - Ajouter la page à index_loc.php
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image901.png
+   .. image:: media/image901.webp
       :width: 5.56389in
       :height: 1.72917in
 
    Ajouter la page au menu dans header.php :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image902.png
+   .. image:: media/image902.webp
       :width: 6.26111in
       :height: 2.46944in
 
@@ -8680,7 +8680,7 @@ programme**
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image903.png
+.. image:: media/image903.webp
    :width: 6.26806in
    :height: 3.40417in
 
@@ -8689,7 +8689,7 @@ programme**
 **16.3.1 Exemple avec un rappel pour la prise de médicaments sur la page
 d’accueil** - Télécharger une icones ou image svg
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image904.png
+   .. image:: media/image904.webp
       :width: 4.33333in
       :height: 2.75in
 
@@ -8697,19 +8697,19 @@ d’accueil** - Télécharger une icones ou image svg
    | **Dans Domoticz :**
    | *Créer la variable*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image905.png
+   .. image:: media/image905.webp
       :width: 5.99028in
       :height: 0.69861in
 
    *Dans le script maj_services :*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image906.png
+   .. image:: media/image906.webp
       :width: 4.70833in
       :height: 0.74028in
 
    *Dans le script notifications_variables (pour une alerte sms)*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image907.png
+   .. image:: media/image907.webp
       :width: 5.31389in
       :height: 1.6875in
 
@@ -8717,13 +8717,13 @@ d’accueil** - Télécharger une icones ou image svg
 
    *La table dispositifs et variables*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image908.png
+   .. image:: media/image908.webp
       :width: 5.23056in
       :height: 2.02083in
 
    *La table text_image :*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image909.png
+   .. image:: media/image909.webp
       :width: 4.5in
       :height: 0.50972in
 
@@ -8731,25 +8731,25 @@ d’accueil** - Télécharger une icones ou image svg
 
    *Accueil.php*
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image910.png
+.. image:: media/image910.webp
    :width: 6.30139in
    :height: 1.63889in
 
    *Les css :*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image911.png
+   .. image:: media/image911.webp
       :width: 3.21944in
       :height: 0.9375in
 
    *Les scripts dans footer.php :*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image912.png
+   .. image:: media/image912.webp
       :width: 6.3in
       :height: 4.35555in
 
    *Affichage :*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image913.png
+   .. image:: media/image913.webp
       :width: 5.36944in
       :height: 3.97778in
 
@@ -8774,27 +8774,27 @@ poubelles et la fosse septique.
 page dédiée, afficher des alertes et commander s’il y a lieu le
 chauffage, les pompes ,….
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image914.png
+   .. image:: media/image914.webp
       :width: 3.95417in
       :height: 3.30139in
 
    **17.1.1. – Création de capteurs virtuels dans Domoticz** Pour
    mémoire, :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image915.png
+.. image:: media/image915.webp
    :width: 5.90278in
    :height: 3.61667in
 
 C’est Domoticz qui fournit l’IDX, il faut donc modifier cet IDX dans
 EasyEsp ; Pour le PH, le redox, le débit, les capteurs sont « Custom.
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image916.png
+.. image:: media/image916.webp
    :width: 4.92639in
    :height: 2.74305in
 
 Dans EasyEsp
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image917.png
+.. image:: media/image917.webp
    :width: 5.96806in
    :height: 0.89444in
 
@@ -8822,20 +8822,20 @@ Dans EasyEsp
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image918.png
+.. image:: media/image918.webp
    :width: 5.71944in
    :height: 1.61528in
 
    Faire de même pour les autres tables , en remplaçant le nom de la
    table dans le fichier ; exemple : CREATE TABLE \`orp_spa\`
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image919.png
+   .. image:: media/image919.webp
       :width: 6.26806in
       :height: 2.08611in
 
    Si création manuelle , ne pas oublier Auto incrémenter « num » :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image920.png
+   .. image:: media/image920.webp
       :width: 6.26806in
       :height: 1.01806in
 
@@ -8847,7 +8847,7 @@ capteurs réels ou virtuels).
 Il suffit donc d’ajouter les données PH, Redox, etc…dans le script
 export_sql dans Evènements de Domoticz :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image921.png
+   .. image:: media/image921.webp
       :width: 6.26806in
       :height: 3.23611in
 
@@ -8855,7 +8855,7 @@ export_sql dans Evènements de Domoticz :
    monitor* Les valeurs si dessous ne sont pas réelles, la sonde PH
    n’est pas branchée.
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image922.png
+   .. image:: media/image922.webp
       :width: 6.26806in
       :height: 3.71667in
 
@@ -8907,7 +8907,7 @@ export_sql dans Evènements de Domoticz :
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image923.png
+   .. image:: media/image923.webp
       :width: 6.20833in
       :height: 4.69861in
 
@@ -8928,7 +8928,7 @@ export_sql dans Evènements de Domoticz :
    | La fonction graph de la page graphique est utilisée
    | Dans config.php : permet d’ajouter facilement une autre page ;
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image924.png
+.. image:: media/image924.webp
    :width: 5.32361in
    :height: 1.64583in
 
@@ -8940,19 +8940,19 @@ export_sql dans Evènements de Domoticz :
 
    Dans header.php
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image925.png
+   .. image:: media/image925.webp
       :width: 6.26806in
       :height: 2.67639in
 
    Dans index_loc.php :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image926.png
+   .. image:: media/image926.webp
       :width: 6.17778in
       :height: 0.97917in
 
    Ajout de l’ID « spa » dans le fichier des styles css :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image927.png
+   .. image:: media/image927.webp
       :width: 6.26806in
       :height: 1.88611in
 
@@ -9109,40 +9109,40 @@ export_sql dans Evènements de Domoticz :
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image928.png
+.. image:: media/image928.webp
    :width: 6.26806in
    :height: 6.31944in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image929.png
+.. image:: media/image929.webp
    :width: 6.26806in
    :height: 6.21667in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image930.png
+   .. image:: media/image930.webp
       :width: 3.41667in
       :height: 3.125in
 
    Enregistrer les capteurs dans la table « dispositifs » :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image931.png
+   .. image:: media/image931.webp
       :width: 5.96944in
       :height: 1.69861in
 
    Monitor reçoit :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image932.png
+   .. image:: media/image932.webp
       :width: 5.74306in
       :height: 3.33333in
 
    La 1ère page :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image933.png
+   .. image:: media/image933.webp
       :width: 5.05278in
       :height: 3.82361in
 
    **17.1.4.2 ajout d’un ID dans l’image svg pour le 2eme écran qui
    affichera les données de la BD**
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image934.png
+   .. image:: media/image934.webp
       :width: 5.04167in
       :height: 3.86528in
 
@@ -9154,7 +9154,7 @@ export_sql dans Evènements de Domoticz :
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image935.png
+   .. image:: media/image935.webp
       :width: 6.26806in
       :height: 0.90278in
 
@@ -9164,7 +9164,7 @@ export_sql dans Evènements de Domoticz :
 
    - export_tab_sqli.php
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image936.png
+   .. image:: media/image936.webp
       :width: 6.26806in
       :height: 2.70139in
 
@@ -9187,11 +9187,11 @@ ligne il faut définir
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image937.png
+   .. image:: media/image937.webp
       :width: 6.26806in
       :height: 0.88055in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image938.png
+   .. image:: media/image938.webp
       :width: 6.26806in
       :height: 3.77778in
 
@@ -9208,11 +9208,11 @@ class="spa2 spa3">Connected</text>';}
    qui affichera les données Redox de la même façon que pour le PH
    ci-dessus
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image939.png
+   .. image:: media/image939.webp
       :width: 6.26806in
       :height: 0.39167in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image940.png
+   .. image:: media/image940.webp
       :width: 4.12083in
       :height: 3.65972in
 
@@ -9224,23 +9224,23 @@ class="spa2 spa3">Connected</text>';}
    | *Impulsion de débit : F(Hz)=(0.20xQ)-3%* *, Q=L/min F= 0,2 L/mn*
    | *dans EasyEsp les données envoyées sont :*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image941.png
+   .. image:: media/image941.webp
       :width: 5.31389in
       :height: 1.14583in
 
    *Domoticz reçoit donc :*
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image942.png
+   .. image:: media/image942.webp
       :width: 4.25in
       :height: 0.53055in
 
    Pour envoyer à la BD uniquement le débit :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image943.png
+   .. image:: media/image943.webp
       :width: 6.09444in
       :height: 3.75972in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image944.png
+   .. image:: media/image944.webp
       :width: 6.26806in
       :height: 0.75278in
 
@@ -9248,27 +9248,27 @@ class="spa2 spa3">Connected</text>';}
 
 - ajout de la page à l’image svg :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image945.png
+.. image:: media/image945.webp
    :width: 6.26806in
    :height: 1.90833in
 
    - Dans config.php
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image946.png
+   .. image:: media/image946.webp
       :width: 4.86389in
       :height: 1.46667in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image947.png
+   .. image:: media/image947.webp
       :width: 3.85417in
       :height: 4.30556in
 
    Pour ajouter des températures :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image948.png
+   .. image:: media/image948.webp
       :width: 5.03194in
       :height: 1.77083in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image949.png
+   .. image:: media/image949.webp
       :width: 6.26806in
       :height: 1.51944in
 
@@ -9284,32 +9284,32 @@ class="spa2 spa3">Connected</text>';}
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image950.png
+   .. image:: media/image950.webp
       :width: 5.52222in
       :height: 1.76111in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image951.png
+   .. image:: media/image951.webp
       :width: 6.3in
       :height: 1.75139in
 
    Extension Pompes perisaltiques pour réguler PH et REDOX : Schéma de
    la partie « pompes »:
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image952.png
+   .. image:: media/image952.webp
       :width: 6.3in
       :height: 3.96944in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image953.png
+   .. image:: media/image953.webp
       :width: 4.17778in
       :height: 4.29167in
 
    Flasher l’ESP avec ESP easy mega :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image954.png
+   .. image:: media/image954.webp
       :width: 6.3in
       :height: 3.90972in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image955.png
+   .. image:: media/image955.webp
       :width: 4.43889in
       :height: 7.04167in
 
@@ -9330,7 +9330,7 @@ et plus …….
   MQTT des données concernées (ESP « mesures » vers l’ESP « pompes »
 | Exemple :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image956.png
+   .. image:: media/image956.webp
       :width: 4.84444in
       :height: 5.72917in
 
@@ -9412,11 +9412,11 @@ et plus …….
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image957.png
+   .. image:: media/image957.webp
       :width: 5.08889in
       :height: 4.22361in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image958.png
+   .. image:: media/image958.webp
       :width: 4.96944in
       :height: 1.51111in
 
@@ -9424,24 +9424,24 @@ Tuto concernant le P2P
 
    Config pour l’ESP qui mesures le PH et le Redox :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image959.png
+   .. image:: media/image959.webp
       :width: 4.65972in
       :height: 2.9375in
 
    Config pour l’ESP qui gère les pompes
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image960.png
+   .. image:: media/image960.webp
       :width: 5.04167in
       :height: 1.68056in
 
    | Port pour l’ UDP :
    | Sur les 2ESP,
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image961.png
+   .. image:: media/image961.webp
       :width: 4.84444in
       :height: 4.49028in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image962.png
+   .. image:: media/image962.webp
       :width: 4.73056in
       :height: 1.05278in
 
@@ -9452,15 +9452,15 @@ transmet par MQTT à Domoticz et avec ces données gère les pompes.
 Dans l’esp « mesures_spa », et aussi dans «l’ESP « pompes » on ajoute un
 contrôleur :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image963.png
+   .. image:: media/image963.webp
       :width: 5.44861in
       :height: 2.41667in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image964.png
+   .. image:: media/image964.webp
       :width: 6.3in
       :height: 2.99583in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image965.png
+   .. image:: media/image965.webp
       :width: 6.3in
       :height: 3.10833in
 
@@ -9469,7 +9469,7 @@ contrôleur :
 
 networking et décocher la case concernant MQTT
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image966.png
+   .. image:: media/image966.webp
       :width: 4.71944in
       :height: 3.78194in
 
@@ -9477,15 +9477,15 @@ networking et décocher la case concernant MQTT
 
    Dans « pompes, activer les capteurs Redox, PH, temp
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image967.png
+   .. image:: media/image967.webp
       :width: 6.33333in
       :height: 2.32222in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image968.png
+   .. image:: media/image968.webp
       :width: 4.45972in
       :height: 4.82222in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image969.png
+   .. image:: media/image969.webp
       :width: 6.3in
       :height: 2.28472in
 
@@ -9513,11 +9513,11 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
 
    Le 1er relais 5V est raccordé au GPIO 12 (D6)
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image970.png
+   .. image:: media/image970.webp
       :width: 6.3in
       :height: 5.74722in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image971.png
+   .. image:: media/image971.webp
       :width: 6.3in
       :height: 1.53611in
 
@@ -9527,18 +9527,18 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
 
    Le 2eme relais pour PH moins :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image973.png
+   .. image:: media/image973.webp
       :width: 5.35694in
       :height: 5.25833in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image974.png
+   .. image:: media/image974.webp
       :width: 5.82361in
       :height: 1.58333in
 
    On créer également un switch virtuel dans Domoticz, ; cela permet de
    commander la pompe en manuel
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image975.png
+   .. image:: media/image975.webp
       :width: 4.01111in
       :height: 1.53055in
 
@@ -9565,23 +9565,23 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
    baisser le redox de la piscine…. Une seule pompe pour le chlore
    suffit
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image976.png
+   .. image:: media/image976.webp
       :width: 5.14583in
       :height: 5.15278in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image977.png
+   .. image:: media/image977.webp
       :width: 5.44861in
       :height: 1.52083in
 
    Dans Domoticz
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image978.png
+   .. image:: media/image978.webp
       :width: 4.20833in
       :height: 1.42778in
 
    On active les règles :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image979.png
+   .. image:: media/image979.webp
       :width: 4.19861in
       :height: 2.57361in
 
@@ -9614,11 +9614,11 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
 
    Après création ou modification des Règles : REBOOT
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image980.png
+   .. image:: media/image980.webp
       :width: 4.01944in
       :height: 3.24028in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image981.png
+   .. image:: media/image981.webp
       :width: 6.3in
       :height: 3.56528in
 
@@ -9653,7 +9653,7 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
    Ensuite je fais la convention ORP vers Cl (j'ai une regulation PH
    donc toujours à 7.4)
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image982.png
+.. image:: media/image982.webp
    :width: 6.46944in
    :height: 3.97361in
 
@@ -9663,13 +9663,13 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
 
    **18.1 Debian : Installer un serveur LAMP (Apache MySQL PHP)**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image983.png
+.. image:: media/image983.webp
    :width: 1.73611in
    :height: 0.91667in
 
    **18.2 Installer Paho-mqtt**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image984.png
+.. image:: media/image984.webp
    :width: 6.26806in
    :height: 2.20972in
 
@@ -9731,7 +9731,7 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
 
    Pour être sûr que le fichier est au bon format (Unix) :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image985.png
+   .. image:: media/image985.webp
       :width: 4.79306in
       :height: 0.41667in
 
@@ -9746,7 +9746,7 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
 
    →donc pour /dev/serial/by-id = IDENTIQUE
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image986.png
+   .. image:: media/image986.webp
       :width: 6.26806in
       :height: 0.85972in
 
@@ -9805,7 +9805,7 @@ Le pH de l’eau de votre piscine doit se situer aux alentours de 7 pour
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image987.png
+   .. image:: media/image987.webp
       :width: 6.26806in
       :height: 5.59167in
 
@@ -9818,13 +9818,13 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
    aldz.py
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image988.png
+   .. image:: media/image988.webp
       :width: 4.87639in
       :height: 0.89583in
 
    aldz.bak.dz
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image989.png
+   .. image:: media/image989.webp
       :width: 4.29305in
       :height: 0.61528in
 
@@ -9937,7 +9937,7 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image990.png
+   .. image:: media/image990.webp
       :width: 6.26806in
       :height: 6.21944in
 
@@ -9947,23 +9947,23 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
    Si ce massage en bash :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image991.png
+   .. image:: media/image991.webp
       :width: 6.26806in
       :height: 1.91806in
 
    Ajouter login et mot de passe :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image992.png
+   .. image:: media/image992.webp
       :width: 4.30278in
       :height: 0.94861in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image993.png
+   .. image:: media/image993.webp
       :width: 6.26806in
       :height: 1.58889in
 
    start_rec_sms.sh
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image994.png
+   .. image:: media/image994.webp
       :width: 4.27222in
       :height: 0.66667in
 
@@ -9986,7 +9986,7 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image995.png
+   .. image:: media/image995.webp
       :width: 6.26806in
       :height: 2.91111in
 
@@ -10056,13 +10056,13 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image996.png
+   .. image:: media/image996.webp
       :width: 6.26806in
       :height: 4.33055in
 
    Le switch domoticz :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image997.png
+.. image:: media/image997.webp
    :width: 5.29306in
    :height: 2.57361in
 
@@ -10070,11 +10070,11 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
    Configuration après installation du plugin:
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image998.png
+   .. image:: media/image998.webp
       :width: 4.75833in
       :height: 5.21806in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image999.png
+   .. image:: media/image999.webp
       :width: 6.26806in
       :height: 0.87917in
 
@@ -10082,31 +10082,31 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
    ENEDIS
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1000.png
+   .. image:: media/image1000.webp
       :width: 6.20833in
       :height: 4.20833in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1001.png
+   .. image:: media/image1001.webp
       :width: 6.26806in
       :height: 2.78194in
 
    Dans monitor :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1002.png
+   .. image:: media/image1002.webp
       :width: 4.63611in
       :height: 5.71667in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1003.png
+   .. image:: media/image1003.webp
       :width: 4.28194in
       :height: 5.29444in
 
    Les modifications dans Domoticz :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1004.png
+   .. image:: media/image1004.webp
       :width: 6.20833in
       :height: 5.63611in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1005.png
+   .. image:: media/image1005.webp
       :width: 4.00139in
       :height: 1.41667in
 
@@ -10115,19 +10115,19 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
    Table dispositifs :création du dispositif
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1006.png
+   .. image:: media/image1006.webp
       :width: 6.26806in
       :height: 0.53889in
 
    Table energie : création de la table
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1007.png
+   .. image:: media/image1007.webp
       :width: 6.26806in
       :height: 1.68056in
 
    Fichier json reçu par domoticz :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1008.png
+   .. image:: media/image1008.webp
       :width: 4.23055in
       :height: 4.78194in
 
@@ -10135,13 +10135,13 @@ Le démarrage automatique est assuré par systemd , voir domo-site.fr page
 
    Interieur.php : création de l’image svg
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1009.png
+   .. image:: media/image1009.webp
       :width: 6.26806in
       :height: 3.57361in
 
    graphiques.php
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1010.png
+   .. image:: media/image1010.webp
       :width: 6.26806in
       :height: 1.15417in
 
@@ -10150,7 +10150,7 @@ Domoticz** Une des solutions pour crypter et décrypter les mots de passe
 
 *Codage* : https://www.base64encode.org/
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1011.png
+.. image:: media/image1011.webp
    :width: 6.17778in
    :height: 6.14583in
 
@@ -10202,19 +10202,19 @@ Domoticz** Une des solutions pour crypter et décrypter les mots de passe
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1012.png
+.. image:: media/image1012.webp
    :width: 7.20833in
    :height: 1.46111in
 
 Le fichier connect.lua :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1013.png
+.. image:: media/image1013.webp
    :width: 3.45972in
    :height: 0.69861in
 
 notification_devices : base64 pour login et mot de passe
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1014.png
+.. image:: media/image1014.webp
    :width: 6.26806in
    :height: 2.44306in
 
@@ -10222,7 +10222,7 @@ notification_devices : base64 pour login et mot de passe
 
    **18.7.1 Les recettes de cuisines sur la tablette domotique**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1015.png
+.. image:: media/image1015.webp
    :width: 4.8125in
    :height: 5.34167in
 
@@ -10241,35 +10241,35 @@ notification_devices : base64 pour login et mot de passe
    et parfois le fichierbib-Slide.js , si l’on doit modifier la largeur
    du menu
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1016.png
+   .. image:: media/image1016.webp
       :width: 2.90556in
       :height: 2.49028in
 
    le fichier recettes.php :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1017.png
+   .. image:: media/image1017.webp
       :width: 6.3in
       :height: 2.56944in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1018.png
+   .. image:: media/image1018.webp
       :width: 6.3in
       :height: 2.28055in
 
    Dans fonctions.php :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1019.png
+   .. image:: media/image1019.webp
       :width: 6.3in
       :height: 6.575in
 
    La page avec 2 recettes :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1020.png
+   .. image:: media/image1020.webp
       :width: 5.56111in
       :height: 3.57361in
 
    Exemple de page recette
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1021.png
+   .. image:: media/image1021.webp
       :width: 6.3in
       :height: 2.01944in
 
@@ -10315,7 +10315,7 @@ notification_devices : base64 pour login et mot de passe
 
 Fichiers concernés:
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1022.png
+.. image:: media/image1022.webp
    :width: 1.92778in
    :height: 1.96944in
 
@@ -10323,7 +10323,7 @@ Changement de version jpgraph
 
 Dossier include :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1023.png
+.. image:: media/image1023.webp
    :width: 2.27222in
    :height: 5.02083in
 
@@ -10335,20 +10335,20 @@ Principale modification : concerne les sessions
 | L’idx ou l’ID indiqué dans MySQL (table dispositifs) ne correspond pas
   avec celui de Domoticz HA
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1024.png
+.. image:: media/image1024.webp
    :width: 3.71944in
    :height: 2.57361in
 
 Vérifier avec F12 du navigateur ->réseau le json renvoyé : exist_id doit
 être « oui »
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1025.png
+.. image:: media/image1025.webp
    :width: 3.32361in
    :height: 1.97917in
 
 **21. – Mon installation**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1026.png
+.. image:: media/image1026.webp
    :width: 6.30139in
    :height: 7.875in
 
@@ -10399,14 +10399,14 @@ Vérifier avec F12 du navigateur ->réseau le json renvoyé : exist_id doit
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1027.png
+   .. image:: media/image1027.webp
       :width: 4.42639in
       :height: 2.52083in
 
    **21.1.1 installation de VM ou CT par l’interface graphique : IP
    :8006**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1028.png
+.. image:: media/image1028.webp
    :width: 6.30139in
    :height: 2.05417in
 
@@ -10414,13 +10414,13 @@ Vérifier avec F12 du navigateur ->réseau le json renvoyé : exist_id doit
 
    choisir le fichier d’installation : ex Conteneur LXC Debian 11
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1029.png
+   .. image:: media/image1029.webp
       :width: 2.77222in
       :height: 1.76111in
 
    Copier le lien :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1030.png
+   .. image:: media/image1030.webp
       :width: 3.16667in
       :height: 2.07361in
 
@@ -10428,19 +10428,19 @@ Vérifier avec F12 du navigateur ->réseau le json renvoyé : exist_id doit
 
    Télécharger le script : wget LIEN
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1031.png
+   .. image:: media/image1031.webp
       :width: 6.3in
       :height: 0.34444in
 
    Modifier les droits du fichier :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1032.png
+   .. image:: media/image1032.webp
       :width: 3.27222in
       :height: 0.35417in
 
    Lancer le script et répondre aux questions :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1033.png
+   .. image:: media/image1033.webp
       :width: 4.86944in
       :height: 6.25in
 
@@ -10448,7 +10448,7 @@ Vérifier avec F12 du navigateur ->réseau le json renvoyé : exist_id doit
      Monitor** Voir le *§ 0.1.1*
    | **21.1.4 Aperçu des VM et CT installés** :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1034.png
+.. image:: media/image1034.webp
    :width: 3.19861in
    :height: 3.59444in
 
@@ -10461,21 +10461,21 @@ conteneur, voir le site domo-site.fr
 
 Mes scripts lua :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1035.png
+.. image:: media/image1035.webp
    :width: 3.19861in
    :height: 3.07222in
 
 Mes scripts bash, python et Node js :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1036.png
+.. image:: media/image1036.webp
    :width: 4.18889in
    :height: 3.63611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1037.png
+.. image:: media/image1037.webp
    :width: 4.27222in
    :height: 3.19722in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1038.png
+.. image:: media/image1038.webp
    :width: 4.34444in
    :height: 1.76111in
 
@@ -10496,17 +10496,17 @@ Les scripts sont disponibles sur Github :
 
    Affichage dans monitor :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1039.png
+   .. image:: media/image1039.webp
       :width: 4.85139in
       :height: 5.58056in
 
    Configuration de l’hôte virtuel Nginx pour affichage dans monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1040.png
+.. image:: media/image1040.webp
    :width: 4.02222in
    :height: 3.03194in
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1041.png
+   .. image:: media/image1041.webp
       :width: 5.55556in
       :height: 6.70694in
 
@@ -10523,13 +10523,13 @@ Les scripts sont disponibles sur Github :
 
    Affichage dans monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1042.png
+.. image:: media/image1042.webp
    :width: 4.93889in
    :height: 4.97778in
 
 Configuration de l’hôte virtuel Nginx pour affichage dans monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1043.png
+.. image:: media/image1043.webp
    :width: 5.36806in
    :height: 6in
 
@@ -10561,13 +10561,13 @@ Comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.
 
 ..
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1044.png
+   .. image:: media/image1044.webp
       :width: 4.84861in
       :height: 6.13472in
 
    Configuration de l’hôte virtuel Nginx
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1045.png
+   .. image:: media/image1045.webp
       :width: 4.98194in
       :height: 5.14583in
 
@@ -10586,13 +10586,13 @@ Comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.
 
    affichage dans un navigateur ou TV **: IP :32400/web**
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1046.png
+.. image:: media/image1046.webp
    :width: 6.30139in
    :height: 4.77917in
 
 Configuration de l’hôte virtuel Nginx pour accès distant
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1047.png
+.. image:: media/image1047.webp
    :width: 5.21806in
    :height: 4.62361in
 
@@ -10607,7 +10607,7 @@ Configuration de l’hôte virtuel Nginx pour accès distant
   des switches par l’intermédiaire de l’API de Domoticz(
 | Le système est sauvegardé par le logiciel Raspibackup :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1048.png
+   .. image:: media/image1048.webp
       :width: 6.25in
       :height: 4.01111in
 
@@ -10638,7 +10638,7 @@ Configuration de l’hôte virtuel Nginx pour accès distant
 
    Conf Nginx :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1049.png
+   .. image:: media/image1049.webp
       :width: 4.70694in
       :height: 5.54028in
 
@@ -10646,7 +10646,7 @@ Installation du système et du raid1 :
 
 Scripts installés en plus de raspibackup et Nagios :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1050.png
+   .. image:: media/image1050.webp
       :width: 4.11528in
       :height: 4.07361in
 
@@ -10660,13 +10660,13 @@ Scripts installés en plus de raspibackup et Nagios :
 
    config :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1051.png
+   .. image:: media/image1051.webp
       :width: 2.88472in
       :height: 4.07222in
 
    Affichage dans monitor :
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1052.png
+.. image:: media/image1052.webp
    :width: 4.40694in
    :height: 4.54861in
 
@@ -10690,7 +10690,7 @@ explorer la partition « boot » .
 Ouvrir le fichier appelé cmdline.txt dans le Bloc-notes ou Notepad et
 ajouter **init=/bin/sh**\ à la fin de la première ligne .
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1053.png
+.. image:: media/image1053.webp
    :width: 5.58472in
    :height: 0.38472in
 
@@ -10701,7 +10701,7 @@ effectuer des modification sur le fichier /etc/fstab.
 
 sudo nano /etc/fstab
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1054.png
+.. image:: media/image1054.webp
    :width: 6.30139in
    :height: 1.50417in
 
@@ -10718,13 +10718,13 @@ sudo nano /etc/fstab
 
    mount -o remount,rw /partition root /
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1055.png
+   .. image:: media/image1055.webp
       :width: 4.85556in
       :height: 0.29167in
 
    pour monter les partitions sans redémarrer :
 
-   .. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1056.png
+   .. image:: media/image1056.webp
       :width: 2.94861in
       :height: 0.32222in
 
@@ -10737,31 +10737,31 @@ sudo nano /etc/fstab
    bash -c "$(wget -qLO -
    https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.sh)"
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1057.png
+.. image:: media/image1057.webp
    :width: 6.30139in
    :height: 2.78611in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1058.png
+.. image:: media/image1058.webp
    :width: 6.16667in
    :height: 2.34444in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1059.png
+.. image:: media/image1059.webp
    :width: 6.30139in
    :height: 3.22222in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1060.png
+.. image:: media/image1060.webp
    :width: 3.09444in
    :height: 2.15556in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1061.png
+.. image:: media/image1061.webp
    :width: 6.30139in
    :height: 3.64167in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1062.png
+.. image:: media/image1062.webp
    :width: 2.59444in
    :height: 2.1875in
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1063.png
+.. image:: media/image1063.webp
    :width: 5.37639in
    :height: 2.78056in
 
@@ -10790,7 +10790,7 @@ sudo nano /etc/fstab
 
    Retour d’info avec GPIO du RPI
 
-.. image:: vertopal_6e277aed43794de08da7229da055806a/media/image1064.png
+.. image:: media/image1064.webp
    :width: 6.30139in
    :height: 3.11389in
 
@@ -10991,4 +10991,3 @@ sudo nano /etc/fstab
 .. |image47| image:: media/image972.webp
    :width: 4.11528in
    :height: 1.47778in
-
