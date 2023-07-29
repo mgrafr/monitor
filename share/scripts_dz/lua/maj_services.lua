@@ -20,7 +20,6 @@ la 1ere semaine est celle ayant au moins 4 jours sur la nouvelle année
 package.path = package.path..";www/modules_lua/?.lua"
 require 'string_tableaux'
 require 'connect'
-adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local base64 = require'base64'
 -- local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 -- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg=poubelle' >> /home/michel/OsExecute.log 2>&1"
@@ -96,6 +95,8 @@ local jour_mois = jour.."-"..mois
 if (time == "00:05"  or time == "17:00") then 
     commandArray['Variable:anniversaires'] = "0";
     commandArray['Variable:fosse septique'] = "0";
+end   
+if (time == "00:30") then
     -- exclusion ou ajout dates poubelles ,
     for k,v in pairs(e_poubelles) do 
       if (jour_mois==k) then 
@@ -105,7 +106,7 @@ if (time == "00:05"  or time == "17:00") then
       end    
     end
 	for k,v in pairs(a_poubelles) do 
-      if (jour_mois==k) then 
+      if (jour_mois==k) then print(k)
 		if (v == "g") then jour_poubelle_grise = day;
 		elseif (v == "j") then jour_poubelle_jaune = day;
 		end
@@ -134,7 +135,7 @@ if  (( day ==  jour_poubelle_grise ) and (time == "17:00")) then commandArray['V
 	 print (time,day, "mettre les poubelles ordures ménagères");
 	 -- envoi notification via free
 		--os.execute(sms_free) résilié
-	commandArray['SendEmail']='poubelles#ménagères#'..adresse_mail
+	commandArray['SendEmail']='poubelles#ménagères#gravier.michel@gmail.com'		
 		end
 --
 if ( day == jour_poubelle_jaune and (time == "17:00")) then 
@@ -152,7 +153,7 @@ if ( day == jour_poubelle_jaune and (time == "17:00")) then
     print (time,day, "mettre les poubelles recyclabes");
 		-- envoi notification via free
 		--os.execute(sms_free) résilié
-	commandArray['SendEmail']='poubelles#recyclabes#'..adresse_mail	
+	commandArray['SendEmail']='poubelles#recyclabes#gravier.michel@gmail.com'	
 		
 		end
 end
@@ -171,9 +172,5 @@ local jour_mois = jour.."-"..mois
         end
     end
 end
--- medicaments
-if (time == "20:00" )  then
-commandArray['Variable:pilule_tension'] = "pilule_michel"
-commandArray['SendEmail']='poubelles#recyclabes#'..adresse_mail
-end
+
 return commandArray 
