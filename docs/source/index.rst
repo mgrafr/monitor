@@ -9,9 +9,9 @@ Monitor-domotique Documentation
 .. toctree::
         :hidden:
 
-        source/guides/modifications
-        source/guides/sommaire
-        source/guides/bien_debuter
+        guides/modifications
+        guides/sommaire
+        guides/bien_debuter
        
 Github Repository <https://github.com/mgrafr/monitor>`__     
 
@@ -21,17 +21,17 @@ Github Repository <https://github.com/mgrafr/monitor>`__
 
 **Dernières modifications :**
 
-:doc:`source/guides/modifications`
+:doc:`guides/modifications`
 
 |image2| Tous les fichiers sont sur Github :
 
  **Sommaire :**
 
-:doc:`source/guides/sommaire`
+:doc:`guides/sommaire`
   
-:doc:`source/guides/bien_debuter`
+:doc:`guides/bien_debuter`
 
-|image1| image:: media/image1.webp
+.. |image1| image:: media/image1.webp
    :width: 0.27917in
    :height: 0.27917in
 .. |image2| image:: media/image2.webp
