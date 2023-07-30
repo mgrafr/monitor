@@ -6,7 +6,7 @@
 Monitor-domotique Documentation
 ========================================
 
-.. toctree::
+
     
     
 
