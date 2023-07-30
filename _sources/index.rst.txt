@@ -1,4 +1,4 @@
-.. Event Server documentation master file, created by
+/.. Event Server documentation master file, created by
    sphinx-quickstart on Fri Jul 28 08:38:52 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -9,7 +9,7 @@ Monitor-domotique Documentation
 .. toctree::
         :hidden:
 
-        guides/modifications
+        source/guides/modifications
         guides/sommaire
         guides/bien_debuter
        
@@ -21,7 +21,7 @@ Github Repository <https://github.com/mgrafr/monitor>`__
 
 **Dernières modifications :**
 
-:doc:`guides/modifications`
+:doc:`source/guides/modifications`
 
 |image2| Tous les fichiers sont sur Github :
 
