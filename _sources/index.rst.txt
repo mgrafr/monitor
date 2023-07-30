@@ -11,7 +11,7 @@ Monitor-domotique Documentation
 
         source/guides/modifications
         source/guides/sommaire
-        source/guides/bien débuter
+        source/guides/bien_débuter
        
 Github Repository <https://github.com/mgrafr/monitor>`__     
 
@@ -29,7 +29,7 @@ Github Repository <https://github.com/mgrafr/monitor>`__
 
 :doc:`source/guides/sommaire`
   
-:doc:`source/guides/bien debuter`
+:doc:`source/guides/bien_debuter`
 
 | **1.\_ Configuration minimum : la page d’accueil** Permet d’afficher
 | - La température extérieure,
