@@ -1,4 +1,4 @@
-.. toctree::
+/.. toctree::
         :hidden:
 
         guides/modifications
@@ -18,7 +18,7 @@
 
 | **Sommaire :**
 
-:doc:'sommaire'
+:doc:'guides/sommaire'
    **0._Infos pour bien débuter**
 
    **0.1Prérequis, installation :** différents choix
