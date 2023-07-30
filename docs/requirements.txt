@@ -1,1 +1,7 @@
 furo==2021.11.16
+extensions = [
+    ...
+    'sphinx_rtd_theme',
+]
+
+html_theme = "sphinx_rtd_theme"
