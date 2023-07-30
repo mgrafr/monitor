@@ -307,14 +307,14 @@
      install.sh :
    | wget
 
-   .. image:: media/image3.png
+   .. image:: media/image3.webp
       :width: 6.3in
       :height: 1.83472in
 
    Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
    chmod +x create_ct_lxc_monitor.sh
 
-   .. image:: media/image4.png
+   .. image:: media/image4.webp
       :width: 3.42778in
       :height: 0.30278in
 
@@ -10850,10 +10850,10 @@ sudo nano /etc/fstab
 +=======================================================================+
 +-----------------------------------------------------------------------+
 
-.. |image1| image:: media/image1.png
+.. |image1| image:: media/image1.webp
    :width: 0.27917in
    :height: 0.27917in
-.. |image2| image:: media/image2.png
+.. |image2| image:: media/image2.webp
    :width: 0.64583in
    :height: 0.61389in
 .. |image3| image:: media/image82.png
