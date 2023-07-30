@@ -10,9 +10,9 @@ Monitor-domotique Documentation
     :hidden:
     :maxdepth: 2
 
-        source/guides/modifications
-        source/guides/sommaire
-        source/guides/bien_debuter
+        guides/modifications
+        guides/sommaire
+        guides/bien_debuter
        
 Github Repository <https://github.com/mgrafr/monitor>`__     
 
@@ -22,7 +22,7 @@ Github Repository <https://github.com/mgrafr/monitor>`__
 
 **Dernières modifications :**
 
-:doc:`source/guides/modifications`
+:doc:`guides/modifications`
 
 |image2| Tous les fichiers sont sur Github :
 
