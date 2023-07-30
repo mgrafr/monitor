@@ -31,5 +31,9 @@ Github Repository <https://github.com/mgrafr/monitor>`__
   
 :doc:`source/guides/bien_debuter`
 
-
-
+|image1| image:: media/image1.webp
+   :width: 0.27917in
+   :height: 0.27917in
+.. |image2| image:: media/image2.webp
+   :width: 0.64583in
+   :height: 0.61389in
