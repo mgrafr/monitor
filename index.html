@@ -36,26 +36,7 @@
 <div class="line"><strong>Compatible Domoticz &amp; Home assistant</strong></div>
 </div>
 <p><strong>Dernières modifications :</strong></p>
-<div class="line-block">
-<div class="line">Version 2.1</div>
-<div class="line">31/03/2023 : début de l’adaptabilité à Home Assistant, l’affichages
-des valeurs des dispositifs, l’utilisation des variables et la
-commande de switches virtuels sont opérationnelles.</div>
-</div>
-<div class="line-block">
-<div class="line">13/04/2023 : ajout certificat auto-signé pour Nginx</div>
-<div class="line">01/05/2023 : ajout reboot serveur distant et scp pour fichiers
-distants</div>
-<div class="line">05/05/2023 : maj automatique des IP lors de changements de serveurs</div>
-<div class="line">20/05/2023 : scripts automatiques d’installation</div>
-<div class="line">01/07/2023 : 3 scripts différents d’installation et version 2.1
-(update vers Debian 12) 20/07/2023 : explication concernant l’envoi
-par Domoticz de SMS</div>
-<div class="line">Version 2.2</div>
-<div class="line">26/07/2023 : suite à la modification de l’API Domoticz (devices
-remplacé par getdevices), ……………………..mise à jour de fonctions.php</div>
-<div class="line">26/07/2023 : accès shell Domoticz-Docker avec SSH2</div>
-</div>
+<p><a href="#id1"><span class="problematic" id="id2">|</span></a><span class="xref std std-doc">guides/modifications</span></p>
 <p><a class="reference internal" href="media/image2.png"><img alt="image2" src="media/image2.png" style="width: 0.64583in; height: 0.61389in;" /></a> Tous les fichiers sont sur Github :</p>
 <div class="line-block">
 <div class="line"><strong>Sommaire :</strong></div>
@@ -5616,7 +5597,7 @@ domoticz.LOG_INFO) if
 txt=tostring(domoticz.variables(‘pression-chaudiere’).value)</div>
 <div class="line">domoticz.variables(‘pression-chaudiere’).set(‘pression_basse’)</div>
 <div class="line">print(“envoi SMS pression-chaudiere”)</div>
-<div class="line">alerte_gsm(‘<a href="#id11"><span class="problematic" id="id12">alarme_</span></a>’..txt)</div>
+<div class="line">alerte_gsm(‘<a href="#id13"><span class="problematic" id="id14">alarme_</span></a>’..txt)</div>
 <div class="line">end</div>
 </div>
 </th>
@@ -6043,7 +6024,7 @@ connect.py et connect.js</p>
 <tr class="row-odd"><th class="head"><blockquote>
 <div><div class="line-block">
 <div class="line">Importer sur Github le fichier complet :</div>
-<div class="line"><a href="#id1"><span class="problematic" id="id2">*</span></a><a class="reference external" href="https://raw.git">https://raw.git</a></div>
+<div class="line"><a href="#id3"><span class="problematic" id="id4">*</span></a><a class="reference external" href="https://raw.git">https://raw.git</a></div>
 </div>
 </div></blockquote>
 <p>hubusercontent.com/mgrafr/monitor/main/share/scripts_dz/py/sms_dz.py*</p>
@@ -6076,7 +6057,7 @@ sms_dz.service</p></th>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><blockquote>
-<div><p><a href="#id3"><span class="problematic" id="id4">*</span></a><a class="reference external" href="https://raw.github">https://raw.github</a></p>
+<div><p><a href="#id5"><span class="problematic" id="id6">*</span></a><a class="reference external" href="https://raw.github">https://raw.github</a></p>
 </div></blockquote>
 <dl class="simple">
 <dt>usercontent.com/mgrafr/monitor/main/share/debian/systemd/system/sms_d</dt><dd><p>z.service*</p>
@@ -7025,7 +7006,7 @@ div_suiv=”ecran”+num_ecran;div_prec=”ecran”+num_actuel;</div>
 </div>
 </div></blockquote>
 <div class="line-block">
-<div class="line">graph(ecranspa[nbec]+’_spa’,’text_svg’,’<a href="#id13"><span class="problematic" id="id14">graphic_</span></a>’+ecranspa[nbec]);
+<div class="line">graph(ecranspa[nbec]+’_spa’,’text_svg’,’<a href="#id15"><span class="problematic" id="id16">graphic_</span></a>’+ecranspa[nbec]);
 | nbec++;
 | }
 | }
@@ -7232,7 +7213,7 @@ M169,183c-27.6,0-50,10.7-50,24</div>
 <div class="line">s22.4,24,50,24s50-10.7,50-24S196.6,183,169,183L169,183z”/&gt;</div>
 <div class="line">&lt;/g&gt;</div>
 <div class="line">&lt;g&gt;</div>
-<div class="line">&lt;g id=”<a href="#id15"><span class="problematic" id="id16">ecran_suivant_</span></a>” xlink:href=”#spa” onclick=”next_ecran(1)”
+<div class="line">&lt;g id=”<a href="#id17"><span class="problematic" id="id18">ecran_suivant_</span></a>” xlink:href=”#spa” onclick=”next_ecran(1)”
 transform=”matrix(0,-</div>
 <div class="line">1,1,0,28.57143,680.00001)”&gt;</div>
 <div class="line">&lt;path id=”e_suiv”
@@ -7251,7 +7232,7 @@ d=”M493,147.5c0,0.1-19.</div>
 <div class="line-block">
 <div class="line">&lt;/g&gt;</div>
 <div class="line">&lt;g&gt;</div>
-<div class="line">&lt;g id=”<a href="#id17"><span class="problematic" id="id18">ecran_precedent_</span></a>” xlink:href=”#spa”
+<div class="line">&lt;g id=”<a href="#id19"><span class="problematic" id="id20">ecran_precedent_</span></a>” xlink:href=”#spa”
 onclick=”next_ecran(-1)”
 transform=”matrix(0,-1,1,0,28.57143,680.00001)”&gt;</div>
 <div class="line">&lt;path id=”e_prec”
@@ -8451,7 +8432,7 @@ vous pouvez exécuter la commande suivante dans pve Shell.</p></th>
 </div>
 </th>
 <th class="head"><blockquote>
-<div><p><a href="#id5"><span class="problematic" id="id6">*</span></a><a class="reference external" href="https://github.co">https://github.co</a></p>
+<div><p><a href="#id7"><span class="problematic" id="id8">*</span></a><a class="reference external" href="https://github.co">https://github.co</a></p>
 </div></blockquote>
 <p>m/StevenSeifried/proxmox-scripts*</p>
 </th>
@@ -8509,7 +8490,7 @@ conteneur, voir le site domo-site.fr</p>
 </td>
 <td><blockquote>
 <div><p>sous Docker, avec Domoticz :
-<a href="#id7"><span class="problematic" id="id8">*</span></a><a class="reference external" href="http://">http://</a></p>
+<a href="#id9"><span class="problematic" id="id10">*</span></a><a class="reference external" href="http://">http://</a></p>
 </div></blockquote>
 <p>domo-site.fr/accueil/dossiers/86*</p>
 </td>
@@ -8689,7 +8670,7 @@ cela, dans</p>
 </th>
 <th class="head"><blockquote>
 <div><p>Le monitoring (Nagios) :
-<a href="#id9"><span class="problematic" id="id10">*</span></a><a class="reference external" href="http://">http://</a></p>
+<a href="#id11"><span class="problematic" id="id12">*</span></a><a class="reference external" href="http://">http://</a></p>
 </div></blockquote>
 <p>domo-site.fr/accueil/dossiers/71*</p>
 </th>
