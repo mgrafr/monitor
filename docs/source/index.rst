@@ -16,7 +16,7 @@
 
 |image2| Tous les fichiers sont sur Github :
 
-| **Sommaire :**
+ **Sommaire :**
 
 :doc:'source/guides/sommaire'
    **0._Infos pour bien débuter**
