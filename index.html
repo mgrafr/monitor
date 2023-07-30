@@ -30,7 +30,9 @@
 
           <div class="body" role="main">
             
-  <div class="line-block">
+  <div class="toctree-wrapper compound">
+</div>
+<div class="line-block">
 <div class="line"><a class="reference internal" href="media/image1.webp"><img alt="image1" src="media/image1.webp" style="width: 0.27917in; height: 0.27917in;" /></a> <strong>Logiciel monitor version 2.2.0</strong> <em>maj manuel 2.2.1 du
 27/07/2023</em></div>
 <div class="line"><strong>Compatible Domoticz &amp; Home assistant</strong></div>
@@ -40,259 +42,9 @@
 <p><a class="reference internal" href="_images/image2.webp"><img alt="image2" src="_images/image2.webp" style="width: 0.64583in; height: 0.61389in;" /></a> Tous les fichiers sont sur Github :</p>
 <div class="line-block">
 <div class="line"><strong>Sommaire :</strong></div>
-<div class="line"><em>0._Infos pour bien débuter</em></div>
-<div class="line"><em>0.1Prérequis, installation : différents choix</em></div>
-<div class="line"><em>0.1.1 Installation automatique d’un conteneur LXC + monitor</em> <em>0.1.2
-Installation manuelle de LEMP et Monitor</em></div>
-<div class="line"><em>0.1.3 – Installation de monitor uniquement</em></div>
-<div class="line"><em>0.1.3.1 mode « découverte »</em></div>
-<div class="line"><em>0.1.3.2 -Création d’un certificat SSL auto-signé pour Nginx</em></div>
 </div>
-<div class="line-block">
-<div class="line"><em>0.2_La page d’accueil et connexion avec Domoticzou HA</em></div>
-<div class="line"><em>0.2.1 page d’accueil</em></div>
-<div class="line"><em>0.2.2 premier dispositif</em></div>
-<div class="line"><em>0.2.2.1 pour Domoticz</em></div>
-<div class="line"><em>0.2.2.2 pour Home Assistant</em></div>
-<div class="line"><em>0.2.2.3 Affichage sur la page d’accueil de Monitor</em></div>
-<div class="line"><em>0.3 _ Base de données Maria DB</em></div>
-<div class="line"><em>0.3.1 Les variables</em></div>
-<div class="line"><em>0.3.2 Les Dispositifs</em></div>
-<div class="line"><em>0.3.3 Les caméras</em></div>
-<div class="line"><em>0.4_ Le serveur http de NGINX</em></div>
-<div class="line"><em>0.5_ Le Framework Bootstrap</em></div>
-<div class="line"><em>0.6_ Les styles CSS</em></div>
-<div class="line"><em>0.7_ Les images</em></div>
-<div class="line"><em>0.8_ Les fichiers PHP</em></div>
-<div class="line"><em>0.9_ Les fichiers javascript</em></div>
-<div class="line"><em>1._ Configuration minimum : la page d’accueil</em></div>
-<div class="line"><em>1.1 - Configuration : le fichier /admin/config.php</em></div>
-<div class="line"><em>1.1.1 -Adresse IP, domaine, favicon de monitor</em></div>
-<div class="line"><em>1.1.2 intervalles de maj, maj temps réel</em></div>
-<div class="line"><em>1.1.3 Autres données</em></div>
-<div class="line"><em>1.2 - Les fichiers à la racine du site, les styles, le javascript</em></div>
-<div class="line"><em>1.2.1 - à la racine du site</em></div>
-<div class="line"><em>1.2.2 - les styles css</em></div>
-<div class="line"><em>1.2.3 – Le javascript</em></div>
-<div class="line"><em>1.2.3 a- Les fichiers footer.php</em></div>
-<div class="line"><em>1.2.3 b- le fichier mes_js.js : scripts principaux</em></div>
-<div class="line"><em>1.2.3 b.1 fenêtre modale modallink</em></div>
-<div class="line"><em>1.3 -Les fichiers principaux dans le répertoire /include</em></div>
-<div class="line"><em>1.3.1 entete_html.php</em></div>
-<div class="line"><em>1.3.2 Test de la base de données, test_db.php</em></div>
-<div class="line"><em>1.3.3 le menu, header.php</em></div>
-<div class="line"><em>1.3.4 la page d’accueil avec les notifications, accueil.php</em></div>
-<div class="line"><em>1.3.5 les scripts javascript, dans la page footer.php</em></div>
-<div class="line"><em>1.3.5.1 rafraichissements de la page</em></div>
-<div class="line"><em>1.3.5.2 Quelques infos supplémentaires</em></div>
-<div class="line"><em>1.4 Le lexique et la température extérieure</em></div>
-<div class="line"><em>1.4.1 Le lexique</em></div>
-<div class="line"><em>1.4.2 La température extérieure (valable pour d’autres dispositifs)</em>
-<em>1.5 liens avec Domoticz ou Home Assistant</em></div>
-<div class="line"><em>1.5.1 Liens avec Domoticz</em></div>
-<div class="line"><em>1.5.1 1 les variables LUA de configuration dans un fichier externe</em>
-1.5.1.2 les scripts de notifications gérées par Domoticz</div>
-<div class="line"><em>1.5.2 Liens avec Home Assistant</em></div>
-<div class="line"><em>1.5.2.1 Exemple d’un ON OFF sur un interrupteur virtuel</em></div>
-<div class="line"><em>1.6 – Lien avec la base de données SQL</em></div>
-<div class="line"><em>1.6.1- exemple avec la date de ramassage des poubelles</em></div>
-<div class="line"><em>1.7 – Ajuster le menu au nombre de pages</em></div>
-<div class="line"><em>2._ Une 1ere PAGE : LE PLAN INTERIEUR</em></div>
-<div class="line"><em>2.1 l’image</em></div>
-<div class="line"><em>2.1.1-avec un logiciel de conception graphique vectorielle</em></div>
-<div class="line"><em>2.1.1.a avec Inkscape qui est gratuit</em></div>
-</div>
-<div class="line-block">
-<div class="line"><em>2.1.1.b avec Adobe Illustrator</em></div>
-<div class="line"><em>2.1.2 – 2eme solution pour le plan, conversion en ligne</em></div>
-<div class="line"><em>2.1.3 - Les Couleurs</em></div>
-<div class="line"><em>2.1.4 - ajout d’un ou plusieurs dispositifs</em></div>
-<div class="line"><em>2.2 Des exemples d’autres dispositifs</em></div>
-<div class="line"><em>2.2.1 Ajout du détecteur de fumée</em></div>
-<div class="line"><em>2.2.2 Ajout de caméras</em></div>
-<div class="line"><em>2.3 le fichier PHP de l’image</em></div>
-<div class="line"><em>2.3.1 Pour afficher le statut complet du dispositif</em></div>
-<div class="line"><em>2.3.2 Affichage des caméras</em></div>
-<div class="line"><em>2.3.3 La gestion des dispositifs à piles</em></div>
-<div class="line"><em>2.3 4 Le contrôle de la tension d’alimentation</em></div>
-<div class="line"><em>2.3 5 ajouter des lampes</em></div>
-<div class="line"><em>2.3.6 ajouter un capteur de T° extérieur Zigbee</em></div>
-<div class="line"><em>2.3.6.1 Le capteur dans Domoticz</em></div>
-<div class="line"><em>2.3.6.2 Le capteur dans la BD</em></div>
-<div class="line"><em>2.3.6.3 Le capteur dans Monitor</em></div>
-<div class="line"><em>2.4 le fichier PHP de la page</em></div>
-<div class="line"><em>2.5 F12 des navigateurs pour faciliter la construction</em></div>
-<div class="line"><em>2.6 Les dispositifs virtuels Domoticz et MQTT</em></div>
-<div class="line"><em>3._ Météo</em></div>
-<div class="line"><em>3.1_ Page météo</em></div>
-<div class="line"><em>3.2_ La Météo à 1 heure de Météo France</em></div>
-<div class="line"><em>3.3_ Autres prévisions météo depuis météo Concept</em></div>
-<div class="line"><em>4._ La page du plan extérieur</em></div>
-<div class="line"><em>4.1 – La page PHP : exterieur.php</em></div>
-<div class="line"><em>4.1 .1– Ajouter des lampes</em></div>
-<div class="line"><em>4.2. – affichage</em></div>
-<div class="line"><em>5. – L’ALARME</em></div>
-<div class="line"><em>5.1 Dans Domoticz, les interrupteurs virtuels</em></div>
-<div class="line"><em>5.1.1 explications concernant MODECT</em></div>
-<div class="line"><em>5.1.1.1 Jeton ZM</em></div>
-<div class="line"><em>5.1.1.2 le script lu</em>a</div>
-<div class="line"><em>5.2 Construction de l’image</em></div>
-<div class="line"><em>5.3- Base de données</em></div>
-<div class="line"><em>5.4- Le PHP</em></div>
-<div class="line"><em>5.5- Le Javascript, dans footer.php</em></div>
-<div class="line"><em>5.6 -Comme pour les autres pages</em></div>
-<div class="line"><em>5.7- Affichage d’une icône sur la page d’accueil</em></div>
-<div class="line"><em>5.8 - Améliorations utiles</em></div>
-<div class="line"><em>5.8.1- la mise en marche automatiquement de l’alarme de nuit</em></div>
-<div class="line"><em>5.8.1.1 Dans Domoticz</em></div>
-<div class="line"><em>5.8.1.2 Dans Monitor</em></div>
-<div class="line"><em>5.8.2 – Alarme par sms GSM (si un modem GSM installé)</em></div>
-<div class="line"><em>5.8.2.1 Version avec une variable Domoticz</em></div>
-<div class="line"><em>5.8.2.1.1 modification du script qui assure la liaison avec le modem</em>
-<em>5.8.2.1.2 aperçus</em></div>
-<div class="line"><em>5.8.2.2 Version sans variable Domoticz</em></div>
-<div class="line"><em>5.8.2.3- Option supplémentaire : bouton de test du modem GSM</em> <em>5.8.3-
-Affichage de la liste des caméras Modect</em></div>
-<div class="line"><em>5.8.5- Copie écran de la dernière version</em></div>
-<div class="line"><em>5.8.5.1 refontes du programme en utilisant des tables</em></div>
-</div>
-<div class="line-block">
-<div class="line"><em>6. – GRAHIQUES &amp; BASE DE DONNEES</em></div>
-<div class="line"><em>6.1 Les table SQL</em></div>
-<div class="line"><em>6.2 Dans Domoticz</em></div>
-<div class="line"><em>6.3 Sur le serveur de la base de données</em></div>
-<div class="line"><em>6.4 Dans Monitor</em></div>
-<div class="line"><em>6.4.1 la page graphique.php</em></div>
-<div class="line"><em>6.4.2 la fonction graph</em></div>
-<div class="line"><em>6.4.3 autres fichiers PHP</em></div>
-<div class="line"><em>6.4.4 copies d’écran</em></div>
-<div class="line"><em>7. – MUR de CAMERAS</em></div>
-<div class="line"><em>7.1- les pages index_loc.php, header.php, entete_html.php</em></div>
-<div class="line"><em>7.2- la page de monitor : mur_cam.php</em></div>
-<div class="line"><em>7.3- Les scripts Javascript pour la vidéo dans footer.php</em></div>
-<div class="line"><em>7.4- Ajouter une caméra</em></div>
-<div class="line"><em>8.- MUR de COMMANDES ON/OFF</em></div>
-<div class="line"><em>8.1 les fichiers de base</em></div>
-<div class="line"><em>8.1.1 écriture automatique du javascript</em></div>
-<div class="line"><em>8.2- mur_inter.php</em></div>
-<div class="line"><em>8.2.1 Exemple pour éclairage jardin</em></div>
-<div class="line"><em>8.2.2 Exemple pour arrosage jardin</em></div>
-<div class="line"><em>8.8.3 - Exemple éclairage simple, une lampe de salon</em></div>
-<div class="line"><em>8.2.4 - Exemple volet roulant</em></div>
-<div class="line"><em>8.2.4 .1 Affichage dans monitor</em></div>
-<div class="line"><em>8.2.4 .2 Dans le mur ON/OFF</em></div>
-<div class="line"><em>8.2.4.3 le script JS</em></div>
-<div class="line"><em>8.2.4.3.1 avec Ajax et PHP</em></div>
-<div class="line"><em>8.2.4.3.2 avec MQTT</em></div>
-<div class="line"><em>9. – Dispositifs Zigbee</em></div>
-<div class="line"><em>9.1 accès distant</em></div>
-<div class="line"><em>10. – Dispositifs Zwave</em></div>
-<div class="line"><em>10.1 Accès distant</em></div>
-<div class="line"><em>11.- MONITORING Nagios</em></div>
-<div class="line"><em>11.1 accès distant</em></div>
-<div class="line"><em>11.2 Supprimer affichage « YouTube »</em></div>
-<div class="line"><em>12. - FICHIERS LOG Domoticz, Nagios, SQL</em></div>
-<div class="line"><em>12.1 AJOUT SQL</em></div>
-<div class="line"><em>12.1.1 Edition de l’historique du ramassage des poubelles</em></div>
-<div class="line"><em>12.1.2 Ajout d’une icône à l’historique des poubelles</em></div>
-<div class="line"><em>13. – APPLICATIONS externes en lien avec Domoticz ou monitor</em></div>
-<div class="line"><em>13.1 Affichage des notifications sur un téléviseur LG</em></div>
-<div class="line"><em>13.2 Portier Dahua VTO 2000 et VTO 2022</em></div>
-<div class="line"><em>13.2.1 VTO 2000A</em></div>
-<div class="line"><em>13.3 -La boite aux lettres</em></div>
-<div class="line"><em>13.4 Surveillance du PI par Domoticz</em></div>
-<div class="line"><em>13.5- Capteur de pression -chaudière</em></div>
-<div class="line"><em>13.5.1 l’image SVG</em> :</div>
-<div class="line"><em>13.5.2 Dans Domoticz, le capteur, le plan, les variables et les
-scripts</em> <em>13.5.3 Dans la Base de données SQL</em></div>
-<div class="line"><em>13.5.4 Styles CSS</em></div>
-<div class="line"><em>13.6- SMS réception et émission</em></div>
-<div class="line"><em>13.6.1 réception SMS</em></div>
-<div class="line"><em>13.6.2 émission SMS</em></div>
-</div>
-<div class="line-block">
-<div class="line"><em>13.6.2.1 Enregistrement des n° de téléphone</em></div>
-<div class="line"><em>13.7- afficher les données du compteur Linky</em></div>
-<div class="line"><em>13.7.1 enregistrement dans la BD SQL</em></div>
-<div class="line"><em>14. - ADMINISTRATION</em></div>
-<div class="line"><em>14.1- fichiers communs à toutes les pages</em></div>
-<div class="line"><em>14.2- admin.php, test_db.php et backup_bd.php</em></div>
-<div class="line"><em>14.3- le javascript</em></div>
-<div class="line"><em>14.4- fonction PHP</em></div>
-<div class="line"><em>14.5 - Téléchargement d’un fichier externe dans Domoticz</em></div>
-<div class="line"><em>14.6 - Copies d’écran</em></div>
-<div class="line"><em>14.7 Explications concernant l’importation distantes d’un tableau
-LUA</em></div>
-<div class="line"><em>14.8 Explications concernant la mise à jour automatique SQL des
-variables et dispositifs</em> <em>14.9 Explications concernant l’affichage
-des infos de la page admin.php</em></div>
-<div class="line"><em>14.10 Commandes ssh2 PC distant (ici un RPI) depuis monitor</em></div>
-<div class="line"><em>14.10.1 reboot PC (ou RPI)</em></div>
-<div class="line"><em>14.10.2 commandes scp pour l’envoi ou la réception de fichiers
-distants 15. - EXEMPLES</em></div>
-<div class="line"><em>15.1- ajout d’un dispositif</em></div>
-<div class="line"><em>15.1.1- Modifier l’image</em></div>
-<div class="line"><em>15.1.2 Dans la Base de données SQL</em></div>
-<div class="line"><em>15.1.3 Dans le fichier PHP de l’image</em></div>
-<div class="line"><em>15.2- Réinitialisation des dispositifs dans Domoticz</em></div>
-<div class="line"><em>16. – Ajouter des pages ou des alertes non incluses dans le
-programme</em></div>
-<div class="line"><em>16.1 – Ajouter un plan (ex : 1</em>er <em>étage)</em></div>
-<div class="line"><em>16.2 - Une page vierge, affichage d’un sous domaine distant</em></div>
-<div class="line"><em>16. 3 – Ajouter une alerte, une alarme,….</em></div>
-</div>
-<div class="line-block">
-<div class="line"><em>16.3.1 Exemple avec un rappel pour la prise de médicaments sur la
-page d’accueil 17.- DIY</em></div>
-<div class="line"><em>17. 1 – Domotiser un SPA (ou une piscine)</em></div>
-<div class="line"><em>17.1.1. – Création de capteurs virtuels dans Domoticz</em></div>
-<div class="line"><em>17.1.2. – Création des tables PH, Redox, temp, .. ; dans la base de
-données</em> <em>17.1.3. – Envoi des données à la BD de monitor par Domoticz</em></div>
-<div class="line"><em>17.1.4. – Affichage dans Monitor</em></div>
-<div class="line"><em>17.1.4.1 la première page spa.php</em></div>
-<div class="line"><em>17.1.4.2 mises à jour ajax pour le 2eme écran de la page spa.php</em>
-<em>17.1.4.3 ajouts d’un ID dans l’image svg pour 3eme écran</em></div>
-<div class="line"><em>17.1.4.4 ajouts d’autres pages</em></div>
-<div class="line"><em>18. - Divers</em></div>
-<div class="line"><em>18.1 Debian : Installer un serveur LAMP (Apache MySQL PHP)</em></div>
-<div class="line"><em>18.2 Installer Paho-mqtt</em></div>
-<div class="line"><em>18.2.1 Le script pour envoyer des messages (mqtt.py)</em></div>
-<div class="line"><em>18.3 Liaison série Domoticz-PI</em></div>
-</div>
-<blockquote>
-<div><p><em>18.4 Commandes de l’alarme à partir d’un GSM</em></p>
-<p><em>18.5 Données compteur Linky</em></p>
-<p><em>18.6 Complément sur l’utilisation des Mots de Passe cryptés dans
-Domoticz</em> <em>18.7 pages sans rapport avec la domotique</em></p>
-<p><em>18.7.1 Les recettes de cuisines sur la tablette domotique</em></p>
-<p><em>18.8 migrations de Domoticz différentes étapes pour ne rien oublier</em></p>
-</div></blockquote>
-<p><em>19. – UPDATE PHP 8.2</em></p>
-<p><em>20. – Résolution de problèmes</em></p>
-<blockquote>
-<div><p><em>20.1 concernant les variables</em></p>
-</div></blockquote>
-<div class="line-block">
-<div class="line"><em>21. – Mon installation</em></div>
-<div class="line"><em>21.1 Proxmox</em></div>
-<div class="line"><em>21.1.1 installation de VM ou CT par l’interface graphique : IP :8006</em>
-<em>21.1.2 installation automatique de VM ou CT</em></div>
-<div class="line"><em>21.1.3 installation automatique d’un conteneur LXC, LEMP &amp; Monitor</em>
-<em>21.1.4 Aperçu des VM et CT installés</em></div>
-<div class="line"><em>21.2 Domoticz</em></div>
-<div class="line"><em>21.3 Zwave</em></div>
-<div class="line"><em>21.4 Zigbee</em></div>
-<div class="line"><em>21.5 Asterisk (sip)</em></div>
-<div class="line"><em>21.6 MQTT (mosquito)</em></div>
-<div class="line"><em>21.7 Zoneminder</em></div>
-<div class="line"><em>21.8 Plex</em></div>
-<div class="line"><em>21.9 Raspberry PI4</em></div>
-<div class="line"><em>21.9.1 Résolution de problèmes</em></div>
-<div class="line"><em>21.9.1.1 cannot-open-access-to-console-the-root-account-is-locked</em>
-<em>21.10 Home Assistant</em></div>
-</div>
-<blockquote>
-<div><p><strong>0._Infos pour bien débuter</strong></p>
+<dl>
+<dt>:doc:’sommaire’</dt><dd><p><strong>0._Infos pour bien débuter</strong></p>
 <p><strong>0.1Prérequis, installation :</strong> différents choix</p>
 <ul class="simple">
 <li><p>Après <em>l’installation de Proxmox :</em></p></li>
@@ -329,7 +81,8 @@ install.sh :</div>
 <p>Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 chmod +x create_ct_lxc_monitor.sh</p>
 <a class="reference internal image-reference" href="_images/image4.webp"><img alt="_images/image4.webp" src="_images/image4.webp" style="width: 3.42778in; height: 0.30278in;" /></a>
-</div></blockquote>
+</dd>
+</dl>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 100%" />
