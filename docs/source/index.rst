@@ -7,7 +7,8 @@ Monitor-domotique Documentation
 ========================================
 
 .. toctree::
-        :hidden:
+    :hidden:
+    :maxdepth: 2
 
         source/guides/modifications
         source/guides/sommaire
