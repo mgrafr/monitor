@@ -6,9 +6,9 @@
        
 
 
-| |image1| **Logiciel monitor version 2.2.0** *maj manuel 2.2.1 du
+ |image1| **Logiciel monitor version 2.2.0** *maj manuel 2.2.1 du
   27/07/2023*
-| **Compatible Domoticz & Home assistant**
+ **Compatible Domoticz & Home assistant**
 
 **Dernières modifications :**
 
