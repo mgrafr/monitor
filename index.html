@@ -31,13 +31,32 @@
           <div class="body" role="main">
             
   <div class="line-block">
-<div class="line"><a class="reference internal" href="media/image1.webp"><img alt="image1" src="media/image1.webp" style="width: 0.27917in; height: 0.27917in;" /></a> <strong>Logiciel monitor version 2.2.0</strong> <em>maj manuel 2.2.1 du
+<div class="line"><a class="reference internal" href="media/image1.png"><img alt="image1" src="media/image1.png" style="width: 0.27917in; height: 0.27917in;" /></a> <strong>Logiciel monitor version 2.2.0</strong> <em>maj manuel 2.2.1 du
 27/07/2023</em></div>
 <div class="line"><strong>Compatible Domoticz &amp; Home assistant</strong></div>
 </div>
 <p><strong>Dernières modifications :</strong></p>
-<p><a href="#id1"><span class="problematic" id="id2">|</span></a><span class="xref std std-doc">guides/modifications</span></p>
-<p><a class="reference internal" href="_images/image2.webp"><img alt="image2" src="_images/image2.webp" style="width: 0.64583in; height: 0.61389in;" /></a> Tous les fichiers sont sur Github :</p>
+<div class="line-block">
+<div class="line">Version 2.1</div>
+<div class="line">31/03/2023 : début de l’adaptabilité à Home Assistant, l’affichages
+des valeurs des dispositifs, l’utilisation des variables et la
+commande de switches virtuels sont opérationnelles.</div>
+</div>
+<div class="line-block">
+<div class="line">13/04/2023 : ajout certificat auto-signé pour Nginx</div>
+<div class="line">01/05/2023 : ajout reboot serveur distant et scp pour fichiers
+distants</div>
+<div class="line">05/05/2023 : maj automatique des IP lors de changements de serveurs</div>
+<div class="line">20/05/2023 : scripts automatiques d’installation</div>
+<div class="line">01/07/2023 : 3 scripts différents d’installation et version 2.1
+(update vers Debian 12) 20/07/2023 : explication concernant l’envoi
+par Domoticz de SMS</div>
+<div class="line">Version 2.2</div>
+<div class="line">26/07/2023 : suite à la modification de l’API Domoticz (devices
+remplacé par getdevices), ……………………..mise à jour de fonctions.php</div>
+<div class="line">26/07/2023 : accès shell Domoticz-Docker avec SSH2</div>
+</div>
+<p><a class="reference internal" href="media/image2.png"><img alt="image2" src="media/image2.png" style="width: 0.64583in; height: 0.61389in;" /></a> Tous les fichiers sont sur Github :</p>
 <div class="line-block">
 <div class="line"><strong>Sommaire :</strong></div>
 <div class="line"><em>0._Infos pour bien débuter</em></div>
@@ -748,7 +767,7 @@ passer par monitor.</p>
 <a class="reference internal image-reference" href="media/image80.png"><img alt="media/image80.png" src="media/image80.png" style="width: 6.30139in; height: 0.41667in;" /></a>
 <p>Dans SQL :</p>
 <a class="reference internal image-reference" href="media/image81.png"><img alt="media/image81.png" src="media/image81.png" style="width: 3.63611in; height: 1.89583in;" /></a>
-<p>Ou par Monitor : <a class="reference internal" href="_images/image82.webp"><img alt="image3" src="_images/image82.webp" style="width: 3.08333in; height: 0.30139in;" /></a></p>
+<p>Ou par Monitor : <a class="reference internal" href="media/image82.png"><img alt="image3" src="media/image82.png" style="width: 3.08333in; height: 0.30139in;" /></a></p>
 <blockquote>
 <div><a class="reference internal image-reference" href="media/image83.png"><img alt="media/image83.png" src="media/image83.png" style="width: 3.3125in; height: 4.05556in;" /></a>
 </div></blockquote>
@@ -1396,7 +1415,7 @@ fichier est choisi par la</p>
 <div class="line">- Lexique.php</div>
 </div>
 <a class="reference internal image-reference" href="media/image176.png"><img alt="media/image176.png" src="media/image176.png" style="width: 5.5625in; height: 3.59167in;" /></a>
-<p>Pour ne pas utiliser de lexique et donc de supprimer l’icône : <a class="reference internal" href="media/image177.webp"><img alt="image4" src="media/image177.webp" style="width: 0.6875in; height: 0.61389in;" /></a></p>
+<p>Pour ne pas utiliser de lexique et donc de supprimer l’icône : <a class="reference internal" href="media/image177.png"><img alt="image4" src="media/image177.png" style="width: 0.6875in; height: 0.61389in;" /></a></p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Supprimer ou mettre en commentaire</p></li>
@@ -1920,7 +1939,7 @@ class pour tout le site… la</p>
 <p>construction est plus longue et là aussi il faut le faire depuis le
 début</p>
 <blockquote>
-<div><p><a class="reference internal" href="media/image259.webp"><img alt="image5" src="media/image259.webp" style="width: 0.54306in; height: 0.11389in;" /></a><a class="reference internal" href="media/image259.webp"><img alt="image6" src="media/image259.webp" style="width: 0.54167in; height: 0.11389in;" /></a></p>
+<div><p><a class="reference internal" href="media/image259.png"><img alt="image5" src="media/image259.png" style="width: 0.54306in; height: 0.11389in;" /></a><a class="reference internal" href="media/image259.png"><img alt="image6" src="media/image259.png" style="width: 0.54167in; height: 0.11389in;" /></a></p>
 <a class="reference internal image-reference" href="media/image260.png"><img alt="media/image260.png" src="media/image260.png" style="width: 2.19722in; height: 2.675in;" /></a>
 </div></blockquote>
 <div class="line-block">
@@ -1929,7 +1948,7 @@ début</p>
 png avec Autotracer Les icones que j’ai choisies : contact d’ouverture
 de porte et détecteur de présence</div>
 </div>
-<p><strong>3</strong> <a class="reference internal" href="media/image261.webp"><img alt="image7" src="media/image261.webp" style="width: 1.78194in; height: 1.75972in;" /></a></p>
+<p><strong>3</strong> <a class="reference internal" href="media/image261.png"><img alt="image7" src="media/image261.png" style="width: 1.78194in; height: 1.75972in;" /></a></p>
 <div class="line-block">
 <div class="line">4Pour les textes il suffit par exemple d’ajouter « tmp » qui sera en
 javascript remplacé par la température enregistrée par le dispositif</div>
@@ -1967,7 +1986,7 @@ construction de l’image</p>
 <blockquote>
 <div><p>Ajout de l’icône avec Inkscape :</p>
 </div></blockquote>
-<p><a class="reference internal" href="media/image274.webp"><img alt="image8" src="media/image274.webp" style="width: 1.98056in; height: 2.36389in;" /></a><a class="reference internal" href="media/image275.webp"><img alt="image9" src="media/image275.webp" style="width: 3.88194in; height: 1.72083in;" /></a></p>
+<p><a class="reference internal" href="media/image274.png"><img alt="image8" src="media/image274.png" style="width: 1.98056in; height: 2.36389in;" /></a><a class="reference internal" href="media/image275.png"><img alt="image9" src="media/image275.png" style="width: 3.88194in; height: 1.72083in;" /></a></p>
 <p>Dans les paramètres de l’objet on a ajouté :</p>
 <blockquote>
 <div><p>Un href, un id, un titre et un onclick avec un id (idm ou idx) ;
@@ -2197,7 +2216,7 @@ créé (variables Domoticz et SQL, images svg, …</p>
 <div><p>Sur la page d’accueil</p>
 <a class="reference internal image-reference" href="media/image332.png"><img alt="media/image332.png" src="media/image332.png" style="width: 1.85694in; height: 1.12639in;" /></a>
 <p>Sur la page des dispositifs</p>
-<p><a class="reference internal" href="media/image333.webp"><img alt="image10" src="media/image333.webp" style="width: 1.84444in; height: 1.59306in;" /></a> <a class="reference internal" href="media/image334.webp"><img alt="image11" src="media/image334.webp" style="width: 3.28056in; height: 0.82222in;" /></a></p>
+<p><a class="reference internal" href="media/image333.png"><img alt="image10" src="media/image333.png" style="width: 1.84444in; height: 1.59306in;" /></a> <a class="reference internal" href="media/image334.png"><img alt="image11" src="media/image334.png" style="width: 3.28056in; height: 0.82222in;" /></a></p>
 </div></blockquote>
 <a class="reference internal image-reference" href="media/image335.png"><img alt="media/image335.png" src="media/image335.png" style="width: 3.94861in; height: 4.60417in;" /></a>
 <p>En plus d’une gestion globale, un cercle clignotant indique que la pile
@@ -2209,7 +2228,7 @@ devra être remplacée</p>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image336.webp"><img alt="image12" src="media/image336.webp" style="width: 6.26111in; height: 4.0625in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image336.png"><img alt="image12" src="media/image336.png" style="width: 6.26111in; height: 4.0625in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -2263,7 +2282,7 @@ maison, les lampe de jardin</div>
 <a class="reference internal image-reference" href="media/image349.png"><img alt="media/image349.png" src="media/image349.png" style="width: 2.59444in; height: 1.60417in;" /></a>
 <p><strong>2.3.6.2 Le capteur dans la BD :</strong></p>
 <a class="reference internal image-reference" href="media/image350.png"><img alt="media/image350.png" src="media/image350.png" style="width: 6.26806in; height: 0.3625in;" /></a>
-<p>On a choisi de limiter le nb de caractère à 4, à l’origine : <a class="reference internal" href="media/image351.webp"><img alt="image13" src="media/image351.webp" style="width: 0.96805in; height: 0.375in;" /></a></p>
+<p>On a choisi de limiter le nb de caractère à 4, à l’origine : <a class="reference internal" href="media/image351.png"><img alt="image13" src="media/image351.png" style="width: 0.96805in; height: 0.375in;" /></a></p>
 <div class="line-block">
 <div class="line"><strong>2.3.6.3 Le capteur dans Monitor :</strong></div>
 <div class="line"><strong>L’image :</strong></div>
@@ -2433,9 +2452,9 @@ demander un token gratuit.</strong></p>
 <col style="width: 25%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image382.webp"><img alt="image14" src="media/image382.webp" style="width: 0.97361in; height: 0.81111in;" /></a></p></th>
-<th class="head"><p><a class="reference internal" href="media/image383.webp"><img alt="image15" src="media/image383.webp" style="width: 0.97083in; height: 0.91528in;" /></a></p></th>
-<th class="head"><p><a class="reference internal" href="media/image384.webp"><img alt="image16" src="media/image384.webp" style="width: 0.96805in; height: 1.29167in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image382.png"><img alt="image14" src="media/image382.png" style="width: 0.97361in; height: 0.81111in;" /></a></p></th>
+<th class="head"><p><a class="reference internal" href="media/image383.png"><img alt="image15" src="media/image383.png" style="width: 0.97083in; height: 0.91528in;" /></a></p></th>
+<th class="head"><p><a class="reference internal" href="media/image384.png"><img alt="image16" src="media/image384.png" style="width: 0.96805in; height: 1.29167in;" /></a></p></th>
 <th class="head"><blockquote>
 <div></div></blockquote>
 <p>vertopal_6e277a
@@ -2834,7 +2853,7 @@ téléchargées ; l’icône png de Domoticz a été convertie en svg.</p>
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image445.webp"><img alt="image17" src="media/image445.webp" style="width: 1.54306in; height: 1.6875in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image445.png"><img alt="image17" src="media/image445.png" style="width: 1.54306in; height: 1.6875in;" /></a></p></th>
 <th class="head"><blockquote>
 <div></div></blockquote>
 <p>:: vertopal_6e277aed4
@@ -3066,7 +3085,7 @@ certaines</p>
 </ul>
 </div></blockquote>
 <ul>
-<li><p><a class="reference internal" href="media/image481.webp"><img alt="image19" src="media/image481.webp" style="width: 2.46389in; height: 1.41528in;" /></a><a class="reference internal" href="media/image482.webp"><img alt="image20" src="media/image482.webp" style="width: 3.24028in; height: 1.19861in;" /></a></p>
+<li><p><a class="reference internal" href="media/image481.png"><img alt="image19" src="media/image481.png" style="width: 2.46389in; height: 1.41528in;" /></a><a class="reference internal" href="media/image482.png"><img alt="image20" src="media/image482.png" style="width: 3.24028in; height: 1.19861in;" /></a></p>
 <p>On ajout le switch au plan</p>
 <a class="reference internal image-reference" href="media/image483.png"><img alt="media/image483.png" src="media/image483.png" style="width: 5.69722in; height: 1.9875in;" /></a>
 <a class="reference internal image-reference" href="media/image484.png"><img alt="media/image484.png" src="media/image484.png" style="width: 5.06389in; height: 2.99028in;" /></a>
@@ -3310,8 +3329,8 @@ utilisé dans « administration »</p>
 </div>
 </th>
 <th class="head"><p>Jpgraph est installé avec le
-cache <a class="reference internal" href="media/image526.webp"><img alt="image21" src="media/image526.webp" style="width: 2.1875in; height: 0.24028in;" /></a></p>
-<p>php-gd est installé <a class="reference internal" href="media/image527.webp"><img alt="image22" src="media/image527.webp" style="width: 3.50972in; height: 0.27083in;" /></a></p>
+cache <a class="reference internal" href="media/image526.png"><img alt="image21" src="media/image526.png" style="width: 2.1875in; height: 0.24028in;" /></a></p>
+<p>php-gd est installé <a class="reference internal" href="media/image527.png"><img alt="image22" src="media/image527.png" style="width: 3.50972in; height: 0.27083in;" /></a></p>
 <p>la bibliothèque python fabric
 est importé</p>
 <p>le module python
@@ -3927,7 +3946,7 @@ mise à jour</strong></p>
 <a class="reference internal image-reference" href="media/image612.png"><img alt="media/image612.png" src="media/image612.png" style="width: 6.26111in; height: 2.19722in;" /></a>
 <p>Exemple : Image lampe_bureau.svg</p>
 <a class="reference internal image-reference" href="media/image613.png"><img alt="media/image613.png" src="media/image613.png" style="width: 0.85556in; height: 0.80278in;" /></a>
-<p>Image lampe: <a class="reference internal" href="media/image614.webp"><img alt="image23" src="media/image614.webp" style="width: 0.52083in; height: 0.67778in;" /></a></p>
+<p>Image lampe: <a class="reference internal" href="media/image614.png"><img alt="image23" src="media/image614.png" style="width: 0.52083in; height: 0.67778in;" /></a></p>
 <a class="reference internal image-reference" href="media/image615.png"><img alt="media/image615.png" src="media/image615.png" style="width: 6.06389in; height: 8.10556in;" /></a>
 <a class="reference internal image-reference" href="media/image616.png"><img alt="media/image616.png" src="media/image616.png" style="width: 5.35556in; height: 6.58333in;" /></a>
 <p>La base de données « monitor » (aussi appelée domoticz), table
@@ -4555,7 +4574,7 @@ l’ESP pour une communication MQTT</p></th>
 </tr>
 </tbody>
 </table>
-<p><a class="reference internal" href="media/image721.webp"><img alt="image24" src="media/image721.webp" style="width: 0.89306in; height: 0.9666in;" /></a><a class="reference internal" href="media/image722.webp"><img alt="image25" src="media/image722.webp" style="width: 0.89583in; height: 0.96875in;" /></a><a class="reference internal" href="media/image723.webp"><img alt="image26" src="media/image723.webp" style="width: 6.5in; height: 0.29081in;" /></a><a class="reference internal" href="media/image724.webp"><img alt="image27" src="media/image724.webp" style="width: 6.34722in; height: 9.5in;" /></a></p>
+<p><a class="reference internal" href="media/image721.png"><img alt="image24" src="media/image721.png" style="width: 0.89306in; height: 0.9666in;" /></a><a class="reference internal" href="media/image722.png"><img alt="image25" src="media/image722.png" style="width: 0.89583in; height: 0.96875in;" /></a><a class="reference internal" href="media/image723.png"><img alt="image26" src="media/image723.png" style="width: 6.5in; height: 0.29081in;" /></a><a class="reference internal" href="media/image724.png"><img alt="image27" src="media/image724.png" style="width: 6.34722in; height: 9.5in;" /></a></p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -4629,7 +4648,7 @@ function () {</div>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image725.webp"><img alt="image28" src="media/image725.webp" style="width: 6.49583in; height: 4.36944in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image725.png"><img alt="image28" src="media/image725.png" style="width: 6.49583in; height: 4.36944in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -4683,7 +4702,7 @@ dispositifs » :</p></td>
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image729.webp"><img alt="image29" src="media/image729.webp" style="width: 6.30139in; height: 2.82222in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image729.png"><img alt="image29" src="media/image729.png" style="width: 6.30139in; height: 2.82222in;" /></a></p></th>
 <th class="head"></th>
 </tr>
 </thead>
@@ -4701,7 +4720,7 @@ dispositifs » :</p></td>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image730.webp"><img alt="image30" src="media/image730.webp" style="width: 6.49583in; height: 1.27917in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image730.png"><img alt="image30" src="media/image730.png" style="width: 6.49583in; height: 1.27917in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -4898,7 +4917,7 @@ a7229da055806a/media/image737.png</p>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image738.webp"><img alt="image31" src="media/image738.webp" style="width: 6.26806in; height: 3.55556in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image738.png"><img alt="image31" src="media/image738.png" style="width: 6.26806in; height: 3.55556in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5037,7 +5056,7 @@ graphique ,….</div>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image744.webp"><img alt="image32" src="media/image744.webp" style="width: 6.26806in; height: 1.80694in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image744.png"><img alt="image32" src="media/image744.png" style="width: 6.26806in; height: 1.80694in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5069,7 +5088,7 @@ suivant</p>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image745.webp"><img alt="image33" src="media/image745.webp" style="width: 6.26806in; height: 5.675in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image745.png"><img alt="image33" src="media/image745.png" style="width: 6.26806in; height: 5.675in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5289,7 +5308,7 @@ supprimer les dernières lignes &lt;rect et &lt;text et modifier les ID
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image748.webp"><img alt="image34" src="media/image748.webp" style="width: 6.26806in; height: 1.95694in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image748.png"><img alt="image34" src="media/image748.png" style="width: 6.26806in; height: 1.95694in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5302,7 +5321,7 @@ supprimer les dernières lignes &lt;rect et &lt;text et modifier les ID
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image750.webp"><img alt="image35" src="media/image750.webp" style="width: 6.26806in; height: 2.40417in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image750.png"><img alt="image35" src="media/image750.png" style="width: 6.26806in; height: 2.40417in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5335,7 +5354,7 @@ scripts</strong></p></th>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image753.webp"><img alt="image36" src="media/image753.webp" style="width: 6.26528in; height: 0.99861in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image753.png"><img alt="image36" src="media/image753.png" style="width: 6.26528in; height: 0.99861in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5384,7 +5403,7 @@ récupérées dans un fichier json</p></th>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image756.webp"><img alt="image37" src="media/image756.webp" style="width: 3.04444in; height: 2.61528in;" /></a><a class="reference internal" href="media/image757.webp"><img alt="image38" src="media/image757.webp" style="width: 2.90694in; height: 2.08333in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image756.png"><img alt="image37" src="media/image756.png" style="width: 3.04444in; height: 2.61528in;" /></a><a class="reference internal" href="media/image757.png"><img alt="image38" src="media/image757.png" style="width: 2.90694in; height: 2.08333in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5401,7 +5420,7 @@ récupérées dans un fichier json</p></th>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image758.webp"><img alt="image39" src="media/image758.webp" style="width: 6.26806in; height: 5.58194in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image758.png"><img alt="image39" src="media/image758.png" style="width: 6.26806in; height: 5.58194in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5524,7 +5543,7 @@ uservariables[‘pression-</div>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image760.webp"><img alt="image40" src="media/image760.webp" style="width: 6.30139in; height: 4.30694in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image760.png"><img alt="image40" src="media/image760.png" style="width: 6.30139in; height: 4.30694in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5552,7 +5571,7 @@ et enverra une notification par mail et sms</p></th>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image762.webp"><img alt="image41" src="media/image762.webp" style="width: 6.26806in; height: 0.82917in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image762.png"><img alt="image41" src="media/image762.png" style="width: 6.26806in; height: 0.82917in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5597,7 +5616,7 @@ domoticz.LOG_INFO) if
 txt=tostring(domoticz.variables(‘pression-chaudiere’).value)</div>
 <div class="line">domoticz.variables(‘pression-chaudiere’).set(‘pression_basse’)</div>
 <div class="line">print(“envoi SMS pression-chaudiere”)</div>
-<div class="line">alerte_gsm(‘<a href="#id13"><span class="problematic" id="id14">alarme_</span></a>’..txt)</div>
+<div class="line">alerte_gsm(‘<a href="#id11"><span class="problematic" id="id12">alarme_</span></a>’..txt)</div>
 <div class="line">end</div>
 </div>
 </th>
@@ -5745,7 +5764,7 @@ smartphone</strong></p>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image767.webp"><img alt="image42" src="media/image767.webp" style="width: 5.94722in; height: 7.52083in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image767.png"><img alt="image42" src="media/image767.png" style="width: 5.94722in; height: 7.52083in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5779,7 +5798,7 @@ smartphone</strong></p>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image770.webp"><img alt="image43" src="media/image770.webp" style="width: 6.26806in; height: 2.62639in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image770.png"><img alt="image43" src="media/image770.png" style="width: 6.26806in; height: 2.62639in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -5974,7 +5993,7 @@ notifications_devices et notifications_variables)</p></th>
 <col style="width: 100%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image776.webp"><img alt="image44" src="media/image776.webp" style="width: 6.30139in; height: 2.99306in;" /></a></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="media/image776.png"><img alt="image44" src="media/image776.png" style="width: 6.30139in; height: 2.99306in;" /></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -6024,7 +6043,7 @@ connect.py et connect.js</p>
 <tr class="row-odd"><th class="head"><blockquote>
 <div><div class="line-block">
 <div class="line">Importer sur Github le fichier complet :</div>
-<div class="line"><a href="#id3"><span class="problematic" id="id4">*</span></a><a class="reference external" href="https://raw.git">https://raw.git</a></div>
+<div class="line"><a href="#id1"><span class="problematic" id="id2">*</span></a><a class="reference external" href="https://raw.git">https://raw.git</a></div>
 </div>
 </div></blockquote>
 <p>hubusercontent.com/mgrafr/monitor/main/share/scripts_dz/py/sms_dz.py*</p>
@@ -6057,7 +6076,7 @@ sms_dz.service</p></th>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><blockquote>
-<div><p><a href="#id5"><span class="problematic" id="id6">*</span></a><a class="reference external" href="https://raw.github">https://raw.github</a></p>
+<div><p><a href="#id3"><span class="problematic" id="id4">*</span></a><a class="reference external" href="https://raw.github">https://raw.github</a></p>
 </div></blockquote>
 <dl class="simple">
 <dt>usercontent.com/mgrafr/monitor/main/share/debian/systemd/system/sms_d</dt><dd><p>z.service*</p>
@@ -6380,9 +6399,9 @@ variable est mise à 0 jusqu’à une prochaine modification du fichier.</div>
 activée, c’est le même script qui est utilisé, la variable « upload »
 est alors passé à 2</p>
 </div></blockquote>
-<p>La variable <a class="reference internal" href="media/image810.webp"><img alt="image45" src="media/image810.webp" style="width: 0.47917in; height: 0.45833in;" /></a></p>
+<p>La variable <a class="reference internal" href="media/image810.png"><img alt="image45" src="media/image810.png" style="width: 0.47917in; height: 0.45833in;" /></a></p>
 <a class="reference internal image-reference" href="media/image811.png"><img alt="media/image811.png" src="media/image811.png" style="width: 6.26806in; height: 0.72083in;" /></a>
-<p>Le script :<a class="reference internal" href="media/image810.webp"><img alt="image46" src="media/image810.webp" style="width: 0.47917in; height: 0.45833in;" /></a></p>
+<p>Le script :<a class="reference internal" href="media/image810.png"><img alt="image46" src="media/image810.png" style="width: 0.47917in; height: 0.45833in;" /></a></p>
 <a class="reference internal image-reference" href="media/image812.png"><img alt="media/image812.png" src="media/image812.png" style="width: 6.26806in; height: 5.79306in;" /></a>
 <p>Les fonctions wajax() et yajax() dans mes_js.js</p>
 <table class="docutils align-default">
@@ -7006,7 +7025,7 @@ div_suiv=”ecran”+num_ecran;div_prec=”ecran”+num_actuel;</div>
 </div>
 </div></blockquote>
 <div class="line-block">
-<div class="line">graph(ecranspa[nbec]+’_spa’,’text_svg’,’<a href="#id15"><span class="problematic" id="id16">graphic_</span></a>’+ecranspa[nbec]);
+<div class="line">graph(ecranspa[nbec]+’_spa’,’text_svg’,’<a href="#id13"><span class="problematic" id="id14">graphic_</span></a>’+ecranspa[nbec]);
 | nbec++;
 | }
 | }
@@ -7213,7 +7232,7 @@ M169,183c-27.6,0-50,10.7-50,24</div>
 <div class="line">s22.4,24,50,24s50-10.7,50-24S196.6,183,169,183L169,183z”/&gt;</div>
 <div class="line">&lt;/g&gt;</div>
 <div class="line">&lt;g&gt;</div>
-<div class="line">&lt;g id=”<a href="#id17"><span class="problematic" id="id18">ecran_suivant_</span></a>” xlink:href=”#spa” onclick=”next_ecran(1)”
+<div class="line">&lt;g id=”<a href="#id15"><span class="problematic" id="id16">ecran_suivant_</span></a>” xlink:href=”#spa” onclick=”next_ecran(1)”
 transform=”matrix(0,-</div>
 <div class="line">1,1,0,28.57143,680.00001)”&gt;</div>
 <div class="line">&lt;path id=”e_suiv”
@@ -7232,7 +7251,7 @@ d=”M493,147.5c0,0.1-19.</div>
 <div class="line-block">
 <div class="line">&lt;/g&gt;</div>
 <div class="line">&lt;g&gt;</div>
-<div class="line">&lt;g id=”<a href="#id19"><span class="problematic" id="id20">ecran_precedent_</span></a>” xlink:href=”#spa”
+<div class="line">&lt;g id=”<a href="#id17"><span class="problematic" id="id18">ecran_precedent_</span></a>” xlink:href=”#spa”
 onclick=”next_ecran(-1)”
 transform=”matrix(0,-1,1,0,28.57143,680.00001)”&gt;</div>
 <div class="line">&lt;path id=”e_prec”
@@ -7574,7 +7593,7 @@ bicarbonate de sodium ou de calcium. On le trouve sous forme liquide</div>
 <a class="reference internal image-reference" href="media/image970.png"><img alt="media/image970.png" src="media/image970.png" style="width: 6.3in; height: 5.74722in;" /></a>
 <a class="reference internal image-reference" href="media/image971.png"><img alt="media/image971.png" src="media/image971.png" style="width: 6.3in; height: 1.53611in;" /></a>
 <p>Dans Domoticz :</p>
-<p><a class="reference internal" href="media/image972.webp"><img alt="image47" src="media/image972.webp" style="width: 4.11528in; height: 1.47778in;" /></a> idx = 285</p>
+<p><a class="reference internal" href="media/image972.png"><img alt="image47" src="media/image972.png" style="width: 4.11528in; height: 1.47778in;" /></a> idx = 285</p>
 <p>Le 2eme relais pour PH moins :</p>
 <a class="reference internal image-reference" href="media/image973.png"><img alt="media/image973.png" src="media/image973.png" style="width: 5.35694in; height: 5.25833in;" /></a>
 <a class="reference internal image-reference" href="media/image974.png"><img alt="media/image974.png" src="media/image974.png" style="width: 5.82361in; height: 1.58333in;" /></a>
@@ -8432,7 +8451,7 @@ vous pouvez exécuter la commande suivante dans pve Shell.</p></th>
 </div>
 </th>
 <th class="head"><blockquote>
-<div><p><a href="#id7"><span class="problematic" id="id8">*</span></a><a class="reference external" href="https://github.co">https://github.co</a></p>
+<div><p><a href="#id5"><span class="problematic" id="id6">*</span></a><a class="reference external" href="https://github.co">https://github.co</a></p>
 </div></blockquote>
 <p>m/StevenSeifried/proxmox-scripts*</p>
 </th>
@@ -8490,7 +8509,7 @@ conteneur, voir le site domo-site.fr</p>
 </td>
 <td><blockquote>
 <div><p>sous Docker, avec Domoticz :
-<a href="#id9"><span class="problematic" id="id10">*</span></a><a class="reference external" href="http://">http://</a></p>
+<a href="#id7"><span class="problematic" id="id8">*</span></a><a class="reference external" href="http://">http://</a></p>
 </div></blockquote>
 <p>domo-site.fr/accueil/dossiers/86*</p>
 </td>
@@ -8670,7 +8689,7 @@ cela, dans</p>
 </th>
 <th class="head"><blockquote>
 <div><p>Le monitoring (Nagios) :
-<a href="#id11"><span class="problematic" id="id12">*</span></a><a class="reference external" href="http://">http://</a></p>
+<a href="#id9"><span class="problematic" id="id10">*</span></a><a class="reference external" href="http://">http://</a></p>
 </div></blockquote>
 <p>domo-site.fr/accueil/dossiers/71*</p>
 </th>
