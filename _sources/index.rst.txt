@@ -12,13 +12,13 @@
 
 **Dernières modifications :**
 
-:doc:`guides/modifications`
+:doc:`source/guides/modifications`
 
 |image2| Tous les fichiers sont sur Github :
 
 | **Sommaire :**
 
-:doc:'guides/sommaire'
+:doc:'source/guides/sommaire'
    **0._Infos pour bien débuter**
 
    **0.1Prérequis, installation :** différents choix
