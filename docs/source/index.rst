@@ -10,8 +10,8 @@ Monitor-domotique Documentation
         :hidden:
 
         source/guides/modifications
-        guides/sommaire
-        guides/bien_debuter
+        source/guides/sommaire
+        source/guides/bien_debuter
        
 Github Repository <https://github.com/mgrafr/monitor>`__     
 
