@@ -10,7 +10,7 @@ Monitor-domotique Documentation
     :hidden:
     :maxdepth: 2
 
-.. contents:: Table of Contents
+.. contents:: 
         guides/modifications
         guides/sommaire
         guides/bien_debuter
