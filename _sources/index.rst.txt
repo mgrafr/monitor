@@ -1,4 +1,7 @@
-
+.. figure:: source/media/image1.webp
+    :alt: Monitor Logo
+    :align: center
+    :width: 200px
 
 Monitor-domotique Documentation
 ========================================
