@@ -1,8 +1,8 @@
-/.. toctree::
+//.. toctree::
         :hidden:
 
-        guides/modifications
-        guides/sommaire
+        source/guides/modifications
+        source/guides/sommaire
        
 
 
