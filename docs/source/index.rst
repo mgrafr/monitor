@@ -3,6 +3,7 @@
 
         source/guides/modifications
         source/guides/sommaire
+        source/guides/bien débuter
        
 
 
@@ -18,8 +19,10 @@
 
  **Sommaire :**
 
-:doc:'source/guides/sommaire'
-   **0._Infos pour bien débuter**
+:doc:`source/guides/sommaire`
+  
+:doc:`source/guides/bien debuter`
+**0._Infos pour bien débuter**
 
    **0.1Prérequis, installation :** différents choix
 
