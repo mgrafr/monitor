@@ -20,7 +20,7 @@ Monitor-domotique Documentation
         guides/sommaire
         guides/bien_debuter
        
-Github Repository <https://github.com/mgrafr/monitor>`__     
+Github Repository <https://github.com/mgrafr/monitor>    
 
  |image1| 
 **Logiciel monitor version 2.2.0**
