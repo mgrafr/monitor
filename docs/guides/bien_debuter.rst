@@ -34,8 +34,7 @@ chmod +x create_ct_lxc_monitor.sh
 
 |image4|
 
-.. admonition::
-
+.. note::
 Si des problèmes de lecture existent 
 convertir le fichier en UNIX 
 pour installer do2unix :  apt install dos2unix
