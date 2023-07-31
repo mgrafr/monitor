@@ -580,6 +580,6 @@ Les scripts python
 .. |image4| image:: ../media/image4.webp
    :width: 329px
    :height: 29px
-.. |image6| image:: ../media/image4.webp
+.. |image6| image:: ../media/image6.webp
    :width: 405px
    :height: 104px
