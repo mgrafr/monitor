@@ -22,9 +22,10 @@ Monitor-domotique Documentation
        
 Github Repository <https://github.com/mgrafr/monitor>`__     
 
- |image1| **Logiciel monitor version 2.2.0** *maj manuel 2.2.1 du
-  27/07/2023*
- **Compatible Domoticz & Home assistant**
+ |image1| 
+**Logiciel monitor version 2.2.0**
+*maj manuel 2.2.1 du 27/07/2023*
+**Compatible Domoticz & Home assistant**
 
 **Dernières modifications :**
 
