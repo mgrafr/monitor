@@ -34,10 +34,12 @@ chmod +x create_ct_lxc_monitor.sh
 
 |image4|
 
-.. sidebar::Si des problèmes de lecture existent, 
-convertir le fichier en UNIX 
-– installer do2unix :  apt install dos2unix
-	o	commande : dos2unix NOM_FICHIER (ex : dos2unix lemp_install.sh)
+.. admonition::
+
+|Si des problèmes de lecture existent, 
+|convertir le fichier en UNIX 
+|pour installer do2unix :  apt install dos2unix
+|commande : dos2unix NOM_FICHIER (ex : dos2unix lemp_install.sh)
 
 
 Installation : ./create_ct_lxc_monitor.sh
