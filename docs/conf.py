@@ -32,3 +32,8 @@ html_short_title = "Monitor"
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 html_logo = "images/logo.png"
+# source_suffix = ['.rst', '.md']
+source_suffix = '.rst'
+
+# The master toctree document.
+master_doc = 'index'
