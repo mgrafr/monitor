@@ -27,7 +27,7 @@ html_theme_path = ["_themes", ]
 html_title = "Monitor"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = Monitor"
+html_short_title = "Monitor"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
