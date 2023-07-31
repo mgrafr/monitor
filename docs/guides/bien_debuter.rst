@@ -45,7 +45,7 @@ chmod +x create_ct_lxc_monitor.sh
 
 Installation : ./create_ct_lxc_monitor.sh
  
- 
+ |image6|
  
  
 
@@ -580,3 +580,6 @@ Les scripts python
 .. |image4| image:: ../media/image4.webp
    :width: 329px
    :height: 29px
+.. |image6| image:: ../media/image4.webp
+   :width: 405px
+   :height: 104px
