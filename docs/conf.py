@@ -29,7 +29,8 @@ html_title = "Monitor"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 html_short_title = "Monitor"
-
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = 'sphinx'
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 html_logo = "images/logo.png"
