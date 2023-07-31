@@ -13,13 +13,7 @@ Monitor-domotique Documentation
         guides/sommaire
         guides/bien_debuter
     
-    
-
-.. contents:: 
-        guides/modifications
-        guides/sommaire
-        guides/bien_debuter
-       
+     
 Github Repository <https://github.com/mgrafr/monitor>    
 
  |image1| 
