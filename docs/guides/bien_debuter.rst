@@ -1,4 +1,4 @@
-Infos pour bien débuter
+0. Infos pour bien débuter
 ----------------
 
 0.1	Prérequis, installation : différents choix
@@ -20,7 +20,7 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), mo
 -	Un utilisateur MySQL PMA et monitor est aussi crée 
 Télécharger depuis le Shell de PVE le fichier d’installation install.sh :
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh 
-  
+|image3|  
 Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 chmod +x create_ct_lxc_monitor.sh
  
