@@ -19,9 +19,7 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), mo
 -	Un utilisateur système est crée
 -	Un utilisateur MySQL PMA et monitor est aussi crée 
 Télécharger depuis le Shell de PVE le fichier d’installation install.sh :
-
-.. code-block:: javascript
-   :emphasize-lines: 26
+::
 
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
 
