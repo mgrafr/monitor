@@ -6,7 +6,12 @@
 Monitor-domotique Documentation
 ========================================
 
-
+.. toctree::
+        :hidden:
+        
+        guides/modifications
+        guides/sommaire
+        guides/bien_debuter
     
     
 
