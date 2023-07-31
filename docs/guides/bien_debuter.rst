@@ -564,9 +564,9 @@ Les scripts python
  
 
 	
-.. |image3| image:: media/image3.webp
+.. |image3| image:: ../media/image3.webp
    :width: 604px
    :height: 176px
-.. |image2| image:: media/image4.webp
+.. |image2| image:: ../media/image4.webp
    :width: 329px
    :height: 29px
