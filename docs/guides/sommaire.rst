@@ -1,3 +1,6 @@
+Sommaire
+----------------
+
 | *0._Infos pour bien débuter*
 | *0.1Prérequis, installation : différents choix*
 | *0.1.1 Installation automatique d’un conteneur LXC + monitor* *0.1.2
