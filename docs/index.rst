@@ -23,7 +23,7 @@ Github Repository <https://github.com/mgrafr/monitor>
 
 **Compatible Domoticz & Home assistant**
 
-début
+Mise à jour & Sommaire
 ----------------
 :doc:`guides/modifications`
     modifications
@@ -34,7 +34,8 @@ début
 :doc:`guides/sommaire`
   sommaire
 
-
+Bien débuter
+----------------
 :doc:`guides/bien_debuter`
     bien débuter
 
