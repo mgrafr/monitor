@@ -1,4 +1,5 @@
-0._Infos pour bien débuter
+*Infos pour bien débuter
+----------------
 
 0.1	Prérequis, installation : différents choix
 -	Après l’installation de Proxmox :
