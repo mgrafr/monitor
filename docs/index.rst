@@ -30,16 +30,18 @@ Github Repository <https://github.com/mgrafr/monitor>
 **Compatible Domoticz & Home assistant**
 
 **Dernières modifications :**
-:doc:`guides/modifications`
 
+:doc:`guides/modifications`
+dernieres modif
 
 |image2| Tous les fichiers sont sur Github :
 
  **Sommaire :**
 
 :doc:`guides/sommaire`
-  
+  sommaire
 :doc:`guides/bien_debuter`
+comment bien débuter
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
