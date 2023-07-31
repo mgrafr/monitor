@@ -37,3 +37,11 @@ source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
+# This is required for the alabaster theme
+# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
+html_sidebars = {
+    '**': [
+        'about.html',
+        
+    ]
+}
