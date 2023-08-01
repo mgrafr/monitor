@@ -11,7 +11,7 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), mo
 - 	    installation uniquement de monitor (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
--	L’installation de Proxmox voir :ref:`ce paragraphe. <mon_installation.rts>`
+-	L’installation de Proxmox voir :ref:`ce paragraphe <mon_installation.rts>`
 
 -	Création d’un conteneur LXC 
 -	Debian 12, et les dépendances sudo, curl, ….
