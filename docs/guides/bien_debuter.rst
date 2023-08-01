@@ -142,8 +142,7 @@ Fin de l'installation:
  
 |image31|
 
-La suite, mode découverte : (:ref:`0.1.3.1 mode « découverte »`)
-
+La suite, mode découverte , :ref:`0.1.3.1`
 0.1.2 -Installation automatique de LEMP et Monitor : 
 ====================================================
 Installer auparavant un système Debian 12 ou supérieur
@@ -167,7 +166,7 @@ Lancer le script :
 
 |image33|
   
-**La suite :**   (:ref:`Installation de LEMP`)
+**La suite :**   :ref:`Installation de LEMP`
 
 0.1.3 – Installation de monitor uniquement
 ==========================================
