@@ -167,7 +167,7 @@ Lancer le script :
 
 |image33|
   
-**La suite :**   (:ref:`Installation de LEMP & Monitor`)
+**La suite :**   (:ref:`Installation de LEMP`)
 
 0.1.3 – Installation de monitor uniquement
 ==========================================
