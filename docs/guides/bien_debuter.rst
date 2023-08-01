@@ -146,16 +146,19 @@ La suite, mode découverte : § 0.1.3.1
 ====================================================
 Installer auparavant un système Debian 12 ou supérieur
 	Télécharger le script : lemp_monitor_install.sh,
+
 .. code-block:: 'fr'
 
    https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh 
  
 Donner des autorisations au fichier lemp_install.sh 
+
 .. code-block:: 'fr'
 
    chmod +x  lemp_monitor_install.sh
 
 Lancer le script :
+
 .. code-block:: 'fr'
 
    ./lemp_monitor_install.sh
@@ -691,4 +694,4 @@ Les scripts python
 .. |image31| image:: ../media/image31.webp
    :width: 206px  
 .. |image33| image:: ../media/image33.webp
-   :width:319px  
+   :width: 319px  
