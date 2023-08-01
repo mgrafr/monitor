@@ -35,7 +35,6 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
 .. admonition:: Si des problèmes de lecture existent 
 
-
    convertir le fichier en UNIX
    pour installer do2unix :  apt install dos2unix
    commande : dos2unix NOM_FICHIER (ex : dos2unix lemp_install.sh)
@@ -75,26 +74,32 @@ Choisir le langage UTF-8 : fr_FR.UTF-8
 
 |image17| 
  
- 
- 
- 
- 
-
-
-
 Sécuriser Maria DB, mot passe root
  
+  
+|image18|
+
+|image19|
+
+|image20|
  
- 
- 
-créer un certificat SSL auto-signé pour Nginx
+|image21|
+
+*créer un certificat SSL auto-signé pour Nginx*
+
 Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
+
+.. admonition:: avec un certificat SSL auto-signé
+
 http reste disponible ce qui permet d’éviter les restrictions CORS pour afficher d’autres serveurs comme Zigbee, Zwave, Nagios, ……
+
 Pour une installation manuelle de ce certificat, voir le paragraphe 0.1.3
+
 Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml
  
-
-
+|image22|
+ 
+|image23|
  
 TAB, ENTER
  
@@ -612,11 +617,9 @@ Les scripts python
    :width: 554px
    :height: 276px
 .. |image10| image:: ../media/image10.webp
-   :width: 736px
-   :height: 585px
+   :width: 636px
 .. |image11| image:: ../media/image11.webp
-   :width: 726px
-   :height: 293px
+   :width: 626px
 .. |image12| image:: ../media/image12.webp
    :width: 557px
    :height: 269px
@@ -624,9 +627,8 @@ Les scripts python
    :width: 552px
    :height: 182px
 .. |image14| image:: ../media/image14.webp
-   :width: 692px
-   :height: 642px
-.. |image15| image:: ../media/image115.webp
+   :width: 592px
+.. |image15| image:: ../media/image15.webp
    :width: 541px
    :height: 176px
 .. |image16| image:: ../media/image16.webp
@@ -635,3 +637,15 @@ Les scripts python
 .. |image17| image:: ../media/image17.webp
    :width: 592px
    :height: 519px
+.. |image18| image:: ../media/image18.webp
+   :width: 563px
+.. |image19| image:: ../media/image19.webp
+   :width: 628px
+.. |image20| image:: ../media/image20.webp
+   :width: 581px
+.. |image21| image:: ../media/image21.webp
+   :width: 583px  
+.. |image22 image:: ../media/image22.webp
+   :width: 250px
+.. |image23| image:: ../media/image23.webp
+   :width: 540px  
