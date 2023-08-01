@@ -118,13 +118,7 @@ Fin de l'installation:
    chmod -R 777 /www/html/*`
  
    **MySQL :**
-.. raw:: html
-
-    <style> .red {color:red} </style>
-
-.. role:: red
-
-   :red:`mysql -u root`
+   mysql -u root
    
 
    |image27| 
