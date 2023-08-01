@@ -1,7 +1,8 @@
 21. – Mon installation
- 
+---------------------- 
 
 21.1 Proxmox
+^^^^^^^^^^^^
 C’est la base du système, il doit être installé en premier, ensuite :
 -	Un conteneur, une VM ou une partition classique 
 -	Ensuite LEMP 
