@@ -63,6 +63,8 @@ Choisir le langage UTF-8 : fr_FR.UTF-8
  
 |image11|
 
+**Installation de LEMP & Monitor**
+
 |image12|
 
 |image13|
@@ -165,17 +167,18 @@ Lancer le script :
 
 |image33|
   
-**La suite : ICI
+**La suite :  (:ref:`Installation de LEMP & Monitor`)
 
 0.1.3 – Installation de monitor uniquement
 ==========================================
 	Après l’installation d’un OS (Debian, Ubuntu…et LEMP ou LAMP, Maria DB ou MySQL ...
 Quelques liens utiles :
-o	phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3
 
-o	LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
+	o phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3
 
-o	 LEMP : voir ce paragraphe
+	o LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
+
+	o LEMP : voir ce paragraphe
 
 **Installation :**
 
