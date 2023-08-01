@@ -21,11 +21,12 @@ voir sur Github : https://github.com/StevenSeifried/proxmox-scripts
 
 
 21.1.1 installation de VM ou CT par l’interface graphique : IP :8006
-
+====================================================================
  
 
 
 21.1.2 installation automatique de VM ou CT : https://github.com/tteck/Proxmox
+==============================================================================
 	choisir le fichier d’installation : ex Conteneur LXC Debian 11
 	 
 	Copier le lien :
@@ -46,7 +47,7 @@ Télécharger le script : wget LIEN
 
 
 21.1.3 installation automatique d’un conteneur LXC,LEMP & Monitor
-
+=================================================================
 Voir le § 0.1.1
 
             21.1.4 Aperçu des VM et CT installés :
@@ -55,6 +56,7 @@ Voir le § 0.1.1
 Plex est installé sur un autre mini PC sous Proxmox également, en conteneur, voir le site domo-site.fr
 
 21.2 Domoticz
+^^^^^^^^^^^^^
 Installation sous Docker :
 http://domo-site.fr/accueil/dossiers/84
 Installation VM :
@@ -72,7 +74,7 @@ Mes scripts bash, python et Node js :
 Les scripts sont disponibles sur Github : https://github.com/mgrafr/monitor/tree/main/share/scripts_dz
 
 21.3 Zwave
-
+^^^^^^^^^^
 Installation de zwave-js-ui ,
 -	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
 -	sous Docker, avec Domoticz : http://domo-site.fr/accueil/dossiers/86
@@ -86,6 +88,7 @@ Configuration de l’hôte virtuel Nginx pour affichage dans monitor :
 
 
 21.4 Zigbee
+^^^^^^^^^^^
 Installation de zigbee2mqtt  :
 -	sous Docker : http://domo-site.fr/accueil/dossiers/88
 -	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/94
@@ -99,17 +102,20 @@ Configuration de l’hôte virtuel Nginx pour affichage dans monitor :
 Plus de commentaires dans le paragraphe précédent
 
 21.5 Asterisk (sip)
+^^^^^^^^^^^^^^^^^^^
 Installation dans une VM :  http://domo-site.fr/accueil/dossiers/9
 
 Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.
 
 21.6 MQTT (mosquito)
+^^^^^^^^^^^^^^^^^^^^
 Installation dans une VM :  http://domo-site.fr/accueil/dossiers/47
 
 Comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.
 
 
 21.7 Zoneminder
+^^^^^^^^^^^^^^^
 Installation dans une VM :  http://domo-site.fr/accueil/dossiers/24
 Ce serveur est nécessaire pour :
 -	 L’affichage du mur de caméras
@@ -122,6 +128,7 @@ Configuration de l’hôte virtuel Nginx
  
 
 21.8 Plex
+^^^^^^^^^
 Installation :
 -	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/95
 -	dans une VM  : http://domo-site.fr/accueil/dossiers/53
@@ -136,6 +143,7 @@ Configuration de l’hôte virtuel Nginx pour accès distant
  
 
 21.9 Raspberry PI4
+^^^^^^^^^^^^^^^^^^
 Alimenté en 12 Volts , comme le mini PC Proxmox, le PI4 couplé à un modem GSM assure l’envoi et la réception des sms même en cas de coupure d’alimentation électrique ENEDIS ; L’alarme ainsi que toute les commandes Domoticz restent opérationnelles.
 Le serveur Domoticz et ce PI4 sont reliés par une liaison série ; à partir d’un smartphone l’envoi de sms permet de commander directement des switches par l’intermédiaire de l’API de Domoticz( http://localhost:PORT
 Le système est sauvegardé par le logiciel Raspibackup :
@@ -163,7 +171,7 @@ Affichage dans monitor :
  
 
 21.9.1 Résolution de problèmes :
-
+================================
 21.9.1.1  cannot-open-access-to-console-the-root-account-is-locked
 
 https://www.msn.com/fr-fr/feed
@@ -199,7 +207,7 @@ pour monter les partitions sans redémarrer :
 
 
 21.10 Home Assistant
-
+^^^^^^^^^^^^^^^^^^^^
 Installation : http://domo-site.fr/accueil/dossiers/61
 
 Script automatique :
