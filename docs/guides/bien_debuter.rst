@@ -58,9 +58,22 @@ Installation :
  
 Choisir le langage UTF-8 : fr_FR.UTF-8
 
+  
+|image10|
  
+|image11|
+
+|image12|
+
+|image13|
  
+|image14|
  
+|image15|
+
+|image16|
+
+|image17| 
  
  
  
@@ -598,3 +611,27 @@ Les scripts python
 .. |image9| image:: ../media/image9.webp
    :width: 554px
    :height: 276px
+.. |image10| image:: ../media/image10.webp
+   :width: 736px
+   :height: 585px
+.. |image11| image:: ../media/image11.webp
+   :width: 726px
+   :height: 293px
+.. |image12| image:: ../media/image12.webp
+   :width: 557px
+   :height: 269px
+.. |image13| image:: ../media/image13.webp
+   :width: 552px
+   :height: 182px
+.. |image14| image:: ../media/image14.webp
+   :width: 692px
+   :height: 642px
+.. |image15| image:: ../media/image115.webp
+   :width: 541px
+   :height: 176px
+.. |image16| image:: ../media/image16.webp
+   :width: 547px
+   :height: 266px
+.. |image17| image:: ../media/image17.webp
+   :width: 592px
+   :height: 519px
