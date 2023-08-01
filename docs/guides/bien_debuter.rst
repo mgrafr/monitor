@@ -115,14 +115,18 @@ Fin de l'installation:
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-   .. code-block:: 'fr'
-      chmod -R 777 /www/html/*
+.. code-block:: 'fr'
+   chmod -R 777 /www/html/*
  
    MySQL :
    mysql -u root
+
+   |image27| 
  
-   phpMyAdmin :
-   Accès par monitor :
+   phpMyAdmin :   Accès par monitor :
+
+   |image28| 
+
  
    Ou en ajoutant l’adresse dans le navigateur :
 
@@ -661,3 +665,7 @@ Les scripts python
    :width: 485px  
 .. |image25| image:: ../media/image25.webp
    :width: 257px  
+.. |image27| image:: ../media/image27.webp
+   :width: 557px  
+.. |image28| image:: ../media/image28.webp
+   :width: 391px  
