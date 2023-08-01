@@ -582,9 +582,6 @@ Les scripts python
 .. |image3| image:: ../media/image3.webp
    :width: 604px
    :height: 176px
-.. |image4| image:: ../media/image4.webp
-   :width: 329px
-   :height: 29px
 .. |image6| image:: ../media/image6.webp
    :width: 405px
    :height: 104px
@@ -594,6 +591,6 @@ Les scripts python
 .. |image8| image:: ../media/image8.webp
    :width: 544px
    :height: 170px
-.. |image9| image:: ../media/image6.webp
+.. |image9| image:: ../media/image9.webp
    :width: 554px
    :height: 276px
