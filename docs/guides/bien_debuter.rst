@@ -28,9 +28,9 @@ Télécharger depuis le Shell de PVE le fichier d’installation install.sh :
 
 Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
-::
+.. code-block:: 'fr'
 
-chmod +x create_ct_lxc_monitor.sh
+   chmod +x create_ct_lxc_monitor.sh
 
 |image4|
 
@@ -43,12 +43,19 @@ chmod +x create_ct_lxc_monitor.sh
 
 
 
-Installation : ./create_ct_lxc_monitor.sh
- 
- |image6|
- 
- 
+Installation :
 
+.. code-block:: 'fr'
+
+   ./create_ct_lxc_monitor.sh
+ 
+|image6|
+ 
+|image7|
+
+|image8|
+
+|image9|
  
 Choisir le langage UTF-8 : fr_FR.UTF-8
 
