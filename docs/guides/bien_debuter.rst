@@ -172,17 +172,36 @@ Lancer le script :
 	Après l’installation d’un OS (Debian, Ubuntu…et LEMP ou LAMP, Maria DB ou MySQL ...
 Quelques liens utiles :
 o	phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3
-o	LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php 
+
+o	LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
+
 o	 LEMP : voir ce paragraphe
-Installation : 
--	Soit télécharger et extraire le fichier :
+
+**Installation :**
+
+*-	Soit télécharger et extraire le fichier :*
+
+.. code-block:: 'fr'
+
+https://github.com/mgrafr/monitor
 
 |image34|                    
 
--	Soit cloner le référentiel : https://github.com/mgrafr/monitor.git
-Commande : git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION>
-Git doit avoir été installé :  sur Debian ou Ubuntu, apt install git
-- soit télécharger en bash avec wget : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+*-	Soit cloner le référentiel : https://github.com/mgrafr/monitor.git*
+
+.. code-block:: 'fr'
+
+git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION
+
+.. admonition:: Git doit avoir été installé 
+
+   sur Debian ou Ubuntu, **apt install git**
+
+
+*-       soit télécharger en bash avec wget :*
+
+https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+
 Et apprès avoir rendu exécutable le fichier, le lancer :
  
  
