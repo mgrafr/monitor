@@ -91,23 +91,25 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
 .. admonition:: avec un certificat SSL auto-signé
 
-http reste disponible ce qui permet d’éviter les restrictions CORS pour afficher d’autres serveurs comme Zigbee, Zwave, Nagios, ……
+   http reste disponible ce qui permet d’éviter les restrictions CORS pour afficher d’autres serveurs comme Zigbee, Zwave, Nagios, ……
 
-Pour une installation manuelle de ce certificat, voir le paragraphe 0.1.3
+   Pour une installation manuelle de ce certificat, voir le paragraphe 0.1.3
 
-Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml
+   Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml
  
 |image22|
  
 |image23|
  
-TAB, ENTER
+
  
 
-Vérifications en cas de problèmes :
+.. admonition:: Vérifications en cas de problèmes :
 
-Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
-chmod -R 777 /www/html/*
+   Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
+
+.. code-block:: 'fr'
+   chmod -R 777 /www/html/*
  
 
 MySQL :
