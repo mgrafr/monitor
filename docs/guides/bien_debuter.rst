@@ -132,10 +132,13 @@ Fin de l'installation:
 
    <IP Monitor>/phpmyadmin/
 
+|image29| 
 
+|image30| 
  
-Les tables installées lors de l’installation :
+**Les tables installées lors de l’installation :**
  
+|image31|
 
 La suite, mode découverte : § 0.1.3.1
 
@@ -143,13 +146,23 @@ La suite, mode découverte : § 0.1.3.1
 ====================================================
 Installer auparavant un système Debian 12 ou supérieur
 	Télécharger le script : lemp_monitor_install.sh,
-https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh 
+.. code-block:: 'fr'
+
+   https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh 
  
 Donner des autorisations au fichier lemp_install.sh 
-chmod +x  lemp_monitor_install.sh
-Lancer le script : ./lemp_monitor_install.sh
+.. code-block:: 'fr'
+
+   chmod +x  lemp_monitor_install.sh
+
+Lancer le script :
+.. code-block:: 'fr'
+
+   ./lemp_monitor_install.sh
+
+|image33|
   
-La suite : ICI
+**La suite : ICI
 
 0.1.3 – Installation de monitor uniquement
 ==========================================
@@ -671,3 +684,11 @@ Les scripts python
    :width: 557px  
 .. |image28| image:: ../media/image28.webp
    :width: 391px  
+.. |image29| image:: ../media/image29.webp
+   :width: 463px  
+.. |image30| image:: ../media/image30.webp
+   :width: 562px  
+.. |image31| image:: ../media/image31.webp
+   :width: 206px  
+.. |image33| image:: ../media/image33.webp
+   :width:319px  
