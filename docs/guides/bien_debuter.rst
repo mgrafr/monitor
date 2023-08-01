@@ -115,9 +115,7 @@ Fin de l'installation:
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-.. code-block:: python 
-
-   chmod -R 777 /www/html/*
+   :textcolor:` #00ff00 chmod -R 777 /www/html/*`
  
    **MySQL :**
    mysql -u root
