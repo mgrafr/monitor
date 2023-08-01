@@ -63,7 +63,7 @@ Choisir le langage UTF-8 : fr_FR.UTF-8
  
 |image11|
 
-**Installation de LEMP & Monitor**
+Installation de LEMP & Monitor
 
 |image12|
 
