@@ -85,7 +85,7 @@ Sécuriser Maria DB, mot passe root
  
 |image21|
 
-*créer un certificat SSL auto-signé pour Nginx*
+  *créer un certificat SSL auto-signé pour Nginx*
 
 Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
@@ -97,8 +97,9 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
    Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml
  
-|image22|
+	|image22|
  
+
 |image23|
  
 
@@ -108,8 +109,8 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-.. code-block:: 'fr'
-   chmod -R 777 /www/html/*
+	.. code-block:: 'fr'
+   	   chmod -R 777 /www/html/*
  
 
 MySQL :
