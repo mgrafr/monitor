@@ -645,7 +645,7 @@ Les scripts python
    :width: 581px
 .. |image21| image:: ../media/image21.webp
    :width: 583px  
-.. |image22 image:: ../media/image22.webp
+.. |image22| image:: ../media/image22.webp
    :width: 250px
 .. |image23| image:: ../media/image23.webp
    :width: 540px  
