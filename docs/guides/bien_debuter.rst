@@ -36,9 +36,10 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 .. admonition:: Si des problèmes de lecture existent 
 
    convertir le fichier en UNIX
-   pour installer do2unix :  apt install dos2unix
-   commande : dos2unix NOM_FICHIER (ex : dos2unix lemp_install.sh)
 
+   pour installer do2unix :  apt install dos2unix
+
+   commande : dos2unix NOM_FICHIER (ex : dos2unix lemp_install.sh)
 
 
 Installation :
@@ -85,7 +86,7 @@ Sécuriser Maria DB, mot passe root
  
 |image21|
 
-  *créer un certificat SSL auto-signé pour Nginx*
+**créer un certificat SSL auto-signé pour Nginx**
 
 Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
@@ -109,15 +110,14 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-	.. code-block:: 'fr'
-   	   chmod -R 777 /www/html/*
+.. code-block:: 'fr'
+   chmod -R 777 /www/html/*
  
-
-MySQL :
-mysql -u root
+   MySQL :
+   mysql -u root
  
-phpMyAdmin :
-Accès par monitor :
+   phpMyAdmin :
+   Accès par monitor :
  
 Ou en ajoutant l’adresse dans le navigateur :
 
