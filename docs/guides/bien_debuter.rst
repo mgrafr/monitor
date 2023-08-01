@@ -42,7 +42,7 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
    commande : dos2unix NOM_FICHIER (ex : dos2unix lemp_install.sh)
 
 
-Installation :
+**Installation :**
 
 .. code-block:: 'fr'
 
@@ -102,11 +102,16 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
  
 
 |image23|
- 
 
- 
+Fin de l'installation:
+
+|image24|
 
 .. admonition:: Vérifications en cas de problèmes :
+
+   avec Filezilla :
+
+   |image25|
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
@@ -652,3 +657,7 @@ Les scripts python
    :width: 250px
 .. |image23| image:: ../media/image23.webp
    :width: 540px  
+.. |image24| image:: ../media/image24.webp
+   :width: 485px  
+.. |image25| image:: ../media/image25.webp
+   :width: 257px  
