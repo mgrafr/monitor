@@ -32,8 +32,6 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
    chmod +x create_ct_lxc_monitor.sh
 
-|image4|
-
 .. admonition:: Si des problèmes de lecture existent 
 
 
@@ -590,3 +588,12 @@ Les scripts python
 .. |image6| image:: ../media/image6.webp
    :width: 405px
    :height: 104px
+.. |image7| image:: ../media/image7.webp
+   :width: 538px
+   :height: 194px
+.. |image8| image:: ../media/image8.webp
+   :width: 544px
+   :height: 170px
+.. |image9| image:: ../media/image6.webp
+   :width: 554px
+   :height: 276px
