@@ -115,10 +115,17 @@ Fin de l'installation:
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-   :textcolor:` #00ff00 chmod -R 777 /www/html/*`
+   chmod -R 777 /www/html/*`
  
    **MySQL :**
-   mysql -u root
+.. raw:: html
+
+    <style> .red {color:red} </style>
+
+.. role:: red
+
+   :red:`mysql -u root`
+   
 
    |image27| 
  
