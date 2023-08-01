@@ -43,7 +43,7 @@ Bien débuter
 
 Mon Installation
 ----------------
-:doc:`guides/mon_istallation`
+:doc:`guides/mon_installation`
     Mon Installation
 
 .. |image1| image:: images/logo.png
