@@ -9,9 +9,10 @@ Monitor-domotique Documentation
 .. toctree::
         :hidden:
         
-        guides/modifications
-        guides/sommaire
-        guides/bien_debuter
+        guides/modifications.rst
+        guides/sommaire.rst
+        guides/bien_debuter.rst
+        guides/mon_installation.rst
     
      
 Github Repository <https://github.com/mgrafr/monitor>    
@@ -39,6 +40,11 @@ Bien débuter
 ----------------
 :doc:`guides/bien_debuter`
     bien débuter
+
+Mon Installation
+----------------
+:doc:`guides/mon_istallation`
+    Mon Installation
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
