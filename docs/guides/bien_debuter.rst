@@ -2,14 +2,15 @@
 ----------------
 
 0.1	Prérequis, installation : différents choix
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -	Après l’installation de Proxmox :
 Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), monitor : https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
 
 - 	    installation automatique : LEMP + monitor (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
 
 - 	    installation uniquement de monitor (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
-
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
+----------------------
 -	L’installation de Proxmox voir ce paragraphe.
 
 -	Création d’un conteneur LXC 
@@ -105,7 +106,9 @@ Les tables installées lors de l’installation :
  
 
 La suite, mode découverte : § 0.1.3.1
+
 0.1.2 -Installation automatique de LEMP et Monitor : 
+----------------------
 Installer auparavant un système Debian 12 ou supérieur
 	Télécharger le script : lemp_monitor_install.sh,
 https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh 
