@@ -115,8 +115,8 @@ Fin de l'installation:
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-.. code-block:: 'fr'
-   chmod -R 777 /www/html/*
+   .. code-block:: 'fr'
+      chmod -R 777 /www/html/*
  
    MySQL :
    mysql -u root
@@ -124,7 +124,7 @@ Fin de l'installation:
    phpMyAdmin :
    Accès par monitor :
  
-Ou en ajoutant l’adresse dans le navigateur :
+   Ou en ajoutant l’adresse dans le navigateur :
 
 
  
