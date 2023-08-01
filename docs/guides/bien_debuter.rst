@@ -1,4 +1,4 @@
-0. Infos pour bien débuter
+:0. Infos pour bien débuter
 --------------------------
 
 0.1	Prérequis, installation : différents choix
@@ -140,7 +140,7 @@ Fin de l'installation:
  
 |image31|
 
-La suite, mode découverte : § 0.1.3.1
+La suite, mode découverte : (:ref:`0.1.3.1 mode « découverte »`)
 
 0.1.2 -Installation automatique de LEMP et Monitor : 
 ====================================================
@@ -176,7 +176,8 @@ o	LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apac
 o	 LEMP : voir ce paragraphe
 Installation : 
 -	Soit télécharger et extraire le fichier :
-                    
+
+|image34|                    
 
 -	Soit cloner le référentiel : https://github.com/mgrafr/monitor.git
 Commande : git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION>
@@ -695,3 +696,5 @@ Les scripts python
    :width: 206px  
 .. |image33| image:: ../media/image33.webp
    :width: 319px  
+.. |image34| image:: ../media/image34.webp
+   :width: 403px  
