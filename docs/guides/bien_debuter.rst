@@ -224,15 +224,15 @@ Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente
  
  
 0.1.3.1 mode « découverte »
-IMPORTANT : après l’installation le programme est en mode « découverte », pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
+"""""""""""""""""""""""""""
+.. note::IMPORTANT : 
+
+après l’installation le programme est en mode « découverte », pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
 En profiter pour changer le mot de passe actuel 1234
-Pour cela soit :
--	Utiliser la fonction du programme 
- 
 
- 
-
--	Modifier le fichier /admin/config.php
+|Pour cela soit :
+|-	Utiliser la fonction du programme 
+|-	Modifier le fichier /admin/config.php
 
  
              
@@ -732,5 +732,5 @@ Les scripts python
    :width: 403px  
 .. |image35| image:: ../media/image35.webp
    :width: 585px  
-.. |image37| image:: ../media/image36.webp
+.. |image37| image:: ../media/image37.webp
    :width: 548px  
