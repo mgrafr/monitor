@@ -47,3 +47,6 @@ html_sidebars = {
         
     ]
 }
+rst_prolog = """
+.. role:: red
+"""
