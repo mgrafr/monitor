@@ -133,7 +133,7 @@ Fin de l'installation:
  
    Ou en ajoutant l’adresse dans le navigateur :
 
-   :red:`<IP Monitor>/phpmyadmin/
+   :red:`IP Monitor/phpmyadmin/
 `
 |image29| 
 
@@ -143,7 +143,7 @@ Fin de l'installation:
  
 |image31|
 
-La suite, mode découverte , :ref:`0.1.3.1`
+La suite, mode découverte , :ref:`0.1.3.1 mode « découverte »`
 
 0.1.2 -Installation automatique de LEMP et Monitor : 
 ====================================================
@@ -218,21 +218,27 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 
 |image37|
 
-Choisir le serveur web pour une installation de monitor dans le bon répertoire ;
-Choisir « autre » si Apache ou Nginx ne sont pas utilisé, monitor sera installé dans « /tmp » il suffira alors de créer un lien symbolique vers le serveur web.
-Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente installation), le supprimer
- 
+.. note::
+   |Choisir le serveur web pour une installation de monitor dans le bon répertoire ;
+   |Choisir « autre » si Apache ou Nginx ne sont pas utilisé, monitor sera installé dans « /tmp » il suffira alors de créer un lien symbolique vers le serveur web.
+   |Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente installation), le supprimer
+
+|image38| 
  
 0.1.3.1 mode « découverte »
 """""""""""""""""""""""""""
 .. note::IMPORTANT : 
 
-après l’installation le programme est en mode « découverte », pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
-En profiter pour changer le mot de passe actuel 1234
+   |après l’installation le programme est en mode « découverte », 
+   |pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
+   |En profiter pour changer le mot de passe actuel 1234
 
-|Pour cela soit :
-|-	Utiliser la fonction du programme 
-|-	Modifier le fichier /admin/config.php
+   |Pour cela soit :
+   |-	Utiliser la fonction du programme 
+
+   |image39|
+
+   |-	Modifier le fichier /admin/config.php
 
  
              
@@ -734,3 +740,7 @@ Les scripts python
    :width: 585px  
 .. |image37| image:: ../media/image37.webp
    :width: 548px  
+.. |image38| image:: ../media/image38.webp
+   :width: 399px  
+.. |image39| image:: ../media/image39.webp
+   :width: 470px 
