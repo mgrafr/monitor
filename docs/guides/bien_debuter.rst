@@ -120,7 +120,8 @@ Fin de l'installation:
    chmod -R 777 /www/html/*`
  
    **MySQL :**
-   mysql -u root
+
+   :emphasize-lines:mysql -u root
    
 
    |image27| 
