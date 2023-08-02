@@ -169,7 +169,7 @@ Lancer le script :
 
 |image33|
   
-**La suite :**   :ref:`Installation de LEMP`
+**La suite :**   :ref:`0.1.1.a Installation de LEMP & Monitor`
 
 0.1.3 – Installation de monitor uniquement
 ==========================================
@@ -231,11 +231,11 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
  
 0.1.3.1 mode « découverte »
 """""""""""""""""""""""""""
-.. note::IMPORTANT : 
-
-   après l’installation le programme est en mode « découverte », 
-   pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
-   En profiter pour changer le mot de passe actuel 1234
+.. note::
+    IMPORTANT :
+   |après l’installation le programme est en mode « découverte », 
+   |pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
+   |En profiter pour changer le mot de passe actuel 1234
 
    Pour cela soit :
    -	Utiliser la fonction du programme 
