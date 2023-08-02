@@ -299,52 +299,77 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
    :darkblue:`Les deux fichiers créés sont placés dans les sous-répertoires appropriés du répertoire /etc/ssl` 
 
+   |image45|
+
    *Confidentialité persistante*
 
    .. code-block:: 'fr'
 
       sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
- 
+    
+   |image46|
+
    C’est assez long
 
 .. admonition:: **Étape 2** :Configurer Nginx pour utiliser SSL
 
    Créer 2 lignes de configuration dans un fichier pointant vers la clé SSL et le certificat
-   -	Créer le fichier self-signed.conf dans /etc/nginx/snippets
-   -	cd /etc/nginx/snippets
-   -	sudo nano self-signed.conf
-   Ajouter
-   #certificat et clé privée
-   ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
-   ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+
+   *-	Créer le fichier self-signed.conf dans /etc/nginx/snippets*
+   
+   .. code-block:: 'fr'
+
+      cd /etc/nginx/snippets
+
+      sudo nano self-signed.conf
+
+   *-   Ajouter*
+
+   .. code-block:: 'fr'
+
+      #certificat et clé privée
+
+      ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+      ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+
+      |image47|
  
    Ctrl X, Enter, ctrl X
+
    
-   Créer un bloc de configuration avec des paramètres de chiffrement forts
-   -	Comme précédemment créer fichier ssl-params.conf
-   -	sudo nano ssl-params.conf
-   Ajouter :
-   # from https://cipherli.st/
-   # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+   *-   Créer un bloc de configuration avec des paramètres de chiffrement forts*
 
-ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-ssl_prefer_server_ciphers on;
-ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-ssl_ecdh_curve secp384r1;
-ssl_session_cache shared:SSL:10m;
-ssl_session_tickets off;
-ssl_stapling on;
-ssl_stapling_verify on;
-resolver 8.8.8.8 8.8.4.4 valid=300s;
-resolver_timeout 5s;
-# Disable preloading HSTS for now.  You can use the commented out header line that includes
-# the "preload" directive if you understand the implications.
-#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
-add_header X-Frame-Options DENY;
-add_header X-Content-Type-Options nosniff;
+     -	Comme précédemment créer un fichier *ssl-params.conf*
 
-ssl_dhparam /etc/ssl/certs/dhparam.pem;
+   .. code-block:: 'fr'
+
+      sudo nano ssl-params.conf
+
+   *-   Ajouter* :
+
+   .. code-block:: 'fr'
+
+      # from https://cipherli.st/
+      # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+
+      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+      ssl_prefer_server_ciphers on;
+      ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+      ssl_ecdh_curve secp384r1;
+      ssl_session_cache shared:SSL:10m;
+      ssl_session_tickets off;
+      ssl_stapling on;
+      ssl_stapling_verify on;
+      resolver 8.8.8.8 8.8.4.4 valid=300s;
+      resolver_timeout 5s;
+      # Disable preloading HSTS for now.  You can use the commented out header line that includes
+      # the "preload" directive if you understand the implications.
+      #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+      add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
+      add_header X-Frame-Options DENY;
+     add_header X-Content-Type-Options nosniff;
+
+     ssl_dhparam /etc/ssl/certs/dhparam.pem;
 	
 	 
 
@@ -790,3 +815,9 @@ Les scripts python
    :width: 618px 
 .. |image44| image:: ../media/image43.webp
    :width: 605px 
+.. |image45| image:: ../media/image45.webp
+   :width: 353px 
+.. |image46| image:: ../media/image46.webp
+   :width: 605px 
+.. |image47| image:: ../media/image47.webp
+   :width: 432px 
