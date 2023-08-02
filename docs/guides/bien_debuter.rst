@@ -121,7 +121,7 @@ Fin de l'installation:
  
    **MySQL :**
 
-   :emphasize-lines:mysql -u root
+   :red:`mysql -u root`
    
 
    |image27| 
