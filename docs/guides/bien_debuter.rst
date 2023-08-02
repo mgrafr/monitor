@@ -63,7 +63,8 @@ Choisir le langage UTF-8 : fr_FR.UTF-8
  
 |image11|
 
-Installation de LEMP & Monitor
+0.1.1.a Installation de LEMP & Monitor
+""""""""""""""""""""""""""""""""""""""
 
 |image12|
 
@@ -96,7 +97,7 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
    http reste disponible ce qui permet d’éviter les restrictions CORS pour afficher d’autres serveurs comme Zigbee, Zwave, Nagios, ……
 
-   Pour une installation manuelle de ce certificat, voir le paragraphe :ref:`0.1.3`
+   Pour une installation manuelle de ce certificat, voir le paragraphe :ref:`0.1.3 – Installation de monitor`
 
    Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml
  
@@ -133,7 +134,7 @@ Fin de l'installation:
  
    Ou en ajoutant l’adresse dans le navigateur :
 
-   :red:`IP Monitor/phpmyadmin/
+   :red:`<IP Monitor>/phpmyadmin/`
 `
 |image29| 
 
