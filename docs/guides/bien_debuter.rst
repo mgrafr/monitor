@@ -133,8 +133,8 @@ Fin de l'installation:
  
    Ou en ajoutant l’adresse dans le navigateur :
 
-   <IP Monitor>/phpmyadmin/
-
+   :red:`<IP Monitor>/phpmyadmin/
+`
 |image29| 
 
 |image30| 
@@ -185,7 +185,7 @@ Quelques liens utiles :
 
 .. code-block:: 'fr'
 
-https://github.com/mgrafr/monitor
+   https://github.com/mgrafr/monitor
 
 |image34|                    
 
@@ -193,7 +193,7 @@ https://github.com/mgrafr/monitor
 
 .. code-block:: 'fr'
 
-git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION
+   git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION
 
 .. admonition:: Git doit avoir été installé 
 
@@ -202,11 +202,22 @@ git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION
 
 *-       soit télécharger en bash avec wget :*
 
-https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+.. code-block:: 'fr'
+
+   https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 
 Et apprès avoir rendu exécutable le fichier, le lancer :
  
- 
+|image35| 
+
+.. code-block:: 'fr'
+
+  ./install_only_monitor.sh
+
+**Installation**
+
+|image37|
+
 Choisir le serveur web pour une installation de monitor dans le bon répertoire ;
 Choisir « autre » si Apache ou Nginx ne sont pas utilisé, monitor sera installé dans « /tmp » il suffira alors de créer un lien symbolique vers le serveur web.
 Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente installation), le supprimer
@@ -719,3 +730,7 @@ Les scripts python
    :width: 319px  
 .. |image34| image:: ../media/image34.webp
    :width: 403px  
+.. |image35| image:: ../media/image35.webp
+   :width: 585px  
+.. |image37| image:: ../media/image36.webp
+   :width: 548px  
