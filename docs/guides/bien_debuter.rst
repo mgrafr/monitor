@@ -96,7 +96,7 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
    http reste disponible ce qui permet d’éviter les restrictions CORS pour afficher d’autres serveurs comme Zigbee, Zwave, Nagios, ……
 
-   Pour une installation manuelle de ce certificat, voir le paragraphe 0.1.3
+   Pour une installation manuelle de ce certificat, voir le paragraphe :ref:`0.1.3`
 
    Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml
  
@@ -219,9 +219,12 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 |image37|
 
 .. note::
-   |Choisir le serveur web pour une installation de monitor dans le bon répertoire ;
-   |Choisir « autre » si Apache ou Nginx ne sont pas utilisé, monitor sera installé dans « /tmp » il suffira alors de créer un lien symbolique vers le serveur web.
-   |Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente installation), le supprimer
+
+   Choisir le serveur web pour une installation de monitor dans le bon répertoire ;
+
+   Choisir « autre » si Apache ou Nginx ne sont pas utilisé, monitor sera installé dans « /tmp » il suffira alors de créer un lien symbolique vers le serveur web.
+
+   Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente installation), le supprimer
 
 |image38| 
  
