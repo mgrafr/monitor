@@ -50,3 +50,4 @@ html_sidebars = {
 rst_prolog = """
 .. role:: red
 """
+html_css_files = ['custom.css']
