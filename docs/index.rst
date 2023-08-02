@@ -8,7 +8,8 @@ Monitor-domotique Documentation
 
 .. toctree::
         :hidden:
-        
+        :maxdepth: 3
+
         guides/modifications.rst
         guides/sommaire.rst
         guides/bien_debuter.rst
