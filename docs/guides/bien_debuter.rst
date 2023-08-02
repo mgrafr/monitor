@@ -239,6 +239,7 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
    En profiter pour changer le mot de passe actuel **1234**
 
    Pour cela soit :
+
    *-	Utiliser la fonction du programme* 
 
    |image39|
@@ -269,55 +270,62 @@ Dans le cas où l’installation n’est pas automatique (en automatique il suff
 Avant de commencer, vous devez avoir un utilisateur non root configuré avec des privilèges ; si vous avez installé Monitor en suivant ce tuto, c’est déjà fait
 
 .. admonition:: **Étape 1** : Créer le certificat SSL
-.. code-block:: 'fr'
-   sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+
+   .. code-block:: 'fr'
+
+      sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+
+   |image44|
  
    *Explications :*
 
-   -	openssl : l’outil en ligne de commande pour créer et gérer des certificats, clés ,….
+   -  **openssl**: l’outil en ligne de commande pour créer et gérer des certificats, clés ,….
 
-   -	req : cette commande spécifie que nous voulons utiliser la gestion des demandes de signature de certificat (CSR) X.509. (C’est une norme d’infrastructure à clé publique à laquelle SSL et TLS adhèrent pour sa gestion des clés et des certificats). 
+   -  **req** : cette commande spécifie que nous voulons utiliser la gestion des demandes de signature de certificat (CSR) X.509. (C’est une norme d’infrastructure à clé publique à laquelle SSL et TLS adhèrent pour sa gestion des clés et des certificats). 
    
-   -	-x509 : pour compléter la commande précédente en indiquant que nous voulons créer un certificat auto-signé.
+   -  **x509** : pour compléter la commande précédente en indiquant que nous voulons créer un certificat auto-signé.
 
-   -	-nodes: pour ignorer l’option de sécurisation de notre certificat avec une phrase secrète. Une phrase secrète empêcherait Nginx de démarrer normalement car il faudrait saisir la phrase secrète à chaque 
+   -  **nodes**: pour ignorer l’option de sécurisation de notre certificat avec une phrase secrète. Une phrase secrète empêcherait Nginx de démarrer normalement car il faudrait saisir la phrase secrète à chaque 
 
    *démarrage.*
 
-   -	-days 365 : la durée en jours de validité du certificat 
+   -  **days 365** : la durée en jours de validité du certificat 
 
-   -	-newkey rsa:2048 : pour générer un nouveau certificat et une nouvelle clé en une seule fois. Il est indiqué de créer une clé RSA de 2048 bits
+   -  **newkey rsa:2048** : pour générer un nouveau certificat et une nouvelle clé en une seule fois. Il est indiqué de créer une clé RSA de 2048 bits
 
-   -	-keyout : emplacement du fichier de la clé privée généré.
+   -  **keyout** : emplacement du fichier de la clé privée généré.
 
-   -	-out: emplacement du certificat créé.
+   -  **out**: emplacement du certificat créé.
 
-Les deux fichiers créés sont placés dans les sous-répertoires appropriés du répertoire /etc/ssl
+   :darkblue:`Les deux fichiers créés sont placés dans les sous-répertoires appropriés du répertoire /etc/ssl` 
+
+   *Confidentialité persistante*
+
+   .. code-block:: 'fr'
+
+      sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
  
+   C’est assez long
 
-Confidentialité persistante
-sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+.. admonition:: **Étape 2** :Configurer Nginx pour utiliser SSL
+
+   Créer 2 lignes de configuration dans un fichier pointant vers la clé SSL et le certificat
+   -	Créer le fichier self-signed.conf dans /etc/nginx/snippets
+   -	cd /etc/nginx/snippets
+   -	sudo nano self-signed.conf
+   Ajouter
+   #certificat et clé privée
+   ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+   ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
  
-C’est assez long
-
-Étape 2 : Configurer Nginx pour utiliser SSL
-Créer 2 lignes de configuration dans un fichier pointant vers la clé SSL et le certificat
--	Créer le fichier self-signed.conf dans /etc/nginx/snippets
--	cd /etc/nginx/snippets
--	sudo nano self-signed.conf
-Ajouter
-#certificat et clé privée
-ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
-ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
- 
-Ctrl X, Enter, ctrl X
-
-Créer un bloc de configuration avec des paramètres de chiffrement forts
--	Comme précédemment créer fichier ssl-params.conf
--	sudo nano ssl-params.conf
-Ajouter :
-# from https://cipherli.st/
-# and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+   Ctrl X, Enter, ctrl X
+   
+   Créer un bloc de configuration avec des paramètres de chiffrement forts
+   -	Comme précédemment créer fichier ssl-params.conf
+   -	sudo nano ssl-params.conf
+   Ajouter :
+   # from https://cipherli.st/
+   # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
 
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 ssl_prefer_server_ciphers on;
@@ -772,11 +780,13 @@ Les scripts python
    :width: 399px  
 .. |image39| image:: ../media/image39.webp
    :width: 470px 
-.. |image40| image:: ../media/image39.webp
+.. |image40| image:: ../media/image40.webp
    :width: 478px 
 .. |image41| image:: ../media/image41.webp
    :width: 520px 
 .. |image42| image:: ../media/image42.webp
    :width: 520px 
-.. |image43| image:: ../media/image42.webp
+.. |image43| image:: ../media/image43.webp
    :width: 618px 
+.. |image44| image:: ../media/image43.webp
+   :width: 605px 
