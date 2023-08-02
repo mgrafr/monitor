@@ -97,7 +97,7 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
    http reste disponible ce qui permet d’éviter les restrictions CORS pour afficher d’autres serveurs comme Zigbee, Zwave, Nagios, ……
 
-   Pour une installation manuelle de ce certificat, voir le paragraphe :ref:`0.1.3 – Installation de monitor`
+   Pour une installation manuelle de ce certificat, voir le paragraphe :ref:`0.1.3`
 
    Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml
  
@@ -198,7 +198,7 @@ Quelques liens utiles :
 
 .. admonition:: Git doit avoir été installé 
 
-   sur Debian ou Ubuntu, **apt install git**
+   sur Debian ou Ubuntu, :red:`apt install git`
 
 
 *-       soit télécharger en bash avec wget :*
@@ -233,16 +233,16 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 """""""""""""""""""""""""""
 .. note::IMPORTANT : 
 
-   |après l’installation le programme est en mode « découverte », 
-   |pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
-   |En profiter pour changer le mot de passe actuel 1234
+   après l’installation le programme est en mode « découverte », 
+   pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
+   En profiter pour changer le mot de passe actuel 1234
 
-   |Pour cela soit :
-   |-	Utiliser la fonction du programme 
+   Pour cela soit :
+   -	Utiliser la fonction du programme 
 
    |image39|
 
-   |-	Modifier le fichier /admin/config.php
+   -	Modifier le fichier /admin/config.php
 
  
              
