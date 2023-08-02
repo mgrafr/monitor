@@ -117,7 +117,7 @@ Fin de l'installation:
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-   chmod -R 777 /www/html/*`
+   :red:`chmod -R 777 /www/html/*`
  
    **MySQL :**
 
@@ -175,11 +175,9 @@ Lancer le script :
 	Après l’installation d’un OS (Debian, Ubuntu…et LEMP ou LAMP, Maria DB ou MySQL ...
 Quelques liens utiles :
 
-	o phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3
-
-	o LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
-
-	o LEMP : voir ce paragraphe
+|	o phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3
+|	o LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
+|	o LEMP : voir ce paragraphe
 
 **Installation :**
 
