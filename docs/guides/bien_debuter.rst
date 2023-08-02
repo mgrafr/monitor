@@ -232,42 +232,66 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 0.1.3.1 mode « découverte »
 """""""""""""""""""""""""""
 .. note::
-    IMPORTANT :
-   |après l’installation le programme est en mode « découverte », 
-   |pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, désactiver le mode « découverte » ;
-   |En profiter pour changer le mot de passe actuel 1234
+    **IMPORTANT** :
+   après l’installation le programme est en mode « découverte », 
+
+   pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, :darkblue:`désactiver le mode « découverte »` ;
+   En profiter pour changer le mot de passe actuel **1234**
 
    Pour cela soit :
-   -	Utiliser la fonction du programme 
+   *-	Utiliser la fonction du programme* 
 
    |image39|
 
-   -	Modifier le fichier /admin/config.php
+   |image40|
 
- 
+   *-	Modifier le fichier /admin/config.php*
+
+   |image41|
+
+   |image42|
              
-Pour utiliser Domoticz ou Home Assistant ou les 2 :
+**Pour utiliser Domoticz ou Home Assistant ou les 2 :**
+
 Indiquer l‘ IP et le port
+
+|image43|
  
-Logiciels utiles :
+**Logiciels utiles :**
+
 -	Logiciel d’édition d’images svg : Adobe Illustrator ou Inkscape 
 -	Pour les autres images webp, un convertisseur en ligne : https://convertio.co/fr/
 
 0.1.3.2 -Création d’un certificat SSL auto-signé pour Nginx :
-Dans le cas où l’installation n’est pas automatique ; en automatique il suffit d’accepter la création du certificat.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Dans le cas où l’installation n’est pas automatique (en automatique il suffit d’accepter la création du certificat).
+
 Avant de commencer, vous devez avoir un utilisateur non root configuré avec des privilèges ; si vous avez installé Monitor en suivant ce tuto, c’est déjà fait
-Étape 1 : Créer le certificat SSL
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+
+.. admonition:: **Étape 1** : Créer le certificat SSL
+.. code-block:: 'fr'
+   sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
  
-Explications :
--	openssl : l’outil en ligne de commande pour créer et gérer des certificats, clés ,….
--	req : cette commande spécifie que nous voulons utiliser la gestion des demandes de signature de certificat (CSR) X.509. (C’est une norme d’infrastructure à clé publique à laquelle SSL et TLS adhèrent pour sa gestion des clés et des certificats). 
--	-x509 : pour compléter la commande précédente en indiquant que nous voulons créer un certificat auto-signé.
--	-nodes: pour ignorer l’option de sécurisation de notre certificat avec une phrase secrète. Une phrase secrète empêcherait Nginx de démarrer normalement car il faudrait saisir la phrase secrète à chaque démarrage.
--	-days 365 : la durée en jours de validité du certificat 
--	-newkey rsa:2048 : pour générer un nouveau certificat et une nouvelle clé en une seule fois. Il est indiqué de créer une clé RSA de 2048 bits
--	-keyout : emplacement du fichier de la clé privée généré.
--	-out: emplacement du certificat créé.
+   *Explications :*
+
+   -	openssl : l’outil en ligne de commande pour créer et gérer des certificats, clés ,….
+
+   -	req : cette commande spécifie que nous voulons utiliser la gestion des demandes de signature de certificat (CSR) X.509. (C’est une norme d’infrastructure à clé publique à laquelle SSL et TLS adhèrent pour sa gestion des clés et des certificats). 
+   
+   -	-x509 : pour compléter la commande précédente en indiquant que nous voulons créer un certificat auto-signé.
+
+   -	-nodes: pour ignorer l’option de sécurisation de notre certificat avec une phrase secrète. Une phrase secrète empêcherait Nginx de démarrer normalement car il faudrait saisir la phrase secrète à chaque 
+
+   *démarrage.*
+
+   -	-days 365 : la durée en jours de validité du certificat 
+
+   -	-newkey rsa:2048 : pour générer un nouveau certificat et une nouvelle clé en une seule fois. Il est indiqué de créer une clé RSA de 2048 bits
+
+   -	-keyout : emplacement du fichier de la clé privée généré.
+
+   -	-out: emplacement du certificat créé.
+
 Les deux fichiers créés sont placés dans les sous-répertoires appropriés du répertoire /etc/ssl
  
 
@@ -748,3 +772,11 @@ Les scripts python
    :width: 399px  
 .. |image39| image:: ../media/image39.webp
    :width: 470px 
+.. |image40| image:: ../media/image39.webp
+   :width: 478px 
+.. |image41| image:: ../media/image41.webp
+   :width: 520px 
+.. |image42| image:: ../media/image42.webp
+   :width: 520px 
+.. |image43| image:: ../media/image42.webp
+   :width: 618px 
