@@ -49,6 +49,7 @@ html_sidebars = {
 }
 rst_prolog = """
 .. role:: red
+.. role:: darkblue
 """
 def setup(app):
     app.add_css_file('css/custom.css') 
