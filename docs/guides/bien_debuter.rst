@@ -332,7 +332,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
       ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
       ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 
-      |image47|
+   |image47|
  
    Ctrl X, Enter, ctrl X
 
@@ -371,36 +371,42 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
      ssl_dhparam /etc/ssl/certs/dhparam.pem;
 	
-	 
+   |image48|	 
 
-Ajustez la configuration Nginx pour utiliser SSL : extrait de monitor.conf
-server {
+   *Ajustez la configuration Nginx pour utiliser SSL : extrait de monitor.conf*
 
+    le fichier sur github :
 
-    listen 80 ;
-    listen [::]:80 ;
-    server_name 192.168.1.127;
+   .. code-block:: 'fr'
 
- # SSL configuration
-    listen 443 ssl ;
-    listen [::]:443 ssl;
-    include /etc/nginx/snippets/selfsigned.conf;
-    include /etc/nginx/snippets/ssl-params.conf;
+      server {
 
-    root /www/html;
-    index  index.php index.html index.htm;
+      listen 80 ;
+      listen [::]:80 ;
+      server_name 192.168.1.127;
 
-    location ~ \.php$ {
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass   unix:/var/run/php/php8.2-fpm.sock;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include        fastcgi_params;
-……
+      # SSL configuration
+      listen 443 ssl ;
+      listen [::]:443 ssl;
+      include /etc/nginx/snippets/selfsigned.conf;
+      include /etc/nginx/snippets/ssl-params.conf;
+
+      root /www/html;
+      index  index.php index.html index.htm;
+
+      location ~ \.php$ {
+         fastcgi_split_path_info ^(.+\.php)(/.+)$;
+         fastcgi_pass   unix:/var/run/php/php8.2-fpm.sock;
+         fastcgi_index  index.php;
+         fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+         include        fastcgi_params;
+      ……
  
+   *Vérifier la config*
+ 
+   .. code-block:: 'fr'
 
-Vérifier la config
-sudo nginx -t
+      sudo nginx -t
  
 Vous devrez confirmer manuellement que vous faites confiance au serveur pour y accéder.= ; les navigateurs ne peuvent vérifier les certificats auto-signés
 sudo systemctl restart nginx
@@ -821,3 +827,5 @@ Les scripts python
    :width: 605px 
 .. |image47| image:: ../media/image47.webp
    :width: 432px 
+.. |image48| image:: ../media/image48.webp
+   :width: 644px 
