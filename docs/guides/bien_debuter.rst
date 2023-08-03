@@ -541,7 +541,6 @@ La météo est installée lors de l’installation du programme :
 Enregistrement du dispositif :
 
 |image66| 
-
 |image67| 
 
 Affichage sue la page d’accueil :
@@ -588,29 +587,38 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
    En cas d ‘absence de base de données ou de mauvais paramétrages ,sur la page d' accueil :
    **" pas de connexion à la BD "**
 
-Ajout à la base de données des données fournie par Domoticz 
+**Ajout à la base de données des données fournie par Domoticz **
 
+      0.3.1 Les variables (table dispositifs)
+      ===================
+	La correspondance entre les variables Domoticz ou HA et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
 
+	- tables :
 
-0.3.1 Les variables
-La correspondance entre les variables Domoticz ou HA et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; tables :
--	text-image
--	dispositifs (gère également les dispositifs
--	- …….
-Ex :
+	- text-image
+
+	- dispositifs 
+
+	- ....
+
+|image75|
+
+.. admonition:: **exemples**
+	
+   **Table « text-image »** :
+
+   Pour un texte contenu dans une variable Domoticz correspond une image ou 0 ou « none »
+
+   ex: le texte "poubelle jaune" dans la variable poubelle aura un alias : l'image d'une poubelle jaune
+
  
-Table « text-image » :
-Pour un texte contenu dans une variable Domoticz correspond une image ou 0 ou « none »
+   **Table « dispositifs»**, ne sont concernés pour les variables que les champs :
  
-Table « dispositifs», ne sont concernés que les champs :
+        . num : ne sert qu’à éditer plus facilement la BD (Pour modifier plus facilement la table, ajouter au début un enregistrement (num par exemple) afin de pouvoir éditer les enregistrements).
  
- 
-num : ne sert qu’à éditer plus facilement la BD
-Pour modifier plus facilement la table, ajouter au début un enregistrement (num par exemple) afin de pouvoir éditer les enregistrements
- 
-Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
-Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; commande Bash (voir image ci-dessous)
-Accès au Shell par SSH2 depuis Domoticz sous Docker : sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.
+	. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
+
+	. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; commande Bash, accès au Shell par SSH2 depuis Domoticz sous Docker; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.
 Dans Domoticz, créer une variable avec les données ci-dessous :
  
 Dans SQL :
@@ -953,19 +961,28 @@ Les scripts python
    :width: 414px
 .. |image60| image:: ../media/image60.webp
    :width: 459px
-. |image64| image:: ../media/image64.webp
+.. |image64| image:: ../media/image64.webp
    :width: 485px
 .. |image65| image:: ../media/image65.webp
    :width: 232px
+   :align: center
 .. |image66| image:: ../media/image66.webp
    :width: 257px
+   :align: center
 .. |image67| image:: ../media/image67.webp
    :width: 287px
+   :align: center
 .. |image68| image:: ../media/image68.webp
    :width: 393px
+   :align: center 
 .. |image69| image:: ../media/image69.webp
    :width: 452px
+   :align: center
 .. |image70| image:: ../media/image70.webp
    :width: 650px
 .. |image72| image:: ../media/image72.webp
    :width: 424px
+   :align: center
+.. |image75| image:: ../media/image75.webp
+   :width: 216px
+   :align: center
