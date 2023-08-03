@@ -27,7 +27,7 @@ Il faut fournir un minimum de renseignements :
 Pour faciliter la réinitialisation des dispositifs dans Domoticz ou un transfert (ex, zwavejs2mqtt , zigbee2mqtt sous docker) ; en créant une copie de la table dispositifs (« dispositifs » par défaut), il est possible de préparer le transfert ; ici la table dispositifs a été renommer Dispositifs
  
  
-1.1.1.a _Pour l’image de fond suivant la résolution d’écran et le logo :
+1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo :
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 // Monitor 
