@@ -48,6 +48,11 @@ Mon Installation
 :doc:`guides/mon_installation`
     Mon Installation
 
+Configuration minimum
+----------------
+:doc:`guides/configuration_minimum`
+    Configuration minimum
+
 .. |image1| image:: images/logo.png
    :width: 1.52in
    :height: 1.52in
