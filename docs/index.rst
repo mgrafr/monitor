@@ -13,6 +13,7 @@ Monitor-domotique Documentation
         guides/modifications.rst
         guides/sommaire.rst
         guides/bien_debuter.rst
+        guides/configuration_minimum.rst
         guides/mon_installation.rst
     
      
