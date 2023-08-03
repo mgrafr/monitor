@@ -462,17 +462,40 @@ Noter :
 l'Idm (Id monitor)  , il est le premier dispositif : 1
 
 Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement avec l’appli :
-  
+
+ |image4| 	 
  
-
-Avec OpenWeather l’API fournit la température ressentie, pour l’ajouter enregistrer le dispositif et ajouter à accueil.php :
-<p class="text-centre">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
-
+ |image58|
+ |image59| 
  
+ |image60| 
 
-Domoticz :  un répertoire devra être créer pour utiliser les variables stockées dans un fichier 
+*Avec OpenWeather l’API fournit la température ressentie, pour l’ajouter enregistrer le dispositif et ajouter à accueil.php :*
 
-Script de remplacement 
+.. code-block:: 'fr'
+
+   <p class="text-centre">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
+
+ La classe "text-centre" :
+
+.. code-block:: 'fr'
+
+   .text-centre {
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    display: block;
+    float: none;}   
+
+.. admonition:: **Script de remplacement**
+
+   Indépendant de Domoticz, la fonction PHP 
+
+   
+
+lien Github du fichier avec les fonctions PHP
+
+
 fonctions.php ->function meteo_concept($choix)
  
 footer.php
@@ -763,6 +786,8 @@ Les scripts python
 .. |image3| image:: ../media/image3.webp
    :width: 604px
    :height: 176px
+.. |image4| image:: ../media/image4.webp
+   :width: 378px
 .. |image6| image:: ../media/image6.webp
    :width: 405px
    :height: 104px
@@ -861,8 +886,14 @@ Les scripts python
 .. |image54| image:: ../media/image54.webp
    :width: 303px
 .. |image55| image:: ../media/image55.webp
-   :width:562px
+   :width: 562px
 .. |image56| image:: ../media/image56.webp
-   :width:562px
+   :width: 562px
 .. |image57| image:: ../media/image57.webp
-   :width:531px
+   :width: 531px
+.. |image58| image:: ../media/image58.webp
+   :width: 298px
+.. |image59| image:: ../media/image59.webp
+   :width: 414px
+.. |image60| image:: ../media/image60.webp
+   :width: 459px
