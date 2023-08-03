@@ -375,7 +375,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
    *Ajustez la configuration Nginx pour utiliser SSL : extrait de monitor.conf*
 
-    le fichier sur github :
+    le fichier sur github : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/monitor.conf`
 
    .. code-block:: 'fr'
 
@@ -402,24 +402,34 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
          include        fastcgi_params;
       ……
  
-   *Vérifier la config*
+.. admonition:: *Vérifier la configuration*
  
    .. code-block:: 'fr'
 
       sudo nginx -t
  
-Vous devrez confirmer manuellement que vous faites confiance au serveur pour y accéder.= ; les navigateurs ne peuvent vérifier les certificats auto-signés
-sudo systemctl restart nginx
- 
+   Vous devrez confirmer manuellement que vous faites confiance au serveur pour y accéder.= ; les navigateurs ne peuvent vérifier les certificats auto-signés
+
+   Redémarrer le serveur Nginx
+
+   .. code-block:: 'fr'
+
+      sudo systemctl restart nginx
 
 0.2	La page d’accueil et connexion avec Domoticz ou HA : 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 0.2.1 page d’accueil :
-Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe
- 
+======================
+Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe :ref:`1.1.1.a _`
 
-0.2.2. Premier dispositif,
+|image52|
+ 
+0.2.2. Premier dispositif
+=========================
 0.2.2.1 pour Domoticz
+""""""""""""""""""""""
 Température extérieure : le matériel
+
 Depuis le 1 avril 2023 le service Darsky n’est assuré que pour des appareil Apple !!!
 J’ai donc provisoirement migré vers Météo Concept que j’utilise pour ma météo à 14 jours ; Je n’utilise pas ces valeurs dans Domoticz 
 
@@ -735,6 +745,88 @@ Avec jQuery
  
 Les scripts python
  
+1._ Configuration minimum : la page d’accueil
+---------------------------------------------
+
+Permet d’afficher 
+|-	La température extérieure, 
+|-	Le jour (changement à 0H pour une tablette connectée en permanence), 
+|-	La sortie des poubelles,
+-	 La gestion de la fosse septique,
+-	La surveillance de la pression de la chaudière 
+-	Les anniversaires 
+-	Rappel pour la prise de médicaments
+-	 La prévision de pluie à 1 heure de Météo France
+-	L’arrivée du courrier
+-	La mise en service de l’alarme de nuit
+-	Le remplacement des piles pour les capteurs concernés
+
+ 
+ 
+Pour afficher cette page, les fichiers nécessaires en jaune 
+
+1.1	– Configuration :/admin.config.php
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Il faut fournir un minimum de renseignements :
+
+1.1.1 -Adresse IP , domaine, favicon de monitor 
+================================================ 
+Pour faciliter la réinitialisation des dispositifs dans Domoticz ou un transfert (ex, zwavejs2mqtt , zigbee2mqtt sous docker) ; en créant une copie de la table dispositifs (« dispositifs » par défaut), il est possible de préparer le transfert ; ici la table dispositifs a été renommer Dispositifs
+ 
+ 
+1.1.1.a _Pour l’image de fond suivant la résolution d’écran et le logo :
+
+// Monitor 
+define('IMAGEACCUEIL', 'images/maison.webp');//image page accueil pour écrans >534 px
+define('IMAGEACCUEILSMALL', 'images/maison_small.webp');//image page accueil pour écrans <535 px
+define('IMGLOGO', 'images/logo.png');//image logo
+
+
+ 
+
+Pour les titres, slogans et lexique 
+Pour le lexique : 
+-	true = lexique par défaut
+-	false= lexique à modifier /include/lexique_no.php
+define('NOMSITE', 'Domoticz');//nom principal du site
+define('NOMSLOGAN', xxxxxxxxxxx);//nom secondaire ou slogan
+// affichage lexique
+define('LEXIQUE', true);
+
+ 
+1.1.2 intervalles de maj, maj temps réel
+========================================
+L’intervalle de mise à jour pour les services (poubelles, anniversaires, …) : il est de ½ heure (1800000 milli secondes), il peut être changé
+ 
+ 
+TEMPO_DEVICES pour tous les dispositifs 
+TEMPO_DEVICES_DZ : pour les dispositifs qui mettent à 1 une variable pour indiquer à monitor d’effectuer une mise à jour, ici toutes les 30 secondes rafraichissement des dispositifs si par exemple un PIR, un contact de porte qui sont déclaré prioritaire dans DZ passent à ON 
+ 
+La fonction JS :
+ 
+La fonction PHP qui récupère la valeur de la variable :
+ 
+
+1.1.3 Autres données
+====================
+
+Idx de Domoticz ou idm de monitor :
+Pour une première installation choisir idx ; pour une réinstallation de Domoticz, il sera alors préférable de choisir idm pour éviter de renommer tous les dispositifs dans les images svg
+La création d’un plan qui regroupe les dispositifs sur Domoticz est nécessaire : noter le N° du plan
+ 
+Paramètres de la base de données :
+ 
+
+Paramètres pour Domoticz :
+ 
+
+Le programme démarre avec 11 pages :
+-	Accueil
+-	1 Plan intérieur
+-	Page d’administration, pour afficher cette page, le mot de passe est obligatoire ; il est toujours possible de modifier le fichier de configuration avec un éditeur.
+Par défaut « admin »
+ 
+-	Les autres pages concernent l’alarme, un mur de caméras, 
 
 	
 .. |image3| image:: ../media/image3.webp
@@ -828,4 +920,8 @@ Les scripts python
 .. |image47| image:: ../media/image47.webp
    :width: 432px 
 .. |image48| image:: ../media/image48.webp
-   :width: 644px 
+   :width: 644px
+.. |image50| image:: ../media/image50.webp
+   :width: 605px
+.. |image52| image:: ../media/image52.webp
+   :width: 446px
