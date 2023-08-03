@@ -420,7 +420,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 0.2.1 page d’accueil :
 ======================
-Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe :ref:`1.1.1.a _Pour l’image de fond`
+Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe :ref:`1.1.1.a Pour l’image de fond`
 
 |image52|
  
@@ -504,17 +504,34 @@ La classe "text-centre" :
       return json_encode($info);
       break;		
 
-lien Github du fichier avec les fonctions PHP : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php` 
+      
+   lien Github du fichier avec les fonctions PHP : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php` 
 
+   Appel, depuis Monitor, la fonction:c()  dans footer.php
 
-fonctions.php ->function meteo_concept($choix)
- 
-footer.php
- 
- 
+   .. code-block:: 'fr'
 
+      mc(1,"#meteo_concept");
+      mc(0,"#meteo_concept_am");
+      //mc(3,"#temp_ext");	//pour la T° locale 
+      setTimeout(pluie, 3600000, 2);
+      function mc(variable,id){
+        $.ajax({
+        type: "GET",
+        url: "ajax.php",
+        data: "app=meteo_concept&variable="+variable,
+        success: function(data){
+        if (variable==3 || variable==2) $(id).html(data.data);
+		else $(id).html(data);
+        }
+      });
+      //setTimeout(mc, 1800000, 3,"#temp_ext");//:red:`pour la T° locale rafraichissement toutes les 30mn`	
+       };
+
+   *footer.php et ajax.php  sont dans le référentiel :  :darkblue:`https://github.com/mgrafr/monitor/`*
 
 0.2.2.2 pour Home Assistant
+"""""""""""""""""""""""""""
 La météo est installée lors de l’installation du programme :
  
 Enregistrement du dispositif :
