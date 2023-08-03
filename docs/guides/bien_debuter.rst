@@ -420,7 +420,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 0.2.1 page d’accueil :
 ======================
-Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe :ref:`1.1.1.a _`
+Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe :ref:`1.1.1.a _Pour l’image de fond`
 
 |image52|
  
@@ -430,7 +430,7 @@ Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce p
 """"""""""""""""""""""
 Température extérieure : le matériel
 
-.. avertissement::
+.. warning::
 
    Depuis le 1 avril 2023 le service Darsky n’est assuré que pour des appareil Apple !!!
    J’ai donc provisoirement migré vers Météo Concept que j’utilise pour ma météo à 14 jours ; Je n’utilise pas ces valeurs dans Domoticz 
@@ -476,7 +476,7 @@ Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement
 
    <p class="text-centre">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
 
- La classe "text-centre" :
+La classe "text-centre" :
 
 .. code-block:: 'fr'
 
@@ -491,9 +491,20 @@ Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement
 
    Indépendant de Domoticz, la fonction PHP 
 
-   
+   .. code-block:: 'fr'
 
-lien Github du fichier avec les fonctions PHP
+      case 2:// relevé temps réel station la pus proche (40Km)
+      $url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&token='.TOKEN_MC.'&insee='.INSEE;
+      //$url2 = 'https://api.meteo-concept.com/api/forecast/nextHours?token='.TOKEN_MC.'&insee='.INSEE;		
+      $prevam = file_get_curl($url);//echo $prevam;return;
+      $forecastam = json_decode($prevam);$info=array();
+	//$info['time']=$forecastam[0]->observation->time;
+	$info['temp']=$forecastam[0]->observation->temperature->value;
+	$info['hPa']=$forecastam[0]->observation->atmospheric_pressure->value;
+      return json_encode($info);
+      break;		
+
+lien Github du fichier avec les fonctions PHP : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php` 
 
 
 fonctions.php ->function meteo_concept($choix)
