@@ -430,25 +430,38 @@ Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce p
 """"""""""""""""""""""
 Température extérieure : le matériel
 
-Depuis le 1 avril 2023 le service Darsky n’est assuré que pour des appareil Apple !!!
-J’ai donc provisoirement migré vers Météo Concept que j’utilise pour ma météo à 14 jours ; Je n’utilise pas ces valeurs dans Domoticz 
+.. avertissement::
+
+   Depuis le 1 avril 2023 le service Darsky n’est assuré que pour des appareil Apple !!!
+   J’ai donc provisoirement migré vers Météo Concept que j’utilise pour ma météo à 14 jours ; Je n’utilise pas ces valeurs dans Domoticz 
 
 A la place OpenWeatherMap peut être utilisé :
  
 Pour la météo actuelle laisser les curseurs en rouge
-Le dispositif :
- 
 
- Création d’un plan :  
+|image53|
 
-  
+**Le dispositif :**
  
-	 
+|image54|
+
+ **Création d’un plan :**  
+
+ |image55|
+
+ |image56| 
  
-Noter l’Idx du plan
-L’Idx (Domoticz) du dispositif 285 
-Id , il est le premier dispositif : 1
-Ajoutons ces données qans la base SQL , soit avec phpmyadmin ou plus simplement avec l’appli :
+ |image57| 	 
+ 
+Noter : 
+
+	- l’Idx du plan Domoticz
+
+	- L’Idx (Domoticz) du dispositif 285 
+
+l'Idm (Id monitor)  , il est le premier dispositif : 1
+
+Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement avec l’appli :
   
  
 
@@ -843,3 +856,13 @@ Les scripts python
    :width: 605px
 .. |image52| image:: ../media/image52.webp
    :width: 446px
+.. |image53| image:: ../media/image53.webp
+   :width: 605px
+.. |image54| image:: ../media/image54.webp
+   :width: 303px
+.. |image55| image:: ../media/image55.webp
+   :width:562px
+.. |image56| image:: ../media/image56.webp
+   :width:562px
+.. |image57| image:: ../media/image57.webp
+   :width:531px
