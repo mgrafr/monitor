@@ -601,7 +601,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 	- ....
 
-|image75|
+:center:`|image75|`
 
 .. admonition:: **exemples**
 	
@@ -968,21 +968,16 @@ Les scripts python
    :align: center
 .. |image66| image:: ../media/image66.webp
    :width: 257px
-   :align: center
 .. |image67| image:: ../media/image67.webp
    :width: 287px
-   :align: center
 .. |image68| image:: ../media/image68.webp
    :width: 393px
-   :align: center 
 .. |image69| image:: ../media/image69.webp
    :width: 452px
-   :align: center
 .. |image70| image:: ../media/image70.webp
    :width: 650px
 .. |image72| image:: ../media/image72.webp
    :width: 424px
-   :align: center
 .. |image75| image:: ../media/image75.webp
    :width: 216px
-   :align: center
+ 
