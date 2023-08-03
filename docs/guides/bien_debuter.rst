@@ -601,7 +601,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 	- ....
 
-:center:`|image75|`
+|image75|
 
 .. admonition:: **exemples**
 	
