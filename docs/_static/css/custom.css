@@ -2,8 +2,5 @@
     font-size: 18px;}
 .darkblue{color:darkblue;font-style: italic;font-family: serif;
     font-size: 18px;}
-img.align-center {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
+.center { text-align: center; }
+
