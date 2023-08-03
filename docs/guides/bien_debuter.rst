@@ -528,37 +528,65 @@ La classe "text-centre" :
       //setTimeout(mc, 1800000, 3,"#temp_ext");//:red:`pour la T° locale rafraichissement toutes les 30mn`	
        };
 
-   *footer.php et ajax.php  sont dans le référentiel :  :darkblue:`https://github.com/mgrafr/monitor/`*
+   *footer.php et ajax.php  sont dans le référentiel :*  :darkblue:`https://github.com/mgrafr/monitor`
+
+|image64| 
 
 0.2.2.2 pour Home Assistant
 """""""""""""""""""""""""""
 La météo est installée lors de l’installation du programme :
- 
+
+|image65| 
+
 Enregistrement du dispositif :
-         
+
+|image66| 
+
+|image67| 
+
 Affichage sue la page d’accueil :
+
+|image68| 
  
 Les données json de ce dispositif :
+
+|image69|
  
 0.2.2.3 Affichage sur la page d’accueil de Monitor :
-Extrait du fichier /inclue/accueil.php
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+Extrait du fichier /include/accueil.php
+
+|image70|
  
-L’ID html est ici « temp_ext »
+*L’ID html est ici « :darkblue:`temp_ext` »*
 
                 
 
-0.3 _ Base de données Maria DB ; La base de données a été créée lors de l’installation du serveur : nom=monitor (donnée lors de la création, il peut être différent)
-Connexion en local : IP/phpMyAdmin
+0.3 _ Base de données Maria DB 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La base de données a été créée lors de l’installation du serveur : nom=monitor (donnée lors de la création, il peut être différent)
+
+Connexion en local : :darkblue:`IP/phpMyAdmin`
                         
-
-
-
+|image72|
 
 Pour les autorisations d’accès, voir le paragraphe concernant la configuration /admin/config.php
+
 Elles ont été créées lors de l’installation automatique, pour l’installation manuelle :
  
-En cas d ‘absence de base de données ou de mauvais paramétrages :
-                   
+*Extrait de config.php:*
+
+.. code-block:: 'fr'
+
+   // parametres serveur DBMaria
+   define('SERVEUR','localhost');
+   define('MOTDEPASSE','<MOT DE PASSE>');
+   define('UTILISATEUR','<UTILISATEUR>');
+   define('DBASE','monitor');
+
+.. warning::
+   En cas d ‘absence de base de données ou de mauvais paramétrages ,sur la page d' accueil :
+   **" pas de connexion à la BD "**
 
 Ajout à la base de données des données fournie par Domoticz 
 
@@ -925,3 +953,19 @@ Les scripts python
    :width: 414px
 .. |image60| image:: ../media/image60.webp
    :width: 459px
+. |image64| image:: ../media/image64.webp
+   :width: 485px
+.. |image65| image:: ../media/image65.webp
+   :width: 232px
+.. |image66| image:: ../media/image66.webp
+   :width: 257px
+.. |image67| image:: ../media/image67.webp
+   :width: 287px
+.. |image68| image:: ../media/image68.webp
+   :width: 393px
+.. |image69| image:: ../media/image69.webp
+   :width: 452px
+.. |image70| image:: ../media/image70.webp
+   :width: 650px
+.. |image72| image:: ../media/image72.webp
+   :width: 424px
