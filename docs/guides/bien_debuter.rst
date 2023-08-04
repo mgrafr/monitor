@@ -965,7 +965,6 @@ Les scripts python
    :width: 485px
 .. |image65| image:: ../media/image65.webp
    :width: 232px
-   :text-align: center
 .. |image66| image:: ../media/image66.webp
    :width: 257px
 .. |image67| image:: ../media/image67.webp
@@ -980,4 +979,4 @@ Les scripts python
    :width: 424px
 .. |image75| image:: ../media/image75.webp
    :width: 216px
- 
+   :align: center
