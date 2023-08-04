@@ -646,7 +646,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    |image83|
                           
-.. admonition:: **un exemple bazsh concret : redémarrer un script après modifications**
+.. admonition:: **un exemple bash concret : redémarrer un script après modifications**
 
    Ici :red:`systemctl restart sms_dz` (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
 
@@ -654,7 +654,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    .. code-block:: 'fr'
 
-      :darkblue:`-- le fichier connect.py est modifié ` 
+      -- le fichier connect.py est modifié ` 
       f = io.open("userdata/scripts/python/connect.py", "w")
                     env="#!/usr/bin/env python3"
                     f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
@@ -662,15 +662,17 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 		    -- on modifie la variable
                     domoticz.variables('BASH').set("restart_sms_dz")
 
+      Dans monitor, PHP-SSH2
 
+      raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
 
-Dans monitor, PHP, SSH2
-raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
-Extrait du fichier :
+      Extrait du fichier :
  
+      |image85|
 
-Monitor surveille les modifications de variables, si une variable avec une ID_img =#shell apparait, si la valeur est !=0 le nom du script indiqué dans Value est exécuté :
-Appel ajax depuis footer.php vers ajax.php->ssh_scp.php->serveur dz ou ha->exécution du fichier Bash
+	Monitor surveille les modifications de variables, si une variable avec une ID_img =#shell apparait, si la valeur est !=0 le nom du script indiqué dans Value est exécuté :
+	
+	Appel ajax depuis footer.php vers ajax.php->ssh_scp.php->serveur dz ou ha->exécution du fichier Bash
 
  
 Le mot de passe peut être ajouté à connect.py
@@ -1028,4 +1030,5 @@ Les scripts python
    :width: 296px     
 .. |image83| image:: ../media/image83.webp
    :width: 401px     
-
+.. |image85| image:: ../media/image83.webp
+   :width: 650px     
