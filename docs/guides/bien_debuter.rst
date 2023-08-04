@@ -602,8 +602,8 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 	- ....
 
   .. |image75| image:: ../media/image75.webp
-   :width: 216px
-   :class: center
+     :width: 216px
+     :align: center
 
 .. admonition:: **exemples**
 	
