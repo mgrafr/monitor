@@ -603,7 +603,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
   |image75|
 
-.. admonition:: **exemples**
+.. admonition:: **quelques explications**
 	
    **Table « text-image »** :
 
@@ -646,12 +646,23 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    |image83|
                           
-.. admonition:: **un exemple : redémarrer un script après modifications**
+.. admonition:: **un exemple bazsh concret : redémarrer un script après modifications**
 
-   Ici systemctl restart sms_dz (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
+   Ici :red:`systemctl restart sms_dz` (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
 
-Dans Domoticz :
- 
+   Dans Domoticz :
+
+   .. code-block:: 'fr'
+
+      :darkblue:`-- le fichier connect.py est modifié ` 
+      f = io.open("userdata/scripts/python/connect.py", "w")
+                    env="#!/usr/bin/env python3"
+                    f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
+                    f:close()
+		    -- on modifie la variable
+                    domoticz.variables('BASH').set("restart_sms_dz")
+
+
 
 Dans monitor, PHP, SSH2
 raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
