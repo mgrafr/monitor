@@ -609,24 +609,46 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    Pour un texte contenu dans une variable Domoticz correspond une image ou 0 ou « none »
 
+   |image76|
+
    ex: le texte "poubelle jaune" dans la variable poubelle aura un alias : l'image d'une poubelle jaune
 
  
    **Table « dispositifs»**, ne sont concernés pour les variables que les champs :
- 
-        . num : ne sert qu’à éditer plus facilement la BD (Pour modifier plus facilement la table, ajouter au début un enregistrement (num par exemple) afin de pouvoir éditer les enregistrements).
+
+   |image77|
+
+   |image78|
+
+        . num : ne sert qu’à éditer plus facilement la BD
+
+          :red:`(Pour modifier plus facilement la table, ajouter au début un enregistrement (num par exemple) afin de pouvoir éditer les enregistrements)`.
+
+   |image79|
  
 	. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
 
-	. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; commande Bash, accès au Shell par SSH2 depuis Domoticz sous Docker; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.
-Dans Domoticz, créer une variable avec les données ci-dessous :
+	. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
+
+             commande Bash, accès au Shell par SSH2 depuis Domoticz sous Docker; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.
+  
+             **Dans Domoticz**, créer une variable avec les données ci-dessous :
+
+    |image80|
  
-Dans SQL :
+             **Dans SQL** :
+
+    |image81|
  
-Ou par Monitor : 
+            Ou par Monitor :
+
+   |image82|
+
+   |image83|
                           
-Exemple : redémarrer script après modifications
-Ici systemctl restart sms_dz (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
+.. admonition:: **un exemple : redémarrer un script après modifications**
+
+   Ici systemctl restart sms_dz (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
 
 Dans Domoticz :
  
@@ -978,6 +1000,20 @@ Les scripts python
 .. |image72| image:: ../media/image72.webp
    :width: 424px
 .. |image75| image:: ../media/image75.webp
-     :width: 216px
-     :align: center
-  
+   :width: 216px
+.. |image76| image:: ../media/image76.webp
+   :width: 598px
+.. |image77| image:: ../media/image77.webp
+   :width: 343px     
+.. |image78| image:: ../media/image78.webp
+   :width: 605px     
+.. |image79| image:: ../media/image79.webp
+   :width: 650px        
+.. |image80| image:: ../media/image80.webp
+   :width: 650px        
+.. |image81| image:: ../media/image81.webp
+   :width:349px        
+.. |image82| image:: ../media/image82.webp
+   :width:296px     
+.. |image83| image:: ../media/image83.webp
+   :width:401px     
