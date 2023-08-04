@@ -632,7 +632,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
              commande Bash, accès au Shell par SSH2 depuis Domoticz sous Docker; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.
   
-        **Dans Domoticz**, créer une variable avec les données ci-dessous :
+        **Dans Domoticz** , créer une variable avec les données ci-dessous :
 
    |image80|
  
@@ -640,7 +640,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    |image81|
  
-        Ou par Monitor :
+        **Ou par Monitor** :
 
    |image82|
 
