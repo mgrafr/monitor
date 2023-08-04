@@ -590,7 +590,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 **Ajout à la base de données des données fournie par Domoticz **
 
       0.3.1 Les variables (table dispositifs)
-      ===================
+      =======================================
 	La correspondance entre les variables Domoticz ou HA et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
 
 	- tables :
@@ -716,10 +716,8 @@ template:
              {{input_text.entity_id ~ "=" ~ input_text.state ~ ", " }}
             {% endfor %}
 
- 
-
-
 0.3.2 Les Dispositifs
+ ====================
 Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz ou HA et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)
 Table « dispositifs »
  
@@ -773,6 +771,7 @@ Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs
 
 
 0.3.3 caméras
+ ============
 On crée une table dans la base de données : cameras
 Si l’on veut un accès extérieur il est utile d’indiquer également le domaine
 Si l’on utilise Zoneminder, il est nécessaire d’assurer la correspondance des Numéros de dispositifs
@@ -801,6 +800,7 @@ valeur : la température
 Téléchargement de temp_meteo.sql
 
 0.4_ Le serveur http de NGINX :
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
 
 Configuration : /admin/config.php
