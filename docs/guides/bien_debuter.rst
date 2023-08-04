@@ -1040,5 +1040,5 @@ Les scripts python
    :width: 296px     
 .. |image83| image:: ../media/image83.webp
    :width: 401px     
-.. |image85| image:: ../media/image83.webp
+.. |image85| image:: ../media/image85.webp
    :width: 650px     
