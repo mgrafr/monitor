@@ -4,7 +4,7 @@
     font-size: 18px;}
 .center { text-align: center; }
 .center { text-align: center; }
-img.center {
+p.img.center {
     display: block;
     margin: auto;
 }
