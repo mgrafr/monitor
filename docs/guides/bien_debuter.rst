@@ -979,4 +979,4 @@ Les scripts python
    :width: 424px
 .. |image75| image:: ../media/image75.webp
    :width: 216px
-   :align: center
+  
