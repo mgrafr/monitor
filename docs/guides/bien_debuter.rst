@@ -681,25 +681,25 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    :darkblue:`Le mot de passe peut être ajouté à connect.py`
 
-   Nom_idx : nom de la variable du serveur domotique (dz)
+Nom_idx : nom de la variable du serveur domotique (dz)
 
-   .. note::
+.. note::
 
-      **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
-
+   **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
       (le programme fonctionne mais l’API renvoie « NULL »)
 
-   Idx : id de la variable du serveur domotique(dz)
-
+Idx : id de la variable du serveur domotique(dz)
    ex : idx de Domoticz
  
-   Nom appareil : non obligatoire
+Nom appareil : non obligatoire
 
-   ID : id de la variable (ha)
+ID : id de la variable (ha)
    Ex : Home Assistant, nom essai, ID input_text.essai
  
 
-Pourquoi une correspondance ? : cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
+*Pourquoi une correspondance ?* :
+
+cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
 Installation des tables : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :
  
 
