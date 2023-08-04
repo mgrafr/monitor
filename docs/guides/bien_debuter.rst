@@ -601,7 +601,9 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 	- ....
 
-   |image75|
+  .. |image75| image:: ../media/image75.webp
+   :width: 216px
+   :class: center
 
 .. admonition:: **exemples**
 	
@@ -977,6 +979,5 @@ Les scripts python
    :width: 650px
 .. |image72| image:: ../media/image72.webp
    :width: 424px
-.. |image75| image:: ../media/image75.webp
-   :width: 216px
+
   
