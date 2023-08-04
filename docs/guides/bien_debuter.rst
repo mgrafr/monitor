@@ -650,7 +650,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    Ici :red:`systemctl restart sms_dz` (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
 
-   Dans Domoticz :
+   **Dans Domoticz** :
 
    .. code-block:: 'fr'
 
@@ -662,7 +662,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 		    -- on modifie la variable
                     domoticz.variables('BASH').set("restart_sms_dz")
 
-   Dans monitor, PHP-SSH2
+   **Dans monitor, PHP-SSH2**
 
    raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
 
@@ -674,29 +674,29 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 	
 	Appel ajax depuis footer.php vers ajax.php->ssh_scp.php->serveur dz ou ha->exécution du fichier Bash
 
- .. code-block:: 'fr'
+    .. code-block:: 'fr'
 
-   #!/usr/bin/bash
-   echo "MOT DE PASSE" | sudo -S systemctl restart sms_dz
+       #!/usr/bin/bash
+       echo "MOT DE PASSE" | sudo -S systemctl restart sms_dz
 
-:darkblue:`Le mot de passe peut être ajouté à connect.py`
+   :darkblue:`Le mot de passe peut être ajouté à connect.py`
 
-Nom_idx : nom de la variable du serveur domotique (dz)
+   Nom_idx : nom de la variable du serveur domotique (dz)
 
-.. note::
+   .. note::
 
-   **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
+      **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
 
-   (le programme fonctionne mais l’API renvoie « NULL »)
+      (le programme fonctionne mais l’API renvoie « NULL »)
 
-Idx : id de la variable du serveur domotique(dz)
+   Idx : id de la variable du serveur domotique(dz)
 
-ex : idx de Domoticz
+   ex : idx de Domoticz
  
-Nom appareil : non obligatoire
+   Nom appareil : non obligatoire
 
-ID : id de la variable (ha)
-Ex : Home Assistant, nom essai, ID input_text.essai
+   ID : id de la variable (ha)
+   Ex : Home Assistant, nom essai, ID input_text.essai
  
 
 Pourquoi une correspondance ? : cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
