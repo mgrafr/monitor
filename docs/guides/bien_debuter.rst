@@ -634,7 +634,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
   
         **Dans Domoticz** : créer une variable avec les données ci-dessous 
 
-   |image81|
+   |image80|
  
         **Dans SQL** :
 
@@ -1010,10 +1010,11 @@ Les scripts python
 .. |image79| image:: ../media/image79.webp
    :width: 650px        
 .. |image80| image:: ../media/image80.webp
-   :width: 650px        
+   :width: 650px
 .. |image81| image:: ../media/image81.webp
-   :width:349px        
+   :width: 349px        
 .. |image82| image:: ../media/image82.webp
-   :width:296px     
+   :width: 296px     
 .. |image83| image:: ../media/image83.webp
-   :width:401px     
+   :width: 401px     
+
