@@ -662,33 +662,43 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 		    -- on modifie la variable
                     domoticz.variables('BASH').set("restart_sms_dz")
 
-      Dans monitor, PHP-SSH2
+   Dans monitor, PHP-SSH2
 
-      raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
+   raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
 
-      Extrait du fichier :
+   Extrait du fichier :
  
-      |image85|
+   |image85|
 
 	Monitor surveille les modifications de variables, si une variable avec une ID_img =#shell apparait, si la valeur est !=0 le nom du script indiqué dans Value est exécuté :
 	
 	Appel ajax depuis footer.php vers ajax.php->ssh_scp.php->serveur dz ou ha->exécution du fichier Bash
 
- 
-Le mot de passe peut être ajouté à connect.py
+ .. code-block:: 'fr'
 
+   #!/usr/bin/bash
+   echo "MOT DE PASSE" | sudo -S systemctl restart sms_dz
 
+:darkblue:`Le mot de passe peut être ajouté à connect.py`
 
 Nom_idx : nom de la variable du serveur domotique (dz)
-IMPORTANT : le nom de la variable Domoticz ne doit pas comporter d’espace
-(le programme fonctionne mais l’API renvoie « NULL »)
+
+.. note::
+
+   **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
+
+   (le programme fonctionne mais l’API renvoie « NULL »)
+
 Idx : id de la variable du serveur domotique(dz)
- ex : idx de Domoticz
+
+ex : idx de Domoticz
  
 Nom appareil : non obligatoire
+
 ID : id de la variable (ha)
 Ex : Home Assistant, nom essai, ID input_text.essai
  
+
 Pourquoi une correspondance ? : cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
 Installation des tables : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :
  
