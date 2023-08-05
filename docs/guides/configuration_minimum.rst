@@ -55,39 +55,53 @@ Permet d’afficher
    possible de préparer le transfert ; ici la table dispositifs a été renommée Dispositifs
 
    |image120|
+
+   |image121|
  
  
-1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo :
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
+1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+.. code-block:: 'fr'
 
 // Monitor 
-define('IMAGEACCUEIL', 'images/maison.webp');//image page accueil pour écrans >534 px
-define('IMAGEACCUEILSMALL', 'images/maison_small.webp');//image page accueil pour écrans <535 px
-define('IMGLOGO', 'images/logo.png');//image logo
+   define('IMAGEACCUEIL', 'images/maison.webp');//image page accueil pour écrans >534 px
+   define('IMAGEACCUEILSMALL', 'images/maison_small.webp');//image page accueil pour écrans <535 px
+   define('IMGLOGO', 'images/logo.png');//image logo
 
 
  
 
-Pour les titres, slogans et lexique 
-Pour le lexique : 
+1.1.1.b Pour les titres, slogans et lexique
+"""""""""""""""""""""""""""""""""""""""""""
+Pour le lexique :
+
 -	true = lexique par défaut
 -	false= lexique à modifier /include/lexique_no.php
-define('NOMSITE', 'Domoticz');//nom principal du site
-define('NOMSLOGAN', xxxxxxxxxxx);//nom secondaire ou slogan
-// affichage lexique
-define('LEXIQUE', true);
 
- 
+.. code-block:: 'fr'
+   define('NOMSITE', 'Domoticz');//nom principal du site
+   define('NOMSLOGAN', xxxxxxxxxxx);//nom secondaire ou slogan
+   // affichage lexique
+   define('LEXIQUE', true);
+
 1.1.2 intervalles de maj, maj temps réel
 ========================================
-L’intervalle de mise à jour pour les services (poubelles, anniversaires, …) : il est de ½ heure (1800000 milli secondes), il peut être changé
+L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) : il est de ½ heure (1800000 milli secondes), il peut être changé
  
- 
-TEMPO_DEVICES pour tous les dispositifs 
-TEMPO_DEVICES_DZ : pour les dispositifs qui mettent à 1 une variable pour indiquer à monitor d’effectuer une mise à jour, ici toutes les 30 secondes rafraichissement des dispositifs si par exemple un PIR, un contact de porte qui sont déclaré prioritaire dans DZ passent à ON 
- 
+.. code-block:: 'fr'
+   // interval de maj des fonctions JS maj_services() & maj_devices()
+   define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
+   define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE(si installée) en milli secondes
+   define('TEMPO_DEVICES', 180000);// en milli secondes
+   define('TEMPO_DEVICES_DZ', 30000);// en milli secondes (>= 15s) maj déclenchée par Dz voir doc
+
+.. note::
+   *TEMPO_DEVICES* pour tous les dispositifs 
+   *TEMPO_DEVICES_DZ* : pour les dispositifs qui mettent à 1 une variable pour indiquer à monitor d’effectuer une mise à jour, ici toutes les 30 secondes rafraichissement des dispositifs si par exemple un PIR, un 
+   contact de porte qui sont déclaré prioritaire dans DZ passent à ON 
+
+   |image126|
+
 La fonction JS :
  
 La fonction PHP qui récupère la valeur de la variable :
@@ -117,5 +131,9 @@ Par défaut « admin »
 
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
-.. |image120| image:: ../media/image117.webp
+.. |image120| image:: ../media/image120.webp
    :width: 357px 
+.. |image121| image:: ../media/image121.webp
+   :width: 239px 
+.. |image126| image:: ../media/image126.webp
+   :width: 604px 
