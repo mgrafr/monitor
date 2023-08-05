@@ -641,14 +641,16 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
       **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
       (le programme fonctionne mais l’API renvoie « NULL »)
 
+   
    . Idx : id de la variable du serveur domotique(dz)
    		ex : idx de Domoticz
- 
+                |image87|
+
    . Nom appareil : non obligatoire
 
    . ID : id de la variable (ha)
    		Ex : Home Assistant, nom essai, ID input_text.essai
- 
+		 |image88|
        
 .. admonition:: **un exemple bash concret : redémarrer un script après modifications**
 
@@ -703,8 +705,10 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 *Pourquoi une correspondance ?* :
 
 cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
-Installation des tables : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :
+
+*Installation des tables* : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :
  
+|image89|
 
 Les API de Domoticz et Home assistant pour les variables :
 -	DZ : URL :PORT/json.htm?type=command&param=getuservariables ,( renvoie la liste de toutes les variables et leurs valeurs)
@@ -1044,4 +1048,10 @@ Les scripts python
 .. |image83| image:: ../media/image83.webp
    :width: 401px     
 .. |image85| image:: ../media/image85.webp
-   :width: 650px     
+   :width: 650px 
+.. |image87| image:: ../media/image87.webp
+   :width: 406px     
+.. |image88| image:: ../media/image88.webp
+   :width: 408px     
+.. |image89| image:: ../media/image89.webp
+   :width: 413px     
