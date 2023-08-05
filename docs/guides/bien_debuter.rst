@@ -642,13 +642,13 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
       (le programme fonctionne mais l’API renvoie « NULL »)
 
    
-   . Idx : id de la variable du serveur domotique(dz)
+   . Idx , id de la variable du serveur domotique(dz)
    		ex : idx de Domoticz
                 |image87|
 
    . Nom appareil : non obligatoire
 
-   . ID : id de la variable (ha)
+   . ID , id de la variable (ha)
    		Ex : Home Assistant, nom essai, ID input_text.essai
 		 |image88|
        
@@ -710,18 +710,21 @@ cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les
  
 |image89|
 
-Les API de Domoticz et Home assistant pour les variables :
--	DZ : URL :PORT/json.htm?type=command&param=getuservariables ,( renvoie la liste de toutes les variables et leurs valeurs)
--	HA : URL:8123/api/states/sensor.liste_var (renvoie la liste des dispositifs enregistrés comme input text)
-Le template sensor : sensor.liste_var
-template:
-  -  sensor:
-       -  name: "liste_var"
-          unique_id : 1234567890
-          state: >
-            {% for input_text in states.input_text %}
-             {{input_text.entity_id ~ "=" ~ input_text.state ~ ", " }}
-            {% endfor %}
+*Les API de Domoticz et Home assistant pour les variables* :
+
+-	DZ ,  URL : PORT/json.htm?type=command&param=getuservariables ,( renvoie la liste de toutes les variables et leurs valeurs)
+
+-	HA ,  URL : 8123/api/states/sensor.liste_var (renvoie la liste des dispositifs enregistrés comme input text)
+
+	Le template sensor : sensor.liste_var
+	template:
+  	- sensor:
+	   - name: "liste_var"
+             unique_id : 1234567890
+             state: >
+              {% for input_text in states.input_text %}
+               {{input_text.entity_id ~ "=" ~ input_text.state ~ ", " }}
+              {% endfor %}
 
 0.3.2 Les Dispositifs
 =====================
