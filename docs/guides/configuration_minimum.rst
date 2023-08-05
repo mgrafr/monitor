@@ -1,4 +1,4 @@
-1._ Configuration minimum : la page d’accueil
+1. Configuration minimum : la page d’accueil
 ---------------------------------------------
 
 Permet d’afficher 
@@ -31,28 +31,36 @@ Permet d’afficher
  
 1.1	– Configuration :/admin.config.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- :red:`Il faut fournir un minimum de renseignements :`
+ :red:`Il faut fournir un minimum de renseignements` :
 
+1.1.1 -Adresse IP , domaine, favicon de monitor 
+================================================ 
 .. code-block:: 'fr'
 
    //general monitor
-   define('URLMONITOR', '');//domaine si port autre 443 
-   define(":red:`IPMONITOR'", '192.168.1.9');//ip
+   -->define('URLMONITOR', '');//domaine (pour accès distant) et port si différent de 443 
+   -->define('IPMONITOR', '192.168.1.9');//ip
    define('PASSMONITOR', '*******');//mot passe serveur et SSH2
    define('USERMONITOR', 'michel');//user serveur et SSH2 ;le répertoire perso sera /home/nom de USERMONITOR
    define('MONCONFIG', 'admin/config.php');//fichier config 
    define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
-   define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
+   -->define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
    define('DISPOSITIFS', 'dispositifs');
-  
 
-1.1.1 -Adresse IP , domaine, favicon de monitor 
-================================================ 
-Pour faciliter la réinitialisation des dispositifs dans Domoticz ou un transfert (ex, zwavejs2mqtt , zigbee2mqtt sous docker) ; en créant une copie de la table dispositifs (« dispositifs » par défaut), il est possible de préparer le transfert ; ici la table dispositifs a été renommer Dispositifs
+.. note::
+  :red:`define('DISPOSITIFS', 'dispositifs');`
+   Pour faciliter la réinitialisation des dispositifs dans Domoticz ou un transfert (ex, zwavejs2mqtt , zigbee2mqtt sous docker) ; 
+
+   en créant une copie de la table dispositifs (« dispositifs » par défaut), il est 
+   possible de préparer le transfert ; ici la table dispositifs a été renommée Dispositifs
+
+   |image120|
  
  
 1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo :
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 
 // Monitor 
 define('IMAGEACCUEIL', 'images/maison.webp');//image page accueil pour écrans >534 px
@@ -109,3 +117,5 @@ Par défaut « admin »
 
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
+.. |image120| image:: ../media/image117.webp
+   :width: 357px 
