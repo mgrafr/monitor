@@ -626,27 +626,27 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    |image79|
  
-	. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
+   . Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
 
-	. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
+   . Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
 
              commande Bash, accès au Shell par SSH2 depuis Domoticz sous Docker; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.
 
               voir ci-après un exemple de commande bash
   
- 	. Nom_idx : nom de la variable du serveur domotique (dz)
+   . Nom_idx : nom de la variable du serveur domotique (dz)
 
    .. warning::
 
       **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
       (le programme fonctionne mais l’API renvoie « NULL »)
 
-        . Idx : id de la variable du serveur domotique(dz)
+   . Idx : id de la variable du serveur domotique(dz)
    		ex : idx de Domoticz
  
-        . Nom appareil : non obligatoire
+   . Nom appareil : non obligatoire
 
-   	. ID : id de la variable (ha)
+   . ID : id de la variable (ha)
    		Ex : Home Assistant, nom essai, ID input_text.essai
  
        
