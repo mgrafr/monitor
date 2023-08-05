@@ -885,7 +885,7 @@ Exemple pour une table temp_meteo :
 - date : la date et l’heure
 - valeur : la température
 
-0.4_ Le serveur http de NGINX :
+0.4 Le serveur http de NGINX :
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image101| 
 
@@ -919,32 +919,89 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 |image103| 
  
 - **ajax.php** : appels ajax depuis javascript, explications dans les divers paragraphes
+
+	extrait du script :
+
+.. code-block:: 'fr'
+
+   <?php
+   require ("fonctions.php");
+   $retour=array();
+   //POST-------------------
+   $appp = isset($_POST['appp']) ? $_POST['appp'] : '';
+   $variablep = isset($_POST['variable']) ? $_POST['variable'] : '';
+   $commandp = isset($_POST['command']) ? $_POST['command'] : '';
+   //GET----------------------
+   $app = isset($_GET['app']) ? $_GET['app'] : '';
+   $idx = isset($_GET['idx']) ? $_GET['idx'] : '';
+   $device = isset($_GET['device']) ? $_GET['device'] : '';
+   $name = isset($_GET['name']) ? $_GET['name'] : '';
+   $variable = isset($_GET['variable']) ? $_GET['variable'] : '';
+   $command = isset($_GET['command']) ? $_GET['command'] : '';
+   $type = isset($_GET['type']) ? $_GET['type'] : '';
+   $table = isset($_GET['table']) ? $_GET['table'] : '';
+   // APPEL A des FONCTIONS PHP 'fonctions.php
+   if ($app=="aff_th") {$retour= status_devices($device,'Temp','Humidity');echo json_encode($retour); }
+   else if ($app=="devices_plan") {if (DECOUVERTE==true) {include('include/json_demo/devices_plan_json.php');return;}
+	else {$retour=devices_plan($variable);echo json_encode($retour); }}
+   else if ($app=="turn") {$retour=devices_id($device,$command);echo $retour; }
+   else if ($app=="OnOff") {$retour=switchOnOff_setpoint($device,$command,$type,$variable,$name);echo json_encode($retour); }
+   else if ($app=="meteo_concept") {if (DECOUVERTE==true) {include('include/json_demo/meteo_concept_json.php');return;}
+	else {echo $retour=meteo_concept($variable); }}
+
+- **Cookies.txt** & **cookie.txt** : utilisés par Zoneminder suivant les versions de l’API
+
+- **favicon.ico** : l’icône associée à la barre de l’url
+
+- **fonctions.php** : toutes les fonctions PHP appelées au démarrage et lors des appels Ajax
+
+- **Index.php** :  le ficher appelé lors du chargement du site ; pour les écrans > 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse 	du répertoire du site sur le serveur
+
+.. code-block:: 'fr'
+
+   <?php
+   echo '<!DOCTYPE html><html><body style="background-color: cornsilk;">';
+   $rep="/"; $domaine=$_SERVER['HTTP_HOST'];$port=$_SERVER['SERVER_PORT'];
+   if (substr($domaine, 0, 7)=="192.168") $rep="/monitor/";
+   header('Location: '.$rep.'index_loc.php');
+   exit();
+   ?>
  
+- **Index_loc.php** : la page d’accueil réelle du site ; sauf pour ajouter des pages non incluses dans le programme, ne pas modifier ce fichier.
 
+|image106|
 
-
--	Cookies.txt & cookie.txt : utilisés par Zoneminder suivant les versions de l’API
--	favicon.ico : l’icône associée à la barre de l’url
--	fonctions.php : toutes les fonctions PHP appelées au démarrage et lors des appels Ajax
--	Index.php :  le ficher appelé lors du chargement du site ; pour les écrans > 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse du répertoire du site sur le serveur
--	Index_loc.php : la page d’accueil réelle du site ; sauf pour ajouter des pages non incluses dans le programme, ne pas modifier ce fichier.
-
-
-Le fichier index.php
- 
-Le fichier index_loc.php
- 
-
-0.5_ Le Framework Bootstrap
+0.5 Le Framework Bootstrap
 Pour des mises en page faciles, des fenêtres modales ,…..
  
-
+|image107|
 
 0.6_ Les styles CSS
- 
+|image108| 
+
 Un extrait :
+
+.. code-block:: 'fr'
+
+   body {
+       font-size: 15px;
+       line-height: 1.50;
+       color: #333333;
+       position: relative;
+       font-family: 'Open Sans', sans-serif;
+   }
+   html, body {height: 100%;}
+   .table td{border:0}
+   #menu {width:17em;}
+   #maison1{margin-top:12%;}
+   .header {height: 150px;color: #ffffff;background-color: rgba(8, 55, 70, 0.7);
+	padding: 10px 0;-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
  
 Les Media queries pour les différents écrans
+
+|image110| 
  
 0.7_ Les images
 Toutes sont au format svg ou webp sauf les caméras
@@ -1154,5 +1211,13 @@ Les scripts python
    :width: 566px   
 .. |image101| image:: ../media/image101.webp
    :width: 307px 
-.. |image103| image:: ../media/image101.webp
+.. |image103| image:: ../media/image103.webp
    :width: 334px 
+.. |image106| image:: ../media/image106.webp
+   :width: 671px 
+.. |image107| image:: ../media/image107.webp
+   :width: 270px 
+.. |image108| image:: ../media/image108.webp
+   :width: 310px 
+.. |image110| image:: ../media/image110.webp
+   :width: 676px 
