@@ -737,42 +737,89 @@ Comme pour les variables, la table fournie une correspondance entre les disposit
  
 |image91| 
 
+|image92| 
 
+La table permet en plus de gérer et modifier si besoin l’affichage de tous les dispositifs sans intervenir sur la page HTML ; :red:`pour les switches, les scripts pour commander l’allumage ou l’extinction sont générés automatiquement à partir des données de cette table`.
 
-La table permet en plus de gérer et modifier si besoin l’affichage de tous les dispositifs sans intervenir sur la page HTML ; pour les switches, les scripts pour commander l’allumage ou l’extinction sont générés automatiquement à partir des données de cette table.
-num : ne sert qu’à éditer plus facilement la BD
-Pour modifier plus facilement la table , ajouter au début un enregistrement (num par exemple) afin de pouvoir éditer les enregistrements
+- num : ne sert qu’à éditer plus facilement la BD
+	voir le paragraphe précédent :ref:`0.3.1 Les variables`
  
+- Nom appareil : nom usuel
 
-Nom appareil : nom usuel
-nom_dz : nom du dispositif Domoticz
-idx : celui de Domoticz
-ID : celui de Home Assistant
-idm : idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
-Voir le paragraphe concernant les images svg
-Matériel : pour les types zwave ou Zigbee
-maj_js : types de mise à jour java script
--	control // détecteur présence(on/off)
--	etat  //porte, volet ,(closed/open)
--	Temp ou data // température, humidité, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est préférable d’utiliser « data »
+- nom_dz : nom du dispositif Domoticz
+
+- idx : celui de Domoticz
+
+- ID : celui de Home Assistant
+
+- idm : idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant 	une recherche ;dans l’image cet idm est indiqué par « rel=idm »
+	:darkblue:`Voir le paragraphe concernant les images svg`
+
+- Matériel : pour les types zwave ou Zigbee
+
+- maj_js : types de mise à jour java script
+	-	control // détecteur présence(on/off)
+	-	etat  //porte, volet ,(closed/open)
+	-	Temp ou data // température, humidité, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est 		préférable d’utiliser « data »
+
+	|image93| 
+
+	|image94| 
  
+	-	onoff commandes 
+	-	onoff+stop commandes (volets par exemple) 
+	-	popup //ouverture d’une fenêtre (commandes particulières)
+		.	exemple des scripts générés automatiquement 
+
+.. code-block:: 'fr'	
+
+   /* switchOnOff*  */
+	
+   $("#coul_al_absence").click(function(){switchOnOff_setpoint("65","41","On","pwdalarm");});
+   $("#coul_al_nuit").click(function(){switchOnOff_setpoint("66","42","On","pwdalarm");});
+   $("#sirene_al").click(function(){switchOnOff_setpoint("67","234","On","pwdalarm");});
+   $("#patha5645").click(function(){switchOnOff_setpoint("68","43","On","pwdalarm");});
+   $("#coul_modect").click(function(){switchOnOff_setpoint("69","44","On","pwdalarm");});
+   $("#raz_dz").click(function(){switchOnOff_setpoint("70","45","On","pwdalarm");});
+   $("#sw7").click(function(){switchOnOff_setpoint("9","77","On","0");});
+   $("#sw8").click(function(){switchOnOff_setpoint("10","79","On","0");});
+   $("#ping_pi").click(function(){switchOnOff_setpoint("14","80","On","0");});
+   $("#coul_al_nuit-2").click(function(){switchOnOff_setpoint("15","81","On","pwdalarm");});
+   $("#sw2").click(function(){switchOnOff_setpoint("11","85","On","0");});
+   $("#gsm").click(function(){switchOnOff_setpoint("8","86","On","pwdalarm");});
+   $("#sw3").click(function(){switchOnOff_setpoint("18","166","On","0");});
+   $("#sw4").click(function(){switchOnOff_setpoint("16","167","On","0");});
+   $("#sw5").click(function(){switchOnOff_setpoint("19","168","On","0");});
+   $("#sw1").click(function(){switchOnOff_setpoint("17","169","On","0");});
+   $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
+   $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
  
--	onoff commandes 
--	onoff+stop commandes (volets par exemple) 
--	popup //ouverture d’une fenêtre (commandes particulières)
-o	exemple des scripts générés automatiquement 
- 
-		Dans footer.php
+le script dans footer.php pour ajouter le javascript automatiquement:
+
+.. code-block:: 'fr'
+
+   <?php 
+   require("fonctions.php");
+   if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	
+   ?>
 		 
-Voir chapitre1. _ Configuration minimum
-Il est possible d’ajouter des types
-id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
-car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
-F() N° case de la fonction « pour_data($nc,$l_device) » , fichier fonctions.php
-class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes
-coul_id1_id2_ON, coul_id1_id2_OFF, coul_lamp_ON, coul_lamp_ON : couleur des ID ou de la class des dispositifs suivant leur position, (class_lamp pour les lampes des différents interrupteurs)
-pass : par défaut « 0 » pas de mot de passe , pwalarm pour mot de passe de l’alarme et pwcommand pour les commandes (on/off ,…)
-doc : pour associer un document au dispositif
+	Voir chapitre :ref:`1._ Configuration minimum`
+
+	*Il est possible d’ajouter des types*
+
+- id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
+
+- car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
+
+- F() N° case de la fonction « pour_data($nc,$l_device) » , fichier fonctions.php
+
+- class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes
+
+- coul_id1_id2_ON, coul_id1_id2_OFF, coul_lamp_ON, coul_lamp_ON : couleur des ID ou de la class des dispositifs suivant leur position, (class_lamp pour les lampes des différents interrupteurs)
+
+- pass : par défaut « 0 » pas de mot de passe , pwalarm pour mot de passe de l’alarme et pwcommand pour les commandes (on/off ,…)
+
+- doc : pour associer un document au dispositif
 
 
 Pour créer cette table l’importer depuis le référentiel « monitor » 
@@ -1062,5 +1109,11 @@ Les scripts python
    :width: 408px     
 .. |image89| image:: ../media/image89.webp
    :width: 413px     
-.. |image91| image:: ../media/image89.webp
+.. |image91| image:: ../media/image91.webp
    :width: 484px     
+.. |image92| image:: ../media/image92.webp
+   :width: 700px   
+.. |image93| image:: ../media/image93.webp
+   :width: 590px  
+.. |image94| image:: ../media/image94.webp
+   :width: 520px   
