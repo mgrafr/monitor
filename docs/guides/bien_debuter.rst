@@ -1009,7 +1009,8 @@ Les Media queries pour les différents écrans
 ^^^^^^^^^^^^^^
 Toutes sont au format svg ou webp sauf les caméras
 
-.. note::*Avantages du format SVG*
+.. note::
+   *Avantages du format SVG*
    Les images SVG peuvent être créées et modifiées un éditeur de texte
    Les images SVG peuvent contenir du javascript 
    Les images SVG sont zoomables
@@ -1228,7 +1229,7 @@ Utilisation de jQuery
 .. |image110| image:: ../media/image110.webp
    :width: 676px 
 .. |image111| image:: ../media/image111.webp
-   :width: 186px 
+   :width: 120px 
 .. |image112| image:: ../media/image112.webp
    :width: 295px 
 .. |image113| image:: ../media/image113.webp
