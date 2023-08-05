@@ -823,73 +823,102 @@ le script dans footer.php pour ajouter le javascript automatiquement:
 
 
 Pour créer cette table l’importer depuis le référentiel « monitor » 
-API Domoticz et HA pour les dispositifs : 
-DZ : URL :PORT/json.htm?type=devices&plan=NUMERO DU PLAN
-HA : URL:8123/api/states
-Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs
-……………ha :
- 
 
+API Domoticz et HA pour les dispositifs :
+
+**DZ** : URL :PORT/json.htm?type=devices&plan=NUMERO DU PLAN
+
+**HA** : URL:8123/api/states
+
+Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs
+
+........ha :
+ 
+|image97| 
 
 0.3.3 caméras
- ============
-On crée une table dans la base de données : cameras
-Si l’on veut un accès extérieur il est utile d’indiquer également le domaine
-Si l’on utilise Zoneminder, il est nécessaire d’assurer la correspondance des Numéros de dispositifs
+=============
+On crée une table dans la base de données : :darkblue:`cameras`
+
+*Si l’on veut un accès extérieur il est utile d’indiquer également le domaine;*
+*Si l’on utilise Zoneminder, il est nécessaire d’assurer la correspondance des Numéros de dispositifs*
  
+|image98| 
 
-num : n° auto incrémenté pour faciliter les modifications
-Idx : N° idx celui qui correspond au onclick du plan, 
-Id_zm : optionnel, utilisé avec Zoneminder, option à définir dans admin/config.php
-Ip : IP locale
-url : url locale de la caméra
-marque : dahua ou generic, option à définir dans admin/config.php 
-type : VTO ou vide concerne uniquement les portier VTO Dahua
-localisation :
+- num : n° auto incrémenté pour faciliter les modifications
+- Idx : N° idx :darkblue:`celui qui correspond au onclick du plan`, 
+- Id_zm : optionnel, utilisé avec Zoneminder, :darkblue:`option à définir dans admin/config.php`
+- Ip : IP locale
+- url : url locale de la caméra
+- marque : dahua ou generic, :darkblue:`option à définir dans admin/config.php` 
+- type : VTO ou vide :darkblue:`concerne uniquement les portier VTO Dahua`
+- localisation :
 
-téléchargement : cameras.sql
+téléchargement de la table "cameras.sql" : https://raw.githubusercontent.com/mgrafr/monitor/main/bd_sql/cameras.sql
 
-Enregistrements de températures, tension ,…..
+0.3.4 Autres tables SQL
+=======================
+Enregistrements de températures, tension ,....
 
- 
+|image99| 
+
 Exemple pour une table temp_meteo :
- 
-num : n° auto incrémenté pour faciliter les modifications
-date : la date et l’heure
-valeur : la température
 
-Téléchargement de temp_meteo.sql
+.. code-block:: 'fr'
+
+   -- Structure de la table `temp_meteo`
+   --
+   CREATE TABLE `temp_meteo` (
+     `num` int(11) NOT NULL,
+     `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+     `valeur` varchar(4) NOT NULL
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+   -- Index pour la table `temp_meteo`
+   ALTER TABLE `temp_meteo`
+     ADD PRIMARY KEY (`num`);
+   -- AUTO_INCREMENT pour la table `temp_meteo`
+   ALTER TABLE `temp_meteo`
+     MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21294;
+   COMMIT;
+
+- num : n° auto incrémenté pour faciliter les modifications
+- date : la date et l’heure
+- valeur : la température
 
 0.4_ Le serveur http de NGINX :
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 
+|image101| 
 
-Configuration : /admin/config.php
+**Configuration de monitor** : :darkblue:`/admin/config.php`
  
 Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/admin/config.php
 
-<?php
-// NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
-//general monitor
-define('URLMONITOR', 'monitor.xxxxxxx.ovh');//domaine
-define('IPMONITOR', '192.168.1.7');//ip 
-define('MONCONFIG', 'admin/config.php');//fichier config 
-define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
-define('FAVICON', 'favicon.ico');//fichier favicon  , icone du domaine dans barre url
-// répertoire des images
-$rep='images/';//ne pas changer
-// images logo et titres
-define('IMAGEACCUEIL', $rep.'maison.jpg');//image page accueil pour écrans >534 px
-define('IMAGEACCUEILSMALL', $rep.'maison_small.jpg');//image page accueil pour écrans <535 px
-define('IMGLOGO', $rep.'logo.png');//image logo
-define('NOMSITE', 'Domoticz');//nom principal du site
-define('NOMSLOGAN', xxxxxx');//nom secondaire ou slogan
-// 
+.. code-block:: 'fr'
+
+   <?php
+   // NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
+   //general monitor
+   define('URLMONITOR', 'monitor.xxxxxxx.ovh');//domaine
+   define('IPMONITOR', '192.168.1.7');//ip 
+   define('MONCONFIG', 'admin/config.php');//fichier config 
+   define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
+   define('FAVICON', 'favicon.ico');//fichier favicon  , icone du domaine dans barre url
+   // répertoire des images
+   $rep='images/';//ne pas changer
+   // images logo et titres
+   define('IMAGEACCUEIL', $rep.'maison.jpg');//image page accueil pour écrans >534 px
+   define('IMAGEACCUEILSMALL', $rep.'maison_small.jpg');//image page accueil pour écrans <535 px
+   define('IMGLOGO', $rep.'logo.png');//image logo
+   define('NOMSITE', 'Domoticz');//nom principal du site
+   define('NOMSLOGAN', xxxxxx');//nom secondaire ou slogan
+   // 
 
 
-Les fichiers à la racine du site :
+**Les fichiers à la racine du site** :
+
+|image103| 
  
--	ajax.php : appels ajax depuis javascript, explications dans les divers paragraphes
+- **ajax.php** : appels ajax depuis javascript, explications dans les divers paragraphes
  
 
 
@@ -1117,3 +1146,13 @@ Les scripts python
    :width: 590px  
 .. |image94| image:: ../media/image94.webp
    :width: 520px   
+.. |image97| image:: ../media/image97.webp
+   :width: 538px   
+.. |image98| image:: ../media/image98.webp
+   :width: 700px   
+.. |image99| image:: ../media/image99.webp
+   :width: 566px   
+.. |image101| image:: ../media/image101.webp
+   :width: 307px 
+.. |image103| image:: ../media/image101.webp
+   :width: 334px 
