@@ -2,19 +2,32 @@
 ---------------------------------------------
 
 Permet d’afficher 
-|-	La température extérieure, 
-|-	Le jour (changement à 0H pour une tablette connectée en permanence), 
-|-	La sortie des poubelles,
+
+-	La température extérieure, 
+
+-	Le jour (changement à 0H pour une tablette connectée en permanence), 
+
+- La sortie des poubelles,
+
 -	 La gestion de la fosse septique,
+
 -	La surveillance de la pression de la chaudière 
+
 -	Les anniversaires 
+
 -	Rappel pour la prise de médicaments
+
 -	 La prévision de pluie à 1 heure de Météo France
+
 -	L’arrivée du courrier
+
 -	La mise en service de l’alarme de nuit
+
 -	Le remplacement des piles pour les capteurs concernés
 
- 
+- .... 
+
+|image117|
  
 Pour afficher cette page, les fichiers nécessaires en jaune 
 
@@ -81,3 +94,7 @@ Le programme démarre avec 11 pages :
 Par défaut « admin »
  
 -	Les autres pages concernent l’alarme, un mur de caméras, 
+
+
+.. |image117| image:: ../media/image117.webp
+   :width: 531px 
