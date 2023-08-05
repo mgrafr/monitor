@@ -717,21 +717,25 @@ cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les
 -	HA ,  URL : 8123/api/states/sensor.liste_var (renvoie la liste des dispositifs enregistrés comme input text)
 
 	Le template sensor : sensor.liste_var
-	template:
-  	- sensor:
-	   - name: "liste_var"
+
+.. code-block:: 'fr'	
+
+   template:
+     -  sensor:
+          -  name: "liste_var"
              unique_id : 1234567890
              state: >
-              {% for input_text in states.input_text %}
-               {{input_text.entity_id ~ "=" ~ input_text.state ~ ", " }}
-              {% endfor %}
+               {% for input_text in states.input_text %}
+                {{input_text.entity_id ~ "=" ~ input_text.state ~ ", " }}
+               {% endfor %}
 
 0.3.2 Les Dispositifs
 =====================
 Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz ou HA et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)
-Table « dispositifs »
+
+**Table « dispositifs »**
  
- 
+|image91| 
 
 
 
@@ -1058,3 +1062,5 @@ Les scripts python
    :width: 408px     
 .. |image89| image:: ../media/image89.webp
    :width: 413px     
+.. |image91| image:: ../media/image89.webp
+   :width: 484px     
