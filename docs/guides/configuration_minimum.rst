@@ -29,11 +29,22 @@ Permet d’afficher
 
 |image117|
  
-Pour afficher cette page, les fichiers nécessaires en jaune 
-
 1.1	– Configuration :/admin.config.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Il faut fournir un minimum de renseignements :
+ :red:`Il faut fournir un minimum de renseignements :`
+
+.. code-block:: 'fr'
+
+   //general monitor
+   define('URLMONITOR', '');//domaine si port autre 443 
+   define(":red:`IPMONITOR'", '192.168.1.9');//ip
+   define('PASSMONITOR', '*******');//mot passe serveur et SSH2
+   define('USERMONITOR', 'michel');//user serveur et SSH2 ;le répertoire perso sera /home/nom de USERMONITOR
+   define('MONCONFIG', 'admin/config.php');//fichier config 
+   define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
+   define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
+   define('DISPOSITIFS', 'dispositifs');
+  
 
 1.1.1 -Adresse IP , domaine, favicon de monitor 
 ================================================ 
