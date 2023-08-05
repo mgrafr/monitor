@@ -972,11 +972,13 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 |image106|
 
 0.5 Le Framework Bootstrap
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Pour des mises en page faciles, des fenêtres modales ,…..
  
 |image107|
 
-0.6_ Les styles CSS
+0.6 Les styles CSS
+^^^^^^^^^^^^^^^^^^^
 |image108| 
 
 Un extrait :
@@ -1003,40 +1005,44 @@ Les Media queries pour les différents écrans
 
 |image110| 
  
-0.7_ Les images
+0.7 Les images
+^^^^^^^^^^^^^^
 Toutes sont au format svg ou webp sauf les caméras
-Avantages du format SVG
-Les images SVG peuvent être créées et modifiées un éditeur de texte
-Les images SVG peuvent contenir du javascript 
-Les images SVG sont zoomables
-Les graphiques SVG ne perdent aucune qualité s'ils sont zoomés ou redimensionnés
-SVG est open source
-Les fichiers SVG sont du pur XML
 
- 
-WebP est un format d'image moderne qui offre une compression supérieure avec perte et sans perte pour les images du Web
+.. note::*Avantages du format SVG*
+   Les images SVG peuvent être créées et modifiées un éditeur de texte
+   Les images SVG peuvent contenir du javascript 
+   Les images SVG sont zoomables
+   Les graphiques SVG ne perdent aucune qualité s'ils sont zoomés ou redimensionnés
+   SVG est open source
+   Les fichiers SVG sont du pur XML
+
+|image111| 
+
+Webp est un format d'image moderne qui offre une compression supérieure avec perte et sans perte pour les images du Web
 
 Les caméras sont au format jpg :
- 
 
-0.8_ Les fichiers PHP
+|image112|
+
+0.8 Les fichiers PHP
+^^^^^^^^^^^^^^^^^^^^
 Ils sont regroupés dans le dossier « include », sauf
 -	 fonctions.php, ajax.php, à la racine de monitor
 -	/admin/config. PHP
 -	/jpgraph
 
- 
-
+ |image113|
 
 Affichage de graphique avec jpgraph
  
+|image114|
 
-0.9_ Les fichiers javascript
-Avec jQuery
+0.9 Les fichiers Javascript & Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Utilisation de jQuery
 
- 
-Les scripts python
- 
+|image115| |image116|
 
 	
 .. |image3| image:: ../media/image3.webp
@@ -1221,3 +1227,15 @@ Les scripts python
    :width: 310px 
 .. |image110| image:: ../media/image110.webp
    :width: 676px 
+.. |image111| image:: ../media/image111.webp
+   :width: 186px 
+.. |image112| image:: ../media/image112.webp
+   :width: 295px 
+.. |image113| image:: ../media/image113.webp
+   :width: 321px 
+.. |image114| image:: ../media/image114.webp
+   :width: 265px 
+.. |image115| image:: ../media/image115.webp
+   :width: 203px 
+.. |image116| image:: ../media/image116.webp
+   :width: 293px 
