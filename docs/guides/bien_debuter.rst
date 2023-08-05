@@ -589,8 +589,8 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 **Ajout à la base de données des données fournie par Domoticz **
 
-      0.3.1 Les variables (table dispositifs)
-      =======================================
+0.3.1 Les variables (table dispositifs)
+=======================================
 	La correspondance entre les variables Domoticz ou HA et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
 
 	- tables :
@@ -636,18 +636,18 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
   
  	. Nom_idx : nom de la variable du serveur domotique (dz)
 
-   .. note::
+   .. warning::
 
       **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
       (le programme fonctionne mais l’API renvoie « NULL »)
 
-   Idx : id de la variable du serveur domotique(dz)
-   ex : idx de Domoticz
+        . Idx : id de la variable du serveur domotique(dz)
+   		ex : idx de Domoticz
  
-   Nom appareil : non obligatoire
+        . Nom appareil : non obligatoire
 
-   ID : id de la variable (ha)
-   Ex : Home Assistant, nom essai, ID input_text.essai
+   	. ID : id de la variable (ha)
+   		Ex : Home Assistant, nom essai, ID input_text.essai
  
        
 .. admonition:: **un exemple bash concret : redémarrer un script après modifications**
@@ -720,7 +720,7 @@ template:
             {% endfor %}
 
 0.3.2 Les Dispositifs
- ====================
+=====================
 Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz ou HA et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)
 Table « dispositifs »
  
