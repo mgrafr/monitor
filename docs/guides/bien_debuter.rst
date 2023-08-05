@@ -631,26 +631,34 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 	. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
 
              commande Bash, accès au Shell par SSH2 depuis Domoticz sous Docker; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.
+
+              voir ci-après un exemple de commande bash
   
-        **Dans Domoticz** : créer une variable avec les données ci-dessous 
+ 	. Nom_idx : nom de la variable du serveur domotique (dz)
 
-   |image80|
+   .. note::
+
+      **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
+      (le programme fonctionne mais l’API renvoie « NULL »)
+
+   Idx : id de la variable du serveur domotique(dz)
+   ex : idx de Domoticz
  
-        **Dans SQL** :
+   Nom appareil : non obligatoire
 
-   |image81|
+   ID : id de la variable (ha)
+   Ex : Home Assistant, nom essai, ID input_text.essai
  
-        **Ou par Monitor** :
-
-   |image82|
-
-   |image83|
-                          
+       
 .. admonition:: **un exemple bash concret : redémarrer un script après modifications**
 
    Ici :red:`systemctl restart sms_dz` (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
 
-   **Dans Domoticz** :
+   **Dans Domoticz** : créer une variable avec les données ci-dessous et l'exploiter dans un script LUA
+
+   |image80|
+
+   scrpt LUA:
 
    .. code-block:: 'fr'
 
@@ -660,8 +668,18 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
                     f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
                     f:close()
 		    -- on modifie la variable
-                    domoticz.variables('BASH').set("restart_sms_dz")
+                    domoticz.variables('BASH').set("restart_sms_dz")	
+ 
+   **Dans SQL** :
 
+   |image81|
+ 
+     *Ou par Monitor* :
+
+     |image82|
+
+     |image83|
+                          
    **Dans monitor, PHP-SSH2**
 
    raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
@@ -681,21 +699,6 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    :darkblue:`Le mot de passe peut être ajouté à connect.py`
 
-Nom_idx : nom de la variable du serveur domotique (dz)
-
-.. note::
-
-   **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
-      (le programme fonctionne mais l’API renvoie « NULL »)
-
-Idx : id de la variable du serveur domotique(dz)
-   ex : idx de Domoticz
- 
-Nom appareil : non obligatoire
-
-ID : id de la variable (ha)
-   Ex : Home Assistant, nom essai, ID input_text.essai
- 
 
 *Pourquoi une correspondance ?* :
 
