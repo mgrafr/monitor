@@ -265,7 +265,7 @@ Principales fonctions contenues dans ce fichier :
 |image141|
 
 https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css
-|https://raw.githubusercontent.com/mgrafr/monitor/main/css/jquery-ui.css
+https://raw.githubusercontent.com/mgrafr/monitor/main/css/jquery-ui.css
 		
 Fichier mes_css.css , extrait :
 
