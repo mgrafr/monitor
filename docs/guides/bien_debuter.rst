@@ -178,7 +178,7 @@ Quelques liens utiles :
 
 |	o phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3
 |	o LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
-|	o LEMP : voir ce paragraphe
+|	o LEMP : voir ce paragraphe :ref:`18.1 Debian : Installer un serveur LAMP (Apache MySQL PHP`
 
 **Installation :**
 
