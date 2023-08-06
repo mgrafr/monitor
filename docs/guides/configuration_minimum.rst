@@ -456,6 +456,61 @@ Dans les scripts lua :
 
 |image156|
 
+
+
+
+1.4 Le lexique et la température extérieure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.4.1 Le lexique
+================
+L’image est inline dans header.ph
+
+
+1.4.2 La température extérieure (valable pour d’autres dispositifs)
+===================================================================
+
+1.5 liens avec Domoticz ou Home Assistant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.5.1 Liens avec Domoticz
+=========================
+Le script maj_services : concerne :
+
+- les poubelles
+- la fosse septique
+- les anniversaires
+- la gestion des piles des dispositifs
+- ….et plus encore
+
+Affichage sur monitor, sur la TV et notifications SMS
+Ce script met à jour, suivant l’horaire et la date, des variables Domoticz ; quand javascript 
+demande une mise à jour, il appelle, par l’intermédiaire d’un fichier ajax.php, une fonction 
+PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi un fichier Json
+
+
+
+1.5.2 Liens avec Home Assistant
+===============================
+
+1.6 – Lien avec la base de données SQL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.6.1- exemple avec la date de ramassage des poubelles
+======================================================
+
+
+1.7 – Ajuster le menu au nombre de pages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Au-delà de 12 pages il faut étendre en largeur le menu ; il faut aussi le descendre de 50 px 
+pour ne pas cacher le menu hamburger
+
+
+
+
+
+
+
+
+
+
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
 .. |image120| image:: ../media/image120.webp
