@@ -63,13 +63,10 @@ Permet d’afficher
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 .. code-block:: 'fr'
 
-// Monitor 
+   // Monitor 
    define('IMAGEACCUEIL', 'images/maison.webp');//image page accueil pour écrans >534 px
    define('IMAGEACCUEILSMALL', 'images/maison_small.webp');//image page accueil pour écrans <535 px
    define('IMGLOGO', 'images/logo.png');//image logo
-
-
- 
 
 1.1.1.b Pour les titres, slogans et lexique
 """""""""""""""""""""""""""""""""""""""""""
