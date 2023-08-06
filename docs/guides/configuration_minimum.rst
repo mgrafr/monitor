@@ -202,7 +202,7 @@ Le programme démarre avec 11 pages :
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.2.1 - à la racine du site :
 =============================
- voir ce paragraphe : :ref:`0.4 Le serveur http de NGINX`
+ voir ce paragraphe : :ref:`0.4 Le serveur http de NGINX :`
 
 **Complément d'informations concernant "fonctions.php":**
 
@@ -314,5 +314,5 @@ Fichier mes_css.css , extrait :
    :width: 605px  
 .. |image140| image:: ../media/image140.webp
    :width: 650px  
-.. |image141| image:: ../media/image140.webp
+.. |image141| image:: ../media/image141.webp
    :width: 205px  
