@@ -17,6 +17,7 @@ Monitor-domotique Documentation
         guides/mon_installation.rst
         guides/plan_interieur.rst
         guides/meteo.rst
+        guides/divers.rst
      
 Github Repository <https://github.com/mgrafr/monitor>    
 
@@ -44,11 +45,6 @@ Bien débuter
 :doc:`guides/bien_debuter`
     bien débuter
 
-Mon Installation
-----------------
-:doc:`guides/mon_installation`
-    Mon Installation
-
 Configuration minimum
 ----------------
 :doc:`guides/configuration_minimum`
@@ -64,6 +60,15 @@ Météo
 :doc:`guides/meteo`
    Météo
 
+Mon Installation
+----------------
+:doc:`guides/mon_installation`
+    Mon Installation
+
+Divers
+----------------
+:doc:`guides/divers`
+    Divers
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
