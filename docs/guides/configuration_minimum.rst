@@ -132,7 +132,7 @@ La fonction PHP qui récupère la valeur de la variable :
 
 1.1.3 Autres données
 ====================
-hoisir Idx de Domoticz ou idm de monitor ? 
+Choisir Idx de Domoticz ou idm de monitor ? 
 
 .. note::
 Pour une première installation choisir idx ; pour une réinstallation de Domoticz, il sera alors préférable de choisir idm pour éviter de renommer tous les dispositifs dans les images svg
