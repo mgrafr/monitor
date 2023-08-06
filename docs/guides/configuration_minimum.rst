@@ -315,7 +315,7 @@ Fichier mes_css.css , extrait :
 
    .. code-block:: 'fr'
 
-      |image145|
+       |image145|
 
 1.3 Les fichiers principaux dans /include
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
