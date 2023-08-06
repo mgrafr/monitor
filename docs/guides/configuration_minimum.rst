@@ -30,11 +30,11 @@ Permet d’afficher
 |image117|
  
 1.1	– Configuration :/admin.config.php
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  :red:`Il faut fournir un minimum de renseignements` :
 
 1.1.1 -Adresse IP , domaine, favicon de monitor 
-================================================ 
+=============================================== 
 .. code-block:: 'fr'
 
    //general monitor
@@ -183,23 +183,35 @@ Paramètres pour Domoticz ou HA :
    define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64
    define('CONF_MODECT', URLDOMOTIC.'modules_lua/string_modect.lua');
 
-..warning::
+.. warning::
   les variables ci-dessus , VARTAB, BASE64, CONF_MODECT sont à déclarer ici que si elles sont utilisées dans un fichier
 
 Le programme démarre avec 11 pages :
+
 -	Accueil
--	1 Plan intérieur
--	Page d’administration, pour afficher cette page, le mot de passe est obligatoire ; il est toujours possible de modifier le fichier de configuration avec un éditeur.
-Par défaut « admin »
- 
--	Les autres pages concernent l’alarme, un mur de caméras, 
 
+-	Plan intérieur
 
-.. |image117| image:: ../media/image117.webp
-   :width: 531px 
-.. |image120| image:: ../media/image120.webp
-   :width: 357px 
-.. |image121| image:: ../media/image121.webp
-   :width: 239px 
-.. |image126| image:: ../media/image126.webp
-   :width: 604px 
+-	Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red::'« admin »'.
+  
+ il est toujours possible de modifier le fichier de configuration avec un éditeur
+
+-	Les autres pages concernent l’alarme, un mur de caméras, ... 
+
+1.2	- Les fichiers à la racine du site, les styles, le javascript
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.2.1 - à la racine du site :
+=============================
+
+ voir ce paragraphe : :ref:'0.4 Le serveur http de NGINX'
+
+Complément d'informations concernant "fonctions.php":
+
+voir le fichier à jour sur Github : https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php
+
+Principales fonctions :
+
+.. admonition:: **function file_http_curl**
+
+   
+
