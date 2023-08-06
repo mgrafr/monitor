@@ -16,8 +16,9 @@ release = '0.1'
 
 extensions = [
        'sphinx_rtd_theme',
+       'sphinx.ext.autosectionlabel'
 ]
-sphinx.ext.autosectionlabelextensions = ['sphinx.ext.autosectionlabel']
+
 language = 'fr'
 html_theme = "sphinx_rtd_theme"
 html_theme_path = ["_themes", ]
