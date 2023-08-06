@@ -241,9 +241,8 @@ Principales fonctions contenues dans ce fichier :
 
    |image140|
 
-   Maj de la date dans cette fonction: si la tablette reste allumée en permanence,la date ne sera pas mise à jour en absence de rafraichissement
+   **Maj de la date** : si la tablette reste allumée en permanence,la date ne sera pas mise à jour en absence de rafraichissement
    
-
    On crée un idx=0 qui n'existe pas , aussi avec cet idx la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php) 
 
    .. code-block:: 'fr'
@@ -251,6 +250,16 @@ Principales fonctions contenues dans ce fichier :
       $data[0] = ['jour' => date('d'),
                   'idx' => '0'];
 
+   **Maj éta des piles des dispositifs**
+
+   .. code-block:: 'fr'
+
+      $abat="0";
+      if ($al_bat==0) $abat="batterie_forte";
+      if ($al_bat==1) $abat="batterie_moyenne";
+      if ($al_bat==2) $abat="batterie_faible";
+      $val_albat=val_variable(PILES[0]);
+      if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 
 
 
