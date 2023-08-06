@@ -103,22 +103,87 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
    |image126|
 
 La fonction JS :
+
+.. code-block:: 'fr'
+
+   tempo_devices=<?php echo TEMPO_DEVICES_DZ;?>;
+   var idsp=1;if (tempo_devices>14999)	var_sp(idsp);
+   function var_sp(idsp){
+     $.get( "ajax.php?app=data_var&variable=29", function(datas) {
+     var variable_sp = datas;
+     if (variable_sp>0){maj_devices(plan);maj_services(0);maj_variable(29,"variable_sp",0,2);}
+    });
+   setTimeout(var_sp, tempo_devices, idsp); 	
+   }
  
 La fonction PHP qui récupère la valeur de la variable :
- 
+
+.. code-block:: 'fr'
+
+   // valeur d'une variable
+   function val_variable($variable){
+   $result=array();	
+   $L=URLDOMOTIC."json.htm?type=command&param=getuservariable&idx=".$variable;
+   $json_string = file_get_curl($L);
+   $result = json_decode($json_string, true);
+   $lect_var = $result['result'][0];
+   $value = $lect_var['Value'];	
+   return 	$value;
+   }
 
 1.1.3 Autres données
 ====================
+hoisir Idx de Domoticz ou idm de monitor ? 
 
-Idx de Domoticz ou idm de monitor :
+.. note::
 Pour une première installation choisir idx ; pour une réinstallation de Domoticz, il sera alors préférable de choisir idm pour éviter de renommer tous les dispositifs dans les images svg
-La création d’un plan qui regroupe les dispositifs sur Domoticz est nécessaire : noter le N° du plan
+
+*La création d’un plan qui regroupe les dispositifs sur Domoticz est nécessaire : noter le N° du plan*
+
+.. code-block:: 'fr'
+
+   // choix ID pour l'affichage des infos des dispositifs
+   // idx : idx de Domoticz    (dans ce cas ,
+   //     en cas de problème il faudra renommer tous les dispositifs 
+   //     dans monitor au lieu de la DB)
+   define('CHOIXID','idm');// DZ:idm ou idx ; HA : idm uniquement
+   define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
  
 Paramètres de la base de données :
  
+.. code-block:: 'fr'
 
-Paramètres pour Domoticz :
+   // parametres serveur DBMaria
+   define('SERVEUR','localhost');
+   define('MOTDEPASSE','<MOT PASSE>');
+   define('UTILISATEUR','michel');
+   define('DBASE','monitor');
+
+Paramètres pour Domoticz ou HA :
  
+.. code-block:: 'fr'
+
+   //seveurs domotiques Domoticz ou HA
+   define('IPDOMOTIC', '192.168.1.76');//ip
+   //pour ssh2
+   define('USERDOMOTIC', 'michel');//user du serveur,répertoire :home/user
+   define('PWDDOMOTIC', '');//mot passe serveur
+   define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
+   define('DOMDOMOTIC', 'https://*************');//domaine
+   define('TOKENDOMOTIC', '');//TOKEN ou BEARER
+   define('IPDOMOTIC1', '');//ip 2emme serveur Domotique
+   define('USERDOMOTIC1', 'michel');//user du serveur,répertoire :home/user
+   define('PWDDOMOTIC1', '');//mot passe serveur
+   define('URLDOMOTIC1', 'http://192.168.1.5:8123/');//url ex:http://192.168.1.5:8123/
+   define('DOMDOMOTIC1', 'https://***********');//domaine
+   define('TOKEN_DOMOTIC1',"eyJhb*****************************************************************2k");   
+   //*************************Pour Domoticz
+   define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//
+   define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64
+   define('CONF_MODECT', URLDOMOTIC.'modules_lua/string_modect.lua');
+
+..warning::
+  les variables ci-dessus , VARTAB, BASE64, CONF_MODECT sont à déclarer ici que si elles sont utilisées dans un fichier
 
 Le programme démarre avec 11 pages :
 -	Accueil
