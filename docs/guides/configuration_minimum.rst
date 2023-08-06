@@ -213,5 +213,36 @@ Principales fonctions :
 
 .. admonition:: **function file_http_curl**
 
-   
+   |image134|
 
+.. admonition:: **function status_variables**
+
+   Pour récupérer les valeurs des variables de Domoticz et HA
+
+   |image135|
+
+   |image136|
+
+.. admonition:: **function devices_zone** 
+
+   API HA pour récupérer les valeurs des dispositifs
+
+   |image137|
+
+
+.. |image117| image:: ../media/image117.webp
+   :width: 531px 
+.. |image120| image:: ../media/image120.webp
+   :width: 357px 
+.. |image121| image:: ../media/image121.webp
+   :width: 239px 
+.. |image126| image:: ../media/image126.webp
+   :width: 604px 
+.. |image134| image:: ../media/image134.webp
+   :width: 544px 
+.. |image135| image:: ../media/image135.webp
+   :width: 605px    
+.. |image136| image:: ../media/image136.webp
+   :width: 635px    
+.. |image137| image:: ../media/image137.webp
+   :width: 650px  
