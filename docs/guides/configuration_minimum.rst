@@ -71,6 +71,7 @@ Permet d’afficher
 1.1.1.b Pour les titres, slogans et lexique
 """""""""""""""""""""""""""""""""""""""""""
 Pour le lexique :
+
 -	true = lexique par défaut
 -	false = lexique à modifier /include/lexique_no.php
 
@@ -94,6 +95,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
 .. note::
    *TEMPO_DEVICES* pour tous les dispositifs 
+
    *TEMPO_DEVICES_DZ* : pour les dispositifs qui mettent à 1 une variable pour indiquer à monitor d’effectuer une mise à jour, ici toutes les 30 secondes rafraichissement des dispositifs si par exemple un PIR, un 
    contact de porte qui sont déclaré prioritaire dans DZ passent à ON 
 
