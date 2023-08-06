@@ -30,7 +30,7 @@ Permet d’afficher
 |image117|
  
 1.1	– Configuration :/admin.config.php
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  :red:`Il faut fournir un minimum de renseignements` :
 
 1.1.1 -Adresse IP , domaine, favicon de monitor 
@@ -199,7 +199,7 @@ Le programme démarre avec 11 pages :
 -	Les autres pages concernent l’alarme, un mur de caméras, ... 
 
 1.2	- Les fichiers PHP, les styles, le javascript
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.2.1 - à la racine du site :
 =============================
  voir ce paragraphe : :ref:`0.4 Le serveur http de NGINX :`
@@ -261,7 +261,7 @@ Principales fonctions contenues dans ce fichier :
       if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 
 1.2.2 - les styles css
-=============================
+======================
 |image141|
 
 https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css
@@ -288,6 +288,47 @@ Fichier mes_css.css , extrait :
 	   .modal-lg {width: 740px;}.cam {margin-left: 100px;}.fond_date {right: -270px;}body {max-width: 768px;margin: 0 auto;background-color: #79afbf;}
     .menu-link {left: 50%;top: 50px;}#bar_pression{top: -750px;left: 450px;}.txt_ext{left:100px;}.modal {left: -100px;}
 	   .modal_param {left: 200px;	}.modal-dialog {width:740px;} }
+
+1.2.3 – Le javascript
+=====================
+	1.2.3 a- Les fichiers footer.php , voir ce script :ref:`1.3.5 les scripts JavaScript`
+	1.2.3 b- le fichier mes_js.js : scripts principaux , fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/js/mes_js.js
+
+
+1.3 Les fichiers principaux dans /include
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.3.1 entete_html.php 
+=====================
+https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php
+
+
+1.3.2 Test de la base de données, test_db.php 
+=============================================
+https://raw.githubusercontent.com/mgrafr/monitor/main/include/test_db.php
+
+ 
+
+1.3.3 le menu, header.php  
+=========================
+les pages configurées avec config.php sont ajoutées automatiquement au menu
+Extrait du fichier, le fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/include/header.php
+
+
+1.3.4   la page d’accueil avec les notifications , accueil.php 
+==============================================================
+https://raw.githubusercontent.com/mgrafr/monitor/main/include/accueil.php
+
+Le HTML:
+ 
+
+ 
+
+
+
+
+1.3.5 les scripts JavaScript
+============================
+dans la page footer.php : https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
 
 
 
