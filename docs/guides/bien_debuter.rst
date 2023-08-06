@@ -1,4 +1,4 @@
-:0. Infos pour bien débuter
+0. Infos pour bien débuter
 --------------------------
 
 0.1	Prérequis, installation : différents choix
