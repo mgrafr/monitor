@@ -202,7 +202,6 @@ Le programme démarre avec 11 pages :
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.2.1 - à la racine du site :
 =============================
-
  voir ce paragraphe : :ref:`0.4 Le serveur http de NGINX`
 
 **Complément d'informations concernant "fonctions.php":**
@@ -261,6 +260,34 @@ Principales fonctions contenues dans ce fichier :
       $val_albat=val_variable(PILES[0]);
       if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 
+1.2.2 - les styles css
+=============================
+|image141|
+
+https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css
+|https://raw.githubusercontent.com/mgrafr/monitor/main/css/jquery-ui.css
+		
+Fichier mes_css.css , extrait :
+
+.. code-block:: 'fr'
+
+   /*interieur*/
+   #linky{position: relative;top: -250px;left: 600px;width: 60px;}
+   #th_ext_cuis{position: relative;top: -747px; left: 170px; width: 50px;}
+   #temp_ext_cuisine{font-size: 8px; color: black;}
+   #voltage{position: absolute;top: -30px;right: -20px;width: 200px;}
+   .meteo_concept_am  {display: inline;width: 150px;margin-left: -20px;}
+   #meteo_concept_am{position: relative;top: 20px;margin-left: -20px;}
+   #meteo_concept{position: relative;top: 10px;}
+   .image_met{width:80px;margin-left: -15px;}
+   .icone_vent{width: 40px;margin-left: 0;margin-top: -20px;}
+   .vvent{font-family: Arial;font-size: 15px;margin-left: 0;
+   /* MediaQueries
+   /* Large devices (Large desktops 768px and up) */
+   @media (min-width:768px) {img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{width: 450px;}
+	   .modal-lg {width: 740px;}.cam {margin-left: 100px;}.fond_date {right: -270px;}body {max-width: 768px;margin: 0 auto;background-color: #79afbf;}
+    .menu-link {left: 50%;top: 50px;}#bar_pression{top: -750px;left: 450px;}.txt_ext{left:100px;}.modal {left: -100px;}
+	   .modal_param {left: 200px;	}.modal-dialog {width:740px;} }
 
 
 
