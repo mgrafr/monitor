@@ -16,6 +16,7 @@ Monitor-domotique Documentation
         guides/configuration_minimum.rst
         guides/mon_installation.rst
         guides/plan_interieur.rst
+        guides/meteo.rst
      
 Github Repository <https://github.com/mgrafr/monitor>    
 
@@ -57,6 +58,11 @@ Plan interieur
 --------------
 :doc:`guides/plan_interieur`
     1ere page plan intérieur
+
+Météo
+-----
+:doc:`guides/meteo`
+   Météo
 
 
 .. |image1| image:: images/logo.png
