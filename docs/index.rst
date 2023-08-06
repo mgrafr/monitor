@@ -15,7 +15,7 @@ Monitor-domotique Documentation
         guides/bien_debuter.rst
         guides/configuration_minimum.rst
         guides/mon_installation.rst
-    
+        guides/plan_interieur.rst
      
 Github Repository <https://github.com/mgrafr/monitor>    
 
@@ -52,6 +52,12 @@ Configuration minimum
 ----------------
 :doc:`guides/configuration_minimum`
     Configuration minimum
+
+Plan interieur
+--------------
+:doc:`guides/plan_interieur`
+    1ere page plan intérieur
+
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
