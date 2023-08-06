@@ -192,24 +192,24 @@ Le programme démarre avec 11 pages :
 
 -	Plan intérieur
 
--	Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red::'« admin »'.
+-	Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red:'« admin »'.
   
  il est toujours possible de modifier le fichier de configuration avec un éditeur
 
 -	Les autres pages concernent l’alarme, un mur de caméras, ... 
 
-1.2	- Les fichiers à la racine du site, les styles, le javascript
+1.2	- Les fichiers PHP, les styles, le javascript
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.2.1 - à la racine du site :
 =============================
 
- voir ce paragraphe : :ref:'0.4 Le serveur http de NGINX'
+ voir ce paragraphe : :ref:`0.4 Le serveur http de NGINX`
 
-Complément d'informations concernant "fonctions.php":
+**Complément d'informations concernant "fonctions.php":**
 
 voir le fichier à jour sur Github : https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php
 
-Principales fonctions :
+Principales fonctions contenues dans ce fichier :
 
 .. admonition:: **function file_http_curl**
 
@@ -223,11 +223,37 @@ Principales fonctions :
 
    |image136|
 
+.. admonition:: **fonctions maj_variable et sql_variable** 
+
+   |image138|
+
 .. admonition:: **function devices_zone** 
 
    API HA pour récupérer les valeurs des dispositifs
 
    |image137|
+
+.. admonition:: **function devices_plan** 
+
+   API Domoticz pour les devices :
+
+   |image139|
+
+   |image140|
+
+   Maj de la date dans cette fonction: si la tablette reste allumée en permanence,la date ne sera pas mise à jour en absence de rafraichissement
+   
+
+   On crée un idx=0 qui n'existe pas , aussi avec cet idx la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php) 
+
+   .. code-block:: 'fr'
+
+      $data[0] = ['jour' => date('d'),
+                  'idx' => '0'];
+
+
+
+
 
 
 .. |image117| image:: ../media/image117.webp
@@ -245,4 +271,10 @@ Principales fonctions :
 .. |image136| image:: ../media/image136.webp
    :width: 635px    
 .. |image137| image:: ../media/image137.webp
+   :width: 650px  
+.. |image138| image:: ../media/image138.webp
+   :width: 650px  
+.. |image139| image:: ../media/image139.webp
+   :width: 605px  
+.. |image140| image:: ../media/image140.webp
    :width: 650px  
