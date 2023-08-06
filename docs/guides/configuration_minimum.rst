@@ -135,9 +135,11 @@ La fonction PHP qui récupère la valeur de la variable :
 Choisir Idx de Domoticz ou idm de monitor ? 
 
 .. note::
-   Pour une première installation choisir idx ; pour une réinstallation de Domoticz, il sera alors préférable de choisir idm pour éviter de renommer tous les dispositifs dans les images svg
+   Pour une première installation avec Domoticz, choisir idx ; pour une réinstallation de Domoticz, il sera alors préférable de choisir idm pour éviter de renommer tous les dispositifs dans les images svg
 
-*La création d’un plan qui regroupe les dispositifs sur Domoticz est nécessaire : noter le N° du plan*
+   Pour une installation avec HA , idm , il n'existe pas d' Idx, choisir idm et laisser vide 'NUMPLAN'. 
+
+*La création d’un plan qui regroupe les dispositifs sur Domoticz est nécessaire : noter le N° du plan (NUMPLAN)*
 
 .. code-block:: 'fr'
 
