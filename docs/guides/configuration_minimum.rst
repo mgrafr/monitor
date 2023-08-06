@@ -292,8 +292,30 @@ Fichier mes_css.css , extrait :
 1.2.3 – Le javascript
 =====================
 	1.2.3 a- Les fichiers footer.php , voir ce script :ref:`1.3.5 les scripts JavaScript`
-	1.2.3 b- le fichier mes_js.js : scripts principaux , fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/js/mes_js.js
 
+	1.2.3 b- le fichier mes_js.js : scripts principaux , 
+
+	fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/js/mes_js.js
+
+.. admonition:: **virtual keypad** 
+
+   .. code-block:: 'fr'
+
+      /*Minimal Virtual Keypad
+      $(document).ready(function () {
+     const input_value = $("#password");
+     var pwd,nameid;
+     //disable input from typing
+     $("#password").keypress(function () {
+      return false;
+     });
+     .......
+
+.. admonition:: **fenêtre modale modallink**
+
+   .. code-block:: 'fr'
+
+      |image145|
 
 1.3 Les fichiers principaux dans /include
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -301,17 +323,82 @@ Fichier mes_css.css , extrait :
 =====================
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php
 
+.. code-block:: 'fr'
+
+   <!DOCTYPE html>
+   <html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>monitor-domoticz | by michel Gravier</title>
+		<meta name="description" content="Domotique">
+		<!-- Mobile Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Favicon  racine du site -->
+		<link rel="shortcut icon" href="<?php if (substr($_SERVER['HTTP_HOST'], 0, 7)=="192.168") echo '/monitor'.FAVICON;else echo FAVICON; ?>">
+		<!-- mes css  dossier css -->
+		<link href="bootstrap/css/bootstrap.css?2" rel="stylesheet">
+		<link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
+		<link href="css/mes_css.css?8" rel="stylesheet">
+		
+		<!-- icones  racine du site -->
+		<link rel="apple-touch-icon" href="iphone-icon.png"/>
+		<link rel="icon" sizes="196x196" href="logo_t.png">
+		<link rel="icon" sizes="192x192" href="logo192.png">
+	</head>
+   <?php 
+
+*Le HTML du navigateur* :
+
+|image147|
 
 1.3.2 Test de la base de données, test_db.php 
 =============================================
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/test_db.php
 
- 
+.. code-block:: 'fr'
+
+   <?php
+   echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >';
+   echo "test....BD: ";
+   // Create connection
+   $con = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE);
+   // Check connection
+   if ($con->connect_error) {   die("Pas de connexion au serveur: " . $con->connect_error);$_SESSION["exeption_db"]="pas de connexion à la BD";}
+   else echo " connection au serveur OK , ..";
+   $conn = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
+   if ($conn->connect_error) { die("Verifier le nom de la BD: " . $conn->connect_error);$_SESSION["exeption_db"]="pas de connexion à la BD";}
+   echo " connection à la BD OK , ..";$_SESSION["exeption_db"]="";
+   echo "connexion terminée , ..";
+  ?>
+  
 
 1.3.3 le menu, header.php  
 =========================
 les pages configurées avec config.php sont ajoutées automatiquement au menu
-Extrait du fichier, le fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/include/header.php
+
+https://raw.githubusercontent.com/mgrafr/monitor/main/include/header.php
+
+Extrait: 
+
+.. code-block:: 'fr'
+
+   <ul class="nav navbar-nav navbar-right" style="color: #adafb1;">
+	<li class="zz active"><a href="#header">Accueil</a></li> 
+	<?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
+	<li class="zz"><a href="#interieur">Intérieur</a></li>
+	<?php if (ON_EXT==true) echo '<li class="zz"><a href="#exterieur">Extérieur</a></li>';?>
+	<?php if (ON_ALARM==true) echo '<li class="zz"><a href="#alarmes">Alarmes</a></li>';?>
+	<?php if (ON_GRAPH==true) echo '<li class="zz"><a href="#graphiques">Graphiques</a></li>';?>
+	<?php if (ON_ONOFF==true) echo '<li class="zz"><a href="#murinter">Mur On/Off</a></li>';?>
+	<?php if (ON_ZIGBEE==true) echo '<li class="zz"><a href="#zigbee">Zigbee2mqtt</a></li>';?>
+	<?php if (ON_ZWAVE==true) echo '<li class="zz"><a href="#zwave">Zwavejs2mqtt</a></li>';?>
+	...
+
+Pour modifier la largeur, Du menu :
+
+|image150|
+
+|image151|
 
 
 1.3.4   la page d’accueil avec les notifications , accueil.php 
@@ -320,18 +407,56 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/accueil.php
 
 Le HTML:
  
-
+|image152|
  
+|image153|
 
+.. code-block:: 'fr'
 
-
+   <!--accueil start -->
+	<!-- image de la page d'accueuil déclarée dans admin/config.php -->
+	<div id="accueil" class="text-white banner">
+	  <div class="banner-image"></div>
+	    <div class="banner-caption">
+		<div class="container">
+		   <div class="row">
+			<div class="txtcenter col-md-12" >
+			<h2 class="text-centre">Température<span style="color:cyan"> Extérieure</span></h2>
+			<p class="taille18 text-centre">En ce moment , il fait :<span id="temp_ext" ></span></p>
+			<p class="text-centre">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
+			</div></div></div></div>
 
 1.3.5 les scripts JavaScript
 ============================
 dans la page footer.php : https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
 
+Extrait:
 
+.. code-block:: 'fr'
 
+   <?php
+   require("fonctions.php");
+   ?>	
+   <!-- footer start -->
+	<footer id="footer">
+	<div class="footer section">
+	<div class="container">
+	</div></div></footer>
+   <!-- footer end -->
+   <!-- JavaScript files placées à la fin du document-->	
+   <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
+   <script src="js/jquery-ui.min.js"></script>
+   <script src="js/jquery.backstretch.min.js"></script>
+
+1.3.5.1 rafraîchissements de la page
+""""""""""""""""""""""""""""""""""""
+La fonction pour le rafraichissement des données à partir d’un changement d’état d’un dispositif dans Domoticz
+
+|image155|
+
+Dans les scripts lua :
+
+|image156|
 
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
@@ -357,3 +482,19 @@ dans la page footer.php : https://raw.githubusercontent.com/mgrafr/monitor/main/
    :width: 650px  
 .. |image141| image:: ../media/image141.webp
    :width: 205px  
+.. |image145| image:: ../media/image145.webp
+   :width: 479px  
+.. |image147| image:: ../media/image147.webp
+   :width: 540px  
+.. |image150| image:: ../media/image150.webp
+   :width: 499px  
+.. |image151| image:: ../media/image151.webp
+   :width: 601px  
+.. |image152| image:: ../media/image152.webp
+   :width: 700px  
+.. |image153| image:: ../media/image153.webp
+   :width: 498px  
+.. |image155| image:: ../media/image155.webp
+   :width: 581px  
+.. |image156| image:: ../media/image156.webp
+   :width: 378px  
