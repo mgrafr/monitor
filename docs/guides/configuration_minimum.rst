@@ -71,11 +71,11 @@ Permet d’afficher
 1.1.1.b Pour les titres, slogans et lexique
 """""""""""""""""""""""""""""""""""""""""""
 Pour le lexique :
-
 -	true = lexique par défaut
--	false= lexique à modifier /include/lexique_no.php
+-	false = lexique à modifier /include/lexique_no.php
 
 .. code-block:: 'fr'
+
    define('NOMSITE', 'Domoticz');//nom principal du site
    define('NOMSLOGAN', xxxxxxxxxxx);//nom secondaire ou slogan
    // affichage lexique
@@ -174,7 +174,7 @@ Paramètres pour Domoticz ou HA :
    define('URLDOMOTIC1', 'http://192.168.1.5:8123/');//url ex:http://192.168.1.5:8123/
    define('DOMDOMOTIC1', 'https://***********');//domaine
    define('TOKEN_DOMOTIC1',"eyJhb*****************************************************************2k");   
-   //*************************Pour Domoticz
+   //______________Pour Domoticz
    define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//
    define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64
    define('CONF_MODECT', URLDOMOTIC.'modules_lua/string_modect.lua');
