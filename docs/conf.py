@@ -15,10 +15,9 @@ release = '0.1'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinx.ext.autosectionlabel',
-    'sphinx_rtd_theme',
+       'sphinx_rtd_theme',
 ]
-
+sphinx.ext.autosectionlabelextensions = ['sphinx.ext.autosectionlabel']
 language = 'fr'
 html_theme = "sphinx_rtd_theme"
 html_theme_path = ["_themes", ]
