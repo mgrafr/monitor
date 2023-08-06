@@ -291,9 +291,9 @@ Fichier mes_css.css , extrait :
 
 1.2.3 – Le javascript
 =====================
-	1.2.3 a- Les fichiers footer.php , voir ce script :ref:`1.3.5 les scripts JavaScript`
+	1.2.3 a - Les fichiers footer.php , voir ce script :ref:`1.3.5 les scripts JavaScript`
 
-	1.2.3 b- le fichier mes_js.js : scripts principaux , 
+	1.2.3 b - le fichier mes_js.js : scripts principaux , 
 
 	fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/js/mes_js.js
 
@@ -313,9 +313,7 @@ Fichier mes_css.css , extrait :
 
 .. admonition:: **fenêtre modale modallink**
 
-   .. code-block:: 'fr'
-
-       |image145|
+   |image145|
 
 1.3 Les fichiers principaux dans /include
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
