@@ -591,16 +591,22 @@ La fenêtre modale dans include/lexique .php ou include/lexique_no.php (le fichi
 .. warning::
    Pour ne pas utiliser de lexique et donc de supprimer l’icône :|image177|
 
-   - Supprimer le script ou le ou mettre en commentaire : :red:'<!--'  <div class="modal" id="lexique">
+   - Supprimer le script ou le ou mettre en commentaire : :red:`<!--`  <div class="modal" id="lexique">
  
 1.4.2 La température extérieure (valable pour d’autres dispositifs)
 ===================================================================
+
+|image179|
+
+Le fichier Json reçu par monitor après une demande de la fonction devices(plan):
+
+|image180|
 
 1.5 liens avec Domoticz ou Home Assistant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.5.1 Liens avec Domoticz
 =========================
-Le script maj_services : concerne :
+Le script maj_services.lua concerne :
 
 - les poubelles
 - la fosse septique
@@ -609,6 +615,8 @@ Le script maj_services : concerne :
 - ….et plus encore
 
 Affichage sur monitor, sur la TV et notifications SMS
+
+
 Ce script met à jour, suivant l’horaire et la date, des variables Domoticz ; quand javascript 
 demande une mise à jour, il appelle, par l’intermédiaire d’un fichier ajax.php, une fonction 
 PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi un fichier Json
@@ -716,4 +724,8 @@ pour ne pas cacher le menu hamburger
    :width: 650px 
 .. |image177| image:: ../media/image177.webp
    :width: 60px 
+.. |image179| image:: ../media/image179.webp
+   :width: 438px 
+.. |image180| image:: ../media/image180.webp
+   :width: 286px 
 
