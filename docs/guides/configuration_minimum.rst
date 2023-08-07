@@ -676,6 +676,40 @@ voir le paragraphe :ref:`14.7 Explications concernant l’importation distantes 
 
    |image188|
 
+   Dans le script LUA, pour les jours de poubelles, les anniversaires, on appelle ce fichier, en ayant indiqué le chemin :
+
+   .. code-block:: 'fr'
+
+      -- chargement fichier contenant les variables de configuration
+      package.path..";/home/USER/domoticz/www/modules_lua/?.lua"
+      require 'string_tableaux'
+
+      -- exclusion ou ajout dates poubelles ,
+          for k,v in pairs(e_poubelles) do 
+            if (jour_mois==k) then 
+                if (v == "g") then jour_poubelle_grise = "";  
+		elseif (v == "j") then jour_poubelle_jaune = "";
+		end
+            end    
+         end
+	for k,v in pairs(a_poubelles) do 
+      if (jour_mois==k) then print(k)
+		if (v == "g") then jour_poubelle_grise = day;
+		elseif (v == "j") then jour_poubelle_jaune = day;
+		end
+	  end    
+    end 
+
+    -- anniversaires ,
+    if (time == "01:30")  then
+      local jour_mois = jour.."-"..mois
+      for k,v in pairs(anniversaires) do 
+         if (jour_mois==k) then  commandArray['Variable:anniversaires'] = v;
+         print(v)  
+         end
+      end
+    end
+
 1.5.2 Liens avec Home Assistant
 ===============================
 
