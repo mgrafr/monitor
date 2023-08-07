@@ -14,11 +14,13 @@ Monitor-domotique Documentation
         guides/sommaire.rst
         guides/bien_debuter.rst
         guides/configuration_minimum.rst
-        guides/mon_installation.rst
         guides/plan_interieur.rst
         guides/meteo.rst
+        guides/mur_de_commandes.rst
         guides/divers.rst
-     
+        guides/mon_installation.rst
+
+
 Github Repository <https://github.com/mgrafr/monitor>    
 
  |image1| 
@@ -59,6 +61,11 @@ Météo
 -----
 :doc:`guides/meteo`
    Météo
+
+Mur de commande On/Off
+----------------------
+:doc:`guides/mur_de_commandes`   
+   MUR de commandes ON/OFF
 
 Mon Installation
 ----------------
