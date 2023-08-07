@@ -570,11 +570,12 @@ Le HTML :
 ================
 L’image est inline dans header.php
 
-La fenêtre modale dans /include lexique .php ou lexique_no.php (le fichier est choisi par la configuration) :
+La fenêtre modale dans include/lexique .php ou include/lexique_no.php (le fichier est choisi par la configuration) :
 
 .. code-block:: 'fr'
 
    // affichage lexique
+
    define('LEXIQUE', true);
 
 |image174|
