@@ -483,7 +483,7 @@ substring(0, 11)=="Set Level
 
 |image161|
 
-  Voir le paragraphe concernant les volets
+  Voir le paragraphe concernant les volets :ref:`8.2.4 Exemple volet roulant`
 
 - La fonction **switchOnOff_setpoint()** exécute des commandes
 
