@@ -448,7 +448,10 @@ Extrait:
 
 1.3.5.1 rafraîchissements de la page
 """"""""""""""""""""""""""""""""""""
-La fonction pour le rafraichissement des données à partir d’un changement d’état d’un dispositif dans Domoticz
+La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif dans Domoticz, 
+une variable est mise à « 1 » ; 
+
+monitor qui scrute en permanence cette valeur importe les données de tous les dispositifs si cette variable est à 1.
 
 |image155|
 
@@ -456,6 +459,9 @@ Dans les scripts lua :
 
 |image156|
 
+la variable:
+
+|image158|
 
 
 
