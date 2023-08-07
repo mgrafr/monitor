@@ -463,7 +463,35 @@ la variable:
 
 |image158|
 
+1.3.5.2 Quelques infos supplémentaires
+""""""""""""""""""""""""""""""""""""""
+substring(0, 32) : affichage tronqué ID ZWAVE très long
 
+|image159|
+
+.substring(0, 11)=="Set Level
+
+|image160|
+
+- La fonction **maj_services** récupère les valeurs de toutes les variables.
+
+- La fonction **maj_variable** modifie la valeur d’une variable.
+
+- La fonction **maj_devices(plan)** récupère les données des dispositifs 
+
+	Un exemple avec set ou get Attribute
+
+   |image161|
+
+   Voir le paragraphe concernant les volets
+
+- La fonction **switchOnOff_setpoint()** exécute des commandes
+   La ligne en PHP « <?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?> » crée pour chaque dispositif on/off le script correspondant à partir de la BD
+
+   |image162|
+
+	Le HTML :
+	|image163|
 
 1.4 Le lexique et la température extérieure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -557,3 +585,15 @@ pour ne pas cacher le menu hamburger
    :width: 581px  
 .. |image156| image:: ../media/image156.webp
    :width: 378px  
+.. |image158| image:: ../media/image158.webp
+   :width: 686px  
+.. |image159| image:: ../media/image159.webp
+   :width: 536px  
+.. |image160| image:: ../media/image160.webp
+   :width: 650px  
+.. |image161| image:: ../media/image161.webp
+   :width: 602px 
+.. |image162| image:: ../media/image162.webp
+   :width: 621px  
+.. |image163| image:: ../media/image163.webp
+   :width: 650px  
