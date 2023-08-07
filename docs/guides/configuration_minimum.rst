@@ -486,6 +486,8 @@ substring(0, 11)=="Set Level
   Voir le paragraphe concernant les volets
 
 - La fonction **switchOnOff_setpoint()** exécute des commandes
+
+.. note::
    La ligne en PHP « <?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?> » crée pour chaque dispositif on/off le script correspondant à partir de la BD
 
 |image162|
@@ -496,7 +498,7 @@ substring(0, 11)=="Set Level
 
 - la fonction **maj_sevices()**
 
-Copie d’écran le jour de l’entretien de la fosse septique
+  Copie d’écran le jour de l’entretien de la fosse septique
 
 |image164|
 
@@ -508,7 +510,7 @@ Copie d’écran le jour de l’entretien de la fosse septique
 
   Une solution pour la maj de la date : un script qui tourne en permanence sur la tablette : je n’ai pas retenu cette solution car un script dans Domoticz gère très bien la gestion du temps.  :ref:`Maj de la date>`
 
- .. admonition:: **solution JS sur la tablette**
+.. admonition:: **solution JS sur la tablette**
 
    .. code-block:: 'fr'
 
