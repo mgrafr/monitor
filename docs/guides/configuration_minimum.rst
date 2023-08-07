@@ -538,20 +538,46 @@ Le HTML :
 .. note::
    Pour que les icones sur la page d’accueil soient affichées, il faut enregistrer les variables dans la base de Données Maria DB,
 
--- La table **dispositifs**
+   - soit avec monitor-->**Administration-->Enregistrer Variable (DZ ou HA) dans SQL**
+   - soit avec PHPMyAdmin
+
+- La table **dispositifs**
 
 |image167|
+
+- La table d’équivalence texte ->images : **text_image**
 
 |image168|
 
 |image169|
 
+.. note::
+   Pour les Anniversaires, il faut entrer chaque prénom ou nom dans la base de données, ces noms correspondent à ceux du script LUA décrit ci-après :
+
+   |image170|
+
+   |image171|
+
+   L’image peut être personnalisée pour chaque nom
+
+*Sur la page d’accueil, il est possible d’ajouter d’autres icones, il suffit d’ajouter un ID dans accueil.php et de renseigner la base de données*
+   
+|image172|
 
 1.4 Le lexique et la température extérieure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.4.1 Le lexique
 ================
-L’image est inline dans header.ph
+L’image est inline dans header.php
+
+La fenêtre modale dans /include lexique .php ou lexique_no.php (le fichier est choisi par la configuration) :
+
+.. code-block:: 'fr'
+
+   // affichage lexique
+   define('LEXIQUE', true);
+
+|image174|
 
 
 1.4.2 La température extérieure (valable pour d’autres dispositifs)
@@ -663,3 +689,11 @@ pour ne pas cacher le menu hamburger
    :width: 352px  
 .. |image169| image:: ../media/image169.webp
    :width: 338px  
+.. |image170| image:: ../media/image170.webp
+   :width: 700px  
+.. |image171| image:: ../media/image171.webp
+   :width: 529px 
+.. |image172| image:: ../media/image172.webp
+   :width:700px 
+.. |image174| image:: ../media/image174.webp
+   :width:602px 
