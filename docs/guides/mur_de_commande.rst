@@ -5,8 +5,8 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-8.2- mur_inter.php
+8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
 
-8.2.4 - Exemple volet roulant
+8.2.4 Exemple volet roulant
 =============================
