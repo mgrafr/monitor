@@ -606,7 +606,9 @@ Le fichier Json reçu par monitor après une demande de la fonction devices(plan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.5.1 Liens avec Domoticz
 =========================
-Le script maj_services.lua concerne :
+|image183|
+
+Le script **maj_services.lua** concerne :
 
 - les poubelles
 - la fosse septique
@@ -614,14 +616,55 @@ Le script maj_services.lua concerne :
 - la gestion des piles des dispositifs
 - ….et plus encore
 
-Affichage sur monitor, sur la TV et notifications SMS
+Affichage des évènements :
+-	sur monitor, 
+-	sur la TV 
+-	notifications SMS
+-	envoi e_mail
 
+lien Github: https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_dz/lua/maj_services.lua
 
-Ce script met à jour, suivant l’horaire et la date, des variables Domoticz ; quand javascript 
+le script met à jour, suivant l’horaire et la date, des variables Domoticz ; quand javascript 
 demande une mise à jour, il appelle, par l’intermédiaire d’un fichier ajax.php, une fonction 
 PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi un fichier Json
 
+*Variables Domoticz* :
 
+   - :darkblue:`variables not_tv_* : pour le script notifications_tv.lua `
+
+|image181|
+
+fichier Json* :
+
+|image182|
+
+.. admonition:: **REMARQUE**
+
+   :darkblue:`D’une année à l’autre, certains jours de ramassage des poubelles peuvent être modifiés' :
+
+   Pour en tenir compte dans Domoticz, il est possible de mettre les variables (string et tableau dans un fichier, voir ci-après: 
+
+
+1.5.1.1 les variables lua de configuration dans un fichier externe
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Les jours de ramassage des poubelles peuvent changer, le nombre d’anniversaires augmenter, toutes les variables correspondantes à ces valeurs peuvent être insérées dans un fichier appelé dans le script lua ; pour les anniversaires on utilise un tableau multidimensionnel, plus facile à compléter que 2 tableaux, si les données sont importantes.
+
+.. note::
+   ce fichier peut alors être modifié dans monitor sans intervenir dans Domoticz, voir le paragraphe concernant l’administration  :ref:`14. ADMINISTRATION`
+
+   Dans ce cas il faut que le fichier soit accessible en http, il faut donc créer un répertoire « modules_lua »   dans « :darkblue:`/home/USER/domoticz/www` »
+
+   Exemple le fichier :darkblue:`/home/USER/domoticz/www/modules_lua/string_tableaux.lua`, affiché dans monitor
+
+   |image186|
+
+Pour une maj depuis monitor, on utilise une variable de Domoticz, ainsi c'est Domoticz qui télécharge le fichier modifié.
+
+|image187|
+
+Il est ausi possible d'utiliser SSH2 pour modifier à distance le fichier; ce n'est pas l'option retenue ici.
+
+voir le paragraphe :ref:`14.7 Explications concernant l’importation distantes d’un tableau LUA`
 
 1.5.2 Liens avec Home Assistant
 ===============================
@@ -728,4 +771,11 @@ pour ne pas cacher le menu hamburger
    :width: 438px 
 .. |image180| image:: ../media/image180.webp
    :width: 286px 
-
+.. |image181| image:: ../media/image181.webp
+   :width: 650px 
+.. |image182| image:: ../media/image182.webp
+   :width: 285px 
+.. |image186| image:: ../media/image186.webp
+   :width: 506px 
+.. |image187| image:: ../media/image187.webp
+   :width: 573px 
