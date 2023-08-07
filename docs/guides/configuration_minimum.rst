@@ -766,8 +766,8 @@ Réponse de l’API sur l’état :
 
 |image200|
 
-|image201
-|
+|image201|
+
 1.6 – Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.6.1- exemple avec la date de ramassage des poubelles
