@@ -494,6 +494,58 @@ substring(0, 11)=="Set Level
 
 |image163|
 
+- la fonction **maj_sevices()**
+
+Copie d’écran le jour de l’entretien de la fosse septique
+
+|image164|
+
+|image165|
+
+- la fonction **Maj_devices(plan)**: pour l’installation minimale, ne concerne que la maj de la température extérieure et de la date ; 
+
+  lorsqu’une tablette reste connectée en permanence, donc sans rafraichissement , la date affichée doit être rafraichie.
+
+  Une solution pour la maj de la date : un script qui tourne en permanence sur la tablette : je n’ai pas retenu cette solution car un script dans Domoticz gère très bien la gestion du temps.  :ref:`Maj de la date>`
+
+ .. admonition:: **solution JS sur la tablette**
+
+   .. code-block:: 'fr'
+
+
+      fonction date_heure(id){
+      date = new Date;
+      annee = date.getFullYear();
+      moi = date.getMonth();
+      mois = new Array('Janvier', 'F&eacute;vrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao&ucirc;t', 'Septembre', 'Octobre', 'Novembre', 'D&eacute;cembre');
+      j = date.getDate();
+      jour = date.getDay();
+      jours = new Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi');
+      h = date.getHours();
+      if(h<10){h = "0"+h;}
+      m = date.getMinutes();
+      if(m<10){m = "0"+m;}
+      s = date.getSeconds();
+      if(s<10){s = "0"+s;}
+      resultat = 'Nous sommes le '+jours[jour]+' '+j+' '+mois[moi]+' '+annee+' il est '+h+':'+m+':'+s;
+      document.getElementById(id).innerHTML = resultat;
+      setTimeout('date_heure("'+id+'");','1000');
+      return true;}
+
+|image166|
+
+.. note::
+   Pour que les icones sur la page d’accueil soient affichées, il faut enregistrer les variables dans la base de Données Maria DB,
+
+-- La table **dispositifs**
+
+|image167|
+
+|image168|
+
+|image169|
+
+
 1.4 Le lexique et la température extérieure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.4.1 Le lexique
@@ -598,3 +650,15 @@ pour ne pas cacher le menu hamburger
    :width: 621px  
 .. |image163| image:: ../media/image163.webp
    :width: 650px  
+.. |image164| image:: ../media/image164.webp
+   :width: 650px  
+.. |image165| image:: ../media/image165.webp
+   :width: 602px  
+.. |image166| image:: ../media/image166.webp
+   :width: 602px  
+.. |image167| image:: ../media/image167.webp
+   :width: 662px  
+.. |image168| image:: ../media/image168.webp
+   :width: 352px  
+.. |image169| image:: ../media/image169.webp
+   :width: 338px  
