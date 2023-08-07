@@ -492,7 +492,7 @@ substring(0, 11)=="Set Level
 
 |image162|
 
-  Le HTML :
+Le HTML :
 
 |image163|
 
@@ -513,7 +513,6 @@ substring(0, 11)=="Set Level
 .. admonition:: **solution JS sur la tablette**
 
    .. code-block:: 'fr'
-
 
       fonction date_heure(id){
       date = new Date;
