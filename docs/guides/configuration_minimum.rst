@@ -710,9 +710,64 @@ voir le paragraphe :ref:`14.7 Explications concernant l’importation distantes 
       end
     end
 
+1.5.1.2 les scripts de notifications gérées par Domoticz
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Alarmes SMS ou Mail , 
+
+- le script LUA pour les variables : ‘:darkblue:`notifications_variables`’ 
+
+https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_variables.lua
+
+Extrait:
+
+.. code-block:: 'fr'
+
+   return {
+	on = {
+		variables = {
+			'alarme_bat',
+		    'boite_lettres',
+		    'upload',
+		    'zm_cam',
+		    'pression-chaudiere',
+		    'porte-ouverte',
+		    'intrusion',
+		    'variable_sp',
+		    'pilule_tension',
+		    'BASH'
+		}
+	},
+	execute = function(domoticz, variable)
+
+- le script LUA pour les dispositifs : ‘:darkblue:`notifications_devices`’ 
+
+https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua
+
+|image194|
+
+- le script LUA pour les notifications concernant le temps: ‘:darkblue:`notification-timer.lua`,
+
+|image195|
+
 1.5.2 Liens avec Home Assistant
 ===============================
+1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+|image196|
+
+|image197|
+
+|image198|
+
+Réponse de l’API sur l’état :
+
+|image199|
+
+|image200|
+
+|image201
+|
 1.6 – Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.6.1- exemple avec la date de ramassage des poubelles
@@ -827,3 +882,20 @@ pour ne pas cacher le menu hamburger
    :width: 573px 
 .. |image188| image:: ../media/image188.webp
    :width: 402px 
+.. |image194| image:: ../media/image194.webp
+   :width: 650px 
+.. |image195| image:: ../media/image195.webp
+   :width: 552px 
+.. |image196| image:: ../media/image196.webp
+   :width: 440px 
+.. |image197| image:: ../media/image197.webp
+   :width: 596px 
+.. |image198| image:: ../media/image198.webp
+   :width: 529px 
+.. |image199| image:: ../media/image198.webp
+   :width: 529px 
+.. |image200| image:: ../media/image200.webp
+   :width: 547px
+.. |image201| image:: ../media/image201.webp
+   :width: 700px 
+
