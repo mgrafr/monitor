@@ -491,6 +491,7 @@ substring(0, 11)=="Set Level
 |image162|
 
   Le HTML :
+
 |image163|
 
 1.4 Le lexique et la température extérieure
