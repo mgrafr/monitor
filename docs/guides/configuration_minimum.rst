@@ -469,7 +469,7 @@ substring(0, 32) : affichage tronqué ID ZWAVE très long
 
 |image159|
 
-.substring(0, 11)=="Set Level
+substring(0, 11)=="Set Level
 
 |image160|
 
@@ -481,17 +481,17 @@ substring(0, 32) : affichage tronqué ID ZWAVE très long
 
 	Un exemple avec set ou get Attribute
 
-   |image161|
+|image161|
 
    Voir le paragraphe concernant les volets
 
 - La fonction **switchOnOff_setpoint()** exécute des commandes
    La ligne en PHP « <?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?> » crée pour chaque dispositif on/off le script correspondant à partir de la BD
 
-   |image162|
+|image162|
 
-	Le HTML :
-	|image163|
+  Le HTML :
+|image163|
 
 1.4 Le lexique et la température extérieure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
