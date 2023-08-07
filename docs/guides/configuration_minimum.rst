@@ -892,7 +892,7 @@ pour ne pas cacher le menu hamburger
    :width: 596px 
 .. |image198| image:: ../media/image198.webp
    :width: 529px 
-.. |image199| image:: ../media/image198.webp
+.. |image199| image:: ../media/image199.webp
    :width: 529px 
 .. |image200| image:: ../media/image200.webp
    :width: 547px
