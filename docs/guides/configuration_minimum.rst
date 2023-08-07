@@ -579,7 +579,19 @@ La fenêtre modale dans /include lexique .php ou lexique_no.php (le fichier est 
 
 |image174|
 
+- Lexique.php
 
+|image175|
+
+- Lexique_no.php
+
+|image176|
+
+.. warning::
+   Pour ne pas utiliser de lexique et donc de supprimer l’icône :|image177|
+
+   - Supprimer le script ou le ou mettre en commentaire : :red:'<!--'  <div class="modal" id="lexique">
+ 
 1.4.2 La température extérieure (valable pour d’autres dispositifs)
 ===================================================================
 
@@ -694,6 +706,13 @@ pour ne pas cacher le menu hamburger
 .. |image171| image:: ../media/image171.webp
    :width: 529px 
 .. |image172| image:: ../media/image172.webp
-   :width:700px 
+   :width: 700px 
 .. |image174| image:: ../media/image174.webp
-   :width:602px 
+   :width: 602px 
+.. |image175| image:: ../media/image175.webp
+   :width: 465px 
+.. |image176| image:: ../media/image176.webp
+   :width: 650px 
+.. |image177| image:: ../media/image177.webp
+   :width: 60px 
+
