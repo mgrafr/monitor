@@ -606,6 +606,7 @@ Le fichier Json reçu par monitor après une demande de la fonction devices(plan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.5.1 Liens avec Domoticz
 =========================
+
 |image183|
 
 Le script **maj_services.lua** concerne :
@@ -618,8 +619,11 @@ Le script **maj_services.lua** concerne :
 
 Affichage des évènements :
 -	sur monitor, 
--	sur la TV 
+
+-	sur la TV
+
 -	notifications SMS
+
 -	envoi e_mail
 
 lien Github: https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_dz/lua/maj_services.lua
@@ -630,7 +634,7 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 
 *Variables Domoticz* :
 
-   - :darkblue:`variables not_tv_* : pour le script notifications_tv.lua `
+   - :darkblue:`variables not_tv_* : pour le script notifications_tv.lua`
 
 |image181|
 
@@ -640,7 +644,7 @@ fichier Json* :
 
 .. admonition:: **REMARQUE**
 
-   :darkblue:`D’une année à l’autre, certains jours de ramassage des poubelles peuvent être modifiés' :
+   :darkblue:`D’une année à l’autre, certains jours de ramassage des poubelles peuvent être modifiés` :
 
    Pour en tenir compte dans Domoticz, il est possible de mettre les variables (string et tableau dans un fichier, voir ci-après: 
 
@@ -665,6 +669,12 @@ Pour une maj depuis monitor, on utilise une variable de Domoticz, ainsi c'est Do
 Il est ausi possible d'utiliser SSH2 pour modifier à distance le fichier; ce n'est pas l'option retenue ici.
 
 voir le paragraphe :ref:`14.7 Explications concernant l’importation distantes d’un tableau LUA`
+
+.. admonition:: **Façon de procéder**
+
+   On place le fichier (ici : string_tableaux.lua)  dans ce répertoire
+
+   |image188|
 
 1.5.2 Liens avec Home Assistant
 ===============================
@@ -779,3 +789,5 @@ pour ne pas cacher le menu hamburger
    :width: 506px 
 .. |image187| image:: ../media/image187.webp
    :width: 573px 
+.. |image188| image:: ../media/image188.webp
+   :width: 402px 
