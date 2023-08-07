@@ -479,11 +479,11 @@ substring(0, 11)=="Set Level
 
 - La fonction **maj_devices(plan)** récupère les données des dispositifs 
 
-	Un exemple avec set ou get Attribute
+ Un exemple avec set ou get Attribute
 
 |image161|
 
-   Voir le paragraphe concernant les volets
+  Voir le paragraphe concernant les volets
 
 - La fonction **switchOnOff_setpoint()** exécute des commandes
    La ligne en PHP « <?php if ($_SESSION["exeption_db"]!="pas de connexion à la BD") {sql_plan(0);}?> » crée pour chaque dispositif on/off le script correspondant à partir de la BD
