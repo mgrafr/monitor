@@ -768,8 +768,14 @@ Réponse de l’API sur l’état :
 
 |image201|
 
+La fonction PHP
+
+|image202|
+
 1.6 – Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 1.6.1- exemple avec la date de ramassage des poubelles
 ======================================================
 
@@ -898,4 +904,5 @@ pour ne pas cacher le menu hamburger
    :width: 547px
 .. |image201| image:: ../media/image201.webp
    :width: 700px 
-
+.. |image202| image:: ../media/image202.webp
+   :width: 700px 
