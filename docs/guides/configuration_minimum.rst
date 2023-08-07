@@ -785,6 +785,8 @@ pour ne pas cacher le menu hamburger
    :width: 650px 
 .. |image182| image:: ../media/image182.webp
    :width: 285px 
+.. |image183| image:: ../media/image183.webp
+   :width: 307px 
 .. |image186| image:: ../media/image186.webp
    :width: 506px 
 .. |image187| image:: ../media/image187.webp
