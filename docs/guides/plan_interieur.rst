@@ -288,7 +288,7 @@ cette valeur peut être modifiée, voir :ref:`2.2.1 Ajout du détecteur de fumé
 
 2.3 le fichier PHP de l’image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué au § :ref:`2.1.1.a avec Inkscape qui est gratuit` ou les 2 ou 3 premières lignes (AI) :
 
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
