@@ -135,6 +135,66 @@ Avant nettoyage :
 
 |image246|
 
+2.1.1.b avec Adobe Illustrator
+""""""""""""""""""""""""""""""
+La construction est sensiblement la même, la différence pour notre sujet, réside dans la description des ID ; Inkscape ajoute des id partout, AI en ajoute aucun, sauf si on le spécifie, comme ci-dessous ;
+
+ :red:`Il est impératif pour retrouver facilement les objets d’ajouter les id à la construction`.
+
+|image247|
+
+|image248|
+
+.. note::
+
+Les cercles ici indiquent lorsqu’ils clignotent, un changement de piles à prévoir ; le N° qui sui « cercle » est l’id du dispositif.
+
+
+
+ :red:`Dans Inkscape, lors de la construction, il est possible d’ajouter du javascript, avec AI, il faut l’ajouter avec un éditeur de texte ou dreamweaver.`
+
+.. code-block:: 'fr'
+
+   <g
+      id="ouverture_porte_sejour"
+      onclick="popup_device(7)"
+
+**Attention aux styles après construction** :
+
+|image250|
+
+.. warning::
+
+:red:`Un style qui existe alors qu’il n’est pas utilisé crée une erreur`
+
+.. admonition:: **La construction de mon plan** 
+
+   avec AI : 
+
+   |image251|
+
+2.1.2 – 2eme solution pour le plan, conversion en ligne
+=======================================================
+
+|image252|
+
+- Mon fichier floorplan.png
+
+|image253|
+
+- **Conversion avec Autotracer** :
+
+|image254|
+
+|image255|
+
+Les textes transformés ne sont pas toujours lisibles, il faut modifier le plan,
+
+|image258|
+
+2.1.3 – Les couleurs
+====================
+
 2.2 Des exemples d’autres dispositifs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 2.2.1 Ajout du détecteur de fumée :
@@ -217,3 +277,22 @@ Un script dz : séparation_valeurs.lua
    :width: 435px 
 .. |image246| image:: ../media/image246.webp
    :width: 601px 
+.. |image247| image:: ../media/image247.webp
+   :width: 537px 
+.. |image248| image:: ../media/image248.webp
+   :width: 700px 
+.. |image250| image:: ../media/image250.webp
+   :width: 568px
+.. |image251| image:: ../media/image251.webp
+   :width: 523px 
+.. |image252| image:: ../media/image252.webp
+   :width: 300px
+.. |image253| image:: ../media/image253.webp
+   :width: 531px 
+.. |image254| image:: ../media/image254.webp
+   :width: 632px 
+.. |image255| image:: ../media/image255.webp
+   :width: 480px 
+.. |image258| image:: ../media/image255.webp
+   :width: 480px 
+
