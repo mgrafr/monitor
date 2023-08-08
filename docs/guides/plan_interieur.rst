@@ -230,7 +230,7 @@ Ajouter un texte « temp » par exemple pour l’affichage de la température ; 
 
 .. note::
 
-les détecteurs de présence peuvent souvent enregistrer la température.
+   les détecteurs de présence peuvent souvent enregistrer la température.
 
 |image267|
 
@@ -250,11 +250,41 @@ les détecteurs de présence peuvent souvent enregistrer la température.
 
 |image270|
 
+Enregistrer le fichier, j’ai choisi « interieur.svg », le nom de ma page
+
+Pour les textes c’est la même façon de procéder
+
+|image272|
+
+Aperçu d’une image avec de nombreux dispositifs
+
+|image273|
 
 2.2 Des exemples d’autres dispositifs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 2.2.1 Ajout du détecteur de fumée :
 ===================================
+Ajout de l’icône avec Inkscape :
+
+|image274| |image275|
+
+Un href, un id, un titre et un onclick avec un id (idm ou idx) ; option choisie dans /admin/config.php
+
+.. code-block:: 'fr'
+
+   define('CHOIXID','idm');// DZ:idm ou idx ; HA : idm uniquement
+
+2.2.2 Ajout de caméras
+======================
+Comme il n’existe pas d’idx Domoticz, nous réserverons la plage >= 10 000 pour cela ; 
+
+cette valeur peut être modifiée, voir :ref:`2.2.1 Ajout du détecteur de fumée`
+
+|image277|
+
+*La base de données* :
+
+|image02|
 
 2.3 le fichier PHP de l’image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -373,7 +403,17 @@ Un script dz : séparation_valeurs.lua
    :width: 700px 
 .. |image270| image:: ../media/image270.webp
    :width: 579px 
-
-
+.. |image272| image:: ../media/image272.webp
+   :width: 504px 
+.. |image273| image:: ../media/image273.webp
+   :width: 500px 
+.. |image274| image:: ../media/image274.webp
+   :width: 190px 
+.. |image275| image:: ../media/image275.webp
+   :width: 300px 
+.. |image277| image:: ../media/image277.webp
+   :width: 665px 
+.. |image02| image:: ../media/image02.webp
+   :width: 602px 
 
 
