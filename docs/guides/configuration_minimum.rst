@@ -829,24 +829,140 @@ Pour faire des essais à partir d’un navigateur :
 
 1.6 – Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
 1.6.1- exemple avec la date de ramassage des poubelles
 ======================================================
+En Dordogne, les poubelles jaunes sont ramassées toutes les 2 semaines mais les poubelles grises sont ramassées selon une procédure différente :
 
+Le contrat annuel comprend 12 ramassages mais le ramassage est possible chaque semaine,
+
+il faut donc gérer au mieux le nombre de ramassages pour éviter des facturations supplémentaires.
+
+c’est le script décrit ici qui enregistre les dates des ramassages réels effectués.
+
+*Il faut au préalable ajouter une table dans la base de données*
+
+.. code-block:: 'fr'
+
+   -- Structure de la table `date_poub`
+   --
+   CREATE TABLE `date_poub` (
+  `num` int(11) NOT NULL,
+  `date` text NOT NULL,
+  `valeur` text NOT NULL,
+  `icone` text NOT NULL
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+- Les 2 icones svg : |image209|
+
+- La table
+
+|image210|
+
+- La page d’accueil :
+
+|image211|
+
+un script est ajouté dans footer.php
+
+Idx_idimg existe déjà dans footer.php , sa valeur est « poubelle_grise » ou « poubelle_jaune » suivant les valeurs choisies dans le script LUA de Domoticz ; 
+
+on va **ajouter une variable pour l’icône dans les données json**
+
+.. code-block:: 'fr'
+   $("#poubelle").click(function () {
+   var date_poub=new Date();
+   var jour_poub=date_poub.getDate();
+   var an_poub=date_poub.getFullYear();
+   var months=new Array('Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre');
+   var mois_poub=months[date_poub.getMonth()];
+   var date_poub=jour_poub+' '+mois_poub+" "+an_poub;
+            $.ajax({
+             url: "ajax.php",
+             data: "app=sql&idx=0&variable=date_poub&type="+idx_idimg+"&command="+
+			 date_poub+"&name="+idx_ico,
+            }).done(function() {
+             alert('date ramassage enregigistrée:'  +date_poub);
+            });
+        });
+
+|image212|
+
+Dans ajax.php
+
+.. code-block:: 'fr'
+
+  if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
+
+Dans fonctions.php , la fonction :darkblue:`sql_app`
+
+.. code-block:: 'fr'
+
+   function sql_app($choix,$table,$valeur,$date,$icone=''){
+   // SERVEUR SQL connexion
+   $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
+   if ($choix==0) {// Pour insertion des données
+   $sql="INSERT INTO ".$table." (`num`, `date`, `valeur`, `valeur`) VALUES (NULL, '".$date."', '".$valeur."', '".$icone."');";	
+   $result = $conn->query($sql);;}
+   if ($choix==1) { // Pour lecture des données
+   $sql="SELECT * FROM ".$table." ORDER BY num DESC LIMIT 24";
+   $result = $conn->query($sql);
+   $number = $result->num_rows;
+   while($row = $result->fetch_array(MYSQLI_ASSOC)){
+    echo $row['date'].'  '.$row['valeur'].' <img style="width:30px;vertical-align:middle" src="'.$row['icone'].'"/><br>';}
+   }
+   $conn->close();
+   return;}
+
+Et pour ajouter l’icône au fichier json concernant les variables :
+
+.. code-block:: 'fr'
+
+   function status_variables($xx){
+   $p=0;$n=0;	
+   if(IPDOMOTIC != ""){
+   $L=URLDOMOTIC."json.htm?type=command&param=getuservariables";
+   $json_string = file_get_curl($L);
+   $resultat = json_decode($json_string, true);
+   ...
+   ...
+   $data[$n+1] = [	
+		'idx' => $idx,
+		'ID' => $ID,
+		'Type' => $type,
+		'Name' => $name,
+		'Value' => $value,
+		'ID_img' => $id_m_img,
+		'image' => $image,
+	--->	'icone' => $icone,
+		'ID_txt' => $id_m_txt,
+		'exist_id' => $exist_id
+		];}
+
+
+Le fichier Json reçu par monitor :
+
+|image216|
+
+Les enregistrements sont sauvegardés, 
+
+pour afficher l’historique des dates, voir le paragraphe  :ref:`12.1.1 Edition de l’historique du ramassage des poubelles`  
+
+|image218|
 
 1.7 – Ajuster le menu au nombre de pages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Au-delà de 12 pages il faut étendre en largeur le menu ; il faut aussi le descendre de 50 px 
 pour ne pas cacher le menu hamburger
 
+|image219
 
+*Modification à apporter au fichier : /js/big-Slide.js :*
 
+|image220|
 
+Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 
-
-
-
+|image221|
 
 
 .. |image117| image:: ../media/image117.webp
@@ -969,3 +1085,21 @@ pour ne pas cacher le menu hamburger
    :width: 454px 
 .. |image208| image:: ../media/image208.webp
    :width: 700px 
+.. |image209| image:: ../media/image209.webp
+   :width: 153px 
+.. |image210| image:: ../media/image210.webp
+   :width: 695px 
+.. |image211| image:: ../media/image211.webp
+   :width: 638px 
+.. |image212| image:: ../media/image212.webp
+   :width: 700px 
+.. |image216| image:: ../media/image216.webp
+   :width: 369px 
+.. |image218| image:: ../media/image218.webp
+   :width: 526px 
+.. |image219| image:: ../media/image219.webp
+   :width: 526px 
+.. |image220| image:: ../media/image220.webp
+   :width: 316px 
+.. |image221| image:: ../media/image221.webp
+   :width: 338px 
