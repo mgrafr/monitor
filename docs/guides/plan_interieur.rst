@@ -53,6 +53,48 @@ Les deux solutions :
 
 |image229|
 
+- Améliorer l’emplacement des ouvertures :
+
+On reste dégroupé et on trace un rectangle autour des murs
+
+|image230|
+
+|image231|
+
+|image232|
+
+.. note::
+
+   Contrairement à Adobe Illustrator , Inkscape ne gère pas les feuilles de style mais celles indiquées sont afficher dans les navigateurs.
+
+- Pour ajouter des classes pour gérer les changements de couleur dans monitor, pour certains dispositifs  :
+
+|image233|
+
+- On donne un nom à cette classe :
+
+|image234|
+
+- L’objet avec la classe :
+
+|image235|
+
+- les CSS dans le fichier .svg 
+
+|image236|
+
+.. admonition:: **Remarque**
+
+   |image237|  
+
+   On ajoute aussi une class aux textes
+
+   |image238|  
+
+- La feuille de style complète pour le plan
+
+ |image239|  
+
 2.2 Des exemples d’autres dispositifs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 2.2.1 Ajout du détecteur de fumée :
@@ -94,10 +136,30 @@ Un script dz : séparation_valeurs.lua
 .. |image225| image:: ../media/image225.webp
    :width: 700px 
 .. |image226| image:: ../media/image226.webp
-   :width:433px 
+   :width: 433px 
 .. |image227| image:: ../media/image227.webp
    :width: 451px 
 .. |image228| image:: ../media/image228.webp
    :width: 350px 
 .. |image229| image:: ../media/image229.webp
    :width: 491px 
+.. |image230| image:: ../media/image230.webp
+   :width: 580px 
+.. |image231| image:: ../media/image231.webp
+   :width: 608px 
+.. |image232| image:: ../media/image232.webp
+   :width: 596px 
+.. |image233| image:: ../media/image233.webp
+   :width: 565px 
+.. |image234| image:: ../media/image234.webp
+   :width: 650px 
+.. |image235| image:: ../media/image235.webp
+   :width: 491px 
+.. |image236| image:: ../media/image236.webp
+   :width: 319px 
+.. |image237| image:: ../media/image237.webp
+   :width: 660px 
+.. |image238| image:: ../media/image238.webp
+   :width: 478px 
+.. |image239| image:: ../media/image239.webp
+   :width: 211px 
