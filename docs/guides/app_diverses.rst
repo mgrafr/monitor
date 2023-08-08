@@ -5,6 +5,6 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
 
 12.1 AJOUT SQL
 ^^^^^^^^^^^^^^
- 12.1.1 Edition de l’historique du ramassage des poubelles
-==========================================================
+12.1.1 Edition de l’historique du ramassage des poubelles
+=========================================================
 
