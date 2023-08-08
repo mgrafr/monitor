@@ -290,6 +290,17 @@ cette valeur peut être modifiée, voir :ref:`2.2.1 Ajout du détecteur de fumé
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué au § :ref:`2.1.1.a avec Inkscape qui est gratuit` ou les 2 ou 3 premières lignes (AI) :
 
+ |image279|
+
+- Enregistrer l’image au format PHP dans le dossier /include:  interieur_svg.php	(utilisé ici)
+*le fichier PHP commence par <svg ....,  supprrimer la ligne <?xml version="1.0" encoding="utf-8"?>*
+
+.. code-block:: 'fr'
+
+   <svg
+   version="1.1"
+   id="Calque_1"
+
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Il faut maintenant ajouter la page sur le site 
@@ -415,5 +426,6 @@ Un script dz : séparation_valeurs.lua
    :width: 665px 
 .. |image02| image:: ../media/image02.webp
    :width: 602px 
-
+.. |image279| image:: ../media/image277.webp
+   :width: 595px 
 
