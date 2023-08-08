@@ -93,7 +93,47 @@ On reste dégroupé et on trace un rectangle autour des murs
 
 - La feuille de style complète pour le plan
 
- |image239|  
+ |image239| 
+
+- L’image est centrée au milieu du calque , on la déplace à l’angle droit haut
+
+|image240| 
+
+- On fait correspondre l’image avec la page
+
+|image241| 
+
+On sauvegarde l l’image
+
+On nettoie le code et on créer un fichier PHP qui contiendra l’image ; pour que cette image soit modifiable par le DOM, elle ne peut être appelée directement comme pour les formats classiques mais chargée entièrement dans le fichier HTML.
+
+Avant nettoyage :
+
+|image242| 
+
+.. admonition:: **Nettoyage de l'image**
+
+   on supprime la partie ci-dessus (jusqu’à « <style>) et on la remplace par : 
+
+   .. code-block:: 'fr'
+
+      <svg version="1.1" id="Calque_1" viewBox="0 0 150 150">
+
+   |image243| 
+
+   Pour comprendre viewbox : https://la-cascade.io/comprendre-svg-viewbox/
+
+**Affichage dans monitor** (on peut ajouter une marge pour centrer l’image)
+
+*534x720 : tablette chinoise*
+
+|image244|
+
+|image245|
+
+*Affichage sur PC : 1200x612*
+
+|image246|
 
 2.2 Des exemples d’autres dispositifs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -163,3 +203,17 @@ Un script dz : séparation_valeurs.lua
    :width: 478px 
 .. |image239| image:: ../media/image239.webp
    :width: 211px 
+.. |image240| image:: ../media/image240.webp
+   :width: 531px 
+.. |image241| image:: ../media/image241.webp
+   :width: 517px 
+.. |image242| image:: ../media/image242.webp
+   :width: 566px 
+.. |image243| image:: ../media/image243.webp
+   :width: 521px 
+.. |image244| image:: ../media/image244.webp
+   :width: 542px 
+.. |image245| image:: ../media/image245.webp
+   :width: 435px 
+.. |image246| image:: ../media/image246.webp
+   :width: 601px 
