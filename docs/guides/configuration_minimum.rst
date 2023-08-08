@@ -833,7 +833,7 @@ Pour faire des essais à partir d’un navigateur :
 ======================================================
 En Dordogne, les poubelles jaunes sont ramassées toutes les 2 semaines mais les poubelles grises sont ramassées selon une procédure différente :
 
-Le contrat annuel comprend 12 ramassages mais le ramassage est possible chaque semaine,
+- Le contrat annuel comprend 12 ramassages mais le ramassage est possible chaque semaine,
 
 il faut donc gérer au mieux le nombre de ramassages pour éviter des facturations supplémentaires.
 
@@ -954,7 +954,7 @@ pour afficher l’historique des dates, voir le paragraphe  :ref:`12.1.1 Edition
 Au-delà de 12 pages il faut étendre en largeur le menu ; il faut aussi le descendre de 50 px 
 pour ne pas cacher le menu hamburger
 
-|image219
+|image219|
 
 *Modification à apporter au fichier : /js/big-Slide.js :*
 
