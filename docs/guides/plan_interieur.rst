@@ -147,7 +147,7 @@ La construction est sensiblement la même, la différence pour notre sujet, rés
 
 .. note::
 
-Les cercles ici indiquent lorsqu’ils clignotent, un changement de piles à prévoir ; le N° qui sui « cercle » est l’id du dispositif.
+Les cercles ici indiquent lorsqu’ils clignotent, un changement de piles à prévoir ; le N° qui suis « cercle » est l’id du dispositif.
 
 
 
@@ -194,6 +194,62 @@ Les textes transformés ne sont pas toujours lisibles, il faut modifier le plan,
 
 2.1.3 – Les couleurs
 ====================
+Choisir des couleurs web : 6 familles (#00xxxx, #33xxxx, #66xxxx, #99xxxx, #CCxxxx, #FFxxxx), 216 couleurs, ce qui limite ne nombre de class ; un seul fichier de class pour tout le site....
+
+...la construction est plus longue et là aussi il faut le faire depuis le début
+
+|image260|
+
+2.1.4 - ajout d’un ou plusieurs dispositifs
+===========================================
+Sur le net on trouve des icones au format svg, sinon on transforme les png avec Autotracer
+Les icones que j’ai choisies : *contact d’ouverture de porte et détecteur de présence*
+
+|image261|
+
+.. note::
+
+Pour les textes il suffit par exemple d’ajouter « tmp » qui sera en javascript remplacé par la température enregistrée par le dispositif
+
+- **Importer l’icone**
+
+|image262|
+
+|image263|
+
+|image264|
+
+|image265|
+
+- Redimensionner l’(les)objet(s) :
+
+|image266|
+
+Comme on peut le voir, avec les images svg le remplacement de couleur, de textes s’effectuent rapidement lors de la création ; il en est de même dans le HTML en utilisant javascript.
+Ajouter un texte « temp » par exemple pour l’affichage de la température ; ce texte sera remplacé par la valeur de la température en utilisant Javascript; 
+
+.. note::
+
+les détecteurs de présence peuvent souvent enregistrer la température.
+
+|image267|
+
+- Pour les dispositifs et les textes, ajouter un ID :
+
+*Comme indiqué précédemment, Avec Inkscape, il est possible d’ajouter facilement un ID lors de la construction de l’image*
+
+|image268|
+
+- La couleur de l’objet :
+
+*avec Inskcape*:
+
+|image269|
+
+*avec Adobe Illustrator*:
+
+|image270|
+
 
 2.2 Des exemples d’autres dispositifs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -293,6 +349,31 @@ Un script dz : séparation_valeurs.lua
    :width: 632px 
 .. |image255| image:: ../media/image255.webp
    :width: 480px 
-.. |image258| image:: ../media/image255.webp
-   :width: 480px 
+.. |image258| image:: ../media/image258.webp
+   :width: 700px 
+.. |image260| image:: ../media/image260.webp
+   :width: 239px 
+.. |image261| image:: ../media/image261.webp
+   :width: 171px 
+.. |image262| image:: ../media/image262.webp
+   :width: 300px 
+.. |image263| image:: ../media/image263.webp
+   :width: 700px 
+.. |image264| image:: ../media/image264.webp
+   :width: 514px 
+.. |image265| image:: ../media/image265.webp
+   :width: 503px 
+.. |image266| image:: ../media/image266.webp
+   :width: 294px 
+.. |image267| image:: ../media/image267.webp
+   :width: 492px 
+.. |image268| image:: ../media/image268.webp
+   :width: 545px 
+.. |image269| image:: ../media/image269.webp
+   :width: 700px 
+.. |image270| image:: ../media/image270.webp
+   :width: 579px 
+
+
+
 
