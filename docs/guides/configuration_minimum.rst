@@ -772,6 +772,61 @@ La fonction PHP
 
 |image202|
 
+Comme pour Domoticz une commande dans monitor appelle l’api qui exécute la commande.
+
+Dans footer.php : départ de la commande avec le script créé automatiquement depuis la base de données:
+
+|image203|
+
+- la fonction :darkblue:`turnonoff()`
+
+.. code-block:: 'fr'
+
+   function turnonoff(idm,idx,command,pass="0"){console.log(idm);
+	if (pp[idm].Data == "On" || pp[idm].Data == "on") {command="off";}
+	else {command="on";}
+	$.ajax({ //commande ON/OFF
+    	type: "GET",
+    	dataType: "json",
+    	url: "ajax.php",
+    	data: "app=turn&device="+idx+"&command="+command+"&name="+pass,
+    	success: function(response){qq=response;
+	   if (qq.resultat != "OK" ){alert("erreur");}
+	   else { 
+           $.ajax({ // commande STATE
+    	   type: "GET",
+    	   dataType: "json",
+    	   url: "ajax.php",
+    	   data: "app=turn&device="+idx+"&command=etat&name="+pass,
+    	   success: function(response){qq=response;
+		}});}
+           }   });
+	var level="";command=qq.state;										 
+	maj_switch(idx,command,level,idm);
+	}
+
+commande concernée dans ajax.php:
+
+.. code-block:: 'fr'
+
+   if ($app=="turn") {$retour=devices_id($device,$command);echo $retour; }
+
+La fonction PHP ":darkblue:`device_id`" ci-dessus retourne pour les capteurs binaires :
+
+|image206|
+
+En plus clair :
+
+|image207|
+
+.. note::
+
+Pour les interrupteurs réels : l’API retourne un tableau vide , d’où un appel de l’API/states pour avoir une confirmation du changement d’état.
+
+Pour faire des essais à partir d’un navigateur :
+
+|image208|
+
 1.6 – Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -905,4 +960,12 @@ pour ne pas cacher le menu hamburger
 .. |image201| image:: ../media/image201.webp
    :width: 700px 
 .. |image202| image:: ../media/image202.webp
+   :width: 700px 
+.. |image203| image:: ../media/image203.webp
+   :width: 655px 
+.. |image206| image:: ../media/image206.webp
+   :width: 327px 
+.. |image207| image:: ../media/image207.webp
+   :width: 454px 
+.. |image208| image:: ../media/image208.webp
    :width: 700px 
