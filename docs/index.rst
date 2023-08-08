@@ -17,6 +17,7 @@ Monitor-domotique Documentation
         guides/plan_interieur.rst
         guides/meteo.rst
         guides/mur_de_commandes.rst
+        guides/app_diverses.rst
         guides/administration.rst
         guides/divers.rst
         guides/mon_installation.rst
@@ -67,6 +68,11 @@ Mur de commande On/Off
 ----------------------
 :doc:`guides/mur_de_commandes`   
    MUR de commandes ON/OFF
+
+App Diverses
+------------
+:doc:`guides/app_diverses` 
+     App Diverses
 
 Administration
 --------------
