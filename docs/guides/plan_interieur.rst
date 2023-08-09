@@ -317,10 +317,98 @@ Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué au §
 
 |image283|
 
+- Que fait le script javascript qui gère les dispositifs :
+
+|image284|
+
+L’appel ajax : appelle la fonction PHP devices_plan($variable), la variable est le N° du Plan
+
+.. code-block:: 'fr'
+
+   if ($app=="devices_plan") {if (DECOUVERTE==true) {include('include/json_demo/devices_plan_json.php');return;}
+   else {$retour=devices_plan($variable);echo json_encode($retour); }}
+
+- La fonction PHP :darkblue:`devices_plan($variable)`:
+
+|image286|
+
+Le Json renvoyé :
+
+|image287|
+
+Monitor peut afficher un changement de couleur du dispositif, une température  mais à condition de retrouver l’ID du dispositif ou l’ID du texte dans le DOM.
+
+C’est pourquoi nous avons ajouté des ID lors de la construction du plan.
+
+Un aperçu du fichier interieur_svg.php :
+
+|image288|
+
+.. note::
+
+   Pour une icône avec une seule couleur, l’ID de l’icône est suffisant mais avec une icône où une seule partie est colorée comme pour l’ouverture de porte, ii est facile, avec F12 d’inspecter la partie de 
+   l’icône qui nous intéresse et de rajouter un ID dans le <path concerné
+
+   C’est alors cet ID qu’il faudra entrer pour le dispositif dans la Base de données SQL.
+
+   |image289|
+
+Pour les textes, si l’ID n’a pas été spécifié à la construction de l’image, ils sont faciles à retrouver avec une recherche sur Notepad pour ajouter un ID ; 
+
+Sur AI il faudra souvent modifier légèrement l’ID
+
+ |image290|
+
+2.3.1 Pour afficher le statut complet du dispositif
+===================================================
+
+|image291|
+
+|image292|
+
+|image293|
+
+C’est la fonction javascript :darkblue:`popup_device` du fichier footer.php qui ouvre cette fenêtre.
+
+.. admonition:: **Remarque**
+   
+   les caméras ne sont pas des dispositifs dans Domoticz, aussi des ID >= à 10000 leur sont attribués ; cette valeur peut être modifiée en modifiant le programme qui suit.
+
+|image294|
+
+Cette fonction est activée par un onclick que l’on ajoute dans l’image ; par contre la BD n’est pas nécessaire pour cet affichage, à condition que le onclick possède comme id l’idx de Domoticz.
+
+.. code-block:: 'fr'
+
+   id="temp_cuisine"
+   onclick="popup_device(21)"
+   inkscape:transform-center-x="-23.52"
+   inkscape:transform-center-y="31.36"><tspan
+     sodipodi:role="line"
+     id="tspan4545-8"
+     x="60.40955"
+     y="281.74768">temp</tspan></text><g
+   id="ouverture_porte_salon"
+   transform="matrix(0.16425446,0,0,0.17058408,527.48825,763.57501)"
+   onclick="popup_device(38)"><path
+   ...
+
+popup_device(:red:`21`) --> :red:`21` = idm
+
+Avec Inkscape ce onclick peut être ajouter lors de la construction
+
+|image296|
+
+|image297|
+
+avec AI il faut l’ajouter manuellement .
+
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Il faut maintenant ajouter la page sur le site 
 Un modèle de page pour toutes les pages du site : 
+
+
 
 
 2.5 F12 des navigateurs pour faciliter la construction
@@ -452,4 +540,27 @@ Un script dz : séparation_valeurs.lua
    :width: 700px 
 .. |image283| image:: ../media/image283.webp
    :width: 601px 
-
+.. |image284| image:: ../media/image284.webp
+   :width: 700px 
+.. |image286| image:: ../media/image286.webp
+   :width: 597px 
+.. |image287| image:: ../media/image287.webp
+   :width: 362px 
+.. |image288| image:: ../media/image288.webp
+   :width: 700px 
+.. |image289| image:: ../media/image289.webp
+   :width: 597px 
+.. |image290| image:: ../media/image290.webp
+   :width: 643px 
+.. |image291| image:: ../media/image291.webp
+   :width: 406px 
+.. |image292| image:: ../media/image292.webp
+   :width: 301px 
+.. |image293| image:: ../media/image293.webp
+   :width: 299px 
+.. |image294| image:: ../media/image294.webp
+   :width: 531px 
+.. |image296| image:: ../media/image296.webp
+   :width: 426px 
+.. |image297| image:: ../media/image297.webp
+   :width: 393px 
