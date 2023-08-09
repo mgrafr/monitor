@@ -414,8 +414,187 @@ Ou lors de la construction avec Inkscape :
 
 2.3.2 Affichage des caméras
 ===========================
+Pour les caméras génériques chinoises, pour les configurer : Internet explorer etait le seul navigateur qui permettait d’afficher Net Surveillance , Edge a pris la relève.
 
+|image301|
 
+La table « cameras » dans la base de données SQL a été remplie, voir le paragraphe concernant la base de données :  :ref:`0.3.3 caméras`
+
+|image302|
+
+**Seulement si Zoneminder est utilisé** :
+
+.. admonition:: **Pour retrouver l’ID Zoneminder **
+
+   pour toutes les cameras :
+
+   Dans un navigateur : :darkblue:`IP DE ZONEMINDER`/zm/api/monitor.json
+
+   |image303|
+
+|image304|
+
+Les icones, les onclick, les <a pour le lien (pour version PC) , ont été ajoutés sur le plan ; une fenêtre (modal) est ajoutée sur la page.
+Voir les paragraphes   :ref:`2.2.2 Ajout de caméras`  et  :ref:`2.3.1 Pour afficher le statut complet du dispositif`
+
+**La modale pour la fenêtre de l’image** :
+
+|image305|
+
+C’est la fonction PHP « :darkblue:`upload_img($idx)` » appelée par ajax qui renvoi l’image de la caméra
+
+|image306|
+
+Le script JS dans footer.php :
+
+.. code-block:: 'fr'
+
+	function popup_device(nom) {
+	if (nom < 10000){if (pp[nom]){
+	.....
+	}
+	else { // partie consacrée aux caméras
+		$.ajax({
+		type: "GET",
+      url: 'ajax.php',
+	   data: "app=upload_img&variable="+nom,
+	   dataType: 'json',
+      success: function(html) {
+		urlimg=html['url']+"?"+Date.now()/1000;zoneminder=html['id_zm'];dahua=html['marque'];
+		ip_cam=html['ip'];idx_cam=html['idx'];dahua_type=html['type'];console.log(dahua_type);
+		if (nom<10010){//de 10000 à 10009: cam autour maison, >10009 : cam jardin garage 
+        $('#cam').attr('src',urlimg); $('#camera').modal('show');} 
+		  else {$('#cam_ext').attr('src',urlimg); $('#camera_ext').modal('show');} }
+			});         
+		} 
+	}
+
+**Affichage de la configuration des caméras**:
+
+Pour les caméras Dahua, il existe un script spécifique ; pour les autres caméras, le script ne fonctionne que si Zoneminder est installé et la configuration effectuée :
+Le fichier de configuration :darkblue:`admin/config.php` :
+
+ |image308|
+
+.. admonition:: **Configuration de Zoneminder**
+
+   **accès aux données* : API 2.0 
+
+   - le token :
+
+        Dans options/système
+
+        |image309|
+
+   - Réponse avec opt_use_auth coché :
+
+        |image310|
+
+   - Réponse avec opt_use_auth décoché :
+
+        |image311|
+
+   *Ci-dessus c’est un exemple manuel, la demande se fera en PHP automatiquement*
+
+L’affichage de cette config est géré par un script JS : :darkblue:`modalink` et non par une fenêtre modale qui est déjà ouverte pour l’image ; appel de ce script par le bouton dans la modale de l’image.
+
+.. code-block:: 'fr'
+
+   <!-- section intérieur start ---- fichier interieur.php-->
+   <div id="interieur" >
+	<div class="container">
+	....
+   ....
+   <div class="modal" id="camera">
+  <div class="modal-dialog" style="height:auto">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">image camera</h3>
+		   <button class="btn_cam">Config</button>
+
+Plus d'infos sur modalink : https://github.com/dmhendricks/jquery-modallink
+
+*Les script JS, dans footer.php et dans mes_js.js* :
+
+**Dans footer.php** :
+
+ |image313|
+
+.. code-block:: 'fr'
+
+   $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert("Zoneminder non installé");}
+  else {$.modalLink.open("ajax.php?app=upload_conf_img&name="+dahua+"&command="+dahua_type+"&variable="+ip_cam+"&idx="+idx_cam+"&type="+zoneminder,{
+  // options here
+	  height: 400,
+	  width: 400,
+	  title:"configuration de la caméra",
+	  showTitle:true,
+	  showClose:true
+  }); }
+  });
+
+**Dans mes_js.js** : 
+
+.. code-block:: 'fr'
+
+   (function ($) {
+
+    $.modalLinkDefaults = {
+            height: 600,
+            width: 900,
+            showTitle: true,
+            showClose: true,
+            overlayOpacity: 0.6,
+            method: "GET", // GET, POST, REF, CLONE
+            disableScroll: true,
+            onHideScroll: function () { },
+            onShowScroll: function () { }
+    };
+
+ |image316|
+
+Le fichier ajax.php :appel function de la fonction :darkblue:`cam_config($marque,$type,$ip,$cam,$idzm)`, (dans fonctions.php)
+
+Extrait de cette fonction
+
+.. admonition:: **Pour caméras DAHUA**
+
+    |image318|
+
+   .. note::
+
+      **Modification CURL pour les différents types d’Autorisation des caméras Dahua** 
+
+      3.2Authentication
+      The IP Camera supplies two authentication ways: basic authentication and digest authentication. Client can login through:
+      http://<ip>/cgi-bin/global.login?userName=admin. The IP camera returns 401. Then the client inputs a username and password to authorize.
+      For example:
+      1. When basic authentication, the IP camera response:
+      401 Unauthorized
+      WWW-Authenticate: Basic realm=”XXXXXX”
+      Then the client encode the username and password with base64, send the following request:
+      Authorization: Basic VXZVXZ.
+      2. When digest authentication, the IP camera response:
+      WWW-Authenticate: Digest realm="DH_00408CA5EA04", nonce="000562fdY631973ef04f77a3ede7c1832ff48720ef95ad",
+      stale=FALSE, qop="auth";
+      The client calculates the digest using username, password, nonce, realm and URI with MD5, then send the following request:
+      Authorization: Digest username="admin", realm="DH_00408CA5EA04", nc=00000001,cnonce="0a4f113b",qop="auth"
+      nonce="000562fdY631973ef04f77a3ede7c1832ff48720ef95ad",uri="cgi-bin/global.login?userName=admin",
+      response="65002de02df697e946b750590b44f8bf"
+
+   https://github.com/mgrafr/monitor/raw/main/Dahua_doc/DAHUA_IPC_HTTP_API_V1.00x.pdf
+
+   Dire à Curl d'accepter plusieurs méthodes comme ceci :
+
+   .. code-block:: 'fr'
+
+      curl_easy_setopt(curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC | CURLAUTH_DIGEST);
+
+   |image319|
+
+.. admonition:: **Pour caméras onvif autres** :
+
+   
 
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -582,3 +761,34 @@ Un script dz : séparation_valeurs.lua
    :width: 650px 
 .. |image299| image:: ../media/image299.webp
    :width: 700px 
+.. |image301| image:: ../media/image301.webp
+   :width: 641px 
+.. |image302| image:: ../media/image302.webp
+   :width: 700px 
+.. |image303| image:: ../media/image303.webp
+   :width: 391px 
+.. |image304| image:: ../media/image304.webp
+   :width: 516px 
+.. |image305| image:: ../media/image305.webp
+   :width: 605px 
+.. |image306| image:: ../media/image306.webp
+   :width: 561px 
+.. |image307| image:: ../media/image307.webp
+   :width: 700px 
+.. |image308| image:: ../media/image308.webp
+   :width: 596px 
+.. |image309| image:: ../media/image309.webp
+   :width: 650px 
+.. |image310| image:: ../media/image310.webp
+   :width: 629px 
+.. |image311| image:: ../media/image311.webp
+   :width: 700px 
+.. |image313| image:: ../media/image313.webp
+   :width: 700px 
+.. |image316| image:: ../media/image316.webp
+   :width: 470px 
+
+.. |image318| image:: ../media/image318.webp
+   :width: 502px 
+.. |image319| image:: ../media/image318.webp
+   :width: 583px 
