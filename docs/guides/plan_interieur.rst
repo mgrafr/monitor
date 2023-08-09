@@ -600,31 +600,31 @@ Extrait de cette fonction
 
    .. code-block:: 'fr'
 
-   function token_zm(){
+      function token_zm(){
 	if ($_SESSION['time_auth_zm']<=time() || ($_SESSION['auth_zm']=="")){
-   $url=ZMURL.'/api/host/login.json';
-   $post=[
-   'user' => ZMUSER,
-   'pass' => ZMPASS,
-    ];
-    $ckfile	= "cookies.txt";
-   //$out=file_post_curl($url,$ckfile,$post);
-   //solution batch   décocher les 2 lines suivantes et cocher celle ci-dessus
-   $oot=' curl -XPOST -c cookies.txt -d "user='.ZMUSER.'&pass='.ZMPASS.'&stateful=1" '.$url;
-   $out=exec($oot);
-   //------------------
-   $out = json_decode($out,true);//echo $out;
-   $token = $out['access_token'];
-   $_SESSION['time_auth_zm']=time()+TIMEAPI;
-   $_SESSION['auth_zm']=$token;echo $token;
-   }
-   else {$token=$_SESSION['auth_zm'];}
-   $zm_cle = array (
-   'token' => $_SESSION['auth_zm']);
-   $cle=json_encode($zm_cle);	
-   file_put_contents('admin/token.json',$cle);
-   return $token;
-   }
+      $url=ZMURL.'/api/host/login.json';
+      $post=[
+      'user' => ZMUSER,
+      'pass' => ZMPASS,
+       ];
+       $ckfile	= "cookies.txt";
+      //$out=file_post_curl($url,$ckfile,$post);
+      //solution batch   décocher les 2 lines suivantes et cocher celle ci-dessus
+      $oot=' curl -XPOST -c cookies.txt -d "user='.ZMUSER.'&pass='.ZMPASS.'&stateful=1" '.$url;
+      $out=exec($oot);
+      //------------------
+      $out = json_decode($out,true);//echo $out;
+      $token = $out['access_token'];
+      $_SESSION['time_auth_zm']=time()+TIMEAPI;
+      $_SESSION['auth_zm']=$token;echo $token;
+      }
+      else {$token=$_SESSION['auth_zm'];}
+      $zm_cle = array (
+      'token' => $_SESSION['auth_zm']);
+      $cle=json_encode($zm_cle);	
+      file_put_contents('admin/token.json',$cle);
+      return $token;
+      }
 
 2.3.3 La gestion des dispositifs à piles
 ========================================
@@ -717,6 +717,37 @@ Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/
 
 2.3 4 Le contrôle de la tension d’alimentation
 ==============================================
+
+ |image340| 
+
+**Le fichier voltmetre_svg.php**
+
+- Comme pour les dispositifs on télécharge une image svg ; 
+
+- comme pour le plan, sur Inkscape ou AI on ajoute un texte (tmp ou autre) qui sera remplacé par la valeur de la tension.
+
+- On enregistre cette image dans un fichier PHP (on supprime les lignes inutiles).
+
+- On ajoute aussi un ID 
+
+ |image341| 
+
+**Le dispositif Domoticz** :
+
+|image342| 
+
+**La base de données SQL** :
+
+|image343|
+
+|image344|
+
+Pour maj_js, au lieu de temp il est possible de remplacer le type par un autre texte ; pour cela il faut modifier le script JS
+
+Le script JS dans le fichier footer.php, déjà vu précédemment :
+
+|image345|
+
 
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -940,4 +971,16 @@ Un script dz : séparation_valeurs.lua
 .. |image337| image:: ../media/image337.webp
    :width: 363px 
 .. |image339| image:: ../media/image339.webp
+   :width: 650px 
+.. |image340| image:: ../media/image340.webp
+   :width: 527px 
+.. |image341| image:: ../media/image341.webp
+   :width: 700px
+.. |image342| image:: ../media/image342.webp
+   :width: 387px 
+.. |image343| image:: ../media/image343.webp
+   :width: 602px 
+.. |image344| image:: ../media/image344.webp
+   :width: 133px 
+.. |image345| image:: ../media/image345.webp
    :width: 650px 
