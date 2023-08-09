@@ -594,7 +594,129 @@ Extrait de cette fonction
 
 .. admonition:: **Pour caméras onvif autres** :
 
-   
+   |image320| 
+
+   Comme le token peut être utile dans d’autres pages création d’une fonction pour cela :
+
+   .. code-block:: 'fr'
+
+   function token_zm(){
+	if ($_SESSION['time_auth_zm']<=time() || ($_SESSION['auth_zm']=="")){
+   $url=ZMURL.'/api/host/login.json';
+   $post=[
+   'user' => ZMUSER,
+   'pass' => ZMPASS,
+    ];
+    $ckfile	= "cookies.txt";
+   //$out=file_post_curl($url,$ckfile,$post);
+   //solution batch   décocher les 2 lines suivantes et cocher celle ci-dessus
+   $oot=' curl -XPOST -c cookies.txt -d "user='.ZMUSER.'&pass='.ZMPASS.'&stateful=1" '.$url;
+   $out=exec($oot);
+   //------------------
+   $out = json_decode($out,true);//echo $out;
+   $token = $out['access_token'];
+   $_SESSION['time_auth_zm']=time()+TIMEAPI;
+   $_SESSION['auth_zm']=$token;echo $token;
+   }
+   else {$token=$_SESSION['auth_zm'];}
+   $zm_cle = array (
+   'token' => $_SESSION['auth_zm']);
+   $cle=json_encode($zm_cle);	
+   file_put_contents('admin/token.json',$cle);
+   return $token;
+   }
+
+2.3.3 La gestion des dispositifs à piles
+========================================
+Assurée par la fonction PHP :darkblue:`devices_plan()`, vue précédemment ; la variable dans la base de données SQL a aussi été décrite lors de la configuration minimale
+
+*Table « dispositifs » : variables
+
+|image322| 
+
+*Table « text_image »* 
+
+|image323| 
+
+La notification se fait :
+
+- sur la page d'accueil 
+
+|image332| 
+
+.. code-block:: 'fr'
+
+   <div class="aff_bat" ><img id="batterie" src="images/batterie_faible.svg" alt="batterie" /></div>
+
+	css
+
+.. code-block:: 'fr'
+
+   /*aff batterie */
+   .aff_bat{position: absolute;top: 810px;left: 120px;}
+   #batterie{width: 30px;height: auto;}
+   .cercle{animation-duration: .8s;animation-name: clignoter;
+     animation-iteration-count: infinite;transition: none;}
+
+*Pour une meilleure visualisation des dispositifs dont la pile est à remplacer, un ajout sur l’image du plan d’un signe distinctifs : un cercle clignotant*.
+
+- sur le plan
+
+|image334| 
+
+|image335| 
+
+	voir le paragraphe :ref:`2.1.1.b avec Adobe Illustrator`
+
+- par sms
+
+effectué par Domoticz:
+
+|image330| 
+
+Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_variables.lua
+
+.. admonition:: *Pour une meilleure compréhension de la gestion des piles
+
+   **Calcul du niveau des piles**
+
+   |image326| 
+
+   |image327| 
+
+   |image328| 
+
+   **Variables Domoticz** :
+
+   |image329| 
+
+   **l'image du plan**
+
+   Un cercle visible selon l’état de la batterie est ajouté à l'image SVG du plan :
+
+   |image336| 
+
+   Il suffit d’ajouter en copier/coller des cercles à tous les dispositifs sur piles.
+
+   |image337| 
+
+   Les valeurs sont définies dans le fichier de configuration /admin/config.php :
+
+   .. code-block:: 'fr'
+
+      define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faible) de l'energie restante  
+      '17',
+      'alarme_bat',
+      50,
+      20
+      ));
+
+   **La fonction javascript : function maj_devices(plan)** :
+
+   |image339| 
+
+2.3 4 Le contrôle de la tension d’alimentation
+==============================================
 
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -787,8 +909,35 @@ Un script dz : séparation_valeurs.lua
    :width: 700px 
 .. |image316| image:: ../media/image316.webp
    :width: 470px 
-
 .. |image318| image:: ../media/image318.webp
    :width: 502px 
-.. |image319| image:: ../media/image318.webp
+.. |image319| image:: ../media/image319.webp
    :width: 583px 
+.. |image320| image:: ../media/image320.webp
+   :width: 650px 
+.. |image322| image:: ../media/image322.webp
+   :width: 507px 
+.. |image323| image:: ../media/image323.webp
+   :width: 605px 
+.. |image326| image:: ../media/image326.webp
+   :width: 650px 
+.. |image327| image:: ../media/image327.webp
+   :width: 408px 
+.. |image328| image:: ../media/image328.webp
+   :width: 522px 
+.. |image329| image:: ../media/image329.webp
+   :width: 700px 
+.. |image330| image:: ../media/image330.webp
+   :width: 700px 
+.. |image332| image:: ../media/image332.webp
+   :width: 178px 
+.. |image334| image:: ../media/image334.webp
+   :width: 315px 
+.. |image335| image:: ../media/image335.webp
+   :width: 379px 
+.. |image336| image:: ../media/image336.webp
+   :width: 605px 
+.. |image337| image:: ../media/image337.webp
+   :width: 363px 
+.. |image339| image:: ../media/image339.webp
+   :width: 650px 
