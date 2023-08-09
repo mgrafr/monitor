@@ -401,7 +401,21 @@ Avec Inkscape ce onclick peut être ajouter lors de la construction
 
 |image297|
 
-avec AI il faut l’ajouter manuellement .
+avec AI il faut l’ajouter manuellement.
+
+Pour indiquer que l’élément est cliquable, comme pour le HTML, on ajoute 
+xlink:href="#interieur"  et une balise <a  (pour afficher la main ) non nécessaire surtout pour les tablettes.
+
+|image298|
+
+Ou lors de la construction avec Inkscape :
+
+|image299|
+
+2.3.2 Affichage des caméras
+===========================
+
+
 
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -564,3 +578,7 @@ Un script dz : séparation_valeurs.lua
    :width: 426px 
 .. |image297| image:: ../media/image297.webp
    :width: 393px 
+.. |image298| image:: ../media/image298.webp
+   :width: 650px 
+.. |image299| image:: ../media/image299.webp
+   :width: 700px 
