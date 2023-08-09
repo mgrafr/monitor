@@ -301,6 +301,22 @@ Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué au §
    version="1.1"
    id="Calque_1"
 
+- Récupérer dans Domoticz les noms et les idx des dispositifs
+
+|image280|
+
+- Dans la table « dispositifs » de la base de données Maria DB Domoticz,
+
+  enregistrer ces données ; si c’est une première installation de monitor, idm peut être le même qu’idx ; dans l’exemple ci-dessous idm est différent après une réinstallation de Domoticz.
+
+|image281|
+
+- Autres exemples :
+
+|image282|
+
+|image283|
+
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Il faut maintenant ajouter la page sur le site 
@@ -428,4 +444,12 @@ Un script dz : séparation_valeurs.lua
    :width: 602px 
 .. |image279| image:: ../media/image277.webp
    :width: 595px 
+.. |image280| image:: ../media/image280.webp
+   :width: 700px 
+.. |image281| image:: ../media/image281.webp
+   :width: 700px 
+.. |image282| image:: ../media/image282.webp
+   :width: 700px 
+.. |image283| image:: ../media/image283.webp
+   :width: 601px 
 
