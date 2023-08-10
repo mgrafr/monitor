@@ -808,7 +808,7 @@ Il faut maintenant ajouter la page sur le site
 .. list-table:: *Un modèle de page pour toutes les pages du site*
    :widths: 25 
    :header-rows: 1
-
+   :class: tab1
    * - <!-- section TITRE start -->
     
    * - <!-- ================ -->
