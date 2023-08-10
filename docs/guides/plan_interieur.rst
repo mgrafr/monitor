@@ -748,6 +748,15 @@ Le script JS dans le fichier footer.php, déjà vu précédemment :
 
 |image345|
 
+2.3 5 ajouter des lampes
+========================
+Voir un exemple dans le paragraphe :ref:`4.1.1 Ajouter des lampes`,  consacré à l’extérieur de la maison, les lampe de jardin
+
+2.3.6 ajouter un capteur de T° extérieur Zigbee
+===============================================
+
+|image346|
+
 
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -984,3 +993,5 @@ Un script dz : séparation_valeurs.lua
    :width: 133px 
 .. |image345| image:: ../media/image345.webp
    :width: 650px 
+.. |image346| image:: ../media/image345.webp
+   :width: 529px 
