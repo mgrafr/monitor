@@ -809,6 +809,7 @@ Il faut maintenant ajouter la page sur le site
    :widths: 25 
    :header-rows: 1
    :class: tab1
+
    * - <!-- section TITRE start -->
     
    * - <!-- ================ -->
