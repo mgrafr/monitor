@@ -764,12 +764,69 @@ Voir un exemple dans le paragraphe :ref:`4.1.1 Ajouter des lampes`,  consacré �
 
 |image348|
 
+*Dans le plan de Domoticz* :
+
+|image349|
+
+2.3.6.2 Le capteur dans la BD
+=============================
+
+|image350|
+
+On a choisi de limiter le nb de caractère à 4, à l’origine : |image351|
+
+2.3.6.3 Le capteur dans Monitor
+===============================
+
+**L’image** :
+
+.. code-block:: 'fr'
+   <svg version="1.1" id="th_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
+   <a xlink:href="#interieur" onclick="popup_device(23)"><path style="fill: #84bef1;" rel="23" d="M9,11.2V7h2v4.2c1.6,0.6,2.4,2.3,1.8,3.8c-0.6,1.6- 
+  2.3,2.4-3.8,1.8S6.6,14.6,7.2,13C7.5,12.1,8.1,11.5,9,11.2z M8,10.5
+	c-1.9,1.1-2.6,3.6-1.5,5.5s3.6,2.6,5.5,1.5c1.9-1.1,2.6-3.6,1.5-5.5c-0.4-0.6-0.9-1.1-1.5-1.5V4c0-1.1-0.9-2-2-2S8,2.9,8,4V10.5
+	L8,10.5z M6,9.5V4c0-2.2,1.8-4,4-4s4,1.8,4,4v5.5c2.5,2.2,2.7,6,0.5,8.5c-1.1,1.3-2.8,2-4.5,2c-3.3,0-6-2.7-6-6
+	C4,12.3,4.7,10.7,6,9.5z"/></a>
+   <text id="temp_ext_cuisine" transform="matrix(0.6725 0 0 1 7.4663 15.254)" class="st33 st36b">tmp</text>
+   </svg>
+
+|image352|
+
+**Le fichier Json** 
+
+|image353|
+
+|image354|
+
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Il faut maintenant ajouter la page sur le site 
-Un modèle de page pour toutes les pages du site : 
 
 
+
+.. list-table:: *Un modèle de page pour toutes les pages du site*
+   :widths: 25 
+   :header-rows: 1
+
+   * - <!-- section TITRE start -->
+    
+   * - <!-- ================ -->
+   * - <div id="ID DE LA PAGE" class="CLASS DE LA PAGE OPTIONNEL">
+   * - <div class="container">
+   * - 	<div class="col-md-12">
+   * - 	 <h1 class="title_TITRE text-center"> exemple Prévisions<span>  météo</span></h1>
+   * - 	 <div class="CLASS DU CONTENU" style="color:black;">
+   * -     <div id="ID DE CETTE LIGNE" >LIGNE OPTIONNELLE</div>	
+   * - 	   div id="CONTENU" class="table-responsive"></div>	
+   * - 	   <div id="AUTRE CONTENU OPTIONNEL"></div>
+   * -  </div></div></div></div>
+   * - <!-- fin  de la section TITRE -->
+		
+
+  
+    
+      
 
 
 2.5 F12 des navigateurs pour faciliter la construction
@@ -1005,3 +1062,17 @@ Un script dz : séparation_valeurs.lua
    :width: 380px 
 .. |image348| image:: ../media/image348.webp
    :width: 344px 
+.. |image349| image:: ../media/image349.webp
+   :width: 249px 
+.. |image350| image:: ../media/image350.webp
+   :width: 700px 
+.. |image351| image:: ../media/image351.webp
+   :width: 93px 
+.. |image352| image:: ../media/image352.webp
+   :width: 602px 
+.. |image353| image:: ../media/image353.webp
+   :width: 334px 
+.. |image354| image:: ../media/image354.webp
+   :width: 529px 
+
+
