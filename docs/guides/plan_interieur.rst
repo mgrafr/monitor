@@ -757,6 +757,12 @@ Voir un exemple dans le paragraphe :ref:`4.1.1 Ajouter des lampes`,  consacré �
 
 |image346|
 
+2.3.6.1 Le capteur dans Domoticz
+""""""""""""""""""""""""""""""""
+
+|image347|
+
+|image348|
 
 2.4 le fichier PHP de la page 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -993,5 +999,9 @@ Un script dz : séparation_valeurs.lua
    :width: 133px 
 .. |image345| image:: ../media/image345.webp
    :width: 650px 
-.. |image346| image:: ../media/image345.webp
+.. |image346| image:: ../media/image346.webp
    :width: 529px 
+.. |image347| image:: ../media/image347.webp
+   :width: 380px 
+.. |image348| image:: ../media/image348.webp
+   :width: 344px 
