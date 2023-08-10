@@ -16,6 +16,7 @@ Monitor-domotique Documentation
         guides/configuration_minimum.rst
         guides/plan_interieur.rst
         guides/meteo.rst
+        guides/plan_exterieur.rst
         guides/mur_de_commandes.rst
         guides/app_diverses.rst
         guides/administration.rst
@@ -63,6 +64,11 @@ Météo
 -----
 :doc:`guides/meteo`
    Météo
+
+Coté Jardin
+-----------
+:doc:`guides/plan_exterieur`
+   Coté jardin
 
 Mur de commande On/Off
 ----------------------
