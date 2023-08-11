@@ -861,6 +861,17 @@ Extrait du fichier include/header.php :
 
 |image360|
 
+**CSS** : css/mes_css.css
+
+Le style existe déjà pour toutes les pages , pour les modifier :
+
+.. code-block:: 'fr'
+   #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
+      #app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
+      background-color: aquamarine;}
+
+|image362|
+
 2.5 F12 des navigateurs pour faciliter la construction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Pour les PIR, les capteurs d’ouverture, pour le changement de couleur 
@@ -1114,4 +1125,6 @@ Un script dz : séparation_valeurs.lua
    :width: 700px 
 .. |image360| image:: ../media/image360.webp
    :width: 400px 
+.. |image362| image:: ../media/image362.webp
+   :width: 600px 
 
