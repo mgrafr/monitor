@@ -78,6 +78,15 @@ Pour commander les lampes : un interrupteur virtuel dans Domoticz ou un interrup
 
   |image404|
 
+Pour chaque lampe, on indique la class dans l’image svg :
+
+..note::
+
+   avec le navigateur et F12 c’est le plus simple car une class pour la couleur existe déjà, il suffit d’ajouter la class choisie ; 
+
+   dans l’attribut class, il faut séparer les class avec un espace.
+
+   |image405|
 
 
 
@@ -105,5 +114,7 @@ Pour commander les lampes : un interrupteur virtuel dans Domoticz ou un interrup
    :width: 458px
 .. |image404| image:: ../media/image404.webp
    :width: 602px
+.. |image405| image:: ../media/image405.webp
+   :width: 650px
 
 
