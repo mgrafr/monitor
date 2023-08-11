@@ -111,13 +111,14 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
 
 - *app_met()*
 
-2	Choix :
-.	(1) en HTML sur le site https://www.lameteoagricole.net/index_pluie-dans-heure.php
-https://www.lameteoagricole.net/meteo-a-10-jours/Saint-Martin-De-Gurson-24610.html
+   2 Choix :
 
-Indiquer Commune-Code postal
+   .   (1) en HTML sur le site https://www.lameteoagricole.net/index_pluie-dans-heure.php
+       https://www.lameteoagricole.net/meteo-a-10-jours/Saint-Martin-De-Gurson-24610.html
 
-.	(2) par météo France et son API avec un Token
+       Indiquer Commune-Code postal
+
+   .   (2) par météo France et son API avec un Token
 
    |image388|
 
@@ -128,6 +129,40 @@ Indiquer Commune-Code postal
 *Voir le site domo-site.fr*
 
 |image390|
+
+3.3 Autres prévisions météo depuis météo Concept
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- relevés temps réel depuis une station 
+
+.. code-block:: 'fr'
+
+   case 3://prévision horaire
+   $url = 'https://api.meteo-concept.com/api/forecast/nextHours?&token='.TOKEN_MC.'&insee='.INSEE;
+   $prevam = file_get_curl($url);
+   $forecast = json_decode($prevam);$info=array();
+		$forecasth=$forecast->forecast[0];
+		$info['temp']=$forecasth->temp2m;
+		$info['hum']=$forecasth->rh2m;
+		$info['Data']=$info['temp'].'°  '.$info['hum'].'%';
+   return json_encode($info);
+   break;		
+
+- prévision heure par heure : peut remplacer Darsky (devenu payant) ou OpenWeatherMap, c’est français et plus facile d’utilisation, nombreux exemple sur le site web Méteoconcept
+
+.. code-block:: 'fr'
+
+   case 2:// relevé temps réel station la pus proche (40Km)
+   $url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&token='.TOKEN_MC.'&insee='.INSEE;
+   //$url2 = 'https://api.meteo-concept.com/api/forecast/nextHours?token='.TOKEN_MC.'&insee='.INSEE;		
+   $prevam = file_get_curl($url);//echo $prevam;return;
+   $forecastam = json_decode($prevam);$info=array();
+		//$info['time']=$forecastam[0]->observation->time;
+		$info['temp']=$forecastam[0]->observation->temperature->value;
+		$info['hPa']=$forecastam[0]->observation->atmospheric_pressure->value;
+   return json_encode($info);
+   break;
+
+|image392|
 
 .. |image366| image:: ../media/image366.webp
    :width: 605px    
@@ -167,8 +202,10 @@ Indiquer Commune-Code postal
    :width: 700px
 .. |image389| image:: ../media/image389.webp
    :width: 625px
-.. |image390| image:: ../media/image389.webp
+.. |image390| image:: ../media/image390.webp
    :width: 601px
+.. |image392| image:: ../media/image392.webp
+   :width: 554px
 
 
 
