@@ -857,7 +857,7 @@ Extrait du fichier include/header.php :
 
    <li class="zz active"><a href="#header">Accueil</a></li> 
    <?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
-   :red:`<li class="zz"><a href="#interieur">Intérieur</a></li>`
+   <li class="zz"><a href="#interieur">Intérieur</a></li>
 
 |image360|
 
@@ -872,20 +872,82 @@ Le style existe déjà pour toutes les pages , pour les modifier :
 
 |image362|
 
+
+
 2.5 F12 des navigateurs pour faciliter la construction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Pour les PIR, les capteurs d’ouverture, pour le changement de couleur 
 
+|image363|
 
 
 2.6 Les dispositifs virtuels Domoticz et MQTT
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Pour monitor ça n’a pas d’importance, il n’y a pas de notion « virtuel – réel » mais la mise à 
 jour de ces dispositifs dans Domoticz n’est pas toujours facile surtout pour les dispositifs 
-avec plusieurs valeurs tels que température+ Humidité température +batterie, …
+avec plusieurs valeurs tels que température+ Humidité température +batterie,...
 
-Un script dz : séparation_valeurs.lua
+**Un script dz : séparation_valeurs.lua**
 
+https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9paration_valeurs.lua
+
+.. code-block:: 'fr'
+
+   local scriptVar = 'separation_valeurs'
+   return 
+   {
+    on = { customEvents = { scriptVar, },
+        httpResponses =   { scriptVar, },
+    },
+    logging =
+    {  level = domoticz.LOG_DEBUG, -- LOG_ERROR 
+       marker = scriptVar,
+    },
+    execute = function(dz, item)
+        lodash = dz.utils._
+        local function sendURL(idx, temperature,batteryLevel) --CAPTEURS TEMPERATURE: svalue=temp    battery= volts battery
+        local url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=udevice&idx=' .. idx .. '&nvalue=0&svalue=' .. temperature .. '&battery=' .. batteryLevel;
+        dz.openURL({   url = url,
+                callback = scriptVar,})
+        end
+        local function sendURL1(idx, temperature,humidity,confort,batteryLevel) --CAPTEURS TEMPERATURE+HUMIDITE : svalue=temp;hum;Humidity_status   battery=volts battery
+        local url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=udevice&idx=' .. idx .. '&nvalue=0&svalue=' .. temperature ..';'..  humidity ..';' .. confort .. '&battery=' .. batteryLevel;
+        dz.openURL( { url = url,
+                callback = scriptVar,})
+        end
+            if item.isCustomEvent then 
+            mqtt = item.data;print ("q:" .. mqtt)
+            mqtt = dz.utils.fromJSON(mqtt) 
+            local batteryLevel = mqtt.batteryLevel 
+            local temperature = mqtt.temperature 
+            local humidity = mqtt.humidity 
+            local humidity_status=tonumber(humidity);print ("q:" .. humidity_status)
+                if (humidity_status<30) then confort = "2" ;
+                elseif (humidity_status>39 and humidity_status<60) then confort = "1" ;
+                elseif (humidity_status>59 and humidity_status<80) then confort = "0" ;
+                elseif (humidity_status>79) then confort = "3";
+                else confort = "3"  
+                end    
+            local idx = mqtt.idx; 
+            local type=dz.devices(idx).deviceType;print("type" .. tostring(type) .. ' ,  humidity_status : ' .. tostring(confort)); 
+            if (type=='Temp')  then sendURL(idx, temperature, batteryLevel);
+            elseif (type=='Temp + Humidity') then sendURL1(idx, temperature, humidity, confort, batteryLevel);
+            else print("pas de dispositif trouvé");
+            end
+        elseif not item.ok then
+            dz.log('Problèm avec l\'envoi de la temperature ou  batteryLevel' .. lodash.str(item), dz.LOG_ERROR)     
+        else
+            dz.log('All ok \n' .. lodash.str(item.data) .. '\n', dz.LOG_DEBUG)     
+        end
+    end
+    
+   }
+
+
+
+**Depuis Domoticz 2021.1**
+
+|image365|
 
 
 
@@ -1127,4 +1189,7 @@ Un script dz : séparation_valeurs.lua
    :width: 400px 
 .. |image362| image:: ../media/image362.webp
    :width: 600px 
-
+.. |image363| image:: ../media/image363.webp
+   :width: 615px 
+.. |image365| image:: ../media/image365.webp
+   :width: 451px 
