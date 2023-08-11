@@ -834,6 +834,32 @@ Sur cette page, des fenêtres(modal) peuvent être ajoutées si besoin, Bootstra
     
 |image356|      
 
+- **Le fichier include/interieur .php**
+
+https://raw.githubusercontent.com/mgrafr/monitor/main/include/interieur.php
+
+|image357|
+
+Extrait du fichier index_loc.php : pour info, **en général ne pas modifier ce fichier** 
+
+.. code-block:: 'fr'
+
+   include ("include/accueil.php");// l' affichage page accueil
+   if (ON_MET==true) include ("include/meteo.php");	// une page de prévision météo
+   include ("include/interieur.php");// plan intérieur
+   //ne pas modifier ce fichier 
+
+Comme pour entete_html.php, header.php, accueil.php, config.php, interieur.php est chargée obligatoirement au démarrage de l'appli.
+
+Extrait du fichier include/header.php :
+
+.. code-block:: 'fr'
+
+   <li class="zz active"><a href="#header">Accueil</a></li> 
+   <?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
+   <li class="zz"><a href="#interieur">Intérieur</a></li>
+
+|image360|
 
 2.5 F12 des navigateurs pour faciliter la construction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1084,4 +1110,8 @@ Un script dz : séparation_valeurs.lua
    :width: 700px 
 .. |image356| image:: ../media/image356.webp
    :width: 496px 
+.. |image357| image:: ../media/image357.webp
+   :width: 700px 
+.. |image360| image:: ../media/image360.webp
+   :width: 400px 
 
