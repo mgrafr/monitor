@@ -80,7 +80,7 @@ Pour commander les lampes : un interrupteur virtuel dans Domoticz ou un interrup
 
 Pour chaque lampe, on indique la class dans l’image svg :
 
-..note::
+.. note::
 
    avec le navigateur et F12 c’est le plus simple car une class pour la couleur existe déjà, il suffit d’ajouter la class choisie ; 
 
