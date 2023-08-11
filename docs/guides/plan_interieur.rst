@@ -808,14 +808,14 @@ Il faut maintenant ajouter la page sur le site
 .. list-table:: *Un modèle de page pour toutes les pages du site*
    :widths: 25 
    :header-rows: 1
-   :class: tab1
-
+  
+   
    * - <!-- section TITRE start -->
     
    * - <!-- ================ -->
    * - <div id="ID DE LA PAGE" class="CLASS DE LA PAGE OPTIONNEL">
    * - <div class="container">
-   * - 	<div class="col-md-12">
+   * - <div class="col-md-12">
    * - 	 <h1 class="title_TITRE text-center"> exemple Prévisions<span>  météo</span></h1>
    * - 	 <div class="CLASS DU CONTENU" style="color:black;">
    * -     <div id="ID DE CETTE LIGNE" >LIGNE OPTIONNELLE</div>	
