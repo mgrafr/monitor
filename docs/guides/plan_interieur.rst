@@ -824,10 +824,15 @@ Il faut maintenant ajouter la page sur le site
    * -  </div></div></div></div>
    * - <!-- fin  de la section TITRE -->
 		
+En Bleu du contenu optionnel
 
+|image355|
   
+Sur cette page, des fenêtres(modal) peuvent être ajoutées si besoin, Bootstrap facilite la création ; sur la page décrite en suivant, 2 fenêtres sont ajoutées.
+
+**Le menu** :
     
-      
+|image356|      
 
 
 2.5 F12 des navigateurs pour faciliter la construction
@@ -1075,5 +1080,8 @@ Un script dz : séparation_valeurs.lua
    :width: 334px 
 .. |image354| image:: ../media/image354.webp
    :width: 529px 
-
+.. |image355| image:: ../media/image355.webp
+   :width: 700px 
+.. |image356| image:: ../media/image356.webp
+   :width: 496px 
 
