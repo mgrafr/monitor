@@ -21,12 +21,13 @@
    |image395|
 
    Pour réduire le nombre de classes et éviter les doublons de couleurs, de polices, …des solutions existent :
-   -	Construire les 2 plans intérieur et extérieur dans la même image et les exporter séparément ensuite ; il suffit alors de ne garder que l’ensemble des styles sans les doublons (même classes) ; pas toujours 
-      facile car on commence souvent avec quelques dispositifs sur un plan, ensuite il est trop tard .
+   -	Construire les 2 plans intérieur et extérieur dans la même image et les exporter séparément ensuite ; il suffit alors de ne garder que l’ensemble des styles sans les doublons (même classes) ;
 
-**Nettoyage** : Ces lignes ne servent à rien , les enlever 
+   pas toujours facile car on commence souvent avec quelques dispositifs sur un plan, ensuite il est trop tard .
 
-|image396|
+   **Nettoyage** : Ces lignes ne servent à rien , les enlever 
+
+   |image396|
                             
 L’image est sauvegardée par exemple en « exterieur_svg.php » (un fichier avec l’extension .php) :
 
@@ -99,10 +100,10 @@ Pour commander les lampes : un interrupteur virtuel dans Domoticz ou un interrup
 .. |image401| image:: ../media/image401.webp
    :width: 252px
 .. |image402| image:: ../media/image402.webp
-   :width: 453px
+   :width: 399px
 .. |image403| image:: ../media/image403.webp
-   :width: 252px
+   :width: 458px
 .. |image404| image:: ../media/image404.webp
-   :width: 252px
+   :width: 602px
 
 
