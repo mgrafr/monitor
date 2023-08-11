@@ -824,7 +824,7 @@ Il faut maintenant ajouter la page sur le site
    * -  </div></div></div></div>
    * - <!-- fin  de la section TITRE -->
 		
-En Bleu du contenu optionnel
+En vert du contenu optionnel
 
 |image355|
   
@@ -857,7 +857,7 @@ Extrait du fichier include/header.php :
 
    <li class="zz active"><a href="#header">Accueil</a></li> 
    <?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
-   <li class="zz"><a href="#interieur">Intérieur</a></li>
+   :red:`<li class="zz"><a href="#interieur">Intérieur</a></li>`
 
 |image360|
 
