@@ -10,7 +10,7 @@
 
    Avec Inkscape, la feuille de style n’est pas gérée par le logiciel, mais insérer par l’utilisateur lors de la construction :
 
-.. admonition:: **NIQUEMENT POUR AI**
+.. admonition:: **UNIQUEMENT POUR AI**
 
    Pour renommer les styles:
 
