@@ -310,6 +310,81 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php
 
 |image458|
 
+|image459|
+
+|image460|
+
+.. code-block:: 'fr'
+
+   <text xml:space="preserve"
+   style="font-size:14.868px;line-height:1.25;font-family:sans-serif;fill:#000000;stroke-width:0.999996;"
+   x="80.619217"
+   y="282.70932"
+   id="text6416"
+   transform="scale(1.0628321,0.94088238)"><tspan
+     sodipodi:role="line"
+     id="not"
+     x="80.619217"
+     y="282.70932"
+     style="stroke-width:0.999996;fill:white;" /></text>
+
+- **Mot de Passe**
+
+*Le fichier config.php gère les mots de passe de l’alarme et de la commande des dispositifs (on/off)*
+
+.. code-block:: 'fr'
+
+   // mot passe alarme et administation , la page administration est ON
+   define('PWDALARM','004546');//mot passe alarme
+   define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
+   define('TIME_PASS_AL','3600');// temps de validité du mot de passe
+
+
+*La fonction mdp() dans fonctions.php* :
+
+.. code-block:: 'fr'
+
+   // --------------MOT de PASSE-----------------------------
+   function mdp($mdp,$page_pass){// 1=commandes , 2=alarmes
+   //if ($_SESSION["pec"]=="admin"){echo "azerty";$page_pass=3;}
+   switch	($page_pass) {
+   case "1":
+   if ($mdp==PWDCOMMAND) {$mp="OK";$_SESSION['passwordc']=$mdp;}
+   else {$mp="entrer le mot de passe";}		
+   break;
+   case "2":
+   if ($mdp==PWDALARM) {$mp="OK";$_SESSION['passworda']=$mdp;$_SESSION['time']=time()+TIME_PASS_AL;}
+   else {$mp="pasword non valide";}			
+   break;		
+   default:
+   $mp="erreur";
+   }
+   $info=['statut' => $mp];
+   return $info;}
+
+**Le script qui commande les poussoirs M/A**
+
+|image464|
+
+5.5 Le Javascript, dans footer.php et mes_js.js
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les scripts pour les mots de passe, dans js/mes_js.js
+
+|image465|
+
+Et le script pour le clavier affiché dans administration
+
+|image466|
+
+.. warning::
+
+   Sans mot de passe les commandes sont impossibles ; si le temps est dépassé pour l’utilisation du mot de passe, le bouton « Entrer votre mot de passe » apparait lors d’un click. 
+
+|image467|
+
+|image468|
+
+La fonction maj_services (footer.php) permet la mise à jour des textes « activer ou désactiver »
 
 
 
@@ -394,6 +469,19 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php
    :width: 557px
 .. |image458| image:: ../media/image458.webp
    :width: 601px
-
+.. |image459| image:: ../media/image459.webp
+   :width: 661px
+.. |image460| image:: ../media/image460.webp
+   :width: 338px
+.. |image464| image:: ../media/image464.webp
+   :width: 601px
+.. |image465| image:: ../media/image465.webp
+   :width: 596px
+.. |image466| image:: ../media/image466.webp
+   :width: 440px
+.. |image467| image:: ../media/image467.webp
+   :width: 337px
+.. |image468| image:: ../media/image468.webp
+   :width: 535px
 
 
