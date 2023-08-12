@@ -88,6 +88,25 @@ Pour chaque lampe, on indique la class dans l’image svg :
 
    |image405|
 
+- **La fonction maj_devices**, déjà décrite pour les IDs des dispositifs, la partie du script consacrée aux lampes :
+
+|image406|
+
+Il n’existe pas de commande simple en javascript, comme pour les IDs, pour effectuer des changements d’attribut ; 
+
+les ID sont uniques alors que les class peuvent être utilisées de nombreuses fois ; il faut donc balayer tous les éléments pour les rechercher, c’est ce que fait la fonction « :darkblue:`class_name` »
+
+
+4.2. affichage
+^^^^^^^^^^^^^^
+Il suffit, comme pour toutes les pages optionnelles ne mettre, dans admin/config.php la variable à « true » :
+
+.. code-block:: 'fr'
+
+   define('ON_EXT',true);// mise en service page extérieur
+
+
+
 
 
 .. |image393| image:: ../media/image393.webp
@@ -116,5 +135,6 @@ Pour chaque lampe, on indique la class dans l’image svg :
    :width: 602px
 .. |image405| image:: ../media/image405.webp
    :width: 650px
-
+.. |image406| image:: ../media/image406.webp
+   :width: 700px
 
