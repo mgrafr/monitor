@@ -17,6 +17,7 @@ Monitor-domotique Documentation
         guides/plan_interieur.rst
         guides/meteo.rst
         guides/plan_exterieur.rst
+        guides/alarme.rst
         guides/mur_de_commandes.rst
         guides/app_diverses.rst
         guides/administration.rst
@@ -69,6 +70,11 @@ Coté Jardin
 -----------
 :doc:`guides/plan_exterieur`
    Coté jardin
+
+Alarme
+-----------
+:doc:`guides/alarme`
+  Alarme
 
 Mur de commande On/Off
 ----------------------
