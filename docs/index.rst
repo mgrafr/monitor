@@ -20,6 +20,7 @@ Monitor-domotique Documentation
         guides/alarme.rst
         guides/mur_de_commandes.rst
         guides/app_diverses.rst
+        guides/app_externes.rst
         guides/administration.rst
         guides/divers.rst
         guides/mon_installation.rst
@@ -85,6 +86,11 @@ App Diverses
 ------------
 :doc:`guides/app_diverses` 
      App Diverses
+
+Applications  Externes
+--------------
+:doc:`guides/aaa_externes`   
+    Applications externes
 
 Administration
 --------------
