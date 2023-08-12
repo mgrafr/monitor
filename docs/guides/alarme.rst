@@ -6,8 +6,10 @@ Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du scri
 
 *Pour entrer le mot de passe : redirection vers la page administration* 
 
-5.1 Dans Domoticz, les interrupteurs virtuels
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.1 Dans Domoticz, les interrupteurs virtuels, les variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**les interrupteurs virtuels**
+
 Les boutons poussoir marche/arrêt pour les commandes :
 
 - m/a alarme de nuit
@@ -43,6 +45,12 @@ On ajoute les dispositifs au plan ;
 
 |image417|
 
+**Les variables, initialisée** à 0
+
+-	ma-alarme :
+
+|image418|
+
 .. |image408| image:: ../media/image408.webp
    :width: 650px
 .. |image409| image:: ../media/image409.webp
@@ -53,4 +61,5 @@ On ajoute les dispositifs au plan ;
    :width: 626px
 .. |image417| image:: ../media/image417.webp
    :width: 533px
-
+.. |image418| image:: ../media/image418.webp
+   :width: 434px
