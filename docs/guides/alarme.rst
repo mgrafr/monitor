@@ -400,7 +400,7 @@ Il ne reste qu’à :
 
    define('ON_ALARM',true);// affichage pour utilisation de l'alarme
 
-	- Ce qui ajoutera l’alarme dans le menu 
+- Ce qui ajoutera l’alarme dans le menu 
 	 
 |image471|
 
