@@ -368,11 +368,11 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php
 
 5.5 Le Javascript, dans footer.php et mes_js.js
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Les scripts pour les mots de passe, dans js/mes_js.js
+- Les scripts pour les mots de passe, dans js/mes_js.js
 
 |image465|
 
-Et le script pour le clavier affiché dans administration
+- Et le script pour le clavier affiché dans administration
 
 |image466|
 
@@ -384,8 +384,84 @@ Et le script pour le clavier affiché dans administration
 
 |image468|
 
-La fonction maj_services (footer.php) permet la mise à jour des textes « activer ou désactiver »
+*La fonction maj_services (footer.php) permet la mise à jour des textes « activer ou désactiver »*
 
+- Le script pour afficher une modale « modalink »
+
+|image469|
+
+5.6 -Comme pour les autres pages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Il ne reste qu’à :
+
+	- Ajouter cette page dans config.php
+
+.. code-block:: 'fr'
+
+   define('ON_ALARM',true);// affichage pour utilisation de l'alarme
+
+	- Ce qui ajoutera l’alarme dans le menu 
+	 
+|image471|
+
+5.7- Affichage d’une icône sur la page d’accueil
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image472|
+
+Pour l’alarme de nuit, pour ne pas oublier de l’annuler le matin si la fonction auto n’a pas été choisie
+
+- **CSS**
+
+.. code-block:: 'fr'
+
+   #alarme_nuit{position:absolute;top:815px;left: 170px;width: 40px;}
+
+.. code-block:: 'fr'
+
+   /* Large devices (small desktops <535) */
+   @media (max-width:534px) {#alarme_nuit{top:580px;}
+
+- **accueil.php** :
+
+.. code-block:: 'fr'
+
+   <div class="aff_al" ><img id="alarme_nuit" src="images/alarme_auto.svg" alt="alarme" /></div>
+
+Dans Domoticz : la variable a déjà été crée, quand l’alarme nuit est activée, son contenu :
+
+|image476|
+
+La table text_images : correspondance entre le texte et l’image
+
+|image477|
+
+|image479|
+
+5.8 Améliorations utiles
+^^^^^^^^^^^^^^^^^^^^^^^^
+5.8.1- la mise en marche automatiquement de l’alarme de nuit
+============================================================
+ - à certaines heures 
+	
+.  On ajoute un bouton avec Inkscape ; pour cela :
+.  On charge dans Inkscape le fichier PHP de l’image ; on accepte l’avertissement car ce n’est pas une extension svg.
+.  On modifie l’image ; on ajoute un bouton
+.  On sauvegarde l’image sous un autre nom, l’extension sera .svg; comme précédemment avec les images, on la copie dans le fichier avec l’extension PHP
+
+|image480|
+
+5.8.1.1 Dans Domoticz
+"""""""""""""""""""""
+- On ajoute un poussoir virtuel : al_nuit_auto
+
+|image481| |image482|
+
+- On ajout le switch au plan
+
+|image483|
+
+|image484|
 
 
 
@@ -483,5 +559,28 @@ La fonction maj_services (footer.php) permet la mise à jour des textes « activ
    :width: 337px
 .. |image468| image:: ../media/image468.webp
    :width: 535px
-
-
+.. |image469| image:: ../media/image469.webp
+   :width: 569px
+.. |image471| image:: ../media/image471.webp
+   :width: 108px
+.. |image472| image:: ../media/image472.webp
+   :width: 379px
+.. |image476| image:: ../media/image476.webp
+   :width: 617px
+.. |image477| image:: ../media/image477.webp
+   :width: 601px
+.. |image479| image:: ../media/image479.webp
+   :width: 535px
+.. |image480| image:: ../media/image480.webp
+ .. |image479| image:: ../media/image479.webp
+   :width: 535px
+.. |image480| image:: ../media/image480.webp
+   :width: 650px
+ .. |image481| image:: ../media/image481.webp
+   :width: 200px
+.. |image482| image:: ../media/image482.webp
+   :width: 400px 
+.. |image483| image:: ../media/image483.webp
+   :width: 400px 
+.. |image484| image:: ../media/image484.webp
+   :width: 400px 
