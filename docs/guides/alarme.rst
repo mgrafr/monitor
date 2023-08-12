@@ -82,7 +82,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notificatio
    **ATTENTION** :
    L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents et les espaces, utiliser des Under scores(ou autre signe) pour séparer les mots
 
-*Script :darkblue:`notifications_variables.lua`, lignes concernées* 
+Script :darkblue:`notifications_variables.lua`, lignes concernées 
 
 .. code-block:: 'fr'
 
@@ -97,9 +97,9 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notificatio
                  alerte_gsm('alarmeù'..txt)
    end
 
-*Script :darkblue:`notifications_timer.lua`, lignes concernées *
+Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe : :ref:`le script LUA pour les notifications concernant le temps: ‘notification-timer.lua>`
+voir ce paragraphe : :ref:`le script LUA pour les notifications concernant le temps: ‘notification-timer.lua>`_
 
 |image426|
 
@@ -165,3 +165,5 @@ voir ce paragraphe : :ref:`le script LUA pour les notifications concernant le te
    :width: 700px
 .. |image432| image:: ../media/image432.webp
    :width: 520px
+.. |image433| image:: ../media/image433.webp
+   :width: 597px
