@@ -99,7 +99,7 @@ Script :darkblue:`notifications_variables.lua`, lignes concernées
 
 Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe : :ref:`le script LUA pour les notifications concernant le temps: ‘notification-timer.lua>`_
+voir ce paragraphe : :ref:`le script LUA pour les notifications concernant le temps>`_
 
 |image426|
 
@@ -465,7 +465,7 @@ La table text_images : correspondance entre le texte et l’image
 
 - *Les scripts lua notification_timer.lua & notification_devices.lua* :
 
-voir ce § :ref:`Notifications : notifications_devices.lua, notifications_timer.lua>`_
+voir ce § :ref:`1.5.1.2 les scripts de notifications gérées par Domoticz`
 
 **Log** :
 
