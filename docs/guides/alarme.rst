@@ -479,6 +479,10 @@ Pour cela on met à jour la table « dispositifs »
 
 |image487|
 
+Comme pour tous les switches la commande a été ajoutée automatiquement sur la page HTML :
+
+|image488|
+
 
 
 .. |image408| image:: ../media/image408.webp
@@ -603,3 +607,5 @@ Pour cela on met à jour la table « dispositifs »
    :width: 577px 
 .. |image487| image:: ../media/image487.webp
    :width: 335px 
+.. |image488| image:: ../media/image488.webp
+   :width: 700px 
