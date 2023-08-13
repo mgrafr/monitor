@@ -483,6 +483,36 @@ Comme pour tous les switches la commande a été ajoutée automatiquement sur la
 
 |image488|
 
+.. admonition:: **En page d’accueil de monitor**
+
+   |image489|
+
+   - La table text_image :
+
+   |image490|
+
+   - L’image :  L’image :
+
+   |image491|
+
+5.8.2 Alarme par sms GSM
+========================
+.. warning::
+
+   si un modem GSM installé
+
+5.8.2.1 Version avec une variable Domoticz
+""""""""""""""""""""""""""""""""""""""""""
+Dans Domoticz
+
+- **Création d’une variable**
+
+ |image492|
+
+- **odification légère du script dz** pour modifier la valeur de la variable en cas d’intrusion :
+
+ |image493|
+
 
 
 .. |image408| image:: ../media/image408.webp
@@ -609,3 +639,15 @@ Comme pour tous les switches la commande a été ajoutée automatiquement sur la
    :width: 335px 
 .. |image488| image:: ../media/image488.webp
    :width: 700px 
+.. |image489| image:: ../media/image489.webp
+   :width: 447px 
+.. |image490| image:: ../media/image490.webp
+   :width: 424px 
+.. |image491| image:: ../media/image491.webp
+   :width: 70px 
+.. |image492| image:: ../media/image492.webp
+   :width: 598px 
+.. |image493| image:: ../media/image493.webp
+   :width: 535px 
+
+
