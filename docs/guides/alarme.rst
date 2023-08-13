@@ -99,7 +99,7 @@ Script :darkblue:`notifications_variables.lua`, lignes concernées
 
 Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe  :ref:`scriptluatimer <guides/configuration_minimum.rst>`
+voir ce paragraphe  :ref:`scriptluatimer`
 
 |image426|
 
@@ -531,7 +531,7 @@ Dans Domoticz
    
    |image496|
 
-   **aperçus d'une commande vers DZ et la réception d'une alarme** 
+   *aperçus d'une commande vers DZ et la réception d'une alarme*
 
    |image497|
 
