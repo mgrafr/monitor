@@ -99,7 +99,7 @@ Script :darkblue:`notifications_variables.lua`, lignes concernées
 
 Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe  :ref:`rst_script_lua_timer>`
+voir ce paragraphe  :ref:`rst_scriptluatimer`
 
 |image426|
 
@@ -477,6 +477,10 @@ Pour cela on met à jour la table « dispositifs »
 
 |image486|
 
+|image487|
+
+
+
 .. |image408| image:: ../media/image408.webp
    :width: 650px
 .. |image409| image:: ../media/image409.webp
@@ -597,3 +601,5 @@ Pour cela on met à jour la table « dispositifs »
    :width: 700px 
 .. |image486| image:: ../media/image486.webp
    :width: 577px 
+.. |image487| image:: ../media/image487.webp
+   :width: 335px 
