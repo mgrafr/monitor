@@ -99,7 +99,7 @@ Script :darkblue:`notifications_variables.lua`, lignes concernées
 
 Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe  :ref:`le script LUA pour les notifications concernant le temps`_
+voir ce paragraphe  :doc:`le script LUA pour les notifications concernant le temps <configuration_minimum.rst>`
 
 |image426|
 
