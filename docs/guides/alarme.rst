@@ -99,7 +99,7 @@ Script :darkblue:`notifications_variables.lua`, lignes concernées
 
 Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe  :doc:`le script LUA pour les notifications concernant le temps <configuration_minimum.rst>`
+voir ce paragraphe  :doc:`script_lua_timer>`
 
 |image426|
 
@@ -471,6 +471,11 @@ voir ce § :ref:`1.5.1.2 les scripts de notifications gérées par Domoticz`
 
 |image485|
 
+5.8.1.2 Dans Monitor
+""""""""""""""""""""
+Pour cela on met à jour la table « dispositifs »
+
+|image486|
 
 .. |image408| image:: ../media/image408.webp
    :width: 650px
@@ -590,3 +595,5 @@ voir ce § :ref:`1.5.1.2 les scripts de notifications gérées par Domoticz`
    :width: 400px 
 .. |image485| image:: ../media/image485.webp
    :width: 700px 
+.. |image486| image:: ../media/image486.webp
+   :width: 577px 
