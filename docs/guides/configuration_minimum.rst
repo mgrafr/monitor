@@ -745,6 +745,8 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notificatio
 
 |image194|
 
+.. _rst_script_lua_timer:
+
 - le script LUA pour les notifications concernant le temps: ‘:darkblue:`notification-timer.lua`,
 
 |image195|
