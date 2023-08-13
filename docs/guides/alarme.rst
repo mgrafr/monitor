@@ -99,7 +99,7 @@ Script :darkblue:`notifications_variables.lua`, lignes concernées
 
 Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe  :ref:'scriptluatimer`
+voir ce paragraphe  :ref:`scriptluatimer`
 
 |image426|
 
@@ -513,6 +513,10 @@ Dans Domoticz
 
  |image493|
 
+5.8.2.1.1 modification du script qui assure la liaison avec le modem 
+Voir http://domo-site.fr pour le script non modifié et des infos sur le fonctionnement
+Pour récupérer les données de la variable Domoticz, on utilise l’API ;
+Une fois le SMS envoyé, on utilise l’API pour remettre à Zéro la variable.
 
 
 .. |image408| image:: ../media/image408.webp
