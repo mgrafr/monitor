@@ -463,13 +463,9 @@ La table text_images : correspondance entre le texte et l’image
 
 |image484|
 
-- *Le script lua notification_timer.lua* :
+- *Les scripts lua notification_timer.lua & notification_devices.lua* :
 
-voir ce § :ref:`Script notifications_timer.lua>`_
-
-- *Le script lua notification_devices.lua* :
-
-voir ce § :ref:`notifications_devices.lua, notifications_timer.lua>`_
+voir ce § :ref:`Notifications : notifications_devices.lua, notifications_timer.lua>`_
 
 **Log** :
 
