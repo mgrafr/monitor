@@ -99,7 +99,7 @@ Script :darkblue:`notifications_variables.lua`, lignes concernées
 
 Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe  :ref:`scriptluatimer <configuration_minimum>`
+voir ce paragraphe  :ref:`scriptluatimer <guides/configuration_minimum.rst>`
 
 |image426|
 
@@ -513,10 +513,35 @@ Dans Domoticz
 
  |image493|
 
-5.8.2.1.1 modification du script qui assure la liaison avec le modem 
-Voir http://domo-site.fr pour le script non modifié et des infos sur le fonctionnement
-Pour récupérer les données de la variable Domoticz, on utilise l’API ;
-Une fois le SMS envoyé, on utilise l’API pour remettre à Zéro la variable.
+.. admonition:: **modification du script qui assure la liaison avec le modem**
+
+   Voir http://domo-site.fr pour le script non modifié et des infos sur le fonctionnement
+
+   Pour récupérer les données de la variable Domoticz, on utilise l’API ;
+
+   Une fois le SMS envoyé, on utilise l’API pour remettre à Zéro la variable.
+
+   |image494|
+
+   On simplifie le script avec 2 fonctions :
+
+   |image495|
+
+   Emplacement du script :
+   
+   |image496|
+
+   **aperçus d'une commande vers DZ et la réception d'une alarme** 
+
+   |image497|
+
+   |image498|
+
+5.8.2.2 Version sans variable Domoticz
+""""""""""""""""""""""""""""""""""""""
+**Avec un reload d’un module python**
+
+
 
 
 .. |image408| image:: ../media/image408.webp
@@ -653,5 +678,16 @@ Une fois le SMS envoyé, on utilise l’API pour remettre à Zéro la variable.
    :width: 598px 
 .. |image493| image:: ../media/image493.webp
    :width: 535px 
+.. |image494| image:: ../media/image494.webp
+   :width: 632px 
+.. |image495| image:: ../media/image495.webp
+   :width: 528px 
+.. |image496| image:: ../media/image496.webp
+   :width: 238px 
+.. |image497| image:: ../media/image497.webp
+   :width: 602px 
+.. |image498| image:: ../media/image498.webp
+   :width: 346px 
+
 
 
