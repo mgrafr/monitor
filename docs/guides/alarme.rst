@@ -573,7 +573,7 @@ La table text_images : correspondance entre le texte et l’image
    :width: 535px
 .. |image480| image:: ../media/image480.webp
    :width: 650px
- .. |image481| image:: ../media/image481.webp
+.. |image481| image:: ../media/image481.webp
    :width: 200px
 .. |image482| image:: ../media/image482.webp
    :width: 400px 
