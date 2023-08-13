@@ -99,7 +99,7 @@ Script :darkblue:`notifications_variables.lua`, lignes concernées
 
 Script :darkblue:`notifications_timer.lua`, lignes concernées
 
-voir ce paragraphe  :doc:`rst_scriptluatimer`
+voir ce paragraphe  :ref:'scriptluatimer`
 
 |image426|
 
