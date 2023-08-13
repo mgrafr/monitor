@@ -463,6 +463,17 @@ La table text_images : correspondance entre le texte et l’image
 
 |image484|
 
+- *Le script lua notification_timer.lua* :
+
+voir ce § :ref:`Script notifications_timer.lua>'_
+
+- *Le script lua notification_devices.lua* :
+
+voir ce § :ref:`notifications_devices.lua, notifications_timer.lua>'_
+
+**Log** :
+
+|image485|
 
 
 .. |image408| image:: ../media/image408.webp
@@ -581,3 +592,5 @@ La table text_images : correspondance entre le texte et l’image
    :width: 400px 
 .. |image484| image:: ../media/image484.webp
    :width: 400px 
+.. |image485| image:: ../media/image485.webp
+   :width: 700px 
