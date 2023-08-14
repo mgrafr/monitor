@@ -560,7 +560,7 @@ On fait une copie de ce fichier : :darkblue:`aldz.bak.py` : ce fichier remplacer
 
 |image500|
 
-Dans Domoticz, pas besoin de créer une variable, simplement modifier le fichier aldz.py pour inclure à la variable x, le texte du SMS
+**Dans Domoticz**, pas besoin de créer une variable, simplement modifier le fichier aldz.py pour inclure à la variable x, le texte du SMS
 
 |image501|
 
@@ -577,10 +577,45 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 
 |image503|
 
-Dans l’image de l’alarme : on ajoute,
+- Dans l’image de l’alarme : on ajoute,
 
 |image504|
 
+- Dans Domoticz : on ajoute un interrupteur virtuel
+
+|image507|
+
+|image508|
+
+On ajoute le dispositif au plan :
+
+|image509|
+
+|image510|
+
+On ajoute qq lignes de script dans évènements dz , :darkblue:`notifications_devices.lua`
+
+.. code-block:: 'fr'
+
+   return {
+	on = {	devices = {'Test_GSM',
+
+.. code-block:: 'fr'
+
+    if (device.name == 'Test_GSM' and  device.state=='On') then print ("test_gsm")
+            txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
+            obj='Test GSM OK'domoticz.email('Alarme',obj,adresse_mail)    
+     end
+
+Dans la BD :
+
+|image512|
+
+*L’exemple est intéressant car le clic s’effectue sur une partie de l’image transparente*
+
+Dans le HTML, Le script est ajouté automatiquement à partir des données de la BD , voir le § :ref:`switchonoff`
+
+|image514|
 
 .. |image408| image:: ../media/image408.webp
    :width: 650px
@@ -736,4 +771,14 @@ Dans l’image de l’alarme : on ajoute,
    :width: 472px 
 .. |image504| image:: ../media/image504.webp
    :width: 700px 
+.. |image507| image:: ../media/image504.webp
+   :width: 332px 
+.. |image508| image:: ../media/image508.webp
+   :width: 402px 
+.. |image509| image:: ../media/image509.webp
+   :width: 544px 
+.. |image510| image:: ../media/image510.webp
+   :width: 450px 
+.. |image512| image:: ../media/image512.webp
+   :width: 612px 
 
