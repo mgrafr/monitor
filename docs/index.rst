@@ -21,6 +21,8 @@ Monitor-domotique Documentation
         guides/graphiques.rst
         guides/mur_cameras.rst
         guides/mur_de_commandes.rst
+        guides/zigbee.rst
+        guides/zwave.rst
         guides/app_diverses.rst
         guides/app_externes.rst
         guides/administration.rst
@@ -85,7 +87,7 @@ Graphiques et Base de données
   Graphiques et Base de données
 
 Mur de Caméras
------------
+--------------
 :doc:`guides/mur_cameras`
   Mur de Caméras
 
@@ -93,6 +95,16 @@ Mur de commande On/Off
 ----------------------
 :doc:`guides/mur_de_commandes`   
    MUR de commandes ON/OFF
+
+Zigbee
+------
+:doc:`guides/zigbee`   
+   Zigbee
+
+Zwave
+-----
+:doc:`guides/zwave`   
+   Zwave
 
 App Diverses
 ------------
