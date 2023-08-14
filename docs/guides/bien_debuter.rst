@@ -773,7 +773,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 .. _interonoff:
   
-switches on off
+Inter on off
 ***************  
 
 .. code-block:: 'fr'	
