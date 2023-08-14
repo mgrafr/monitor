@@ -787,4 +787,6 @@ Dans le HTML, Le script est ajouté automatiquement à partir des données de la
    :width: 450px 
 .. |image512| image:: ../media/image512.webp
    :width: 612px 
+.. |image514| image:: ../media/image514.webp
+   :width: 700px 
 
