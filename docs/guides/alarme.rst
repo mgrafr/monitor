@@ -662,6 +662,24 @@ Cette liste est établie automatiquement avec une fonction dans « administratio
 
    |image520|
 
+   Affichage :
+
+   |image521|
+
+5.8.5- Copie écran de la dernière version
+=========================================
+Version 2.1.0 réécrite en DzVent avec :
+
+- 1 script pour le timer
+
+- 1 script pour les notifications à partir des dispositifs
+
+- 1 script p pour les notifications à partir des variables
+
+- Le script principal de l’alarme
+
+|image522|
+
 
 
 
@@ -839,3 +857,12 @@ Cette liste est établie automatiquement avec une fonction dans « administratio
    :width: 700px 
 .. |image520| image:: ../media/image520.webp
    :width: 578px 
+.. |image521| image:: ../media/image521.webp
+   :width: 457px 
+.. |image522| image:: ../media/image522.webp
+   :width: 705px 
+
+
+
+
+
