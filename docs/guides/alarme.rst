@@ -613,7 +613,7 @@ Dans la BD :
 
 *L’exemple est intéressant car le clic s’effectue sur une partie de l’image transparente*
 
-Dans le HTML, Le script est ajouté automatiquement à partir des données de la BD , voir le § :ref:`switchonoff`
+Dans le HTML, Le script est ajouté automatiquement à partir des données de la BD , voir le § :ref:`interonoff`
 
 |image514|
 
