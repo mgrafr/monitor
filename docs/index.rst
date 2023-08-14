@@ -27,6 +27,7 @@ Monitor-domotique Documentation
         guides/app_diverses.rst
         guides/app_externes.rst
         guides/administration.rst
+        guides/exemples.rst
         guides/divers.rst
         guides/mon_installation.rst
 
@@ -126,6 +127,11 @@ Administration
 --------------
 :doc:`guides/administration`   
     Administration
+
+Exemples
+--------------
+:doc:`guides/exemples`   
+    Exemples
 
 Mon Installation
 ----------------
