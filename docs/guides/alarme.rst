@@ -617,6 +617,12 @@ Dans le HTML, Le script est ajouté automatiquement à partir des données de la
 
 |image514|
 
+.. note::
+
+   **Affichage de l’alarme**
+   une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour de devices_plan() au plus tard : 3minutes par défaut mais modifiable dans admin/config.php
+
+
 .. |image408| image:: ../media/image408.webp
    :width: 650px
 .. |image409| image:: ../media/image409.webp
