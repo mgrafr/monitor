@@ -23,6 +23,7 @@ Monitor-domotique Documentation
         guides/mur_de_commandes.rst
         guides/zigbee.rst
         guides/zwave.rst
+        guides/monitoring.rst
         guides/app_diverses.rst
         guides/app_externes.rst
         guides/administration.rst
@@ -105,6 +106,11 @@ Zwave
 -----
 :doc:`guides/zwave`   
    Zwave
+
+Monitoring
+----------
+:doc:`guides/monitoring`   
+   Monitoring Nagios
 
 App Diverses
 ------------
