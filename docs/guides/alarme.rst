@@ -541,8 +541,39 @@ Dans Domoticz
 """"""""""""""""""""""""""""""""""""""
 **Avec un reload d’un module python**
 
+C’est la version que j’ai retenue
 
+On utilise un module python en import reload et on modifie ce module :
 
+- Avec Domoticz pour envoyer un message 
+
+- Avec python pour une réinitialisation après l'envoi du message
+
+**Création d’un fichier python** : :darkblue:`aldz.py:darkblue:`, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme
+
+.. code-block:: 'fr'
+
+   #!/usr/bin/env python3.7 -*- coing: utf-8 -*-
+   x='0'
+
+On fait une copie de ce fichier : :darkblue:`aldz.bak.py` : ce fichier remplacera le fichier original pour remettre à 0 la variable et cesser d’envoyer des messages.
+
+|image500|
+
+Dans Domoticz, pas besoin de créer une variable, simplement modifier le fichier aldz.py pour inclure à la variable x, le texte du SMS
+
+|image501|
+
+.. warning::
+
+   **Attention** :  comme déjà indiqué, si modem Ebyte, pas d’espaces et accents
+
+Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
+
+|image502|
+
+5.8.2.3 Option supplémentaire : le test de l’envoi de SMS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. |image408| image:: ../media/image408.webp
    :width: 650px
@@ -688,6 +719,10 @@ Dans Domoticz
    :width: 602px 
 .. |image498| image:: ../media/image498.webp
    :width: 346px 
-
-
+.. |image500| image:: ../media/image500.webp
+   :width: 311px 
+.. |image501| image:: ../media/image501.webp
+   :width: 575px 
+.. |image502| image:: ../media/image502.webp
+   :width: 5700px 
 
