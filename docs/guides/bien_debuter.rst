@@ -773,8 +773,8 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 .. _switchonoff:
   
-   switches on off
-   ***************
+switches on off
+***************
   
 .. code-block:: 'fr'	
 
