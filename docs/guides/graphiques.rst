@@ -84,7 +84,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/export_sql.
    weekday = tonumber(os.date("%w"));
    time    = os.date("%X");
    datetime = year.."-"..month.."-"..day.." "..time;
---
+   --
     function write_datas(data0,data1)
    f = io.open("www/modules_lua/datas.lua", "w")
    f:write('pression='..data0..';d_linky='..data1)
