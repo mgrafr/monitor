@@ -263,6 +263,14 @@ Jpgraph est installé à la racine de monitor
 
 - *css*
 
+.. code-block:: 'fr'
+   /*graphiques-------*/
+   #graphic{color:white;}
+   .graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
+   .graphiques{background-color: green;}
+
+
+
 .. |image523| image:: ../media/image523.webp
    :width: 650px
 .. |image524| image:: ../media/image524.webp
