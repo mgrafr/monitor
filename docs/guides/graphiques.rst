@@ -193,8 +193,71 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
 
 6.3 Sur le serveur de la base de données
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Le serveur Nginx avec aussi Monitor,
 
+réception des datas : Le script python :darkblue:`sqlite_mysql.py` :
 
+.. code-block:: 'fr'
+
+   #!/usr/bin/env python3
+   # -*- coding: utf-8 -*-
+   import sys
+   import mysql.connector
+   from mysql.connector import Error
+   total_arg = len(sys.argv)
+   if (total_arg>0) :
+       x= str(sys.argv[1])
+       temp = x.split('#')
+       table=temp[0]
+       champ=temp[1]
+       val1=temp[2]
+       val=temp[3]+" "+temp[4]
+   if (len(temp)==7) :
+       champ2=temp[5]
+       val2=temp[6]
+   try:
+       connection = mysql.connector.connect(
+             host = "127.0.0.1",
+             user = "michel",
+          password = xxxxxxxx",
+          database = "domoticz")
+
+       if connection.is_connected():
+           db_Info = connection.get_server_info()
+           print("Connected to MySQL Server version ", db_Info)
+           cursor = connection.cursor()
+           cursor.execute("select database();")
+           record = cursor.fetchone()
+           print("You're connected to database: ", record)
+           if (len(temp)==7) :
+               query = "INSERT INTO "+table+" (date,"+champ+","+champ2+") VALUES(%>
+               values = (val, val1, val2)
+           else :
+               query = "INSERT INTO "+table+" (date,"+champ+") VALUES(%s, %s)"
+               values = (val, val1)
+           cursor.execute(query, values)
+       connection.commit()
+       print(cursor.rowcount, "Record inserted successfully into Laptop table")
+   except Error as e:
+       print("Error while connecting to MySQL", e)
+   finally:
+       if (connection.is_connected()):
+           cursor.close()
+
+|image542|
+
+6.4 Dans Monitor
+^^^^^^^^^^^^^^^^
+Le cache pour jpgraph est présent :
+
+|image543|
+
+Jpgraph est installé à la racine de monitor
+
+|image544|
+
+6.4.1 la page graphique.php
+===========================
 
 .. |image523| image:: ../media/image523.webp
    :width: 650px
@@ -230,3 +293,9 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
    :width: 306px
 .. |image541| image:: ../media/image541.webp
    :width: 543px
+.. |image542| image:: ../media/image542.webp
+   :width: 602px
+.. |image543| image:: ../media/image543.webp
+   :width: 205px
+.. |image544| image:: ../media/image544.webp
+   :width: 215px
