@@ -651,7 +651,7 @@ Cette liste est établie automatiquement avec une fonction dans « administratio
 
    .. code-block:: 'fr'
 
-   $("#zm").click(function () {
+      $("#zm").click(function () {
           $.ajax({
              url: "ajax.php",
              data: "app=sql&idx=3&variable=cameras&type=modect&command=1",
