@@ -136,6 +136,64 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
 
    |image537|
 
+   .. code-block:: 'fr'
+
+      #!/bin/bash
+
+      echo $1
+      echo $2
+      a="#"
+      c=$1$a$2
+      echo $c
+      cd /home/michel/python
+      fab maintask --don=$c  > /home/michel/fab.log 2>&1
+
+   Pour tester le script, il est plus facile de travailler dans le répertoire USER, c’est l’objet de la création du lien symbolique vers le dossier python de Domoticz
+
+    |image538|
+
+    |image539|
+
+.. admonition:: **Le script fabfile.py**
+
+   |image540|
+
+   .. code-block:: 'fr'
+
+      #!/usr/bin/env python2.7
+      # -*- coding: utf-8 -*-
+      from fabric import Connection
+      from fabric.tasks import task
+      @task
+      def subtask(ctx, donn):
+        with ctx.cd("/www/monitor/python"):
+          ctx.run(donn)
+      @task( optional = ['don'])
+      def maintask(ctx, don = None ):
+        con = Connection(host = '192.168.1.7', user = 'michel', connect_kwargs = {'password':'PASS'})
+        file = "python3 sqlite_mysql.py "
+        donn = file+don
+        print(subtask(con,donn))
+
+   *Le script fabfile.py appelle sur le serveur qui héberge la BD le script sqlite_mysql.py*;
+
+**sqlite_mysql.py n’est exécuté que lorsqu’il est appelé, il n’écoute pas en permanence si des données sont envoyées**
+
+|image541|
+
+**POUR RESUMER** : sur le serveur de Domoticz
+
+- script LUA->MENU Domoticz évènements
+
+- script fabric.sh-> ../domoticz/scripts/
+
+- script fabfile.py->../domoticz/scripts/python/   avec ls /home/USER/python/
+
+-  fab.log-> /home/USER
+
+6.3 Sur le serveur de la base de données
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 
 .. |image523| image:: ../media/image523.webp
@@ -164,5 +222,11 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
    :width: 478px
 .. |image537| image:: ../media/image537.webp
    :width: 256px
-
-
+.. |image538| image:: ../media/image538.webp
+   :width: 608px
+.. |image539| image:: ../media/image539.webp
+   :width: 548px
+.. |image540| image:: ../media/image540.webp
+   :width: 306px
+.. |image541| image:: ../media/image541.webp
+   :width: 543px
