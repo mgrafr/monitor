@@ -622,6 +622,48 @@ Dans le HTML, Le script est ajouté automatiquement à partir des données de la
    **Affichage de l’alarme**
    une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour de devices_plan() au plus tard : 3minutes par défaut mais modifiable dans admin/config.php
 
+|image515|
+
+5.8.3- Affichage de la liste des caméras Modect
+===============================================
+Cette liste est établie automatiquement avec une fonction dans « administration » , voir le § :ref:`5.1.1.2 le script lua`
+
+.. admonition:: **ajout d'une icône pour afficher la liste depuis l'alarme**
+
+   |image517|
+
+   Dans alarmes.php :
+
+   |image518|
+
+   .. code-block:: 'fr'
+      <svg version="1.1" id="zm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 326 18" style="width:500px" xml:space="preserve">
+      <style type="text/css">
+	.st208{fill:#03A8F3;}
+	.st207{font-size:13.5px;}
+      </style><a id="zm" href="#alarmes">
+      <rect x="0.9" y="-0.7" class="st208" width="31.2" height="18.8"/>
+      <text transform="matrix(1 0 0 1 5.4312 13.3434)" class="st203 st33 st207">Z M</text></a>
+      </svg>
+
+   Dans footer.php , on appelle la fonction php  sql_app() qui est déjà utilisé dans « administration »
+
+   .. code-block:: 'fr'
+
+   $("#zm").click(function () {
+          $.ajax({
+             url: "ajax.php",
+             data: "app=sql&idx=3&variable=cameras&type=modect&command=1",
+			 success: function(data) { 
+             alert("liste de caméras enregistrées \nen modect dans SQL\n"+data);
+            }
+        });	});
+
+   |image520|
+
+
+
 
 .. |image408| image:: ../media/image408.webp
    :width: 650px
@@ -789,4 +831,11 @@ Dans le HTML, Le script est ajouté automatiquement à partir des données de la
    :width: 612px 
 .. |image514| image:: ../media/image514.webp
    :width: 700px 
-
+.. |image515| image:: ../media/image515.webp
+   :width: 461px 
+.. |image517| image:: ../media/image517.webp
+   :width: 408px 
+.. |image518| image:: ../media/image518.webp
+   :width: 700px 
+.. |image520| image:: ../media/image520.webp
+   :width: 578px 
