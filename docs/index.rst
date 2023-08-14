@@ -19,6 +19,7 @@ Monitor-domotique Documentation
         guides/plan_exterieur.rst
         guides/alarme.rst
         guides/graphiques.rst
+        guides/mur_cameras.rst
         guides/mur_de_commandes.rst
         guides/app_diverses.rst
         guides/app_externes.rst
@@ -82,6 +83,11 @@ Graphiques et Base de données
 -----------
 :doc:`guides/graphiques`
   Graphiques et Base de données
+
+Mur de Caméras
+-----------
+:doc:`guides/mur_cameras`
+  Mur de Caméras
 
 Mur de commande On/Off
 ----------------------
