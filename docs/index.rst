@@ -18,6 +18,7 @@ Monitor-domotique Documentation
         guides/meteo.rst
         guides/plan_exterieur.rst
         guides/alarme.rst
+        guides/graphiques.rst
         guides/mur_de_commandes.rst
         guides/app_diverses.rst
         guides/app_externes.rst
@@ -76,6 +77,11 @@ Alarme
 -----------
 :doc:`guides/alarme`
   Alarme
+
+Graphiques et Base de données
+-----------
+:doc:`guides/graphiques`
+  Graphiques et Base de données
 
 Mur de commande On/Off
 ----------------------
