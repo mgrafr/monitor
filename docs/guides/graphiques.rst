@@ -150,9 +150,9 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
 
    Pour tester le script, il est plus facile de travailler dans le répertoire USER, c’est l’objet de la création du lien symbolique vers le dossier python de Domoticz
 
-    |image538|
+   |image538|
 
-    |image539|
+   |image539|
 
 .. admonition:: **Le script fabfile.py**
 
