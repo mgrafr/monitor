@@ -771,6 +771,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	-	popup //ouverture d’une fenêtre (commandes particulières)
 		.	exemple des scripts générés automatiquement 
 
+.. _switchonoff:
+  
+   switches on off
+   ***************
+  
 .. code-block:: 'fr'	
 
    /* switchOnOff*  */
