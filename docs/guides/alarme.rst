@@ -575,6 +575,13 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 5.8.2.3 Option supplémentaire : le test de l’envoi de SMS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+|image503|
+
+Dans l’image de l’alarme : on ajoute,
+
+|image504|
+
+
 .. |image408| image:: ../media/image408.webp
    :width: 650px
 .. |image409| image:: ../media/image409.webp
@@ -724,5 +731,9 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 .. |image501| image:: ../media/image501.webp
    :width: 575px 
 .. |image502| image:: ../media/image502.webp
-   :width: 5700px 
+   :width: 570px 
+.. |image503| image:: ../media/image503.webp
+   :width: 472px 
+.. |image504| image:: ../media/image504.webp
+   :width: 700px 
 
