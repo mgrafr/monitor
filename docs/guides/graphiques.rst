@@ -162,7 +162,7 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
    :width: 570px
 .. |image536| image:: ../media/image536.webp
    :width: 478px
-.. |image537| image:: ../media/image536.webp
+.. |image537| image:: ../media/image537.webp
    :width: 256px
 
 
