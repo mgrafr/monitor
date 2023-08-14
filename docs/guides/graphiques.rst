@@ -259,6 +259,10 @@ Jpgraph est installé à la racine de monitor
 6.4.1 la page graphique.php
 ===========================
 
+|image545|
+
+- *css*
+
 .. |image523| image:: ../media/image523.webp
    :width: 650px
 .. |image524| image:: ../media/image524.webp
@@ -299,3 +303,5 @@ Jpgraph est installé à la racine de monitor
    :width: 205px
 .. |image544| image:: ../media/image544.webp
    :width: 215px
+.. |image545| image:: ../media/image545.webp
+   :width: 602px
