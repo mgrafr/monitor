@@ -17,6 +17,7 @@ release = '0.1'
 extensions = [
        'sphinx_rtd_theme',
        'sphinx.ext.autosectionlabel',
+       'sphinx.ext.intersphinx'
       ]
 
 language = 'fr'
