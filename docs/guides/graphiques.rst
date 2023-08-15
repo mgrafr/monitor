@@ -60,6 +60,7 @@ Pour utiliser des données de la base SQL, il faut au préalable les avoir enreg
 Pour l'installer (pip est déjà installé):
 
 .. code-block::
+
    sudo pip3 install fabric
 
 Une fois un premier enregistrement crée, pour une température, dans la base, il suffit pour un nouvel enregistrement d’une autre t° d’ajouter dans le script LUA « évènement /:darkblue:`export_sql` » cette T°
@@ -262,12 +263,10 @@ Jpgraph est installé à la racine de monitor
 
 - *css*
 
-.. code-block:: 'fr'
+.. code-block:: 
 
    #graphic{color:white;}
-
    graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
-
    graphiques{background-color: green;}
 
 6.4.2 la fonction graph
