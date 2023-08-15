@@ -303,6 +303,14 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.ph
 
 |image551|
 
+6.4.4 copies d’écran
+====================
+
+|image552|
+
+|image553|
+
+|image554|
 
 .. |image523| image:: ../media/image523.webp
    :width: 650px
@@ -354,3 +362,10 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.ph
    :width: 602px
 .. |image551| image:: ../media/image551.webp
    :width: 700px
+.. |image552| image:: ../media/image552.webp
+   :width: 525px
+.. |image553| image:: ../media/image553.webp
+   :width: 535px
+.. |image554| image:: ../media/image554.webp
+   :width: 535px
+
