@@ -295,6 +295,16 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.ph
 
    La documentation sur jpgraph : https://jpgraph.net/download/manuals/chunkhtml/index.html
 
+6.4.3 autres fichiers PHP
+=========================
+- index_loc.php (en général ne pas modifier)
+
+- config.php, header.php (en général ne pas modifier)
+
+   Mettre la variable à « true » dans config.php
+
+|image551|
+
 
 .. |image523| image:: ../media/image523.webp
    :width: 650px
@@ -344,3 +354,5 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.ph
    :width: 593px
 .. |image550| image:: ../media/image550.webp
    :width: 602px
+.. |image551| image:: ../media/image551.webp
+   :width: 700px
