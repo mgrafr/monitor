@@ -264,10 +264,9 @@ Jpgraph est installé à la racine de monitor
 - *css*
 
 .. code-block:: 'fr'
-   /*graphiques-------*/
    #graphic{color:white;}
-   .graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
-   .graphiques{background-color: green;}
+   graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
+   graphiques{background-color: green;}
 
 
 
