@@ -118,7 +118,8 @@ voir ce paragraphe  :ref:`scriptluatimer`
    **Pour activer ou désactiver la sirène** :
 
       Pour les textes : notifications_devices.lua
-   .. code-block:: 'fr'
+
+   .. code-block::
 
       -- activation sirène
             if (device.name == 'activation-sirene' and  device.state=='On') then domoticz.variables('activation-sir-txt').set("désactiver");
