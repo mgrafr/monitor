@@ -25,7 +25,7 @@ Permet d’afficher
 
 -	Le remplacement des piles pour les capteurs concernés
 
-- .... 
+- 	.... 
 
 |image117|
  
@@ -87,10 +87,15 @@ Pour le lexique :
 L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) : il est de ½ heure (1800000 milli secondes), il peut être changé
  
 .. code-block:: 'fr'
+
    // interval de maj des fonctions JS maj_services() & maj_devices()
+
    define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
+
    define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE(si installée) en milli secondes
+
    define('TEMPO_DEVICES', 180000);// en milli secondes
+
    define('TEMPO_DEVICES_DZ', 30000);// en milli secondes (>= 15s) maj déclenchée par Dz voir doc
 
 .. note::
@@ -849,12 +854,18 @@ c’est le script décrit ici qui enregistre les dates des ramassages réels eff
 .. code-block:: 'fr'
 
    -- Structure de la table `date_poub`
+
    --
    CREATE TABLE `date_poub` (
+
   `num` int(11) NOT NULL,
+
   `date` text NOT NULL,
+
   `valeur` text NOT NULL,
+
   `icone` text NOT NULL
+
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 - Les 2 icones svg : |image209|
