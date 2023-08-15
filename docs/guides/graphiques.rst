@@ -264,8 +264,11 @@ Jpgraph est installé à la racine de monitor
 - *css*
 
 .. code-block:: 'fr'
+
    #graphic{color:white;}
+
    graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
+
    graphiques{background-color: green;}
 
 6.4.2 la fonction graph
@@ -288,7 +291,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.ph
 
 |image550|
 
-.. Indication::
+.. hint::
 
    La documentation sur jpgraph : https://jpgraph.net/download/manuals/chunkhtml/index.html
 
