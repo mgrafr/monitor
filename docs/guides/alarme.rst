@@ -139,32 +139,50 @@ voir ce paragraphe  :ref:`scriptluatimer`
 
 **Le fichier pushover.sh** :
 
- .. code-block:: 'fr'
+ .. code-block::
 
    #!/bin/bash
+
    TITLE="Alerte"
+
    APP_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
    USER_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-   MESSAGE=$1 
+
+   MESSAGE=$1
+
    echo $1
+
    curl -s -F "token=$APP_TOKEN" \
+
    -F "user=$USER_TOKEN" \
+
    -F "title=$TITLE" \
+
    -F "message=$MESSAGE" \
+
    https://api.pushover.net/1/messages.json
 
 *Ou en Python* :
 
-.. code-block:: 'fr'
+.. code-block::
 
    #!/bin/python
+
    import requests,sys
+
    x= str(sys.argv[1])
+
    r = requests.post("https://api.pushover.net/1/messages.json", data = {
+
    "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+
    "user": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+
    "message": x
+
    })
+
    print(r.text)
 
 Voir les pages web :
@@ -242,7 +260,7 @@ On ajoute des zones de textes pour la date, les messages ,...
 
 |image448|
 
-.. code-block:: 'fr'
+.. code-block::
 
    <text xml:space="preserve"
    style="font-size:14.8002px;line-height:1.25;font-family:sans-serif;fill:#ffffff;stroke-width:1"
@@ -314,7 +332,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php
 
 |image460|
 
-.. code-block:: 'fr'
+.. code-block::
 
    <text xml:space="preserve"
    style="font-size:14.868px;line-height:1.25;font-family:sans-serif;fill:#000000;stroke-width:0.999996;"
@@ -332,7 +350,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php
 
 *Le fichier config.php gère les mots de passe de l’alarme et de la commande des dispositifs (on/off)*
 
-.. code-block:: 'fr'
+.. code-block::
 
    // mot passe alarme et administation , la page administration est ON
    define('PWDALARM','004546');//mot passe alarme
@@ -342,7 +360,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php
 
 *La fonction mdp() dans fonctions.php* :
 
-.. code-block:: 'fr'
+.. code-block::
 
    // --------------MOT de PASSE-----------------------------
    function mdp($mdp,$page_pass){// 1=commandes , 2=alarmes
@@ -413,18 +431,18 @@ Pour l’alarme de nuit, pour ne pas oublier de l’annuler le matin si la fonct
 
 - **CSS**
 
-.. code-block:: 'fr'
+.. code-block::
 
    #alarme_nuit{position:absolute;top:815px;left: 170px;width: 40px;}
 
-.. code-block:: 'fr'
+.. code-block::
 
    /* Large devices (small desktops <535) */
    @media (max-width:534px) {#alarme_nuit{top:580px;}
 
 - **accueil.php** :
 
-.. code-block:: 'fr'
+.. code-block::
 
    <div class="aff_al" ><img id="alarme_nuit" src="images/alarme_auto.svg" alt="alarme" /></div>
 
@@ -551,7 +569,7 @@ On utilise un module python en import reload et on modifie ce module :
 
 **Création d’un fichier python** : :darkblue:`aldz.py:darkblue:`, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme
 
-.. code-block:: 'fr'
+.. code-block::
 
    #!/usr/bin/env python3.7 -*- coing: utf-8 -*-
    x='0'
@@ -595,12 +613,12 @@ On ajoute le dispositif au plan :
 
 On ajoute qq lignes de script dans évènements dz , :darkblue:`notifications_devices.lua`
 
-.. code-block:: 'fr'
+.. code-block::
 
    return {
 	on = {	devices = {'Test_GSM',
 
-.. code-block:: 'fr'
+.. code-block::
 
     if (device.name == 'Test_GSM' and  device.state=='On') then print ("test_gsm")
             txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
@@ -636,7 +654,7 @@ Cette liste est établie automatiquement avec une fonction dans « administratio
 
    |image518|
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       <svg version="1.1" id="zm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 
@@ -658,7 +676,7 @@ Cette liste est établie automatiquement avec une fonction dans « administratio
 
    Dans footer.php , on appelle la fonction php  sql_app() qui est déjà utilisé dans « administration »
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       $("#zm").click(function () {
           $.ajax({
