@@ -42,7 +42,7 @@ Voir ces pages pour installer les scripts :
 
 **Création de la table avec phpMyAdmin** :*exemple*
 
-.. code-block:: 'fr'
+.. code-block:: 
 
    CREATE TABLE `pression_chaudiere` (
   `num` int(5) NOT NULL,
@@ -59,8 +59,7 @@ Pour utiliser des données de la base SQL, il faut au préalable les avoir enreg
 
 Pour l'installer (pip est déjà installé):
 
-.. code-block:: 'fr'
-
+.. code-block::
    sudo pip3 install fabric
 
 Une fois un premier enregistrement crée, pour une température, dans la base, il suffit pour un nouvel enregistrement d’une autre t° d’ajouter dans le script LUA « évènement /:darkblue:`export_sql` » cette T°
@@ -69,7 +68,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/export_sql.
 
 *Extrait de export_sql.lua*:
 
-.. code-block:: 'fr'
+.. code-block::
 
    package.path = package.path..";www/modules_lua/?.lua"
    require 'datas'
@@ -136,7 +135,7 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
 
    |image537|
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       #!/bin/bash
 
@@ -158,7 +157,7 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
 
    |image540|
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       #!/usr/bin/env python2.7
       # -*- coding: utf-8 -*-
@@ -197,7 +196,7 @@ Le serveur Nginx avec aussi Monitor,
 
 réception des datas : Le script python :darkblue:`sqlite_mysql.py` :
 
-.. code-block:: 'fr'
+.. code-block::
 
    #!/usr/bin/env python3
    # -*- coding: utf-8 -*-
@@ -275,7 +274,7 @@ Jpgraph est installé à la racine de monitor
 =======================
 **dans fonctions.php** et appelée par ajax.php, la fonction :darkblue:`graph()`
 
-.. code-block:: 'fr'
+.. code-block::
 
    if ($app=="graph") {graph($device,$variable);}
 
