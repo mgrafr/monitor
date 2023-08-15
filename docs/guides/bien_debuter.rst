@@ -143,7 +143,7 @@ Fin de l'installation:
    Ou en ajoutant l’adresse dans le navigateur :
 
    :red:`<IP Monitor>/phpmyadmin/`
-`
+
 |image29| 
 
 |image30| 
@@ -182,6 +182,7 @@ Lancer le script :
 0.1.3 – Installation de monitor uniquement
 ==========================================
 	Après l’installation d’un OS (Debian, Ubuntu…et LEMP ou LAMP, Maria DB ou MySQL ...
+
 Quelques liens utiles :
 
 |	o phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3
@@ -240,8 +241,8 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 0.1.3.1 mode « découverte »
 """""""""""""""""""""""""""
 .. note::
-    **IMPORTANT** :
-   après l’installation le programme est en mode « découverte », 
+    
+   **IMPORTANT** : après l’installation le programme est en mode « découverte », 
 
    pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, :darkblue:`désactiver le mode « découverte »` ;
    En profiter pour changer le mot de passe actuel **1234**
@@ -596,7 +597,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    **" pas de connexion à la BD "**
 
-**Ajout à la base de données des données fournie par Domoticz **
+**Ajout à la base de données des données fournie par Domoticz**
 
 0.3.1 Les variables (table dispositifs)
 =======================================
@@ -674,16 +675,11 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
    .. code-block::
 
       -- le fichier connect.py est modifié ` 
-
       f = io.open("userdata/scripts/python/connect.py", "w")
-
                     env="#!/usr/bin/env python3"
-
                     f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
-
                     f:close()
-
-	 -- on modifie la variable
+      -- on modifie la variable
                     domoticz.variables('BASH').set("restart_sms_dz")	
  
    **Dans SQL** :
@@ -788,7 +784,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 .. _interonoff:
   
 Inter on off
-************  
+~~~~~~~~~~~~
 
 .. code-block::	
 
