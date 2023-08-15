@@ -35,7 +35,7 @@ Permet d’afficher
 
 1.1.1 -Adresse IP , domaine, favicon de monitor 
 =============================================== 
-.. code-block:: 'fr'
+.. code-block::
 
    //general monitor
    -->define('URLMONITOR', '');//domaine (pour accès distant) et port si différent de 443 
@@ -61,7 +61,7 @@ Permet d’afficher
  
 1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-.. code-block:: 'fr'
+.. code-block::
 
    // Monitor 
    define('IMAGEACCUEIL', 'images/maison.webp');//image page accueil pour écrans >534 px
@@ -75,7 +75,7 @@ Pour le lexique :
 -	true = lexique par défaut
 -	false = lexique à modifier /include/lexique_no.php
 
-.. code-block:: 'fr'
+.. code-block::
 
    define('NOMSITE', 'Domoticz');//nom principal du site
    define('NOMSLOGAN', xxxxxxxxxxx);//nom secondaire ou slogan
@@ -86,8 +86,7 @@ Pour le lexique :
 ========================================
 L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) : il est de ½ heure (1800000 milli secondes), il peut être changé
  
-.. code-block:: 'fr'
-
+.. code-block::
    // interval de maj des fonctions JS maj_services() & maj_devices()
 
    define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
@@ -108,8 +107,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
 La fonction JS :
 
-.. code-block:: 'fr'
-
+.. code-block::
    tempo_devices=<?php echo TEMPO_DEVICES_DZ;?>;
    var idsp=1;if (tempo_devices>14999)	var_sp(idsp);
    function var_sp(idsp){
@@ -122,7 +120,7 @@ La fonction JS :
  
 La fonction PHP qui récupère la valeur de la variable :
 
-.. code-block:: 'fr'
+.. code-block::
 
    // valeur d'une variable
    function val_variable($variable){
@@ -146,7 +144,7 @@ Choisir Idx de Domoticz ou idm de monitor ?
 
 *La création d’un plan qui regroupe les dispositifs sur Domoticz est nécessaire : noter le N° du plan (NUMPLAN)*
 
-.. code-block:: 'fr'
+.. code-block::
 
    // choix ID pour l'affichage des infos des dispositifs
    // idx : idx de Domoticz    (dans ce cas ,
@@ -157,7 +155,7 @@ Choisir Idx de Domoticz ou idm de monitor ?
  
 Paramètres de la base de données :
  
-.. code-block:: 'fr'
+.. code-block::
 
    // parametres serveur DBMaria
    define('SERVEUR','localhost');
@@ -167,7 +165,7 @@ Paramètres de la base de données :
 
 Paramètres pour Domoticz ou HA :
  
-.. code-block:: 'fr'
+.. code-block::
 
    //seveurs domotiques Domoticz ou HA
    define('IPDOMOTIC', '192.168.1.76');//ip
@@ -249,14 +247,14 @@ Principales fonctions contenues dans ce fichier :
    
    On crée un idx=0 qui n'existe pas , aussi avec cet idx la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php) 
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       $data[0] = ['jour' => date('d'),
                   'idx' => '0'];
 
    **Maj éta des piles des dispositifs**
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       $abat="0";
       if ($al_bat==0) $abat="batterie_forte";
@@ -274,7 +272,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/css/jquery-ui.css
 		
 Fichier mes_css.css , extrait :
 
-.. code-block:: 'fr'
+.. code-block::
 
    /*interieur*/
    #linky{position: relative;top: -250px;left: 600px;width: 60px;}
@@ -304,7 +302,7 @@ Fichier mes_css.css , extrait :
 
 .. admonition:: **virtual keypad** 
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       /*Minimal Virtual Keypad
       $(document).ready(function () {
@@ -326,7 +324,7 @@ Fichier mes_css.css , extrait :
 =====================
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php
 
-.. code-block:: 'fr'
+.. code-block::
 
    <!DOCTYPE html>
    <html lang="fr">
@@ -358,7 +356,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php
 =============================================
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/test_db.php
 
-.. code-block:: 'fr'
+.. code-block::
 
    <?php
    echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >';
@@ -383,7 +381,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/header.php
 
 Extrait: 
 
-.. code-block:: 'fr'
+.. code-block::
 
    <ul class="nav navbar-nav navbar-right" style="color: #adafb1;">
 	<li class="zz active"><a href="#header">Accueil</a></li> 
@@ -414,7 +412,7 @@ Le HTML:
  
 |image153|
 
-.. code-block:: 'fr'
+.. code-block::
 
    <!--accueil start -->
 	<!-- image de la page d'accueuil déclarée dans admin/config.php -->
@@ -435,7 +433,7 @@ dans la page footer.php : https://raw.githubusercontent.com/mgrafr/monitor/main/
 
 Extrait:
 
-.. code-block:: 'fr'
+.. code-block::
 
    <?php
    require("fonctions.php");
@@ -517,7 +515,7 @@ Le HTML :
 
 .. admonition:: **solution JS sur la tablette**
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       fonction date_heure(id){
       date = new Date;
@@ -577,7 +575,7 @@ L’image est inline dans header.php
 
 La fenêtre modale dans include/lexique .php ou include/lexique_no.php (le fichier est choisi par la configuration) :
 
-.. code-block:: 'fr'
+.. code-block::
 
    // affichage lexique
 
@@ -683,7 +681,7 @@ voir le paragraphe :ref:`14.7 Explications concernant l’importation distantes 
 
    Dans le script LUA, pour les jours de poubelles, les anniversaires, on appelle ce fichier, en ayant indiqué le chemin :
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       -- chargement fichier contenant les variables de configuration
       package.path..";/home/USER/domoticz/www/modules_lua/?.lua"
@@ -725,8 +723,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notificatio
 
 Extrait:
 
-.. code-block:: 'fr'
-
+.. code-block::
    return {
 	on = {
 		variables = {
@@ -790,7 +787,7 @@ Dans footer.php : départ de la commande avec le script créé automatiquement d
 
 - la fonction :darkblue:`turnonoff()`
 
-.. code-block:: 'fr'
+.. code-block::
 
    function turnonoff(idm,idx,command,pass="0"){console.log(idm);
 	if (pp[idm].Data == "On" || pp[idm].Data == "on") {command="off";}
@@ -851,7 +848,7 @@ c’est le script décrit ici qui enregistre les dates des ramassages réels eff
 
 *Il faut au préalable ajouter une table dans la base de données*
 
-.. code-block:: 'fr'
+.. code-block::
 
    -- Structure de la table `date_poub`
 
@@ -884,7 +881,7 @@ Idx_idimg existe déjà dans footer.php , sa valeur est « poubelle_grise » ou 
 
 on va **ajouter une variable pour l’icône dans les données json**
 
-.. code-block:: 'fr'
+.. code-block::
    $("#poubelle").click(function () {
    var date_poub=new Date();
    var jour_poub=date_poub.getDate();
@@ -905,13 +902,13 @@ on va **ajouter une variable pour l’icône dans les données json**
 
 Dans ajax.php
 
-.. code-block:: 'fr'
+.. code-block::
 
   if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
 
 Dans fonctions.php , la fonction :darkblue:`sql_app`
 
-.. code-block:: 'fr'
+.. code-block::
 
    function sql_app($choix,$table,$valeur,$date,$icone=''){
    // SERVEUR SQL connexion
@@ -931,8 +928,7 @@ Dans fonctions.php , la fonction :darkblue:`sql_app`
 
 Et pour ajouter l’icône au fichier json concernant les variables :
 
-.. code-block:: 'fr'
-
+.. code-block::
    function status_variables($xx){
    $p=0;$n=0;	
    if(IPDOMOTIC != ""){
