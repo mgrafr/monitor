@@ -40,7 +40,9 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
    if (ON_MUR==true) {include ("include/mur_cam.php");
    $_SESSION["zmuser"]=ZMUSER;$_SESSION["zmpass"]=ZMPASS;}
 
-.. note:: $_SESSION["zmuser"]=ZMUSER;$_SESSION["zmpass"]=ZMPASS;}: voir les explications ci-après
+.. note:: 
+
+   $_SESSION["zmuser"]=ZMUSER;$_SESSION["zmpass"]=ZMPASS;}: voir les explications ci-après
 
 - **config.php**
 
@@ -116,6 +118,7 @@ Extrait de mur_cam.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Le Zoom Bootstrap :
 
+|image569|
 
 .. |image555| image:: ../media/image555.webp
    :width: 332px
@@ -135,4 +138,8 @@ Le Zoom Bootstrap :
    :width: 700px
 .. |image568| image:: ../media/image568.webp
    :width: 603px
+.. |image569| image:: ../media/image569.webp
+   :width: 602px
+
+
 
