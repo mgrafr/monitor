@@ -29,7 +29,7 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), mo
 
 Télécharger depuis le Shell de PVE le fichier d’installation install.sh :
 
-.. code-block:: 'fr'
+.. code-block::
 
    wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
 
@@ -37,7 +37,7 @@ Télécharger depuis le Shell de PVE le fichier d’installation install.sh :
 
 Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
-.. code-block:: 'fr'
+.. code-block::
 
    chmod +x create_ct_lxc_monitor.sh
 
@@ -52,7 +52,7 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
 **Installation :**
 
-.. code-block:: 'fr'
+.. code-block::
 
    ./create_ct_lxc_monitor.sh
  
@@ -159,19 +159,19 @@ La suite, mode découverte , :ref:`0.1.3.1 mode « découverte »`
 Installer auparavant un système Debian 12 ou supérieur
 	Télécharger le script : lemp_monitor_install.sh,
 
-.. code-block:: 'fr'
+.. code-block::
 
    https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh 
  
 Donner des autorisations au fichier lemp_install.sh 
 
-.. code-block:: 'fr'
+.. code-block::
 
    chmod +x  lemp_monitor_install.sh
 
 Lancer le script :
 
-.. code-block:: 'fr'
+.. code-block::
 
    ./lemp_monitor_install.sh
 
@@ -192,7 +192,7 @@ Quelques liens utiles :
 
 *-	Soit télécharger et extraire le fichier :*
 
-.. code-block:: 'fr'
+.. code-block::
 
    https://github.com/mgrafr/monitor
 
@@ -200,7 +200,7 @@ Quelques liens utiles :
 
 *-	Soit cloner le référentiel : https://github.com/mgrafr/monitor.git*
 
-.. code-block:: 'fr'
+.. code-block::
 
    git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION
 
@@ -211,7 +211,7 @@ Quelques liens utiles :
 
 *-       soit télécharger en bash avec wget :*
 
-.. code-block:: 'fr'
+.. code-block::
 
    https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 
@@ -219,7 +219,7 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
  
 |image35| 
 
-.. code-block:: 'fr'
+.. code-block::'
 
   ./install_only_monitor.sh
 
@@ -279,7 +279,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
 .. admonition:: **Étape 1** : Créer le certificat SSL
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
@@ -311,7 +311,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
    *Confidentialité persistante*
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
     
@@ -325,7 +325,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
    *-	Créer le fichier self-signed.conf dans /etc/nginx/snippets*
    
-   .. code-block:: 'fr'
+   .. code-block::
 
       cd /etc/nginx/snippets
 
@@ -333,7 +333,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
    *-   Ajouter*
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       #certificat et clé privée
 
@@ -349,13 +349,13 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
      -	Comme précédemment créer un fichier *ssl-params.conf*
 
-   .. code-block:: 'fr'
+   .. code-block:: 
 
       sudo nano ssl-params.conf
 
    *-   Ajouter* :
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       # from https://cipherli.st/
       # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
@@ -385,7 +385,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
     le fichier sur github : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/monitor.conf`
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       server {
 
@@ -412,7 +412,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
  
 .. admonition:: *Vérifier la configuration*
  
-   .. code-block:: 'fr'
+   .. code-block::
 
       sudo nginx -t
  
@@ -420,7 +420,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
    Redémarrer le serveur Nginx
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       sudo systemctl restart nginx
 
@@ -480,13 +480,13 @@ Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement
 
 *Avec OpenWeather l’API fournit la température ressentie, pour l’ajouter enregistrer le dispositif et ajouter à accueil.php :*
 
-.. code-block:: 'fr'
+.. code-block::
 
    <p class="text-centre">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
 
 La classe "text-centre" :
 
-.. code-block:: 'fr'
+.. code-block::
 
    .text-centre {
     margin-right: 2px;
@@ -499,7 +499,7 @@ La classe "text-centre" :
 
    Indépendant de Domoticz, la fonction PHP 
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       case 2:// relevé temps réel station la pus proche (40Km)
       $url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&token='.TOKEN_MC.'&insee='.INSEE;
@@ -517,7 +517,7 @@ La classe "text-centre" :
 
    Appel, depuis Monitor, la fonction:c()  dans footer.php
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       mc(1,"#meteo_concept");
       mc(0,"#meteo_concept_am");
@@ -583,7 +583,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
  
 *Extrait de config.php:*
 
-.. code-block:: 'fr'
+.. code-block::
 
    // parametres serveur DBMaria
    define('SERVEUR','localhost');
@@ -671,7 +671,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    scrpt LUA:
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       -- le fichier connect.py est modifié ` 
 
@@ -708,7 +708,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 	
 	Appel ajax depuis footer.php vers ajax.php->ssh_scp.php->serveur dz ou ha->exécution du fichier Bash
 
-    .. code-block:: 'fr'
+    .. code-block::
 
        #!/usr/bin/bash
        echo "MOT DE PASSE" | sudo -S systemctl restart sms_dz
@@ -790,7 +790,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 Inter on off
 ************  
 
-.. code-block:: 'fr'	
+.. code-block::	
 
    /* switchOnOff*  */
 	
@@ -815,7 +815,7 @@ Inter on off
  
 le script dans footer.php pour ajouter le javascript automatiquement:
 
-.. code-block:: 'fr'
+.. code-block::
 
    <?php 
    require("fonctions.php");
@@ -883,7 +883,7 @@ Enregistrements de températures, tension ,....
 
 Exemple pour une table temp_meteo :
 
-.. code-block:: 'fr'
+.. code-block::
 
    -- Structure de la table `temp_meteo`
    --
@@ -912,7 +912,7 @@ Exemple pour une table temp_meteo :
  
 Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/admin/config.php
 
-.. code-block:: 'fr'
+.. code-block::
 
    <?php
    // NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
@@ -941,7 +941,7 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 
 	extrait du script :
 
-.. code-block:: 'fr'
+.. code-block::
 
    <?php
    require ("fonctions.php");
@@ -976,7 +976,7 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 
 - **Index.php** :  le ficher appelé lors du chargement du site ; pour les écrans > 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse 	du répertoire du site sur le serveur
 
-.. code-block:: 'fr'
+.. code-block::
 
    <?php
    echo '<!DOCTYPE html><html><body style="background-color: cornsilk;">';
@@ -1002,7 +1002,7 @@ Pour des mises en page faciles, des fenêtres modales ,…..
 
 Un extrait :
 
-.. code-block:: 'fr'
+.. code-block::
 
    body {
        font-size: 15px;
