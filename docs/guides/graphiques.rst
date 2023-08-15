@@ -268,6 +268,29 @@ Jpgraph est installé à la racine de monitor
    graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
    graphiques{background-color: green;}
 
+6.4.2 la fonction graph
+=======================
+**dans fonctions.php** et appelée par ajax.php, la fonction :darkblue:`graph()`
+
+.. code-block:: 'fr'
+
+   if ($app=="graph") {graph($device,$variable);}
+
+|image548|
+
+**L'accès à base de données**, le fichier PHP: :darkblue:`include/export_tab_sqli.php` et traitement des données par la BD
+
+https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.php
+
+|image549|
+
+*Suite de graph()*
+
+|image550|
+
+.. Indication::
+
+   La documentation sur jpgraph : https://jpgraph.net/download/manuals/chunkhtml/index.html
 
 
 .. |image523| image:: ../media/image523.webp
@@ -311,4 +334,10 @@ Jpgraph est installé à la racine de monitor
 .. |image544| image:: ../media/image544.webp
    :width: 215px
 .. |image545| image:: ../media/image545.webp
+   :width: 602px
+.. |image548| image:: ../media/image548.webp
+   :width: 700px
+.. |image549| image:: ../media/image549.webp
+   :width: 593px
+.. |image550| image:: ../media/image550.webp
    :width: 602px
