@@ -25,7 +25,7 @@ Permet d’afficher
 
 -	Le remplacement des piles pour les capteurs concernés
 
-- 	.... 
+- 	etc .... 
 
 |image117|
  
@@ -87,14 +87,11 @@ Pour le lexique :
 L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) : il est de ½ heure (1800000 milli secondes), il peut être changé
  
 .. code-block::
+
    // interval de maj des fonctions JS maj_services() & maj_devices()
-
    define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
-
    define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE(si installée) en milli secondes
-
    define('TEMPO_DEVICES', 180000);// en milli secondes
-
    define('TEMPO_DEVICES_DZ', 30000);// en milli secondes (>= 15s) maj déclenchée par Dz voir doc
 
 .. note::
@@ -108,6 +105,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 La fonction JS :
 
 .. code-block::
+
    tempo_devices=<?php echo TEMPO_DEVICES_DZ;?>;
    var idsp=1;if (tempo_devices>14999)	var_sp(idsp);
    function var_sp(idsp){
@@ -578,7 +576,6 @@ La fenêtre modale dans include/lexique .php ou include/lexique_no.php (le fichi
 .. code-block::
 
    // affichage lexique
-
    define('LEXIQUE', true);
 
 |image174|
@@ -724,6 +721,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notificatio
 Extrait:
 
 .. code-block::
+
    return {
 	on = {
 		variables = {
@@ -851,18 +849,12 @@ c’est le script décrit ici qui enregistre les dates des ramassages réels eff
 .. code-block::
 
    -- Structure de la table `date_poub`
-
    --
    CREATE TABLE `date_poub` (
-
   `num` int(11) NOT NULL,
-
   `date` text NOT NULL,
-
   `valeur` text NOT NULL,
-
   `icone` text NOT NULL
-
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 - Les 2 icones svg : |image209|
@@ -882,6 +874,7 @@ Idx_idimg existe déjà dans footer.php , sa valeur est « poubelle_grise » ou 
 on va **ajouter une variable pour l’icône dans les données json**
 
 .. code-block::
+
    $("#poubelle").click(function () {
    var date_poub=new Date();
    var jour_poub=date_poub.getDate();
@@ -929,6 +922,7 @@ Dans fonctions.php , la fonction :darkblue:`sql_app`
 Et pour ajouter l’icône au fichier json concernant les variables :
 
 .. code-block::
+
    function status_variables($xx){
    $p=0;$n=0;	
    if(IPDOMOTIC != ""){
