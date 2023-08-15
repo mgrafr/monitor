@@ -115,7 +115,7 @@ Avant nettoyage :
 
    on supprime la partie ci-dessus (jusqu’à « <style>) et on la remplace par : 
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       <svg version="1.1" id="Calque_1" viewBox="0 0 150 150">
 
@@ -151,12 +151,10 @@ La construction est sensiblement la même, la différence pour notre sujet, rés
 
    :red:`Dans Inkscape, lors de la construction, il est possible d’ajouter du javascript, avec AI, il faut l’ajouter avec un éditeur de texte ou dreamweaver.`
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       <g
-
       id="ouverture_porte_sejour"
-
       onclick="popup_device(7)"
 
 **Attention aux styles après construction** :
@@ -295,12 +293,10 @@ Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué au §
 - Enregistrer l’image au format PHP dans le dossier /include:  interieur_svg.php	(utilisé ici)
 *le fichier PHP commence par <svg ....,  supprrimer la ligne <?xml version="1.0" encoding="utf-8"?>*
 
-.. code-block:: 'fr'
+.. code-block::
 
    <svg
-
    version="1.1"
-
    id="Calque_1"
 
 - Récupérer dans Domoticz les noms et les idx des dispositifs
@@ -325,10 +321,9 @@ Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué au §
 
 L’appel ajax : appelle la fonction PHP devices_plan($variable), la variable est le N° du Plan
 
-.. code-block:: 'fr'
+.. code-block::
 
    if ($app=="devices_plan") {if (DECOUVERTE==true) {include('include/json_demo/devices_plan_json.php');return;}
-
    else {$retour=devices_plan($variable);echo json_encode($retour); }}
 
 - La fonction PHP :darkblue:`devices_plan($variable)`:
@@ -381,30 +376,19 @@ C’est la fonction javascript :darkblue:`popup_device` du fichier footer.php qu
 
 Cette fonction est activée par un onclick que l’on ajoute dans l’image ; par contre la BD n’est pas nécessaire pour cet affichage, à condition que le onclick possède comme id l’idx de Domoticz.
 
-.. code-block:: 'fr'
+.. code-block::
 
    id="temp_cuisine"
-
    onclick="popup_device(21)"
-
    inkscape:transform-center-x="-23.52"
-
    inkscape:transform-center-y="31.36"><tspan
-
      sodipodi:role="line"
-
      id="tspan4545-8"
-
      x="60.40955"
-
      y="281.74768">temp</tspan></text><g
-
    id="ouverture_porte_salon"
-
    transform="matrix(0.16425446,0,0,0.17058408,527.48825,763.57501)"
-
    onclick="popup_device(38)"><path
-
    ...
 
 popup_device(:red:`21`) --> :red:`21` = idm
@@ -460,7 +444,7 @@ C’est la fonction PHP « :darkblue:`upload_img($idx)` » appelée par ajax qui
 
 Le script JS dans footer.php :
 
-.. code-block:: 'fr'
+.. code-block::
 
 	function popup_device(nom) {
 	if (nom < 10000){if (pp[nom]){
@@ -511,7 +495,7 @@ Le fichier de configuration :darkblue:`admin/config.php` :
 
 L’affichage de cette config est géré par un script JS : :darkblue:`modalink` et non par une fenêtre modale qui est déjà ouverte pour l’image ; appel de ce script par le bouton dans la modale de l’image.
 
-.. code-block:: 'fr'
+.. code-block::
 
    <!-- section intérieur start ---- fichier interieur.php-->
    <div id="interieur" >
@@ -536,22 +520,21 @@ Plus d'infos sur modalink : https://github.com/dmhendricks/jquery-modallink
 .. code-block:: 'fr'
 
    $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert("Zoneminder non installé");}
-  else {$.modalLink.open("ajax.php?app=upload_conf_img&name="+dahua+"&command="+dahua_type+"&variable="+ip_cam+"&idx="+idx_cam+"&type="+zoneminder,{
-  // options here
+   else {$.modalLink.open("ajax.php?app=upload_conf_img&name="+dahua+"&command="+dahua_type+"&variable="+ip_cam+"&idx="+idx_cam+"&type="+zoneminder,{
+   // options here
 	  height: 400,
 	  width: 400,
 	  title:"configuration de la caméra",
 	  showTitle:true,
 	  showClose:true
-  }); }
-  });
+   }); }
+   });
 
 **Dans mes_js.js** : 
 
-.. code-block:: 'fr'
+.. code-block::
 
    (function ($) {
-
     $.modalLinkDefaults = {
             height: 600,
             width: 900,
@@ -599,7 +582,7 @@ Extrait de cette fonction
 
    Dire à Curl d'accepter plusieurs méthodes comme ceci :
 
-   .. code-block:: 'fr'
+   .. code-block:: 
 
       curl_easy_setopt(curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC | CURLAUTH_DIGEST);
 
@@ -611,7 +594,7 @@ Extrait de cette fonction
 
    Comme le token peut être utile dans d’autres pages création d’une fonction pour cela :
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       function token_zm(){
 	if ($_SESSION['time_auth_zm']<=time() || ($_SESSION['auth_zm']=="")){
@@ -663,7 +646,7 @@ La notification se fait :
 
 	css
 
-.. code-block:: 'fr'
+.. code-block::
 
    /*aff batterie */
    .aff_bat{position: absolute;top: 810px;left: 120px;}
@@ -715,7 +698,7 @@ Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/
 
    Les valeurs sont définies dans le fichier de configuration /admin/config.php :
 
-   .. code-block:: 'fr'
+   .. code-block::
 
       define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faible) de l'energie restante  
       '17',
@@ -793,24 +776,16 @@ On a choisi de limiter le nb de caractère à 4, à l’origine : |image351|
 
 **L’image** :
 
-.. code-block:: 'fr'
+.. code-block::
 
    <svg version="1.1" id="th_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-
 	 viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
-
    <a xlink:href="#interieur" onclick="popup_device(23)"><path style="fill: #84bef1;" rel="23" d="M9,11.2V7h2v4.2c1.6,0.6,2.4,2.3,1.8,3.8c-0.6,1.6- 
-
   2.3,2.4-3.8,1.8S6.6,14.6,7.2,13C7.5,12.1,8.1,11.5,9,11.2z M8,10.5
-
 	c-1.9,1.1-2.6,3.6-1.5,5.5s3.6,2.6,5.5,1.5c1.9-1.1,2.6-3.6,1.5-5.5c-0.4-0.6-0.9-1.1-1.5-1.5V4c0-1.1-0.9-2-2-2S8,2.9,8,4V10.5
-
 	L8,10.5z M6,9.5V4c0-2.2,1.8-4,4-4s4,1.8,4,4v5.5c2.5,2.2,2.7,6,0.5,8.5c-1.1,1.3-2.8,2-4.5,2c-3.3,0-6-2.7-6-6
-
 	C4,12.3,4.7,10.7,6,9.5z"/></a
-
    <text id="temp_ext_cuisine" transform="matrix(0.6725 0 0 1 7.4663 15.254)" class="st33 st36b">tmp</text>
-
    </svg>
 
 |image352|
@@ -864,7 +839,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/interieur.php
 
 Extrait du fichier index_loc.php : pour info, **en général ne pas modifier ce fichier** 
 
-.. code-block:: 'fr'
+.. code-block::
 
    include ("include/accueil.php");// l' affichage page accueil
    if (ON_MET==true) include ("include/meteo.php");	// une page de prévision météo
@@ -875,12 +850,10 @@ Comme pour entete_html.php, header.php, accueil.php, config.php, interieur.php e
 
 Extrait du fichier include/header.php :
 
-.. code-block:: 'fr'
+.. code-block::
 
    <li class="zz active"><a href="#header">Accueil</a></li> 
-
    <?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
-
    <li class="zz"><a href="#interieur">Intérieur</a></li>
 
 |image360|
@@ -889,11 +862,9 @@ Extrait du fichier include/header.php :
 
 Le style existe déjà pour toutes les pages , pour les modifier :
 
-.. code-block:: 'fr'
+.. code-block::
    #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
-
       #app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
-
       background-color: aquamarine;}
 
 |image362|
@@ -917,101 +888,56 @@ avec plusieurs valeurs tels que température+ Humidité température +batterie,.
 
 https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9paration_valeurs.lua
 
-.. code-block:: 'fr'
+.. code-block::
 
    local scriptVar = 'separation_valeurs'
-
    return 
    {
-
     on = { customEvents = { scriptVar, },
-
         httpResponses =   { scriptVar, },
-
     },
-
     logging =
-
     {  level = domoticz.LOG_DEBUG, -- LOG_ERROR 
-
        marker = scriptVar,
     },
-
     execute = function(dz, item)
-
         lodash = dz.utils._
-
         local function sendURL(idx, temperature,batteryLevel) --CAPTEURS TEMPERATURE: svalue=temp    battery= volts battery
-
         local url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=udevice&idx=' .. idx .. '&nvalue=0&svalue=' .. temperature .. '&battery=' .. batteryLevel;
-
         dz.openURL({   url = url,
-
                 callback = scriptVar,})
-
         end
-
         local function sendURL1(idx, temperature,humidity,confort,batteryLevel) --CAPTEURS TEMPERATURE+HUMIDITE : svalue=temp;hum;Humidity_status   battery=volts battery
-
         local url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=udevice&idx=' .. idx .. '&nvalue=0&svalue=' .. temperature ..';'..  humidity ..';' .. confort .. '&battery=' .. batteryLevel;
-
         dz.openURL( { url = url,
-
                 callback = scriptVar,})
-
         end
-
             if item.isCustomEvent then 
-
             mqtt = item.data;print ("q:" .. mqtt)
-
             mqtt = dz.utils.fromJSON(mqtt) 
-
             local batteryLevel = mqtt.batteryLevel
-
             local temperature = mqtt.temperature 
-
             local humidity = mqtt.humidity
-
             local humidity_status=tonumber(humidity);print ("q:" .. humidity_status)
-
                 if (humidity_status<30) then confort = "2" ;
-
                 elseif (humidity_status>39 and humidity_status<60) then confort = "1" ;
-
                 elseif (humidity_status>59 and humidity_status<80) then confort = "0" ;
-
                 elseif (humidity_status>79) then confort = "3";
-
                 else confort = "3" 
-
                 end
-
             local idx = mqtt.idx;
-
             local type=dz.devices(idx).deviceType;print("type" .. tostring(type) .. ' ,  humidity_status : ' .. tostring(confort));
-
             if (type=='Temp')  then sendURL(idx, temperature, batteryLevel);
-
             elseif (type=='Temp + Humidity') then sendURL1(idx, temperature, humidity, confort, batteryLevel);
-
             else print("pas de dispositif trouvé");
-
             end
-
         elseif not item.ok then
-
             dz.log('Problèm avec l\'envoi de la temperature ou  batteryLevel' .. lodash.str(item), dz.LOG_ERROR)
-
         else
-
             dz.log('All ok \n' .. lodash.str(item.data) .. '\n', dz.LOG_DEBUG) 
-
         end
-
     end
-    
-   }
+    }
 
 **Depuis Domoticz 2021.1**
 
