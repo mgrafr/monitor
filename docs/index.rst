@@ -51,7 +51,7 @@ Mises à jour
 |image2| Tous les fichiers sont sur Github :
 
 Table de matières
---------
+-----------------
 :doc:`guides/sommaire`
   sommaire
 
