@@ -8,7 +8,7 @@ Monitor-domotique Documentation
 
 .. toctree::
         
-        :maxdepth: 4
+        :maxdepth: 3
 
         guides/modifications.rst
         guides/sommaire.rst
@@ -35,7 +35,8 @@ Monitor-domotique Documentation
 
 Github Repository <https://github.com/mgrafr/monitor>    
 
- |image1| 
+ |image1|
+
 **Logiciel monitor version 2.2.0**
 
 *maj manuel 2.2.1 du 27/07/2023*
@@ -49,18 +50,18 @@ Mises à jour
 
 |image2| Tous les fichiers sont sur Github :
 
-Sommaire
-----------------
+Table de matières
+--------
 :doc:`guides/sommaire`
   sommaire
 
 Bien débuter
-----------------
+------------
 :doc:`guides/bien_debuter`
     bien débuter
 
 Configuration minimum
-----------------
+---------------------
 :doc:`guides/configuration_minimum`
     Configuration minimum
 
@@ -80,12 +81,12 @@ Coté Jardin
    Coté jardin
 
 Alarme
------------
+------
 :doc:`guides/alarme`
   Alarme
 
 Graphiques et Base de données
------------
+-----------------------------
 :doc:`guides/graphiques`
   Graphiques et Base de données
 
@@ -120,7 +121,7 @@ App Diverses
      App Diverses
 
 Applications  Externes
---------------
+----------------------
 :doc:`guides/aaa_externes`   
     Applications externes
 
@@ -130,12 +131,12 @@ Administration
     Administration
 
 Exemples
---------------
+--------
 :doc:`guides/exemples`   
     Exemples
 
 Ajout Page Alertes
---------------
+------------------
 :doc:`guides/ajout_page_alertes`   
    Ajout Pages Alertes
 
@@ -145,7 +146,7 @@ Mon Installation
     Mon Installation
 
 Divers
-----------------
+------
 :doc:`guides/divers`
     Divers
 
