@@ -16,10 +16,9 @@ Pour éviter des problèmes de capacité mémoire, vider le cache périodiquemen
 
 |image556|
 
-Ici la mémoire sera libérée des données cache et tampon tous les jours à 12H ; plus d’ infos :
+Ici la mémoire sera libérée des données cache et tampon tous les jours à 12H ; 
 
-.. _a link: 
-   https://www.tomzone.fr/vider-la-memoire-cache-dun-serveur-linux/#:~:text=Par%20exemple%20pour%20vider%20tous%20les%20jours%20%C3%A0,%2A%20%2A%20%2A%20sync%3B%20echo%203%20%3E%20%2Fproc%2Fsys%2Fvm%2Fdrop_caches
+**plus d’ infos** : https://www.tomzone.fr/vider-la-memoire-cache-dun-serveur-linux/#:~:text=Par%20exemple%20pour%20vider%20tous%20les%20jours%20%C3%A0,%2A%20%2A%20%2A%20sync%3B%20echo%203%20%3E%20%2Fproc%2Fsys%2Fvm%2Fdrop_caches
 
 |image557|
 
