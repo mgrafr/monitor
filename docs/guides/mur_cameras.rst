@@ -69,10 +69,13 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
    <link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
 
-.. info:: https://github.com/gitbrent/bootstrap-switch-button/releases/latest
+.. info:: 
+
+   https://github.com/gitbrent/bootstrap-switch-button/releases/latest
 
 7.2- la page de monitor 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 - **mur_cam.php**
 
  |image563|
@@ -92,8 +95,11 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 .. warning::
 
    **IMPORTANT** : le fichier include/mur_cameras.php est indépendant du programme (‘est une image en retour) et de ce fait on ne peut utiliser les constantes définies dans admin/config.php
+   
    On va donc pour remédier à ce problème :
+
    -	passer l’url en paramètre ainsi que l’Idx
+
    -	utiliser les variables de session :red:`$_SESSION["zmuser"] et $_SESSION["zmpass"] pour le login et le mot de passe` car ces données sont sensibles 
 
 **Les fichiers sont tous UTF-8 sans BOM** et l’url des caméras doit se trouver dans :darkblue:`mur_cam.php`. (:red:`ZMURL dans mur_cam.php` et non dans mur_cameras.php); 
