@@ -40,7 +40,7 @@ Pour le test sirène : un interrupteur « PUSH »
 
 On ajoute les dispositifs au plan ; 
 
-.. info::
+.. note::
    le plan peut se résumer à un simple cadre ou être très simplifié, il ne sert qu’à regrouper les dispositifs pour récupérer les données avec un seul appel à l’API json
 
 |image414|
@@ -65,7 +65,7 @@ o	2  = alarme nuit activée, les capteurs PIR sont ignorés
 
 -	**intrusion**
 
--	**alarme* : est utilisée pour un affichage sur la page d’accueil ; 
+-	**alarme** : est utilisée pour un affichage sur la page d’accueil ; 
 
 -	**activation-sir-txt**, texte activation de la sirène : activer ou désactiver
 
@@ -120,7 +120,7 @@ voir ce paragraphe  :ref:`scriptluatimer`
       Pour les textes : notifications_devices.lua
    .. code-block:: 'fr'
 
-     -- activation sirène
+      -- activation sirène
             if (device.name == 'activation-sirene' and  device.state=='On') then domoticz.variables('activation-sir-txt').set("désactiver");
             else domoticz.variables('activation-sir-txt').set("activer");
             end  
@@ -637,14 +637,23 @@ Cette liste est établie automatiquement avec une fonction dans « administratio
    |image518|
 
    .. code-block:: 'fr'
+
       <svg version="1.1" id="zm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+
 	 viewBox="0 0 326 18" style="width:500px" xml:space="preserve">
+
       <style type="text/css">
+
 	.st208{fill:#03A8F3;}
+
 	.st207{font-size:13.5px;}
+
       </style><a id="zm" href="#alarmes">
+
       <rect x="0.9" y="-0.7" class="st208" width="31.2" height="18.8"/>
+
       <text transform="matrix(1 0 0 1 5.4312 13.3434)" class="st203 st33 st207">Z M</text></a>
+
       </svg>
 
    Dans footer.php , on appelle la fonction php  sql_app() qui est déjà utilisé dans « administration »
