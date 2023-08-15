@@ -24,8 +24,8 @@ extensions = [
        'sphinx.ext.autosectionlabel',
        'sphinx.ext.intersphinx'
       ]
-language = os.getenv("READTHEDOCS_LANGUAGE", "fr")
-# language = 'fr'
+# language = os.getenv("READTHEDOCS_LANGUAGE", "fr")
+language = 'fr'
 html_theme = "sphinx_rtd_theme"
 html_theme_path = ["_themes", ]
 html_static_path = ["_static"]
