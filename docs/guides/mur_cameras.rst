@@ -18,7 +18,7 @@ Pour éviter des problèmes de capacité mémoire, vider le cache périodiquemen
 
 Ici la mémoire sera libérée des données cache et tampon tous les jours à 12H ; 
 
-**plus d’ infos** : https://www.tomzone.fr/vider-la-memoire-cache-dun-serveur-linux/#:~:text=Par%20exemple%20pour%20vider%20tous%20les%20jours%20%C3%A0,%2A%20%2A%20%2A%20sync%3B%20echo%203%20%3E%20%2Fproc%2Fsys%2Fvm%2Fdrop_caches
+.. note:: **plus d’ infos** : https://www.tomzone.fr/vider-la-memoire-cache-dun-serveur-linux/
 
 |image557|
 
@@ -37,7 +37,10 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
 .. code-block:: 
 
-   if (ON_MUR==true) {include ("include/mur_cam.php");$_SESSION["zmuser"]=ZMUSER;
+   if (ON_MUR==true) {include ("include/mur_cam.php");
+   $_SESSION["zmuser"]=ZMUSER;$_SESSION["zmpass"]=ZMPASS;}
+
+.. note:: $_SESSION["zmuser"]=ZMUSER;$_SESSION["zmpass"]=ZMPASS;}: voir les explications ci-après
 
 - **config.php**
 
@@ -64,10 +67,54 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
    <link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
 
-7.2- la page de monitor : mur_cam.php
+.. info:: https://github.com/gitbrent/bootstrap-switch-button/releases/latest
+
+7.2- la page de monitor 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- **mur_cam.php**
 
+ |image563|
 
+- **Le script du bouton On/Off** , dans footer , ajouter cette ligne:
+
+.. code-block:: 
+
+   <script src="bootstrap/bootstrap-switch-button.js"></script>
+
+|image565|
+
+- **mur_cameras.php**
+
+|image566|
+
+.. warning::
+
+   **IMPORTANT** : le fichier include/mur_cameras.php est indépendant du programme (‘est une image en retour) et de ce fait on ne peut utiliser les constantes définies dans admin/config.php
+   On va donc pour remédier à ce problème :
+   -	passer l’url en paramètre ainsi que l’Idx
+   -	utiliser les variables de session :red:`$_SESSION["zmuser"] et $_SESSION["zmpass"] pour le login et le mot de passe` car ces données sont sensibles 
+
+**Les fichiers sont tous UTF-8 sans BOM** et l’url des caméras doit se trouver dans :darkblue:`mur_cam.php`. (:red:`ZMURL dans mur_cam.php` et non dans mur_cameras.php); 
+
+Extrait de mur_cam.php
+
+.. code-block:: 
+
+   <?php
+   $scale=100;$i=1;$j=1;
+   while ($i <= NBCAM) {
+	   $camImgId="cam".$i;
+	   if ($j==1) {echo "<tr>";}
+  	   echo '<td>
+	   <img id="'.$camImgId.'" src="include/mur_cameras.php?idx='.$i.'&url='.ZMURL.'&x=" rel="'.$i.'" class="dimcam" alt=""/></td>';
+	   if (($j==2) || ($i==NBCAM)){ echo "</tr>";$j=0;}
+     $i++;$j++;}				
+
+|image568|
+
+7.3- Les scripts JS pour la vidéo dans footer.php 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Le Zoom Bootstrap :
 
 
 .. |image555| image:: ../media/image555.webp
@@ -80,3 +127,12 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
    :width: 601px
 .. |image561| image:: ../media/image561.webp
    :width: 570px
+.. |image563| image:: ../media/image563.webp
+   :width: 608px
+.. |image565| image:: ../media/image565.webp
+   :width: 581px
+.. |image566| image:: ../media/image566.webp
+   :width: 700px
+.. |image568| image:: ../media/image568.webp
+   :width: 603px
+
