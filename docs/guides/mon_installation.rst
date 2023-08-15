@@ -149,17 +149,15 @@ Le serveur Domoticz et ce PI4 sont reliés par une liaison série ; à partir d�
 Le système est sauvegardé par le logiciel Raspibackup :
  http://domo-site.fr/accueil/dossiers/81
 
-
- 
-
-
 Le PI4 assure aussi :
 -	La sauvegarde RAID1, mais celle-ci n’est pas sauvegardée et un reboot du PI est nécessaire en cas de coupure de courant ; une fonction existe, pour cela, dans monitor….. http://domo-site.fr/accueil/dossiers/60
+
 -	Le monitoring (Nagios) : http://domo-site.fr/accueil/dossiers/71
+
 Conf Nginx :
- 
 
 Installation du système et du raid1 : http://domo-site.fr/accueil/dossiers/60
+
 Scripts installés en plus de raspibackup et Nagios :
  
 -	msmtp , pour envoyer des emails facilement 
