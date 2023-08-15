@@ -120,7 +120,10 @@ Le Zoom Bootstrap :
 
 |image569|
 
-Rafraichissement des images ; pour limiter l’utilisation de la bande passante, le rafraichissement des images n’a lieu que si le bouton est sur ON ; par contre même sur OFF le zoom d’une caméra est opérationnel
+
+.. important::
+
+   Rafraichissement des images ; pour limiter l’utilisation de la bande passante, le rafraichissement des images n’a lieu que si le bouton est sur ON ; par contre même sur OFF le zoom d’une caméra est opérationnel
 
 .. |image555| image:: ../media/image555.webp
    :width: 332px
