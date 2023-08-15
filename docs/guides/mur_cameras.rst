@@ -42,7 +42,7 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
 .. note:: 
 
-   $_SESSION["zmuser"]=ZMUSER;$_SESSION["zmpass"]=ZMPASS;}: voir les explications ci-après
+   $_SESSION["zmuser"] et $_SESSION["zmpass"], voir les explications ci-après
 
 - **config.php**
 
@@ -119,6 +119,8 @@ Extrait de mur_cam.php
 Le Zoom Bootstrap :
 
 |image569|
+
+Rafraichissement des images ; pour limiter l’utilisation de la bande passante, le rafraichissement des images n’a lieu que si le bouton est sur ON ; par contre même sur OFF le zoom d’une caméra est opérationnel
 
 .. |image555| image:: ../media/image555.webp
    :width: 332px
