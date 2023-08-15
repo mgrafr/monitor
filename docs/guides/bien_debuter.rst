@@ -4,21 +4,29 @@
 0.1	Prérequis, installation : différents choix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -	Après l’installation de Proxmox :
+
 Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), monitor : https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
 
 - 	    installation automatique : LEMP + monitor (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
 
 - 	    installation uniquement de monitor (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
 -	L’installation de Proxmox voir (:ref:`21.1 Proxmox`)
 
--	Création d’un conteneur LXC 
--	Debian 12, et les dépendances sudo, curl, ….
+-	Création d’un conteneur LXC
+
+-	Debian 12, et les dépendances sudo, curl,...
+
 -	Nginx, PHP 8.2, maria db, phpMyAdmin, monitor
+
 -	Quelques programme python utiles : pip, Paho-mqtt
+
 -	Un utilisateur système est crée
+
 -	Un utilisateur MySQL PMA et monitor est aussi crée 
+
 Télécharger depuis le Shell de PVE le fichier d’installation install.sh :
 
 .. code-block:: 'fr'
@@ -127,7 +135,7 @@ Fin de l'installation:
 
    |image27| 
  
-   **phpMyAdmin :   Accès par monitor**
+   **phpMyAdmin** :   Accès par monitor
 
    |image28| 
 
@@ -585,6 +593,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 .. warning::
    En cas d ‘absence de base de données ou de mauvais paramétrages ,sur la page d' accueil :
+
    **" pas de connexion à la BD "**
 
 **Ajout à la base de données des données fournie par Domoticz **
@@ -639,8 +648,8 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
    .. warning::
 
       **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
-      (le programme fonctionne mais l’API renvoie « NULL »)
 
+      (le programme fonctionne mais l’API renvoie « NULL »)
    
    . Idx , id de la variable du serveur domotique(dz)
    		ex : idx de Domoticz
@@ -665,11 +674,16 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
    .. code-block:: 'fr'
 
       -- le fichier connect.py est modifié ` 
+
       f = io.open("userdata/scripts/python/connect.py", "w")
+
                     env="#!/usr/bin/env python3"
+
                     f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
+
                     f:close()
-		    -- on modifie la variable
+
+	 -- on modifie la variable
                     domoticz.variables('BASH').set("restart_sms_dz")	
  
    **Dans SQL** :
@@ -890,8 +904,8 @@ Exemple pour une table temp_meteo :
 - date : la date et l’heure
 - valeur : la température
 
-0.4 Le serveur http de NGINX :
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+0.4 Le serveur http de NGINX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image101| 
 
 **Configuration de monitor** : :darkblue:`/admin/config.php`
@@ -1045,7 +1059,7 @@ Affichage de graphique avec jpgraph
 |image114|
 
 0.9 Les fichiers Javascript & Python
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Utilisation de jQuery
 
 |image115| |image116|
