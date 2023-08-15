@@ -84,7 +84,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notificatio
 
 Script :darkblue:`notifications_variables.lua`, lignes concernées 
 
-.. code-block:: 'fr'
+.. code-block::
 
    if (domoticz.variables('porte-ouverte').changed) then  
 	             txt=tostring(domoticz.variables('porte-ouverte').value) 
@@ -143,25 +143,15 @@ voir ce paragraphe  :ref:`scriptluatimer`
  .. code-block::
 
    #!/bin/bash
-
    TITLE="Alerte"
-
    APP_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
    USER_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
    MESSAGE=$1
-
    echo $1
-
    curl -s -F "token=$APP_TOKEN" \
-
    -F "user=$USER_TOKEN" \
-
    -F "title=$TITLE" \
-
    -F "message=$MESSAGE" \
-
    https://api.pushover.net/1/messages.json
 
 *Ou en Python* :
@@ -169,21 +159,13 @@ voir ce paragraphe  :ref:`scriptluatimer`
 .. code-block::
 
    #!/bin/python
-
    import requests,sys
-
    x= str(sys.argv[1])
-
    r = requests.post("https://api.pushover.net/1/messages.json", data = {
-
    "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-
    "user": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-
    "message": x
-
    })
-
    print(r.text)
 
 Voir les pages web :
@@ -415,7 +397,7 @@ Il ne reste qu’à :
 
 	- Ajouter cette page dans config.php
 
-.. code-block:: 'fr'
+.. code-block::
 
    define('ON_ALARM',true);// affichage pour utilisation de l'alarme
 
@@ -658,21 +640,13 @@ Cette liste est établie automatiquement avec une fonction dans « administratio
    .. code-block::
 
       <svg version="1.1" id="zm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-
 	 viewBox="0 0 326 18" style="width:500px" xml:space="preserve">
-
       <style type="text/css">
-
 	.st208{fill:#03A8F3;}
-
 	.st207{font-size:13.5px;}
-
       </style><a id="zm" href="#alarmes">
-
       <rect x="0.9" y="-0.7" class="st208" width="31.2" height="18.8"/>
-
       <text transform="matrix(1 0 0 1 5.4312 13.3434)" class="st203 st33 st207">Z M</text></a>
-
       </svg>
 
    Dans footer.php , on appelle la fonction php  sql_app() qui est déjà utilisé dans « administration »
