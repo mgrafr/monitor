@@ -44,7 +44,7 @@ Il faut ajouter la page au site ; la procédure est toujours la même :
 
   Mettre la variable à « true » ; *il faut au préalable demander un token gratuit*.
 
-.. code-block:: 'fr'
+.. code-block::
 
    // Page Météo  meteo concept
    define('ON_MET',true);// affichage page TOKEN PBLIGATOIRE
@@ -54,7 +54,7 @@ Il faut ajouter la page au site ; la procédure est toujours la même :
 
 Dans header.php, l’affichage dans le menu est alors automatique.
 
-.. code-block:: 'fr'
+.. code-block::
 
    <?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
 
@@ -66,7 +66,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/meteo.php
 
 _ **Les css : en plus du style pour la page** 
 
-.. code-block:: 'fr'
+.. code-block::
 
    .meteo_concept_am  {display: inline;width: 150px;margin-left: -20px;}
    #meteo_concept_am{position: relative;top: 20px;margin-left: -20px;}
@@ -88,7 +88,7 @@ Ne fait pas partie de la page météo : affichage sur la page d’accueil
 
 **Extrait de accueil.php** :
 
-.. code-block:: 'fr'
+.. code-block::
 
    <div class="aff_pluie" >
 	 <div id="pluie" ><img id="pl" src="" alt="pluie" /></div><div id="txt_pluie"></div></div>
@@ -105,7 +105,7 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
 
 - *ajax.php* :
 
-.. code-block:: 'fr'
+.. code-block::
 
    if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour);}
 
@@ -134,7 +134,7 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - relevés temps réel depuis une station 
 
-.. code-block:: 'fr'
+.. code-block::
 
    case 3://prévision horaire
    $url = 'https://api.meteo-concept.com/api/forecast/nextHours?&token='.TOKEN_MC.'&insee='.INSEE;
@@ -149,7 +149,7 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
 
 - prévision heure par heure : peut remplacer Darsky (devenu payant) ou OpenWeatherMap, c’est français et plus facile d’utilisation, nombreux exemple sur le site web Méteoconcept
 
-.. code-block:: 'fr'
+.. code-block::
 
    case 2:// relevé temps réel station la pus proche (40Km)
    $url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&token='.TOKEN_MC.'&insee='.INSEE;
