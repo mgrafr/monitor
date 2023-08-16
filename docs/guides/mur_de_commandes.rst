@@ -125,9 +125,24 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
       # Loop forever
       mqttc.loop_forever()
 
- Paho  |paho|
+|paho|
  
 https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
+
+Pour éviter des erreurs (512, 256), penser à convertir le fichier python en Unix s’il a été créé
+avec Notepad++
+
+.. admonition:: **dos2unix**
+   installation  et commande bash pour convertir le fichier en Unix
+
+    .. code-block:: 
+
+       sudo apt install dos2unix
+
+   .. code-block::
+
+      dos2unix <CHEMIN/NOM DU FICHIER>
+
 
 8.2.4 Exemple volet roulant
 =============================
