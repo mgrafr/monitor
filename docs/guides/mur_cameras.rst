@@ -129,7 +129,41 @@ Le Zoom Bootstrap :
 
 .. important::
 
-   Rafraichissement des images ; pour limiter l’utilisation de la bande passante, le rafraichissement des images n’a lieu que si le bouton est sur ON ; par contre même sur OFF le zoom d’une caméra est opérationnel
+   **Rafraichissement des images** 
+
+   Pour limiter l’utilisation de la bande passante, le rafraichissement des images n’a lieu que si le bouton est sur ON ; par contre même sur OFF le zoom d’une caméra est opérationnel
+
+   La fonction updateImage() dans footer.php
+
+  .. code-block:: 
+ 
+   function updateImage(camIndex)
+   {if (arret_mur==0) return false;
+	// get cam image ID
+	camImgId="cam" + camIndex;
+	
+	// if cam image element is fully downloaded
+	if (document.getElementById(camImgId).complete==true) 
+	{	now=new Date();
+	// update cam index to next cam
+		camIndex++;
+		if (camIndex > nbrCam) camIndex=1;
+		// update next cam URL to force refresh
+		camImgId="cam" + camIndex;
+	 
+		camImg=document.getElementById(camImgId);
+		camImgURL=camImg.src;console.log('gg'+camImgURL);
+		camImg.src=URL[camIndex]+now.getTime();
+	}
+
+   |image571|
+
+.. ATTENTION:: Les caméras ne sont pas en https, pour éviter les certificats, mais comme l’accès se fait en local (sur le réseau 192.168.1.x) et enregistre une image, sur le serveur, chaque 100ms pour recréer une 
+   vidéo, l’accès distant en https est assuré.
+
+   |image572|
+
+
 
 .. |image555| image:: ../media/image555.webp
    :width: 332px
@@ -151,6 +185,8 @@ Le Zoom Bootstrap :
    :width: 603px
 .. |image569| image:: ../media/image569.webp
    :width: 602px
-
-
+.. |image571 image:: ../media/image571.webp
+   :width: 538px
+.. |image572 image:: ../media/image572.webp
+   :width: 566px
 
