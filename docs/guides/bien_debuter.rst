@@ -781,11 +781,6 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	-	popup //ouverture d’une fenêtre (commandes particulières)
 		.	exemple des scripts générés automatiquement 
 
-.. _interonoff:
-  
-Inter on off
-~~~~~~~~~~~~
-
 .. code-block::	
 
    /* switchOnOff*  */
@@ -809,6 +804,11 @@ Inter on off
    $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
    $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
  
+.. _switches:
+
+switches
+********
+
 le script dans footer.php pour ajouter le javascript automatiquement:
 
 .. code-block::
