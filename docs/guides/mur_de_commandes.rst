@@ -37,7 +37,11 @@ Index_loc.php en général ne pas modifier
 ========================================
 Effectuée par une fonction PHP à partir de la base de données
 
-voir le § :ref:`le script dans footer.php pour ajouter le javascript automatiquement <bien_debuter>`_
+Extrait de la page html pour des commandes pour Domoticz et Home Assistant:
+
+|image580|
+
+voir le § :ref:`switches <bien_debuter>`
 
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
@@ -52,4 +56,5 @@ voir le § :ref:`le script dans footer.php pour ajouter le javascript automatiqu
    :width: 528px
 .. |image575| image:: ../media/image575.webp
    :width: 629px
-
+.. |image580| image:: ../media/image580.webp
+   :width: 700px
