@@ -826,9 +826,9 @@ En plus clair :
 
 .. note::
 
-Pour les interrupteurs réels : l’API retourne un tableau vide , d’où un appel de l’API/states pour avoir une confirmation du changement d’état.
+   Pour les interrupteurs réels : l’API retourne un tableau vide , d’où un appel de l’API/states pour avoir une confirmation du changement d’état.
 
-Pour faire des essais à partir d’un navigateur :
+   Pour faire des essais à partir d’un navigateur :
 
 |image208|
 
