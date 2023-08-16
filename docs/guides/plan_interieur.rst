@@ -163,7 +163,7 @@ La construction est sensiblement la même, la différence pour notre sujet, rés
 
 .. warning::
 
-:red:`Un style qui existe alors qu’il n’est pas utilisé crée une erreur`
+   :red:`Un style qui existe alors qu’il n’est pas utilisé crée une erreur`
 
 .. admonition:: **La construction de mon plan** 
 
@@ -290,7 +290,8 @@ Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué au §
 
  |image279|
 
-- Enregistrer l’image au format PHP dans le dossier /include:  interieur_svg.php	(utilisé ici)
+- Enregistrer l’image au format PHP dans le dossier /include:  interieur_svg.php (utilisé ici)
+
 *le fichier PHP commence par <svg ....,  supprrimer la ligne <?xml version="1.0" encoding="utf-8"?>*
 
 .. code-block::
@@ -421,7 +422,7 @@ La table « cameras » dans la base de données SQL a été remplie, voir le par
 
 **Seulement si Zoneminder est utilisé** :
 
-.. admonition:: **Pour retrouver l’ID Zoneminder **
+.. admonition:: **Pour retrouver l’ID Zoneminder**
 
    pour toutes les cameras :
 
@@ -475,7 +476,7 @@ Le fichier de configuration :darkblue:`admin/config.php` :
 
 .. admonition:: **Configuration de Zoneminder**
 
-   **accès aux données* : API 2.0 
+   **accès aux données** : API 2.0 
 
    - le token :
 
@@ -626,7 +627,7 @@ Extrait de cette fonction
 ========================================
 Assurée par la fonction PHP :darkblue:`devices_plan()`, vue précédemment ; la variable dans la base de données SQL a aussi été décrite lors de la configuration minimale
 
-*Table « dispositifs » : variables
+*Table « dispositifs »* : **variables**
 
 |image322| 
 
@@ -672,7 +673,7 @@ effectué par Domoticz:
 
 Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_variables.lua
 
-.. admonition:: *Pour une meilleure compréhension de la gestion des piles
+.. admonition:: **Pour une meilleure compréhension de la gestion des piles**
 
    **Calcul du niveau des piles**
 
@@ -863,13 +864,12 @@ Extrait du fichier include/header.php :
 Le style existe déjà pour toutes les pages , pour les modifier :
 
 .. code-block::
+
    #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
       #app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
       background-color: aquamarine;}
 
 |image362|
-
-
 
 2.5 F12 des navigateurs pour faciliter la construction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
