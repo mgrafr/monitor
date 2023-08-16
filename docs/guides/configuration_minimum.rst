@@ -514,7 +514,7 @@ Le HTML :
 
   lorsqu’une tablette reste connectée en permanence, donc sans rafraichissement , la date affichée doit être rafraichie.
 
-  Une solution pour la maj de la date : un script qui tourne en permanence sur la tablette : je n’ai pas retenu cette solution car un script dans Domoticz gère très bien la gestion du temps.  :ref:`Maj de la date>`
+  Une solution pour la maj de la date : un script qui tourne en permanence sur la tablette : je n’ai pas retenu cette solution car un script dans Domoticz gère très bien la gestion du temps.  :ref:`refmajdate`
 
 .. admonition:: **solution JS sur la tablette**
 
