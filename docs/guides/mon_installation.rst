@@ -147,7 +147,7 @@ Configuration de l’hôte virtuel Nginx pour accès distant
 Alimenté en 12 Volts , comme le mini PC Proxmox, le PI4 couplé à un modem GSM assure l’envoi et la réception des sms même en cas de coupure d’alimentation électrique ENEDIS ; L’alarme ainsi que toute les commandes Domoticz restent opérationnelles.
 Le serveur Domoticz et ce PI4 sont reliés par une liaison série ; à partir d’un smartphone l’envoi de sms permet de commander directement des switches par l’intermédiaire de l’API de Domoticz( http://localhost:PORT
 Le système est sauvegardé par le logiciel Raspibackup :
- http://domo-site.fr/accueil/dossiers/81
+http://domo-site.fr/accueil/dossiers/81
 
 Le PI4 assure aussi :
 -	La sauvegarde RAID1, mais celle-ci n’est pas sauvegardée et un reboot du PI est nécessaire en cas de coupure de courant ; une fonction existe, pour cela, dans monitor….. http://domo-site.fr/accueil/dossiers/60
@@ -161,6 +161,7 @@ Installation du système et du raid1 : http://domo-site.fr/accueil/dossiers/60
 Scripts installés en plus de raspibackup et Nagios :
  
 -	msmtp , pour envoyer des emails facilement 
+
 config :
  
 
