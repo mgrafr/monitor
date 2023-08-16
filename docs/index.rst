@@ -1,4 +1,4 @@
-.. figure:: images/logo.png
+.. figure:: ../images/logo.png
    :alt: Monitor Logo
    :align: center
    :width:146px
