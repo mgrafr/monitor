@@ -127,12 +127,9 @@ Le Zoom Bootstrap :
 |image569|
 
 
-.. important::
-
-   **Rafraichissement des images** 
+.. important:: **Rafraichissement des images** 
 
    Pour limiter l’utilisation de la bande passante, le rafraichissement des images n’a lieu que si le bouton est sur ON ; par contre même sur OFF le zoom d’une caméra est opérationnel
-
    La fonction updateImage() dans footer.php
 
   .. code-block:: 
@@ -162,6 +159,14 @@ Le Zoom Bootstrap :
    vidéo, l’accès distant en https est assuré.
 
    |image572|
+
+7.4- Ajouter une caméra
+^^^^^^^^^^^^^^^^^^^^^^^
+Il suffit d’indiquer dans admin/config.php le nb de caméras
+
+ .. code-block:: 
+
+   define('NBCAM','8');// nombre 
 
 
 
