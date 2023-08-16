@@ -244,8 +244,7 @@ Principales fonctions contenues dans ce fichier :
    .. _refmajdate:
 
    **Maj de la date**
-   ******************
-
+   
    si la tablette reste allumée en permanence,la date ne sera pas mise à jour en absence de rafraichissement
    
    On crée un idx=0 qui n'existe pas , aussi avec cet idx la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php) 
