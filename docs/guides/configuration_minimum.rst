@@ -203,7 +203,7 @@ Le programme démarre avec 11 pages :
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.2.1 - à la racine du site :
 =============================
- voir ce paragraphe : :ref:`0.4 Le serveur http de NGINX :`
+ voir ce paragraphe : :ref:`0.4 Le serveur http de NGINX`
 
 **Complément d'informations concernant "fonctions.php":**
 
