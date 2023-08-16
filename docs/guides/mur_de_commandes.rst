@@ -70,9 +70,7 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
 
    |image587|
 
-.. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de 
-l’interrupteur car le délai de réponse peut atteindre plus de 10 s, il faut donc envoyer un 
-message MQTT à partir de l’interrupteur virtuel.**
+.. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de l’interrupteur car le délai de réponse peut atteindre plus de 10 s, il faut donc envoyer un message MQTT à partir de l’interrupteur virtuel.**
 
 .. admonition:: **Le script python lancé par la « lampe_ext_entree »**
 
@@ -85,6 +83,49 @@ message MQTT à partir de l’interrupteur virtuel.**
 
       .../domoticz/scripts/python/mqtt.py zigbee2mqtt/eclairage_ext/set state_l2 ON 
       .../domoticz/scripts/python/mqtt.py zigbee2mqtt/eclairage_ext/set state_l2 OFF
+
+   **le script mqtt.py**
+
+   .. code-block:: 
+
+      #!/usr/bin/env python3.7
+      # -*- coding: utf-8 -*- 
+      import paho.mqtt.client as mqtt
+      import json
+      import sys
+      # Variables et Arguments
+      topic= str(sys.argv[1])
+      etat= str(sys.argv[2]) 
+      valeur= str(sys.argv[3]) 
+      MQTT_HOST = "192.168.1.42"
+      MQTT_PORT = 1883
+      MQTT_KEEPALIVE_INTERVAL = 45
+      MQTT_TOPIC = topic
+      MQTT_MSG=json.dumps({etat: valeur});
+      # 
+      def on_publish(client, userdata, mid):
+        print ("Message Publié...")
+      def on_connect(client, userdata, flags, rc):
+        client.subscribe(MQTT_TOPIC)
+        client.publish(MQTT_TOPIC, MQTT_MSG)
+      def on_message(client, userdata, msg):
+        print(msg.topic)
+        print(msg.payload)
+        payload = json.loads(msg.payload) # convertion en json
+        print(payload['state_l2']) 
+        client.disconnect() 
+      # Initiatlisation MQTT Client
+      mqttc = mqtt.Client()
+      # callback funRction
+      mqttc.on_publish = on_publish
+      mqttc.on_connect = on_connect
+      mqttc.on_message = on_message
+      # Connection avec le serveur MQTT 
+      mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
+      # Loop forever
+      mqttc.loop_forever()
+
+   ttps://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
 
 8.2.4 Exemple volet roulant
 =============================
