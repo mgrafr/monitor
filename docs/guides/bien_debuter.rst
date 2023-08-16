@@ -778,8 +778,14 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
  
 	-	onoff commandes 
 	-	onoff+stop commandes (volets par exemple) 
-	-	popup //ouverture d’une fenêtre (commandes particulières)
-		.	exemple des scripts générés automatiquement 
+	-	popup //ouverture d’une fenêtre (commandes particulières)	
+
+.. _switches:
+
+switches
+********
+
+exemple des scripts générés automatiquement 
 
 .. code-block::	
 
@@ -804,11 +810,6 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
    $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
    $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
  
-.. _switches:
-
-switches
-********
-
 le script dans footer.php pour ajouter le javascript automatiquement:
 
 .. code-block::
