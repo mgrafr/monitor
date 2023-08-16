@@ -46,6 +46,13 @@ voir le §  :ref:`switches <bien_debuter>`
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
 
+|image582|
+
+8.2.1 Exemple pour éclairage jardin
+===================================
+L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande également en zigbee l’éclairage du jardin.
+
+|image583| |image584|
 8.2.4 Exemple volet roulant
 =============================
 
@@ -58,3 +65,10 @@ voir le §  :ref:`switches <bien_debuter>`
    :width: 629px
 .. |image580| image:: ../media/image580.webp
    :width: 700px
+.. |image582| image:: ../media/image582.webp
+   :width: 601px
+.. |image583| image:: ../media/image583.webp
+   :width: 300px
+.. |image584| image:: ../media/image584.webp
+   :width: 300px
+
