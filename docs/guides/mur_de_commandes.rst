@@ -81,6 +81,10 @@ message MQTT à partir de l’interrupteur virtuel.**
 
    |image588|
 
+   .. code-block:: 
+
+      .../domoticz/scripts/python/mqtt.py zigbee2mqtt/eclairage_ext/set state_l2 ON 
+      .../domoticz/scripts/python/mqtt.py zigbee2mqtt/eclairage_ext/set state_l2 OFF
 
 8.2.4 Exemple volet roulant
 =============================
