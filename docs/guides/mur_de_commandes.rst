@@ -116,7 +116,7 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
         client.disconnect() 
       # Initiatlisation MQTT Client
       mqttc = mqtt.Client()
-      # callback funRction
+      # callback function
       mqttc.on_publish = on_publish
       mqttc.on_connect = on_connect
       mqttc.on_message = on_message
