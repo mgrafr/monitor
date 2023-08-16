@@ -119,7 +119,7 @@ App Diverses
 
 Applications  Externes
 ----------------------
-:doc:`guides/aaa_externes`   
+:doc:`guides/app_externes`   
     Applications externes
 
 Administration
