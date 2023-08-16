@@ -816,7 +816,7 @@ Dans footer.php : départ de la commande avec le script créé automatiquement d
 
 commande concernée dans ajax.php:
 
-.. code-block:: 'fr'
+.. code-block::
 
    if ($app=="turn") {$retour=devices_id($device,$command);echo $retour; }
 
