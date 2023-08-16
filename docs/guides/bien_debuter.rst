@@ -782,10 +782,8 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 .. _switches:
 
-switches
-********
-
-exemple des scripts générés automatiquement 
+exemple des scripts générés automatiquement
+*******************************************
 
 .. code-block::	
 
