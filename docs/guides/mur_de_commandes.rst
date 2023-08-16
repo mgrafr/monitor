@@ -65,6 +65,17 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
    *envoi vers domoticz/in*
 
    |image586|
+
+   *La réponse de Domoticz* 
+
+   |image587|
+
+   .. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de 
+l’interrupteur car le délai de réponse peut atteindre plus de 10 s, il faut donc envoyer un 
+message MQTT à partir de l’interrupteur virtuel.
+
+
+
 8.2.4 Exemple volet roulant
 =============================
 
@@ -87,4 +98,5 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
    :width: 612px
 .. |image586| image:: ../media/image586.webp
    :width: 365px
-
+.. |image587| image:: ../media/image587.webp
+   :width: 398px
