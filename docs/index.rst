@@ -1,6 +1,5 @@
 .. figure:: ../images/logo.png
    :alt: Monitor Logo
-   :align: center
    :width:146px
 
 Monitor-domotique Documentation
@@ -8,8 +7,6 @@ Monitor-domotique Documentation
 
 .. toctree::
         
-        :maxdepth: 2
-
         guides/modifications.rst
         guides/sommaire.rst
         guides/bien_debuter.rst
