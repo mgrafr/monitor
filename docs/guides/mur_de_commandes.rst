@@ -53,6 +53,11 @@ voir le §  :ref:`switches <bien_debuter>`
 L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande également en zigbee l’éclairage du jardin.
 
 |image583| |image584|
+
+**Domoticz** , Les capteurs virtuels
+
+|image585|
+
 8.2.4 Exemple volet roulant
 =============================
 
@@ -71,4 +76,5 @@ L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande 
    :width: 300px
 .. |image584| image:: ../media/image584.webp
    :width: 300px
-
+.. |image585| image:: ../media/image585.webp
+   :width: 612px
