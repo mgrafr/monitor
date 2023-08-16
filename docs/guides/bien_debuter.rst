@@ -829,6 +829,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
       require("fonctions.php");
       if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	
       ?>
+   
    Voir chapitre :ref:`1. Configuration minimum : la page d’accueil`
 
 	*Il est possible d’ajouter des types*
