@@ -101,13 +101,9 @@ les ID sont uniques alors que les class peuvent être utilisées de nombreuses f
 ^^^^^^^^^^^^^^
 Il suffit, comme pour toutes les pages optionnelles ne mettre, dans admin/config.php la variable à « true » :
 
-.. code-block:: 'fr'
+.. code-block::
 
    define('ON_EXT',true);// mise en service page extérieur
-
-
-
-
 
 .. |image393| image:: ../media/image393.webp
    :width: 541px
