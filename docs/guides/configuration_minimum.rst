@@ -241,7 +241,7 @@ Principales fonctions contenues dans ce fichier :
 
    |image140|
 
-   .. _refmajdate:
+   .. _majdate:
 
    **Maj de la date**
    
@@ -513,7 +513,7 @@ Le HTML :
 
   lorsqu’une tablette reste connectée en permanence, donc sans rafraichissement , la date affichée doit être rafraichie.
 
-  Une solution pour la maj de la date : un script qui tourne en permanence sur la tablette : je n’ai pas retenu cette solution car un script dans Domoticz gère très bien la gestion du temps.  :ref:`refmajdate`
+  Une solution pour la maj de la date : un script qui tourne en permanence sur la tablette : je n’ai pas retenu cette solution car un script dans Domoticz gère très bien la gestion du temps.  :ref:`majdate`
 
 .. admonition:: **solution JS sur la tablette**
 
