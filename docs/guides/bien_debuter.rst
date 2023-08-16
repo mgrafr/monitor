@@ -808,7 +808,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
       $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
       $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
  
-   le script dans footer.php pour ajouter le javascript automatiquement:
+le script dans footer.php pour ajouter le javascript automatiquement:
 
    .. code-block::
 
