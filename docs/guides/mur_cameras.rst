@@ -69,7 +69,7 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
    <link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
 
-.. info:: 
+.. note:: 
 
    https://github.com/gitbrent/bootstrap-switch-button/releases/latest
 
