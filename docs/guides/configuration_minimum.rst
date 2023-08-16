@@ -241,7 +241,7 @@ Principales fonctions contenues dans ce fichier :
 
    |image140|
 
-   .. _refname:
+   .. _refmajdate:
 
    **Maj de la date**
    ******************
