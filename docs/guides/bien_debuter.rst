@@ -728,7 +728,7 @@ cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les
 
 	Le template sensor : sensor.liste_var
 
-.. code-block:: 'fr'	
+.. code-block::
 
    template:
      -  sensor:
