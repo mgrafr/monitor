@@ -60,7 +60,7 @@ L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande 
 
 Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
 
-.. admonition:: **Les script node-red** 
+.. admonition:: **Les scripts node-red** 
 
    *envoi vers domoticz/in*
 
@@ -70,10 +70,16 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
 
    |image587|
 
-   .. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de 
+.. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de 
 l’interrupteur car le délai de réponse peut atteindre plus de 10 s, il faut donc envoyer un 
-message MQTT à partir de l’interrupteur virtuel.
+message MQTT à partir de l’interrupteur virtuel.**
 
+.. admonition:: **Le script python lancé par la « lampe_ext_entree »**
+
+   Ce script publie un message MQTT vers zigbee2mqtt pour allumer l’éclairage du jardin si 
+   l’interrupteur « lampe_ext_entree » est actionné
+
+   |image588|
 
 
 8.2.4 Exemple volet roulant
@@ -100,3 +106,5 @@ message MQTT à partir de l’interrupteur virtuel.
    :width: 365px
 .. |image587| image:: ../media/image587.webp
    :width: 398px
+.. |image588| image:: ../media/image588.webp
+   :width: 700px
