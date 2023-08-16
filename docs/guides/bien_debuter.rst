@@ -782,40 +782,40 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 .. _switches:
 
-exemple des scripts générés automatiquement
-*******************************************
+   exemple des scripts générés automatiquement
+   *******************************************
 
-.. code-block::	
+   .. code-block::	
 
-   /* switchOnOff*  */
+      /* switchOnOff*  */
 	
-   $("#coul_al_absence").click(function(){switchOnOff_setpoint("65","41","On","pwdalarm");});
-   $("#coul_al_nuit").click(function(){switchOnOff_setpoint("66","42","On","pwdalarm");});
-   $("#sirene_al").click(function(){switchOnOff_setpoint("67","234","On","pwdalarm");});
-   $("#patha5645").click(function(){switchOnOff_setpoint("68","43","On","pwdalarm");});
-   $("#coul_modect").click(function(){switchOnOff_setpoint("69","44","On","pwdalarm");});
-   $("#raz_dz").click(function(){switchOnOff_setpoint("70","45","On","pwdalarm");});
-   $("#sw7").click(function(){switchOnOff_setpoint("9","77","On","0");});
-   $("#sw8").click(function(){switchOnOff_setpoint("10","79","On","0");});
-   $("#ping_pi").click(function(){switchOnOff_setpoint("14","80","On","0");});
-   $("#coul_al_nuit-2").click(function(){switchOnOff_setpoint("15","81","On","pwdalarm");});
-   $("#sw2").click(function(){switchOnOff_setpoint("11","85","On","0");});
-   $("#gsm").click(function(){switchOnOff_setpoint("8","86","On","pwdalarm");});
-   $("#sw3").click(function(){switchOnOff_setpoint("18","166","On","0");});
-   $("#sw4").click(function(){switchOnOff_setpoint("16","167","On","0");});
-   $("#sw5").click(function(){switchOnOff_setpoint("19","168","On","0");});
-   $("#sw1").click(function(){switchOnOff_setpoint("17","169","On","0");});
-   $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
-   $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
+      $("#coul_al_absence").click(function(){switchOnOff_setpoint("65","41","On","pwdalarm");});
+      $("#coul_al_nuit").click(function(){switchOnOff_setpoint("66","42","On","pwdalarm");});
+      $("#sirene_al").click(function(){switchOnOff_setpoint("67","234","On","pwdalarm");});
+      $("#patha5645").click(function(){switchOnOff_setpoint("68","43","On","pwdalarm");});
+      $("#coul_modect").click(function(){switchOnOff_setpoint("69","44","On","pwdalarm");});
+      $("#raz_dz").click(function(){switchOnOff_setpoint("70","45","On","pwdalarm");});
+      $("#sw7").click(function(){switchOnOff_setpoint("9","77","On","0");});
+      $("#sw8").click(function(){switchOnOff_setpoint("10","79","On","0");});
+      $("#ping_pi").click(function(){switchOnOff_setpoint("14","80","On","0");});
+      $("#coul_al_nuit-2").click(function(){switchOnOff_setpoint("15","81","On","pwdalarm");});
+      $("#sw2").click(function(){switchOnOff_setpoint("11","85","On","0");});
+      $("#gsm").click(function(){switchOnOff_setpoint("8","86","On","pwdalarm");});
+      $("#sw3").click(function(){switchOnOff_setpoint("18","166","On","0");});
+      $("#sw4").click(function(){switchOnOff_setpoint("16","167","On","0");});
+      $("#sw5").click(function(){switchOnOff_setpoint("19","168","On","0");});
+      $("#sw1").click(function(){switchOnOff_setpoint("17","169","On","0");});
+      $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
+      $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
  
-le script dans footer.php pour ajouter le javascript automatiquement:
+   le script dans footer.php pour ajouter le javascript automatiquement:
 
-.. code-block::
+   .. code-block::
 
-   <?php 
-   require("fonctions.php");
-   if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	
-   ?>
+      <?php 
+      require("fonctions.php");
+      if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	
+      ?>
 		 
 	Voir chapitre :ref:`1._ Configuration minimum`
 
