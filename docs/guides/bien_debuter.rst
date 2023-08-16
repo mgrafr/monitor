@@ -780,10 +780,26 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	-	onoff+stop commandes (volets par exemple) 
 	-	popup //ouverture d’une fenêtre (commandes particulières)	
 
+- id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
+
+- car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
+
+- F() N° case de la fonction « pour_data($nc,$l_device) » , fichier fonctions.php
+
+- class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes
+
+- coul_id1_id2_ON, coul_id1_id2_OFF, coul_lamp_ON, coul_lamp_ON : couleur des ID ou de la class des dispositifs suivant leur position, (class_lamp pour les lampes des différents interrupteurs)
+
+- pass : par défaut « 0 » pas de mot de passe , pwalarm pour mot de passe de l’alarme et pwcommand pour les commandes (on/off ,…)
+
+- doc : pour associer un document au dispositif
+
 .. _switches:
 
+..note::
+
    exemple des scripts générés automatiquement
-   *******************************************
+   """""""""""""""""""""""""""""""""""""""""""
 
    .. code-block::	
 
@@ -808,7 +824,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
       $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
       $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
  
-le script dans footer.php pour ajouter le javascript automatiquement:
+   le script dans footer.php pour ajouter le javascript automatiquement:
 
    .. code-block::
 
@@ -816,25 +832,9 @@ le script dans footer.php pour ajouter le javascript automatiquement:
       require("fonctions.php");
       if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	
       ?>
-		 
-	Voir chapitre :ref:`1._ Configuration minimum`
+   Voir chapitre :ref:`1._ Configuration minimum`
 
 	*Il est possible d’ajouter des types*
-
-- id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
-
-- car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
-
-- F() N° case de la fonction « pour_data($nc,$l_device) » , fichier fonctions.php
-
-- class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes
-
-- coul_id1_id2_ON, coul_id1_id2_OFF, coul_lamp_ON, coul_lamp_ON : couleur des ID ou de la class des dispositifs suivant leur position, (class_lamp pour les lampes des différents interrupteurs)
-
-- pass : par défaut « 0 » pas de mot de passe , pwalarm pour mot de passe de l’alarme et pwcommand pour les commandes (on/off ,…)
-
-- doc : pour associer un document au dispositif
-
 
 Pour créer cette table l’importer depuis le référentiel « monitor » 
 
