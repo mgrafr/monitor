@@ -268,7 +268,7 @@ Ajout de l’icône avec Inkscape :
 
 Un href, un id, un titre et un onclick avec un id (idm ou idx) ; option choisie dans /admin/config.php
 
-.. code-block:: 'fr'
+.. code-block::
 
    define('CHOIXID','idm');// DZ:idm ou idx ; HA : idm uniquement
 
@@ -276,7 +276,7 @@ Un href, un id, un titre et un onclick avec un id (idm ou idx) ; option choisie 
 ======================
 Comme il n’existe pas d’idx Domoticz, nous réserverons la plage >= 10 000 pour cela ; 
 
-cette valeur peut être modifiée, voir :ref:`2.2.1 Ajout du détecteur de fumée`
+cette valeur peut être modifiée, voir :ref:`2.2.1 Ajout du détecteur de fumée :`
 
 |image277|
 
@@ -518,7 +518,7 @@ Plus d'infos sur modalink : https://github.com/dmhendricks/jquery-modallink
 
  |image313|
 
-.. code-block:: 'fr'
+.. code-block::
 
    $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert("Zoneminder non installé");}
    else {$.modalLink.open("ajax.php?app=upload_conf_img&name="+dahua+"&command="+dahua_type+"&variable="+ip_cam+"&idx="+idx_cam+"&type="+zoneminder,{
@@ -641,7 +641,7 @@ La notification se fait :
 
 |image332| 
 
-.. code-block:: 'fr'
+.. code-block::
 
    <div class="aff_bat" ><img id="batterie" src="images/batterie_faible.svg" alt="batterie" /></div>
 
