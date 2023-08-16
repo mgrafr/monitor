@@ -609,7 +609,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 	- dispositifs 
 
-	- ....
+	- etc
 
   |image75|
 
@@ -784,7 +784,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
 
-- F() N° case de la fonction « pour_data($nc,$l_device) » , fichier fonctions.php
+- F() N° case de la fonction « pour_data() » , fichier fonctions.php
 
 - class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes
 
