@@ -35,7 +35,9 @@ Index_loc.php en général ne pas modifier
 
 8.1.1 écriture automatique du javascript
 ========================================
+Effectuée par une fonction PHP à partir de la base de données
 
+voir le § :ref:`le script dans footer.php pour ajouter le javascript automatiquement <bien_debuter>`_
 
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
