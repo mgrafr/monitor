@@ -41,7 +41,7 @@ Extrait de la page html pour des commandes pour Domoticz et Home Assistant:
 
 |image580|
 
-voir le §  :ref:`switches <bien_debuter>`
+voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automatiquement*
 
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
@@ -58,6 +58,13 @@ L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande 
 
 |image585|
 
+Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
+
+.. admonition:: **Les script node-red** 
+
+   *envoi vers domoticz/in*
+
+   |image586|
 8.2.4 Exemple volet roulant
 =============================
 
@@ -78,3 +85,6 @@ L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande 
    :width: 300px
 .. |image585| image:: ../media/image585.webp
    :width: 612px
+.. |image586| image:: ../media/image586.webp
+   :width: 365px
+
