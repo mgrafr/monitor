@@ -135,9 +135,9 @@ avec Notepad++
 .. admonition:: **dos2unix**
    installation  et commande bash pour convertir le fichier en Unix
 
-    .. code-block:: 
+   .. code-block:: 
 
-       sudo apt install dos2unix
+      sudo apt install dos2unix
 
    .. code-block::
 
