@@ -185,8 +185,8 @@ Le Zoom Bootstrap :
    :width: 603px
 .. |image569| image:: ../media/image569.webp
    :width: 602px
-.. |image571 image:: ../media/image571.webp
+.. |image571| image:: ../media/image571.webp
    :width: 538px
-.. |image572 image:: ../media/image572.webp
+.. |image572| image:: ../media/image572.webp
    :width: 566px
 
