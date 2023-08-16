@@ -41,7 +41,7 @@ Extrait de la page html pour des commandes pour Domoticz et Home Assistant:
 
 |image580|
 
-voir le §  :ref:`switches <bien_debuter>`
+voir le §  :ref:`switches`
 
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
