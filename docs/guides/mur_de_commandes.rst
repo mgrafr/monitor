@@ -125,14 +125,17 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
       # Loop forever
       mqttc.loop_forever()
 
-   ttps://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
+ Paho  |paho|
+ 
+https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
 
 8.2.4 Exemple volet roulant
 =============================
 
 
 
-
+.. |paho| image:: ../images/paho.png
+   :width: 100px
 .. |image574| image:: ../media/image574.webp
    :width: 528px
 .. |image575| image:: ../media/image575.webp
