@@ -317,6 +317,20 @@ Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
 
 |image626|
 
+**Domoticz** ,  Ci-dessous le dispositif concerné 
+
+|image627|
+
+**Base de données SQL**
+
+- Enregistrer le dispositif avec l’ID pour le mur de commande et une CLASS pour le plan (permet de visualiser, comme pour les lampes l’ouverture ou la fermeture des volets 
+
+  |image628|
+
+.. note:: **Sur le plan on indique simplement si les volets sont fermés ou ouverts (même partiellement)
+
+   |image629|
+
 .. |paho| image:: ../images/paho.png
    :width: 100px
 .. |image574| image:: ../media/image574.webp
@@ -393,4 +407,9 @@ Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
    :width: 561px
 .. |image626| image:: ../media/image626.webp
    :width: 438px
-
+.. |image627| image:: ../media/image627.webp
+   :width: 398px
+.. |image628| image:: ../media/image628.webp
+   :width: 700px
+.. |image629| image:: ../media/image629.webp
+   :width: 210px
