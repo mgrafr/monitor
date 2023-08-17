@@ -155,6 +155,17 @@ avec Notepad++
 
 |image592|
 
+**monitor** le fichier exterieur.php
+
+Les lampes concernées en gris et jaune
+
+|image595|
+
+|image596|
+
+
+
+css pour svg
 
 8.2.4 Exemple volet roulant
 =============================
@@ -189,3 +200,7 @@ avec Notepad++
    :width: 514px
 .. |image592| image:: ../media/image592.webp
    :width: 511px
+.. |image595| image:: ../media/image595.webp
+   :width: 526px
+.. |image596| image:: ../media/image596.webp
+   :width: 462px
