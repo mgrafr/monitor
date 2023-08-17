@@ -331,6 +331,56 @@ Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
 
    |image629|
 
+**Le Javascript** , footer.php
+
+- *maj_devices()*
+
+ |image630|
+
+	. L’ouverture est Open ou les 12 premiers caractères sont « Set Level :  » 
+
+	. La fermeture est Closed
+
+	|image631|
+
+8.2.4 .2 Dans le mur ON/OFF
+"""""""""""""""""""""""""""
+*Pour afficher le % d’ouverture*
+
+Pour indiquer le % d’ouverture on ajoute un rectangle dans l’image, la hauteur sera fonction du % d’ouverture ; pour cela il faut indiquer dans l’image la hauteur de référence ; sinon un pourcentage s’appliquera à la hauteur déjà modifiée qui diminuera au fil des mises à jour.
+
+.. important:: **Height de l’image sera suivant le % d’ouverture modifié dans le Dom, c’est pourquoi on crée un attribut h qui est le reflet du height d’origine**
+
+   |image632|
+
+   Le volume d’ouverture est indiqué dans Data : Set Level : VALEUR en %
+
+   |image633|
+
+   On applique ce pourcentage au rectangle de l’mage.
+
+Dans maj_devices() , on récupère la valeur h de l’image
+
+.. code-block:: 
+
+   var h=document.getElementById(val.ID1).getAttribute("h");
+
+On attribue à l’image la bonne hauteur qui tient compte du % d’ouverture
+
+.. code-block:: 
+
+   document.getElementById(val.ID1).setAttribute("height",parseInt((h*pourcent[2])/100));
+
+Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
+
+.. code-block:: 
+
+   document.getElementById(val.ID1).setAttribute("height",parseInt((h*(100-pourcent[2]))/100));
+
+**Affichage sur le mur de commandes**:
+
+ |image634|
+
 .. |paho| image:: ../images/paho.png
    :width: 100px
 .. |image574| image:: ../media/image574.webp
@@ -413,3 +463,15 @@ Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
    :width: 700px
 .. |image629| image:: ../media/image629.webp
    :width: 210px
+.. |image630| image:: ../media/image630.webp
+   :width: 700px
+.. |image631| image:: ../media/image631.webp
+   :width: 239px
+.. |image632| image:: ../media/image632.webp
+   :width: 638px
+.. |image633| image:: ../media/image633.webp
+   :width: 406px
+.. |image634| image:: ../media/image634.webp
+   :width: 192px
+
+
