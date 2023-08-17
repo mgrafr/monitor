@@ -125,6 +125,8 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
       # Loop forever
       mqttc.loop_forever()
 
+   |image591|
+
 |paho|
  
 https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
@@ -142,6 +144,12 @@ avec Notepad++
    .. code-block::
 
       dos2unix <CHEMIN/NOM DU FICHIER>
+
+..attention:: 
+
+   Attention aussi aux autorisations
+
+   |image590|
 
 
 8.2.4 Exemple volet roulant
@@ -171,3 +179,7 @@ avec Notepad++
    :width: 398px
 .. |image588| image:: ../media/image588.webp
    :width: 700px
+.. |image590| image:: ../media/image590.webp
+   :width: 465px
+.. |image591| image:: ../media/image591.webp
+   :width: 514px
