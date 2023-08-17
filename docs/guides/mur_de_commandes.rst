@@ -256,6 +256,10 @@ Le capteur est ajouté au plan
 
 |image612|
 
+Les images pour lampe de bureau :
+
+|image613| |image614|
+
 
 8.2.4 Exemple volet roulant
 =============================
@@ -314,6 +318,10 @@ Le capteur est ajouté au plan
    :width: 570px
 .. |image612| image:: ../media/image612.webp
    :width: 605px
+.. |image613| image:: ../media/image613.webp
+   :width: 82px
+.. |image614| image:: ../media/image614.webp
+   :width: 50px
 
 
 
