@@ -260,7 +260,18 @@ Les images pour lampe de bureau :
 
 |image613| |image614|
 
+.. admonition:: **extrait de maison_svg.php** (le plan intérieur)
 
+   |image615|
+
+   |image616|
+
+**La base de données « monitor »**, table dispositifs
+
+ |image617|
+
+**Affichage** : :green:`Eteint` / :red:`Allumé` 
+    
 8.2.4 Exemple volet roulant
 =============================
 
@@ -322,9 +333,12 @@ Les images pour lampe de bureau :
    :width: 82px
 .. |image614| image:: ../media/image614.webp
    :width: 50px
-
-
-
+.. |image615| image:: ../media/image615.webp
+   :width: 582px
+.. |image616| image:: ../media/image616.webp
+   :width: 514px
+.. |image617| image:: ../media/image617.webp
+   :width: 605px
 
 
 
