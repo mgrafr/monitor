@@ -381,6 +381,20 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
  |image634|
 
+*La fonction complète maj_devices(plan) dans footer.php*
+
+|image635|
+
+.. note:: **Manoeuvrer le volet**
+
+   Le rectangle indiquant le % d’ouverture peut être très petit, aussi pour pouvoir cliquer n’importe où sur l’image, il suffit d’ajouter un rectangle incolore comme déjà indiqué dans ce paragraphe :
+
+   |image636|
+
+   On ajoute l’id de ce rectangle dans la base de données :
+
+   |image637|
+
 .. |paho| image:: ../images/paho.png
    :width: 100px
 .. |image574| image:: ../media/image574.webp
@@ -473,5 +487,10 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
    :width: 406px
 .. |image634| image:: ../media/image634.webp
    :width: 192px
-
+.. |image635| image:: ../media/image635.webp
+   :width: 700px
+.. |image636| image:: ../media/image636.webp
+   :width: 650px
+.. |image637| image:: ../media/image637.webp
+   :width: 650px
 
