@@ -1,4 +1,4 @@
-n# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 #
 import sphinx_rtd_theme
 import sys
