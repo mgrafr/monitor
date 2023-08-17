@@ -293,9 +293,29 @@ Les images pour lampe de bureau :
 
 |image623|
 
+- Cette image a été ajoutée avec la CLASS ci-dessus, les ID étant uniques ; 
 
+- ID « volet_bureau » (1er <rect ) pour indiquer le % d’ouverture
 
+- ID « volet_bureau1 » (2eme <rect ) :red:`pour pouvoir cliquer n’importe où sur l’image`.
 
+8.2.4.1 Affichage sur le plan
+"""""""""""""""""""""""""""""
+**Le plan** :
+
+|image624|
+
+Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
+
+.. code-block:: 
+
+   <rect style="fill:black;fill-opacity:1" xlink:href="#interieur" 
+	onclick="popup_device(31)" 
+	class="volet_bureau" 
+	id="volet_bur" width="26" height="37" x="113" y="726">
+	<title id="title69449">volet_bur</title></rect> 
+
+|image626|
 
 .. |paho| image:: ../images/paho.png
    :width: 100px
@@ -369,5 +389,8 @@ Les images pour lampe de bureau :
    :width: 650px
 .. |image623| image:: ../media/image623.webp
    :width: 700px
-
+.. |image624| image:: ../media/image624.webp
+   :width: 561px
+.. |image626| image:: ../media/image626.webp
+   :width: 438px
 
