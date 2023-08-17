@@ -1,6 +1,7 @@
-.. figure:: ../images/logo.png
+  
+.. figure:: images/logo.png
    :alt: Monitor Logo
-   :width:146px
+   :class: with-border
 
 Monitor-domotique Documentation
 ========================================
