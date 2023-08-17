@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+n# -*- coding: utf-8 -*-
 #
 import sphinx_rtd_theme
 import sys
@@ -56,7 +56,7 @@ html_sidebars = {
 rst_prolog = """
 .. role:: red
 .. role:: darkblue
-.. role:: center
+.. role:: green
 """
 def setup(app):
     app.add_css_file('css/custom.css') 
