@@ -145,7 +145,7 @@ avec Notepad++
 
       dos2unix <CHEMIN/NOM DU FICHIER>
 
-..attention:: 
+.. attention:: 
 
    Attention aussi aux autorisations
 
