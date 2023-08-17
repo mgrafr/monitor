@@ -45,9 +45,7 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
    convertir le fichier en UNIX
 
-   pour installer do2unix :  apt install dos2unix
-
-   commande : dos2unix NOM_FICHIER (ex : dos2unix lemp_install.sh)
+  voir le § :ref:`8.2.1.1 Problème de lecture de fichier`
 
 
 **Installation :**
