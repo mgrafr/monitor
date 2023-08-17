@@ -205,7 +205,7 @@ Les lampes concernées en gris et jaune
 
 |image602|
 
-Le capteur est ajouté au 
+Le capteur est ajouté au plan
 
 |image604|
 
@@ -227,9 +227,10 @@ Le capteur est ajouté au
    req.add_header('Content-Length', len(dataasbytes))
    response = urllib.request.urlopen(req, dataasbytes)
 
-**Mur_inter.php**
+**mur_inter.php**
 
 .. code-block:: 
+
    <ul>
    <li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw8" src="<?php echo $lien_img;?>/images/arrosage.svg" width="60" height="auto" alt=""/></a></li>
 
