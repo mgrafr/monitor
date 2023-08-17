@@ -260,7 +260,9 @@ Les images pour lampe de bureau :
 
 |image613| |image614|
 
-.. admonition:: **extrait de maison_svg.php** (le plan intérieur)
+.. admonition:: 
+
+**extrait de maison_svg.php** (le plan intérieur)
 
    |image615|
 
