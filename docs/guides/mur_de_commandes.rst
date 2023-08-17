@@ -156,7 +156,7 @@ avec Notepad++
 
    |image590|
 
-**Le plan*: l’interrupteur est ajouté
+**Le plan**: l’interrupteur est ajouté
 
 |image592|
 
@@ -260,10 +260,7 @@ Les images pour lampe de bureau :
 
 |image613| |image614|
 
-.. admonition:: 
-
-**extrait de maison_svg.php** (le plan intérieur)
-
+.. admonition:: **extrait de maison_svg.php**
    |image615|
 
    |image616|
@@ -273,6 +270,8 @@ Les images pour lampe de bureau :
  |image617|
 
 **Affichage** : :green:`Eteint` / :red:`Allumé` 
+
+|image618| |image619|
     
 8.2.4 Exemple volet roulant
 =============================
@@ -341,6 +340,10 @@ Les images pour lampe de bureau :
    :width: 514px
 .. |image617| image:: ../media/image617.webp
    :width: 605px
+.. |image618| image:: ../media/image618.webp
+   :width: 270px
+.. |image619| image:: ../media/image619.webp
+   :width: 270px
 
 
 
