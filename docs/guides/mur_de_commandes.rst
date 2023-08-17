@@ -156,7 +156,7 @@ avec Notepad++
 
    |image590|
 
-**Le plan**: l’interrupteur est ajouté
+**Le plan*: l’interrupteur est ajouté
 
 |image592|
 
@@ -168,7 +168,7 @@ Les lampes concernées en gris et jaune
 
 |image596|
 
-*css pour les lampes de l'image :darkblue:`exterieur_svg.php`*
+*css pour les lampes de :darkblue:`exterieur_svg.php`*
 
 .. code-block:: 
 
@@ -178,6 +178,23 @@ Les lampes concernées en gris et jaune
    .lj2{fill:#a29e9e;}
 
 |image594|
+
+**La Base de Données**
+
+|image597|
+
+**Le Javascript** dans footer.php
+
+.. important:: **La mise à jour de tous les dispositifs est automatique mais avec un temps de réponse, aussi pour la commande des interrupteurs le second script permet une mise à jour instantanée**
+  
+- *maj_devices()*
+
+|image598|
+
+- *maj_switch()*
+
+|image599|
+
 
 8.2.4 Exemple volet roulant
 =============================
@@ -218,3 +235,11 @@ Les lampes concernées en gris et jaune
    :width: 526px
 .. |image596| image:: ../media/image596.webp
    :width: 462px
+.. |image597| image:: ../media/image597.webp
+   :width: 624px
+.. |image598| image:: ../media/image598.webp
+   :width: 700px
+.. |image599| image:: ../media/image599.webp
+   :width: 650px
+
+
