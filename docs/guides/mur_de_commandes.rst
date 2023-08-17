@@ -131,6 +131,9 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
  
 https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
 
+8.2.1.1 Problème de lecture de fichier
+""""""""""""""""""""""""""""""""""""""
+
 Pour éviter des erreurs (512, 256), penser à convertir le fichier python en Unix s’il a été créé
 avec Notepad++
 
@@ -144,6 +147,8 @@ avec Notepad++
    .. code-block::
 
       dos2unix <CHEMIN/NOM DU FICHIER>
+
+
 
 .. attention:: 
 
@@ -163,9 +168,16 @@ Les lampes concernées en gris et jaune
 
 |image596|
 
+*css pour les lampes de l'image :darkblue:`exterieur_svg.php`*
 
+.. code-block:: 
 
-css pour svg
+   /*exterieur*/
+   .txt_ext{position:relative;top:20px;left:20px;}
+   .lj1{fill:#a29e9e;}
+   .lj2{fill:#a29e9e;}
+
+|image594|
 
 8.2.4 Exemple volet roulant
 =============================
@@ -200,6 +212,8 @@ css pour svg
    :width: 514px
 .. |image592| image:: ../media/image592.webp
    :width: 511px
+.. |image594| image:: ../media/image594.webp
+   :width: 557px
 .. |image595| image:: ../media/image595.webp
    :width: 526px
 .. |image596| image:: ../media/image596.webp
