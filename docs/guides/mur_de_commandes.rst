@@ -275,6 +275,11 @@ Les images pour lampe de bureau :
     
 8.2.4 Exemple volet roulant
 =============================
+*Le moteur est à 4 fils, piloté par une commande TUYA FT30F et Zigbee2mqtt*
+
+|image620|
+
+.. important:: **pour éviter que les commandes soient inversées dans Domoticz, mettre à TRUE le paramètre spécifique concernant cet interrupteur, dans le fronted de zigbee2mqtt**
 
 
 
@@ -344,8 +349,10 @@ Les images pour lampe de bureau :
    :width: 270px
 .. |image619| image:: ../media/image619.webp
    :width: 270px
-
-
+.. |image620| image:: ../media/image620.webp
+   :width: 467px
+.. |image621| image:: ../media/image621.webp
+   :width: 650px
 
 
 
