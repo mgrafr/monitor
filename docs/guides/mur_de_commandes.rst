@@ -205,6 +205,56 @@ Les lampes concernées en gris et jaune
 
 |image602|
 
+Le capteur est ajouté au 
+
+|image604|
+
+**Le script python**
+
+.. code-block:: 
+
+   #!/usr/bin/env python3.7
+   # -*- coding: utf-8 -*-
+   import sys
+   import urllib.request
+   import json    
+   total_arg = len(sys.argv)
+   if (total_arg>0) : arg= str(sys.argv[1])
+   data = '{"deviceid":"1000a0876c","data":{"switch":"'+arg+'"}}'
+   url = 'http://192.168.1.146:8081/zeroconf/switch'
+   req = urllib.request.Request(url)
+   dataasbytes = data.encode('utf-8')   # needs to be bytes
+   req.add_header('Content-Length', len(dataasbytes))
+   response = urllib.request.urlopen(req, dataasbytes)
+
+**Mur_inter.php**
+
+.. code-block:: 
+   <ul>
+   <li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw8" src="<?php echo $lien_img;?>/images/arrosage.svg" width="60" height="auto" alt=""/></a></li>
+
+**La Base de données** 
+
+|image606|
+
+8.2.3 Exemple éclairage simple, une lampe de salon
+==================================================
+**Dans Domoticz**
+
+- *création d'un dispositif virtuel*
+
+- *ajout du dispositif au plan*
+
+|image609|
+
+- *placement sur le plan*
+
+**Dans monitor**
+
+- *mur_inter.php*
+
+|image612|
+
 
 8.2.4 Exemple volet roulant
 =============================
@@ -255,6 +305,19 @@ Les lampes concernées en gris et jaune
    :width: 502px
 .. |image602| image:: ../media/image602.webp
    :width: 462px
+.. |image604| image:: ../media/image604.webp
+   :width: 549px
+.. |image606| image:: ../media/image606.webp
+   :width: 623px
+.. |image609| image:: ../media/image609.webp
+   :width: 570px
+.. |image612| image:: ../media/image612.webp
+   :width: 605px
+
+
+
+
+
 
 
 
