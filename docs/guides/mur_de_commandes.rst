@@ -168,7 +168,7 @@ Les lampes concernées en gris et jaune
 
 |image596|
 
-*css pour les lampes de :darkblue:`exterieur_svg.php`*
+*css pour les lampes de* :darkblue:`exterieur_svg.php`
 
 .. code-block:: 
 
@@ -194,6 +194,16 @@ Les lampes concernées en gris et jaune
 - *maj_switch()*
 
 |image599|
+
+8.2.2 Exemple pour arrosage jardin
+==================================
+*Relais Sonoff wifi ip 192.168.x.x :8081*
+
+**DOMOTICZ** : Le Capteur virtuel :
+
+|image601|
+
+|image602|
 
 
 8.2.4 Exemple volet roulant
@@ -241,5 +251,10 @@ Les lampes concernées en gris et jaune
    :width: 700px
 .. |image599| image:: ../media/image599.webp
    :width: 650px
+.. |image601| image:: ../media/image601.webp
+   :width: 502px
+.. |image602| image:: ../media/image602.webp
+   :width: 462px
+
 
 
