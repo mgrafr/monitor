@@ -151,6 +151,10 @@ avec Notepad++
 
    |image590|
 
+**Le plan**: l’interrupteur est ajouté
+
+|image592|
+
 
 8.2.4 Exemple volet roulant
 =============================
@@ -183,3 +187,5 @@ avec Notepad++
    :width: 465px
 .. |image591| image:: ../media/image591.webp
    :width: 514px
+.. |image592| image:: ../media/image592.webp
+   :width: 511px
