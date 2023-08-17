@@ -281,6 +281,20 @@ Les images pour lampe de bureau :
 
 .. important:: **pour éviter que les commandes soient inversées dans Domoticz, mettre à TRUE le paramètre spécifique concernant cet interrupteur, dans le fronted de zigbee2mqtt**
 
+   |image621|
+
+.. warning:: **Pour utiliser le Javascript (comme pour le plan) il ne faut pas charger l’image par son nom mais l’incorporer dans un fichier PHP.**
+
+   .. code-block:: 
+
+      <li style="margin-left:0;margin-top:10px"><?php include ("volet-roulant_svg.php");?></li>
+
+**L’image svg** :
+
+|image623|
+
+
+
 
 
 .. |paho| image:: ../images/paho.png
@@ -353,6 +367,7 @@ Les images pour lampe de bureau :
    :width: 467px
 .. |image621| image:: ../media/image621.webp
    :width: 650px
-
+.. |image623| image:: ../media/image623.webp
+   :width: 700px
 
 
