@@ -385,7 +385,7 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
 |image635|
 
-.. note:: **Manoeuvrer le volet**
+.. admonition:: **Manoeuvrer le volet**
 
    Le rectangle indiquant le % d’ouverture peut être très petit, aussi pour pouvoir cliquer n’importe où sur l’image, il suffit d’ajouter un rectangle incolore comme déjà indiqué dans ce paragraphe :
 
@@ -403,9 +403,16 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
    |image639|
 
-   La fonction PHP :
+   La fonction PHP sql_1() , partie consacrée à :darkblue:`maj_js=onoff+stop`
 
-   |image640|
+   .. code-block:: 
+
+      if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function () 
+      {$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
+
+   La fenêtre complémentaire :
+
+   |image641|
 
 .. |paho| image:: ../images/paho.png
    :width: 100px
@@ -511,5 +518,7 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
    :width: 700px
 .. |image640| image:: ../media/image640.webp
    :width: 700px
+.. |image641| image:: ../media/image641.webp
+   :width: 423px
 
 
