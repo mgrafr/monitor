@@ -395,6 +395,18 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
    |image637|
 
+   Comme pour les commandes onoff , les scripts des commandes onoff+stop sont écrits automatiquement par la fonction function sql_plan($t) ;
+
+   |image638|
+
+   Le wiki de Domoticz concernant ces commandes :
+
+   |image639|
+
+   La fonction PHP :
+
+   |image640|
+
 .. |paho| image:: ../images/paho.png
    :width: 100px
 .. |image574| image:: ../media/image574.webp
@@ -493,4 +505,11 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
    :width: 650px
 .. |image637| image:: ../media/image637.webp
    :width: 650px
+.. |image638| image:: ../media/image638.webp
+   :width: 647px
+.. |image639| image:: ../media/image639.webp
+   :width: 700px
+.. |image640| image:: ../media/image640.webp
+   :width: 700px
+
 
