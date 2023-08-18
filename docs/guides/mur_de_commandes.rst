@@ -446,6 +446,15 @@ https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
 |image646|
 
+|image647|
+
+Ce fichier est chargé automatiquement si MQTT est à true dans /admin/config
+
+.. code-block:: 
+
+   define('MQTT', false);//  true si serveur MQTT utilisé par monitor
+
+
 .. |paho| image:: ../images/paho.png
    :width: 100px
 .. |image574| image:: ../media/image574.webp
@@ -562,5 +571,7 @@ https://www.eclipse.org/paho/index.php?page=clients/js/index.php
    :width: 524px
 .. |image646| image:: ../media/image646.webp
    :width: 648px
+.. |image647| image:: ../media/image647.webp
+   :width: 650px
 
 
