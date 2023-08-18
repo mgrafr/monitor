@@ -430,6 +430,22 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
 |image643|
 
+Ci-dessus, on récupère idx idm et la commande
+
+|image644|
+
+Mise à jour instantanée :
+
+|image645|
+
+8.2.4.3.2 avec MQTT
+~~~~~~~~~~~~~~~~~~~
+C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par le programme. Il faut installer la bibliothèque ci-dessous paho-mqtt
+
+https://www.eclipse.org/paho/index.php?page=clients/js/index.php
+
+|image646|
+
 .. |paho| image:: ../images/paho.png
    :width: 100px
 .. |image574| image:: ../media/image574.webp
@@ -540,5 +556,11 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
    :width: 533px
 .. |image643| image:: ../media/image643.webp
    :width: 634px
+.. |image644| image:: ../media/image644.webp
+   :width: 700px
+.. |image645| image:: ../media/image645.webp
+   :width: 524px
+.. |image646| image:: ../media/image646.webp
+   :width: 648px
 
 
