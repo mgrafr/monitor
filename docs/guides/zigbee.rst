@@ -42,12 +42,66 @@ Affichage du Frontend
 ^^^^^^^^^^^^^^^^^
 Il faut configurer NGINX :
 
-Exemple de fichier .conf avant de demander un certificat cerbot :
+.. admonition:: **Exemple de fichier .conf avant de demander un certificat cerbot**
+
+.. code-block::
+
+   server {
+    listen       80;
+    server_name  zigbee.<DOMAINE>;
+    #return 301   https://zigbee<DOMAINE>$request_uri;
+   }
+    location / {
+        proxy_pass http://<IP>:<PORT>/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     }
+     location /api {
+        proxy_pass         http://<IP>:<PORT>/api;
+        proxy_set_header Host $host;
+
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        }
+   }
+
+- **Demande de certificat Let's Encrypt** :
+
+.. prereq::**Installer Cerbot**
+
+   .. code-block::
+
+      sudo apt install certbot python3-certbot-nginx
+
+.. code-block::
+
+   sudo cerbot --nginx
+
+Le fichier modifié par cerbot lors de la demande de certificat
+
+|image655|
+
+.. attention:: ** Pour utiliser auth basic**
+   *comme c'est le cas ici*
+
+   Il faut créer un fichier de mot de passe et ajouter des utilisateurs
+
+   https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/
+
+
+
+
+
+
 
 .. |image653| image:: ../media/image653.webp
    :width: 536px
 .. |image654| image:: ../media/image654.webp
    :width: 625px
+.. |image655| image:: ../media/image655.webp
+   :width: 700px
 .. |image658| image:: ../media/image658.webp
    :width: 600px
 .. |image659| image:: ../media/image659.webp
