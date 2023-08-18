@@ -31,7 +31,7 @@ Affichage du Frontend
 
    Démarrage auto : avec PM2 , Voir la page domo-site : http://domo-site.fr/accueil/dossiers/74 
 
-   image658|
+   |image658|
 
    |image659|
 
