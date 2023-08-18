@@ -448,11 +448,42 @@ https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
 |image647|
 
-Ce fichier est chargé automatiquement si MQTT est à true dans /admin/config
+Ce fichier est chargé automatiquement dans footer.php si MQTT est à true dans /admin/config
 
 .. code-block:: 
 
    define('MQTT', false);//  true si serveur MQTT utilisé par monitor
+
+.. code-block:: 
+
+   if (MQTT==true) echo '<script src="js/mqttws31.js"></script>';?>	
+
+La même commande de volet par MQTT
+
+|image650|
+
+L'envoi des données doit être un tableau json
+
+|image651|
+
+.. code-block:: 
+
+   Value= {idx : 177,  switchcmd : ‘’ Set Level’’ , level  : ‘’ On ‘’} 
+
+.. note::
+   Le topic étant domoticz/in, voir cette page de domo-site.fr :http://domo-site.fr/accueil/dossiers/90
+
+   Cette page est consacrée à un capteur mais la publication d'un message est identique
+
+.. admonition:: **convertit une valeur JavaScript en chaîne JSON**
+   *avec La méthode JSON.stringify()* 
+
+   .. code-block:: 
+      var result = JSON.stringify(value);
+
+**La commande** :
+
+|image652|
 
 
 .. |paho| image:: ../images/paho.png
@@ -573,5 +604,11 @@ Ce fichier est chargé automatiquement si MQTT est à true dans /admin/config
    :width: 648px
 .. |image647| image:: ../media/image647.webp
    :width: 650px
+.. |image650| image:: ../media/image650.webp
+   :width: 700px
+.. |image651| image:: ../media/image651.webp
+   :width: 597px
+.. |image652| image:: ../media/image652.webp
+   :width: 523px
 
 
