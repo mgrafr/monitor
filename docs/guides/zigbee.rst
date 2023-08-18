@@ -44,20 +44,20 @@ Il faut configurer NGINX :
 
 .. admonition:: **Exemple de fichier .conf avant de demander un certificat cerbot**
 
-.. code-block::
+   .. code-block::
 
-   server {
-    listen       80;
-    server_name  zigbee.<DOMAINE>;
-    #return 301   https://zigbee<DOMAINE>$request_uri;
-   }
-    location / {
+      server {
+       listen       80;
+       server_name  zigbee.<DOMAINE>;
+       #return 301   https://zigbee<DOMAINE>$request_uri;
+      }
+       location / {
         proxy_pass http://<IP>:<PORT>/;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-     }
-     location /api {
+       }
+       location /api {
         proxy_pass         http://<IP>:<PORT>/api;
         proxy_set_header Host $host;
 
@@ -65,7 +65,7 @@ Il faut configurer NGINX :
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         }
-   }
+       }
 
 - **Demande de certificat Let's Encrypt** :
 
