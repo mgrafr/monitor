@@ -471,14 +471,16 @@ L'envoi des données doit être un tableau json
    Value= {idx : 177,  switchcmd : ‘’ Set Level’’ , level  : ‘’ On ‘’} 
 
 .. note::
-   Le topic étant domoticz/in, voir cette page de domo-site.fr :http://domo-site.fr/accueil/dossiers/90
+   Le topic étant **domoticz/in**, voir cette page de domo-site.fr :http://domo-site.fr/accueil/dossiers/90
 
    Cette page est consacrée à un capteur mais la publication d'un message est identique
 
-.. admonition:: **convertit une valeur JavaScript en chaîne JSON**
+.. admonition:: **convertir une valeur JavaScript en chaîne JSON**
+   
    *avec La méthode JSON.stringify()* 
 
-   .. code-block:: 
+   .. code-block::
+
       var result = JSON.stringify(value);
 
 **La commande** :
