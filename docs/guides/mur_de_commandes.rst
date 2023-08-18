@@ -418,6 +418,17 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
    |image642|
 
+   C’est cette fenêtre qui va envoyer les commandes d’ouverture, fermeture 
+
+8.2.4.3 les scripts JS
+""""""""""""""""""""""
+2 solutions:
+
+8.2.4.3.1  avec Ajax et PHP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*amount=id pour input button* voir l'mage du § prec
+
+|image643|
 
 .. |paho| image:: ../images/paho.png
    :width: 100px
@@ -527,5 +538,7 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
    :width: 423px
 .. |image642| image:: ../media/image642.webp
    :width: 533px
+.. |image643| image:: ../media/image643.webp
+   :width: 634px
 
 
