@@ -386,7 +386,7 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 |image635|
 
 .. admonition:: **Manoeuvrer le volet**
-
+   
    Le rectangle indiquant le % d’ouverture peut être très petit, aussi pour pouvoir cliquer n’importe où sur l’image, il suffit d’ajouter un rectangle incolore comme déjà indiqué dans ce paragraphe :
 
    |image636|
@@ -413,6 +413,11 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
    La fenêtre complémentaire :
 
    |image641|
+
+   le code PHP dans mur_inter.php
+
+   |image642|
+
 
 .. |paho| image:: ../images/paho.png
    :width: 100px
@@ -520,5 +525,7 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
    :width: 700px
 .. |image641| image:: ../media/image641.webp
    :width: 423px
+.. |image642| image:: ../media/image642.webp
+   :width: 533px
 
 
