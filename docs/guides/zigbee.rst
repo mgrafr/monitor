@@ -35,6 +35,14 @@ Affichage du Frontend
 
    |image659|
 
+   Pour une installation sous Docker, le démarrage sera automatique.
+
+
+9.1 accès distant
+^^^^^^^^^^^^^^^^^
+Il faut configurer NGINX :
+
+Exemple de fichier .conf avant de demander un certificat cerbot :
 
 .. |image653| image:: ../media/image653.webp
    :width: 536px
