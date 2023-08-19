@@ -836,7 +836,7 @@ En plus clair :
 
 |image208|
 
-1.6 – Lien avec la base de données SQL
+1.6 Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.6.1- exemple avec la date de ramassage des poubelles
 ======================================================
@@ -959,7 +959,7 @@ pour afficher l’historique des dates, voir le paragraphe  :ref:`12.1.1 Edition
 
 |image218|
 
-1.7 – Ajuster le menu au nombre de pages
+1.7 Ajuster le menu au nombre de pages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Au-delà de 12 pages il faut étendre en largeur le menu ; il faut aussi le descendre de 50 px 
 pour ne pas cacher le menu hamburger
@@ -974,6 +974,9 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 
 |image221|
 
+1.8 Accès distant HTTPS
+^^^^^^^^^^^^^^^^^^^^^^^^^
+voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
