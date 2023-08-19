@@ -46,9 +46,9 @@ En plus des css pour la page:
    /*zigbee2mqtt zwavejs2mqtt & ngiosmobile   (----------------*/
    #zbmqtt,#zwmqtt {margin-top:-40px;width: 100%;height: 800px;}
 
-9.1 accès distant
-^^^^^^^^^^^^^^^^^
-Il faut configurer NGINX :
+9.1 accès distant HTTPS 
+^^^^^^^^^^^^^^^^^^^^^^^
+Il faut configurer NGINX : - :ref:`1.8 Accès distant HTTPS`
 
 .. admonition:: **Exemple de fichier .conf avant de demander un certificat cerbot**
 
