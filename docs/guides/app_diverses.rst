@@ -52,13 +52,50 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
 
 |image685|
 
-.. admonition:: Vérifications en cas de problèmes :
-
+|image686|
 
 12.1 AJOUT SQL
 ^^^^^^^^^^^^^^
 12.1.1 Edition de l’historique du ramassage des poubelles
 =========================================================
+
+|image687|
+
+|image688|
+
+- **Le fichier app_diverses.php**
+
+   Une icône est téléchargée ou celle du fichier image (celle-ci-dessus) est utilisée
+
+|image689|
+
+.. code-block::
+
+   <img src="<?php echo $lien_img;?>/images/serveur-sql.svg" style="width:40px;height:auto;margin:0 0 10px 118px" alt="dz">
+   <p class="txt_app"><input type="button" rel="sql1" style="margin-left: 60px;" class="btn_appd" value="afficher historique poubelles"></p>
+
+- **La fonction php : sql_app()**  déjà vu au §  :ref:`1.6.1- exemple avec la date de ramassage des poubelles`
+
+- **footer.php** 
+
+   |image691|
+
+Ligne de code concernée:
+
+.. code-block::
+
+   else if (logapp=="hostlist"){urllog="ajax.php?app=infos_nagios&variable="+logapp;titre="Hosts Nagios";}
+   else if (logapp=="sql"){var table_sql = $(this).attr('title');
+	urllog="ajax.php?app=sql&idx=1&variable="+table_sql+"&type=&command=";titre="historique poubelles";}
+   else {urllog="erreur";}
+
+12.1.2 Ajout d’une icône à l’historique des poubelles
+=====================================================
+
+
+.. admonition:: Vérifications en cas de problèmes :
+
+
 
 .. |image679| image:: ../media/image679.webp
    :width: 639px
@@ -72,6 +109,20 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
    :width: 650px
 .. |image685| image:: ../media/image685.webp
    :width: 585px
+.. |image686| image:: ../media/image686.webp
+   :width: 532px
+.. |image687| image:: ../media/image687.webp
+   :width: 411px
+.. |image688| image:: ../media/image688.webp
+   :width: 465px
+.. |image689| image:: ../media/image689webp
+   :width: 601px
+.. |image691| image:: ../media/image691webp
+   :width: 700px
+
+
+
+
 
 
 
