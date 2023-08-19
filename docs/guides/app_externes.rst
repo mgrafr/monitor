@@ -188,7 +188,7 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
 |image712| 
 
-   .  *extensions.conf
+   .  *extensions.conf*
 
 |image714| 
 
