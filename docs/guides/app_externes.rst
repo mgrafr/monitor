@@ -208,11 +208,70 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
    |image719|
 
+13.3 -La boite aux lettres
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Voir domo-site pour la programmation de l’esp8266 , de dzvent et Python*
 
+|image720|
 
+- **Le matériel**
 
+   .	2 ILS (pour le volet , pour la porte
 
+   .	1 esp 01 et une alim 12V/3,3 Volts
 
+Voir la page consacrée à la réalisation et la programmation de l’ESP pour une communication MQTT: http://domo-site.fr/accueil/dossiers/68
+
+- **Les images svg**
+
+|image721|  |image722|
+
+- **Le fichier accueil.php** , * concernée*
+
+.. code-block::
+
+   <div class="confirm bl" ><a href="#" id="confirm-box" rel="19" title="courrier récupéré"><img id="bl" src="images/boite_lettres.svg" alt="boite_lettres" /></a></div>
+
+- **Le fichier footer.php** , *le script pour afficher une demande de confirmation de la relève du courrier*
+
+.. code-block::
+
+   /*---popup boite_lettres-----------------------------------*/
+   var bl=0;var modalContainer = document.createElement('div');
+   modalContainer.setAttribute('id', 'modal_bl');
+   var customBox = document.createElement('div');
+   customBox.className = 'custom-box';
+   // Affichage boîte de confirmation
+   document.getElementById('confirm-box').addEventListener('click', function() {
+    customBox.innerHTML = '<p>Confirmation de la relève du courrier</p>';
+    customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
+    customBox.innerHTML += '<button id="modal-close">Annuler</button>';
+    modalShow();
+   console.log(bl);
+   });
+   function modalShow() {
+    modalContainer.appendChild(customBox);
+    document.body.appendChild(modalContainer);
+    document.getElementById('modal-close').addEventListener('click', function() {
+        modalClose();
+    });
+    if (document.getElementById('modal-confirm')) {
+        document.getElementById('modal-confirm').addEventListener('click', function () {
+           console.log('Confirmé !');bl=1; 
+           modalClose(bl);
+        });
+    } else if (document.getElementById('modal-submit')) {
+        document.getElementById('modal-submit').addEventListener('click', function () {
+            console.log(document.getElementById('modal-prompt').value);
+            bl=0;modalClose(bl);
+        });       }   }
+   function modalClose(bl) {
+    while (modalContainer.hasChildNodes()) {
+        modalContainer.removeChild(modalContainer.firstChild);
+    }
+    document.body.removeChild(modalContainer);
+	 console.log(bl);if (bl==1) {maj_variable(19,"boite_lettres","0",2);maj_services(0);bl=0;}  
+   }
 
 
 
@@ -255,6 +314,12 @@ Et : http://domo-site.fr/accueil/dossiers/7
    :width: 700px
 .. |image719| image:: ../media/image719.webp
    :width: 650px
+.. |image720| image:: ../media/image720.webp
+   :width: 416px
+.. |image721| image:: ../media/image721.webp
+   :width: 85px
+.. |image722| image:: ../media/image722.webp
+   :width: 85px
 
 
 
