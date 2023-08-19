@@ -157,6 +157,36 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
    |image710|
 
+.. important:: **En utilisant connect.lua**
+
+   *on évite une mise à jour lors d'un changement d’IP*
+
+   on évite d'afficher les logins et mots de passe
+
+   connect.lua :
+
+  |image711| 
+
+   - **Dans DZ** , on indique la variable de connect.lua, :darkblue:`ex : ip_domoticz`
+
+   .. code-block::
+      
+      package.path = package.path..";www/modules_lua/?.lua"
+      require 'connect'
+      --
+      os.execute("/bin/bash userdata/scripts/bash/pushover_img.sh "..ip_domoticz..">> /home/michel/push.log 2>&1");
+
+   - **Dans pushover_img.sh**
+
+   .. code-block::
+
+      wget  http://$1:8086/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
+
+- **asterisk**
+
+|image712| 
+
+
 13.4 Surveillance du PI par Domoticz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -175,7 +205,11 @@ Et : http://domo-site.fr/accueil/dossiers/7
 .. |image706| image:: ../media/image706.webp
    :width: 642px
 .. |image709| image:: ../media/image709.webp
-   :width: 588x
+   :width: 588px
 .. |image710| image:: ../media/image710.webp
    :width: 700px
+.. |image711| image:: ../media/image711.webp
+   :width: 288px
+.. |image712| image:: ../media/image712.webp
+   :width: 450px
 
