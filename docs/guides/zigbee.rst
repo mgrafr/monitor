@@ -37,6 +37,14 @@ Affichage du Frontend
 
    Pour une installation sous Docker, le démarrage sera automatique.
 
+- **Les styles CSS**
+
+En plus des css pour la page:
+
+.. code-block::
+
+   /*zigbee2mqtt zwavejs2mqtt & ngiosmobile   (----------------*/
+   #zbmqtt,#zwmqtt {margin-top:-40px;width: 100%;height: 800px;}
 
 9.1 accès distant
 ^^^^^^^^^^^^^^^^^
