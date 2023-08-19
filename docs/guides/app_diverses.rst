@@ -120,7 +120,7 @@ Pour la restitution de l’historique :
 
 |image698|
 
-.. admonition:: Vérifications en cas de problèmes :
+
 
 
 
