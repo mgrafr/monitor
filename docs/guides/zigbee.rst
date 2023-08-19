@@ -54,6 +54,8 @@ on ajoute une iframe *(permet d'obtenir une page HTML intégrée dans la page co
 
    <iframe id="zbmqtt" src="<?php echo $lien_zigbee;?>" frameborder="0" ></iframe>
 
+|image657|
+
 9.1 accès distant HTTPS 
 ^^^^^^^^^^^^^^^^^^^^^^^
 Il faut configurer NGINX : - :ref:`1.8 Accès distant HTTPS`
@@ -117,6 +119,8 @@ Le fichier modifié par cerbot lors de la demande de certificat
 .. |image654| image:: ../media/image654.webp
    :width: 625px
 .. |image655| image:: ../media/image655.webp
+   :width: 700px
+.. |image657| image:: ../media/image657.webp
    :width: 700px
 .. |image658| image:: ../media/image658.webp
    :width: 600px
