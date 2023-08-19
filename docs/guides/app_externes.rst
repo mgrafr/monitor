@@ -184,7 +184,36 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
 - **asterisk**
 
+   .  *sip.conf*
+
 |image712| 
+
+   .  *extensions.conf
+
+|image714| 
+
+.. admonition:: **Réglages du portier vidéo
+
+   |image713| 
+
+   **configTools** -> *VDPConfig*
+
+   |image715|
+
+   |image716|
+
+   |image717|
+
+   |image718|
+
+   |image719|
+
+
+
+
+
+
+
 
 
 13.4 Surveillance du PI par Domoticz
@@ -212,4 +241,21 @@ Et : http://domo-site.fr/accueil/dossiers/7
    :width: 288px
 .. |image712| image:: ../media/image712.webp
    :width: 450px
+.. |image713| image:: ../media/image713.webp
+   :width: 392px
+.. |image714| image:: ../media/image714.webp
+   :width: 614px
+.. |image715| image:: ../media/image715.webp
+   :width: 514px
+.. |image716| image:: ../media/image716.webp
+   :width: 414px
+.. |image717| image:: ../media/image717.webp
+   :width: 485px
+.. |image718| image:: ../media/image718.webp
+   :width: 700px
+.. |image719| image:: ../media/image719.webp
+   :width: 650px
+
+
+
 
