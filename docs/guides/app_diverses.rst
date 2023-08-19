@@ -92,6 +92,33 @@ Ligne de code concernée:
 12.1.2 Ajout d’une icône à l’historique des poubelles
 =====================================================
 
+- **Dans la BD** : une colonne est réservée pour l’icône
+
+   . dans la table "date_poub"
+
+   . dans la table "text_image
+
+|image692|
+
+- **footer.php** *maj_services() et $(#poubelles)*
+
+|image694|
+
+|image695|
+
+- **fonctions.php**  *status_variables()* 
+
+pour que maj_services (footer.php) récupère le chemin de l’icône la fonction sql_app doit envoyer la donnée
+
+|image696|
+
+Pour la restitution de l’historique :
+
+|image697|
+
+- **Affichage dans monitor**
+
+|image698|
 
 .. admonition:: Vérifications en cas de problèmes :
 
@@ -115,12 +142,22 @@ Ligne de code concernée:
    :width: 411px
 .. |image688| image:: ../media/image688.webp
    :width: 465px
-.. |image689| image:: ../media/image689webp
+.. |image689| image:: ../media/image689.webp
    :width: 601px
-.. |image691| image:: ../media/image691webp
+.. |image691| image:: ../media/image691.webp
    :width: 700px
-
-
+.. |image692| image:: ../media/image692.webp
+   :width: 500px
+.. |image694| image:: ../media/image694.webp
+   :width: 700px
+.. |image695| image:: ../media/image695.webp
+   :width: 650px
+.. |image696| image:: ../media/image696.webp
+   :width: 537px
+.. |image697| image:: ../media/image697.webp
+   :width: 517px
+.. |image698| image:: ../media/image698.webp
+   :width: 439px
 
 
 
