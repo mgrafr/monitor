@@ -46,6 +46,14 @@ En plus des css pour la page:
    /*zigbee2mqtt zwavejs2mqtt & ngiosmobile   (----------------*/
    #zbmqtt,#zwmqtt {margin-top:-40px;width: 100%;height: 800px;}
 
+- **zigbee.php**
+
+on ajoute une iframe *(permet d'obtenir une page HTML intégrée dans la page courante)*
+
+.. code-block::		         
+
+   <iframe id="zbmqtt" src="<?php echo $lien_zigbee;?>" frameborder="0" ></iframe>
+
 9.1 accès distant HTTPS 
 ^^^^^^^^^^^^^^^^^^^^^^^
 Il faut configurer NGINX : - :ref:`1.8 Accès distant HTTPS`
