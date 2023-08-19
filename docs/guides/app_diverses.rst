@@ -7,6 +7,51 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
 
 |image680| 
 
+.. notes:: **Les fichiers header.php, config.php, les styles css, etc**
+
+   voir les pages précédentes :
+
+   - :ref:`7.1- les pages index_loc.php, header.php, entete_html.php`
+
+   - :ref:`8.1 les fichiers de base`
+
+- **Le fichier app_diverses.php**
+
+.. code-block::
+
+   <?php
+   session_start();
+   $domaine=$_SESSION["domaine"];
+   if ($domaine==URLMONITOR) $lien_img="";
+   if ($domaine==IPMONITOR) $lien_img="/monitor";
+   ?><!-- section App diverses start -->
+		<div id="app_diverses" class="app_div">
+			<div class="container">
+		<div class="col-md-12">
+	   <h1 class="title_ext text-center">App<span>  diverses</span></h1><br>
+	   <img src="<?php echo $lien_img;?>/images/dz.webp" style="width:50px;height:auto;margin:10px 0 10px 120px" alt="dz">
+		<form2>
+		<p class="txt_app"><input type="button" rel="1" style="margin-left: 60px;" class="btn_appd" value="afficher fichier log normal"></p>	
+		<p class="txt_app"><input type="button" rel="2" style="margin-left: 60px;" class="btn_appd" value="afficher fichier log statut"></p>
+		<p class="txt_app"><input type="button" rel="4" style="margin-left: 60px;" class="btn_appd" value="afficher fichier log erreur"></p>
+		<img src="<?php echo $lien_img;?>/images/nagios.webp" style="width:100px;height:auto;margin:10px 0 10px 100px" alt="dz">
+		<p class="txt_app"><input type="button" rel="hostlist" style="margin-left: 60px;" class="btn_appd" value="afficher hosts Nagios"></p>
+		<img src="<?php echo $lien_img;?>/images/serveur-sql.svg" style="width:40px;height:auto;margin:0 0 10px 118px" alt="dz">
+		<p class="txt_app"><input type="button" rel="sql" title="date_poub" style="margin-left: 60px;" class="btn_appd" value="afficher historique poubelles"></p>
+		</form>   </div></div></div>
+
+|image682|
+
+- **footer.php**
+
+|image683|
+
+- **Fonctions.php**, *les fonctions log_dz()  et app_nagios()*
+
+|image684|
+
+|image685|
+
 .. admonition:: Vérifications en cas de problèmes :
 
 
@@ -19,4 +64,14 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
    :width: 639px
 .. |image680| image:: ../media/image680.webp
    :width: 533px
+.. |image682| image:: ../media/image682.webp
+   :width: 535px
+.. |image683| image:: ../media/image683.webp
+   :width: 567px
+.. |image684| image:: ../media/image684.webp
+   :width: 650px
+.. |image685| image:: ../media/image685.webp
+   :width: 585px
+
+
 
