@@ -653,6 +653,36 @@ On import aussi aldz (b) et la variable lue est donc :darkblue:`b.x`
 
 13.6.2.1 Enregistrement des n° de téléphone
 """""""""""""""""""""""""""""""""""""""""""
+*Il est possible d’envoyé plusieurs SMS à des numéros différents ; pour cela, il faut ajouter les numéros à connect.lua (la maj est automatique vers connec.py)*
+
+|image777|
+
+Le nombre de numéros n’est pas limité : tel={‘xxxxxxxxxx’,’yyyyyyyyyy’,’zzzzzzzzzz’,…)
+
+.. important:: **Le tableau est LUA avec des {}, remplacés par des crochets dans connect.py et connect.js**
+
+Importer sur Github le fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_dz/py/sms_dz.py
+
+.. admonition:: **Démarrage automatique avec systemd**
+
+   Après installation de Domoticz, utiliser systemd de Debian ; le fichier à créer : sms_dz.service , 
+
+   à télécharger https://raw.githubusercontent.com/mgrafr/monitor/main/share/debian/systemd/system/sms_dz.service
+
+   Ne pas oublier d’activer le script avant de le démarrer :
+
+   .. code-block::
+
+      systemctl enable sms_dz
+      systemctl start sms_dz
+
+13.7- afficher les données du compteur Linky
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*A partir des données reçues par Domoticz par le plugin domoticz-linky* : https://github.com/guillaumezin/DomoticzLinky
+
+|image778|
+
+
 
 .. |image699| image:: ../media/image699.webp
    :width: 423px
@@ -774,7 +804,10 @@ On import aussi aldz (b) et la variable lue est donc :darkblue:`b.x`
    :width: 389px    
 .. |image776| image:: ../media/image776.webp
    :width: 650px    
-
+.. |image777| image:: ../media/image777.webp
+   :width: 432px    
+.. |image778| image:: ../media/image778.webp
+   :width: 525px   
 
 
 
