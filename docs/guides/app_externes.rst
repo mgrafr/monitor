@@ -332,6 +332,22 @@ Domoticz(script dzvents) envoie par MQTT la confirmation de la mise à zéro de 
 13.4 Surveillance du PI par Domoticz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+|image733|
+
+.. note:: Voir cette page : http://domo-site.fr/accueil/dossiers/44
+
+- **Les tables SQL "text_image" et "variables_dz"**
+
+|image734|
+
+|image735|
+
+C'est le script JS ,
+
+- **maj_services** qui gère l’affichage de la page d’accueil
+
+|image736|
+
 
 
 .. |image699| image:: ../media/image699.webp
@@ -386,7 +402,14 @@ Domoticz(script dzvents) envoie par MQTT la confirmation de la mise à zéro de 
    :width: 650px
 .. |image731| image:: ../media/image731.webp
    :width: 533px
-
+.. |image733| image:: ../media/image733.webp
+   :width: 533px
+.. |image734| image:: ../media/image734.webp
+   :width: 335px
+.. |image735| image:: ../media/image735.webp
+   :width: 430px
+.. |image736| image:: ../media/image736.webp
+   :width: 650px
 
 
 
