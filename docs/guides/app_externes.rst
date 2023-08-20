@@ -627,7 +627,7 @@ Voir le § consacrées au modem GSM et la communication série entre Domoticz et
 
 	-	3 .....3eme .....
 
-   :darkblue:`Si bien sÛr ces numéros existent`
+   :darkblue:`Si bien sûr ces numéros existent`
 
    Cela est possible avec l’utilisation du module Python « importlib »
 
@@ -637,11 +637,22 @@ Voir le § consacrées au modem GSM et la communication série entre Domoticz et
 
 |image772|
 
+.. note:: 
+
+   **Le fichier aldz.py est modifié par Domoticz (scripts LUA notifications_devices et notifications_variables)**
+
+|image775|
+
+|image776|
+
 - **sms_dz.py**
 
 On import aussi aldz (b) et la variable lue est donc :darkblue:`b.x`
 
 |image774|
+
+13.6.2.1 Enregistrement des n° de téléphone
+"""""""""""""""""""""""""""""""""""""""""""
 
 .. |image699| image:: ../media/image699.webp
    :width: 423px
@@ -759,6 +770,11 @@ On import aussi aldz (b) et la variable lue est donc :darkblue:`b.x`
    :width: 414px    
 .. |image774| image:: ../media/image774.webp
    :width: 483px    
+.. |image775| image:: ../media/image775.webp
+   :width: 389px    
+.. |image776| image:: ../media/image776.webp
+   :width: 650px    
+
 
 
 
