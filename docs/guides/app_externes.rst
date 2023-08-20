@@ -729,7 +729,7 @@ Importer sur Github le fichier complet : https://raw.githubusercontent.com/mgraf
 
 .. admonition:: **Explications pour explode(concerne le PHP)**
 
-   *Data concerne 6 éléments*
+   *Data concerne 6 éléments* , :darkblue:`fonctions devices_plan() et pour_data()`
 
    |image780|
 
