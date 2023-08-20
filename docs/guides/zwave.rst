@@ -21,7 +21,7 @@ La structure est la même que pour la page zigbee.php, voir cette page :ref:`9. 
 ^^^^^^^^^^^^^^^^^^
 Il faut configurer NGINX pour un accès https , voir les paragraphes 
 
-- :ref:`9.1 accès distant`
+- :ref:`9.1 accès distant HTTPS`
 
 - :ref:`1.8 Accès distant HTTPS`
 
