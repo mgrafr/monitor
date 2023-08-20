@@ -597,32 +597,32 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 **Ajout à la base de données des données fournie par Domoticz**
 
-0.3.1 Les variables (table dispositifs)
-=======================================
+0.3.1 Les Tables "dispositifs(variables)" & "text-image"
+========================================================
 	La correspondance entre les variables Domoticz ou HA et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
 
 	- tables :
 
-	- text-image
+		.  text-image
 
-	- dispositifs 
-
-	- etc
+		. dispositifs 
 
   |image75|
 
+0.3.1.1 Table text-image
+""""""""""""""""""""""""
+
 .. admonition:: **quelques explications**
 	
-   **Table « text-image »** :
-
    Pour un texte contenu dans une variable Domoticz correspond une image ou 0 ou « none »
 
    |image76|
 
    ex: le texte "poubelle jaune" dans la variable poubelle aura un alias : l'image d'une poubelle jaune
 
- 
-   **Table « dispositifs»**, ne sont concernés pour les variables que les champs :
+0.3.1.2 Table dispositifs pour les variables
+"""""""""""""""""""""""""""""""""""""""""""" 
+  *ne sont concernés pour les variables que les champs :
 
    |image77|
 
