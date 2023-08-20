@@ -45,6 +45,15 @@ Extrait de la fonction:
 
 |image795|
 
+|image796|
+
+|image797|
+
+- **admin.php**
+
+|image798|
+
+
 14.7 Explications concernant l’importation distantes d’un tableau LUA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -54,3 +63,11 @@ Extrait de la fonction:
    :width: 630px 
 .. |image795| image:: ../media/image795.webp
    :width: 464px 
+.. |image796| image:: ../media/image796.webp
+   :width: 406px 
+.. |image797| image:: ../media/image797.webp
+   :width: 419px 
+.. |image798| image:: ../media/image798.webp
+   :width: 700px 
+
+
