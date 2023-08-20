@@ -4,7 +4,9 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Le script optionnel pour la notification sur un téléviseur LG (web os)
 
-.. prereq:: **sudo et Node.js doit être installés**
+.. prereq:: 
+
+   **sudo et Node.js doit être installés**
 
    *ainsi que les modules lgtv et superagent*
 
