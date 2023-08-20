@@ -743,8 +743,39 @@ Importer sur Github le fichier complet : https://raw.githubusercontent.com/mgraf
 
 13.7.1 enregistrement dans la BD SQL
 ====================================
+- **Créer la table**
 
+.. code-block::
 
+   CREATE TABLE `energie` (
+  `num` int(4) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `conso` varchar(10) NOT NULL,
+  `pmax` varchar(10) NOT NULL
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+   ALTER TABLE `energie` CHANGE `num` `num` INT(4) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
+
+*La table possède 2 valeurs aussi le champ « valeur » ne peut être utilisé , 2 champs distincts sont créés* 
+
+- **Domoticz**  , *graphique.php*
+
+Comme pour le capteur de pression, on enregistre, dans une variable une info pour éviter d’enregistrer un grand nombre de fois la même valeur ; on se sert du jour (day) et on modifie la fonction write_datas () utilisée pour le capteur de pression (fichier avec 2 valeurs au lieu d’une)
+
+|image782|
+
+|image783|
+
+- **monitor**
+
+|image784|
+
+|image785|
+
+|image786|
+
+Pour ajouter un historique de la consommation :
+
+|image787|
 
 .. |image699| image:: ../media/image699.webp
    :width: 423px
@@ -876,5 +907,19 @@ Importer sur Github le fichier complet : https://raw.githubusercontent.com/mgraf
    :width: 437px   
 .. |image781| image:: ../media/image781.webp
    :width: 700px   
+.. |image782| image:: ../media/image782.webp
+   :width: 700px   
+.. |image783| image:: ../media/image783.webp
+   :width: 238px   
+.. |image784| image:: ../media/image784.webp
+   :width: 650px 
+.. |image785| image:: ../media/image785.webp
+   :width: 490px   
+.. |image786| image:: ../media/image786.webp
+   :width: 530px 
+.. |image787| image:: ../media/image787.webp
+   :width: 602px 
+
+
 
 
