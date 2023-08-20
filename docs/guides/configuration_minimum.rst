@@ -263,7 +263,7 @@ Principales fonctions contenues dans ce fichier :
       $val_albat=val_variable(PILES[0]);
       if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 
-1.2.2 - les styles css
+1.2.2 les styles css
 ======================
 |image141|
 
@@ -291,6 +291,15 @@ Fichier mes_css.css , extrait :
 	   .modal-lg {width: 740px;}.cam {margin-left: 100px;}.fond_date {right: -270px;}body {max-width: 768px;margin: 0 auto;background-color: #79afbf;}
     .menu-link {left: 50%;top: 50px;}#bar_pression{top: -750px;left: 450px;}.txt_ext{left:100px;}.modal {left: -100px;}
 	   .modal_param {left: 200px;	}.modal-dialog {width:740px;} }
+
+1.2.2.1 styles CSS communs à toutes les pages
+"""""""""""""""""""""""""""""""""""""""""""""
+.. code-block::
+
+  #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
+    width: 100%;height: 1120px;padding: 80px 0;min-height: 100%;position: relative;color: #000;top: 350px;z-index:-20;overflow: auto;}
+  #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
+    background-color: aquamarine;} 
 
 1.2.3 – Le javascript
 =====================
