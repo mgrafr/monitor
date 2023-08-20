@@ -413,6 +413,11 @@ Elle est ajoutée à **interieur.php** (ci-dessous)  et **accueil.php** (ci-dess
 
    .. important:: **Une variable doit être créée dans Domoticz**, *voir le paragraphe suivant*
 
+   **Annulation de l’alarme**   
+
+   |image747|
+
+
 _ **L’image SVG**
 
 .. code-block::
@@ -455,9 +460,21 @@ _ **L’image SVG**
 
    |image746|
 
-**Annulation de l’alarme**   
+- **interieur.php**
 
-|image747|
+.. code-block::
+
+   <div id="bar_pression"><?php include ("include/chaudiere_svg.php");?></div>
+
+|image749|
+
+chaudiere_svg.php:
+
+|image750|
+
+13.5.2 Dans Domoticz, le capteur, le plan, les variables et les scripts
+- **le capteur**
+
 
 .. |image699| image:: ../media/image699.webp
    :width: 423px
@@ -535,4 +552,7 @@ _ **L’image SVG**
    :width: 352px
 .. |image747| image:: ../media/image747.webp
    :width: 413px
-
+.. |image749| image:: ../media/image749.webp
+   :width: 371px
+.. |image750| image:: ../media/image750.webp
+   :width: 650px
