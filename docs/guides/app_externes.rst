@@ -379,6 +379,20 @@ C'est le script JS ,
 
    |image740|
 
+13.5 Capteur de pression chaudière 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Réalisé avec un microcontrôleur Wemos D1 : pour la partie réalisation du capteur, voir le site web : domo-site.fr*
+
+|image741|
+
+-	Envoie les données de pression sur le serveur MQTT
+
+-	Domoticz récupère et traites les données
+
+-	Monitor affiche en temps réel les données, l’historique des données, un graphique ,...
+
+|image742|
+
 
 .. |image699| image:: ../media/image699.webp
    :width: 423px
@@ -444,5 +458,9 @@ C'est le script JS ,
    :width: 650px
 .. |image740| image:: ../media/image740.webp
    :width: 623px
+.. |image741| image:: ../media/image741.webp
+   :width: 142px
+.. |image742| image:: ../media/image742.webp
+   :width: 478px
 
 
