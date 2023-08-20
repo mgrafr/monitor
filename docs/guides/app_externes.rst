@@ -495,6 +495,18 @@ chaudiere_svg.php:
 
 |image758|
 
+.. admonition:: **Enregistrer les valeurs dans la BD SQL**
+
+   - Le **script export_sql.lua**
+
+    Pour n’envoyer à la BD que les changements de pression (pour limiter le nombre d’enregistrements) , il faut :
+
+     .	Soit créer une user variable
+     .  Soit utiliser une donnée persistante, solution retenue ici
+
+      |image759|
+
+
 
 
 .. |image699| image:: ../media/image699.webp
@@ -587,6 +599,10 @@ chaudiere_svg.php:
    :width: 279px
 .. |image758| image:: ../media/image758.webp
    :width: 700px
-
+.. |image759| image:: ../media/image759.webp
+   :width: 400px
+.. |image651| image:: ../media/image651.webp
+   :width: 474px
+ 
 
 
