@@ -588,7 +588,7 @@ voir paragraphe :ref:`0.3.2 Les Dispositifs`
 13.5.3.3  Mettre à jour la table "text-image"
 """""""""""""""""""""""""""""""""""""""""""""
 
-|image766|
+|image767|
 
 Pour afficher comme ci-dessus une image plutôt qu’un texte , voir § :ref:`0.3.1.1 Table text-image`
 
@@ -606,7 +606,42 @@ Pour afficher comme ci-dessus une image plutôt qu’un texte , voir § :ref:`0.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 13.6.1 réception SMS
 ====================
+Voir le § consacrées au modem GSM et la communication série entre Domoticz et un RPI :ref:`18.3 Liaison série Domoticz-PI`
 
+- **Variable Domoticz*
+
+|image768|
+
+13.6.2 émission SMS
+===================
+
+.. note::
+
+   Un fichier python : sms_dz.py surveille en permanence la variable x de aldz.py et déclenche l’envoi d’un sms si celle-ci est différente de « 0 » ; priority indique la priorité pour l’envoi des SMS :
+
+	-	0 envoi à tous les numéros
+
+	-	1 envoi au 1er numéro
+
+	-	2 envoi au 2eme numéro
+
+	-	3 .....3eme .....
+
+   :darkblue:`Si bien sÛr ces numéros existent`
+
+   Cela est possible avec l’utilisation du module Python « importlib »
+
+   |image773|
+
+- **aldz.py**
+
+|image772|
+
+- **sms_dz.py**
+
+On import aussi aldz (b) et la variable lue est donc :darkblue:`b.x`
+
+|image774|
 
 .. |image699| image:: ../media/image699.webp
    :width: 423px
@@ -716,6 +751,14 @@ Pour afficher comme ci-dessus une image plutôt qu’un texte , voir § :ref:`0.
    :width: 700px    
 .. |image767| image:: ../media/image767.webp
    :width: 571px    
+.. |image768| image:: ../media/image768.webp
+   :width: 650px    
+.. |image772| image:: ../media/image772.webp
+   :width: 444px    
+.. |image773| image:: ../media/image773.webp
+   :width: 414px    
+.. |image774| image:: ../media/image774.webp
+   :width: 483px    
 
 
 
