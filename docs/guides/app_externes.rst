@@ -537,7 +537,12 @@ chaudiere_svg.php:
         end
 
    |image760|
-   
+
+       .*variable domoticz*
+
+       |image762|
+
+
 
 .. |image699| image:: ../media/image699.webp
    :width: 423px
@@ -635,6 +640,10 @@ chaudiere_svg.php:
    :width: 474px
 .. |image760| image:: ../media/image760.webp
    :width: 700px
+.. |image762| image:: ../media/image762.webp
+   :width: 605px
   
+
+
 
 
