@@ -538,10 +538,72 @@ chaudiere_svg.php:
 
    |image760|
 
-       .*variable domoticz*
+       . *variable domoticz*
 
        |image762|
 
+       . *Le script notifications_variables.lua*
+
+.. code-block::
+
+   return {
+	on = {
+		variables = {'pression-chaudiere'}
+	},
+	execute = function(domoticz, variable)
+	    domoticz.log('Variable ' .. variable.name .. ' was changed', domoticz.LOG_INFO)
+	if (domoticz.variables('pression-chaudiere').value == "manque_pression") then	             txt=tostring(domoticz.variables('pression-chaudiere').value) 
+	             domoticz.variables('pression-chaudiere').set('pression_basse')
+	 	         print("envoi SMS pression-chaudiere")
+                 alerte_gsm('alarme_'..txt)
+        end	
+
+13.5.3 Dans la Base de données SQL
+==================================
+
+13.5.3.1 Créer une nouvelle table
+"""""""""""""""""""""""""""""""""
+
+.. code-block::
+
+   CREATE TABLE `pression_chaudiere` (
+  `num` int(5) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `valeur` varchar(4) NOT NULL
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+     ALTER TABLE `pression_chaudiere` CHANGE `num` `num` INT(4) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
+
+13.5.3.2 Mettre à jour la table des dispositifs
+"""""""""""""""""""""""""""""""""""""""""""""""
+voir paragraphe :ref:`0.3.2 Les Dispositifs`
+
+|image764|
+
+|image765|
+
+- Mettre à jour la variables DZ pour l’affichage d’une notification sur l’app donc la tablette ou le smartphone voir § :ref:`0.3.1.2 Table dispositifs pour les variables`
+
+13.5.3.3  Mettre à jour la table "text-image"
+"""""""""""""""""""""""""""""""""""""""""""""
+
+|image766|
+
+Pour afficher comme ci-dessus une image plutôt qu’un texte , voir § :ref:`0.3.1.1 Table text-image`
+
+13.5.4 Styles CSS
+=================
+
+.. code-block::
+
+   #bar_pression {position: relative;top: -770px;width: 100px;left: 500px;}
+   #pression_chaud{width:60px}
+   .pression_chaud{position: relative;top: -460px;left: 220px;}
+   @media (max-width:534px) {#pression_chaud{width:50px}.pression_chaud{top: -305px;}}
+
+13.6 SMS réception et émission
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+13.6.1 réception SMS
+====================
 
 
 .. |image699| image:: ../media/image699.webp
@@ -642,8 +704,14 @@ chaudiere_svg.php:
    :width: 700px
 .. |image762| image:: ../media/image762.webp
    :width: 605px
-  
-
+.. |image764| image:: ../media/image764.webp
+   :width: 700px
+.. |image765| image:: ../media/image765.webp
+   :width: 700px    
+.. |image766| image:: ../media/image766.webp
+   :width: 700px    
+.. |image767| image:: ../media/image767.webp
+   :width: 571px    
 
 
 
