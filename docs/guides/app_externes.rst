@@ -273,7 +273,61 @@ Voir la page consacrée à la réalisation et la programmation de l’ESP pour u
 	 console.log(bl);if (bl==1) {maj_variable(19,"boite_lettres","0",2);maj_services(0);bl=0;}  
    }
 
+|image725|
 
+Un clique sur la BL fait apparaitre le popup de confirmation
+
+|image726|
+
+- **Les styles css**
+
+.. code-block::
+
+   .bl{position: absolute;top: 870px;left: 115px;}
+   #bl{width: 40px;height: auto;}
+   .custom-box {border: 2px solid grey;text-align: center;padding: 10px;
+    width: fit-content;background-color: #e5c666;margin: auto;}
+   #modal_bl {position: absolute;top: 0;left: 0;display: flex;
+    width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.5);}
+
+- **La variable Domoticz**
+
+|image728|
+
+- **Les tables sql**
+
+   . Variables dans la table « dispositifs »
+
+   |image729|
+
+   . La table « text_image »
+
+   |image730|
+
+Après confirmation de la relève, la confirmation de la maj de la variable Domoticz
+
+|image731|
+
+Domoticz(script dzvents) envoie par MQTT la confirmation de la mise à zéro de la variable boite lettres
+
+.. code-block::
+
+   -- script notifications_autres
+   return {
+	on = {
+		variables = {'boite_lettres'}
+	},
+	execute = function(domoticz, variable)
+	    domoticz.log('Variable ' .. variable.name .. ' was changed', domoticz.LOG_INFO)
+	    if (domoticz.variables('boite_lettres').changed) then
+                if (domoticz.variables('boite_lettres').value == "0") then 
+                print("topic envoyé : esp/in/boite_lettres")
+                 local command = "/home/michel/domoticz/scripts/python/mqtt.py esp/in/boite_lettres valeur 0   >> /home/michel/esp.log 2>&1" ;
+                 os.execute(command);    
+                end 
+           end     
+       end
+   }
 
 13.4 Surveillance du PI par Domoticz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -320,6 +374,18 @@ Voir la page consacrée à la réalisation et la programmation de l’ESP pour u
    :width: 85px
 .. |image722| image:: ../media/image722.webp
    :width: 85px
+.. |image725| image:: ../media/image725.webp
+   :width: 639px
+.. |image726| image:: ../media/image726.webp
+   :width: 455px
+.. |image728| image:: ../media/image728.webp
+   :width: 700px
+.. |image729| image:: ../media/image729.webp
+   :width: 700px
+.. |image730| image:: ../media/image730.webp
+   :width: 650px
+.. |image731| image:: ../media/image731.webp
+   :width: 533px
 
 
 
