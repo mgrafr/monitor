@@ -506,8 +506,38 @@ chaudiere_svg.php:
 
       |image759|
 
+    	Le script : les lignes à ajouter pour l’enregistrement dans la BD et le déclenchement d’une alarme
 
+   .. code-block::
 
+      package.path = package.path..";www/modules_lua/?.lua"
+      require 'datas'
+      require 'string_tableaux'
+
+      function write_datas(data)
+      f = io.open("www/modules_lua/datas.lua", "w")
+      f:write("pression="..data)
+      f:close()
+      end
+
+      elseif (deviceName=='pression_chaudière') then 
+        pressionch=tonumber(deviceValue);
+        print ("pression_chaudiere:"..pressionch.."--"..pression);
+        if (pression~=pressionch) then 
+            libelle="pression_chaudiere#valeur";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
+            envoi_fab(don)
+            --donnees['pression']=tonumber(deviceValue)
+            write_datas(tonumber(deviceValue),data1)
+            --pression_chaudiere: variable du fichier 'string_tableaux'
+            if (pressionch<pression_chaudiere and uservariables['pression-chaudiere']=="ras") then 
+                commandArray['Variable:pression-chaudiere'] = "manque_pression";  print("pression basse")
+            elseif (pressionch<pression_chaudiere and uservariables['pression-chaudiere']~="pression_basse") then 
+                commandArray['Variable:pression-chaudiere']="ras"    
+            end
+        end
+
+   |image760|
+   
 
 .. |image699| image:: ../media/image699.webp
    :width: 423px
@@ -603,6 +633,8 @@ chaudiere_svg.php:
    :width: 400px
 .. |image651| image:: ../media/image651.webp
    :width: 474px
- 
+.. |image760| image:: ../media/image760.webp
+   :width: 700px
+  
 
 
