@@ -194,7 +194,7 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
 |image714| 
 
-.. admonition:: **Réglages du portier vidéo
+.. admonition:: **Réglages du portier vidéo**
 
    |image713| 
 
@@ -375,7 +375,7 @@ C'est le script JS ,
             txt='alarmeùPIùdeùnouveauùOK';obj='alarme PI de nouveau OK'alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
             end
             --
-- **monitor**	*page « nagios* 
+- **monitor**	*page "nagios"* 
 
    c’est le script JS « maj_devices(plan) » qui gère le changement de couleur de l’icône, à partir du dispositif dans Domoticz
 
@@ -620,6 +620,8 @@ Pour afficher comme ci-dessus une image plutôt qu’un texte , voir § :ref:`0.
    :width: 601px
 .. |image706| image:: ../media/image706.webp
    :width: 642px
+.. |image707| image:: ../media/image707.webp
+   :width: 659px
 .. |image709| image:: ../media/image709.webp
    :width: 588px
 .. |image710| image:: ../media/image710.webp
