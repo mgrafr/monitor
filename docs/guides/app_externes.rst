@@ -348,6 +348,36 @@ C'est le script JS ,
 
 |image736|
 
+- **Domoticz** , DZEvent « notifications_devices » 
+
+   A partir de l’info du matériel « **System Alive Checker** » , la variable « pi-alarme » est modifié
+
+   |image737|
+
+.. code-block::
+
+   return {
+	on = {
+		devices = {
+			'Ping_pi4',
+				}
+	},
+     execute = function(domoticz, device)
+        domoticz.log('device '..device.name..' was changed', domoticz.LOG_INFO)
+            if (device.name == 'Ping_pi4' and  device.state=='Off' and domoticz.variables('pi-alarme').value == "0") then 
+            domoticz.variables('pi-alarme').set("pi_hs")
+            domoticz.variables('variable_sp').set("1")
+            txt='alarmeùpiùhs';obj='alarme pi hs'alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
+            elseif (device.name == 'Ping_pi4' and  device.state=='On' and domoticz.variables('pi-alarme').value == "pi_hs") then 
+            domoticz.variables('pi-alarme').set("0")
+            txt='alarmeùPIùdeùnouveauùOK';obj='alarme PI de nouveau OK'alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
+            end
+            --
+- **monitor**	*page « nagios* 
+
+   c’est le script JS « maj_devices(plan) » qui gère le changement de couleur de l’icône, à partir du dispositif dans Domoticz
+
+   |image740|
 
 
 .. |image699| image:: ../media/image699.webp
@@ -410,6 +440,9 @@ C'est le script JS ,
    :width: 430px
 .. |image736| image:: ../media/image736.webp
    :width: 650px
-
+.. |image737| image:: ../media/image737.webp
+   :width: 650px
+.. |image740| image:: ../media/image740.webp
+   :width: 623px
 
 
