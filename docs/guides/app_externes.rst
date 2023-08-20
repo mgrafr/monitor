@@ -407,16 +407,13 @@ Elle est ajoutée à **interieur.php** (ci-dessous)  et **accueil.php** (ci-dess
 
 .. admonition:: **Pour annuler l'alarme**
 
+   |image747|
+
    - **footer.php**, la fenêtre modale est déjà utilisée pour la boite aux lettres, ajout d’une variable « ch=0 pour la BL et ch=1 pour la pression chaudière
 
    |image745|
 
    .. important:: **Une variable doit être créée dans Domoticz**, *voir le paragraphe suivant*
-
-   **Annulation de l’alarme**   
-
-   |image747|
-
 
 _ **L’image SVG**
 
@@ -473,7 +470,31 @@ chaudiere_svg.php:
 |image750|
 
 13.5.2 Dans Domoticz, le capteur, le plan, les variables et les scripts
+=======================================================================
 - **le capteur**
+
+|image752|
+
+.. error:: **Pour éviter des erreurs comme celles-ci**
+
+   |image753|
+
+   L’envoie des données doivent être un tableau json de cette forme :
+
+   |image651|
+
+   *Le topic est « domoticz/in »* 
+
+- **Le plan**
+
+*Le capteur est ajouté au plan pour une communication automatique avec Monitor ou toute autre application, les données sont récupérées dans un fichier json*
+
+|image756|  |image757|
+
+- **Le fichier json** appelé par la fonction « devices_plan » , voir le § :ref:`1.3.5 les scripts JavaScript`
+
+|image758|
+
 
 
 .. |image699| image:: ../media/image699.webp
@@ -556,3 +577,16 @@ chaudiere_svg.php:
    :width: 371px
 .. |image750| image:: ../media/image750.webp
    :width: 650px
+.. |image752| image:: ../media/image752.webp
+   :width: 496px
+.. |image753| image:: ../media/image753.webp
+   :width: 601px
+.. |image756| image:: ../media/image756.webp
+   :width: 292px
+.. |image757| image:: ../media/image757.webp
+   :width: 279px
+.. |image758| image:: ../media/image758.webp
+   :width: 700px
+
+
+
