@@ -222,11 +222,11 @@ Extrait de la fonction:
 
 Concerne :
 
--	le tableau de variable string_tableau.lua
+. le tableau de variable string_tableau.lua
 
--	la liste des caméras Modect pour l’alarme
+. la liste des caméras Modect pour l’alarme
 
--	le fichier des Logins/mots de passe
+. le fichier des Logins/mots de passe
 
 - **string_tableau.lua**   *exemple*
 
@@ -242,7 +242,7 @@ Concerne :
    -- table anniversaires
    anniversaires = {["27-08"]="Damien",["18-05"]="Yoann",["14-09"]="Jonathan",["19-07"]="Alexandra",["25-08"]="Charlotte",["01-05"]="Guillaume",["07-11"]="Corentin",["22-08"]="Pauline",["14-03"]="Clémence",["31-10"]="Eric",["01-02"]="Nathalie",["14-04"]="Christèle",["25-04"]="Katy",["23-05"]="Eveline",["23-08"]="Jean Paul",["24-07"]="Arthur",["09-07"]="Jade",["27-03"]="Judith",["06-03"]="Annie",["02-11"]="Nicole",["22-12"]="Michel"};
 
-   .  Dans admin/config.php de monitor :
+_ **Dans admin/config.php de monitor**
 
 .. code-block::
 
@@ -258,7 +258,7 @@ Concerne :
 
 |image836|
 
-      . Dans fonctions.php : *function admin()*
+- **Dans fonctions.php** : *function admin()*
 
          |image837|
 
@@ -269,6 +269,19 @@ Concerne :
            $content = file_get_contents($file);
 	        if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	          
 
+- **upload et Maj par dz** :*on met à 1,2 ou 3  la variable,  dz se charge d’importer le fichier*
+
+|image839|
+
+Le script lua utilisé :
+
+.. code-block:: 
+
+   package.path = package.path..";www/modules_lua/?.lua"
+   require 'string_tableaux'
+   require 'connect'
+
+|image842|
 
 14.10  Commandes ssh2 PC distant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -370,6 +383,11 @@ Concerne :
    :width: 488px
 .. |image837| image:: ../media/image837.webp
    :width: 629px
+.. |image839| image:: ../media/image839.webp
+   :width: 613px
+.. |image842| image:: ../media/image842.webp
+   :width: 605px
+
 
 
 
