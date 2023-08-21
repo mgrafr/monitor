@@ -248,7 +248,7 @@ _ **Dans admin/config.php de monitor**
 
    define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');
 
-  . Création d'un fichier temporaire dans monitor, le répertoire « dz » est à créer avec les autorisations pour écrire
+. Création d'un fichier temporaire dans monitor, le répertoire « dz » est à créer avec les autorisations pour écrire
 
 .. code-block::
 
@@ -282,6 +282,15 @@ Le script lua utilisé :
    require 'connect'
 
 |image842|
+
+ Le script python : *upload_fichier.py*
+
+.. note::
+
+   C’est pour la raison ci-dessous que l’adresse ip de monitor se trouve dans le fichier « connect.lua »
+
+   |image843|
+
 
 14.10  Commandes ssh2 PC distant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -387,6 +396,8 @@ Le script lua utilisé :
    :width: 613px
 .. |image842| image:: ../media/image842.webp
    :width: 605px
+.. |image843| image:: ../media/image843.webp
+   :width: 528px
 
 
 
