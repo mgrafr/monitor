@@ -429,8 +429,11 @@ La fonction PHP admin() appelle la fonction ssh_scp.php
 *SCP veut dire Secure Copy et il est utilisé pour copier en toute sécurité des fichiers d’un ordinateur local vers des serveurs distants ou inversement, à l'aide du protocole SSH, SSH2 avec PHP*
 
 Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes sont nécessaires :
+
 -	télécharger le fichier distant :green:`/etc/mcmtprc par exemple` , celui de la commande affichée dans « Administration »
+
 -	le modifier
+
 -	le renvoyer au pc distant
 
 **fonctions.php , extrait de admin()**
