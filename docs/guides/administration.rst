@@ -242,13 +242,13 @@ Concerne :
    -- table anniversaires
    anniversaires = {["27-08"]="Damien",["18-05"]="Yoann",["14-09"]="Jonathan",["19-07"]="Alexandra",["25-08"]="Charlotte",["01-05"]="Guillaume",["07-11"]="Corentin",["22-08"]="Pauline",["14-03"]="Clémence",["31-10"]="Eric",["01-02"]="Nathalie",["14-04"]="Christèle",["25-04"]="Katy",["23-05"]="Eveline",["23-08"]="Jean Paul",["24-07"]="Arthur",["09-07"]="Jade",["27-03"]="Judith",["06-03"]="Annie",["02-11"]="Nicole",["22-12"]="Michel"};
 
-_ **Dans admin/config.php de monitor**
++ **Dans monitor** *admin/config.php* 
 
 .. code-block::
 
    define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');
 
-. Création d'un fichier temporaire dans monitor, le répertoire « dz » est à créer avec les autorisations pour écrire
+Création d'un fichier temporaire dans monitor, le répertoire « dz » est à créer avec les autorisations pour écrire
 
 .. code-block::
 
@@ -258,7 +258,7 @@ _ **Dans admin/config.php de monitor**
 
 |image836|
 
-- **Dans fonctions.php** : *function admin()*
++ **Dans monitor,  fonctions.php** : *function admin()*
 
          |image837|
 
@@ -291,6 +291,37 @@ Le script lua utilisé :
 
    |image843|
 
+.. warning:: **REMARQUE IMPORTANTE**
+
+   pour que python trouve le fichier connect et donc la variable ip_monitor, il faut ajouter le répertoire vide __INIT__.py
+
+    |image845|
+
+- **string_modect.lua**
+
+**admin.php**
+
+.. code-block:: 
+
+   <a class="admin1" href="#admin" rel="10" title="reponse1" >Configuation modect dz alarmes</a>
+
+|image849|
+
+**fonctions.php**  *admin()*
+
+|image850|
+
+Pour cette fonction le script LUA est similaire à string_tableaux.lua (celui pour les poubelles, la fosse septique, les anniversaires,...
+
+La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichier externe dans Domoticz`
+
+|image847|
+
+.. seealso:: *MODECT* 
+
+   Affichage dans admin.php mais aussi dans alarmes.php
+
+   |image853|
 
 14.10  Commandes ssh2 PC distant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -398,6 +429,17 @@ Le script lua utilisé :
    :width: 605px
 .. |image843| image:: ../media/image843.webp
    :width: 528px
+.. |image845| image:: ../media/image845.webp
+   :width: 518px
+.. |image847| image:: ../media/image847.webp
+   :width: 518px
+.. |image849| image:: ../media/image849.webp
+   :width: 401px
+.. |image850| image:: ../media/image850.webp
+   :width: 609px
+.. |image853| image:: ../media/image853.webp
+   :width: 497px
+
 
 
 
