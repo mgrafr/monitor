@@ -256,6 +256,19 @@ Concerne :
 
 |image835|
 
+|image836|
+
+      . Dans fonctions.php : *function admin()*
+
+         |image837|
+
+      .. code-block::
+
+         case "3" :
+         echo $file.'<div id="result"><form >';
+           $content = file_get_contents($file);
+	        if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	          
+
 
 14.10  Commandes ssh2 PC distant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -353,4 +366,10 @@ Concerne :
    :width: 374px
 .. |image835| image:: ../media/image835.webp
    :width: 324px
+.. |image836| image:: ../media/image836.webp
+   :width: 488px
+.. |image837| image:: ../media/image837.webp
+   :width: 629px
+
+
 
