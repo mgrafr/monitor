@@ -7,7 +7,7 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **css**
 
-voir le § 1.2.2.1 styles CSS communs à toutes les pages
+voir le § :ref:`1.2.2.1 styles CSS communs à toutes les pages`
 
 - **Index_loc.php**  *chargement de la page impératif*
 
