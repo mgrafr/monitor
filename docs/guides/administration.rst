@@ -148,8 +148,8 @@ Extrait de la fonction:
 
  |image814|
 
-14.6 Copies d’écran
-^^^^^^^^^^^^^^^^^^^
+14.6 Copies d’écran et explications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image815|
 
@@ -197,6 +197,15 @@ Extrait de la fonction:
 - **admin.php**
 
  |image826|
+
+- **admin()**  *fonctions.php*
+
+|image827|
+
+|image828|
+
+|image829|
+
 
 14.6.1.3 connect.js
 """""""""""""""""""
@@ -262,5 +271,11 @@ Extrait de la fonction:
 .. |image825| image:: ../media/image825.webp
    :width: 427px 
 .. |image826| image:: ../media/image826.webp
+   :width: 700px 
+.. |image827| image:: ../media/image827.webp
+   :width: 604px 
+.. |image828| image:: ../media/image828.webp
+   :width: 650px 
+.. |image829| image:: ../media/image829.webp
    :width: 700px 
 
