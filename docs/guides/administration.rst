@@ -106,6 +106,66 @@ Extrait de la fonction:
 
 14.4 fonctions PHP
 ^^^^^^^^^^^^^^^^^^
+- **admin()**
+
+|image805|
+
+|image806|
+
+|image807|
+
+|image808|
+
+14.5 Téléchargement d’un fichier externe dans Domoticz
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Pour la mise à jour du fichier avec les variables pour les scripts Domoticz* 
+
+.. info::
+
+   Plusieurs solutions étaient possibles mais avec l’installations de scripts et de modules supplémentaires.
+
+   En http, on ne peut seulement télécharger un fichier depuis un site distant.
+   
+   La solution retenue :
+
+      -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met 
+à 1 une variable (nommée ici "upload") dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
+
+   |image811|
+
+   .. code-block::
+
+      maj_variable("22","upload","1","2")
+   
+   Pour la mise à jour de la liste des caméras dont la détection est activée, c’est le même script qui est utilisé, la variable « upload » est alors passé à 2 :
+
+   |image812|
+
+- **Les fonctions JS wajax() et yajax()** ,  *dans mes_js.js*
+
+ |image813|
+
+- **Les fichiers temporaires**,  *dans monitor pour Domoticz*
+
+ |image814|
+
+14.6 Copies d’écran
+^^^^^^^^^^^^^^^^^^^
+
+|image815|
+
+|image816|
+
+|image817|
+
+|image818|
+
+|image819|
+
+|image820|
+
+
+
 
 14.7 Explications concernant l’importation distantes d’un tableau LUA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -130,6 +190,31 @@ Extrait de la fonction:
    :width: 324px 
 .. |image804| image:: ../media/image804.webp
    :width: 664px 
-
-
-
+.. |image805| image:: ../media/image805.webp
+   :width: 700px 
+.. |image806| image:: ../media/image806.webp
+   :width: 605px 
+.. |image807| image:: ../media/image807.webp
+   :width: 650px 
+.. |image808| image:: ../media/image808.webp
+   :width: 635px 
+.. |image811| image:: ../media/image811.webp
+   :width: 650px 
+.. |image812| image:: ../media/image812.webp
+   :width: 700px 
+.. |image813| image:: ../media/image813.webp
+   :width: 618px 
+.. |image814| image:: ../media/image814.webp
+   :width: 319px 
+.. |image815| image:: ../media/image815.webp
+   :width: 379px 
+.. |image816| image:: ../media/image816.webp
+   :width: 536px 
+.. |image817| image:: ../media/image817.webp
+   :width: 532px 
+.. |image818| image:: ../media/image818.webp
+   :width: 526px 
+.. |image819| image:: ../media/image819.webp
+   :width: 461px 
+.. |image820| image:: ../media/image820.webp
+   :width: 477px 
