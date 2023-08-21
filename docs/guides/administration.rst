@@ -401,6 +401,67 @@ on ajoute pour les lignes concernées :
 =================
 *ou RPI*
 
+Sur le pi, soit une commande sudo reboot, soit un script qui effectue la commande ; j’ai choisi cette dernière solution car il suffit de modifier ce fichier pour faire d’autres commandes.
+
+.. code-block::
+
+   #!/usr/bin/bash
+   echo  "reboot"
+   sudo reboot
+
+**La fonction PHP**  *sh_scp.php*
+
+|image868|
+
+Comme pour toutes les autres commandes « Administration » les scripts JS et ajax existent déjà, il suffit d’ajouter l’appel de la fonction ci-dessus dans admin.php :
+
+.. code-block::
+
+   <img src="images/rpi.webp" style="width:30px" alt="rpi">
+   <a class="admin1" href="#admin" rel="20" style="margin-left:35px" title="reponse1" >Reboot Raspberry</a>
+
+La fonction PHP admin() appelle la fonction ssh_scp.php
+
+|image870|
+
+14.10.2 commandes scp pour l’envoi ou la réception de fichiers distants
+=======================================================================
+*SCP veut dire Secure Copy et il est utilisé pour copier en toute sécurité des fichiers d’un ordinateur local vers des serveurs distants ou inversement, à l'aide du protocole SSH, SSH2 avec PHP*
+
+Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes sont nécessaires :
+-	télécharger le fichier distant :green:`/etc/mcmtprc par exemple` , celui de la commande affichée dans « Administration »
+-	le modifier
+-	le renvoyer au pc distant
+
+**fonctions.php , extrait de admin()**
+
+|image872|
+
+.. admonition:: **Exemple pour le fichier /etc/msmtprc**
+
+    |image876|
+
+   *msmtp est un client SMTP très simple et facile à configurer*  
+
+   |image873|
+
+.. important:: *SSH2 et SCP concerne aussi la commande de maj du fichier python connect.py si il est utilisé par plusieurs serveurs.*
+
+   La commande ci-dessous met à jour connect.py dans Domoticz, Monitor, et un autre serveur (le PI)
+
+   *REMARQUE* : pour que python trouve le fichier connect  et donc les variables,il faut ajouter le répertoire vide __INIT__.py
+
+   Ce fichier permet de ne pas avoir à modifier les scripts python lors d’un changement de serveur
+
+   Exemple ( fichier rec_sms_serie.py) 	
+
+   |image875|
+
+   connect.py
+
+    |image877|
+
+
 
 .. |image788| image:: ../media/image788.webp
    :width: 605px 
@@ -512,5 +573,16 @@ on ajoute pour les lignes concernées :
    :width: 387px
 .. |image865| image:: ../media/image865.webp
    :width: 613px
+.. |image868| image:: ../media/image868.webp
+   :width: 700px
+.. |image872| image:: ../media/image872.webp
+   :width: 700px
+.. |image875| image:: ../media/image875.webp
+   :width: 576px
+.. |image876| image:: ../media/image876.webp
+   :width: 537px
+.. |image877| image:: ../media/image877.webp
+   :width: 425px
+
 
 
