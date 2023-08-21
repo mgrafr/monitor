@@ -595,6 +595,8 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    **" pas de connexion à la BD "**
 
+   plus d'info sur test_db.php :ref:`14.2 admin.php, info_admin.php, test_db.php et backup_bd`
+
 **Ajout à la base de données des données fournie par Domoticz**
 
 0.3.1 Les Tables "dispositifs(variables)" & "text-image"
