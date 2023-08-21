@@ -273,7 +273,7 @@ Création d'un fichier temporaire dans monitor, le répertoire « dz » est à c
 
 |image839|
 
-Le script lua utilisé :
+Le script lua utilisé pour ouvrir ces fichiers:
 
 .. code-block:: 
 
@@ -322,6 +322,26 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
    Affichage dans admin.php mais aussi dans alarmes.php
 
    |image853|
+
+14.8 Explications concernant la mise à jour automatique SQL des variables et dispositifs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- **admin.php**
+
+:darkblue:`rel=17 et rel=18`
+
+.. code-block:: 
+
+   <a class="admin1" href="#admin" rel="17" title="reponse2" >Enregistrer Variable (DZ ou HA) dans SQL&nbsp;&nbsp;</a>
+	<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=0 style="width:25px;display:inline;"></a><br>
+	<a class="admin1" href="#admin" rel="18" title="reponse2" >Enregistrer Dispositifs DZ( ou HA) dans SQL&nbsp;&nbsp;</a>
+
+- **footer.php**
+
+|image857|
+
+- **fonction.php** : *admin()*
+
+|image858|
 
 14.10  Commandes ssh2 PC distant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -439,7 +459,10 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
    :width: 609px
 .. |image853| image:: ../media/image853.webp
    :width: 497px
-
+.. |image857| image:: ../media/image857.webp
+   :width: 700px
+.. |image858| image:: ../media/image858.webp
+   :width: 650px
 
 
 
