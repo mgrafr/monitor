@@ -181,6 +181,18 @@ Un double de connect.lua est enregistré au format python pour les script écrit
 
 |image823|
 
+.. important::
+
+   Ce double peut aussi servir à un autre serveur (un PI par exemple) ce qui facilite les mises à jour.
+
+   Une commande dans administration permet une mise à jour automatique du RPI; pour cela le fichier admin/config.php doit posséder l’IP du serveur :
+
+   .. code-block:: 
+
+      define('IPRPI', '192.168.1.8');//IP du Raspberry
+
+   |image825|
+
 14.7 Explications concernant l’importation distantes d’un tableau LUA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -238,3 +250,7 @@ Un double de connect.lua est enregistré au format python pour les script écrit
    :width: 485px 
 .. |image823| image:: ../media/image823.webp
    :width: 595px 
+.. |image825| image:: ../media/image825.webp
+   :width: 427px 
+
+
