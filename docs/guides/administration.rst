@@ -343,6 +343,41 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 
 |image858|
 
+14.8.1 Affichage dans monitor
+=============================
+
+|image859|
+
+- **footer.php**
+
+|image860|
+
+|image861|
+
+**ajax.php puis fonctions.php** : *mysql_app()*
+
+|image862|
+
+**Confirmation de l'enregistrement des données**
+
+|image863|
+
+14.9 Explications concernant l’affichage des infos de la page admin.php
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image864|
+
+- **admin.php**
+
+on ajoute pour les lignes concernées :
+
+.. code-block::
+   <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=6 style="width:25px;display:inline;"></a><br>
+
+..important:: **:red:`rel` correspond au n° de l’élément dans la table du fichier:info_admin.php**
+
+|image865|
+
 14.10  Commandes ssh2 PC distant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 *ici un RPI depuis monitor*
@@ -463,7 +498,19 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
    :width: 700px
 .. |image858| image:: ../media/image858.webp
    :width: 650px
-
-
+.. |image859| image:: ../media/image859.webp
+   :width: 413px
+.. |image860| image:: ../media/image860.webp
+   :width: 590px
+.. |image861| image:: ../media/image861.webp
+   :width: 629px
+.. |image862| image:: ../media/image862.webp
+   :width: 700px
+.. |image863| image:: ../media/image863.webp
+   :width: 480px
+.. |image864| image:: ../media/image864.webp
+   :width: 387px
+.. |image865| image:: ../media/image865.webp
+   :width: 613px
 
 
