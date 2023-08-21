@@ -165,7 +165,7 @@ Extrait de la fonction:
 
 14.6.1 Fichier connect.xxx (mots de passe et login en base64 ,ips réseau
 =======================================================================
-*pour utiliser ces données dans des scripts (python ou autres)*
+*pour utiliser ces données dans des scripts (lua, python, js ou autres)*
 
 |image821|
 
@@ -206,13 +206,80 @@ Extrait de la fonction:
 
 |image829|
 
+|image830|
+
+.. warning:: **Cette commande utilise SSH2 et SCP** , voir le § :ref:`14.10  Commandes ssh2 PC distant`
 
 14.6.1.3 connect.js
 """""""""""""""""""
 *pour node-red*
 
+|image831|
+
 14.7 Explications concernant l’importation distantes d’un tableau LUA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Compléments sur les fichiers de variables LUA*
+
+Concerne :
+
+-	le tableau de variable string_tableau.lua
+
+-	la liste des caméras Modect pour l’alarme
+
+-	le fichier des Logins/mots de passe
+
+- **string_tableau.lua**   *exemple*
+
+|image832|
+
+.. code-block::
+
+   -- liste de variables
+   -- string
+   jour_poubelle_grise="Wednesday"
+   jour_poubelle_jaune="Sunday"
+   semaine_poub_jaune= 0  -- 0 pour pair 1 pour impair
+   -- table anniversaires
+   anniversaires = {["27-08"]="Damien",["18-05"]="Yoann",["14-09"]="Jonathan",["19-07"]="Alexandra",["25-08"]="Charlotte",["01-05"]="Guillaume",["07-11"]="Corentin",["22-08"]="Pauline",["14-03"]="Clémence",["31-10"]="Eric",["01-02"]="Nathalie",["14-04"]="Christèle",["25-04"]="Katy",["23-05"]="Eveline",["23-08"]="Jean Paul",["24-07"]="Arthur",["09-07"]="Jade",["27-03"]="Judith",["06-03"]="Annie",["02-11"]="Nicole",["22-12"]="Michel"};
+
+   .  Dans admin/config.php de monitor :
+
+.. code-block::
+
+   define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');
+
+  . Création d'un fichier temporaire dans monitor, le répertoire « dz » est à créer avec les autorisations pour écrire
+
+.. code-block::
+
+   define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp
+
+|image835|
+
+
+14.10  Commandes ssh2 PC distant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*ici un RPI depuis monitor*
+
+.. admonition:: **SSH, ou Secure Shell**
+*un protocole utilisé pour se connecter en toute sécurité à des systèmes distants*.
+
+   .. note::
+
+      Mon RAID1 étant alimenté en 230 Volts, le PI étant alimenté sur batterie, lors d’une coupure secteur, lors de la remise sous tension, le raid1 n’est pas reconnu ; Absent de la maison il faut donc faire un reboot du PI ou un « mount -a «  en bash d’où la commande ci-dessous.
+
+      Autre application: mise à jour de la configuration pour l’envoi de notifications par mails lors d’un changement de mot de passe par exemple.
+
+   Pour cela on utilise le paquet php8.2-ssh2
+
+   .. code-block:: 
+
+      sudo apt install php8.2-ssh2
+
+14.10.1 reboot PC
+=================
+*ou RPI*
+
 
 .. |image788| image:: ../media/image788.webp
    :width: 605px 
@@ -278,4 +345,12 @@ Extrait de la fonction:
    :width: 650px 
 .. |image829| image:: ../media/image829.webp
    :width: 700px 
+.. |image830| image:: ../media/image830.webp
+   :width: 403px
+.. |image831| image:: ../media/image831.webp
+   :width: 324px
+.. |image832| image:: ../media/image832.webp
+   :width: 374px
+.. |image835| image:: ../media/image835.webp
+   :width: 324px
 
