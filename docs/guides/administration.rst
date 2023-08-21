@@ -118,7 +118,7 @@ Extrait de la fonction:
 
 14.5 Téléchargement d’un fichier externe dans Domoticz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-*Pour la mise à jour du fichier "connect.lua" (variables pour les scripts Domoticz)* 
+*Pour la mise à jour des fichiers "connect.lua, connect.py, connect.js, etc..." (variables pour les scripts Domoticz)* 
 
 .. note::
 
@@ -128,8 +128,7 @@ Extrait de la fonction:
    
    La solution retenue :
 
-      -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met 
-à 1 une variable (nommée ici "upload") dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
+      -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1 une variable (nommée ici "upload") dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
 
    |image811|
 
@@ -164,15 +163,23 @@ Extrait de la fonction:
 
 |image820|
 
-Fichier des mots de passe et login en base64 , des ip réseau (comme celle de monitor pour l’utiliser dans des scripts (python ou autres): :darkblue:`connect.lua` 
+14.6.1 Fichier connect.xxx (mots de passe et login en base64 ,ips réseau
+=======================================================================
+*pour utiliser ces données dans des scripts (python ou autres)*
 
 |image821|
+
+- **connect.lua**
 
 |image822|
 
 .. important:: **L’ip de monitor dans ce fichier permet, en cas de changement de l’IP de ne pas avoir à modifier les scripts. C’est également valable pour tous les serveurs.**
 
+- **connect.py**
 
+Un double de connect.lua est enregistré au format python pour les script écrit dans ce langage
+
+|image823|
 
 14.7 Explications concernant l’importation distantes d’un tableau LUA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -229,3 +236,5 @@ Fichier des mots de passe et login en base64 , des ip réseau (comme celle de mo
    :width: 508px 
 .. |image822| image:: ../media/image822.webp
    :width: 485px 
+.. |image823| image:: ../media/image823.webp
+   :width: 595px 
