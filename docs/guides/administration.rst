@@ -118,9 +118,9 @@ Extrait de la fonction:
 
 14.5 Téléchargement d’un fichier externe dans Domoticz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-*Pour la mise à jour du fichier avec les variables pour les scripts Domoticz* 
+*Pour la mise à jour du fichier "connect.lua" (variables pour les scripts Domoticz)* 
 
-.. info::
+.. note::
 
    Plusieurs solutions étaient possibles mais avec l’installations de scripts et de modules supplémentaires.
 
@@ -164,6 +164,13 @@ Extrait de la fonction:
 
 |image820|
 
+Fichier des mots de passe et login en base64 , des ip réseau (comme celle de monitor pour l’utiliser dans des scripts (python ou autres): :darkblue:`connect.lua` 
+
+|image821|
+
+|image822|
+
+.. important:: **L’ip de monitor dans ce fichier permet, en cas de changement de l’IP de ne pas avoir à modifier les scripts. C’est également valable pour tous les serveurs.**
 
 
 
@@ -218,3 +225,7 @@ Extrait de la fonction:
    :width: 461px 
 .. |image820| image:: ../media/image820.webp
    :width: 477px 
+.. |image821| image:: ../media/image821.webp
+   :width: 508px 
+.. |image822| image:: ../media/image822.webp
+   :width: 485px 
