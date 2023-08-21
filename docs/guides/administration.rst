@@ -169,15 +169,16 @@ Extrait de la fonction:
 
 |image821|
 
-- **connect.lua**
+14.6.1.1 connect.lua
+""""""""""""""""""""
 
 |image822|
 
 .. important:: **L’ip de monitor dans ce fichier permet, en cas de changement de l’IP de ne pas avoir à modifier les scripts. C’est également valable pour tous les serveurs.**
 
-- **connect.py**
-
-Un double de connect.lua est enregistré au format python pour les script écrit dans ce langage
+14.6.1.2 connect.py
+"""""""""""""""""""
+*Un double de connect.lua est enregistré au format python pour les script écrit dans ce langage*
 
 |image823|
 
@@ -192,6 +193,14 @@ Un double de connect.lua est enregistré au format python pour les script écrit
       define('IPRPI', '192.168.1.8');//IP du Raspberry
 
    |image825|
+
+- **admin.php**
+
+ |image826|
+
+14.6.1.3 connect.js
+"""""""""""""""""""
+*pour node-red*
 
 14.7 Explications concernant l’importation distantes d’un tableau LUA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -252,5 +261,6 @@ Un double de connect.lua est enregistré au format python pour les script écrit
    :width: 595px 
 .. |image825| image:: ../media/image825.webp
    :width: 427px 
-
+.. |image826| image:: ../media/image826.webp
+   :width: 700px 
 
