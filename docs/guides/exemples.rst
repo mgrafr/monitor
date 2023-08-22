@@ -40,7 +40,7 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 15.1.2 Dans la Base de données SQL
 ==================================
-*Insérer le dispositif dans la table « dispositifs »
+*Insérer le dispositif dans la table « dispositifs »*
 
 |image888|
 
