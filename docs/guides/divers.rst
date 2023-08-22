@@ -182,11 +182,15 @@ voir le $ :ref:`5.1 Dans Domoticz, les interrupteurs virtuels, les variables`
 
 |image1002|
 
+.. seealso:: § :ref:`15.1 ajout d’un dispositif` 
+
 |image1003|
+
+.. seealso:: §  :ref:`6. GRAHIQUES & BASE DE DONNEES`
 
 - **Les modifications dans Domoticz**   *export_sql*
 
-pour enregistrer dans la BD SQL
+pour enregistrer dans la BD SQL, voir §  :ref:`6.2 Dans Domoticz`
 
 |image1004|
 
