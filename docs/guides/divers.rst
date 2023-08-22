@@ -89,6 +89,8 @@ Le démarrage automatique est assuré par systemd (voir § :ref:`13.6.2.1 Enregi
 
 aldz.bak.dz, en absence de message
 
+|image989|
+
 .. admonition:: **Scripts PI**
 
    - **rec_sms_serie.py** : https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_PI8/rec_sms_serie.py
