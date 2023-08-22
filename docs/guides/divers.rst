@@ -2,13 +2,14 @@
 ------------
 18.1 Debian : Installer un serveur LAMP (Apache MySQL PHP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 |image983|
 
 https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
 
 18.2 Installer Paho-mqtt
 ^^^^^^^^^^^^^^^^^^^^^^^^
-*paho-mqtt est le code source pour la bibliothèque Python MQTT
+*paho-mqtt est le code source pour la bibliothèque Python MQTT*
 
 .. code-block::
 
