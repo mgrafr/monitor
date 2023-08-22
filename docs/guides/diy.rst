@@ -22,7 +22,46 @@ Ce paragraphe contient différentes parties qui peuvent être indépendantes ou 
 
    |image916|
 
+**Dans EasyEsp**
+
 |image917|
+
+17.1.2. Création des tables PH, Redox, temp, ...
+================================================
+*dans la base de données*
+
+.. note::
+
+   Dans phpMyAdmin, il n’est pas possible de faire des copier/coller, aussi il faut enregistrer les lignes ci-dessous dans un fichier et l’importer pour éviter de taper toutes les lignes.
+**4  ou 5 caractères** sont nécessaires pour la valeur (5 caractères reçus par Dz de MQTT , réduits à 4 avec :red:`round(deviceValue, 1)` dans le script lua).
+
+- **La commande SQL** :
+
+.. code-block::
+
+   CREATE TABLE `ph_spa` (
+  `num` int(5) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `valeur` varchar(5) NOT NULL 
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+   ALTER TABLE `debit_spa` CHANGE `num` `num` INT(5) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
+
+|image918|
+
+*Faire de même pour les autres tables , en remplaçant le nom de la table dans le fichier ; exemple : CREATE TABLE `orp_spa`*
+
+|image919|
+
+.. important:: :darkblue:`Si la création est manuelle , ne pas oublier Auto incrémenter « num »`
+
+   |image920|
+
+17.1.3 Envoi des données à la BD de monitor par Domoticz
+========================================================
+*Le paragraphe 6.2 traite de ce sujet (envoie de températures issues de capteurs réels ou virtuels)*.
+
+Il suffit donc d’ajouter les données PH, Redox, etc... dans le script export_sql dans Evènements de Domoticz :
+
 
 .. |image914| image:: ../media/image914.webp
    :width:534px
@@ -32,5 +71,11 @@ Ce paragraphe contient différentes parties qui peuvent être indépendantes ou 
    :width:605px
 .. |image917| image:: ../media/image917.webp
    :width:700px
+.. |image918| image:: ../media/image918.webp
+   :width:549px
+.. |image919| image:: ../media/image919.webp
+   :width:610px
+.. |image920| image:: ../media/image920.webp
+   :width:601px
 
 
