@@ -82,6 +82,30 @@ Avec F12 du navigateur ajuster la position
 
    transfert de Domoticz linux vers Domoticz Docker avec Zwave et Zigbee sous docker également, avec la reconnaissance automatique MQTT
 
+   |image895|
+
+Dans ce cas tous les dispositifs changent d’idx dans Domoticz, il faut mettre à jour la table de la base de données : « dispositifs »
+.
+Pour préparer le travail, faire une copie de la table « dispositifs en l’exportant
+
+|image896|
+
+Modifier le fichier exporté 
+
+|image897|
+
+Importer la nouvelle table  |image898|
+
+**Faire correspondre les nouveaux « idx » de Domoticz avec les « idm « de monitor.**
+
+Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP de Domoticz :
+
+.. code-block::
+
+   define('DBASE','monitor');
+   define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
+
+
 .. |image878| image:: ../media/image878.webp
    :width: 382px
 .. |image879| image:: ../media/image879.webp
@@ -114,3 +138,11 @@ Avec F12 du navigateur ajuster la position
    :width: 285px
 .. |image894| image:: ../media/image894.webp
    :width: 268px
+.. |image895| image:: ../media/image895.webp
+   :width: 700px
+.. |image896| image:: ../media/image896.webp
+   :width: 563px
+.. |image897| image:: ../media/image897.webp
+   :width: 392px
+.. |image898| image:: ../media/image898.webp
+   :width: 180px
