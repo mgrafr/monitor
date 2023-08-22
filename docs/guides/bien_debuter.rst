@@ -753,7 +753,6 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - num : ne sert qu’à éditer plus facilement la BD
 	voir le paragraphe précédent :ref:`0.3.1.2 Table dispositifs pour les variables`
-`
  
 - Nom appareil : nom usuel
 
