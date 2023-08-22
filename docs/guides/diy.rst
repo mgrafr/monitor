@@ -33,6 +33,7 @@ Ce paragraphe contient différentes parties qui peuvent être indépendantes ou 
 .. note::
 
    Dans phpMyAdmin, il n’est pas possible de faire des copier/coller, aussi il faut enregistrer les lignes ci-dessous dans un fichier et l’importer pour éviter de taper toutes les lignes.
+
 **4  ou 5 caractères** sont nécessaires pour la valeur (5 caractères reçus par Dz de MQTT , réduits à 4 avec :red:`round(deviceValue, 1)` dans le script lua).
 
 - **La commande SQL** :
@@ -106,7 +107,7 @@ Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.
 
 |image923|
 
-.. agmonition:: **Explication de cette ligne**
+.. admonition:: **Explication de cette ligne**
 
    .. code-block::
 
@@ -161,7 +162,7 @@ voir le § :ref:`0.3.2 Les Dispositifs`
 
 
 17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 *qui affichera les données de la BD*
 
  |image934|
@@ -208,7 +209,7 @@ voir le § :ref:`0.3.2 Les Dispositifs`
 
 17.1.4.4  ajout d’autres écrans
 """""""""""""""""""""""""""""""
-*Mesure de la température de l’eau, de l’air, le débit de la filtration,...
+*Mesure de la température de l’eau, de l’air, le débit de la filtration,...*
 
 .. admonition:: **Calcul du débit de la filtration**
 
