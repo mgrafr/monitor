@@ -131,7 +131,34 @@ aldz.bak.dz, en absence de message
       [Install]
       WantedBy=multi-user.target
  
+18.4 Commandes de l’alarme à partir d’un GSM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Pour faciliter l’activation ou l’arrêt de l’alarme*
 
+il est facile d’ajouter des codes au script du paragraphe précédent :ref:`18.3 Liaison série Domoticz-PI`
+
+Extrait de **rec_sms_serie.py** installé sur le PI qui assure le monitoring , les notifications GSM et les sauvegardes
+ù
+.. code-block:: 
+
+   if params[0]=="Alon":
+         domoticz=ip_domoticz
+         ip_se=1
+         params[1]= '41'
+         params[2]='switch'
+         params[3]='On'
+   if params[0]=="Aloff":
+         domoticz=ip_domoticz
+         ip_se=1
+         params[1]= '41'
+         params[2]='switch'
+         params[3]='Off'
+
+.. note::  :red:`Alon et Aloff` = Marche/Arrêt de l'alarme
+
+|image996|
+
+Le switch domoticz : |image997|
 
 
 .. |image983| image:: ../media/image983.webp
