@@ -57,7 +57,9 @@ https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-ph
       # Loop forever
       mqttc.loop_forever()
 
-.. IMPORTANT:: Pour être sûr que le fichier est au bon format (Unix) : dos2unix , § :ref:`8.2.1.1 Problème de lecture de fichier`
+.. IMPORTANT:: 
+
+   Pour être sûr que le fichier est au bon format (Unix) : utiliser dos2unix , § :ref:`8.2.1.1 Problème de lecture de fichier`
 
 18.3 Liaison série Domoticz-PI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -65,13 +67,17 @@ https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-ph
 
 Ils sont exécutés en dehors du conteneur si Domoticz est sous Docker.
 
-.. attention:: **La passerelle Zigbee 3.0 SonOff utilise le même driver série CP2102 -donc pour /dev/serial/by-id = IDENTIQUE**
+.. attention:: 
+
+   **La passerelle Zigbee 3.0 SonOff utilise le même driver série CP2102 -donc pour /dev/serial/by-id = IDENTIQUE**
 
 - **sms_dz.py** : https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_dz/py/sms_dz.py
 
 |image987|
 
-.. note:: *Modifier si besoin le numéro de la variable et le port de domoticz*
+.. note:: 
+
+   *Modifier si besoin le numéro de la variable et le port de domoticz*
 
 Le démarrage automatique est assuré par systemd (voir § :ref:`13.6.2.1 Enregistrement des n° de `
 
