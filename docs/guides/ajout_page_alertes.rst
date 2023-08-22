@@ -14,7 +14,7 @@
 
 |image902|
 
-- **Ajouter l'ID et les classes**  *si ellesexistent au fichier mes_css.css
+- **Ajouter l'ID et les classes**  *si ellesexistent au fichier mes_css.css*
 
 ci-dessous les ID's des pages existantes
 
@@ -131,9 +131,9 @@ La table "text_image" :
 .. |image908| image:: ../media/image908.webp
    :width: 502px
 .. |image909| image:: ../media/image909.webp
-   :width:432px
+   :width: 432px
 .. |image912| image:: ../media/image912.webp
-   :width:700px
+   :width: 700px
 .. |image913| image:: ../media/image913.webp
-   :width:503px
+   :width: 503px
 
