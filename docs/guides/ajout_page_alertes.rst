@@ -52,6 +52,62 @@
 
 |image905|
 
+*Dans le script notifications_timer* :
+
+.. code-block::
+
+   --médicaments
+   elseif (time=='20:00' and domoticz.variables('pilule_tension').value == '0') then
+        domoticz.variables('pilule_tension').set('pilule_michel')
+   end
+
+*Dans le script notifications_variables (pour une alerte sms)*
+
+.. code-block::
+
+   return {
+	on = {
+		variables = { 'pilule_tension'	}
+	},
+	execute = function(domoticz, variable)
+	    --domoticz.log('Variable ' .. variable.name .. ' was changed', domoticz.LOG_INFO)
+	    if (domoticz.variables('pilule_tension').changed) then 
+                 if (domoticz.variables('pilule_tension').value ~= "0") then 
+	             txt=tostring(domoticz.variables('pilule_tension').value) 
+	             print('médicaments')
+                 alerte_gsm('alerteù'..txt)
+                 end
+            end
+
+*Dans la base de données SQL* :
+
+La table "dispositifs"
+
+|image908|
+
+La table "text_image" :
+
+|image909|
+
+- **Dans monitor** :  *Accueil.php*
+
+.. code-block::
+
+   <div class="confirm pilule"><a href="#" id="annul_pilule" rel="30" title="Annulation de l'\alerte pilule michel"><img id="pilule" src=""/></a></div>
+
+*Les styles css* :
+
+.. code-block::
+
+   .pilule{position: relative;top: -300px;width: 50px;left: 220px;}
+
+*Les scripts dans footer.php* :
+
+|image912|
+
+*Affichage sur la page d'accueil* :
+
+|image913|
 
 .. |image901| image:: ../media/image901.webp
    :width: 534px
@@ -63,5 +119,12 @@
    :width: 416px
 .. |image905| image:: ../media/image905.webp
    :width: 575px
-
+.. |image908| image:: ../media/image908.webp
+   :width: 502px
+.. |image909| image:: ../media/image909.webp
+   :width:432px
+.. |image912| image:: ../media/image912.webp
+   :width:700px
+.. |image913| image:: ../media/image913.webp
+   :width:503px
 
