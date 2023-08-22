@@ -343,7 +343,7 @@ Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
 
 	|image631|
 
-8.2.4 .2 Dans le mur ON/OFF
+8.2.4.2 Dans le mur ON/OFF
 """""""""""""""""""""""""""
 *Pour afficher le % d’ouverture*
 
@@ -440,7 +440,7 @@ Mise à jour instantanée :
 
 8.2.4.3.2 avec MQTT
 ~~~~~~~~~~~~~~~~~~~
-C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par le programme. Il faut installer la bibliothèque ci-dessous paho-mqtt
+C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par le programme. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
 
 https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
