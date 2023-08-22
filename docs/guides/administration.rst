@@ -578,6 +578,8 @@ Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes
    :width: 613px
 .. |image868| image:: ../media/image868.webp
    :width: 700px
+.. |image870| image:: ../media/image870.webp
+   :width: 700px
 .. |image872| image:: ../media/image872.webp
    :width: 700px
 .. |image875| image:: ../media/image875.webp
