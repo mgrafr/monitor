@@ -27,6 +27,7 @@ Monitor-domotique Documentation
         guides/administration.rst
         guides/exemples.rst
         guides/ajout_page_alertes.rst
+        guides/diy.rst 
         guides/divers.rst
         guides/mon_installation.rst
 
@@ -138,15 +139,20 @@ Ajout Page Alertes
 :doc:`guides/ajout_page_alertes`   
    Ajout Pages Alertes
 
-Mon Installation
+DIY
 ----------------
-:doc:`guides/mon_installation`
-    Mon Installation
+:doc:`guides/diy`
+    DIY
 
 Divers
 ------
 :doc:`guides/divers`
     Divers
+
+Mon Installation
+----------------
+:doc:`guides/mon_installation`
+    Mon Installation
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
