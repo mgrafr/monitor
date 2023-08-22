@@ -79,7 +79,7 @@ Ils sont exécutés en dehors du conteneur si Domoticz est sous Docker.
 
    *Modifier si besoin le numéro de la variable et le port de domoticz*
 
-Le démarrage automatique est assuré par systemd (voir § :ref:`13.6.2.1 Enregistrement des n° de `
+Le démarrage automatique est assuré par systemd (voir § :ref:`13.6.2.1 Enregistrement des n° de téléphone`
 
 .. seealso:: *voir http://domo-site.fr/accueil/dossiers/70 *(liaison série)*
 
