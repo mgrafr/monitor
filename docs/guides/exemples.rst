@@ -18,9 +18,44 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 |image881|
 
--	*Avec Inkscape, ouvrir l’image*
+-	*Avec Inkscape, ouvrir et modifier l’image*
 
 |image882| |image883|
+
+- *Faire un copier/coller d’un dispositif existant ou importer une icone*
+
+|image883| |image884|
+
+- *Placer l’icône et renseigner l’ID*
+
+|image885|
+
+- *Pour la couleur*
+
+|image886|
+
+- *Sauvegarder l’image dans le fichier PHP d’origine, en supprimant la ligne XML*
+
+|image887|
+
+15.1.2 Dans la Base de données SQL
+==================================
+*Insérer le dispositif dans la table « dispositifs »
+
+|image888|
+
+15.1.3 Dans le fichier PHP de l’image 
+=====================================
+*On ajoute un onclick pour l’affichage des propriétés*
+
+.. note::
+
+   avec Inkscape, il est possible de l’ajouter lors de la création de l’image si l’on a déjà choisi l’ID monitor.
+
+   Ce n’est pas important, il faut ouvrir de toute façon cette image pour ajouter un cercle clignotant pour la gestion de la pile.
+
+
+
 
 .. |image878| image:: ../media/image878.webp
    :width: 382px
@@ -34,4 +69,13 @@ Dans Domoticz le dispositif est ajouté au plan :
    :width: 356px
 .. |image883| image:: ../media/image883.webp
    :width: 306px
-
+.. |image884| image:: ../media/image884.webp
+   :width: 198px
+.. |image885| image:: ../media/image885.webp
+   :width: 502px
+.. |image886| image:: ../media/image886.webp
+   :width: 549px
+.. |image887| image:: ../media/image887.webp
+   :width: 604px
+.. |image888| image:: ../media/image888.webp
+   :width: 617px
