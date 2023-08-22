@@ -160,7 +160,7 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    |image933|
 
 
-17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran
+17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 *qui affichera les données de la BD*
 
@@ -206,8 +206,8 @@ voir le § :ref:`0.3.2 Les Dispositifs`
 
 |image940|
 
-17.1.4.4  ajout d’autres pages
-""""""""""""""""""""""""""""""
+17.1.4.4  ajout d’autres écrans
+"""""""""""""""""""""""""""""""
 *Mesure de la température de l’eau, de l’air, le débit de la filtration,...
 
 .. admonition:: **Calcul du débit de la filtration**
@@ -225,6 +225,46 @@ voir le § :ref:`0.3.2 Les Dispositifs`
 - **Domoticz reçoit**
 
 |image942|
+
+Pour envoyer à la BD le débit : script lua "export_sql"
+
+.. code-block::
+
+   t = {};
+   ...
+    elseif (deviceName=='Debit_filtration_SPA') then
+	print ("debit:"..deviceValue);c=0;
+	for i in string.gmatch(deviceValue,"[^;]+") do
+        t[c]=i;c=c+1;
+        end
+	libelle="debit_spa#valeur";don=" "..libelle.."#"..t[0].."#"..datetime
+	envoi_fab(don)   
+
+|image944|
+
+- **Dans monitor**, *ajout du 3eme écran(ecran2) à l’image svg*
+
+.. code-block::
+
+   <g id="ecran3" style="display:none">
+   <rect x="43" y="36.5" class="spa9" width="256.7" height="145.9"/>
+   <text transform="matrix(1 0 0 1 70 55)" class="spa2 spa3">Dernières Mesures de Débit :</text>
+   <g id="graphic_debit" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>		
+   </g>
+
+|image947|
+
+17.1.4.4. ecran4 , ecran5
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|image949|
+
+17.2 Extension Pompes perisaltiques pour réguler PH et REDOX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*en cours de rédaction*
+
+
+
 
 .. |image914| image:: ../media/image914.webp
    :width: 534px
@@ -276,6 +316,10 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    :width: 510px
 .. |image942| image:: ../media/image942.webp
    :width: 408px
-
-
+.. |image944| image:: ../media/image944.webp
+   :width: 650px
+.. |image947| image:: ../media/image947.webp
+   :width: 469px
+.. |image949| image:: ../media/image949.webp
+   :width: 700px
 
