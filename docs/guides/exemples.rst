@@ -54,6 +54,13 @@ Dans Domoticz le dispositif est ajouté au plan :
 
    Ce n’est pas important, il faut ouvrir de toute façon cette image pour ajouter un cercle clignotant pour la gestion de la pile.
 
+.. code-block::
+
+   <g
+   id="ouverture_porte_sejour"
+   onclick="popup_device(7)"
+
+Pour le cercle le plus simple c’est de faire un copier/coller d’un cercle existant avec des coordonnées facile à retrouver et avec une opacité à 1 :Voir paragraphe 2.2.3
 
 
 
