@@ -7,7 +7,7 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
 
 |image680| 
 
-.. notes:: 
+.. note:: 
 
    **Les fichiers header.php, config.php, les styles css, etc**
 
