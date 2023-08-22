@@ -118,6 +118,8 @@ Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.
 
 - **Dans config.php** : *(permet d’ajouter facilement une autre page)*
 
+Il suffira alors simplement d’ajouter cette page à l’image svg, voir le § :ref:`17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran`
+
 .. code-block::
 
    //SPA
@@ -127,9 +129,43 @@ Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.
     0 => "ph",// si nb ecran >=2
     1 => "orp",// si nb ecran >=3 
     2 => "debit", //débit en M3 // si nb ecran >=4
-	3 => "temp", //si nb ecran >=5
-	4 => "temp_ext", //si nb ecran >=6
+    3 => "temp", //si nb ecran >=5
+    4 => "temp_ext", //si nb ecran >=6
 	));
+
+.. warning:: **NE PAS OUBLIER d'ajouter la page au menu , à index_loc.php et son ID aux CSS**, voir le paragraphe :ref:`16. Ajouter des pages ou des alertes`
+
+|image925|
+
+17.1.4.1.a L’image svg support de l’affichage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*https://raw.githubusercontent.com/mgrafr/monitor/main/include/ph-redox_svg.php*
+
+|image928|
+
+|image929|
+
+|image930|
+
+- **Enregistrer les capteurs dans la table « dispositifs »** 
+
+voir le § :ref:`0.3.2 Les Dispositifs`
+
+- **Monitor reçoit**
+
+|image932|
+
+.. admonition:: **La 1ère page**
+
+   |image933|
+
+
+17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+*qui affichera les données de la BD*
+
+
+
 
 
 .. |image914| image:: ../media/image914.webp
@@ -152,4 +188,19 @@ Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.
    :width: 700px
 .. |image923| image:: ../media/image923.webp
    :width: 596px
+.. |image925| image:: ../media/image925.webp
+   :width: 700px
+.. |image928| image:: ../media/image928.webp
+   :width: 602px
+.. |image929| image:: ../media/image929.webp
+   :width: 620px
+.. |image930| image:: ../media/image930.webp
+   :width: 327px
+.. |image932| image:: ../media/image932.webp
+   :width: 700px
+.. |image933| image:: ../media/image933.webp
+   :width: 485px
+
+
+
 
