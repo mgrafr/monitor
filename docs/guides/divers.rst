@@ -160,6 +160,37 @@ Extrait de **rec_sms_serie.py** installé sur le PI qui assure le monitoring , l
 
 Le switch domoticz : |image997|
 
+voir le $ :ref:`5.1 Dans Domoticz, les interrupteurs virtuels, les variables`
+
+18.5 Données compteur Linky
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Configuration après installation du plugin: https://github.com/guillaumezin/DomoticzLinky
+
+|image998|
+
+.. Important::
+
+   Pour la correspondance avec ENEDIS : Ne pas copier toute l'adresse http, s’arrêter après le code
+
+   |image999|
+
+|image1000|
+
+- **Dans monitor**
+
+|image1001|
+
+|image1002|
+
+|image1003|
+
+- **Les modifications dans Domoticz**   *export_sql*
+
+pour enregistrer dans la BD SQL
+
+|image1004|
+
+
 
 .. |image983| image:: ../media/image983.webp
    :width: 200px
@@ -183,6 +214,18 @@ Le switch domoticz : |image997|
    :width: 700px
 .. |image997| image:: ../media/image997.webp
    :width: 400px
-
-
+.. |image998| image:: ../media/image998.webp
+   :width:570px
+.. |image999| image:: ../media/image999.webp
+   :width:601px
+.. |image1000| image:: ../media/image1000.webp
+   :width:596px
+.. |image1001| image:: ../media/image1001.webp
+   :width: 700px
+.. |image1002| image:: ../media/image1002.webp
+   :width: 650px
+.. |image1003| image:: ../media/image1003.webp
+   :width: 519px
+.. |image1004| image:: ../media/image1004.webp
+   :width: 596px
 
