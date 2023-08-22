@@ -290,7 +290,7 @@ Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
 
   |image628|
 
-.. note:: **Sur le plan on indique simplement si les volets sont fermés ou ouverts (même partiellement)
+.. note:: **Sur le plan on indique simplement si les volets sont fermés ou ouverts (même partiellement)**
 
    |image629|
 
