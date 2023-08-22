@@ -20,7 +20,7 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 -	*Avec Inkscape, ouvrir et modifier l’image*
 
-|image882| |image883|
+|image882|
 
 - *Faire un copier/coller d’un dispositif existant ou importer une icone*
 
@@ -60,9 +60,11 @@ Dans Domoticz le dispositif est ajouté au plan :
    id="ouverture_porte_sejour"
    onclick="popup_device(7)"
 
-Pour le cercle le plus simple c’est de faire un copier/coller d’un cercle existant avec des coordonnées facile à retrouver et avec une opacité à 1 :Voir paragraphe 2.2.3
+|image890|
 
+Pour le cercle le plus simple c’est de faire un copier/coller d’un cercle existant avec des coordonnées facile à retrouver et avec une opacité à 1 :Voir paragraphe ref:`2.1.1.b avec Adobe Illustrator`
 
+|image892|
 
 .. |image878| image:: ../media/image878.webp
    :width: 382px
@@ -86,3 +88,7 @@ Pour le cercle le plus simple c’est de faire un copier/coller d’un cercle ex
    :width: 604px
 .. |image888| image:: ../media/image888.webp
    :width: 617px
+.. |image890| image:: ../media/image890.webp
+   :width: 291px
+.. |image892| image:: ../media/image892.webp
+   :width: 656px
