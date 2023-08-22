@@ -131,7 +131,7 @@ aldz.bak.dz, en absence de message
       [Install]
       WantedBy=multi-user.target
  
- 18.4 Commandes de l’alarme à partir d’un GSM
+18.4 Commandes de l’alarme à partir d’un GSM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 *Pour faciliter l’activation ou l’arrêt de l’alarme*
 
