@@ -1,4 +1,4 @@
-18. - Divers
+18. Divers
 ------------
 18.1 Debian : Installer un serveur LAMP (Apache MySQL PHP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
