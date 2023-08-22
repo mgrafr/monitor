@@ -106,7 +106,30 @@ Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.
 
 |image923|
 
+.. agmonition:: **Explication de cette ligne**
 
+   .. code-block::
+
+      var ecranspa=<?php echo '["' . implode('", "', ECRANSPA) . '"]' ?>;
+
+  :darkblue:`C’est la façon de passer un array PHP à une fonction JavaScript`
+
+*La fonction graph de la page graphique est utilisée*
+
+- **Dans config.php** : *(permet d’ajouter facilement une autre page)*
+
+.. code-block::
+
+   //SPA
+   define('ON_SPA',true);// mise en service SPA
+   define('NB_ECRAN_SPA',6);
+   define('ECRANSPA', array(
+    0 => "ph",// si nb ecran >=2
+    1 => "orp",// si nb ecran >=3 
+    2 => "debit", //débit en M3 // si nb ecran >=4
+	3 => "temp", //si nb ecran >=5
+	4 => "temp_ext", //si nb ecran >=6
+	));
 
 
 .. |image914| image:: ../media/image914.webp
