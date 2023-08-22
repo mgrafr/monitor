@@ -81,7 +81,7 @@ Ils sont exécutés en dehors du conteneur si Domoticz est sous Docker.
 
 Le démarrage automatique est assuré par systemd (voir § :ref:`13.6.2.1 Enregistrement des n° de `
 
-.. seealso:: voir http://domo-site.fr/accueil/dossiers/70 *(liaison série)*
+.. seealso:: *voir http://domo-site.fr/accueil/dossiers/70 *(liaison série)*
 
 - **aldz.py**  voir § :ref:`13.6.2 émission SMS`
 
@@ -93,11 +93,13 @@ aldz.bak.dz, en absence de message
 
    - **rec_sms_serie.py** : https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_PI8/rec_sms_serie.py
 
-     extrait:
+    extrait:
 
     |image990|
    
-   .. IMPORTANT:: :red:`Utiliser localhost et non 127.0.0.1`
+   .. IMPORTANT:: 
+
+      :red:`Utiliser localhost et non 127.0.0.1`
 
    .. warning:: **Si ce massage en bash**
 
