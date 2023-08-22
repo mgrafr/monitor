@@ -102,8 +102,10 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
 
 .. code-block::
 
-   define('DBASE','monitor');
+   define('DISPOSITIFS', 'Dispositifs');
    define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
+
+
 
 
 .. |image878| image:: ../media/image878.webp
