@@ -215,11 +215,11 @@ pour enregistrer dans la BD SQL
 .. |image997| image:: ../media/image997.webp
    :width: 400px
 .. |image998| image:: ../media/image998.webp
-   :width:570px
+   :width: 570px
 .. |image999| image:: ../media/image999.webp
-   :width:601px
+   :width: 601px
 .. |image1000| image:: ../media/image1000.webp
-   :width:596px
+   :width: 596px
 .. |image1001| image:: ../media/image1001.webp
    :width: 700px
 .. |image1002| image:: ../media/image1002.webp
