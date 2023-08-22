@@ -164,7 +164,7 @@ voir le $ :ref:`5.1 Dans Domoticz, les interrupteurs virtuels, les variables`
 
 18.5 Données compteur Linky
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-*Configuration après installation du plugin: https://github.com/guillaumezin/DomoticzLinky
+*Configuration après installation du plugin: https://github.com/guillaumezin/DomoticzLinky*
 
 |image998|
 
