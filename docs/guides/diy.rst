@@ -62,20 +62,71 @@ Ce paragraphe contient différentes parties qui peuvent être indépendantes ou 
 
 Il suffit donc d’ajouter les données PH, Redox, etc... dans le script export_sql dans Evènements de Domoticz :
 
+|image921|
+
+.. note:: Pour rappel :darkblue:`fabric` appelle le script python :darkblue:`sqlite_mysql.py` de monitor
+
+Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.
+
+|image922|
+
+17.1.4. – Affichage dans Monitor
+================================
+.. warning:: Pour que Monitor reçoive les données, il faut enregistrer les capteurs dans la BD et les ajouter dans un plan dans Domoticz plan, voir les $ 
+
+- :ref:`0.3.1 Les Tables « dispositifs(variables) » & « text-image »` 
+
+- :ref:`2.1.4 - ajout d’un ou plusieurs dispositifs`
+
+17.1.4.1 la page spa.php
+""""""""""""""""""""""""
+*cette page a la particularité d'affichher un écran à pages multiples défilantes*
+
+.. code-block::
+
+   <!-- section SPA start -->
+		<div id="spa" class="spa">
+			<div class="container">
+		      <div class="col-md-12"><p><h1 class="title_ext text-center">SPA<span style="margin-left:20px;font-size: 20px;"> contrôle qualité</span></h1><br></p>
+	         <?php include ("ph-redox_svg.php");?>
+            </div>   </div>    </div>
+   <script>
+   num_ecran=0;nb_ecran=<?php echo NB_ECRAN_SPA;?>;
+   function next_ecran(num_ec){
+    num_actuel=num_ecran;num_ecran=num_ecran+num_ec;
+    if (num_ecran>=nb_ecran || num_ecran<0) {num_ecran=0;}
+    div_suiv="ecran"+num_ecran;div_prec="ecran"+num_actuel;
+    document.getElementById(div_prec).style.display="none";document.getElementById(div_suiv).style.display="block";
+    var ecranspa=<?php echo '["' . implode('", "', ECRANSPA) . '"]' ?>;
+    nbec=0;
+    while (nbec<=nb_ecran-2){//console.log(nbec+" .. "+ecranspa[nbec]);
+	   graph(ecranspa[nbec]+'_spa','text_svg','graphic_'+ecranspa[nbec]);
+	   nbec++;    }	   }
+   </script>
+
+|image923|
+
+
+
 
 .. |image914| image:: ../media/image914.webp
-   :width:534px
+   :width: 534px
 .. |image915| image:: ../media/image915.webp
-   :width:700px
+   :width: 700px
 .. |image916| image:: ../media/image916.webp
-   :width:605px
+   :width: 605px
 .. |image917| image:: ../media/image917.webp
-   :width:700px
+   :width: 700px
 .. |image918| image:: ../media/image918.webp
-   :width:549px
+   :width: 549px
 .. |image919| image:: ../media/image919.webp
-   :width:610px
+   :width: 610px
 .. |image920| image:: ../media/image920.webp
-   :width:601px
-
+   :width: 601px
+.. |image921| image:: ../media/image921.webp
+   :width: 618px
+.. |image922| image:: ../media/image922.webp
+   :width: 700px
+.. |image923| image:: ../media/image923.webp
+   :width: 596px
 
