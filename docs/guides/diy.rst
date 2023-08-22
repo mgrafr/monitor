@@ -202,7 +202,29 @@ voir le § :ref:`0.3.2 Les Dispositifs`
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 *qui affiche les données Redox de la même façon que pour le PH ci-dessus*
 
+|image939|
 
+|image940|
+
+17.1.4.4  ajout d’autres pages
+""""""""""""""""""""""""""""""
+*Mesure de la température de l’eau, de l’air, le débit de la filtration,...
+
+.. admonition:: **Calcul du débit de la filtration**
+
+   Impulsion de débit : F(Hz)=(0.20xQ)-3%
+ 
+   Q=L/min
+
+   F= 0,2 L/mn
+
+- **dans EasyEsp** les données envoyées sont :
+
+|image941|
+
+- **Domoticz reçoit**
+
+|image942|
 
 .. |image914| image:: ../media/image914.webp
    :width: 534px
@@ -246,7 +268,14 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    :width: 700px
 .. |image938| image:: ../media/image938.webp
    :width: 601px
-
+.. |image939| image:: ../media/image939.webp
+   :width: 650px
+.. |image940| image:: ../media/image940.webp
+   :width: 491px
+.. |image941| image:: ../media/image941.webp
+   :width: 510px
+.. |image942| image:: ../media/image942.webp
+   :width: 408px
 
 
 
