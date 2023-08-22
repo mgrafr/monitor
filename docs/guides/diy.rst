@@ -74,7 +74,7 @@ Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.
 ================================
 .. warning:: Pour que Monitor reçoive les données, il faut enregistrer les capteurs dans la BD et les ajouter dans un plan dans Domoticz plan, voir les $ 
 
-- :ref:`0.3.1 Les Tables « dispositifs(variables) » & « text-image »` 
+- :ref:`0.3.1 Les Tables "dispositifs(variables)" & "text-image"` 
 
 - :ref:`2.1.4 - ajout d’un ou plusieurs dispositifs`
 
@@ -164,7 +164,43 @@ voir le § :ref:`0.3.2 Les Dispositifs`
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 *qui affichera les données de la BD*
 
+ |image934|
 
+.. code-block::
+
+   <g id="graphic_ph" transform="matrix(1 0 0 1 70 65)" class="spa2 spa3"></g>
+
+ |image935|
+
+17.1.4.2.a Les autres fichiers concernés
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-	fonctions.php graph()
+
+-	export_tab_sqli.php
+
+|image936|
+
+.. important::
+
+   L’écran de mesure est petit , l’affichage est limité à 10 analyses ; pour un historique plus long , utiliser page  graphique et « infos_bd »
+
+   L’image svg n’accepte pas les retours à la ligne <br> , pour chaque ligne il faut définir un <text>…</text> ; le fichier fonctions.php est donc modifié en conséquence.
+
+   .. code-block::
+
+      <text transform="matrix(1 0 0 1 0 '.$ccc.')" class="spa2 spa3">'.$xdate[$i].'='.$yvaleur[$i].'</text>
+
+   |image937|
+
+   |image938|
+
+.. warning:: **Les lignes non indispensables sont supprimées** pour $periode= « text_svg »; 
+
+   en remplacement, affichage de "connected"  : :green:`echo '<text transform="matrix(1 0 0 1 0 0)" class="spa2 spa3">Connected</text>';`
+
+17.1.4.3 ajout d’un ID dans  l’image svg pour 3eme écran
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+*qui affiche les données Redox de la même façon que pour le PH ci-dessus*
 
 
 
@@ -200,6 +236,16 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    :width: 700px
 .. |image933| image:: ../media/image933.webp
    :width: 485px
+.. |image934| image:: ../media/image934.webp
+   :width: 484px
+.. |image935| image:: ../media/image935.webp
+   :width: 650px
+.. |image936| image:: ../media/image936.webp
+   :width: 700px
+.. |image937| image:: ../media/image937.webp
+   :width: 700px
+.. |image938| image:: ../media/image938.webp
+   :width: 601px
 
 
 
