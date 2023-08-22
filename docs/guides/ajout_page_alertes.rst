@@ -44,8 +44,13 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 16.3.1 Exemple avec un rappel pour la prise de médicaments sur la page d’accueil
 ================================================================================
+- *Télécharger une icones ou image svg*
 
+|image904|
 
+- **Dans Domoticz** : *Créer la variable*
+
+|image905|
 
 
 .. |image901| image:: ../media/image901.webp
@@ -54,5 +59,9 @@
    :width: 700px
 .. |image903| image:: ../media/image903.webp
    :width: 700px
+.. |image904| image:: ../media/image904.webp
+   :width: 416px
+.. |image905| image:: ../media/image905.webp
+   :width: 575px
 
 
