@@ -62,9 +62,25 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 |image890|
 
-Pour le cercle le plus simple c’est de faire un copier/coller d’un cercle existant avec des coordonnées facile à retrouver et avec une opacité à 1 :Voir paragraphe ref:`2.1.1.b avec Adobe Illustrator`
+On peut vérifier que l’iD pour la couleur est bien présent
+
+|image891|
+
+Pour le cercle le plus simple c’est de faire un copier/coller d’un cercle existant avec des coordonnées facile à retrouver et avec une opacité à 1 
+
+Voir paragraphe :ref:`2.1.1.b avec Adobe Illustrator`
 
 |image892|
+
+Avec F12 du navigateur ajuster la position
+
+|image893| |image894|
+
+15.2 Réinitialisation des dispositifs dans Domoticz
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note:: **Exemple** 
+
+   transfert de Domoticz linux vers Domoticz Docker avec Zwave et Zigbee sous docker également, avec la reconnaissance automatique MQTT
 
 .. |image878| image:: ../media/image878.webp
    :width: 382px
@@ -90,5 +106,11 @@ Pour le cercle le plus simple c’est de faire un copier/coller d’un cercle ex
    :width: 617px
 .. |image890| image:: ../media/image890.webp
    :width: 291px
+.. |image891| image:: ../media/image891.webp
+   :width: 560px
 .. |image892| image:: ../media/image892.webp
    :width: 656px
+.. |image893| image:: ../media/image893.webp
+   :width: 285px
+.. |image894| image:: ../media/image894.webp
+   :width: 268px
