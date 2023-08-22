@@ -375,6 +375,7 @@ C'est le script JS ,
             txt='alarmeùPIùdeùnouveauùOK';obj='alarme PI de nouveau OK'alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
             end
             --
+
 - **monitor**	*page "nagios"* 
 
    c’est le script JS « maj_devices(plan) » qui gère le changement de couleur de l’icône, à partir du dispositif dans Domoticz
@@ -608,7 +609,7 @@ Pour afficher comme ci-dessus une image plutôt qu’un texte , voir § :ref:`0.
 ====================
 Voir le § consacrées au modem GSM et la communication série entre Domoticz et un RPI :ref:`18.3 Liaison série Domoticz-PI`
 
-- **Variable Domoticz*
+- **Variable Domoticz**
 
 |image768|
 
