@@ -119,7 +119,7 @@ Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.
 
 - **Dans config.php** : *(permet d’ajouter facilement une autre page)*
 
-Il suffira alors simplement d’ajouter cette page à l’image svg, voir le § :ref:`17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran`
+Il suffira alors simplement d’ajouter cette page à l’image svg, voir le § :ref:`17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)`
 
 .. code-block::
 
