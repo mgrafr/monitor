@@ -10,9 +10,18 @@
 
 |image901|
 
-**Ajouter la page au menu dans header.php** 
+- **Ajouter la page au menu dans header.php** 
 
 |image902|
+
+- **Ajouter l'ID et les classes**  *si ellesexistent au fichier mes_css.css
+
+ci-dessous les ID's des pages existantes
+
+.. code-block::
+
+   #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
+
 
 16.2 Ajouter une page vierge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
