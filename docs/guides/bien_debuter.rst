@@ -218,7 +218,7 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
  
 |image35| 
 
-.. code-block::'
+.. code-block::
 
   ./install_only_monitor.sh
 
