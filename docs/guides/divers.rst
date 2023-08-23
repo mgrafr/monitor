@@ -196,9 +196,11 @@ pour enregistrer dans la BD SQL, voir §  :ref:`6.2 Dans Domoticz`
 
 |image1005|
 
-- **Le compteur est ajouté au plan** , les données sont disponibles pour monitor : 
+- **Le compteur est ajouté au plan** , les données sont disponibles pour monitor : voir § :ref:`1.2.1.1 status_variables et devices_zone et device_plan` 
 
 - **Table dispositifs** : *création du dispositif*
+
+|image1006|
 
 .. |image983| image:: ../media/image983.webp
    :width: 200px
@@ -238,3 +240,7 @@ pour enregistrer dans la BD SQL, voir §  :ref:`6.2 Dans Domoticz`
    :width: 596px
 .. |image1005| image:: ../media/image1005.webp
    :width: 478px
+.. |image1006| image:: ../media/image1006.webp
+   :width: 700px
+
+
