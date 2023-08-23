@@ -84,7 +84,7 @@ Extrait de la fonction:
 
 14.3 le javascript
 ^^^^^^^^^^^^^^^^^^
-*Pour la fonction mdp() et le clavier(Minimal Virtual Keypad), voir le §  :ref:`5.5 Le Javascript, dans footer.php et mes_js.js`
+*Pour la fonction mdp() et le clavier(Minimal Virtual Keypad)*, voir le §  :ref:`5.5 Le Javascript, dans footer.php et mes_js.js`
 
 - **appel de admin()**  *de fonctions.php*
 
@@ -164,7 +164,7 @@ Extrait de la fonction:
 |image820|
 
 14.6.1 Fichier connect.xxx (mots de passe et login en base64 ,ips réseau
-=======================================================================
+========================================================================
 *pour utiliser ces données dans des scripts (lua, python, js ou autres)*
 
 |image821|
@@ -383,7 +383,8 @@ on ajoute pour les lignes concernées :
 *ici un RPI depuis monitor*
 
 .. admonition:: **SSH, ou Secure Shell**
-*un protocole utilisé pour se connecter en toute sécurité à des systèmes distants*.
+
+   *un protocole utilisé pour se connecter en toute sécurité à des systèmes distants*.
 
    .. note::
 
