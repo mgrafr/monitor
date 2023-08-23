@@ -51,7 +51,7 @@ Ici : https://github.com/tteck/Proxmox/raw/main/ct/debian.sh
 
    wget <LIEN>
 
- - **Modifier les droits du fichier** 
+- **Modifier les droits du fichier** 
 	 
 .. code-block::
 
@@ -79,9 +79,9 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
 ^^^^^^^^^^^^^
 *Installation sous Docker* :  http://domo-site.fr/accueil/dossiers/84
 
-- **Installation sur une machine virtuelle** :  http://domo-site.fr/accueil/dossiers/2
+*Installation sur une machine virtuelle* :  http://domo-site.fr/accueil/dossiers/2
 
-- **Mes scripts lua*
+- **Mes scripts lua**
 
 |image1035|
 
@@ -115,58 +115,65 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
 
 21.4 Zigbee
 ^^^^^^^^^^^
-Installation de zigbee2mqtt  :
+*Installation de zigbee2mqtt*
 -	sous Docker : http://domo-site.fr/accueil/dossiers/88
 -	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/94
 
 Affichage dans monitor :
- 
+
+|image1042|
 
 Configuration de l’hôte virtuel Nginx pour affichage dans monitor :
  
+|image1043|
 
-Plus de commentaires dans le paragraphe précédent
+.. note:: *Les commentaires du paragraphe précédent s'appliquent également*
 
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
-Installation dans une VM :  http://domo-site.fr/accueil/dossiers/9
+*Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
 
-Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.
+.. note:: *Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.*
 
 21.6 MQTT (mosquito)
 ^^^^^^^^^^^^^^^^^^^^
-Installation dans une VM :  http://domo-site.fr/accueil/dossiers/47
+*Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/47
 
-Comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.
-
+.. note:: *Comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.*
 
 21.7 Zoneminder
 ^^^^^^^^^^^^^^^
-Installation dans une VM :  http://domo-site.fr/accueil/dossiers/24
-Ce serveur est nécessaire pour :
--	 L’affichage du mur de caméras
--	La détection (mode modect) de présence pour l’alarme
+*Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/24
 
+.. warning:: **Ce serveur est nécessaire pour**
 
- 
+   -	 L’affichage du mur de caméras
+
+   -	La détection (mode modect) de présence pour l’alarme
+
+   |image557|
 
 Configuration de l’hôte virtuel Nginx
  
+|image1045|
 
 21.8 Plex
 ^^^^^^^^^
-Installation :
+*Installation*
+
 -	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/95
+
 -	dans une VM  : http://domo-site.fr/accueil/dossiers/53
 
-partage samba pour Plex (conteneur LXC) : http://domo-site.fr/accueil/dossiers/93
+**partage samba pour Plex** (conteneur LXC) : http://domo-site.fr/accueil/dossiers/93
 
-affichage dans un navigateur ou TV : IP :32400/web
+- **affichage dans un navigateur ou TV*  : :green:`IP :32400/web`
  
+|image1046|
 
-
-Configuration de l’hôte virtuel Nginx pour accès distant
+- **Configuration de l’hôte virtuel Nginx pour accès distant**
  
+|image1047|
 
 21.9 Raspberry PI4
 ^^^^^^^^^^^^^^^^^^
@@ -269,4 +276,16 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.s
    :width: 386px  
 .. |image1041| image:: ../media/image1041.webp
    :width: 597px   
+.. |image1042| image:: ../media/image1042.webp
+   :width: 700px   
+.. |image1043| image:: ../media/image1043.webp
+   :width: 603px   
+.. |image557| image:: ../media/image557.webp
+   :width: 400px 
+.. |image1045| image:: ../media/image1045.webp
+   :width: 579px   
+.. |image1046| image:: ../media/image1046.webp
+   :width: 700px 
+.. |image1047| image:: ../media/image1047.webp
+   :width: 599px
 
