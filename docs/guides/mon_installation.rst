@@ -97,7 +97,7 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
 
 21.3 Zwave
 ^^^^^^^^^^
-**Installation de zwave-js-ui
+**Installation de zwave-js-ui**
 
 -	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
 
@@ -266,7 +266,7 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.s
    :width: 307px 
 .. |image1036| image:: ../media/image1036.webp
    :width: 402px 
- .. |image1037| image:: ../media/image1037.webp
+.. |image1037| image:: ../media/image1037.webp
    :width: 410px 
 .. |image1038| image:: ../media/image1038.webp
    :width: 417px 
