@@ -10,8 +10,6 @@ Monitor-domotique Documentation
    
    :caption: General
         
-        guides/modifications.rst
-        guides/sommaire.rst
         guides/bien_debuter.rst
         guides/configuration_minimum.rst
         guides/plan_interieur.rst
@@ -45,18 +43,6 @@ Github Repository <https://github.com/mgrafr/monitor>
 *maj manuel 2.2.1 du 27/07/2023*
 
 **Compatible Domoticz & Home assistant**
-
-Mises à jour
-----------------
-:doc:`guides/modifications`
-    modifications
-
-|image2| Tous les fichiers sont sur Github :
-
-Table de matières
------------------
-:doc:`guides/sommaire`
-  sommaire
 
 Bien débuter
 ------------
