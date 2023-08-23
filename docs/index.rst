@@ -31,7 +31,7 @@ Monitor-domotique Documentation
         guides/update.rst
         guides/resolution_problemes.rst
         guides/mon_installation.rst
-        guides/optimisatations.rst
+        guides/optimisations.rst
 
 Github Repository <https://github.com/mgrafr/monitor>    
 
