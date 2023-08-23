@@ -236,6 +236,27 @@ voir un exemple : :ref:`17.1.2. Création des tables PH, Redox, temp, …`
 
    |image1011|
 
+- **Décodage** , *Extrait du script maj-services.lua*
+
+.. code-block::
+
+   -- chargement fichier contenant les variables de configuration
+   package.path = package.path..";www/modules_lua/?.lua"
+   require 'connect'
+   local base64 = require'base64'
+   local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
+   local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg=poubelle' >> /home/michel/OsExecute.log 2>&1"
+
+voir ce § :ref:`14.6.1.1 connect.lua`
+
+18.7 pages sans rapport avec la domotique
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18.7.1  Les recettes de cuisines sur la tablette domotique
+==========================================================
+
+|image1015|
+
+
 
 .. |image983| image:: ../media/image983.webp
    :width: 200px
@@ -287,4 +308,5 @@ voir un exemple : :ref:`17.1.2. Création des tables PH, Redox, temp, …`
    :width: 700px
 .. |image1011| image:: ../media/image1011.webp
    :width: 593px
-
+.. |image1015| image:: ../media/image1015.webp
+   :width: 528px
