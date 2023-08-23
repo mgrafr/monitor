@@ -30,6 +30,7 @@ Monitor-domotique Documentation
         guides/diy.rst 
         guides/divers.rst
         guides/update.rst
+        guides/resolution_problemes.rst
         guides/mon_installation.rst
 
 
@@ -154,6 +155,11 @@ Update
 ------
 :doc:`guides/update`
     Update
+
+Résolution de problèmes
+-----------------------
+:doc:`guides/resolution_probmemes`
+   Résolution de problèmes
 
 Mon Installation
 ----------------
