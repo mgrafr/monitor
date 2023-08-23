@@ -156,7 +156,7 @@ Mon Installation
 Optimisations
 -------------
 :doc:`guides/optimisations`
-    Optimisations en cours
+    Optimisations
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
