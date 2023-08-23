@@ -354,7 +354,7 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 .. |image1057| image:: ../media/image1057.webp
    :width: 608px
 .. |image1058| image:: ../media/image1058.webp
-   :width:592px
+   :width: 592px
 .. |image1059| image:: ../media/image1059.webp
    :width: 610px
 .. |image1060| image:: ../media/image1060.webp
