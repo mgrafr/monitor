@@ -215,8 +215,8 @@ Principales fonctions contenues dans ce fichier :
 
    |image134|
 
-1.2.1.1 status_variables et devices_zone et device_plan
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+1.2.1.1 status_variables , devices_zone et device_plan
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. admonition:: **function status_variables**
 
