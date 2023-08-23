@@ -208,7 +208,7 @@ pour enregistrer dans la BD SQL, voir §  :ref:`6.2 Dans Domoticz`
 
 |image1007|
 
-voir un exemple : :ref:`17.1.2. Création des tables PH, Redox, temp, …`
+voir un exemple : :ref:`17.1.2. Création des tables PH, Redox, temp, ...`
 
 - **Fichier json** envoyé par domoticz :
 
