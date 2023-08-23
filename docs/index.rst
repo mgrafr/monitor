@@ -29,6 +29,7 @@ Monitor-domotique Documentation
         guides/ajout_page_alertes.rst
         guides/diy.rst 
         guides/divers.rst
+        guides/update.rst
         guides/mon_installation.rst
 
 
@@ -148,6 +149,11 @@ Divers
 ------
 :doc:`guides/divers`
     Divers
+
+Update
+------
+:doc:`guides/update`
+    Update
 
 Mon Installation
 ----------------
