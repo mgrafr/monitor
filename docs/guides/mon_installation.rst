@@ -22,13 +22,13 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-i
 
 .. seealso:: **sur Github**
 
-- https://github.com/StevenSeifried/proxmox-scripts
+   - https://github.com/StevenSeifried/proxmox-scripts
 
-- https://github.com/tteck/Proxmox
+   - https://github.com/tteck/Proxmox
 
-- https://github.com/StevenSeifried/proxmox-scripts
+   - https://github.com/StevenSeifried/proxmox-scripts
 
-|image1027|
+   |image1027|
  
 21.1.1 installation de VM ou CT par l’interface graphique : IP :8006
 ====================================================================
