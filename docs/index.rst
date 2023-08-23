@@ -8,7 +8,6 @@ Monitor-domotique Documentation
 
 .. toctree::
    
-   :caption: General
         
         guides/bien_debuter.rst
         guides/configuration_minimum.rst
