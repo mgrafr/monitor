@@ -256,6 +256,27 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 |image1015|
 
+.. important:: **Comme pour chaque ajout de page , il faut modifier les fichiers** :
+
+   -	mes.css.css
+
+   -	config.php
+
+   -	index_loc.php
+
+   -	header.php
+
+  *et parfois le fichier* :darkblue:`big-Slide.js` , si l’on doit modifier la largeur du menu § :ref:`1.7 Ajuster le menu au nombre de pages`
+
+   |image1016|
+
+- **le fichier recettes.php**  https://raw.githubusercontent.com/mgrafr/monitor/main/include/recettes.php
+
+ |image1018|
+
+- **Dans fonctions.php**  *sql_app()*
+
+|image1019|
 
 
 .. |image983| image:: ../media/image983.webp
@@ -310,3 +331,9 @@ voir ce § :ref:`14.6.1.1 connect.lua`
    :width: 593px
 .. |image1015| image:: ../media/image1015.webp
    :width: 528px
+.. |image1016| image:: ../media/image1016.webp
+   :width: 279px
+.. |image1018| image:: ../media/image1018.webp
+   :width: 700px
+.. |image1019| image:: ../media/image1019.webp
+   :width: 620px
