@@ -215,6 +215,9 @@ Principales fonctions contenues dans ce fichier :
 
    |image134|
 
+1.2.1.1 status_variables et devices_zone et device_plan
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 .. admonition:: **function status_variables**
 
    Pour récupérer les valeurs des variables de Domoticz et HA
@@ -235,11 +238,13 @@ Principales fonctions contenues dans ce fichier :
 
 .. admonition:: **function devices_plan** 
 
-   API Domoticz pour les devices :
+   API Domoticz pour les devices : les dispositifs doivent être placés dans un plan; celui-ci peut se résumer à un rectangle ou un carré
 
    |image139|
 
    |image140|
+
+
 
    **Maj de la date**
    
