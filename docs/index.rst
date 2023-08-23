@@ -32,7 +32,7 @@ Monitor-domotique Documentation
         guides/update.rst
         guides/resolution_problemes.rst
         guides/mon_installation.rst
-
+        guides/optimisatations.rst
 
 Github Repository <https://github.com/mgrafr/monitor>    
 
@@ -165,6 +165,11 @@ Mon Installation
 ----------------
 :doc:`guides/mon_installation`
     Mon Installation
+
+Optimisations
+-------------
+:doc:`guides/optimisations`
+    Optimisations en cours
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
