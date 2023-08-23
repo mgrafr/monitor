@@ -250,6 +250,8 @@ Principales fonctions contenues dans ce fichier :
 
       Plusieurs plans peuvent être crées mais l'un d'eux doit regrouper tous les dispositifs utilisés par monitor.
 
+      |image943|
+
    **Maj de la date**
    
    si la tablette reste allumée en permanence,la date ne sera pas mise à jour en absence de rafraichissement
@@ -1134,3 +1136,6 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 316px 
 .. |image221| image:: ../media/image221.webp
    :width: 338px 
+.. |image943| image:: ../media/image943.webp
+   :width: 600px 
+
