@@ -256,7 +256,9 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 |image1015|
 
-.. important:: **Comme pour chaque ajout de page , il faut modifier les fichiers** :
+.. important:: 
+
+   **Comme pour chaque ajout de page , il faut modifier les fichiers** :
 
    -	mes.css.css
 
