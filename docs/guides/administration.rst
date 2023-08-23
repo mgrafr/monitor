@@ -372,6 +372,7 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 on ajoute pour les lignes concernées :
 
 .. code-block::
+
    <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=6 style="width:25px;display:inline;"></a><br>
 
 ..important:: **:red:`rel` correspond au n° de l’élément dans la table du fichier:info_admin.php**
