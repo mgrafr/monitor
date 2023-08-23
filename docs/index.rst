@@ -158,7 +158,7 @@ Update
 
 Résolution de problèmes
 -----------------------
-:doc:`guides/resolution_probmemes`
+:doc:`guides/resolution_problemes`
    Résolution de problèmes
 
 Mon Installation
