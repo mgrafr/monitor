@@ -207,48 +207,66 @@ Le PI4 assure aussi :
 
    |image1050|
  
-	. **msmtp** , pour envoyer des emails facilement 
+    et **msmtp** , pour envoyer des emails facilement ; pour la configuration voir ce § :ref:`14.10.2 commandes scp pour l’envoi ou la réception de fichiers distants`
+ 
+- **Affichage dans monitor de Nagios**
 
-config :
+ |image1052|
  
 
-
-Affichage dans monitor :
- 
-
-21.9.1 Résolution de problèmes :
-================================
+21.9.1 Résolution des problèmes :
+=================================
 21.9.1.1  cannot-open-access-to-console-the-root-account-is-locked
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 https://www.msn.com/fr-fr/feed
+
 Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'accès à la console, le compte root est verrouillé sur l'écran de démarrage : 
 
-Mode d’emploi pour revenir à la situation normale
+.. admonition:: **Mode d’emploi pour revenir à la situation normale**
 
-/etc/fstab  à certainement  une entrée non prise en charge. C’est ce qui se passe si un disque USB externe est déconnecté ou remplacé
+   - /etc/fstab  à certainement  une entrée non prise en charge. C’est ce qui se passe si un disque USB externe est déconnecté ou remplacé
 
-Pour résoudre ce problème, sortez la carte SD ou la clé USB du PI et branchez-la sur votre ordinateur. Ignorez les demandes de formatage et explorer la partition « boot »  .
-Ouvrir le fichier appelé cmdline.txt dans le Bloc-notes ou Notepad et ajouter init=/bin/sh à la fin de la première ligne .
+   - Pour résoudre ce problème, sortez la carte SD ou la clé USB du PI et branchez-la sur votre ordinateur. Ignorez les demandes de formatage et explorer la partition « boot »  .
+
+   - Ouvrir le fichier appelé cmdline.txt dans le Bloc-notes ou Notepad et ajouter :ref:`init=/bin/sh` à la fin de la première ligne .
+
+	 |image1053|
+ 
+   - Enregistrez le fichier et remettez la carte SD ou la clé USB dans le PI et bootez. 
+
+   .. important::
+
+      Un clavier et un écran sont raccordés au PI ; sur l’écran on peut alors constater qu’une console en bash est alors disponible pour effectuer des modification sur le fichier /etc/fstab.
+
+   .. code-block::
+      
+      sudo nano /etc/fstab
+
+   |image1054|
+
+   - Commenter ou supprimer la ligne défectueuse 
+
+   - Enregistrer le fichier, CTRL O, ENTER, CTRL X
+
+   - Eteindre le PI, retirer la carte SD ou la clé USB pour supprimer init=/bin/sh du fichier cmdline.txt
+
+   - Redémarrer le Pi 
+
+   .. error:: S’il n’est pas possible de modifier /etc/fstab (écriture non autorisée), il faut alors remonter la partition (/dev/sda2 pour une clé USB ou /dev/ mmcblk0p2 pour une SD Card).
+
+      La commande à effectuer :
+
+      .. code-block::
+
+         mount -o remount,rw  /partition root  /
+
+      |image1055|
  
 
-Enregistrez le fichier et remettez la carte SD ou la clé USB dans le PI et bootez. Un clavier et un écran sont raccordés au PI ; sur l’écran on peut alors constater qu’une console en bash est alors disponible pour effectuer des modification sur le fichier /etc/fstab.
-
-sudo nano /etc/fstab
+21.9.1.2 pour monter les partitions sans redémarrer
+"""""""""""""""""""""""""""""""""""""""""""""""""""
  
-Commenter ou supprimer la ligne défectueuse 
-Enregistrer le fichier, CTRL O, ENTER, CTRL X
-Eteindre le PI, retirer la carte SD ou la clé USB pour supprimer init=/bin/sh du fichier cmdline.txt
-Redémarrer le Pi 
-
-S’il n’est pas possible de modifier /etc/fstab (écriture non autorisée), il faut alors remonter la partition (/dev/sda2 pour une clé USB ou /dev/ mmcblk0p2 pour une SD Card).
-La commande à effectuer :
-
-
-mount -o remount,rw  /partition root  /
- 
-
-pour monter les partitions sans redémarrer :
- 
+      |image1056|
 
 
 
@@ -308,6 +326,13 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.s
    :width: 588px
 .. |image1050| image:: ../media/image1050.webp
    :width: 395px
-
-
-
+.. |image1052| image:: ../media/image1052.webp
+   :width: 422px
+.. |image1053| image:: ../media/image1053.webp
+   :width: 536px
+.. |image1054| image:: ../media/image1054.webp
+   :width: 641px
+.. |image1055| image:: ../media/image1055.webp
+   :width: 466px
+.. |image1056| image:: ../media/image1056.webp
+   :width: 283px
