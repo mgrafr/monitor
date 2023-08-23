@@ -33,27 +33,33 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-i
 21.1.1 installation de VM ou CT par l’interface graphique : IP :8006
 ====================================================================
  
-
+|image1028|
 
 21.1.2 installation automatique de VM ou CT : https://github.com/tteck/Proxmox
 ==============================================================================
-	choisir le fichier d’installation : ex Conteneur LXC Debian 11
+choisir le fichier d’installation : ex Conteneur LXC Debian 11
 	 
-	Copier le lien :
+|image1029|
 
-                
+Copier le lien : |image1030|
+
 Ici : https://github.com/tteck/Proxmox/raw/main/ct/debian.sh
 
-Télécharger le script : wget LIEN
+- **Télécharger le script**
 
- 
+.. code-block::
 
-	Modifier les droits du fichier : 
+   wget <LIEN>
+
+ - **Modifier les droits du fichier** 
 	 
+.. code-block::
 
-	Lancer le script et répondre aux questions :
+   chmod 777 debian.sh
+
+- **Lancer le script** *et répondre aux questions*
 	
- 
+|image1033|
 
 
 21.1.3 installation automatique d’un conteneur LXC,LEMP & Monitor
@@ -229,8 +235,14 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.s
    :width: 700px
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
-
- 
+.. |image1028| image:: ../media/image1028.webp
+   :width: 604px
+.. |image1029| image:: ../media/image1029.webp
+   :width: 266px
+.. |image1030| image:: ../media/image1030.webp
+   :width: 304px
+ .. |image1033| image:: ../media/image1033.webp
+   :width: 571px
 
  
  
