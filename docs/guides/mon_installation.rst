@@ -272,14 +272,29 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 21.10 Home Assistant
 ^^^^^^^^^^^^^^^^^^^^
-Installation : http://domo-site.fr/accueil/dossiers/61
+*Installation* : http://domo-site.fr/accueil/dossiers/61
 
-Script automatique :
-bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.sh)"
- 
- 
+**Script pour une installation automatique** :
 
+.. code-block::
+
+   bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.sh)"
  
+|image1057|
+
+|image1058|
+
+|image1059|
+
+|image1060|
+
+|image1061|
+
+|image1062|
+
+|image1063|
+
+
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
 .. |image1027| image:: ../media/image1027.webp
@@ -336,3 +351,17 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.s
    :width: 466px
 .. |image1056| image:: ../media/image1056.webp
    :width: 283px
+.. |image1057| image:: ../media/image1057.webp
+   :width: 608px
+.. |image1058| image:: ../media/image1058.webp
+   :width:592px
+.. |image1059| image:: ../media/image1059.webp
+   :width: 610px
+.. |image1060| image:: ../media/image1060.webp
+   :width: 297px
+.. |image1061 image:: ../media/image1061.webp
+   :width: 700px
+.. |image1062| image:: ../media/image1062.webp
+   :width: 249px
+.. |image1063| image:: ../media/image1063.webp
+   :width: 516px
