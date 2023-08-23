@@ -244,7 +244,11 @@ Principales fonctions contenues dans ce fichier :
 
    |image140|
 
+   .. important:: **plan Domoticz**
 
+      Le mode plan consiste à définir des salles et y placer différents périphériques; l'avantage de ce mode c'est que l'api peut envoyer des données concernant tous les dispositifs dun plan.
+
+      Plusieurs plans peuvent être crées mais l'un d'eux doit regrouper tous les dispositifs utilisés par monitor.
 
    **Maj de la date**
    
