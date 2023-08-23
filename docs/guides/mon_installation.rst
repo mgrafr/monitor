@@ -99,9 +99,9 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
 ^^^^^^^^^^
 **Installation de zwave-js-ui**
 
--	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
+. dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
 
--	sous Docker, avec Domoticz : http://domo-site.fr/accueil/dossiers/86
+. sous Docker, avec Domoticz : http://domo-site.fr/accueil/dossiers/86
 
 - **Affichage dans monitor**
  
@@ -116,14 +116,16 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
 21.4 Zigbee
 ^^^^^^^^^^^
 *Installation de zigbee2mqtt*
+
 -	sous Docker : http://domo-site.fr/accueil/dossiers/88
+
 -	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/94
 
-Affichage dans monitor :
+**Affichage dans monitor**
 
 |image1042|
 
-Configuration de l’hôte virtuel Nginx pour affichage dans monitor :
+**Configuration de l’hôte virtuel Nginx** *pour affichage dans monitor 
  
 |image1043|
 
@@ -153,7 +155,7 @@ Configuration de l’hôte virtuel Nginx pour affichage dans monitor :
 
    |image557|
 
-Configuration de l’hôte virtuel Nginx
+**Configuration de l’hôte virtuel Nginx**
  
 |image1045|
 
@@ -161,13 +163,13 @@ Configuration de l’hôte virtuel Nginx
 ^^^^^^^^^
 *Installation*
 
--	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/95
+. dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/95
 
--	dans une VM  : http://domo-site.fr/accueil/dossiers/53
+. dans une VM  : http://domo-site.fr/accueil/dossiers/53
 
 **partage samba pour Plex** (conteneur LXC) : http://domo-site.fr/accueil/dossiers/93
 
-- **affichage dans un navigateur ou TV*  : :green:`IP :32400/web`
+- **affichage dans un navigateur ou TV**  : :green:`IP :32400/web`
  
 |image1046|
 
