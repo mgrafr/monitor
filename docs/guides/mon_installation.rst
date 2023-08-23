@@ -1,25 +1,35 @@
 21. – Mon installation
 ---------------------- 
 
+|image1026|
+
 21.1 Proxmox
 ^^^^^^^^^^^^
 C’est la base du système, il doit être installé en premier, ensuite :
--	Un conteneur, une VM ou une partition classique 
--	Ensuite LEMP 
--	En dernier et monitor
 
-Installation de Proxmox : assurez-vous que la virtualisation UEFI est activée dans le BIOS
-http://domo-site.fr/accueil/dossiers/1
+-	Un conteneur, une VM ou une partition classique 
+
+-	Ensuite LEMP 
+
+-	En dernier **monitor**
+
+.. warning:: **Installation de Proxmox** : *assurez-vous que la virtualisation UEFI est activée dans le BIOS*
+
+Pour l'installation: http://domo-site.fr/accueil/dossiers/1
+
 Pour terminer le processus de post-installation de Proxmox VE 7(évite de modifier manuellement les fichiers sources.list  d’apt,) vous pouvez exécuter la commande suivante dans pve Shell.
 bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh)"
 
-voir sur Github : https://github.com/StevenSeifried/proxmox-scripts
--	https://github.com/tteck/Proxmox
--	https://github.com/StevenSeifried/proxmox-scripts
+.. seealso:: **sur Github**
 
+- https://github.com/StevenSeifried/proxmox-scripts
+
+- https://github.com/tteck/Proxmox
+
+- https://github.com/StevenSeifried/proxmox-scripts
+
+|image1027|
  
-
-
 21.1.1 installation de VM ou CT par l’interface graphique : IP :8006
 ====================================================================
  
@@ -215,6 +225,10 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.s
  
 
  
+.. |image1026| image:: ../media/image1026.webp
+   :width: 700px
+.. |image1027| image:: ../media/image1027.webp
+   :width: 425px
 
  
 
