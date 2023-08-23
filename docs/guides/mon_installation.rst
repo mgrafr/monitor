@@ -95,21 +95,23 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
  
 .. note:: *Les scripts sont disponibles sur Github : https://github.com/mgrafr/monitor/tree/main/share/scripts_dz*
 
-
-
 21.3 Zwave
 ^^^^^^^^^^
-Installation de zwave-js-ui ,
+**Installation de zwave-js-ui
+
 -	dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
+
 -	sous Docker, avec Domoticz : http://domo-site.fr/accueil/dossiers/86
-Affichage dans monitor :
- 
 
-Configuration de l’hôte virtuel Nginx pour affichage dans monitor :
+- **Affichage dans monitor**
  
+|image1039|
 
+- **Configuration de l’hôte virtuel Nginx**  *pour affichage dans monitor*
  
-
+|image1040|
+ 
+|image1041|
 
 21.4 Zigbee
 ^^^^^^^^^^^
@@ -261,6 +263,10 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.s
    :width: 410px 
 .. |image1038| image:: ../media/image1038.webp
    :width: 417px 
- 
- 
+.. |image1039| image:: ../media/image1039.webp
+   :width: 465px 
+.. |image1040| image:: ../media/image1040.webp
+   :width: 386px  
+.. |image1041| image:: ../media/image1041.webp
+   :width: 597px   
 
