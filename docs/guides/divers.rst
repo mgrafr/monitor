@@ -202,6 +202,41 @@ pour enregistrer dans la BD SQL, voir §  :ref:`6.2 Dans Domoticz`
 
 |image1006|
 
+.. seealso:: le § :ref:`0.3.2 Les Dispositifs`
+
+- **Table energie** : création de la table
+
+|image1007|
+
+voir un exemple : :ref:`17.1.2. Création des tables PH, Redox, temp, …`
+
+- **Fichier json** envoyé par domoticz :
+
+|image1008|
+
+.. admonition:: **Les fichiers modifiés dans monitor**
+
+   - **Interieur.php** : *ajout de l’image svg* 
+
+   .. code-block::
+
+      <div id="linky"><?php include ('linky_svg.php');?></div>
+
+   |image1009|
+
+   - **graphiques.php**
+
+   |image1010|
+
+18.6 Complément sur l’utilisation des Mots de Passe cryptés dans Domoticz
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Une des solutions pour crypter et décrypter les mots de passe*
+
+.. seealso:: Codage : https://www.base64encode.org/
+
+   |image1011|
+
+
 .. |image983| image:: ../media/image983.webp
    :width: 200px
 .. |image987| image:: ../media/image987.webp
@@ -242,5 +277,14 @@ pour enregistrer dans la BD SQL, voir §  :ref:`6.2 Dans Domoticz`
    :width: 478px
 .. |image1006| image:: ../media/image1006.webp
    :width: 700px
-
+.. |image1007| image:: ../media/image1007.webp
+   :width: 700px
+.. |image1008| image:: ../media/image1008.webp
+   :width: 406px
+.. |image1009| image:: ../media/image1009.webp
+   :width: 700px
+.. |image1010| image:: ../media/image1010.webp
+   :width: 700px
+.. |image1011| image:: ../media/image1011.webp
+   :width: 593px
 
