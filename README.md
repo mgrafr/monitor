@@ -31,5 +31,5 @@ Les pages optionnelles:<br>
 <br> <strong>installation:</strong> en bash, choisir un script dans le répertoir "install" <br>- installation complète (Debian12,LEMP,PhpmyAdmin, Monitor) dans un conteneur LXC Proxmox: create_ct_lxc_monitor.sh<br>- installation uniquement de monitor: install_only_monitor.sh<br>- installation seulement de LEMP+PhpMyAdmin+Monitor : lemp_monitor_install.sh<br><br>plus d'information dans le PDF téléchargeable ci-dessous.
 <br><br>
 <video width="320" height="240" poster="placeholder.png" controls ><source src="http://domo-site.fr/assets/video/monitor.mp4" type=video/mp4></video>
-Un pdf de 517 pages à télécharger sur ce dépôt<br>
-<img src="readme_img/pdf_monitor.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
+<br><br><p>
+Documentation Readthedocs: https://monitor-domotique.readthedocs.io/fr/latest/  </p>
