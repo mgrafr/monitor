@@ -7,6 +7,7 @@ Monitor-domotique Documentation
 ========================================
 
 .. toctree::
+   :caption: General
         
         guides/modifications.rst
         guides/sommaire.rst
