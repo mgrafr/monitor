@@ -64,30 +64,38 @@ Ici : https://github.com/tteck/Proxmox/raw/main/ct/debian.sh
 
 21.1.3 installation automatique d’un conteneur LXC,LEMP & Monitor
 =================================================================
-Voir le § 0.1.1
+Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
-            21.1.4 Aperçu des VM et CT installés :
+21.1.4 Aperçu des VM et CT installés
+====================================
  
+|image1034|
 
-Plex est installé sur un autre mini PC sous Proxmox également, en conteneur, voir le site domo-site.fr
+.. note:: **Plex est installé sur un autre mini PC** 
+
+   *sous Proxmox également, en conteneur, voir le site http://domo-site.fr/accueil/dossiers/53*
 
 21.2 Domoticz
 ^^^^^^^^^^^^^
-Installation sous Docker :
-http://domo-site.fr/accueil/dossiers/84
-Installation VM :
-http://domo-site.fr/accueil/dossiers/2
+*Installation sous Docker* :  http://domo-site.fr/accueil/dossiers/84
 
-Mes scripts lua :
- 
+- **Installation sur une machine virtuelle** :  http://domo-site.fr/accueil/dossiers/2
 
-Mes scripts bash, python et Node js :
- 
+- **Mes scripts lua*
 
- 
+|image1035|
 
+- **Mes scripts bash, python et Node js**
  
-Les scripts sont disponibles sur Github : https://github.com/mgrafr/monitor/tree/main/share/scripts_dz
+|image1036|
+
+|image1037|
+
+|image1038|
+ 
+.. note:: *Les scripts sont disponibles sur Github : https://github.com/mgrafr/monitor/tree/main/share/scripts_dz*
+
+
 
 21.3 Zwave
 ^^^^^^^^^^
@@ -241,10 +249,18 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.s
    :width: 266px
 .. |image1030| image:: ../media/image1030.webp
    :width: 304px
- .. |image1033| image:: ../media/image1033.webp
+.. |image1033| image:: ../media/image1033.webp
    :width: 571px
-
- 
+.. |image1034| image:: ../media/image1034.webp
+   :width: 307px
+.. |image1035| image:: ../media/image1035.webp
+   :width: 307px 
+.. |image1036| image:: ../media/image1036.webp
+   :width: 402px 
+ .. |image1037| image:: ../media/image1037.webp
+   :width: 410px 
+.. |image1038| image:: ../media/image1038.webp
+   :width: 417px 
  
  
 
