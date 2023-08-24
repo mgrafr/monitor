@@ -3,6 +3,8 @@
    :alt: Monitor Logo
    :class: with-border
 
+Bienvenue dans **monitor** avec ce tutoriel !! 
+
 Documentation
 =============
 
