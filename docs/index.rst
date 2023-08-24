@@ -10,29 +10,40 @@ Monitor-domotique Documentation
    :caption: Ma table des matières
    :maxdepth: 2
         
-   bien_debuter
-   configuration_minimum
-   plan_interieur
-   meteo
-   plan_exterieur
-   alarme
-   graphiques
-   mur_cameras
-   mur_de_commandes
-   zigbee
-   zwave
-   monitoring
-   app_diverses
-   app_externes
-   administration
-   exemples
-   ajout_page_alertes
-   diy
-   divers
-   update
-   resolution_problemes
-   mon_installation
-   optimisations
+   .. figure:: images/logo.png
+   :alt: Monitor Logo
+   :class: with-border
+
+Monitor-domotique Documentation
+========================================
+
+.. toctree::
+
+   :caption: Ma table des matières
+        
+        guides/bien_debuter.rst
+        guides/configuration_minimum.rst
+        guides/plan_interieur.rst
+        guides/meteo.rst
+        guides/plan_exterieur.rst
+        guides/alarme.rst
+        guides/graphiques.rst
+        guides/mur_cameras.rst
+        guides/mur_de_commandes.rst
+        guides/zigbee.rst
+        guides/zwave.rst
+        guides/monitoring.rst
+        guides/app_diverses.rst
+        guides/app_externes.rst
+        guides/administration.rst
+        guides/exemples.rst
+        guides/ajout_page_alertes.rst
+        guides/diy.rst 
+        guides/divers.rst
+        guides/update.rst
+        guides/resolution_problemes.rst
+        guides/mon_installation.rst
+        guides/optimisations.rst
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
