@@ -38,8 +38,7 @@ Documentation
 INDEX
 -----
 :doc:`guides/index`
-   SOMMAIRE   
-
+   
 Bien débuter
 ------------
 :doc:`guides/bien_debuter`
