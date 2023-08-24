@@ -5,11 +5,11 @@
 
 Bienvenue dans **monitor** avec ce tutoriel !! 
 
-Documentation
-=============
+SOMMAIRE
+========
 
 .. toctree::
-   :caption: Table du Contenu
+   :caption: SOMMAIRE
    
    guides/bien_debuter
    guides/configuration_minimum
@@ -23,17 +23,17 @@ Documentation
    guides/zigbee
    guides/zwave
    guides/monitoring
-   guides/app_diverses.rst
-   guides/app_externes.rst
-   guides/administration.rst
-   guides/exemples.rst
-   guides/ajout_page_alertes.rst
-   guides/diy.rst 
-   guides/divers.rst
-   guides/update.rst
-   guides/resolution_problemes.rst
-   guides/mon_installation.rst
-   guides/optimisations.rst
+   guides/app_diverses
+   guides/app_externes
+   guides/administration
+   guides/exemples
+   guides/ajout_page_alertes
+   guides/diy
+   guides/divers
+   guides/update
+   guides/resolution_problemes
+   guides/mon_installation
+   guides/optimisations
 
 
 
