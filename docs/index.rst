@@ -7,8 +7,8 @@ Monitor-domotique Documentation
 ========================================
 
 .. toctree::
-
    :caption: Ma table des matières
+   :maxdepth: 2
         
         guides/bien_debuter
         guides/configuration_minimum
