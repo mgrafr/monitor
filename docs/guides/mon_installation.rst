@@ -125,7 +125,7 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
 
 |image1042|
 
-**Configuration de l’hôte virtuel Nginx** *pour affichage dans monitor 
+**Configuration de l’hôte virtuel Nginx** *pour affichage dans monitor* 
  
 |image1043|
 
@@ -359,7 +359,7 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
    :width: 610px
 .. |image1060| image:: ../media/image1060.webp
    :width: 297px
-.. |image1061 image:: ../media/image1061.webp
+.. |image1061| image:: ../media/image1061.webp
    :width: 700px
 .. |image1062| image:: ../media/image1062.webp
    :width: 249px
