@@ -31,8 +31,6 @@ Les pages optionnelles:<br>
 <img src="readme_img/image12.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image13.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image14.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
-<br> <strong>installation:</strong> en bash, choisir un script dans le répertoir "install" <br>- installation complète (Debian12,LEMP,PhpmyAdmin, Monitor) dans un conteneur LXC Proxmox: create_ct_lxc_monitor.sh<br>- installation uniquement de monitor: install_only_monitor.sh<br>- installation seulement de LEMP+PhpMyAdmin+Monitor : lemp_monitor_install.sh<br><br>
-<br><br>
-<video width="320" height="240" poster="placeholder.png" controls ><source src="http://domo-site.fr/assets/video/monitor.mp4" type=video/mp4></video>
-  <p>
-Documentation Readthedocs: https://monitor-domotique.readthedocs.io/fr/latest/  </p>
+<br> <strong>installation:</strong> en bash, choisir un script dans le répertoir "install" <br><br>- <strong>create_ct_lxc_monitor.sh</strong> : installation complète (Debian12,LEMP,PhpmyAdmin, Monitor) dans un conteneur LXC Proxmox<br><br>- <strong>install_only_monitor.sh</strong> : installation uniquement de monitor<br><br>- <strong>lemp_monitor_install.sh</strong> : installation seulement de LEMP+PhpMyAdmin+Monitor <br><br>
+<br><br><video width="320" height="240" poster="placeholder.png" controls ><source src="http://domo-site.fr/assets/video/monitor.mp4" type=video/mp4></video>
+  <p>Documentation Readthedocs: https://monitor-domotique.readthedocs.io/fr/latest/  </p>
