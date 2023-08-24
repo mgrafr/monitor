@@ -7,9 +7,13 @@ Bienvenue dans **monitor** avec ce tutoriel !!
 
 *maj tutoriel 2.2.1 du 27/07/2023*
 
+
 .. toctree::
    :caption: SOMMAIRE
-   
+
+table de contenu
+----------------
+
    guides/bien_debuter
    guides/configuration_minimum
    guides/plan_interieur
