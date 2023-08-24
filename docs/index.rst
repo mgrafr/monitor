@@ -35,6 +35,11 @@ Documentation
    guides/mon_installation.rst
    guides/optimisations.rst
 
+INDEX
+------------
+:doc:`guides/index`
+    SOMMAIRE
+
 
 Bien débuter
 ------------
