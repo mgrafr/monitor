@@ -20,13 +20,13 @@ release = '0.1'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-       'sphinx_rtd_theme',
+       'sphinx-rtd-theme',
        'sphinx.ext.autosectionlabel',
        'sphinx.ext.intersphinx'
       ]
 # language = os.getenv("READTHEDOCS_LANGUAGE", "fr")
 language = 'fr'
-html_theme = "sphinx_rtd_theme"
+html_theme = "sphinx-èrtd-theme"
 html_theme_path = ["_themes", ]
 html_static_path = ["_static"]
 # The name for this set of Sphinx documents.  If None, it defaults to
