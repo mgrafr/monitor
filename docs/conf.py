@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-import sphinx_rtd_theme
+import sphinx-rtd-theme
 import sys
 import os
 # Configuration file for the Sphinx documentation builder.
@@ -26,7 +26,7 @@ extensions = [
       ]
 # language = os.getenv("READTHEDOCS_LANGUAGE", "fr")
 language = 'fr'
-html_theme = "sphinx-èrtd-theme"
+html_theme = "sphinx-rtd-theme"
 html_theme_path = ["_themes", ]
 html_static_path = ["_static"]
 # The name for this set of Sphinx documents.  If None, it defaults to
