@@ -7,9 +7,7 @@ Monitor-domotique Documentation
 ========================================
 
 .. toctree::
-
-   :caption: Ma table des matières
-        
+       
         guides/bien_debuter.rst
         guides/configuration_minimum.rst
         guides/plan_interieur.rst
