@@ -26,7 +26,7 @@
 
 **Retour d’info avec GPIO du RPI**
 
-|image1063|
+|image1064|
 
 
 
