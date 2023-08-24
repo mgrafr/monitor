@@ -11,19 +11,18 @@ Documentation
 .. toctree::
    :caption: Table du Contenu
    
-   index  
    guides/bien_debuter
-   guides/configuration_minimum.rst
-   guides/plan_interieur.rst
-   guides/meteo.rst
-   guides/plan_exterieur.rst
-   guides/alarme.rst
-   guides/graphiques.rst
-   guides/mur_cameras.rst
-   guides/mur_de_commandes.rst
-   guides/zigbee.rst
-   guides/zwave.rst
-   guides/monitoring.rst
+   guides/configuration_minimum
+   guides/plan_interieur
+   guides/meteo
+   guides/plan_exterieur
+   guides/alarme
+   guides/graphiques
+   guides/mur_cameras
+   guides/mur_de_commandes
+   guides/zigbee
+   guides/zwave
+   guides/monitoring
    guides/app_diverses.rst
    guides/app_externes.rst
    guides/administration.rst
