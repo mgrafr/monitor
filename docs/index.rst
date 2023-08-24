@@ -9,29 +9,29 @@ Monitor-domotique Documentation
 .. toctree::
    
        
-        guides/bien_debuter.rst
-        guides/configuration_minimum.rst
-        guides/plan_interieur.rst
-        guides/meteo.rst
-        guides/plan_exterieur.rst
-        guides/alarme.rst
-        guides/graphiques.rst
-        guides/mur_cameras.rst
-        guides/mur_de_commandes.rst
-        guides/zigbee.rst
-        guides/zwave.rst
-        guides/monitoring.rst
-        guides/app_diverses.rst
-        guides/app_externes.rst
-        guides/administration.rst
-        guides/exemples.rst
-        guides/ajout_page_alertes.rst
-        guides/diy.rst 
-        guides/divers.rst
-        guides/update.rst
-        guides/resolution_problemes.rst
-        guides/mon_installation.rst
-        guides/optimisations.rst
+   guides/bien_debuter.rst
+   guides/configuration_minimum.rst
+   guides/plan_interieur.rst
+   guides/meteo.rst
+   guides/plan_exterieur.rst
+   guides/alarme.rst
+   guides/graphiques.rst
+   guides/mur_cameras.rst
+   guides/mur_de_commandes.rst
+   guides/zigbee.rst
+   guides/zwave.rst
+   guides/monitoring.rst
+   guides/app_diverses.rst
+   guides/app_externes.rst
+   guides/administration.rst
+   guides/exemples.rst
+   guides/ajout_page_alertes.rst
+   guides/diy.rst 
+   guides/divers.rst
+   guides/update.rst
+   guides/resolution_problemes.rst
+   guides/mon_installation.rst
+   guides/optimisations.rst
 
 
 Bien débuter
