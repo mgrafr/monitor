@@ -3,8 +3,8 @@
    :alt: Monitor Logo
    :class: with-border
 
-Monitor-domotique Documentation
-========================================
+Documentation
+=============
 
 .. toctree::
    
@@ -112,7 +112,7 @@ Administration
 Exemples
 --------
 :doc:`guides/exemples`   
-    Exemples
+    Des exemples
 
 Ajout Page Alertes
 ------------------
