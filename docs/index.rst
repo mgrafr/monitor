@@ -10,7 +10,7 @@ Documentation
 
 .. toctree::
    
-   guides/index.rst    
+   index.rst    
    guides/bien_debuter.rst
    guides/configuration_minimum.rst
    guides/plan_interieur.rst
@@ -37,7 +37,8 @@ Documentation
 
 INDEX
 -----
-:doc:`guides/index`
+:doc:`index`
+   SOMMAIRE
    
 Bien débuter
 ------------
