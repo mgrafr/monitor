@@ -1,4 +1,7 @@
   
+accueil
+-------
+
 .. figure:: images/logo.png
    :alt: Monitor Logo
    :class: with-border
@@ -9,7 +12,7 @@ Bienvenue dans **monitor** avec ce tutoriel !!
 
 
 .. toctree::
-   .. contents:: Table of Contents
+   :caption: SOMMAIRE
 
    guides/bien_debuter
    guides/configuration_minimum
