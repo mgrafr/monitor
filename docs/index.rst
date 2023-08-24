@@ -7,17 +7,6 @@ Monitor-domotique Documentation
 ========================================
 
 .. toctree::
-   :caption: Ma table des matières
-   :maxdepth: 2
-        
-   .. figure:: images/logo.png
-   :alt: Monitor Logo
-   :class: with-border
-
-Monitor-domotique Documentation
-========================================
-
-.. toctree::
 
    :caption: Ma table des matières
         
