@@ -154,5 +154,5 @@ Optimisations
     Optimisations
 
 .. |image1| image:: images/logo.png
-   :width: 1.52in
-   :height: 1.52in
+   :width: 20px
+   
