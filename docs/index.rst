@@ -10,29 +10,29 @@ Monitor-domotique Documentation
    :caption: Ma table des matières
    :maxdepth: 2
         
-        guides/bien_debuter
-        guides/configuration_minimum
-        guides/plan_interieur
-        guides/meteo
-        guides/plan_exterieur
-        guides/alarme
-        guides/graphiques
-        guides/mur_cameras
-        guides/mur_de_commandes
-        guides/zigbee
-        guides/zwave
-        guides/monitoring
-        guides/app_diverses
-        guides/app_externes
-        guides/administration
-        guides/exemples
-        guides/ajout_page_alertes
-        guides/diy
-        guides/divers
-        guides/update
-        guides/resolution_problemes
-        guides/mon_installation
-        guides/optimisations
+        bien_debuter
+        configuration_minimum
+        plan_interieur
+        meteo
+        plan_exterieur
+        alarme
+        graphiques
+        mur_cameras
+        mur_de_commandes
+        zigbee
+        zwave
+        monitoring
+        app_diverses
+        app_externes
+        administration
+        exemples
+        ajout_page_alertes
+        diy
+        divers
+        /update
+        resolution_problemes
+        mon_installation
+        optimisations
 
 .. |image1| image:: images/logo.png
    :width: 1.52in
