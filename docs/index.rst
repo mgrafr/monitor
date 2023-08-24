@@ -11,9 +11,6 @@ Bienvenue dans **monitor** avec ce tutoriel !!
 .. toctree::
    :caption: SOMMAIRE
 
-table de contenu
-----------------
-
    guides/bien_debuter
    guides/configuration_minimum
    guides/plan_interieur
