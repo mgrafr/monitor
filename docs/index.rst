@@ -10,7 +10,7 @@ Documentation
 
 .. toctree::
    
-       
+   guides/index.rst    
    guides/bien_debuter.rst
    guides/configuration_minimum.rst
    guides/plan_interieur.rst
@@ -38,23 +38,20 @@ Documentation
 INDEX
 ------------
 :doc:`guides/index`
-    SOMMAIRE
-
+   SOMMAIRE   
 
 Bien débuter
 ------------
 :doc:`guides/bien_debuter`
-    bien débuter
-
+  
 Configuration minimum
 ---------------------
 :doc:`guides/configuration_minimum`
-    Configuration minimum
 
 Plan interieur
 --------------
 :doc:`guides/plan_interieur`
-    1ere page plan intérieur
+
 
 Météo
 -----
