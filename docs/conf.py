@@ -22,9 +22,10 @@ release = '0.1'
 extensions = [
        'sphinx_rtd_theme',
        'sphinx.ext.autosectionlabel',
-       'sphinx.ext.intersphinx'
+       'sphinx.ext.intersphinx',
+       'rst2pdf.pdfbuilder'
       ]
-# language = os.getenv("READTHEDOCS_LANGUAGE", "fr")
+pdf_documents = [('index', u'rst2pdf', u'Sample rst2pdf doc', u'domo-site'),]
 language = 'fr'
 html_theme = "sphinx_rtd_theme"
 html_theme_path = ["_themes", ]
