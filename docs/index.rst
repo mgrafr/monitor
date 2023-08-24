@@ -9,7 +9,7 @@ Bienvenue dans **monitor** avec ce tutoriel !!
 
 
 .. toctree::
-   :caption: SOMMAIRE
+   .. contents:: Table of Contents
 
    guides/bien_debuter
    guides/configuration_minimum
