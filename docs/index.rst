@@ -36,7 +36,7 @@ Documentation
    guides/optimisations.rst
 
 INDEX
-------------
+-----
 :doc:`guides/index`
    SOMMAIRE   
 
