@@ -7,7 +7,7 @@ Monitor-domotique Documentation
 ========================================
 
 .. toctree::
-   :caption: Table du contenu
+   
        
         guides/bien_debuter.rst
         guides/configuration_minimum.rst
