@@ -9,9 +9,10 @@ Documentation
 =============
 
 .. toctree::
+   :caption: Table du Contenu
    
-   index.rst    
-   guides/bien_debuter.rst
+   index  
+   guides/bien_debuter
    guides/configuration_minimum.rst
    guides/plan_interieur.rst
    guides/meteo.rst
