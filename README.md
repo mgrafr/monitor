@@ -1,7 +1,6 @@
 # monitor  <p>
-Documentation Readthedocs: https://monitor-domotique.readthedocs.io/fr/latest/  </p><br>
-
-<a href="Manuel utilisateur MONITOR_DOMOTIQUE.pdf"> Le PDF , maj tutoriel 2.2.1 du 27/07/2023</a> <br>
+Documentation Readthedocs: https://monitor-domotique.readthedocs.io/fr/latest/  </p>
+<a href="Manuel utilisateur MONITOR_DOMOTIQUE.pdf"> Le PDF , maj tutoriel 2.2.1 du 27/07/2023</a> <br><br>
 
 affichage d'un serveur domotique<br>demo : <br>
 <img src="readme_img/monitor.gif" alt="Monitor" style="max-width: 100%;"><br><br>
