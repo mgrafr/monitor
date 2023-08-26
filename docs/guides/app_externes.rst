@@ -144,7 +144,7 @@ Et : http://domo-site.fr/accueil/dossiers/7
    -- 
    if (uservariables['sonnette']=="1") then 
    --          --envoi image pushover ---------------
-            os.execute("/bin/bash userdata/scripts/bash/pushover_img.sh "..ip_domoticz..">> /home/michel/push.log 2>&1");
+            os.execute("/bin/bash userdata/scripts/bash/./pushover_img.sh "..ip_domoticz..">> /home/michel/push.log 2>&1");
             commandArray['Variable:sonnette'] = '0'
    end
    return commandArray
