@@ -1,7 +1,7 @@
 --
 --[[
 -- time
-name : maj_services.lua
+name : maj_services.lua  version 1.0.1
 
 ce script à pour but de déterminer si nous sommes en semaine pair ou impair
 et fonction de cela, le jeudi en fin d'après midi,
@@ -159,7 +159,7 @@ if ( day == jour_poubelle_jaune and (time == "17:00")) then
 end
 -- fosse septique jour de traitement , ici le 12 de chaque mois
  if  ((time == "00:50") and (jour ==jour_fosse)) then
-        commandArray['Variable:fosse septique'] = "fosse septique"
+        commandArray['Variable:fosse_septique'] = "fosse septique"
         commandArray['Variable:not_tv_fosse'] = "1" -- notification télé
  end  
 -- anniversaires ,
