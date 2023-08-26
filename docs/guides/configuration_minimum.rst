@@ -187,17 +187,23 @@ Paramètres pour Domoticz ou HA :
 .. warning::
   les variables ci-dessus , VARTAB, BASE64, CONF_MODECT sont à déclarer ici que si elles sont utilisées dans un fichier
 
-Le programme démarre avec 11 pages :
+Le programme démarre avec 3 pages :
 
 -	Accueil
 
 -	Plan intérieur
 
 -	Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red:'« admin »'.
-  
- il est toujours possible de modifier le fichier de configuration avec un éditeur
 
--	Les autres pages concernent l’alarme, un mur de caméras, ... 
+.. note:: 
+
+   *pour afficher d'autres pages existantes dans le programme, modifier la configuration.*
+
+   - à partir de la page administration
+   
+   - avec un éditeur (le fichier à modifier: :green:'admin/config.php'
+
+Les autres pages concernent l’alarme, un mur de caméras, ... 
 
 1.2	- Les fichiers PHP, les styles, le javascript
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
