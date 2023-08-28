@@ -657,7 +657,7 @@ La notification se fait :
 
 .. admonition:: **Pour une meilleure visualisation des dispositifs dont la pile est à remplacer**
 
-   ajout d’un signe distinctifs, un cercle clignotant :
+   ajout d’un signe distinctif, un cercle clignotant :
 
    . sur les plans interieur et exterieur
 
@@ -693,7 +693,7 @@ Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/
 
    **l'image du plan**
 
-   Un cercle visible selon l’état de la batterie est ajouté à l'image SVG du plan :
+   Un cercle visible selon l’état de la batterie est ajouté à l'image SVG du plan concerné  :
 
    |image336| 
 
@@ -703,8 +703,7 @@ Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/
 
    .. code-block::
 
-      <ellipse style="mix-blend-mode:darken;fill:#ff0000;fill-opacity:0;stroke:#cef6ff;stroke-width:1.00157;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
-      class="cercle" id="cercle_23" cx="6" cy="6" rx="6" ry="6">
+      <ellipse style="fill-opacity: 1; fill: red;" class="cercle" id="cercle_23" cx="6" cy="6" rx="6" ry="6">
       <title id="temperaure-exterieure">cercle temp ext cuisine</title>
       </ellipse>
 
