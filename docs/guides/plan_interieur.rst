@@ -969,6 +969,8 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9para
 
 .. |image36| image:: ../media/image36.webp
    :width: 350px 
+.. |image49| image:: ../media/image49.webp
+   :width: 400px 
 .. |image222| image:: ../media/image222.webp
    :width: 480px 
 .. |image223| image:: ../media/image223.webp
