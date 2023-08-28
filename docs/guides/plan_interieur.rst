@@ -665,6 +665,12 @@ La notification se fait :
 
 |image334| 
 
+.. important::
+
+   Si les cercles clignotants ne sont pas utilisés, pour retrouver le nom du dispositif :
+
+   |image49|
+
 |image335| 
 
 	voir le paragraphe :ref:`2.1.1.b avec Adobe Illustrator`
