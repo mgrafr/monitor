@@ -655,9 +655,13 @@ La notification se fait :
    .cercle{animation-duration: .8s;animation-name: clignoter;
      animation-iteration-count: infinite;transition: none;}
 
-*Pour une meilleure visualisation des dispositifs dont la pile est à remplacer, un ajout sur l’image du plan d’un signe distinctifs : un cercle clignotant*.
+.. admonition:: **Pour une meilleure visualisation des dispositifs dont la pile est à remplacer**
 
-- sur le plan
+   ajout d’un signe distinctifs, un cercle clignotant :
+
+   . sur les plans interieur et exterieur
+
+   . sur l'image svg d'un dispositif s'il est séparé d'un plan (exemple de cercles, $  :ref:`2.1.1.b avec Adobe Illustrator`)
 
 |image334| 
 
@@ -693,9 +697,20 @@ Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/
 
    |image336| 
 
-   Il suffit d’ajouter en copier/coller des cercles à tous les dispositifs sur piles.
+   Il suffit d’ajouter en copier/coller des cercles à tous les dispositifs sur piles et d'en modifier le positionnement.
 
-   |image337| 
+.. admonition:: **exemple pour un cercle**
+
+   .. code-block::
+
+      <ellipse style="mix-blend-mode:darken;fill:#ff0000;fill-opacity:0;stroke:#cef6ff;stroke-width:1.00157;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+      class="cercle" id="cercle_23" cx="6" cy="6" rx="6" ry="6">
+      <title id="temperaure-exterieure">cercle temp ext cuisine</title>
+      </ellipse>
+
+*Les styles CSS*
+
+|image337| 
 
    Les valeurs sont définies dans le fichier de configuration /admin/config.php :
 
