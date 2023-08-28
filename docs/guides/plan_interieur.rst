@@ -708,9 +708,9 @@ Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/
       <title id="temperaure-exterieure">cercle temp ext cuisine</title>
       </ellipse>
 
-      l'image ud code ci-dessus concernant un dispositifs non inclu dans un plan.
+   l'image ud code ci-dessus concernant un dispositifs non inclu dans un plan.
 
-      |image36|
+   |image36|
 
 *Les styles CSS*
 
