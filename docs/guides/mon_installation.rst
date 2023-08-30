@@ -75,6 +75,84 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
 
    *sous Proxmox également, en conteneur, voir le site http://domo-site.fr/accueil/dossiers/53*
 
+21.1.5 Update Version Debian 
+============================
+**Exemple , updater Bullseye vers Bookworm**
+
+.. seealso:: *https://www.debian.org/releases/stable/amd64/release-notes/ch-upgrading.fr.html#system-status*
+
+*Mettre à jour la dernière version*:
+
+.. code-block::
+
+   apt update && apt full-upgrade 
+
+|image1065|
+
+*Supprimer les paquets (si ils existent)*:
+
+- ne provenant pas de Debian
+
+- Les composants non-free et non-free-firmware
+
+Le fichier sources.list doit ressembler à ceci:
+
+|image1066|
+
+.. admonition:: **pour trouver les paquets indésirables**
+
+   .. code-block::
+
+      find /etc -name '*.dpkg-*' -o -name '*.ucf-*' -o -name '*.merge-error'
+
+  |image1067| 
+
+.. important:: *APT a besoin de gpgv , il est normalement installé*, sinon :darkred:`apt install gpgv`
+
+Avant de commencer la mise à niveau, vous devez reconfigurer les listes de sources d'APT (/etc/apt/sources.list et les fichiers situés dans /etc/apt/sources.list.d/) pour ajouter les sources pour Bookworm et supprimer celles pour Bullseye.
+
+*/etc/apt/sources.list* 
+
+|image1068|
+
+*/etc/apt/sources.d/nodesource.list*
+
+|image1069|
+
+Mise à jour vers une nouvelle version:
+
+.. code-block::
+
+   apt update
+
+.. code-block::
+
+   apt upgrade --without-new-pkgs
+
+|image1070|
+
+|image1071|
+
+*Entrée ou la flèche pour défiler; pour quitter et poursuivre* : **q**
+
+.. code-block::
+
+   apt full-upgrade
+
+|image1072|
+
+.. code-block::
+
+   apt purge '~o'
+
+|image1073|
+
+.. code-block::
+
+   cat /etc/debian_version
+
+|image1074|
+
 21.2 Domoticz
 ^^^^^^^^^^^^^
 *Installation sous Docker* :  http://domo-site.fr/accueil/dossiers/84
@@ -365,3 +443,24 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
    :width: 249px
 .. |image1063| image:: ../media/image1063.webp
    :width: 516px
+.. |image1065| image:: ../media/image1065.webp
+   :width: 570px
+.. |image1066| image:: ../media/image1066.webp
+   :width: 579px
+.. |image1067| image:: ../media/image1067.webp
+   :width: 700px
+.. |image1068| image:: ../media/image1068.webp
+   :width: 590px
+.. |image1069| image:: ../media/image1069.webp
+   :width: 700px
+.. |image1070| image:: ../media/image1070.webp
+   :width: 590px
+.. |image1071| image:: ../media/image1071.webp
+   :width: 583px
+.. |image1072| image:: ../media/image1072.webp
+   :width: 700px
+.. |image1073| image:: ../media/image1073.webp
+   :width: 570px
+.. |image1074| image:: ../media/image1074.webp
+   :width: 380px
+
