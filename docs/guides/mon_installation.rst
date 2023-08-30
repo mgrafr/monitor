@@ -193,7 +193,8 @@ Mise à jour vers une nouvelle version:
 
 21.4 Zigbee
 ^^^^^^^^^^^
-*Installation de zigbee2mqtt*
+21.4.1 Installation de zigbee2mqtt
+==================================
 
 -	sous Docker : http://domo-site.fr/accueil/dossiers/88
 
@@ -208,6 +209,66 @@ Mise à jour vers une nouvelle version:
 |image1043|
 
 .. note:: *Les commentaires du paragraphe précédent s'appliquent également*
+
+21.4.2 Mise à jour de zigbee2mqtt
+=================================
+Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Update Version Debian`
+
+.. admonition:: **Pour mettre à jour Zigbee2MQTT vers la dernière version**
+
+   Arrêter le service:
+
+   .. code-block::
+
+      sudo systemctl stop zigbee2mqtt
+
+   .. code-block::
+
+      cd /opt/zigbee2mqtt
+
+   Faire une sauvegarde de la configuration
+
+   .. code-block::
+
+      sudo cp -R data data-backup
+
+   |image1075|
+ 
+   Mise à jour:
+
+   .. code-block::
+
+      sudo git pull
+
+   .. code-block::
+
+      sudo npm  ci
+
+   |image1076|
+
+   .. warning:: **Si erreur : bash: npm: command not found**
+
+      .. code-block::
+
+         apt install -y npm 
+
+   Restoration de la  configuration
+
+   .. code-block::
+
+      cp -R data-backup/* data
+
+   Redémarrer le service et si tout fonctionne supprimer la sauvegarde
+
+   .. code-block::
+
+      sudo systemctl start zigbee2mqtt
+      rm -rf data-backup
+
+
+
+
+sudo systemctl start zigbee2mqtt
 
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
@@ -463,4 +524,8 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
    :width: 700px
 .. |image1074| image:: ../media/image1074.webp
    :width: 380px
+.. |image1075| image:: ../media/image1075.webp
+   :width: 501px
+.. |image1076| image:: ../media/image1076.webp
+   :width: 441px
 
