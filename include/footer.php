@@ -10,6 +10,7 @@ require("fonctions.php");
 				</div>
 			</div>
 		</footer>
+
 <!-- footer end -->
 <!-- JavaScript files placées à la fin du document-->	
 <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
@@ -103,7 +104,8 @@ function maj_services(index){
 			if (img_serv=="none"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 					}
-				else if(idt!="0") {document.getElementById(idt).innerHTML ="erreur : "+idw;}	
+		else {document.getElementById("erreur_interieur").innerHTML =("erreur : "+idt);console.log(idt+".."+idw);
+			  document.getElementById('reset_erreur_interieur').style='block';}	
 					}
 					
 	}}
@@ -202,7 +204,8 @@ $.ajax({
 		}}
 			else if (val.idm!="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
 		}});
-		if (al_bat!=""){document.getElementById("erreur_interieur").innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;}
+				if (al_bat!="" ){document.getElementById("erreur_interieur").innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;
+				document.getElementById('reset_erreur_interieur').style='block';}
 					}
 });
 
