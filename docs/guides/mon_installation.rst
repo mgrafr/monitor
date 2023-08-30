@@ -265,11 +265,6 @@ Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Up
       sudo systemctl start zigbee2mqtt
       rm -rf data-backup
 
-
-
-
-sudo systemctl start zigbee2mqtt
-
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
