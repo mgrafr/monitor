@@ -1,15 +1,22 @@
 19. UPDATE
-------------
-19.1 UPDATE PHP
+----------
+19.1 Version de PHP
 ^^^^^^^^^^^^^^^
 *La version actuelle est 8.2*
 
 19.2 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-*La version actuelle est 2.2.0*
+**La version stable actuelle est 2.2.3**
 
 19.2.1 Releases
 ===============
+Version en développement 2.2.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+30/08/2023 : ajout bouton reset pour annuler la notification de piles faibles
+
+Version 2.2.3
+~~~~~~~~~~~~~
+26/08/2023 : Ajout docomentation Readthedocs
 
 Version 2.2.0
 ~~~~~~~~~~~~~
@@ -33,3 +40,13 @@ Version 2.1.0
 
 20/07/2023 : explication concernant l’envoi par Domoticz de SMS
 
+
+19.3 Version de JPGRAPH
+^^^^^^^^^^^^^^^
+*La version actuelle est 4.4.1*
+
+Recommendé:
+
+-  >= PHP 5.2.0
+
+-  PHP Builtin GD library
