@@ -748,7 +748,7 @@ Effectuée par un onclick dans l'image svg (incluse dans interieur.php):
 
    <circle onclick="document.getElementById('reset_erreur_interieur').style.display='none';document.getElementById('erreur_interieur').innerHTML ='';" fill="#007DC6" cx="7.7" cy="7.9" r="7.7"/>
 
-**Les <div du texte et de l'image 'reset' , le display passe à** :red:`none'
+**Lors d'un clique sur l'image RESET** , le display (des <div du texte et de l'image 'reset') , passe à** :red:`none`
 
 2.3 4 Le contrôle de la tension d’alimentation
 ==============================================
