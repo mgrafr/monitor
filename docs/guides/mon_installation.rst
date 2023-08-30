@@ -107,7 +107,7 @@ Le fichier sources.list doit ressembler à ceci:
 
   |image1067| 
 
-.. important:: *APT a besoin de gpgv , il est normalement installé*, sinon :darkred:`apt install gpgv`
+.. important:: *APT a besoin de gpgv , il est normalement installé*, sinon :darkblue:`apt install gpgv`
 
 Avant de commencer la mise à niveau, vous devez reconfigurer les listes de sources d'APT (/etc/apt/sources.list et les fichiers situés dans /etc/apt/sources.list.d/) pour ajouter les sources pour Bookworm et supprimer celles pour Bullseye.
 
@@ -139,13 +139,13 @@ Mise à jour vers une nouvelle version:
 
    apt full-upgrade
 
-|image1072|
+|image1073|
 
 .. code-block::
 
    apt purge '~o'
 
-|image1073|
+|image1072|
 
 .. code-block::
 
@@ -458,9 +458,9 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 .. |image1071| image:: ../media/image1071.webp
    :width: 583px
 .. |image1072| image:: ../media/image1072.webp
-   :width: 700px
-.. |image1073| image:: ../media/image1073.webp
    :width: 570px
+.. |image1073| image:: ../media/image1073.webp
+   :width: 700px
 .. |image1074| image:: ../media/image1074.webp
    :width: 380px
 
