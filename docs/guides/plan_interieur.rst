@@ -655,17 +655,21 @@ La notification se fait :
    .cercle{animation-duration: .8s;animation-name: clignoter;
      animation-iteration-count: infinite;transition: none;}
 
+- Sur les plans intérieur ou extérieur
+
+|image334| 
+
 .. admonition:: **Pour une meilleure visualisation des dispositifs dont la pile est à remplacer**
 
    ajout d’un signe distinctif, un cercle clignotant :
 
-   . sur les plans interieur et exterieur
+   . sur les images des plans interieur et exterieur
 
    . sur l'image svg d'un dispositif s'il est séparé d'un plan (exemple de cercles, $  :ref:`2.1.1.b avec Adobe Illustrator`)
 
-|image334| 
-
 .. important::
+
+   Pour annuler la notification, faire un RESET : |image62|
 
    Si les cercles clignotants ne sont pas utilisés, pour retrouver le nom du dispositif :
 
@@ -971,6 +975,8 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9para
    :width: 350px 
 .. |image49| image:: ../media/image49.webp
    :width: 400px 
+.. |image62| image:: ../media/image62.webp
+   :width: 80px 
 .. |image222| image:: ../media/image222.webp
    :width: 480px 
 .. |image223| image:: ../media/image223.webp
@@ -1160,7 +1166,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9para
 .. |image332| image:: ../media/image332.webp
    :width: 178px 
 .. |image334| image:: ../media/image334.webp
-   :width: 315px 
+   :width: 559px 
 .. |image335| image:: ../media/image335.webp
    :width: 379px 
 .. |image336| image:: ../media/image336.webp
