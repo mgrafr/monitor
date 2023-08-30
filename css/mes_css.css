@@ -50,9 +50,15 @@ width:100px}
 }
  #erreur_interieur{
 position: absolute;
-top: 50px;
-left: 10px;
+top: 200px;
+left: 90px;
  color: #ce1c1c;}
+#reset_erreur_interieur{position: absolute;
+    top: 190px;
+    display: none;
+    width: 40px;
+    left: 40px;}
+
  /*----------------------------*/
 
 .text-center{
