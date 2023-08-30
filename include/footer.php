@@ -100,7 +100,7 @@ function maj_services(index){
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){document.getElementById(idt).innerHTML ="";}*/
 	if ((img_serv!="pas image")&&(img_serv!=null)){console.log("image="+img_serv);
-		if (idw!=""){if (document.getElementById(idw)){
+		if (idw!="" &&idw!="#shell"){if (document.getElementById(idw)){
 			if (img_serv=="none"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 					}
