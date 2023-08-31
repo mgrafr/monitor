@@ -8937,6 +8937,7 @@
 <text id="temp_ext_bl" transform="matrix(1.1566 0 0 1 140.9673 533.377)" class="est12 est34">TEMP</text>
 <text id="temp_cuis_ete" transform="matrix(1.0788 0 0 1 478.9619 282.8027)" class="est12 est35">TEMP</text>
 <text id="temp_garage" transform="matrix(0.7035 0 0 1 718.9619 337.2275)" class="est12 est36">temp</text>
+	<ellipse style="fill-opacity: 1; fill: red;" class="cercle" id="cercle_4" cx="20" cy="20" rx="20" ry="20">	</ellipse>
 <a id="pir_veranda_g" xlink:href="#exterieur"  onclick="popup_device(4)">
 	<g id="pir_cuisine_ete">
 		<path class="est37" d="M508.9,316.1c-0.3,0.7-0.1,1.7-0.1,2.5C509.1,317.9,508.9,316.9,508.9,316.1 M508.8,314.1
@@ -9919,4 +9920,6 @@
 			c0.4,1.8,0.7,3.8,1,5.7c0.1,0.8,0.6,2,0.3,2.6c-0.1,0.4-0.7,0.7-1,1L476.8,126.9z"/>
 	</g>
 </a>
+<title id="temperaure-exterieure">cercle temp ext cuisine</title>
+</ellipse>	
 </svg>

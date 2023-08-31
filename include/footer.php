@@ -38,6 +38,8 @@ $('.close_clavier').click(function(){
 /*----------------------------------------------------*/	
 var base_url=window.location.href;
 var arret_mur;var arret_zoom;
+notpiles="<?php echo NOTIFICATIONS_PILES;?>";if (notpiles==""){notpiles="interieur";}	
+not_piles_reset="reset_erreur_"+notpiles;not_piles="erreur_"+notpiles;																	
 /*----------------------------------------------------*/
 $(document).ready(function(){	
 /*commande onoff*/	
@@ -68,7 +70,7 @@ maj_services(0);
 var time_maj=<?php echo TEMPSMAJSERVICES;?>;
 var time_maj_al=<?php echo TEMPSMAJSERVICESAL;?>;
 var int_maj=time_maj;
-function maj_services(index){	
+function maj_services(index){console.log("piles:"+not_piles);		
   $.ajax({
     type: "GET",
     dataType: "json",
@@ -100,12 +102,12 @@ function maj_services(index){
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){document.getElementById(idt).innerHTML ="";}*/
 	if ((img_serv!="pas image")&&(img_serv!=null)){console.log("image="+img_serv);
-		if (idw!="" &&idw!="#shell"){if (document.getElementById(idw)){
+		if (idw!=""){if (document.getElementById(idw)){console.log(not_piles_reset);
 			if (img_serv=="none"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 					}
-		else {document.getElementById("erreur_interieur").innerHTML =("erreur : "+idt);console.log(idt+".."+idw);
-			  document.getElementById('reset_erreur_interieur').style='block';}	
+		else {console.log(not_piles);document.getElementById(not_piles).innerHTML =("erreur : "+idt);
+			  document.getElementById(not_piles_reset).style.display="block";}	
 					}
 					
 	}}
@@ -204,8 +206,8 @@ $.ajax({
 		}}
 			else if (val.idm!="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
 		}});
-				if (al_bat!="" ){document.getElementById("erreur_interieur").innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;
-				document.getElementById('reset_erreur_interieur').style='block';}
+				if (al_bat!="" ){document.getElementById(not_piles).innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;
+				document.getElementById(not_piles_reset).style.display="block";}
 					}
 });
 
