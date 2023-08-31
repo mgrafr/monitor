@@ -76,6 +76,7 @@ define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faib
     50,
 	20
 ));
+define('NOTIFICATIONS_PILES','');// nom de la page default: interieur
 //---------------------------------------
 // Serveurs Domoticz ou HA
 define('IPDOMOTIC', 'ip');//ip 1er serveur Domotique
