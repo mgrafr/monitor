@@ -48,12 +48,12 @@ width:100px}
     left: 100px;
     color: white;
 }
- #erreur_interieur{
+ #erreur_interieur, #erreur_exterieur{
 position: absolute;
 top: 200px;
 left: 90px;
  color: #ce1c1c;}
-#reset_erreur_interieur{position: absolute;
+#reset_erreur_interieur, #reset_erreur_exterieur{position: absolute;
     top: 190px;
     display: none;
     width: 40px;
