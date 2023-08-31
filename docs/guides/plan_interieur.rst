@@ -657,6 +657,26 @@ La notification se fait :
 
 - Sur les plans intérieur ou extérieur
 
+.. admonition:: **IMPORTANT**
+
+   par défaut la notification de piles faibles est affichée sur le plan intérieur (page interieur.php)
+
+   pour l'afficher sur le plan extérieur (page exterieur.php , l'indiquer dans admin/config.php:
+
+   .. code-block::
+   
+      define('NOTIFICATIONS_PILES','exterieur');// nom de la page default : interieur (sans extension .php)
+
+   Si une nouvelle page est crée , il faut ajouter ces lignes de code dans la page:
+
+   .. code-block::
+
+      <div id="erreur_NOM_PAGE(SANS .PHP) ></div>
+      <div id="reset_erreur_NOM_PAGE(SANS .PHP)" style="display:none"><svg version="1.1" id="reset_erreur" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="30px" y="30px" viewBox="0 0 16 16" xml:space="preserve">
+      circle onclick="document.getElementById('reset_erreur_exterieur').style.display='none';document.getElementById('erreur_exterieur').innerHTML ='';"fill="#007DC6" cx="7.7" cy="7.9" r="7.7"/>
+      <path class="st1" d="M8,3C5.2,3,3,5.2,3,8s2.2,5,5,5s5-2.2,5-5c0-0.7-0.2-1.4-0.5-2.1c-0.1-0.3,0-0.5,0.3-0.7c0.2-0.1,0.5,0,0.6,0.2 c1.4,3,0.1,6.6-2.9,8s-6.6,0.1-8-2.9s-0.1-6.6,2.9-8C6.3,2.2,7.1,2,8,2V3z"/>
+      <path d="M8,4.5V0.5c0-0.1,0.1-0.2,0.3-0.2c0.1,0,0.1,0,0.2,0.1l2.4,2c0.1,0.1,0.1,0.3,0,0.4l-2.4,2c-0.1,0.1-0.3,0.1-0.4,0C8,4.6,8,4.5,8,4.5z"/></svg></div>
+ 
 |image334| 
 
 .. admonition:: **Pour une meilleure visualisation des dispositifs dont la pile est à remplacer**
