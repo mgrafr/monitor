@@ -102,7 +102,7 @@ function maj_services(index){console.log("piles:"+not_piles);
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){document.getElementById(idt).innerHTML ="";}*/
 	if ((img_serv!="pas image")&&(img_serv!=null)){console.log("image="+img_serv);
-		if (idw!=""){if (document.getElementById(idw)){console.log(not_piles_reset);
+		if (idw!="" && idw!="#shell" ){if (document.getElementById(idw)){console.log(not_piles_reset);
 			if (img_serv=="none"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 					}
