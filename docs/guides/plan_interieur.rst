@@ -762,7 +762,9 @@ Le script dz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/
 
 *l'annulation de la notification*
 
-Effectuée par un onclick dans l'image svg (incluse dans interieur.php):
+Effectuée par un onclick dans l'image svg (incluse dans interieur.php et exterieur.php):
+
+Exemple pour interieur.php
 
 .. code-block::
 
