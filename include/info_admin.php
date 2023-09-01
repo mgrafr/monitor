@@ -1,8 +1,8 @@
 <?php
-
 $info_admin=array();
 $info_admin = [
-	8 => '<p>- Version monitor: '.$_SESSION["version"].'<br>- Version PHP:     8.2<br>- Version Jpgraph: 4.4.1</p>',
+	8 => '<p>- Version monitor:  '.$_SESSION["version"].'<br>- Version PHP:      8.2<br>- Version Jpgraph:  4.4.1<br>
+	        - Version Bootstrap: 4.5.2</p>',
 	7 => '<p>Pour mettre à jour automatiquement la base de données SQL à partir :<br>des données de Domoticz ou HA et de Monitor<br><img src="images/info10.webp" style="width:281px;height="auto";margin: 0 10px;" alt=""/></p>',
 	0 => '<p>Pour mettre à jour automatiquement la base de données SQL à partir :<br>des données de Domoticz ou HA et de Monitor<br><img src="images/info1.webp" style="width:281px;height="auto";margin: 0 10px;" alt=""/></p>',
     1 => '<p>Pour configurer le programme :<br>- indiquer les IP,les Mots de passe,...<br>- Choisir le nom des variables utilisées,..<img src="images/info2.webp" style="width:300px;height="auto";margin: 0 10px;" alt=""/></p>',
