@@ -44,7 +44,9 @@ include ("include/test_pass.php");// verif du mot de passe
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=0 style="width:25px;display:inline;"></a><br>
 		<a class="admin1" href="#admin" rel="18" title="reponse2" >Enregistrer Dispositifs DZ( ou HA) dans SQL&nbsp;&nbsp;</a>
 		<a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=7 style="width:25px;display:inline;"></a><br><br>
-			<a href="http://<?php echo IPMONITOR;?>/phpmyadmin" target="_blank"><img src="images/PhpMyAdmin_logo.svg" style="width:80px" alt=""/></a></p>		
+		<a href="http://<?php echo IPMONITOR;?>/phpmyadmin" target="_blank"><img src="images/PhpMyAdmin_logo.svg" style="width:80px" alt=""/></a><br><br>
+		<a id="about"><img class="info_admin" src="images/about.svg" data-toggle="modal" data-target="#info-admin1" rel=8 alt="a Propos"/></a></p>	
+			
 <div id="reponse1"></div>
 <div id="reponse2" style="height:auto"></div>
 
