@@ -242,8 +242,7 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
     
    **IMPORTANT** : après l’installation le programme est en mode « découverte », 
 
-   pour utiliser Domoticz et toutes les fonctions nécessitant des tables de la base de données, :darkblue:`désactiver le mode « découverte »` ;
-   En profiter pour changer le mot de passe actuel **1234**
+   pour utiliser Domoticz ou Home Assistant et toutes les fonctions nécessitant des tables de la base de données, :darkblue:`désactiver le mode « découverte »` ;En profiter pour changer le mot de passe actuel **1234**
 
    Pour cela soit :
 
