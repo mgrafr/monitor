@@ -1269,7 +1269,7 @@ Utilisation de jQuery
 .. |image99| image:: ../media/image99.webp
    :width: 566px   
 .. |image101| image:: ../media/image101.webp
-   :width: 307px 
+   :width: 205px 
 .. |image103| image:: ../media/image103.webp
    :width: 334px 
 .. |image106| image:: ../media/image106.webp
