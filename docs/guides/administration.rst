@@ -466,8 +466,15 @@ Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes
 
     |image877|
 
+14.11 A Propos
+==============
+Affiche les numéros des versions de monitor, PHP et Jpgraph
+
+|image63|
 
 
+.. |image63| image:: ../media/image63.webp
+   :width: 400px 
 .. |image788| image:: ../media/image788.webp
    :width: 605px 
 .. |image794| image:: ../media/image794.webp
