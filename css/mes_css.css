@@ -10,6 +10,11 @@ html, body {
     height: 100%;
 }.table td{border:0}
 #menu {width:17em;}
+#about{width: 300px;
+    position: relative;
+    left: 100px;
+    top: -60px;
+}
 #maison1{margin-top:12%;}
 .header {height: 150px;
 	color: #ffffff;
@@ -341,8 +346,8 @@ height: auto;}
     top: -10px;
     left: 5px;
 }
-#reponse1 {background-color: beige;position:relative;top:-470px;display:none;left:0;height:auto;width:480px}
-#reponse2 {background-color: beige;position: relative;top: -400px;left: 5px;display:block;line-height: 0.2;height:500px;width: 410px;}
+#reponse1 {background-color: beige;position:relative;top:-1000px;display:none;left:0;height:auto;width:480px}
+#reponse2 {background-color: beige;position: relative;top: -900px;left: 5px;display:block;line-height: 0.2;height:500px;width: 410px;}
 #info_admin{margin-left:10px;display:block;}
 #d_btn_a , #d_btn_al{display:block;position: absolute;left: 50px;background-color: #4d4d4d;color:white;
 border-color: #e0e3e6;border-radius: 0.55rem}
