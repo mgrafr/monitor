@@ -1097,7 +1097,13 @@ Utilisation de jQuery
 
 |image115| |image116|
 
-	
+0.10 Les fichiers ajouté par l'utilisateur
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4 sous dossiers sont créés pour ajouter des pages personnelles avec les styles , les images et le Javascript
+
+|image102|
+
+
 .. |image3| image:: ../media/image3.webp
    :width: 604px
    :height: 176px
@@ -1270,6 +1276,8 @@ Utilisation de jQuery
    :width: 566px   
 .. |image101| image:: ../media/image101.webp
    :width: 205px 
+.. |image102| image:: ../media/image102.webp
+   :width: 284px 
 .. |image103| image:: ../media/image103.webp
    :width: 334px 
 .. |image106| image:: ../media/image106.webp
