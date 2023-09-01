@@ -1097,8 +1097,8 @@ Utilisation de jQuery
 
 |image115| |image116|
 
-0.10 Les fichiers ajouté par l'utilisateur
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+0.10 Les fichiers ajoutés par l'utilisateur
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 4 sous dossiers sont créés pour ajouter des pages personnelles avec les styles , les images et le Javascript
 
 |image102|
