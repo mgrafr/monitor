@@ -177,7 +177,7 @@ Lancer le script :
   
 **La suite :**   :ref:`0.1.1.a Installation de LEMP & Monitor`
 
-0.1.3 – Installation de monitor uniquement
+0.1.3 Installation de monitor uniquement
 ==========================================
 	Après l’installation d’un OS (Debian, Ubuntu…et LEMP ou LAMP, Maria DB ou MySQL ...
 
@@ -421,6 +421,21 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
    .. code-block::
 
       sudo systemctl restart nginx
+
+0.1.4 Mise à jour de monitor
+============================
+Avec la console :
+
+.. code-block::
+
+   cd /tmp
+   wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.bash
+   chmod +x update.bash
+   ./update.bash
+
+|image51|
+
+|image73|
 
 0.2	La page d’accueil et connexion avec Domoticz ou HA : 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1200,6 +1215,8 @@ Utilisation de jQuery
    :width: 644px
 .. |image50| image:: ../media/image50.webp
    :width: 605px
+.. |image51| image:: ../media/image51.webp
+   :width: 647px
 .. |image52| image:: ../media/image52.webp
    :width: 446px
 .. |image53| image:: ../media/image53.webp
@@ -1234,6 +1251,8 @@ Utilisation de jQuery
    :width: 650px
 .. |image72| image:: ../media/image72.webp
    :width: 424px
+.. |image73| image:: ../media/image73.webp
+   :width: 647px
 .. |image75| image:: ../media/image75.webp
    :width: 216px
 .. |image76| image:: ../media/image76.webp
