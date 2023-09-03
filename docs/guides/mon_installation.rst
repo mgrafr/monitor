@@ -119,6 +119,12 @@ Avant de commencer la mise à niveau, vous devez reconfigurer les listes de sour
 
 |image1069|
 
+Sauvegarde de "sudoers":
+
+.. code-block::
+
+   sudo cp /etc/sudoers /etc/sudoers_old
+
 Mise à jour vers une nouvelle version:
 
 .. code-block::
@@ -152,6 +158,12 @@ Mise à jour vers une nouvelle version:
    cat /etc/debian_version
 
 |image1074|
+
+*Restauration de "sudoers"
+
+.. code-block::
+
+   sudo cp /etc/sudoers_old /etc/sudoers  
 
 21.2 Domoticz
 ^^^^^^^^^^^^^
