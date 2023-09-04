@@ -11,6 +11,17 @@ define('MONCONFIG', 'admin/config.php');//fichier config
 define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
 define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
 define('DISPOSITIFS', 'dispositifs');
+define('ECRAN_ADMIN', array( // disable ou disable
+     "connect_lua" => "disable", // Mots passe cryptés(Base64) et IP réseau
+     "string_tableaux" => "disable",//Configuation variables dz maj_services
+     "modect" => "disable", //Configuation modect dz alarmes 
+     "idx_dz_list" => "disable", //Créer fichier idx/nom Domoticz , LISTE
+     "var_list" => "disable", //LISTE variables (HA et DZ)
+     "idx_dz-zigbee" => "disable", //Créer fichier idx/nom Domoticz , TABLEAU zigbee
+     "reboot_pi" => "disable", //Reboot Raspberry
+     "msmtprc" => "disable", //msmtprc (config envoi mail)
+     "connect_py" => "disable", // Maj automatique des IP depuis connect.py
+	));
 // répertoire des images
 $rep='images/';//ne pas changer
 // images logo et titres
