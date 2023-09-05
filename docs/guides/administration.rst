@@ -67,9 +67,23 @@ Choisir les fonctions dans admin/config.php
 
 14.1.2 Pour ajouter des fonctions personnelles
 ==============================================
-voir les  § :ref:`14.2 admin.php, info_admin.php, test_db.php et backup_bd`, :ref:`14.4 fonctions PHP`
+voir les paragraphes: 
 
+	. :ref:`14.2 admin.php, info_admin.php, test_db.php et backup_bd`,
 
+	. :ref:`14.4 fonctions PHP`
+
+- ajouter dans admin.php l'appel à la fonction:
+
+.. code-block::
+
+    <a class="admin1" href="#admin" rel="<N° CHOIX (CASE) DE LA FONCTION PHP>" style="margin-left:70px" title="reponse1" ></a><br>
+
+**admin() de fonctions.php**
+
+|image90|
+
+|image95|
 
 14.2 admin.php, info_admin.php, test_db.php et backup_bd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -512,6 +526,10 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 400px 
 .. |image84| image:: ../media/image84.webp
    :width: 700px 
+.. |image90| image:: ../media/image90.webp
+   :width: 700px 
+.. |image95| image:: ../media/image95.webp
+   :width: 650px 
 .. |image788| image:: ../media/image788.webp
    :width: 605px 
 .. |image794| image:: ../media/image794.webp
