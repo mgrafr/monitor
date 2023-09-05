@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();require('admin/config.php');
 ?>
 <!-- -->
 <!-- section administration -->
@@ -18,15 +18,17 @@ session_start();
       <p id="admin2" style="margin-top:100px;display:<?php echo $style1;//voir test_pass.php?>"> <img src="images/logo.webp" style="position:relative;top:-30px;left:-20px;width:50px" alt="logo"/></p>
       <p id="admin3"><a class="admin1" href="#admin" title="reponse1" rel="7">CHANGER de MOT de PASSE</a><br>
         <a class="admin1" href="#admin" rel="5" title="reponse1" >Configuation monitor</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=1 style="width:25px;display:inline;"></a></p>
-      <p id="admin4"><img src="images/dz.webp" style="position:relative;top:0px;left:-10px;width:35px" alt="logo"/> <a class="admin1" href="#admin" rel="15" style="margin-left:30px" title="reponse1" >Mots passe cryptés(Base64) et IP réseau</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=6 style="width:25px;display:inline;"></a><br>
-        <a class="admin1" href="#admin" rel="3" title="reponse1" >Configuation variables dz maj_services</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=5 style="width:25px;display:inline;"></a><br>
-        <a class="admin1" href="#admin" rel="10" title="reponse1" >Configuation modect dz alarmes</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=4 style="width:25px;display:inline;"></a><br>
-        <a class="admin1" href="#admin" rel="12" title="reponse1" >Créer fichier idx/nom Domoticz , LISTE</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=3 style="width:25px;display:inline;"></a><br>
-        <a class="admin1" href="#admin" rel="19" title="reponse1" >LISTE variables</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=8 style="width:25px;display:inline;"></a><br>
-        <a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier idx/nom Domoticz , TABLEAU zigbee</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>
-        <img src="images/rpi.webp" style="width:30px" alt="rpi"> <a class="admin1" href="#admin" rel="20" style="margin-left:35px" title="reponse1" >Reboot Raspberry</a><br>
-        <a class="admin1" href="#admin" rel="21" style="margin-left:70px" title="reponse1" >msmtprc (config envoi mail)</a><br>
-        <a class="admin1" href="#admin" rel="23" style="margin-left:70px" title="reponse1" >Maj automatique des IP depuis connect.py </a><br>
+      <p id="admin4">
+		<?php  
+		  if (ECRAN_ADMIN['connect_lua']=="")echo '<img src="images/dz.webp" style="position:relative;top:0px;left:-10px;width:35px" alt="logo"/> <a class="admin1" href="#admin" rel="15" style="margin-left:30px" title="reponse1" >Mots passe cryptés(Base64) et IP réseau</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=6 style="width:25px;display:inline;"></a><br>'; 
+         if (ECRAN_ADMIN['string_tableaux']=="")echo '<a class="admin1" href="#admin" rel="3" title="reponse1" >Configuation variables dz maj_services</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=5 style="width:25px;display:inline;"></a><br>';
+        if (ECRAN_ADMIN['modect']=="")echo '<a class="admin1" href="#admin" rel="10" title="reponse1" >Configuation modect dz alarmes</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=4 style="width:25px;display:inline;"></a><br>';
+        if (ECRAN_ADMIN['idx_dz_list']=="")echo '<a class="admin1" href="#admin" rel="12" title="reponse1" >Créer fichier idx/nom Domoticz , LISTE</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=3 style="width:25px;display:inline;"></a><br>';
+        if (ECRAN_ADMIN['var_list']=="")echo '<a class="admin1" href="#admin" rel="19" title="reponse1" >LISTE variables</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=8 style="width:25px;display:inline;"></a><br>';
+        if (ECRAN_ADMIN['idx_dz-zigbee']=="")echo '<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier idx/nom Domoticz , TABLEAU zigbee</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>';
+        if (ECRAN_ADMIN['reboot_pi']=="")echo '<img src="images/rpi.webp" style="width:30px" alt="rpi"> <a class="admin1" href="#admin" rel="20" style="margin-left:35px" title="reponse1" >Reboot Raspberry</a><br>';
+        if (ECRAN_ADMIN['msmtprc']=="")echo '<a class="admin1" href="#admin" rel="21" style="margin-left:70px" title="reponse1" >msmtprc (config envoi mail)</a><br>';
+        if (ECRAN_ADMIN['connect_py']=="")echo '<a class="admin1" href="#admin" rel="23" style="margin-left:70px" title="reponse1" >Maj automatique des IP depuis connect.py </a><br>';?>
         <img src="images/serveur-sql.svg" style="width:30px"><br>
         <a class="admin1" href="#admin" rel="9" title="reponse1" >Test Base de données</a><br>
         <a class="admin1" href="#admin" rel="14" title="reponse1" >Sauvegarde Base de données</a><br>
