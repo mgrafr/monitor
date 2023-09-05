@@ -85,6 +85,42 @@ voir les paragraphes:
 
 |image95|
 
+.. important:: **Les N° pour $choix (rel de admin.php) 1 à 49 sont réservés pour des maj ultérieures du programme.**
+
+.. admonition:: **Exemple pour executer un script PHP**
+
+   .. code-block::
+
+      case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;
+
+.. admonition:: **Exemple pour la modification d'un fichier**
+
+*ici modification du mot de passe*
+
+   .. code-block::
+
+      case "7" :
+        echo $file.'<div id="result"><form >';
+        $content = file_get_contents($file);
+	file_put_contents($file.'.bak.'.$time, $content);
+	$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];$_SESSION["mdpass"]=$find.$content;$height="30";}
+	echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
+	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
+	echo '</form></div>';
+        return "sauvegarde OK";	 
+      case "8" :
+       $newpass=$idrep;$oldpass=$_SESSION["mdpass"];$content=$_SESSION["contenu"];
+       $str = str_replace($oldpass, "PWDALARM','".$newpass,$content);
+       file_put_contents($file, $str);echo '<div id="reload" style="display:block;"><a style="background-color: #605b5dde;color:white;
+       border-color: #e0e3e6;border-radius: 0.55rem" class="btn btn-primary"  onclick="location.reload();
+       return false;">redemarrer </a></div>';//echo file_get_contents($file);
+       return ;	 
+      break;
+
+   on utilise "explode" pour rechercher le texte à modifier 
+
+   |image96|
+
 14.2 admin.php, info_admin.php, test_db.php et backup_bd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
