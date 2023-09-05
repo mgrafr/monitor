@@ -82,6 +82,8 @@ voir les  § :ref:`14.2 admin.php, info_admin.php, test_db.php et backup_bd`, :r
 
 - **admin.php**
 
+|image84|
+
 |image798|
 
 - **info_admin.php**
@@ -508,6 +510,8 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 400px 
 .. |image74| image:: ../media/image74.webp
    :width: 400px 
+.. |image84| image:: ../media/image84.webp
+   :width: 700px 
 .. |image788| image:: ../media/image788.webp
    :width: 605px 
 .. |image794| image:: ../media/image794.webp
