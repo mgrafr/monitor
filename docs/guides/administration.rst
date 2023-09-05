@@ -1,7 +1,14 @@
 14.  ADMINISTRATION
 -------------------
+Page sans les options:
+
+|image74|
+
+Page avec toutes les options , voir aussi ce §  :ref:`14.1.1 Pour utiliser les didfférentes fonctions optionnelles`
 
 |image788|
+
+Pour ajouter d'autres fonctions voir ce §  :ref:`14.1.2 Pour ajouter des fonctions personnelles`
 
 14.1 fichiers communs à toutes les pages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,6 +46,30 @@ voir le § :ref:`1.2.2.1 styles CSS communs à toutes les pages`
 Extrait de la fonction:
 
 |image794|
+
+14.1.1 Pour utiliser les didfférentes fonctions optionnelles
+============================================================
+Choisir les fonctions dans admin/config.php
+
+.. code-block::
+
+   define('ECRAN_ADMIN', array( // enable ou disable
+     "connect_lua" => "enable", // Mots passe cryptés(Base64) et IP réseau
+     "string_tableaux" => "enable",//Configuation variables dz maj_services
+     "modect" => "enable", //Configuation modect dz alarmes 
+     "idx_dz_list" => "enable", //Créer fichier idx/nom Domoticz , LISTE
+     "var_list" => "enable", //LISTE variables (HA et DZ)
+     "idx_dz-zigbee" => "enable", //Créer fichier idx/nom Domoticz , TABLEAU zigbee
+     "reboot_pi" => "enable", //Reboot Raspberry
+     "msmtprc" => "enable", //msmtprc (config envoi mail)
+     "connect_py" => "enable" // Maj automatique des IP depuis connect.py
+	));
+
+14.1.2 Pour ajouter des fonctions personnelles
+==============================================
+voir les  § :ref:`14.2 admin.php, info_admin.php, test_db.php et backup_bd`, :ref:`14.4 fonctions PHP`
+
+
 
 14.2 admin.php, info_admin.php, test_db.php et backup_bd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -474,6 +505,8 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
 
 
 .. |image63| image:: ../media/image63.webp
+   :width: 400px 
+.. |image74| image:: ../media/image74.webp
    :width: 400px 
 .. |image788| image:: ../media/image788.webp
    :width: 605px 
