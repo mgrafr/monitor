@@ -5,11 +5,13 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -	Après l’installation de Proxmox :
 
-Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), monitor : https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
+Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), monitor (version dev): https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
 
 - 	    installation automatique : LEMP + monitor (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
 
-- 	    installation uniquement de monitor (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+- 	    installation uniquement de monitor (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+
+-	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.3.tar.gz
 
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
@@ -187,32 +189,46 @@ Quelques liens utiles :
 |	o LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
 |	o LEMP : voir ce paragraphe `
 
-**Installation :**
+**Installation : plusieurs solutions**
 
-*-	Soit télécharger et extraire le fichier :*
+0.1.3.1	Télécharger de la version en développement
+""""""""""""""""""""""""""""""""""""""""""""""""""
+*et extraire les fichiers*
 
 .. code-block::
 
    https://github.com/mgrafr/monitor
 
-|image34|                    
+|image34| 
 
-*-	Soit cloner le référentiel : https://github.com/mgrafr/monitor.git*
+0.1.3.2	Télécharger de la derière version stable
+""""""""""""""""""""""""""""""""""""""""""""""""
+*et extraire les fichiers*
 
 .. code-block::
 
-   git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION
+   https://github.com/mgrafr/monitor/releases/latest
+
+|image358| 
+
+0.1.3.3 cloner le référentiel de monitor
+""""""""""""""""""""""""""""""""""""""""
+*https://github.com/mgrafr/monitor.git*
+
+.. code-block::
+
+   git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION>
 
 .. admonition:: Git doit avoir été installé 
 
    sur Debian ou Ubuntu, :red:`apt install git`
 
 
-*-       soit télécharger en bash avec wget :*
+0.1.3.4 Télécharger en bash le script d'installation*
 
 .. code-block::
 
-   https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+   wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 
 Et apprès avoir rendu exécutable le fichier, le lancer :
  
@@ -222,7 +238,7 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 
   ./install_only_monitor.sh
 
-**Installation**
+*Installation de monitor*
 
 |image37|
 
@@ -1319,3 +1335,5 @@ Utilisation de jQuery
    :width: 203px 
 .. |image116| image:: ../media/image116.webp
    :width: 293px 
+.. |image358| image:: ../media/image358.webp
+   :width: 500px 
