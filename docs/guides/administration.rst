@@ -95,7 +95,7 @@ voir les paragraphes:
 
 .. admonition:: **Exemple pour la modification d'un fichier**
 
-*ici modification du mot de passe*
+   *ici modification du mot de passe*
 
    .. code-block::
 
