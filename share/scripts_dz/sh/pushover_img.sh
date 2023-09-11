@@ -1,8 +1,9 @@
 #!/bin/bash
 jour=$(date +%H:%M:%S)
-
-wget  http://$1:8086/camsnapshot.jpg?idx=1 -O /opt/domoticz/config/camsnapshot.jpg
-
+#pour Docker
+wget  http://$1:8086/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
+# pour linux
+#wget  http://$1:8086/camsnapshot.jpg?idx=1 -O /opt/domoticz/config/camsnapshot.jpg
 TITLE="image portier"
 APP_TOKEN="axxxxxxxxxxxxxxxxxxxxa"
 USER_TOKEN="uxxxxxxxxxxxxxxxxxxxi"
