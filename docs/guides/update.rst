@@ -13,6 +13,7 @@
 Version en développement 2.2.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 30/08/2023 : ajout bouton reset pour annuler la notification de piles faibles
+
 12/09/2023 : réécriture de export_sql en dzvent : export_timer_sql et export_dev_sql(concerne Linky et les températures
 
 Version 2.2.3
