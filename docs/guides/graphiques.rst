@@ -63,11 +63,11 @@ Pour l'installer (pip est déjà installé):
 
    sudo pip3 install fabric
 
-Une fois un premier enregistrement crée, pour une température, dans la base, il suffit pour un nouvel enregistrement d’une autre t° d’ajouter dans le script LUA « évènement /:darkblue:`export_sql` » cette T°
+Une fois un premier enregistrement crée, pour une température, dans la base, il suffit pour un nouvel enregistrement d’une autre t° d’ajouter dans le script LUA « évènement /:darkblue:`NOM_DU SCRIPT` » cette T°
 
-https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/export_sql.lua
+**Depuis la version 2023-2 de Domoticz le script a été réécrit en dzvent**
 
-*Extrait de export_sql.lua*:
+*pour info Extrait du script en lua*:
 
 .. code-block::
 
@@ -122,11 +122,120 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/export_sql.
 
 |image534|
 
+**Le script en dzvent "export_dev_sql"**
+
+.. code-block::
+
+   --[[
+   export_dev_sql]]
+   --
+   package.path = package.path..";www/modules_lua/?.lua"
+   require 'datas'
+   require 'string_tableaux'
+   data0=pression;
+   year 	= tonumber(os.date("%Y"));
+   month 	= os.date("%m");
+   day 	= os.date("%d");
+   hour 	= os.date("%H");
+   min 	= os.date("%M");
+   sec     = os.date("%S");
+   weekday = tonumber(os.date("%w"));
+   time    = os.date("%X");
+   datetime = year.."-"..month.."-"..day.." "..time;
+   function write_datas(data0,data1)
+   f = io.open("www/modules_lua/datas.lua", "w")
+   f:write('pression='..data0..';d_linky='..data1)
+   f:close()
+   end
+   function envoi_fab(libelle,valeur)
+    don=" "..libelle.."#"..valeur.."#"..datetime
+	print ("maj valeur:"..don);
+        local command = "/bin/bash userdata/scripts/bash/./fabric.sh"..don.." > /home/michel/fab.log 2>&1";
+        os.execute(command);
+        --txt="michel";os.execute("python3 scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
+   end
+   function round(num,numDecimal)
+   local mult = 10^(numDecimal or 0)
+  return math.floor(num * mult + 0.5) / mult
+ end
+ --
+   return {
+	on = {
+		devices = {
+			'temp_cave',
+			'temp_cuisine_ete',
+			'temp_cellier',
+			'TempHumBaro',
+			'pir_salon_temp',
+			'pir ar cuisine_temp',
+			'pression_chaudière',
+			'PH_Spa',
+			'Redox_Spa'
+		}
+	},
+
+       execute = function(domoticz, item)
+        domoticz.log('item '..item.name..' was changed', domoticz.LOG_INFO)
+            
+        if (item.name=='temp_cuisine_ete') then 
+        -- choix nb decimales apres la virgule 
+        -- local temp=round(deviceValue, 1)
+            local valeur=round(item.temperature, 0)
+            if (domoticz.variables('temp_cuis_ete').value ~= tostring(valeur)) then
+            domoticz.variables('temp_cuis_ete').set(tostring(valeur)) 
+    	    libelle="temp_cuis_ete#valeur";
+    	    envoi_fab(libelle,valeur)    
+            end       
+        elseif (item.name=='temp_cave') then 
+           --local valeur=round(item.temperature, 1)
+           local valeur=round(item.temperature, 0)
+            if tostring(valeur)~=domoticz.variables('temp_cave').value then
+            domoticz.variables('temp_cave').set(tostring(valeur))
+    	    libelle="temp_cave#valeur";
+    	    envoi_fab(libelle,valeur) 
+            end  
+       elseif (item.name=='temp_cellier') then 
+        -- local valeur=round(deviceValue, 1)
+        local valeur=round(item.temperature, 0)
+            if tostring(valeur)~=domoticz.variables('temp_cellier').value then
+            domoticz.variables('temp_cellier').set(tostring(valeur))    
+    	    libelle="temp_cellier#valeur";
+            envoi_fab(libelle,valeur) 
+            end
+       elseif (item.name=='TempHumBaro') then 
+            local valeur=round(item.temperature, 0)
+            if tostring(valeur)~=domoticz.variables('temp_meteo').value then
+            domoticz.variables('temp_meteo').set(tostring(valeur))   
+    	    libelle="temp_meteo#valeur";
+            envoi_fab(libelle,valeur) 
+            end
+       elseif (item.name=='pir_salon_temp') then
+        local valeur=round(item.temperature, 0) 
+        if tostring(valeur)~=domoticz.variables('temp_salon').value then
+           domoticz.variables('temp_salon').set(tostring(valeur))    
+            libelle="temp_salon#valeur";
+            envoi_fab(libelle,valeur) 
+        end
+       elseif (item.name=='pir ar cuisine_temp') then 
+         local valeur=round(item.temperature, 0)
+        if tostring(valeur)~=domoticz.variables('temp_ar_cuisine').value then
+            domoticz.variables('temp_ar_cuisine').set(tostring(valeur))    
+	        libelle="temp_cuisine#valeur";
+            envoi_fab(libelle,valeur) 
+        end
+      end 
+   ...
+       print("device changed:"..item.name) 
+    end       
+   }
+   
+ |image783| 
+
 Pour limiter le nb d’enregistrements :
 
 |image535|
 
-Dans cet exemple, il a été créer 3 variables qui permettent des enregistrements dans la BD à chaque changement de valeurs limité au degré.:
+Dans cet exemple, il a été créer plusieurs variables qui permettent des enregistrements dans la BD à chaque changement de valeurs limité au degré.:
 
 |image536|
 
@@ -371,4 +480,5 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.ph
    :width: 535px
 .. |image554| image:: ../media/image554.webp
    :width: 535px
-
+.. |image783| image:: ../media/image783.webp
+   :width: 700px
