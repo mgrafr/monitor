@@ -109,11 +109,11 @@ Une fois un premier enregistrement crée, pour une température, dans la base, i
   end 
   commandArray = {}
   t = {};
-  --donnees={['pression']='1.2'};write_datas('{["pression"]="'.."1.2"..';}')
-  -- libelle=table#champ
-  -- si 2 champs , ajouter ..'#champ2#"..split_str[2] après datetime.. 
-  -- exemple "don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime.."#champ2#"..split_str[2]
-  for deviceName,deviceValue in pairs(devicechanged) do
+   --donnees={['pression']='1.2'};write_datas('{["pression"]="'.."1.2"..';}')
+   -- libelle=table#champ
+   -- si 2 champs , ajouter ..'#champ2#"..split_str[2] après datetime.. 
+   -- exemple "don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime.."#champ2#"..split_str[2]
+   for deviceName,deviceValue in pairs(devicechanged) do
     if (deviceName=='pir_salon_temp') then
         print ("temp_salon:"..deviceValue);
 	    libelle="temp_salon#valeur";don=" "..libelle.."#"..tostring(deviceValue).."#"..datetime
