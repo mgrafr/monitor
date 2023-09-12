@@ -760,9 +760,9 @@ Importer sur Github le fichier complet : https://raw.githubusercontent.com/mgraf
 
 - **Domoticz**  , *graphique.php*
 
-Depuis la mise à jour 2023-2 de Domoticz , DeviceValue ne peut plus être utilisée aussi le script lua a été réécrit en dzvent: :darkblue:`export_timer_sql`
+Depuis la mise à jour 2023-2 de Domoticz , DeviceValue ne peut plus être utilisé aussi le script lua a été réécrit en dzvent: :darkblue:`export_timer_sql`
 
-**Comme c'est la consommation de la veille qui est affichée , il suffit donc de choisir à quelle heure enregistrer ces paramètres.**
+*Comme c'est la consommation de la veille qui est affichée , il suffit donc de choisir à quelle heure enregistrer ces paramètres.*
 
 |image782|
 
