@@ -742,6 +742,14 @@ Importer sur Github le fichier complet : https://raw.githubusercontent.com/mgraf
 
    .. important:: :red:`Contrairement à LUA, en PHP les tables commencent à 0 : 4 = table[4 ]= 5eme champ`
 
+ .. note::
+
+   Data a été utilisé car c'est le cas avec l'API pour beaucoup de dispositifs mais Counter et Usage peuvent aussi être utilisé dans l'utilisation des compteurs.
+
+   c'est d'ailleurs counter et usage qu'i faut utiliser avec DzVent, voir le § :ref:`13.7.1 enregistrement dans la BD SQL` , ci dessous
+
+   |image256|
+
 13.7.1 enregistrement dans la BD SQL
 ====================================
 - **Créer la table**
@@ -780,6 +788,8 @@ Pour ajouter un historique de la consommation :
 
 |image787|
 
+.. |image256| image:: ../media/image256.webp
+   :width: 433px
 .. |image699| image:: ../media/image699.webp
    :width: 423px
 .. |image700| image:: ../media/image700.webp
