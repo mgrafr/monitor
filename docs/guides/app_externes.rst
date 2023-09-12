@@ -911,8 +911,6 @@ Pour ajouter un historique de la consommation :
    :width: 700px   
 .. |image782| image:: ../media/image782.webp
    :width: 700px   
-.. |image783| image:: ../media/image783.webp
-   :width: 238px   
 .. |image784| image:: ../media/image784.webp
    :width: 650px 
 .. |image785| image:: ../media/image785.webp
