@@ -767,6 +767,7 @@ Depuis la mise à jour 2023-2 de Domoticz , DeviceValue ne peut plus être utili
 |image782|
 
 voir également le paragraphe :ref:`6.2.1 fabric`
+
 - **monitor**
 
 |image784|
