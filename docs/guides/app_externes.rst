@@ -760,12 +760,13 @@ Importer sur Github le fichier complet : https://raw.githubusercontent.com/mgraf
 
 - **Domoticz**  , *graphique.php*
 
-Comme pour le capteur de pression, on enregistre, dans une variable une info pour éviter d’enregistrer un grand nombre de fois la même valeur ; on se sert du jour (day) et on modifie la fonction write_datas () utilisée pour le capteur de pression (fichier avec 2 valeurs au lieu d’une)
+Depuis la mise à jour 2023-2 de Domoticz , DeviceValue ne peut plus être utilisée aussi le script lua a été réécrit en dzvent: :darkblue:`export_timer_sql`
+
+**Comme c'est la consommation de la veille qui est affichée , il suffit donc de choisir à quelle heure enregistrer ces paramètres.**
 
 |image782|
 
-|image783|
-
+voir également le paragraphe :ref:`6.2.1 fabric`
 - **monitor**
 
 |image784|
