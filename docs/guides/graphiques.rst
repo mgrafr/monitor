@@ -130,6 +130,9 @@ Dans cet exemple, il a été créer 3 variables qui permettent des enregistremen
 
 |image536|
 
+6.2.1 fabric
+============
+
 .. admonition:: **Le script fabric.sh**
 
    installé ici dans le répertoire « scripts » de Domoticz
