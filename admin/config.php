@@ -125,7 +125,9 @@ define('INSEE','');
 define('TOKEN_MF','__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__');
 //-----------------------------------------------------------------------------------------------
 // Page App diverses , log dz , nagios , sql
-define('ON_APP',true);// mise en service page extérieur
+define('ON_APP',true);// mise en service page app diverses
+define('APP_NB_ENR',30); //nb d'enregistrements affichés , concene poubelles
+//-------------------------------------------------------
 // Page exterieur jardin plan extérieur
 define('ON_EXT',true);// mise en service page extérieur
 // Page graphiques
