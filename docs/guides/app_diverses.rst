@@ -63,6 +63,13 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
 
 |image687|
 
+.. admonition:: **ne nombre d'enregistrements affichés doit être défini dans admin/config.php**
+
+   .. code-block::
+
+      define('ON_APP',true);// mise en service page app diverses
+      define('APP_NB_ENR',30); //nb d'enregistrements affichés , concene poubelles
+
 |image688|
 
 - **Le fichier app_diverses.php**
