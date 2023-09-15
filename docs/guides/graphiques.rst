@@ -122,10 +122,11 @@ Une fois un premier enregistrement crée, pour une température, dans la base, i
 
 |image534|
 
-**Le script en dzvent "export_dev_sql"**
+**Le script en DzVent "export_dev_sql"**
 
 .. code-block::
 
+   --
    --[[
    export_dev_sql]]
    --
@@ -142,23 +143,22 @@ Une fois un premier enregistrement crée, pour une température, dans la base, i
    weekday = tonumber(os.date("%w"));
    time    = os.date("%X");
    datetime = year.."-"..month.."-"..day.." "..time;
-   function write_datas(data0,data1)
+   function write_datas(data0)
    f = io.open("www/modules_lua/datas.lua", "w")
-   f:write('pression='..data0..';d_linky='..data1)
+   f:write('pression='..data0)
    f:close()
-   end
-   function envoi_fab(libelle,valeur)
-    don=" "..libelle.."#"..valeur.."#"..datetime
-	print ("maj valeur:"..don);
-        local command = "/bin/bash userdata/scripts/bash/./fabric.sh"..don.." > /home/michel/fab.log 2>&1";
-        os.execute(command);
-        --txt="michel";os.execute("python3 scripts/python/pushover.py "..txt.." >> /home/michel/push.log 2>&1");
    end
    function round(num,numDecimal)
    local mult = 10^(numDecimal or 0)
-  return math.floor(num * mult + 0.5) / mult
- end
- --
+   return math.floor(num * mult + 0.5) / mult
+   end
+
+   function envoi_fab1(libelle,valeur)
+    don=" "..libelle.."#"..valeur.."#"..datetime
+	print("maj valeur:"..don);
+        command = "/bin/bash userdata/scripts/bash/./fabric.sh "..don.." > /home/michel/fab.log 2>&1";
+        os.execute(command);
+   end
    return {
 	on = {
 		devices = {
@@ -180,56 +180,59 @@ Une fois un premier enregistrement crée, pour une température, dans la base, i
         if (item.name=='temp_cuisine_ete') then 
         -- choix nb decimales apres la virgule 
         -- local temp=round(deviceValue, 1)
-            local valeur=round(item.temperature, 0)
-            if (domoticz.variables('temp_cuis_ete').value ~= tostring(valeur)) then
-            domoticz.variables('temp_cuis_ete').set(tostring(valeur)) 
+           valeur=tostring(round(item.temperature, 0))
+            if (domoticz.variables('temp_cuis_ete').value ~= valeur) then
+            domoticz.variables('temp_cuis_ete').set(valeur) 
     	    libelle="temp_cuis_ete#valeur";
-    	    envoi_fab(libelle,valeur)    
+    	    envoi_fab1(libelle,valeur) 
             end       
         elseif (item.name=='temp_cave') then 
            --local valeur=round(item.temperature, 1)
-           local valeur=round(item.temperature, 0)
+          valeur=tostring(round(item.temperature, 0))
             if tostring(valeur)~=domoticz.variables('temp_cave').value then
             domoticz.variables('temp_cave').set(tostring(valeur))
     	    libelle="temp_cave#valeur";
-    	    envoi_fab(libelle,valeur) 
+    	   envoi_fab1(libelle,valeur) 
             end  
        elseif (item.name=='temp_cellier') then 
         -- local valeur=round(deviceValue, 1)
-        local valeur=round(item.temperature, 0)
+           valeur=tostring(round(item.temperature, 0))
             if tostring(valeur)~=domoticz.variables('temp_cellier').value then
             domoticz.variables('temp_cellier').set(tostring(valeur))    
     	    libelle="temp_cellier#valeur";
-            envoi_fab(libelle,valeur) 
+            envoi_fab1(libelle,valeur) 
             end
        elseif (item.name=='TempHumBaro') then 
-            local valeur=round(item.temperature, 0)
-            if tostring(valeur)~=domoticz.variables('temp_meteo').value then
-            domoticz.variables('temp_meteo').set(tostring(valeur))   
+            valeur=tostring(round(item.temperature, 0))
+            if valeur~=domoticz.variables('temp_meteo').value then
+            domoticz.variables('temp_meteo').set(valeur)   
     	    libelle="temp_meteo#valeur";
-            envoi_fab(libelle,valeur) 
+    	    envoi_fab1(libelle,valeur) 
             end
        elseif (item.name=='pir_salon_temp') then
-        local valeur=round(item.temperature, 0) 
+        valeur=tostring(round(item.temperature, 0))
         if tostring(valeur)~=domoticz.variables('temp_salon').value then
            domoticz.variables('temp_salon').set(tostring(valeur))    
             libelle="temp_salon#valeur";
-            envoi_fab(libelle,valeur) 
+           envoi_fab1(libelle,valeur)  
         end
        elseif (item.name=='pir ar cuisine_temp') then 
-         local valeur=round(item.temperature, 0)
+        valeur=tostring(round(item.temperature, 0))
         if tostring(valeur)~=domoticz.variables('temp_ar_cuisine').value then
             domoticz.variables('temp_ar_cuisine').set(tostring(valeur))    
 	        libelle="temp_cuisine#valeur";
-            envoi_fab(libelle,valeur) 
+            envoi_fab1(libelle,valeur) 
         end
-      end 
    ...
-       print("device changed:"..item.name) 
+   ...
     end       
    }
    
- |image783| 
+   |image783| 
+
+.. important:: **Nom pour les fonctions DzVent**
+
+   le même nom ne peut pas être utilisé pour 2 fonctions dans des scripts DzVents (mêmes différents). 
 
 Pour limiter le nb d’enregistrements :
 
