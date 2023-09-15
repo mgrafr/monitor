@@ -16,6 +16,8 @@ Version en développement 2.2.4
 
 12/09/2023 : réécriture de export_sql en dzvent : export_timer_sql et export_dev_sql(concerne Linky et les températures
 
+15/09/2023 : Nb enregistrements affichés pour historique poubelles : remplacé 24 par choix dans config.php
+
 Version 2.2.3
 ~~~~~~~~~~~~~
 26/08/2023 : Ajout docomentation Readthedocs
