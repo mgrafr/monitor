@@ -1055,7 +1055,7 @@ VALUES (NULL, '".$date."', '".$valeur."', '".$icone."');";
 $result = $conn->query($sql);	
 ;}
 if ($choix==1) {
-$sql="SELECT * FROM ".$table." ORDER BY num DESC LIMIT 24";
+$sql="SELECT * FROM ".$table." ORDER BY num DESC LIMIT ".APP_NB_ENR;
 $result = $conn->query($sql);
 $number = $result->num_rows;
 while($row = $result->fetch_array(MYSQLI_ASSOC)){
