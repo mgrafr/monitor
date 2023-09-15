@@ -164,7 +164,7 @@ Pour la restitution de l’historique :
 .. |image696| image:: ../media/image696.webp
    :width: 537px
 .. |image697| image:: ../media/image697.webp
-   :width: 517px
+   :width: 649px
 .. |image698| image:: ../media/image698.webp
    :width: 439px
 
