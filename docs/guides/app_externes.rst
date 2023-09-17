@@ -1,5 +1,5 @@
-13. APPLICATIONS externes en lien avec Domoticz ou monitor
-----------------------------------------------------------
+13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor
+--------------------------------------------------------------
 13.1 Affichage des notifications sur un téléviseur LG
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Le script optionnel pour la notification sur un téléviseur LG (web os)
@@ -788,6 +788,98 @@ Pour ajouter un historique de la consommation :
 
 |image787|
 
+13.8 Pont HA (ha-bridge)
+^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/bwssytems/ha-bridge
+
+ha-bridge est un logiciel qui simule sur votre ordinateur un pont Philips Hue
+
+.. admonition:: **fonction du pont**
+
+   extrait du readme de github :
+
+   Émule l’API Philips Hue à d’autres passerelles domotiques telles qu’Amazon Echo/Dot ou d’autres systèmes prenant en charge la découverte de réseau local Philips Hue.
+
+   :darkblue:`Le ha-bridge ne fait pas partie de meethue.philips.com donc la connexion cloud ne s’applique pas à ce système. Le pont gère les commandes de base telles que les commandes « On », « Off », « Brightness » et « Color » du protocole hue. Ce pont peut 
+   contrôler la plupart des appareils qui ont une API distincte.`
+
+13.8.1 Installation dans un conteneur LXC Proxmox
+=================================================
+
+Vous pouvez l’installer comme moi dans un conteneur LXC (debian12 standart)  ou dans une VM, le programme java est léger.
+
+|image1077|
+
+Comme pour les autres VM et CT on installe sudo et l'on crée un utilisateur avec des droits.
+
+Après **apt update & apt upgrade**:
+
+|image1078|
+
+.. code-block::
+
+   usermod -aG sudo <UTILISATEUR>
+
+Java 8 ou > doit être installé , pour debian12 un package existe:
+
+.. code-block::
+
+   apt install default-jdk -y
+
+|image1079|
+
+.. admonition:: **Téléchargement & Installation de ha-bridge**
+
+   .. code:: 
+
+      mkdir ha-bridge
+      cd ha-bridge
+      wget https://github.com/bwssytems/ha-bridge/releases/download/v5.4.1RC1/ha-bridge-5.4.1RC1.jar -O ha-bridge.jar
+
+   **Création du service systemd** :darkblue:`nano /etc/systemd/system/ha-bridge.service`
+
+   .. note::
+
+      Il faut choisir le port , 8084(zigbee2mqtt), 8086 (dz), 8090(dvr), 8091(Zwavejs), 8123(HA), sont utilisé , j’ai choisi 8088
+
+   .. code::
+
+      [Unit]
+      Description=HA Bridge
+      Wants=network.target
+      After=syslog.target network-online.target
+
+      [Service]
+      Type=simple
+      WorkingDirectory=/opt/habridge
+      ExecStart=/usr/bin/java -jar -Dconfig.file=/etc/habridge/habridge.config -Dserver.port=8088 /opt/habridge/ha-bridge-5.4.1.jar
+      Restart=on-failure
+      RestartSec=10
+      KillMode=process
+
+      [Install]
+      WantedBy=multi-user.target
+   
+    **activation du service**
+
+   .. code::
+
+      systemctl daemon-reload
+      systemctl start ha-bridge.service
+      systemctl enable ha-bridge.service
+
+13.8.2 Le serveur de ha-bridge
+==============================
+
+On récupère l'ip :
+
+|image1080|
+
+On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://192.168.1.14:8088/`
+
+|image1081|
+
+
 .. |image256| image:: ../media/image256.webp
    :width: 433px
 .. |image699| image:: ../media/image699.webp
@@ -930,7 +1022,13 @@ Pour ajouter un historique de la consommation :
    :width: 530px 
 .. |image787| image:: ../media/image787.webp
    :width: 602px 
-
-
-
-
+.. |image1077| image:: ../media/image1077.webp
+   :width: 313px 
+.. |image1078| image:: ../media/image1078.webp
+   :width: 605px
+.. |image1079| image:: ../media/image1079.webp
+   :width: 700px
+.. |image1080| image:: ../media/image1080.webp
+   :width: 601px
+.. |image1081| image:: ../media/image1081.webp
+   :width: 605px
