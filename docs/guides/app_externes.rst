@@ -879,6 +879,42 @@ On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://
 
 |image1081|
 
+*Google Home et Alexa exigent que le pont réponde sur le port 80. On va utiliser les fonctions de proxy de Nginx pour rediriger les urls concernant ha-bridge vers le port 8080.*
+
+Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
+
+.. code::
+
+   server {
+    listen     80;
+
+   #auth_basic "Mot de Passe Obligatoire";
+   #auth_basic_user_file /etc/nginx/.htpasswd;
+
+   server_name habridge.<DOMAINE>.ovh;
+
+    location / {
+        proxy_pass http://192.168.1.14:8088;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /api {
+        proxy_pass http://127.0.0.1:8080/api;
+
+
+13.8.2.1 Enregistrement d'Alexa & Domoticz dans le pont
+""""""""""""""""""""""""""""""""""""""""""""
+
+|image1082|
+
+|image1083|
+
+13.8.2.2 Enregistrement du pont dans Domoticz
+"""""""""""""""""""""""""""""""""""""""""""""
+
+|image1084|
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
@@ -1031,4 +1067,10 @@ On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://
 .. |image1080| image:: ../media/image1080.webp
    :width: 601px
 .. |image1081| image:: ../media/image1081.webp
+   :width: 605px
+.. |image1082| image:: ../media/image1082.webp
+   :width: 700px
+.. |image1083| image:: ../media/image1083.webp
+   :width: 700px
+.. |image1084| image:: ../media/image1084.webp
    :width: 605px
