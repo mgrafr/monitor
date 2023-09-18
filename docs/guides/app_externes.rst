@@ -832,7 +832,7 @@ Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
 
    *https://github.com/bwssytems/ha-bridge/releases* , choisir la version java 11
 
-   |image1087|
+   |image1088|
 
    .. code:: 
 
@@ -1092,6 +1092,6 @@ Il suffit d'actualiser la page et un nouvel onglet pour Domoticz est disponible 
 .. |image1086| image:: ../media/image1086.webp
    :width: 571px
 .. |image1087| image:: ../media/image1087.webp
-   :width: 363px
-.. |image1088| image:: ../media/image1088.webp
    :width: 700px
+.. |image1088| image:: ../media/image1088.webp
+   :width: 363px
