@@ -912,8 +912,8 @@ Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
         proxy_pass http://192.168.1.14:8080/api;
 
 
-13.8.2.1 Enregistrement d'Alexa & Domoticz dans le pont
-""""""""""""""""""""""""""""""""""""""""""""
+13.8.3 Enregistrement d'Alexa & Domoticz dans le pont
+=====================================================
 
 |image1082|
 
@@ -928,6 +928,16 @@ Sauvegarder la configuration
 Il suffit d'actualiser la page et un nouvel onglet pour Domoticz est disponible avec la liste des dispositifs
 
 |image1087|
+
+13.8.3.1 Les dispositifs et les actions
+"""""""""""""""""""""""""""""""""""""""
+Exemple avec marche/arrêt de l'alarme
+
+|image1089|
+
+|image1090|
+
+|image1091|
 
 
 
@@ -1097,3 +1107,10 @@ Il suffit d'actualiser la page et un nouvel onglet pour Domoticz est disponible 
    :width: 700px
 .. |image1088| image:: ../media/image1088.webp
    :width: 363px
+.. |image1089| image:: ../media/image1089.webp
+   :width: 564px
+.. |image1090| image:: ../media/image1090.webp
+   :width: 700px
+.. |image1091| image:: ../media/image1091.webp
+   :width: 700px
+
