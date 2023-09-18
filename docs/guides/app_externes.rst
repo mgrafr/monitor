@@ -923,10 +923,11 @@ Sauvegérder la configuration
 
 |image1086|
 
-13.8.2.2 Enregistrement du pont dans Domoticz
-"""""""""""""""""""""""""""""""""""""""""""""
+Il suffit d'actualiser la page et un nouvel onglet pour Domoticz est disponible avec la liste des dispositifs
 
-|image1084|
+|image1087|
+
+
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
@@ -1089,6 +1090,8 @@ Sauvegérder la configuration
 .. |image1085| image:: ../media/image1085.webp
    :width: 622px
 .. |image1086| image:: ../media/image1086.webp
-   :width: 107px
+   :width: 571px
 .. |image1087| image:: ../media/image1087.webp
    :width: 363px
+.. |image1088| image:: ../media/image1088.webp
+   :width: 700px
