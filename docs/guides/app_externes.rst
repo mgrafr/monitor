@@ -911,6 +911,12 @@ Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
 
 |image1083|
 
+|image1085|
+
+Sauvegérder la configuration
+
+|image1086|
+
 13.8.2.2 Enregistrement du pont dans Domoticz
 """""""""""""""""""""""""""""""""""""""""""""
 
@@ -1074,3 +1080,7 @@ Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
    :width: 700px
 .. |image1084| image:: ../media/image1084.webp
    :width: 605px
+.. |image1085| image:: ../media/image1085.webp
+   :width: 622px
+.. |image1086| image:: ../media/image1086.webp
+   :width: 107px
