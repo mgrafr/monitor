@@ -919,7 +919,7 @@ Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
 
 |image1085|
 
-Sauvegérder la configuration
+Sauvegarder la configuration
 
 |image1086|
 
