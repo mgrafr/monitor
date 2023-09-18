@@ -845,7 +845,7 @@ Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
 
    .. note::
 
-      Il faut choisir le port , 8084(zigbee2mqtt), 8086 (dz), 8090(dvr), 8091(Zwavejs), 8123(HA), sont utilisé , j’ai choisi 8088
+      Il faut choisir le port , 8084(zigbee2mqtt), 8086 (dz), 8090(dvr), 8091(Zwavejs), 8123(HA), sont utilisé , j’ai choisi 8088 
 
    .. code::
 
@@ -887,6 +887,8 @@ On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://
 
 *Google Home et Alexa exigent que le pont réponde sur le port 80. On va utiliser les fonctions de proxy de Nginx pour rediriger les urls concernant ha-bridge vers le port 8080.*
 
+.. important:: **Vérifier qu'il ne soit pas déjà utilisé**
+
 Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
 
 .. code::
@@ -907,7 +909,7 @@ Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
     }
 
     location /api {
-        proxy_pass http://127.0.0.1:8080/api;
+        proxy_pass http://192.168.1.14:8080/api;
 
 
 13.8.2.1 Enregistrement d'Alexa & Domoticz dans le pont
