@@ -820,7 +820,7 @@ Après **apt update & apt upgrade**:
 
    usermod -aG sudo <UTILISATEUR>
 
-Java 8 ou > doit être installé , pour debian12 un package existe:
+Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
 
 .. code-block::
 
@@ -830,11 +830,16 @@ Java 8 ou > doit être installé , pour debian12 un package existe:
 
 .. admonition:: **Téléchargement & Installation de ha-bridge**
 
+   *https://github.com/bwssytems/ha-bridge/releases* , choisir la version java 11
+
+   |image1087|
+
    .. code:: 
 
       mkdir ha-bridge
       cd ha-bridge
-      wget https://github.com/bwssytems/ha-bridge/releases/download/v5.4.1RC1/ha-bridge-5.4.1RC1.jar -O ha-bridge.jar
+      wget https://github.com/bwssytems/ha-bridge/releases/download/v5.4.1RC1/ha-bridge-5.4.1-java11.jar
+
 
    **Création du service systemd** :darkblue:`nano /etc/systemd/system/ha-bridge.service`
 
@@ -852,7 +857,8 @@ Java 8 ou > doit être installé , pour debian12 un package existe:
       [Service]
       Type=simple
       WorkingDirectory=/opt/habridge
-      ExecStart=/usr/bin/java -jar -Dconfig.file=/etc/habridge/habridge.config -Dserver.port=8088 /opt/habridge/ha-bridge-5.4.1.jar
+      ExecStart=/usr/bin/java -jar -Dconfig.file=/etc/habridge/habridge.config -Dserver.port=8088 /opt/habridge/ha-bridge-5.4.1-java11.jar
+
       Restart=on-failure
       RestartSec=10
       KillMode=process
@@ -1084,3 +1090,5 @@ Sauvegérder la configuration
    :width: 622px
 .. |image1086| image:: ../media/image1086.webp
    :width: 107px
+.. |image1087| image:: ../media/image1087.webp
+   :width: 363px
