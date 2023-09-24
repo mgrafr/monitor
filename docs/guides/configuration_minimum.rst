@@ -867,7 +867,7 @@ En plus clair :
 1.5.3.1  Ajout dans Domoticz
 """"""""""""""""""""""""""""
 
-- *Créer une pièce fictive nommée :darkblue:`mqttDevices` où seront placés les dispositifs concernés*
+- **Créer une pièce fictive** nommée :darkblue:`mqttDevices` où seront placés les dispositifs concernés.
 
 .. note:: les dispositifs peuvent appartenir également à une autre pièce
 
@@ -875,18 +875,50 @@ En plus clair :
 
 Ici les 2 dispositifs concernant les interrupteurs pour l'alarme d'absence et l'alarme de nuit.
 
-- *Sous Configuration/Matériel, ajoutez un périphérique de ce type : :darkblue:`MQTT Client Gateway with LAN interface`*
+|image1094|
+
+- **Sous Configuration/Matériel**, ajoutez un périphérique de ce type : :darkblue:`MQTT Client Gateway with LAN interface`
 
 |image1093|
 
 .. note:: pour la pièce choisie ci-dessus le topic sera :darkblue:`domoticz/out/interieur/mqttDevices` et :darkblue:`domoticz/out`
 
+
 1.5.3.2  Ajout dans Home Assistant
 """"""""""""""""""""""""""""""""""
 
+- **Créer un répertoire mqtt** et l'inclure dans :darkblue:`/config/configuration.yaml`
 
+.. code-block::
 
-1.6 Lien avec la base de données SQL
+   mqtt: !include_dir_merge_named mqtt/
+
+|image1095|
+
+- **créer un fichier qui concernera les interrupteurs: :darkblue:`switches.yaml`
+
+|image1096|
+
+- **ajouter le code pour chaque interrupteur:**
+
+.. code-block::
+
+   switch:
+     - name: "alarme_absence"
+       object_id: "41"
+       unique_id: alarme_absence
+       state_topic: "domoticz/out/interieur/mqttDevices"
+       command_topic: "domoticz/in"
+       value_template: "{{ value_json.nvalue }}"
+       state_on: "1"
+       state_off: "0"
+       payload_on:  '{"command": "switchlight", "idx": 41 , "switchcmd": "On" }'
+       payload_off: '{"command": "switchlight", "idx": 41, "switchcmd": "Off" }'
+       optimistic: false
+       qos: 0
+       retain: true
+
+  1.6 Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.6.1- exemple avec la date de ramassage des poubelles
 ======================================================
@@ -1172,4 +1204,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 500px 
 .. |image1093| image:: ../media/image1093.webp
    :width: 600px 
-
+.. |image1094| image:: ../media/image1094.webp
+   :width: 500px 
+.. |image1095| image:: ../media/image1095.webp
+   :width: 319px 
+.. |image1096| image:: ../media/image1096.webp
+   :width: 291px 
