@@ -862,6 +862,30 @@ En plus clair :
 
 |image208|
 
+1.5.3 Liaison MQTT entre Home Assistant et Domoticz
+===================================================
+1.5.3.1  Ajout dans Domoticz
+""""""""""""""""""""""""""""
+
+- *Créer une pièce fictive nommée :darkblue:`mqttDevices` où seront placés les dispositifs concernés*
+
+.. note:: les dispositifs peuvent appartenir également à une autre pièce
+
+|image1092|
+
+Ici les 2 dispositifs concernant les interrupteurs pour l'alarme d'absence et l'alarme de nuit.
+
+- *Sous Configuration/Matériel, ajoutez un périphérique de ce type : :darkblue:`MQTT Client Gateway with LAN interface`*
+
+|image1093|
+
+.. note:: pour la pièce choisie ci-dessus le topic sera :darkblue:`domoticz/out/interieur/mqttDevices` et :darkblue:`domoticz/out`
+
+1.5.3.2  Ajout dans Home Assistant
+""""""""""""""""""""""""""""""""""
+
+
+
 1.6 Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.6.1- exemple avec la date de ramassage des poubelles
@@ -1143,5 +1167,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image221| image:: ../media/image221.webp
    :width: 338px 
 .. |image943| image:: ../media/image943.webp
+   :width: 600px 
+.. |image1092| image:: ../media/image1092.webp
+   :width: 500px 
+.. |image1093| image:: ../media/image1093.webp
    :width: 600px 
 
