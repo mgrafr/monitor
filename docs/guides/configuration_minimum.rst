@@ -895,6 +895,8 @@ Ici les 2 dispositifs concernant les interrupteurs pour l'alarme d'absence et l'
 
 |image1095|
 
+enregistrer le fichier modifié
+
 - **créer un fichier qui concernera les interrupteurs: :darkblue:`switches.yaml`
 
 |image1096|
@@ -918,7 +920,13 @@ Ici les 2 dispositifs concernant les interrupteurs pour l'alarme d'absence et l'
        qos: 0
        retain: true
 
-  1.6 Lien avec la base de données SQL
+Pour l'alarme de nuit (idx=42), le script sera le même avec comme object_id et idx :red:`42` au lieu de :darkblue:`41`
+
+Enregistrer le fichier modifier, vérifier la configuration et **redémarrer Home Assistant**
+
+|image1097|
+
+1.6 Lien avec la base de données SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.6.1- exemple avec la date de ramassage des poubelles
 ======================================================
@@ -1210,3 +1218,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 319px 
 .. |image1096| image:: ../media/image1096.webp
    :width: 291px 
+.. |image1097| image:: ../media/image1097.webp
+   :width: 443px 
