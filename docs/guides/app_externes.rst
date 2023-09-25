@@ -184,7 +184,7 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
       wget  http://$1/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
 
-   .. note:: **Si domoticz est sous docker, c'est le cas ici l'ip et le port sont ceux de docker-compose.yml et non l'ip du derveur**
+   .. note:: **Si domoticz est sous docker**, c'est le cas ici, l':red:`ip et le port` sont ceux de :darkblue:`docker-compose.yml` et non l'ip du serveur
 
 - **asterisk**
 
