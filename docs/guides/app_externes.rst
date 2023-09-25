@@ -186,6 +186,10 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
    .. note:: **Si domoticz est sous docker**, c'est le cas ici, l':red:`ip et le port` sont ceux de :darkblue:`docker-compose.yml` et non l'ip du serveur
 
+      *Il est difficile de récupérer l'ip de l'hôte il est préférable d'utiliser* l':red:`IP 127.0.0.1`
+
+      |image257|
+
 - **asterisk**
 
    .  *sip.conf*
@@ -945,6 +949,8 @@ Exemple avec marche/arrêt de l'alarme
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
+.. |image257| image:: ../media/image256.webp
+   :width: 438px
 .. |image699| image:: ../media/image699.webp
    :width: 423px
 .. |image700| image:: ../media/image700.webp
