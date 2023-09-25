@@ -949,7 +949,7 @@ Exemple avec marche/arrêt de l'alarme
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
-.. |image257| image:: ../media/image256.webp
+.. |image257| image:: ../media/image257.webp
    :width: 438px
 .. |image699| image:: ../media/image699.webp
    :width: 423px
