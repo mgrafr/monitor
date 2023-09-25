@@ -182,7 +182,9 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
    .. code-block::
 
-      wget  http://$1:8086/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
+      wget  http://$1/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
+
+   .. note:: **Si domoticz est sous docker, c'est le cas ici l'ip et le port sont ceux de docker-compose.yml et non l'ip du derveur**
 
 - **asterisk**
 
@@ -962,7 +964,7 @@ Exemple avec marche/arrêt de l'alarme
 .. |image710| image:: ../media/image710.webp
    :width: 700px
 .. |image711| image:: ../media/image711.webp
-   :width: 288px
+   :width: 474px
 .. |image712| image:: ../media/image712.webp
    :width: 450px
 .. |image713| image:: ../media/image713.webp
