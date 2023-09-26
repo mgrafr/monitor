@@ -958,7 +958,7 @@ Dans Domoticz, cliquer sur "**register on bridge**" et ajouter le pont
 
 13.8.5 détection des nouveaux appareils par Alexa
 =================================================
-Associer les appareils en appuyan sur "lien"
+Associer les appareils en appuyant sur "lien"
 
 |image1100|
 
