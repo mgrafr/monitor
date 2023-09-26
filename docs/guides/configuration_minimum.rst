@@ -1112,6 +1112,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
    *le certificat peut être fourni gratuitement par Let'sEncrypt*
 
+   Comment installer Let's Encrypt sur Nginx : https://upcloud.com/resources/tutorials/install-lets-encrypt-nginx
+
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
 .. |image120| image:: ../media/image120.webp
