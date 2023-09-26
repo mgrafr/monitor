@@ -1094,9 +1094,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
     ssl_certificate_key /etc/letsencrypt/live/<DOMAINE>/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-}
+   }
 
-server {
+   server {
     if ($host = monitor.<DOMAINE>) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
@@ -1104,7 +1104,7 @@ server {
     listen       80;
     server_name  monitor.<DOMAINE>;
     return 404; # managed by Certbot
-}
+   }
 
 .. note:: ce fichier est pour un accès en https, avec PHP 8.2
 
