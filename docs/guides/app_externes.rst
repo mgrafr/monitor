@@ -947,15 +947,21 @@ Exemple avec marche/arrêt de l'alarme
 
 13.8.4 Ajouter Ha-bridge dans le matériel Domoticz
 ==================================================
-Dans Domoticz, préparer l'ajout du Pont Hue (ne pas ajouter pour l'instant)
-
-|image1099|
-
 Sur le serveur Ha-bridge, utiliser le "link button"
 
 |image1098|
 
-Cliquer sur "**register on bridge**" et ajouter le pont
+Dans Domoticz, cliquer sur "**register on bridge**" et ajouter le pont
+
+|image1099|
+
+
+13.8.5 détection des nouveaux appareils par Alexa
+=================================================
+Associer les appareils en appuyan sur "lien"
+
+|image1100|
+
 
 
 .. |image256| image:: ../media/image256.webp
@@ -1136,3 +1142,5 @@ Cliquer sur "**register on bridge**" et ajouter le pont
    :width: 450px
 .. |image1099| image:: ../media/image1099.webp
    :width: 635px
+.. |image1100| image:: ../media/image1100.webp
+   :width: 550px
