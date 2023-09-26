@@ -1068,6 +1068,50 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
+1.8.1 monitor.conf
+==================
+
+.. code-block::
+
+   upstream monitor {
+	server 192.168.1.9;
+   }
+   server {
+    server_name  monitor.<DOMAINE>;
+    root /var/www/html/monitor;
+    index  index.php index.html index.htm;
+ 
+   location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass   unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/<DOMAINE>fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/<DOMAINE>/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = monitor.<DOMAINE>) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen       80;
+    server_name  monitor.<DOMAINE>;
+    return 404; # managed by Certbot
+}
+
+.. note:: ce fichier est pour un accès en https, avec PHP 8.2
+
+   *un nom de domaine doit être demandé auprès d'un fournisseur*
+
+   *le certificat peut être fourni gratuitement par Let'sEncrypt*
+
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
 .. |image120| image:: ../media/image120.webp
