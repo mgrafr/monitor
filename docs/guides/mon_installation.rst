@@ -402,8 +402,6 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
  
       |image1056|
 
-
-
 21.10 Home Assistant
 ^^^^^^^^^^^^^^^^^^^^
 *Installation* : http://domo-site.fr/accueil/dossiers/61
@@ -427,6 +425,11 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 |image1062|
 
 |image1063|
+
+21.11 Pont Hue Ha-bridge
+^^^^^^^^^^^^^^^^^^^^^^^^
+voir le § :ref:`13.8 Pont HA (ha-bridge)`
+
 
 
 .. |image1026| image:: ../media/image1026.webp
