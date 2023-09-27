@@ -849,10 +849,10 @@ Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
 
    **Création du service systemd** :darkblue:`nano /etc/systemd/system/ha-bridge.service`
 
-   .. note::
+   .. note:: **Il faut choisir le port** 
 
-      Il faut choisir le port , 8084(zigbee2mqtt), 8086 (dz), 8090(dvr), 8091(Zwavejs), 8123(HA), sont utilisé , j’ai choisi 8088 
-
+      le port 80 est nécessaire pour Alexa et il n'est pas pas utilisé sur mon installation domotique, sont utilisés 8084(zigbee2mqtt), 8086 (dz), 8090(dvr), 8091(Zwavejs), 8123(HA)
+ 
    .. code::
 
       [Unit]
@@ -863,7 +863,7 @@ Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
       [Service]
       Type=simple
       WorkingDirectory=/opt/habridge
-      ExecStart=/usr/bin/java -jar -Dconfig.file=/etc/habridge/habridge.config -Dserver.port=8088 /opt/habridge/ha-bridge-5.4.1-java11.jar
+      ExecStart=/usr/bin/java -jar -Dconfig.file=/etc/habridge/habridge.config /opt/habridge/ha-bridge-5.4.1-java11.jar
 
       Restart=on-failure
       RestartSec=10
@@ -887,36 +887,31 @@ On récupère l'ip :
 
 |image1080|
 
-On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://192.168.1.14:8088/`
+On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://192.168.1.14/`
 
 |image1081|
 
-*Google Home et Alexa exigent que le pont réponde sur le port 80. On va utiliser les fonctions de proxy de Nginx pour rediriger les urls concernant ha-bridge vers le port 8080.*
+*Google Home et Alexa exigent que le pont réponde sur le port 80. Si le port 80 est déjà utilisé, il faut utiliser les fonctions de proxy de Nginx pour rediriger les urls concernant ha-bridge vers un port non 
+ utilisé par exemple 8088.* 
 
 .. important:: **Vérifier qu'il ne soit pas déjà utilisé**
 
-Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
+   si 80 est utilisé :
 
-.. code::
+   Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
 
-   server {
-    listen     80;
+   .. code::
 
-   #auth_basic "Mot de Passe Obligatoire";
-   #auth_basic_user_file /etc/nginx/.htpasswd;
-
-   server_name habridge.<DOMAINE>.ovh;
-
-    location / {
+       location / {
         proxy_pass http://192.168.1.14:8088;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
+       }
 
-    location /api {
-        proxy_pass http://192.168.1.14:8080/api;
-
+       location /api {
+        proxy_pass http://192.168.1.14:8088/api;
+       }
 
 13.8.3 Enregistrement d'Alexa & Domoticz dans le pont
 =====================================================
