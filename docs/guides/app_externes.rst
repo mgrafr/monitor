@@ -880,6 +880,8 @@ Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
       systemctl start ha-bridge.service
       systemctl enable ha-bridge.service
 
+   .. important si le port est différent de 80 , ajouter dans ExecStart : :darkblue:`-Dserveur.port=<port number>`
+
 13.8.2 Le serveur de ha-bridge
 ==============================
 
@@ -891,8 +893,7 @@ On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://
 
 |image1081|
 
-*Google Home et Alexa exigent que le pont réponde sur le port 80. Si le port 80 est déjà utilisé, il faut utiliser les fonctions de proxy de Nginx pour rediriger les urls concernant ha-bridge vers un port non 
- utilisé par exemple 8088.* 
+*Come indiqué précédemment, Google Home et Alexa exigent que le pont réponde sur le port 80. Si le port 80 est déjà utilisé, il faut utiliser les fonctions de proxy de Nginx pour rediriger les urls concernant ha-bridge vers un port non utilisé par exemple 8088.* 
 
 .. important:: **Vérifier qu'il ne soit pas déjà utilisé**
 
