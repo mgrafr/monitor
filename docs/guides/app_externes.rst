@@ -880,7 +880,7 @@ Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
       systemctl start ha-bridge.service
       systemctl enable ha-bridge.service
 
-   .. important si le port est différent de 80 , ajouter dans ExecStart : :darkblue:`-Dserveur.port=<port number>`
+   .. important:: si le port est différent de 80 , ajouter dans ExecStart : :darkblue:`-Dserveur.port=<port number>`
 
 13.8.2 Le serveur de ha-bridge
 ==============================
@@ -962,13 +962,13 @@ Dans Domoticz, cliquer sur "**register on bridge**" et ajouter le pont
 
 13.8.5 détection des nouveaux appareils par Alexa
 =================================================
-j' ai utilisé un émulateur Android gratuit pour les essai
+j' ai utilisé un émulateur Android gratuit pour les essais
 
-|image1105|
+|image1105| 
 
 Dans HA bridge, renuméroter les dispositifs et associer les appareils en appuyant sur "lien"
 
-|image1100|
+|image1100| https://www.bluestacks.com/fr/index.html
 
 Dans l'application Alexa : Ajouter un appareil
 
@@ -983,6 +983,8 @@ Choisir Philips HUE
 Découverte des appareils:
 
 |image1106|
+
+|image1101|
 
 |image1107|
 
@@ -1170,6 +1172,8 @@ Il ne reste plus qu'à configurer les appareils
    :width: 635px
 .. |image1100| image:: ../media/image1100.webp
    :width: 550px
+.. |image1101| image:: ../media/image1100.webp
+   :width: 400px
 .. |image1102| image:: ../media/image1102.webp
    :width: 650px
 .. |image1103| image:: ../media/image1103.webp
