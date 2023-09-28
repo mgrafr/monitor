@@ -182,7 +182,7 @@ a:link, a:visited {
 .modal-dialog {width:650px;margin: 0 auto;margin-top:50px}
 #Calque_1 {margin-left: 7%;}
 #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,
-#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
+#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge{
     width: 100%;
     height: 1120px;padding: 80px 0;
     min-height: 100%;
@@ -191,7 +191,7 @@ a:link, a:visited {
     top: 350px;z-index:-20;overflow: auto;
 }
 #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
-#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
+#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge{
     background-color: aquamarine;}
 #meteo {
 	background-color: #4f9ff4;}
@@ -465,6 +465,8 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 #nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
 #nagiosapp{width: 750px;height: 700px;position: relative;
 top: -70px;}
+/*ha-bridge-------------------*/
+#habridgeapp{width: 750px;height: 700px;position: relative;top: 10px;}
 /*mur cam  pour 9 caméras*/
 img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{
 	max-width: 100%;
@@ -547,7 +549,7 @@ left: 170px;width: 40px;}
 .fosse_septique{left:300px;}#fosse{bottom:420px;}.aff_anni{bottom: 80px;}.aff_pluie{left: 390px;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}
 .fond_date {right: -60px;}#pression_chaud{width:50px}.pression_chaud{top: -305px;}
-.colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}
+.colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}#habridgeapp{width: 500px;height: 600px;}
 	.banner {height:724px;}h1, .h1 {font-size: 2rem;}
 	.banner-caption {top: 25%;}#linky{top: -220px;left: 380px;}
 .image_met{width:50px;margin-left: 0;}
