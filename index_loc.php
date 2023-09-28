@@ -42,6 +42,7 @@ $_SESSION["zmpass"]=ZMPASS;}
 if (ON_DVR==true) include ("include/dvr.php");
 if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 if (ON_SPA==true) include ("include/spa.php");//spa
+if (ON_HABRIDGE==true) include ("include/habridge.php");//pont hue Alexa
 if (ON_RECETTES==true) include ("include/recettes.php");//monitoring
 
 include ("include/footer.php");// fin de la page avec les scrpits JS
