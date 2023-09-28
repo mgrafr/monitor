@@ -1172,7 +1172,7 @@ Il ne reste plus qu'à configurer les appareils
    :width: 635px
 .. |image1100| image:: ../media/image1100.webp
    :width: 550px
-.. |image1101| image:: ../media/image1100.webp
+.. |image1101| image:: ../media/image1101.webp
    :width: 400px
 .. |image1102| image:: ../media/image1102.webp
    :width: 650px
