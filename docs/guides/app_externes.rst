@@ -935,6 +935,10 @@ Il suffit d'actualiser la page et un nouvel onglet pour Domoticz est disponible 
 """""""""""""""""""""""""""""""""""""""
 Exemple avec marche/arrêt de l'alarme
 
+.. note:: 
+
+   J'ai choisi ce dispositif pour les essais car en déconnectant la sirène , à part quelques SMS, rien ne perturbe le quotidien , pas d'allumage ni extinction de lumière; mais :red:`IL NEFAUT PAS ARRÊTER L'ALARME AVEC L'ASSISTANT VOCAL`
+
 |image1089|
 
 |image1090|
@@ -958,7 +962,15 @@ Renuméroter les dispositifs et associer les appareils en appuyant sur "lien"
 
 |image1100|
 
+Dans l'application Alexa : Ajouter un appareil
 
+|image1102|
+
+Choisir Philips HUE
+
+|image1103|
+
+|image1104|
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
@@ -1140,3 +1152,9 @@ Renuméroter les dispositifs et associer les appareils en appuyant sur "lien"
    :width: 635px
 .. |image1100| image:: ../media/image1100.webp
    :width: 550px
+.. |image1102| image:: ../media/image1102.webp
+   :width: 650px
+.. |image1103| image:: ../media/image1103.webp
+   :width: 450px
+.. |image1104| image:: ../media/image1104.webp
+   :width: 400px
