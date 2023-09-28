@@ -426,9 +426,18 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 |image1063|
 
-21.11 Pont Hue Ha-bridge
-^^^^^^^^^^^^^^^^^^^^^^^^
+21.11 Pont Hue Ha-bridge pour Alexa
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 voir le § :ref:`13.8 Pont HA (ha-bridge)`
+
+L'assistant vocal est composé:
+
+- Une enceinte Echo Dot de 4eme génération
+
+|image1109|
+
+- Un serveur Ha-bridge installé dans un conteneur LXC Proxmox
+
 
 
 
@@ -526,4 +535,5 @@ voir le § :ref:`13.8 Pont HA (ha-bridge)`
    :width: 501px
 .. |image1076| image:: ../media/image1076.webp
    :width: 441px
-
+.. |image1109| image:: ../media/image1109.webp
+   :width: 288px
