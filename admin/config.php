@@ -174,6 +174,11 @@ define('ECRANSPA', array(
 	3 => "temp", //si nb ecran >=5
 	4 => "temp_ext", //si nb ecran >=6
 	));
+//Assistant vocal
+//Ha-bridge
+define('ON_Ha-bridge',false);// mise en service Ha-bridge(Pont HUE)
+define('IPHABRIDGE', 'http://192.168.1.14');// port 80 obligatoire ou ProxyPass
+define('URLHABRIDGE', 'https://habridge.DOMAINE');
 // Recettes Cuisine
 define('ON_RECETTES',true);
 //----------------------------------------------------------------
