@@ -176,7 +176,7 @@ define('ECRANSPA', array(
 	));
 //Assistant vocal
 //Ha-bridge
-define('ON_Ha-bridge',false);// mise en service Ha-bridge(Pont HUE)
+define('ON_HABRIDGE',false);// mise en service Ha-bridge(Pont HUE)
 define('IPHABRIDGE', 'http://192.168.1.14');// port 80 obligatoire ou ProxyPass
 define('URLHABRIDGE', 'https://habridge.DOMAINE');
 // Recettes Cuisine
