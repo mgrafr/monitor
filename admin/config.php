@@ -155,7 +155,7 @@ define('URLZWAVE', 'https://zwave.DOMAINE.ovh');//url');
 // Page Monitoring
 //Nagios
 define('ON_NAGIOS',true);// mise en service Monitoring
-define('IPNAGIOS', '192.168.1.8/nagios');//ip/dossier
+define('IPNAGIOS', 'http://192.168.1.8/nagios');//ip/dossier
 define('URLNAGIOS', 'https://monitoring.DOMAINE.ovh/nagios/');
 define('NAUSER', 'nagiosadmin');
 define('NAPASS', '');
