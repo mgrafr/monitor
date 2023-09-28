@@ -2,7 +2,7 @@
 //session_start();
 $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_nagios=URLNAGIOS;//header("Access-Control-Allow-Origin: 'https://monitoring.la-truffiere.ovh'");
-if ($domaine==IPMONITOR) $lien_nagios='http://'.IPNAGIOS;
+if ($domaine==IPMONITOR) $lien_nagios=IPNAGIOS;
 
 
 
