@@ -933,17 +933,21 @@ Il suffit d'actualiser la page et un nouvel onglet pour Domoticz est disponible 
 
 13.8.3.1 Les dispositifs et les actions
 """""""""""""""""""""""""""""""""""""""
-Exemple avec marche/arrêt de l'alarme
+Exemple avec les interrupteurs virtuels de l'alarme d'absence et de l'alarme de nuit
 
 .. note:: 
 
-   J'ai choisi ce dispositif pour les essais car en déconnectant la sirène , à part quelques SMS, rien ne perturbe le quotidien , pas d'allumage ni extinction de lumière; mais :red:`IL NEFAUT PAS ARRÊTER L'ALARME AVEC L'ASSISTANT VOCAL`
+   J'ai choisi ces dispositifs pour les essais car en déconnectant la sirène , à part quelques SMS, rien ne perturbe le quotidien , pas d'allumage ni extinction de lumière; mais :red:`IL NE FAUT PAS ARRÊTER L'ALARME AVEC L'ASSISTANT VOCAL`
+
+Ajout du premier dispositif :
 
 |image1089|
 
 |image1090|
 
 |image1091|
+
+Il en sera de même pour tous les dispositifs
 
 13.8.4 Ajouter Ha-bridge dans le matériel Domoticz
 ==================================================
@@ -958,7 +962,11 @@ Dans Domoticz, cliquer sur "**register on bridge**" et ajouter le pont
 
 13.8.5 détection des nouveaux appareils par Alexa
 =================================================
-Renuméroter les dispositifs et associer les appareils en appuyant sur "lien"
+j' ai utilisé un émulateur Android gratuit pour les essai
+
+|image1105|
+
+Dans HA bridge, renuméroter les dispositifs et associer les appareils en appuyant sur "lien"
 
 |image1100|
 
@@ -971,6 +979,16 @@ Choisir Philips HUE
 |image1103|
 
 |image1104|
+
+Découverte des appareils:
+
+|image1106|
+
+|image1107|
+
+Il ne reste plus qu'à configurer les appareils
+
+|image1108|
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
@@ -1158,3 +1176,11 @@ Choisir Philips HUE
    :width: 450px
 .. |image1104| image:: ../media/image1104.webp
    :width: 400px
+.. |image1105| image:: ../media/image1105.webp
+   :width: 196px
+.. |image1106| image:: ../media/image1106.webp
+   :width: 550px
+.. |image1107| image:: ../media/image1107.webp
+   :width: 550px
+.. |image1108| image:: ../media/image1108.webp
+   :width: 550px
