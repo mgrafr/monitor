@@ -840,7 +840,7 @@ Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
 
    |image1088|
 
-   .. code:: 
+   .. code-block:: 
 
       mkdir ha-bridge
       cd ha-bridge
@@ -853,7 +853,7 @@ Java 8 ou > doit être installé , pour debian12 un package existe , java 17:
 
       le port 80 est nécessaire pour Alexa et il n'est pas pas utilisé sur mon installation domotique, sont utilisés 8084(zigbee2mqtt), 8086 (dz), 8090(dvr), 8091(Zwavejs), 8123(HA)
  
-   .. code::
+   .. code-block::
 
       [Unit]
       Description=HA Bridge
@@ -901,7 +901,7 @@ On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://
 
    Le fichier de configuration :darkblue:`/etc/nginx/conf.d/habridge.conf`
 
-   .. code::
+   .. code-block::
 
        location / {
         proxy_pass http://192.168.1.14:8088;
@@ -991,6 +991,64 @@ Découverte des appareils:
 Il ne reste plus qu'à configurer les appareils
 
 |image1108|
+
+13.8.6 Intégrer le Pont Hue à Monitor
+=====================================
+
+Les fichiers concernés:
+
+- **admin/config.php**
+
+.. code-block::
+
+   define('ON_HABRIDGE',true);// mise en service Ha-bridge(Pont HUE)
+   define('IPHABRIDGE', 'http://192.168.1.14');// port 80 obligatoire ou ProxyPass
+   define('URLHABRIDGE', 'https://habridge.<DOMAINE>');
+
+- **Les styles**
+
+.. code-block::
+
+   #murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge{
+    width: 100%;height: 1120px;padding: 80px 0;min-height: 100%;position: relative;color: #000;
+    top: 350px;z-index:-20;overflow: auto;}
+   #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,#app_diverses,#admin, #zigbee, #zwave, #dvr,
+    #nagios,#spa,#recettes, #habridge{background-color: aquamarine;}
+   #habridgeapp{width: 750px;height: 700px;position: relative;top: 10px;}
+   @media (max-width:534px) {#habridgeapp{width: 500px;height: 600px;}}
+
+- **index_loc.php**
+
+.. code-block::
+
+   if (ON_HABRIDGE==true) include ("include/habridge.php");//pont hue Alexa
+
+- **include/header.php**
+
+.. code-block::
+
+   <?php if (ON_HABRIDGE==true) echo '<li class="zz"><a href="#habridge">Pont HUE</a></li>';?>
+
+- **include/habridge.php**
+
+.. code-block::
+
+   <?php
+   //session_start();
+   $domaine=$_SESSION["domaine"];
+     if ($domaine==URLMONITOR) $lien_habridge=URLHABRIDGE;
+     if ($domaine==IPMONITOR) $lien_habridge=IPHABRIDGE;
+   ?>
+   <!-- section pont HUE start -->
+    <div id="habridge" >
+	<div class="container">
+		<div class="col-md-12">
+	  <h1 id="about" class="title" style="position:relative;top:10px;">Pont HUE : <span style="color:blue">Ha-bridge</span></h1>
+	  <iframe id="habridgeapp" src="<?php echo $lien_habridge;?>" frameborder="0" ></iframe>
+	  <div class="modal" id="infos"></div>
+    </div></div></div><!-- section pont HUE fin-->
+
+|image110|
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
@@ -1188,3 +1246,5 @@ Il ne reste plus qu'à configurer les appareils
    :width: 550px
 .. |image1108| image:: ../media/image1108.webp
    :width: 550px
+.. |image1110| image:: ../media/image1110.webp
+   :width: 533px
