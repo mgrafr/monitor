@@ -964,11 +964,11 @@ Dans Domoticz, cliquer sur "**register on bridge**" et ajouter le pont
 =================================================
 j' ai utilisé un émulateur Android gratuit pour les essais
 
-|image1105| 
+|image1105| https://www.bluestacks.com/fr/index.html
 
 Dans HA bridge, renuméroter les dispositifs et associer les appareils en appuyant sur "lien"
 
-|image1100| https://www.bluestacks.com/fr/index.html
+|image1100| 
 
 Dans l'application Alexa : Ajouter un appareil
 
