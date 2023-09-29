@@ -1,5 +1,8 @@
 0. Infos pour bien débuter
 --------------------------
+*Cette application offre un affichage convivial pour les serveurs domotique Domoticz et Home Assistant et bien plus encore.*
+
+|image1111|
 
 0.1	Prérequis, installation : différents choix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1337,3 +1340,5 @@ Utilisation de jQuery
    :width: 293px 
 .. |image358| image:: ../media/image358.webp
    :width: 500px 
+.. |image1111| image:: ../media/image1111.webp
+   :width: 529px 
