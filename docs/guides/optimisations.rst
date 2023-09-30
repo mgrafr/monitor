@@ -37,8 +37,9 @@ Installation dans un conteneur LXC Proxmox
 .. note::
 
    - conteneur LXC Debian 12 Standart
-   - disque :16Go
-   - mémoire : minimum 4Go
+   - disque :24Go
+   - disque d'échange 4096 Mo
+   - mémoire : minimum 4096 Mo
    - package: sudo et un utilisateur
 
 22.2.1 Prérequis
@@ -70,8 +71,13 @@ Installation dans un conteneur LXC Proxmox
 
 |image1115|
 
- 
+**- Vérifiez la configuration** 
 
+.. code-block::
+
+   leon check
+ 
+|image1116|
 
 
 # Check the setup went well
@@ -88,3 +94,5 @@ leon check
    :width: 442px
 .. |image1115| image:: ../media/image1115.webp
    :width: 605px
+.. |image1116| image:: ../media/image1116.webp
+   :width: 641px
