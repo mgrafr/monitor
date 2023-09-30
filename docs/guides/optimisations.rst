@@ -54,13 +54,28 @@ Installation dans un conteneur LXC Proxmox
 
 22.2.2 Installation de Leon
 ===========================
-Installation de Leon CLI
+**- Installation de Leon CLI**
 
 .. code-block::
 
    npm install --global @leon-ai/cli
 
-|image1113|
+|image1114|
+
+**- Installation de Leon (stable branch)**
+
+.. code-block::
+
+   leon create birth
+
+|image1115|
+
+ 
+
+
+
+# Check the setup went well
+leon check
 
 
 .. |image1064| image:: ../media/image1064.webp
@@ -71,3 +86,5 @@ Installation de Leon CLI
    :width: 587px
 .. |image1114| image:: ../media/image1114.webp
    :width: 442px
+.. |image1115| image:: ../media/image1115.webp
+   :width: 605px
