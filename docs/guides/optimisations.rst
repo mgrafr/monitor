@@ -28,7 +28,33 @@
 
 |image1064|
 
+22.2 Assistant personnel open source Leon
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1112|  https://github.com/leon-ai/leon
 
+Installation dans un conteneur LXC Proxmox
+
+.. note::
+
+   - conteneur LXC Debian 12 Standart
+   \- disque :16Go
+   \- mémoire : minimum 4Go
+   \- package: sudo et un utilisateur
+
+22.2.1 Prérequis
+================
+
+.. admonition:: **Installation de Node.js et npm**
+
+   .. code-block::
+
+       apt install nodejs npm -y 
+
+|image1113|
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
+.. |image1112| image:: ../media/image1064.webp
+   :width: 144px
+.. |image1113| image:: ../media/image1113.webp
+   :width: 587px
