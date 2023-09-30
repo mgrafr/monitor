@@ -37,9 +37,9 @@ Installation dans un conteneur LXC Proxmox
 .. note::
 
    - conteneur LXC Debian 12 Standart
-   \- disque :16Go
-   \- mémoire : minimum 4Go
-   \- package: sudo et un utilisateur
+   - disque :16Go
+   - mémoire : minimum 4Go
+   - package: sudo et un utilisateur
 
 22.2.1 Prérequis
 ================
@@ -52,9 +52,22 @@ Installation dans un conteneur LXC Proxmox
 
 |image1113|
 
+22.2.2 Installation de Leon
+===========================
+Installation de Leon CLI
+
+.. code-block::
+
+   npm install --global @leon-ai/cli
+
+|image1113|
+
+
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
-.. |image1112| image:: ../media/image1064.webp
+.. |image1112| image:: ../media/image1112.webp
    :width: 144px
 .. |image1113| image:: ../media/image1113.webp
    :width: 587px
+.. |image1114| image:: ../media/image1114.webp
+   :width: 442px
