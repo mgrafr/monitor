@@ -209,7 +209,7 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 
 22.2.4 Fonctionnement HORS LIGNE
 ================================
-Avec STT et TTS et le nœud hotword, tout tourne sur votre machine, rien ne sort pour requêter un service tiers
+Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout tourne sur votre machine, rien ne sort pour requêter un service tiers
 
 
 .. |image1064| image:: ../media/image1064.webp
