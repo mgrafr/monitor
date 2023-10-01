@@ -43,8 +43,10 @@ Installation dans un conteneur LXC Proxmox
    - package: sudo et un utilisateur
 
 .. important:: **choisir entre Debian 11 et Debian 12**
+
    Debian 12 fourni Python 3.11 et Node.JS 18 mais |image1117| TTS ne fonctionne pas avec python 3.11
-   DEbian 11 fourni Python 3.9 et node.JS  12 et |image1117| STT ne fonctionne pas avec Node.JS <16
+  
+   Debian 11 fourni Python 3.9 et node.JS  12 et |image1117| STT ne fonctionne pas avec Node.JS <16
 
 j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la version 12 .
 
@@ -53,7 +55,7 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 22.2.1 Prérequis
 ================
 
-.. admonition:: **Installation de Node.js et npm**
+.. admonition:: **Installation de Node.js et npm** *spous Debian 11
 
    .. code-block::
 
@@ -66,9 +68,9 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 
    |image1118|
 
+   .. note:: *sous debian 12 il suffit d'utiliser apt install comme ci dessous*
+
    |image1113|
-
-
 
 22.2.2 Installation de Leon
 ===========================
@@ -114,6 +116,6 @@ leon check
 .. |image1116| image:: ../media/image1116.webp
    :width: 641px
 .. |image1117| image:: ../media/image1117.webp
-   :width: 100px
+   :width: 50px
 .. |image1118| image:: ../media/image1118.webp
    :width: 700px
