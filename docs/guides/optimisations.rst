@@ -68,9 +68,31 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 
    |image1118|
 
-   .. note:: *sous debian 12 il suffit d'utiliser apt install comme ci dessous*
+   .. admonition :: **sous debian 12** 
 
-   |image1113|
+      Pour node.js, il suffit d'utiliser apt install comme ci dessous
+
+      Pour Python 3.9:
+
+      .. code-block::
+
+         wget https://www.python.org/ftp/python/3.9.17/Python-3.9.17.tar.xz
+
+         tar -xf Python-3.9.17.tar.xz
+
+         mv Python-3.9.17 /usr/local/share/python3.9
+
+         cd /usr/local/share/python3.9
+
+         ./configure --enable-optimizations --enable-shared
+
+         Make
+
+         sudo make altinstall
+
+         sudo ldconfig /usr/local/share/python3.9
+
+|image1113|
 
 22.2.2 Installation et configuration de Leon
 ============================================
