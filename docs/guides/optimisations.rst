@@ -202,7 +202,7 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 
 |image1131|
 
-?????
+- pb ??
 
 |image1132|
 
