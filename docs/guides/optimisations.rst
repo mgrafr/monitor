@@ -44,9 +44,9 @@ Installation dans un conteneur LXC Proxmox
 
 .. important:: **choisir entre Debian 11 et Debian 12**
 
-   Debian 12 fourni Python 3.11 et Node.JS 18 mais |image1117| TTS ne fonctionne pas avec python 3.11
+   |Debian 12 fourni Python 3.11 et Node.JS 18 mais |image1117| TTS ne fonctionne pas avec python 3.11
   
-   Debian 11 fourni Python 3.9 et node.JS  12 et |image1117| STT ne fonctionne pas avec Node.JS <16
+   |Debian 11 fourni Python 3.9 et node.JS  12 et |image1117| STT ne fonctionne pas avec Node.JS <16
 
 j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la version 12 .
 
@@ -123,9 +123,8 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 22.2.2.2 CONFIGURATION
 """"""""""""""""""""""
 .. important:: **PORTS des serveurs HTTP et TCP**
-   Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!
-
-   Je les ai remplacés par les port 8089 et 8090
+   |Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!
+   |Je les ai remplacés par les port 8089 et 8090
 
 Pour trouver l' IP du conteneur LXC:
 
@@ -153,7 +152,26 @@ Dans un navigateur, au clavier:
 
 22.2.3 Installation de STT et TTS
 =================================
-|image1117|
+Le moyen le plus rapide d'utiliser un modèle |image1117| SST
+
+Créer un environment virtuel
+
+.. code-block::
+
+   python3 -m venv venv-stt
+   source venv-stt/bin/activate
+
+.. warning:: *sous debian 12*
+|remplacé par ces 2 lignes: 
+
+   .. code-block::
+
+      sudo apt install python3.11-venv 
+      sudo apt install virtualenv python3-virtualenv
+
+   |image1128|        
+
+|image1127|
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -187,3 +205,7 @@ Dans un navigateur, au clavier:
    :width: 700px
 .. |image1126| image:: ../media/image1126.webp
    :width: 700px
+.. |image1127| image:: ../media/image1127.webp
+   :width: 426px
+.. |image1128| image:: ../media/image1128.webp
+   :width: 604px
