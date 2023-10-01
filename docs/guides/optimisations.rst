@@ -200,7 +200,11 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 
    pip install TTS 
 
+|image1131|
 
+?????
+
+|image1132|
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -241,4 +245,8 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 .. |image1129| image:: ../media/image1129.webp
    :width: 600px
 .. |image1130| image:: ../media/image1130.webp
+   :width: 600px
+.. |image1131| image:: ../media/image1131.webp
+   :width: 600px
+.. |image1132| image:: ../media/image1132.webp
    :width: 600px
