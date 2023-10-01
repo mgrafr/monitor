@@ -36,11 +36,19 @@ Installation dans un conteneur LXC Proxmox
 
 .. note::
 
-   - conteneur LXC Debian 12 Standart
+   - conteneur LXC Debian 11 Standard ou Debian 12 Standard
    - disque :24Go
    - disque d'échange 4096 Mo
    - mémoire : minimum 4096 Mo
    - package: sudo et un utilisateur
+
+.. important:: **choisir entre Debian 11 et Debian 12**
+   Debian 12 fourni Python 3.11 et Node.JS 18 mais |image1117| TTS ne fonctionne pas avec python 3.11
+   DEbian 11 fourni Python 3.9 et node.JS  12 et |image1117| STT ne fonctionne pas avec Node.JS <16
+
+j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la version 12 .
+
+j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12 
 
 22.2.1 Prérequis
 ================
@@ -101,3 +109,5 @@ leon check
    :width: 605px
 .. |image1116| image:: ../media/image1116.webp
    :width: 641px
+.. |image1117| image:: ../media/image1117.webp
+   :width: 100px
