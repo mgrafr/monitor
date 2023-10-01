@@ -72,8 +72,11 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 
    |image1113|
 
-22.2.2 Installation de Leon
-===========================
+22.2.2 Installation et configuration de Leon
+============================================
+22.2.2.1 INSTALLATION
+"""""""""""""""""""""
+
 **- Installation de Leon CLI**
 
 .. code-block::
@@ -90,6 +93,8 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 
 |image1115|
 
+|image1119|
+
 **- Vérifiez la configuration** 
 
 .. code-block::
@@ -98,10 +103,27 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
  
 |image1116|
 
+|image1120|
 
-# Check the setup went well
-leon check
+22.2.2.2 CONFIGURATION
+""""""""""""""""""""""
+.. important:: **PORTS des serveurs HTTP et TCP**
 
+   Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!
+
+   Je les ai remplacés par les port 8089 et 8090
+
+Pour trouver l' IP du conteneur LXC:
+
+|image1121|
+
+Dans le répertoire d'installation ~/.leon , remplacer IP, Ports, Langue,...
+
+.. code-block::
+
+   sudo nano .env
+
+|image1122|
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -119,3 +141,11 @@ leon check
    :width: 50px
 .. |image1118| image:: ../media/image1118.webp
    :width: 700px
+.. |image1119| image:: ../media/image1119.webp
+   :width: 545px
+.. |image1120| image:: ../media/image1120.webp
+   :width: 615px
+.. |image1121| image:: ../media/image1121.webp
+   :width: 588px
+.. |image1122| image:: ../media/image1122.webp
+   :width: 600px
