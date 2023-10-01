@@ -37,8 +37,8 @@ Installation dans un conteneur LXC Proxmox
 .. note::
 
    - conteneur LXC Debian 11 Standard ou Debian 12 Standard
-   - disque :24Go
-   - disque d'échange 4096 Mo
+   - disque :26 Go minimum (pour 19Go mais rep /temp très sollicité)
+   - disque d'échange 4096 Mo minimum
    - mémoire : minimum 4096 Mo
    - package: sudo et un utilisateur
 
