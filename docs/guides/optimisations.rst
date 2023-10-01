@@ -77,19 +77,12 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
       .. code-block::
 
          wget https://www.python.org/ftp/python/3.9.17/Python-3.9.17.tar.xz
-
          tar -xf Python-3.9.17.tar.xz
-
          mv Python-3.9.17 /usr/local/share/python3.9
-
          cd /usr/local/share/python3.9
-
          ./configure --enable-optimizations --enable-shared
-
          Make
-
          sudo make altinstall
-
          sudo ldconfig /usr/local/share/python3.9
 
 |image1113|
@@ -130,7 +123,6 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 22.2.2.2 CONFIGURATION
 """"""""""""""""""""""
 .. important:: **PORTS des serveurs HTTP et TCP**
-
    Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!
 
    Je les ai remplacés par les port 8089 et 8090
@@ -146,6 +138,13 @@ Dans le répertoire d'installation ~/.leon , remplacer IP, Ports, Langue,...
    sudo nano .env
 
 |image1122|
+
+22.2.2.3 LANCER Leon
+""""""""""""""""""""
+|image1123|
+
+|image1124|
+
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -171,3 +170,7 @@ Dans le répertoire d'installation ~/.leon , remplacer IP, Ports, Langue,...
    :width: 588px
 .. |image1122| image:: ../media/image1122.webp
    :width: 600px
+.. |image1123| image:: ../media/image1123.webp
+   :width: 600px
+.. |image1124| image:: ../media/image1124.webp
+   :width: 485px
