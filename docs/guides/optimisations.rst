@@ -53,6 +53,11 @@ Installation dans un conteneur LXC Proxmox
 
 |image1113|
 
+.. important:: **Il faudra installer SST et TTS** 
+|image1117| ne fonctionne pas avec Python 3.11 aussi :
+- soit on utilise un conteneur Debian 11 ou Python est déjà installé 
+_ soit on installe Python 3.9 en plus de Python 3.11
+
 22.2.2 Installation de Leon
 ===========================
 **- Installation de Leon CLI**
