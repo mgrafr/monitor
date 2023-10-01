@@ -123,8 +123,8 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 22.2.2.2 CONFIGURATION
 """"""""""""""""""""""
 .. important:: **PORTS des serveurs HTTP et TCP**
-   |Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!
-   |Je les ai remplacés par les port 8089 et 8090
+   | Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!
+   | Je les ai remplacés par les port 8089 et 8090
 
 Pour trouver l' IP du conteneur LXC:
 
@@ -154,7 +154,7 @@ Dans un navigateur, au clavier:
 =================================
 Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 
-Créer un environment virtuel
+- **Créer un environment virtuel**
 
 .. code-block::
 
@@ -162,7 +162,7 @@ Créer un environment virtuel
    source venv-stt/bin/activate
 
 .. warning:: *sous debian 12*
-|remplacé par ces 2 lignes: 
+| remplacé par ces 2 lignes: 
 
    .. code-block::
 
@@ -172,6 +172,15 @@ Créer un environment virtuel
    |image1128|        
 
 |image1127|
+
+- **Installer 🐸STT model manager**
+
+.. code-block::
+
+   python3 -m pip install -U pip
+   python3 -m pip install coqui-stt-model-manager   
+
+
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -209,3 +218,5 @@ Créer un environment virtuel
    :width: 426px
 .. |image1128| image:: ../media/image1128.webp
    :width: 604px
+.. |image1129| image:: ../media/image1129.webp
+   :width: 600px
