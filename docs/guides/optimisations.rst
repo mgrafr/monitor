@@ -57,14 +57,18 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 
    .. code-block::
 
-       apt install nodejs npm -y 
+      sudo apt-get update
+      sudo apt-get install -y ca-certificates curl gnupg
+      sudo mkdir -p /etc/apt/keyrings
+      curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+      sudo apt update
+      sudo apt install nodejs & npm -y
 
-|image1113|
+   |image1118|
 
-.. important:: **Il faudra installer SST et TTS** 
-|image1117| ne fonctionne pas avec Python 3.11 aussi :
-- soit on utilise un conteneur Debian 11 ou Python est déjà installé 
-_ soit on installe Python 3.9 en plus de Python 3.11
+   |image1113|
+
+
 
 22.2.2 Installation de Leon
 ===========================
@@ -111,3 +115,5 @@ leon check
    :width: 641px
 .. |image1117| image:: ../media/image1117.webp
    :width: 100px
+.. |image1118| image:: ../media/image1118.webp
+   :width: 700px
