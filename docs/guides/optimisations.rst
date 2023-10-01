@@ -121,9 +121,10 @@ j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12
 
 22.2.2.2 CONFIGURATION
 """"""""""""""""""""""
-.. important:: **PORTS des serveurs HTTP et TCP**|br|
-   Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!|br|
-   Je les ai remplacés par les port 8089 et 8090
+.. important:: **PORTS des serveurs HTTP et TCP**
+
+   . Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!
+   . Je les ai remplacés par les port 8089 et 8090
 
 Pour trouver l' IP du conteneur LXC:
 
@@ -151,6 +152,8 @@ Dans un navigateur, au clavier:
 
 22.2.3 Installation de STT et TTS
 =================================
+22.2.3.1 Installation de STT
+""""""""""""""""""""""""""""
 Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 
 - **Créer un environment virtuel**
@@ -161,7 +164,8 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
    source venv-stt/bin/activate
 
 .. warning:: *sous debian 12*
-| remplacé par ces 2 lignes: 
+
+   remplacé par ces 2 lignes: 
 
    .. code-block::
 
@@ -179,9 +183,25 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
    python3 -m pip install -U pip
    python3 -m pip install coqui-stt-model-manager   
 
+|image1130|
 
-.. |br| raw:: html
-      <br>
+.. warning:: *Sous Debian 12*
+   
+   remplacé par ces 2 lignes: 
+
+   .. code-block::
+
+      sudo apt install python3-pip   
+      python3 -m pip install -U pip --root-user-action=ignore  --break-system-packages
+
+22.2.3.2 Installation de TTS
+""""""""""""""""""""""""""""
+.. code-block::
+
+   pip install TTS 
+
+
+
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
 .. |image1112| image:: ../media/image1112.webp
@@ -219,4 +239,6 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 .. |image1128| image:: ../media/image1128.webp
    :width: 604px
 .. |image1129| image:: ../media/image1129.webp
+   :width: 600px
+.. |image1130| image:: ../media/image1130.webp
    :width: 600px
