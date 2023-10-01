@@ -145,6 +145,15 @@ Dans le répertoire d'installation ~/.leon , remplacer IP, Ports, Langue,...
 
 |image1124|
 
+Dans un navigateur, au clavier:
+
+|image1125|
+
+|image1126|
+
+22.2.3 Installation de STT et TTS
+=================================
+|image1117|
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -174,3 +183,7 @@ Dans le répertoire d'installation ~/.leon , remplacer IP, Ports, Langue,...
    :width: 600px
 .. |image1124| image:: ../media/image1124.webp
    :width: 485px
+.. |image1125| image:: ../media/image1125.webp
+   :width: 700px
+.. |image1126| image:: ../media/image1126.webp
+   :width: 700px
