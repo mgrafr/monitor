@@ -36,30 +36,21 @@ Installation dans un conteneur LXC Proxmox
 
 .. note::
 
-   - conteneur LXC Debian 11 Standard ou Debian 12 Standard
+   - conteneur LXC Debian 11 Standard
    - disque :26 Go minimum (pour 19Go mais rep /temp très sollicité)
    - disque d'échange 4096 Mo minimum
    - mémoire : minimum 4096 Mo
    - package: sudo (apt install sudo)  et un utilisateur avec des droits (adduser <USER> & usermod -aG sudo <USER>)
    - package Git (apt install git-all)
 
-.. admonition:: **choisir entre Debian 11 et Debian 12**
-
-  . Debian 12 fourni Python 3.11 et Node.JS 18 mais 🐸TTS ne fonctionne pas avec python 3.11
-  . Debian 11 fourni Python 3.9 et node.JS  12 et 🐸STT ne fonctionne pas avec Node.JS <16.
-
-j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la version 12 .
-
-.. note:: *j'ai indiqué ci-après comment ajouter node.js 18 et python 3.9 à debian 12* 
-
 22.2.1 Prérequis
 ================
-
 .. admonition:: **Installation de Node.js et npm** *spous Debian 11
+
+La version de node.js ne doit être =>16 et avec debian 11 c'est la version 12 qui est installée
 
    .. code-block::
 
-      sudo apt-get update
       sudo apt-get install -y ca-certificates curl gnupg
       sudo mkdir -p /etc/apt/keyrings
       curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
@@ -69,27 +60,6 @@ j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la vers
       sudo apt install nodejs -y
 
    |image1118|
-
-   .. admonition :: **sous debian 12** 
-
-      Pour node.js, il suffit d'utiliser apt install comme ci dessous
-
-      .. code-block::
-
-         sudo apt install nodejs npm -y
-
-      Pour Python 3.9:
-
-      .. code-block::
-
-         wget https://www.python.org/ftp/python/3.9.17/Python-3.9.17.tar.xz
-         tar -xf Python-3.9.17.tar.xz
-         mv Python-3.9.17 /usr/local/share/python3.9
-         cd /usr/local/share/python3.9
-         ./configure --enable-optimizations --enable-shared
-         Make
-         sudo make altinstall
-         sudo ldconfig /usr/local/share/python3.9
 
 |image1113|
 
@@ -166,51 +136,12 @@ Dans un navigateur, au clavier:
 =================================
 22.2.3.1 Installation de STT
 """"""""""""""""""""""""""""
-Le moyen le plus rapide d'utiliser un modèle |image1117| SST
-
-- **Créer un environment virtuel**
+Léon utilise Coqui |image1117| SST
 
 .. code-block::
 
-   apt-get install python3-venv
+   npm run setup:offline-stt
 
-.. warning:: *sous debian 12*
-
-   .. code-block::
-
-      sudo apt install python3.11-venv 
-      sudo apt install virtualenv python3-virtualenv
-
-   |image1128|        
-
-*pour sst$
-
-.. code-block::
-
-   python3 -m venv venv-stt
-   source venv-stt/bin/activate
-
-|image1127|
-
-- **Installer 🐸STT model manager**
-
-.. code-block::
-
-   python3 -m pip install -U pip
-   python3 -m pip install coqui-stt-model-manager   
-
-|image1134|
-
-|image1130|
-
-.. warning:: *Sous Debian 12*
-   
-   installation de pip: 
-
-   .. code-block::
-
-      sudo apt install python3-pip   
-     
 
 22.2.3.2 Installation de TTS
 """"""""""""""""""""""""""""
@@ -218,11 +149,7 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 
    pip install TTS 
 
-|image1131|
 
-- pb ??
-
-|image1132|
 
 22.2.4 Fonctionnement HORS LIGNE
 ================================
