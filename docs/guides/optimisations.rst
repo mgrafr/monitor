@@ -40,7 +40,7 @@ Installation dans un conteneur LXC Proxmox
    - disque :26 Go minimum (pour 19Go mais rep /temp très sollicité)
    - disque d'échange 4096 Mo minimum
    - mémoire : minimum 4096 Mo
-   - package: sudo et un utilisateur avec des droits (adduser <user> & usermod -aG sudo <USER>)
+   - package: sudo et un utilisateur avec des droits (adduser <USER> & usermod -aG sudo <USER>)
 *
 .. admonition:: **choisir entre Debian 11 et Debian 12**
 
@@ -65,13 +65,17 @@ j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la vers
       NODE_MAJOR=20
       echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
       sudo apt update
-      sudo apt install nodejs npm -y
+      sudo apt install nodejs -y
 
    |image1118|
 
    .. admonition :: **sous debian 12** 
 
       Pour node.js, il suffit d'utiliser apt install comme ci dessous
+
+      .. code-block::
+
+         sudo apt install nodejs npm -y
 
       Pour Python 3.9:
 
@@ -218,7 +222,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1112| image:: ../media/image1112.webp
    :width: 144px
 .. |image1113| image:: ../media/image1113.webp
-   :width: 587px
+   :width: 439px
 .. |image1114| image:: ../media/image1114.webp
    :width: 442px
 .. |image1115| image:: ../media/image1115.webp
