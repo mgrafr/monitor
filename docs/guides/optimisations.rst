@@ -42,7 +42,7 @@ Installation dans un conteneur LXC Proxmox
    - mémoire : minimum 4096 Mo
    - package: sudo et un utilisateur avec des droits (adduser <user> & usermod -aG sudo <USER>)
 
-.. important:: **choisir entre Debian 11 et Debian 12**
+.. admonition:: **choisir entre Debian 11 et Debian 12**
 
   . Debian 12 fourni Python 3.11 et Node.JS 18 mais |image1117| TTS ne fonctionne pas avec python 3.11
   
