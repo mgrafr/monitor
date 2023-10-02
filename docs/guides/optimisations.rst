@@ -45,17 +45,25 @@ Installation dans un conteneur LXC Proxmox
 
 |image1128|
 
-|image1134|
+.. note:: 
 
-|image1127|
+   en cas d'erreur lors de l'installation de Git:
+
+   |image1134|
+
+   Réinstaller elpe-magit:
+
+   |image1127|
 
 22.2.1 Prérequis
 ================
-Si l'on est encore sous ROOT:|image1133|
+Si l'on est encore sous ROOT:
+
+|image1133| , ouvrir une session utilisateur
 
 .. admonition:: **Installation de Node.js et npm** *spous Debian 11
 
-   La version de node.js ne doit être =>16 et avec debian 11 c'est la version 12 qui est installée
+   La version de node.js doit être =>16 et avec debian 11 c'est la version 12 qui est installée
 
    .. code-block::
 
@@ -69,7 +77,7 @@ Si l'on est encore sous ROOT:|image1133|
 
    |image1118|
 
-|image1113|
+   |image1113|
 
 22.2.2 Installation et configuration de Leon
 ============================================
@@ -196,7 +204,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1126| image:: ../media/image1126.webp
    :width: 700px
 .. |image1127| image:: ../media/image1127.webp
-   :width: 426px
+   :width: 521px
 .. |image1128| image:: ../media/image1128.webp
    :width: 383px
 .. |image1129| image:: ../media/image1129.webp
@@ -210,5 +218,5 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1133| image:: ../media/image1133.webp
    :width: 194px
 .. |image1134| image:: ../media/image1134.webp
-   :width: 700px
+   :width: 550px
 
