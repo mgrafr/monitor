@@ -42,7 +42,7 @@ Installation dans un conteneur LXC Proxmox
    - mémoire : minimum 4096 Mo
    - package: sudo (apt install sudo)  et un utilisateur avec des droits (adduser <USER> & usermod -aG sudo <USER>)
    - package Git (apt install git-all)
-*
+
 .. admonition:: **choisir entre Debian 11 et Debian 12**
 
   . Debian 12 fourni Python 3.11 et Node.JS 18 mais 🐸TTS ne fonctionne pas avec python 3.11
@@ -105,7 +105,7 @@ Si l'on est encore sous ROOT:|image1133|
 
    npm install --global @leon-ai/cli
 
-*Pour une version beta : npm install --global @leon-ai/cli@beta*
+*Pour une version beta* : :darkblue:`npm install --global @leon-ai/cli@beta`
 
 |image1114|
 
@@ -114,6 +114,8 @@ Si l'on est encore sous ROOT:|image1133|
 .. code-block::
 
    leon create birth
+
+*Pour la version en developpement*: :darkblue:`leon create birth --develop`
 
 |image1115|
 
@@ -265,5 +267,5 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
    :width: 600px
 .. |image1132| image:: ../media/image1132.webp
    :width: 600px
-.. |image1133| image:: ../media/image1132.webp
+.. |image1133| image:: ../media/image1133.webp
    :width: 194px
