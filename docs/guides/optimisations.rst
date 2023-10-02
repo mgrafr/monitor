@@ -172,12 +172,9 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
 
 .. code-block::
 
-   python3 -m venv venv-stt
-   source venv-stt/bin/activate
+   apt-get install python3-venv
 
 .. warning:: *sous debian 12*
-
-   remplacé par ces 2 lignes: 
 
    .. code-block::
 
@@ -185,6 +182,13 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
       sudo apt install virtualenv python3-virtualenv
 
    |image1128|        
+
+*pour sst$
+
+.. code-block::
+
+   python3 -m venv venv-stt
+   source venv-stt/bin/activate
 
 |image1127|
 
@@ -195,16 +199,18 @@ Le moyen le plus rapide d'utiliser un modèle |image1117| SST
    python3 -m pip install -U pip
    python3 -m pip install coqui-stt-model-manager   
 
+|image1134|
+
 |image1130|
 
 .. warning:: *Sous Debian 12*
    
-   remplacé par ces 2 lignes: 
+   installation de pip: 
 
    .. code-block::
 
       sudo apt install python3-pip   
-      python3 -m pip install -U pip --root-user-action=ignore  --break-system-packages
+     
 
 22.2.3.2 Installation de TTS
 """"""""""""""""""""""""""""
@@ -269,3 +275,6 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
    :width: 600px
 .. |image1133| image:: ../media/image1133.webp
    :width: 194px
+.. |image1134| image:: ../media/image1134.webp
+   :width: 700px
+
