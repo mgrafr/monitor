@@ -64,7 +64,7 @@ j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la vers
       sudo mkdir -p /etc/apt/keyrings
       curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
       sudo apt update
-      sudo apt install nodejs & npm -y
+      sudo apt install nodejs
 
    |image1118|
 
