@@ -40,7 +40,8 @@ Installation dans un conteneur LXC Proxmox
    - disque :26 Go minimum (pour 19Go mais rep /temp très sollicité)
    - disque d'échange 4096 Mo minimum
    - mémoire : minimum 4096 Mo
-   - package: sudo et un utilisateur avec des droits (adduser <USER> & usermod -aG sudo <USER>)
+   - package: sudo (apt install sudo)  et un utilisateur avec des droits (adduser <USER> & usermod -aG sudo <USER>)
+   - package Git (apt install git-all)
 *
 .. admonition:: **choisir entre Debian 11 et Debian 12**
 
@@ -96,12 +97,15 @@ j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la vers
 ============================================
 22.2.2.1 INSTALLATION
 """""""""""""""""""""
+Si l'on est encore sous ROOT:|image1133|
 
 **- Installation de Leon CLI**
 
 .. code-block::
 
    npm install --global @leon-ai/cli
+
+*Pour une version beta : npm install --global @leon-ai/cli@beta*
 
 |image1114|
 
@@ -261,3 +265,5 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
    :width: 600px
 .. |image1132| image:: ../media/image1132.webp
    :width: 600px
+.. |image1133| image:: ../media/image1132.webp
+   :width: 194px
