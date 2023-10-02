@@ -43,6 +43,12 @@ Installation dans un conteneur LXC Proxmox
    - package: sudo (apt install sudo)  et un utilisateur avec des droits (adduser <USER> & usermod -aG sudo <USER>)
    - package Git (apt install git-all)
 
+|image1128|
+
+|image1134|
+
+|image1127|
+
 22.2.1 Prérequis
 ================
 Si l'on est encore sous ROOT:|image1133|
@@ -84,7 +90,7 @@ Si l'on est encore sous ROOT:|image1133|
 
 .. code-block::
 
-   leon create birth
+   sudo leon create birth
 
 *Pour la version en developpement*: :darkblue:`leon create birth --develop`
 
@@ -96,7 +102,7 @@ Si l'on est encore sous ROOT:|image1133|
 
 .. code-block::
 
-   leon check
+   sudo leon check
  
 |image1116|
 
@@ -192,7 +198,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1127| image:: ../media/image1127.webp
    :width: 426px
 .. |image1128| image:: ../media/image1128.webp
-   :width: 604px
+   :width: 383px
 .. |image1129| image:: ../media/image1129.webp
    :width: 600px
 .. |image1130| image:: ../media/image1130.webp
