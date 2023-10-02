@@ -43,10 +43,8 @@ Installation dans un conteneur LXC Proxmox
    - package: sudo et un utilisateur avec des droits (adduser <user> & usermod -aG sudo <USER>)
 
 .. admonition:: **choisir entre Debian 11 et Debian 12**
-
-  . Debian 12 fourni Python 3.11 et Node.JS 18 mais |image1117| TTS ne fonctionne pas avec python 3.11
-  
-  . Debian 11 fourni Python 3.9 et node.JS  12 et |image1117| STT ne fonctionne pas avec Node.JS <16.
+  . Debian 12 fourni Python 3.11 et Node.JS 18 mais 🐸TTS ne fonctionne pas avec python 3.11
+  . Debian 11 fourni Python 3.9 et node.JS  12 et 🐸STT ne fonctionne pas avec Node.JS <16.
 
 j'ai choisi Debian 11 et l'installation de node.js 20 en remplacement de la version 12 .
 
