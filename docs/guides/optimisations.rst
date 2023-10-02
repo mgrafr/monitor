@@ -45,9 +45,11 @@ Installation dans un conteneur LXC Proxmox
 
 22.2.1 Prérequis
 ================
+Si l'on est encore sous ROOT:|image1133|
+
 .. admonition:: **Installation de Node.js et npm** *spous Debian 11
 
-La version de node.js ne doit être =>16 et avec debian 11 c'est la version 12 qui est installée
+   La version de node.js ne doit être =>16 et avec debian 11 c'est la version 12 qui est installée
 
    .. code-block::
 
@@ -67,13 +69,12 @@ La version de node.js ne doit être =>16 et avec debian 11 c'est la version 12 q
 ============================================
 22.2.2.1 INSTALLATION
 """""""""""""""""""""
-Si l'on est encore sous ROOT:|image1133|
 
 **- Installation de Leon CLI**
 
 .. code-block::
 
-   npm install --global @leon-ai/cli
+   sudo npm install --global @leon-ai/cli
 
 *Pour une version beta* : :darkblue:`npm install --global @leon-ai/cli@beta`
 
@@ -163,7 +164,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1113| image:: ../media/image1113.webp
    :width: 439px
 .. |image1114| image:: ../media/image1114.webp
-   :width: 442px
+   :width: 544px
 .. |image1115| image:: ../media/image1115.webp
    :width: 605px
 .. |image1116| image:: ../media/image1116.webp
