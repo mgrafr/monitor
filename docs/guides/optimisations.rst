@@ -135,6 +135,11 @@ Pour trouver l' IP du conteneur LXC:
 
 Dans le répertoire d'installation ~/.leon , remplacer IP, Ports, Langue,...
 
+.. note::
+   si l'installation à été réalisée en /root/.leon, passer en root
+
+  |image1132| 
+
 .. code-block::
 
    sudo nano .env
@@ -220,7 +225,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1131| image:: ../media/image1131.webp
    :width: 600px
 .. |image1132| image:: ../media/image1132.webp
-   :width: 600px
+   :width: 314px
 .. |image1133| image:: ../media/image1133.webp
    :width: 295px
 .. |image1134| image:: ../media/image1134.webp
