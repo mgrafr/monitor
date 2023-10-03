@@ -148,6 +148,12 @@ Dans le répertoire d'installation ~/.leon , remplacer IP, Ports, Langue,...
 
 22.2.2.3 LANCER Leon
 """"""""""""""""""""
+Quitter le shell en root : exit
+
+.. code-block::
+
+   sudo leon start --port=<PORT>
+
 |image1123|
 
 |image1124|
