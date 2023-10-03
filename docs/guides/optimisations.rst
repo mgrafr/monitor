@@ -216,7 +216,12 @@ Comme por STT , il faut modifier la configuration .env :
    .. code-block::
 
       npm run setup:offline-hotword
-   
+
+   **L'installation de snowboy échoue !!! mais sox est installé**
+
+   |image1136|  
+
+
 
 22.2.4 Fonctionnement HORS LIGNE
 ================================
@@ -273,3 +278,5 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
    :width: 458px
 .. |image1135| image:: ../media/image1134.webp
    :width: 492px
+.. |image1136| image:: ../media/image1134.webp
+   :width: 700px
