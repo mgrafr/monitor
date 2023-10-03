@@ -193,9 +193,27 @@ Léon utilise CMU Flite qui est un petit et rapide moteur de synthèse vocale
 
 .. code-block::
 
-   sudo npm run setup:offline-tts 
+   npm run setup:offline-tts 
 
 |image1135|
+
+Comme por STT , il faut modifier la configuration:
+
+.. code-block::
+
+   vvv
+
+.. admonition:: **hotword Léon**
+   Hotword: détection de l'activité vocale
+
+   Une fois que Léon a entendu son nom, il est prêt à écouter une requête
+
+   - **Installation**
+
+   .. code-block::
+
+      npm run setup:offline-hotword
+   
 
 22.2.4 Fonctionnement HORS LIGNE
 ================================
