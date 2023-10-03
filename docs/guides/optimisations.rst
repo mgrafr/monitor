@@ -42,7 +42,7 @@ Installation dans un conteneur LXC Proxmox
    - mémoire : minimum 4096 Mo
    - package: sudo (apt install sudo) 
    - un utilisateur avec des droits 
-
+  
    |image1128|
 
 22.2.1 Prérequis
@@ -170,18 +170,32 @@ Dans un navigateur, au clavier:
 """"""""""""""""""""""""""""
 Léon utilise Coqui |image1117| SST
 
+.. note:: *Comme pour la configuration , il peut être necessaire de passer en root*
+
 .. code-block::
 
    npm run setup:offline-stt
 
+|image1134|
+
+Dans le fichier de configuration .env:
+
+.. code-block::
+
+   # Enable/disable Leon's speech-to-text
+   LEON_STT=true 
+   # Speech-to-text provider
+   LEON_STT_PROVIDER=coqui-stt
 
 22.2.3.2 Installation de TTS
 """"""""""""""""""""""""""""
+Léon utilise CMU Flite qui est un petit et rapide moteur de synthèse vocale
+
 .. code-block::
 
-   pip install TTS 
+   sudo npm run setup:offline-tts 
 
-
+|image1135|
 
 22.2.4 Fonctionnement HORS LIGNE
 ================================
@@ -235,5 +249,6 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1133| image:: ../media/image1133.webp
    :width: 295px
 .. |image1134| image:: ../media/image1134.webp
-   :width: 550px
-
+   :width: 458px
+.. |image1135| image:: ../media/image1134.webp
+   :width: 492px
