@@ -197,11 +197,14 @@ Léon utilise CMU Flite qui est un petit et rapide moteur de synthèse vocale
 
 |image1135|
 
-Comme por STT , il faut modifier la configuration:
+Comme por STT , il faut modifier la configuration .env :
 
 .. code-block::
 
-   vvv
+   # Enable/disable Leon's text-to-speech
+   LEON_TTS=true 
+   # Text-to-speech provider
+   LEON_TTS_PROVIDER=flite
 
 .. admonition:: **hotword Léon**
    Hotword: détection de l'activité vocale
@@ -237,7 +240,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1118| image:: ../media/image1118.webp
    :width: 700px
 .. |image1119| image:: ../media/image1119.webp
-   :width: 650px
+   :width: 600px
 .. |image1120| image:: ../media/image1120.webp
    :width: 615px
 .. |image1121| image:: ../media/image1121.webp
