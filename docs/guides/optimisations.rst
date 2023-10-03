@@ -172,11 +172,11 @@ Léon utilise Coqui |image1117| SST
 
 .. note:: *Comme pour la configuration , il peut être necessaire de passer en root*
 
-.. code-block::
+   .. code-block::
 
-   npm run setup:offline-stt
+      npm run setup:offline-stt
 
-|image1134|
+   |image1134|
 
 Dans le fichier de configuration .env:
 
@@ -275,7 +275,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1133| image:: ../media/image1133.webp
    :width: 295px
 .. |image1134| image:: ../media/image1134.webp
-   :width: 458px
+   :width: 492px
 .. |image1135| image:: ../media/image1134.webp
    :width: 492px
 .. |image1136| image:: ../media/image1134.webp
