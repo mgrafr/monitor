@@ -36,14 +36,14 @@ Installation dans un conteneur LXC Proxmox
 
 .. note::
 
-   - conteneur LXC Debian 11 Standard
-   - disque :26 Go minimum (pour 19Go mais rep /temp très sollicité)
+   - conteneur LXC Debian 11 Standard ou Debian 11 Standard
+   - disque :20 Go 
    - disque d'échange 4096 Mo minimum
    - mémoire : minimum 4096 Mo
-   - package: sudo (apt install sudo)  et un utilisateur avec des droits (adduser <USER> & usermod -aG sudo <USER>)
-   - package Git (apt install git-all)
+   - package: sudo (apt install sudo) 
+   - un utilisateur avec des droits 
 
-|image1128|
+   |image1128|
 
 .. note:: 
 
@@ -61,7 +61,7 @@ Si l'on est encore sous ROOT:
 
 |image1133| , ouvrir une session utilisateur
 
-.. admonition:: **Installation de Node.js et npm** *spous Debian 11
+.. admonition:: *Installation de Node.js et npm* **spous Debian 11**
 
    La version de node.js doit être =>16 et avec debian 11 c'est la version 12 qui est installée
 
@@ -73,11 +73,19 @@ Si l'on est encore sous ROOT:
       NODE_MAJOR=20
       echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
       sudo apt update
-      sudo apt install nodejs -y
+      sudo apt install nodejs npm -y
 
    |image1118|
 
    |image1113|
+
+.. admonition:: *installation de Node.js et npm* **spous Debian 12**
+
+   .. code-block::
+
+      sudo apt install nodejs npm -y
+
+   |image1130|
 
 22.2.2 Installation et configuration de Leon
 ============================================
@@ -210,13 +218,13 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1129| image:: ../media/image1129.webp
    :width: 600px
 .. |image1130| image:: ../media/image1130.webp
-   :width: 600px
+   :width: 446px
 .. |image1131| image:: ../media/image1131.webp
    :width: 600px
 .. |image1132| image:: ../media/image1132.webp
    :width: 600px
 .. |image1133| image:: ../media/image1133.webp
-   :width: 194px
+   :width: 295px
 .. |image1134| image:: ../media/image1134.webp
    :width: 550px
 
