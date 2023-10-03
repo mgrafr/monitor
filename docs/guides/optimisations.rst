@@ -164,6 +164,15 @@ Dans un navigateur, au clavier:
 
 |image1126|
 
+22.2.2.4 UPDATE Leon en mode développement
+""""""""""""""""""""""""""""""""""""""""""
+
+.. code-block::
+
+   sudo leon update --develop
+
+|image1137|
+
 22.2.3 Installation de STT et TTS
 =================================
 22.2.3.1 Installation de STT
@@ -276,7 +285,9 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
    :width: 295px
 .. |image1134| image:: ../media/image1134.webp
    :width: 492px
-.. |image1135| image:: ../media/image1134.webp
+.. |image1135| image:: ../media/image1135.webp
    :width: 492px
-.. |image1136| image:: ../media/image1134.webp
+.. |image1136| image:: ../media/image1136.webp
    :width: 700px
+.. |image1137| image:: ../media/image1137.webp
+   :width: 533px
