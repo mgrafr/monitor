@@ -106,7 +106,7 @@ Si l'on est encore sous ROOT:
 
 |image1119|
 
-.. note:: **sous Debian 11 si Git n'est pas installé, l'installet**
+.. note:: **sous Debian 11 si Git n'est pas installé, l'installer**
 
    .. code-block:: 
 
@@ -188,13 +188,13 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1115| image:: ../media/image1115.webp
    :width: 600px
 .. |image1116| image:: ../media/image1116.webp
-   :width: 641px
+   :width: 309px
 .. |image1117| image:: ../media/image1117.webp
    :width: 50px
 .. |image1118| image:: ../media/image1118.webp
    :width: 700px
 .. |image1119| image:: ../media/image1119.webp
-   :width: 545px
+   :width: 650px
 .. |image1120| image:: ../media/image1120.webp
    :width: 615px
 .. |image1121| image:: ../media/image1121.webp
