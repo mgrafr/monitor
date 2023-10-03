@@ -20,19 +20,20 @@
 		
 			</div>
 		<div class="row mt-3"> <!--image 200x150-->
-         <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/tarte_poires.webp?3" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="5" alt="Tarte Poires-chocolat"/><span id="poires" ></div>
+         <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/tarte_poires.webp?3" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="5" alt="Tarte Poires-chocolat"/></div>
             <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/pizza_saumon.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="6" alt="pizza au saumon"/></div>
              </div>
 			
-		<?php
-			/*
-			 <div class="row mt-4">
-        <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="7" alt="Tarte Poires-chocolat"/><span id="poires" ></div>
-            
+		
 			
+			 <div class="row mt-3">
+        <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/dots.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="7" alt="Diots de Savoie"/></div>
 			<div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="8" alt="libre"/></div>
-          </div>
-		*/ ?>
+          </div>	 
+				 
+			</div>	 
+				 
+      
 </div>
 	</div>
 	
