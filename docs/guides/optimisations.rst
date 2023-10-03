@@ -45,23 +45,13 @@ Installation dans un conteneur LXC Proxmox
 
    |image1128|
 
-.. note:: 
-
-   en cas d'erreur lors de l'installation de Git:
-
-   |image1134|
-
-   Réinstaller elpe-magit:
-
-   |image1127|
-
 22.2.1 Prérequis
 ================
 Si l'on est encore sous ROOT:
 
 |image1133| , ouvrir une session utilisateur
 
-.. admonition:: *Installation de Node.js et npm* **spous Debian 11**
+.. admonition:: *Installation de Node.js et npm* **sous Debian 11**
 
    La version de node.js doit être =>16 et avec debian 11 c'est la version 12 qui est installée
 
@@ -79,7 +69,7 @@ Si l'on est encore sous ROOT:
 
    |image1113|
 
-.. admonition:: *installation de Node.js et npm* **spous Debian 12**
+.. admonition:: *installation de Node.js et npm* **sous Debian 12**
 
    .. code-block::
 
@@ -110,9 +100,17 @@ Si l'on est encore sous ROOT:
 
 *Pour la version en developpement*: :darkblue:`leon create birth --develop`
 
+|image1127|
+
 |image1115|
 
 |image1119|
+
+.. note:: **sous Debian 11 si Git n'est pas installé, l'installet**
+
+   .. code-block:: 
+
+      sudo apt install git-all
 
 **- Vérifiez la configuration** 
 
@@ -188,7 +186,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1114| image:: ../media/image1114.webp
    :width: 544px
 .. |image1115| image:: ../media/image1115.webp
-   :width: 605px
+   :width: 600px
 .. |image1116| image:: ../media/image1116.webp
    :width: 641px
 .. |image1117| image:: ../media/image1117.webp
@@ -212,7 +210,7 @@ Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout t
 .. |image1126| image:: ../media/image1126.webp
    :width: 700px
 .. |image1127| image:: ../media/image1127.webp
-   :width: 521px
+   :width: 358px
 .. |image1128| image:: ../media/image1128.webp
    :width: 383px
 .. |image1129| image:: ../media/image1129.webp
