@@ -2,7 +2,7 @@
 accueil
 -------
 
-.. figure:: images/logo.png
+.. figure:: ../images/logo.png
    :alt: Monitor Logo
    :class: with-border
 
