@@ -14,8 +14,8 @@ Bienvenue dans **monitor** avec ce tutoriel !!
 .. toctree::
    :caption: SOMMAIRE
 
-   ../guides/bien_debuter
-   ../guides/configuration_minimum
+   /docs/guides/bien_debuter
+   ../../guides/configuration_minimum
    ../guides/plan_interieur
    ../guides/meteo
    ../guides/plan_exterieur
