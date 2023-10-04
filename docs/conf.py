@@ -2,7 +2,7 @@
 #
 import sys
 import os
-from sphinx_rtd_theme import __version__ as theme_version
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
