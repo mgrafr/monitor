@@ -16,7 +16,7 @@ Bienvenue dans **monitor** avec ce tutoriel !!
 
    /docs/guides/bien_debuter
    ../../guides/configuration_minimum
-   ../guides/plan_interieur
+   /guides/plan_interieur
    ../guides/meteo
    ../guides/plan_exterieur
    ../guides/alarme
