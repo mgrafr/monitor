@@ -914,39 +914,7 @@ On ouvre la page d'accueil du serveur dans un navigateur, ici :darkblue:`http://
         proxy_pass http://192.168.1.14:8088/api;
        }
 
-13.8.2.1 accès distant
-""""""""""""""""""""""
 
-.. code-block::
-
-   upstream pontha {
-       server 192.168.1.14;   }
-   server {
-    server_name  pontha.<DOMAINE>;
-   location / {
-    proxy_pass http://pontha;
-    proxy_set_header Host $host;
-        proxy_connect_timeout 30;
-        proxy_send_timeout 30;    }
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/pontha.<DOMAINE>/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/pontha.<DOMAINE>/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot}
-   server {
-    if ($host = pontha.<DOMAINE>) {
-        return 301 https://$host$request_uri;    } 
-    listen       80;
-    server_name  pontha.<DOMAINE>;
-    return 404; # managed by Certbot}
-
-La demande de certificat Let'sEncrypt:
-
-.. code-block::
-
-   sudo certbot --nginx -d pontha.<DOMAINE> 
-
-|image1138|
 
 13.8.3 Enregistrement d'Alexa & Domoticz dans le pont
 =====================================================
