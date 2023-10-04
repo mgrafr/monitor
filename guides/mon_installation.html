@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>21. – Mon installation &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="22. OPTIMISATION en cours" href="optimisations.html" />
+    <link rel="prev" title="20. Résolution de problèmes" href="resolution_problemes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">21. – Mon installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#proxmox">21.1 Proxmox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-de-vm-ou-ct-par-linterface-graphique-ip-8006">21.1.1 installation de VM ou CT par l’interface graphique : IP :8006</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-automatique-de-vm-ou-ct-https-github-com-tteck-proxmox">21.1.2 installation automatique de VM ou CT : https://github.com/tteck/Proxmox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor">21.1.3 installation automatique d’un conteneur LXC,LEMP &amp; Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apercu-des-vm-et-ct-installes">21.1.4 Aperçu des VM et CT installés</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-version-debian">21.1.5 Update Version Debian</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#domoticz">21.2 Domoticz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zwave">21.3 Zwave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zigbee">21.4 Zigbee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-de-zigbee2mqtt">21.4.1 Installation de zigbee2mqtt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mise-a-jour-de-zigbee2mqtt">21.4.2 Mise à jour de zigbee2mqtt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#asterisk-sip">21.5 Asterisk (sip)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mqtt-mosquito">21.6 MQTT (mosquito)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zoneminder">21.7 Zoneminder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plex">21.8 Plex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#raspberry-pi4">21.9 Raspberry PI4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resolution-des-problemes">21.9.1 Résolution des problèmes :</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cannot-open-access-to-console-the-root-account-is-locked">21.9.1.1  cannot-open-access-to-console-the-root-account-is-locked</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pour-monter-les-partitions-sans-redemarrer">21.9.1.2 pour monter les partitions sans redémarrer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#home-assistant">21.10 Home Assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pont-hue-ha-bridge-pour-alexa">21.11 Pont Hue Ha-bridge pour Alexa</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">21. – Mon installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/mon_installation.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="mon-installation">
+<h1>21. – Mon installation<a class="headerlink" href="#mon-installation" title="Lien permanent vers ce titre"></a></h1>
+<p><a class="reference internal" href="../_images/image1026.webp"><img alt="image1026" src="../_images/image1026.webp" style="width: 700px;" /></a></p>
+<div class="section" id="proxmox">
+<h2>21.1 Proxmox<a class="headerlink" href="#proxmox" title="Lien permanent vers ce titre"></a></h2>
+<p>C’est la base du système, il doit être installé en premier, ensuite :</p>
+<ul class="simple">
+<li><p>Un conteneur, une VM ou une partition classique</p></li>
+<li><p>Ensuite LEMP</p></li>
+<li><p>En dernier <strong>monitor</strong></p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Installation de Proxmox</strong> : <em>assurez-vous que la virtualisation UEFI est activée dans le BIOS</em></p>
+</div>
+<p>Pour l’installation: <a class="reference external" href="http://domo-site.fr/accueil/dossiers/1">http://domo-site.fr/accueil/dossiers/1</a></p>
+<p>Pour terminer le processus de post-installation de Proxmox VE 7(évite de modifier manuellement les fichiers sources.list  d’apt,) vous pouvez exécuter la commande suivante dans pve Shell.
+bash -c « $(wget -qLO - <a class="reference external" href="https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh">https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh</a>) »</p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><strong>sur Github</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/StevenSeifried/proxmox-scripts">https://github.com/StevenSeifried/proxmox-scripts</a></p></li>
+<li><p><a class="reference external" href="https://github.com/tteck/Proxmox">https://github.com/tteck/Proxmox</a></p></li>
+<li><p><a class="reference external" href="https://github.com/StevenSeifried/proxmox-scripts">https://github.com/StevenSeifried/proxmox-scripts</a></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1027.webp"><img alt="image1027" src="../_images/image1027.webp" style="width: 425px;" /></a></p>
+</div>
+<div class="section" id="installation-de-vm-ou-ct-par-linterface-graphique-ip-8006">
+<h3>21.1.1 installation de VM ou CT par l’interface graphique : IP :8006<a class="headerlink" href="#installation-de-vm-ou-ct-par-linterface-graphique-ip-8006" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image1028.webp"><img alt="image1028" src="../_images/image1028.webp" style="width: 604px;" /></a></p>
+</div>
+<div class="section" id="installation-automatique-de-vm-ou-ct-https-github-com-tteck-proxmox">
+<h3>21.1.2 installation automatique de VM ou CT : <a class="reference external" href="https://github.com/tteck/Proxmox">https://github.com/tteck/Proxmox</a><a class="headerlink" href="#installation-automatique-de-vm-ou-ct-https-github-com-tteck-proxmox" title="Lien permanent vers ce titre"></a></h3>
+<p>choisir le fichier d’installation : ex Conteneur LXC Debian 11</p>
+<p><a class="reference internal" href="../_images/image1029.webp"><img alt="image1029" src="../_images/image1029.webp" style="width: 266px;" /></a></p>
+<p>Copier le lien : <a class="reference internal" href="../_images/image1030.webp"><img alt="image1030" src="../_images/image1030.webp" style="width: 304px;" /></a></p>
+<p>Ici : <a class="reference external" href="https://github.com/tteck/Proxmox/raw/main/ct/debian.sh">https://github.com/tteck/Proxmox/raw/main/ct/debian.sh</a></p>
+<ul class="simple">
+<li><p><strong>Télécharger le script</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">&lt;</span><span class="n">LIEN</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Modifier les droits du fichier</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">777</span> <span class="n">debian</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Lancer le script</strong> <em>et répondre aux questions</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1033.webp"><img alt="image1033" src="../_images/image1033.webp" style="width: 571px;" /></a></p>
+</div>
+<div class="section" id="installation-automatique-dun-conteneur-lxc-lemp-monitor">
+<h3>21.1.3 installation automatique d’un conteneur LXC,LEMP &amp; Monitor<a class="headerlink" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor" title="Lien permanent vers ce titre"></a></h3>
+<p>Voir le § <a class="reference internal" href="bien_debuter.html#installation-automatique-dun-conteneur-lxc-lemp-monitor"><span class="std std-ref">0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</span></a></p>
+</div>
+<div class="section" id="apercu-des-vm-et-ct-installes">
+<h3>21.1.4 Aperçu des VM et CT installés<a class="headerlink" href="#apercu-des-vm-et-ct-installes" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image1034.webp"><img alt="image1034" src="../_images/image1034.webp" style="width: 307px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Plex est installé sur un autre mini PC</strong></p>
+<p><em>sous Proxmox également, en conteneur, voir le site http://domo-site.fr/accueil/dossiers/53</em></p>
+</div>
+</div>
+<div class="section" id="update-version-debian">
+<h3>21.1.5 Update Version Debian<a class="headerlink" href="#update-version-debian" title="Lien permanent vers ce titre"></a></h3>
+<p><strong>Exemple , updater Bullseye vers Bookworm</strong></p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><em>https://www.debian.org/releases/stable/amd64/release-notes/ch-upgrading.fr.html#system-status</em></p>
+</div>
+<p><em>Mettre à jour la dernière version</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span> <span class="n">full</span><span class="o">-</span><span class="n">upgrade</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1065.webp"><img alt="image1065" src="../_images/image1065.webp" style="width: 570px;" /></a></p>
+<p><em>Supprimer les paquets (si ils existent)</em>:</p>
+<ul class="simple">
+<li><p>ne provenant pas de Debian</p></li>
+<li><p>Les composants non-free et non-free-firmware</p></li>
+</ul>
+<p>Le fichier sources.list doit ressembler à ceci:</p>
+<p><a class="reference internal" href="../_images/image1066.webp"><img alt="image1066" src="../_images/image1066.webp" style="width: 579px;" /></a></p>
+<div class="admonition-pour-trouver-les-paquets-indesirables admonition">
+<p class="admonition-title"><strong>pour trouver les paquets indésirables</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span><span class="n">etc</span> <span class="o">-</span><span class="n">name</span> <span class="s1">&#39;*.dpkg-*&#39;</span> <span class="o">-</span><span class="n">o</span> <span class="o">-</span><span class="n">name</span> <span class="s1">&#39;*.ucf-*&#39;</span> <span class="o">-</span><span class="n">o</span> <span class="o">-</span><span class="n">name</span> <span class="s1">&#39;*.merge-error&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1067.webp"><img alt="image1067" src="../_images/image1067.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><em>APT a besoin de gpgv , il est normalement installé</em>, sinon <span class="darkblue">apt install gpgv</span></p>
+</div>
+<p>Avant de commencer la mise à niveau, vous devez reconfigurer les listes de sources d’APT (/etc/apt/sources.list et les fichiers situés dans /etc/apt/sources.list.d/) pour ajouter les sources pour Bookworm et supprimer celles pour Bullseye.</p>
+<p><em>/etc/apt/sources.list</em></p>
+<p><a class="reference internal" href="../_images/image1068.webp"><img alt="image1068" src="../_images/image1068.webp" style="width: 590px;" /></a></p>
+<p><em>/etc/apt/sources.d/nodesource.list</em></p>
+<p><a class="reference internal" href="../_images/image1069.webp"><img alt="image1069" src="../_images/image1069.webp" style="width: 700px;" /></a></p>
+<p>Mise à jour vers une nouvelle version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">update</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">upgrade</span> <span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">pkgs</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1070.webp"><img alt="image1070" src="../_images/image1070.webp" style="width: 590px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1071.webp"><img alt="image1071" src="../_images/image1071.webp" style="width: 583px;" /></a></p>
+<p><em>Entrée ou la flèche pour défiler; pour quitter et poursuivre</em> : <strong>q</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">full</span><span class="o">-</span><span class="n">upgrade</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1073.webp"><img alt="image1073" src="../_images/image1073.webp" style="width: 700px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">purge</span> <span class="s1">&#39;~o&#39;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1072.webp"><img alt="image1072" src="../_images/image1072.webp" style="width: 570px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">debian_version</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1074.webp"><img alt="image1074" src="../_images/image1074.webp" style="width: 380px;" /></a></p>
+</div>
+</div>
+<div class="section" id="domoticz">
+<h2>21.2 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Installation sous Docker</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/84">http://domo-site.fr/accueil/dossiers/84</a></p>
+<p><em>Installation sur une machine virtuelle</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/2">http://domo-site.fr/accueil/dossiers/2</a></p>
+<ul class="simple">
+<li><p><strong>Mes scripts lua</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1035.webp"><img alt="image1035" src="../_images/image1035.webp" style="width: 307px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Mes scripts bash, python et Node js</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1036.webp"><img alt="image1036" src="../_images/image1036.webp" style="width: 402px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1037.webp"><img alt="image1037" src="../_images/image1037.webp" style="width: 410px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1038.webp"><img alt="image1038" src="../_images/image1038.webp" style="width: 417px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Les scripts sont disponibles sur Github : https://github.com/mgrafr/monitor/tree/main/share/scripts_dz</em></p>
+</div>
+</div>
+<div class="section" id="zwave">
+<h2>21.3 Zwave<a class="headerlink" href="#zwave" title="Lien permanent vers ce titre"></a></h2>
+<p><strong>Installation de zwave-js-ui</strong></p>
+<p>. dans un conteneur LXC : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/99">http://domo-site.fr/accueil/dossiers/99</a></p>
+<p>. sous Docker, avec Domoticz : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/86">http://domo-site.fr/accueil/dossiers/86</a></p>
+<ul class="simple">
+<li><p><strong>Affichage dans monitor</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1039.webp"><img alt="image1039" src="../_images/image1039.webp" style="width: 465px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Configuration de l’hôte virtuel Nginx</strong>  <em>pour affichage dans monitor</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1040.webp"><img alt="image1040" src="../_images/image1040.webp" style="width: 386px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1041.webp"><img alt="image1041" src="../_images/image1041.webp" style="width: 597px;" /></a></p>
+</div>
+<div class="section" id="zigbee">
+<h2>21.4 Zigbee<a class="headerlink" href="#zigbee" title="Lien permanent vers ce titre"></a></h2>
+<div class="section" id="installation-de-zigbee2mqtt">
+<h3>21.4.1 Installation de zigbee2mqtt<a class="headerlink" href="#installation-de-zigbee2mqtt" title="Lien permanent vers ce titre"></a></h3>
+<ul class="simple">
+<li><p>sous Docker : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/88">http://domo-site.fr/accueil/dossiers/88</a></p></li>
+<li><p>dans un conteneur LXC : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/94">http://domo-site.fr/accueil/dossiers/94</a></p></li>
+</ul>
+<p><strong>Affichage dans monitor</strong></p>
+<p><a class="reference internal" href="../_images/image1042.webp"><img alt="image1042" src="../_images/image1042.webp" style="width: 700px;" /></a></p>
+<p><strong>Configuration de l’hôte virtuel Nginx</strong> <em>pour affichage dans monitor</em></p>
+<p><a class="reference internal" href="../_images/image1043.webp"><img alt="image1043" src="../_images/image1043.webp" style="width: 603px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Les commentaires du paragraphe précédent s’appliquent également</em></p>
+</div>
+</div>
+<div class="section" id="mise-a-jour-de-zigbee2mqtt">
+<h3>21.4.2 Mise à jour de zigbee2mqtt<a class="headerlink" href="#mise-a-jour-de-zigbee2mqtt" title="Lien permanent vers ce titre"></a></h3>
+<p>Si l’OS du conteneur LXC peut aussi être mis à jour voir ce § <a class="reference internal" href="#update-version-debian"><span class="std std-ref">21.1.5 Update Version Debian</span></a></p>
+<div class="admonition-pour-mettre-a-jour-zigbee2mqtt-vers-la-derniere-version admonition">
+<p class="admonition-title"><strong>Pour mettre à jour Zigbee2MQTT vers la dernière version</strong></p>
+<p>Arrêter le service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">zigbee2mqtt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">zigbee2mqtt</span>
+</pre></div>
+</div>
+<p>Faire une sauvegarde de la configuration</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cp</span> <span class="o">-</span><span class="n">R</span> <span class="n">data</span> <span class="n">data</span><span class="o">-</span><span class="n">backup</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1075.webp"><img alt="image1075" src="../_images/image1075.webp" style="width: 501px;" /></a></p>
+<p>Mise à jour:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">npm</span>  <span class="n">ci</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1076.webp"><img alt="image1076" src="../_images/image1076.webp" style="width: 441px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Si erreur : bash: npm: command not found</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">npm</span>
+</pre></div>
+</div>
+</div>
+<p>Restoration de la  configuration</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">R</span> <span class="n">data</span><span class="o">-</span><span class="n">backup</span><span class="o">/*</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p>Redémarrer le service et si tout fonctionne supprimer la sauvegarde</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">zigbee2mqtt</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">data</span><span class="o">-</span><span class="n">backup</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="asterisk-sip">
+<h2>21.5 Asterisk (sip)<a class="headerlink" href="#asterisk-sip" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Installation dans une VM</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/9">http://domo-site.fr/accueil/dossiers/9</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.</em></p>
+</div>
+</div>
+<div class="section" id="mqtt-mosquito">
+<h2>21.6 MQTT (mosquito)<a class="headerlink" href="#mqtt-mosquito" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Installation dans une VM</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/47">http://domo-site.fr/accueil/dossiers/47</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.</em></p>
+</div>
+</div>
+<div class="section" id="zoneminder">
+<h2>21.7 Zoneminder<a class="headerlink" href="#zoneminder" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Installation dans une VM</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/24">http://domo-site.fr/accueil/dossiers/24</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Ce serveur est nécessaire pour</strong></p>
+<ul class="simple">
+<li><p>L’affichage du mur de caméras</p></li>
+<li><p>La détection (mode modect) de présence pour l’alarme</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image557.webp"><img alt="image557" src="../_images/image557.webp" style="width: 400px;" /></a></p>
+</div>
+<p><strong>Configuration de l’hôte virtuel Nginx</strong></p>
+<p><a class="reference internal" href="../_images/image1045.webp"><img alt="image1045" src="../_images/image1045.webp" style="width: 579px;" /></a></p>
+</div>
+<div class="section" id="plex">
+<h2>21.8 Plex<a class="headerlink" href="#plex" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Installation</em></p>
+<p>. dans un conteneur LXC : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/95">http://domo-site.fr/accueil/dossiers/95</a></p>
+<p>. dans une VM  : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/53">http://domo-site.fr/accueil/dossiers/53</a></p>
+<p><strong>partage samba pour Plex</strong> (conteneur LXC) : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/93">http://domo-site.fr/accueil/dossiers/93</a></p>
+<ul class="simple">
+<li><p><strong>affichage dans un navigateur ou TV</strong>  : <span class="green">IP :32400/web</span></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1046.webp"><img alt="image1046" src="../_images/image1046.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Configuration de l’hôte virtuel Nginx pour accès distant</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1047.webp"><img alt="image1047" src="../_images/image1047.webp" style="width: 599px;" /></a></p>
+</div>
+<div class="section" id="raspberry-pi4">
+<h2>21.9 Raspberry PI4<a class="headerlink" href="#raspberry-pi4" title="Lien permanent vers ce titre"></a></h2>
+<p>Alimenté en 12 Volts , comme le mini PC Proxmox, le PI4 couplé à un modem GSM assure l’envoi et la réception des sms même en cas de coupure d’alimentation électrique ENEDIS ;</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>L’alarme ainsi que toute les commandes Domoticz restent opérationnelles.</strong></p>
+</div>
+<p>Le serveur Domoticz et ce PI4 sont reliés par une liaison série ; à partir d’un smartphone l’envoi de sms permet de commander directement des switches par l’intermédiaire de l’API de Domoticz( <a class="reference external" href="http://localhost:PORT">http://localhost:PORT</a>
+Le système est sauvegardé par le logiciel Raspibackup : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/81">http://domo-site.fr/accueil/dossiers/81</a></p>
+<p><a class="reference internal" href="../_images/image1048.webp"><img alt="image1048" src="../_images/image1048.webp" style="width: 600px;" /></a></p>
+<p>Le PI4 assure aussi :</p>
+<ul class="simple">
+<li><p>La sauvegarde RAID1, mais celle-ci n’est pas sauvegardée et un reboot du PI est nécessaire en cas de coupure de courant ; une fonction existe, pour cela, dans monitor….. <a class="reference external" href="http://domo-site.fr/accueil/dossiers/60">http://domo-site.fr/accueil/dossiers/60</a></p></li>
+<li><p>Le monitoring (Nagios) : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/71">http://domo-site.fr/accueil/dossiers/71</a></p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Affichage dans monitor de Nagios</strong></p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1052.webp"><img alt="image1052" src="../_images/image1052.webp" style="width: 422px;" /></a></p>
+</div></blockquote>
+<div class="section" id="resolution-des-problemes">
+<h3>21.9.1 Résolution des problèmes :<a class="headerlink" href="#resolution-des-problemes" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="cannot-open-access-to-console-the-root-account-is-locked">
+<h4>21.9.1.1  cannot-open-access-to-console-the-root-account-is-locked<a class="headerlink" href="#cannot-open-access-to-console-the-root-account-is-locked" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference external" href="https://www.msn.com/fr-fr/feed">https://www.msn.com/fr-fr/feed</a></p>
+<p>Si votre Raspberry Pi (RPI) ne démarre pas et affiche « Impossible d’ouvrir l’accès à la console, le compte root est verrouillé sur l’écran de démarrage :</p>
+<div class="admonition-mode-demploi-pour-revenir-a-la-situation-normale admonition">
+<p class="admonition-title"><strong>Mode d’emploi pour revenir à la situation normale</strong></p>
+<ul>
+<li><p>/etc/fstab  à certainement  une entrée non prise en charge. C’est ce qui se passe si un disque USB externe est déconnecté ou remplacé</p></li>
+<li><p>Pour résoudre ce problème, sortez la carte SD ou la clé USB du PI et branchez-la sur votre ordinateur. Ignorez les demandes de formatage et explorer la partition « boot »  .</p></li>
+<li><p>Ouvrir le fichier appelé cmdline.txt dans le Bloc-notes ou Notepad et ajouter <span class="xref std std-ref">init=/bin/sh</span> à la fin de la première ligne .</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1053.webp"><img alt="image1053" src="../_images/image1053.webp" style="width: 536px;" /></a></p>
+</div></blockquote>
+</li>
+<li><p>Enregistrez le fichier et remettez la carte SD ou la clé USB dans le PI et bootez.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Un clavier et un écran sont raccordés au PI ; sur l’écran on peut alors constater qu’une console en bash est alors disponible pour effectuer des modification sur le fichier /etc/fstab.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1054.webp"><img alt="image1054" src="../_images/image1054.webp" style="width: 641px;" /></a></p>
+<ul class="simple">
+<li><p>Commenter ou supprimer la ligne défectueuse</p></li>
+<li><p>Enregistrer le fichier, CTRL O, ENTER, CTRL X</p></li>
+<li><p>Eteindre le PI, retirer la carte SD ou la clé USB pour supprimer init=/bin/sh du fichier cmdline.txt</p></li>
+<li><p>Redémarrer le Pi</p></li>
+</ul>
+<div class="admonition error">
+<p class="admonition-title">Erreur</p>
+<p>S’il n’est pas possible de modifier /etc/fstab (écriture non autorisée), il faut alors remonter la partition (/dev/sda2 pour une clé USB ou /dev/ mmcblk0p2 pour une SD Card).</p>
+<p>La commande à effectuer :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">-</span><span class="n">o</span> <span class="n">remount</span><span class="p">,</span><span class="n">rw</span>  <span class="o">/</span><span class="n">partition</span> <span class="n">root</span>  <span class="o">/</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1055.webp"><img alt="image1055" src="../_images/image1055.webp" style="width: 466px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="pour-monter-les-partitions-sans-redemarrer">
+<h4>21.9.1.2 pour monter les partitions sans redémarrer<a class="headerlink" href="#pour-monter-les-partitions-sans-redemarrer" title="Lien permanent vers ce titre"></a></h4>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1056.webp"><img alt="image1056" src="../_images/image1056.webp" style="width: 283px;" /></a></p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="home-assistant">
+<h2>21.10 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Installation</em> : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/61">http://domo-site.fr/accueil/dossiers/61</a></p>
+<p><strong>Script pour une installation automatique</strong> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.sh)&quot;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1057.webp"><img alt="image1057" src="../_images/image1057.webp" style="width: 608px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1058.webp"><img alt="image1058" src="../_images/image1058.webp" style="width: 592px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1059.webp"><img alt="image1059" src="../_images/image1059.webp" style="width: 610px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1060.webp"><img alt="image1060" src="../_images/image1060.webp" style="width: 297px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1061.webp"><img alt="image1061" src="../_images/image1061.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1062.webp"><img alt="image1062" src="../_images/image1062.webp" style="width: 249px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1063.webp"><img alt="image1063" src="../_images/image1063.webp" style="width: 516px;" /></a></p>
+</div>
+<div class="section" id="pont-hue-ha-bridge-pour-alexa">
+<h2>21.11 Pont Hue Ha-bridge pour Alexa<a class="headerlink" href="#pont-hue-ha-bridge-pour-alexa" title="Lien permanent vers ce titre"></a></h2>
+<p>voir le § <a class="reference internal" href="app_externes.html#pont-ha-ha-bridge"><span class="std std-ref">13.8 Pont HA (ha-bridge)</span></a></p>
+<p>L’assistant vocal est composé:</p>
+<ul class="simple">
+<li><p>Une enceinte Echo Dot de 4eme génération</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1109.webp"><img alt="image1109" src="../_images/image1109.webp" style="width: 288px;" /></a></p>
+<ul class="simple">
+<li><p>Un serveur Ha-bridge installé dans un conteneur LXC Proxmox</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="resolution_problemes.html" class="btn btn-neutral float-left" title="20. Résolution de problèmes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="optimisations.html" class="btn btn-neutral float-right" title="22. OPTIMISATION en cours" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

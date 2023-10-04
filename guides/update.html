@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>19. UPDATE &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="20. Résolution de problèmes" href="resolution_problemes.html" />
+    <link rel="prev" title="18. Divers" href="divers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">19. UPDATE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version-de-php">19.1 Version de PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-monitor">19.2 UPDATE Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#releases">19.2.1 Releases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#version-en-developpement-2-2-4">Version en développement 2.2.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-2-2-3">Version 2.2.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-2-2-0">Version 2.2.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-2-1-0">Version 2.1.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#version-de-jpgraph">19.3 Version de JPGRAPH</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">19. UPDATE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/update.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="update">
+<h1>19. UPDATE<a class="headerlink" href="#update" title="Lien permanent vers ce titre"></a></h1>
+<div class="section" id="version-de-php">
+<h2>19.1 Version de PHP<a class="headerlink" href="#version-de-php" title="Lien permanent vers ce titre"></a></h2>
+<p><em>La version actuelle est 8.2</em></p>
+</div>
+<div class="section" id="update-monitor">
+<h2>19.2 UPDATE Monitor<a class="headerlink" href="#update-monitor" title="Lien permanent vers ce titre"></a></h2>
+<p><strong>La version stable actuelle est 2.2.3</strong></p>
+<div class="section" id="releases">
+<h3>19.2.1 Releases<a class="headerlink" href="#releases" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="version-en-developpement-2-2-4">
+<h4>Version en développement 2.2.4<a class="headerlink" href="#version-en-developpement-2-2-4" title="Lien permanent vers ce titre"></a></h4>
+<p>30/08/2023 : ajout bouton reset pour annuler la notification de piles faibles</p>
+<p>12/09/2023 : réécriture de export_sql en dzvent : export_timer_sql et export_dev_sql(concerne Linky et les températures</p>
+<p>15/09/2023 : Nb enregistrements affichés pour historique poubelles : remplacé 24 par choix dans config.php</p>
+<p>28/09/2023 : installation d’un assistant vocal Ha-bridge et Alexa pour la mise en marche et l’arrêt de l’alarme; intégration dans monitor</p>
+</div>
+<div class="section" id="version-2-2-3">
+<h4>Version 2.2.3<a class="headerlink" href="#version-2-2-3" title="Lien permanent vers ce titre"></a></h4>
+<p>26/08/2023 : Ajout docomentation Readthedocs</p>
+</div>
+<div class="section" id="version-2-2-0">
+<h4>Version 2.2.0<a class="headerlink" href="#version-2-2-0" title="Lien permanent vers ce titre"></a></h4>
+<p>26/07/2023 : suite à la modification de l’API Domoticz (devices remplacé par getdevices),   ……………………..mise à jour de fonctions.php</p>
+<p>26/07/2023 : accès shell Domoticz-Docker avec SSH2</p>
+</div>
+<div class="section" id="version-2-1-0">
+<h4>Version 2.1.0<a class="headerlink" href="#version-2-1-0" title="Lien permanent vers ce titre"></a></h4>
+<p>31/03/2023 : début de l’adaptabilité à Home Assistant, l’affichages des valeurs des dispositifs, l’utilisation des variables et la commande de switches virtuels sont opérationnelles.</p>
+<p>13/04/2023 : ajout certificat auto-signé pour Nginx</p>
+<p>01/05/2023 : ajout reboot serveur distant et scp pour fichiers distants</p>
+<p>05/05/2023 : maj automatique des IP lors de changements de serveurs</p>
+<p>20/05/2023 : scripts automatiques d’installation</p>
+<p>01/07/2023 : 3 scripts différents d’installation et version 2.1 (update vers Debian 12)</p>
+<p>20/07/2023 : explication concernant l’envoi par Domoticz de SMS</p>
+</div>
+</div>
+</div>
+<div class="section" id="version-de-jpgraph">
+<h2>19.3 Version de JPGRAPH<a class="headerlink" href="#version-de-jpgraph" title="Lien permanent vers ce titre"></a></h2>
+<p><em>La version actuelle est 4.4.1</em></p>
+<p>Recommendé:</p>
+<ul class="simple">
+<li><p>&gt;= PHP 5.2.0</p></li>
+<li><p>PHP Builtin GD library</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="divers.html" class="btn btn-neutral float-left" title="18. Divers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="resolution_problemes.html" class="btn btn-neutral float-right" title="20. Résolution de problèmes" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

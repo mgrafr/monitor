@@ -2,7 +2,7 @@
 accueil
 -------
 
-.. figure:: ../images/logo.png
+.. figure:: images/logo.png
    :alt: Monitor Logo
    :class: with-border
 
@@ -14,29 +14,29 @@ Bienvenue dans **monitor** avec ce tutoriel !!
 .. toctree::
    :caption: SOMMAIRE
 
-   /docs/guides/bien_debuter
-   ../../guides/configuration_minimum
-   /guides/plan_interieur
-   ../guides/meteo
-   ../guides/plan_exterieur
-   ../guides/alarme
-   ../guides/graphiques
-   ../guides/mur_cameras
-   ../guides/mur_de_commandes
-   ../guides/zigbee
-   ../guides/zwave
-   ../guides/monitoring
-   ../guides/app_diverses
-   ../guides/app_externes
-   ../guides/administration
-   ../guides/exemples
-   ../guides/ajout_page_alertes
-   ../guides/diy
-   ../guides/divers
-   ../guides/update
-   ../guides/resolution_problemes
-   ../guides/mon_installation
-   ../guides/optimisations
+   guides/bien_debuter
+   guides/configuration_minimum
+   guides/plan_interieur
+   guides/meteo
+   guides/plan_exterieur
+   guides/alarme
+   guides/graphiques
+   guides/mur_cameras
+   guides/mur_de_commandes
+   guides/zigbee
+   guides/zwave
+   guides/monitoring
+   guides/app_diverses
+   guides/app_externes
+   guides/administration
+   guides/exemples
+   guides/ajout_page_alertes
+   guides/diy
+   guides/divers
+   guides/update
+   guides/resolution_problemes
+   guides/mon_installation
+   guides/optimisations
 
 
 

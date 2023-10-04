@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14. ADMINISTRATION &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="15. EXEMPLES" href="exemples.html" />
+    <link rel="prev" title="13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor" href="app_externes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">14.  ADMINISTRATION</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fichiers-communs-a-toutes-les-pages">14.1 fichiers communs à toutes les pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pour-utiliser-les-didfferentes-fonctions-optionnelles">14.1.1 Pour utiliser les didfférentes fonctions optionnelles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pour-ajouter-des-fonctions-personnelles">14.1.2 Pour ajouter des fonctions personnelles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#admin-php-info-admin-php-test-db-php-et-backup-bd">14.2 admin.php, info_admin.php, test_db.php et backup_bd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#le-javascript">14.3 le javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions-php">14.4 fonctions PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#telechargement-dun-fichier-externe-dans-domoticz">14.5 Téléchargement d’un fichier externe dans Domoticz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copies-decran-et-explications">14.6 Copies d’écran et explications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fichier-connect-xxx-mots-de-passe-et-login-en-base64-ips-reseau">14.6.1 Fichier connect.xxx (mots de passe et login en base64 ,ips réseau</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connect-lua">14.6.1.1 connect.lua</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connect-py">14.6.1.2 connect.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connect-js">14.6.1.3 connect.js</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#explications-concernant-limportation-distantes-dun-tableau-lua">14.7 Explications concernant l’importation distantes d’un tableau LUA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#explications-concernant-la-mise-a-jour-automatique-sql-des-variables-et-dispositifs">14.8 Explications concernant la mise à jour automatique SQL des variables et dispositifs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#affichage-dans-monitor">14.8.1 Affichage dans monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#explications-concernant-laffichage-des-infos-de-la-page-admin-php">14.9 Explications concernant l’affichage des infos de la page admin.php</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commandes-ssh2-pc-distant">14.10  Commandes ssh2 PC distant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reboot-pc">14.10.1 reboot PC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commandes-scp-pour-lenvoi-ou-la-reception-de-fichiers-distants">14.10.2 commandes scp pour l’envoi ou la réception de fichiers distants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-propos">14.11 A Propos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">14.  ADMINISTRATION</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/administration.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="administration">
+<h1>14.  ADMINISTRATION<a class="headerlink" href="#administration" title="Lien permanent vers ce titre"></a></h1>
+<p>Page sans les options:</p>
+<p><a class="reference internal" href="../_images/image74.webp"><img alt="image74" src="../_images/image74.webp" style="width: 400px;" /></a></p>
+<p>Page avec toutes les options , voir aussi ce §  <a class="reference internal" href="#pour-utiliser-les-didfferentes-fonctions-optionnelles"><span class="std std-ref">14.1.1 Pour utiliser les didfférentes fonctions optionnelles</span></a></p>
+<p><a class="reference internal" href="../_images/image788.webp"><img alt="image788" src="../_images/image788.webp" style="width: 605px;" /></a></p>
+<p>Pour ajouter d’autres fonctions voir ce §  <a class="reference internal" href="#pour-ajouter-des-fonctions-personnelles"><span class="std std-ref">14.1.2 Pour ajouter des fonctions personnelles</span></a></p>
+<div class="section" id="fichiers-communs-a-toutes-les-pages">
+<h2>14.1 fichiers communs à toutes les pages<a class="headerlink" href="#fichiers-communs-a-toutes-les-pages" title="Lien permanent vers ce titre"></a></h2>
+<ul class="simple">
+<li><p><strong>css</strong></p></li>
+</ul>
+<p>voir le § <a class="reference internal" href="configuration_minimum.html#styles-css-communs-a-toutes-les-pages"><span class="std std-ref">1.2.2.1 styles CSS communs à toutes les pages</span></a></p>
+<ul class="simple">
+<li><p><strong>Index_loc.php</strong>  <em>chargement de la page impératif</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">administration</span>
+<span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/admin.php&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>header.php</strong>  <em>Affichage obligatoire dans le menu</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">li</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;zz&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#admin&quot;</span><span class="o">&gt;</span><span class="n">Administration</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ajax.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if ($app==&quot;admin&quot;) {admin($variable,$command);}      //$command=fenetre(administration footer
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>config.php</strong> <em>emplacement du fichier</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;MONCONFIG&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/config.php&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">fichier</span> <span class="n">config</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>fonctions.php</strong>    <em>admin()</em></p></li>
+</ul>
+<p>Extrait de la fonction:</p>
+<p><a class="reference internal" href="../_images/image794.webp"><img alt="image794" src="../_images/image794.webp" style="width: 630px;" /></a></p>
+<div class="section" id="pour-utiliser-les-didfferentes-fonctions-optionnelles">
+<h3>14.1.1 Pour utiliser les didfférentes fonctions optionnelles<a class="headerlink" href="#pour-utiliser-les-didfferentes-fonctions-optionnelles" title="Lien permanent vers ce titre"></a></h3>
+<p>Choisir les fonctions dans admin/config.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;ECRAN_ADMIN&#39;</span><span class="p">,</span> <span class="n">array</span><span class="p">(</span> <span class="o">//</span> <span class="n">enable</span> <span class="n">ou</span> <span class="n">disable</span>
+  <span class="s2">&quot;connect_lua&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Mots</span> <span class="n">passe</span> <span class="n">cryptés</span><span class="p">(</span><span class="n">Base64</span><span class="p">)</span> <span class="n">et</span> <span class="n">IP</span> <span class="n">réseau</span>
+  <span class="s2">&quot;string_tableaux&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span><span class="o">//</span><span class="n">Configuation</span> <span class="n">variables</span> <span class="n">dz</span> <span class="n">maj_services</span>
+  <span class="s2">&quot;modect&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">Configuation</span> <span class="n">modect</span> <span class="n">dz</span> <span class="n">alarmes</span>
+  <span class="s2">&quot;idx_dz_list&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">Créer</span> <span class="n">fichier</span> <span class="n">idx</span><span class="o">/</span><span class="n">nom</span> <span class="n">Domoticz</span> <span class="p">,</span> <span class="n">LISTE</span>
+  <span class="s2">&quot;var_list&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">LISTE</span> <span class="n">variables</span> <span class="p">(</span><span class="n">HA</span> <span class="n">et</span> <span class="n">DZ</span><span class="p">)</span>
+  <span class="s2">&quot;idx_dz-zigbee&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">Créer</span> <span class="n">fichier</span> <span class="n">idx</span><span class="o">/</span><span class="n">nom</span> <span class="n">Domoticz</span> <span class="p">,</span> <span class="n">TABLEAU</span> <span class="n">zigbee</span>
+  <span class="s2">&quot;reboot_pi&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">Reboot</span> <span class="n">Raspberry</span>
+  <span class="s2">&quot;msmtprc&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">msmtprc</span> <span class="p">(</span><span class="n">config</span> <span class="n">envoi</span> <span class="n">mail</span><span class="p">)</span>
+  <span class="s2">&quot;connect_py&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span> <span class="o">//</span> <span class="n">Maj</span> <span class="n">automatique</span> <span class="n">des</span> <span class="n">IP</span> <span class="n">depuis</span> <span class="n">connect</span><span class="o">.</span><span class="n">py</span>
+     <span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pour-ajouter-des-fonctions-personnelles">
+<h3>14.1.2 Pour ajouter des fonctions personnelles<a class="headerlink" href="#pour-ajouter-des-fonctions-personnelles" title="Lien permanent vers ce titre"></a></h3>
+<p>voir les paragraphes:</p>
+<blockquote>
+<div><p>. <a class="reference internal" href="#admin-php-info-admin-php-test-db-php-et-backup-bd"><span class="std std-ref">14.2 admin.php, info_admin.php, test_db.php et backup_bd</span></a>,</p>
+<p>. <a class="reference internal" href="#fonctions-php"><span class="std std-ref">14.4 fonctions PHP</span></a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>ajouter dans admin.php l’appel à la fonction:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;admin1&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#admin&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;&lt;N° CHOIX (CASE) DE LA FONCTION PHP&gt;&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;margin-left:70px&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;reponse1&quot;</span> <span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><strong>admin() de fonctions.php</strong></p>
+<p><a class="reference internal" href="../_images/image90.webp"><img alt="image90" src="../_images/image90.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image95.webp"><img alt="image95" src="../_images/image95.webp" style="width: 650px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Les N° pour $choix (rel de admin.php) 1 à 49 sont réservés pour des maj ultérieures du programme.</strong></p>
+</div>
+<div class="admonition-exemple-pour-executer-un-script-php admonition">
+<p class="admonition-title"><strong>Exemple pour executer un script PHP</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="s2">&quot;14&quot;</span> <span class="p">:</span><span class="n">include</span> <span class="p">(</span><span class="s1">&#39;include/backup_bd.php&#39;</span><span class="p">);</span><span class="n">echo</span> <span class="s2">&quot;sauvegarde effectuée&quot;</span><span class="p">;</span><span class="k">return</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-exemple-pour-la-modification-d-un-fichier admonition">
+<p class="admonition-title"><strong>Exemple pour la modification d’un fichier</strong></p>
+<p><em>ici modification du mot de passe</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case &quot;7&quot; :
+  echo $file.&#39;&lt;div id=&quot;result&quot;&gt;&lt;form &gt;&#39;;
+  $content = file_get_contents($file);
+  file_put_contents($file.&#39;.bak.&#39;.$time, $content);
+  $_SESSION[&quot;contenu&quot;]=$content; $find=&quot;PWDALARM&#39;,&#39;&quot;;$tab = explode($find, $content);$tab=$tab[1];$tab = explode(&quot;&#39;&quot;, $tab);$content=$tab[0];$_SESSION[&quot;mdpass&quot;]=$find.$content;$height=&quot;30&quot;;}
+  echo &#39;&lt;textarea id=&quot;adm1&quot; style=&quot;height: auto;max-height: 200px;min-height: 400px;&quot; name=&quot;command&quot; &gt;&#39; . htmlspecialchars($content) . &#39;&lt;/textarea&gt;&lt;br&gt;
+  &lt;input type=&quot;button&quot; value=&quot;enregistrer&quot; id=&quot;enr&quot; onclick=\&#39;wajax($(&quot;#adm1&quot;).val(),&#39;.$rel.&#39;);\&#39; /&gt;&lt;input type=&quot;button&quot; id=&quot;annuler&quot; value=&quot;Annuler&quot; onclick=&quot;yajax(&#39;.$idrep.&#39;)&quot;&gt; &#39;;
+  echo &#39;&lt;/form&gt;&lt;/div&gt;&#39;;
+  return &quot;sauvegarde OK&quot;;
+case &quot;8&quot; :
+ $newpass=$idrep;$oldpass=$_SESSION[&quot;mdpass&quot;];$content=$_SESSION[&quot;contenu&quot;];
+ $str = str_replace($oldpass, &quot;PWDALARM&#39;,&#39;&quot;.$newpass,$content);
+ file_put_contents($file, $str);echo &#39;&lt;div id=&quot;reload&quot; style=&quot;display:block;&quot;&gt;&lt;a style=&quot;background-color: #605b5dde;color:white;
+ border-color: #e0e3e6;border-radius: 0.55rem&quot; class=&quot;btn btn-primary&quot;  onclick=&quot;location.reload();
+ return false;&quot;&gt;redemarrer &lt;/a&gt;&lt;/div&gt;&#39;;//echo file_get_contents($file);
+ return ;
+break;
+</pre></div>
+</div>
+<p>on utilise « explode » pour rechercher le texte à modifier</p>
+<p><a class="reference internal" href="../_images/image96.webp"><img alt="image96" src="../_images/image96.webp" style="width: 497px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="admin-php-info-admin-php-test-db-php-et-backup-bd">
+<h2>14.2 admin.php, info_admin.php, test_db.php et backup_bd<a class="headerlink" href="#admin-php-info-admin-php-test-db-php-et-backup-bd" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image795.webp"><img alt="image795" src="../_images/image795.webp" style="width: 464px;" /></a></p>
+<p><a class="reference internal" href="../_images/image796.webp"><img alt="image796" src="../_images/image796.webp" style="width: 406px;" /></a></p>
+<p><a class="reference internal" href="../_images/image797.webp"><img alt="image797" src="../_images/image797.webp" style="width: 419px;" /></a></p>
+<ul class="simple">
+<li><p><strong>admin.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image84.webp"><img alt="image84" src="../_images/image84.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image798.webp"><img alt="image798" src="../_images/image798.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p><strong>info_admin.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image799.webp"><img alt="image799" src="../_images/image799.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p><strong>test_db.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+echo &#39;&lt;textarea id=&quot;adm1&quot; style=&quot;height:&#39;.$height.&#39;px;&quot; name=&quot;command&quot; &gt;&#39;;
+echo &quot;test....BD: &quot;;
+// Create connection
+$con = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE);
+// Check connection
+if ($con-&gt;connect_error) {   die(&quot;Pas de connexion au serveur: &quot; . $con-&gt;connect_error);$_SESSION[&quot;exeption_db&quot;]=&quot;pas de connexion à la BD&quot;;}
+else echo &quot; connection au serveur OK , ..&quot;;
+$conn = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
+if ($conn-&gt;connect_error) { die(&quot;Verifier le nom de la BD: &quot; . $conn-&gt;connect_error);$_SESSION[&quot;exeption_db&quot;]=&quot;pas de connexion à la BD&quot;;}
+echo &quot; connection à la BD OK , ..&quot;;$_SESSION[&quot;exeption_db&quot;]=&quot;&quot;;
+echo &quot;connexion terminée , ..&quot;;
+?&gt;
+&lt;/textarea&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>backup_db.php</strong> , <em>Pour la sauvegarde de la BD</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image801.webp"><img alt="image801" src="../_images/image801.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image802.webp"><img alt="image802" src="../_images/image802.webp" style="width: 324px;" /></a></p>
+</div>
+<div class="section" id="le-javascript">
+<h2>14.3 le javascript<a class="headerlink" href="#le-javascript" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Pour la fonction mdp() et le clavier(Minimal Virtual Keypad)</em>, voir le §  <a class="reference internal" href="alarme.html#le-javascript-dans-footer-php-et-mes-js-js"><span class="std std-ref">5.5 Le Javascript, dans footer.php et mes_js.js</span></a></p>
+<ul class="simple">
+<li><p><strong>appel de admin()</strong>  <em>de fonctions.php</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image804.webp"><img alt="image804" src="../_images/image804.webp" style="width: 664px;" /></a></p>
+<ul class="simple">
+<li><p><strong>info_admin()</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(&#39;.info_admin&#39;).click(function(){
+var rel=$(this).attr(&#39;rel&#39;);$(&#39;#affich_content_info&#39;).empty;var info_admin=&quot;&quot;;
+affich_info_admin(rel);
+});
+function affich_info_admin(rel){
+console.log(rel);
+&lt;?php echo &quot;var info_admin = &quot;. $js_info_admin . &quot;;\n&quot;;?&gt;
+document.getElementById(&quot;affich_content_info&quot;).innerHTML = info_admin[rel];
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="fonctions-php">
+<h2>14.4 fonctions PHP<a class="headerlink" href="#fonctions-php" title="Lien permanent vers ce titre"></a></h2>
+<ul class="simple">
+<li><p><strong>admin()</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image805.webp"><img alt="image805" src="../_images/image805.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image806.webp"><img alt="image806" src="../_images/image806.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image807.webp"><img alt="image807" src="../_images/image807.webp" style="width: 650px;" /></a></p>
+<p><a class="reference internal" href="../_images/image808.webp"><img alt="image808" src="../_images/image808.webp" style="width: 635px;" /></a></p>
+</div>
+<div class="section" id="telechargement-dun-fichier-externe-dans-domoticz">
+<h2>14.5 Téléchargement d’un fichier externe dans Domoticz<a class="headerlink" href="#telechargement-dun-fichier-externe-dans-domoticz" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Pour la mise à jour des fichiers « connect.lua, connect.py, connect.js, etc… » (variables pour les scripts Domoticz)</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Plusieurs solutions étaient possibles mais avec l’installations de scripts et de modules supplémentaires.</p>
+<p>En http, on ne peut seulement télécharger un fichier depuis un site distant.</p>
+<p>La solution retenue :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1 une variable (nommée ici « upload ») dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.</p></li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image811.webp"><img alt="image811" src="../_images/image811.webp" style="width: 650px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maj_variable</span><span class="p">(</span><span class="s2">&quot;22&quot;</span><span class="p">,</span><span class="s2">&quot;upload&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pour la mise à jour de la liste des caméras dont la détection est activée, c’est le même script qui est utilisé, la variable « upload » est alors passé à 2 :</p>
+<p><a class="reference internal" href="../_images/image812.webp"><img alt="image812" src="../_images/image812.webp" style="width: 700px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Les fonctions JS wajax() et yajax()</strong> ,  <em>dans mes_js.js</em></p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image813.webp"><img alt="image813" src="../_images/image813.webp" style="width: 618px;" /></a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Les fichiers temporaires</strong>,  <em>dans monitor pour Domoticz</em></p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image814.webp"><img alt="image814" src="../_images/image814.webp" style="width: 319px;" /></a></p>
+</div></blockquote>
+</div>
+<div class="section" id="copies-decran-et-explications">
+<h2>14.6 Copies d’écran et explications<a class="headerlink" href="#copies-decran-et-explications" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image815.webp"><img alt="image815" src="../_images/image815.webp" style="width: 379px;" /></a></p>
+<p><a class="reference internal" href="../_images/image816.webp"><img alt="image816" src="../_images/image816.webp" style="width: 536px;" /></a></p>
+<p><a class="reference internal" href="../_images/image817.webp"><img alt="image817" src="../_images/image817.webp" style="width: 532px;" /></a></p>
+<p><a class="reference internal" href="../_images/image818.webp"><img alt="image818" src="../_images/image818.webp" style="width: 526px;" /></a></p>
+<p><a class="reference internal" href="../_images/image819.webp"><img alt="image819" src="../_images/image819.webp" style="width: 461px;" /></a></p>
+<p><a class="reference internal" href="../_images/image820.webp"><img alt="image820" src="../_images/image820.webp" style="width: 477px;" /></a></p>
+<div class="section" id="fichier-connect-xxx-mots-de-passe-et-login-en-base64-ips-reseau">
+<h3>14.6.1 Fichier connect.xxx (mots de passe et login en base64 ,ips réseau<a class="headerlink" href="#fichier-connect-xxx-mots-de-passe-et-login-en-base64-ips-reseau" title="Lien permanent vers ce titre"></a></h3>
+<p><em>pour utiliser ces données dans des scripts (lua, python, js ou autres)</em></p>
+<p><a class="reference internal" href="../_images/image821.webp"><img alt="image821" src="../_images/image821.webp" style="width: 508px;" /></a></p>
+<div class="section" id="connect-lua">
+<h4>14.6.1.1 connect.lua<a class="headerlink" href="#connect-lua" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image822.webp"><img alt="image822" src="../_images/image822.webp" style="width: 485px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>L’ip de monitor dans ce fichier permet, en cas de changement de l’IP de ne pas avoir à modifier les scripts. C’est également valable pour tous les serveurs.</strong></p>
+</div>
+</div>
+<div class="section" id="connect-py">
+<h4>14.6.1.2 connect.py<a class="headerlink" href="#connect-py" title="Lien permanent vers ce titre"></a></h4>
+<p><em>Un double de connect.lua est enregistré au format python pour les script écrit dans ce langage</em></p>
+<p><a class="reference internal" href="../_images/image823.webp"><img alt="image823" src="../_images/image823.webp" style="width: 595px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Ce double peut aussi servir à un autre serveur (un PI par exemple) ce qui facilite les mises à jour.</p>
+<p>Une commande dans administration permet une mise à jour automatique du RPI; pour cela le fichier admin/config.php doit posséder l’IP du serveur :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPRPI&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.1.8&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">IP</span> <span class="n">du</span> <span class="n">Raspberry</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image825.webp"><img alt="image825" src="../_images/image825.webp" style="width: 427px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>admin.php</strong></p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image826.webp"><img alt="image826" src="../_images/image826.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>admin()</strong>  <em>fonctions.php</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image827.webp"><img alt="image827" src="../_images/image827.webp" style="width: 604px;" /></a></p>
+<p><a class="reference internal" href="../_images/image828.webp"><img alt="image828" src="../_images/image828.webp" style="width: 650px;" /></a></p>
+<p><a class="reference internal" href="../_images/image829.webp"><img alt="image829" src="../_images/image829.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image830.webp"><img alt="image830" src="../_images/image830.webp" style="width: 403px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Cette commande utilise SSH2 et SCP</strong> , voir le § <a class="reference internal" href="#commandes-ssh2-pc-distant"><span class="std std-ref">14.10  Commandes ssh2 PC distant</span></a></p>
+</div>
+</div>
+<div class="section" id="connect-js">
+<h4>14.6.1.3 connect.js<a class="headerlink" href="#connect-js" title="Lien permanent vers ce titre"></a></h4>
+<p><em>pour node-red</em></p>
+<p><a class="reference internal" href="../_images/image831.webp"><img alt="image831" src="../_images/image831.webp" style="width: 324px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="explications-concernant-limportation-distantes-dun-tableau-lua">
+<h2>14.7 Explications concernant l’importation distantes d’un tableau LUA<a class="headerlink" href="#explications-concernant-limportation-distantes-dun-tableau-lua" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Compléments sur les fichiers de variables LUA</em></p>
+<p>Concerne :</p>
+<p>. le tableau de variable string_tableau.lua</p>
+<p>. la liste des caméras Modect pour l’alarme</p>
+<p>. le fichier des Logins/mots de passe</p>
+<ul class="simple">
+<li><p><strong>string_tableau.lua</strong>   <em>exemple</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image832.webp"><img alt="image832" src="../_images/image832.webp" style="width: 374px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">liste</span> <span class="n">de</span> <span class="n">variables</span>
+<span class="o">--</span> <span class="n">string</span>
+<span class="n">jour_poubelle_grise</span><span class="o">=</span><span class="s2">&quot;Wednesday&quot;</span>
+<span class="n">jour_poubelle_jaune</span><span class="o">=</span><span class="s2">&quot;Sunday&quot;</span>
+<span class="n">semaine_poub_jaune</span><span class="o">=</span> <span class="mi">0</span>  <span class="o">--</span> <span class="mi">0</span> <span class="n">pour</span> <span class="n">pair</span> <span class="mi">1</span> <span class="n">pour</span> <span class="n">impair</span>
+<span class="o">--</span> <span class="n">table</span> <span class="n">anniversaires</span>
+<span class="n">anniversaires</span> <span class="o">=</span> <span class="p">{[</span><span class="s2">&quot;27-08&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Damien&quot;</span><span class="p">,[</span><span class="s2">&quot;18-05&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Yoann&quot;</span><span class="p">,[</span><span class="s2">&quot;14-09&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Jonathan&quot;</span><span class="p">,[</span><span class="s2">&quot;19-07&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Alexandra&quot;</span><span class="p">,[</span><span class="s2">&quot;25-08&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Charlotte&quot;</span><span class="p">,[</span><span class="s2">&quot;01-05&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Guillaume&quot;</span><span class="p">,[</span><span class="s2">&quot;07-11&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Corentin&quot;</span><span class="p">,[</span><span class="s2">&quot;22-08&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Pauline&quot;</span><span class="p">,[</span><span class="s2">&quot;14-03&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Clémence&quot;</span><span class="p">,[</span><span class="s2">&quot;31-10&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Eric&quot;</span><span class="p">,[</span><span class="s2">&quot;01-02&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Nathalie&quot;</span><span class="p">,[</span><span class="s2">&quot;14-04&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Christèle&quot;</span><span class="p">,[</span><span class="s2">&quot;25-04&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Katy&quot;</span><span class="p">,[</span><span class="s2">&quot;23-05&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Eveline&quot;</span><span class="p">,[</span><span class="s2">&quot;23-08&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Jean Paul&quot;</span><span class="p">,[</span><span class="s2">&quot;24-07&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Arthur&quot;</span><span class="p">,[</span><span class="s2">&quot;09-07&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Jade&quot;</span><span class="p">,[</span><span class="s2">&quot;27-03&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Judith&quot;</span><span class="p">,[</span><span class="s2">&quot;06-03&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Annie&quot;</span><span class="p">,[</span><span class="s2">&quot;02-11&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Nicole&quot;</span><span class="p">,[</span><span class="s2">&quot;22-12&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Michel&quot;</span><span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Dans monitor</strong> <em>admin/config.php</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;VARTAB&#39;</span><span class="p">,</span> <span class="n">URLDOMOTIC</span><span class="o">.</span><span class="s1">&#39;modules_lua/string_tableaux.lua&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Création d’un fichier temporaire dans monitor, le répertoire « dz » est à créer avec les autorisations pour écrire</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;DZCONFIG&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/dz/temp.lua&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">fichier</span> <span class="n">temp</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image835.webp"><img alt="image835" src="../_images/image835.webp" style="width: 324px;" /></a></p>
+<p><a class="reference internal" href="../_images/image836.webp"><img alt="image836" src="../_images/image836.webp" style="width: 488px;" /></a></p>
+<ul>
+<li><p><strong>Dans monitor,  fonctions.php</strong> : <em>function admin()</em></p>
+<blockquote>
+<div><blockquote>
+<div><p><a class="reference internal" href="../_images/image837.webp"><img alt="image837" src="../_images/image837.webp" style="width: 629px;" /></a></p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case &quot;3&quot; :
+echo $file.&#39;&lt;div id=&quot;result&quot;&gt;&lt;form &gt;&#39;;
+  $content = file_get_contents($file);
+       if($choix==3){ file_put_contents(DZCONFIG.&#39;.bak.&#39;.$time, $content);}
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<ul class="simple">
+<li><p><strong>upload et Maj par dz</strong> :<em>on met à 1,2 ou 3  la variable,  dz se charge d’importer le fichier</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image839.webp"><img alt="image839" src="../_images/image839.webp" style="width: 613px;" /></a></p>
+<p>Le script lua utilisé pour ouvrir ces fichiers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+<span class="n">require</span> <span class="s1">&#39;string_tableaux&#39;</span>
+<span class="n">require</span> <span class="s1">&#39;connect&#39;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image842.webp"><img alt="image842" src="../_images/image842.webp" style="width: 605px;" /></a></p>
+<blockquote>
+<div><p>Le script python : <em>upload_fichier.py</em></p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>C’est pour la raison ci-dessous que l’adresse ip de monitor se trouve dans le fichier « connect.lua »</p>
+<p><a class="reference internal" href="../_images/image843.webp"><img alt="image843" src="../_images/image843.webp" style="width: 528px;" /></a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>REMARQUE IMPORTANTE</strong></p>
+<p>pour que python trouve le fichier connect et donc la variable ip_monitor, il faut ajouter le répertoire vide __INIT__.py</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image845.webp"><img alt="image845" src="../_images/image845.webp" style="width: 518px;" /></a></p>
+</div></blockquote>
+</div>
+<ul class="simple">
+<li><p><strong>string_modect.lua</strong></p></li>
+</ul>
+<p><strong>admin.php</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;admin1&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#admin&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;10&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;reponse1&quot;</span> <span class="o">&gt;</span><span class="n">Configuation</span> <span class="n">modect</span> <span class="n">dz</span> <span class="n">alarmes</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image849.webp"><img alt="image849" src="../_images/image849.webp" style="width: 401px;" /></a></p>
+<p><strong>fonctions.php</strong>  <em>admin()</em></p>
+<p><a class="reference internal" href="../_images/image850.webp"><img alt="image850" src="../_images/image850.webp" style="width: 609px;" /></a></p>
+<p>Pour cette fonction le script LUA est similaire à string_tableaux.lua (celui pour les poubelles, la fosse septique, les anniversaires,…</p>
+<p>La variable est mise à 2, voir le § : <a class="reference internal" href="#telechargement-dun-fichier-externe-dans-domoticz"><span class="std std-ref">14.5 Téléchargement d’un fichier externe dans Domoticz</span></a></p>
+<p><a class="reference internal" href="../_images/image847.webp"><img alt="image847" src="../_images/image847.webp" style="width: 518px;" /></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><em>MODECT</em></p>
+<p>Affichage dans admin.php mais aussi dans alarmes.php</p>
+<p><a class="reference internal" href="../_images/image853.webp"><img alt="image853" src="../_images/image853.webp" style="width: 497px;" /></a></p>
+</div>
+</div>
+<div class="section" id="explications-concernant-la-mise-a-jour-automatique-sql-des-variables-et-dispositifs">
+<h2>14.8 Explications concernant la mise à jour automatique SQL des variables et dispositifs<a class="headerlink" href="#explications-concernant-la-mise-a-jour-automatique-sql-des-variables-et-dispositifs" title="Lien permanent vers ce titre"></a></h2>
+<ul class="simple">
+<li><p><strong>admin.php</strong></p></li>
+</ul>
+<p><span class="darkblue">rel=17 et rel=18</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;admin1&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#admin&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;17&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;reponse2&quot;</span> <span class="o">&gt;</span><span class="n">Enregistrer</span> <span class="n">Variable</span> <span class="p">(</span><span class="n">DZ</span> <span class="n">ou</span> <span class="n">HA</span><span class="p">)</span> <span class="n">dans</span> <span class="n">SQL</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">a</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;info_admin&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;images/icon-info.svg&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">toggle</span><span class="o">=</span><span class="s2">&quot;modal&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;#info-admin1&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="mi">0</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width:25px;display:inline;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;admin1&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#admin&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;18&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;reponse2&quot;</span> <span class="o">&gt;</span><span class="n">Enregistrer</span> <span class="n">Dispositifs</span> <span class="n">DZ</span><span class="p">(</span> <span class="n">ou</span> <span class="n">HA</span><span class="p">)</span> <span class="n">dans</span> <span class="n">SQL</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>footer.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image857.webp"><img alt="image857" src="../_images/image857.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p><strong>fonction.php</strong> : <em>admin()</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image858.webp"><img alt="image858" src="../_images/image858.webp" style="width: 650px;" /></a></p>
+<div class="section" id="affichage-dans-monitor">
+<h3>14.8.1 Affichage dans monitor<a class="headerlink" href="#affichage-dans-monitor" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image859.webp"><img alt="image859" src="../_images/image859.webp" style="width: 413px;" /></a></p>
+<ul class="simple">
+<li><p><strong>footer.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image860.webp"><img alt="image860" src="../_images/image860.webp" style="width: 590px;" /></a></p>
+<p><a class="reference internal" href="../_images/image861.webp"><img alt="image861" src="../_images/image861.webp" style="width: 629px;" /></a></p>
+<p><strong>ajax.php puis fonctions.php</strong> : <em>mysql_app()</em></p>
+<p><a class="reference internal" href="../_images/image862.webp"><img alt="image862" src="../_images/image862.webp" style="width: 700px;" /></a></p>
+<p><strong>Confirmation de l’enregistrement des données</strong></p>
+<p><a class="reference internal" href="../_images/image863.webp"><img alt="image863" src="../_images/image863.webp" style="width: 480px;" /></a></p>
+</div>
+</div>
+<div class="section" id="explications-concernant-laffichage-des-infos-de-la-page-admin-php">
+<h2>14.9 Explications concernant l’affichage des infos de la page admin.php<a class="headerlink" href="#explications-concernant-laffichage-des-infos-de-la-page-admin-php" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image864.webp"><img alt="image864" src="../_images/image864.webp" style="width: 387px;" /></a></p>
+<ul class="simple">
+<li><p><strong>admin.php</strong></p></li>
+</ul>
+<p>on ajoute pour les lignes concernées :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;info_admin&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;images/icon-info.svg&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">toggle</span><span class="o">=</span><span class="s2">&quot;modal&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;#info-admin1&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="mi">6</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width:25px;display:inline;&quot;</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>..important:: <strong>:red:`rel` correspond au n° de l’élément dans la table du fichier:info_admin.php</strong></p>
+<p><a class="reference internal" href="../_images/image865.webp"><img alt="image865" src="../_images/image865.webp" style="width: 613px;" /></a></p>
+</div>
+<div class="section" id="commandes-ssh2-pc-distant">
+<h2>14.10  Commandes ssh2 PC distant<a class="headerlink" href="#commandes-ssh2-pc-distant" title="Lien permanent vers ce titre"></a></h2>
+<p><em>ici un RPI depuis monitor</em></p>
+<div class="admonition-ssh-ou-secure-shell admonition">
+<p class="admonition-title"><strong>SSH, ou Secure Shell</strong></p>
+<p><em>un protocole utilisé pour se connecter en toute sécurité à des systèmes distants</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mon RAID1 étant alimenté en 230 Volts, le PI étant alimenté sur batterie, lors d’une coupure secteur, lors de la remise sous tension, le raid1 n’est pas reconnu ; Absent de la maison il faut donc faire un reboot du PI ou un « mount -a «  en bash d’où la commande ci-dessous.</p>
+<p>Autre application: mise à jour de la configuration pour l’envoi de notifications par mails lors d’un changement de mot de passe par exemple.</p>
+</div>
+<p>Pour cela on utilise le paquet php8.2-ssh2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">php8</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">ssh2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reboot-pc">
+<h3>14.10.1 reboot PC<a class="headerlink" href="#reboot-pc" title="Lien permanent vers ce titre"></a></h3>
+<p><em>ou RPI</em></p>
+<p>Sur le pi, soit une commande sudo reboot, soit un script qui effectue la commande ; j’ai choisi cette dernière solution car il suffit de modifier ce fichier pour faire d’autres commandes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+<span class="n">echo</span>  <span class="s2">&quot;reboot&quot;</span>
+<span class="n">sudo</span> <span class="n">reboot</span>
+</pre></div>
+</div>
+<p><strong>La fonction PHP</strong>  <em>sh_scp.php</em></p>
+<p><a class="reference internal" href="../_images/image868.webp"><img alt="image868" src="../_images/image868.webp" style="width: 700px;" /></a></p>
+<p>Comme pour toutes les autres commandes « Administration » les scripts JS et ajax existent déjà, il suffit d’ajouter l’appel de la fonction ci-dessus dans admin.php :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;images/rpi.webp&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width:30px&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;rpi&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;admin1&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#admin&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;20&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;margin-left:35px&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;reponse1&quot;</span> <span class="o">&gt;</span><span class="n">Reboot</span> <span class="n">Raspberry</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>La fonction PHP admin() appelle la fonction ssh_scp.php</p>
+<p><a class="reference internal" href="../_images/image870.webp"><img alt="image870" src="../_images/image870.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="commandes-scp-pour-lenvoi-ou-la-reception-de-fichiers-distants">
+<h3>14.10.2 commandes scp pour l’envoi ou la réception de fichiers distants<a class="headerlink" href="#commandes-scp-pour-lenvoi-ou-la-reception-de-fichiers-distants" title="Lien permanent vers ce titre"></a></h3>
+<p><em>SCP veut dire Secure Copy et il est utilisé pour copier en toute sécurité des fichiers d’un ordinateur local vers des serveurs distants ou inversement, à l’aide du protocole SSH, SSH2 avec PHP</em></p>
+<p>Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes sont nécessaires :</p>
+<ul class="simple">
+<li><p>télécharger le fichier distant <span class="green">/etc/mcmtprc par exemple</span> , celui de la commande affichée dans « Administration »</p></li>
+<li><p>le modifier</p></li>
+<li><p>le renvoyer au pc distant</p></li>
+</ul>
+<p><strong>fonctions.php , extrait de admin()</strong></p>
+<p><a class="reference internal" href="../_images/image872.webp"><img alt="image872" src="../_images/image872.webp" style="width: 700px;" /></a></p>
+<div class="admonition-exemple-pour-le-fichier-etc-msmtprc admonition">
+<p class="admonition-title"><strong>Exemple pour le fichier /etc/msmtprc</strong></p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image876.webp"><img alt="image876" src="../_images/image876.webp" style="width: 537px;" /></a></p>
+</div></blockquote>
+<p><em>msmtp est un client SMTP très simple et facile à configurer</em></p>
+<p><a class="reference internal" href="../_images/image873.webp"><img alt="image873" src="../_images/image873.webp" style="width: 623px;" /></a></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><em>SSH2 et SCP concerne aussi la commande de maj du fichier python connect.py si il est utilisé par plusieurs serveurs.</em></p>
+<p>La commande ci-dessous met à jour connect.py dans Domoticz, Monitor, et un autre serveur (le PI)</p>
+<p><em>REMARQUE</em> : pour que python trouve le fichier connect  et donc les variables,il faut ajouter le répertoire vide __INIT__.py</p>
+<p>Ce fichier permet de ne pas avoir à modifier les scripts python lors d’un changement de serveur</p>
+<p>Exemple ( fichier rec_sms_serie.py)</p>
+<p><a class="reference internal" href="../_images/image875.webp"><img alt="image875" src="../_images/image875.webp" style="width: 576px;" /></a></p>
+<p>connect.py</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image877.webp"><img alt="image877" src="../_images/image877.webp" style="width: 425px;" /></a></p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="a-propos">
+<h3>14.11 A Propos<a class="headerlink" href="#a-propos" title="Lien permanent vers ce titre"></a></h3>
+<p>Affiche les numéros des versions de monitor, PHP et Jpgraph</p>
+<p><a class="reference internal" href="../_images/image63.webp"><img alt="image63" src="../_images/image63.webp" style="width: 400px;" /></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="app_externes.html" class="btn btn-neutral float-left" title="13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="exemples.html" class="btn btn-neutral float-right" title="15. EXEMPLES" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

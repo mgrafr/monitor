@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Une 1ere PAGE : LE PLAN INTERIEUR &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="3. Météo" href="meteo.html" />
+    <link rel="prev" title="1. Configuration minimum : la page d’accueil" href="configuration_minimum.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Une 1ere PAGE : LE PLAN INTERIEUR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#limage">2.1 l’image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avec-un-logiciel-de-conception-graphique-vectorielle">2.1.1 Avec un logiciel de conception graphique vectorielle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#a-avec-inkscape-qui-est-gratuit">2.1.1.a avec Inkscape qui est gratuit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#b-avec-adobe-illustrator">2.1.1.b avec Adobe Illustrator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#eme-solution-pour-le-plan-conversion-en-ligne">2.1.2 – 2eme solution pour le plan, conversion en ligne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#les-couleurs">2.1.3 – Les couleurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajout-dun-ou-plusieurs-dispositifs">2.1.4 - ajout d’un ou plusieurs dispositifs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#des-exemples-dautres-dispositifs">2.2 Des exemples d’autres dispositifs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ajout-du-detecteur-de-fumee">2.2.1 Ajout du détecteur de fumée :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajout-de-cameras">2.2.2 Ajout de caméras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#le-fichier-php-de-limage">2.3 le fichier PHP de l’image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pour-afficher-le-statut-complet-du-dispositif">2.3.1 Pour afficher le statut complet du dispositif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affichage-des-cameras">2.3.2 Affichage des caméras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#la-gestion-des-dispositifs-a-piles">2.3.3 La gestion des dispositifs à piles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#le-controle-de-la-tension-dalimentation">2.3 4 Le contrôle de la tension d’alimentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajouter-des-lampes">2.3 5 ajouter des lampes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajouter-un-capteur-de-t-exterieur-zigbee">2.3.6 ajouter un capteur de T° extérieur Zigbee</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#le-capteur-dans-domoticz">2.3.6.1 Le capteur dans Domoticz</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#le-capteur-dans-la-bd">2.3.6.2 Le capteur dans la BD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#le-capteur-dans-monitor">2.3.6.3 Le capteur dans Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#le-fichier-php-de-la-page">2.4 le fichier PHP de la page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#f12-des-navigateurs-pour-faciliter-la-construction">2.5 F12 des navigateurs pour faciliter la construction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-dispositifs-virtuels-domoticz-et-mqtt">2.6 Les dispositifs virtuels Domoticz et MQTT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">2. Une 1ere PAGE : LE PLAN INTERIEUR</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/plan_interieur.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="une-1ere-page-le-plan-interieur">
+<h1>2. Une 1ere PAGE : LE PLAN INTERIEUR<a class="headerlink" href="#une-1ere-page-le-plan-interieur" title="Lien permanent vers ce titre"></a></h1>
+<div class="section" id="limage">
+<h2>2.1 l’image<a class="headerlink" href="#limage" title="Lien permanent vers ce titre"></a></h2>
+<p>Pour construire l’image du plan au format svg on utilise</p>
+<ul class="simple">
+<li><p>Adobe Illustrateur, payant mais (version hackée sur le net)</p></li>
+<li><p>Inskape gratuit open source :  <a class="reference external" href="https://inkscape.org/fr/release/inkscape-1.0.2/">https://inkscape.org/fr/release/inkscape-1.0.2/</a></p></li>
+</ul>
+<p>Les avantages d’utiliser des images svg c’est de pouvoir manipuler le contenu avec javascript dans le DOM. Pour cela l’image doit faire partie complètement du HTML, l’url de l’image ne suffit pas.</p>
+<p>Comme on ne peut pas charger uniquement cette url avec par exemple &lt;img src= ’’image.svg ‘’&gt;, il faut inclure cette image dans un fichier PHP et faire un include : &lt; ?php include (‘image_svg.php’) ;?&gt;</p>
+<p>Il n’est pas facile au début d’utiliser ces logiciels pour construire complètement un plan ; une autre solution est de construire le plan au format jpg ou png avec un outil graphique plus facile à utiliser, Photofiltre, Paint ou Gimp et de convertir ensuite l’image ; un convertissur en ligne: <a class="reference external" href="https://www.autotracer.org/fr.html">https://www.autotracer.org/fr.html</a></p>
+<p>C’est une bonne solution pour débuter mais quand tout fonctionne, il est alors temps de réaliser un plan directement avec AI, le poids du fichier sera réduit de beaucoup et la qualité sera excellente</p>
+<p>Les deux solutions :</p>
+<div class="section" id="avec-un-logiciel-de-conception-graphique-vectorielle">
+<h3>2.1.1 Avec un logiciel de conception graphique vectorielle<a class="headerlink" href="#avec-un-logiciel-de-conception-graphique-vectorielle" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="a-avec-inkscape-qui-est-gratuit">
+<h4>2.1.1.a avec Inkscape qui est gratuit<a class="headerlink" href="#a-avec-inkscape-qui-est-gratuit" title="Lien permanent vers ce titre"></a></h4>
+<ul class="simple">
+<li><p>On délimite le terrain en traçant un rectangle et en choisissant la couleur</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image222.webp"><img alt="image222" src="../_images/image222.webp" style="width: 480px;" /></a></p>
+<ul class="simple">
+<li><p>On construit les murs extérieurs de la même façon ; on peut ajuster l’épaisseur en utilisant la barre supérieure</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image223.webp"><img alt="image223" src="../_images/image223.webp" style="width: 445px;" /></a></p>
+<ul class="simple">
+<li><p>Pour modifier les objets :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image224.webp"><img alt="image224" src="../_images/image224.webp" style="width: 521px;" /></a></p>
+<ul class="simple">
+<li><p>Toujours avec un rectangle, on ajoute les pièces</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image225.webp"><img alt="image225" src="../_images/image225.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p>On peut faire du copier/coller</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image226.webp"><img alt="image226" src="../_images/image226.webp" style="width: 433px;" /></a></p>
+<ul class="simple">
+<li><p>Pour regrouper des objets de même couleur ou d’un même ensemble : GROUPER</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image227.webp"><img alt="image227" src="../_images/image227.webp" style="width: 451px;" /></a></p>
+<ul class="simple">
+<li><p>Pour dégrouper :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image228.webp"><img alt="image228" src="../_images/image228.webp" style="width: 350px;" /></a></p>
+<ul class="simple">
+<li><p>Pour les textes</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image229.webp"><img alt="image229" src="../_images/image229.webp" style="width: 491px;" /></a></p>
+<ul class="simple">
+<li><p>Améliorer l’emplacement des ouvertures :</p></li>
+</ul>
+<p>On reste dégroupé et on trace un rectangle autour des murs</p>
+<p><a class="reference internal" href="../_images/image230.webp"><img alt="image230" src="../_images/image230.webp" style="width: 580px;" /></a></p>
+<p><a class="reference internal" href="../_images/image231.webp"><img alt="image231" src="../_images/image231.webp" style="width: 608px;" /></a></p>
+<p><a class="reference internal" href="../_images/image232.webp"><img alt="image232" src="../_images/image232.webp" style="width: 596px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Contrairement à Adobe Illustrator , Inkscape ne gère pas les feuilles de style mais celles indiquées sont afficher dans les navigateurs.</p>
+</div>
+<ul class="simple">
+<li><p>Pour ajouter des classes pour gérer les changements de couleur dans monitor, pour certains dispositifs  :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image233.webp"><img alt="image233" src="../_images/image233.webp" style="width: 565px;" /></a></p>
+<ul class="simple">
+<li><p>On donne un nom à cette classe :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image234.webp"><img alt="image234" src="../_images/image234.webp" style="width: 650px;" /></a></p>
+<ul class="simple">
+<li><p>L’objet avec la classe :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image235.webp"><img alt="image235" src="../_images/image235.webp" style="width: 491px;" /></a></p>
+<ul class="simple">
+<li><p>les CSS dans le fichier .svg</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image236.webp"><img alt="image236" src="../_images/image236.webp" style="width: 319px;" /></a></p>
+<div class="admonition-remarque admonition">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p><a class="reference internal" href="../_images/image237.webp"><img alt="image237" src="../_images/image237.webp" style="width: 660px;" /></a></p>
+<p>On ajoute aussi une class aux textes</p>
+<p><a class="reference internal" href="../_images/image238.webp"><img alt="image238" src="../_images/image238.webp" style="width: 478px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p>La feuille de style complète pour le plan</p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image239.webp"><img alt="image239" src="../_images/image239.webp" style="width: 211px;" /></a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>L’image est centrée au milieu du calque , on la déplace à l’angle droit haut</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image240.webp"><img alt="image240" src="../_images/image240.webp" style="width: 531px;" /></a></p>
+<ul class="simple">
+<li><p>On fait correspondre l’image avec la page</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image241.webp"><img alt="image241" src="../_images/image241.webp" style="width: 517px;" /></a></p>
+<p>On sauvegarde l l’image</p>
+<p>On nettoie le code et on créer un fichier PHP qui contiendra l’image ; pour que cette image soit modifiable par le DOM, elle ne peut être appelée directement comme pour les formats classiques mais chargée entièrement dans le fichier HTML.</p>
+<p>Avant nettoyage :</p>
+<p><a class="reference internal" href="../_images/image242.webp"><img alt="image242" src="../_images/image242.webp" style="width: 566px;" /></a></p>
+<div class="admonition-nettoyage-de-l-image admonition">
+<p class="admonition-title"><strong>Nettoyage de l’image</strong></p>
+<p>on supprime la partie ci-dessus (jusqu’à « &lt;style&gt;) et on la remplace par :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svg</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;Calque_1&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 150 150&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image243.webp"><img alt="image243" src="../_images/image243.webp" style="width: 521px;" /></a></p>
+<p>Pour comprendre viewbox : <a class="reference external" href="https://la-cascade.io/comprendre-svg-viewbox/">https://la-cascade.io/comprendre-svg-viewbox/</a></p>
+</div>
+<p><strong>Affichage dans monitor</strong> (on peut ajouter une marge pour centrer l’image)</p>
+<p><em>534x720 : tablette chinoise</em></p>
+<p><a class="reference internal" href="../_images/image244.webp"><img alt="image244" src="../_images/image244.webp" style="width: 542px;" /></a></p>
+<p><a class="reference internal" href="../_images/image245.webp"><img alt="image245" src="../_images/image245.webp" style="width: 435px;" /></a></p>
+<p><em>Affichage sur PC : 1200x612</em></p>
+<p><a class="reference internal" href="../_images/image246.webp"><img alt="image246" src="../_images/image246.webp" style="width: 601px;" /></a></p>
+</div>
+<div class="section" id="b-avec-adobe-illustrator">
+<h4>2.1.1.b avec Adobe Illustrator<a class="headerlink" href="#b-avec-adobe-illustrator" title="Lien permanent vers ce titre"></a></h4>
+<p>La construction est sensiblement la même, la différence pour notre sujet, réside dans la description des ID ; Inkscape ajoute des id partout, AI en ajoute aucun, sauf si on le spécifie, comme ci-dessous ;</p>
+<blockquote>
+<div><p><span class="red">Il est impératif pour retrouver facilement les objets d’ajouter les id à la construction</span>.</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image247.webp"><img alt="image247" src="../_images/image247.webp" style="width: 537px;" /></a></p>
+<p><a class="reference internal" href="../_images/image248.webp"><img alt="image248" src="../_images/image248.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Les cercles ici indiquent lorsqu’ils clignotent, un changement de piles à prévoir ; le N° qui suis « cercle » est l’id du dispositif.</p>
+<p><span class="red">Dans Inkscape, lors de la construction, il est possible d’ajouter du javascript, avec AI, il faut l’ajouter avec un éditeur de texte ou dreamweaver.</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">g</span>
+<span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ouverture_porte_sejour&quot;</span>
+<span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;popup_device(7)&quot;</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Attention aux styles après construction</strong> :</p>
+<p><a class="reference internal" href="../_images/image250.webp"><img alt="image250" src="../_images/image250.webp" style="width: 568px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><span class="red">Un style qui existe alors qu’il n’est pas utilisé crée une erreur</span></p>
+</div>
+<div class="admonition-la-construction-de-mon-plan admonition">
+<p class="admonition-title"><strong>La construction de mon plan</strong></p>
+<p>avec AI :</p>
+<p><a class="reference internal" href="../_images/image251.webp"><img alt="image251" src="../_images/image251.webp" style="width: 523px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="eme-solution-pour-le-plan-conversion-en-ligne">
+<h3>2.1.2 – 2eme solution pour le plan, conversion en ligne<a class="headerlink" href="#eme-solution-pour-le-plan-conversion-en-ligne" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image252.webp"><img alt="image252" src="../_images/image252.webp" style="width: 300px;" /></a></p>
+<ul class="simple">
+<li><p>Mon fichier floorplan.png</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image253.webp"><img alt="image253" src="../_images/image253.webp" style="width: 531px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Conversion avec Autotracer</strong> :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image254.webp"><img alt="image254" src="../_images/image254.webp" style="width: 632px;" /></a></p>
+<p><a class="reference internal" href="../_images/image255.webp"><img alt="image255" src="../_images/image255.webp" style="width: 480px;" /></a></p>
+<p>Les textes transformés ne sont pas toujours lisibles, il faut modifier le plan,</p>
+<p><a class="reference internal" href="../_images/image258.webp"><img alt="image258" src="../_images/image258.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="les-couleurs">
+<h3>2.1.3 – Les couleurs<a class="headerlink" href="#les-couleurs" title="Lien permanent vers ce titre"></a></h3>
+<p>Choisir des couleurs web : 6 familles (#00xxxx, #33xxxx, #66xxxx, #99xxxx, #CCxxxx, #FFxxxx), 216 couleurs, ce qui limite ne nombre de class ; un seul fichier de class pour tout le site….</p>
+<p>…la construction est plus longue et là aussi il faut le faire depuis le début</p>
+<p><a class="reference internal" href="../_images/image260.webp"><img alt="image260" src="../_images/image260.webp" style="width: 239px;" /></a></p>
+</div>
+<div class="section" id="ajout-dun-ou-plusieurs-dispositifs">
+<h3>2.1.4 - ajout d’un ou plusieurs dispositifs<a class="headerlink" href="#ajout-dun-ou-plusieurs-dispositifs" title="Lien permanent vers ce titre"></a></h3>
+<p>Sur le net on trouve des icones au format svg, sinon on transforme les png avec Autotracer
+Les icones que j’ai choisies : <em>contact d’ouverture de porte et détecteur de présence</em></p>
+<p><a class="reference internal" href="../_images/image261.webp"><img alt="image261" src="../_images/image261.webp" style="width: 171px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour les textes il suffit par exemple d’ajouter « tmp » qui sera en javascript remplacé par la température enregistrée par le dispositif</p>
+</div>
+<ul class="simple">
+<li><p><strong>Importer l’icone</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image262.webp"><img alt="image262" src="../_images/image262.webp" style="width: 300px;" /></a></p>
+<p><a class="reference internal" href="../_images/image263.webp"><img alt="image263" src="../_images/image263.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image264.webp"><img alt="image264" src="../_images/image264.webp" style="width: 514px;" /></a></p>
+<p><a class="reference internal" href="../_images/image265.webp"><img alt="image265" src="../_images/image265.webp" style="width: 503px;" /></a></p>
+<ul class="simple">
+<li><p>Redimensionner l’(les)objet(s) :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image266.webp"><img alt="image266" src="../_images/image266.webp" style="width: 294px;" /></a></p>
+<p>Comme on peut le voir, avec les images svg le remplacement de couleur, de textes s’effectuent rapidement lors de la création ; il en est de même dans le HTML en utilisant javascript.
+Ajouter un texte « temp » par exemple pour l’affichage de la température ; ce texte sera remplacé par la valeur de la température en utilisant Javascript;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>les détecteurs de présence peuvent souvent enregistrer la température.</p>
+</div>
+<p><a class="reference internal" href="../_images/image267.webp"><img alt="image267" src="../_images/image267.webp" style="width: 492px;" /></a></p>
+<ul class="simple">
+<li><p>Pour les dispositifs et les textes, ajouter un ID :</p></li>
+</ul>
+<p><em>Comme indiqué précédemment, Avec Inkscape, il est possible d’ajouter facilement un ID lors de la construction de l’image</em></p>
+<p><a class="reference internal" href="../_images/image268.webp"><img alt="image268" src="../_images/image268.webp" style="width: 545px;" /></a></p>
+<ul class="simple">
+<li><p>La couleur de l’objet :</p></li>
+</ul>
+<p><em>avec Inskcape</em>:</p>
+<p><a class="reference internal" href="../_images/image269.webp"><img alt="image269" src="../_images/image269.webp" style="width: 700px;" /></a></p>
+<p><em>avec Adobe Illustrator</em>:</p>
+<p><a class="reference internal" href="../_images/image270.webp"><img alt="image270" src="../_images/image270.webp" style="width: 579px;" /></a></p>
+<p>Enregistrer le fichier, j’ai choisi « interieur.svg », le nom de ma page</p>
+<p>Pour les textes c’est la même façon de procéder</p>
+<p><a class="reference internal" href="../_images/image272.webp"><img alt="image272" src="../_images/image272.webp" style="width: 504px;" /></a></p>
+<p>Aperçu d’une image avec de nombreux dispositifs</p>
+<p><a class="reference internal" href="../_images/image273.webp"><img alt="image273" src="../_images/image273.webp" style="width: 500px;" /></a></p>
+</div>
+</div>
+<div class="section" id="des-exemples-dautres-dispositifs">
+<h2>2.2 Des exemples d’autres dispositifs<a class="headerlink" href="#des-exemples-dautres-dispositifs" title="Lien permanent vers ce titre"></a></h2>
+<div class="section" id="ajout-du-detecteur-de-fumee">
+<h3>2.2.1 Ajout du détecteur de fumée :<a class="headerlink" href="#ajout-du-detecteur-de-fumee" title="Lien permanent vers ce titre"></a></h3>
+<p>Ajout de l’icône avec Inkscape :</p>
+<p><a class="reference internal" href="../_images/image274.webp"><img alt="image274" src="../_images/image274.webp" style="width: 190px;" /></a> <a class="reference internal" href="../_images/image275.webp"><img alt="image275" src="../_images/image275.webp" style="width: 300px;" /></a></p>
+<p>Un href, un id, un titre et un onclick avec un id (idm ou idx) ; option choisie dans /admin/config.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;CHOIXID&#39;</span><span class="p">,</span><span class="s1">&#39;idm&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">DZ</span><span class="p">:</span><span class="n">idm</span> <span class="n">ou</span> <span class="n">idx</span> <span class="p">;</span> <span class="n">HA</span> <span class="p">:</span> <span class="n">idm</span> <span class="n">uniquement</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ajout-de-cameras">
+<h3>2.2.2 Ajout de caméras<a class="headerlink" href="#ajout-de-cameras" title="Lien permanent vers ce titre"></a></h3>
+<p>Comme il n’existe pas d’idx Domoticz, nous réserverons la plage &gt;= 10 000 pour cela ;</p>
+<p>cette valeur peut être modifiée, voir <a class="reference internal" href="#ajout-du-detecteur-de-fumee"><span class="std std-ref">2.2.1 Ajout du détecteur de fumée :</span></a></p>
+<p><a class="reference internal" href="../_images/image277.webp"><img alt="image277" src="../_images/image277.webp" style="width: 665px;" /></a></p>
+<p><em>La base de données</em> :</p>
+<p><a class="reference internal" href="../_images/image02.webp"><img alt="image02" src="../_images/image02.webp" style="width: 602px;" /></a></p>
+</div>
+</div>
+<div class="section" id="le-fichier-php-de-limage">
+<h2>2.3 le fichier PHP de l’image<a class="headerlink" href="#le-fichier-php-de-limage" title="Lien permanent vers ce titre"></a></h2>
+<p>Avec Notepad, on supprime les premières lignes (Inkscape), comme indiqué au § <a class="reference internal" href="#a-avec-inkscape-qui-est-gratuit"><span class="std std-ref">2.1.1.a avec Inkscape qui est gratuit</span></a> ou les 2 ou 3 premières lignes (AI) :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image277.webp"><img alt="image279" src="../_images/image277.webp" style="width: 595px;" /></a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Enregistrer l’image au format PHP dans le dossier /include:  interieur_svg.php (utilisé ici)</p></li>
+</ul>
+<p><em>le fichier PHP commence par &lt;svg ….,  supprrimer la ligne &lt;?xml version= »1.0 » encoding= »utf-8 »?&gt;</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svg</span>
+<span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span>
+<span class="nb">id</span><span class="o">=</span><span class="s2">&quot;Calque_1&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Récupérer dans Domoticz les noms et les idx des dispositifs</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image280.webp"><img alt="image280" src="../_images/image280.webp" style="width: 700px;" /></a></p>
+<ul>
+<li><p>Dans la table « dispositifs » de la base de données Maria DB Domoticz,</p>
+<p>enregistrer ces données ; si c’est une première installation de monitor, idm peut être le même qu’idx ; dans l’exemple ci-dessous idm est différent après une réinstallation de Domoticz.</p>
+</li>
+</ul>
+<p><a class="reference internal" href="../_images/image281.webp"><img alt="image281" src="../_images/image281.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p>Autres exemples :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image282.webp"><img alt="image282" src="../_images/image282.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image283.webp"><img alt="image283" src="../_images/image283.webp" style="width: 601px;" /></a></p>
+<ul class="simple">
+<li><p>Que fait le script javascript qui gère les dispositifs :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image284.webp"><img alt="image284" src="../_images/image284.webp" style="width: 700px;" /></a></p>
+<p>L’appel ajax : appelle la fonction PHP devices_plan($variable), la variable est le N° du Plan</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if ($app==&quot;devices_plan&quot;) {if (DECOUVERTE==true) {include(&#39;include/json_demo/devices_plan_json.php&#39;);return;}
+else {$retour=devices_plan($variable);echo json_encode($retour); }}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>La fonction PHP <span class="darkblue">devices_plan($variable)</span>:</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image286.webp"><img alt="image286" src="../_images/image286.webp" style="width: 597px;" /></a></p>
+<p>Le Json renvoyé :</p>
+<p><a class="reference internal" href="../_images/image287.webp"><img alt="image287" src="../_images/image287.webp" style="width: 362px;" /></a></p>
+<p>Monitor peut afficher un changement de couleur du dispositif, une température  mais à condition de retrouver l’ID du dispositif ou l’ID du texte dans le DOM.</p>
+<p>C’est pourquoi nous avons ajouté des ID lors de la construction du plan.</p>
+<p>Un aperçu du fichier interieur_svg.php :</p>
+<p><a class="reference internal" href="../_images/image288.webp"><img alt="image288" src="../_images/image288.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour une icône avec une seule couleur, l’ID de l’icône est suffisant mais avec une icône où une seule partie est colorée comme pour l’ouverture de porte, ii est facile, avec F12 d’inspecter la partie de
+l’icône qui nous intéresse et de rajouter un ID dans le &lt;path concerné</p>
+<p>C’est alors cet ID qu’il faudra entrer pour le dispositif dans la Base de données SQL.</p>
+<p><a class="reference internal" href="../_images/image289.webp"><img alt="image289" src="../_images/image289.webp" style="width: 597px;" /></a></p>
+</div>
+<p>Pour les textes, si l’ID n’a pas été spécifié à la construction de l’image, ils sont faciles à retrouver avec une recherche sur Notepad pour ajouter un ID ;</p>
+<p>Sur AI il faudra souvent modifier légèrement l’ID</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image290.webp"><img alt="image290" src="../_images/image290.webp" style="width: 643px;" /></a></p>
+</div></blockquote>
+<div class="section" id="pour-afficher-le-statut-complet-du-dispositif">
+<h3>2.3.1 Pour afficher le statut complet du dispositif<a class="headerlink" href="#pour-afficher-le-statut-complet-du-dispositif" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image291.webp"><img alt="image291" src="../_images/image291.webp" style="width: 406px;" /></a></p>
+<p><a class="reference internal" href="../_images/image292.webp"><img alt="image292" src="../_images/image292.webp" style="width: 301px;" /></a></p>
+<p><a class="reference internal" href="../_images/image293.webp"><img alt="image293" src="../_images/image293.webp" style="width: 299px;" /></a></p>
+<p>C’est la fonction javascript <span class="darkblue">popup_device</span> du fichier footer.php qui ouvre cette fenêtre.</p>
+<div class="admonition-remarque admonition">
+<p class="admonition-title"><strong>Remarque</strong></p>
+<p>les caméras ne sont pas des dispositifs dans Domoticz, aussi des ID &gt;= à 10000 leur sont attribués ; cette valeur peut être modifiée en modifiant le programme qui suit.</p>
+</div>
+<p><a class="reference internal" href="../_images/image294.webp"><img alt="image294" src="../_images/image294.webp" style="width: 531px;" /></a></p>
+<p>Cette fonction est activée par un onclick que l’on ajoute dans l’image ; par contre la BD n’est pas nécessaire pour cet affichage, à condition que le onclick possède comme id l’idx de Domoticz.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;temp_cuisine&quot;</span>
+<span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;popup_device(21)&quot;</span>
+<span class="n">inkscape</span><span class="p">:</span><span class="n">transform</span><span class="o">-</span><span class="n">center</span><span class="o">-</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;-23.52&quot;</span>
+<span class="n">inkscape</span><span class="p">:</span><span class="n">transform</span><span class="o">-</span><span class="n">center</span><span class="o">-</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;31.36&quot;</span><span class="o">&gt;&lt;</span><span class="n">tspan</span>
+  <span class="n">sodipodi</span><span class="p">:</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;line&quot;</span>
+  <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;tspan4545-8&quot;</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">&quot;60.40955&quot;</span>
+  <span class="n">y</span><span class="o">=</span><span class="s2">&quot;281.74768&quot;</span><span class="o">&gt;</span><span class="n">temp</span><span class="o">&lt;/</span><span class="n">tspan</span><span class="o">&gt;&lt;/</span><span class="n">text</span><span class="o">&gt;&lt;</span><span class="n">g</span>
+<span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ouverture_porte_salon&quot;</span>
+<span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(0.16425446,0,0,0.17058408,527.48825,763.57501)&quot;</span>
+<span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;popup_device(38)&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>popup_device(<span class="red">21</span>) –&gt; <span class="red">21</span> = idm</p>
+<p>Avec Inkscape ce onclick peut être ajouter lors de la construction</p>
+<p><a class="reference internal" href="../_images/image296.webp"><img alt="image296" src="../_images/image296.webp" style="width: 426px;" /></a></p>
+<p><a class="reference internal" href="../_images/image297.webp"><img alt="image297" src="../_images/image297.webp" style="width: 393px;" /></a></p>
+<p>avec AI il faut l’ajouter manuellement.</p>
+<p>Pour indiquer que l’élément est cliquable, comme pour le HTML, on ajoute xlink:href= »#interieur »  et une balise &lt;a  (pour afficher la main ) non nécessaire surtout pour les tablettes.</p>
+<p><a class="reference internal" href="../_images/image298.webp"><img alt="image298" src="../_images/image298.webp" style="width: 650px;" /></a></p>
+<p>Ou lors de la construction avec Inkscape :</p>
+<p><a class="reference internal" href="../_images/image299.webp"><img alt="image299" src="../_images/image299.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="affichage-des-cameras">
+<h3>2.3.2 Affichage des caméras<a class="headerlink" href="#affichage-des-cameras" title="Lien permanent vers ce titre"></a></h3>
+<p>Pour les caméras génériques chinoises, pour les configurer : Internet explorer etait le seul navigateur qui permettait d’afficher Net Surveillance , Edge a pris la relève.</p>
+<p><a class="reference internal" href="../_images/image301.webp"><img alt="image301" src="../_images/image301.webp" style="width: 641px;" /></a></p>
+<p>La table « cameras » dans la base de données SQL a été remplie, voir le paragraphe concernant la base de données :  <a class="reference internal" href="bien_debuter.html#cameras"><span class="std std-ref">0.3.3 caméras</span></a></p>
+<p><a class="reference internal" href="../_images/image302.webp"><img alt="image302" src="../_images/image302.webp" style="width: 700px;" /></a></p>
+<p><strong>Seulement si Zoneminder est utilisé</strong> :</p>
+<div class="admonition-pour-retrouver-lid-zoneminder admonition">
+<p class="admonition-title"><strong>Pour retrouver l’ID Zoneminder</strong></p>
+<p>pour toutes les cameras :</p>
+<p>Dans un navigateur : <span class="darkblue">IP DE ZONEMINDER</span>/zm/api/monitor.json</p>
+<p><a class="reference internal" href="../_images/image303.webp"><img alt="image303" src="../_images/image303.webp" style="width: 391px;" /></a></p>
+</div>
+<p><a class="reference internal" href="../_images/image304.webp"><img alt="image304" src="../_images/image304.webp" style="width: 516px;" /></a></p>
+<p>Les icones, les onclick, les &lt;a pour le lien (pour version PC) , ont été ajoutés sur le plan ; une fenêtre (modal) est ajoutée sur la page.
+Voir les paragraphes   <a class="reference internal" href="#ajout-de-cameras"><span class="std std-ref">2.2.2 Ajout de caméras</span></a>  et  <a class="reference internal" href="#pour-afficher-le-statut-complet-du-dispositif"><span class="std std-ref">2.3.1 Pour afficher le statut complet du dispositif</span></a></p>
+<p><strong>La modale pour la fenêtre de l’image</strong> :</p>
+<p><a class="reference internal" href="../_images/image305.webp"><img alt="image305" src="../_images/image305.webp" style="width: 605px;" /></a></p>
+<p>C’est la fonction PHP « <span class="darkblue">upload_img($idx)</span> » appelée par ajax qui renvoi l’image de la caméra</p>
+<p><a class="reference internal" href="../_images/image306.webp"><img alt="image306" src="../_images/image306.webp" style="width: 561px;" /></a></p>
+<p>Le script JS dans footer.php :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  function popup_device(nom) {
+  if (nom &lt; 10000){if (pp[nom]){
+  .....
+  }
+  else { // partie consacrée aux caméras
+          $.ajax({
+          type: &quot;GET&quot;,
+url: &#39;ajax.php&#39;,
+     data: &quot;app=upload_img&amp;variable=&quot;+nom,
+     dataType: &#39;json&#39;,
+success: function(html) {
+          urlimg=html[&#39;url&#39;]+&quot;?&quot;+Date.now()/1000;zoneminder=html[&#39;id_zm&#39;];dahua=html[&#39;marque&#39;];
+          ip_cam=html[&#39;ip&#39;];idx_cam=html[&#39;idx&#39;];dahua_type=html[&#39;type&#39;];console.log(dahua_type);
+          if (nom&lt;10010){//de 10000 à 10009: cam autour maison, &gt;10009 : cam jardin garage
+  $(&#39;#cam&#39;).attr(&#39;src&#39;,urlimg); $(&#39;#camera&#39;).modal(&#39;show&#39;);}
+            else {$(&#39;#cam_ext&#39;).attr(&#39;src&#39;,urlimg); $(&#39;#camera_ext&#39;).modal(&#39;show&#39;);} }
+                  });
+          }
+  }
+</pre></div>
+</div>
+<p><strong>Affichage de la configuration des caméras</strong>:</p>
+<p>Pour les caméras Dahua, il existe un script spécifique ; pour les autres caméras, le script ne fonctionne que si Zoneminder est installé et la configuration effectuée :
+Le fichier de configuration <span class="darkblue">admin/config.php</span> :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image308.webp"><img alt="image308" src="../_images/image308.webp" style="width: 596px;" /></a></p>
+</div></blockquote>
+<div class="admonition-configuration-de-zoneminder admonition">
+<p class="admonition-title"><strong>Configuration de Zoneminder</strong></p>
+<p><strong>accès aux données</strong> : API 2.0</p>
+<ul>
+<li><p>le token :</p>
+<blockquote>
+<div><p>Dans options/système</p>
+<p><a class="reference internal" href="../_images/image309.webp"><img alt="image309" src="../_images/image309.webp" style="width: 650px;" /></a></p>
+</div></blockquote>
+</li>
+<li><p>Réponse avec opt_use_auth coché :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image310.webp"><img alt="image310" src="../_images/image310.webp" style="width: 629px;" /></a></p>
+</div></blockquote>
+</li>
+<li><p>Réponse avec opt_use_auth décoché :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image311.webp"><img alt="image311" src="../_images/image311.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+</li>
+</ul>
+<p><em>Ci-dessus c’est un exemple manuel, la demande se fera en PHP automatiquement</em></p>
+</div>
+<p>L’affichage de cette config est géré par un script JS : <span class="darkblue">modalink</span> et non par une fenêtre modale qui est déjà ouverte pour l’image ; appel de ce script par le bouton dans la modale de l’image.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> &lt;!-- section intérieur start ---- fichier interieur.php--&gt;
+ &lt;div id=&quot;interieur&quot; &gt;
+      &lt;div class=&quot;container&quot;&gt;
+      ....
+ ....
+ &lt;div class=&quot;modal&quot; id=&quot;camera&quot;&gt;
+&lt;div class=&quot;modal-dialog&quot; style=&quot;height:auto&quot;&gt;
+  &lt;div class=&quot;modal-content&quot;&gt;
+    &lt;div class=&quot;modal-header&quot;&gt;
+      &lt;h3 class=&quot;modal-title&quot;&gt;image camera&lt;/h3&gt;
+                 &lt;button class=&quot;btn_cam&quot;&gt;Config&lt;/button&gt;
+</pre></div>
+</div>
+<p>Plus d’infos sur modalink : <a class="reference external" href="https://github.com/dmhendricks/jquery-modallink">https://github.com/dmhendricks/jquery-modallink</a></p>
+<p><em>Les script JS, dans footer.php et dans mes_js.js</em> :</p>
+<p><strong>Dans footer.php</strong> :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image313.webp"><img alt="image313" src="../_images/image313.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(&quot;.btn_cam&quot;).click(function () {if (zoneminder==null &amp;&amp; dahua==&#39;generic&#39;){alert(&quot;Zoneminder non installé&quot;);}
+else {$.modalLink.open(&quot;ajax.php?app=upload_conf_img&amp;name=&quot;+dahua+&quot;&amp;command=&quot;+dahua_type+&quot;&amp;variable=&quot;+ip_cam+&quot;&amp;idx=&quot;+idx_cam+&quot;&amp;type=&quot;+zoneminder,{
+// options here
+       height: 400,
+       width: 400,
+       title:&quot;configuration de la caméra&quot;,
+       showTitle:true,
+       showClose:true
+}); }
+});
+</pre></div>
+</div>
+<p><strong>Dans mes_js.js</strong> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  (function ($) {
+   $.modalLinkDefaults = {
+           height: 600,
+           width: 900,
+           showTitle: true,
+           showClose: true,
+           overlayOpacity: 0.6,
+           method: &quot;GET&quot;, // GET, POST, REF, CLONE
+           disableScroll: true,
+           onHideScroll: function () { },
+           onShowScroll: function () { }
+   };
+
+|image316|
+</pre></div>
+</div>
+<p>Le fichier ajax.php :appel function de la fonction <span class="darkblue">cam_config($marque,$type,$ip,$cam,$idzm)</span>, (dans fonctions.php)</p>
+<p>Extrait de cette fonction</p>
+<div class="admonition-pour-cameras-dahua admonition">
+<p class="admonition-title"><strong>Pour caméras DAHUA</strong></p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image318.webp"><img alt="image318" src="../_images/image318.webp" style="width: 502px;" /></a></p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Modification CURL pour les différents types d’Autorisation des caméras Dahua</strong></p>
+<p>3.2Authentication
+The IP Camera supplies two authentication ways: basic authentication and digest authentication. Client can login through:
+<a class="reference external" href="http:/">http:/</a>/&lt;ip&gt;/cgi-bin/global.login?userName=admin. The IP camera returns 401. Then the client inputs a username and password to authorize.
+For example:
+1. When basic authentication, the IP camera response:
+401 Unauthorized
+WWW-Authenticate: Basic realm=”XXXXXX”
+Then the client encode the username and password with base64, send the following request:
+Authorization: Basic VXZVXZ.
+2. When digest authentication, the IP camera response:
+WWW-Authenticate: Digest realm= »DH_00408CA5EA04 », nonce= »000562fdY631973ef04f77a3ede7c1832ff48720ef95ad »,
+stale=FALSE, qop= »auth »;
+The client calculates the digest using username, password, nonce, realm and URI with MD5, then send the following request:
+Authorization: Digest username= »admin », realm= »DH_00408CA5EA04 », nc=00000001,cnonce= »0a4f113b »,qop= »auth »
+nonce= »000562fdY631973ef04f77a3ede7c1832ff48720ef95ad »,uri= »cgi-bin/global.login?userName=admin »,
+response= »65002de02df697e946b750590b44f8bf »</p>
+</div>
+<p><a class="reference external" href="https://github.com/mgrafr/monitor/raw/main/Dahua_doc/DAHUA_IPC_HTTP_API_V1.00x.pdf">https://github.com/mgrafr/monitor/raw/main/Dahua_doc/DAHUA_IPC_HTTP_API_V1.00x.pdf</a></p>
+<p>Dire à Curl d’accepter plusieurs méthodes comme ceci :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_HTTPAUTH</span><span class="p">,</span> <span class="n">CURLAUTH_BASIC</span> <span class="o">|</span> <span class="n">CURLAUTH_DIGEST</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image319.webp"><img alt="image319" src="../_images/image319.webp" style="width: 583px;" /></a></p>
+</div>
+<div class="admonition-pour-cameras-onvif-autres admonition">
+<p class="admonition-title"><strong>Pour caméras onvif autres</strong> :</p>
+<p><a class="reference internal" href="../_images/image320.webp"><img alt="image320" src="../_images/image320.webp" style="width: 650px;" /></a></p>
+<p>Comme le token peut être utile dans d’autres pages création d’une fonction pour cela :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function token_zm(){
+  if ($_SESSION[&#39;time_auth_zm&#39;]&lt;=time() || ($_SESSION[&#39;auth_zm&#39;]==&quot;&quot;)){
+$url=ZMURL.&#39;/api/host/login.json&#39;;
+$post=[
+&#39;user&#39; =&gt; ZMUSER,
+&#39;pass&#39; =&gt; ZMPASS,
+ ];
+ $ckfile  = &quot;cookies.txt&quot;;
+//$out=file_post_curl($url,$ckfile,$post);
+//solution batch   décocher les 2 lines suivantes et cocher celle ci-dessus
+$oot=&#39; curl -XPOST -c cookies.txt -d &quot;user=&#39;.ZMUSER.&#39;&amp;pass=&#39;.ZMPASS.&#39;&amp;stateful=1&quot; &#39;.$url;
+$out=exec($oot);
+//------------------
+$out = json_decode($out,true);//echo $out;
+$token = $out[&#39;access_token&#39;];
+$_SESSION[&#39;time_auth_zm&#39;]=time()+TIMEAPI;
+$_SESSION[&#39;auth_zm&#39;]=$token;echo $token;
+}
+else {$token=$_SESSION[&#39;auth_zm&#39;];}
+$zm_cle = array (
+&#39;token&#39; =&gt; $_SESSION[&#39;auth_zm&#39;]);
+$cle=json_encode($zm_cle);
+file_put_contents(&#39;admin/token.json&#39;,$cle);
+return $token;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="la-gestion-des-dispositifs-a-piles">
+<h3>2.3.3 La gestion des dispositifs à piles<a class="headerlink" href="#la-gestion-des-dispositifs-a-piles" title="Lien permanent vers ce titre"></a></h3>
+<p>Assurée par la fonction PHP <span class="darkblue">devices_plan()</span>, vue précédemment ; la variable dans la base de données SQL a aussi été décrite lors de la configuration minimale</p>
+<p><em>Table « dispositifs »</em> : <strong>variables</strong></p>
+<p><a class="reference internal" href="../_images/image322.webp"><img alt="image322" src="../_images/image322.webp" style="width: 507px;" /></a></p>
+<p><em>Table « text_image »</em></p>
+<p><a class="reference internal" href="../_images/image323.webp"><img alt="image323" src="../_images/image323.webp" style="width: 605px;" /></a></p>
+<p>La notification se fait :</p>
+<ul class="simple">
+<li><p>sur la page d’accueil</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image332.webp"><img alt="image332" src="../_images/image332.webp" style="width: 178px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;aff_bat&quot;</span> <span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;batterie&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;images/batterie_faible.svg&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;batterie&quot;</span> <span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+
+     <span class="n">css</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">aff</span> <span class="n">batterie</span> <span class="o">*/</span>
+<span class="o">.</span><span class="n">aff_bat</span><span class="p">{</span><span class="n">position</span><span class="p">:</span> <span class="n">absolute</span><span class="p">;</span><span class="n">top</span><span class="p">:</span> <span class="mi">810</span><span class="n">px</span><span class="p">;</span><span class="n">left</span><span class="p">:</span> <span class="mi">120</span><span class="n">px</span><span class="p">;}</span>
+<span class="c1">#batterie{width: 30px;height: auto;}</span>
+<span class="o">.</span><span class="n">cercle</span><span class="p">{</span><span class="n">animation</span><span class="o">-</span><span class="n">duration</span><span class="p">:</span> <span class="o">.</span><span class="mi">8</span><span class="n">s</span><span class="p">;</span><span class="n">animation</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">clignoter</span><span class="p">;</span>
+  <span class="n">animation</span><span class="o">-</span><span class="n">iteration</span><span class="o">-</span><span class="n">count</span><span class="p">:</span> <span class="n">infinite</span><span class="p">;</span><span class="n">transition</span><span class="p">:</span> <span class="n">none</span><span class="p">;}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sur les plans intérieur ou extérieur</p></li>
+</ul>
+<div class="admonition-important admonition">
+<p class="admonition-title"><strong>IMPORTANT</strong></p>
+<p>par défaut la notification de piles faibles est affichée sur le plan intérieur (page interieur.php)</p>
+<p>pour l’afficher sur le plan extérieur (page exterieur.php , l’indiquer dans admin/config.php:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;NOTIFICATIONS_PILES&#39;</span><span class="p">,</span><span class="s1">&#39;exterieur&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nom</span> <span class="n">de</span> <span class="n">la</span> <span class="n">page</span> <span class="n">default</span> <span class="p">:</span> <span class="n">interieur</span> <span class="p">(</span><span class="n">sans</span> <span class="n">extension</span> <span class="o">.</span><span class="n">php</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Si une nouvelle page est crée , il faut ajouter ces lignes de code dans la page:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;erreur_NOM_PAGE(SANS .PHP) &gt;&lt;/div&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;reset_erreur_NOM_PAGE(SANS .PHP)&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;display:none&quot;</span><span class="o">&gt;&lt;</span><span class="n">svg</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;reset_erreur&quot;</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">xlink</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;30px&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;30px&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 16 16&quot;</span> <span class="n">xml</span><span class="p">:</span><span class="n">space</span><span class="o">=</span><span class="s2">&quot;preserve&quot;</span><span class="o">&gt;</span>
+<span class="n">circle</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;document.getElementById(&#39;reset_erreur_exterieur&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;erreur_exterieur&#39;).innerHTML =&#39;&#39;;&quot;</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;#007DC6&quot;</span> <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;7.7&quot;</span> <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;7.9&quot;</span> <span class="n">r</span><span class="o">=</span><span class="s2">&quot;7.7&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st1&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M8,3C5.2,3,3,5.2,3,8s2.2,5,5,5s5-2.2,5-5c0-0.7-0.2-1.4-0.5-2.1c-0.1-0.3,0-0.5,0.3-0.7c0.2-0.1,0.5,0,0.6,0.2 c1.4,3,0.1,6.6-2.9,8s-6.6,0.1-8-2.9s-0.1-6.6,2.9-8C6.3,2.2,7.1,2,8,2V3z&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M8,4.5V0.5c0-0.1,0.1-0.2,0.3-0.2c0.1,0,0.1,0,0.2,0.1l2.4,2c0.1,0.1,0.1,0.3,0,0.4l-2.4,2c-0.1,0.1-0.3,0.1-0.4,0C8,4.6,8,4.5,8,4.5z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../_images/image334.webp"><img alt="image334" src="../_images/image334.webp" style="width: 559px;" /></a></p>
+<div class="admonition-pour-une-meilleure-visualisation-des-dispositifs-dont-la-pile-est-a-remplacer admonition">
+<p class="admonition-title"><strong>Pour une meilleure visualisation des dispositifs dont la pile est à remplacer</strong></p>
+<p>ajout d’un signe distinctif, un cercle clignotant :</p>
+<p>. sur les images des plans interieur et exterieur</p>
+<p>. sur l’image svg d’un dispositif s’il est séparé d’un plan (exemple de cercles, $  <a class="reference internal" href="#b-avec-adobe-illustrator"><span class="std std-ref">2.1.1.b avec Adobe Illustrator</span></a>)</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour annuler la notification, faire un RESET : <a class="reference internal" href="../_images/image62.webp"><img alt="image62" src="../_images/image62.webp" style="width: 80px;" /></a></p>
+<p>Si les cercles clignotants ne sont pas utilisés, pour retrouver le nom du dispositif :</p>
+<p><a class="reference internal" href="../_images/image49.webp"><img alt="image49" src="../_images/image49.webp" style="width: 400px;" /></a></p>
+</div>
+<p><a class="reference internal" href="../_images/image335.webp"><img alt="image335" src="../_images/image335.webp" style="width: 379px;" /></a></p>
+<blockquote>
+<div><p>voir le paragraphe <a class="reference internal" href="#b-avec-adobe-illustrator"><span class="std std-ref">2.1.1.b avec Adobe Illustrator</span></a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>par sms</p></li>
+</ul>
+<p>effectué par Domoticz:</p>
+<p><a class="reference internal" href="../_images/image330.webp"><img alt="image330" src="../_images/image330.webp" style="width: 700px;" /></a></p>
+<p>Le script dz : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_variables.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_variables.lua</a></p>
+<div class="admonition-pour-une-meilleure-comprehension-de-la-gestion-des-piles admonition">
+<p class="admonition-title"><strong>Pour une meilleure compréhension de la gestion des piles</strong></p>
+<p><strong>Calcul du niveau des piles</strong></p>
+<p><a class="reference internal" href="../_images/image326.webp"><img alt="image326" src="../_images/image326.webp" style="width: 650px;" /></a></p>
+<p><a class="reference internal" href="../_images/image327.webp"><img alt="image327" src="../_images/image327.webp" style="width: 408px;" /></a></p>
+<p><a class="reference internal" href="../_images/image328.webp"><img alt="image328" src="../_images/image328.webp" style="width: 522px;" /></a></p>
+<p><strong>Variables Domoticz</strong> :</p>
+<p><a class="reference internal" href="../_images/image329.webp"><img alt="image329" src="../_images/image329.webp" style="width: 700px;" /></a></p>
+<p><strong>l’image du plan</strong></p>
+<p>Un cercle visible selon l’état de la batterie est ajouté à l’image SVG du plan concerné  :</p>
+<p><a class="reference internal" href="../_images/image336.webp"><img alt="image336" src="../_images/image336.webp" style="width: 605px;" /></a></p>
+<p>Il suffit d’ajouter en copier/coller des cercles à tous les dispositifs sur piles et d’en modifier le positionnement.</p>
+</div>
+<div class="admonition-exemple-pour-un-cercle admonition">
+<p class="admonition-title"><strong>exemple pour un cercle</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ellipse</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;fill-opacity: 1; fill: red;&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cercle&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;cercle_23&quot;</span> <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;6&quot;</span> <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;6&quot;</span> <span class="n">rx</span><span class="o">=</span><span class="s2">&quot;6&quot;</span> <span class="n">ry</span><span class="o">=</span><span class="s2">&quot;6&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">title</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;temperaure-exterieure&quot;</span><span class="o">&gt;</span><span class="n">cercle</span> <span class="n">temp</span> <span class="n">ext</span> <span class="n">cuisine</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">ellipse</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>l’image du code ci-dessus concernant un dispositif non inclu dans un plan.</p>
+<p><a class="reference internal" href="../_images/image36.webp"><img alt="image36" src="../_images/image36.webp" style="width: 350px;" /></a></p>
+</div>
+<p><em>Les styles CSS</em></p>
+<p><a class="reference internal" href="../_images/image337.webp"><img alt="image337" src="../_images/image337.webp" style="width: 363px;" /></a></p>
+<blockquote>
+<div><p>Les valeurs sont définies dans le fichier de configuration /admin/config.php :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;PILES&#39;</span><span class="p">,</span> <span class="n">array</span><span class="p">(</span> <span class="o">//</span><span class="nb">id</span> <span class="n">var</span> <span class="n">domoticz</span><span class="p">,</span> <span class="n">nom</span> <span class="n">var</span> <span class="n">domoticz</span><span class="p">,</span> <span class="o">%</span><span class="mi">1</span> <span class="p">(</span><span class="n">moyen</span><span class="p">),</span> <span class="o">%</span><span class="mi">2</span> <span class="p">(</span><span class="n">faible</span><span class="p">)</span> <span class="n">de</span> <span class="n">l</span><span class="s1">&#39;energie restante</span>
+<span class="s1">&#39;17&#39;</span><span class="p">,</span>
+<span class="s1">&#39;alarme_bat&#39;</span><span class="p">,</span>
+<span class="mi">50</span><span class="p">,</span>
+<span class="mi">20</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p><strong>La fonction javascript : function maj_devices(plan)</strong> :</p>
+<p><a class="reference internal" href="../_images/image339.webp"><img alt="image339" src="../_images/image339.webp" style="width: 650px;" /></a></p>
+</div></blockquote>
+<p><em>l’annulation de la notification</em></p>
+<p>Effectuée par un onclick dans l’image svg (incluse dans interieur.php et exterieur.php):</p>
+<p>Exemple pour interieur.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">circle</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;document.getElementById(&#39;reset_erreur_interieur&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;erreur_interieur&#39;).innerHTML =&#39;&#39;;&quot;</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;#007DC6&quot;</span> <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;7.7&quot;</span> <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;7.9&quot;</span> <span class="n">r</span><span class="o">=</span><span class="s2">&quot;7.7&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p><strong>Lors d’un clique sur l’image RESET</strong> , le display (des &lt;div du texte et de l’image “reset”) , passe à <span class="red">none</span></p>
+</div>
+<div class="section" id="le-controle-de-la-tension-dalimentation">
+<h3>2.3 4 Le contrôle de la tension d’alimentation<a class="headerlink" href="#le-controle-de-la-tension-dalimentation" title="Lien permanent vers ce titre"></a></h3>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image340.webp"><img alt="image340" src="../_images/image340.webp" style="width: 527px;" /></a></p>
+</div></blockquote>
+<p><strong>Le fichier voltmetre_svg.php</strong></p>
+<ul class="simple">
+<li><p>Comme pour les dispositifs on télécharge une image svg ;</p></li>
+<li><p>comme pour le plan, sur Inkscape ou AI on ajoute un texte (tmp ou autre) qui sera remplacé par la valeur de la tension.</p></li>
+<li><p>On enregistre cette image dans un fichier PHP (on supprime les lignes inutiles).</p></li>
+<li><p>On ajoute aussi un ID</p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image341.webp"><img alt="image341" src="../_images/image341.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+<p><strong>Le dispositif Domoticz</strong> :</p>
+<p><a class="reference internal" href="../_images/image342.webp"><img alt="image342" src="../_images/image342.webp" style="width: 387px;" /></a></p>
+<p><strong>La base de données SQL</strong> :</p>
+<p><a class="reference internal" href="../_images/image343.webp"><img alt="image343" src="../_images/image343.webp" style="width: 602px;" /></a></p>
+<p><a class="reference internal" href="../_images/image344.webp"><img alt="image344" src="../_images/image344.webp" style="width: 133px;" /></a></p>
+<p>Pour maj_js, au lieu de temp il est possible de remplacer le type par un autre texte ; pour cela il faut modifier le script JS</p>
+<p>Le script JS dans le fichier footer.php, déjà vu précédemment :</p>
+<p><a class="reference internal" href="../_images/image345.webp"><img alt="image345" src="../_images/image345.webp" style="width: 650px;" /></a></p>
+</div>
+<div class="section" id="ajouter-des-lampes">
+<h3>2.3 5 ajouter des lampes<a class="headerlink" href="#ajouter-des-lampes" title="Lien permanent vers ce titre"></a></h3>
+<p>Voir un exemple dans le paragraphe <a class="reference internal" href="plan_exterieur.html#ajouter-des-lampes"><span class="std std-ref">4.1.1 Ajouter des lampes</span></a>,  consacré à l’extérieur de la maison, les lampe de jardin</p>
+</div>
+<div class="section" id="ajouter-un-capteur-de-t-exterieur-zigbee">
+<h3>2.3.6 ajouter un capteur de T° extérieur Zigbee<a class="headerlink" href="#ajouter-un-capteur-de-t-exterieur-zigbee" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image346.webp"><img alt="image346" src="../_images/image346.webp" style="width: 529px;" /></a></p>
+<div class="section" id="le-capteur-dans-domoticz">
+<h4>2.3.6.1 Le capteur dans Domoticz<a class="headerlink" href="#le-capteur-dans-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image347.webp"><img alt="image347" src="../_images/image347.webp" style="width: 380px;" /></a></p>
+<p><a class="reference internal" href="../_images/image348.webp"><img alt="image348" src="../_images/image348.webp" style="width: 344px;" /></a></p>
+<p><em>Dans le plan de Domoticz</em> :</p>
+<p><a class="reference internal" href="../_images/image349.webp"><img alt="image349" src="../_images/image349.webp" style="width: 249px;" /></a></p>
+</div>
+</div>
+<div class="section" id="le-capteur-dans-la-bd">
+<h3>2.3.6.2 Le capteur dans la BD<a class="headerlink" href="#le-capteur-dans-la-bd" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image350.webp"><img alt="image350" src="../_images/image350.webp" style="width: 700px;" /></a></p>
+<p>On a choisi de limiter le nb de caractère à 4, à l’origine : <a class="reference internal" href="../_images/image351.webp"><img alt="image351" src="../_images/image351.webp" style="width: 93px;" /></a></p>
+</div>
+<div class="section" id="le-capteur-dans-monitor">
+<h3>2.3.6.3 Le capteur dans Monitor<a class="headerlink" href="#le-capteur-dans-monitor" title="Lien permanent vers ce titre"></a></h3>
+<p><strong>L’image</strong> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&lt;</span><span class="n">svg</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;th_1&quot;</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">xlink</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span>
+       <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 20 20&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;enable-background:new 0 0 20 20;&quot;</span> <span class="n">xml</span><span class="p">:</span><span class="n">space</span><span class="o">=</span><span class="s2">&quot;preserve&quot;</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="n">a</span> <span class="n">xlink</span><span class="p">:</span><span class="n">href</span><span class="o">=</span><span class="s2">&quot;#interieur&quot;</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;popup_device(23)&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;fill: #84bef1;&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;23&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M9,11.2V7h2v4.2c1.6,0.6,2.4,2.3,1.8,3.8c-0.6,1.6-</span>
+<span class="mf">2.3</span><span class="p">,</span><span class="mf">2.4</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">1.8</span><span class="n">S6</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">14.6</span><span class="p">,</span><span class="mf">7.2</span><span class="p">,</span><span class="mi">13</span><span class="n">C7</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">12.1</span><span class="p">,</span><span class="mf">8.1</span><span class="p">,</span><span class="mf">11.5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mf">11.2</span><span class="n">z</span> <span class="n">M8</span><span class="p">,</span><span class="mf">10.5</span>
+      <span class="n">c</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">2.6</span><span class="p">,</span><span class="mf">3.6</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">5.5</span><span class="n">s3</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">2.6</span><span class="p">,</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">1.5</span><span class="n">c1</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">2.6</span><span class="o">-</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">5.5</span><span class="n">c</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">0.6</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">1.5</span><span class="n">V4c0</span><span class="o">-</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="n">S8</span><span class="p">,</span><span class="mf">2.9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="n">V10</span><span class="o">.</span><span class="mi">5</span>
+      <span class="n">L8</span><span class="p">,</span><span class="mf">10.5</span><span class="n">z</span> <span class="n">M6</span><span class="p">,</span><span class="mf">9.5</span><span class="n">V4c0</span><span class="o">-</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">1.8</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="o">-</span><span class="mi">4</span><span class="n">s4</span><span class="p">,</span><span class="mf">1.8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="n">v5</span><span class="o">.</span><span class="mi">5</span><span class="n">c2</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">2.7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">8.5</span><span class="n">c</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">1.3</span><span class="o">-</span><span class="mf">2.8</span><span class="p">,</span><span class="mi">2</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">2</span><span class="n">c</span><span class="o">-</span><span class="mf">3.3</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mf">2.7</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">6</span>
+      <span class="n">C4</span><span class="p">,</span><span class="mf">12.3</span><span class="p">,</span><span class="mf">4.7</span><span class="p">,</span><span class="mf">10.7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">9.5</span><span class="n">z</span><span class="s2">&quot;/&gt;&lt;/a</span>
+ <span class="o">&lt;</span><span class="n">text</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;temp_ext_cuisine&quot;</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(0.6725 0 0 1 7.4663 15.254)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st33 st36b&quot;</span><span class="o">&gt;</span><span class="n">tmp</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+ <span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image352.webp"><img alt="image352" src="../_images/image352.webp" style="width: 602px;" /></a></p>
+<p><strong>Le fichier Json</strong></p>
+<p><a class="reference internal" href="../_images/image353.webp"><img alt="image353" src="../_images/image353.webp" style="width: 334px;" /></a></p>
+<p><a class="reference internal" href="../_images/image354.webp"><img alt="image354" src="../_images/image354.webp" style="width: 529px;" /></a></p>
+</div>
+</div>
+<div class="section" id="le-fichier-php-de-la-page">
+<h2>2.4 le fichier PHP de la page<a class="headerlink" href="#le-fichier-php-de-la-page" title="Lien permanent vers ce titre"></a></h2>
+<p>Il faut maintenant ajouter la page sur le site</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text"><em>Un modèle de page pour toutes les pages du site</em></span><a class="headerlink" href="#id1" title="Lien permanent vers ce tableau"></a></caption>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>&lt;!– section TITRE start –&gt;</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&lt;!– ================ –&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;div id= »ID DE LA PAGE » class= »CLASS DE LA PAGE OPTIONNEL »&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;div class= »container »&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;div class= »col-md-12 »&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;h1 class= »title_TITRE text-center »&gt; exemple Prévisions&lt;span&gt;  météo&lt;/span&gt;&lt;/h1&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;div class= »CLASS DU CONTENU » style= »color:black; »&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;div id= »ID DE CETTE LIGNE » &gt;LIGNE OPTIONNELLE&lt;/div&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>div id= »CONTENU » class= »table-responsive »&gt;&lt;/div&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;div id= »AUTRE CONTENU OPTIONNEL »&gt;&lt;/div&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;!– fin  de la section TITRE –&gt;</p></td>
+</tr>
+</tbody>
+</table>
+<p>En vert du contenu optionnel</p>
+<p><a class="reference internal" href="../_images/image355.webp"><img alt="image355" src="../_images/image355.webp" style="width: 700px;" /></a></p>
+<p>Sur cette page, des fenêtres(modal) peuvent être ajoutées si besoin, Bootstrap facilite la création ; sur la page décrite en suivant, 2 fenêtres sont ajoutées.</p>
+<p><strong>Le menu</strong> :</p>
+<p><a class="reference internal" href="../_images/image356.webp"><img alt="image356" src="../_images/image356.webp" style="width: 496px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Le fichier include/interieur .php</strong></p></li>
+</ul>
+<p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/interieur.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/interieur.php</a></p>
+<p><a class="reference internal" href="../_images/image357.webp"><img alt="image357" src="../_images/image357.webp" style="width: 700px;" /></a></p>
+<p>Extrait du fichier index_loc.php : pour info, <strong>en général ne pas modifier ce fichier</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/accueil.php&quot;</span><span class="p">);</span><span class="o">//</span> <span class="n">l</span><span class="s1">&#39; affichage page accueil</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">ON_MET</span><span class="o">==</span><span class="n">true</span><span class="p">)</span> <span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/meteo.php&quot;</span><span class="p">);</span>     <span class="o">//</span> <span class="n">une</span> <span class="n">page</span> <span class="n">de</span> <span class="n">prévision</span> <span class="n">météo</span>
+<span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/interieur.php&quot;</span><span class="p">);</span><span class="o">//</span> <span class="n">plan</span> <span class="n">intérieur</span>
+<span class="o">//</span><span class="n">ne</span> <span class="n">pas</span> <span class="n">modifier</span> <span class="n">ce</span> <span class="n">fichier</span>
+</pre></div>
+</div>
+<p>Comme pour entete_html.php, header.php, accueil.php, config.php, interieur.php est chargée obligatoirement au démarrage de l’appli.</p>
+<p>Extrait du fichier include/header.php :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;li class=&quot;zz active&quot;&gt;&lt;a href=&quot;#header&quot;&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+&lt;?php if (ON_MET==true) echo &#39;&lt;li class=&quot;zz&quot;&gt;&lt;a href=&quot;#meteo&quot;&gt;Météo&lt;/a&gt;&lt;/li&gt;&#39;;?&gt;
+&lt;li class=&quot;zz&quot;&gt;&lt;a href=&quot;#interieur&quot;&gt;Intérieur&lt;/a&gt;&lt;/li&gt;
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image360.webp"><img alt="image360" src="../_images/image360.webp" style="width: 400px;" /></a></p>
+<p><strong>CSS</strong> : css/mes_css.css</p>
+<p>Le style existe déjà pour toutes les pages , pour les modifier :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,</span>
+   <span class="c1">#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{</span>
+   <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">aquamarine</span><span class="p">;}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image362.webp"><img alt="image362" src="../_images/image362.webp" style="width: 600px;" /></a></p>
+</div>
+<div class="section" id="f12-des-navigateurs-pour-faciliter-la-construction">
+<h2>2.5 F12 des navigateurs pour faciliter la construction<a class="headerlink" href="#f12-des-navigateurs-pour-faciliter-la-construction" title="Lien permanent vers ce titre"></a></h2>
+<p>Pour les PIR, les capteurs d’ouverture, pour le changement de couleur</p>
+<p><a class="reference internal" href="../_images/image363.webp"><img alt="image363" src="../_images/image363.webp" style="width: 615px;" /></a></p>
+</div>
+<div class="section" id="les-dispositifs-virtuels-domoticz-et-mqtt">
+<h2>2.6 Les dispositifs virtuels Domoticz et MQTT<a class="headerlink" href="#les-dispositifs-virtuels-domoticz-et-mqtt" title="Lien permanent vers ce titre"></a></h2>
+<p>Pour monitor ça n’a pas d’importance, il n’y a pas de notion « virtuel – réel » mais la mise à
+jour de ces dispositifs dans Domoticz n’est pas toujours facile surtout pour les dispositifs
+avec plusieurs valeurs tels que température+ Humidité température +batterie,…</p>
+<p><strong>Un script dz : séparation_valeurs.lua</strong></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9paration_valeurs.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9paration_valeurs.lua</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">local</span> <span class="n">scriptVar</span> <span class="o">=</span> <span class="s1">&#39;separation_valeurs&#39;</span>
+<span class="k">return</span>
+<span class="p">{</span>
+ <span class="n">on</span> <span class="o">=</span> <span class="p">{</span> <span class="n">customEvents</span> <span class="o">=</span> <span class="p">{</span> <span class="n">scriptVar</span><span class="p">,</span> <span class="p">},</span>
+     <span class="n">httpResponses</span> <span class="o">=</span>   <span class="p">{</span> <span class="n">scriptVar</span><span class="p">,</span> <span class="p">},</span>
+ <span class="p">},</span>
+ <span class="n">logging</span> <span class="o">=</span>
+ <span class="p">{</span>  <span class="n">level</span> <span class="o">=</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">LOG_DEBUG</span><span class="p">,</span> <span class="o">--</span> <span class="n">LOG_ERROR</span>
+    <span class="n">marker</span> <span class="o">=</span> <span class="n">scriptVar</span><span class="p">,</span>
+ <span class="p">},</span>
+ <span class="n">execute</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">dz</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+     <span class="n">lodash</span> <span class="o">=</span> <span class="n">dz</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">_</span>
+     <span class="n">local</span> <span class="n">function</span> <span class="n">sendURL</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span><span class="n">batteryLevel</span><span class="p">)</span> <span class="o">--</span><span class="n">CAPTEURS</span> <span class="n">TEMPERATURE</span><span class="p">:</span> <span class="n">svalue</span><span class="o">=</span><span class="n">temp</span>    <span class="n">battery</span><span class="o">=</span> <span class="n">volts</span> <span class="n">battery</span>
+     <span class="n">local</span> <span class="n">url</span> <span class="o">=</span> <span class="n">dz</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;Domoticz url&#39;</span><span class="p">]</span> <span class="o">..</span> <span class="s1">&#39;/json.htm?type=command&amp;param=udevice&amp;idx=&#39;</span> <span class="o">..</span> <span class="n">idx</span> <span class="o">..</span> <span class="s1">&#39;&amp;nvalue=0&amp;svalue=&#39;</span> <span class="o">..</span> <span class="n">temperature</span> <span class="o">..</span> <span class="s1">&#39;&amp;battery=&#39;</span> <span class="o">..</span> <span class="n">batteryLevel</span><span class="p">;</span>
+     <span class="n">dz</span><span class="o">.</span><span class="n">openURL</span><span class="p">({</span>   <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="p">,</span>
+             <span class="n">callback</span> <span class="o">=</span> <span class="n">scriptVar</span><span class="p">,})</span>
+     <span class="n">end</span>
+     <span class="n">local</span> <span class="n">function</span> <span class="n">sendURL1</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span><span class="n">humidity</span><span class="p">,</span><span class="n">confort</span><span class="p">,</span><span class="n">batteryLevel</span><span class="p">)</span> <span class="o">--</span><span class="n">CAPTEURS</span> <span class="n">TEMPERATURE</span><span class="o">+</span><span class="n">HUMIDITE</span> <span class="p">:</span> <span class="n">svalue</span><span class="o">=</span><span class="n">temp</span><span class="p">;</span><span class="n">hum</span><span class="p">;</span><span class="n">Humidity_status</span>   <span class="n">battery</span><span class="o">=</span><span class="n">volts</span> <span class="n">battery</span>
+     <span class="n">local</span> <span class="n">url</span> <span class="o">=</span> <span class="n">dz</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;Domoticz url&#39;</span><span class="p">]</span> <span class="o">..</span> <span class="s1">&#39;/json.htm?type=command&amp;param=udevice&amp;idx=&#39;</span> <span class="o">..</span> <span class="n">idx</span> <span class="o">..</span> <span class="s1">&#39;&amp;nvalue=0&amp;svalue=&#39;</span> <span class="o">..</span> <span class="n">temperature</span> <span class="o">..</span><span class="s1">&#39;;&#39;</span><span class="o">..</span>  <span class="n">humidity</span> <span class="o">..</span><span class="s1">&#39;;&#39;</span> <span class="o">..</span> <span class="n">confort</span> <span class="o">..</span> <span class="s1">&#39;&amp;battery=&#39;</span> <span class="o">..</span> <span class="n">batteryLevel</span><span class="p">;</span>
+     <span class="n">dz</span><span class="o">.</span><span class="n">openURL</span><span class="p">(</span> <span class="p">{</span> <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="p">,</span>
+             <span class="n">callback</span> <span class="o">=</span> <span class="n">scriptVar</span><span class="p">,})</span>
+     <span class="n">end</span>
+         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">isCustomEvent</span> <span class="n">then</span>
+         <span class="n">mqtt</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">;</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;q:&quot;</span> <span class="o">..</span> <span class="n">mqtt</span><span class="p">)</span>
+         <span class="n">mqtt</span> <span class="o">=</span> <span class="n">dz</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">fromJSON</span><span class="p">(</span><span class="n">mqtt</span><span class="p">)</span>
+         <span class="n">local</span> <span class="n">batteryLevel</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">batteryLevel</span>
+         <span class="n">local</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">temperature</span>
+         <span class="n">local</span> <span class="n">humidity</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">humidity</span>
+         <span class="n">local</span> <span class="n">humidity_status</span><span class="o">=</span><span class="n">tonumber</span><span class="p">(</span><span class="n">humidity</span><span class="p">);</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;q:&quot;</span> <span class="o">..</span> <span class="n">humidity_status</span><span class="p">)</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">humidity_status</span><span class="o">&lt;</span><span class="mi">30</span><span class="p">)</span> <span class="n">then</span> <span class="n">confort</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span> <span class="p">;</span>
+             <span class="n">elseif</span> <span class="p">(</span><span class="n">humidity_status</span><span class="o">&gt;</span><span class="mi">39</span> <span class="ow">and</span> <span class="n">humidity_status</span><span class="o">&lt;</span><span class="mi">60</span><span class="p">)</span> <span class="n">then</span> <span class="n">confort</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span> <span class="p">;</span>
+             <span class="n">elseif</span> <span class="p">(</span><span class="n">humidity_status</span><span class="o">&gt;</span><span class="mi">59</span> <span class="ow">and</span> <span class="n">humidity_status</span><span class="o">&lt;</span><span class="mi">80</span><span class="p">)</span> <span class="n">then</span> <span class="n">confort</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="p">;</span>
+             <span class="n">elseif</span> <span class="p">(</span><span class="n">humidity_status</span><span class="o">&gt;</span><span class="mi">79</span><span class="p">)</span> <span class="n">then</span> <span class="n">confort</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span><span class="p">;</span>
+             <span class="k">else</span> <span class="n">confort</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
+             <span class="n">end</span>
+         <span class="n">local</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">idx</span><span class="p">;</span>
+         <span class="n">local</span> <span class="nb">type</span><span class="o">=</span><span class="n">dz</span><span class="o">.</span><span class="n">devices</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="n">deviceType</span><span class="p">;</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">..</span> <span class="n">tostring</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="o">..</span> <span class="s1">&#39; ,  humidity_status : &#39;</span> <span class="o">..</span> <span class="n">tostring</span><span class="p">(</span><span class="n">confort</span><span class="p">));</span>
+         <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="o">==</span><span class="s1">&#39;Temp&#39;</span><span class="p">)</span>  <span class="n">then</span> <span class="n">sendURL</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">batteryLevel</span><span class="p">);</span>
+         <span class="n">elseif</span> <span class="p">(</span><span class="nb">type</span><span class="o">==</span><span class="s1">&#39;Temp + Humidity&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">sendURL1</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">humidity</span><span class="p">,</span> <span class="n">confort</span><span class="p">,</span> <span class="n">batteryLevel</span><span class="p">);</span>
+         <span class="k">else</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pas de dispositif trouvé&quot;</span><span class="p">);</span>
+         <span class="n">end</span>
+     <span class="n">elseif</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">ok</span> <span class="n">then</span>
+         <span class="n">dz</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Problèm avec l</span><span class="se">\&#39;</span><span class="s1">envoi de la temperature ou  batteryLevel&#39;</span> <span class="o">..</span> <span class="n">lodash</span><span class="o">.</span><span class="n">str</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="n">dz</span><span class="o">.</span><span class="n">LOG_ERROR</span><span class="p">)</span>
+     <span class="k">else</span>
+         <span class="n">dz</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;All ok </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">..</span> <span class="n">lodash</span><span class="o">.</span><span class="n">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">..</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">dz</span><span class="o">.</span><span class="n">LOG_DEBUG</span><span class="p">)</span>
+     <span class="n">end</span>
+ <span class="n">end</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Depuis Domoticz 2021.1</strong></p>
+<p><a class="reference internal" href="../_images/image365.webp"><img alt="image365" src="../_images/image365.webp" style="width: 451px;" /></a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="configuration_minimum.html" class="btn btn-neutral float-left" title="1. Configuration minimum : la page d’accueil" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="meteo.html" class="btn btn-neutral float-right" title="3. Météo" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

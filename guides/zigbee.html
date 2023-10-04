@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9. Dispositifs Zigbee &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="10. Dispositifs Zwave" href="zwave.html" />
+    <link rel="prev" title="8. MUR de COMMANDES ON/OFF" href="mur_de_commandes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Dispositifs Zigbee</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acces-distant-https">9.1 accès distant HTTPS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">9. Dispositifs Zigbee</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/zigbee.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="dispositifs-zigbee">
+<h1>9. Dispositifs Zigbee<a class="headerlink" href="#dispositifs-zigbee" title="Lien permanent vers ce titre"></a></h1>
+<p><strong>Avec zigbee2mqtt</strong></p>
+<p>Affichage du Frontend</p>
+<p><a class="reference internal" href="../_images/image653.webp"><img alt="image653" src="../_images/image653.webp" style="width: 536px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Voir la page du site consacrée à frontend : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/48">http://domo-site.fr/accueil/dossiers/48</a></p>
+</div>
+<ul class="simple">
+<li><p><strong>la page zigbee.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image654.webp"><img alt="image654" src="../_images/image654.webp" style="width: 625px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Le fichier admin/config.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Page</span> <span class="n">zigbee2mqtt</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_ZIGBEE&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">Zigbee</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPZIGBEE&#39;</span><span class="p">,</span> <span class="s1">&#39;http://192.168.1.92:8084&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">ip</span><span class="p">:</span><span class="n">port</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLZIGBEE&#39;</span><span class="p">,</span> <span class="s1">&#39;https://zigbee.&lt;DOMAINE&gt;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">url</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Le fichier index_loc.php</strong> : pour info, ne pas modifier</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">ON_ZIGBEE</span><span class="o">==</span><span class="n">true</span><span class="p">)</span> <span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/zigbee.php&quot;</span><span class="p">);</span><span class="o">//</span> <span class="n">fronted</span> <span class="n">zigbee2mqtt</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Pour une installation classique node.js</strong></p>
+<p>Démarrage auto : avec PM2 , Voir la page domo-site : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/74">http://domo-site.fr/accueil/dossiers/74</a></p>
+<p><a class="reference internal" href="../_images/image658.webp"><img alt="image658" src="../_images/image658.webp" style="width: 600px;" /></a></p>
+<p><a class="reference internal" href="../_images/image659.webp"><img alt="image659" src="../_images/image659.webp" style="width: 647px;" /></a></p>
+<p>Pour une installation sous Docker, le démarrage sera automatique.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Les styles CSS</strong></p></li>
+</ul>
+<p>En plus des css pour la page:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">zigbee2mqtt</span> <span class="n">zwavejs2mqtt</span> <span class="o">&amp;</span> <span class="n">ngiosmobile</span>   <span class="p">(</span><span class="o">----------------*/</span>
+<span class="c1">#zbmqtt,#zwmqtt {margin-top:-40px;width: 100%;height: 800px;}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>zigbee.php</strong></p></li>
+</ul>
+<p>on ajoute une iframe <em>(permet d’obtenir une page HTML intégrée dans la page courante)</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">iframe</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;zbmqtt&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo $lien_zigbee;?&gt;&quot;</span> <span class="n">frameborder</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="o">&gt;&lt;/</span><span class="n">iframe</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image657.webp"><img alt="image657" src="../_images/image657.webp" style="width: 700px;" /></a></p>
+<div class="section" id="acces-distant-https">
+<h2>9.1 accès distant HTTPS<a class="headerlink" href="#acces-distant-https" title="Lien permanent vers ce titre"></a></h2>
+<p>Il faut configurer NGINX : - <a class="reference internal" href="configuration_minimum.html#acces-distant-https"><span class="std std-ref">1.8 Accès distant HTTPS</span></a></p>
+<div class="admonition-exemple-de-fichier-conf-avant-de-demander-un-certificat-cerbot admonition">
+<p class="admonition-title"><strong>Exemple de fichier .conf avant de demander un certificat cerbot</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+ listen       80;
+ server_name  zigbee.&lt;DOMAINE&gt;;
+ #return 301   https://zigbee&lt;DOMAINE&gt;$request_uri;
+}
+ location / {
+  proxy_pass http://&lt;IP&gt;:&lt;PORT&gt;/;
+  proxy_set_header Host $host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ }
+ location /api {
+  proxy_pass         http://&lt;IP&gt;:&lt;PORT&gt;/api;
+  proxy_set_header Host $host;
+
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection &quot;upgrade&quot;;
+  }
+ }
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Demande de certificat Let’s Encrypt</strong> :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cerbot</span> <span class="o">--</span><span class="n">nginx</span>
+</pre></div>
+</div>
+<p>Le fichier modifié par cerbot lors de la demande de certificat</p>
+<p><a class="reference internal" href="../_images/image655.webp"><img alt="image655" src="../_images/image655.webp" style="width: 700px;" /></a></p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>** Pour utiliser auth basic**
+<em>comme c’est le cas ici</em></p>
+<p>Il faut créer un fichier de mot de passe et ajouter des utilisateurs</p>
+<p><a class="reference external" href="https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/">https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="mur_de_commandes.html" class="btn btn-neutral float-left" title="8. MUR de COMMANDES ON/OFF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="zwave.html" class="btn btn-neutral float-right" title="10. Dispositifs Zwave" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

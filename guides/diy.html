@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17. DIY &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="18. Divers" href="divers.html" />
+    <link rel="prev" title="16. Ajouter des pages ou des alertes" href="ajout_page_alertes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">17. DIY</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#domotiser-un-spa-ou-une-piscine">17.1 Domotiser un SPA (ou une piscine)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creation-de-capteurs-virtuels-dans-domoticz">17.1.1. Création de capteurs virtuels dans Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creation-des-tables-ph-redox-temp">17.1.2. Création des tables PH, Redox, temp, …</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#envoi-des-donnees-a-la-bd-de-monitor-par-domoticz">17.1.3 Envoi des données à la BD de monitor par Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affichage-dans-monitor">17.1.4. – Affichage dans Monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#la-page-spa-php">17.1.4.1 la page spa.php</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1">17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ajout-dun-id-dans-limage-svg-pour-3eme-ecran">17.1.4.3 ajout d’un ID dans  l’image svg pour 3eme écran</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ajout-dautres-ecrans">17.1.4.4  ajout d’autres écrans</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#extension-pompes-perisaltiques-pour-reguler-ph-et-redox">17.2 Extension Pompes perisaltiques pour réguler PH et REDOX</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">17. DIY</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/diy.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="diy">
+<h1>17. DIY<a class="headerlink" href="#diy" title="Lien permanent vers ce titre"></a></h1>
+<div class="section" id="domotiser-un-spa-ou-une-piscine">
+<h2>17.1 Domotiser un SPA (ou une piscine)<a class="headerlink" href="#domotiser-un-spa-ou-une-piscine" title="Lien permanent vers ce titre"></a></h2>
+<p>Ce paragraphe contient différentes parties qui peuvent être indépendantes ou liées suivant le choix de chacun :</p>
+<ul class="simple">
+<li><p>La réalisation d’un boitier électronique de mesures de PH, Redox, Températures, Débit de la filtration, les mesures étant envoyées sur un serveur MQTT;Cette réalisation est décrite sur le site domo-site.fr</p></li>
+<li><p>La création de capteurs virtuels dans Domoticz qui récupère les valeurs envoyées par le serveur MQTT et les envoie vers la base de données de Monitor ; il envoie également des alertes sur la TV comme pour les poubelles et la fosse septique.</p></li>
+<li><p>La création d’une page dans Monitor pour afficher les données sur une page dédiée, afficher des alertes et commander s’il y a lieu le chauffage, les pompes ,…</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image914.webp"><img alt="image914" src="../_images/image914.webp" style="width: 534px;" /></a></p>
+<div class="section" id="creation-de-capteurs-virtuels-dans-domoticz">
+<h3>17.1.1. Création de capteurs virtuels dans Domoticz<a class="headerlink" href="#creation-de-capteurs-virtuels-dans-domoticz" title="Lien permanent vers ce titre"></a></h3>
+<p><em>Pour mémoire</em></p>
+<p><a class="reference internal" href="../_images/image915.webp"><img alt="image915" src="../_images/image915.webp" style="width: 700px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>C’est Domoticz qui fournit l’IDX, il faut donc modifier cet IDX dans EasyEsp ;Pour le PH, le redox, le débit, les capteurs sont  » Custom « .</p>
+<p><a class="reference internal" href="../_images/image916.webp"><img alt="image916" src="../_images/image916.webp" style="width: 605px;" /></a></p>
+</div>
+<p><strong>Dans EasyEsp</strong></p>
+<p><a class="reference internal" href="../_images/image917.webp"><img alt="image917" src="../_images/image917.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="creation-des-tables-ph-redox-temp">
+<h3>17.1.2. Création des tables PH, Redox, temp, …<a class="headerlink" href="#creation-des-tables-ph-redox-temp" title="Lien permanent vers ce titre"></a></h3>
+<p><em>dans la base de données</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans phpMyAdmin, il n’est pas possible de faire des copier/coller, aussi il faut enregistrer les lignes ci-dessous dans un fichier et l’importer pour éviter de taper toutes les lignes.</p>
+</div>
+<p><strong>4  ou 5 caractères</strong> sont nécessaires pour la valeur (5 caractères reçus par Dz de MQTT , réduits à 4 avec <span class="red">round(deviceValue, 1)</span> dans le script lua).</p>
+<ul class="simple">
+<li><p><strong>La commande SQL</strong> :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> CREATE TABLE `ph_spa` (
+`num` int(5) NOT NULL,
+`date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+`valeur` varchar(5) NOT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ ALTER TABLE `debit_spa` CHANGE `num` `num` INT(5) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image918.webp"><img alt="image918" src="../_images/image918.webp" style="width: 549px;" /></a></p>
+<p><em>Faire de même pour les autres tables , en remplaçant le nom de la table dans le fichier ; exemple : CREATE TABLE `orp_spa`</em></p>
+<p><a class="reference internal" href="../_images/image919.webp"><img alt="image919" src="../_images/image919.webp" style="width: 610px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><span class="darkblue">Si la création est manuelle , ne pas oublier Auto incrémenter « num »</span></p>
+<p><a class="reference internal" href="../_images/image920.webp"><img alt="image920" src="../_images/image920.webp" style="width: 601px;" /></a></p>
+</div>
+</div>
+<div class="section" id="envoi-des-donnees-a-la-bd-de-monitor-par-domoticz">
+<h3>17.1.3 Envoi des données à la BD de monitor par Domoticz<a class="headerlink" href="#envoi-des-donnees-a-la-bd-de-monitor-par-domoticz" title="Lien permanent vers ce titre"></a></h3>
+<p><em>Le paragraphe 6.2 traite de ce sujet (envoie de températures issues de capteurs réels ou virtuels)</em>.</p>
+<p>Il suffit donc d’ajouter les données PH, Redox, etc… dans le script export_sql dans Evènements de Domoticz :</p>
+<p><a class="reference internal" href="../_images/image921.webp"><img alt="image921" src="../_images/image921.webp" style="width: 618px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour rappel <span class="darkblue">fabric</span> appelle le script python <span class="darkblue">sqlite_mysql.py</span> de monitor</p>
+</div>
+<p>Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.</p>
+<p><a class="reference internal" href="../_images/image922.webp"><img alt="image922" src="../_images/image922.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="affichage-dans-monitor">
+<h3>17.1.4. – Affichage dans Monitor<a class="headerlink" href="#affichage-dans-monitor" title="Lien permanent vers ce titre"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Pour que Monitor reçoive les données, il faut enregistrer les capteurs dans la BD et les ajouter dans un plan dans Domoticz plan, voir les $</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="bien_debuter.html#les-tables-dispositifs-variables-text-image"><span class="std std-ref">0.3.1 Les Tables « dispositifs(variables) » &amp; « text-image »</span></a></p></li>
+<li><p><a class="reference internal" href="plan_interieur.html#ajout-dun-ou-plusieurs-dispositifs"><span class="std std-ref">2.1.4 - ajout d’un ou plusieurs dispositifs</span></a></p></li>
+</ul>
+<div class="section" id="la-page-spa-php">
+<h4>17.1.4.1 la page spa.php<a class="headerlink" href="#la-page-spa-php" title="Lien permanent vers ce titre"></a></h4>
+<p><em>cette page a la particularité d’affichher un écran à pages multiples défilantes</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- section SPA start --&gt;
+             &lt;div id=&quot;spa&quot; class=&quot;spa&quot;&gt;
+                     &lt;div class=&quot;container&quot;&gt;
+                   &lt;div class=&quot;col-md-12&quot;&gt;&lt;p&gt;&lt;h1 class=&quot;title_ext text-center&quot;&gt;SPA&lt;span style=&quot;margin-left:20px;font-size: 20px;&quot;&gt; contrôle qualité&lt;/span&gt;&lt;/h1&gt;&lt;br&gt;&lt;/p&gt;
+              &lt;?php include (&quot;ph-redox_svg.php&quot;);?&gt;
+         &lt;/div&gt;   &lt;/div&gt;    &lt;/div&gt;
+&lt;script&gt;
+num_ecran=0;nb_ecran=&lt;?php echo NB_ECRAN_SPA;?&gt;;
+function next_ecran(num_ec){
+ num_actuel=num_ecran;num_ecran=num_ecran+num_ec;
+ if (num_ecran&gt;=nb_ecran || num_ecran&lt;0) {num_ecran=0;}
+ div_suiv=&quot;ecran&quot;+num_ecran;div_prec=&quot;ecran&quot;+num_actuel;
+ document.getElementById(div_prec).style.display=&quot;none&quot;;document.getElementById(div_suiv).style.display=&quot;block&quot;;
+ var ecranspa=&lt;?php echo &#39;[&quot;&#39; . implode(&#39;&quot;, &quot;&#39;, ECRANSPA) . &#39;&quot;]&#39; ?&gt;;
+ nbec=0;
+ while (nbec&lt;=nb_ecran-2){//console.log(nbec+&quot; .. &quot;+ecranspa[nbec]);
+        graph(ecranspa[nbec]+&#39;_spa&#39;,&#39;text_svg&#39;,&#39;graphic_&#39;+ecranspa[nbec]);
+        nbec++;    }    }
+&lt;/script&gt;
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image923.webp"><img alt="image923" src="../_images/image923.webp" style="width: 596px;" /></a></p>
+<div class="admonition-explication-de-cette-ligne admonition">
+<p class="admonition-title"><strong>Explication de cette ligne</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var ecranspa=&lt;?php echo &#39;[&quot;&#39; . implode(&#39;&quot;, &quot;&#39;, ECRANSPA) . &#39;&quot;]&#39; ?&gt;;
+</pre></div>
+</div>
+</div></blockquote>
+<p><span class="darkblue">C’est la façon de passer un array PHP à une fonction JavaScript</span></p>
+</div>
+<p><em>La fonction graph de la page graphique est utilisée</em></p>
+<ul class="simple">
+<li><p><strong>Dans config.php</strong> : <em>(permet d’ajouter facilement une autre page)</em></p></li>
+</ul>
+<p>Il suffira alors simplement d’ajouter cette page à l’image svg, voir le § <a class="reference internal" href="#ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1"><span class="std std-ref">17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPA</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_SPA&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">SPA</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;NB_ECRAN_SPA&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ECRANSPA&#39;</span><span class="p">,</span> <span class="n">array</span><span class="p">(</span>
+ <span class="mi">0</span> <span class="o">=&gt;</span> <span class="s2">&quot;ph&quot;</span><span class="p">,</span><span class="o">//</span> <span class="n">si</span> <span class="n">nb</span> <span class="n">ecran</span> <span class="o">&gt;=</span><span class="mi">2</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s2">&quot;orp&quot;</span><span class="p">,</span><span class="o">//</span> <span class="n">si</span> <span class="n">nb</span> <span class="n">ecran</span> <span class="o">&gt;=</span><span class="mi">3</span>
+ <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s2">&quot;debit&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">débit</span> <span class="n">en</span> <span class="n">M3</span> <span class="o">//</span> <span class="n">si</span> <span class="n">nb</span> <span class="n">ecran</span> <span class="o">&gt;=</span><span class="mi">4</span>
+ <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">si</span> <span class="n">nb</span> <span class="n">ecran</span> <span class="o">&gt;=</span><span class="mi">5</span>
+ <span class="mi">4</span> <span class="o">=&gt;</span> <span class="s2">&quot;temp_ext&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">si</span> <span class="n">nb</span> <span class="n">ecran</span> <span class="o">&gt;=</span><span class="mi">6</span>
+     <span class="p">));</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>NE PAS OUBLIER d’ajouter la page au menu , à index_loc.php et son ID aux CSS</strong>, voir le paragraphe <a class="reference internal" href="ajout_page_alertes.html#ajouter-des-pages-ou-des-alertes"><span class="std std-ref">16. Ajouter des pages ou des alertes</span></a></p>
+</div>
+<p><a class="reference internal" href="../_images/image925.webp"><img alt="image925" src="../_images/image925.webp" style="width: 700px;" /></a></p>
+<div class="section" id="a-limage-svg-support-de-laffichage">
+<h5>17.1.4.1.a L’image svg support de l’affichage<a class="headerlink" href="#a-limage-svg-support-de-laffichage" title="Lien permanent vers ce titre"></a></h5>
+<p><em>https://raw.githubusercontent.com/mgrafr/monitor/main/include/ph-redox_svg.php</em></p>
+<p><a class="reference internal" href="../_images/image928.webp"><img alt="image928" src="../_images/image928.webp" style="width: 602px;" /></a></p>
+<p><a class="reference internal" href="../_images/image929.webp"><img alt="image929" src="../_images/image929.webp" style="width: 620px;" /></a></p>
+<p><a class="reference internal" href="../_images/image930.webp"><img alt="image930" src="../_images/image930.webp" style="width: 327px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Enregistrer les capteurs dans la table « dispositifs »</strong></p></li>
+</ul>
+<p>voir le § <a class="reference internal" href="bien_debuter.html#les-dispositifs"><span class="std std-ref">0.3.2 Les Dispositifs</span></a></p>
+<ul class="simple">
+<li><p><strong>Monitor reçoit</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image932.webp"><img alt="image932" src="../_images/image932.webp" style="width: 700px;" /></a></p>
+<div class="admonition-la-1ere-page admonition">
+<p class="admonition-title"><strong>La 1ère page</strong></p>
+<p><a class="reference internal" href="../_images/image933.webp"><img alt="image933" src="../_images/image933.webp" style="width: 485px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1">
+<h4>17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)<a class="headerlink" href="#ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1" title="Lien permanent vers ce titre"></a></h4>
+<p><em>qui affichera les données de la BD</em></p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image934.webp"><img alt="image934" src="../_images/image934.webp" style="width: 484px;" /></a></p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">g</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;graphic_ph&quot;</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 70 65)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;spa2 spa3&quot;</span><span class="o">&gt;&lt;/</span><span class="n">g</span><span class="o">&gt;</span>
+
+<span class="o">|</span><span class="n">image935</span><span class="o">|</span>
+</pre></div>
+</div>
+<div class="section" id="a-les-autres-fichiers-concernes">
+<h5>17.1.4.2.a Les autres fichiers concernés<a class="headerlink" href="#a-les-autres-fichiers-concernes" title="Lien permanent vers ce titre"></a></h5>
+<ul class="simple">
+<li><p>fonctions.php graph()</p></li>
+<li><p>export_tab_sqli.php</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image936.webp"><img alt="image936" src="../_images/image936.webp" style="width: 700px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>L’écran de mesure est petit , l’affichage est limité à 10 analyses ; pour un historique plus long , utiliser page  graphique et « infos_bd »</p>
+<p>L’image svg n’accepte pas les retours à la ligne &lt;br&gt; , pour chaque ligne il faut définir un &lt;text&gt;…&lt;/text&gt; ; le fichier fonctions.php est donc modifié en conséquence.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">text</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 0 &#39;.$ccc.&#39;)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;spa2 spa3&quot;</span><span class="o">&gt;</span><span class="s1">&#39;.$xdate[$i].&#39;</span><span class="o">=</span><span class="s1">&#39;.$yvaleur[$i].&#39;</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image937.webp"><img alt="image937" src="../_images/image937.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image938.webp"><img alt="image938" src="../_images/image938.webp" style="width: 601px;" /></a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Les lignes non indispensables sont supprimées</strong> pour $periode= « text_svg »;</p>
+<p>en remplacement, affichage de « connected »  : <span class="green">echo “&lt;text transform= »matrix(1 0 0 1 0 0) » class= »spa2 spa3 »&gt;Connected&lt;/text&gt;”;</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="ajout-dun-id-dans-limage-svg-pour-3eme-ecran">
+<h4>17.1.4.3 ajout d’un ID dans  l’image svg pour 3eme écran<a class="headerlink" href="#ajout-dun-id-dans-limage-svg-pour-3eme-ecran" title="Lien permanent vers ce titre"></a></h4>
+<p><em>qui affiche les données Redox de la même façon que pour le PH ci-dessus</em></p>
+<p><a class="reference internal" href="../_images/image939.webp"><img alt="image939" src="../_images/image939.webp" style="width: 650px;" /></a></p>
+<p><a class="reference internal" href="../_images/image940.webp"><img alt="image940" src="../_images/image940.webp" style="width: 491px;" /></a></p>
+</div>
+<div class="section" id="ajout-dautres-ecrans">
+<h4>17.1.4.4  ajout d’autres écrans<a class="headerlink" href="#ajout-dautres-ecrans" title="Lien permanent vers ce titre"></a></h4>
+<p><em>Mesure de la température de l’eau, de l’air, le débit de la filtration,…</em></p>
+<div class="admonition-calcul-du-debit-de-la-filtration admonition">
+<p class="admonition-title"><strong>Calcul du débit de la filtration</strong></p>
+<p>Impulsion de débit : F(Hz)=(0.20xQ)-3%</p>
+<p>Q=L/min</p>
+<p>F= 0,2 L/mn</p>
+</div>
+<ul class="simple">
+<li><p><strong>dans EasyEsp</strong> les données envoyées sont :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image941.webp"><img alt="image941" src="../_images/image941.webp" style="width: 510px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Domoticz reçoit</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image942.webp"><img alt="image942" src="../_images/image942.webp" style="width: 408px;" /></a></p>
+<p>Pour envoyer à la BD le débit : script lua « export_sql »</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="o">...</span>
+ <span class="n">elseif</span> <span class="p">(</span><span class="n">deviceName</span><span class="o">==</span><span class="s1">&#39;Debit_filtration_SPA&#39;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;debit:&quot;</span><span class="o">..</span><span class="n">deviceValue</span><span class="p">);</span><span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">gmatch</span><span class="p">(</span><span class="n">deviceValue</span><span class="p">,</span><span class="s2">&quot;[^;]+&quot;</span><span class="p">)</span> <span class="n">do</span>
+     <span class="n">t</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+     <span class="n">end</span>
+     <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;debit_spa#valeur&quot;</span><span class="p">;</span><span class="n">don</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="o">..</span><span class="n">libelle</span><span class="o">..</span><span class="s2">&quot;#&quot;</span><span class="o">..</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">..</span><span class="s2">&quot;#&quot;</span><span class="o">..</span><span class="n">datetime</span>
+     <span class="n">envoi_fab</span><span class="p">(</span><span class="n">don</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image944.webp"><img alt="image944" src="../_images/image944.webp" style="width: 650px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Dans monitor</strong>, <em>ajout du 3eme écran(ecran2) à l’image svg</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">g</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ecran3&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;display:none&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">rect</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;43&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;36.5&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;spa9&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;256.7&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;145.9&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">text</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 70 55)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;spa2 spa3&quot;</span><span class="o">&gt;</span><span class="n">Dernières</span> <span class="n">Mesures</span> <span class="n">de</span> <span class="n">Débit</span> <span class="p">:</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">g</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;graphic_debit&quot;</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 70 65)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;spa2 spa3&quot;</span><span class="o">&gt;&lt;/</span><span class="n">g</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">g</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image947.webp"><img alt="image947" src="../_images/image947.webp" style="width: 469px;" /></a></p>
+<div class="section" id="ecran4-ecran5">
+<h5>17.1.4.4. ecran4 , ecran5<a class="headerlink" href="#ecran4-ecran5" title="Lien permanent vers ce titre"></a></h5>
+<p><a class="reference internal" href="../_images/image949.webp"><img alt="image949" src="../_images/image949.webp" style="width: 700px;" /></a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extension-pompes-perisaltiques-pour-reguler-ph-et-redox">
+<h2>17.2 Extension Pompes perisaltiques pour réguler PH et REDOX<a class="headerlink" href="#extension-pompes-perisaltiques-pour-reguler-ph-et-redox" title="Lien permanent vers ce titre"></a></h2>
+<p><em>en cours de rédaction</em></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="ajout_page_alertes.html" class="btn btn-neutral float-left" title="16. Ajouter des pages ou des alertes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="divers.html" class="btn btn-neutral float-right" title="18. Divers" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

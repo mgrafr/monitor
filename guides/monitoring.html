@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11. MONITORING Nagios &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="12. - FICHIERS LOG Domoticz, Nagios, SQL" href="app_diverses.html" />
+    <link rel="prev" title="10. Dispositifs Zwave" href="zwave.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. MONITORING Nagios</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acces-distant">11.1 accès distant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supprimer-laffichage-youtube">11.2 Supprimer l’affichage YouTube</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">11. MONITORING Nagios</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/monitoring.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="monitoring-nagios">
+<h1>11. MONITORING Nagios<a class="headerlink" href="#monitoring-nagios" title="Lien permanent vers ce titre"></a></h1>
+<p>Avec Nagios ou Nagios mobile sur monitor</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’app Nagios PC est installée sur un Raspberry 4 8Go, celui qui gère également les sauvegardes et la com GSM</p>
+</div>
+<p><a class="reference internal" href="../_images/image668.webp"><img alt="image668" src="../_images/image668.webp" style="width: 533px;" /></a></p>
+<p><a class="reference internal" href="../_images/image669.webp"><img alt="image669" src="../_images/image669.webp" style="width: 537px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nagios effectue le monitoring des VM Proxmox avec un plugin : voir le site domo-site.fr</p>
+<p><a class="reference external" href="http://domo-site.fr/accueil/dossiers/71">http://domo-site.fr/accueil/dossiers/71</a></p>
+<p><a class="reference internal" href="../_images/image670.webp"><img alt="image670" src="../_images/image670.webp" style="width: 601px;" /></a></p>
+</div>
+<p><strong>La page a la même structure que zigbee2mqtt exceptés les ID (css) et liens local et distant</strong> : <a class="reference internal" href="zigbee.html#dispositifs-zigbee"><span class="std std-ref">9. Dispositifs Zigbee</span></a></p>
+<ul class="simple">
+<li><p><strong>config.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Nagios</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_NAGIOS&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">Monitoring</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPNAGIOS&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.1.8/nagios&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">ip</span><span class="o">/</span><span class="n">dossier</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLNAGIOS&#39;</span><span class="p">,</span> <span class="s1">&#39;https://monitoring.&lt;DOMAINE&gt;/nagios/&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;NAUSER&#39;</span><span class="p">,</span> <span class="s1">&#39;nagiosadmin&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;NAPASS&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Styles css</strong> , <em>en plus de ceux de la page</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#nagiosmobile {width:750px;margin-top:-50px;height: 700px;}</span>
+<span class="c1">#nagiosapp{width: 750px;height: 700px;position: relative;top: -70px;}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Le html</strong>, le fichier index_loc.php  (ne pas modifier)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">ON_NAGIOS</span><span class="o">==</span><span class="n">true</span><span class="p">)</span> <span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/nagios.php&quot;</span><span class="p">);</span><span class="o">//</span><span class="n">monitoring</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>header.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php if (ON_NAGIOS==true) echo &#39;&lt;li class=&quot;zz&quot;&gt;&lt;a href=&quot;#nagios&quot;&gt;Monitoring&lt;/a&gt;&lt;/li&gt;&#39;;?&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>nagios.php</strong></p></li>
+</ul>
+<p>on ajoute une iframe :</p>
+<p><a class="reference internal" href="../_images/image675.webp"><img alt="image675" src="../_images/image675.webp" style="width: 595px;" /></a></p>
+<p>Surveillance par Domoticz du PI : voir scripts paragraphe <a class="reference internal" href="app_externes.html#surveillance-du-pi-par-domoticz"><span class="std std-ref">13.4 Surveillance du PI par Domoticz</span></a></p>
+<p>Voir la page consacrée à ce sujet sur <a class="reference external" href="http://domo-site.fr/accueil/dossiers/76">http://domo-site.fr/accueil/dossiers/76</a></p>
+<div class="section" id="acces-distant">
+<h2>11.1 accès distant<a class="headerlink" href="#acces-distant" title="Lien permanent vers ce titre"></a></h2>
+<p>Il faut configurer Nginx et ensuite demander un certificat Letsencrypt,</p>
+<p>Voir paragraphe <a class="reference internal" href="zigbee.html#acces-distant-https"><span class="std std-ref">9.1 accès distant HTTPS</span></a> , <em>un exemple de configuration avant de faire une demande de certificat</em> ;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cerbot</span> <span class="o">--</span><span class="n">nginx</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="supprimer-laffichage-youtube">
+<h2>11.2 Supprimer l’affichage YouTube<a class="headerlink" href="#supprimer-laffichage-youtube" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image678.webp"><img alt="image678" src="../_images/image678.webp" style="width: 700px;" /></a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="zwave.html" class="btn btn-neutral float-left" title="10. Dispositifs Zwave" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="app_diverses.html" class="btn btn-neutral float-right" title="12. - FICHIERS LOG Domoticz, Nagios, SQL" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

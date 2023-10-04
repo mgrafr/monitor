@@ -17,7 +17,8 @@
         <script src="_static/translations.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Recherche" href="search.html" /> 
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="0. Infos pour bien débuter" href="guides/bien_debuter.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -30,6 +31,7 @@
           
           <a href="#" class="icon icon-home">
             monitor-domotique
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -39,11 +41,33 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">accueil</a></li>
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guides/bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/optimisations.html">22. OPTIMISATION en cours</a></li>
 </ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -76,13 +100,511 @@
 <p>Bienvenue dans <strong>monitor</strong> avec ce tutoriel !!</p>
 <p><em>maj tutoriel 2.2.3_2 du 05/09/2023</em></p>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guides/bien_debuter.html">0. Infos pour bien débuter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#prerequis-installation-differents-choix">0.1     Prérequis, installation : différents choix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#installation-automatique-dun-conteneur-lxc-lemp-monitor">0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#a-installation-de-lemp-monitor">0.1.1.a Installation de LEMP &amp; Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#installation-automatique-de-lemp-et-monitor">0.1.2 -Installation automatique de LEMP et Monitor :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#installation-de-monitor-uniquement">0.1.3 Installation de monitor uniquement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#telecharger-de-la-version-en-developpement">0.1.3.1 Télécharger de la version en développement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#telecharger-de-la-deriere-version-stable">0.1.3.2 Télécharger de la derière version stable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#cloner-le-referentiel-de-monitor">0.1.3.3 cloner le référentiel de monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#mode-decouverte">0.1.3.1 mode « découverte »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#creation-dun-certificat-ssl-auto-signe-pour-nginx">0.1.3.2 -Création d’un certificat SSL auto-signé pour Nginx :</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#mise-a-jour-de-monitor">0.1.4 Mise à jour de monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#la-page-daccueil-et-connexion-avec-domoticz-ou-ha">0.2     La page d’accueil et connexion avec Domoticz ou HA :</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#page-daccueil">0.2.1 page d’accueil :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#premier-dispositif">0.2.2. Premier dispositif</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#pour-domoticz">0.2.2.1 pour Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#pour-home-assistant">0.2.2.2 pour Home Assistant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#affichage-sur-la-page-daccueil-de-monitor">0.2.2.3 Affichage sur la page d’accueil de Monitor :</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#base-de-donnees-maria-db">0.3 _ Base de données Maria DB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#les-tables-dispositifs-variables-text-image">0.3.1 Les Tables « dispositifs(variables) » &amp; « text-image »</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#table-text-image">0.3.1.1 Table text-image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/bien_debuter.html#table-dispositifs-pour-les-variables">0.3.1.2 Table dispositifs pour les variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#les-dispositifs">0.3.2 Les Dispositifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#cameras">0.3.3 caméras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/bien_debuter.html#autres-tables-sql">0.3.4 Autres tables SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#le-serveur-http-de-nginx">0.4 Le serveur http de NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#le-framework-bootstrap">0.5 Le Framework Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#les-styles-css">0.6 Les styles CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#les-images">0.7 Les images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#les-fichiers-php">0.8 Les fichiers PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#les-fichiers-javascript-python">0.9 Les fichiers Javascript &amp; Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/bien_debuter.html#les-fichiers-ajoutes-par-l-utilisateur">0.10 Les fichiers ajoutés par l’utilisateur</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/configuration_minimum.html">1. Configuration minimum : la page d’accueil</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#configuration-admin-config-php">1.1     – Configuration :/admin.config.php</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#adresse-ip-domaine-favicon-de-monitor">1.1.1 -Adresse IP , domaine, favicon de monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#a-pour-limage-de-fond-suivant-la-resolution-decran-et-le-logo">1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#b-pour-les-titres-slogans-et-lexique">1.1.1.b Pour les titres, slogans et lexique</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#intervalles-de-maj-maj-temps-reel">1.1.2 intervalles de maj, maj temps réel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#autres-donnees">1.1.3 Autres données</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#les-fichiers-php-les-styles-le-javascript">1.2     - Les fichiers PHP, les styles, le javascript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#a-la-racine-du-site">1.2.1 - à la racine du site :</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#status-variables-devices-zone-et-device-plan">1.2.1.1 status_variables , devices_zone et device_plan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#les-styles-css">1.2.2 les styles css</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#styles-css-communs-a-toutes-les-pages">1.2.2.1 styles CSS communs à toutes les pages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#le-javascript">1.2.3 – Le javascript</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#les-fichiers-principaux-dans-include">1.3 Les fichiers principaux dans /include</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#entete-html-php">1.3.1 entete_html.php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#test-de-la-base-de-donnees-test-db-php">1.3.2 Test de la base de données, test_db.php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#le-menu-header-php">1.3.3 le menu, header.php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#la-page-daccueil-avec-les-notifications-accueil-php">1.3.4   la page d’accueil avec les notifications , accueil.php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#les-scripts-javascript">1.3.5 les scripts JavaScript</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#rafraichissements-de-la-page">1.3.5.1 rafraîchissements de la page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#quelques-infos-supplementaires">1.3.5.2 Quelques infos supplémentaires</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#le-lexique-et-la-temperature-exterieure">1.4 Le lexique et la température extérieure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#le-lexique">1.4.1 Le lexique</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#la-temperature-exterieure-valable-pour-dautres-dispositifs">1.4.2 La température extérieure (valable pour d’autres dispositifs)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#liens-avec-domoticz-ou-home-assistant">1.5 liens avec Domoticz ou Home Assistant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#liens-avec-domoticz">1.5.1 Liens avec Domoticz</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#les-variables-lua-de-configuration-dans-un-fichier-externe">1.5.1.1 les variables lua de configuration dans un fichier externe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#les-scripts-de-notifications-gerees-par-domoticz">1.5.1.2 les scripts de notifications gérées par Domoticz</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="guides/configuration_minimum.html#script-lua">script lua</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#liens-avec-home-assistant">1.5.2 Liens avec Home Assistant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#exemple-dun-on-off-sur-un-interrupteur-virtuel">1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#liaison-mqtt-entre-home-assistant-et-domoticz">1.5.3 Liaison MQTT entre Home Assistant et Domoticz</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#ajout-dans-domoticz">1.5.3.1  Ajout dans Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#ajout-dans-home-assistant">1.5.3.2  Ajout dans Home Assistant</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#lien-avec-la-base-de-donnees-sql">1.6 Lien avec la base de données SQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#exemple-avec-la-date-de-ramassage-des-poubelles">1.6.1- exemple avec la date de ramassage des poubelles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#ajuster-le-menu-au-nombre-de-pages">1.7 Ajuster le menu au nombre de pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#acces-distant-https">1.8 Accès distant HTTPS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#monitor-conf">1.8.1 monitor.conf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/plan_interieur.html#limage">2.1 l’image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#avec-un-logiciel-de-conception-graphique-vectorielle">2.1.1 Avec un logiciel de conception graphique vectorielle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/plan_interieur.html#a-avec-inkscape-qui-est-gratuit">2.1.1.a avec Inkscape qui est gratuit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/plan_interieur.html#b-avec-adobe-illustrator">2.1.1.b avec Adobe Illustrator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#eme-solution-pour-le-plan-conversion-en-ligne">2.1.2 – 2eme solution pour le plan, conversion en ligne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#les-couleurs">2.1.3 – Les couleurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#ajout-dun-ou-plusieurs-dispositifs">2.1.4 - ajout d’un ou plusieurs dispositifs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/plan_interieur.html#des-exemples-dautres-dispositifs">2.2 Des exemples d’autres dispositifs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#ajout-du-detecteur-de-fumee">2.2.1 Ajout du détecteur de fumée :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#ajout-de-cameras">2.2.2 Ajout de caméras</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/plan_interieur.html#le-fichier-php-de-limage">2.3 le fichier PHP de l’image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#pour-afficher-le-statut-complet-du-dispositif">2.3.1 Pour afficher le statut complet du dispositif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#affichage-des-cameras">2.3.2 Affichage des caméras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#la-gestion-des-dispositifs-a-piles">2.3.3 La gestion des dispositifs à piles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#le-controle-de-la-tension-dalimentation">2.3 4 Le contrôle de la tension d’alimentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#ajouter-des-lampes">2.3 5 ajouter des lampes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#ajouter-un-capteur-de-t-exterieur-zigbee">2.3.6 ajouter un capteur de T° extérieur Zigbee</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/plan_interieur.html#le-capteur-dans-domoticz">2.3.6.1 Le capteur dans Domoticz</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#le-capteur-dans-la-bd">2.3.6.2 Le capteur dans la BD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_interieur.html#le-capteur-dans-monitor">2.3.6.3 Le capteur dans Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/plan_interieur.html#le-fichier-php-de-la-page">2.4 le fichier PHP de la page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/plan_interieur.html#f12-des-navigateurs-pour-faciliter-la-construction">2.5 F12 des navigateurs pour faciliter la construction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/plan_interieur.html#les-dispositifs-virtuels-domoticz-et-mqtt">2.6 Les dispositifs virtuels Domoticz et MQTT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/meteo.html">3. Météo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/meteo.html#page-meteo">3.1 Page météo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/meteo.html#la-meteo-a-1-heure-de-meteo-france">3.2 La Météo à 1 heure de Météo France</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/meteo.html#autres-previsions-meteo-depuis-meteo-concept">3.3 Autres prévisions météo depuis météo Concept</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/plan_exterieur.html">4. La page du plan extérieur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/plan_exterieur.html#la-page-php-exterieur-php">4.1 La page PHP : exterieur.php</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/plan_exterieur.html#ajouter-des-lampes">4.1.1 Ajouter des lampes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/plan_exterieur.html#affichage">4.2. affichage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/alarme.html">5. L’ALARME</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/alarme.html#dans-domoticz-les-interrupteurs-virtuels-les-variables">5.1 Dans Domoticz, les interrupteurs virtuels, les variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/alarme.html#explications-concernant-modect">5.1.1 explications concernant MODECT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/alarme.html#jeton-zm">5.1.1.1 Jeton ZM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/alarme.html#le-script-lua">5.1.1.2 le script lua</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/alarme.html#construction-de-limage">5.2 Construction de l’image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/alarme.html#base-de-donnees">5.3 Base de données</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/alarme.html#le-php">5.4- Le PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/alarme.html#le-javascript-dans-footer-php-et-mes-js-js">5.5 Le Javascript, dans footer.php et mes_js.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/alarme.html#comme-pour-les-autres-pages">5.6 -Comme pour les autres pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/alarme.html#affichage-dune-icone-sur-la-page-daccueil">5.7- Affichage d’une icône sur la page d’accueil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/alarme.html#ameliorations-utiles">5.8 Améliorations utiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/alarme.html#la-mise-en-marche-automatiquement-de-lalarme-de-nuit">5.8.1- la mise en marche automatiquement de l’alarme de nuit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/alarme.html#dans-domoticz">5.8.1.1 Dans Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/alarme.html#dans-monitor">5.8.1.2 Dans Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/alarme.html#alarme-par-sms-gsm">5.8.2 Alarme par sms GSM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/alarme.html#version-avec-une-variable-domoticz">5.8.2.1 Version avec une variable Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/alarme.html#version-sans-variable-domoticz">5.8.2.2 Version sans variable Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/alarme.html#option-supplementaire-le-test-de-lenvoi-de-sms">5.8.2.3 Option supplémentaire : le test de l’envoi de SMS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/alarme.html#affichage-de-la-liste-des-cameras-modect">5.8.3- Affichage de la liste des caméras Modect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/alarme.html#copie-ecran-de-la-derniere-version">5.8.5- Copie écran de la dernière version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/graphiques.html#les-table-sql">6.1 Les table SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/graphiques.html#dans-domoticz">6.2 Dans Domoticz</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/graphiques.html#fabric">6.2.1 fabric</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/graphiques.html#sur-le-serveur-de-la-base-de-donnees">6.3 Sur le serveur de la base de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/graphiques.html#dans-monitor">6.4 Dans Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/graphiques.html#la-page-graphique-php">6.4.1 la page graphique.php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/graphiques.html#la-fonction-graph">6.4.2 la fonction graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/graphiques.html#autres-fichiers-php">6.4.3 autres fichiers PHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/graphiques.html#copies-decran">6.4.4 copies d’écran</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/mur_cameras.html">7. MUR de CAMERAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/mur_cameras.html#les-pages-index-loc-php-header-php-entete-html-php">7.1- les pages index_loc.php, header.php, entete_html.php</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mur_cameras.html#la-page-de-monitor">7.2- la page de monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mur_cameras.html#les-scripts-js-pour-la-video-dans-footer-php">7.3- Les scripts JS pour la vidéo dans footer.php</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mur_cameras.html#ajouter-une-camera">7.4- Ajouter une caméra</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/mur_de_commandes.html#les-fichiers-de-base">8.1 les fichiers de base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/mur_de_commandes.html#ecriture-automatique-du-javascript">8.1.1 écriture automatique du javascript</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mur_de_commandes.html#mur-inter-php">8.2 mur_inter.php</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/mur_de_commandes.html#exemple-pour-eclairage-jardin">8.2.1 Exemple pour éclairage jardin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/mur_de_commandes.html#probleme-de-lecture-de-fichier">8.2.1.1 Problème de lecture de fichier</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/mur_de_commandes.html#exemple-pour-arrosage-jardin">8.2.2 Exemple pour arrosage jardin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/mur_de_commandes.html#exemple-eclairage-simple-une-lampe-de-salon">8.2.3 Exemple éclairage simple, une lampe de salon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/mur_de_commandes.html#exemple-volet-roulant">8.2.4 Exemple volet roulant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/mur_de_commandes.html#affichage-sur-le-plan">8.2.4.1 Affichage sur le plan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/mur_de_commandes.html#dans-le-mur-on-off">8.2.4.2 Dans le mur ON/OFF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/mur_de_commandes.html#les-scripts-js">8.2.4.3 les scripts JS</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="guides/mur_de_commandes.html#avec-ajax-et-php">8.2.4.3.1  avec Ajax et PHP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="guides/mur_de_commandes.html#avec-mqtt">8.2.4.3.2 avec MQTT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/zigbee.html">9. Dispositifs Zigbee</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/zigbee.html#acces-distant-https">9.1 accès distant HTTPS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/zwave.html">10. Dispositifs Zwave</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/zwave.html#acces-distant">10.1 Accès distant</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/monitoring.html">11. MONITORING Nagios</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/monitoring.html#acces-distant">11.1 accès distant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/monitoring.html#supprimer-laffichage-youtube">11.2 Supprimer l’affichage YouTube</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_diverses.html#ajout-sql">12.1 AJOUT SQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_diverses.html#edition-de-lhistorique-du-ramassage-des-poubelles">12.1.1 Edition de l’historique du ramassage des poubelles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_diverses.html#ajout-dune-icone-a-lhistorique-des-poubelles">12.1.2 Ajout d’une icône à l’historique des poubelles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_externes.html#affichage-des-notifications-sur-un-televiseur-lg">13.1 Affichage des notifications sur un téléviseur LG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_externes.html#portier-dahua-vto-2000-et-vto-2022">13.2 Portier Dahua VTO 2000 et VTO 2022</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#vto-2000a">13.2.1 VTO 2000A</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_externes.html#la-boite-aux-lettres">13.3 -La boite aux lettres</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_externes.html#surveillance-du-pi-par-domoticz">13.4 Surveillance du PI par Domoticz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_externes.html#capteur-de-pression-chaudiere">13.5 Capteur de pression chaudière</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#limage-svg">13.5.1 l’image SVG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#dans-domoticz-le-capteur-le-plan-les-variables-et-les-scripts">13.5.2 Dans Domoticz, le capteur, le plan, les variables et les scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#dans-la-base-de-donnees-sql">13.5.3 Dans la Base de données SQL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/app_externes.html#creer-une-nouvelle-table">13.5.3.1 Créer une nouvelle table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/app_externes.html#mettre-a-jour-la-table-des-dispositifs">13.5.3.2 Mettre à jour la table des dispositifs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/app_externes.html#mettre-a-jour-la-table-text-image">13.5.3.3  Mettre à jour la table « text-image »</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#styles-css">13.5.4 Styles CSS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_externes.html#sms-reception-et-emission">13.6 SMS réception et émission</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#reception-sms">13.6.1 réception SMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#emission-sms">13.6.2 émission SMS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/app_externes.html#enregistrement-des-n-de-telephone">13.6.2.1 Enregistrement des n° de téléphone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_externes.html#afficher-les-donnees-du-compteur-linky">13.7- afficher les données du compteur Linky</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#enregistrement-dans-la-bd-sql">13.7.1 enregistrement dans la BD SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/app_externes.html#pont-ha-ha-bridge">13.8 Pont HA (ha-bridge)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#installation-dans-un-conteneur-lxc-proxmox">13.8.1 Installation dans un conteneur LXC Proxmox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#le-serveur-de-ha-bridge">13.8.2 Le serveur de ha-bridge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/app_externes.html#acces-distant">13.8.2.1 accès distant</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#enregistrement-d-alexa-domoticz-dans-le-pont">13.8.3 Enregistrement d’Alexa &amp; Domoticz dans le pont</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/app_externes.html#les-dispositifs-et-les-actions">13.8.3.1 Les dispositifs et les actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#ajouter-ha-bridge-dans-le-materiel-domoticz">13.8.4 Ajouter Ha-bridge dans le matériel Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#detection-des-nouveaux-appareils-par-alexa">13.8.5 détection des nouveaux appareils par Alexa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/app_externes.html#integrer-le-pont-hue-a-monitor">13.8.6 Intégrer le Pont Hue à Monitor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/administration.html">14.  ADMINISTRATION</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#fichiers-communs-a-toutes-les-pages">14.1 fichiers communs à toutes les pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/administration.html#pour-utiliser-les-didfferentes-fonctions-optionnelles">14.1.1 Pour utiliser les didfférentes fonctions optionnelles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/administration.html#pour-ajouter-des-fonctions-personnelles">14.1.2 Pour ajouter des fonctions personnelles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#admin-php-info-admin-php-test-db-php-et-backup-bd">14.2 admin.php, info_admin.php, test_db.php et backup_bd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#le-javascript">14.3 le javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#fonctions-php">14.4 fonctions PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#telechargement-dun-fichier-externe-dans-domoticz">14.5 Téléchargement d’un fichier externe dans Domoticz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#copies-decran-et-explications">14.6 Copies d’écran et explications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/administration.html#fichier-connect-xxx-mots-de-passe-et-login-en-base64-ips-reseau">14.6.1 Fichier connect.xxx (mots de passe et login en base64 ,ips réseau</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/administration.html#connect-lua">14.6.1.1 connect.lua</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/administration.html#connect-py">14.6.1.2 connect.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/administration.html#connect-js">14.6.1.3 connect.js</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#explications-concernant-limportation-distantes-dun-tableau-lua">14.7 Explications concernant l’importation distantes d’un tableau LUA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#explications-concernant-la-mise-a-jour-automatique-sql-des-variables-et-dispositifs">14.8 Explications concernant la mise à jour automatique SQL des variables et dispositifs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/administration.html#affichage-dans-monitor">14.8.1 Affichage dans monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#explications-concernant-laffichage-des-infos-de-la-page-admin-php">14.9 Explications concernant l’affichage des infos de la page admin.php</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/administration.html#commandes-ssh2-pc-distant">14.10  Commandes ssh2 PC distant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/administration.html#reboot-pc">14.10.1 reboot PC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/administration.html#commandes-scp-pour-lenvoi-ou-la-reception-de-fichiers-distants">14.10.2 commandes scp pour l’envoi ou la réception de fichiers distants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/administration.html#a-propos">14.11 A Propos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/exemples.html">15. EXEMPLES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/exemples.html#ajout-dun-dispositif">15.1 ajout d’un dispositif</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/exemples.html#modifier-limage">15.1.1 Modifier l’image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/exemples.html#dans-la-base-de-donnees-sql">15.1.2 Dans la Base de données SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/exemples.html#dans-le-fichier-php-de-limage">15.1.3 Dans le fichier PHP de l’image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/exemples.html#reinitialisation-des-dispositifs-dans-domoticz">15.2 Réinitialisation des dispositifs dans Domoticz</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/ajout_page_alertes.html#ajouter-un-plan-ex-1er-etage">16.1 Ajouter un plan (ex : 1er étage)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/ajout_page_alertes.html#ajouter-une-page-vierge">16.2 Ajouter une page vierge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/ajout_page_alertes.html#ajouter-une-alerte-une-alarme">16.3 Ajouter une alerte, une alarme, …</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/ajout_page_alertes.html#exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil">16.3.1 Exemple avec un rappel pour la prise de médicaments sur la page d’accueil</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/diy.html">17. DIY</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/diy.html#domotiser-un-spa-ou-une-piscine">17.1 Domotiser un SPA (ou une piscine)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/diy.html#creation-de-capteurs-virtuels-dans-domoticz">17.1.1. Création de capteurs virtuels dans Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/diy.html#creation-des-tables-ph-redox-temp">17.1.2. Création des tables PH, Redox, temp, …</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/diy.html#envoi-des-donnees-a-la-bd-de-monitor-par-domoticz">17.1.3 Envoi des données à la BD de monitor par Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/diy.html#affichage-dans-monitor">17.1.4. – Affichage dans Monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/diy.html#la-page-spa-php">17.1.4.1 la page spa.php</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="guides/diy.html#a-limage-svg-support-de-laffichage">17.1.4.1.a L’image svg support de l’affichage</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="guides/diy.html#ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1">17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="guides/diy.html#a-les-autres-fichiers-concernes">17.1.4.2.a Les autres fichiers concernés</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="guides/diy.html#ajout-dun-id-dans-limage-svg-pour-3eme-ecran">17.1.4.3 ajout d’un ID dans  l’image svg pour 3eme écran</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/diy.html#ajout-dautres-ecrans">17.1.4.4  ajout d’autres écrans</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="guides/diy.html#ecran4-ecran5">17.1.4.4. ecran4 , ecran5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/diy.html#extension-pompes-perisaltiques-pour-reguler-ph-et-redox">17.2 Extension Pompes perisaltiques pour réguler PH et REDOX</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/divers.html">18. Divers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/divers.html#debian-installer-un-serveur-lamp-apache-mysql-php">18.1 Debian : Installer un serveur LAMP (Apache MySQL PHP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/divers.html#installer-paho-mqtt">18.2 Installer Paho-mqtt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/divers.html#le-script-pour-envoyer-des-messages-mqtt-py">18.2.1 Le script pour envoyer des messages (mqtt.py)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/divers.html#liaison-serie-domoticz-pi">18.3 Liaison série Domoticz-PI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/divers.html#commandes-de-lalarme-a-partir-dun-gsm">18.4 Commandes de l’alarme à partir d’un GSM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/divers.html#donnees-compteur-linky">18.5 Données compteur Linky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/divers.html#complement-sur-lutilisation-des-mots-de-passe-cryptes-dans-domoticz">18.6 Complément sur l’utilisation des Mots de Passe cryptés dans Domoticz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/divers.html#pages-sans-rapport-avec-la-domotique">18.7 pages sans rapport avec la domotique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/divers.html#les-recettes-de-cuisines-sur-la-tablette-domotique">18.7.1  Les recettes de cuisines sur la tablette domotique</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/divers.html#migration-de-domoticz-differentes-etapes-pour-ne-rien-oublier">18.8 migration de Domoticz différentes étapes pour ne rien oublier</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/update.html">19. UPDATE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/update.html#version-de-php">19.1 Version de PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/update.html#update-monitor">19.2 UPDATE Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/update.html#releases">19.2.1 Releases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/update.html#version-en-developpement-2-2-4">Version en développement 2.2.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/update.html#version-2-2-3">Version 2.2.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/update.html#version-2-2-0">Version 2.2.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/update.html#version-2-1-0">Version 2.1.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/update.html#version-de-jpgraph">19.3 Version de JPGRAPH</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/resolution_problemes.html">20. Résolution de problèmes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/resolution_problemes.html#concernant-les-variables">20.1 concernant les variables :</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/mon_installation.html">21. – Mon installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#proxmox">21.1 Proxmox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/mon_installation.html#installation-de-vm-ou-ct-par-linterface-graphique-ip-8006">21.1.1 installation de VM ou CT par l’interface graphique : IP :8006</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/mon_installation.html#installation-automatique-de-vm-ou-ct-https-github-com-tteck-proxmox">21.1.2 installation automatique de VM ou CT : https://github.com/tteck/Proxmox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/mon_installation.html#installation-automatique-dun-conteneur-lxc-lemp-monitor">21.1.3 installation automatique d’un conteneur LXC,LEMP &amp; Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/mon_installation.html#apercu-des-vm-et-ct-installes">21.1.4 Aperçu des VM et CT installés</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/mon_installation.html#update-version-debian">21.1.5 Update Version Debian</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#domoticz">21.2 Domoticz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#zwave">21.3 Zwave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#zigbee">21.4 Zigbee</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/mon_installation.html#installation-de-zigbee2mqtt">21.4.1 Installation de zigbee2mqtt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/mon_installation.html#mise-a-jour-de-zigbee2mqtt">21.4.2 Mise à jour de zigbee2mqtt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#asterisk-sip">21.5 Asterisk (sip)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#mqtt-mosquito">21.6 MQTT (mosquito)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#zoneminder">21.7 Zoneminder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#plex">21.8 Plex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#raspberry-pi4">21.9 Raspberry PI4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/mon_installation.html#resolution-des-problemes">21.9.1 Résolution des problèmes :</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/mon_installation.html#cannot-open-access-to-console-the-root-account-is-locked">21.9.1.1  cannot-open-access-to-console-the-root-account-is-locked</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/mon_installation.html#pour-monter-les-partitions-sans-redemarrer">21.9.1.2 pour monter les partitions sans redémarrer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#home-assistant">21.10 Home Assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/mon_installation.html#pont-hue-ha-bridge-pour-alexa">21.11 Pont Hue Ha-bridge pour Alexa</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/optimisations.html">22. OPTIMISATION en cours</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/optimisations.html#reset-a-distance-du-modem-gsm">22.1 Reset à distance du modem GSM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/optimisations.html#simple-programme-de-commande-de-relais-usb-lcus-1">22.1.1 Simple programme de commande de relais USB LCUS_1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guides/optimisations.html#assistant-personnel-open-source-leon">22.2 Assistant personnel open source Leon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/optimisations.html#prerequis">22.2.1 Prérequis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guides/optimisations.html#installation-et-configuration-de-leon">22.2.2 Installation et configuration de Leon</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/optimisations.html#installation">22.2.2.1 INSTALLATION</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/optimisations.html#configuration">22.2.2.2 CONFIGURATION</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/optimisations.html#lancer-leon">22.2.2.3 LANCER Leon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/optimisations.html#update-leon-en-mode-developpement">22.2.2.4 UPDATE Leon en mode développement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/optimisations.html#installation-de-stt-et-tts">22.2.3 Installation de STT et TTS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/optimisations.html#installation-de-stt">22.2.3.1 Installation de STT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/optimisations.html#installation-de-tts">22.2.3.2 Installation de TTS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guides/optimisations.html#fonctionnement-hors-ligne">22.2.4 Fonctionnement HORS LIGNE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="guides/bien_debuter.html" class="btn btn-neutral float-right" title="0. Infos pour bien débuter" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0. Infos pour bien débuter &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="1. Configuration minimum : la page d’accueil" href="configuration_minimum.html" />
+    <link rel="prev" title="accueil" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">0. Infos pour bien débuter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequis-installation-differents-choix">0.1     Prérequis, installation : différents choix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor">0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#a-installation-de-lemp-monitor">0.1.1.a Installation de LEMP &amp; Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-automatique-de-lemp-et-monitor">0.1.2 -Installation automatique de LEMP et Monitor :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-de-monitor-uniquement">0.1.3 Installation de monitor uniquement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#telecharger-de-la-version-en-developpement">0.1.3.1 Télécharger de la version en développement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#telecharger-de-la-deriere-version-stable">0.1.3.2 Télécharger de la derière version stable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cloner-le-referentiel-de-monitor">0.1.3.3 cloner le référentiel de monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mode-decouverte">0.1.3.1 mode « découverte »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creation-dun-certificat-ssl-auto-signe-pour-nginx">0.1.3.2 -Création d’un certificat SSL auto-signé pour Nginx :</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mise-a-jour-de-monitor">0.1.4 Mise à jour de monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#la-page-daccueil-et-connexion-avec-domoticz-ou-ha">0.2     La page d’accueil et connexion avec Domoticz ou HA :</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#page-daccueil">0.2.1 page d’accueil :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#premier-dispositif">0.2.2. Premier dispositif</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pour-domoticz">0.2.2.1 pour Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pour-home-assistant">0.2.2.2 pour Home Assistant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#affichage-sur-la-page-daccueil-de-monitor">0.2.2.3 Affichage sur la page d’accueil de Monitor :</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#base-de-donnees-maria-db">0.3 _ Base de données Maria DB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#les-tables-dispositifs-variables-text-image">0.3.1 Les Tables « dispositifs(variables) » &amp; « text-image »</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table-text-image">0.3.1.1 Table text-image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table-dispositifs-pour-les-variables">0.3.1.2 Table dispositifs pour les variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#les-dispositifs">0.3.2 Les Dispositifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cameras">0.3.3 caméras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autres-tables-sql">0.3.4 Autres tables SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#le-serveur-http-de-nginx">0.4 Le serveur http de NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#le-framework-bootstrap">0.5 Le Framework Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-styles-css">0.6 Les styles CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-images">0.7 Les images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-fichiers-php">0.8 Les fichiers PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-fichiers-javascript-python">0.9 Les fichiers Javascript &amp; Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-fichiers-ajoutes-par-l-utilisateur">0.10 Les fichiers ajoutés par l’utilisateur</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">0. Infos pour bien débuter</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/bien_debuter.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="infos-pour-bien-debuter">
+<h1>0. Infos pour bien débuter<a class="headerlink" href="#infos-pour-bien-debuter" title="Lien permanent vers ce titre"></a></h1>
+<p><em>Cette application offre un affichage convivial pour les serveurs domotique Domoticz et Home Assistant et bien plus encore.</em></p>
+<p><a class="reference internal" href="../_images/image1111.webp"><img alt="image1111" src="../_images/image1111.webp" style="width: 529px;" /></a></p>
+<div class="section" id="prerequis-installation-differents-choix">
+<h2>0.1     Prérequis, installation : différents choix<a class="headerlink" href="#prerequis-installation-differents-choix" title="Lien permanent vers ce titre"></a></h2>
+<ul class="simple">
+<li><p>Après l’installation de Proxmox :</p></li>
+</ul>
+<p>Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), monitor (version dev): <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh</a></p>
+<ul class="simple">
+<li><p>installation automatique : LEMP + monitor (pour installation dans une VM ou une partition Linux) : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh</a></p></li>
+<li><p>installation uniquement de monitor (version en développement) (pour une installation avec LAMP, MySQL,) : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh</a></p></li>
+<li><p>dernière version stable : <a class="reference external" href="https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.3.tar.gz">https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.3.tar.gz</a></p></li>
+</ul>
+<div class="section" id="installation-automatique-dun-conteneur-lxc-lemp-monitor">
+<h3>0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor<a class="headerlink" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor" title="Lien permanent vers ce titre"></a></h3>
+<ul class="simple">
+<li><p>L’installation de Proxmox voir (<a class="reference internal" href="mon_installation.html#proxmox"><span class="std std-ref">21.1 Proxmox</span></a>)</p></li>
+<li><p>Création d’un conteneur LXC</p></li>
+<li><p>Debian 12, et les dépendances sudo, curl,…</p></li>
+<li><p>Nginx, PHP 8.2, maria db, phpMyAdmin, monitor</p></li>
+<li><p>Quelques programme python utiles : pip, Paho-mqtt</p></li>
+<li><p>Un utilisateur système est crée</p></li>
+<li><p>Un utilisateur MySQL PMA et monitor est aussi crée</p></li>
+</ul>
+<p>Télécharger depuis le Shell de PVE le fichier d’installation install.sh :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">create_ct_lxc_monitor</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image3.webp"><img alt="image3" src="../_images/image3.webp" style="width: 604px; height: 176px;" /></a></p>
+<p>Donner des autorisations au fichier « create_ct_lxc_monitor.sh »</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">create_ct_lxc_monitor</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<div class="admonition-si-des-problemes-de-lecture-existent admonition">
+<p class="admonition-title">Si des problèmes de lecture existent</p>
+<blockquote>
+<div><p>convertir le fichier en UNIX</p>
+</div></blockquote>
+<p>voir le § <a class="reference internal" href="mur_de_commandes.html#probleme-de-lecture-de-fichier"><span class="std std-ref">8.2.1.1 Problème de lecture de fichier</span></a></p>
+</div>
+<p><strong>Installation :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">create_ct_lxc_monitor</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image6.webp"><img alt="image6" src="../_images/image6.webp" style="width: 405px; height: 104px;" /></a></p>
+<p><a class="reference internal" href="../_images/image7.webp"><img alt="image7" src="../_images/image7.webp" style="width: 538px; height: 194px;" /></a></p>
+<p><a class="reference internal" href="../_images/image8.webp"><img alt="image8" src="../_images/image8.webp" style="width: 544px; height: 170px;" /></a></p>
+<p><a class="reference internal" href="../_images/image9.webp"><img alt="image9" src="../_images/image9.webp" style="width: 554px; height: 276px;" /></a></p>
+<p>Choisir le langage UTF-8 : fr_FR.UTF-8</p>
+<p><a class="reference internal" href="../_images/image10.webp"><img alt="image10" src="../_images/image10.webp" style="width: 636px;" /></a></p>
+<p><a class="reference internal" href="../_images/image11.webp"><img alt="image11" src="../_images/image11.webp" style="width: 626px;" /></a></p>
+<div class="section" id="a-installation-de-lemp-monitor">
+<h4>0.1.1.a Installation de LEMP &amp; Monitor<a class="headerlink" href="#a-installation-de-lemp-monitor" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image12.webp"><img alt="image12" src="../_images/image12.webp" style="width: 557px; height: 269px;" /></a></p>
+<p><a class="reference internal" href="../_images/image13.webp"><img alt="image13" src="../_images/image13.webp" style="width: 552px; height: 182px;" /></a></p>
+<p><a class="reference internal" href="../_images/image14.webp"><img alt="image14" src="../_images/image14.webp" style="width: 592px;" /></a></p>
+<p><a class="reference internal" href="../_images/image15.webp"><img alt="image15" src="../_images/image15.webp" style="width: 541px; height: 176px;" /></a></p>
+<p><a class="reference internal" href="../_images/image16.webp"><img alt="image16" src="../_images/image16.webp" style="width: 547px; height: 266px;" /></a></p>
+<p><a class="reference internal" href="../_images/image17.webp"><img alt="image17" src="../_images/image17.webp" style="width: 592px; height: 519px;" /></a></p>
+<p>Sécuriser Maria DB, mot passe root</p>
+<p><a class="reference internal" href="../_images/image18.webp"><img alt="image18" src="../_images/image18.webp" style="width: 563px;" /></a></p>
+<p><a class="reference internal" href="../_images/image19.webp"><img alt="image19" src="../_images/image19.webp" style="width: 628px;" /></a></p>
+<p><a class="reference internal" href="../_images/image20.webp"><img alt="image20" src="../_images/image20.webp" style="width: 581px;" /></a></p>
+<p><a class="reference internal" href="../_images/image21.webp"><img alt="image21" src="../_images/image21.webp" style="width: 583px;" /></a></p>
+<p><strong>créer un certificat SSL auto-signé pour Nginx</strong></p>
+<p>Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on</p>
+<div class="admonition-avec-un-certificat-ssl-auto-signe admonition">
+<p class="admonition-title">avec un certificat SSL auto-signé</p>
+<p>http reste disponible ce qui permet d’éviter les restrictions CORS pour afficher d’autres serveurs comme Zigbee, Zwave, Nagios, ……</p>
+<p>Pour une installation manuelle de ce certificat, voir le paragraphe <span class="xref std std-ref">0.1.3 – Installation de monitor uniquement</span></p>
+<p>Pour l’utiliser avec HA, ajouter dans /config/configuration.yaml</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image22.webp"><img alt="image22" src="../_images/image22.webp" style="width: 250px;" /></a></p>
+</div></blockquote>
+</div>
+<p><a class="reference internal" href="../_images/image23.webp"><img alt="image23" src="../_images/image23.webp" style="width: 540px;" /></a></p>
+<p>Fin de l’installation:</p>
+<p><a class="reference internal" href="../_images/image24.webp"><img alt="image24" src="../_images/image24.webp" style="width: 485px;" /></a></p>
+<div class="admonition-verifications-en-cas-de-problemes admonition">
+<p class="admonition-title">Vérifications en cas de problèmes :</p>
+<p>avec Filezilla :</p>
+<p><a class="reference internal" href="../_images/image25.webp"><img alt="image25" src="../_images/image25.webp" style="width: 257px;" /></a></p>
+<p>Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :</p>
+<p><span class="red">chmod -R 777 /www/html/*</span></p>
+<p><strong>MySQL :</strong></p>
+<p><span class="red">mysql -u root</span></p>
+<p><a class="reference internal" href="../_images/image27.webp"><img alt="image27" src="../_images/image27.webp" style="width: 557px;" /></a></p>
+<p><strong>phpMyAdmin</strong> :   Accès par monitor</p>
+<p><a class="reference internal" href="../_images/image28.webp"><img alt="image28" src="../_images/image28.webp" style="width: 391px;" /></a></p>
+<p>Ou en ajoutant l’adresse dans le navigateur :</p>
+<p><span class="red">&lt;IP Monitor&gt;/phpmyadmin/</span></p>
+</div>
+<p><a class="reference internal" href="../_images/image29.webp"><img alt="image29" src="../_images/image29.webp" style="width: 463px;" /></a></p>
+<p><a class="reference internal" href="../_images/image30.webp"><img alt="image30" src="../_images/image30.webp" style="width: 562px;" /></a></p>
+<p><strong>Les tables installées lors de l’installation :</strong></p>
+<p><a class="reference internal" href="../_images/image31.webp"><img alt="image31" src="../_images/image31.webp" style="width: 206px;" /></a></p>
+<p>La suite, mode découverte , <a class="reference internal" href="#mode-decouverte"><span class="std std-ref">0.1.3.1 mode « découverte »</span></a></p>
+</div>
+</div>
+<div class="section" id="installation-automatique-de-lemp-et-monitor">
+<h3>0.1.2 -Installation automatique de LEMP et Monitor :<a class="headerlink" href="#installation-automatique-de-lemp-et-monitor" title="Lien permanent vers ce titre"></a></h3>
+<dl class="simple">
+<dt>Installer auparavant un système Debian 12 ou supérieur</dt><dd><p>Télécharger le script : lemp_monitor_install.sh,</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">lemp_monitor_install</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Donner des autorisations au fichier lemp_install.sh</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span>  <span class="n">lemp_monitor_install</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Lancer le script :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">lemp_monitor_install</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image33.webp"><img alt="image33" src="../_images/image33.webp" style="width: 319px;" /></a></p>
+<p><strong>La suite :</strong>   <a class="reference internal" href="#a-installation-de-lemp-monitor"><span class="std std-ref">0.1.1.a Installation de LEMP &amp; Monitor</span></a></p>
+</div>
+<div class="section" id="installation-de-monitor-uniquement">
+<h3>0.1.3 Installation de monitor uniquement<a class="headerlink" href="#installation-de-monitor-uniquement" title="Lien permanent vers ce titre"></a></h3>
+<blockquote>
+<div><p>Après l’installation d’un OS (Debian, Ubuntu…et LEMP ou LAMP, Maria DB ou MySQL …</p>
+</div></blockquote>
+<p>Quelques liens utiles :</p>
+<div class="line-block">
+<div class="line">o phpMyAdmin, voir <a class="reference external" href="http://domo-site.fr/accueil/dossiers/3">http://domo-site.fr/accueil/dossiers/3</a></div>
+<div class="line">o LAMP :   <a class="reference external" href="https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php">https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php</a></div>
+<div class="line">o LEMP : voir ce paragraphe `</div>
+</div>
+<p><strong>Installation : plusieurs solutions</strong></p>
+<div class="section" id="telecharger-de-la-version-en-developpement">
+<h4>0.1.3.1 Télécharger de la version en développement<a class="headerlink" href="#telecharger-de-la-version-en-developpement" title="Lien permanent vers ce titre"></a></h4>
+<p><em>et extraire les fichiers</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image34.webp"><img alt="image34" src="../_images/image34.webp" style="width: 403px;" /></a></p>
+</div>
+<div class="section" id="telecharger-de-la-deriere-version-stable">
+<h4>0.1.3.2 Télécharger de la derière version stable<a class="headerlink" href="#telecharger-de-la-deriere-version-stable" title="Lien permanent vers ce titre"></a></h4>
+<p><em>et extraire les fichiers</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image358.webp"><img alt="image358" src="../_images/image358.webp" style="width: 500px;" /></a></p>
+</div>
+<div class="section" id="cloner-le-referentiel-de-monitor">
+<h4>0.1.3.3 cloner le référentiel de monitor<a class="headerlink" href="#cloner-le-referentiel-de-monitor" title="Lien permanent vers ce titre"></a></h4>
+<p><em>https://github.com/mgrafr/monitor.git</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">.</span><span class="n">git</span>  <span class="o">&lt;</span><span class="n">REPERTOIRE_DESTINATION</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-git-doit-avoir-ete-installe admonition">
+<p class="admonition-title">Git doit avoir été installé</p>
+<p>sur Debian ou Ubuntu, <span class="red">apt install git</span></p>
+</div>
+<p>0.1.3.4 Télécharger en bash le script d’installation*</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">install_only_monitor</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Et apprès avoir rendu exécutable le fichier, le lancer :</p>
+<p><a class="reference internal" href="../_images/image35.webp"><img alt="image35" src="../_images/image35.webp" style="width: 585px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">install_only_monitor</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p><em>Installation de monitor</em></p>
+<p><a class="reference internal" href="../_images/image37.webp"><img alt="image37" src="../_images/image37.webp" style="width: 548px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Choisir le serveur web pour une installation de monitor dans le bon répertoire ;</p>
+<p>Choisir « autre » si Apache ou Nginx ne sont pas utilisé, monitor sera installé dans « /tmp » il suffira alors de créer un lien symbolique vers le serveur web.</p>
+<p>Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente installation), le supprimer</p>
+</div>
+<p><a class="reference internal" href="../_images/image38.webp"><img alt="image38" src="../_images/image38.webp" style="width: 399px;" /></a></p>
+</div>
+<div class="section" id="mode-decouverte">
+<h4>0.1.3.1 mode « découverte »<a class="headerlink" href="#mode-decouverte" title="Lien permanent vers ce titre"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>IMPORTANT</strong> : après l’installation le programme est en mode « découverte »,</p>
+<p>pour utiliser Domoticz ou Home Assistant et toutes les fonctions nécessitant des tables de la base de données, <span class="darkblue">désactiver le mode « découverte »</span> ;En profiter pour changer le mot de passe actuel <strong>1234</strong></p>
+<p>Pour cela soit :</p>
+<p><em>-   Utiliser la fonction du programme</em></p>
+<p><a class="reference internal" href="../_images/image39.webp"><img alt="image39" src="../_images/image39.webp" style="width: 470px;" /></a></p>
+<p><a class="reference internal" href="../_images/image40.webp"><img alt="image40" src="../_images/image40.webp" style="width: 478px;" /></a></p>
+<p><em>-   Modifier le fichier /admin/config.php</em></p>
+<p><a class="reference internal" href="../_images/image41.webp"><img alt="image41" src="../_images/image41.webp" style="width: 520px;" /></a></p>
+<p><a class="reference internal" href="../_images/image42.webp"><img alt="image42" src="../_images/image42.webp" style="width: 520px;" /></a></p>
+</div>
+<p><strong>Pour utiliser Domoticz ou Home Assistant ou les 2 :</strong></p>
+<p>Indiquer l‘ IP et le port</p>
+<p><a class="reference internal" href="../_images/image43.webp"><img alt="image43" src="../_images/image43.webp" style="width: 618px;" /></a></p>
+<p><strong>Logiciels utiles :</strong></p>
+<ul class="simple">
+<li><p>Logiciel d’édition d’images svg : Adobe Illustrator ou Inkscape</p></li>
+<li><p>Pour les autres images webp, un convertisseur en ligne : <a class="reference external" href="https://convertio.co/fr/">https://convertio.co/fr/</a></p></li>
+</ul>
+</div>
+<div class="section" id="creation-dun-certificat-ssl-auto-signe-pour-nginx">
+<h4>0.1.3.2 -Création d’un certificat SSL auto-signé pour Nginx :<a class="headerlink" href="#creation-dun-certificat-ssl-auto-signe-pour-nginx" title="Lien permanent vers ce titre"></a></h4>
+<p>Dans le cas où l’installation n’est pas automatique (en automatique il suffit d’accepter la création du certificat).</p>
+<p>Avant de commencer, vous devez avoir un utilisateur non root configuré avec des privilèges ; si vous avez installé Monitor en suivant ce tuto, c’est déjà fait</p>
+<div class="admonition-etape-1-creer-le-certificat-ssl admonition">
+<p class="admonition-title"><strong>Étape 1</strong> : Créer le certificat SSL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">x509</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="n">days</span> <span class="mi">365</span> <span class="o">-</span><span class="n">newkey</span> <span class="n">rsa</span><span class="p">:</span><span class="mi">2048</span> <span class="o">-</span><span class="n">keyout</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">selfsigned</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">selfsigned</span><span class="o">.</span><span class="n">crt</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image43.webp"><img alt="image44" src="../_images/image43.webp" style="width: 605px;" /></a></p>
+<p><em>Explications :</em></p>
+<ul class="simple">
+<li><p><strong>openssl</strong>: l’outil en ligne de commande pour créer et gérer des certificats, clés ,….</p></li>
+<li><p><strong>req</strong> : cette commande spécifie que nous voulons utiliser la gestion des demandes de signature de certificat (CSR) X.509. (C’est une norme d’infrastructure à clé publique à laquelle SSL et TLS adhèrent pour sa gestion des clés et des certificats).</p></li>
+<li><p><strong>x509</strong> : pour compléter la commande précédente en indiquant que nous voulons créer un certificat auto-signé.</p></li>
+<li><p><strong>nodes</strong>: pour ignorer l’option de sécurisation de notre certificat avec une phrase secrète. Une phrase secrète empêcherait Nginx de démarrer normalement car il faudrait saisir la phrase secrète à chaque</p></li>
+</ul>
+<p><em>démarrage.</em></p>
+<ul class="simple">
+<li><p><strong>days 365</strong> : la durée en jours de validité du certificat</p></li>
+<li><p><strong>newkey rsa:2048</strong> : pour générer un nouveau certificat et une nouvelle clé en une seule fois. Il est indiqué de créer une clé RSA de 2048 bits</p></li>
+<li><p><strong>keyout</strong> : emplacement du fichier de la clé privée généré.</p></li>
+<li><p><strong>out</strong>: emplacement du certificat créé.</p></li>
+</ul>
+<p><span class="darkblue">Les deux fichiers créés sont placés dans les sous-répertoires appropriés du répertoire /etc/ssl</span></p>
+<p><a class="reference internal" href="../_images/image45.webp"><img alt="image45" src="../_images/image45.webp" style="width: 353px;" /></a></p>
+<p><em>Confidentialité persistante</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">openssl</span> <span class="n">dhparam</span> <span class="o">-</span><span class="n">out</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span> <span class="mi">2048</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image46.webp"><img alt="image46" src="../_images/image46.webp" style="width: 605px;" /></a></p>
+<p>C’est assez long</p>
+</div>
+<div class="admonition-etape-2-configurer-nginx-pour-utiliser-ssl admonition">
+<p class="admonition-title"><strong>Étape 2</strong> :Configurer Nginx pour utiliser SSL</p>
+<p>Créer 2 lignes de configuration dans un fichier pointant vers la clé SSL et le certificat</p>
+<p><em>-   Créer le fichier self-signed.conf dans /etc/nginx/snippets</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">snippets</span>
+
+<span class="n">sudo</span> <span class="n">nano</span> <span class="bp">self</span><span class="o">-</span><span class="n">signed</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p><em>-   Ajouter</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#certificat et clé privée</span>
+
+<span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">selfsigned</span><span class="o">.</span><span class="n">crt</span><span class="p">;</span>
+<span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">selfsigned</span><span class="o">.</span><span class="n">key</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image47.webp"><img alt="image47" src="../_images/image47.webp" style="width: 432px;" /></a></p>
+<p>Ctrl X, Enter, ctrl X</p>
+<p><em>-   Créer un bloc de configuration avec des paramètres de chiffrement forts</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Comme précédemment créer un fichier <em>ssl-params.conf</em></p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="n">ssl</span><span class="o">-</span><span class="n">params</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p><em>-   Ajouter</em> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="c1"># from https://cipherli.st/</span>
+ <span class="c1"># and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</span>
+
+ <span class="n">ssl_protocols</span> <span class="n">TLSv1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="mi">1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="mi">2</span><span class="p">;</span>
+ <span class="n">ssl_prefer_server_ciphers</span> <span class="n">on</span><span class="p">;</span>
+ <span class="n">ssl_ciphers</span> <span class="s2">&quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&quot;</span><span class="p">;</span>
+ <span class="n">ssl_ecdh_curve</span> <span class="n">secp384r1</span><span class="p">;</span>
+ <span class="n">ssl_session_cache</span> <span class="n">shared</span><span class="p">:</span><span class="n">SSL</span><span class="p">:</span><span class="mi">10</span><span class="n">m</span><span class="p">;</span>
+ <span class="n">ssl_session_tickets</span> <span class="n">off</span><span class="p">;</span>
+ <span class="n">ssl_stapling</span> <span class="n">on</span><span class="p">;</span>
+ <span class="n">ssl_stapling_verify</span> <span class="n">on</span><span class="p">;</span>
+ <span class="n">resolver</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span> <span class="n">valid</span><span class="o">=</span><span class="mi">300</span><span class="n">s</span><span class="p">;</span>
+ <span class="n">resolver_timeout</span> <span class="mi">5</span><span class="n">s</span><span class="p">;</span>
+ <span class="c1"># Disable preloading HSTS for now.  You can use the commented out header line that includes</span>
+ <span class="c1"># the &quot;preload&quot; directive if you understand the implications.</span>
+ <span class="c1">#add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; preload&quot;;</span>
+ <span class="n">add_header</span> <span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span> <span class="s2">&quot;max-age=63072000; includeSubdomains&quot;</span><span class="p">;</span>
+ <span class="n">add_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Frame</span><span class="o">-</span><span class="n">Options</span> <span class="n">DENY</span><span class="p">;</span>
+<span class="n">add_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">-</span><span class="n">Options</span> <span class="n">nosniff</span><span class="p">;</span>
+
+<span class="n">ssl_dhparam</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image48.webp"><img alt="image48" src="../_images/image48.webp" style="width: 644px;" /></a></p>
+<p><em>Ajustez la configuration Nginx pour utiliser SSL : extrait de monitor.conf</em></p>
+<blockquote>
+<div><p>le fichier sur github : <span class="darkblue">https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/monitor.conf</span></p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+
+listen 80 ;
+listen [::]:80 ;
+server_name 192.168.1.127;
+
+# SSL configuration
+listen 443 ssl ;
+listen [::]:443 ssl;
+include /etc/nginx/snippets/selfsigned.conf;
+include /etc/nginx/snippets/ssl-params.conf;
+
+root /www/html;
+index  index.php index.html index.htm;
+
+location ~ \.php$ {
+   fastcgi_split_path_info ^(.+\.php)(/.+)$;
+   fastcgi_pass   unix:/var/run/php/php8.2-fpm.sock;
+   fastcgi_index  index.php;
+   fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+   include        fastcgi_params;
+……
+</pre></div>
+</div>
+</div>
+<div class="admonition-verifier-la-configuration admonition">
+<p class="admonition-title"><em>Vérifier la configuration</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">t</span>
+</pre></div>
+</div>
+<p>Vous devrez confirmer manuellement que vous faites confiance au serveur pour y accéder.= ; les navigateurs ne peuvent vérifier les certificats auto-signés</p>
+<p>Redémarrer le serveur Nginx</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">nginx</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="mise-a-jour-de-monitor">
+<h3>0.1.4 Mise à jour de monitor<a class="headerlink" href="#mise-a-jour-de-monitor" title="Lien permanent vers ce titre"></a></h3>
+<p>Avec la console :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">update</span><span class="o">.</span><span class="n">bash</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">update</span><span class="o">.</span><span class="n">bash</span>
+<span class="o">./</span><span class="n">update</span><span class="o">.</span><span class="n">bash</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image51.webp"><img alt="image51" src="../_images/image51.webp" style="width: 647px;" /></a></p>
+<p><a class="reference internal" href="../_images/image73.webp"><img alt="image73" src="../_images/image73.webp" style="width: 647px;" /></a></p>
+</div>
+</div>
+<div class="section" id="la-page-daccueil-et-connexion-avec-domoticz-ou-ha">
+<h2>0.2     La page d’accueil et connexion avec Domoticz ou HA :<a class="headerlink" href="#la-page-daccueil-et-connexion-avec-domoticz-ou-ha" title="Lien permanent vers ce titre"></a></h2>
+<div class="section" id="page-daccueil">
+<h3>0.2.1 page d’accueil :<a class="headerlink" href="#page-daccueil" title="Lien permanent vers ce titre"></a></h3>
+<p>Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe <a class="reference internal" href="configuration_minimum.html#a-pour-limage-de-fond-suivant-la-resolution-decran-et-le-logo"><span class="std std-ref">1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo</span></a></p>
+<p><a class="reference internal" href="../_images/image52.webp"><img alt="image52" src="../_images/image52.webp" style="width: 446px;" /></a></p>
+</div>
+<div class="section" id="premier-dispositif">
+<h3>0.2.2. Premier dispositif<a class="headerlink" href="#premier-dispositif" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="pour-domoticz">
+<h4>0.2.2.1 pour Domoticz<a class="headerlink" href="#pour-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<p>Température extérieure : le matériel</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Depuis le 1 avril 2023 le service Darsky n’est assuré que pour des appareil Apple !!!
+J’ai donc provisoirement migré vers Météo Concept que j’utilise pour ma météo à 14 jours ; Je n’utilise pas ces valeurs dans Domoticz</p>
+</div>
+<p>A la place OpenWeatherMap peut être utilisé :</p>
+<p>Pour la météo actuelle laisser les curseurs en rouge</p>
+<p><a class="reference internal" href="../_images/image53.webp"><img alt="image53" src="../_images/image53.webp" style="width: 605px;" /></a></p>
+<p><strong>Le dispositif :</strong></p>
+<p><a class="reference internal" href="../_images/image54.webp"><img alt="image54" src="../_images/image54.webp" style="width: 303px;" /></a></p>
+<blockquote>
+<div><p><strong>Création d’un plan :</strong></p>
+<p><a class="reference internal" href="../_images/image55.webp"><img alt="image55" src="../_images/image55.webp" style="width: 562px;" /></a></p>
+<p><a class="reference internal" href="../_images/image56.webp"><img alt="image56" src="../_images/image56.webp" style="width: 562px;" /></a></p>
+<p><a class="reference internal" href="../_images/image57.webp"><img alt="image57" src="../_images/image57.webp" style="width: 531px;" /></a></p>
+</div></blockquote>
+<p>Noter :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>l’Idx du plan Domoticz</p></li>
+<li><p>L’Idx (Domoticz) du dispositif 285</p></li>
+</ul>
+</div></blockquote>
+<p>l’Idm (Id monitor)  , il est le premier dispositif : 1</p>
+<p>Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement avec l’appli :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image4.webp"><img alt="image4" src="../_images/image4.webp" style="width: 378px;" /></a></p>
+<p><a class="reference internal" href="../_images/image58.webp"><img alt="image58" src="../_images/image58.webp" style="width: 298px;" /></a>
+<a class="reference internal" href="../_images/image59.webp"><img alt="image59" src="../_images/image59.webp" style="width: 414px;" /></a></p>
+<p><a class="reference internal" href="../_images/image60.webp"><img alt="image60" src="../_images/image60.webp" style="width: 459px;" /></a></p>
+</div></blockquote>
+<p><em>Avec OpenWeather l’API fournit la température ressentie, pour l’ajouter enregistrer le dispositif et ajouter à accueil.php :</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;p class=&quot;text-centre&quot;&gt;T° ressentie :&lt;span id=&quot;temp_ressentie&quot; style=&quot;color:#ffc107;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+</pre></div>
+</div>
+<p>La classe « text-centre » :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">text</span><span class="o">-</span><span class="n">centre</span> <span class="p">{</span>
+ <span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="p">:</span> <span class="mi">2</span><span class="n">px</span><span class="p">;</span>
+ <span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="p">:</span> <span class="mi">2</span><span class="n">px</span><span class="p">;</span>
+ <span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="p">:</span> <span class="mi">2</span><span class="n">px</span><span class="p">;</span>
+ <span class="n">display</span><span class="p">:</span> <span class="n">block</span><span class="p">;</span>
+ <span class="nb">float</span><span class="p">:</span> <span class="n">none</span><span class="p">;}</span>
+</pre></div>
+</div>
+<div class="admonition-script-de-remplacement admonition">
+<p class="admonition-title"><strong>Script de remplacement</strong></p>
+<p>Indépendant de Domoticz, la fonction PHP</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case 2:// relevé temps réel station la pus proche (40Km)
+$url = &#39;https://api.meteo-concept.com/api/observations/around?param=temperature&amp;radius=40&amp;token=&#39;.TOKEN_MC.&#39;&amp;insee=&#39;.INSEE;
+//$url2 = &#39;https://api.meteo-concept.com/api/forecast/nextHours?token=&#39;.TOKEN_MC.&#39;&amp;insee=&#39;.INSEE;
+$prevam = file_get_curl($url);//echo $prevam;return;
+$forecastam = json_decode($prevam);$info=array();
+  //$info[&#39;time&#39;]=$forecastam[0]-&gt;observation-&gt;time;
+  $info[&#39;temp&#39;]=$forecastam[0]-&gt;observation-&gt;temperature-&gt;value;
+  $info[&#39;hPa&#39;]=$forecastam[0]-&gt;observation-&gt;atmospheric_pressure-&gt;value;
+return json_encode($info);
+break;
+</pre></div>
+</div>
+<p>lien Github du fichier avec les fonctions PHP : <span class="darkblue">https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php</span></p>
+<p>Appel, depuis Monitor, la fonction:c()  dans footer.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mc(1,&quot;#meteo_concept&quot;);
+mc(0,&quot;#meteo_concept_am&quot;);
+//mc(3,&quot;#temp_ext&quot;);      //pour la T° locale
+setTimeout(pluie, 3600000, 2);
+function mc(variable,id){
+  $.ajax({
+  type: &quot;GET&quot;,
+  url: &quot;ajax.php&quot;,
+  data: &quot;app=meteo_concept&amp;variable=&quot;+variable,
+  success: function(data){
+  if (variable==3 || variable==2) $(id).html(data.data);
+          else $(id).html(data);
+  }
+});
+//setTimeout(mc, 1800000, 3,&quot;#temp_ext&quot;);//:red:`pour la T° locale rafraichissement toutes les 30mn`
+ };
+</pre></div>
+</div>
+<p><em>footer.php et ajax.php  sont dans le référentiel :</em>  <span class="darkblue">https://github.com/mgrafr/monitor</span></p>
+</div>
+<p><a class="reference internal" href="../_images/image64.webp"><img alt="image64" src="../_images/image64.webp" style="width: 485px;" /></a></p>
+</div>
+<div class="section" id="pour-home-assistant">
+<h4>0.2.2.2 pour Home Assistant<a class="headerlink" href="#pour-home-assistant" title="Lien permanent vers ce titre"></a></h4>
+<p>La météo est installée lors de l’installation du programme :</p>
+<p><a class="reference internal" href="../_images/image65.webp"><img alt="image65" src="../_images/image65.webp" style="width: 232px;" /></a></p>
+<p>Enregistrement du dispositif :</p>
+<p><a class="reference internal" href="../_images/image66.webp"><img alt="image66" src="../_images/image66.webp" style="width: 257px;" /></a>
+<a class="reference internal" href="../_images/image67.webp"><img alt="image67" src="../_images/image67.webp" style="width: 287px;" /></a></p>
+<p>Affichage sue la page d’accueil :</p>
+<p><a class="reference internal" href="../_images/image68.webp"><img alt="image68" src="../_images/image68.webp" style="width: 393px;" /></a></p>
+<p>Les données json de ce dispositif :</p>
+<p><a class="reference internal" href="../_images/image69.webp"><img alt="image69" src="../_images/image69.webp" style="width: 452px;" /></a></p>
+</div>
+<div class="section" id="affichage-sur-la-page-daccueil-de-monitor">
+<h4>0.2.2.3 Affichage sur la page d’accueil de Monitor :<a class="headerlink" href="#affichage-sur-la-page-daccueil-de-monitor" title="Lien permanent vers ce titre"></a></h4>
+<p>Extrait du fichier /include/accueil.php</p>
+<p><a class="reference internal" href="../_images/image70.webp"><img alt="image70" src="../_images/image70.webp" style="width: 650px;" /></a></p>
+<p><em>L’ID html est ici « :darkblue:`temp_ext` »</em></p>
+</div>
+</div>
+</div>
+<div class="section" id="base-de-donnees-maria-db">
+<h2>0.3 _ Base de données Maria DB<a class="headerlink" href="#base-de-donnees-maria-db" title="Lien permanent vers ce titre"></a></h2>
+<p>La base de données a été créée lors de l’installation du serveur : nom=monitor (donnée lors de la création, il peut être différent)</p>
+<p>Connexion en local : <span class="darkblue">IP/phpMyAdmin</span></p>
+<p><a class="reference internal" href="../_images/image72.webp"><img alt="image72" src="../_images/image72.webp" style="width: 424px;" /></a></p>
+<p>Pour les autorisations d’accès, voir le paragraphe concernant la configuration /admin/config.php</p>
+<p>Elles ont été créées lors de l’installation automatique, pour l’installation manuelle :</p>
+<p><em>Extrait de config.php:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">parametres</span> <span class="n">serveur</span> <span class="n">DBMaria</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SERVEUR&#39;</span><span class="p">,</span><span class="s1">&#39;localhost&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;MOTDEPASSE&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;MOT DE PASSE&gt;&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;UTILISATEUR&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;UTILISATEUR&gt;&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;DBASE&#39;</span><span class="p">,</span><span class="s1">&#39;monitor&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>En cas d ‘absence de base de données ou de mauvais paramétrages ,sur la page d” accueil :</p>
+<p><strong> » pas de connexion à la BD « </strong></p>
+<p>plus d’info sur test_db.php <a class="reference internal" href="administration.html#admin-php-info-admin-php-test-db-php-et-backup-bd"><span class="std std-ref">14.2 admin.php, info_admin.php, test_db.php et backup_bd</span></a></p>
+</div>
+<p><strong>Ajout à la base de données des données fournie par Domoticz</strong></p>
+<div class="section" id="les-tables-dispositifs-variables-text-image">
+<h3>0.3.1 Les Tables « dispositifs(variables) » &amp; « text-image »<a class="headerlink" href="#les-tables-dispositifs-variables-text-image" title="Lien permanent vers ce titre"></a></h3>
+<blockquote>
+<div><blockquote>
+<div><p>La correspondance entre les variables Domoticz ou HA et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ;</p>
+<ul>
+<li><p>tables :</p>
+<blockquote>
+<div><p>.  text-image</p>
+<p>. dispositifs</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image75.webp"><img alt="image75" src="../_images/image75.webp" style="width: 216px;" /></a></p>
+</div></blockquote>
+<div class="section" id="table-text-image">
+<h4>0.3.1.1 Table text-image<a class="headerlink" href="#table-text-image" title="Lien permanent vers ce titre"></a></h4>
+<div class="admonition-quelques-explications admonition">
+<p class="admonition-title"><strong>quelques explications</strong></p>
+<p>Pour un texte contenu dans une variable Domoticz correspond une image ou 0 ou « none »</p>
+<p><a class="reference internal" href="../_images/image76.webp"><img alt="image76" src="../_images/image76.webp" style="width: 598px;" /></a></p>
+<p>ex: le texte « poubelle jaune » dans la variable poubelle aura un alias : l’image d’une poubelle jaune</p>
+</div>
+</div>
+<div class="section" id="table-dispositifs-pour-les-variables">
+<h4>0.3.1.2 Table dispositifs pour les variables<a class="headerlink" href="#table-dispositifs-pour-les-variables" title="Lien permanent vers ce titre"></a></h4>
+<blockquote>
+<div><p><em>ne sont concernés pour les variables que les champs</em> :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image77.webp"><img alt="image77" src="../_images/image77.webp" style="width: 343px;" /></a></p>
+<p><a class="reference internal" href="../_images/image78.webp"><img alt="image78" src="../_images/image78.webp" style="width: 605px;" /></a></p>
+<blockquote>
+<div><p>. num : ne sert qu’à éditer plus facilement la BD</p>
+<blockquote>
+<div><p><span class="red">(Pour modifier plus facilement la table, ajouter au début un enregistrement (num par exemple) afin de pouvoir éditer les enregistrements)</span>.</p>
+</div></blockquote>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image79.webp"><img alt="image79" src="../_images/image79.webp" style="width: 650px;" /></a></p>
+<p>. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)</p>
+<p>. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ;</p>
+<blockquote>
+<div><p>commande Bash, accès au Shell par SSH2 depuis Domoticz sous Docker; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.</p>
+<blockquote>
+<div><p>voir ci-après un exemple de commande bash</p>
+</div></blockquote>
+</div></blockquote>
+<p>. Nom_idx : nom de la variable du serveur domotique (dz)</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>IMPORTANT</strong> : le nom de la variable Domoticz ne doit pas comporter d’espace</p>
+<p>(le programme fonctionne mais l’API renvoie « NULL »)</p>
+</div>
+<dl class="simple">
+<dt>. Idx , id de la variable du serveur domotique(dz)</dt><dd><p>ex : idx de Domoticz
+<a class="reference internal" href="../_images/image87.webp"><img alt="image87" src="../_images/image87.webp" style="width: 406px;" /></a></p>
+</dd>
+</dl>
+<p>. Nom appareil : non obligatoire</p>
+<dl class="simple">
+<dt>. ID , id de la variable (ha)</dt><dd><dl class="simple">
+<dt>Ex<span class="classifier">Home Assistant, nom essai, ID input_text.essai</span></dt><dd><p><a class="reference internal" href="../_images/image88.webp"><img alt="image88" src="../_images/image88.webp" style="width: 408px;" /></a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<div class="admonition-un-exemple-bash-concret-redemarrer-un-script-apres-modifications admonition">
+<p class="admonition-title"><strong>un exemple bash concret : redémarrer un script après modifications</strong></p>
+<p>Ici <span class="red">systemctl restart sms_dz</span> (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)</p>
+<p><strong>Dans Domoticz</strong> : créer une variable avec les données ci-dessous et l’exploiter dans un script LUA</p>
+<p><a class="reference internal" href="../_images/image80.webp"><img alt="image80" src="../_images/image80.webp" style="width: 650px;" /></a></p>
+<p>scrpt LUA:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>-- le fichier connect.py est modifié `
+f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
+              env=&quot;#!/usr/bin/env python3&quot;
+              f:write(env..&quot; -*- coding: utf-8 -*-&quot;..&quot;\n&quot;..fich)
+              f:close()
+-- on modifie la variable
+              domoticz.variables(&#39;BASH&#39;).set(&quot;restart_sms_dz&quot;)
+</pre></div>
+</div>
+<p><strong>Dans SQL</strong> :</p>
+<p><a class="reference internal" href="../_images/image81.webp"><img alt="image81" src="../_images/image81.webp" style="width: 349px;" /></a></p>
+<blockquote>
+<div><p><em>Ou par Monitor</em> :</p>
+<p><a class="reference internal" href="../_images/image82.webp"><img alt="image82" src="../_images/image82.webp" style="width: 296px;" /></a></p>
+<p><a class="reference internal" href="../_images/image83.webp"><img alt="image83" src="../_images/image83.webp" style="width: 401px;" /></a></p>
+</div></blockquote>
+<p><strong>Dans monitor, PHP-SSH2</strong></p>
+<p>raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php</p>
+<p>Extrait du fichier :</p>
+<p><a class="reference internal" href="../_images/image85.webp"><img alt="image85" src="../_images/image85.webp" style="width: 650px;" /></a></p>
+<blockquote>
+<div><blockquote>
+<div><p>Monitor surveille les modifications de variables, si une variable avec une ID_img =#shell apparait, si la valeur est !=0 le nom du script indiqué dans Value est exécuté :</p>
+<p>Appel ajax depuis footer.php vers ajax.php-&gt;ssh_scp.php-&gt;serveur dz ou ha-&gt;exécution du fichier Bash</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+<span class="n">echo</span> <span class="s2">&quot;MOT DE PASSE&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">S</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">sms_dz</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><span class="darkblue">Le mot de passe peut être ajouté à connect.py</span></p>
+</div>
+<p><em>Pourquoi une correspondance ?</em> :</p>
+<p>cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor</p>
+<p><em>Installation des tables</em> : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :</p>
+<p><a class="reference internal" href="../_images/image89.webp"><img alt="image89" src="../_images/image89.webp" style="width: 413px;" /></a></p>
+<p><em>Les API de Domoticz et Home assistant pour les variables</em> :</p>
+<ul>
+<li><p>DZ ,  URL : PORT/json.htm?type=command&amp;param=getuservariables ,( renvoie la liste de toutes les variables et leurs valeurs)</p></li>
+<li><p>HA ,  URL : 8123/api/states/sensor.liste_var (renvoie la liste des dispositifs enregistrés comme input text)</p>
+<p>Le template sensor : sensor.liste_var</p>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span><span class="p">:</span>
+  <span class="o">-</span>  <span class="n">sensor</span><span class="p">:</span>
+       <span class="o">-</span>  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;liste_var&quot;</span>
+          <span class="n">unique_id</span> <span class="p">:</span> <span class="mi">1234567890</span>
+          <span class="n">state</span><span class="p">:</span> <span class="o">&gt;</span>
+            <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">input_text</span> <span class="ow">in</span> <span class="n">states</span><span class="o">.</span><span class="n">input_text</span> <span class="o">%</span><span class="p">}</span>
+             <span class="p">{{</span><span class="n">input_text</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">~</span> <span class="s2">&quot;=&quot;</span> <span class="o">~</span> <span class="n">input_text</span><span class="o">.</span><span class="n">state</span> <span class="o">~</span> <span class="s2">&quot;, &quot;</span> <span class="p">}}</span>
+            <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="les-dispositifs">
+<h3>0.3.2 Les Dispositifs<a class="headerlink" href="#les-dispositifs" title="Lien permanent vers ce titre"></a></h3>
+<p>Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz ou HA et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)</p>
+<p><strong>Table « dispositifs »</strong></p>
+<p><a class="reference internal" href="../_images/image91.webp"><img alt="image91" src="../_images/image91.webp" style="width: 484px;" /></a></p>
+<p><a class="reference internal" href="../_images/image92.webp"><img alt="image92" src="../_images/image92.webp" style="width: 700px;" /></a></p>
+<p>La table permet en plus de gérer et modifier si besoin l’affichage de tous les dispositifs sans intervenir sur la page HTML ; <span class="red">pour les switches, les scripts pour commander l’allumage ou l’extinction sont générés automatiquement à partir des données de cette table</span>.</p>
+<ul>
+<li><dl class="simple">
+<dt>num<span class="classifier">ne sert qu’à éditer plus facilement la BD</span></dt><dd><p>voir le paragraphe précédent <a class="reference internal" href="#table-dispositifs-pour-les-variables"><span class="std std-ref">0.3.1.2 Table dispositifs pour les variables</span></a></p>
+</dd>
+</dl>
+</li>
+<li><p>Nom appareil : nom usuel</p></li>
+<li><p>nom_dz : nom du dispositif Domoticz</p></li>
+<li><p>idx : celui de Domoticz</p></li>
+<li><p>ID : celui de Home Assistant</p></li>
+<li><dl class="simple">
+<dt>idm<span class="classifier">idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant      une recherche ;dans l’image cet idm est indiqué par « rel=idm »</span></dt><dd><p><span class="darkblue">Voir le paragraphe concernant les images svg</span></p>
+</dd>
+</dl>
+</li>
+<li><p>Matériel : pour les types zwave ou Zigbee</p></li>
+<li><dl>
+<dt>maj_js<span class="classifier">types de mise à jour java script</span></dt><dd><ul class="simple">
+<li><p>control // détecteur présence(on/off)</p></li>
+<li><p>etat  //porte, volet ,(closed/open)</p></li>
+<li><p>Temp ou data // température, humidité, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est               préférable d’utiliser « data »</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image93.webp"><img alt="image93" src="../_images/image93.webp" style="width: 590px;" /></a></p>
+<p><a class="reference internal" href="../_images/image94.webp"><img alt="image94" src="../_images/image94.webp" style="width: 520px;" /></a></p>
+<ul class="simple">
+<li><p>onoff commandes</p></li>
+<li><p>onoff+stop commandes (volets par exemple)</p></li>
+<li><p>popup //ouverture d’une fenêtre (commandes particulières)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,</p></li>
+<li><p>car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)</p></li>
+<li><p>F() N° case de la fonction « pour_data() » , fichier fonctions.php</p></li>
+<li><p>class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes</p></li>
+<li><p>coul_id1_id2_ON, coul_id1_id2_OFF, coul_lamp_ON, coul_lamp_ON : couleur des ID ou de la class des dispositifs suivant leur position, (class_lamp pour les lampes des différents interrupteurs)</p></li>
+<li><p>pass : par défaut « 0 » pas de mot de passe , pwalarm pour mot de passe de l’alarme et pwcommand pour les commandes (on/off ,…)</p></li>
+<li><p>doc : pour associer un document au dispositif</p></li>
+</ul>
+<div class="admonition important" id="switches">
+<p class="admonition-title">Important</p>
+<p>exemple des scripts générés automatiquement</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* switchOnOff*  */
+
+$(&quot;#coul_al_absence&quot;).click(function(){switchOnOff_setpoint(&quot;65&quot;,&quot;41&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+$(&quot;#coul_al_nuit&quot;).click(function(){switchOnOff_setpoint(&quot;66&quot;,&quot;42&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+$(&quot;#sirene_al&quot;).click(function(){switchOnOff_setpoint(&quot;67&quot;,&quot;234&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+$(&quot;#patha5645&quot;).click(function(){switchOnOff_setpoint(&quot;68&quot;,&quot;43&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+$(&quot;#coul_modect&quot;).click(function(){switchOnOff_setpoint(&quot;69&quot;,&quot;44&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+$(&quot;#raz_dz&quot;).click(function(){switchOnOff_setpoint(&quot;70&quot;,&quot;45&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+$(&quot;#sw7&quot;).click(function(){switchOnOff_setpoint(&quot;9&quot;,&quot;77&quot;,&quot;On&quot;,&quot;0&quot;);});
+$(&quot;#sw8&quot;).click(function(){switchOnOff_setpoint(&quot;10&quot;,&quot;79&quot;,&quot;On&quot;,&quot;0&quot;);});
+$(&quot;#ping_pi&quot;).click(function(){switchOnOff_setpoint(&quot;14&quot;,&quot;80&quot;,&quot;On&quot;,&quot;0&quot;);});
+$(&quot;#coul_al_nuit-2&quot;).click(function(){switchOnOff_setpoint(&quot;15&quot;,&quot;81&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+$(&quot;#sw2&quot;).click(function(){switchOnOff_setpoint(&quot;11&quot;,&quot;85&quot;,&quot;On&quot;,&quot;0&quot;);});
+$(&quot;#gsm&quot;).click(function(){switchOnOff_setpoint(&quot;8&quot;,&quot;86&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+$(&quot;#sw3&quot;).click(function(){switchOnOff_setpoint(&quot;18&quot;,&quot;166&quot;,&quot;On&quot;,&quot;0&quot;);});
+$(&quot;#sw4&quot;).click(function(){switchOnOff_setpoint(&quot;16&quot;,&quot;167&quot;,&quot;On&quot;,&quot;0&quot;);});
+$(&quot;#sw5&quot;).click(function(){switchOnOff_setpoint(&quot;19&quot;,&quot;168&quot;,&quot;On&quot;,&quot;0&quot;);});
+$(&quot;#sw1&quot;).click(function(){switchOnOff_setpoint(&quot;17&quot;,&quot;169&quot;,&quot;On&quot;,&quot;0&quot;);});
+$(&quot;#volet_bureau,#volet_bureau1&quot;).on(&quot;click&quot;, function (){$(&quot;#popup_vr&quot;).fadeIn(300);document.getElementById(&quot;VR&quot;).setAttribute(&quot;title&quot;,&quot;31&quot;);document.getElementById(&quot;VR&quot;).setAttribute(&quot;rel&quot;,&quot;177&quot;);})
+$(&quot;#act-sir&quot;).click(function(){switchOnOff_setpoint(&quot;36&quot;,&quot;230&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+</pre></div>
+</div>
+<p>le script dans footer.php pour ajouter le javascript automatiquement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+require(&quot;fonctions.php&quot;);
+if ($_SESSION[&quot;exeption_db&quot;]==&quot;&quot; &amp;&amp;  DECOUVERTE==false)   {sql_plan(&#39;0&#39;);}
+?&gt;
+</pre></div>
+</div>
+<p>le script dans fonctions.php pour créer automatiquement le javasript dans HTML:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> function sql_plan($t){// SERVEUR SQL connexion
+ $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
+ if (($t!=&#39;0&#39;)  &amp;&amp; (strlen($t) &lt; 4)) {
+   $sql=&quot;SELECT * FROM `&quot;.DISPOSITIFS.&quot;` WHERE idx = &#39;$t&#39; AND maj_js &lt;&gt; &#39;variable&#39;;&quot;;
+   $result = $conn-&gt;query($sql);
+   $row = $result-&gt;fetch_assoc();return $row;}
+ else if ($t!=&#39;0&#39;  &amp;&amp; strlen($t) &gt; 3) {
+   $sql=&quot;SELECT * FROM `&quot;.DISPOSITIFS.&quot;` WHERE ID = &#39;$t&#39; AND maj_js &lt;&gt; &#39;variable&#39;;&quot;;
+           $result = $conn-&gt;query($sql);//if ($result === FALSE) {echo &quot;pas id&quot;;return &quot;&quot;;}
+           $row = $result-&gt;fetch_assoc();
+   return $row;}
+ else if ($t==&#39;0&#39;) {//$commande=&quot;On&quot;;
+ if (IPDOMOTIC1 != &quot;&quot;){
+   $sql=&quot;SELECT * FROM dispositifs WHERE (`maj_js` LIKE &#39;%onoff%&#39; AND `ID` &lt;&gt; &#39;&#39;);&quot;;
+   $result = $conn-&gt;query($sql);
+   while($row = $result-&gt;fetch_array(MYSQLI_ASSOC)){sql_1($row,&#39;turnonoff&#39;,&#39;ha&#39;);
+   }        }
+ if (IPDOMOTIC != &quot;&quot;){
+   $sql=&quot;SELECT * FROM dispositifs WHERE (`maj_js` LIKE &#39;%onoff%&#39; AND `idx` &lt;&gt; &#39;&#39;);&quot;;
+   $result = $conn-&gt;query($sql);//echo &quot;/*&quot;;
+   while($row = $result-&gt;fetch_array(MYSQLI_ASSOC)){sql_1($row,&#39;switchOnOff_setpoint&#39;,&#39;dz&#39;);
+   }       }
+ return;}
+ else echo &quot;pas d&#39;id_dz&quot;;
+ }
+ function sql_1($row,$f,$ser_dom){$commande=&quot;On&quot;;
+ if($ser_dom==&quot;dz&quot;)$ser_dom=$row[&#39;idx&#39;];
+ if($ser_dom==&quot;ha&quot;)$ser_dom=$row[&#39;ID&#39;];
+ if($row[&#39;id1_html&#39;]!=&#39;&#39;){$s=&#39;$(&quot;#&#39;.$row[&quot;id1_html&quot;];}
+           if($row[&#39;id2_html&#39;]!=&#39;&#39;){$s=$s.&#39;,#&#39;.$row[&#39;id2_html&#39;];}
+           if ($row[&#39;maj_js&#39;]==&quot;onoff+stop&quot;) {$sl=&#39;&quot;).on(&quot;click&quot;, function ()
+{$(&quot;#popup_vr&quot;).fadeIn(300);document.getElementById(&quot;VR&quot;).setAttribute(&quot;title&quot;,&quot;&#39;.$row[&#39;idm&#39;].&#39;&quot;);document.getElementById(&quot;VR&quot;).setAttribute(&quot;rel&quot;,&quot;&#39;.$row[&#39;idx&#39;].&#39;&quot;);})&#39;;}
+   else {$sl=&#39;&quot;).click(function(){&#39;.$f.&#39;(&quot;&#39;.$row[&#39;idm&#39;].&#39;&quot;,&quot;&#39;.$ser_dom.&#39;&quot;,&quot;&#39;.$commande.&#39;&quot;,&quot;&#39;.$row[&#39;pass&#39;].&#39;&quot;);});&#39;;}
+           $s=$s.$sl;
+           echo $s.&quot;\r\n&quot; ;
+ return; }?&gt;
+</pre></div>
+</div>
+<p>Voir chapitre <a class="reference internal" href="configuration_minimum.html#configuration-minimum-la-page-daccueil"><span class="std std-ref">1. Configuration minimum : la page d’accueil</span></a></p>
+</div>
+<p><em>Il est possible d’ajouter des types</em></p>
+<p>Pour créer cette table l’importer depuis le référentiel « monitor »</p>
+<p>API Domoticz et HA pour les dispositifs :</p>
+<p><strong>DZ</strong> : URL :PORT/json.htm?type=devices&amp;plan=NUMERO DU PLAN</p>
+<p><strong>HA</strong> : URL:8123/api/states</p>
+<p>Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs</p>
+<p>……..ha :</p>
+<p><a class="reference internal" href="../_images/image97.webp"><img alt="image97" src="../_images/image97.webp" style="width: 538px;" /></a></p>
+</div>
+<div class="section" id="cameras">
+<h3>0.3.3 caméras<a class="headerlink" href="#cameras" title="Lien permanent vers ce titre"></a></h3>
+<p>On crée une table dans la base de données : <span class="darkblue">cameras</span></p>
+<p><em>Si l’on veut un accès extérieur il est utile d’indiquer également le domaine;</em>
+<em>Si l’on utilise Zoneminder, il est nécessaire d’assurer la correspondance des Numéros de dispositifs</em></p>
+<p><a class="reference internal" href="../_images/image98.webp"><img alt="image98" src="../_images/image98.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p>num : n° auto incrémenté pour faciliter les modifications</p></li>
+<li><p>Idx : N° idx <span class="darkblue">celui qui correspond au onclick du plan</span>,</p></li>
+<li><p>Id_zm : optionnel, utilisé avec Zoneminder, <span class="darkblue">option à définir dans admin/config.php</span></p></li>
+<li><p>Ip : IP locale</p></li>
+<li><p>url : url locale de la caméra</p></li>
+<li><p>marque : dahua ou generic, <span class="darkblue">option à définir dans admin/config.php</span></p></li>
+<li><p>type : VTO ou vide <span class="darkblue">concerne uniquement les portier VTO Dahua</span></p></li>
+<li><p>localisation :</p></li>
+</ul>
+<p>téléchargement de la table « cameras.sql » : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/bd_sql/cameras.sql">https://raw.githubusercontent.com/mgrafr/monitor/main/bd_sql/cameras.sql</a></p>
+</div>
+<div class="section" id="autres-tables-sql">
+<h3>0.3.4 Autres tables SQL<a class="headerlink" href="#autres-tables-sql" title="Lien permanent vers ce titre"></a></h3>
+<p>Enregistrements de températures, tension ,….</p>
+<p><a class="reference internal" href="../_images/image99.webp"><img alt="image99" src="../_images/image99.webp" style="width: 566px;" /></a></p>
+<p>Exemple pour une table temp_meteo :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>-- Structure de la table `temp_meteo`
+--
+CREATE TABLE `temp_meteo` (
+  `num` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `valeur` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+-- Index pour la table `temp_meteo`
+ALTER TABLE `temp_meteo`
+  ADD PRIMARY KEY (`num`);
+-- AUTO_INCREMENT pour la table `temp_meteo`
+ALTER TABLE `temp_meteo`
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21294;
+COMMIT;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>num : n° auto incrémenté pour faciliter les modifications</p></li>
+<li><p>date : la date et l’heure</p></li>
+<li><p>valeur : la température</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="le-serveur-http-de-nginx">
+<h2>0.4 Le serveur http de NGINX<a class="headerlink" href="#le-serveur-http-de-nginx" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image101.webp"><img alt="image101" src="../_images/image101.webp" style="width: 205px;" /></a></p>
+<p><strong>Configuration de monitor</strong> : <span class="darkblue">/admin/config.php</span></p>
+<p>Extrait du fichier, fichier complet : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/admin/config.php">https://raw.githubusercontent.com/mgrafr/monitor/main/admin/config.php</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+// NE PAS MODIFIER LES VALEURS EN MAJUSCULES------
+//general monitor
+define(&#39;URLMONITOR&#39;, &#39;monitor.xxxxxxx.ovh&#39;);//domaine
+define(&#39;IPMONITOR&#39;, &#39;192.168.1.7&#39;);//ip
+define(&#39;MONCONFIG&#39;, &#39;admin/config.php&#39;);//fichier config
+define(&#39;DZCONFIG&#39;, &#39;admin/dz/temp.lua&#39;);//fichier temp
+define(&#39;FAVICON&#39;, &#39;favicon.ico&#39;);//fichier favicon  , icone du domaine dans barre url
+// répertoire des images
+$rep=&#39;images/&#39;;//ne pas changer
+// images logo et titres
+define(&#39;IMAGEACCUEIL&#39;, $rep.&#39;maison.jpg&#39;);//image page accueil pour écrans &gt;534 px
+define(&#39;IMAGEACCUEILSMALL&#39;, $rep.&#39;maison_small.jpg&#39;);//image page accueil pour écrans &lt;535 px
+define(&#39;IMGLOGO&#39;, $rep.&#39;logo.png&#39;);//image logo
+define(&#39;NOMSITE&#39;, &#39;Domoticz&#39;);//nom principal du site
+define(&#39;NOMSLOGAN&#39;, xxxxxx&#39;);//nom secondaire ou slogan
+//
+</pre></div>
+</div>
+<p><strong>Les fichiers à la racine du site</strong> :</p>
+<p><a class="reference internal" href="../_images/image103.webp"><img alt="image103" src="../_images/image103.webp" style="width: 334px;" /></a></p>
+<ul>
+<li><p><strong>ajax.php</strong> : appels ajax depuis javascript, explications dans les divers paragraphes</p>
+<blockquote>
+<div><p>extrait du script :</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+require (&quot;fonctions.php&quot;);
+$retour=array();
+//POST-------------------
+$appp = isset($_POST[&#39;appp&#39;]) ? $_POST[&#39;appp&#39;] : &#39;&#39;;
+$variablep = isset($_POST[&#39;variable&#39;]) ? $_POST[&#39;variable&#39;] : &#39;&#39;;
+$commandp = isset($_POST[&#39;command&#39;]) ? $_POST[&#39;command&#39;] : &#39;&#39;;
+//GET----------------------
+$app = isset($_GET[&#39;app&#39;]) ? $_GET[&#39;app&#39;] : &#39;&#39;;
+$idx = isset($_GET[&#39;idx&#39;]) ? $_GET[&#39;idx&#39;] : &#39;&#39;;
+$device = isset($_GET[&#39;device&#39;]) ? $_GET[&#39;device&#39;] : &#39;&#39;;
+$name = isset($_GET[&#39;name&#39;]) ? $_GET[&#39;name&#39;] : &#39;&#39;;
+$variable = isset($_GET[&#39;variable&#39;]) ? $_GET[&#39;variable&#39;] : &#39;&#39;;
+$command = isset($_GET[&#39;command&#39;]) ? $_GET[&#39;command&#39;] : &#39;&#39;;
+$type = isset($_GET[&#39;type&#39;]) ? $_GET[&#39;type&#39;] : &#39;&#39;;
+$table = isset($_GET[&#39;table&#39;]) ? $_GET[&#39;table&#39;] : &#39;&#39;;
+// APPEL A des FONCTIONS PHP &#39;fonctions.php
+if ($app==&quot;aff_th&quot;) {$retour= status_devices($device,&#39;Temp&#39;,&#39;Humidity&#39;);echo json_encode($retour); }
+else if ($app==&quot;devices_plan&quot;) {if (DECOUVERTE==true) {include(&#39;include/json_demo/devices_plan_json.php&#39;);return;}
+     else {$retour=devices_plan($variable);echo json_encode($retour); }}
+else if ($app==&quot;turn&quot;) {$retour=devices_id($device,$command);echo $retour; }
+else if ($app==&quot;OnOff&quot;) {$retour=switchOnOff_setpoint($device,$command,$type,$variable,$name);echo json_encode($retour); }
+else if ($app==&quot;meteo_concept&quot;) {if (DECOUVERTE==true) {include(&#39;include/json_demo/meteo_concept_json.php&#39;);return;}
+     else {echo $retour=meteo_concept($variable); }}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Cookies.txt</strong> &amp; <strong>cookie.txt</strong> : utilisés par Zoneminder suivant les versions de l’API</p></li>
+<li><p><strong>favicon.ico</strong> : l’icône associée à la barre de l’url</p></li>
+<li><p><strong>fonctions.php</strong> : toutes les fonctions PHP appelées au démarrage et lors des appels Ajax</p></li>
+<li><p><strong>Index.php</strong> :  le ficher appelé lors du chargement du site ; pour les écrans &gt; 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse       du répertoire du site sur le serveur</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+echo &#39;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body style=&quot;background-color: cornsilk;&quot;&gt;&#39;;
+$rep=&quot;/&quot;; $domaine=$_SERVER[&#39;HTTP_HOST&#39;];$port=$_SERVER[&#39;SERVER_PORT&#39;];
+if (substr($domaine, 0, 7)==&quot;192.168&quot;) $rep=&quot;/monitor/&quot;;
+header(&#39;Location: &#39;.$rep.&#39;index_loc.php&#39;);
+exit();
+?&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Index_loc.php</strong> : la page d’accueil réelle du site ; sauf pour ajouter des pages non incluses dans le programme, ne pas modifier ce fichier.</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image106.webp"><img alt="image106" src="../_images/image106.webp" style="width: 671px;" /></a></p>
+</div>
+<div class="section" id="le-framework-bootstrap">
+<h2>0.5 Le Framework Bootstrap<a class="headerlink" href="#le-framework-bootstrap" title="Lien permanent vers ce titre"></a></h2>
+<p>Pour des mises en page faciles, des fenêtres modales ,…..</p>
+<p><a class="reference internal" href="../_images/image107.webp"><img alt="image107" src="../_images/image107.webp" style="width: 270px;" /></a></p>
+</div>
+<div class="section" id="les-styles-css">
+<h2>0.6 Les styles CSS<a class="headerlink" href="#les-styles-css" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image108.webp"><img alt="image108" src="../_images/image108.webp" style="width: 310px;" /></a></p>
+<p>Un extrait :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">body</span> <span class="p">{</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="p">:</span> <span class="mf">1.50</span><span class="p">;</span>
+    <span class="n">color</span><span class="p">:</span> <span class="c1">#333333;</span>
+    <span class="n">position</span><span class="p">:</span> <span class="n">relative</span><span class="p">;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="p">:</span> <span class="s1">&#39;Open Sans&#39;</span><span class="p">,</span> <span class="n">sans</span><span class="o">-</span><span class="n">serif</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">html</span><span class="p">,</span> <span class="n">body</span> <span class="p">{</span><span class="n">height</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;}</span>
+<span class="o">.</span><span class="n">table</span> <span class="n">td</span><span class="p">{</span><span class="n">border</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="c1">#menu {width:17em;}</span>
+<span class="c1">#maison1{margin-top:12%;}</span>
+<span class="o">.</span><span class="n">header</span> <span class="p">{</span><span class="n">height</span><span class="p">:</span> <span class="mi">150</span><span class="n">px</span><span class="p">;</span><span class="n">color</span><span class="p">:</span> <span class="c1">#ffffff;background-color: rgba(8, 55, 70, 0.7);</span>
+     <span class="n">padding</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span> <span class="mi">0</span><span class="p">;</span><span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="p">:</span> <span class="nb">all</span> <span class="mf">0.2</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+     <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transition</span><span class="p">:</span> <span class="nb">all</span> <span class="mf">0.2</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="p">:</span> <span class="nb">all</span> <span class="mf">0.2</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+     <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">transition</span><span class="p">:</span> <span class="nb">all</span> <span class="mf">0.2</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Les Media queries pour les différents écrans</p>
+<p><a class="reference internal" href="../_images/image110.webp"><img alt="image110" src="../_images/image110.webp" style="width: 676px;" /></a></p>
+</div>
+<div class="section" id="les-images">
+<h2>0.7 Les images<a class="headerlink" href="#les-images" title="Lien permanent vers ce titre"></a></h2>
+<p>Toutes sont au format svg ou webp sauf les caméras</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Avantages du format SVG</em>
+Les images SVG peuvent être créées et modifiées un éditeur de texte
+Les images SVG peuvent contenir du javascript
+Les images SVG sont zoomables
+Les graphiques SVG ne perdent aucune qualité s’ils sont zoomés ou redimensionnés
+SVG est open source
+Les fichiers SVG sont du pur XML</p>
+</div>
+<p><a class="reference internal" href="../_images/image111.webp"><img alt="image111" src="../_images/image111.webp" style="width: 120px;" /></a></p>
+<p>Webp est un format d’image moderne qui offre une compression supérieure avec perte et sans perte pour les images du Web</p>
+<p>Les caméras sont au format jpg :</p>
+<p><a class="reference internal" href="../_images/image112.webp"><img alt="image112" src="../_images/image112.webp" style="width: 295px;" /></a></p>
+</div>
+<div class="section" id="les-fichiers-php">
+<h2>0.8 Les fichiers PHP<a class="headerlink" href="#les-fichiers-php" title="Lien permanent vers ce titre"></a></h2>
+<p>Ils sont regroupés dans le dossier « include », sauf
+-        fonctions.php, ajax.php, à la racine de monitor
+-       /admin/config. PHP
+-       /jpgraph</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image113.webp"><img alt="image113" src="../_images/image113.webp" style="width: 321px;" /></a></p>
+</div></blockquote>
+<p>Affichage de graphique avec jpgraph</p>
+<p><a class="reference internal" href="../_images/image114.webp"><img alt="image114" src="../_images/image114.webp" style="width: 265px;" /></a></p>
+</div>
+<div class="section" id="les-fichiers-javascript-python">
+<h2>0.9 Les fichiers Javascript &amp; Python<a class="headerlink" href="#les-fichiers-javascript-python" title="Lien permanent vers ce titre"></a></h2>
+<p>Utilisation de jQuery</p>
+<p><a class="reference internal" href="../_images/image115.webp"><img alt="image115" src="../_images/image115.webp" style="width: 203px;" /></a> <a class="reference internal" href="../_images/image116.webp"><img alt="image116" src="../_images/image116.webp" style="width: 293px;" /></a></p>
+</div>
+<div class="section" id="les-fichiers-ajoutes-par-l-utilisateur">
+<h2>0.10 Les fichiers ajoutés par l’utilisateur<a class="headerlink" href="#les-fichiers-ajoutes-par-l-utilisateur" title="Lien permanent vers ce titre"></a></h2>
+<p>4 sous dossiers sont créés pour ajouter des pages personnelles avec les styles , les images et le Javascript</p>
+<p><a class="reference internal" href="../_images/image102.webp"><img alt="image102" src="../_images/image102.webp" style="width: 284px;" /></a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="../index.html" class="btn btn-neutral float-left" title="accueil" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="configuration_minimum.html" class="btn btn-neutral float-right" title="1. Configuration minimum : la page d’accueil" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

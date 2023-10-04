@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="14. ADMINISTRATION" href="administration.html" />
+    <link rel="prev" title="12. - FICHIERS LOG Domoticz, Nagios, SQL" href="app_diverses.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#affichage-des-notifications-sur-un-televiseur-lg">13.1 Affichage des notifications sur un téléviseur LG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#portier-dahua-vto-2000-et-vto-2022">13.2 Portier Dahua VTO 2000 et VTO 2022</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vto-2000a">13.2.1 VTO 2000A</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#la-boite-aux-lettres">13.3 -La boite aux lettres</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#surveillance-du-pi-par-domoticz">13.4 Surveillance du PI par Domoticz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#capteur-de-pression-chaudiere">13.5 Capteur de pression chaudière</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#limage-svg">13.5.1 l’image SVG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dans-domoticz-le-capteur-le-plan-les-variables-et-les-scripts">13.5.2 Dans Domoticz, le capteur, le plan, les variables et les scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dans-la-base-de-donnees-sql">13.5.3 Dans la Base de données SQL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creer-une-nouvelle-table">13.5.3.1 Créer une nouvelle table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mettre-a-jour-la-table-des-dispositifs">13.5.3.2 Mettre à jour la table des dispositifs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mettre-a-jour-la-table-text-image">13.5.3.3  Mettre à jour la table « text-image »</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#styles-css">13.5.4 Styles CSS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sms-reception-et-emission">13.6 SMS réception et émission</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reception-sms">13.6.1 réception SMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emission-sms">13.6.2 émission SMS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enregistrement-des-n-de-telephone">13.6.2.1 Enregistrement des n° de téléphone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#afficher-les-donnees-du-compteur-linky">13.7- afficher les données du compteur Linky</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enregistrement-dans-la-bd-sql">13.7.1 enregistrement dans la BD SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pont-ha-ha-bridge">13.8 Pont HA (ha-bridge)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-dans-un-conteneur-lxc-proxmox">13.8.1 Installation dans un conteneur LXC Proxmox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#le-serveur-de-ha-bridge">13.8.2 Le serveur de ha-bridge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#acces-distant">13.8.2.1 accès distant</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enregistrement-d-alexa-domoticz-dans-le-pont">13.8.3 Enregistrement d’Alexa &amp; Domoticz dans le pont</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#les-dispositifs-et-les-actions">13.8.3.1 Les dispositifs et les actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ajouter-ha-bridge-dans-le-materiel-domoticz">13.8.4 Ajouter Ha-bridge dans le matériel Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detection-des-nouveaux-appareils-par-alexa">13.8.5 détection des nouveaux appareils par Alexa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrer-le-pont-hue-a-monitor">13.8.6 Intégrer le Pont Hue à Monitor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/app_externes.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="applications-externes-en-lien-avec-domoticz-ha-ou-monitor">
+<h1>13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor<a class="headerlink" href="#applications-externes-en-lien-avec-domoticz-ha-ou-monitor" title="Lien permanent vers ce titre"></a></h1>
+<div class="section" id="affichage-des-notifications-sur-un-televiseur-lg">
+<h2>13.1 Affichage des notifications sur un téléviseur LG<a class="headerlink" href="#affichage-des-notifications-sur-un-televiseur-lg" title="Lien permanent vers ce titre"></a></h2>
+<p>Le script optionnel pour la notification sur un téléviseur LG (web os)</p>
+<div class="admonition-prerequis admonition">
+<p class="admonition-title"><strong>PREREQUIS</strong></p>
+<p><strong>sudo et Node.js doit être installés</strong></p>
+<p><em>ainsi que les modules lgtv et superagent</em></p>
+<p>Pour les installer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">lgtv</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">superagent</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image699.webp"><img alt="image699" src="../_images/image699.webp" style="width: 423px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Les variables Domoticz</strong> ,  <em>à ajouter</em> :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image700.webp"><img alt="image700" src="../_images/image700.webp" style="width: 650px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Le script, notifications_tv.lua</strong>  à ajouter à Domoticz-&gt;Evènements :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">notification</span> <span class="n">à</span> <span class="mi">19</span><span class="n">h30</span> <span class="n">et</span> <span class="mi">20</span><span class="n">h30</span> <span class="p">,</span> <span class="n">rappel</span> <span class="n">possible</span> <span class="n">à</span> <span class="mi">20</span><span class="n">h</span><span class="s2">&quot;30 :</span>
+<span class="o">--</span> <span class="n">variable</span> <span class="n">nb_not_tv</span> <span class="o">=</span> <span class="mi">2</span>   <span class="n">trigger</span><span class="o">-&gt;</span><span class="n">TIME</span>
+<span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+<span class="o">--</span> <span class="n">pour</span> <span class="n">notification_lg</span> <span class="n">ip</span> <span class="n">tv</span> <span class="n">et</span> <span class="n">ip</span> <span class="n">dz</span>
+<span class="n">require</span> <span class="s1">&#39;connect&#39;</span>
+<span class="n">local</span> <span class="n">iptv</span><span class="o">=</span><span class="n">ip_tv</span>
+<span class="n">local</span> <span class="n">ipdz</span><span class="o">=</span><span class="n">ip_domoticz</span>
+<span class="n">commandArray</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">local</span> <span class="n">time</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%X</span><span class="s2">&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">--</span>
+<span class="n">local</span> <span class="n">idx</span><span class="o">=</span><span class="s2">&quot;7&quot;</span><span class="p">;</span><span class="o">--</span> <span class="n">idx</span> <span class="n">de</span> <span class="n">la</span> <span class="n">variable</span> <span class="n">not_tv_ok</span>
+<span class="n">function</span> <span class="n">notification</span><span class="p">()</span>
+             <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;node userdata/scripts/js/notification_lg.js &quot;</span><span class="o">..</span><span class="n">texte</span><span class="o">..</span><span class="s2">&quot; &quot;</span><span class="o">..</span><span class="n">idx</span><span class="o">..</span><span class="s2">&quot; not_tv_ok 2 1 &quot;</span><span class="o">..</span><span class="n">iptv</span><span class="o">..</span><span class="s2">&quot; &quot;</span><span class="o">..</span><span class="n">ipdz</span><span class="o">..</span><span class="s2">&quot; &gt;&gt; /home/michel/tv.log 2&gt;&amp;1&quot;</span><span class="p">);</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">..</span><span class="s2">&quot;..  maj notification&quot;</span><span class="p">);</span>
+<span class="n">end</span>
+<span class="o">--</span>
+<span class="o">--</span><span class="mi">19</span><span class="n">h30</span> <span class="n">et</span> <span class="mi">20</span><span class="n">h00</span>
+<span class="o">--</span> <span class="n">on</span> <span class="n">envoie</span> <span class="n">les</span> <span class="mi">1</span><span class="n">eres</span> <span class="n">notifications</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">time</span> <span class="o">==</span> <span class="s2">&quot;19:30&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">time</span> <span class="o">==</span> <span class="s2">&quot;20:00&quot;</span><span class="p">))</span> <span class="n">then</span>
+ <span class="n">tv_conf</span><span class="o">=</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_conf&#39;</span><span class="p">]</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tv_conf&#39;</span><span class="o">..</span><span class="n">tv_conf</span><span class="p">)</span>
+<span class="o">--</span> <span class="n">les</span> <span class="n">poubelles</span> <span class="p">:</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_poubelle&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="n">texte</span><span class="o">=</span><span class="s2">&quot; mettre_la_poubelle &quot;</span>
+     <span class="n">notification</span><span class="p">()</span>
+ <span class="n">end</span>
+<span class="o">--</span> <span class="n">autres</span><span class="p">:</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_fosse&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="n">texte</span><span class="o">=</span><span class="s2">&quot;entretien_fosse_septique&quot;</span>
+     <span class="n">notification</span><span class="p">()</span>
+<span class="o">--</span> <span class="o">..................</span>
+ <span class="n">end</span>
+<span class="o">--</span>  <span class="n">si</span> <span class="n">affichage</span> <span class="n">ok</span> <span class="n">on</span> <span class="n">incrémente</span> <span class="n">le</span> <span class="n">nb</span> <span class="n">d</span><span class="s1">&#39; affichage</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_ok&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;connexion reussie&#39;</span><span class="p">)</span>
+     <span class="n">tv_nb</span><span class="o">=</span><span class="n">tonumber</span><span class="p">(</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_nb&#39;</span><span class="p">])</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tv_nb_0&#39;</span><span class="o">..</span><span class="n">tostring</span><span class="p">(</span><span class="n">tv_nb</span><span class="p">))</span><span class="o">--</span> <span class="n">pour</span> <span class="n">test</span>
+     <span class="n">tv_nb</span><span class="o">=</span><span class="n">tv_nb</span><span class="o">+</span><span class="mi">1</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tv_nb_1&#39;</span><span class="o">..</span><span class="n">tostring</span><span class="p">(</span><span class="n">tv_nb</span><span class="p">))</span>  <span class="o">--</span> <span class="n">pour</span> <span class="n">test</span>
+     <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:not_tv_nb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tostring</span><span class="p">(</span><span class="n">tv_nb</span><span class="p">)</span>
+     <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:not_tv_ok&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tostring</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+         <span class="k">else</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pas de notification&#39;</span><span class="p">)</span>
+ <span class="n">end</span>
+<span class="n">end</span>
+<span class="o">--</span> <span class="n">si</span> <span class="n">une</span> <span class="n">notification</span> <span class="n">n</span><span class="s1">&#39;a pas eu lieu (TV allumé apres 19h30 etc .....not_tv est inférieur à 2.)</span>
+<span class="o">--</span><span class="mi">20</span><span class="n">h30</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">time</span> <span class="o">==</span> <span class="s2">&quot;20:30&quot;</span><span class="p">)</span> <span class="n">then</span>
+ <span class="n">tv_conf</span><span class="o">=</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_conf&#39;</span><span class="p">]</span>
+  <span class="n">tv_nb</span><span class="o">=</span><span class="n">tonumber</span><span class="p">(</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_nb&#39;</span><span class="p">])</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">tv_nb</span> <span class="o">&lt;=</span> <span class="n">tonumber</span><span class="p">(</span><span class="n">tv_conf</span><span class="p">))</span>  <span class="n">then</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tv_nb_2&#39;</span><span class="o">..</span><span class="n">tv_nb</span><span class="p">)</span>  <span class="o">--</span> <span class="n">pour</span> <span class="n">test</span>
+<span class="o">--</span> <span class="n">les</span> <span class="n">poubelles</span> <span class="p">:</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_poubelle&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="n">texte</span><span class="o">=</span><span class="s2">&quot; mettre_la_poubelle &quot;</span>
+     <span class="n">notification</span><span class="p">()</span>
+     <span class="n">end</span>
+<span class="o">--</span> <span class="n">autres</span><span class="p">:</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;not_tv_fosse&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="n">texte</span><span class="o">=</span><span class="s2">&quot;entretien_fosse_septique&quot;</span>
+     <span class="n">notification</span><span class="p">()</span>
+<span class="o">--</span> <span class="o">..................</span>
+     <span class="n">end</span>
+ <span class="n">end</span>
+<span class="o">--</span><span class="n">remise</span> <span class="n">à</span> <span class="n">zero</span> <span class="n">des</span> <span class="n">notifications</span> <span class="n">pour</span> <span class="n">ce</span> <span class="n">jour</span>
+     <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:not_tv_poubelle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tostring</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+     <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:not_tv_fosse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tostring</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+     <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:not_tv_nb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tostring</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+     <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:not_tv_ok&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tostring</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+     <span class="n">tv_nb</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">end</span>
+<span class="k">return</span> <span class="n">commandArray</span>
+</pre></div>
+</div>
+<p>Les valeurs transmises par dz au script dans l’ordre : texte, idx, vtype, vvalue</p>
+<p><a class="reference internal" href="../_images/image703.webp"><img alt="image703" src="../_images/image703.webp" style="width: 642px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Scripts js</strong>
+Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/</p>
+<p>Script <span class="darkblue">node_modules/lgtv/index.js</span> à remplacer</p>
+<p>Voir le dossier <a class="reference external" href="http://domo-site/accueil/dossiers/32">http://domo-site/accueil/dossiers/32</a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Essai avec la console</strong> :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image704.webp"><img alt="image704" src="../_images/image704.webp" style="width: 644px;" /></a></p>
+</div>
+<div class="section" id="portier-dahua-vto-2000-et-vto-2022">
+<h2>13.2 Portier Dahua VTO 2000 et VTO 2022<a class="headerlink" href="#portier-dahua-vto-2000-et-vto-2022" title="Lien permanent vers ce titre"></a></h2>
+<div class="section" id="vto-2000a">
+<h3>13.2.1 VTO 2000A<a class="headerlink" href="#vto-2000a" title="Lien permanent vers ce titre"></a></h3>
+<p>Voir les pages <a class="reference external" href="http://domo-site.fr/accueil/dossiers/21">http://domo-site.fr/accueil/dossiers/21</a></p>
+<p><a class="reference internal" href="../_images/image705.webp"><img alt="image705" src="../_images/image705.webp" style="width: 601px;" /></a></p>
+<p>Et : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/7">http://domo-site.fr/accueil/dossiers/7</a></p>
+<p><a class="reference internal" href="../_images/image706.webp"><img alt="image706" src="../_images/image706.webp" style="width: 642px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Domoticz</strong> , on crée une variable « sonnette »</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image707.webp"><img alt="image707" src="../_images/image707.webp" style="width: 659px;" /></a></p>
+<blockquote>
+<div><p>. <strong>Le script LUA</strong> :</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">vto2000</span> <span class="n">Dahua</span> <span class="n">exploiter</span> <span class="n">le</span> <span class="n">changement</span> <span class="n">de</span> <span class="n">valeur</span> <span class="n">d</span><span class="s1">&#39; une variable</span>
+<span class="o">--</span> <span class="n">pour</span> <span class="n">signaler</span> <span class="n">l</span><span class="s1">&#39; appui sur le portier video vto2000</span>
+<span class="o">--</span>
+<span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+<span class="n">require</span> <span class="s1">&#39;connect&#39;</span>
+<span class="n">commandArray</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">--</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;sonnette&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
+<span class="o">--</span>          <span class="o">--</span><span class="n">envoi</span> <span class="n">image</span> <span class="n">pushover</span> <span class="o">---------------</span>
+         <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;/bin/bash userdata/scripts/bash/./pushover_img.sh &quot;</span><span class="o">..</span><span class="n">ip_domoticz</span><span class="o">..</span><span class="s2">&quot;&gt;&gt; /home/michel/push.log 2&gt;&amp;1&quot;</span><span class="p">);</span>
+         <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:sonnette&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+<span class="n">end</span>
+<span class="k">return</span> <span class="n">commandArray</span>
+</pre></div>
+</div>
+<p><span class="red">La variable passe à 1 à la demande d’asterisk quand la sonnette est activée sur le portier</span></p>
+<blockquote>
+<div><p>. <strong>pushover_img.sh</strong></p>
+<blockquote>
+<div><p>2 versions, sous <strong>linux/debian</strong> et sous <strong>docker/debian</strong></p>
+<p><a class="reference internal" href="../_images/image709.webp"><img alt="image709" src="../_images/image709.webp" style="width: 588px;" /></a></p>
+<p><a class="reference internal" href="../_images/image710.webp"><img alt="image710" src="../_images/image710.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>En utilisant connect.lua</strong></p>
+<blockquote>
+<div><p><em>on évite une mise à jour lors d’un changement d’IP</em></p>
+<p>on évite d’afficher les logins et mots de passe</p>
+<p>connect.lua :</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image711.webp"><img alt="image711" src="../_images/image711.webp" style="width: 474px;" /></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Dans DZ</strong> , on indique la variable de connect.lua, <span class="darkblue">ex : ip_domoticz</span></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+<span class="n">require</span> <span class="s1">&#39;connect&#39;</span>
+<span class="o">--</span>
+<span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;/bin/bash userdata/scripts/bash/pushover_img.sh &quot;</span><span class="o">..</span><span class="n">ip_domoticz</span><span class="o">..</span><span class="s2">&quot;&gt;&gt; /home/michel/push.log 2&gt;&amp;1&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Dans pushover_img.sh</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wget  http://$1/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Si domoticz est sous docker</strong>, c’est le cas ici, l”<span class="red">ip et le port</span> sont ceux de <span class="darkblue">docker-compose.yml</span> et non l’ip du serveur</p>
+<p><em>Il est difficile de récupérer l’ip de l’hôte il est préférable d’utiliser</em> l”<span class="red">IP 127.0.0.1</span></p>
+<p><a class="reference internal" href="../_images/image257.webp"><img alt="image257" src="../_images/image257.webp" style="width: 438px;" /></a></p>
+</div>
+</div></blockquote>
+</div>
+<ul>
+<li><p><strong>asterisk</strong></p>
+<blockquote>
+<div><p>.  <em>sip.conf</em></p>
+</div></blockquote>
+</li>
+</ul>
+<p><a class="reference internal" href="../_images/image712.webp"><img alt="image712" src="../_images/image712.webp" style="width: 450px;" /></a></p>
+<blockquote>
+<div><p>.  <em>extensions.conf</em></p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image714.webp"><img alt="image714" src="../_images/image714.webp" style="width: 614px;" /></a></p>
+<div class="admonition-reglages-du-portier-video admonition">
+<p class="admonition-title"><strong>Réglages du portier vidéo</strong></p>
+<p><a class="reference internal" href="../_images/image713.webp"><img alt="image713" src="../_images/image713.webp" style="width: 392px;" /></a></p>
+<p><strong>configTools</strong> -&gt; <em>VDPConfig</em></p>
+<p><a class="reference internal" href="../_images/image715.webp"><img alt="image715" src="../_images/image715.webp" style="width: 514px;" /></a></p>
+<p><a class="reference internal" href="../_images/image716.webp"><img alt="image716" src="../_images/image716.webp" style="width: 414px;" /></a></p>
+<p><a class="reference internal" href="../_images/image717.webp"><img alt="image717" src="../_images/image717.webp" style="width: 485px;" /></a></p>
+<p><a class="reference internal" href="../_images/image718.webp"><img alt="image718" src="../_images/image718.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image719.webp"><img alt="image719" src="../_images/image719.webp" style="width: 650px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="la-boite-aux-lettres">
+<h2>13.3 -La boite aux lettres<a class="headerlink" href="#la-boite-aux-lettres" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Voir domo-site pour la programmation de l’esp8266 , de dzvent et Python</em></p>
+<p><a class="reference internal" href="../_images/image720.webp"><img alt="image720" src="../_images/image720.webp" style="width: 416px;" /></a></p>
+<ul>
+<li><p><strong>Le matériel</strong></p>
+<blockquote>
+<div><p>.    2 ILS (pour le volet , pour la porte</p>
+<p>.    1 esp 01 et une alim 12V/3,3 Volts</p>
+</div></blockquote>
+</li>
+</ul>
+<p>Voir la page consacrée à la réalisation et la programmation de l’ESP pour une communication MQTT: <a class="reference external" href="http://domo-site.fr/accueil/dossiers/68">http://domo-site.fr/accueil/dossiers/68</a></p>
+<ul class="simple">
+<li><p><strong>Les images svg</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image721.webp"><img alt="image721" src="../_images/image721.webp" style="width: 85px;" /></a>  <a class="reference internal" href="../_images/image722.webp"><img alt="image722" src="../_images/image722.webp" style="width: 85px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Le fichier accueil.php</strong> , * concernée*</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm bl&quot;</span> <span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;confirm-box&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;19&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;courrier récupéré&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;bl&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;images/boite_lettres.svg&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;boite_lettres&quot;</span> <span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Le fichier footer.php</strong> , <em>le script pour afficher une demande de confirmation de la relève du courrier</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*---</span><span class="n">popup</span> <span class="n">boite_lettres</span><span class="o">-----------------------------------*/</span>
+<span class="n">var</span> <span class="n">bl</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">var</span> <span class="n">modalContainer</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="n">modalContainer</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;modal_bl&#39;</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">customBox</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="n">customBox</span><span class="o">.</span><span class="n">className</span> <span class="o">=</span> <span class="s1">&#39;custom-box&#39;</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">Affichage</span> <span class="n">boîte</span> <span class="n">de</span> <span class="n">confirmation</span>
+<span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;confirm-box&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">customBox</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">=</span> <span class="s1">&#39;&lt;p&gt;Confirmation de la relève du courrier&lt;/p&gt;&#39;</span><span class="p">;</span>
+ <span class="n">customBox</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">+=</span> <span class="s1">&#39;&lt;button style=&quot;margin-right: 20px;&quot; id=&quot;modal-confirm&quot;&gt;Confirmer&lt;/button&gt;&#39;</span><span class="p">;</span>
+ <span class="n">customBox</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">+=</span> <span class="s1">&#39;&lt;button id=&quot;modal-close&quot;&gt;Annuler&lt;/button&gt;&#39;</span><span class="p">;</span>
+ <span class="n">modalShow</span><span class="p">();</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">bl</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="n">function</span> <span class="n">modalShow</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">modalContainer</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">customBox</span><span class="p">);</span>
+ <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">modalContainer</span><span class="p">);</span>
+ <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;modal-close&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="n">modalClose</span><span class="p">();</span>
+ <span class="p">});</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;modal-confirm&#39;</span><span class="p">))</span> <span class="p">{</span>
+     <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;modal-confirm&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Confirmé !&#39;</span><span class="p">);</span><span class="n">bl</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">modalClose</span><span class="p">(</span><span class="n">bl</span><span class="p">);</span>
+     <span class="p">});</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;modal-submit&#39;</span><span class="p">))</span> <span class="p">{</span>
+     <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;modal-submit&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+         <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;modal-prompt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">);</span>
+         <span class="n">bl</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">modalClose</span><span class="p">(</span><span class="n">bl</span><span class="p">);</span>
+     <span class="p">});</span>       <span class="p">}</span>   <span class="p">}</span>
+<span class="n">function</span> <span class="n">modalClose</span><span class="p">(</span><span class="n">bl</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">while</span> <span class="p">(</span><span class="n">modalContainer</span><span class="o">.</span><span class="n">hasChildNodes</span><span class="p">())</span> <span class="p">{</span>
+     <span class="n">modalContainer</span><span class="o">.</span><span class="n">removeChild</span><span class="p">(</span><span class="n">modalContainer</span><span class="o">.</span><span class="n">firstChild</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">removeChild</span><span class="p">(</span><span class="n">modalContainer</span><span class="p">);</span>
+      <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">bl</span><span class="p">);</span><span class="k">if</span> <span class="p">(</span><span class="n">bl</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">maj_variable</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="s2">&quot;boite_lettres&quot;</span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="n">maj_services</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="n">bl</span><span class="o">=</span><span class="mi">0</span><span class="p">;}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image725.webp"><img alt="image725" src="../_images/image725.webp" style="width: 639px;" /></a></p>
+<p>Un clique sur la BL fait apparaitre le popup de confirmation</p>
+<p><a class="reference internal" href="../_images/image726.webp"><img alt="image726" src="../_images/image726.webp" style="width: 455px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Les styles css</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">bl</span><span class="p">{</span><span class="n">position</span><span class="p">:</span> <span class="n">absolute</span><span class="p">;</span><span class="n">top</span><span class="p">:</span> <span class="mi">870</span><span class="n">px</span><span class="p">;</span><span class="n">left</span><span class="p">:</span> <span class="mi">115</span><span class="n">px</span><span class="p">;}</span>
+<span class="c1">#bl{width: 40px;height: auto;}</span>
+<span class="o">.</span><span class="n">custom</span><span class="o">-</span><span class="n">box</span> <span class="p">{</span><span class="n">border</span><span class="p">:</span> <span class="mi">2</span><span class="n">px</span> <span class="n">solid</span> <span class="n">grey</span><span class="p">;</span><span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span><span class="n">padding</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+ <span class="n">width</span><span class="p">:</span> <span class="n">fit</span><span class="o">-</span><span class="n">content</span><span class="p">;</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="c1">#e5c666;margin: auto;}</span>
+<span class="c1">#modal_bl {position: absolute;top: 0;left: 0;display: flex;</span>
+ <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span><span class="n">height</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>La variable Domoticz</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image728.webp"><img alt="image728" src="../_images/image728.webp" style="width: 700px;" /></a></p>
+<ul>
+<li><p><strong>Les tables sql</strong></p>
+<blockquote>
+<div><p>. Variables dans la table « dispositifs »</p>
+<p><a class="reference internal" href="../_images/image729.webp"><img alt="image729" src="../_images/image729.webp" style="width: 700px;" /></a></p>
+<p>. La table « text_image »</p>
+<p><a class="reference internal" href="../_images/image730.webp"><img alt="image730" src="../_images/image730.webp" style="width: 650px;" /></a></p>
+</div></blockquote>
+</li>
+</ul>
+<p>Après confirmation de la relève, la confirmation de la maj de la variable Domoticz</p>
+<p><a class="reference internal" href="../_images/image731.webp"><img alt="image731" src="../_images/image731.webp" style="width: 533px;" /></a></p>
+<p>Domoticz(script dzvents) envoie par MQTT la confirmation de la mise à zéro de la variable boite lettres</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">script</span> <span class="n">notifications_autres</span>
+<span class="k">return</span> <span class="p">{</span>
+     <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">variables</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;boite_lettres&#39;</span><span class="p">}</span>
+     <span class="p">},</span>
+     <span class="n">execute</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">domoticz</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Variable &#39;</span> <span class="o">..</span> <span class="n">variable</span><span class="o">.</span><span class="n">name</span> <span class="o">..</span> <span class="s1">&#39; was changed&#39;</span><span class="p">,</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">LOG_INFO</span><span class="p">)</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;boite_lettres&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="n">then</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;boite_lettres&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="n">then</span>
+             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;topic envoyé : esp/in/boite_lettres&quot;</span><span class="p">)</span>
+              <span class="n">local</span> <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;/home/michel/domoticz/scripts/python/mqtt.py esp/in/boite_lettres valeur 0   &gt;&gt; /home/michel/esp.log 2&gt;&amp;1&quot;</span> <span class="p">;</span>
+              <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">);</span>
+             <span class="n">end</span>
+        <span class="n">end</span>
+    <span class="n">end</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="surveillance-du-pi-par-domoticz">
+<h2>13.4 Surveillance du PI par Domoticz<a class="headerlink" href="#surveillance-du-pi-par-domoticz" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image733.webp"><img alt="image733" src="../_images/image733.webp" style="width: 533px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Voir cette page : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/44">http://domo-site.fr/accueil/dossiers/44</a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Les tables SQL « text_image » et « variables_dz »</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image734.webp"><img alt="image734" src="../_images/image734.webp" style="width: 335px;" /></a></p>
+<p><a class="reference internal" href="../_images/image735.webp"><img alt="image735" src="../_images/image735.webp" style="width: 430px;" /></a></p>
+<p>C’est le script JS ,</p>
+<ul class="simple">
+<li><p><strong>maj_services</strong> qui gère l’affichage de la page d’accueil</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image736.webp"><img alt="image736" src="../_images/image736.webp" style="width: 650px;" /></a></p>
+<ul>
+<li><p><strong>Domoticz</strong> , DZEvent « notifications_devices »</p>
+<blockquote>
+<div><p>A partir de l’info du matériel « <strong>System Alive Checker</strong> » , la variable « pi-alarme » est modifié</p>
+<p><a class="reference internal" href="../_images/image737.webp"><img alt="image737" src="../_images/image737.webp" style="width: 650px;" /></a></p>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="p">{</span>
+     <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">devices</span> <span class="o">=</span> <span class="p">{</span>
+                     <span class="s1">&#39;Ping_pi4&#39;</span><span class="p">,</span>
+                             <span class="p">}</span>
+     <span class="p">},</span>
+  <span class="n">execute</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">domoticz</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+     <span class="n">domoticz</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;device &#39;</span><span class="o">..</span><span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="o">..</span><span class="s1">&#39; was changed&#39;</span><span class="p">,</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">LOG_INFO</span><span class="p">)</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Ping_pi4&#39;</span> <span class="ow">and</span>  <span class="n">device</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="ow">and</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pi-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="n">then</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pi-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;pi_hs&quot;</span><span class="p">)</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;variable_sp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+         <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarmeùpiùhs&#39;</span><span class="p">;</span><span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme pi hs&#39;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+         <span class="n">elseif</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Ping_pi4&#39;</span> <span class="ow">and</span>  <span class="n">device</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span> <span class="ow">and</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pi-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;pi_hs&quot;</span><span class="p">)</span> <span class="n">then</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pi-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+         <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarmeùPIùdeùnouveauùOK&#39;</span><span class="p">;</span><span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme PI de nouveau OK&#39;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+         <span class="n">end</span>
+         <span class="o">--</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>monitor</strong>   <em>page « nagios »</em></p>
+<blockquote>
+<div><p>c’est le script JS « maj_devices(plan) » qui gère le changement de couleur de l’icône, à partir du dispositif dans Domoticz</p>
+<p><a class="reference internal" href="../_images/image740.webp"><img alt="image740" src="../_images/image740.webp" style="width: 623px;" /></a></p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="capteur-de-pression-chaudiere">
+<h2>13.5 Capteur de pression chaudière<a class="headerlink" href="#capteur-de-pression-chaudiere" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Réalisé avec un microcontrôleur Wemos D1 : pour la partie réalisation du capteur, voir le site web : domo-site.fr</em></p>
+<p><a class="reference internal" href="../_images/image741.webp"><img alt="image741" src="../_images/image741.webp" style="width: 142px;" /></a></p>
+<ul class="simple">
+<li><p>Envoie les données de pression sur le serveur MQTT</p></li>
+<li><p>Domoticz récupère et traites les données</p></li>
+<li><p>Monitor affiche en temps réel les données, l’historique des données, un graphique ,…</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image742.webp"><img alt="image742" src="../_images/image742.webp" style="width: 478px;" /></a></p>
+<div class="section" id="limage-svg">
+<h3>13.5.1 l’image SVG<a class="headerlink" href="#limage-svg" title="Lien permanent vers ce titre"></a></h3>
+<p>Elle est ajoutée à <strong>interieur.php</strong> (ci-dessous)  et <strong>accueil.php</strong> (ci-dessus)</p>
+<p><a class="reference internal" href="../_images/image743.webp"><img alt="image743" src="../_images/image743.webp" style="width: 500px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Accueil.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm pression_chaud&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;annul_pression&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;28&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Annulation de l&#39;</span><span class="se">\a</span><span class="s2">lerte pression&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;pression_chaud&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-pour-annuler-l-alarme admonition">
+<p class="admonition-title"><strong>Pour annuler l’alarme</strong></p>
+<p><a class="reference internal" href="../_images/image747.webp"><img alt="image747" src="../_images/image747.webp" style="width: 413px;" /></a></p>
+<ul class="simple">
+<li><p><strong>footer.php</strong>, la fenêtre modale est déjà utilisée pour la boite aux lettres, ajout d’une variable « ch=0 pour la BL et ch=1 pour la pression chaudière</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image745.webp"><img alt="image745" src="../_images/image745.webp" style="width: 700px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Une variable doit être créée dans Domoticz</strong>, <em>voir le paragraphe suivant</em></p>
+</div>
+</div>
+<p>_ <strong>L’image SVG</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svg</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;svgpression&quot;</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">xlink</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span>
+      <span class="n">y</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 111.7 136.9&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;enable-background:new 0 0 111.7 136.9;&quot;</span> <span class="n">xml</span><span class="p">:</span><span class="n">space</span><span class="o">=</span><span class="s2">&quot;preserve&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">g</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;chaudiere&quot;</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">path</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;path14834&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st1&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M25.1,15.8v-4.2c2.1,0,3.2,2,5.4,1.8c4-0.4,5.2-5.3,1.4-6.9c-1.1-0.5-2.6-0.4-3.6,0.1</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">0.6</span><span class="o">-</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">1.4</span><span class="o">-</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">1.4</span><span class="n">c0</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">2.2</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mi">3</span><span class="n">c</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">2.7</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">3.3</span><span class="p">,</span><span class="mf">0.3</span><span class="n">c</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.9</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">2.8</span><span class="n">c</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">2.1</span><span class="o">-</span><span class="mf">0.7</span><span class="o">-</span><span class="mf">3.2</span><span class="o">-</span><span class="mf">1.4</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">2.6</span><span class="o">-</span><span class="mf">0.6</span><span class="o">-</span><span class="mf">3.8</span><span class="o">-</span><span class="mf">0.1</span><span class="n">c</span><span class="o">-</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">1.6</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span><span class="mf">6.5</span><span class="p">,</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">6.9</span><span class="n">c2</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">3.3</span><span class="o">-</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">5.4</span><span class="o">-</span><span class="mf">1.8</span><span class="n">v4</span><span class="o">.</span><span class="mi">5</span><span class="n">c</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">4.8</span><span class="p">,</span><span class="mf">0.5</span><span class="n">c</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">8.2</span><span class="p">,</span><span class="mf">1.3</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span><span class="mf">2.7</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">2.6</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">1.8</span><span class="n">c</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.8</span><span class="n">c0</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.1</span><span class="p">,</span><span class="mf">1.9</span><span class="n">c2</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">4.3</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">6.6</span><span class="p">,</span><span class="mf">1.9</span><span class="n">c9</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">19.7</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">29.5</span><span class="p">,</span><span class="mf">2.3</span>
+             <span class="n">c7</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">15.5</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">22.7</span><span class="o">-</span><span class="mf">2.9</span><span class="n">c1</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">3.8</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">5.5</span><span class="o">-</span><span class="mf">1.9</span><span class="n">c0</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.9</span><span class="o">-</span><span class="mf">1.4</span><span class="n">c0</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">1.2</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">1.6</span><span class="n">c</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">2.1</span><span class="o">-</span><span class="mf">1.3</span><span class="o">-</span><span class="mf">3.2</span><span class="o">-</span><span class="mf">1.7</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">2.8</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">5.6</span><span class="o">-</span><span class="mf">1.6</span><span class="o">-</span><span class="mf">8.5</span><span class="o">-</span><span class="mf">2.3</span><span class="n">c</span><span class="o">-</span><span class="mf">2.1</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">4.5</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">6.7</span><span class="o">-</span><span class="mi">1</span><span class="n">c0</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">1.6</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">3.1</span><span class="o">-</span><span class="mf">5.1</span><span class="n">c1</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">4.2</span><span class="o">-</span><span class="mf">3.3</span><span class="p">,</span><span class="mi">7</span><span class="o">-</span><span class="mi">4</span><span class="n">c6</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">13.1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">16.5</span><span class="p">,</span><span class="mi">6</span>
+             <span class="n">c1</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span><span class="mf">2.1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">4.4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">6.9</span><span class="n">h7</span><span class="o">.</span><span class="mi">6</span><span class="n">c0</span><span class="o">-</span><span class="mf">3.2</span><span class="o">-</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">6.4</span><span class="o">-</span><span class="mf">2.3</span><span class="o">-</span><span class="mf">9.2</span><span class="n">c</span><span class="o">-</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">2.1</span><span class="o">-</span><span class="mf">2.7</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mf">4.6</span><span class="o">-</span><span class="mf">5.6</span><span class="n">c</span><span class="o">-</span><span class="mf">7.4</span><span class="o">-</span><span class="mf">6.2</span><span class="o">-</span><span class="mi">19</span><span class="o">-</span><span class="mf">7.1</span><span class="o">-</span><span class="mf">27.3</span><span class="o">-</span><span class="mf">2.1</span><span class="n">c</span><span class="o">-</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">1.9</span><span class="o">-</span><span class="mf">5.8</span><span class="p">,</span><span class="mf">4.6</span><span class="o">-</span><span class="mf">7.6</span><span class="p">,</span><span class="mf">7.7</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">2.2</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.4</span><span class="n">c</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">1.3</span><span class="n">c</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.2</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">1.9</span><span class="o">-</span><span class="mf">0.1</span><span class="n">c</span><span class="o">-</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">2.9</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">4.4</span><span class="o">-</span><span class="mf">0.1</span><span class="n">C32</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="mf">15.3</span><span class="p">,</span><span class="mf">28.9</span><span class="p">,</span><span class="mf">15.8</span><span class="p">,</span><span class="mf">25.1</span><span class="p">,</span><span class="mf">15.8</span>
+              <span class="n">M76</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">21.6</span><span class="n">c</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.8</span><span class="n">c</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.2</span><span class="n">c0</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">2.9</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">3.5</span><span class="n">c0</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">3.1</span><span class="p">,</span><span class="mf">0.1</span><span class="n">h6</span><span class="o">.</span><span class="mi">8</span>
+             <span class="n">c0</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">3</span><span class="o">-</span><span class="mf">0.1</span><span class="n">c1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">3.2</span><span class="n">c0</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">1.3</span><span class="n">c</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">0.7</span><span class="o">-</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">0.9</span><span class="n">c</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">2.3</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">3.2</span><span class="o">-</span><span class="mf">0.1</span><span class="n">h</span><span class="o">-</span><span class="mf">6.6</span>
+             <span class="n">C78</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="mf">21.5</span><span class="p">,</span><span class="mf">77.4</span><span class="p">,</span><span class="mf">21.3</span><span class="p">,</span><span class="mf">76.5</span><span class="p">,</span><span class="mf">21.6</span> <span class="n">M0</span><span class="p">,</span><span class="mf">27.1</span><span class="n">v64</span><span class="o">.</span><span class="mi">6</span><span class="n">v16</span><span class="o">.</span><span class="mi">8</span><span class="n">v4</span><span class="o">.</span><span class="mi">3</span><span class="n">c0</span><span class="p">,</span><span class="mf">0.6</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mi">2</span><span class="n">c0</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">2.9</span><span class="p">,</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">4.3</span><span class="p">,</span><span class="mf">2.3</span><span class="n">c3</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">7.2</span><span class="p">,</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">10.9</span><span class="p">,</span><span class="mf">2.5</span>
+             <span class="n">c5</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">16.5</span><span class="p">,</span><span class="mf">1.2</span><span class="n">c7</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">15.6</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">23.4</span><span class="o">-</span><span class="mf">1.4</span><span class="n">c3</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">6.9</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">10.1</span><span class="o">-</span><span class="mf">2.4</span><span class="n">c1</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">3</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mi">4</span><span class="o">-</span><span class="mf">2.1</span><span class="n">c0</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">3.8</span><span class="n">v</span><span class="o">-</span><span class="mf">9.9</span>
+             <span class="n">h9</span><span class="o">.</span><span class="mi">4</span><span class="n">c0</span><span class="p">,</span><span class="mf">2.5</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">7.6</span><span class="n">c1</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="mf">5.9</span><span class="p">,</span><span class="mf">5.1</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mf">10.8</span><span class="p">,</span><span class="mi">14</span><span class="n">c1</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">4.5</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">6.8</span><span class="p">,</span><span class="mf">2.3</span><span class="n">v</span><span class="o">-</span><span class="mi">5</span><span class="n">c0</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.2</span><span class="o">-</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">1.9</span><span class="n">c</span><span class="o">-</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">1.6</span><span class="o">-</span><span class="mf">0.6</span>
+             <span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">1.8</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">2.7</span><span class="o">-</span><span class="mf">1.4</span><span class="n">c</span><span class="o">-</span><span class="mf">3.4</span><span class="o">-</span><span class="mf">2.3</span><span class="o">-</span><span class="mf">5.5</span><span class="o">-</span><span class="mf">5.7</span><span class="o">-</span><span class="mf">5.9</span><span class="o">-</span><span class="mf">9.5</span><span class="n">c</span><span class="o">-</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">2.8</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">5.8</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">8.6</span><span class="n">V80</span><span class="o">.</span><span class="mi">8</span><span class="n">v</span><span class="o">-</span><span class="mi">52</span><span class="n">h</span><span class="o">-</span><span class="mf">7.6</span><span class="n">v8</span><span class="o">.</span><span class="mi">6</span><span class="n">c</span><span class="o">-</span><span class="mf">1.2</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="mf">2.4</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">3.6</span><span class="o">-</span><span class="mf">0.1</span><span class="n">h</span><span class="o">-</span><span class="mf">5.8</span><span class="n">v</span><span class="o">-</span><span class="mi">10</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">4.1</span><span class="p">,</span><span class="mf">1.8</span><span class="o">-</span><span class="mf">6.3</span><span class="p">,</span><span class="mf">2.3</span><span class="n">c</span><span class="o">-</span><span class="mf">9.4</span><span class="p">,</span><span class="mf">2.5</span><span class="o">-</span><span class="mf">19.5</span><span class="p">,</span><span class="mi">3</span><span class="o">-</span><span class="mf">29.3</span><span class="p">,</span><span class="mi">3</span><span class="n">c</span><span class="o">-</span><span class="mf">8.7</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">17.8</span><span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">26.2</span><span class="o">-</span><span class="mf">2.6</span><span class="n">c</span><span class="o">-</span><span class="mf">1.6</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">3.3</span><span class="o">-</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">4.9</span><span class="o">-</span><span class="mf">1.5</span><span class="n">C2</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">27.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">27.1</span>
+              <span class="n">M79</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">42.2</span><span class="n">v53</span><span class="o">.</span><span class="mi">9</span><span class="n">C76</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">95.8</span><span class="p">,</span><span class="mi">73</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mf">69.9</span><span class="p">,</span><span class="mi">96</span><span class="n">V42</span><span class="o">.</span><span class="mi">2</span><span class="n">H79</span><span class="o">.</span><span class="mi">3</span> <span class="n">M17</span><span class="p">,</span><span class="mi">71</span><span class="n">c1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">2.6</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">0.3</span><span class="n">c5</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">,</span><span class="mf">11.6</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span><span class="mf">1.9</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">3.2</span><span class="p">,</span><span class="mi">1</span><span class="n">c</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">3.2</span><span class="o">-</span><span class="mf">0.2</span><span class="n">c</span><span class="o">-</span><span class="mf">5.5</span><span class="o">-</span><span class="mf">1.2</span><span class="o">-</span><span class="mf">7.8</span><span class="o">-</span><span class="mf">7.3</span><span class="o">-</span><span class="mf">4.8</span><span class="o">-</span><span class="mf">11.4</span><span class="n">c0</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">2.4</span><span class="o">-</span><span class="mf">2.1</span>
+             <span class="n">C14</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="mf">71.5</span><span class="p">,</span><span class="mf">15.8</span><span class="p">,</span><span class="mf">71.2</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">71</span> <span class="n">M17</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">74.4</span><span class="n">c</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">0.7</span><span class="n">c</span><span class="o">-</span><span class="mf">3.1</span><span class="p">,</span><span class="mf">2.1</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">6.7</span><span class="p">,</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">7.3</span><span class="n">c0</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.6</span><span class="p">,</span><span class="mi">0</span>
+             <span class="n">c0</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.4</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">1.9</span><span class="o">-</span><span class="mf">0.8</span><span class="n">c1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.8</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.8</span><span class="o">-</span><span class="mf">3.3</span><span class="n">C22</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">75.9</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">73.9</span><span class="p">,</span><span class="mf">17.3</span><span class="p">,</span><span class="mf">74.4</span> <span class="n">M17</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">91.1</span><span class="n">c4</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">9.1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">8.7</span><span class="p">,</span><span class="mf">8.1</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">3.8</span><span class="o">-</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">6.5</span><span class="o">-</span><span class="mf">7.7</span><span class="p">,</span><span class="mf">6.9</span><span class="n">c</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">2.2</span><span class="o">-</span><span class="mf">0.1</span><span class="n">c</span><span class="o">-</span><span class="mf">5.5</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">8.2</span><span class="o">-</span><span class="mf">6.5</span><span class="o">-</span><span class="mf">5.7</span><span class="o">-</span><span class="mf">10.9</span><span class="n">C12</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">92.6</span><span class="p">,</span><span class="mf">14.9</span><span class="p">,</span><span class="mf">91.3</span><span class="p">,</span><span class="mf">17.8</span><span class="p">,</span><span class="mf">91.1</span> <span class="n">M17</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">94.6</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">0.6</span><span class="o">-</span><span class="mf">4.8</span><span class="p">,</span><span class="mf">4.7</span><span class="o">-</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">6.9</span><span class="n">c1</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">4.3</span><span class="p">,</span><span class="mi">1</span><span class="n">c2</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">4.2</span><span class="o">-</span><span class="mf">3.7</span><span class="p">,</span><span class="mf">2.9</span><span class="o">-</span><span class="mf">5.9</span><span class="n">C21</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mf">19.2</span><span class="p">,</span><span class="mf">94.2</span><span class="p">,</span><span class="mf">17.3</span><span class="p">,</span><span class="mf">94.6</span> <span class="n">M99</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">115.2</span>
+             <span class="n">c</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mi">1</span><span class="n">c</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">2.7</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">3.8</span><span class="n">v5</span><span class="o">.</span><span class="mi">6</span><span class="n">c0</span><span class="p">,</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.7</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">2.3</span><span class="n">s2</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.4</span><span class="n">c0</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.8</span><span class="o">-</span><span class="mf">0.1</span>
+             <span class="n">c0</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">1.2</span><span class="n">c0</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">3.7</span><span class="n">v</span><span class="o">-</span><span class="mf">5.1</span><span class="n">c0</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.2</span><span class="o">-</span><span class="mf">1.7</span><span class="o">-</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">2.3</span><span class="n">c</span><span class="o">-</span><span class="mf">0.7</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">2.5</span><span class="o">-</span><span class="mf">0.7</span><span class="o">-</span><span class="mf">3.6</span><span class="o">-</span><span class="mf">0.7</span>
+             <span class="n">C100</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">115.1</span><span class="p">,</span><span class="mf">100.3</span><span class="p">,</span><span class="mf">115.1</span><span class="p">,</span><span class="mf">99.8</span><span class="p">,</span><span class="mf">115.2</span> <span class="n">M106</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">118.6</span><span class="n">v6</span><span class="o">.</span><span class="mi">9</span><span class="n">h5</span><span class="o">.</span><span class="mi">2</span><span class="n">v</span><span class="o">-</span><span class="mf">6.9</span><span class="n">H106</span><span class="o">.</span><span class="mi">5</span> <span class="n">M6</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">121.2</span><span class="n">v7</span><span class="o">.</span><span class="mi">9</span><span class="n">c0</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">3.1</span><span class="n">c0</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">3.3</span><span class="p">,</span><span class="mf">1.7</span>
+             <span class="n">c2</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">4.7</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">7.1</span><span class="p">,</span><span class="mf">1.8</span><span class="n">c4</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">8.6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">12.9</span><span class="p">,</span><span class="mf">1.2</span><span class="n">c6</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">13.2</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">19.7</span><span class="o">-</span><span class="mf">0.9</span><span class="n">c3</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">6.3</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">9.3</span><span class="o">-</span><span class="mf">2.1</span><span class="n">c1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">2.6</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">3.4</span><span class="o">-</span><span class="mf">1.8</span>
+             <span class="n">c0</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">3.1</span><span class="n">v</span><span class="o">-</span><span class="mf">7.8</span><span class="n">c</span><span class="o">-</span><span class="mf">2.8</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">5.6</span><span class="p">,</span><span class="mf">1.3</span><span class="o">-</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">1.7</span><span class="n">c</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="mf">1.6</span><span class="o">-</span><span class="mf">22.4</span><span class="p">,</span><span class="mf">1.7</span><span class="o">-</span><span class="mf">33.4</span><span class="p">,</span><span class="mf">0.7</span><span class="n">c</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">6.1</span><span class="o">-</span><span class="mf">0.6</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mf">1.2</span>
+             <span class="n">C10</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">121.4</span><span class="p">,</span><span class="mf">6.6</span><span class="p">,</span><span class="mf">121.2</span><span class="n">L6</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">121.2</span><span class="n">z</span><span class="s2">&quot;/&gt;</span>
+     <span class="o">&lt;</span><span class="n">rect</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;6.5&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;37&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st185&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;56.9&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;25&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">g</span><span class="o">&gt;</span><span class="n">text</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;text_chaudiere&quot;</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 7 55)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st33 st36a&quot;</span><span class="o">&gt;</span><span class="n">tmp</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Pour la notification (chaudière rouge en page d’accueil) supprimer les dernières lignes &lt;rect et &lt;text et modifier les ID (les id doivent être uniques)</strong></p>
+<p><a class="reference internal" href="../_images/image746.webp"><img alt="image746" src="../_images/image746.webp" style="width: 352px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>interieur.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;div id=&quot;bar_pression&quot;&gt;&lt;?php include (&quot;include/chaudiere_svg.php&quot;);?&gt;&lt;/div&gt;
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image749.webp"><img alt="image749" src="../_images/image749.webp" style="width: 371px;" /></a></p>
+<p>chaudiere_svg.php:</p>
+<p><a class="reference internal" href="../_images/image750.webp"><img alt="image750" src="../_images/image750.webp" style="width: 650px;" /></a></p>
+</div>
+<div class="section" id="dans-domoticz-le-capteur-le-plan-les-variables-et-les-scripts">
+<h3>13.5.2 Dans Domoticz, le capteur, le plan, les variables et les scripts<a class="headerlink" href="#dans-domoticz-le-capteur-le-plan-les-variables-et-les-scripts" title="Lien permanent vers ce titre"></a></h3>
+<ul class="simple">
+<li><p><strong>le capteur</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image752.webp"><img alt="image752" src="../_images/image752.webp" style="width: 496px;" /></a></p>
+<div class="admonition error">
+<p class="admonition-title">Erreur</p>
+<p><strong>Pour éviter des erreurs comme celles-ci</strong></p>
+<p><a class="reference internal" href="../_images/image753.webp"><img alt="image753" src="../_images/image753.webp" style="width: 601px;" /></a></p>
+<p>L’envoie des données doivent être un tableau json de cette forme :</p>
+<p><a class="reference internal" href="../_images/image651.webp"><img alt="image651" src="../_images/image651.webp" style="width: 474px;" /></a></p>
+<p><em>Le topic est « domoticz/in »</em></p>
+</div>
+<ul class="simple">
+<li><p><strong>Le plan</strong></p></li>
+</ul>
+<p><em>Le capteur est ajouté au plan pour une communication automatique avec Monitor ou toute autre application, les données sont récupérées dans un fichier json</em></p>
+<p><a class="reference internal" href="../_images/image756.webp"><img alt="image756" src="../_images/image756.webp" style="width: 292px;" /></a>  <a class="reference internal" href="../_images/image757.webp"><img alt="image757" src="../_images/image757.webp" style="width: 279px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Le fichier json</strong> appelé par la fonction « devices_plan » , voir le § <a class="reference internal" href="configuration_minimum.html#les-scripts-javascript"><span class="std std-ref">1.3.5 les scripts JavaScript</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image758.webp"><img alt="image758" src="../_images/image758.webp" style="width: 700px;" /></a></p>
+<div class="admonition-enregistrer-les-valeurs-dans-la-bd-sql admonition">
+<p class="admonition-title"><strong>Enregistrer les valeurs dans la BD SQL</strong></p>
+<ul class="simple">
+<li><p>Le <strong>script export_sql.lua</strong></p></li>
+</ul>
+<blockquote>
+<div><p>Pour n’envoyer à la BD que les changements de pression (pour limiter le nombre d’enregistrements) , il faut :</p>
+<blockquote>
+<div><p>.  Soit créer une user variable
+.  Soit utiliser une donnée persistante, solution retenue ici</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image759.webp"><img alt="image759" src="../_images/image759.webp" style="width: 400px;" /></a></p>
+<blockquote>
+<div><p>Le script : les lignes à ajouter pour l’enregistrement dans la BD et le déclenchement d’une alarme</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+<span class="n">require</span> <span class="s1">&#39;datas&#39;</span>
+<span class="n">require</span> <span class="s1">&#39;string_tableaux&#39;</span>
+
+<span class="n">function</span> <span class="n">write_datas</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;www/modules_lua/datas.lua&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">:</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;pression=&quot;</span><span class="o">..</span><span class="n">data</span><span class="p">)</span>
+<span class="n">f</span><span class="p">:</span><span class="n">close</span><span class="p">()</span>
+<span class="n">end</span>
+
+<span class="n">elseif</span> <span class="p">(</span><span class="n">deviceName</span><span class="o">==</span><span class="s1">&#39;pression_chaudière&#39;</span><span class="p">)</span> <span class="n">then</span>
+  <span class="n">pressionch</span><span class="o">=</span><span class="n">tonumber</span><span class="p">(</span><span class="n">deviceValue</span><span class="p">);</span>
+  <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;pression_chaudiere:&quot;</span><span class="o">..</span><span class="n">pressionch</span><span class="o">..</span><span class="s2">&quot;--&quot;</span><span class="o">..</span><span class="n">pression</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">pression</span><span class="o">~=</span><span class="n">pressionch</span><span class="p">)</span> <span class="n">then</span>
+      <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;pression_chaudiere#valeur&quot;</span><span class="p">;</span><span class="n">don</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="o">..</span><span class="n">libelle</span><span class="o">..</span><span class="s2">&quot;#&quot;</span><span class="o">..</span><span class="n">tostring</span><span class="p">(</span><span class="n">deviceValue</span><span class="p">)</span><span class="o">..</span><span class="s2">&quot;#&quot;</span><span class="o">..</span><span class="n">datetime</span>
+      <span class="n">envoi_fab</span><span class="p">(</span><span class="n">don</span><span class="p">)</span>
+      <span class="o">--</span><span class="n">donnees</span><span class="p">[</span><span class="s1">&#39;pression&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">tonumber</span><span class="p">(</span><span class="n">deviceValue</span><span class="p">)</span>
+      <span class="n">write_datas</span><span class="p">(</span><span class="n">tonumber</span><span class="p">(</span><span class="n">deviceValue</span><span class="p">),</span><span class="n">data1</span><span class="p">)</span>
+      <span class="o">--</span><span class="n">pression_chaudiere</span><span class="p">:</span> <span class="n">variable</span> <span class="n">du</span> <span class="n">fichier</span> <span class="s1">&#39;string_tableaux&#39;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">pressionch</span><span class="o">&lt;</span><span class="n">pression_chaudiere</span> <span class="ow">and</span> <span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;pression-chaudiere&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;ras&quot;</span><span class="p">)</span> <span class="n">then</span>
+          <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:pression-chaudiere&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;manque_pression&quot;</span><span class="p">;</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pression basse&quot;</span><span class="p">)</span>
+      <span class="n">elseif</span> <span class="p">(</span><span class="n">pressionch</span><span class="o">&lt;</span><span class="n">pression_chaudiere</span> <span class="ow">and</span> <span class="n">uservariables</span><span class="p">[</span><span class="s1">&#39;pression-chaudiere&#39;</span><span class="p">]</span><span class="o">~=</span><span class="s2">&quot;pression_basse&quot;</span><span class="p">)</span> <span class="n">then</span>
+          <span class="n">commandArray</span><span class="p">[</span><span class="s1">&#39;Variable:pression-chaudiere&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;ras&quot;</span>
+      <span class="n">end</span>
+  <span class="n">end</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image760.webp"><img alt="image760" src="../_images/image760.webp" style="width: 700px;" /></a></p>
+<blockquote>
+<div><p>. <em>variable domoticz</em></p>
+<p><a class="reference internal" href="../_images/image762.webp"><img alt="image762" src="../_images/image762.webp" style="width: 605px;" /></a></p>
+<p>. <em>Le script notifications_variables.lua</em></p>
+</div></blockquote>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="p">{</span>
+     <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">variables</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pression-chaudiere&#39;</span><span class="p">}</span>
+     <span class="p">},</span>
+     <span class="n">execute</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">domoticz</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Variable &#39;</span> <span class="o">..</span> <span class="n">variable</span><span class="o">.</span><span class="n">name</span> <span class="o">..</span> <span class="s1">&#39; was changed&#39;</span><span class="p">,</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">LOG_INFO</span><span class="p">)</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pression-chaudiere&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;manque_pression&quot;</span><span class="p">)</span> <span class="n">then</span>                <span class="n">txt</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pression-chaudiere&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                  <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pression-chaudiere&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;pression_basse&#39;</span><span class="p">)</span>
+                      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;envoi SMS pression-chaudiere&quot;</span><span class="p">)</span>
+              <span class="n">alerte_gsm</span><span class="p">(</span><span class="s1">&#39;alarme_&#39;</span><span class="o">..</span><span class="n">txt</span><span class="p">)</span>
+     <span class="n">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dans-la-base-de-donnees-sql">
+<h3>13.5.3 Dans la Base de données SQL<a class="headerlink" href="#dans-la-base-de-donnees-sql" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="creer-une-nouvelle-table">
+<h4>13.5.3.1 Créer une nouvelle table<a class="headerlink" href="#creer-une-nouvelle-table" title="Lien permanent vers ce titre"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> CREATE TABLE `pression_chaudiere` (
+`num` int(5) NOT NULL,
+`date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+`valeur` varchar(4) NOT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+   ALTER TABLE `pression_chaudiere` CHANGE `num` `num` INT(4) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
+</pre></div>
+</div>
+</div>
+<div class="section" id="mettre-a-jour-la-table-des-dispositifs">
+<h4>13.5.3.2 Mettre à jour la table des dispositifs<a class="headerlink" href="#mettre-a-jour-la-table-des-dispositifs" title="Lien permanent vers ce titre"></a></h4>
+<p>voir paragraphe <a class="reference internal" href="bien_debuter.html#les-dispositifs"><span class="std std-ref">0.3.2 Les Dispositifs</span></a></p>
+<p><a class="reference internal" href="../_images/image764.webp"><img alt="image764" src="../_images/image764.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image765.webp"><img alt="image765" src="../_images/image765.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p>Mettre à jour la variables DZ pour l’affichage d’une notification sur l’app donc la tablette ou le smartphone voir § <a class="reference internal" href="bien_debuter.html#table-dispositifs-pour-les-variables"><span class="std std-ref">0.3.1.2 Table dispositifs pour les variables</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="mettre-a-jour-la-table-text-image">
+<h4>13.5.3.3  Mettre à jour la table « text-image »<a class="headerlink" href="#mettre-a-jour-la-table-text-image" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image767.webp"><img alt="image767" src="../_images/image767.webp" style="width: 571px;" /></a></p>
+<p>Pour afficher comme ci-dessus une image plutôt qu’un texte , voir § <a class="reference internal" href="bien_debuter.html#table-text-image"><span class="std std-ref">0.3.1.1 Table text-image</span></a></p>
+</div>
+</div>
+<div class="section" id="styles-css">
+<h3>13.5.4 Styles CSS<a class="headerlink" href="#styles-css" title="Lien permanent vers ce titre"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#bar_pression {position: relative;top: -770px;width: 100px;left: 500px;}</span>
+<span class="c1">#pression_chaud{width:60px}</span>
+<span class="o">.</span><span class="n">pression_chaud</span><span class="p">{</span><span class="n">position</span><span class="p">:</span> <span class="n">relative</span><span class="p">;</span><span class="n">top</span><span class="p">:</span> <span class="o">-</span><span class="mi">460</span><span class="n">px</span><span class="p">;</span><span class="n">left</span><span class="p">:</span> <span class="mi">220</span><span class="n">px</span><span class="p">;}</span>
+<span class="nd">@media</span> <span class="p">(</span><span class="nb">max</span><span class="o">-</span><span class="n">width</span><span class="p">:</span><span class="mi">534</span><span class="n">px</span><span class="p">)</span> <span class="p">{</span><span class="c1">#pression_chaud{width:50px}.pression_chaud{top: -305px;}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sms-reception-et-emission">
+<h2>13.6 SMS réception et émission<a class="headerlink" href="#sms-reception-et-emission" title="Lien permanent vers ce titre"></a></h2>
+<div class="section" id="reception-sms">
+<h3>13.6.1 réception SMS<a class="headerlink" href="#reception-sms" title="Lien permanent vers ce titre"></a></h3>
+<p>Voir le § consacrées au modem GSM et la communication série entre Domoticz et un RPI <a class="reference internal" href="divers.html#liaison-serie-domoticz-pi"><span class="std std-ref">18.3 Liaison série Domoticz-PI</span></a></p>
+<ul class="simple">
+<li><p><strong>Variable Domoticz</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image768.webp"><img alt="image768" src="../_images/image768.webp" style="width: 650px;" /></a></p>
+</div>
+<div class="section" id="emission-sms">
+<h3>13.6.2 émission SMS<a class="headerlink" href="#emission-sms" title="Lien permanent vers ce titre"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Un fichier python : sms_dz.py surveille en permanence la variable x de aldz.py et déclenche l’envoi d’un sms si celle-ci est différente de « 0 » ; priority indique la priorité pour l’envoi des SMS :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 envoi à tous les numéros</p></li>
+<li><p>1 envoi au 1er numéro</p></li>
+<li><p>2 envoi au 2eme numéro</p></li>
+<li><p>3 …..3eme …..</p></li>
+</ul>
+</div></blockquote>
+<p><span class="darkblue">Si bien sûr ces numéros existent</span></p>
+<p>Cela est possible avec l’utilisation du module Python « importlib »</p>
+<p><a class="reference internal" href="../_images/image773.webp"><img alt="image773" src="../_images/image773.webp" style="width: 414px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>aldz.py</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image772.webp"><img alt="image772" src="../_images/image772.webp" style="width: 444px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Le fichier aldz.py est modifié par Domoticz (scripts LUA notifications_devices et notifications_variables)</strong></p>
+</div>
+<p><a class="reference internal" href="../_images/image775.webp"><img alt="image775" src="../_images/image775.webp" style="width: 389px;" /></a></p>
+<p><a class="reference internal" href="../_images/image776.webp"><img alt="image776" src="../_images/image776.webp" style="width: 650px;" /></a></p>
+<ul class="simple">
+<li><p><strong>sms_dz.py</strong></p></li>
+</ul>
+<p>On import aussi aldz (b) et la variable lue est donc <span class="darkblue">b.x</span></p>
+<p><a class="reference internal" href="../_images/image774.webp"><img alt="image774" src="../_images/image774.webp" style="width: 483px;" /></a></p>
+<div class="section" id="enregistrement-des-n-de-telephone">
+<h4>13.6.2.1 Enregistrement des n° de téléphone<a class="headerlink" href="#enregistrement-des-n-de-telephone" title="Lien permanent vers ce titre"></a></h4>
+<p><em>Il est possible d’envoyé plusieurs SMS à des numéros différents ; pour cela, il faut ajouter les numéros à connect.lua (la maj est automatique vers connec.py)</em></p>
+<p><a class="reference internal" href="../_images/image777.webp"><img alt="image777" src="../_images/image777.webp" style="width: 432px;" /></a></p>
+<p>Le nombre de numéros n’est pas limité : tel={‘xxxxxxxxxx’,’yyyyyyyyyy’,’zzzzzzzzzz’,…)</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Le tableau est LUA avec des {}, remplacés par des crochets dans connect.py et connect.js</strong></p>
+</div>
+<p>Importer sur Github le fichier complet : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_dz/py/sms_dz.py">https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_dz/py/sms_dz.py</a></p>
+<div class="admonition-demarrage-automatique-avec-systemd admonition">
+<p class="admonition-title"><strong>Démarrage automatique avec systemd</strong></p>
+<p>Après installation de Domoticz, utiliser systemd de Debian ; le fichier à créer : sms_dz.service ,</p>
+<p>à télécharger <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/share/debian/systemd/system/sms_dz.service">https://raw.githubusercontent.com/mgrafr/monitor/main/share/debian/systemd/system/sms_dz.service</a></p>
+<p>Ne pas oublier d’activer le script avant de le démarrer :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="n">sms_dz</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">sms_dz</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="afficher-les-donnees-du-compteur-linky">
+<h2>13.7- afficher les données du compteur Linky<a class="headerlink" href="#afficher-les-donnees-du-compteur-linky" title="Lien permanent vers ce titre"></a></h2>
+<p><em>A partir des données reçues par Domoticz par le plugin domoticz-linky</em> : <a class="reference external" href="https://github.com/guillaumezin/DomoticzLinky">https://github.com/guillaumezin/DomoticzLinky</a></p>
+<p><a class="reference internal" href="../_images/image778.webp"><img alt="image778" src="../_images/image778.webp" style="width: 525px;" /></a></p>
+<ul class="simple">
+<li><p><strong>L’image svg</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svg</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;Calque_1&quot;</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">xlink</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span>
+      <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 162.2 321.9&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;enable-background:new 0 0 162.2 321.9;&quot;</span> <span class="n">xml</span><span class="p">:</span><span class="n">space</span><span class="o">=</span><span class="s2">&quot;preserve&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">style</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&gt;</span>
+     <span class="o">.</span><span class="n">linky0</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#BAC174;}</span>
+     <span class="o">.</span><span class="n">linky1</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#CDCDA6;}</span>
+     <span class="o">.</span><span class="n">linky2</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#D3D860;}</span>
+     <span class="o">.</span><span class="n">linky3</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#E2E2E3;}</span>
+     <span class="o">.</span><span class="n">linky4</span><span class="p">{</span><span class="n">fill</span><span class="c1">#96CD32;}</span>
+     <span class="o">.</span><span class="n">linky5</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#3B3F00;}</span>
+     <span class="o">.</span><span class="n">linky6</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#FCFFBF;}</span>
+     <span class="o">.</span><span class="n">linky7</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#FFE42A;}</span>
+     <span class="o">.</span><span class="n">linky8</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#FFDA15;}</span>
+     <span class="o">.</span><span class="n">linky10</span><span class="p">{</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span><span class="mi">48</span><span class="n">px</span><span class="p">;}</span>
+     <span class="o">.</span><span class="n">linky11</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#FFFFFF;}</span>
+     <span class="o">.</span><span class="n">linky12</span><span class="p">{</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span><span class="mi">60</span><span class="n">px</span><span class="p">;}</span>
+<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">xlink</span><span class="p">:</span><span class="n">href</span><span class="o">=</span><span class="s2">&quot;#interieur&quot;</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;popup_device(71)&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky0&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M3.5,56.5c-0.1,0.1-0.1,1.1,0.3,0.7C3.9,57.1,4,56.1,3.5,56.5z&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky1&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M84.2,250.9c0,2.5,0.2,4-1,6l-1-1c2.3,1.7,3.2,1.7,6,1c-2.3-1.8-1.7-3.2-1-6H84.2z&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky2&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M82.2,251.9l1,1L82.2,251.9z&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky3&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M83.2,251.9c-0.5,2.2-0.5,2.8,0,5C84,254.8,84,253.9,83.2,251.9 M86.2,251.9v5C87.7,254.7,87.7,254,86.2,251.9z</span>
+     <span class="s2">&quot;/&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky2&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M87.2,251.9l1,1L87.2,251.9z&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky3&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M3.2,308.9c0.7,3.6,1.8,5.3,5,7L3.2,308.9 M163.2,309.9c-2,2.8-3.9,4.4-7,6</span>
+     <span class="n">C160</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">317.2</span><span class="p">,</span><span class="mf">164.4</span><span class="p">,</span><span class="mf">314.2</span><span class="p">,</span><span class="mf">163.2</span><span class="p">,</span><span class="mf">309.9</span><span class="n">z</span><span class="s2">&quot;/&gt;</span>
+<span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky0&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M5.2,310.9l1,0.5L5.2,310.9 M162.2,310.9c-0.1,0.2,1-5,1-5S162.3,310.6,162.2,310.9z&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">rect</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky4&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;162.2&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;321.9&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">rect</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;338&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky4&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">rect</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;15&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;103&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky5&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;130&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;76&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">circle</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky5&quot;</span> <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;76.6&quot;</span> <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;74.6&quot;</span> <span class="n">r</span><span class="o">=</span><span class="s2">&quot;5.6&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">circle</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky6&quot;</span> <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;73.8&quot;</span> <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;17.8&quot;</span> <span class="n">r</span><span class="o">=</span><span class="s2">&quot;2.8&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">circle</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky7&quot;</span> <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;76.1&quot;</span> <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;22.8&quot;</span> <span class="n">r</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">circle</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky8&quot;</span> <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;77.4&quot;</span> <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;270.5&quot;</span> <span class="n">r</span><span class="o">=</span><span class="s2">&quot;6.4&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">text</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 15 57)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st33 linky10&quot;</span><span class="o">&gt;</span><span class="n">P</span> <span class="n">Max</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">text</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;txtlinky&quot;</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 8 156)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky11 linky9 linky12&quot;</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">text</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 40 230)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;linky9 linky10&quot;</span><span class="o">&gt;</span><span class="n">kW</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>La BD</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image779.webp"><img alt="image779" src="../_images/image779.webp" style="width: 700px;" /></a></p>
+<div class="admonition-explications-pour-explode-concerne-le-php admonition">
+<p class="admonition-title"><strong>Explications pour explode(concerne le PHP)</strong></p>
+<blockquote>
+<div><p><em>Data concerne 6 éléments</em> , <span class="darkblue">fonctions devices_plan() et pour_data()</span></p>
+<p><a class="reference internal" href="../_images/image780.webp"><img alt="image780" src="../_images/image780.webp" style="width: 437px;" /></a></p>
+<p>Pour n’afficher que le 5eme élément on utilise dans une fonction PHP « explode »</p>
+<p>Explode renvoie un tableau de chaînes, chacune étant une sous-chaîne limitée par un séparateur, ici un point-virgule.</p>
+<p><a class="reference internal" href="../_images/image781.webp"><img alt="image781" src="../_images/image781.webp" style="width: 700px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><span class="red">Contrairement à LUA, en PHP les tables commencent à 0 : 4 = table[4 ]= 5eme champ</span></p>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Data a été utilisé car c’est le cas avec l’API pour beaucoup de dispositifs mais Counter et Usage peuvent aussi être utilisé dans l’utilisation des compteurs.</p>
+<p>c’est d’ailleurs counter et usage qu’i faut utiliser avec DzVent, voir le § <a class="reference internal" href="#enregistrement-dans-la-bd-sql"><span class="std std-ref">13.7.1 enregistrement dans la BD SQL</span></a> , ci dessous</p>
+<p><a class="reference internal" href="../_images/image256.webp"><img alt="image256" src="../_images/image256.webp" style="width: 433px;" /></a></p>
+</div>
+</div>
+<div class="section" id="enregistrement-dans-la-bd-sql">
+<h3>13.7.1 enregistrement dans la BD SQL<a class="headerlink" href="#enregistrement-dans-la-bd-sql" title="Lien permanent vers ce titre"></a></h3>
+<ul class="simple">
+<li><p><strong>Créer la table</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> CREATE TABLE `energie` (
+`num` int(4) NOT NULL,
+`date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+`conso` varchar(10) NOT NULL,
+`pmax` varchar(10) NOT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ ALTER TABLE `energie` CHANGE `num` `num` INT(4) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
+</pre></div>
+</div>
+<p><em>La table possède 2 valeurs aussi le champ « valeur » ne peut être utilisé , 2 champs distincts sont créés</em></p>
+<ul class="simple">
+<li><p><strong>Domoticz</strong>  , <em>graphique.php</em></p></li>
+</ul>
+<p>Depuis la mise à jour 2023-2 de Domoticz , DeviceValue ne peut plus être utilisé aussi le script lua a été réécrit en dzvent: <span class="darkblue">export_timer_sql</span></p>
+<p><em>Comme c’est la consommation de la veille qui est affichée , il suffit donc de choisir à quelle heure enregistrer ces paramètres.</em></p>
+<p><a class="reference internal" href="../_images/image782.webp"><img alt="image782" src="../_images/image782.webp" style="width: 700px;" /></a></p>
+<p>voir également le paragraphe <a class="reference internal" href="graphiques.html#fabric"><span class="std std-ref">6.2.1 fabric</span></a></p>
+<ul class="simple">
+<li><p><strong>monitor</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image784.webp"><img alt="image784" src="../_images/image784.webp" style="width: 650px;" /></a></p>
+<p><a class="reference internal" href="../_images/image785.webp"><img alt="image785" src="../_images/image785.webp" style="width: 490px;" /></a></p>
+<p><a class="reference internal" href="../_images/image786.webp"><img alt="image786" src="../_images/image786.webp" style="width: 530px;" /></a></p>
+<p>Pour ajouter un historique de la consommation :</p>
+<p><a class="reference internal" href="../_images/image787.webp"><img alt="image787" src="../_images/image787.webp" style="width: 602px;" /></a></p>
+</div>
+</div>
+<div class="section" id="pont-ha-ha-bridge">
+<h2>13.8 Pont HA (ha-bridge)<a class="headerlink" href="#pont-ha-ha-bridge" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference external" href="https://github.com/bwssytems/ha-bridge">https://github.com/bwssytems/ha-bridge</a></p>
+<p>ha-bridge est un logiciel qui simule sur votre ordinateur un pont Philips Hue</p>
+<div class="admonition-fonction-du-pont admonition">
+<p class="admonition-title"><strong>fonction du pont</strong></p>
+<p>extrait du readme de github :</p>
+<p>Émule l’API Philips Hue à d’autres passerelles domotiques telles qu’Amazon Echo/Dot ou d’autres systèmes prenant en charge la découverte de réseau local Philips Hue.</p>
+<p><span class="darkblue">Le ha-bridge ne fait pas partie de meethue.philips.com donc la connexion cloud ne s’applique pas à ce système. Le pont gère les commandes de base telles que les commandes « On », « Off », « Brightness » et « Color » du protocole hue. Ce pont peut
+contrôler la plupart des appareils qui ont une API distincte.</span></p>
+</div>
+<div class="section" id="installation-dans-un-conteneur-lxc-proxmox">
+<h3>13.8.1 Installation dans un conteneur LXC Proxmox<a class="headerlink" href="#installation-dans-un-conteneur-lxc-proxmox" title="Lien permanent vers ce titre"></a></h3>
+<p>Vous pouvez l’installer comme moi dans un conteneur LXC (debian12 standart)  ou dans une VM, le programme java est léger.</p>
+<p><a class="reference internal" href="../_images/image1077.webp"><img alt="image1077" src="../_images/image1077.webp" style="width: 313px;" /></a></p>
+<p>Comme pour les autres VM et CT on installe sudo et l’on crée un utilisateur avec des droits.</p>
+<p>Après <strong>apt update &amp; apt upgrade</strong>:</p>
+<p><a class="reference internal" href="../_images/image1078.webp"><img alt="image1078" src="../_images/image1078.webp" style="width: 605px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">sudo</span> <span class="o">&lt;</span><span class="n">UTILISATEUR</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Java 8 ou &gt; doit être installé , pour debian12 un package existe , java 17:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">default</span><span class="o">-</span><span class="n">jdk</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1079.webp"><img alt="image1079" src="../_images/image1079.webp" style="width: 700px;" /></a></p>
+<div class="admonition-telechargement-installation-de-ha-bridge admonition">
+<p class="admonition-title"><strong>Téléchargement &amp; Installation de ha-bridge</strong></p>
+<p><em>https://github.com/bwssytems/ha-bridge/releases</em> , choisir la version java 11</p>
+<p><a class="reference internal" href="../_images/image1088.webp"><img alt="image1088" src="../_images/image1088.webp" style="width: 363px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">ha</span><span class="o">-</span><span class="n">bridge</span>
+<span class="n">cd</span> <span class="n">ha</span><span class="o">-</span><span class="n">bridge</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bwssytems</span><span class="o">/</span><span class="n">ha</span><span class="o">-</span><span class="n">bridge</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v5</span><span class="o">.</span><span class="mf">4.1</span><span class="n">RC1</span><span class="o">/</span><span class="n">ha</span><span class="o">-</span><span class="n">bridge</span><span class="o">-</span><span class="mf">5.4</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">java11</span><span class="o">.</span><span class="n">jar</span>
+</pre></div>
+</div>
+<p><strong>Création du service systemd</strong> <span class="darkblue">nano /etc/systemd/system/ha-bridge.service</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Il faut choisir le port</strong></p>
+<p>le port 80 est nécessaire pour Alexa et il n’est pas pas utilisé sur mon installation domotique, sont utilisés 8084(zigbee2mqtt), 8086 (dz), 8090(dvr), 8091(Zwavejs), 8123(HA)</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+  <span class="n">Description</span><span class="o">=</span><span class="n">HA</span> <span class="n">Bridge</span>
+  <span class="n">Wants</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">target</span>
+  <span class="n">After</span><span class="o">=</span><span class="n">syslog</span><span class="o">.</span><span class="n">target</span> <span class="n">network</span><span class="o">-</span><span class="n">online</span><span class="o">.</span><span class="n">target</span>
+
+  <span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+  <span class="n">Type</span><span class="o">=</span><span class="n">simple</span>
+  <span class="n">WorkingDirectory</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">habridge</span>
+  <span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="o">-</span><span class="n">Dconfig</span><span class="o">.</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">habridge</span><span class="o">/</span><span class="n">habridge</span><span class="o">.</span><span class="n">config</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">habridge</span><span class="o">/</span><span class="n">ha</span><span class="o">-</span><span class="n">bridge</span><span class="o">-</span><span class="mf">5.4</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">java11</span><span class="o">.</span><span class="n">jar</span>
+
+  <span class="n">Restart</span><span class="o">=</span><span class="n">on</span><span class="o">-</span><span class="n">failure</span>
+  <span class="n">RestartSec</span><span class="o">=</span><span class="mi">10</span>
+  <span class="n">KillMode</span><span class="o">=</span><span class="n">process</span>
+
+  <span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+  <span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+
+<span class="o">**</span><span class="n">activation</span> <span class="n">du</span> <span class="n">service</span><span class="o">**</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">ha</span><span class="o">-</span><span class="n">bridge</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">enable</span> <span class="n">ha</span><span class="o">-</span><span class="n">bridge</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>si le port est différent de 80 , ajouter dans ExecStart : <span class="darkblue">-Dserveur.port=&lt;port number&gt;</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="le-serveur-de-ha-bridge">
+<h3>13.8.2 Le serveur de ha-bridge<a class="headerlink" href="#le-serveur-de-ha-bridge" title="Lien permanent vers ce titre"></a></h3>
+<p>On récupère l’ip :</p>
+<p><a class="reference internal" href="../_images/image1080.webp"><img alt="image1080" src="../_images/image1080.webp" style="width: 601px;" /></a></p>
+<p>On ouvre la page d’accueil du serveur dans un navigateur, ici <span class="darkblue">http://192.168.1.14/</span></p>
+<p><a class="reference internal" href="../_images/image1081.webp"><img alt="image1081" src="../_images/image1081.webp" style="width: 605px;" /></a></p>
+<p><em>Come indiqué précédemment, Google Home et Alexa exigent que le pont réponde sur le port 80. Si le port 80 est déjà utilisé, il faut utiliser les fonctions de proxy de Nginx pour rediriger les urls concernant ha-bridge vers un port non utilisé par exemple 8088.</em></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Vérifier qu’il ne soit pas déjà utilisé</strong></p>
+<p>si 80 est utilisé :</p>
+<p>Le fichier de configuration <span class="darkblue">/etc/nginx/conf.d/habridge.conf</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>location / {
+ proxy_pass http://192.168.1.14:8088;
+ proxy_set_header Host $host;
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+
+location /api {
+ proxy_pass http://192.168.1.14:8088/api;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="acces-distant">
+<h4>13.8.2.1 accès distant<a class="headerlink" href="#acces-distant" title="Lien permanent vers ce titre"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>upstream pontha {
+    server 192.168.1.14;   }
+server {
+ server_name  pontha.&lt;DOMAINE&gt;;
+location / {
+ proxy_pass http://pontha;
+ proxy_set_header Host $host;
+     proxy_connect_timeout 30;
+     proxy_send_timeout 30;    }
+ listen 443 ssl; # managed by Certbot
+ ssl_certificate /etc/letsencrypt/live/pontha.&lt;DOMAINE&gt;/fullchain.pem; # managed by Certbot
+ ssl_certificate_key /etc/letsencrypt/live/pontha.&lt;DOMAINE&gt;/privkey.pem; # managed by Certbot
+ include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+ ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot}
+server {
+ if ($host = pontha.&lt;DOMAINE&gt;) {
+     return 301 https://$host$request_uri;    }
+ listen       80;
+ server_name  pontha.&lt;DOMAINE&gt;;
+ return 404; # managed by Certbot}
+</pre></div>
+</div>
+<p>La demande de certificat Let’sEncrypt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">certbot</span> <span class="o">--</span><span class="n">nginx</span> <span class="o">-</span><span class="n">d</span> <span class="n">pontha</span><span class="o">.&lt;</span><span class="n">DOMAINE</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1138.webp"><img alt="image1138" src="../_images/image1138.webp" style="width: 647px;" /></a></p>
+</div>
+</div>
+<div class="section" id="enregistrement-d-alexa-domoticz-dans-le-pont">
+<h3>13.8.3 Enregistrement d’Alexa &amp; Domoticz dans le pont<a class="headerlink" href="#enregistrement-d-alexa-domoticz-dans-le-pont" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image1082.webp"><img alt="image1082" src="../_images/image1082.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1083.webp"><img alt="image1083" src="../_images/image1083.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1085.webp"><img alt="image1085" src="../_images/image1085.webp" style="width: 622px;" /></a></p>
+<p>Sauvegarder la configuration</p>
+<p><a class="reference internal" href="../_images/image1086.webp"><img alt="image1086" src="../_images/image1086.webp" style="width: 571px;" /></a></p>
+<p>Il suffit d’actualiser la page et un nouvel onglet pour Domoticz est disponible avec la liste des dispositifs</p>
+<p><a class="reference internal" href="../_images/image1087.webp"><img alt="image1087" src="../_images/image1087.webp" style="width: 700px;" /></a></p>
+<div class="section" id="les-dispositifs-et-les-actions">
+<h4>13.8.3.1 Les dispositifs et les actions<a class="headerlink" href="#les-dispositifs-et-les-actions" title="Lien permanent vers ce titre"></a></h4>
+<p>Exemple avec les interrupteurs virtuels de l’alarme d’absence et de l’alarme de nuit</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>J’ai choisi ces dispositifs pour les essais car en déconnectant la sirène , à part quelques SMS, rien ne perturbe le quotidien , pas d’allumage ni extinction de lumière; mais <span class="red">IL NE FAUT PAS ARRÊTER L’ALARME AVEC L’ASSISTANT VOCAL</span></p>
+</div>
+<p>Ajout du premier dispositif :</p>
+<p><a class="reference internal" href="../_images/image1089.webp"><img alt="image1089" src="../_images/image1089.webp" style="width: 564px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1090.webp"><img alt="image1090" src="../_images/image1090.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1091.webp"><img alt="image1091" src="../_images/image1091.webp" style="width: 700px;" /></a></p>
+<p>Il en sera de même pour tous les dispositifs</p>
+</div>
+</div>
+<div class="section" id="ajouter-ha-bridge-dans-le-materiel-domoticz">
+<h3>13.8.4 Ajouter Ha-bridge dans le matériel Domoticz<a class="headerlink" href="#ajouter-ha-bridge-dans-le-materiel-domoticz" title="Lien permanent vers ce titre"></a></h3>
+<p>Sur le serveur Ha-bridge, utiliser le « link button »</p>
+<p><a class="reference internal" href="../_images/image1098.webp"><img alt="image1098" src="../_images/image1098.webp" style="width: 450px;" /></a></p>
+<p>Dans Domoticz, cliquer sur « <strong>register on bridge</strong> » et ajouter le pont</p>
+<p><a class="reference internal" href="../_images/image1099.webp"><img alt="image1099" src="../_images/image1099.webp" style="width: 635px;" /></a></p>
+</div>
+<div class="section" id="detection-des-nouveaux-appareils-par-alexa">
+<h3>13.8.5 détection des nouveaux appareils par Alexa<a class="headerlink" href="#detection-des-nouveaux-appareils-par-alexa" title="Lien permanent vers ce titre"></a></h3>
+<p>j” ai utilisé un émulateur Android gratuit pour les essais</p>
+<p><a class="reference internal" href="../_images/image1105.webp"><img alt="image1105" src="../_images/image1105.webp" style="width: 196px;" /></a> <a class="reference external" href="https://www.bluestacks.com/fr/index.html">https://www.bluestacks.com/fr/index.html</a></p>
+<p>Dans HA bridge, renuméroter les dispositifs et associer les appareils en appuyant sur « lien »</p>
+<p><a class="reference internal" href="../_images/image1100.webp"><img alt="image1100" src="../_images/image1100.webp" style="width: 550px;" /></a></p>
+<p>Dans l’application Alexa : Ajouter un appareil</p>
+<p><a class="reference internal" href="../_images/image1102.webp"><img alt="image1102" src="../_images/image1102.webp" style="width: 650px;" /></a></p>
+<p>Choisir Philips HUE</p>
+<p><a class="reference internal" href="../_images/image1103.webp"><img alt="image1103" src="../_images/image1103.webp" style="width: 450px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1104.webp"><img alt="image1104" src="../_images/image1104.webp" style="width: 400px;" /></a></p>
+<p>Découverte des appareils:</p>
+<p><a class="reference internal" href="../_images/image1106.webp"><img alt="image1106" src="../_images/image1106.webp" style="width: 550px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1101.webp"><img alt="image1101" src="../_images/image1101.webp" style="width: 400px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1107.webp"><img alt="image1107" src="../_images/image1107.webp" style="width: 550px;" /></a></p>
+<p>Il ne reste plus qu’à configurer les appareils</p>
+<p><a class="reference internal" href="../_images/image1108.webp"><img alt="image1108" src="../_images/image1108.webp" style="width: 550px;" /></a></p>
+</div>
+<div class="section" id="integrer-le-pont-hue-a-monitor">
+<h3>13.8.6 Intégrer le Pont Hue à Monitor<a class="headerlink" href="#integrer-le-pont-hue-a-monitor" title="Lien permanent vers ce titre"></a></h3>
+<p>Les fichiers concernés:</p>
+<ul class="simple">
+<li><p><strong>admin/config.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_HABRIDGE&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">Ha</span><span class="o">-</span><span class="n">bridge</span><span class="p">(</span><span class="n">Pont</span> <span class="n">HUE</span><span class="p">)</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPHABRIDGE&#39;</span><span class="p">,</span> <span class="s1">&#39;http://192.168.1.14&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">port</span> <span class="mi">80</span> <span class="n">obligatoire</span> <span class="n">ou</span> <span class="n">ProxyPass</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLHABRIDGE&#39;</span><span class="p">,</span> <span class="s1">&#39;https://habridge.&lt;DOMAINE&gt;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Les styles</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge{</span>
+ <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span><span class="n">height</span><span class="p">:</span> <span class="mi">1120</span><span class="n">px</span><span class="p">;</span><span class="n">padding</span><span class="p">:</span> <span class="mi">80</span><span class="n">px</span> <span class="mi">0</span><span class="p">;</span><span class="nb">min</span><span class="o">-</span><span class="n">height</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span><span class="n">position</span><span class="p">:</span> <span class="n">relative</span><span class="p">;</span><span class="n">color</span><span class="p">:</span> <span class="c1">#000;</span>
+ <span class="n">top</span><span class="p">:</span> <span class="mi">350</span><span class="n">px</span><span class="p">;</span><span class="n">z</span><span class="o">-</span><span class="n">index</span><span class="p">:</span><span class="o">-</span><span class="mi">20</span><span class="p">;</span><span class="n">overflow</span><span class="p">:</span> <span class="n">auto</span><span class="p">;}</span>
+<span class="c1">#interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,#app_diverses,#admin, #zigbee, #zwave, #dvr,</span>
+ <span class="c1">#nagios,#spa,#recettes, #habridge{background-color: aquamarine;}</span>
+<span class="c1">#habridgeapp{width: 750px;height: 700px;position: relative;top: 10px;}</span>
+<span class="nd">@media</span> <span class="p">(</span><span class="nb">max</span><span class="o">-</span><span class="n">width</span><span class="p">:</span><span class="mi">534</span><span class="n">px</span><span class="p">)</span> <span class="p">{</span><span class="c1">#habridgeapp{width: 500px;height: 600px;}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>index_loc.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">ON_HABRIDGE</span><span class="o">==</span><span class="n">true</span><span class="p">)</span> <span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/habridge.php&quot;</span><span class="p">);</span><span class="o">//</span><span class="n">pont</span> <span class="n">hue</span> <span class="n">Alexa</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>include/header.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php if (ON_HABRIDGE==true) echo &#39;&lt;li class=&quot;zz&quot;&gt;&lt;a href=&quot;#habridge&quot;&gt;Pont HUE&lt;/a&gt;&lt;/li&gt;&#39;;?&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>include/habridge.php</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+//session_start();
+$domaine=$_SESSION[&quot;domaine&quot;];
+  if ($domaine==URLMONITOR) $lien_habridge=URLHABRIDGE;
+  if ($domaine==IPMONITOR) $lien_habridge=IPHABRIDGE;
+?&gt;
+&lt;!-- section pont HUE start --&gt;
+ &lt;div id=&quot;habridge&quot; &gt;
+     &lt;div class=&quot;container&quot;&gt;
+             &lt;div class=&quot;col-md-12&quot;&gt;
+       &lt;h1 id=&quot;about&quot; class=&quot;title&quot; style=&quot;position:relative;top:10px;&quot;&gt;Pont HUE : &lt;span style=&quot;color:blue&quot;&gt;Ha-bridge&lt;/span&gt;&lt;/h1&gt;
+       &lt;iframe id=&quot;habridgeapp&quot; src=&quot;&lt;?php echo $lien_habridge;?&gt;&quot; frameborder=&quot;0&quot; &gt;&lt;/iframe&gt;
+       &lt;div class=&quot;modal&quot; id=&quot;infos&quot;&gt;&lt;/div&gt;
+ &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;!-- section pont HUE fin--&gt;
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1110.webp"><img alt="image1110" src="../_images/image1110.webp" style="width: 533px;" /></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="app_diverses.html" class="btn btn-neutral float-left" title="12. - FICHIERS LOG Domoticz, Nagios, SQL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="administration.html" class="btn btn-neutral float-right" title="14. ADMINISTRATION" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

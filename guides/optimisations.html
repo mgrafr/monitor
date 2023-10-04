@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22. OPTIMISATION en cours &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="prev" title="21. – Mon installation" href="mon_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">22. OPTIMISATION en cours</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reset-a-distance-du-modem-gsm">22.1 Reset à distance du modem GSM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-programme-de-commande-de-relais-usb-lcus-1">22.1.1 Simple programme de commande de relais USB LCUS_1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#assistant-personnel-open-source-leon">22.2 Assistant personnel open source Leon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequis">22.2.1 Prérequis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-et-configuration-de-leon">22.2.2 Installation et configuration de Leon</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installation">22.2.2.1 INSTALLATION</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">22.2.2.2 CONFIGURATION</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lancer-leon">22.2.2.3 LANCER Leon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-leon-en-mode-developpement">22.2.2.4 UPDATE Leon en mode développement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-de-stt-et-tts">22.2.3 Installation de STT et TTS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installation-de-stt">22.2.3.1 Installation de STT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installation-de-tts">22.2.3.2 Installation de TTS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#fonctionnement-hors-ligne">22.2.4 Fonctionnement HORS LIGNE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">22. OPTIMISATION en cours</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/optimisations.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="optimisation-en-cours">
+<h1>22. OPTIMISATION en cours<a class="headerlink" href="#optimisation-en-cours" title="Lien permanent vers ce titre"></a></h1>
+<div class="section" id="reset-a-distance-du-modem-gsm">
+<h2>22.1 Reset à distance du modem GSM<a class="headerlink" href="#reset-a-distance-du-modem-gsm" title="Lien permanent vers ce titre"></a></h2>
+<p><em>1 Bug  en 2 ans !!!</em></p>
+<div class="section" id="simple-programme-de-commande-de-relais-usb-lcus-1">
+<h3>22.1.1 Simple programme de commande de relais USB LCUS_1<a class="headerlink" href="#simple-programme-de-commande-de-relais-usb-lcus-1" title="Lien permanent vers ce titre"></a></h3>
+<p><strong>le script bash</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+
+<span class="n">echo</span> <span class="s2">&quot;Entrer une commande : ON ou OFF &quot;</span>
+<span class="n">read</span> <span class="n">COMMANDE</span>
+<span class="k">if</span> <span class="p">[</span> <span class="s2">&quot;$COMMANDE&quot;</span> <span class="o">=</span> <span class="s2">&quot;ON&quot;</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span> <span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\xA0\x01\x01\xA2</span><span class="s1">&#39;</span>
+<span class="n">fi</span>
+<span class="k">if</span> <span class="p">[</span> <span class="s2">&quot;$COMMANDE&quot;</span> <span class="o">=</span> <span class="s2">&quot;OFF&quot;</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span> <span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\xA0\x01\x01\xA2</span><span class="s1">&#39;</span><span class="p">;</span>
+<span class="n">fi</span>
+<span class="n">serdev</span><span class="o">=</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span>
+
+<span class="n">echo</span> <span class="s1">&#39;reset modem gsm&#39;</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;echo -n -e &#39;$cmd&#39; &gt; $serdev&quot;</span>
+</pre></div>
+</div>
+<p><strong>Retour d’info avec GPIO du RPI</strong></p>
+<p><a class="reference internal" href="../_images/image1064.webp"><img alt="image1064" src="../_images/image1064.webp" style="width: 696px;" /></a></p>
+</div>
+</div>
+<div class="section" id="assistant-personnel-open-source-leon">
+<h2>22.2 Assistant personnel open source Leon<a class="headerlink" href="#assistant-personnel-open-source-leon" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image1112.webp"><img alt="image1112" src="../_images/image1112.webp" style="width: 144px;" /></a>  <a class="reference external" href="https://github.com/leon-ai/leon">https://github.com/leon-ai/leon</a></p>
+<p>Installation dans un conteneur LXC Proxmox</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>conteneur LXC Debian 11 Standard ou Debian 11 Standard</p></li>
+<li><p>disque :20 Go</p></li>
+<li><p>disque d’échange 4096 Mo minimum</p></li>
+<li><p>mémoire : minimum 4096 Mo</p></li>
+<li><p>package: sudo (apt install sudo)</p></li>
+<li><p>un utilisateur avec des droits</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1128.webp"><img alt="image1128" src="../_images/image1128.webp" style="width: 383px;" /></a></p>
+</div>
+<div class="section" id="prerequis">
+<h3>22.2.1 Prérequis<a class="headerlink" href="#prerequis" title="Lien permanent vers ce titre"></a></h3>
+<p>Si l’on est encore sous ROOT:</p>
+<p><a class="reference internal" href="../_images/image1133.webp"><img alt="image1133" src="../_images/image1133.webp" style="width: 295px;" /></a> , ouvrir une session utilisateur</p>
+<div class="admonition-installation-de-node-js-et-npm-sous-debian-11 admonition">
+<p class="admonition-title"><em>Installation de Node.js et npm</em> <strong>sous Debian 11</strong></p>
+<p>La version de node.js doit être =&gt;16 et avec debian 11 c’est la version 12 qui est installée</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span> <span class="n">curl</span> <span class="n">gnupg</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">keyrings</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">deb</span><span class="o">.</span><span class="n">nodesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">gpgkey</span><span class="o">/</span><span class="n">nodesource</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">gpg</span><span class="o">.</span><span class="n">key</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">dearmor</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">nodesource</span><span class="o">.</span><span class="n">gpg</span>
+<span class="n">NODE_MAJOR</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">nodesource</span><span class="o">.</span><span class="n">list</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">nodejs</span> <span class="n">npm</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1118.webp"><img alt="image1118" src="../_images/image1118.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1113.webp"><img alt="image1113" src="../_images/image1113.webp" style="width: 439px;" /></a></p>
+</div>
+<div class="admonition-installation-de-node-js-et-npm-sous-debian-12 admonition">
+<p class="admonition-title"><em>installation de Node.js et npm</em> <strong>sous Debian 12</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">nodejs</span> <span class="n">npm</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1130.webp"><img alt="image1130" src="../_images/image1130.webp" style="width: 446px;" /></a></p>
+</div>
+</div>
+<div class="section" id="installation-et-configuration-de-leon">
+<h3>22.2.2 Installation et configuration de Leon<a class="headerlink" href="#installation-et-configuration-de-leon" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="installation">
+<h4>22.2.2.1 INSTALLATION<a class="headerlink" href="#installation" title="Lien permanent vers ce titre"></a></h4>
+<p><strong>- Installation de Leon CLI</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">npm</span> <span class="n">install</span> <span class="o">--</span><span class="k">global</span> <span class="nd">@leon</span><span class="o">-</span><span class="n">ai</span><span class="o">/</span><span class="n">cli</span>
+</pre></div>
+</div>
+<p><em>Pour une version beta</em> : <span class="darkblue">npm install –global &#64;leon-ai/cli&#64;beta</span></p>
+<p><a class="reference internal" href="../_images/image1114.webp"><img alt="image1114" src="../_images/image1114.webp" style="width: 544px;" /></a></p>
+<p><strong>- Installation de Leon (stable branch)</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">leon</span> <span class="n">create</span> <span class="n">birth</span>
+</pre></div>
+</div>
+<p><em>Pour la version en developpement</em>: <span class="darkblue">leon create birth –develop</span></p>
+<p><a class="reference internal" href="../_images/image1127.webp"><img alt="image1127" src="../_images/image1127.webp" style="width: 358px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1115.webp"><img alt="image1115" src="../_images/image1115.webp" style="width: 600px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1119.webp"><img alt="image1119" src="../_images/image1119.webp" style="width: 600px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>sous Debian 11 si Git n’est pas installé, l’installer</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">git</span><span class="o">-</span><span class="nb">all</span>
+</pre></div>
+</div>
+</div>
+<p><strong>- Vérifiez la configuration</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">leon</span> <span class="n">check</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1116.webp"><img alt="image1116" src="../_images/image1116.webp" style="width: 309px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1120.webp"><img alt="image1120" src="../_images/image1120.webp" style="width: 615px;" /></a></p>
+</div>
+<div class="section" id="configuration">
+<h4>22.2.2.2 CONFIGURATION<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre"></a></h4>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>PORTS des serveurs HTTP et TCP</strong></p>
+<p>. Sur mon installation les ports 1337 et 1342 ne fonctionne pas , déjà utilisés !!
+. Je les ai remplacés par les port 8089 et 8090</p>
+</div>
+<p>Pour trouver l” IP du conteneur LXC:</p>
+<p><a class="reference internal" href="../_images/image1121.webp"><img alt="image1121" src="../_images/image1121.webp" style="width: 588px;" /></a></p>
+<p>Dans le répertoire d’installation ~/.leon , remplacer IP, Ports, Langue,…</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<blockquote>
+<div><p>si l’installation à été réalisée en /root/.leon, passer en root</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1132.webp"><img alt="image1132" src="../_images/image1132.webp" style="width: 314px;" /></a></p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">.</span><span class="n">env</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1122.webp"><img alt="image1122" src="../_images/image1122.webp" style="width: 600px;" /></a></p>
+</div>
+<div class="section" id="lancer-leon">
+<h4>22.2.2.3 LANCER Leon<a class="headerlink" href="#lancer-leon" title="Lien permanent vers ce titre"></a></h4>
+<p>Quitter le shell en root : exit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">leon</span> <span class="n">start</span> <span class="o">--</span><span class="n">port</span><span class="o">=&lt;</span><span class="n">PORT</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1123.webp"><img alt="image1123" src="../_images/image1123.webp" style="width: 600px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1124.webp"><img alt="image1124" src="../_images/image1124.webp" style="width: 485px;" /></a></p>
+<p>Dans un navigateur, au clavier:</p>
+<p><a class="reference internal" href="../_images/image1125.webp"><img alt="image1125" src="../_images/image1125.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1126.webp"><img alt="image1126" src="../_images/image1126.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="update-leon-en-mode-developpement">
+<h4>22.2.2.4 UPDATE Leon en mode développement<a class="headerlink" href="#update-leon-en-mode-developpement" title="Lien permanent vers ce titre"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">leon</span> <span class="n">update</span> <span class="o">--</span><span class="n">develop</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1137.webp"><img alt="image1137" src="../_images/image1137.webp" style="width: 533px;" /></a></p>
+</div>
+</div>
+<div class="section" id="installation-de-stt-et-tts">
+<h3>22.2.3 Installation de STT et TTS<a class="headerlink" href="#installation-de-stt-et-tts" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="installation-de-stt">
+<h4>22.2.3.1 Installation de STT<a class="headerlink" href="#installation-de-stt" title="Lien permanent vers ce titre"></a></h4>
+<p>Léon utilise Coqui <a class="reference internal" href="../_images/image1117.webp"><img alt="image1117" src="../_images/image1117.webp" style="width: 50px;" /></a> SST</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Comme pour la configuration , il peut être necessaire de passer en root</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">run</span> <span class="n">setup</span><span class="p">:</span><span class="n">offline</span><span class="o">-</span><span class="n">stt</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1134.webp"><img alt="image1134" src="../_images/image1134.webp" style="width: 492px;" /></a></p>
+</div>
+<p>Dans le fichier de configuration .env:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable/disable Leon&#39;s speech-to-text</span>
+<span class="n">LEON_STT</span><span class="o">=</span><span class="n">true</span>
+<span class="c1"># Speech-to-text provider</span>
+<span class="n">LEON_STT_PROVIDER</span><span class="o">=</span><span class="n">coqui</span><span class="o">-</span><span class="n">stt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation-de-tts">
+<h4>22.2.3.2 Installation de TTS<a class="headerlink" href="#installation-de-tts" title="Lien permanent vers ce titre"></a></h4>
+<p>Léon utilise CMU Flite qui est un petit et rapide moteur de synthèse vocale</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">run</span> <span class="n">setup</span><span class="p">:</span><span class="n">offline</span><span class="o">-</span><span class="n">tts</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1135.webp"><img alt="image1135" src="../_images/image1135.webp" style="width: 492px;" /></a></p>
+<p>Comme por STT , il faut modifier la configuration .env :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable/disable Leon&#39;s text-to-speech</span>
+<span class="n">LEON_TTS</span><span class="o">=</span><span class="n">true</span>
+<span class="c1"># Text-to-speech provider</span>
+<span class="n">LEON_TTS_PROVIDER</span><span class="o">=</span><span class="n">flite</span>
+</pre></div>
+</div>
+<div class="admonition-hotword-leon-hotword-detection-de-l-activite-vocale admonition">
+<p class="admonition-title"><strong>hotword Léon</strong>
+Hotword: détection de l’activité vocale</p>
+<p>Une fois que Léon a entendu son nom, il est prêt à écouter une requête</p>
+<ul class="simple">
+<li><p><strong>Installation</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">run</span> <span class="n">setup</span><span class="p">:</span><span class="n">offline</span><span class="o">-</span><span class="n">hotword</span>
+</pre></div>
+</div>
+<p><strong>L’installation de snowboy échoue !!! mais sox est installé</strong></p>
+<p><a class="reference internal" href="../_images/image1136.webp"><img alt="image1136" src="../_images/image1136.webp" style="width: 700px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="fonctionnement-hors-ligne">
+<h3>22.2.4 Fonctionnement HORS LIGNE<a class="headerlink" href="#fonctionnement-hors-ligne" title="Lien permanent vers ce titre"></a></h3>
+<p>Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout tourne sur votre machine, rien ne sort pour requêter un service tiers</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="mon_installation.html" class="btn btn-neutral float-left" title="21. – Mon installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

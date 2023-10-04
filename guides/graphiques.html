@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. GRAHIQUES &amp; BASE DE DONNEES &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="7. MUR de CAMERAS" href="mur_cameras.html" />
+    <link rel="prev" title="5. L’ALARME" href="alarme.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. GRAHIQUES &amp; BASE DE DONNEES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#les-table-sql">6.1 Les table SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dans-domoticz">6.2 Dans Domoticz</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fabric">6.2.1 fabric</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sur-le-serveur-de-la-base-de-donnees">6.3 Sur le serveur de la base de données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dans-monitor">6.4 Dans Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#la-page-graphique-php">6.4.1 la page graphique.php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#la-fonction-graph">6.4.2 la fonction graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autres-fichiers-php">6.4.3 autres fichiers PHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copies-decran">6.4.4 copies d’écran</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">6. GRAHIQUES &amp; BASE DE DONNEES</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/graphiques.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="grahiques-base-de-donnees">
+<h1>6. GRAHIQUES &amp; BASE DE DONNEES<a class="headerlink" href="#grahiques-base-de-donnees" title="Lien permanent vers ce titre"></a></h1>
+<p><a class="reference internal" href="../_images/image523.webp"><img alt="image523" src="../_images/image523.webp" style="width: 650px;" /></a></p>
+<p>Voir ces pages pour installer les scripts :
+-        <a class="reference external" href="http://domo-site.fr/accueil/dossiers/40">http://domo-site.fr/accueil/dossiers/40</a>
+-        <a class="reference external" href="http://domo-site.fr/accueil/dossiers/42">http://domo-site.fr/accueil/dossiers/42</a></p>
+<p><a class="reference internal" href="../_images/image524.webp"><img alt="image524" src="../_images/image524.webp" style="width: 601px;" /></a></p>
+<p><a class="reference internal" href="../_images/image525.webp"><img alt="image525" src="../_images/image525.webp" style="width: 601px;" /></a></p>
+<div class="admonition-prerequis admonition">
+<p class="admonition-title"><strong>Prérequis</strong></p>
+<ul class="simple">
+<li><p>Jpgraph est installé avec le cache <a class="reference internal" href="../_images/image526.webp"><img alt="image526" src="../_images/image526.webp" style="width: 210px;" /></a></p></li>
+<li><p>php-gd est installé <a class="reference internal" href="../_images/image527.webp"><img alt="image527" src="../_images/image527.webp" style="width: 300px;" /></a></p></li>
+<li><p>la bibliothèque python fabric est importé</p></li>
+<li><p>le module python mysql.connector est importé</p></li>
+</ul>
+</div>
+<div class="section" id="les-table-sql">
+<h2>6.1 Les table SQL<a class="headerlink" href="#les-table-sql" title="Lien permanent vers ce titre"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Pour le nom des tables concernant les graphiques, NE PAS UTILISER le CARACTERE –(moins)</p>
+<p>Ce caractère est utilisé comme séparateur pour l’indication de l’ensemble table-champ pour les graphiques</p>
+<p><a class="reference internal" href="../_images/image528.webp"><img alt="image528" src="../_images/image528.webp" style="width: 602px;" /></a></p>
+<p><strong>En absence de champ c’est le champ « valeur » qui est utilisé sinon</strong> :</p>
+<p>Value= « &lt;TABLE&gt;-&lt;CHAMP&gt; »</p>
+</div>
+<p><a class="reference internal" href="../_images/image529.webp"><img alt="image529" src="../_images/image529.webp" style="width: 188px;" /></a></p>
+<p><em>Avec 2 champs ou 3 champs</em></p>
+<p><a class="reference internal" href="../_images/image530.webp"><img alt="image530" src="../_images/image530.webp" style="width: 244px;" /></a> <a class="reference internal" href="../_images/image531.webp"><img alt="image531" src="../_images/image531.webp" style="width: 351px;" /></a></p>
+<p><strong>Création de la table avec phpMyAdmin</strong> :<em>exemple</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> CREATE TABLE `pression_chaudiere` (
+`num` int(5) NOT NULL,
+`date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+`valeur` varchar(4) NOT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ ALTER TABLE `pression_chaudiere` CHANGE `num` `num` INT(4) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
+</pre></div>
+</div>
+</div>
+<div class="section" id="dans-domoticz">
+<h2>6.2 Dans Domoticz<a class="headerlink" href="#dans-domoticz" title="Lien permanent vers ce titre"></a></h2>
+<p>Les données à enregistrer peuvent provenir de capteurs réels ou virtuels. Pour éviter un trop grand nombre de valeurs, il est utile pour certains dispositifs, de créer des variables pour comparer les valeurs et les limiter aux valeurs entières (c’est le cas de la météo Darsky, des capteurs de température Onoff).</p>
+<p>Pour utiliser des données de la base SQL, il faut au préalable les avoir enregistrées depuis Domoticz : c’est le rôle de la bibliothèque Python <span class="darkblue">fabric</span></p>
+<p>Pour l’installer (pip est déjà installé):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">fabric</span>
+</pre></div>
+</div>
+<p>Une fois un premier enregistrement crée, pour une température, dans la base, il suffit pour un nouvel enregistrement d’une autre t° d’ajouter dans le script LUA « évènement /<span class="darkblue">NOM_DU SCRIPT</span> » cette T°</p>
+<p><strong>Depuis la version 2023-2 de Domoticz le script a été réécrit en dzvent</strong></p>
+<p><em>pour info Extrait du script en lua</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+ <span class="n">require</span> <span class="s1">&#39;datas&#39;</span>
+ <span class="n">require</span> <span class="s1">&#39;string_tableaux&#39;</span>
+ <span class="n">data0</span><span class="o">=</span><span class="n">pression</span><span class="p">;</span><span class="n">data1</span><span class="o">=</span><span class="n">d_linky</span>
+ <span class="n">year</span>         <span class="o">=</span> <span class="n">tonumber</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">));</span>
+ <span class="n">month</span>        <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%m&quot;</span><span class="p">);</span>
+ <span class="n">day</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">);</span>
+ <span class="n">hour</span>         <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%H&quot;</span><span class="p">);</span>
+ <span class="nb">min</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%M&quot;</span><span class="p">);</span>
+ <span class="n">sec</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%S&quot;</span><span class="p">);</span>
+ <span class="n">weekday</span> <span class="o">=</span> <span class="n">tonumber</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%w&quot;</span><span class="p">));</span>
+ <span class="n">time</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%X</span><span class="s2">&quot;</span><span class="p">);</span>
+ <span class="n">datetime</span> <span class="o">=</span> <span class="n">year</span><span class="o">..</span><span class="s2">&quot;-&quot;</span><span class="o">..</span><span class="n">month</span><span class="o">..</span><span class="s2">&quot;-&quot;</span><span class="o">..</span><span class="n">day</span><span class="o">..</span><span class="s2">&quot; &quot;</span><span class="o">..</span><span class="n">time</span><span class="p">;</span>
+ <span class="o">--</span>
+  <span class="n">function</span> <span class="n">write_datas</span><span class="p">(</span><span class="n">data0</span><span class="p">,</span><span class="n">data1</span><span class="p">)</span>
+ <span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;www/modules_lua/datas.lua&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+ <span class="n">f</span><span class="p">:</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;pression=&#39;</span><span class="o">..</span><span class="n">data0</span><span class="o">..</span><span class="s1">&#39;;d_linky=&#39;</span><span class="o">..</span><span class="n">data1</span><span class="p">)</span>
+ <span class="n">f</span><span class="p">:</span><span class="n">close</span><span class="p">()</span>
+ <span class="n">end</span>
+ <span class="n">function</span> <span class="n">envoi_fab</span><span class="p">(</span><span class="n">don</span><span class="p">)</span>
+      <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;maj valeur:&quot;</span><span class="o">..</span><span class="n">don</span><span class="p">);</span>
+      <span class="n">local</span> <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;/bin/bash userdata/scripts/bash/./fabric.sh&quot;</span><span class="o">..</span><span class="n">don</span><span class="o">..</span><span class="s2">&quot; &gt; /home/michel/fab.log 2&gt;&amp;1&quot;</span><span class="p">;</span>
+      <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">);</span>
+      <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;python3 scripts/python/pushover.py &quot;</span><span class="o">..</span><span class="n">txt</span><span class="o">..</span><span class="s2">&quot; &gt;&gt; /home/michel/push.log 2&gt;&amp;1&quot;</span><span class="p">);</span>
+ <span class="n">end</span>
+ <span class="n">function</span> <span class="nb">round</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">numDecimal</span><span class="p">)</span>
+ <span class="n">local</span> <span class="n">mult</span> <span class="o">=</span> <span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="n">numDecimal</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span>
+ <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">mult</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">mult</span>
+ <span class="n">end</span>
+ <span class="n">function</span> <span class="n">Split</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">delimiter</span><span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="p">(</span><span class="n">s</span><span class="o">..</span><span class="n">delimiter</span><span class="p">):</span><span class="n">gmatch</span><span class="p">(</span><span class="s2">&quot;(.-)&quot;</span><span class="o">..</span><span class="n">delimiter</span><span class="p">)</span> <span class="n">do</span>
+      <span class="n">table</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">match</span><span class="p">);</span>
+  <span class="n">end</span>
+  <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="n">end</span>
+<span class="n">commandArray</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">{};</span>
+ <span class="o">--</span><span class="n">donnees</span><span class="o">=</span><span class="p">{[</span><span class="s1">&#39;pression&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;1.2&#39;</span><span class="p">};</span><span class="n">write_datas</span><span class="p">(</span><span class="s1">&#39;{[&quot;pression&quot;]=&quot;&#39;</span><span class="o">..</span><span class="s2">&quot;1.2&quot;</span><span class="o">..</span><span class="s1">&#39;;}&#39;</span><span class="p">)</span>
+ <span class="o">--</span> <span class="n">libelle</span><span class="o">=</span><span class="n">table</span><span class="c1">#champ</span>
+ <span class="o">--</span> <span class="n">si</span> <span class="mi">2</span> <span class="n">champs</span> <span class="p">,</span> <span class="n">ajouter</span> <span class="o">..</span><span class="s1">&#39;#champ2#&quot;..split_str[2] après datetime..</span>
+ <span class="o">--</span> <span class="n">exemple</span> <span class="s2">&quot;don=&quot;</span> <span class="s2">&quot;..libelle..&quot;</span><span class="c1">#&quot;..tostring(deviceValue)..&quot;#&quot;..datetime..&quot;#champ2#&quot;..split_str[2]</span>
+ <span class="k">for</span> <span class="n">deviceName</span><span class="p">,</span><span class="n">deviceValue</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">devicechanged</span><span class="p">)</span> <span class="n">do</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">deviceName</span><span class="o">==</span><span class="s1">&#39;pir_salon_temp&#39;</span><span class="p">)</span> <span class="n">then</span>
+      <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;temp_salon:&quot;</span><span class="o">..</span><span class="n">deviceValue</span><span class="p">);</span>
+          <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;temp_salon#valeur&quot;</span><span class="p">;</span><span class="n">don</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="o">..</span><span class="n">libelle</span><span class="o">..</span><span class="s2">&quot;#&quot;</span><span class="o">..</span><span class="n">tostring</span><span class="p">(</span><span class="n">deviceValue</span><span class="p">)</span><span class="o">..</span><span class="s2">&quot;#&quot;</span><span class="o">..</span><span class="n">datetime</span>
+      <span class="n">envoi_fab</span><span class="p">(</span><span class="n">don</span><span class="p">)</span>
+ <span class="o">......</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image534.webp"><img alt="image534" src="../_images/image534.webp" style="width: 700px;" /></a></p>
+<p><strong>Le script en DzVent « export_dev_sql »</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span>
+<span class="o">--</span><span class="p">[[</span>
+<span class="n">export_dev_sql</span><span class="p">]]</span>
+<span class="o">--</span>
+<span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+<span class="n">require</span> <span class="s1">&#39;datas&#39;</span>
+<span class="n">require</span> <span class="s1">&#39;string_tableaux&#39;</span>
+<span class="n">data0</span><span class="o">=</span><span class="n">pression</span><span class="p">;</span>
+<span class="n">year</span>         <span class="o">=</span> <span class="n">tonumber</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">));</span>
+<span class="n">month</span>        <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%m&quot;</span><span class="p">);</span>
+<span class="n">day</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">hour</span>         <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%H&quot;</span><span class="p">);</span>
+<span class="nb">min</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%M&quot;</span><span class="p">);</span>
+<span class="n">sec</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%S&quot;</span><span class="p">);</span>
+<span class="n">weekday</span> <span class="o">=</span> <span class="n">tonumber</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;%w&quot;</span><span class="p">));</span>
+<span class="n">time</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%X</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">datetime</span> <span class="o">=</span> <span class="n">year</span><span class="o">..</span><span class="s2">&quot;-&quot;</span><span class="o">..</span><span class="n">month</span><span class="o">..</span><span class="s2">&quot;-&quot;</span><span class="o">..</span><span class="n">day</span><span class="o">..</span><span class="s2">&quot; &quot;</span><span class="o">..</span><span class="n">time</span><span class="p">;</span>
+<span class="n">function</span> <span class="n">write_datas</span><span class="p">(</span><span class="n">data0</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;www/modules_lua/datas.lua&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">:</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;pression=&#39;</span><span class="o">..</span><span class="n">data0</span><span class="p">)</span>
+<span class="n">f</span><span class="p">:</span><span class="n">close</span><span class="p">()</span>
+<span class="n">end</span>
+<span class="n">function</span> <span class="nb">round</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">numDecimal</span><span class="p">)</span>
+<span class="n">local</span> <span class="n">mult</span> <span class="o">=</span> <span class="mi">10</span><span class="o">^</span><span class="p">(</span><span class="n">numDecimal</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">mult</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">mult</span>
+<span class="n">end</span>
+
+<span class="n">function</span> <span class="n">envoi_fab1</span><span class="p">(</span><span class="n">libelle</span><span class="p">,</span><span class="n">valeur</span><span class="p">)</span>
+ <span class="n">don</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="o">..</span><span class="n">libelle</span><span class="o">..</span><span class="s2">&quot;#&quot;</span><span class="o">..</span><span class="n">valeur</span><span class="o">..</span><span class="s2">&quot;#&quot;</span><span class="o">..</span><span class="n">datetime</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;maj valeur:&quot;</span><span class="o">..</span><span class="n">don</span><span class="p">);</span>
+     <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;/bin/bash userdata/scripts/bash/./fabric.sh &quot;</span><span class="o">..</span><span class="n">don</span><span class="o">..</span><span class="s2">&quot; &gt; /home/michel/fab.log 2&gt;&amp;1&quot;</span><span class="p">;</span>
+     <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">);</span>
+<span class="n">end</span>
+<span class="k">return</span> <span class="p">{</span>
+     <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">devices</span> <span class="o">=</span> <span class="p">{</span>
+                     <span class="s1">&#39;temp_cave&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;temp_cuisine_ete&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;temp_cellier&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;TempHumBaro&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;pir_salon_temp&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;pir ar cuisine_temp&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;pression_chaudière&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;PH_Spa&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Redox_Spa&#39;</span>
+             <span class="p">}</span>
+     <span class="p">},</span>
+
+    <span class="n">execute</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">domoticz</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+     <span class="n">domoticz</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;item &#39;</span><span class="o">..</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">..</span><span class="s1">&#39; was changed&#39;</span><span class="p">,</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">LOG_INFO</span><span class="p">)</span>
+
+     <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;temp_cuisine_ete&#39;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="o">--</span> <span class="n">choix</span> <span class="n">nb</span> <span class="n">decimales</span> <span class="n">apres</span> <span class="n">la</span> <span class="n">virgule</span>
+     <span class="o">--</span> <span class="n">local</span> <span class="n">temp</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">deviceValue</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">valeur</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_cuis_ete&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">~=</span> <span class="n">valeur</span><span class="p">)</span> <span class="n">then</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_cuis_ete&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+         <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;temp_cuis_ete#valeur&quot;</span><span class="p">;</span>
+         <span class="n">envoi_fab1</span><span class="p">(</span><span class="n">libelle</span><span class="p">,</span><span class="n">valeur</span><span class="p">)</span>
+         <span class="n">end</span>
+     <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;temp_cave&#39;</span><span class="p">)</span> <span class="n">then</span>
+        <span class="o">--</span><span class="n">local</span> <span class="n">valeur</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+       <span class="n">valeur</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="k">if</span> <span class="n">tostring</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span><span class="o">~=</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_cave&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="n">then</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_cave&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tostring</span><span class="p">(</span><span class="n">valeur</span><span class="p">))</span>
+         <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;temp_cave#valeur&quot;</span><span class="p">;</span>
+        <span class="n">envoi_fab1</span><span class="p">(</span><span class="n">libelle</span><span class="p">,</span><span class="n">valeur</span><span class="p">)</span>
+         <span class="n">end</span>
+    <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;temp_cellier&#39;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="o">--</span> <span class="n">local</span> <span class="n">valeur</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">deviceValue</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">valeur</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="k">if</span> <span class="n">tostring</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span><span class="o">~=</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_cellier&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="n">then</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_cellier&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tostring</span><span class="p">(</span><span class="n">valeur</span><span class="p">))</span>
+         <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;temp_cellier#valeur&quot;</span><span class="p">;</span>
+         <span class="n">envoi_fab1</span><span class="p">(</span><span class="n">libelle</span><span class="p">,</span><span class="n">valeur</span><span class="p">)</span>
+         <span class="n">end</span>
+    <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;TempHumBaro&#39;</span><span class="p">)</span> <span class="n">then</span>
+         <span class="n">valeur</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="k">if</span> <span class="n">valeur</span><span class="o">~=</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_meteo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="n">then</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_meteo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+         <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;temp_meteo#valeur&quot;</span><span class="p">;</span>
+         <span class="n">envoi_fab1</span><span class="p">(</span><span class="n">libelle</span><span class="p">,</span><span class="n">valeur</span><span class="p">)</span>
+         <span class="n">end</span>
+    <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;pir_salon_temp&#39;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="n">valeur</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+     <span class="k">if</span> <span class="n">tostring</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span><span class="o">~=</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_salon&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="n">then</span>
+        <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_salon&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tostring</span><span class="p">(</span><span class="n">valeur</span><span class="p">))</span>
+         <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;temp_salon#valeur&quot;</span><span class="p">;</span>
+        <span class="n">envoi_fab1</span><span class="p">(</span><span class="n">libelle</span><span class="p">,</span><span class="n">valeur</span><span class="p">)</span>
+     <span class="n">end</span>
+    <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;pir ar cuisine_temp&#39;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="n">valeur</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+     <span class="k">if</span> <span class="n">tostring</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span><span class="o">~=</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_ar_cuisine&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="n">then</span>
+         <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;temp_ar_cuisine&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tostring</span><span class="p">(</span><span class="n">valeur</span><span class="p">))</span>
+             <span class="n">libelle</span><span class="o">=</span><span class="s2">&quot;temp_cuisine#valeur&quot;</span><span class="p">;</span>
+         <span class="n">envoi_fab1</span><span class="p">(</span><span class="n">libelle</span><span class="p">,</span><span class="n">valeur</span><span class="p">)</span>
+     <span class="n">end</span>
+<span class="o">...</span>
+<span class="o">...</span>
+ <span class="n">end</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image783.webp"><img alt="image783" src="../_images/image783.webp" style="width: 700px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Nom pour les fonctions DzVent</strong></p>
+<p>le même nom ne peut pas être utilisé pour 2 fonctions dans des scripts DzVents (mêmes différents).</p>
+</div>
+<p>Pour limiter le nb d’enregistrements :</p>
+<p><a class="reference internal" href="../_images/image535.webp"><img alt="image535" src="../_images/image535.webp" style="width: 570px;" /></a></p>
+<p>Dans cet exemple, il a été créer plusieurs variables qui permettent des enregistrements dans la BD à chaque changement de valeurs limité au degré.:</p>
+<p><a class="reference internal" href="../_images/image536.webp"><img alt="image536" src="../_images/image536.webp" style="width: 478px;" /></a></p>
+<div class="section" id="fabric">
+<h3>6.2.1 fabric<a class="headerlink" href="#fabric" title="Lien permanent vers ce titre"></a></h3>
+<div class="admonition-le-script-fabric-sh admonition">
+<p class="admonition-title"><strong>Le script fabric.sh</strong></p>
+<p>installé ici dans le répertoire « scripts » de Domoticz</p>
+<p><a class="reference internal" href="../_images/image537.webp"><img alt="image537" src="../_images/image537.webp" style="width: 256px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+echo $1
+echo $2
+a=&quot;#&quot;
+c=$1$a$2
+echo $c
+cd /home/michel/python
+fab maintask --don=$c  &gt; /home/michel/fab.log 2&gt;&amp;1
+</pre></div>
+</div>
+<p>Pour tester le script, il est plus facile de travailler dans le répertoire USER, c’est l’objet de la création du lien symbolique vers le dossier python de Domoticz</p>
+<p><a class="reference internal" href="../_images/image538.webp"><img alt="image538" src="../_images/image538.webp" style="width: 608px;" /></a></p>
+<p><a class="reference internal" href="../_images/image539.webp"><img alt="image539" src="../_images/image539.webp" style="width: 548px;" /></a></p>
+</div>
+<div class="admonition-le-script-fabfile-py admonition">
+<p class="admonition-title"><strong>Le script fabfile.py</strong></p>
+<p><a class="reference internal" href="../_images/image540.webp"><img alt="image540" src="../_images/image540.webp" style="width: 306px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python2.7</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">fabric</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">fabric.tasks</span> <span class="kn">import</span> <span class="n">task</span>
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">subtask</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">donn</span><span class="p">):</span>
+  <span class="k">with</span> <span class="n">ctx</span><span class="o">.</span><span class="n">cd</span><span class="p">(</span><span class="s2">&quot;/www/monitor/python&quot;</span><span class="p">):</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">donn</span><span class="p">)</span>
+<span class="nd">@task</span><span class="p">(</span> <span class="n">optional</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;don&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">maintask</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">don</span> <span class="o">=</span> <span class="kc">None</span> <span class="p">):</span>
+  <span class="n">con</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;192.168.1.7&#39;</span><span class="p">,</span> <span class="n">user</span> <span class="o">=</span> <span class="s1">&#39;michel&#39;</span><span class="p">,</span> <span class="n">connect_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="s1">&#39;PASS&#39;</span><span class="p">})</span>
+  <span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;python3 sqlite_mysql.py &quot;</span>
+  <span class="n">donn</span> <span class="o">=</span> <span class="n">file</span><span class="o">+</span><span class="n">don</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">subtask</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="n">donn</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><em>Le script fabfile.py appelle sur le serveur qui héberge la BD le script sqlite_mysql.py</em>;</p>
+</div>
+<p><strong>sqlite_mysql.py n’est exécuté que lorsqu’il est appelé, il n’écoute pas en permanence si des données sont envoyées</strong></p>
+<p><a class="reference internal" href="../_images/image541.webp"><img alt="image541" src="../_images/image541.webp" style="width: 543px;" /></a></p>
+<p><strong>POUR RESUMER</strong> : sur le serveur de Domoticz</p>
+<ul class="simple">
+<li><p>script LUA-&gt;MENU Domoticz évènements</p></li>
+<li><p>script fabric.sh-&gt; ../domoticz/scripts/</p></li>
+<li><p>script fabfile.py-&gt;../domoticz/scripts/python/   avec ls /home/USER/python/</p></li>
+<li><p>fab.log-&gt; /home/USER</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="sur-le-serveur-de-la-base-de-donnees">
+<h2>6.3 Sur le serveur de la base de données<a class="headerlink" href="#sur-le-serveur-de-la-base-de-donnees" title="Lien permanent vers ce titre"></a></h2>
+<p>Le serveur Nginx avec aussi Monitor,</p>
+<p>réception des datas : Le script python <span class="darkblue">sqlite_mysql.py</span> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">mysql.connector</span>
+<span class="kn">from</span> <span class="nn">mysql.connector</span> <span class="kn">import</span> <span class="n">Error</span>
+<span class="n">total_arg</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">total_arg</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">x</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">=</span><span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">champ</span><span class="o">=</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">val1</span><span class="o">=</span><span class="n">temp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">val</span><span class="o">=</span><span class="n">temp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">==</span><span class="mi">7</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">champ2</span><span class="o">=</span><span class="n">temp</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">val2</span><span class="o">=</span><span class="n">temp</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">connection</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+          <span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+          <span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;michel&quot;</span><span class="p">,</span>
+       <span class="n">password</span> <span class="o">=</span> <span class="n">xxxxxxxx</span><span class="s2">&quot;,</span>
+       <span class="n">database</span> <span class="o">=</span> <span class="s2">&quot;domoticz&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">connection</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+        <span class="n">db_Info</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">get_server_info</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connected to MySQL Server version &quot;</span><span class="p">,</span> <span class="n">db_Info</span><span class="p">)</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select database();&quot;</span><span class="p">)</span>
+        <span class="n">record</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You&#39;re connected to database: &quot;</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">==</span><span class="mi">7</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO &quot;</span><span class="o">+</span><span class="n">table</span><span class="o">+</span><span class="s2">&quot; (date,&quot;</span><span class="o">+</span><span class="n">champ</span><span class="o">+</span><span class="s2">&quot;,&quot;</span><span class="o">+</span><span class="n">champ2</span><span class="o">+</span><span class="s2">&quot;) VALUES(%&gt;</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO &quot;</span><span class="o">+</span><span class="n">table</span><span class="o">+</span><span class="s2">&quot; (date,&quot;</span><span class="o">+</span><span class="n">champ</span><span class="o">+</span><span class="s2">&quot;) VALUES(</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val1</span><span class="p">)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+    <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">rowcount</span><span class="p">,</span> <span class="s2">&quot;Record inserted successfully into Laptop table&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error while connecting to MySQL&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()):</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image542.webp"><img alt="image542" src="../_images/image542.webp" style="width: 602px;" /></a></p>
+</div>
+<div class="section" id="dans-monitor">
+<h2>6.4 Dans Monitor<a class="headerlink" href="#dans-monitor" title="Lien permanent vers ce titre"></a></h2>
+<p>Le cache pour jpgraph est présent :</p>
+<p><a class="reference internal" href="../_images/image543.webp"><img alt="image543" src="../_images/image543.webp" style="width: 205px;" /></a></p>
+<p>Jpgraph est installé à la racine de monitor</p>
+<p><a class="reference internal" href="../_images/image544.webp"><img alt="image544" src="../_images/image544.webp" style="width: 215px;" /></a></p>
+<div class="section" id="la-page-graphique-php">
+<h3>6.4.1 la page graphique.php<a class="headerlink" href="#la-page-graphique-php" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image545.webp"><img alt="image545" src="../_images/image545.webp" style="width: 602px;" /></a></p>
+<ul class="simple">
+<li><p><em>css</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#graphic{color:white;}</span>
+<span class="n">graphique_img</span><span class="p">{</span><span class="nb">max</span><span class="o">-</span><span class="n">width</span><span class="p">:</span><span class="mi">700</span><span class="n">px</span><span class="p">;</span><span class="n">margin</span><span class="p">:</span><span class="mi">0</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">0</span> <span class="mi">1</span><span class="n">px</span><span class="p">,;</span><span class="n">width</span><span class="p">:</span><span class="mi">100</span><span class="o">%</span><span class="p">;}</span>
+<span class="n">graphiques</span><span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">green</span><span class="p">;}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="la-fonction-graph">
+<h3>6.4.2 la fonction graph<a class="headerlink" href="#la-fonction-graph" title="Lien permanent vers ce titre"></a></h3>
+<p><strong>dans fonctions.php</strong> et appelée par ajax.php, la fonction <span class="darkblue">graph()</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if ($app==&quot;graph&quot;) {graph($device,$variable);}
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image548.webp"><img alt="image548" src="../_images/image548.webp" style="width: 700px;" /></a></p>
+<p><strong>L’accès à base de données</strong>, le fichier PHP: <span class="darkblue">include/export_tab_sqli.php</span> et traitement des données par la BD</p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/export_tab_sqli.php</a></p>
+<p><a class="reference internal" href="../_images/image549.webp"><img alt="image549" src="../_images/image549.webp" style="width: 593px;" /></a></p>
+<p><em>Suite de graph()</em></p>
+<p><a class="reference internal" href="../_images/image550.webp"><img alt="image550" src="../_images/image550.webp" style="width: 602px;" /></a></p>
+<div class="admonition hint">
+<p class="admonition-title">Indication</p>
+<p>La documentation sur jpgraph : <a class="reference external" href="https://jpgraph.net/download/manuals/chunkhtml/index.html">https://jpgraph.net/download/manuals/chunkhtml/index.html</a></p>
+</div>
+</div>
+<div class="section" id="autres-fichiers-php">
+<h3>6.4.3 autres fichiers PHP<a class="headerlink" href="#autres-fichiers-php" title="Lien permanent vers ce titre"></a></h3>
+<ul>
+<li><p>index_loc.php (en général ne pas modifier)</p></li>
+<li><p>config.php, header.php (en général ne pas modifier)</p>
+<blockquote>
+<div><p>Mettre la variable à « true » dans config.php</p>
+</div></blockquote>
+</li>
+</ul>
+<p><a class="reference internal" href="../_images/image551.webp"><img alt="image551" src="../_images/image551.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="copies-decran">
+<h3>6.4.4 copies d’écran<a class="headerlink" href="#copies-decran" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image552.webp"><img alt="image552" src="../_images/image552.webp" style="width: 525px;" /></a></p>
+<p><a class="reference internal" href="../_images/image553.webp"><img alt="image553" src="../_images/image553.webp" style="width: 535px;" /></a></p>
+<p><a class="reference internal" href="../_images/image554.webp"><img alt="image554" src="../_images/image554.webp" style="width: 535px;" /></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="alarme.html" class="btn btn-neutral float-left" title="5. L’ALARME" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="mur_cameras.html" class="btn btn-neutral float-right" title="7. MUR de CAMERAS" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

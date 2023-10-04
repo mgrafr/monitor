@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16. Ajouter des pages ou des alertes &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="17. DIY" href="diy.html" />
+    <link rel="prev" title="15. EXEMPLES" href="exemples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">16. Ajouter des pages ou des alertes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ajouter-un-plan-ex-1er-etage">16.1 Ajouter un plan (ex : 1er étage)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ajouter-une-page-vierge">16.2 Ajouter une page vierge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ajouter-une-alerte-une-alarme">16.3 Ajouter une alerte, une alarme, …</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil">16.3.1 Exemple avec un rappel pour la prise de médicaments sur la page d’accueil</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">16. Ajouter des pages ou des alertes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/ajout_page_alertes.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="ajouter-des-pages-ou-des-alertes">
+<h1>16. Ajouter des pages ou des alertes<a class="headerlink" href="#ajouter-des-pages-ou-des-alertes" title="Lien permanent vers ce titre"></a></h1>
+<p><em>non incluses dans le programme</em></p>
+<div class="section" id="ajouter-un-plan-ex-1er-etage">
+<h2>16.1 Ajouter un plan (ex : 1er étage)<a class="headerlink" href="#ajouter-un-plan-ex-1er-etage" title="Lien permanent vers ce titre"></a></h2>
+<ul class="simple">
+<li><p><strong>créer la page</strong> avec le plan, voir le § <a class="reference internal" href="plan_interieur.html#une-1ere-page-le-plan-interieur"><span class="std std-ref">2. Une 1ere PAGE : LE PLAN INTERIEUR</span></a></p></li>
+<li><p><strong>Ajouter la page à index_loc.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image901.webp"><img alt="image901" src="../_images/image901.webp" style="width: 534px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Ajouter la page au menu dans header.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image902.webp"><img alt="image902" src="../_images/image902.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Ajouter l’ID et les classes</strong>  <em>si ellesexistent au fichier mes_css.css</em></p></li>
+</ul>
+<p>ci-dessous les ID’s des pages existantes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ajouter-une-page-vierge">
+<h2>16.2 Ajouter une page vierge<a class="headerlink" href="#ajouter-une-page-vierge" title="Lien permanent vers ce titre"></a></h2>
+<p><em>affichage d’un sous domaine distant</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+session_start();
+$domaine=$_SESSION[&quot;domaine&quot;];
+if ($domaine==URLMONITOR) $lien_ID_MENU=NOM SOUS DOMAINE dans config.php;
+if ($domaine==IPMONITOR) $lien_ID MENU= NOM  IP dans config.php;;
+?&gt;
+&lt;!-- section TITRE start --&gt;
+&lt;!-- ================ --&gt;
+&lt;div id=&quot;ID du MENU&quot; &gt;
+     &lt;div class=&quot;container&quot;&gt;
+             &lt;div class=&quot;col-md-12&quot;&gt;
+       &lt;h1 id=&quot;about&quot; class=&quot;title&quot; style=&quot;position:relative;top:-30px;&quot;&gt;TITRE1 : &lt;span style=&quot;color:blue&quot;&gt;TITRE2&lt;/span&gt;&lt;/h1&gt;
+                      &lt;iframe id=&quot;ID de l’IFRAME&quot; src=&quot;&lt;?php echo $lien_IDMENU;?&gt;&quot; frameborder=&quot;0&quot; &gt;&lt;/iframe&gt;
+             &lt;/div&gt;
+        &lt;/div&gt;
+                &lt;/div&gt;
+&lt;!-- section TITRE fin--&gt;
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image903.webp"><img alt="image903" src="../_images/image903.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="ajouter-une-alerte-une-alarme">
+<h2>16.3 Ajouter une alerte, une alarme, …<a class="headerlink" href="#ajouter-une-alerte-une-alarme" title="Lien permanent vers ce titre"></a></h2>
+<div class="section" id="exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil">
+<h3>16.3.1 Exemple avec un rappel pour la prise de médicaments sur la page d’accueil<a class="headerlink" href="#exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil" title="Lien permanent vers ce titre"></a></h3>
+<ul class="simple">
+<li><p><em>Télécharger une icones ou image svg</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image904.webp"><img alt="image904" src="../_images/image904.webp" style="width: 416px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Dans Domoticz</strong> : <em>Créer la variable</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image905.webp"><img alt="image905" src="../_images/image905.webp" style="width: 575px;" /></a></p>
+<p><em>Dans le script notifications_timer</em> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">médicaments</span>
+<span class="n">elseif</span> <span class="p">(</span><span class="n">time</span><span class="o">==</span><span class="s1">&#39;20:00&#39;</span> <span class="ow">and</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pilule_tension&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="n">then</span>
+     <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pilule_tension&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;pilule_michel&#39;</span><span class="p">)</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p><em>Dans le script notifications_variables (pour une alerte sms)</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="p">{</span>
+     <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="n">variables</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;pilule_tension&#39;</span>  <span class="p">}</span>
+     <span class="p">},</span>
+     <span class="n">execute</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">domoticz</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
+         <span class="o">--</span><span class="n">domoticz</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Variable &#39;</span> <span class="o">..</span> <span class="n">variable</span><span class="o">.</span><span class="n">name</span> <span class="o">..</span> <span class="s1">&#39; was changed&#39;</span><span class="p">,</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">LOG_INFO</span><span class="p">)</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pilule_tension&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="n">then</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pilule_tension&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">~=</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="n">then</span>
+                  <span class="n">txt</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;pilule_tension&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;médicaments&#39;</span><span class="p">)</span>
+              <span class="n">alerte_gsm</span><span class="p">(</span><span class="s1">&#39;alerteù&#39;</span><span class="o">..</span><span class="n">txt</span><span class="p">)</span>
+              <span class="n">end</span>
+         <span class="n">end</span>
+</pre></div>
+</div>
+<p><em>Dans la base de données SQL</em> :</p>
+<p>La table « dispositifs »</p>
+<p><a class="reference internal" href="../_images/image908.webp"><img alt="image908" src="../_images/image908.webp" style="width: 502px;" /></a></p>
+<p>La table « text_image » :</p>
+<p><a class="reference internal" href="../_images/image909.webp"><img alt="image909" src="../_images/image909.webp" style="width: 432px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Dans monitor</strong> :  <em>Accueil.php</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm pilule&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;annul_pilule&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;30&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Annulation de l&#39;</span><span class="se">\a</span><span class="s2">lerte pilule michel&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;pilule&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><em>Les styles css</em> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">pilule</span><span class="p">{</span><span class="n">position</span><span class="p">:</span> <span class="n">relative</span><span class="p">;</span><span class="n">top</span><span class="p">:</span> <span class="o">-</span><span class="mi">300</span><span class="n">px</span><span class="p">;</span><span class="n">width</span><span class="p">:</span> <span class="mi">50</span><span class="n">px</span><span class="p">;</span><span class="n">left</span><span class="p">:</span> <span class="mi">220</span><span class="n">px</span><span class="p">;}</span>
+</pre></div>
+</div>
+<p><em>Les scripts dans footer.php</em> :</p>
+<p><a class="reference internal" href="../_images/image912.webp"><img alt="image912" src="../_images/image912.webp" style="width: 700px;" /></a></p>
+<p><em>Affichage sur la page d’accueil</em> :</p>
+<p><a class="reference internal" href="../_images/image913.webp"><img alt="image913" src="../_images/image913.webp" style="width: 503px;" /></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="exemples.html" class="btn btn-neutral float-left" title="15. EXEMPLES" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="diy.html" class="btn btn-neutral float-right" title="17. DIY" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18. Divers &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="19. UPDATE" href="update.html" />
+    <link rel="prev" title="17. DIY" href="diy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">18. Divers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#debian-installer-un-serveur-lamp-apache-mysql-php">18.1 Debian : Installer un serveur LAMP (Apache MySQL PHP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installer-paho-mqtt">18.2 Installer Paho-mqtt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#le-script-pour-envoyer-des-messages-mqtt-py">18.2.1 Le script pour envoyer des messages (mqtt.py)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#liaison-serie-domoticz-pi">18.3 Liaison série Domoticz-PI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commandes-de-lalarme-a-partir-dun-gsm">18.4 Commandes de l’alarme à partir d’un GSM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#donnees-compteur-linky">18.5 Données compteur Linky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complement-sur-lutilisation-des-mots-de-passe-cryptes-dans-domoticz">18.6 Complément sur l’utilisation des Mots de Passe cryptés dans Domoticz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pages-sans-rapport-avec-la-domotique">18.7 pages sans rapport avec la domotique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#les-recettes-de-cuisines-sur-la-tablette-domotique">18.7.1  Les recettes de cuisines sur la tablette domotique</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-de-domoticz-differentes-etapes-pour-ne-rien-oublier">18.8 migration de Domoticz différentes étapes pour ne rien oublier</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">18. Divers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/divers.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="divers">
+<h1>18. Divers<a class="headerlink" href="#divers" title="Lien permanent vers ce titre"></a></h1>
+<div class="section" id="debian-installer-un-serveur-lamp-apache-mysql-php">
+<h2>18.1 Debian : Installer un serveur LAMP (Apache MySQL PHP)<a class="headerlink" href="#debian-installer-un-serveur-lamp-apache-mysql-php" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image983.webp"><img alt="image983" src="../_images/image983.webp" style="width: 200px;" /></a></p>
+<p><a class="reference external" href="https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php">https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php</a></p>
+</div>
+<div class="section" id="installer-paho-mqtt">
+<h2>18.2 Installer Paho-mqtt<a class="headerlink" href="#installer-paho-mqtt" title="Lien permanent vers ce titre"></a></h2>
+<p><em>paho-mqtt est le code source pour la bibliothèque Python MQTT</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">paho</span><span class="o">-</span><span class="n">mqtt</span>
+</pre></div>
+</div>
+<div class="section" id="le-script-pour-envoyer-des-messages-mqtt-py">
+<h3>18.2.1 Le script pour envoyer des messages (mqtt.py)<a class="headerlink" href="#le-script-pour-envoyer-des-messages-mqtt-py" title="Lien permanent vers ce titre"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.7</span>
+   <span class="c1"># -*- coding: utf-8 -*-</span>
+   <span class="kn">import</span> <span class="nn">paho.mqtt.client</span> <span class="k">as</span> <span class="nn">mqtt</span>
+   <span class="kn">import</span> <span class="nn">json</span>
+   <span class="kn">import</span> <span class="nn">sys</span>
+   <span class="c1"># Variables et Arguments</span>
+   <span class="n">topic</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+   <span class="n">etat</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+   <span class="n">valeur</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+   <span class="n">MQTT_HOST</span> <span class="o">=</span> <span class="s2">&quot;192.168.1.42&quot;</span>
+   <span class="n">MQTT_PORT</span> <span class="o">=</span> <span class="mi">1883</span>
+   <span class="n">MQTT_KEEPALIVE_INTERVAL</span> <span class="o">=</span> <span class="mi">45</span>
+   <span class="n">MQTT_TOPIC</span> <span class="o">=</span> <span class="n">topic</span>
+   <span class="n">MQTT_MSG</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">etat</span><span class="p">:</span> <span class="n">valeur</span><span class="p">});</span>
+   <span class="c1">#</span>
+   <span class="k">def</span> <span class="nf">on_publish</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">mid</span><span class="p">):</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Message Publié...&quot;</span><span class="p">)</span>
+   <span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">rc</span><span class="p">):</span>
+     <span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">MQTT_TOPIC</span><span class="p">)</span>
+     <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">MQTT_TOPIC</span><span class="p">,</span> <span class="n">MQTT_MSG</span><span class="p">)</span>
+   <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">topic</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+     <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span> <span class="c1"># convertion en json</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">payload</span><span class="p">[</span><span class="s1">&#39;state_l2&#39;</span><span class="p">])</span>
+     <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+   <span class="c1"># Initiatlisation MQTT Client</span>
+   <span class="n">mqttc</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+   <span class="c1"># callback function</span>
+   <span class="n">mqttc</span><span class="o">.</span><span class="n">on_publish</span> <span class="o">=</span> <span class="n">on_publish</span>
+   <span class="n">mqttc</span><span class="o">.</span><span class="n">on_connect</span> <span class="o">=</span> <span class="n">on_connect</span>
+   <span class="n">mqttc</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
+   <span class="c1"># Connection avec le serveur MQTT</span>
+   <span class="n">mqttc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">MQTT_HOST</span><span class="p">,</span> <span class="n">MQTT_PORT</span><span class="p">,</span> <span class="n">MQTT_KEEPALIVE_INTERVAL</span><span class="p">)</span>
+   <span class="c1"># Loop forever</span>
+   <span class="n">mqttc</span><span class="o">.</span><span class="n">loop_forever</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour être sûr que le fichier est au bon format (Unix) : utiliser dos2unix , § <a class="reference internal" href="mur_de_commandes.html#probleme-de-lecture-de-fichier"><span class="std std-ref">8.2.1.1 Problème de lecture de fichier</span></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="liaison-serie-domoticz-pi">
+<h2>18.3 Liaison série Domoticz-PI<a class="headerlink" href="#liaison-serie-domoticz-pi" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Scripts dans Domoticz</em></p>
+<p>Ils sont exécutés en dehors du conteneur si Domoticz est sous Docker.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>La passerelle Zigbee 3.0 SonOff utilise le même driver série CP2102 -donc pour /dev/serial/by-id = IDENTIQUE</strong></p>
+</div>
+<ul class="simple">
+<li><p><strong>sms_dz.py</strong> : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_dz/py/sms_dz.py">https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_dz/py/sms_dz.py</a></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image987.webp"><img alt="image987" src="../_images/image987.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Modifier si besoin le numéro de la variable et le port de domoticz</em></p>
+</div>
+<p>Le démarrage automatique est assuré par systemd (voir § <a class="reference internal" href="app_externes.html#enregistrement-des-n-de-telephone"><span class="std std-ref">13.6.2.1 Enregistrement des n° de téléphone</span></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><em>voir http://domo-site.fr/accueil/dossiers/70 *(liaison série)</em></p>
+</div>
+<ul class="simple">
+<li><p><strong>aldz.py</strong>  voir § <a class="reference internal" href="app_externes.html#emission-sms"><span class="std std-ref">13.6.2 émission SMS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image988.webp"><img alt="image988" src="../_images/image988.webp" style="width: 468px;" /></a></p>
+<p>aldz.bak.dz, en absence de message</p>
+<p><a class="reference internal" href="../_images/image989.webp"><img alt="image989" src="../_images/image989.webp" style="width: 412px;" /></a></p>
+<div class="admonition-scripts-pi admonition">
+<p class="admonition-title"><strong>Scripts PI</strong></p>
+<ul class="simple">
+<li><p><strong>rec_sms_serie.py</strong> : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_PI8/rec_sms_serie.py">https://raw.githubusercontent.com/mgrafr/monitor/main/share/scripts_PI8/rec_sms_serie.py</a></p></li>
+</ul>
+<blockquote>
+<div><p>extrait:</p>
+<p><a class="reference internal" href="../_images/image990.webp"><img alt="image990" src="../_images/image990.webp" style="width: 645px;" /></a></p>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><span class="red">Utiliser localhost et non 127.0.0.1</span></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Si ce massage en bash</strong></p>
+<p><a class="reference internal" href="../_images/image991.webp"><img alt="image991" src="../_images/image991.webp" style="width: 644px;" /></a></p>
+<blockquote>
+<div><p>C’est un problème de mot de passe</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image992.webp"><img alt="image992" src="../_images/image992.webp" style="width: 413px;" /></a>
+<a class="reference internal" href="../_images/image993.webp"><img alt="image993" src="../_images/image993.webp" style="width: 643px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p><em>start_rec_sms.sh*</em></p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image994.webp"><img alt="image994" src="../_images/image994.webp" style="width: 410px;" /></a></p>
+<p>Démarrage auto avec systemd :</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">start</span> <span class="n">rec</span> <span class="n">sms</span> <span class="n">pour</span> <span class="n">Domoticz</span>
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">simple</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">michel</span><span class="o">/</span><span class="n">start_rec_sms</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">Restart</span><span class="o">=</span><span class="n">on</span><span class="o">-</span><span class="n">failure</span>
+<span class="n">RestartSec</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">KillMode</span><span class="o">=</span><span class="n">process</span>
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="commandes-de-lalarme-a-partir-dun-gsm">
+<h2>18.4 Commandes de l’alarme à partir d’un GSM<a class="headerlink" href="#commandes-de-lalarme-a-partir-dun-gsm" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Pour faciliter l’activation ou l’arrêt de l’alarme</em></p>
+<p>il est facile d’ajouter des codes au script du paragraphe précédent <a class="reference internal" href="#liaison-serie-domoticz-pi"><span class="std std-ref">18.3 Liaison série Domoticz-PI</span></a></p>
+<p>Extrait de <strong>rec_sms_serie.py</strong> installé sur le PI qui assure le monitoring , les notifications GSM et les sauvegardes
+ù
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Alon&quot;</span><span class="p">:</span>
+      <span class="n">domoticz</span><span class="o">=</span><span class="n">ip_domoticz</span>
+      <span class="n">ip_se</span><span class="o">=</span><span class="mi">1</span>
+      <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="s1">&#39;41&#39;</span>
+      <span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;switch&#39;</span>
+      <span class="n">params</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;On&#39;</span>
+<span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Aloff&quot;</span><span class="p">:</span>
+      <span class="n">domoticz</span><span class="o">=</span><span class="n">ip_domoticz</span>
+      <span class="n">ip_se</span><span class="o">=</span><span class="mi">1</span>
+      <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="s1">&#39;41&#39;</span>
+      <span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;switch&#39;</span>
+      <span class="n">params</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Off&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span class="red">Alon et Aloff</span> = Marche/Arrêt de l’alarme</p>
+</div>
+<p><a class="reference internal" href="../_images/image996.webp"><img alt="image996" src="../_images/image996.webp" style="width: 700px;" /></a></p>
+<p>Le switch domoticz : <a class="reference internal" href="../_images/image997.webp"><img alt="image997" src="../_images/image997.webp" style="width: 400px;" /></a></p>
+<p>voir le $ <a class="reference internal" href="alarme.html#dans-domoticz-les-interrupteurs-virtuels-les-variables"><span class="std std-ref">5.1 Dans Domoticz, les interrupteurs virtuels, les variables</span></a></p>
+</div>
+<div class="section" id="donnees-compteur-linky">
+<h2>18.5 Données compteur Linky<a class="headerlink" href="#donnees-compteur-linky" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Configuration après installation du plugin: https://github.com/guillaumezin/DomoticzLinky</em></p>
+<p><a class="reference internal" href="../_images/image998.webp"><img alt="image998" src="../_images/image998.webp" style="width: 570px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour la correspondance avec ENEDIS : Ne pas copier toute l’adresse http, s’arrêter après le code</p>
+<p><a class="reference internal" href="../_images/image999.webp"><img alt="image999" src="../_images/image999.webp" style="width: 601px;" /></a></p>
+</div>
+<p><a class="reference internal" href="../_images/image1000.webp"><img alt="image1000" src="../_images/image1000.webp" style="width: 596px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Dans monitor</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1001.webp"><img alt="image1001" src="../_images/image1001.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1002.webp"><img alt="image1002" src="../_images/image1002.webp" style="width: 650px;" /></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p>§ <a class="reference internal" href="exemples.html#ajout-dun-dispositif"><span class="std std-ref">15.1 ajout d’un dispositif</span></a></p>
+</div>
+<p><a class="reference internal" href="../_images/image1003.webp"><img alt="image1003" src="../_images/image1003.webp" style="width: 519px;" /></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p>§  <a class="reference internal" href="graphiques.html#grahiques-base-de-donnees"><span class="std std-ref">6. GRAHIQUES &amp; BASE DE DONNEES</span></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Les modifications dans Domoticz</strong>   <em>export_sql</em></p></li>
+</ul>
+<p>pour enregistrer dans la BD SQL, voir §  <a class="reference internal" href="graphiques.html#dans-domoticz"><span class="std std-ref">6.2 Dans Domoticz</span></a></p>
+<p><a class="reference internal" href="../_images/image1004.webp"><img alt="image1004" src="../_images/image1004.webp" style="width: 596px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1005.webp"><img alt="image1005" src="../_images/image1005.webp" style="width: 478px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Le compteur est ajouté au plan</strong> , les données sont disponibles pour monitor : voir § <a class="reference internal" href="configuration_minimum.html#status-variables-devices-zone-et-device-plan"><span class="std std-ref">1.2.1.1 status_variables , devices_zone et device_plan</span></a></p></li>
+<li><p><strong>Table dispositifs</strong> : <em>création du dispositif</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1006.webp"><img alt="image1006" src="../_images/image1006.webp" style="width: 700px;" /></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p>le § <a class="reference internal" href="bien_debuter.html#les-dispositifs"><span class="std std-ref">0.3.2 Les Dispositifs</span></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Table energie</strong> : création de la table</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1007.webp"><img alt="image1007" src="../_images/image1007.webp" style="width: 700px;" /></a></p>
+<p>voir un exemple : <a class="reference internal" href="diy.html#creation-des-tables-ph-redox-temp"><span class="std std-ref">17.1.2. Création des tables PH, Redox, temp, …</span></a></p>
+<ul class="simple">
+<li><p><strong>Fichier json</strong> envoyé par domoticz :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1008.webp"><img alt="image1008" src="../_images/image1008.webp" style="width: 406px;" /></a></p>
+<div class="admonition-les-fichiers-modifies-dans-monitor admonition">
+<p class="admonition-title"><strong>Les fichiers modifiés dans monitor</strong></p>
+<ul class="simple">
+<li><p><strong>Interieur.php</strong> : <em>ajout de l’image svg</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;div id=&quot;linky&quot;&gt;&lt;?php include (&#39;linky_svg.php&#39;);?&gt;&lt;/div&gt;
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1009.webp"><img alt="image1009" src="../_images/image1009.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p><strong>graphiques.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1010.webp"><img alt="image1010" src="../_images/image1010.webp" style="width: 700px;" /></a></p>
+</div>
+</div>
+<div class="section" id="complement-sur-lutilisation-des-mots-de-passe-cryptes-dans-domoticz">
+<h2>18.6 Complément sur l’utilisation des Mots de Passe cryptés dans Domoticz<a class="headerlink" href="#complement-sur-lutilisation-des-mots-de-passe-cryptes-dans-domoticz" title="Lien permanent vers ce titre"></a></h2>
+<p><em>Une des solutions pour crypter et décrypter les mots de passe</em></p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p>Codage : <a class="reference external" href="https://www.base64encode.org/">https://www.base64encode.org/</a></p>
+<p><a class="reference internal" href="../_images/image1011.webp"><img alt="image1011" src="../_images/image1011.webp" style="width: 593px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p><strong>Décodage</strong> , <em>Extrait du script maj-services.lua</em></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">chargement</span> <span class="n">fichier</span> <span class="n">contenant</span> <span class="n">les</span> <span class="n">variables</span> <span class="n">de</span> <span class="n">configuration</span>
+<span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+<span class="n">require</span> <span class="s1">&#39;connect&#39;</span>
+<span class="n">local</span> <span class="n">base64</span> <span class="o">=</span> <span class="n">require</span><span class="s1">&#39;base64&#39;</span>
+<span class="n">local</span> <span class="n">user_free</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">login_free</span><span class="p">);</span><span class="n">local</span> <span class="n">passe_free</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">pass_free</span><span class="p">);</span>
+<span class="n">local</span> <span class="n">sms_free</span><span class="o">=</span><span class="s2">&quot;curl --insecure  &#39;https://smsapi.free-mobile.fr/sendmsg?user=&quot;</span><span class="o">..</span><span class="n">user_free</span><span class="o">..</span><span class="s2">&quot;&amp;pass=&quot;</span><span class="o">..</span><span class="n">passe_free</span><span class="o">..</span><span class="s2">&quot;&amp;msg=poubelle&#39; &gt;&gt; /home/michel/OsExecute.log 2&gt;&amp;1&quot;</span>
+</pre></div>
+</div>
+<p>voir ce § <a class="reference internal" href="administration.html#connect-lua"><span class="std std-ref">14.6.1.1 connect.lua</span></a></p>
+</div>
+<div class="section" id="pages-sans-rapport-avec-la-domotique">
+<h2>18.7 pages sans rapport avec la domotique<a class="headerlink" href="#pages-sans-rapport-avec-la-domotique" title="Lien permanent vers ce titre"></a></h2>
+<div class="section" id="les-recettes-de-cuisines-sur-la-tablette-domotique">
+<h3>18.7.1  Les recettes de cuisines sur la tablette domotique<a class="headerlink" href="#les-recettes-de-cuisines-sur-la-tablette-domotique" title="Lien permanent vers ce titre"></a></h3>
+<p><a class="reference internal" href="../_images/image1015.webp"><img alt="image1015" src="../_images/image1015.webp" style="width: 528px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<blockquote>
+<div><p><strong>Comme pour chaque ajout de page , il faut modifier les fichiers</strong> :</p>
+<ul class="simple">
+<li><p>mes.css.css</p></li>
+<li><p>config.php</p></li>
+<li><p>index_loc.php</p></li>
+<li><p>header.php</p></li>
+</ul>
+</div></blockquote>
+<p><em>et parfois le fichier</em> <span class="darkblue">big-Slide.js</span> , si l’on doit modifier la largeur du menu § <a class="reference internal" href="configuration_minimum.html#ajuster-le-menu-au-nombre-de-pages"><span class="std std-ref">1.7 Ajuster le menu au nombre de pages</span></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1016.webp"><img alt="image1016" src="../_images/image1016.webp" style="width: 279px;" /></a></p>
+</div></blockquote>
+</div>
+<ul class="simple">
+<li><p><strong>le fichier recettes.php</strong>  <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/recettes.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/recettes.php</a></p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1018.webp"><img alt="image1018" src="../_images/image1018.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Dans fonctions.php</strong>  <em>sql_app()</em></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1019.webp"><img alt="image1019" src="../_images/image1019.webp" style="width: 620px;" /></a></p>
+</div>
+</div>
+<div class="section" id="migration-de-domoticz-differentes-etapes-pour-ne-rien-oublier">
+<h2>18.8 migration de Domoticz différentes étapes pour ne rien oublier<a class="headerlink" href="#migration-de-domoticz-differentes-etapes-pour-ne-rien-oublier" title="Lien permanent vers ce titre"></a></h2>
+<div class="admonition-exemple-migration-vers-docker admonition">
+<p class="admonition-title"><strong>Exemple migration vers Docker.</strong></p>
+<ul class="simple">
+<li><p>Modifier les IP/PORT de Domoticz, Zwavejs2mqtt, Zigbee2mqtt,…dans le fichier de configuration de monitor.</p></li>
+<li><p>Pour les scripts externes non gérés dans le conteneur Domoticz ,installer les versions de python, node, … nécessaires, et les dépendances nécessaires ;par exemple pour la communication série de Domoticz , l’installation de python-periphery , le démarrage auto sur systemd ,…. Si l’API de Domoticz est utilisée dans ces scripts , modifier le Port de Domoticz</p></li>
+</ul>
+<blockquote>
+<div><p>Pour VOIP asterisk, modifier ip de domoticz pour la capture d’image (portier) ; pour appeler json de Domoticz depuis Docker, autoriser dans les paramètres de Domoticz le réseau 172.*.*.*</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Pour le monitoring Nagios, il faut indiquer les IP/PORT qui sont modifiés et les noms des VM Proxmox si Proxmox est utilisé.</p></li>
+<li><p>Si une nouvelle page doit être ajoutée à monitor, par exemple pour Zwave (OZW n’étant plus maintenu) : créer le sous-domaine pour l’accès distant et le certificat pour HTTPS (Letsencrypt-cerbot)</p></li>
+<li><p>Les dispositifs sont souvent difficiles à réveiller, s’ils sont réinstallés, modifier l’ID de Domoticz dans la base de données de monitor</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="diy.html" class="btn btn-neutral float-left" title="17. DIY" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="update.html" class="btn btn-neutral float-right" title="19. UPDATE" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

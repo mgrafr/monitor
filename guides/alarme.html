@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. L’ALARME &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="6. GRAHIQUES &amp; BASE DE DONNEES" href="graphiques.html" />
+    <link rel="prev" title="4. La page du plan extérieur" href="plan_exterieur.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. L’ALARME</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dans-domoticz-les-interrupteurs-virtuels-les-variables">5.1 Dans Domoticz, les interrupteurs virtuels, les variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#explications-concernant-modect">5.1.1 explications concernant MODECT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#jeton-zm">5.1.1.1 Jeton ZM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#le-script-lua">5.1.1.2 le script lua</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#construction-de-limage">5.2 Construction de l’image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#base-de-donnees">5.3 Base de données</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#le-php">5.4- Le PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#le-javascript-dans-footer-php-et-mes-js-js">5.5 Le Javascript, dans footer.php et mes_js.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comme-pour-les-autres-pages">5.6 -Comme pour les autres pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#affichage-dune-icone-sur-la-page-daccueil">5.7- Affichage d’une icône sur la page d’accueil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ameliorations-utiles">5.8 Améliorations utiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#la-mise-en-marche-automatiquement-de-lalarme-de-nuit">5.8.1- la mise en marche automatiquement de l’alarme de nuit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dans-domoticz">5.8.1.1 Dans Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dans-monitor">5.8.1.2 Dans Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#alarme-par-sms-gsm">5.8.2 Alarme par sms GSM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#version-avec-une-variable-domoticz">5.8.2.1 Version avec une variable Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-sans-variable-domoticz">5.8.2.2 Version sans variable Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#option-supplementaire-le-test-de-lenvoi-de-sms">5.8.2.3 Option supplémentaire : le test de l’envoi de SMS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#affichage-de-la-liste-des-cameras-modect">5.8.3- Affichage de la liste des caméras Modect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copie-ecran-de-la-derniere-version">5.8.5- Copie écran de la dernière version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">5. L’ALARME</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/alarme.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="lalarme">
+<h1>5. L’ALARME<a class="headerlink" href="#lalarme" title="Lien permanent vers ce titre"></a></h1>
+<p>Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du script python avec les codes retenus pour l’alarme. <a class="reference internal" href="divers.html#commandes-de-lalarme-a-partir-dun-gsm"><span class="std std-ref">18.4 Commandes de l’alarme à partir d’un GSM</span></a></p>
+<p><a class="reference internal" href="../_images/image408.webp"><img alt="image408" src="../_images/image408.webp" style="width: 650px;" /></a></p>
+<p><em>Pour entrer le mot de passe : redirection vers la page administration</em></p>
+<p>Le script LUA dans Evènements de Domoticz : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_intrusion.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_intrusion.lua</a></p>
+<div class="section" id="dans-domoticz-les-interrupteurs-virtuels-les-variables">
+<h2>5.1 Dans Domoticz, les interrupteurs virtuels, les variables<a class="headerlink" href="#dans-domoticz-les-interrupteurs-virtuels-les-variables" title="Lien permanent vers ce titre"></a></h2>
+<p><strong>les interrupteurs virtuels</strong></p>
+<p>Les boutons poussoir marche/arrêt pour les commandes :</p>
+<ul class="simple">
+<li><p>m/a alarme de nuit</p></li>
+<li><p>m/a alarme absence</p></li>
+<li><p>m/a al_nuit_auto</p></li>
+<li><p>m/a sirène</p></li>
+<li><p>m/a mode detect des caméras</p></li>
+<li><p>poussoir de reset des valeurs de Domoticz,</p></li>
+<li><p>activation/désactivation de la sirène : permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF</p></li>
+</ul>
+<p><strong>Option</strong> : allumages de lampes :</p>
+<p>Dans ce tuto : lampe_salon (lampe commandée par le 433MHz avec une interface Sonoff modifié, voir le site domo-site.fr</p>
+<p><a class="reference internal" href="../_images/image409.webp"><img alt="image409" src="../_images/image409.webp" style="width: 427px;" /></a></p>
+<p>Pour le test sirène : un interrupteur « PUSH »</p>
+<p><a class="reference internal" href="../_images/image410.webp"><img alt="image410" src="../_images/image410.webp" style="width: 450px;" /></a></p>
+<p>On ajoute les dispositifs au plan ;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>le plan peut se résumer à un simple cadre ou être très simplifié, il ne sert qu’à regrouper les dispositifs pour récupérer les données avec un seul appel à l’API json</p>
+</div>
+<p><a class="reference internal" href="../_images/image414.webp"><img alt="image414" src="../_images/image414.webp" style="width: 626px;" /></a></p>
+<p><a class="reference internal" href="../_images/image417.webp"><img alt="image417" src="../_images/image417.webp" style="width: 533px;" /></a></p>
+<p><strong>Les variables, initialisée</strong> à 0</p>
+<ul class="simple">
+<li><p><strong>ma-alarme</strong> :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image418.webp"><img alt="image418" src="../_images/image418.webp" style="width: 434px;" /></a></p>
+<p>o       0  =  alarme non activée,</p>
+<p>o       1  = alarme absence activée, les capteurs PIR sont pris en compte</p>
+<p>o       2  = alarme nuit activée, les capteurs PIR sont ignorés</p>
+<ul class="simple">
+<li><p><strong>modect</strong> : pour la mise en service de la détection par caméras (non utilisé actuellement, pour une notification en page d’accueil ou autre …)</p></li>
+<li><p><strong>porte-ouverte</strong></p></li>
+<li><p><strong>intrusion</strong></p></li>
+<li><p><strong>alarme</strong> : est utilisée pour un affichage sur la page d’accueil ;</p></li>
+<li><p><strong>activation-sir-txt</strong>, texte activation de la sirène : activer ou désactiver</p></li>
+<li><p><strong>Notifications</strong> : notifications_devices.lua, notifications_timer.lua</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image423.webp"><img alt="image423" src="../_images/image423.webp" style="width: 379px;" /></a></p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua</a></p>
+<p><a class="reference internal" href="../_images/image424.webp"><img alt="image424" src="../_images/image424.webp" style="width: 379px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>ATTENTION</strong> :
+L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents et les espaces, utiliser des Under scores(ou autre signe) pour séparer les mots</p>
+</div>
+<p>Script <span class="darkblue">notifications_variables.lua</span>, lignes concernées</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="n">then</span>
+                  <span class="n">txt</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;porte-ouverte&quot;</span><span class="p">)</span>
+              <span class="n">alerte_gsm</span><span class="p">(</span><span class="s1">&#39;alarmeù&#39;</span><span class="o">..</span><span class="n">txt</span><span class="p">)</span>
+<span class="n">end</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="n">then</span>
+                  <span class="n">txt</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span>
+              <span class="n">alerte_gsm</span><span class="p">(</span><span class="s1">&#39;alarmeù&#39;</span><span class="o">..</span><span class="n">txt</span><span class="p">)</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>Script <span class="darkblue">notifications_timer.lua</span>, lignes concernées</p>
+<p>voir ce paragraphe  <a class="reference internal" href="configuration_minimum.html#scriptluatimer"><span class="std std-ref">script lua</span></a></p>
+<p><a class="reference internal" href="../_images/image426.webp"><img alt="image426" src="../_images/image426.webp" style="width: 633px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’utilisation de <span class="red">timer= at hh :mm-hh</span> :mm ne peut être utilisé ;</p>
+<p>j’ai essayé isTimer mais ça ne fonctionne que pour ON ; else avec isTimer ne fonctionne pas.</p>
+</div>
+<div class="admonition-des-explications-concrnant-le-script-alarme-intrusion-lua admonition">
+<p class="admonition-title"><strong>des explications concrnant le script alarme_intrusion.lua</strong></p>
+<p><a class="reference internal" href="../_images/image428.webp"><img alt="image428" src="../_images/image428.webp" style="width: 602px;" /></a></p>
+<p><a class="reference internal" href="../_images/image429.webp"><img alt="image429" src="../_images/image429.webp" style="width: 602px;" /></a></p>
+<p><strong>Pour activer ou désactiver la sirène</strong> :</p>
+<blockquote>
+<div><p>Pour les textes : notifications_devices.lua</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">activation</span> <span class="n">sirène</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;activation-sirene&#39;</span> <span class="ow">and</span>  <span class="n">device</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;activation-sir-txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;désactiver&quot;</span><span class="p">);</span>
+      <span class="k">else</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;activation-sir-txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;activer&quot;</span><span class="p">);</span>
+      <span class="n">end</span>
+</pre></div>
+</div>
+<p><em>Pour l’activation ou la désactivation</em> :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image431.webp"><img alt="image431" src="../_images/image431.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+<p><em>Pour allumer des lampes</em> :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image432.webp"><img alt="image432" src="../_images/image432.webp" style="width: 520px;" /></a></p>
+</div></blockquote>
+<p><em>Pour ajouter des dispositifs</em> :</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image433.webp"><img alt="image433" src="../_images/image433.webp" style="width: 597px;" /></a></p>
+</div></blockquote>
+</div>
+<p><strong>Le fichier pushover.sh</strong> :</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+TITLE=&quot;Alerte&quot;
+APP_TOKEN=&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;
+USER_TOKEN=&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;
+MESSAGE=$1
+echo $1
+curl -s -F &quot;token=$APP_TOKEN&quot; \
+-F &quot;user=$USER_TOKEN&quot; \
+-F &quot;title=$TITLE&quot; \
+-F &quot;message=$MESSAGE&quot; \
+https://api.pushover.net/1/messages.json
+</pre></div>
+</div>
+</div></blockquote>
+<p><em>Ou en Python</em> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/python</span>
+<span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span><span class="nn">sys</span>
+<span class="n">x</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;https://api.pushover.net/1/messages.json&quot;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">x</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Voir les pages web :</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://domo-site.fr/accueil/dossiers/10">http://domo-site.fr/accueil/dossiers/10</a></p></li>
+<li><p>Et <a class="reference external" href="http://domo-site.fr/accueil/dossiers/8">http://domo-site.fr/accueil/dossiers/8</a></p></li>
+</ul>
+<div class="admonition-resume-des-scripts-domoticz-concernes admonition">
+<p class="admonition-title"><strong>Résumé des scripts Domoticz concernés</strong></p>
+<p><a class="reference internal" href="../_images/image434.webp"><img alt="image434" src="../_images/image434.webp" style="width: 690px;" /></a></p>
+</div>
+<div class="section" id="explications-concernant-modect">
+<h3>5.1.1 explications concernant MODECT<a class="headerlink" href="#explications-concernant-modect" title="Lien permanent vers ce titre"></a></h3>
+<p>Si l’alarme absence est activée les caméras autorisées passent en mode MODECT automatiquement.</p>
+<p>Dans les autres cas Modect peut être activé manuellement.</p>
+<p><a class="reference internal" href="../_images/image435.webp"><img alt="image435" src="../_images/image435.webp" style="width: 521px;" /></a></p>
+<p><a class="reference internal" href="../_images/image436.webp"><img alt="image436" src="../_images/image436.webp" style="width: 452px;" /></a></p>
+<div class="section" id="jeton-zm">
+<h4>5.1.1.1 Jeton ZM<a class="headerlink" href="#jeton-zm" title="Lien permanent vers ce titre"></a></h4>
+<p>Dans fonctions.php :</p>
+<p><a class="reference internal" href="../_images/image437.webp"><img alt="image437" src="../_images/image437.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image438.webp"><img alt="image438" src="../_images/image438.webp" style="width: 644px;" /></a></p>
+<p><em>Le format du fichier est json pour une exploitation facile avec Domoticz</em></p>
+</div>
+<div class="section" id="le-script-lua">
+<h4>5.1.1.2 le script lua<a class="headerlink" href="#le-script-lua" title="Lien permanent vers ce titre"></a></h4>
+<p><em>dans :darkblue:`alarme_intrusion.lua`</em></p>
+<p><a class="reference internal" href="../_images/image439.webp"><img alt="image439" src="../_images/image439.webp" style="width: 661px;" /></a></p>
+<p>Le fichier <span class="darkblue">string_modect</span> est écrit automatiquement à partir de Zoneminder, il est visible dans « administration »</p>
+<p><a class="reference internal" href="../_images/image440.webp"><img alt="image440" src="../_images/image440.webp" style="width: 443px;" /></a></p>
+<p><a class="reference internal" href="../_images/image05.webp"><img alt="image05" src="../_images/image05.webp" style="width: 515px;" /></a></p>
+<p><em>Capture d’écran de ZM</em> :</p>
+<p><a class="reference internal" href="../_images/image441.webp"><img alt="image441" src="../_images/image441.webp" style="width: 595px;" /></a></p>
+<p>Le choix des caméras se fait dans la BD :</p>
+<p><a class="reference internal" href="../_images/image442.webp"><img alt="image442" src="../_images/image442.webp" style="width: 265px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="construction-de-limage">
+<h2>5.2 Construction de l’image<a class="headerlink" href="#construction-de-limage" title="Lien permanent vers ce titre"></a></h2>
+<p>On ajoute les composants avec Inkscape, les ID pour les changements de couleur, <em>pas besoin de onclick, il n’y a que des dispositifs virtuels</em>.</p>
+<p>La construction de la page est identique à celle du plan intérieur.</p>
+<p><a class="reference internal" href="../_images/image443.webp"><img alt="image443" src="../_images/image443.webp" style="width: 601px;" /></a></p>
+<p><a class="reference internal" href="../_images/image444.webp"><img alt="image444" src="../_images/image444.webp" style="width: 535px;" /></a></p>
+<p>Les boutons M/A sont réalisés avec 2 cercles de grandeur et de couleur différentes, les poussoirs simples (les mains) sont des icones téléchargées ;</p>
+<p>l’icône png de Domoticz a été convertie en svg.</p>
+<p><a class="reference internal" href="../_images/image445.webp"><img alt="image445" src="../_images/image445.webp" style="width: 148px;" /></a> <a class="reference internal" href="../_images/image446.webp"><img alt="image446" src="../_images/image446.webp" style="width: 101px;" /></a> <a class="reference internal" href="../_images/image447.webp"><img alt="image447" src="../_images/image447.webp" style="width: 81px;" /></a></p>
+<p>On ajoute des zones de textes pour la date, les messages ,…</p>
+<p><a class="reference internal" href="../_images/image448.webp"><img alt="image448" src="../_images/image448.webp" style="width: 507px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">text</span> <span class="n">xml</span><span class="p">:</span><span class="n">space</span><span class="o">=</span><span class="s2">&quot;preserve&quot;</span>
+<span class="n">style</span><span class="o">=</span><span class="s2">&quot;font-size:14.8002px;line-height:1.25;font-family:sans-serif;fill:#ffffff;stroke-width:1&quot;</span>
+<span class="n">x</span><span class="o">=</span><span class="s2">&quot;295&quot;</span>
+<span class="n">y</span><span class="o">=</span><span class="s2">&quot;93.74398&quot;</span>
+<span class="nb">id</span><span class="o">=</span><span class="s2">&quot;console1&quot;</span>
+<span class="n">transform</span><span class="o">=</span><span class="s2">&quot;scale(1.0550891,0.94778725)&quot;</span><span class="o">&gt;&lt;</span><span class="n">tspan</span>
+  <span class="n">sodipodi</span><span class="p">:</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;line&quot;</span>
+  <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;tspan1850&quot;</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">&quot;269.5726&quot;</span>
+  <span class="n">y</span><span class="o">=</span><span class="s2">&quot;93.74398&quot;</span>
+  <span class="n">style</span><span class="o">=</span><span class="s2">&quot;stroke-width:1&quot;</span><span class="o">&gt;</span><span class="n">txt</span><span class="o">&lt;/</span><span class="n">tspan</span><span class="o">&gt;&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>On enregistre l’image dans un fichier PHP, comme indiqué au paragraphe <a class="reference internal" href="plan_interieur.html#des-exemples-dautres-dispositifs"><span class="std std-ref">2.2 Des exemples d’autres dispositifs</span></a></p>
+<p>On peut aussi ajouter les ID en s’aidant de l’outil de dévelopement  (F12 du navigateur)</p>
+<p><a class="reference internal" href="../_images/image450.webp"><img alt="image450" src="../_images/image450.webp" style="width: 571px;" /></a></p>
+<div class="admonition-verifier-quil-ny-a-pas-de-doublon-did admonition">
+<p class="admonition-title"><strong>Vérifier qu’il n’y a pas de doublon d’ID</strong></p>
+<p>dans ce cas faire des remplacements :</p>
+<p>exemple: <strong>remplacer « pathxxxx »</strong> par « pathyyy »</p>
+<p>ou avec Notepad tous les ’’path remplacé par ‘’patha</p>
+</div>
+<div class="admonition-un-extrait-concernant-le-bouton-activation-desactivation-de-la-sirene admonition">
+<p class="admonition-title"><strong>Un extrait concernant le bouton « activation/désactivation de la sirène »</strong></p>
+<p><a class="reference internal" href="../_images/image451.webp"><img alt="image451" src="../_images/image451.webp" style="width: 602px;" /></a></p>
+</div>
+<div class="section" id="base-de-donnees">
+<h3>5.3 Base de données<a class="headerlink" href="#base-de-donnees" title="Lien permanent vers ce titre"></a></h3>
+<p><strong>Table « dispositifs »</strong></p>
+<p>Après avoir ajouté les ID : enregistrement des dispositifs virtuels dans la base de données ; On ajoute au dispositif dans la colonne pass : « <strong>pwdalarm</strong> » pour limiter l’accès ;(<span class="red">cette valeur peut être modifiée dans config.php</span>)</p>
+<p><a class="reference internal" href="../_images/image452.webp"><img alt="image452" src="../_images/image452.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image453.webp"><img alt="image453" src="../_images/image453.webp" style="width: 700px;" /></a></p>
+<p>Comme on peut le voir pour l’alarme absence il a été préféré l’ID du cercle à l’ID choisi avec Inkscape</p>
+<p><a class="reference internal" href="../_images/image454.webp"><img alt="image454" src="../_images/image454.webp" style="width: 554px;" /></a></p>
+<p><a class="reference internal" href="../_images/image455.webp"><img alt="image455" src="../_images/image455.webp" style="width: 700px;" /></a></p>
+<p><strong>Il est aussi possible de renommer l’ID du cercle.</strong></p>
+<p><em>les variables concernées</em></p>
+<p><a class="reference internal" href="../_images/image456.webp"><img alt="image456" src="../_images/image456.webp" style="width: 595px;" /></a></p>
+</div>
+</div>
+<div class="section" id="le-php">
+<h2>5.4- Le PHP<a class="headerlink" href="#le-php" title="Lien permanent vers ce titre"></a></h2>
+<ul class="simple">
+<li><p><strong>alarme.php</strong> :</p></li>
+</ul>
+<p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php</a></p>
+<p><a class="reference internal" href="../_images/image457.webp"><img alt="image457" src="../_images/image457.webp" style="width: 557px;" /></a></p>
+<ul class="simple">
+<li><p><strong>test_pass.php</strong> : surligné en jaune, pour admin.php, voir le § <a class="reference internal" href="administration.html#admin-php-info-admin-php-test-db-php-et-backup-bd"><span class="std std-ref">14.2 admin.php, info_admin.php, test_db.php et backup_bd</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image449.webp"><img alt="image449" src="../_images/image449.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image458.webp"><img alt="image458" src="../_images/image458.webp" style="width: 601px;" /></a></p>
+<p><a class="reference internal" href="../_images/image459.webp"><img alt="image459" src="../_images/image459.webp" style="width: 661px;" /></a></p>
+<p><a class="reference internal" href="../_images/image460.webp"><img alt="image460" src="../_images/image460.webp" style="width: 338px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">text</span> <span class="n">xml</span><span class="p">:</span><span class="n">space</span><span class="o">=</span><span class="s2">&quot;preserve&quot;</span>
+<span class="n">style</span><span class="o">=</span><span class="s2">&quot;font-size:14.868px;line-height:1.25;font-family:sans-serif;fill:#000000;stroke-width:0.999996;&quot;</span>
+<span class="n">x</span><span class="o">=</span><span class="s2">&quot;80.619217&quot;</span>
+<span class="n">y</span><span class="o">=</span><span class="s2">&quot;282.70932&quot;</span>
+<span class="nb">id</span><span class="o">=</span><span class="s2">&quot;text6416&quot;</span>
+<span class="n">transform</span><span class="o">=</span><span class="s2">&quot;scale(1.0628321,0.94088238)&quot;</span><span class="o">&gt;&lt;</span><span class="n">tspan</span>
+  <span class="n">sodipodi</span><span class="p">:</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;line&quot;</span>
+  <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;not&quot;</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">&quot;80.619217&quot;</span>
+  <span class="n">y</span><span class="o">=</span><span class="s2">&quot;282.70932&quot;</span>
+  <span class="n">style</span><span class="o">=</span><span class="s2">&quot;stroke-width:0.999996;fill:white;&quot;</span> <span class="o">/&gt;&lt;/</span><span class="n">text</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Mot de Passe</strong></p></li>
+</ul>
+<p><em>Le fichier config.php gère les mots de passe de l’alarme et de la commande des dispositifs (on/off)</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">mot</span> <span class="n">passe</span> <span class="n">alarme</span> <span class="n">et</span> <span class="n">administation</span> <span class="p">,</span> <span class="n">la</span> <span class="n">page</span> <span class="n">administration</span> <span class="n">est</span> <span class="n">ON</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;PWDALARM&#39;</span><span class="p">,</span><span class="s1">&#39;004546&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">mot</span> <span class="n">passe</span> <span class="n">alarme</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;NOM_PASS_AL&#39;</span><span class="p">,</span><span class="s1">&#39;pwdalarm&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nom</span> <span class="n">du</span> <span class="n">mot</span> <span class="n">de</span> <span class="n">passe</span> <span class="n">dans</span> <span class="n">la</span> <span class="n">BD</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TIME_PASS_AL&#39;</span><span class="p">,</span><span class="s1">&#39;3600&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">temps</span> <span class="n">de</span> <span class="n">validité</span> <span class="n">du</span> <span class="n">mot</span> <span class="n">de</span> <span class="n">passe</span>
+</pre></div>
+</div>
+<p><em>La fonction mdp() dans fonctions.php</em> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// --------------MOT de PASSE-----------------------------
+function mdp($mdp,$page_pass){// 1=commandes , 2=alarmes
+//if ($_SESSION[&quot;pec&quot;]==&quot;admin&quot;){echo &quot;azerty&quot;;$page_pass=3;}
+switch       ($page_pass) {
+case &quot;1&quot;:
+if ($mdp==PWDCOMMAND) {$mp=&quot;OK&quot;;$_SESSION[&#39;passwordc&#39;]=$mdp;}
+else {$mp=&quot;entrer le mot de passe&quot;;}
+break;
+case &quot;2&quot;:
+if ($mdp==PWDALARM) {$mp=&quot;OK&quot;;$_SESSION[&#39;passworda&#39;]=$mdp;$_SESSION[&#39;time&#39;]=time()+TIME_PASS_AL;}
+else {$mp=&quot;pasword non valide&quot;;}
+break;
+default:
+$mp=&quot;erreur&quot;;
+}
+$info=[&#39;statut&#39; =&gt; $mp];
+return $info;}
+</pre></div>
+</div>
+<p><strong>Le script qui commande les poussoirs M/A</strong></p>
+<p><a class="reference internal" href="../_images/image464.webp"><img alt="image464" src="../_images/image464.webp" style="width: 601px;" /></a></p>
+</div>
+<div class="section" id="le-javascript-dans-footer-php-et-mes-js-js">
+<h2>5.5 Le Javascript, dans footer.php et mes_js.js<a class="headerlink" href="#le-javascript-dans-footer-php-et-mes-js-js" title="Lien permanent vers ce titre"></a></h2>
+<ul class="simple">
+<li><p>Les scripts pour les mots de passe, dans js/mes_js.js</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image465.webp"><img alt="image465" src="../_images/image465.webp" style="width: 596px;" /></a></p>
+<ul class="simple">
+<li><p>Et le script pour le clavier affiché dans administration</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image466.webp"><img alt="image466" src="../_images/image466.webp" style="width: 440px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Sans mot de passe les commandes sont impossibles ; si le temps est dépassé pour l’utilisation du mot de passe, le bouton « Entrer votre mot de passe » apparait lors d’un click.</p>
+</div>
+<p><a class="reference internal" href="../_images/image467.webp"><img alt="image467" src="../_images/image467.webp" style="width: 337px;" /></a></p>
+<p><a class="reference internal" href="../_images/image468.webp"><img alt="image468" src="../_images/image468.webp" style="width: 535px;" /></a></p>
+<p><em>La fonction maj_services (footer.php) permet la mise à jour des textes « activer ou désactiver »</em></p>
+<ul class="simple">
+<li><p>Le script pour afficher une modale « modalink »</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image469.webp"><img alt="image469" src="../_images/image469.webp" style="width: 569px;" /></a></p>
+</div>
+<div class="section" id="comme-pour-les-autres-pages">
+<h2>5.6 -Comme pour les autres pages<a class="headerlink" href="#comme-pour-les-autres-pages" title="Lien permanent vers ce titre"></a></h2>
+<p>Il ne reste qu’à :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ajouter cette page dans config.php</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_ALARM&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">affichage</span> <span class="n">pour</span> <span class="n">utilisation</span> <span class="n">de</span> <span class="n">l</span><span class="s1">&#39;alarme</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Ce qui ajoutera l’alarme dans le menu</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image471.webp"><img alt="image471" src="../_images/image471.webp" style="width: 108px;" /></a></p>
+</div>
+<div class="section" id="affichage-dune-icone-sur-la-page-daccueil">
+<h2>5.7- Affichage d’une icône sur la page d’accueil<a class="headerlink" href="#affichage-dune-icone-sur-la-page-daccueil" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image472.webp"><img alt="image472" src="../_images/image472.webp" style="width: 379px;" /></a></p>
+<p>Pour l’alarme de nuit, pour ne pas oublier de l’annuler le matin si la fonction auto n’a pas été choisie</p>
+<ul class="simple">
+<li><p><strong>CSS</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#alarme_nuit{position:absolute;top:815px;left: 170px;width: 40px;}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Large</span> <span class="n">devices</span> <span class="p">(</span><span class="n">small</span> <span class="n">desktops</span> <span class="o">&lt;</span><span class="mi">535</span><span class="p">)</span> <span class="o">*/</span>
+<span class="nd">@media</span> <span class="p">(</span><span class="nb">max</span><span class="o">-</span><span class="n">width</span><span class="p">:</span><span class="mi">534</span><span class="n">px</span><span class="p">)</span> <span class="p">{</span><span class="c1">#alarme_nuit{top:580px;}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>accueil.php</strong> :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;aff_al&quot;</span> <span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;alarme_nuit&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;images/alarme_auto.svg&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;alarme&quot;</span> <span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Dans Domoticz : la variable a déjà été crée, quand l’alarme nuit est activée, son contenu :</p>
+<p><a class="reference internal" href="../_images/image476.webp"><img alt="image476" src="../_images/image476.webp" style="width: 617px;" /></a></p>
+<p>La table text_images : correspondance entre le texte et l’image</p>
+<p><a class="reference internal" href="../_images/image477.webp"><img alt="image477" src="../_images/image477.webp" style="width: 601px;" /></a></p>
+<p><a class="reference internal" href="../_images/image479.webp"><img alt="image479" src="../_images/image479.webp" style="width: 535px;" /></a></p>
+</div>
+<div class="section" id="ameliorations-utiles">
+<h2>5.8 Améliorations utiles<a class="headerlink" href="#ameliorations-utiles" title="Lien permanent vers ce titre"></a></h2>
+<div class="section" id="la-mise-en-marche-automatiquement-de-lalarme-de-nuit">
+<h3>5.8.1- la mise en marche automatiquement de l’alarme de nuit<a class="headerlink" href="#la-mise-en-marche-automatiquement-de-lalarme-de-nuit" title="Lien permanent vers ce titre"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>à certaines heures</p></li>
+</ul>
+</div></blockquote>
+<p>.  On ajoute un bouton avec Inkscape ; pour cela :
+.  On charge dans Inkscape le fichier PHP de l’image ; on accepte l’avertissement car ce n’est pas une extension svg.
+.  On modifie l’image ; on ajoute un bouton
+.  On sauvegarde l’image sous un autre nom, l’extension sera .svg; comme précédemment avec les images, on la copie dans le fichier avec l’extension PHP</p>
+<p><a class="reference internal" href="../_images/image480.webp"><img alt="image480" src="../_images/image480.webp" style="width: 650px;" /></a></p>
+<div class="section" id="dans-domoticz">
+<h4>5.8.1.1 Dans Domoticz<a class="headerlink" href="#dans-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<ul class="simple">
+<li><p>On ajoute un poussoir virtuel : al_nuit_auto</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image481.webp"><img alt="image481" src="../_images/image481.webp" style="width: 200px;" /></a> <a class="reference internal" href="../_images/image482.webp"><img alt="image482" src="../_images/image482.webp" style="width: 400px;" /></a></p>
+<ul class="simple">
+<li><p>On ajout le switch au plan</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image483.webp"><img alt="image483" src="../_images/image483.webp" style="width: 400px;" /></a></p>
+<p><a class="reference internal" href="../_images/image484.webp"><img alt="image484" src="../_images/image484.webp" style="width: 400px;" /></a></p>
+<ul class="simple">
+<li><p><em>Les scripts lua notification_timer.lua &amp; notification_devices.lua</em> :</p></li>
+</ul>
+<p>voir ce § <a class="reference internal" href="configuration_minimum.html#les-scripts-de-notifications-gerees-par-domoticz"><span class="std std-ref">1.5.1.2 les scripts de notifications gérées par Domoticz</span></a></p>
+<p><strong>Log</strong> :</p>
+<p><a class="reference internal" href="../_images/image485.webp"><img alt="image485" src="../_images/image485.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="section" id="dans-monitor">
+<h4>5.8.1.2 Dans Monitor<a class="headerlink" href="#dans-monitor" title="Lien permanent vers ce titre"></a></h4>
+<p>Pour cela on met à jour la table « dispositifs »</p>
+<p><a class="reference internal" href="../_images/image486.webp"><img alt="image486" src="../_images/image486.webp" style="width: 577px;" /></a></p>
+<p><a class="reference internal" href="../_images/image487.webp"><img alt="image487" src="../_images/image487.webp" style="width: 335px;" /></a></p>
+<p>Comme pour tous les switches la commande a été ajoutée automatiquement sur la page HTML :</p>
+<p><a class="reference internal" href="../_images/image488.webp"><img alt="image488" src="../_images/image488.webp" style="width: 700px;" /></a></p>
+<div class="admonition-en-page-daccueil-de-monitor admonition">
+<p class="admonition-title"><strong>En page d’accueil de monitor</strong></p>
+<p><a class="reference internal" href="../_images/image489.webp"><img alt="image489" src="../_images/image489.webp" style="width: 447px;" /></a></p>
+<ul class="simple">
+<li><p>La table text_image :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image490.webp"><img alt="image490" src="../_images/image490.webp" style="width: 424px;" /></a></p>
+<ul class="simple">
+<li><p>L’image :  L’image :</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image491.webp"><img alt="image491" src="../_images/image491.webp" style="width: 70px;" /></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="alarme-par-sms-gsm">
+<h3>5.8.2 Alarme par sms GSM<a class="headerlink" href="#alarme-par-sms-gsm" title="Lien permanent vers ce titre"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>si un modem GSM installé</p>
+</div>
+<div class="section" id="version-avec-une-variable-domoticz">
+<h4>5.8.2.1 Version avec une variable Domoticz<a class="headerlink" href="#version-avec-une-variable-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<p>Dans Domoticz</p>
+<ul class="simple">
+<li><p><strong>Création d’une variable</strong></p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image492.webp"><img alt="image492" src="../_images/image492.webp" style="width: 598px;" /></a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>odification légère du script dz</strong> pour modifier la valeur de la variable en cas d’intrusion :</p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image493.webp"><img alt="image493" src="../_images/image493.webp" style="width: 535px;" /></a></p>
+</div></blockquote>
+<div class="admonition-modification-du-script-qui-assure-la-liaison-avec-le-modem admonition">
+<p class="admonition-title"><strong>modification du script qui assure la liaison avec le modem</strong></p>
+<p>Voir <a class="reference external" href="http://domo-site.fr">http://domo-site.fr</a> pour le script non modifié et des infos sur le fonctionnement</p>
+<p>Pour récupérer les données de la variable Domoticz, on utilise l’API ;</p>
+<p>Une fois le SMS envoyé, on utilise l’API pour remettre à Zéro la variable.</p>
+<p><a class="reference internal" href="../_images/image494.webp"><img alt="image494" src="../_images/image494.webp" style="width: 632px;" /></a></p>
+<p>On simplifie le script avec 2 fonctions :</p>
+<p><a class="reference internal" href="../_images/image495.webp"><img alt="image495" src="../_images/image495.webp" style="width: 528px;" /></a></p>
+<p>Emplacement du script :</p>
+<p><a class="reference internal" href="../_images/image496.webp"><img alt="image496" src="../_images/image496.webp" style="width: 238px;" /></a></p>
+<p><em>aperçus d’une commande vers DZ et la réception d’une alarme</em></p>
+<p><a class="reference internal" href="../_images/image497.webp"><img alt="image497" src="../_images/image497.webp" style="width: 602px;" /></a></p>
+<p><a class="reference internal" href="../_images/image498.webp"><img alt="image498" src="../_images/image498.webp" style="width: 346px;" /></a></p>
+</div>
+</div>
+<div class="section" id="version-sans-variable-domoticz">
+<h4>5.8.2.2 Version sans variable Domoticz<a class="headerlink" href="#version-sans-variable-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<p><strong>Avec un reload d’un module python</strong></p>
+<p>C’est la version que j’ai retenue</p>
+<p>On utilise un module python en import reload et on modifie ce module :</p>
+<ul class="simple">
+<li><p>Avec Domoticz pour envoyer un message</p></li>
+<li><p>Avec python pour une réinitialisation après l’envoi du message</p></li>
+</ul>
+<p><strong>Création d’un fichier python</strong> : <span class="darkblue">aldz.py:darkblue:</span>, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.7 -*- coing: utf-8 -*-</span>
+<span class="n">x</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
+</pre></div>
+</div>
+<p>On fait une copie de ce fichier : <span class="darkblue">aldz.bak.py</span> : ce fichier remplacera le fichier original pour remettre à 0 la variable et cesser d’envoyer des messages.</p>
+<p><a class="reference internal" href="../_images/image500.webp"><img alt="image500" src="../_images/image500.webp" style="width: 311px;" /></a></p>
+<p><strong>Dans Domoticz</strong>, pas besoin de créer une variable, simplement modifier le fichier aldz.py pour inclure à la variable x, le texte du SMS</p>
+<p><a class="reference internal" href="../_images/image501.webp"><img alt="image501" src="../_images/image501.webp" style="width: 575px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Attention</strong> :  comme déjà indiqué, si modem Ebyte, pas d’espaces et accents</p>
+</div>
+<p>Le fichier <span class="darkblue">sms_dz</span> est modifié (simplifié) :</p>
+<p><a class="reference internal" href="../_images/image502.webp"><img alt="image502" src="../_images/image502.webp" style="width: 570px;" /></a></p>
+</div>
+<div class="section" id="option-supplementaire-le-test-de-lenvoi-de-sms">
+<h4>5.8.2.3 Option supplémentaire : le test de l’envoi de SMS<a class="headerlink" href="#option-supplementaire-le-test-de-lenvoi-de-sms" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image503.webp"><img alt="image503" src="../_images/image503.webp" style="width: 472px;" /></a></p>
+<ul class="simple">
+<li><p>Dans l’image de l’alarme : on ajoute,</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image504.webp"><img alt="image504" src="../_images/image504.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p>Dans Domoticz : on ajoute un interrupteur virtuel</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image504.webp"><img alt="image507" src="../_images/image504.webp" style="width: 332px;" /></a></p>
+<p><a class="reference internal" href="../_images/image508.webp"><img alt="image508" src="../_images/image508.webp" style="width: 402px;" /></a></p>
+<p>On ajoute le dispositif au plan :</p>
+<p><a class="reference internal" href="../_images/image509.webp"><img alt="image509" src="../_images/image509.webp" style="width: 544px;" /></a></p>
+<p><a class="reference internal" href="../_images/image510.webp"><img alt="image510" src="../_images/image510.webp" style="width: 450px;" /></a></p>
+<p>On ajoute qq lignes de script dans évènements dz , <span class="darkblue">notifications_devices.lua</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="p">{</span>
+     <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>  <span class="n">devices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Test_GSM&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Test_GSM&#39;</span> <span class="ow">and</span>  <span class="n">device</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;test_gsm&quot;</span><span class="p">)</span>
+        <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;TestùGSMùOK&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">send_sms</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">=</span><span class="s1">&#39;Test GSM OK&#39;</span><span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+ <span class="n">end</span>
+</pre></div>
+</div>
+<p>Dans la BD :</p>
+<p><a class="reference internal" href="../_images/image512.webp"><img alt="image512" src="../_images/image512.webp" style="width: 612px;" /></a></p>
+<p><em>L’exemple est intéressant car le clic s’effectue sur une partie de l’image transparente</em></p>
+<p>Dans le HTML, Le script est ajouté automatiquement à partir des données de la BD , voir le § <a class="reference internal" href="bien_debuter.html#les-dispositifs"><span class="std std-ref">0.3.2 Les Dispositifs</span></a></p>
+<p><a class="reference internal" href="../_images/image514.webp"><img alt="image514" src="../_images/image514.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Affichage de l’alarme</strong>
+une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour de devices_plan() au plus tard : 3minutes par défaut mais modifiable dans admin/config.php</p>
+</div>
+<p><a class="reference internal" href="../_images/image515.webp"><img alt="image515" src="../_images/image515.webp" style="width: 461px;" /></a></p>
+</div>
+</div>
+<div class="section" id="affichage-de-la-liste-des-cameras-modect">
+<h3>5.8.3- Affichage de la liste des caméras Modect<a class="headerlink" href="#affichage-de-la-liste-des-cameras-modect" title="Lien permanent vers ce titre"></a></h3>
+<p>Cette liste est établie automatiquement avec une fonction dans « administration » , voir le § <a class="reference internal" href="#le-script-lua"><span class="std std-ref">5.1.1.2 le script lua</span></a></p>
+<div class="admonition-ajout-d-une-icone-pour-afficher-la-liste-depuis-l-alarme admonition">
+<p class="admonition-title"><strong>ajout d’une icône pour afficher la liste depuis l’alarme</strong></p>
+<p><a class="reference internal" href="../_images/image517.webp"><img alt="image517" src="../_images/image517.webp" style="width: 408px;" /></a></p>
+<p>Dans alarmes.php :</p>
+<p><a class="reference internal" href="../_images/image518.webp"><img alt="image518" src="../_images/image518.webp" style="width: 700px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">svg</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;zm&quot;</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">xlink</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;0px&quot;</span>
+   <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 326 18&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width:500px&quot;</span> <span class="n">xml</span><span class="p">:</span><span class="n">space</span><span class="o">=</span><span class="s2">&quot;preserve&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">style</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&gt;</span>
+  <span class="o">.</span><span class="n">st208</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#03A8F3;}</span>
+  <span class="o">.</span><span class="n">st207</span><span class="p">{</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span><span class="mf">13.5</span><span class="n">px</span><span class="p">;}</span>
+<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;zm&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#alarmes&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">rect</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;0.9&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;-0.7&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st208&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;31.2&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;18.8&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">text</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;matrix(1 0 0 1 5.4312 13.3434)&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st203 st33 st207&quot;</span><span class="o">&gt;</span><span class="n">Z</span> <span class="n">M</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Dans footer.php , on appelle la fonction php  sql_app() qui est déjà utilisé dans « administration »</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(&quot;#zm&quot;).click(function () {
+    $.ajax({
+       url: &quot;ajax.php&quot;,
+       data: &quot;app=sql&amp;idx=3&amp;variable=cameras&amp;type=modect&amp;command=1&quot;,
+                   success: function(data) {
+       alert(&quot;liste de caméras enregistrées \nen modect dans SQL\n&quot;+data);
+      }
+  });     });
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image520.webp"><img alt="image520" src="../_images/image520.webp" style="width: 578px;" /></a></p>
+<p>Affichage :</p>
+<p><a class="reference internal" href="../_images/image521.webp"><img alt="image521" src="../_images/image521.webp" style="width: 457px;" /></a></p>
+</div>
+</div>
+<div class="section" id="copie-ecran-de-la-derniere-version">
+<h3>5.8.5- Copie écran de la dernière version<a class="headerlink" href="#copie-ecran-de-la-derniere-version" title="Lien permanent vers ce titre"></a></h3>
+<p>Version 2.1.0 réécrite en DzVent avec :</p>
+<ul class="simple">
+<li><p>1 script pour le timer</p></li>
+<li><p>1 script pour les notifications à partir des dispositifs</p></li>
+<li><p>1 script p pour les notifications à partir des variables</p></li>
+<li><p>Le script principal de l’alarme</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image522.webp"><img alt="image522" src="../_images/image522.webp" style="width: 705px;" /></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="plan_exterieur.html" class="btn btn-neutral float-left" title="4. La page du plan extérieur" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="graphiques.html" class="btn btn-neutral float-right" title="6. GRAHIQUES &amp; BASE DE DONNEES" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

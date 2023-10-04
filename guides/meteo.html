@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Météo &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="4. La page du plan extérieur" href="plan_exterieur.html" />
+    <link rel="prev" title="2. Une 1ere PAGE : LE PLAN INTERIEUR" href="plan_interieur.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Météo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#page-meteo">3.1 Page météo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#la-meteo-a-1-heure-de-meteo-france">3.2 La Météo à 1 heure de Météo France</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#autres-previsions-meteo-depuis-meteo-concept">3.3 Autres prévisions météo depuis météo Concept</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">3. Météo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/meteo.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="meteo">
+<h1>3. Météo<a class="headerlink" href="#meteo" title="Lien permanent vers ce titre"></a></h1>
+<p>2 affichages :</p>
+<ul class="simple">
+<li><p>Une page de prévision à 14 jours de Météo Concept</p></li>
+<li><p>Une alerte pluie imminent (à 1 h de météo France)</p></li>
+</ul>
+<div class="section" id="page-meteo">
+<h2>3.1 Page météo<a class="headerlink" href="#page-meteo" title="Lien permanent vers ce titre"></a></h2>
+<p>Cette page n’a PAS DE LIAISON AVEC DOMOTICZ</p>
+<p>Voir également le site domo-site.fr</p>
+<p><a class="reference internal" href="../_images/image366.webp"><img alt="image366" src="../_images/image366.webp" style="width: 605px;" /></a></p>
+<p><em>L’API est gratuite chez Météo Concept mais il faut s’enregistrer pour obtenir une clé</em></p>
+<ul class="simple">
+<li><p><strong>La fonction  PHP : dans fonctions.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image367.webp"><img alt="image367" src="../_images/image367.webp" style="width: 568px;" /></a></p>
+<p><a class="reference internal" href="../_images/image368.webp"><img alt="image368" src="../_images/image368.webp" style="width: 650px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Le JS dans footer.php</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image369.webp"><img alt="image369" src="../_images/image369.webp" style="width: 452px;" /></a></p>
+<p>Pour la mise à jour auto chaque matin :</p>
+<p><a class="reference internal" href="../_images/image370.webp"><img alt="image370" src="../_images/image370.webp" style="width: 592px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Le HTML de la page meteo</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image371.webp"><img alt="image371" src="../_images/image371.webp" style="width: 525px;" /></a></p>
+<p>l’image SVG de l’icône pour une actualisation:</p>
+<p><a class="reference internal" href="../_images/image372.webp"><img alt="image372" src="../_images/image372.webp" style="width: 600px;" /></a></p>
+<p>Il faut ajouter la page au site ; la procédure est toujours la même :</p>
+<ul>
+<li><p>dans config.php,</p>
+<p>Mettre la variable à « true » ; <em>il faut au préalable demander un token gratuit</em>.</p>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Page</span> <span class="n">Météo</span>  <span class="n">meteo</span> <span class="n">concept</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_MET&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">affichage</span> <span class="n">page</span> <span class="n">TOKEN</span> <span class="n">PBLIGATOIRE</span>
+<span class="o">//</span> <span class="o">---</span><span class="n">Token</span> <span class="o">&amp;</span> <span class="n">code</span> <span class="n">insee</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TOKEN_MC&#39;</span><span class="p">,</span><span class="s1">&#39;2f**********************************d0&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;INSEE&#39;</span><span class="p">,</span><span class="s1">&#39;24454&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Dans header.php, l’affichage dans le menu est alors automatique.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php if (ON_MET==true) echo &#39;&lt;li class=&quot;zz&quot;&gt;&lt;a href=&quot;#meteo&quot;&gt;Météo&lt;/a&gt;&lt;/li&gt;&#39;;?&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>La page meteo.php</strong> :</p></li>
+</ul>
+<p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/meteo.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/meteo.php</a></p>
+<p><a class="reference internal" href="../_images/image375.webp"><img alt="image375" src="../_images/image375.webp" style="width: 700px;" /></a></p>
+<p>_ <strong>Les css : en plus du style pour la page</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">meteo_concept_am</span>  <span class="p">{</span><span class="n">display</span><span class="p">:</span> <span class="n">inline</span><span class="p">;</span><span class="n">width</span><span class="p">:</span> <span class="mi">150</span><span class="n">px</span><span class="p">;</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="p">:</span> <span class="o">-</span><span class="mi">20</span><span class="n">px</span><span class="p">;}</span>
+<span class="c1">#meteo_concept_am{position: relative;top: 20px;margin-left: -20px;}</span>
+<span class="c1">#meteo_concept{position: relative;top: 10px;}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Les icones</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image377.webp"><img alt="image377" src="../_images/image377.webp" style="width: 541px;" /></a></p>
+<p><a class="reference internal" href="../_images/image378.webp"><img alt="image378" src="../_images/image378.webp" style="width: 530px;" /></a></p>
+</div>
+<div class="section" id="la-meteo-a-1-heure-de-meteo-france">
+<h2>3.2 La Météo à 1 heure de Météo France<a class="headerlink" href="#la-meteo-a-1-heure-de-meteo-france" title="Lien permanent vers ce titre"></a></h2>
+<p>Ne fait pas partie de la page météo : affichage sur la page d’accueil</p>
+<p><a class="reference internal" href="../_images/image379.webp"><img alt="image379" src="../_images/image379.webp" style="width: 525px;" /></a></p>
+<p><a class="reference internal" href="../_images/image380.webp"><img alt="image380" src="../_images/image380.webp" style="width: 525px;" /></a></p>
+<p><strong>Extrait de accueil.php</strong> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;aff_pluie&quot;</span> <span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;pluie&quot;</span> <span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;pl&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;pluie&quot;</span> <span class="o">/&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;txt_pluie&quot;</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Les icones svg « pluie imminente » et « pas de pluie » disponibles</p>
+<p><a class="reference internal" href="../_images/image382.webp"><img alt="image382" src="../_images/image382.webp" style="width: 93px;" /></a> <a class="reference internal" href="../_images/image383.webp"><img alt="image383" src="../_images/image383.webp" style="width: 93px;" /></a> <a class="reference internal" href="../_images/image384.webp"><img alt="image384" src="../_images/image384.webp" style="width: 93px;" /></a> <a class="reference internal" href="../_images/image385.webp"><img alt="image385" src="../_images/image385.webp" style="width: 60px;" /></a></p>
+<p><strong>Le JS dans Footer.php</strong> :</p>
+<p><a class="reference internal" href="../_images/image386.webp"><img alt="image386" src="../_images/image386.webp" style="width: 700px;" /></a></p>
+<p><strong>PHP</strong> : ajax.php et fonction PHP « app_met($choix) »</p>
+<ul class="simple">
+<li><p><em>ajax.php</em> :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if ($app==&quot;infos_met&quot;) {$retour=app_met($variable);echo json_encode($retour);}
+</pre></div>
+</div>
+<ul>
+<li><p><em>app_met()</em></p>
+<blockquote>
+<div><p>2 Choix :</p>
+<dl>
+<dt>.   (1) en HTML sur le site <a class="reference external" href="https://www.lameteoagricole.net/index_pluie-dans-heure.php">https://www.lameteoagricole.net/index_pluie-dans-heure.php</a></dt><dd><p><a class="reference external" href="https://www.lameteoagricole.net/meteo-a-10-jours/Saint-Martin-De-Gurson-24610.html">https://www.lameteoagricole.net/meteo-a-10-jours/Saint-Martin-De-Gurson-24610.html</a></p>
+<p>Indiquer Commune-Code postal</p>
+</dd>
+</dl>
+<p>.   (2) par météo France et son API avec un Token</p>
+<p><a class="reference internal" href="../_images/image388.webp"><img alt="image388" src="../_images/image388.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>La base de données</strong>: correspondance texte – image, la table text_image</p>
+<p><a class="reference internal" href="../_images/image389.webp"><img alt="image389" src="../_images/image389.webp" style="width: 625px;" /></a></p>
+<p><em>Voir le site domo-site.fr</em></p>
+<p><a class="reference internal" href="../_images/image390.webp"><img alt="image390" src="../_images/image390.webp" style="width: 601px;" /></a></p>
+</div>
+<div class="section" id="autres-previsions-meteo-depuis-meteo-concept">
+<h2>3.3 Autres prévisions météo depuis météo Concept<a class="headerlink" href="#autres-previsions-meteo-depuis-meteo-concept" title="Lien permanent vers ce titre"></a></h2>
+<ul class="simple">
+<li><p>relevés temps réel depuis une station</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case 3://prévision horaire
+$url = &#39;https://api.meteo-concept.com/api/forecast/nextHours?&amp;token=&#39;.TOKEN_MC.&#39;&amp;insee=&#39;.INSEE;
+$prevam = file_get_curl($url);
+$forecast = json_decode($prevam);$info=array();
+             $forecasth=$forecast-&gt;forecast[0];
+             $info[&#39;temp&#39;]=$forecasth-&gt;temp2m;
+             $info[&#39;hum&#39;]=$forecasth-&gt;rh2m;
+             $info[&#39;Data&#39;]=$info[&#39;temp&#39;].&#39;°  &#39;.$info[&#39;hum&#39;].&#39;%&#39;;
+return json_encode($info);
+break;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>prévision heure par heure : peut remplacer Darsky (devenu payant) ou OpenWeatherMap, c’est français et plus facile d’utilisation, nombreux exemple sur le site web Méteoconcept</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case 2:// relevé temps réel station la pus proche (40Km)
+$url = &#39;https://api.meteo-concept.com/api/observations/around?param=temperature&amp;radius=40&amp;token=&#39;.TOKEN_MC.&#39;&amp;insee=&#39;.INSEE;
+//$url2 = &#39;https://api.meteo-concept.com/api/forecast/nextHours?token=&#39;.TOKEN_MC.&#39;&amp;insee=&#39;.INSEE;
+$prevam = file_get_curl($url);//echo $prevam;return;
+$forecastam = json_decode($prevam);$info=array();
+             //$info[&#39;time&#39;]=$forecastam[0]-&gt;observation-&gt;time;
+             $info[&#39;temp&#39;]=$forecastam[0]-&gt;observation-&gt;temperature-&gt;value;
+             $info[&#39;hPa&#39;]=$forecastam[0]-&gt;observation-&gt;atmospheric_pressure-&gt;value;
+return json_encode($info);
+break;
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image392.webp"><img alt="image392" src="../_images/image392.webp" style="width: 554px;" /></a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="plan_interieur.html" class="btn btn-neutral float-left" title="2. Une 1ere PAGE : LE PLAN INTERIEUR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="plan_exterieur.html" class="btn btn-neutral float-right" title="4. La page du plan extérieur" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
