@@ -993,6 +993,9 @@ Dans Domoticz, cliquer sur "**register on bridge**" et ajouter le pont
 
 |image1099|
 
+Des nouveaux dispositifs sont crées:
+
+|image1139|
 
 13.8.5 détection des nouveaux appareils par Alexa
 =================================================
@@ -1284,3 +1287,5 @@ Les fichiers concernés:
    :width: 533px
 .. |image1138| image:: ../media/image1138.webp
    :width: 647px
+.. |image1139| image:: ../media/image1138.webp
+   :width: 700px
