@@ -248,7 +248,7 @@ Les images pour lampe de bureau :
 
 .. note:: **Calibration**
 
-   |image621|
+   |image1140|
 
 .. warning:: **Pour utiliser le Javascript (comme pour le plan) il ne faut pas charger l’image par son nom mais l’incorporer dans un fichier PHP.**
 
@@ -579,5 +579,6 @@ L'envoi des données doit être un tableau json
    :width: 597px
 .. |image652| image:: ../media/image652.webp
    :width: 523px
-
+.. |image1140| image:: ../media/image1140.webp
+   :width: 650px
 
