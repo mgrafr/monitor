@@ -246,6 +246,10 @@ Les images pour lampe de bureau :
 
    |image621|
 
+.. note:: **Calibration**
+
+   |image621|
+
 .. warning:: **Pour utiliser le Javascript (comme pour le plan) il ne faut pas charger l’image par son nom mais l’incorporer dans un fichier PHP.**
 
    .. code-block:: 
