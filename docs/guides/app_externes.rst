@@ -1287,5 +1287,5 @@ Les fichiers concernés:
    :width: 533px
 .. |image1138| image:: ../media/image1138.webp
    :width: 647px
-.. |image1139| image:: ../media/image1138.webp
+.. |image1139| image:: ../media/image1139.webp
    :width: 700px
