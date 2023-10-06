@@ -54,8 +54,6 @@
 <li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES ON/OFF</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">9. Dispositifs Zigbee</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#demarrage-automatique">9.1 Démarrage automatique</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#le-fronted">9.2 Le fronted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acces-distant-https">9.1 accès distant HTTPS</a></li>
 </ul>
 </li>
@@ -101,22 +99,7 @@
   <div class="section" id="dispositifs-zigbee">
 <h1>9. Dispositifs Zigbee<a class="headerlink" href="#dispositifs-zigbee" title="Lien permanent vers ce titre"></a></h1>
 <p><strong>Avec zigbee2mqtt</strong></p>
-<div class="section" id="demarrage-automatique">
-<h2>9.1 Démarrage automatique<a class="headerlink" href="#demarrage-automatique" title="Lien permanent vers ce titre"></a></h2>
-<ul class="simple">
-<li><p><strong>Pour une installation classique node.js</strong></p></li>
-</ul>
-<p>Démarrage auto : avec PM2 , Voir la page domo-site : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/74">http://domo-site.fr/accueil/dossiers/74</a></p>
-<p>[image658|</p>
-<p><a class="reference internal" href="../_images/image659.webp"><img alt="image659" src="../_images/image659.webp" style="width: 647px;" /></a></p>
-<ul class="simple">
-<li><p><strong>Pour une installation sous Docker</strong>, le démarrage sera automatique.</p></li>
-</ul>
-</div>
-<div class="section" id="le-fronted">
-<h2>9.2 Le fronted<a class="headerlink" href="#le-fronted" title="Lien permanent vers ce titre"></a></h2>
-<p><a class="reference internal" href="../_images/image1142.webp"><img alt="image1143" src="../_images/image1142.webp" style="width: 418px;" /></a></p>
-<p>Affichage</p>
+<p>Affichage du Frontend</p>
 <p><a class="reference internal" href="../_images/image653.webp"><img alt="image653" src="../_images/image653.webp" style="width: 536px;" /></a></p>
 <div class="admonition-ajouter-une-fonction-utile-vu-pour-la-deriere-fois admonition">
 <p class="admonition-title"><strong>ajouter une fonction utile</strong>: <em>vu pour la derière fois</em></p>
@@ -154,6 +137,14 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">ON_ZIGBEE</span><span class="o">==</span><span class="n">true</span><span class="p">)</span> <span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/zigbee.php&quot;</span><span class="p">);</span><span class="o">//</span> <span class="n">fronted</span> <span class="n">zigbee2mqtt</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Pour une installation classique node.js</strong></p>
+<p>Démarrage auto : avec PM2 , Voir la page domo-site : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/74">http://domo-site.fr/accueil/dossiers/74</a></p>
+<p><a class="reference internal" href="../_images/image658.webp"><img alt="image658" src="../_images/image658.webp" style="width: 600px;" /></a></p>
+<p><a class="reference internal" href="../_images/image659.webp"><img alt="image659" src="../_images/image659.webp" style="width: 647px;" /></a></p>
+<p>Pour une installation sous Docker, le démarrage sera automatique.</p>
+</div>
 <ul class="simple">
 <li><p><strong>Les styles CSS</strong></p></li>
 </ul>
@@ -170,7 +161,6 @@
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image657.webp"><img alt="image657" src="../_images/image657.webp" style="width: 700px;" /></a></p>
-</div>
 <div class="section" id="acces-distant-https">
 <h2>9.1 accès distant HTTPS<a class="headerlink" href="#acces-distant-https" title="Lien permanent vers ce titre"></a></h2>
 <p>Il faut configurer NGINX : - <a class="reference internal" href="configuration_minimum.html#acces-distant-https"><span class="std std-ref">1.8 Accès distant HTTPS</span></a></p>
