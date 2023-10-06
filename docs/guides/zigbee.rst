@@ -142,4 +142,7 @@ Le fichier modifié par cerbot lors de la demande de certificat
    :width: 600px
 .. |image659| image:: ../media/image659.webp
    :width: 647px
-
+.. |image1141| image:: ../media/image1141.webp
+   :width: 650px
+.. |image1142| image:: ../media/image1142.webp
+   :width: 700px
