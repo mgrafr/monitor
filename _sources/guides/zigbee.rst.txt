@@ -2,7 +2,23 @@
 ---------------------
 **Avec zigbee2mqtt**
 
-Affichage du Frontend
+9.1 Démarrage automatique
+^^^^^^^^^^^^^^^^^^^^^^^^^
+- **Pour une installation classique node.js**
+
+Démarrage auto : avec PM2 , Voir la page domo-site : http://domo-site.fr/accueil/dossiers/74 
+
+[image658|
+
+|image659|
+
+- **Pour une installation sous Docker**, le démarrage sera automatique.
+
+9.2 Le fronted
+^^^^^^^^^^^^^^
+|image1143|
+
+Affichage
 
 |image653|
 
@@ -42,16 +58,6 @@ Affichage du Frontend
 .. code-block::
 
    if (ON_ZIGBEE==true) include ("include/zigbee.php");// fronted zigbee2mqtt
-
-.. note:: **Pour une installation classique node.js**
-
-   Démarrage auto : avec PM2 , Voir la page domo-site : http://domo-site.fr/accueil/dossiers/74 
-
-   |image658|
-
-   |image659|
-
-   Pour une installation sous Docker, le démarrage sera automatique.
 
 - **Les styles CSS**
 
@@ -146,3 +152,5 @@ Le fichier modifié par cerbot lors de la demande de certificat
    :width: 650px
 .. |image1142| image:: ../media/image1142.webp
    :width: 700px
+.. |image1143| image:: ../media/image1142.webp
+   :width: 418px
