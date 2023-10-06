@@ -6,13 +6,21 @@ Affichage du Frontend
 
 |image653|
 
-.. note:: vu pour la derière fois
+.. admonition:: **ajouter une fonction utile**: *vu pour la derière fois*
+
+   |image1142|
+
+   A parir du frontend:
+
+   |image1141|
 
    le payload MQTT:
 
-   .. code::
+      .. code::
 
-      MQTT publish: topic 'zigbee2mqtt/lampe_jardin', payload '{"last_seen":"2023-10-05T20:52:34.706Z","linkquality":156,"state_l1":"OFF","state_l2":"OFF"}'
+         MQTT publish: topic 'zigbee2mqtt/lampe_jardin', payload '{"last_seen":"2023-10-05T20:52:34.706Z","linkquality":156,"state_l1":"OFF","state_l2":"OFF"}'
+
+   La donnée "last_seen" peut être utilisé avec Node , HA (mais pas avec Dz) pour connaitre les dispositifs :red:`offline`
 
 .. note:: Voir la page du site consacrée à frontend : http://domo-site.fr/accueil/dossiers/48
 
