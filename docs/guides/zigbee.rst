@@ -40,6 +40,9 @@ Affichage
 
 .. note:: Voir la page du site consacrée à frontend : http://domo-site.fr/accueil/dossiers/48
 
+9.3 Ajouter le Fronted dans monitor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 - **la page zigbee.php**
 
 |image654|
@@ -78,7 +81,7 @@ on ajoute une iframe *(permet d'obtenir une page HTML intégrée dans la page co
 
 |image657|
 
-9.1 accès distant HTTPS 
+9.4 accès distant HTTPS 
 ^^^^^^^^^^^^^^^^^^^^^^^
 Il faut configurer NGINX : - :ref:`1.8 Accès distant HTTPS`
 
@@ -152,5 +155,5 @@ Le fichier modifié par cerbot lors de la demande de certificat
    :width: 650px
 .. |image1142| image:: ../media/image1142.webp
    :width: 700px
-.. |image1143| image:: ../media/image1142.webp
+.. |image1143| image:: ../media/image1143.webp
    :width: 418px
