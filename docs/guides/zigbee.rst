@@ -30,7 +30,7 @@ Affichage
 
    |image1141|
 
-   ..note:: **ISO 8601** c'est la  représentation de la date, en format internationalement, exemple : 2023-10-06T17:13:26Z
+   .. note:: **ISO 8601** c'est la  représentation de la date, en format internationalement, exemple : 2023-10-06T17:13:26Z
 
    le payload MQTT:
 
