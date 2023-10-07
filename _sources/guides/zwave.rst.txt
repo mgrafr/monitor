@@ -63,6 +63,17 @@ Il faut configurer NGINX pour un accès https , voir les paragraphes
        return 404; # managed by Certbot
       }
 
+10.2 Dépannage
+^^^^^^^^^^^^^^
+
+Après avoir tout essayé, eclusion, nouvelle intrusion , réinitialisation, ...  :red:`impossible d'inclure un noeud`.
+
+REDEMARRER ZWAVE-JS-UI , sous Docker: :darkblue:`docker-compose down` suivi de :green:`docker-compose up -d`
+
+|image1145|
+
 
 .. |image656| image:: ../media/image656.webp
    :width: 650px
+.. |image1145| image:: ../media/image1145.webp
+   :width: 484px
