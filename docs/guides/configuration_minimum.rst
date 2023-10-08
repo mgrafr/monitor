@@ -25,6 +25,8 @@ Permet d’afficher
 
 -	Le remplacement des piles pour les capteurs concernés
 
+-       Les dispositifs off line
+
 - 	etc .... 
 
 |image117|
@@ -1064,8 +1066,18 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 
 |image221|
 
-1.8 Accès distant HTTPS
-^^^^^^^^^^^^^^^^^^^^^^^^^
+1.8 Complément pour les nootifications à l'écran
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.8.1 les notifications incluse dans le programme
+=================================================
+
+|image1146|
+
+1.8.2 les emplacements disponibles et les styles css
+====================================================
+
+1.9 Accès distant HTTPS
+^^^^^^^^^^^^^^^^^^^^^^^
 voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
 1.8.1 monitor.conf
@@ -1266,3 +1278,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 291px 
 .. |image1097| image:: ../media/image1097.webp
    :width: 443px 
+.. |image1146| image:: ../media/image1146.webp
+   :width: 474px 
