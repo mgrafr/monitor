@@ -1073,6 +1073,27 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 
 |image1146|
 
+Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monitor compare la valeur de ces variables ou dispositifs avec la Base de données et affiche la notification.
+
+|image1147|
+
+.. admonition:: **Mode d'emploi pour ajouter une noification**
+
+   l'ajout concernera "Vu pour la dernière fois" (lastseem) des dispositifs	
+
+   les notifications programmées de la page d'accueil
+
+   |image1148|
+
+   - ajout de la notificaion
+
+   .. code-block::
+
+      <div class="confirm lastseem"><a href="#" id="annul_lastseem" rel="30" title="Annulation de l'\alerte lastseem"><img id="lastseem" src=""/></a></div>
+
+      |image1149|
+
+
 1.8.2 les emplacements disponibles et les styles css
 ====================================================
 
@@ -1280,3 +1301,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 443px 
 .. |image1146| image:: ../media/image1146.webp
    :width: 474px 
+.. |image1147| image:: ../media/image1147.webp
+   :width: 500px 
+.. |image1148| image:: ../media/image1147.webp
+   :width: 700px 
+.. |image1149| image:: ../media/image1147.webp
+   :width: 600px 
