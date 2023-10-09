@@ -1096,6 +1096,8 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    |image1152|
 
+   |image1153|
+
 .. admonition:: **Script pour Domotiz**
 
    .. warning:: 
@@ -1143,13 +1145,15 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 				end
 		    end
 	  end
-          dz.variables('lastseem').set(list_idx)
-          obj='alarme';dz.email('notification',obj,adresse_mail)
+          dz.variables('lastseem').set(list_idx) -- pour affichage notification sur l'écran d'accueil
+          obj='alarme';dz.email('notification',obj,adresse_mail)  -- envoi d'un mail
         end
       end
       }
 
    Le log dz
+
+   |image1151|
 
    .. important:: **domoticz ou dz mais c'est l'un ou l'autre dans le script**
 
@@ -1393,3 +1397,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 652px 
 .. |image1152| image:: ../media/image1152.webp
    :width: 396px 
+.. |image1153| image:: ../media/image1153.webp
+   :width: 441px 
