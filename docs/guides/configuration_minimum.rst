@@ -1068,8 +1068,8 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 
 1.8 Complément pour les notifications sur l'écran d'accueil
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1.8.1 les notifications incluse dans le programme
-=================================================
+1.8.1 les notifications incluses dans le programme
+==================================================
 
 |image1146|
 
@@ -1077,11 +1077,84 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 
 |image1147|
 
-.. admonition:: **Mode d'emploi pour ajouter une noification**
+1.8.2 Mode d'emploi pour ajouter une notification
+=================================================
 
-   l'ajout concernera "Vu pour la dernière fois" (lastseem) des dispositifs	
+1.8.2.1  Ecriture d'un script Dzvent(Dz) ou yaml(HA)
+====================================================
+l'ajout concerne "Vu pour la dernière fois" (lastseem) des dispositifs	
 
-   les notifications programmées de la page d'accueil
+1.8.2.1.1 Domoticz
+""""""""""""""""""
+En premier , création de la variable, noter son nom :
+
+|image1150|
+
+En second , création d'une variable dans le tableau de variables (string_tableaux.lua) :
+
+.. note:: à partir de monitor (:darkblue:`Administration->Configuation variable dz maj_services`) ou avec la console
+
+   |image1152|
+
+.. admonition:: **Script pour Domotiz**
+
+   .. warning:: 
+
+      Vue pour la dernière fois n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que dans la mémoire et dans le cache du navigateur. La seule façon de l’obtenir est d'utiliser JSON/API et il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
+
+   L'écriture d'un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d'appréhender l'écriture de scripts pour l'affichage ou l'envoi de notifications complexes
+   
+   Le script qui tient compte des ecommandations précédentes, ne seront concerné que les dispositifs appartenant à un plan.
+
+   .. code-block::
+   
+      -- Script dzVents destiné à détecter les périphériques morts ou offline.
+
+      -- chargement fichier contenant les variable de configuration
+      package.path = package.path..";www/modules_lua/?.lua"
+      require 'string_tableaux' -- variable concernée : max_lastseem
+      require 'connect'
+      adresse_mail=mail_gmail -- mail_gmail dans connect.lua
+
+     local scriptVar = 'lastSeen'
+
+    return {
+    on = { timer =  {'at 17:39'}, httpResponses = { scriptVar }},
+    logging = { level   = domoticz.LOG_ERROR, marker  = scriptVar },
+    
+    execute = function(dz, item) 
+        
+          if not (item.isHTTPResponse) then
+            dz.openURL({ 
+                url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=getdevices&used=true',
+                callback = scriptVar })
+          else
+            local Time = require('Time');local lastup="";
+            for _, node in pairs(item.json.result) do
+				 if node.PlanID == "2" and node.HardwareName ~= "virtuels" and dz.devices(tonumber(node.idx)) then
+				    --print(node.HardwareName)
+				   	local lastSeen = Time(node.LastUpdate).hoursAgo
+				   	local lastUpdated = dz.devices(tonumber(node.idx)).lastUpdate.hoursAgo
+					local delta = lastSeen - lastUpdated
+					if lastSeen > max_lastseem then -- limite en heure pour considérer le dispositif on line
+					print('idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseem:'..lastSeen..'/'..delta)
+					lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseem:'..lastSeen..'/'..delta..'\n'
+					--dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
+				end
+		    end
+	  end
+          dz.variables('lastseem').set(list_idx)
+          obj='alarme';dz.email('notification',obj,adresse_mail)
+        end
+      end
+      }
+
+   Le log dz
+
+   .. important:: **domoticz ou dz mais c'est l'un ou l'autre dans le script**
+
+
+les notifications programmées de la page d'accueil
 
    |image1148|
 
@@ -1091,11 +1164,18 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 
       <div class="confirm lastseem"><a href="#" id="annul_lastseem" rel="30" title="Annulation de l'\alerte lastseem"><img id="lastseem" src=""/></a></div>
 
-      |image1149|
+   |image1149|
+
+1.8.2.2  La page d'accueil de monitor
+=====================================
 
 
 1.8.2 les emplacements disponibles et les styles css
 ====================================================
+
+Des emplacements pré-programmés éxistent:
+
+
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1307,3 +1387,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px 
 .. |image1149| image:: ../media/image1149.webp
    :width: 600px 
+.. |image1150| image:: ../media/image1150.webp
+   :width: 700px 
+.. |image1151| image:: ../media/image1151.webp
+   :width: 652px 
+.. |image1152| image:: ../media/image1152.webp
+   :width: 396px 
