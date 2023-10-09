@@ -1107,7 +1107,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
    L'écriture d'un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d'appréhender l'écriture de scripts pour l'affichage ou l'envoi de notifications complexes
    
    Le script tient compte des recommandations précédentes, 
-   - ne seront concerné que les dispositifs appartenant à un plan.
+   - ne seront concernés que les dispositifs appartenant à un plan.
    - les dispositifs virtuels sont exclus
 
    .. code-block::
@@ -1170,11 +1170,15 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    .. code-block::
 
-      <div class="confirm lastseem"><a href="#" id="annul_lastseem" rel="34" title="Annulation de l'\alerte lastseem"><img id="lastseem" src=""/></a></div>
+      <div class="confirm lastseem"><a href="#" id="annul_lastseem" rel="34" title="Annulation de l'alerte lastseem"><img id="lastseem" src=""/></a></div>
 
 |image1149|
 
 .. note:: rel = id de la variable de Domoticz
+
+   - On importe une image svg, j'ai choisi un oeil rouge
+
+|image1154|
 
 
 1.8.2 les emplacements disponibles et les styles css
@@ -1402,3 +1406,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 396px 
 .. |image1153| image:: ../media/image1153.webp
    :width: 441px 
+.. |image1154| image:: ../media/image1154.webp
+   :width: 150px 
