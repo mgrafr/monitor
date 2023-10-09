@@ -109,12 +109,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#ajuster-le-menu-au-nombre-de-pages">1.7 Ajuster le menu au nombre de pages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#complement-pour-les-notifications-sur-l-ecran-d-accueil">1.8 Complément pour les notifications sur l’écran d’accueil</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#les-notifications-incluses-dans-le-programme">1.8.1 les notifications incluses dans le programme</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mode-d-emploi-pour-ajouter-une-notification">1.8.2 Mode d’emploi pour ajouter une notification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#domoticz">1.8.2.1.1 Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mode-d-emploi-pour-ajouter-une-notification">1.8.2 Mode d’emploi pour ajouter une notification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#la-page-d-accueil-de-monitor">1.8.2.2  La page d’accueil de monitor</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#la-page-d-accueil-de-monitor">1.8.2.2  La page d’accueil de monitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#les-emplacements-disponibles-et-les-styles-css">1.8.2 les emplacements disponibles et les styles css</a></li>
 </ul>
 </li>
@@ -1105,12 +1104,9 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <div class="section" id="mode-d-emploi-pour-ajouter-une-notification">
 <h3>1.8.2 Mode d’emploi pour ajouter une notification<a class="headerlink" href="#mode-d-emploi-pour-ajouter-une-notification" title="Lien permanent vers ce titre"></a></h3>
-</div>
 <div class="section" id="ecriture-d-un-script-dzvent-dz-ou-yaml-ha">
-<h3>1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)<a class="headerlink" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha" title="Lien permanent vers ce titre"></a></h3>
+<h4>1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)<a class="headerlink" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha" title="Lien permanent vers ce titre"></a></h4>
 <p>l’ajout concerne « Vu pour la dernière fois » (lastseem) des dispositifs</p>
-<div class="section" id="domoticz">
-<h4>1.8.2.1.1 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h4>
 <p>En premier , création de la variable, noter son nom :</p>
 <p><a class="reference internal" href="../_images/image1150.webp"><img alt="image1150" src="../_images/image1150.webp" style="width: 700px;" /></a></p>
 <p>En second , création d’une variable dans le tableau de variables (string_tableaux.lua) :</p>
@@ -1124,10 +1120,12 @@ pour ne pas cacher le menu hamburger</p>
 <p class="admonition-title"><strong>Script pour Domotiz</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>Vue pour la dernière fois n’est pas stocké dans la base de données aussi DZ ne l’exporte pas vers le système d’événements. L’info n’est disponible que dans la mémoire et dans le cache du navigateur. La seule façon de l’obtenir est d’utiliser JSON/API et il n’est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.</p>
+<p>Vu pour la dernière fois n’est pas stocké dans la base de données aussi DZ ne l’exporte pas vers le système d’événements. L’info n’est disponible que dans la mémoire et dans le cache du navigateur. La seule façon de l’obtenir est d’utiliser JSON/API et il n’est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.</p>
 </div>
 <p>L’écriture d’un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d’appréhender l’écriture de scripts pour l’affichage ou l’envoi de notifications complexes</p>
-<p>Le script qui tient compte des ecommandations précédentes, ne seront concerné que les dispositifs appartenant à un plan.</p>
+<p>Le script tient compte des recommandations précédentes,
+- ne seront concerné que les dispositifs appartenant à un plan.
+- les dispositifs virtuels sont exclus</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">--</span> <span class="n">Script</span> <span class="n">dzVents</span> <span class="n">destiné</span> <span class="n">à</span> <span class="n">détecter</span> <span class="n">les</span> <span class="n">périphériques</span> <span class="n">morts</span> <span class="n">ou</span> <span class="n">offline</span><span class="o">.</span>
 
   <span class="o">--</span> <span class="n">chargement</span> <span class="n">fichier</span> <span class="n">contenant</span> <span class="n">les</span> <span class="n">variable</span> <span class="n">de</span> <span class="n">configuration</span>
@@ -1174,24 +1172,27 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image1151.webp"><img alt="image1151" src="../_images/image1151.webp" style="width: 652px;" /></a></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><strong>domoticz ou dz mais c’est l’un ou l’autre dans le script</strong></p>
+<p><strong>objet domoticz</strong>:domoticz ou dz mais c’est l’un ou l’autre dans le script</p>
 </div>
-</div>
-<p>les notifications programmées de la page d’accueil</p>
-<blockquote>
-<div><p><a class="reference internal" href="../_images/image1148.webp"><img alt="image1148" src="../_images/image1148.webp" style="width: 700px;" /></a></p>
-<ul class="simple">
-<li><p>ajout de la notification</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm lastseem&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;annul_lastseem&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;30&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Annulation de l&#39;</span><span class="se">\a</span><span class="s2">lerte lastseem&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;lastseem&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p><a class="reference internal" href="../_images/image1149.webp"><img alt="image1149" src="../_images/image1149.webp" style="width: 600px;" /></a></p>
-</div></blockquote>
 </div>
 </div>
 <div class="section" id="la-page-d-accueil-de-monitor">
-<h3>1.8.2.2  La page d’accueil de monitor<a class="headerlink" href="#la-page-d-accueil-de-monitor" title="Lien permanent vers ce titre"></a></h3>
+<h4>1.8.2.2  La page d’accueil de monitor<a class="headerlink" href="#la-page-d-accueil-de-monitor" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image1148.webp"><img alt="image1148" src="../_images/image1148.webp" style="width: 700px;" /></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ajout de la notification</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm lastseem&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;annul_lastseem&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;34&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Annulation de l&#39;</span><span class="se">\a</span><span class="s2">lerte lastseem&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;lastseem&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1149.webp"><img alt="image1149" src="../_images/image1149.webp" style="width: 600px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>rel = id de la variable de Domoticz</p>
+</div>
+</div>
 </div>
 <div class="section" id="les-emplacements-disponibles-et-les-styles-css">
 <h3>1.8.2 les emplacements disponibles et les styles css<a class="headerlink" href="#les-emplacements-disponibles-et-les-styles-css" title="Lien permanent vers ce titre"></a></h3>
