@@ -1107,7 +1107,9 @@ En second , création d'une variable dans le tableau de variables (string_tablea
    L'écriture d'un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d'appréhender l'écriture de scripts pour l'affichage ou l'envoi de notifications complexes
    
    Le script tient compte des recommandations précédentes, 
+
    - ne seront concernés que les dispositifs appartenant à un plan.
+
    - les dispositifs virtuels sont exclus
 
    .. code-block::
@@ -1157,7 +1159,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    |image1151|
 
-   .. important:: **objet domoticz**:domoticz ou dz mais c'est l'un ou l'autre dans le script
+   .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
 
 1.8.2.2  La page d'accueil de monitor
 """""""""""""""""""""""""""""""""""""
@@ -1183,8 +1185,28 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
 1.8.2 les emplacements disponibles et les styles css
 ====================================================
+Pour cet exemple l'ID (lastseem) est imposé mais 4 id's pré programmés sont disponibles; les styles associés sont déclarés dans le fichier :darkblue:`custom/css/styles.css`:
 
-Des emplacements pré-programmés éxistent:
+la class .lastseem:
+
+|image1155|
+
+les class pré programmées :notif1, notif2, notif3, notif4
+
+.. code-block::
+
+   .notif1,.notif2,.notif3,.notif4{width: 50px;
+    height: 50px;
+    position: absolute;
+    Top: 600px;
+    }
+   .notif1{left:50px;display:none}
+   .notif2{left: 150px;display:none}
+   .notif3{left: 250px;display:none}
+   .notif4{left: 350px;display:none}
+
+.. note::
+Les emplacements de ces IDs disponibles sur la page d'accueil:
 
 
 
@@ -1408,3 +1430,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 441px 
 .. |image1154| image:: ../media/image1154.webp
    :width: 150px 
+.. |image1155| image:: ../media/image1155.webp
+   :width: 278px 
