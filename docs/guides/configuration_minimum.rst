@@ -1081,11 +1081,11 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 =================================================
 
 1.8.2.1  Ecriture d'un script Dzvent(Dz) ou yaml(HA)
-====================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 l'ajout concerne "Vu pour la dernière fois" (lastseem) des dispositifs	
 
 1.8.2.1.1 Domoticz
-""""""""""""""""""
+~~~~~~~~~~~~~~~~~~
 En premier , création de la variable, noter son nom :
 
 |image1150|
@@ -1102,11 +1102,13 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    .. warning:: 
 
-      Vue pour la dernière fois n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que dans la mémoire et dans le cache du navigateur. La seule façon de l’obtenir est d'utiliser JSON/API et il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
+      Vu pour la dernière fois n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que dans la mémoire et dans le cache du navigateur. La seule façon de l’obtenir est d'utiliser JSON/API et il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
 
    L'écriture d'un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d'appréhender l'écriture de scripts pour l'affichage ou l'envoi de notifications complexes
    
-   Le script qui tient compte des ecommandations précédentes, ne seront concerné que les dispositifs appartenant à un plan.
+   Le script tient compte des recommandations précédentes, 
+   - ne seront concerné que les dispositifs appartenant à un plan.
+   - les dispositifs virtuels sont exclus
 
    .. code-block::
    
@@ -1155,23 +1157,24 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    |image1151|
 
-   .. important:: **domoticz ou dz mais c'est l'un ou l'autre dans le script**
+   .. important:: **objet domoticz**:domoticz ou dz mais c'est l'un ou l'autre dans le script
 
+1.8.2.2  La page d'accueil de monitor
+"""""""""""""""""""""""""""""""""""""
+1.8.2.2.1 les notifications programmées de la page d'accueil
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-les notifications programmées de la page d'accueil
-
-   |image1148|
+|image1148|
 
    - ajout de la notification
 
    .. code-block::
 
-      <div class="confirm lastseem"><a href="#" id="annul_lastseem" rel="30" title="Annulation de l'\alerte lastseem"><img id="lastseem" src=""/></a></div>
+      <div class="confirm lastseem"><a href="#" id="annul_lastseem" rel="34" title="Annulation de l'\alerte lastseem"><img id="lastseem" src=""/></a></div>
 
-   |image1149|
+|image1149|
 
-1.8.2.2  La page d'accueil de monitor
-=====================================
+.. note:: rel = id de la variable de Domoticz
 
 
 1.8.2 les emplacements disponibles et les styles css
