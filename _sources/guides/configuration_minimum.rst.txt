@@ -1066,8 +1066,8 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 
 |image221|
 
-1.8 Complément pour les nootifications à l'écran
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.8 Complément pour les notifications sur l'écran d'accueil
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.8.1 les notifications incluse dans le programme
 =================================================
 
@@ -1085,7 +1085,7 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 
    |image1148|
 
-   - ajout de la notificaion
+   - ajout de la notification
 
    .. code-block::
 
@@ -1302,8 +1302,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1146| image:: ../media/image1146.webp
    :width: 474px 
 .. |image1147| image:: ../media/image1147.webp
-   :width: 500px 
-.. |image1148| image:: ../media/image1147.webp
+   :width: 480px 
+.. |image1148| image:: ../media/image1148.webp
    :width: 700px 
-.. |image1149| image:: ../media/image1147.webp
+.. |image1149| image:: ../media/image1149.webp
    :width: 600px 
