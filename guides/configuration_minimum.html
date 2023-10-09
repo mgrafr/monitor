@@ -1118,6 +1118,7 @@ pour ne pas cacher le menu hamburger</p>
 <p class="admonition-title">Note</p>
 <p>à partir de monitor (<span class="darkblue">Administration-&gt;Configuation variable dz maj_services</span>) ou avec la console</p>
 <p><a class="reference internal" href="../_images/image1152.webp"><img alt="image1152" src="../_images/image1152.webp" style="width: 396px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1153.webp"><img alt="image1153" src="../_images/image1153.webp" style="width: 441px;" /></a></p>
 </div>
 <div class="admonition-script-pour-domotiz admonition">
 <p class="admonition-title"><strong>Script pour Domotiz</strong></p>
@@ -1162,14 +1163,15 @@ pour ne pas cacher le menu hamburger</p>
                             <span class="n">end</span>
                 <span class="n">end</span>
       <span class="n">end</span>
-      <span class="n">dz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;lastseem&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">list_idx</span><span class="p">)</span>
-      <span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme&#39;</span><span class="p">;</span><span class="n">dz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;notification&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+      <span class="n">dz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;lastseem&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">list_idx</span><span class="p">)</span> <span class="o">--</span> <span class="n">pour</span> <span class="n">affichage</span> <span class="n">notification</span> <span class="n">sur</span> <span class="n">l</span><span class="s1">&#39;écran d&#39;</span><span class="n">accueil</span>
+      <span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme&#39;</span><span class="p">;</span><span class="n">dz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;notification&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>  <span class="o">--</span> <span class="n">envoi</span> <span class="n">d</span><span class="s1">&#39;un mail</span>
     <span class="n">end</span>
   <span class="n">end</span>
   <span class="p">}</span>
 </pre></div>
 </div>
 <p>Le log dz</p>
+<p><a class="reference internal" href="../_images/image1151.webp"><img alt="image1151" src="../_images/image1151.webp" style="width: 652px;" /></a></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p><strong>domoticz ou dz mais c’est l’un ou l’autre dans le script</strong></p>
