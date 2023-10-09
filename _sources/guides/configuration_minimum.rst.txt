@@ -1166,7 +1166,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
 |image1148|
 
-- ajout de la notification
+   - ajout de la notification
 
    .. code-block::
 
@@ -1176,7 +1176,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
 .. note:: rel = id de la variable de Domoticz
 
-- On importe une image svg, j'ai choisi un oeil rouge
+   - On importe une image svg, j'ai choisi un oeil rouge
 
 |image1154|
 
