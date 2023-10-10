@@ -14,7 +14,7 @@ require("fonctions.php");
 <!-- footer end -->
 <!-- JavaScript files placées à la fin du document-->	
 <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery-ui-v1.13.2.js"></script>
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script> 
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
@@ -102,7 +102,7 @@ function maj_services(index){console.log("piles:"+not_piles);
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){document.getElementById(idt).innerHTML ="";}*/
 	if ((img_serv!="pas image")&&(img_serv!=null)){console.log("image="+img_serv);
-		if (idw!="" && idw!="#shell" ){if (document.getElementById(idw)){console.log(not_piles_reset);
+		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){console.log(not_piles_reset);
 			if (img_serv=="none"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 					}
@@ -579,7 +579,18 @@ var nom;
 	}
 
 
-</script> 
+</script>
+
+ <style>
+  #custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+  </style>
 <script>
 var sliderMin = 0,
   sliderMax = 100;
