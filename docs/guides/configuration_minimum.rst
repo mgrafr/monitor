@@ -1187,9 +1187,9 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
 1.8.2 les emplacements disponibles et les styles css
 ====================================================
-Pour cet exemple l'ID (lastseem) est imposé mais 4 id's pré programmés sont disponibles; les styles associés sont déclarés dans le fichier :darkblue:`custom/css/styles.css`:
+Pour cet exemple l'ID (lastseen) est imposé mais 4 id's pré programmés sont disponibles; les styles associés sont déclarés dans le fichier :darkblue:`custom/css/styles.css`:
 
-la classe .lastseem créee:
+la classe .lastseen créee:
 
 |image1155|
 
@@ -1203,9 +1203,9 @@ les classes pré programmées :notif1, notif2, notif3, notif4
     Top: 600px;
     }
    .notif1{left:50px;display:none}
-   .notif2{left: 150px;display:none}
-   .notif3{left: 250px;display:none}
-   .notif4{left: 350px;display:none}
+   .notif2{left: 120px;display:none}
+   .notif3{left: 190px;display:none}
+   .notif4{left: 260px;display:none}
 
 .. note::
 Les emplacements de ces IDs disponibles sur la page d'accueil:
