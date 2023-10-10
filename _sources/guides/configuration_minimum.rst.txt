@@ -1161,6 +1161,14 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    |image1151|
 
+   .. note::
+
+      **Quelques explications**
+
+      Comme on peut le voir le caactère # sépare le nom attribué à la variable et la liste des dispositifs; on peut retrouver la liste dans la donnée "contenu" du fichier Json reçu par monitor.
+
+      |image1157|
+
    .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
 
 1.8.2.2  La page d'accueil de monitor
@@ -1215,6 +1223,20 @@ Les emplacements de ces IDs disponibles sur la page d'accueil:
 .. warning:: chaque icone sera celle indiquée dans la table SQL :darkblue:`text-image`
 
 les ID étant soit notif1, notif2, notif3 ou notif4
+
+1.8.3 Enregistrement de la variable dans la base SQL
+====================================================
+Avec monitor:
+
+|image1158|
+
+Avec PhpMyAdmin: les tables :darkblue:`text-image`text-image` et :green:`dispositifs`
+
+|image1159|
+
+|image1160|
+
+
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1440,3 +1462,11 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 200px 
 .. |image1156| image:: ../media/image1156.webp
    :width: 524px 
+.. |image1157| image:: ../media/image1157.webp
+   :width: 700px 
+.. |image1158| image:: ../media/image1158.webp
+   :width: 414px 
+.. |image1159| image:: ../media/image1159.webp
+   :width: 561px 
+.. |image1160| image:: ../media/image1160.webp
+   :width: 700px 
