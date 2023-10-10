@@ -1118,44 +1118,46 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
       -- chargement fichier contenant les variable de configuration
       package.path = package.path..";www/modules_lua/?.lua"
-      require 'string_tableaux' -- variable concernée : max_lastseem
+      require 'string_tableaux' -- variable concernée : max_lastseen
       require 'connect'
       adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 
-     local scriptVar = 'lastSeen'
+      local scriptVar = 'lastSeen'
 
-    return {
-    on = { timer =  {'at 17:39'}, httpResponses = { scriptVar }},
-    logging = { level   = domoticz.LOG_ERROR, marker  = scriptVar },
+      return {
+          on = { timer =  {'at 16:26'}, httpResponses = { scriptVar }},
+          logging = { level   = domoticz.LOG_ERROR, marker  = scriptVar },
     
-    execute = function(dz, item) 
+          execute = function(dz, item) 
         
-          if not (item.isHTTPResponse) then
-            dz.openURL({ 
-                url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=getdevices&used=true',
-                callback = scriptVar })
-          else
-            local Time = require('Time');local lastup="";
-            for _, node in pairs(item.json.result) do
-				 if node.PlanID == "2" and node.HardwareName ~= "virtuels" and dz.devices(tonumber(node.idx)) then
-				    --print(node.HardwareName)
-				   	local lastSeen = Time(node.LastUpdate).hoursAgo
-				   	local lastUpdated = dz.devices(tonumber(node.idx)).lastUpdate.hoursAgo
-					local delta = lastSeen - lastUpdated
-					if lastSeen > max_lastseem then -- limite en heure pour considérer le dispositif on line
-					print('idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseem:'..lastSeen..'/'..delta)
-					lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseem:'..lastSeen..'/'..delta..'\n'
-					--dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
-				end
-		    end
-	  end
-          dz.variables('lastseem').set(list_idx) -- pour affichage notification sur l'écran d'accueil
-          obj='alarme';dz.email('notification',obj,adresse_mail)  -- envoi d'un mail
+              if not (item.isHTTPResponse) then
+                  dz.openURL({ 
+                      url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=getdevices&used=true',
+                      callback = scriptVar })
+              else
+                  local Time = require('Time');local lastup="lastseem#";list_idx="lastseem#"
+                  for _, node in pairs(item.json.result) do
+		      if node.PlanID == "2" and node.HardwareName ~= "virtuels" and dz.devices(tonumber(node.idx)) then
+		        --print(node.HardwareName)
+			local lastSeen = Time(node.LastUpdate).hoursAgo
+			local lastUpdated = dz.devices(tonumber(node.idx)).lastUpdate.hoursAgo
+			local delta = lastSeen - lastUpdated
+			   if lastSeen > max_lastseen then -- limite en heure pour considérer le dispositif on line
+			   print('idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta)
+			   lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta..'\n'
+			   list_idx=list_idx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'Lastseen:'..tostring(lastSeen)..'delta:'..tostring(delta)..'\n'
+				
+			   --dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
+		           end	
+		      end
+	         end
+      		dz.variables('lastseen').set(list_idx)
+      		obj='alarme';dz.email('notification',obj,adresse_mail)
+    	   end
         end
-      end
       }
 
-   Le log dz
+   La variable lastseen
 
    |image1151|
 
@@ -1427,7 +1429,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1150| image:: ../media/image1150.webp
    :width: 700px 
 .. |image1151| image:: ../media/image1151.webp
-   :width: 652px 
+   :width: 459px 
 .. |image1152| image:: ../media/image1152.webp
    :width: 396px 
 .. |image1153| image:: ../media/image1153.webp
