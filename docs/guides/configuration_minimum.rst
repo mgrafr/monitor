@@ -1187,11 +1187,11 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 ====================================================
 Pour cet exemple l'ID (lastseem) est imposé mais 4 id's pré programmés sont disponibles; les styles associés sont déclarés dans le fichier :darkblue:`custom/css/styles.css`:
 
-la class .lastseem:
+la classe .lastseem créee:
 
 |image1155|
 
-les class pré programmées :notif1, notif2, notif3, notif4
+les classes pré programmées :notif1, notif2, notif3, notif4
 
 .. code-block::
 
@@ -1208,7 +1208,9 @@ les class pré programmées :notif1, notif2, notif3, notif4
 .. note::
 Les emplacements de ces IDs disponibles sur la page d'accueil:
 
+|image1155|
 
+.. warning:: chaque icone sera celle indiquée dans la table SQL :darkblue:`text-image`
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1431,4 +1433,6 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1154| image:: ../media/image1154.webp
    :width: 150px 
 .. |image1155| image:: ../media/image1155.webp
-   :width: 278px 
+   :width: 200px 
+.. |image1156| image:: ../media/image1156.webp
+   :width: 524px 
