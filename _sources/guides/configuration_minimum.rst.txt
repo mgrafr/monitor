@@ -1082,7 +1082,7 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 
 1.8.2.1  Ecriture d'un script Dzvent(Dz) ou yaml(HA)
 """"""""""""""""""""""""""""""""""""""""""""""""""""
-l'ajout concerne "Vu pour la dernière fois" (lastseem) des dispositifs	
+l'ajout concerne "Vu pour la dernière fois" (lastSeen) des dispositifs	
 
 1.8.2.1.1 Domoticz
 ~~~~~~~~~~~~~~~~~~
@@ -1172,7 +1172,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    .. code-block::
 
-      <div class="confirm lastseem"><a href="#" id="annul_lastseem" rel="34" title="Annulation de l'alerte lastseem"><img id="lastseem" src=""/></a></div>
+      <div class="confirm lastseen"><a href="#" id="annul_lastseen" rel="34" title="Annulation de l'alerte lastseem"><img id="lastseen" src=""/></a></div>
 
 |image1149|
 
@@ -1211,6 +1211,8 @@ Les emplacements de ces IDs disponibles sur la page d'accueil:
 |image1155|
 
 .. warning:: chaque icone sera celle indiquée dans la table SQL :darkblue:`text-image`
+
+les ID étant soit notif1, notif2, notif3 ou notif4
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^

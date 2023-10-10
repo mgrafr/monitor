@@ -1106,7 +1106,7 @@ pour ne pas cacher le menu hamburger</p>
 <h3>1.8.2 Mode d’emploi pour ajouter une notification<a class="headerlink" href="#mode-d-emploi-pour-ajouter-une-notification" title="Lien permanent vers ce titre"></a></h3>
 <div class="section" id="ecriture-d-un-script-dzvent-dz-ou-yaml-ha">
 <h4>1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)<a class="headerlink" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha" title="Lien permanent vers ce titre"></a></h4>
-<p>l’ajout concerne « Vu pour la dernière fois » (lastseem) des dispositifs</p>
+<p>l’ajout concerne « Vu pour la dernière fois » (lastSeen) des dispositifs</p>
 <p>En premier , création de la variable, noter son nom :</p>
 <p><a class="reference internal" href="../_images/image1150.webp"><img alt="image1150" src="../_images/image1150.webp" style="width: 700px;" /></a></p>
 <p>En second , création d’une variable dans le tableau de variables (string_tableaux.lua) :</p>
@@ -1184,7 +1184,7 @@ pour ne pas cacher le menu hamburger</p>
 <ul>
 <li><p>ajout de la notification</p>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm lastseem&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;annul_lastseem&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;34&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Annulation de l&#39;alerte lastseem&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;lastseem&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm lastseen&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;annul_lastseen&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;34&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Annulation de l&#39;alerte lastseem&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;lastseen&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -1224,6 +1224,7 @@ pour ne pas cacher le menu hamburger</p>
 <p class="admonition-title">Avertissement</p>
 <p>chaque icone sera celle indiquée dans la table SQL <span class="darkblue">text-image</span></p>
 </div>
+<p>les ID étant soit notif1, notif2, notif3 ou notif4</p>
 </div>
 </div>
 <div class="section" id="acces-distant-https">
