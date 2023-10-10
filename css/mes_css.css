@@ -249,6 +249,8 @@ margin: -15px 0 0 50px;}
 .modal-header{background-color:cyan;}
 .modal-backdrop {z-index: -1040;}
 /*.modal-dialog {margin: 40px;}*/
+/*----------------------------------*/
+/* css page accueil*/
 .aff_dim_ecran{    width: 50px;
     height: 50px;
     position: absolute;
@@ -291,6 +293,12 @@ left: 220px;}
     top: -300px;
     width: 50px;
     left: 220px;}
+/*lastseem*/
+.lastseem{width: 150px;
+    height: 50px;
+    position: absolute;
+    Top: 200px;
+    left: 50px;}
 /*ping PI4*/
 #ping_pi4{position: relative;top: -85px;
 left: 410px;
@@ -331,6 +339,8 @@ height: auto;}
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+/* fin notifications page accueil*/	
+	
 }
 @keyframes clignoter {
   0%   { opacity:1; }
@@ -545,7 +555,7 @@ left: 170px;width: 40px;}
 }
 /* Large devices (small desktops <535) */
 @media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:580px;}#nagiosmobile{width:480px;}
-.poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}
+.poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}.aff_not1{top: 450px;}
 .fosse_septique{left:300px;}#fosse{bottom:420px;}.aff_anni{bottom: 80px;}.aff_pluie{left: 390px;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}
 .fond_date {right: -60px;}#pression_chaud{width:50px}.pression_chaud{top: -305px;}
