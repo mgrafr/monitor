@@ -1,3 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
-
+.aff_not1,.aff_not2,.aff_not3,.aff_not4{width: 50px;
+    height: 50px;
+    position: absolute;
+    Top: 600px;
+    }
+.aff_not1,.aff_not2{left: 50px;display:none}
+.aff_not2,.aff_not2{left: 150px;display:none}
+.aff_not3,.aff_not3{left: 250px;display:none}
+.aff_not4,.aff_not4{left: 350px;display:none}
