@@ -27,8 +27,13 @@
 <div class="aff_anni" ><img id="aff_anni" src="" alt="anni" /><div id="prenom"></div></div>
 <div class="aff_al" ><img id="alarme_nuit" src="images/alarme_auto.svg" alt="alarme" /></div>
 <div class="aff_bat" ><img id="batterie" src="images/batterie_faible.svg" alt="batterie" /></div>
-<div class="ping_rasp" ><img id="ping_rasp" style="width:40px;height:40px" src="images/ping_pi4.svg" alt="ping" /></div>
+<div class="confirm ping_rasp" ><a href="#" id="annul_ping" rel="21" title="effacement alerte pi"><img id="ping_rasp" style="width:40px;height:40px" src="" alt="ping" /></a></div>  
 <div class="confirm bl" ><a href="#" id="confirm-box" rel="19" title="courrier récupéré"><img id="bl" src="images/boite_lettres.svg" alt="boite_lettres" /></a></div>
+
+<div class="confirm lastseem"><a href="#" id="annul_lastseem" rel="34" title="Annulation de l'alerte lastseem"><img id="lastseem" src="images/icon_eye.svg"/></a></div>
+
+<div class="confirm not1"><a href="#" id="annul_not1" rel="30" title="Annulation de l'alerte not1"><img id="affich_not1" src=""/></a></div>
+
 <p id="erreur" ></p>
  <!-- accueil end -->
 
