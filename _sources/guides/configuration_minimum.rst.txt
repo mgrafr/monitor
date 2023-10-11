@@ -1236,7 +1236,19 @@ Avec PhpMyAdmin: les tables :darkblue:`text-image`text-image` et :green:`disposi
 
 |image1160|
 
+Le fichier Json reçu par monitor:
 
+|image1162|
+
+1.8.4 Affichage dans monitor
+============================
+
+|image1161|
+
+1.8.4.1 function status_variables($xx) dans fonctions.php
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+|image1163|
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1470,3 +1482,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 561px 
 .. |image1160| image:: ../media/image1160.webp
    :width: 700px 
+.. |image1161| image:: ../media/image1161.webp
+   :width: 541px 
+.. |image1162| image:: ../media/image1162.webp
+   :width: 523px 
+.. |image1163| image:: ../media/image1163.webp
+   :width: 600px 
