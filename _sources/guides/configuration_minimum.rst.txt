@@ -1248,6 +1248,10 @@ La variable :darkblue:`contenu` du fichier Json reçu par monitor:
 
 |image1161|
 
+.. attention::
+
+   il y a un nombre important de dispositifs en défaut : la clé zigbee est en défaut , en la redémarrant , seulement quelques dispositifs n'ont pas communiqé depuis la valeur max choisie (ici 24 heures)
+
 1.8.4.1 function status_variables($xx) dans :darkblue:`fonctions.php`
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
