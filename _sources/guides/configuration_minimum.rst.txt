@@ -1236,9 +1236,11 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
 |image1160|
 
-La variable "contenu du fichier Json reçu par monitor:
+La variable :darkblue:`contenu` du fichier Json reçu par monitor:
 
 |image1157|
+
+.. note:: * la valeur de Lastseen est en heures , le delta correspond à la différence entre LastUpdate et Lasteen.
 
 1.8.4 Affichage dans monitor
 ============================
@@ -1253,6 +1255,13 @@ La variable "contenu du fichier Json reçu par monitor:
 La variable "lastseen" de domoticz contient une chaine composée du nom du texte de la table "text-image" et du contenu correspondant aux disposifs off line ou morts, ces 2 valeurs séparés par le caractère :red:`#`.
 
 Pour décomposer cette chaîne en 2 valeurs d'un tableau, on utilise la fonction PHP :green:`explode`: pour résumer, *si "value" contient # on la découpe en value et contenu*.
+
+1.8.4.2 script Jquery dans :darkblue:`footer.php`
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+|image1164|
+
+on récupére la valeur de contenu pour l'afficher dans un popup qui permet d'annuler la notification
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1475,7 +1484,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1154| image:: ../media/image1154.webp
    :width: 150px 
 .. |image1155| image:: ../media/image1155.webp
-   :width: 200px 
+   :width: 250px 
 .. |image1156| image:: ../media/image1156.webp
    :width: 524px 
 .. |image1157| image:: ../media/image1157.webp
@@ -1492,3 +1501,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 523px 
 .. |image1163| image:: ../media/image1163.webp
    :width: 600px 
+.. |image1164| image:: ../media/image1164.webp
+   :width: 700px 
