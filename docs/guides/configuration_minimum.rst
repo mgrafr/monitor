@@ -1111,7 +1111,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    - ne seront concernés que les dispositifs appartenant à un plan.
 
-   - les dispositifs virtuels sont exclus
+   - les dispositifs virtuels et de surveillance réseau sont exclus
 
    .. code-block::
    
@@ -1138,7 +1138,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
               else
                   local Time = require('Time');local lastup="";listidx="lastseen#"
                   for _, node in pairs(item.json.result) do
-			if node.PlanID == "2" and node.HardwareName ~= "virtuels" and dz.devices(tonumber(node.idx)) then
+			if node.PlanID == "2" and node.HardwareName ~= "virtuels" and node.HardwareName ~= "surveillance réseau" and dz.devices(tonumber(node.idx)) then
 			--print(node.HardwareName)
 			local lastSeen = Time(node.LastUpdate).hoursAgo
 			local lastUpdated = dz.devices(tonumber(node.idx)).lastUpdate.hoursAgo
