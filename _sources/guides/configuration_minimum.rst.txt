@@ -1033,6 +1033,7 @@ Et pour ajouter l’icône au fichier json concernant les variables :
 		'Type' => $type,
 		'Name' => $name,
 		'Value' => $value,
+		'contenu' => $content,
 		'ID_img' => $id_m_img,
 		'image' => $image,
 	--->	'icone' => $icone,
