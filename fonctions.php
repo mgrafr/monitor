@@ -85,6 +85,8 @@ $lect_var = $result[$n];
 $idx = isset($lect_var["idx"]) ? $lect_var["idx"] : '';
 $ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';	
 $value = $lect_var['Value'];
+	if (str_contains($value, '#')) {$tab = explode("#", $value);
+	$value = $tab[0];$content=$tab[1];}
 $name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
 $type = $lect_var['Type'];
 if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,3);} 
@@ -108,6 +110,7 @@ $data[$n+1] = [
 		'Type' => $type,
 		'Name' => $name,
 		'Value' => $value,
+		'contenu' => $content,
 		'ID_img' => $id_m_img,
 		'image' => $image,
 		'icone' => $icone,
