@@ -24,7 +24,7 @@ Version 2.2.4
 
 - Nb enregistrements affichés pour historique poubelles : remplacé 24 par choix dans config.php
 
-- installation d'un assistant vocal Ha-bridge et Alexa pour la mise en marche et l'arrêt de l'alarme; intégration dans monitor
+- installation d'un assistant vocal Ha-bridge et Alexa ; intégration du pont Ha-bridge dans monitor
 
 Version 2.2.3
 ~~~~~~~~~~~~~
