@@ -1,4 +1,4 @@
-   -- script notifications_devices version  2.1.3
+  -- script notifications_devices version  2.1.3
  -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 require 'connect'
@@ -47,15 +47,15 @@ return {
             if (device.name == 'Ping_pi4' and  device.state=='Off' and domoticz.variables('pi-alarme').value == "0") then 
             domoticz.variables('pi-alarme').set("pi_hs")
             domoticz.variables('variable_sp').set("1")
-            txt='alarmeùpiùhs';obj='alarme pi hs'alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
+            txt='alarmeùpiùhs';obj='alarme pi hs';alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
             elseif (device.name == 'Ping_pi4' and  device.state=='On' and domoticz.variables('pi-alarme').value == "pi_hs") then 
             domoticz.variables('pi-alarme').set("0")
-            txt='alarmeùPIùdeùnouveauùOK';obj='alarme PI de nouveau OK'alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
+            txt='alarmeùPIùdeùnouveauùOK';obj='alarme PI de nouveau OK';alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
             end
             --
             if (device.name == 'Test_GSM' and  device.state=='On') then print ("test_gsm")
             txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
-            obj='Test GSM OK'domoticz.email('Alarme',obj,adresse_mail)    
+            obj='Test GSM OK';domoticz.email('Alarme',obj,adresse_mail)    
             end
             -- alarme auto
             if (device.name == 'al_nuit_auto' and  device.state=='On') then txt='alarme_nuit_auto_activee';alerte_gsm(txt); domoticz.variables('alarme').set("alarme_auto");
