@@ -1136,26 +1136,26 @@ En second , création d'une variable dans le tableau de variables (string_tablea
                       url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=getdevices&used=true',
                       callback = scriptVar })
               else
-                  local Time = require('Time');local lastup="lastseem#";list_idx="lastseem#"
+                  local Time = require('Time');local lastup="";listidx="lastseen#"
                   for _, node in pairs(item.json.result) do
-		      if node.PlanID == "2" and node.HardwareName ~= "virtuels" and dz.devices(tonumber(node.idx)) then
-		        --print(node.HardwareName)
+			if node.PlanID == "2" and node.HardwareName ~= "virtuels" and dz.devices(tonumber(node.idx)) then
+			--print(node.HardwareName)
 			local lastSeen = Time(node.LastUpdate).hoursAgo
 			local lastUpdated = dz.devices(tonumber(node.idx)).lastUpdate.hoursAgo
 			local delta = lastSeen - lastUpdated
-			   if lastSeen > max_lastseen then -- limite en heure pour considérer le dispositif on line
-			   print('idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta)
-			   lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta..'<br>'
-			   list_idx=list_idx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'Lastseen:'..tostring(lastSeen)..'delta:'..tostring(delta)..'<br>'
-				
-			   --dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
-		           end	
-		      end
-	         end
-      		dz.variables('lastseen').set(list_idx)
-      		obj='alarme';dz.email('notification',obj,adresse_mail)
-    	   end
-        end
+				if lastSeen > max_lastseen then -- limite en heure pour considérer le dispositif on line
+				--print('idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta)
+				lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta..'<br>'
+				listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'Lastseen:'..tostring(lastSeen)..'delta:'..tostring(delta)..'<br>'
+				--dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
+				end	
+		        end
+		 end
+                 dz.variables('lastseen').set(listidx)
+      		 obj='alarme lastseen: '..listidx;dz.email('LastSeen',lastup,adresse_mail)
+          end
+    
+      end
       }
 
    La variable lastseen
@@ -1263,6 +1263,11 @@ Pour décomposer cette chaîne en 2 valeurs d'un tableau, on utilise la fonction
 |image1164|
 
 on récupére la valeur de contenu pour l'afficher dans un popup qui permet d'annuler la notification
+
+1.8.5 Réception du mail de notification
+=======================================
+
+|image1165|
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1504,3 +1509,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 600px 
 .. |image1164| image:: ../media/image1164.webp
    :width: 700px 
+.. |image1165| image:: ../media/image1165.webp
+   :width:449px 
