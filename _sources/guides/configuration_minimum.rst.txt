@@ -1144,8 +1144,8 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 			local delta = lastSeen - lastUpdated
 			   if lastSeen > max_lastseen then -- limite en heure pour considérer le dispositif on line
 			   print('idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta)
-			   lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta..'\n'
-			   list_idx=list_idx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'Lastseen:'..tostring(lastSeen)..'delta:'..tostring(delta)..'\n'
+			   lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta..'<br>'
+			   list_idx=list_idx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'Lastseen:'..tostring(lastSeen)..'delta:'..tostring(delta)..'<br>'
 				
 			   --dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
 		           end	
@@ -1167,7 +1167,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
       Comme on peut le voir le caactère # sépare le nom attribué à la variable et la liste des dispositifs; on peut retrouver la liste dans la donnée "contenu" du fichier Json reçu par monitor.
 
-      |image1157|
+      |image1162|
 
    .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
 
@@ -1188,7 +1188,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
 .. note:: rel = id de la variable de Domoticz
 
-- On importe une image svg, j'ai choisi un oeil rouge
+- On importe une image svg dans lr répertoire "images", j'ai choisi un oeil rouge
 
 |image1154|
 
@@ -1218,7 +1218,7 @@ les classes pré programmées :notif1, notif2, notif3, notif4
 .. note::
 Les emplacements de ces IDs disponibles sur la page d'accueil:
 
-|image1155|
+|image1156|
 
 .. warning:: chaque icone sera celle indiquée dans la table SQL :darkblue:`text-image`
 
@@ -1226,29 +1226,33 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
 1.8.3 Enregistrement de la variable dans la base SQL
 ====================================================
-Avec monitor:
+- *Avec monitor*:
 
 |image1158|
 
-Avec PhpMyAdmin: les tables :darkblue:`text-image`text-image` et :green:`dispositifs`
+- *Avec PhpMyAdmin*: les tables :darkblue:`text-image`text-image` et :green:`dispositifs`
 
 |image1159|
 
 |image1160|
 
-Le fichier Json reçu par monitor:
+La variable "contenu du fichier Json reçu par monitor:
 
-|image1162|
+|image1157|
 
 1.8.4 Affichage dans monitor
 ============================
 
 |image1161|
 
-1.8.4.1 function status_variables($xx) dans fonctions.php
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+1.8.4.1 function status_variables($xx) dans :darkblue:`fonctions.php`
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 |image1163|
+
+La variable "lastseen" de domoticz contient une chaine composée du nom du texte de la table "text-image" et du contenu correspondant aux disposifs off line ou morts, ces 2 valeurs séparés par le caractère :red:`#`.
+
+Pour décomposer cette chaîne en 2 valeurs d'un tableau, on utilise la fonction PHP :green:`explode`: pour résumer, *si "value" contient # on la découpe en value et contenu*.
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1475,7 +1479,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1156| image:: ../media/image1156.webp
    :width: 524px 
 .. |image1157| image:: ../media/image1157.webp
-   :width: 700px 
+   :width: 533px 
 .. |image1158| image:: ../media/image1158.webp
    :width: 414px 
 .. |image1159| image:: ../media/image1159.webp
