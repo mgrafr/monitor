@@ -456,7 +456,8 @@ customBox.className = 'custom-box';
 // Affichage boîte de confirmation
 	$(".confirm a").click(function(){ 
     var title_confirm=$(this).attr('title');ch=$(this).attr('rel');
-    customBox.innerHTML = '<p>'+title_confirm+'</p>';
+	var content_modal=service[ch].contenu;
+    customBox.innerHTML = '<p>'+title_confirm+'</p><p>'+content_modal+'</p>';
     customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
     customBox.innerHTML += '<button id="modal-close">Annuler</button>';
    modalShow();
