@@ -9,7 +9,7 @@ adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local scriptVar = 'lastSeen'
 
 return {
-    on = { timer =  {'at 17:12'}, httpResponses = { scriptVar }},
+    on = { timer =  {'at 16:53'}, httpResponses = { scriptVar }},
     logging = { level   = domoticz.LOG_ERROR, marker  = scriptVar },
     
     execute = function(dz, item) 
@@ -21,7 +21,7 @@ return {
         else
             local Time = require('Time');local lastup="";listidx="lastseen#"
             for _, node in pairs(item.json.result) do
-				 if node.PlanID == "2" and node.HardwareName ~= "virtuels" and dz.devices(tonumber(node.idx)) then
+				 if node.PlanID == "2" and node.HardwareName ~= "virtuels" and node.HardwareName ~= "surveillance réseau" and dz.devices(tonumber(node.idx)) then
 				    --print(node.HardwareName)
 				   	local lastSeen = Time(node.LastUpdate).hoursAgo
 				   	local lastUpdated = dz.devices(tonumber(node.idx)).lastUpdate.hoursAgo
