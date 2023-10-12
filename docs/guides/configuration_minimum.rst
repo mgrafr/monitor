@@ -1237,9 +1237,13 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
 |image1160|
 
-La variable :darkblue:`contenu` du fichier Json reçu par monitor:
+La variable :darkblue:`contenu` du fichier Json reçu par monitor un jour de défaillance de la clé zigbee:
 
 |image1157|
+
+La même variable lors d'un seul dispositif en défaut:
+
+|image1166|
 
 .. note:: * la valeur de Lastseen est en heures , le delta correspond à la différence entre LastUpdate et Lasteen.
 
@@ -1250,7 +1254,9 @@ La variable :darkblue:`contenu` du fichier Json reçu par monitor:
 
 .. attention::
 
-   il y a un nombre important de dispositifs en défaut : la clé zigbee est en défaut , en la redémarrant , seulement quelques dispositifs n'ont pas communiqé depuis la valeur max choisie (ici 24 heures)
+   il y a un nombre important de dispositifs en défaut : la clé zigbee est en défaut , en la redémarrant , seulement un dispositif n'a pas communiqué depuis la valeur max choisie (ici 24 heures)
+
+|image1167|
 
 1.8.4.1 function status_variables($xx) dans :darkblue:`fonctions.php`
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1272,6 +1278,8 @@ on récupére la valeur de contenu pour l'afficher dans un popup qui permet d'an
 =======================================
 
 |image1165|
+
+|image1168|
 
 1.9 Accès distant HTTPS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1515,3 +1523,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px 
 .. |image1165| image:: ../media/image1165.webp
    :width: 449px 
+.. |image1166| image:: ../media/image1166.webp
+   :width: 577px 
+.. |image1167| image:: ../media/image1167.webp
+   :width: 605px 
+.. |image1168| image:: ../media/image1168.webp
+   :width: 450px 
