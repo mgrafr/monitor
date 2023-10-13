@@ -1085,7 +1085,7 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 l'ajout concerne "Vu pour la dernière fois" (lastSeen) des dispositifs	
 
-1.8.2.1.1 Domoticz
+1.8.2.1.a Domoticz
 ~~~~~~~~~~~~~~~~~~
 En premier , création de la variable, noter son nom :
 
@@ -1172,7 +1172,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
 
-1.8.2.1.1 Home Assistant
+1.8.2.1.b Home Assistant
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Créer une automatisation : merci à **OzGav** *https://community.home-assistant.io/u/OzGav*
