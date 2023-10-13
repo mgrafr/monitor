@@ -1124,8 +1124,8 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image1152.webp"><img alt="image1152" src="../_images/image1152.webp" style="width: 396px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1153.webp"><img alt="image1153" src="../_images/image1153.webp" style="width: 441px;" /></a></p>
 </div>
-<div class="admonition-script-dzvent admonition">
-<p class="admonition-title"><strong>Script DzVent</strong></p>
+<div class="admonition-script-pour-domotiz admonition">
+<p class="admonition-title"><strong>Script pour Domotiz</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p>Vu pour la dernière fois n’est pas stocké dans la base de données aussi DZ ne l’exporte pas vers le système d’événements. L’info n’est disponible que dans la mémoire et dans le cache du navigateur. La seule façon de l’obtenir est d’utiliser JSON/API et il n’est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.</p>
@@ -1193,33 +1193,6 @@ pour ne pas cacher le menu hamburger</p>
 <p><strong>objet domoticz</strong> : <em>domoticz ou dz mais c’est l’un ou l’autre dans le script</em></p>
 </div>
 </div>
-<p>Créer une automatisation : merci à <strong>OzGav</strong> <em>https://community.home-assistant.io/u/OzGav</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">lastseen_alerte_dispositifs</span>
-<span class="n">alias</span><span class="p">:</span> <span class="n">LastSeen</span> <span class="n">Alerte</span> <span class="n">Dispositifs</span>
-<span class="n">trigger</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">time</span>
-  <span class="n">at</span><span class="p">:</span> <span class="s1">&#39;17:46:00&#39;</span>
-<span class="n">condition</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">condition</span><span class="p">:</span> <span class="n">template</span>
-  <span class="n">value_template</span><span class="p">:</span> <span class="s2">&quot;{</span><span class="si">% s</span><span class="s2">et ns = namespace(break = false) %} {</span><span class="si">% f</span><span class="s2">or state in states</span>
-    <span class="o">-%</span><span class="p">}</span>\<span class="n">n</span>  <span class="p">{</span><span class="o">%-</span> <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span> <span class="o">%</span><span class="p">}</span>\<span class="n">n</span>    <span class="p">{</span><span class="o">%-</span> <span class="k">if</span> <span class="p">(</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span>
-    <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="ow">and</span> <span class="n">ns</span><span class="o">.</span><span class="k">break</span> <span class="o">==</span> <span class="n">false</span>
-    <span class="o">%</span><span class="p">}</span>\<span class="n">n</span>      <span class="p">{</span><span class="o">%-</span> <span class="nb">set</span> <span class="n">ns</span><span class="o">.</span><span class="k">break</span> <span class="o">=</span> <span class="n">true</span> <span class="o">%</span><span class="p">}</span>\<span class="n">n</span>      <span class="n">true</span>\<span class="n">n</span>    <span class="p">{</span><span class="o">%-</span> <span class="n">endif</span> <span class="o">-%</span><span class="p">}</span>\<span class="n">n</span>  <span class="p">{</span><span class="o">%-</span> <span class="n">endif</span>
-    <span class="o">-%</span><span class="p">}</span>\<span class="n">n</span><span class="p">{</span><span class="o">%-</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span> \<span class="n">n</span><span class="s2">&quot;</span>
-<span class="n">action</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">notify</span><span class="o">.</span><span class="n">mobile_app_RMO_NX1</span>
-  <span class="n">data</span><span class="p">:</span>
-    <span class="n">message</span><span class="p">:</span> <span class="s2">&quot;Some Zigbee devices haven&#39;t been seen lately... {</span><span class="si">% f</span><span class="s2">or state in states</span>
-      <span class="o">-%</span><span class="p">}</span>\<span class="n">n</span>  <span class="p">{</span><span class="o">%-</span> <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span> <span class="o">%</span><span class="p">}</span>\<span class="n">n</span>    <span class="p">{</span><span class="o">%-</span> <span class="k">if</span> <span class="p">(</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span>
-      <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="o">%</span><span class="p">}</span>\<span class="n">n</span>      <span class="p">{{</span> <span class="p">((</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span>
-      <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3600</span><span class="p">))</span> <span class="o">|</span> <span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}}</span> <span class="n">hours</span>
-      <span class="n">ago</span> <span class="k">for</span> <span class="p">{{</span> <span class="n">state</span><span class="o">.</span><span class="n">name</span> <span class="p">}}</span>\<span class="n">n</span>      \<span class="n">n</span>    <span class="p">{</span><span class="o">%-</span> <span class="n">endif</span> <span class="o">-%</span><span class="p">}</span>\<span class="n">n</span>  <span class="p">{</span><span class="o">%-</span> <span class="n">endif</span> <span class="o">-%</span><span class="p">}</span>\<span class="n">n</span><span class="p">{</span><span class="o">%-</span>
-      <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span><span class="s2">&quot;</span>
-</pre></div>
-</div>
-<p><a class="reference internal" href="../_images/image1169.webp"><img alt="image1169" src="../_images/image1169.webp" style="width: 650px;" /></a></p>
-<p>Vérifier que dans la config par defaut, <span class="green">mobile_app</span> est présent</p>
-<p><a class="reference internal" href="../_images/image1169.webp"><img alt="image1169" src="../_images/image1169.webp" style="width: 650px;" /></a></p>
 </div>
 <div class="section" id="la-page-d-accueil-de-monitor">
 <h4>1.8.2.2  La page d’accueil de monitor<a class="headerlink" href="#la-page-d-accueil-de-monitor" title="Lien permanent vers ce titre"></a></h4>
