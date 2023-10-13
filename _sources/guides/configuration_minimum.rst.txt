@@ -1099,7 +1099,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    |image1153|
 
-.. admonition:: **Script pour Domotiz**
+.. admonition:: **Script DzVent**
 
    .. warning:: 
 
@@ -1171,6 +1171,41 @@ En second , création d'une variable dans le tableau de variables (string_tablea
       |image1162|
 
    .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
+
+1.8.2.1.1 Home Assistant
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Créer une automatisation : merci à **OzGav** *https://community.home-assistant.io/u/OzGav*
+
+.. code-block::
+
+   - id: lastseen_alerte_dispositifs
+  alias: LastSeen Alerte Dispositifs
+  trigger:
+  - platform: time
+    at: '17:46:00'
+  condition:
+  - condition: template
+    value_template: "{% set ns = namespace(break = false) %} {% for state in states
+      -%}\n  {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now())
+      - as_timestamp(state.attributes.last_seen) > (60 * 1) ) and ns.break == false
+      %}\n      {%- set ns.break = true %}\n      true\n    {%- endif -%}\n  {%- endif
+      -%}\n{%- endfor %} \n"
+  action:
+  - service: notify.mobile_app_RMO_NX1
+    data:
+      message: "Some Zigbee devices haven't been seen lately... {% for state in states
+        -%}\n  {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now())
+        - as_timestamp(state.attributes.last_seen) > (60 * 1) ) %}\n      {{ ((as_timestamp(now())
+        - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} hours
+        ago for {{ state.name }}\n      \n    {%- endif -%}\n  {%- endif -%}\n{%-
+        endfor %}"
+
+|image1169|
+
+Vérifier que dans la config par defaut, :green:`mobile_app` est présent 
+
+|image1169|
 
 1.8.2.2  La page d'accueil de monitor
 """""""""""""""""""""""""""""""""""""
@@ -1529,3 +1564,10 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 605px 
 .. |image1168| image:: ../media/image1168.webp
    :width: 450px 
+.. |image1169| image:: ../media/image1169.webp
+   :width: 650px 
+.. |image1169| image:: ../media/image1169.webp
+   :width: 650px 
+.. |image1170| image:: ../media/image1170.webp
+   :width: 421px 
+
