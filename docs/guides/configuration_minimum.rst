@@ -1205,7 +1205,11 @@ Créer une automatisation : merci à **OzGav** *https://community.home-assistant
 
 Vérifier que dans la config par defaut, :green:`mobile_app` est présent 
 
-|image1169|
+|image1170|
+
+La notification sur le smartphone
+
+|image1171|
 
 1.8.2.2  La page d'accueil de monitor
 """""""""""""""""""""""""""""""""""""
@@ -1570,4 +1574,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 650px 
 .. |image1170| image:: ../media/image1170.webp
    :width: 421px 
-
+.. |image1171| image:: ../media/image1171.webp
+   :width: 300px 
