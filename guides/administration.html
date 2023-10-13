@@ -317,30 +317,24 @@ document.getElementById(&quot;affich_content_info&quot;).innerHTML = info_admin[
 <p>Plusieurs solutions étaient possibles mais avec l’installations de scripts et de modules supplémentaires.</p>
 <p>En http, on ne peut seulement télécharger un fichier depuis un site distant.</p>
 <p>La solution retenue :</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1 une variable (nommée ici « upload ») dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.</p></li>
 </ul>
-</div></blockquote>
 <p><a class="reference internal" href="../_images/image811.webp"><img alt="image811" src="../_images/image811.webp" style="width: 650px;" /></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maj_variable</span><span class="p">(</span><span class="s2">&quot;22&quot;</span><span class="p">,</span><span class="s2">&quot;upload&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Pour la mise à jour de la liste des caméras dont la détection est activée, c’est le même script qui est utilisé, la variable « upload » est alors passé à 2 :</p>
 <p><a class="reference internal" href="../_images/image812.webp"><img alt="image812" src="../_images/image812.webp" style="width: 700px;" /></a></p>
-</div>
 <ul class="simple">
 <li><p><strong>Les fonctions JS wajax() et yajax()</strong> ,  <em>dans mes_js.js</em></p></li>
 </ul>
-<blockquote>
-<div><p><a class="reference internal" href="../_images/image813.webp"><img alt="image813" src="../_images/image813.webp" style="width: 618px;" /></a></p>
-</div></blockquote>
+<p><a class="reference internal" href="../_images/image813.webp"><img alt="image813" src="../_images/image813.webp" style="width: 618px;" /></a></p>
 <ul class="simple">
 <li><p><strong>Les fichiers temporaires</strong>,  <em>dans monitor pour Domoticz</em></p></li>
 </ul>
-<blockquote>
-<div><p><a class="reference internal" href="../_images/image814.webp"><img alt="image814" src="../_images/image814.webp" style="width: 319px;" /></a></p>
-</div></blockquote>
+<p><a class="reference internal" href="../_images/image814.webp"><img alt="image814" src="../_images/image814.webp" style="width: 319px;" /></a></p>
+</div>
 </div>
 <div class="section" id="copies-decran-et-explications">
 <h2>14.6 Copies d’écran et explications<a class="headerlink" href="#copies-decran-et-explications" title="Lien permanent vers ce titre"></a></h2>
