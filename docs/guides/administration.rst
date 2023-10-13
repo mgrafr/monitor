@@ -211,7 +211,7 @@ voir les paragraphes:
    
    La solution retenue :
 
-      -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1 une variable (nommée ici "upload") dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
+   -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1 une variable (nommée ici "upload") dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
 
    |image811|
 
@@ -223,13 +223,13 @@ voir les paragraphes:
 
    |image812|
 
-- **Les fonctions JS wajax() et yajax()** ,  *dans mes_js.js*
+   - **Les fonctions JS wajax() et yajax()** ,  *dans mes_js.js*
 
- |image813|
+   |image813|
 
-- **Les fichiers temporaires**,  *dans monitor pour Domoticz*
+   - **Les fichiers temporaires**,  *dans monitor pour Domoticz*
 
- |image814|
+   |image814|
 
 14.6 Copies d’écran et explications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
