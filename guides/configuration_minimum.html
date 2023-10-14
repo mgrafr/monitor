@@ -88,23 +88,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#liens-avec-domoticz-ou-home-assistant">1.5 liens avec Domoticz ou Home Assistant</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#liens-avec-domoticz">1.5.1 Liens avec Domoticz</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#les-variables-lua-de-configuration-dans-un-fichier-externe">1.5.1.1 les variables lua de configuration dans un fichier externe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#les-scripts-de-notifications-gerees-par-domoticz">1.5.1.2 les scripts de notifications gérées par Domoticz</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#script-lua">script lua</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-scripts-de-notifications-gerees-par-domoticz">1.5.1.2 les scripts de notifications gérées par Domoticz</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#liens-avec-home-assistant">1.5.2 Liens avec Home Assistant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#exemple-dun-on-off-sur-un-interrupteur-virtuel">1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#liaison-mqtt-entre-home-assistant-et-domoticz">1.5.3 Liaison MQTT entre Home Assistant et Domoticz</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ajout-dans-domoticz">1.5.3.1  Ajout dans Domoticz</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ajout-dans-home-assistant">1.5.3.2  Ajout dans Home Assistant</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="#script-lua">script lua</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#lien-avec-la-base-de-donnees-sql">1.6 Lien avec la base de données SQL</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#exemple-avec-la-date-de-ramassage-des-poubelles">1.6.1- exemple avec la date de ramassage des poubelles</a></li>
 </ul>
@@ -113,15 +104,22 @@
 <li class="toctree-l2"><a class="reference internal" href="#complement-pour-les-notifications-sur-l-ecran-d-accueil">1.8 Complément pour les notifications sur l’écran d’accueil</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#les-notifications-incluses-dans-le-programme">1.8.1 les notifications incluses dans le programme</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mode-d-emploi-pour-ajouter-une-notification">1.8.2 Mode d’emploi pour ajouter une notification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#la-page-d-accueil-de-monitor">1.8.2.2  La page d’accueil de monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#a-domoticz">1.8.2.1.a Domoticz</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#b-home-assistant">1.8.2.1.b Home Assistant</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#la-page-d-accueil-de-monitor">1.8.2.2  La page d’accueil de monitor</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#les-notifications-programmees-de-la-page-d-accueil">1.8.2.2.1 les notifications programmées de la page d’accueil</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#les-emplacements-disponibles-et-les-styles-css">1.8.2 les emplacements disponibles et les styles css</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#enregistrement-de-la-variable-dans-la-base-sql">1.8.3 Enregistrement de la variable dans la base SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#affichage-dans-monitor">1.8.4 Affichage dans monitor</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#function-status-variables-xx-dans-fonctions-php">1.8.4.1 function status_variables($xx) dans <span class="darkblue">fonctions.php</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#script-jquery-dans-footer-php">1.8.4.2 script Jquery dans <span class="darkblue">footer.php</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-status-variables-xx-dans-fonctions-php">1.8.4.1 function status_variables($xx) dans fonctions.php</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script-jquery-dans-footer-php">1.8.4.2 script Jquery dans footer.php</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#reception-du-mail-de-notification">1.8.5 Réception du mail de notification</a></li>
@@ -859,21 +857,18 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 </ul>
 <p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua</a></p>
 <p><a class="reference internal" href="../_images/image194.webp"><img alt="image194" src="../_images/image194.webp" style="width: 650px;" /></a></p>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="script-lua">
-<span id="scriptluatimer"></span><h5>script lua<a class="headerlink" href="#script-lua" title="Lien permanent vers ce titre"></a></h5>
+<span id="scriptluatimer"></span><h1>script lua<a class="headerlink" href="#script-lua" title="Lien permanent vers ce titre"></a></h1>
 <blockquote>
 <div><ul class="simple">
 <li><p>le script LUA pour les notifications concernant le temps: ‘<span class="darkblue">notification-timer.lua</span>,</p></li>
 </ul>
 </div></blockquote>
 <p><a class="reference internal" href="../_images/image195.webp"><img alt="image195" src="../_images/image195.webp" style="width: 552px;" /></a></p>
-</div>
-</div>
-</div>
-<div class="section" id="liens-avec-home-assistant">
-<h3>1.5.2 Liens avec Home Assistant<a class="headerlink" href="#liens-avec-home-assistant" title="Lien permanent vers ce titre"></a></h3>
-<div class="section" id="exemple-dun-on-off-sur-un-interrupteur-virtuel">
-<h4>1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel<a class="headerlink" href="#exemple-dun-on-off-sur-un-interrupteur-virtuel" title="Lien permanent vers ce titre"></a></h4>
 <p><a class="reference internal" href="../_images/image196.webp"><img alt="image196" src="../_images/image196.webp" style="width: 440px;" /></a></p>
 <p><a class="reference internal" href="../_images/image197.webp"><img alt="image197" src="../_images/image197.webp" style="width: 596px;" /></a></p>
 <p><a class="reference internal" href="../_images/image198.webp"><img alt="image198" src="../_images/image198.webp" style="width: 529px;" /></a></p>
@@ -927,12 +922,6 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 <p>Pour faire des essais à partir d’un navigateur :</p>
 </div>
 <p><a class="reference internal" href="../_images/image208.webp"><img alt="image208" src="../_images/image208.webp" style="width: 700px;" /></a></p>
-</div>
-</div>
-<div class="section" id="liaison-mqtt-entre-home-assistant-et-domoticz">
-<h3>1.5.3 Liaison MQTT entre Home Assistant et Domoticz<a class="headerlink" href="#liaison-mqtt-entre-home-assistant-et-domoticz" title="Lien permanent vers ce titre"></a></h3>
-<div class="section" id="ajout-dans-domoticz">
-<h4>1.5.3.1  Ajout dans Domoticz<a class="headerlink" href="#ajout-dans-domoticz" title="Lien permanent vers ce titre"></a></h4>
 <ul class="simple">
 <li><p><strong>Créer une pièce fictive</strong> nommée <span class="darkblue">mqttDevices</span> où seront placés les dispositifs concernés.</p></li>
 </ul>
@@ -951,9 +940,6 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 <p class="admonition-title">Note</p>
 <p>pour la pièce choisie ci-dessus le topic sera <span class="darkblue">domoticz/out/interieur/mqttDevices</span> et <span class="darkblue">domoticz/out</span></p>
 </div>
-</div>
-<div class="section" id="ajout-dans-home-assistant">
-<h4>1.5.3.2  Ajout dans Home Assistant<a class="headerlink" href="#ajout-dans-home-assistant" title="Lien permanent vers ce titre"></a></h4>
 <ul class="simple">
 <li><p><strong>Créer un répertoire mqtt</strong> et l’inclure dans <span class="darkblue">/config/configuration.yaml</span></p></li>
 </ul>
@@ -988,9 +974,6 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 <p>Pour l’alarme de nuit (idx=42), le script sera le même avec comme object_id et idx <span class="red">42</span> au lieu de <span class="darkblue">41</span></p>
 <p>Enregistrer le fichier modifier, vérifier la configuration et <strong>redémarrer Home Assistant</strong></p>
 <p><a class="reference internal" href="../_images/image1097.webp"><img alt="image1097" src="../_images/image1097.webp" style="width: 443px;" /></a></p>
-</div>
-</div>
-</div>
 <div class="section" id="lien-avec-la-base-de-donnees-sql">
 <h2>1.6 Lien avec la base de données SQL<a class="headerlink" href="#lien-avec-la-base-de-donnees-sql" title="Lien permanent vers ce titre"></a></h2>
 <div class="section" id="exemple-avec-la-date-de-ramassage-des-poubelles">
@@ -1118,6 +1101,8 @@ pour ne pas cacher le menu hamburger</p>
 <div class="section" id="ecriture-d-un-script-dzvent-dz-ou-yaml-ha">
 <h4>1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)<a class="headerlink" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha" title="Lien permanent vers ce titre"></a></h4>
 <p>l’ajout concerne « Vu pour la dernière fois » (lastSeen) des dispositifs</p>
+<div class="section" id="a-domoticz">
+<h5>1.8.2.1.a Domoticz<a class="headerlink" href="#a-domoticz" title="Lien permanent vers ce titre"></a></h5>
 <p>En premier , création de la variable, noter son nom :</p>
 <p><a class="reference internal" href="../_images/image1150.webp"><img alt="image1150" src="../_images/image1150.webp" style="width: 700px;" /></a></p>
 <p>En second , création d’une variable dans le tableau de variables (string_tableaux.lua) :</p>
@@ -1196,6 +1181,9 @@ pour ne pas cacher le menu hamburger</p>
 <p><strong>objet domoticz</strong> : <em>domoticz ou dz mais c’est l’un ou l’autre dans le script</em></p>
 </div>
 </div>
+</div>
+<div class="section" id="b-home-assistant">
+<h5>1.8.2.1.b Home Assistant<a class="headerlink" href="#b-home-assistant" title="Lien permanent vers ce titre"></a></h5>
 <p>Créer une automatisation : merci à <strong>OzGav</strong> <em>https://community.home-assistant.io/u/OzGav</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">lastseen_alerte_dispositifs</span>
 <span class="n">alias</span><span class="p">:</span> <span class="n">LastSeen</span> <span class="n">Alerte</span> <span class="n">Dispositifs</span>
@@ -1226,8 +1214,11 @@ pour ne pas cacher le menu hamburger</p>
 <p>La notification sur le smartphone</p>
 <p><a class="reference internal" href="../_images/image1171.webp"><img alt="image1171" src="../_images/image1171.webp" style="width: 300px;" /></a></p>
 </div>
+</div>
 <div class="section" id="la-page-d-accueil-de-monitor">
 <h4>1.8.2.2  La page d’accueil de monitor<a class="headerlink" href="#la-page-d-accueil-de-monitor" title="Lien permanent vers ce titre"></a></h4>
+<div class="section" id="les-notifications-programmees-de-la-page-d-accueil">
+<h5>1.8.2.2.1 les notifications programmées de la page d’accueil<a class="headerlink" href="#les-notifications-programmees-de-la-page-d-accueil" title="Lien permanent vers ce titre"></a></h5>
 <p><a class="reference internal" href="../_images/image1148.webp"><img alt="image1148" src="../_images/image1148.webp" style="width: 700px;" /></a></p>
 <ul>
 <li><p>ajout de la notification</p>
@@ -1247,6 +1238,7 @@ pour ne pas cacher le menu hamburger</p>
 <li><p>On importe une image svg dans lr répertoire « images », j’ai choisi un oeil rouge</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1154.webp"><img alt="image1154" src="../_images/image1154.webp" style="width: 150px;" /></a></p>
+</div>
 </div>
 </div>
 <div class="section" id="les-emplacements-disponibles-et-les-styles-css">
@@ -1305,13 +1297,13 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <p><a class="reference internal" href="../_images/image1167.webp"><img alt="image1167" src="../_images/image1167.webp" style="width: 605px;" /></a></p>
 <div class="section" id="function-status-variables-xx-dans-fonctions-php">
-<h4>1.8.4.1 function status_variables($xx) dans <span class="darkblue">fonctions.php</span><a class="headerlink" href="#function-status-variables-xx-dans-fonctions-php" title="Lien permanent vers ce titre"></a></h4>
+<h4>1.8.4.1 function status_variables($xx) dans fonctions.php<a class="headerlink" href="#function-status-variables-xx-dans-fonctions-php" title="Lien permanent vers ce titre"></a></h4>
 <p><a class="reference internal" href="../_images/image1163.webp"><img alt="image1163" src="../_images/image1163.webp" style="width: 600px;" /></a></p>
 <p>La variable « lastseen » de domoticz contient une chaine composée du nom du texte de la table « text-image » et du contenu correspondant aux disposifs off line ou morts, ces 2 valeurs séparés par le caractère <span class="red">#</span>.</p>
 <p>Pour décomposer cette chaîne en 2 valeurs d’un tableau, on utilise la fonction PHP <span class="green">explode</span>: pour résumer, <em>si « value » contient # on la découpe en value et contenu</em>.</p>
 </div>
 <div class="section" id="script-jquery-dans-footer-php">
-<h4>1.8.4.2 script Jquery dans <span class="darkblue">footer.php</span><a class="headerlink" href="#script-jquery-dans-footer-php" title="Lien permanent vers ce titre"></a></h4>
+<h4>1.8.4.2 script Jquery dans footer.php<a class="headerlink" href="#script-jquery-dans-footer-php" title="Lien permanent vers ce titre"></a></h4>
 <p><a class="reference internal" href="../_images/image1164.webp"><img alt="image1164" src="../_images/image1164.webp" style="width: 700px;" /></a></p>
 <p>on récupére la valeur de contenu pour l’afficher dans un popup qui permet d’annuler la notification</p>
 </div>
