@@ -1106,12 +1106,6 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
       **En conclusion**, :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastUpdate et un vrai LastSeen`
 
-      .. important::
-
-         Pour les dispositifs Zwave les informations reçues sont identiques, ci dessous n exemple pour une prise de courant; Le voltage est rafraicjit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.
-
-         |image1175|
-
 1.8.2.1.1 Domoticz
 ~~~~~~~~~~~~~~~~~~
 En premier , création de la variable, noter son nom :
@@ -1593,5 +1587,3 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 379px 
 .. |image1174| image:: ../media/image1174.webp
    :width: 370px 
-.. |image1175| image:: ../media/image1175.webp
-   :width: 700px 
