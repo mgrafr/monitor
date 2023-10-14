@@ -113,22 +113,26 @@
 <li class="toctree-l2"><a class="reference internal" href="#complement-pour-les-notifications-sur-l-ecran-d-accueil">1.8 Complément pour les notifications sur l’écran d’accueil</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#les-notifications-incluses-dans-le-programme">1.8.1 les notifications incluses dans le programme</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mode-d-emploi-pour-ajouter-une-notification">1.8.2 Mode d’emploi pour ajouter une notification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#domoticz">1.8.2.1.1 Domoticz</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#home-assistant">1.8.2.1.2 Home Assistant</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#la-page-d-accueil-de-monitor">1.8.2.2  La page d’accueil de monitor</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#les-emplacements-disponibles-et-les-styles-css">1.8.2 les emplacements disponibles et les styles css</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#enregistrement-de-la-variable-dans-la-base-sql">1.8.3 Enregistrement de la variable dans la base SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#affichage-dans-monitor">1.8.4 Affichage dans monitor</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#function-status-variables-xx-dans-fonctions-php">1.8.4.1 function status_variables($xx) dans fonctions.php</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#script-jquery-dans-footer-php">1.8.4.2 script Jquery dans footer.php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#les-emplacements-disponibles-et-les-styles-css">1.8.3 les emplacements disponibles et les styles css</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enregistrement-de-la-variable-dans-la-base-sql">1.8.4 Enregistrement de la variable dans la base SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affichage-dans-monitor">1.8.5 Affichage dans monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#function-status-variables-xx-dans-fonctions-php">1.8.5.1 function status_variables($xx) dans fonctions.php</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script-jquery-dans-footer-php">1.8.5.2 script Jquery dans footer.php</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#reception-du-mail-de-notification">1.8.5 Réception du mail de notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reception-du-mail-de-notification">1.8.6 Réception du mail de notification</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#acces-distant-https">1.9 Accès distant HTTPS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#monitor-conf">1.8.1 monitor.conf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monitor-conf">1.9.1 monitor.conf</a></li>
 </ul>
 </li>
 </ul>
@@ -1118,6 +1122,8 @@ pour ne pas cacher le menu hamburger</p>
 <div class="section" id="ecriture-d-un-script-dzvent-dz-ou-yaml-ha">
 <h4>1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)<a class="headerlink" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha" title="Lien permanent vers ce titre"></a></h4>
 <p>l’ajout concerne « Vu pour la dernière fois » (lastSeen) des dispositifs</p>
+<div class="section" id="domoticz">
+<h5>1.8.2.1.1 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h5>
 <p>En premier , création de la variable, noter son nom :</p>
 <p><a class="reference internal" href="../_images/image1150.webp"><img alt="image1150" src="../_images/image1150.webp" style="width: 700px;" /></a></p>
 <p>En second , création d’une variable dans le tableau de variables (string_tableaux.lua) :</p>
@@ -1196,6 +1202,9 @@ pour ne pas cacher le menu hamburger</p>
 <p><strong>objet domoticz</strong> : <em>domoticz ou dz mais c’est l’un ou l’autre dans le script</em></p>
 </div>
 </div>
+</div>
+<div class="section" id="home-assistant">
+<h5>1.8.2.1.2 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers ce titre"></a></h5>
 <p>Créer une automatisation : merci à <strong>OzGav</strong> <em>https://community.home-assistant.io/u/OzGav</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">lastseen_alerte_dispositifs</span>
 <span class="n">alias</span><span class="p">:</span> <span class="n">LastSeen</span> <span class="n">Alerte</span> <span class="n">Dispositifs</span>
@@ -1226,31 +1235,13 @@ pour ne pas cacher le menu hamburger</p>
 <p>La notification sur le smartphone</p>
 <p><a class="reference internal" href="../_images/image1171.webp"><img alt="image1171" src="../_images/image1171.webp" style="width: 300px;" /></a></p>
 </div>
+</div>
 <div class="section" id="la-page-d-accueil-de-monitor">
 <h4>1.8.2.2  La page d’accueil de monitor<a class="headerlink" href="#la-page-d-accueil-de-monitor" title="Lien permanent vers ce titre"></a></h4>
-<p><a class="reference internal" href="../_images/image1148.webp"><img alt="image1148" src="../_images/image1148.webp" style="width: 700px;" /></a></p>
-<ul>
-<li><p>ajout de la notification</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm lastseen&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;annul_lastseen&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;34&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Annulation de l&#39;alerte lastseem&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;lastseen&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-</ul>
-<p><a class="reference internal" href="../_images/image1149.webp"><img alt="image1149" src="../_images/image1149.webp" style="width: 600px;" /></a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>rel = id de la variable de Domoticz</p>
-</div>
-<ul class="simple">
-<li><p>On importe une image svg dans lr répertoire « images », j’ai choisi un oeil rouge</p></li>
-</ul>
-<p><a class="reference internal" href="../_images/image1154.webp"><img alt="image1154" src="../_images/image1154.webp" style="width: 150px;" /></a></p>
 </div>
 </div>
 <div class="section" id="les-emplacements-disponibles-et-les-styles-css">
-<h3>1.8.2 les emplacements disponibles et les styles css<a class="headerlink" href="#les-emplacements-disponibles-et-les-styles-css" title="Lien permanent vers ce titre"></a></h3>
+<h3>1.8.3 les emplacements disponibles et les styles css<a class="headerlink" href="#les-emplacements-disponibles-et-les-styles-css" title="Lien permanent vers ce titre"></a></h3>
 <p>Pour cet exemple l’ID (lastseen) est imposé mais 4 id’s pré programmés sont disponibles; les styles associés sont déclarés dans le fichier <span class="darkblue">custom/css/styles.css</span>:</p>
 <p>la classe .lastseen créee:</p>
 <p><a class="reference internal" href="../_images/image1155.webp"><img alt="image1155" src="../_images/image1155.webp" style="width: 250px;" /></a></p>
@@ -1275,7 +1266,7 @@ pour ne pas cacher le menu hamburger</p>
 <p>les ID étant soit notif1, notif2, notif3 ou notif4</p>
 </div>
 <div class="section" id="enregistrement-de-la-variable-dans-la-base-sql">
-<h3>1.8.3 Enregistrement de la variable dans la base SQL<a class="headerlink" href="#enregistrement-de-la-variable-dans-la-base-sql" title="Lien permanent vers ce titre"></a></h3>
+<h3>1.8.4 Enregistrement de la variable dans la base SQL<a class="headerlink" href="#enregistrement-de-la-variable-dans-la-base-sql" title="Lien permanent vers ce titre"></a></h3>
 <ul class="simple">
 <li><p><em>Avec monitor</em>:</p></li>
 </ul>
@@ -1297,7 +1288,7 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 </div>
 <div class="section" id="affichage-dans-monitor">
-<h3>1.8.4 Affichage dans monitor<a class="headerlink" href="#affichage-dans-monitor" title="Lien permanent vers ce titre"></a></h3>
+<h3>1.8.5 Affichage dans monitor<a class="headerlink" href="#affichage-dans-monitor" title="Lien permanent vers ce titre"></a></h3>
 <p><a class="reference internal" href="../_images/image1161.webp"><img alt="image1161" src="../_images/image1161.webp" style="width: 541px;" /></a></p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -1305,19 +1296,19 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <p><a class="reference internal" href="../_images/image1167.webp"><img alt="image1167" src="../_images/image1167.webp" style="width: 605px;" /></a></p>
 <div class="section" id="function-status-variables-xx-dans-fonctions-php">
-<h4>1.8.4.1 function status_variables($xx) dans fonctions.php<a class="headerlink" href="#function-status-variables-xx-dans-fonctions-php" title="Lien permanent vers ce titre"></a></h4>
+<h4>1.8.5.1 function status_variables($xx) dans fonctions.php<a class="headerlink" href="#function-status-variables-xx-dans-fonctions-php" title="Lien permanent vers ce titre"></a></h4>
 <p><a class="reference internal" href="../_images/image1163.webp"><img alt="image1163" src="../_images/image1163.webp" style="width: 600px;" /></a></p>
 <p>La variable « lastseen » de domoticz contient une chaine composée du nom du texte de la table « text-image » et du contenu correspondant aux disposifs off line ou morts, ces 2 valeurs séparés par le caractère <span class="red">#</span>.</p>
 <p>Pour décomposer cette chaîne en 2 valeurs d’un tableau, on utilise la fonction PHP <span class="green">explode</span>: pour résumer, <em>si « value » contient # on la découpe en value et contenu</em>.</p>
 </div>
 <div class="section" id="script-jquery-dans-footer-php">
-<h4>1.8.4.2 script Jquery dans footer.php<a class="headerlink" href="#script-jquery-dans-footer-php" title="Lien permanent vers ce titre"></a></h4>
+<h4>1.8.5.2 script Jquery dans footer.php<a class="headerlink" href="#script-jquery-dans-footer-php" title="Lien permanent vers ce titre"></a></h4>
 <p><a class="reference internal" href="../_images/image1164.webp"><img alt="image1164" src="../_images/image1164.webp" style="width: 700px;" /></a></p>
 <p>on récupére la valeur de contenu pour l’afficher dans un popup qui permet d’annuler la notification</p>
 </div>
 </div>
 <div class="section" id="reception-du-mail-de-notification">
-<h3>1.8.5 Réception du mail de notification<a class="headerlink" href="#reception-du-mail-de-notification" title="Lien permanent vers ce titre"></a></h3>
+<h3>1.8.6 Réception du mail de notification<a class="headerlink" href="#reception-du-mail-de-notification" title="Lien permanent vers ce titre"></a></h3>
 <p><a class="reference internal" href="../_images/image1165.webp"><img alt="image1165" src="../_images/image1165.webp" style="width: 449px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1168.webp"><img alt="image1168" src="../_images/image1168.webp" style="width: 450px;" /></a></p>
 </div>
@@ -1326,7 +1317,7 @@ pour ne pas cacher le menu hamburger</p>
 <h2>1.9 Accès distant HTTPS<a class="headerlink" href="#acces-distant-https" title="Lien permanent vers ce titre"></a></h2>
 <p>voir cette page web : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/3">http://domo-site.fr/accueil/dossiers/3</a></p>
 <div class="section" id="monitor-conf">
-<h3>1.8.1 monitor.conf<a class="headerlink" href="#monitor-conf" title="Lien permanent vers ce titre"></a></h3>
+<h3>1.9.1 monitor.conf<a class="headerlink" href="#monitor-conf" title="Lien permanent vers ce titre"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>upstream monitor {
      server 192.168.1.9;
 }

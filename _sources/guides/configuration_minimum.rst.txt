@@ -3,31 +3,31 @@
 
 Permet d’afficher 
 
--	La température extérieure, 
+- La température extérieure, 
 
--	Le jour (changement à 0H pour une tablette connectée en permanence), 
+- Le jour (changement à 0H pour une tablette connectée en permanence), 
 
 - La sortie des poubelles,
 
--	 La gestion de la fosse septique,
+- La gestion de la fosse septique,
 
--	La surveillance de la pression de la chaudière 
+- La surveillance de la pression de la chaudière 
 
--	Les anniversaires 
+- Les anniversaires 
 
--	Rappel pour la prise de médicaments
+- Rappel pour la prise de médicaments
 
--	 La prévision de pluie à 1 heure de Météo France
+- La prévision de pluie à 1 heure de Météo France
 
--	L’arrivée du courrier
+- L’arrivée du courrier
 
--	La mise en service de l’alarme de nuit
+- La mise en service de l’alarme de nuit
 
--	Le remplacement des piles pour les capteurs concernés
+- Le remplacement des piles pour les capteurs concernés
 
--       Les dispositifs off line
+- Les dispositifs off line
 
-- 	etc .... 
+-  etc .... 
 
 |image117|
  
@@ -1087,15 +1087,16 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 l'ajout concerne "Vu pour la dernière fois" (lastSeen) des dispositifs	
 
 1.8.2.1.1 Domoticz
-"""""""""""""""""""
-
+~~~~~~~~~~~~~~~~~~
 En premier , création de la variable, noter son nom :
 
 |image1150|
 
 En second , création d'une variable dans le tableau de variables (string_tableaux.lua) :
 
-.. note:: à partir de monitor (:darkblue:`Administration->Configuation variable dz maj_services`) ou avec la console
+.. note:: 
+
+   à partir de monitor (:darkblue:`Administration->Configuation variable dz maj_services`) ou avec la console
 
    |image1152|
 
@@ -1175,7 +1176,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
    .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
 
 1.8.2.1.2 Home Assistant
-"""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Créer une automatisation : merci à **OzGav** *https://community.home-assistant.io/u/OzGav*
 
@@ -1213,29 +1214,11 @@ La notification sur le smartphone
 
 |image1171|
 
+
 1.8.2.2  La page d'accueil de monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1.8.2.2.1 les notifications programmées de la page d'accueil
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-|image1148|
-
-- ajout de la notification
-
-   .. code-block::
-
-      <div class="confirm lastseen"><a href="#" id="annul_lastseen" rel="34" title="Annulation de l'alerte lastseem"><img id="lastseen" src=""/></a></div>
-
-|image1149|
-
-.. note:: rel = id de la variable de Domoticz
-
-- On importe une image svg dans lr répertoire "images", j'ai choisi un oeil rouge
-
-|image1154|
-
-
-1.8.2 les emplacements disponibles et les styles css
+1.8.3 les emplacements disponibles et les styles css
 ----------------------------------------------------
 Pour cet exemple l'ID (lastseen) est imposé mais 4 id's pré programmés sont disponibles; les styles associés sont déclarés dans le fichier :darkblue:`custom/css/styles.css`:
 
@@ -1266,7 +1249,7 @@ Les emplacements de ces IDs disponibles sur la page d'accueil:
 
 les ID étant soit notif1, notif2, notif3 ou notif4
 
-1.8.3 Enregistrement de la variable dans la base SQL
+1.8.4 Enregistrement de la variable dans la base SQL
 ----------------------------------------------------
 - *Avec monitor*:
 
@@ -1288,7 +1271,7 @@ La même variable lors d'un seul dispositif en défaut:
 
 .. note:: * la valeur de Lastseen est en heures , le delta correspond à la différence entre LastUpdate et Lasteen.
 
-1.8.4 Affichage dans monitor
+1.8.5 Affichage dans monitor
 ----------------------------
 
 |image1161|
@@ -1299,7 +1282,7 @@ La même variable lors d'un seul dispositif en défaut:
 
 |image1167|
 
-1.8.4.1 function status_variables($xx) dans fonctions.php
+1.8.5.1 function status_variables($xx) dans fonctions.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image1163|
@@ -1308,14 +1291,14 @@ La variable "lastseen" de domoticz contient une chaine composée du nom du texte
 
 Pour décomposer cette chaîne en 2 valeurs d'un tableau, on utilise la fonction PHP :green:`explode`: pour résumer, *si "value" contient # on la découpe en value et contenu*.
 
-1.8.4.2 script Jquery dans footer.php
+1.8.5.2 script Jquery dans footer.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image1164|
 
 on récupére la valeur de contenu pour l'afficher dans un popup qui permet d'annuler la notification
 
-1.8.5 Réception du mail de notification
+1.8.6 Réception du mail de notification
 ---------------------------------------
 
 |image1165|
@@ -1326,7 +1309,7 @@ on récupére la valeur de contenu pour l'afficher dans un popup qui permet d'an
 =======================
 voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
-1.8.1 monitor.conf
+1.9.1 monitor.conf
 ------------------
 
 .. code-block::
