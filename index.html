@@ -45,7 +45,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="guides/bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/configuration_minimum.html#script-lua">script lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/meteo.html">3. Météo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/plan_exterieur.html">4. La page du plan extérieur</a></li>
@@ -194,14 +193,23 @@
 <li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#liens-avec-domoticz-ou-home-assistant">1.5 liens avec Domoticz ou Home Assistant</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#liens-avec-domoticz">1.5.1 Liens avec Domoticz</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#les-variables-lua-de-configuration-dans-un-fichier-externe">1.5.1.1 les variables lua de configuration dans un fichier externe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#les-scripts-de-notifications-gerees-par-domoticz">1.5.1.2 les scripts de notifications gérées par Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#les-scripts-de-notifications-gerees-par-domoticz">1.5.1.2 les scripts de notifications gérées par Domoticz</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="guides/configuration_minimum.html#script-lua">script lua</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#liens-avec-home-assistant">1.5.2 Liens avec Home Assistant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#exemple-dun-on-off-sur-un-interrupteur-virtuel">1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="guides/configuration_minimum.html#script-lua">script lua</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#liaison-mqtt-entre-home-assistant-et-domoticz">1.5.3 Liaison MQTT entre Home Assistant et Domoticz</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#ajout-dans-domoticz">1.5.3.1  Ajout dans Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#ajout-dans-home-assistant">1.5.3.2  Ajout dans Home Assistant</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#lien-avec-la-base-de-donnees-sql">1.6 Lien avec la base de données SQL</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#exemple-avec-la-date-de-ramassage-des-poubelles">1.6.1- exemple avec la date de ramassage des poubelles</a></li>
 </ul>
@@ -210,15 +218,8 @@
 <li class="toctree-l2"><a class="reference internal" href="guides/configuration_minimum.html#complement-pour-les-notifications-sur-l-ecran-d-accueil">1.8 Complément pour les notifications sur l’écran d’accueil</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#les-notifications-incluses-dans-le-programme">1.8.1 les notifications incluses dans le programme</a></li>
 <li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#mode-d-emploi-pour-ajouter-une-notification">1.8.2 Mode d’emploi pour ajouter une notification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="guides/configuration_minimum.html#a-domoticz">1.8.2.1.a Domoticz</a></li>
-<li class="toctree-l5"><a class="reference internal" href="guides/configuration_minimum.html#b-home-assistant">1.8.2.1.b Home Assistant</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#la-page-d-accueil-de-monitor">1.8.2.2  La page d’accueil de monitor</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="guides/configuration_minimum.html#les-notifications-programmees-de-la-page-d-accueil">1.8.2.2.1 les notifications programmées de la page d’accueil</a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guides/configuration_minimum.html#la-page-d-accueil-de-monitor">1.8.2.2  La page d’accueil de monitor</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="guides/configuration_minimum.html#les-emplacements-disponibles-et-les-styles-css">1.8.2 les emplacements disponibles et les styles css</a></li>
