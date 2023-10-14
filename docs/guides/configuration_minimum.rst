@@ -1098,11 +1098,13 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
       Prenons 2 dispositifs qui n'affichent pas le même LastUpdate:
 
-      |image1173|  |image1174|
+      |image1173| 
 
-      l'un envoie des informations toutes les 2 ou 3 minutes tandis que l'autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif) 
+      |image1174|
 
-      **En conclusion**, :red:`il faut tenir compte de ces information pour écrire un scruipt qui fera le travail pour afficher un vrai LastUpdate et un vrai LastSeen`
+      l'un envoie des informations toutes les 2 ou 3 minutes tandis que l'autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif); l'un est d'un type "general", l'autre d'un type "light/switch" et les subtype sont aussi différents. 
+
+      **En conclusion**, :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastUpdate et un vrai LastSeen`
 
 1.8.2.1.1 Domoticz
 ~~~~~~~~~~~~~~~~~~
@@ -1584,4 +1586,4 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1173| image:: ../media/image1173.webp
    :width: 379px 
 .. |image1174| image:: ../media/image1174.webp
-   :width: 288px 
+   :width: 370px 
