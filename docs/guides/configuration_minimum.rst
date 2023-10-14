@@ -1,5 +1,5 @@
 1. Configuration minimum : la page d’accueil
----------------------------------------------
+********************************************
 
 Permet d’afficher 
 
@@ -32,11 +32,11 @@ Permet d’afficher
 |image117|
  
 1.1	– Configuration :/admin.config.php
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================================
  :red:`Il faut fournir un minimum de renseignements` :
 
 1.1.1 -Adresse IP , domaine, favicon de monitor 
-=============================================== 
+-----------------------------------------------
 .. code-block::
 
    //general monitor
@@ -62,7 +62,7 @@ Permet d’afficher
  
  
 1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block::
 
    // Monitor 
@@ -71,7 +71,7 @@ Permet d’afficher
    define('IMGLOGO', 'images/logo.png');//image logo
 
 1.1.1.b Pour les titres, slogans et lexique
-"""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Pour le lexique :
 
 -	true = lexique par défaut
@@ -85,7 +85,7 @@ Pour le lexique :
    define('LEXIQUE', true);
 
 1.1.2 intervalles de maj, maj temps réel
-========================================
+----------------------------------------
 L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) : il est de ½ heure (1800000 milli secondes), il peut être changé
  
 .. code-block::
@@ -134,7 +134,7 @@ La fonction PHP qui récupère la valeur de la variable :
    }
 
 1.1.3 Autres données
-====================
+--------------------
 Choisir Idx de Domoticz ou idm de monitor ? 
 
 .. note::
@@ -208,9 +208,9 @@ Le programme démarre avec 3 pages :
 Les autres pages concernent l’alarme, un mur de caméras, ... 
 
 1.2	- Les fichiers PHP, les styles, le javascript
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=====================================================
 1.2.1 - à la racine du site :
-=============================
+-----------------------------
  voir ce paragraphe : :ref:`0.4 Le serveur http de NGINX`
 
 **Complément d'informations concernant "fonctions.php":**
@@ -224,7 +224,7 @@ Principales fonctions contenues dans ce fichier :
    |image134|
 
 1.2.1.1 status_variables , devices_zone et device_plan
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. admonition:: **function status_variables**
 
@@ -283,7 +283,7 @@ Principales fonctions contenues dans ce fichier :
       if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 
 1.2.2 les styles css
-======================
+--------------------
 |image141|
 
 https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css
@@ -312,7 +312,7 @@ Fichier mes_css.css , extrait :
 	   .modal_param {left: 200px;	}.modal-dialog {width:740px;} }
 
 1.2.2.1 styles CSS communs à toutes les pages
-"""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block::
 
   #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{
@@ -321,7 +321,7 @@ Fichier mes_css.css , extrait :
     background-color: aquamarine;} 
 
 1.2.3 – Le javascript
-=====================
+---------------------
 	1.2.3 a - Les fichiers footer.php , voir ce script :ref:`1.3.5 les scripts JavaScript`
 
 	1.2.3 b - le fichier mes_js.js : scripts principaux , 
@@ -347,9 +347,9 @@ Fichier mes_css.css , extrait :
    |image145|
 
 1.3 Les fichiers principaux dans /include
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=========================================
 1.3.1 entete_html.php 
-=====================
+---------------------
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php
 
 .. code-block::
@@ -381,7 +381,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php
 |image147|
 
 1.3.2 Test de la base de données, test_db.php 
-=============================================
+---------------------------------------------
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/test_db.php
 
 .. code-block::
@@ -402,7 +402,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/test_db.php
   
 
 1.3.3 le menu, header.php  
-=========================
+-------------------------
 les pages configurées avec config.php sont ajoutées automatiquement au menu
 
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/header.php
@@ -431,7 +431,7 @@ Pour modifier la largeur, Du menu :
 
 
 1.3.4   la page d’accueil avec les notifications , accueil.php 
-==============================================================
+--------------------------------------------------------------
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/accueil.php
 
 Le HTML:
@@ -456,7 +456,7 @@ Le HTML:
 			</div></div></div></div>
 
 1.3.5 les scripts JavaScript
-============================
+----------------------------
 dans la page footer.php : https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
 
 Extrait:
@@ -478,7 +478,7 @@ Extrait:
    <script src="js/jquery.backstretch.min.js"></script>
 
 1.3.5.1 rafraîchissements de la page
-""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif dans Domoticz, 
 une variable est mise à « 1 » ; 
 
@@ -495,7 +495,7 @@ la variable:
 |image158|
 
 1.3.5.2 Quelques infos supplémentaires
-""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 substring(0, 32) : affichage tronqué ID ZWAVE très long
 
 |image159|
@@ -598,9 +598,9 @@ Le HTML :
 |image172|
 
 1.4 Le lexique et la température extérieure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================================
 1.4.1 Le lexique
-================
+----------------
 L’image est inline dans header.php
 
 La fenêtre modale dans include/lexique .php ou include/lexique_no.php (le fichier est choisi par la configuration) :
@@ -626,7 +626,7 @@ La fenêtre modale dans include/lexique .php ou include/lexique_no.php (le fichi
    - Supprimer le script ou le ou mettre en commentaire : :red:`<!--`  <div class="modal" id="lexique">
  
 1.4.2 La température extérieure (valable pour d’autres dispositifs)
-===================================================================
+-------------------------------------------------------------------
 
 |image179|
 
@@ -635,9 +635,9 @@ Le fichier Json reçu par monitor après une demande de la fonction devices(plan
 |image180|
 
 1.5 liens avec Domoticz ou Home Assistant
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=========================================
 1.5.1 Liens avec Domoticz
-=========================
+-------------------------
 
 |image183|
 
@@ -682,7 +682,7 @@ fichier Json* :
 
 
 1.5.1.1 les variables lua de configuration dans un fichier externe
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Les jours de ramassage des poubelles peuvent changer, le nombre d’anniversaires augmenter, toutes les variables correspondantes à ces valeurs peuvent être insérées dans un fichier appelé dans le script lua ; pour les anniversaires on utilise un tableau multidimensionnel, plus facile à compléter que 2 tableaux, si les données sont importantes.
 
 .. note::
@@ -743,7 +743,7 @@ voir le paragraphe :ref:`14.7 Explications concernant l’importation distantes 
     end
 
 1.5.1.2 les scripts de notifications gérées par Domoticz
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Alarmes SMS ou Mail , 
 
 - le script LUA pour les variables : ‘:darkblue:`notifications_variables`’ 
@@ -787,9 +787,9 @@ script lua
 |image195|
 
 1.5.2 Liens avec Home Assistant
-===============================
+-------------------------------
 1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image196|
 
@@ -865,9 +865,9 @@ En plus clair :
 |image208|
 
 1.5.3 Liaison MQTT entre Home Assistant et Domoticz
-===================================================
+---------------------------------------------------
 1.5.3.1  Ajout dans Domoticz
-""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Créer une pièce fictive** nommée :darkblue:`mqttDevices` où seront placés les dispositifs concernés.
 
@@ -887,7 +887,7 @@ Ici les 2 dispositifs concernant les interrupteurs pour l'alarme d'absence et l'
 
 
 1.5.3.2  Ajout dans Home Assistant
-""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Créer un répertoire mqtt** et l'inclure dans :darkblue:`/config/configuration.yaml`
 
@@ -929,9 +929,9 @@ Enregistrer le fichier modifier, vérifier la configuration et **redémarrer Hom
 |image1097|
 
 1.6 Lien avec la base de données SQL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+====================================
 1.6.1- exemple avec la date de ramassage des poubelles
-======================================================
+------------------------------------------------------
 En Dordogne, les poubelles jaunes sont ramassées toutes les 2 semaines mais les poubelles grises sont ramassées selon une procédure différente :
 
 - Le contrat annuel comprend 12 ramassages mais le ramassage est possible chaque semaine,
@@ -1053,7 +1053,7 @@ pour afficher l’historique des dates, voir le paragraphe  :ref:`12.1.1 Edition
 |image218|
 
 1.7 Ajuster le menu au nombre de pages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+======================================
 Au-delà de 12 pages il faut étendre en largeur le menu ; il faut aussi le descendre de 50 px 
 pour ne pas cacher le menu hamburger
 
@@ -1068,9 +1068,9 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 |image221|
 
 1.8 Complément pour les notifications sur l'écran d'accueil
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================================================
 1.8.1 les notifications incluses dans le programme
-==================================================
+--------------------------------------------------
 
 |image1146|
 
@@ -1079,14 +1079,14 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 |image1147|
 
 1.8.2 Mode d'emploi pour ajouter une notification
-=================================================
+-------------------------------------------------
 
 1.8.2.1  Ecriture d'un script Dzvent(Dz) ou yaml(HA)
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 l'ajout concerne "Vu pour la dernière fois" (lastSeen) des dispositifs	
 
 1.8.2.1.a Domoticz
-~~~~~~~~~~~~~~~~~~
+""""""""""""""""""
 En premier , création de la variable, noter son nom :
 
 |image1150|
@@ -1173,7 +1173,7 @@ En second , création d'une variable dans le tableau de variables (string_tablea
    .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
 
 1.8.2.1.b Home Assistant
-~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""
 
 Créer une automatisation : merci à **OzGav** *https://community.home-assistant.io/u/OzGav*
 
@@ -1212,9 +1212,9 @@ La notification sur le smartphone
 |image1171|
 
 1.8.2.2  La page d'accueil de monitor
-"""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.8.2.2.1 les notifications programmées de la page d'accueil
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 |image1148|
 
@@ -1234,7 +1234,7 @@ La notification sur le smartphone
 
 
 1.8.2 les emplacements disponibles et les styles css
-====================================================
+----------------------------------------------------
 Pour cet exemple l'ID (lastseen) est imposé mais 4 id's pré programmés sont disponibles; les styles associés sont déclarés dans le fichier :darkblue:`custom/css/styles.css`:
 
 la classe .lastseen créee:
@@ -1265,7 +1265,7 @@ Les emplacements de ces IDs disponibles sur la page d'accueil:
 les ID étant soit notif1, notif2, notif3 ou notif4
 
 1.8.3 Enregistrement de la variable dans la base SQL
-====================================================
+----------------------------------------------------
 - *Avec monitor*:
 
 |image1158|
@@ -1287,7 +1287,7 @@ La même variable lors d'un seul dispositif en défaut:
 .. note:: * la valeur de Lastseen est en heures , le delta correspond à la différence entre LastUpdate et Lasteen.
 
 1.8.4 Affichage dans monitor
-============================
+----------------------------
 
 |image1161|
 
@@ -1297,8 +1297,8 @@ La même variable lors d'un seul dispositif en défaut:
 
 |image1167|
 
-1.8.4.1 function status_variables($xx) dans :darkblue:`fonctions.php`
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+1.8.4.1 function status_variables($xx) dans fonctions.php
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image1163|
 
@@ -1306,26 +1306,26 @@ La variable "lastseen" de domoticz contient une chaine composée du nom du texte
 
 Pour décomposer cette chaîne en 2 valeurs d'un tableau, on utilise la fonction PHP :green:`explode`: pour résumer, *si "value" contient # on la découpe en value et contenu*.
 
-1.8.4.2 script Jquery dans :darkblue:`footer.php`
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+1.8.4.2 script Jquery dans footer.php
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image1164|
 
 on récupére la valeur de contenu pour l'afficher dans un popup qui permet d'annuler la notification
 
 1.8.5 Réception du mail de notification
-=======================================
+---------------------------------------
 
 |image1165|
 
 |image1168|
 
 1.9 Accès distant HTTPS
-^^^^^^^^^^^^^^^^^^^^^^^
+=======================
 voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
 1.8.1 monitor.conf
-==================
+------------------
 
 .. code-block::
 
