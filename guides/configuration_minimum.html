@@ -1121,7 +1121,20 @@ pour ne pas cacher le menu hamburger</p>
 <h3>1.8.2 Mode d’emploi pour ajouter une notification<a class="headerlink" href="#mode-d-emploi-pour-ajouter-une-notification" title="Lien permanent vers ce titre"></a></h3>
 <div class="section" id="ecriture-d-un-script-dzvent-dz-ou-yaml-ha">
 <h4>1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)<a class="headerlink" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha" title="Lien permanent vers ce titre"></a></h4>
-<p>l’ajout concerne « Vu pour la dernière fois » (lastSeen) des dispositifs</p>
+<p>l’ajout concerne « Vu pour la dernière fois » (lastSeen) et « Dernière mise à jour » (LastUpdate) des dispositifs</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Domotiz et Home assistant n’affiche pas ces 2 paramètres , ZwaveJsMqtt et Zigbee2mqtt ne les envoient pas de lamême façon, c’est très difficile de trouver les bonnes informations.</p>
+<p>Un exemple concret dans Domoticz avec Zigbee2mqtt et un interrupteur de volet roulant Tuya:</p>
+<div class="admonition-les-differents-dispositifs-pour-cet-appareil admonition">
+<p class="admonition-title"><strong>les différents dispositifs pour cet appareil</strong></p>
+<p><a class="reference internal" href="../_images/image1172.webp"><img alt="image1172" src="../_images/image1172.webp" style="width: 650px;" /></a></p>
+<p>Prenons 2 dispositifs qui n’affichent pas le même LastUpdate:</p>
+<p><a class="reference internal" href="../_images/image1173.webp"><img alt="image1173" src="../_images/image1173.webp" style="width: 379px;" /></a>  <a class="reference internal" href="../_images/image1174.webp"><img alt="image1174" src="../_images/image1174.webp" style="width: 288px;" /></a></p>
+<p>l’un envoie des informations toutes les 2 ou 3 minutes tandis que l’autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif)</p>
+<p><strong>En conclusion</strong>, <span class="red">il faut tenir compte de ces information pour écrire un scruipt qui fera le travail pour afficher un vrai LastUpdate et un vrai LastSeen</span></p>
+</div>
+</div>
 <div class="section" id="domoticz">
 <h5>1.8.2.1.1 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h5>
 <p>En premier , création de la variable, noter son nom :</p>

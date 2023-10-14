@@ -1084,7 +1084,25 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 
 1.8.2.1  Ecriture d'un script Dzvent(Dz) ou yaml(HA)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-l'ajout concerne "Vu pour la dernière fois" (lastSeen) des dispositifs	
+l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jour" (LastUpdate) des dispositifs
+
+.. warning::
+
+   Domotiz et Home assistant n'affiche pas ces 2 paramètres , ZwaveJsMqtt et Zigbee2mqtt ne les envoient pas de lamême façon, c'est très difficile de trouver les bonnes informations.
+
+   Un exemple concret dans Domoticz avec Zigbee2mqtt et un interrupteur de volet roulant Tuya:
+
+   .. admonition:: **les différents dispositifs pour cet appareil**
+
+      |image1172|
+
+      Prenons 2 dispositifs qui n'affichent pas le même LastUpdate:
+
+      |image1173|  |image1174|
+
+      l'un envoie des informations toutes les 2 ou 3 minutes tandis que l'autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif) 
+
+      **En conclusion**, :red:`il faut tenir compte de ces information pour écrire un scruipt qui fera le travail pour afficher un vrai LastUpdate et un vrai LastSeen`
 
 1.8.2.1.1 Domoticz
 ~~~~~~~~~~~~~~~~~~
@@ -1561,3 +1579,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 421px 
 .. |image1171| image:: ../media/image1171.webp
    :width: 300px 
+.. |image1172| image:: ../media/image1172.webp
+   :width: 650px 
+.. |image1173| image:: ../media/image1173.webp
+   :width: 379px 
+.. |image1174| image:: ../media/image1174.webp
+   :width: 288px 
