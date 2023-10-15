@@ -1113,11 +1113,11 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
          |image1175|
 .. admonition:: **les bases pour l'écriture d'un script**
 
-   On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" envoient la vrai info "lastSeen; Mais, ....certains appareils, comme la sirène Zwave fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script
+   On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" envoient la vrai info "lastSeen; Mais, ....certains appareils, comme la sirène Zwave, les PIR Zwave, etc , fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script
 
    |image1176|
 
-
+   |image1177|
 1.8.2.1.1 Domoticz
 ~~~~~~~~~~~~~~~~~~
 En premier , création de la variable, noter son nom :
@@ -1603,3 +1603,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px 
 .. |image1176| image:: ../media/image1176.webp
    :width: 550px 
+.. |image1177| image:: ../media/image1177.webp
+   :width: 530px 
