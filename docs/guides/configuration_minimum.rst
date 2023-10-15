@@ -1144,7 +1144,7 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
    .. warning:: 
 
-      Comme on vient de le voir, Vu pour la dernière fois pour l'appareil n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que pour les dispositifs qui envoient l'information (exemple le dispositif indiquant la valeur de la tension pour une prise de courant, le dispositif on/off de la prise attend une commande et ce n'est qu'à ce moment que "vu pour la dernière fois" sera mis à jour). La seule façon de l’obtenir est de récupérer l'information avec l'API pour les dispositifs qui la fournissent car il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
+      Comme on vient de le voir, :darkblue:`Vu pour la dernière fois` pour l'appareil n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que pour les dispositifs qui envoient l'information (exemple le dispositif indiquant la valeur de la tension pour une prise de courant, le dispositif on/off de la prise attend une commande et ce n'est qu'à ce moment que "vu pour la dernière fois" sera mis à jour). La seule façon de l’obtenir est de récupérer l'information avec l'API pour les dispositifs qui la fournissent car il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
 
    L'écriture d'un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d'appréhender l'écriture de scripts pour l'affichage ou l'envoi de notifications complexes.
    
@@ -1152,7 +1152,15 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
    - seront concernés les dispositifs de Type "General".
 
+   - les dispositifs appartiennent à un Plan
+
    - les dispositifs virtuels et de surveillance réseau sont exclus
+
+   - une valeur max en minutes de LastSeen est définie
+
+   - une valeur max en heures de LastUpdate est définie
+
+   - pour les appareils Zwave dont on ne peut obtenir un Lastseen on teste le % de la batterie et au dela d'un seuil défini
 
    .. code-block::
    
@@ -1160,45 +1168,62 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
       -- chargement fichier contenant les variable de configuration
       package.path = package.path..";www/modules_lua/?.lua"
-      require 'string_tableaux' -- variable concernée : max_lastseen
+      require 'string_tableaux' -- variable concernée : max_lastseen  max update et max_bat
       require 'connect'
       adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 
+      local ls=0
       local scriptVar = 'lastSeen'
 
       return {
-          on = { timer =  {'at 16:26'}, httpResponses = { scriptVar }},
+          on = { timer =  {'at 17:16'}, httpResponses = { scriptVar }},
           logging = { level   = domoticz.LOG_ERROR, marker  = scriptVar },
     
           execute = function(dz, item) 
         
               if not (item.isHTTPResponse) then
                   dz.openURL({ 
-                      url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=getdevices&used=true',
+                      url = dz.settings['Domoticz url'] .. '/json.htm?type=command&param=getdevices',
                       callback = scriptVar })
               else
                   local Time = require('Time');local lastup="";listidx="lastseen#"
-                  for _, node in pairs(item.json.result) do
-			if node.PlanID == "2" and node.HardwareName ~= "virtuels" and node.HardwareName ~= "surveillance réseau" and dz.devices(tonumber(node.idx)) then
-			--print(node.HardwareName)
-			local lastSeen = Time(node.LastUpdate).hoursAgo
-			local lastUpdated = dz.devices(tonumber(node.idx)).lastUpdate.hoursAgo
-			local delta = lastSeen - lastUpdated
-				if lastSeen > max_lastseen then -- limite en heure pour considérer le dispositif on line
-				--print('idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta)
-				lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUp:'..node.LastUpdate..' lastseen:'..lastSeen..'/'..delta..'<br>'
-				listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'Lastseen:'..tostring(lastSeen)..'delta:'..tostring(delta)..'<br>'
-				--dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
-				end	
+                  for i, node in pairs(item.json.result) do
+               		 if node.HardwareName ~= "virtuels" and node.HardwareName ~= "surveillance réseau"  and node.HardwareType ~= "Linky"  and node.PlanID == "2" then
+			    if node.Type == "General" then 
+				local lastSeen = Time(node.LastUpdate).minutesAgo
+			   	if lastSeen >=max_lastseen then -- limite en heure pour considérer le dispositif on line
+				lastup = lastup..'idx:'..node.idx..','..node.Name..' lastseen:'..lastSeen..'<br>'
+				listidx=listidx..' '..node.idx..node.Name..'Lastseen:'..tostring(lastSeen)..' / '..node.LastUpdate..'<br>'    
+		   	        ls=1
+		   	        end    
+   	                    elseif string.find(node.ID, "zwavejs2mqtt") == nil then
+   	                        local lastUpdated = Time(node.LastUpdate).hoursAgo
+	   	                if lastUpdated > max_lastupdate  then
+		   	        lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'<br>'
+				listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'<br>'
+				ls=2
+				end
+		            elseif string.find(node.ID, "zwavejs2mqtt") ~= nil then
+		                local lastUpdated = Time(node.LastUpdate).hoursAgo
+			        if lastUpdated > max_lastupdate and node.BatteryLevel <= 100 then 
+			        print(node.ID)
+		   	        lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
+				listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
+			        ls=3
+			        end	    
+			    end	
 		        end
-		 end
-                 dz.variables('lastseen').set(listidx)
-      		 obj='alarme lastseen: '..listidx;dz.email('LastSeen',lastup,adresse_mail)
+	        end
+         	print("ls="..ls)
+         	if ls > 0 then
+         	dz.variables('lastseen').set(listidx)
+         	obj='alarme lastseen: '..listidx;dz.email('LastSeen',lastup,adresse_mail)
+         	ls=0
+            end
+           end
           end
-    
-      end
-      }
-
+         }
+   
    La variable lastseen
 
    |image1151|
