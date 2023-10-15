@@ -1120,7 +1120,7 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
    |image1177|
 1.8.2.1.1 Domoticz
 ~~~~~~~~~~~~~~~~~~
-En premier , création de la variable, noter son nom :
+En premier , création d'une variable, noter son nom :
 
 |image1150|
 
@@ -1144,7 +1144,7 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
    .. warning:: 
 
-      Comme on vient de le voir, :darkblue:`Vu pour la dernière fois` pour l'appareil n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que pour les dispositifs qui envoient l'information (exemple le dispositif indiquant la valeur de la tension pour une prise de courant, le dispositif on/off de la prise attend une commande et ce n'est qu'à ce moment que "vu pour la dernière fois" sera mis à jour). La seule façon de l’obtenir est de récupérer l'information avec l'API pour les dispositifs qui la fournissent car il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
+      Comme on vient de le voir, :darkblue:`Vu pour la dernière fois` pour l'appareil n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que pour les dispositifs qui envoient l'information (exemple le dispositif indiquant la valeur de la tension pour une prise de courant, le dispositif on/off de la prise attend une commande et ce n'est qu'à ce moment que :darkblue:`vu pour la dernière fois` sera mis à jour). La seule façon de l’obtenir est de récupérer l'information avec l'API pour les dispositifs qui la fournissent car il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
 
    L'écriture d'un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d'appréhender l'écriture de scripts pour l'affichage ou l'envoi de notifications complexes.
    

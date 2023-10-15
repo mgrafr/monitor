@@ -1149,7 +1149,7 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <div class="section" id="domoticz">
 <h5>1.8.2.1.1 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h5>
-<p>En premier , création de la variable, noter son nom :</p>
+<p>En premier , création d’une variable, noter son nom :</p>
 <p><a class="reference internal" href="../_images/image1150.webp"><img alt="image1150" src="../_images/image1150.webp" style="width: 700px;" /></a></p>
 <p>En second , création de 3 variables dans le tableau de variables (string_tableaux.lua) :</p>
 <ul class="simple">
@@ -1167,7 +1167,7 @@ pour ne pas cacher le menu hamburger</p>
 <p class="admonition-title"><strong>Script DzVent</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>Comme on vient de le voir, <span class="darkblue">Vu pour la dernière fois</span> pour l’appareil n’est pas stocké dans la base de données aussi DZ ne l’exporte pas vers le système d’événements. L’info n’est disponible que pour les dispositifs qui envoient l’information (exemple le dispositif indiquant la valeur de la tension pour une prise de courant, le dispositif on/off de la prise attend une commande et ce n’est qu’à ce moment que « vu pour la dernière fois » sera mis à jour). La seule façon de l’obtenir est de récupérer l’information avec l’API pour les dispositifs qui la fournissent car il n’est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.</p>
+<p>Comme on vient de le voir, <span class="darkblue">Vu pour la dernière fois</span> pour l’appareil n’est pas stocké dans la base de données aussi DZ ne l’exporte pas vers le système d’événements. L’info n’est disponible que pour les dispositifs qui envoient l’information (exemple le dispositif indiquant la valeur de la tension pour une prise de courant, le dispositif on/off de la prise attend une commande et ce n’est qu’à ce moment que <span class="darkblue">vu pour la dernière fois</span> sera mis à jour). La seule façon de l’obtenir est de récupérer l’information avec l’API pour les dispositifs qui la fournissent car il n’est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.</p>
 </div>
 <p>L’écriture d’un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d’appréhender l’écriture de scripts pour l’affichage ou l’envoi de notifications complexes.</p>
 <p>Le script tient compte des recommandations précédentes,</p>
