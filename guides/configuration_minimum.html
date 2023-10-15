@@ -1133,18 +1133,13 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image1173.webp"><img alt="image1173" src="../_images/image1173.webp" style="width: 379px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1174.webp"><img alt="image1174" src="../_images/image1174.webp" style="width: 370px;" /></a></p>
 <p>l’un envoie des informations toutes les 2 ou 3 minutes tandis que l’autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif); l’un est d’un type « general », l’autre d’un type « light/switch » et les subtype sont aussi différents.</p>
-<p><strong>En conclusion</strong>, <span class="red">il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen</span></p>
+<p><strong>En conclusion</strong>, <span class="red">il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastUpdate et un vrai LastSeen</span></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Pour les dispositifs Zwave les informations reçues sont identiques, ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.</p>
 <p><a class="reference internal" href="../_images/image1175.webp"><img alt="image1175" src="../_images/image1175.webp" style="width: 700px;" /></a></p>
 </div>
 </div>
-</div>
-<div class="admonition-les-bases-pour-l-ecriture-d-un-script admonition">
-<p class="admonition-title"><strong>les bases pour l’écriture d’un script</strong></p>
-<p>On peut remarquer, que pour un appareil, tous les dispositifs de Type « General » envoient la vrai info « lastSeen; Mais, ….certains appareils, comme la sirène Zwave fournissent cette info avec le Type « Light/Switch », ce qui ne simplifie pas l’écriture du script</p>
-<p><a class="reference internal" href="../_images/image1176.webp"><img alt="image1176" src="../_images/image1176.webp" style="width: 550px;" /></a></p>
 </div>
 <div class="section" id="domoticz">
 <h5>1.8.2.1.1 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h5>
@@ -1161,12 +1156,12 @@ pour ne pas cacher le menu hamburger</p>
 <p class="admonition-title"><strong>Script DzVent</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>Comme on vient de le voir, Vu pour la dernière fois pour l’appareil n’est pas stocké dans la base de données aussi DZ ne l’exporte pas vers le système d’événements. L’info n’est disponible que pour les dispositifs qui envoient l’information (exemple le dispositif indiquant la valeur de la tension pour une prise de courant, le dispositif on/off de la prise attend une commande et ce n’est qu’à ce moment que « vu pour la dernière fois » sera mis à jour). La seule façon de l’obtenir est de récupérer l’information avec l’API pour les dispositifs qui la fournissent car il n’est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.</p>
+<p>Vu pour la dernière fois n’est pas stocké dans la base de données aussi DZ ne l’exporte pas vers le système d’événements. L’info n’est disponible que dans la mémoire et dans le cache du navigateur. La seule façon de l’obtenir est d’utiliser JSON/API et il n’est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.</p>
 </div>
-<p>L’écriture d’un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d’appréhender l’écriture de scripts pour l’affichage ou l’envoi de notifications complexes.</p>
+<p>L’écriture d’un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d’appréhender l’écriture de scripts pour l’affichage ou l’envoi de notifications complexes</p>
 <p>Le script tient compte des recommandations précédentes,</p>
 <ul class="simple">
-<li><p>seront concernés les dispositifs de Type « General ».</p></li>
+<li><p>ne seront concernés que les dispositifs appartenant à un plan.</p></li>
 <li><p>les dispositifs virtuels et de surveillance réseau sont exclus</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">Script</span> <span class="n">dzVents</span> <span class="n">destiné</span> <span class="n">à</span> <span class="n">détecter</span> <span class="n">les</span> <span class="n">périphériques</span> <span class="n">morts</span> <span class="n">ou</span> <span class="n">offline</span><span class="o">.</span>
