@@ -1136,14 +1136,14 @@ pour ne pas cacher le menu hamburger</p>
 <p><strong>En conclusion</strong>, <span class="red">il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen</span></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Pour les dispositifs Zwave les informations reçues sont identiques, ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.</p>
+<p>Pour les dispositifs Zwave les informations reçues sont parfois identiques aux appareils Zigbee mais souvent c’est plus compliqué; ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes n’ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas touours à celui affiché dans Domoticz.</p>
 <p><a class="reference internal" href="../_images/image1175.webp"><img alt="image1175" src="../_images/image1175.webp" style="width: 700px;" /></a></p>
 </div>
 </div>
 </div>
 <div class="admonition-les-bases-pour-l-ecriture-d-un-script admonition">
 <p class="admonition-title"><strong>les bases pour l’écriture d’un script</strong></p>
-<p>On peut remarquer, que pour un appareil, tous les dispositifs de Type « General » envoient la vrai info « lastSeen; Mais, ….certains appareils, comme la sirène Zwave, les PIR Zwave, etc , fournissent cette info avec le Type « Light/Switch », ce qui ne simplifie pas l’écriture du script</p>
+<p>On peut remarquer, que pour un appareil, tous les dispositifs de Type « General » envoient la vrai info « lastSeen; Mais, pour les appareils Zwave (  la sirène, les PIR , etc ) fournissent cette info avec le Type « Light/Switch », ce qui ne simplifie pas l’écriture du script.</p>
 <p><a class="reference internal" href="../_images/image1176.webp"><img alt="image1176" src="../_images/image1176.webp" style="width: 550px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1177.webp"><img alt="image1177" src="../_images/image1177.webp" style="width: 530px;" /></a></p>
 </div>
@@ -1151,7 +1151,12 @@ pour ne pas cacher le menu hamburger</p>
 <h5>1.8.2.1.1 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h5>
 <p>En premier , création de la variable, noter son nom :</p>
 <p><a class="reference internal" href="../_images/image1150.webp"><img alt="image1150" src="../_images/image1150.webp" style="width: 700px;" /></a></p>
-<p>En second , création d’une variable dans le tableau de variables (string_tableaux.lua) :</p>
+<p>En second , création de 3 variables dans le tableau de variables (string_tableaux.lua) :</p>
+<ul class="simple">
+<li><p>max_lastseen, pour la valeur qui considère l’appareil en défaut</p></li>
+<li><p>max_lastupdate , ….idem……</p></li>
+<li><p>max_bat , <em>voir ci-après le pourquoi de cette variable</em></p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>à partir de monitor (<span class="darkblue">Administration-&gt;Configuation variable dz maj_services</span>) ou avec la console</p>

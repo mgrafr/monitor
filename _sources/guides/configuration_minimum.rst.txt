@@ -1108,12 +1108,12 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
       .. important::
 
-         Pour les dispositifs Zwave les informations reçues sont identiques, ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.
+         Pour les dispositifs Zwave les informations reçues sont parfois identiques aux appareils Zigbee mais souvent c'est plus compliqué; ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes n'ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas touours à celui affiché dans Domoticz.
 
          |image1175|
 .. admonition:: **les bases pour l'écriture d'un script**
 
-   On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" envoient la vrai info "lastSeen; Mais, ....certains appareils, comme la sirène Zwave, les PIR Zwave, etc , fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script
+   On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" envoient la vrai info "lastSeen; Mais, pour les appareils Zwave (  la sirène, les PIR , etc ) fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script.
 
    |image1176|
 
@@ -1124,7 +1124,13 @@ En premier , création de la variable, noter son nom :
 
 |image1150|
 
-En second , création d'une variable dans le tableau de variables (string_tableaux.lua) :
+En second , création de 3 variables dans le tableau de variables (string_tableaux.lua) :
+
+- max_lastseen, pour la valeur qui considère l'appareil en défaut
+
+- max_lastupdate , ....idem......
+
+-  max_bat , *voir ci-après le pourquoi de cette variable*
 
 .. note:: 
 
