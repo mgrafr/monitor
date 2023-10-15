@@ -1104,13 +1104,19 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
       l'un envoie des informations toutes les 2 ou 3 minutes tandis que l'autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif); l'un est d'un type "general", l'autre d'un type "light/switch" et les subtype sont aussi différents. 
 
-      **En conclusion**, :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastUpdate et un vrai LastSeen`
+      **En conclusion**, :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen`
 
       .. important::
 
          Pour les dispositifs Zwave les informations reçues sont identiques, ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.
 
          |image1175|
+.. admonition:: **les bases pour l'écriture d'un script**
+
+   On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" envoient la vrai info "lastSeen; Mais, ....certains appareils, comme la sirène Zwave fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script
+
+   |image1176|
+
 
 1.8.2.1.1 Domoticz
 ~~~~~~~~~~~~~~~~~~
@@ -1132,13 +1138,13 @@ En second , création d'une variable dans le tableau de variables (string_tablea
 
    .. warning:: 
 
-      Vu pour la dernière fois n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que dans la mémoire et dans le cache du navigateur. La seule façon de l’obtenir est d'utiliser JSON/API et il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
+      Comme on vient de le voir, Vu pour la dernière fois pour l'appareil n'est pas stocké dans la base de données aussi DZ ne l'exporte pas vers le système d'événements. L'info n'est disponible que pour les dispositifs qui envoient l'information (exemple le dispositif indiquant la valeur de la tension pour une prise de courant, le dispositif on/off de la prise attend une commande et ce n'est qu'à ce moment que "vu pour la dernière fois" sera mis à jour). La seule façon de l’obtenir est de récupérer l'information avec l'API pour les dispositifs qui la fournissent car il n'est pas envisageable de le faire systématiquement pour tous les appareils car cela prendrait beaucoup trop de ressources système.
 
-   L'écriture d'un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d'appréhender l'écriture de scripts pour l'affichage ou l'envoi de notifications complexes
+   L'écriture d'un script est donc nécessaire pour obtenir la propriété lastSeen des appareils. J’ai choisi cet exemple car il permet d'appréhender l'écriture de scripts pour l'affichage ou l'envoi de notifications complexes.
    
    Le script tient compte des recommandations précédentes, 
 
-   - ne seront concernés que les dispositifs appartenant à un plan.
+   - seront concernés les dispositifs de Type "General".
 
    - les dispositifs virtuels et de surveillance réseau sont exclus
 
@@ -1595,3 +1601,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 370px 
 .. |image1175| image:: ../media/image1175.webp
    :width: 700px 
+.. |image1176| image:: ../media/image1176.webp
+   :width: 550px 
