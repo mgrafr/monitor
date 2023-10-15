@@ -1108,7 +1108,7 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
       .. important::
 
-         Pour les dispositifs Zwave les informations reçues sont identiques, ci dessous n exemple pour une prise de courant; Le voltage est rafraicjit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.
+         Pour les dispositifs Zwave les informations reçues sont identiques, ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.
 
          |image1175|
 
