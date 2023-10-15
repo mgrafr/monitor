@@ -1088,7 +1088,7 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
 .. warning::
 
-   Domotiz et Home assistant n'affiche pas ces 2 paramètres , ZwaveJsMqtt et Zigbee2mqtt ne les envoient pas de lamême façon, c'est très difficile de trouver les bonnes informations.
+   Domotiz et Home assistant n'affiche pas ces 2 paramètres , ZwaveJsMqtt et Zigbee2mqtt ne les envoient pas de la même façon, c'est très difficile de trouver les bonnes informations.
 
    Un exemple concret dans Domoticz avec Zigbee2mqtt et un interrupteur de volet roulant Tuya:
 
@@ -1108,7 +1108,7 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
       .. important::
 
-         Pour les dispositifs Zwave les informations reçues sont parfois identiques aux appareils Zigbee mais souvent c'est plus compliqué; ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes n'ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas touours à celui affiché dans Domoticz.
+         Pour les dispositifs Zwave les informations reçues sont parfois identiques aux appareils Zigbee mais souvent c'est plus compliqué; les niveaux de batterie signalés sont souvent erronés; ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes n'ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas touours à celui affiché dans Domoticz.
 
          |image1175|
 .. admonition:: **les bases pour l'écriture d'un script**
@@ -1240,32 +1240,44 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
 1.8.2.1.2 Home Assistant
 ~~~~~~~~~~~~~~~~~~~~~~~~
+:red:`Comme pour Domoticz, Zwave-JS est le problème` 
 
 Créer une automatisation : merci à **OzGav** *https://community.home-assistant.io/u/OzGav*
 
-.. code-block::
+.. admonition:: **Script Yaml**
 
-   - id: lastseen_alerte_dispositifs
-  alias: LastSeen Alerte Dispositifs
-  trigger:
-  - platform: time
-    at: '17:46:00'
-  condition:
-  - condition: template
-    value_template: "{% set ns = namespace(break = false) %} {% for state in states
-      -%}\n  {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now())
-      - as_timestamp(state.attributes.last_seen) > (60 * 1) ) and ns.break == false
-      %}\n      {%- set ns.break = true %}\n      true\n    {%- endif -%}\n  {%- endif
-      -%}\n{%- endfor %} \n"
-  action:
-  - service: notify.mobile_app_RMO_NX1
-    data:
-      message: "Some Zigbee devices haven't been seen lately... {% for state in states
-        -%}\n  {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now())
-        - as_timestamp(state.attributes.last_seen) > (60 * 1) ) %}\n      {{ ((as_timestamp(now())
-        - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} hours
-        ago for {{ state.name }}\n      \n    {%- endif -%}\n  {%- endif -%}\n{%-
-        endfor %}"
+   .. code-block::
+
+      - id: lastseen_alerte_dispositifs
+        alias: LastSeen Alerte Dispositifs
+        trigger:
+        - platform: time
+          at: '17:37:00'
+        condition:
+        - condition: template
+          value_template: "{% set ns = namespace(break = false) %} {% for state in states
+            -%}\n  {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now())
+            - as_timestamp(state.attributes.last_seen) > (60 * 1) ) and ns.break == false
+            %}\n      {%- set ns.break = true %}\n      true\n    {%- endif -%}\n  {%- endif
+            -%}\n{%- endfor %} \n"
+        action:
+        - service: notify.mobile_app_RMO_NX1
+          data:
+            message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}\n
+              \ {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now()) -
+              as_timestamp(state.attributes.last_seen) > (60 * 1) ) %}\n      {{ ((as_timestamp(now())
+              - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} hours
+              ago for {{ state.name }}\n      \n    {%- endif -%}\n  {%- endif -%}\n{%-
+              endfor %}"
+	- service: notify.email
+    	  data:
+            title: alerte dispositifs
+            message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}\n
+              \ {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now()) -
+              as_timestamp(state.attributes.last_seen) > (60 * 1) ) %}\n      {{ ((as_timestamp(now())
+              - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} hours
+              ago for {{ state.name }}\n      \n    {%- endif -%}\n  {%- endif -%}\n{%-
+              endfor %}"
 
 |image1169|
 
