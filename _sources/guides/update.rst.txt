@@ -12,7 +12,7 @@
 ===============
 Version en développement 2.2.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-en cours script LastSeen pour HA
+- ajout script "lasteen pour home assistant
 
 Version 2.2.4
 ~~~~~~~~~~~~~
