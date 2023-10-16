@@ -530,13 +530,9 @@ Comme pour tous les switches la commande a été ajoutée automatiquement sur la
 
    si un modem GSM installé
 
-
-
 5.8.2.1 Version sans l'utilisation d'une variable Domoticz
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 **Avec un reload d’un module python**
-
-C’est la version que j’ai retenue
 
 On utilise un module python en import reload et on modifie ce module :
 
