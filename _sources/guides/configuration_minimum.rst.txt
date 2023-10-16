@@ -757,13 +757,11 @@ Extrait:
    return {
 	on = {
 		variables = {
-			'alarme_bat',
+		    'alarme_bat',
 		    'boite_lettres',
 		    'upload',
 		    'zm_cam',
 		    'pression-chaudiere',
-		    'porte-ouverte',
-		    'intrusion',
 		    'variable_sp',
 		    'pilule_tension',
 		    'BASH'
@@ -777,13 +775,10 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notificatio
 
 |image194|
 
-.. _scriptluatimer:
-
 script lua
 ~~~~~~~~~~
 
-
-   - le script LUA pour les notifications concernant le temps: ‘:darkblue:`notification-timer.lua`,
+- le script LUA pour les notifications concernant le temps: ‘:darkblue:`notification-timer.lua`,
 
 |image195|
 
@@ -1548,7 +1543,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image194| image:: ../media/image194.webp
    :width: 650px 
 .. |image195| image:: ../media/image195.webp
-   :width: 552px 
+   :width: 650px 
 .. |image196| image:: ../media/image196.webp
    :width: 440px 
 .. |image197| image:: ../media/image197.webp
