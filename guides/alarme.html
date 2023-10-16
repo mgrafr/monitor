@@ -73,8 +73,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#alarme-par-sms-gsm">5.8.2 Alarme par sms GSM</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#version-avec-une-variable-domoticz">5.8.2.1 Version avec une variable Domoticz</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#version-sans-variable-domoticz">5.8.2.2 Version sans variable Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-sans-l-utilisation-d-une-variable-domoticz">5.8.2.1 Version sans l’utilisation d’une variable Domoticz</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#option-supplementaire-le-test-de-lenvoi-de-sms">5.8.2.3 Option supplémentaire : le test de l’envoi de SMS</a></li>
 </ul>
 </li>
@@ -258,7 +257,7 @@ L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents
 </div></blockquote>
 </div>
 <p><strong>Pour ajouter une notification PUSHOVER</strong> , ajouter ces lignes:</p>
-<p><a href="#id7"><span class="problematic" id="id8">|image429|</span></a></p>
+<p><a class="reference internal" href="../_images/image429.webp"><img alt="image429" src="../_images/image429.webp" style="width: 700px;" /></a></p>
 <p><a href="#id5"><span class="problematic" id="id6">*</span></a>le scripts bash *</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
@@ -557,38 +556,8 @@ return $info;}
 <p class="admonition-title">Avertissement</p>
 <p>si un modem GSM installé</p>
 </div>
-<div class="section" id="version-avec-une-variable-domoticz">
-<h4>5.8.2.1 Version avec une variable Domoticz<a class="headerlink" href="#version-avec-une-variable-domoticz" title="Lien permanent vers ce titre"></a></h4>
-<p>Dans Domoticz</p>
-<ul class="simple">
-<li><p><strong>Création d’une variable</strong></p></li>
-</ul>
-<blockquote>
-<div><p><a class="reference internal" href="../_images/image492.webp"><img alt="image492" src="../_images/image492.webp" style="width: 598px;" /></a></p>
-</div></blockquote>
-<ul class="simple">
-<li><p><strong>odification légère du script dz</strong> pour modifier la valeur de la variable en cas d’intrusion :</p></li>
-</ul>
-<blockquote>
-<div><p><a class="reference internal" href="../_images/image493.webp"><img alt="image493" src="../_images/image493.webp" style="width: 535px;" /></a></p>
-</div></blockquote>
-<div class="admonition-modification-du-script-qui-assure-la-liaison-avec-le-modem admonition">
-<p class="admonition-title"><strong>modification du script qui assure la liaison avec le modem</strong></p>
-<p>Voir <a class="reference external" href="http://domo-site.fr">http://domo-site.fr</a> pour le script non modifié et des infos sur le fonctionnement</p>
-<p>Pour récupérer les données de la variable Domoticz, on utilise l’API ;</p>
-<p>Une fois le SMS envoyé, on utilise l’API pour remettre à Zéro la variable.</p>
-<p><a class="reference internal" href="../_images/image494.webp"><img alt="image494" src="../_images/image494.webp" style="width: 632px;" /></a></p>
-<p>On simplifie le script avec 2 fonctions :</p>
-<p><a class="reference internal" href="../_images/image495.webp"><img alt="image495" src="../_images/image495.webp" style="width: 528px;" /></a></p>
-<p>Emplacement du script :</p>
-<p><a class="reference internal" href="../_images/image496.webp"><img alt="image496" src="../_images/image496.webp" style="width: 238px;" /></a></p>
-<p><em>aperçus d’une commande vers DZ et la réception d’une alarme</em></p>
-<p><a class="reference internal" href="../_images/image497.webp"><img alt="image497" src="../_images/image497.webp" style="width: 602px;" /></a></p>
-<p><a class="reference internal" href="../_images/image498.webp"><img alt="image498" src="../_images/image498.webp" style="width: 346px;" /></a></p>
-</div>
-</div>
-<div class="section" id="version-sans-variable-domoticz">
-<h4>5.8.2.2 Version sans variable Domoticz<a class="headerlink" href="#version-sans-variable-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<div class="section" id="version-sans-l-utilisation-d-une-variable-domoticz">
+<h4>5.8.2.1 Version sans l’utilisation d’une variable Domoticz<a class="headerlink" href="#version-sans-l-utilisation-d-une-variable-domoticz" title="Lien permanent vers ce titre"></a></h4>
 <p><strong>Avec un reload d’un module python</strong></p>
 <p>C’est la version que j’ai retenue</p>
 <p>On utilise un module python en import reload et on modifie ce module :</p>

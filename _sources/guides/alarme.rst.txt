@@ -530,44 +530,10 @@ Comme pour tous les switches la commande a été ajoutée automatiquement sur la
 
    si un modem GSM installé
 
-5.8.2.1 Version avec une variable Domoticz
-""""""""""""""""""""""""""""""""""""""""""
-Dans Domoticz
 
-- **Création d’une variable**
 
- |image492|
-
-- **odification légère du script dz** pour modifier la valeur de la variable en cas d’intrusion :
-
- |image493|
-
-.. admonition:: **modification du script qui assure la liaison avec le modem**
-
-   Voir http://domo-site.fr pour le script non modifié et des infos sur le fonctionnement
-
-   Pour récupérer les données de la variable Domoticz, on utilise l’API ;
-
-   Une fois le SMS envoyé, on utilise l’API pour remettre à Zéro la variable.
-
-   |image494|
-
-   On simplifie le script avec 2 fonctions :
-
-   |image495|
-
-   Emplacement du script :
-   
-   |image496|
-
-   *aperçus d'une commande vers DZ et la réception d'une alarme*
-
-   |image497|
-
-   |image498|
-
-5.8.2.2 Version sans variable Domoticz
-""""""""""""""""""""""""""""""""""""""
+5.8.2.1 Version sans l'utilisation d'une variable Domoticz
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 **Avec un reload d’un module python**
 
 C’est la version que j’ai retenue
@@ -733,6 +699,8 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 543px
 .. |image428| image:: ../media/image428.webp
    :width: 602px
+.. |image429| image:: ../media/image429.webp
+   :width: 700px
 .. |image431| image:: ../media/image431.webp
    :width: 700px
 .. |image432| image:: ../media/image432.webp
