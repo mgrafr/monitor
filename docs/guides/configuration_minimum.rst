@@ -1257,7 +1257,7 @@ Créer une automatisation : merci à **OzGav** *https://community.home-assistant
         - condition: template
           value_template: "{% set ns = namespace(break = false) %} {% for state in states
             -%}\n  {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now())
-            - as_timestamp(state.attributes.last_seen) > (60 * 1) ) and ns.break == false
+            - as_timestamp(state.attributes.last_seen) > (60 * 6) ) and ns.break == false
             %}\n      {%- set ns.break = true %}\n      true\n    {%- endif -%}\n  {%- endif
             -%}\n{%- endfor %} \n"
         action:
@@ -1265,7 +1265,7 @@ Créer une automatisation : merci à **OzGav** *https://community.home-assistant
           data:
             message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}\n
               \ {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now()) -
-              as_timestamp(state.attributes.last_seen) > (60 * 1) ) %}\n      {{ ((as_timestamp(now())
+              as_timestamp(state.attributes.last_seen) > (60 * 6) ) %}\n      {{ ((as_timestamp(now())
               - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} hours
               ago for {{ state.name }}\n      \n    {%- endif -%}\n  {%- endif -%}\n{%-
               endfor %}"
@@ -1274,14 +1274,35 @@ Créer une automatisation : merci à **OzGav** *https://community.home-assistant
             title: alerte dispositifs
             message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}\n
               \ {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now()) -
-              as_timestamp(state.attributes.last_seen) > (60 * 1) ) %}\n      {{ ((as_timestamp(now())
+              as_timestamp(state.attributes.last_seen) > (60 * 6) ) %}\n      {{ ((as_timestamp(now())
               - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} hours
               ago for {{ state.name }}\n      \n    {%- endif -%}\n  {%- endif -%}\n{%-
               endfor %}"
 
+   .. note::
+
+      Pour une notification par Email , dans :darkblue:`/config/configuration.yaml`
+
+      .. code-block::
+
+         notify:
+           - name: "email"
+             platform: smtp
+             server: "smtp.orange.fr"
+             port: 587
+             timeout: 15
+             encryption: starttls
+             username: "NOM_UTILISATEUR"
+             password: "MOT DE PASSE"
+             sender: "EMAIL_EXPEDITEUR"
+             recipient: 
+               - "EMAIL_DESTINATAIRE"
+             sender_name: "NOM_EXPEDITEUR" 
+             debug: true
+
 |image1169|
 
-Vérifier que dans la config par defaut, :green:`mobile_app` est présent 
+Pour la notification dans l'Appli HA, Vérifier que dans la config par defaut, :green:`mobile_app` est présent 
 
 |image1170|
 
