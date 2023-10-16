@@ -195,55 +195,35 @@ L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents
                  <span class="n">end</span>
          <span class="n">end</span>
      <span class="n">end</span>
+   <span class="o">--</span> <span class="n">alarme</span> <span class="n">nuit</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="n">then</span>
+         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ipairs</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span> <span class="n">do</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="p">(</span><span class="n">A2</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">A2</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span> <span class="n">then</span>
+                <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="n">A2</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">A2</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">4</span><span class="p">]);</span><span class="n">lampe</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">sirene</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+                <span class="n">end</span>
+         <span class="n">end</span>
+   <span class="o">--</span><span class="n">allumer</span> <span class="n">lampes</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">lampes</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">then</span> <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;lampe_salon&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span><span class="n">lampes</span><span class="o">=</span><span class="s2">&quot;2&quot;</span>
+         <span class="n">end</span>
+     <span class="o">--</span><span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">sirene</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">sirene</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">then</span> <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;ma_sirene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span><span class="n">sirene</span><span class="o">=</span><span class="s2">&quot;2&quot;</span>
+         <span class="n">end</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">sirene</span><span class="o">==</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;activation-sirene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span>  <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;sirene_switch&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span><span class="n">sirene</span><span class="o">=</span><span class="s2">&quot;3&quot;</span>
+         <span class="n">end</span>
+     <span class="n">end</span>
+     <span class="o">--</span> <span class="n">fin</span> <span class="n">alarme</span> <span class="n">nuit</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="n">then</span>
+                  <span class="n">txt</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;porte-ouverte&quot;</span><span class="p">)</span>
+              <span class="n">alerte_gsm</span><span class="p">(</span><span class="s1">&#39;alarmeù&#39;</span><span class="o">..</span><span class="n">txt</span><span class="p">)</span>
+     <span class="n">end</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="n">then</span>
+                  <span class="n">txt</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span>
+              <span class="n">alerte_gsm</span><span class="p">(</span><span class="s1">&#39;alarmeù&#39;</span><span class="o">..</span><span class="n">txt</span><span class="p">)</span>
+     <span class="n">end</span>
 </pre></div>
 </div>
-<dl>
-<dt>–      – alarme nuit</dt><dd><dl>
-<dt>if (domoticz.variables(“ma-alarme”).value == « 2 ») then</dt><dd><dl class="simple">
-<dt>for k, v in ipairs(A2) do</dt><dd><dl class="simple">
-<dt>if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then</dt><dd><p>domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
-end</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>end</p>
-</dd>
-</dl>
-</dd>
-<dt>–            –allumer lampes</dt><dd><blockquote>
-<div><p>if (lampes==1) then devices(“lampe_salon”).switchOn();lampes= »2 »
-end</p>
-</div></blockquote>
-<dl class="simple">
-<dt>–mise en service sirene</dt><dd><p>if (sirene==1) then devices(“ma_sirene”).switchOn();sirene= »2 »
-end
-if (sirene==2 and domoticz.device(“activation-sirene”).state == “On”) then  devices(“sirene_switch”).switchOn();sirene= »3 »
-end</p>
-</dd>
-</dl>
-<p>end
-– fin alarme nuit
-if (domoticz.variables(“porte-ouverte”).changed) then</p>
-<blockquote>
-<div><blockquote>
-<div><p>txt=tostring(domoticz.variables(“porte-ouverte”).value)
-print(« porte-ouverte »)</p>
-</div></blockquote>
-<p>alerte_gsm(“alarmeù”..txt)</p>
-</div></blockquote>
-<p>end
-if (domoticz.variables(“intrusion”).changed) then</p>
-<blockquote>
-<div><blockquote>
-<div><p>txt=tostring(domoticz.variables(“intrusion”).value)
-print(“intrusion”)</p>
-</div></blockquote>
-<p>alerte_gsm(“alarmeù”..txt)</p>
-</div></blockquote>
-<p>end</p>
-</dd>
-</dl>
 <p>Partie du script concernant :darkblue:<a href="#id1"><span class="problematic" id="id2">`</span></a>le timer <a href="#id3"><span class="problematic" id="id4">`</span></a>,</p>
 <p><a class="reference internal" href="../_images/image426.webp"><img alt="image426" src="../_images/image426.webp" style="width: 543px;" /></a></p>
 <div class="admonition note">
@@ -254,7 +234,6 @@ print(“intrusion”)</p>
 <div class="admonition-des-explications-concrnant-le-script-alarme-3-lua admonition">
 <p class="admonition-title"><strong>des explications concrnant le script alarme_3.lua</strong></p>
 <p><a class="reference internal" href="../_images/image428.webp"><img alt="image428" src="../_images/image428.webp" style="width: 602px;" /></a></p>
-<p><a class="reference internal" href="../_images/image429.webp"><img alt="image429" src="../_images/image429.webp" style="width: 602px;" /></a></p>
 <p><strong>Pour activer ou désactiver la sirène</strong> :</p>
 <blockquote>
 <div><p>Pour les textes : notifications_devices.lua</p>
@@ -278,7 +257,9 @@ print(“intrusion”)</p>
 <div><p><a class="reference internal" href="../_images/image433.webp"><img alt="image433" src="../_images/image433.webp" style="width: 597px;" /></a></p>
 </div></blockquote>
 </div>
-<p><strong>Le fichier pushover.sh</strong> :</p>
+<p><strong>Pour ajouter une notification PUSHOVER</strong> , ajouter ces lignes:</p>
+<p><a href="#id7"><span class="problematic" id="id8">|image429|</span></a></p>
+<p><a href="#id5"><span class="problematic" id="id6">*</span></a>le scripts bash *</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 TITLE=&quot;Alerte&quot;

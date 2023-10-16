@@ -97,14 +97,14 @@ Partie du script concernant  :darkblue:`les variables`,
         	    end
             end
         end
---      -- alarme nuit
+      -- alarme nuit
         if (domoticz.variables('ma-alarme').value == "2") then 
             for k, v in ipairs(A2) do 
                if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then 
         	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
         	   end
             end
---            --allumer lampes
+      --allumer lampes
             if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
             end    
         --mise en service sirene
@@ -139,8 +139,6 @@ Partie du script concernant :darkblue:`le timer `,
 
    |image428|
 
-   |image429|
-
    **Pour activer ou désactiver la sirène** :
 
       Pour les textes : notifications_devices.lua
@@ -164,7 +162,11 @@ Partie du script concernant :darkblue:`le timer `,
 
     |image433|
 
-**Le fichier pushover.sh** :
+**Pour ajouter une notification PUSHOVER** , ajouter ces lignes:
+
+|image429|
+
+*le scripts bash *
 
  .. code-block::
 
@@ -730,8 +732,6 @@ Version 2.1.0 réécrite en DzVent avec :
 .. |image426| image:: ../media/image426.webp
    :width: 543px
 .. |image428| image:: ../media/image428.webp
-   :width: 602px
-.. |image429| image:: ../media/image429.webp
    :width: 602px
 .. |image431| image:: ../media/image431.webp
    :width: 700px
