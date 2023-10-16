@@ -132,7 +132,7 @@
 <p>Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du script python avec les codes retenus pour l’alarme. <a class="reference internal" href="divers.html#commandes-de-lalarme-a-partir-dun-gsm"><span class="std std-ref">18.4 Commandes de l’alarme à partir d’un GSM</span></a></p>
 <p><a class="reference internal" href="../_images/image408.webp"><img alt="image408" src="../_images/image408.webp" style="width: 650px;" /></a></p>
 <p><em>Pour entrer le mot de passe : redirection vers la page administration</em></p>
-<p>Le script LUA dans Evènements de Domoticz : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_intrusion.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_intrusion.lua</a></p>
+<p>Le script LUA dans Evènements de Domoticz : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua</a></p>
 <div class="section" id="dans-domoticz-les-interrupteurs-virtuels-les-variables">
 <h2>5.1 Dans Domoticz, les interrupteurs virtuels, les variables<a class="headerlink" href="#dans-domoticz-les-interrupteurs-virtuels-les-variables" title="Lien permanent vers ce titre"></a></h2>
 <p><strong>les interrupteurs virtuels</strong></p>
@@ -172,39 +172,87 @@
 <li><p><strong>intrusion</strong></p></li>
 <li><p><strong>alarme</strong> : est utilisée pour un affichage sur la page d’accueil ;</p></li>
 <li><p><strong>activation-sir-txt</strong>, texte activation de la sirène : activer ou désactiver</p></li>
-<li><p><strong>Notifications</strong> : notifications_devices.lua, notifications_timer.lua</p></li>
 </ul>
-<p><a class="reference internal" href="../_images/image423.webp"><img alt="image423" src="../_images/image423.webp" style="width: 379px;" /></a></p>
-<p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua</a></p>
-<p><a class="reference internal" href="../_images/image424.webp"><img alt="image424" src="../_images/image424.webp" style="width: 379px;" /></a></p>
+<p>Tous les Items</p>
+<p><a class="reference internal" href="../_images/image423.webp"><img alt="image423" src="../_images/image423.webp" style="width: 333px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>la notification se fait par modem GSM mais il est facile d’ajouter l’envoi de Push ou Email</p>
+</div>
+<p><a class="reference internal" href="../_images/image424.webp"><img alt="image424" src="../_images/image424.webp" style="width: 594px;" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p><strong>ATTENTION</strong> :
 L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents et les espaces, utiliser des Under scores(ou autre signe) pour séparer les mots</p>
 </div>
-<p>Script <span class="darkblue">notifications_variables.lua</span>, lignes concernées</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="n">then</span>
-                  <span class="n">txt</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-                  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;porte-ouverte&quot;</span><span class="p">)</span>
-              <span class="n">alerte_gsm</span><span class="p">(</span><span class="s1">&#39;alarmeù&#39;</span><span class="o">..</span><span class="n">txt</span><span class="p">)</span>
-<span class="n">end</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="n">then</span>
-                  <span class="n">txt</span><span class="o">=</span><span class="n">tostring</span><span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-                  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span>
-              <span class="n">alerte_gsm</span><span class="p">(</span><span class="s1">&#39;alarmeù&#39;</span><span class="o">..</span><span class="n">txt</span><span class="p">)</span>
-<span class="n">end</span>
+<p>Partie du script concernant  <span class="darkblue">les variables</span>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--*********************</span><span class="n">variables</span><span class="o">***************************************</span>
+     <span class="o">--</span> <span class="n">alarme</span> <span class="n">absence</span> <span class="o">-</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
+         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ipairs</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span> <span class="n">do</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="p">(</span><span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span> <span class="n">then</span>
+                     <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">4</span><span class="p">]);</span>
+                 <span class="n">end</span>
+         <span class="n">end</span>
+     <span class="n">end</span>
 </pre></div>
 </div>
-<p>Script <span class="darkblue">notifications_timer.lua</span>, lignes concernées</p>
-<p>voir ce paragraphe  <a class="reference internal" href="configuration_minimum.html#scriptluatimer"><span class="std std-ref">script lua</span></a></p>
-<p><a class="reference internal" href="../_images/image426.webp"><img alt="image426" src="../_images/image426.webp" style="width: 633px;" /></a></p>
+<dl>
+<dt>–      – alarme nuit</dt><dd><dl>
+<dt>if (domoticz.variables(“ma-alarme”).value == « 2 ») then</dt><dd><dl class="simple">
+<dt>for k, v in ipairs(A2) do</dt><dd><dl class="simple">
+<dt>if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then</dt><dd><p>domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
+end</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>end</p>
+</dd>
+</dl>
+</dd>
+<dt>–            –allumer lampes</dt><dd><blockquote>
+<div><p>if (lampes==1) then devices(“lampe_salon”).switchOn();lampes= »2 »
+end</p>
+</div></blockquote>
+<dl class="simple">
+<dt>–mise en service sirene</dt><dd><p>if (sirene==1) then devices(“ma_sirene”).switchOn();sirene= »2 »
+end
+if (sirene==2 and domoticz.device(“activation-sirene”).state == “On”) then  devices(“sirene_switch”).switchOn();sirene= »3 »
+end</p>
+</dd>
+</dl>
+<p>end
+– fin alarme nuit
+if (domoticz.variables(“porte-ouverte”).changed) then</p>
+<blockquote>
+<div><blockquote>
+<div><p>txt=tostring(domoticz.variables(“porte-ouverte”).value)
+print(« porte-ouverte »)</p>
+</div></blockquote>
+<p>alerte_gsm(“alarmeù”..txt)</p>
+</div></blockquote>
+<p>end
+if (domoticz.variables(“intrusion”).changed) then</p>
+<blockquote>
+<div><blockquote>
+<div><p>txt=tostring(domoticz.variables(“intrusion”).value)
+print(“intrusion”)</p>
+</div></blockquote>
+<p>alerte_gsm(“alarmeù”..txt)</p>
+</div></blockquote>
+<p>end</p>
+</dd>
+</dl>
+<p>Partie du script concernant :darkblue:<a href="#id1"><span class="problematic" id="id2">`</span></a>le timer <a href="#id3"><span class="problematic" id="id4">`</span></a>,</p>
+<p><a class="reference internal" href="../_images/image426.webp"><img alt="image426" src="../_images/image426.webp" style="width: 543px;" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>L’utilisation de <span class="red">timer= at hh :mm-hh</span> :mm ne peut être utilisé ;</p>
+<p>L’utilisation de <span class="red">timer { at hh:mm</span> , <span class="red">hh:mm</span> ne peut être utilisé ;</p>
 <p>j’ai essayé isTimer mais ça ne fonctionne que pour ON ; else avec isTimer ne fonctionne pas.</p>
 </div>
-<div class="admonition-des-explications-concrnant-le-script-alarme-intrusion-lua admonition">
-<p class="admonition-title"><strong>des explications concrnant le script alarme_intrusion.lua</strong></p>
+<div class="admonition-des-explications-concrnant-le-script-alarme-3-lua admonition">
+<p class="admonition-title"><strong>des explications concrnant le script alarme_3.lua</strong></p>
 <p><a class="reference internal" href="../_images/image428.webp"><img alt="image428" src="../_images/image428.webp" style="width: 602px;" /></a></p>
 <p><a class="reference internal" href="../_images/image429.webp"><img alt="image429" src="../_images/image429.webp" style="width: 602px;" /></a></p>
 <p><strong>Pour activer ou désactiver la sirène</strong> :</p>

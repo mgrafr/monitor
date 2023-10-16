@@ -6,7 +6,7 @@ Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du scri
 
 *Pour entrer le mot de passe : redirection vers la page administration* 
 
-Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_intrusion.lua
+Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua
 
 5.1 Dans Domoticz, les interrupteurs virtuels, les variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -69,11 +69,13 @@ o	2  = alarme nuit activée, les capteurs PIR sont ignorés
 
 -	**activation-sir-txt**, texte activation de la sirène : activer ou désactiver
 
-- **Notifications** : notifications_devices.lua, notifications_timer.lua 
+Tous les Items
 
 |image423|
 
-https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua
+.. note::
+
+   la notification se fait par modem GSM mais il est facile d'ajouter l'envoi de Push ou Email
 
 |image424|
 
@@ -82,34 +84,58 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notificatio
    **ATTENTION** :
    L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents et les espaces, utiliser des Under scores(ou autre signe) pour séparer les mots
 
-Script :darkblue:`notifications_variables.lua`, lignes concernées 
+Partie du script concernant  :darkblue:`les variables`,
 
 .. code-block::
 
-   if (domoticz.variables('porte-ouverte').changed) then  
+   --*********************variables***************************************	
+	-- alarme absence - 
+        if (domoticz.variables('ma-alarme').value == "1") then 
+            for k, v in ipairs(A1) do 
+                if (device.name == (A1[k][1]) and device.state == A1[k][2] ) then 
+        	        domoticz.variables(A1[k][3]).set(A1[k][4]);
+        	    end
+            end
+        end
+--      -- alarme nuit
+        if (domoticz.variables('ma-alarme').value == "2") then 
+            for k, v in ipairs(A2) do 
+               if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then 
+        	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
+        	   end
+            end
+--            --allumer lampes
+            if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
+            end    
+        --mise en service sirene
+            if (sirene==1) then devices('ma_sirene').switchOn();sirene="2"
+            end 
+            if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('sirene_switch').switchOn();sirene="3"
+            end    
+        end  
+        -- fin alarme nuit   
+        if (domoticz.variables('porte-ouverte').changed) then  
 	             txt=tostring(domoticz.variables('porte-ouverte').value) 
 	             print("porte-ouverte")
                  alerte_gsm('alarmeù'..txt)
-   end
-   if (domoticz.variables('intrusion').changed) then  
+        end
+        if (domoticz.variables('intrusion').changed) then  
 	             txt=tostring(domoticz.variables('intrusion').value) 
 	             print('intrusion')
                  alerte_gsm('alarmeù'..txt)
-   end
+        end
 
-Script :darkblue:`notifications_timer.lua`, lignes concernées
-
-voir ce paragraphe  :ref:`scriptluatimer`
+Partie du script concernant :darkblue:`le timer `,
 
 |image426|
 
 .. note::
 
-   L’utilisation de :red:`timer= at hh :mm-hh` :mm ne peut être utilisé ; 
+   L’utilisation de :red:`timer { at hh:mm` , :red:`hh:mm` ne peut être utilisé ; 
 
    j’ai essayé isTimer mais ça ne fonctionne que pour ON ; else avec isTimer ne fonctionne pas.
 
-.. admonition:: **des explications concrnant le script alarme_intrusion.lua** 
+.. admonition:: **des explications concrnant le script alarme_3.lua** 
 
    |image428|
 
@@ -698,11 +724,11 @@ Version 2.1.0 réécrite en DzVent avec :
 .. |image418| image:: ../media/image418.webp
    :width: 434px
 .. |image423| image:: ../media/image423.webp
-   :width: 379px
+   :width: 333px
 .. |image424| image:: ../media/image424.webp
-   :width: 379px
+   :width: 594px
 .. |image426| image:: ../media/image426.webp
-   :width: 633px
+   :width: 543px
 .. |image428| image:: ../media/image428.webp
    :width: 602px
 .. |image429| image:: ../media/image429.webp
