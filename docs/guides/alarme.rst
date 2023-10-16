@@ -563,7 +563,7 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 
 |image502|
 
-5.8.2.3 Option supplémentaire : le test de l’envoi de SMS
+5.8.2.2 Option supplémentaire : le test de l’envoi de SMS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 |image503|
