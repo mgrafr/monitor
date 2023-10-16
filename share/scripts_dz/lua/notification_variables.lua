@@ -1,4 +1,4 @@
--- script notifications_variables version 2.1.4
+--- script notifications_variables version 2.1.4
 -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
@@ -30,8 +30,6 @@ return {
 		    'upload',
 		    'zm_cam',
 		    'pression-chaudiere',
-		    'porte-ouverte',
-		    'intrusion',
 		    'variable_sp',
 		    'pilule_tension',
 		    'BASH'
@@ -104,16 +102,7 @@ return {
                 
             end
                
-            if (domoticz.variables('porte-ouverte').changed) then  
-	             txt=tostring(domoticz.variables('porte-ouverte').value) 
-	             print("porte-ouverte")
-                 alerte_gsm('alarmeù'..txt)
-            end
-            if (domoticz.variables('intrusion').changed) then  
-	             txt=tostring(domoticz.variables('intrusion').value) 
-	             print('intrusion')
-                 alerte_gsm('alarmeù'..txt)
-            end
+            
             if (domoticz.variables('pilule_tension').changed) then 
                  if (domoticz.variables('pilule_tension').value ~= "0") then 
 	             txt=tostring(domoticz.variables('pilule_tension').value) 

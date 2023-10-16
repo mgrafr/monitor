@@ -1,28 +1,26 @@
 -- notifications_timer
+package.path = package.path..";www/modules_lua/?.lua"
+JSON=require 'json'
 
 local time = string.sub(os.date("%X"), 1, 5)
+
 return {
     on = {
         timer = {
-             'at 23:00',
-             'at 06:00',
-             'at 09:15',
+             'at 19:30',
+             'at 15:55'
         }
     },
     execute = function(domoticz, item)
         domoticz.log('modif variables: ' .. item.trigger)
-        if (time=='23:00') then
-            if(domoticz.devices('al_nuit_auto').state == "On")  then 
-                domoticz.devices('alarme_nuit').switchOn();print('al_nuit=ON')
-            end
-        elseif (time=='06:00') then    
-            if(domoticz.devices('al_nuit_auto').state == "On")  then 
-                domoticz.variables('alarme').set('alarme_auto');
-                domoticz.devices('alarme_nuit').switchOff();print('al_nuit=OFF')    
-            end  
+        
 	    --médicaments
-	   elseif (time=='09:15' and domoticz.variables('pilule_tension').value == '0') then
+	  if (time=='19:30' and domoticz.variables('pilule_tension').value == '0') then
             domoticz.variables('pilule_tension').set('pilule_michel')
-       end
+      elseif time=='15:55' then
+        print("truffiere1..."..tostring(domoticz.devices('truffiere - Linky').counter )) 
+        print("truffiere2..."..tostring(domoticz.devices('truffiere - Linky').usage ))   
+       
+      end
 	end
 }
