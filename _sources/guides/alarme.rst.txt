@@ -216,7 +216,17 @@ Dans les autres cas Modect peut être activé manuellement.
 
 |image436|
 
-.. warning
+.. note::
+
+   La demande du jeton peut être automatique à partir du bouton :green:`Modect`; dans ce cas il faut utiliser le champ **F()**de la table :darkblue:`monitor`:
+
+   |image142|
+
+   il faut modifier la fonction :darkblue:`pour_data()` dans fonctions.php, ajouter un index pour 'case' (ici:2)
+
+   |image143|
+
+.. warning::
 
    **Il faut avoir installé Zoneminder**
 
@@ -674,7 +684,10 @@ Version 2.1.0 réécrite en DzVent avec :
 
 
 
-
+.. |image142| image:: ../media/image142.webp
+   :width: 650px
+.. |image143| image:: ../media/image143.webp
+   :width: 500px
 .. |image408| image:: ../media/image408.webp
    :width: 650px
 .. |image409| image:: ../media/image409.webp
