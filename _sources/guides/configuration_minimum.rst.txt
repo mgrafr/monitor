@@ -1301,9 +1301,9 @@ Pour la notification dans l'Appli HA, Vérifier que dans la config par defaut, :
 
 |image1170|
 
-La notification sur le smartphone
+Les notifications sur le smartphone :
 
-|image1171|
+|image1171| |image154|
 
 
 1.8.2.2  La page d'accueil de monitor
@@ -1482,6 +1482,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px  
 .. |image153| image:: ../media/image153.webp
    :width: 498px  
+.. |image154| image:: ../media/image154.webp
+   :width: 250px  
 .. |image155| image:: ../media/image155.webp
    :width: 581px  
 .. |image156| image:: ../media/image156.webp
