@@ -686,8 +686,8 @@ Version 2.1.0 réécrite en DzVent avec :
 
 .. |image142| image:: ../media/image142.webp
    :width: 650px
-.. |image142| image:: ../media/image142.webp
-   :width: 650px
+.. |image143| image:: ../media/image143.webp
+   :width: 500px
 .. |image408| image:: ../media/image408.webp
    :width: 650px
 .. |image409| image:: ../media/image409.webp
