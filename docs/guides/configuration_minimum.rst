@@ -784,6 +784,17 @@ script lua
 
 1.5.2 Liens avec Home Assistant
 -------------------------------
+
+.. note::
+
+   Pour faire un essai de Rest API, sans installer de client HTTP, il suffit à partir de monitor d'envoyer la variable app=ha
+
+   .. code-block::
+
+      http://IP DE MONITOR/monitor/ajax.php?app=ha
+
+|image142|
+
 1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
