@@ -45,6 +45,6 @@ Entrer votre mot de passe
 </style><a id="zm" href="#alarmes">
 <rect x="0.9" y="-0.7" class="st208" width="31.2" height="18.8"/>
 <text transform="matrix(1 0 0 1 5.4312 13.3434)" class="st203 st33 st207">Z M</text></a>
-</svg><br><br> <p class="zminder">Pour afficher la liste des caméras déclarées Modect<br>et pour demander un jeton pour Modect<br>Le jeton peut être demandé automatiquement en utilisant F(), <br><em style="color:darkblue">voir le § 5.1.1 de la Doc</em>.</p>
+</svg><br><br> <p class="zminder">Pour afficher la liste des caméras déclarées Modect<br>et pour <strong style="color:darkred">demander un jeton pour Modect</strong><br>.</p>
 </div>
  
