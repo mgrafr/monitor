@@ -216,15 +216,9 @@ Dans les autres cas Modect peut être activé manuellement.
 
 |image436|
 
-.. note::
+.. ATTENTION::
 
-   La demande du jeton peut être automatique à partir du bouton :green:`Modect`; dans ce cas il faut utiliser le champ **F()**de la table :darkblue:`monitor`:
-
-   |image142|
-
-   il faut modifier la fonction :darkblue:`pour_data()` dans fonctions.php, ajouter un index pour 'case' (ici:2)
-
-   |image143|
+   La demande du jeton n'est pas automatique à partir du bouton :green:`Modect`; :darkblue:`IL FAUT APPUYER SUR LE BOUTON ZM`:
 
 .. warning::
 
