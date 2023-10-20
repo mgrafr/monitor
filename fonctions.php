@@ -8,7 +8,7 @@ function file_http_curl($L,$mode,$post){
 /* set the content type json */
     $headers = [];
     $headers[] = 'Content-Type:application/json';
-    $token =TOKEN_DOM1; 
+    $token =TOKEN_DOMOTIC1; 
 	$headers[] = "Authorization: Bearer ".$token;	
 	
 	
