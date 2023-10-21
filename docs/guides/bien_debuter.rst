@@ -1125,9 +1125,7 @@ pour les dispositifs :
 
 **HA** : URL:8123/api/states
 
-et les variables (input_text pour HA):
-
-Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs
+pou les variables (input_text pour HA):
 
 **DZ** : URL:PORT/json.htm?type=command&param=getuservariables
 
@@ -1136,6 +1134,8 @@ Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs
 .. note::
 
    *liste_var001 est l'unique_id du template concernant les input_text* , voir ce § :ref:`1.8.2.1.2 Home Assistant`
+
+Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs ou les variables.
 
 ........ha, un dispositif :
  
