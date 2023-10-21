@@ -1423,9 +1423,13 @@ La même variable lors d'un seul dispositif en défaut:
 
 .. attention::
 
-   il y a un nombre important de dispositifs en défaut : la clé zigbee est en défaut , en la redémarrant , seulement un dispositif n'a pas communiqué depuis la valeur max choisie (ici 24 heures)
+   il y a un nombre important de dispositifs du au réglage des valeurs max : avec d'autres valeurs plus normales  , seulement un dispositif n'a pas communiqué depuis la valeur max choisie.
 
 |image1167|
+
+accueil.php, css et table "text_image" concernant cet affichage:
+
+|image146|
 
 1.8.5.1 function status_variables($xx) dans fonctions.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1534,6 +1538,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 400px  
 .. |image145| image:: ../media/image145.webp
    :width: 479px  
+.. |image146| image:: ../media/image146.webp
+   :width: 700px  
 .. |image147| image:: ../media/image147.webp
    :width: 540px  
 .. |image150| image:: ../media/image150.webp
