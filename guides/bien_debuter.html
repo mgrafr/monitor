@@ -89,7 +89,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#les-images">0.7 Les images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#les-fichiers-php">0.8 Les fichiers PHP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#les-fichiers-javascript-python">0.9 Les fichiers Javascript &amp; Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#les-fichiers-ajoutes-par-l-utilisateur">0.10 Les fichiers ajoutés par l’utilisateur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-domoticz-et-ha">0.10 API Domoticz et HA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-fichiers-ajoutes-par-l-utilisateur">0.11 Les fichiers ajoutés par l’utilisateur</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -754,7 +755,7 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <li><p>idx : celui de Domoticz</p></li>
 <li><p>ID : celui de Home Assistant</p></li>
 <li><dl class="simple">
-<dt>idm<span class="classifier">idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant      une recherche ;dans l’image cet idm est indiqué par « rel=idm »</span></dt><dd><p><span class="darkblue">Voir le paragraphe concernant les images svg</span></p>
+<dt>idm<span class="classifier">idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »</span></dt><dd><p><span class="darkblue">Voir le paragraphe concernant les images svg</span></p>
 </dd>
 </dl>
 </li>
@@ -763,7 +764,7 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <dt>maj_js<span class="classifier">types de mise à jour java script</span></dt><dd><ul class="simple">
 <li><p>control // détecteur présence(on/off)</p></li>
 <li><p>etat  //porte, volet ,(closed/open)</p></li>
-<li><p>Temp ou data // température, humidité, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est               préférable d’utiliser « data »</p></li>
+<li><p>Temp ou data // température, humidité, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est préférable d’utiliser « data »</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image93.webp"><img alt="image93" src="../_images/image93.webp" style="width: 590px;" /></a></p>
 <p><a class="reference internal" href="../_images/image94.webp"><img alt="image94" src="../_images/image94.webp" style="width: 520px;" /></a></p>
@@ -858,12 +859,6 @@ if ($_SESSION[&quot;exeption_db&quot;]==&quot;&quot; &amp;&amp;  DECOUVERTE==fal
 </div>
 <p><em>Il est possible d’ajouter des types</em></p>
 <p>Pour créer cette table l’importer depuis le référentiel « monitor »</p>
-<p>API Domoticz et HA pour les dispositifs :</p>
-<p><strong>DZ</strong> : URL :PORT/json.htm?type=devices&amp;plan=NUMERO DU PLAN</p>
-<p><strong>HA</strong> : URL:8123/api/states</p>
-<p>Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs</p>
-<p>……..ha :</p>
-<p><a class="reference internal" href="../_images/image97.webp"><img alt="image97" src="../_images/image97.webp" style="width: 509px;" /></a></p>
 </div>
 <div class="section" id="cameras">
 <h3>0.3.3 caméras<a class="headerlink" href="#cameras" title="Lien permanent vers ce titre"></a></h3>
@@ -974,7 +969,7 @@ else if ($app==&quot;meteo_concept&quot;) {if (DECOUVERTE==true) {include(&#39;i
 <li><p><strong>Cookies.txt</strong> &amp; <strong>cookie.txt</strong> : utilisés par Zoneminder suivant les versions de l’API</p></li>
 <li><p><strong>favicon.ico</strong> : l’icône associée à la barre de l’url</p></li>
 <li><p><strong>fonctions.php</strong> : toutes les fonctions PHP appelées au démarrage et lors des appels Ajax</p></li>
-<li><p><strong>Index.php</strong> :  le ficher appelé lors du chargement du site ; pour les écrans &gt; 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse       du répertoire du site sur le serveur</p></li>
+<li><p><strong>Index.php</strong> :  le ficher appelé lors du chargement du site ; pour les écrans &gt; 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse du répertoire du site sur le serveur</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 echo &#39;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body style=&quot;background-color: cornsilk;&quot;&gt;&#39;;
@@ -1054,8 +1049,24 @@ Les fichiers SVG sont du pur XML</p>
 <p>Utilisation de jQuery</p>
 <p><a class="reference internal" href="../_images/image115.webp"><img alt="image115" src="../_images/image115.webp" style="width: 203px;" /></a> <a class="reference internal" href="../_images/image116.webp"><img alt="image116" src="../_images/image116.webp" style="width: 293px;" /></a></p>
 </div>
+<div class="section" id="api-domoticz-et-ha">
+<h2>0.10 API Domoticz et HA<a class="headerlink" href="#api-domoticz-et-ha" title="Lien permanent vers ce titre"></a></h2>
+<p>pour les dispositifs :</p>
+<p><strong>DZ</strong> : URL:PORT/json.htm?type=getdevices&amp;plan=NUMERO DU PLAN</p>
+<p><strong>HA</strong> : URL:8123/api/states</p>
+<p>et les variables (input_text pour HA):</p>
+<p>Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs</p>
+<p><strong>DZ</strong> : URL:PORT/json.htm?type=command&amp;param=getuservariables</p>
+<p><strong>HA</strong> : URL:8123/api/states/sensor.:darkblue:<cite>liste_var001</cite></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>liste_var001 est l’unique_id du template concernant les input_text</em> , voir ce § <a class="reference internal" href="configuration_minimum.html#home-assistant"><span class="std std-ref">1.8.2.1.2 Home Assistant</span></a></p>
+</div>
+<p>……..ha, un dispositif :</p>
+<p><a class="reference internal" href="../_images/image97.webp"><img alt="image97" src="../_images/image97.webp" style="width: 509px;" /></a></p>
+</div>
 <div class="section" id="les-fichiers-ajoutes-par-l-utilisateur">
-<h2>0.10 Les fichiers ajoutés par l’utilisateur<a class="headerlink" href="#les-fichiers-ajoutes-par-l-utilisateur" title="Lien permanent vers ce titre"></a></h2>
+<h2>0.11 Les fichiers ajoutés par l’utilisateur<a class="headerlink" href="#les-fichiers-ajoutes-par-l-utilisateur" title="Lien permanent vers ce titre"></a></h2>
 <p>4 sous dossiers sont créés pour ajouter des pages personnelles avec les styles , les images et le Javascript</p>
 <p><a class="reference internal" href="../_images/image102.webp"><img alt="image102" src="../_images/image102.webp" style="width: 284px;" /></a></p>
 </div>

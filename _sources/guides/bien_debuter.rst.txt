@@ -793,7 +793,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - ID : celui de Home Assistant
 
-- idm : idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant 	une recherche ;dans l’image cet idm est indiqué par « rel=idm »
+- idm : idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
 
 - Matériel : pour les types zwave ou Zigbee
@@ -801,7 +801,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - maj_js : types de mise à jour java script
 	-	control // détecteur présence(on/off)
 	-	etat  //porte, volet ,(closed/open)
-	-	Temp ou data // température, humidité, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est 		préférable d’utiliser « data »
+	-	Temp ou data // température, humidité, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est préférable d’utiliser « data »
 
 	|image93| 
 
@@ -907,18 +907,6 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 *Il est possible d’ajouter des types*
 
 Pour créer cette table l’importer depuis le référentiel « monitor » 
-
-API Domoticz et HA pour les dispositifs :
-
-**DZ** : URL :PORT/json.htm?type=devices&plan=NUMERO DU PLAN
-
-**HA** : URL:8123/api/states
-
-Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs
-
-........ha :
- 
-|image97| 
 
 0.3.3 caméras
 =============
@@ -1039,7 +1027,7 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 
 - **fonctions.php** : toutes les fonctions PHP appelées au démarrage et lors des appels Ajax
 
-- **Index.php** :  le ficher appelé lors du chargement du site ; pour les écrans > 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse 	du répertoire du site sur le serveur
+- **Index.php** :  le ficher appelé lors du chargement du site ; pour les écrans > 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse du répertoire du site sur le serveur
 
 .. code-block::
 
@@ -1129,7 +1117,31 @@ Utilisation de jQuery
 
 |image115| |image116|
 
-0.10 Les fichiers ajoutés par l'utilisateur
+0.10 API Domoticz et HA
+^^^^^^^^^^^^^^^^^^^^^^
+pour les dispositifs :
+
+**DZ** : URL:PORT/json.htm?type=getdevices&plan=NUMERO DU PLAN
+
+**HA** : URL:8123/api/states
+
+et les variables (input_text pour HA):
+
+Dans les 2 cas, un fichier json de tous lis dispositifs et les valeurs
+
+**DZ** : URL:PORT/json.htm?type=command&param=getuservariables
+
+**HA** : URL:8123/api/states/sensor.:darkblue:`liste_var001`
+
+.. note::
+
+   *liste_var001 est l'unique_id du template concernant les input_text* , voir ce § :ref:`1.8.2.1.2 Home Assistant`
+
+........ha, un dispositif :
+ 
+|image97| 
+
+0.11 Les fichiers ajoutés par l'utilisateur
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 4 sous dossiers sont créés pour ajouter des pages personnelles avec les styles , les images et le Javascript
 
