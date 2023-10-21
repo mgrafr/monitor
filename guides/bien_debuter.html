@@ -650,42 +650,31 @@ function mc(variable,id){
 <blockquote>
 <div><p><a class="reference internal" href="../_images/image77.webp"><img alt="image77" src="../_images/image77.webp" style="width: 343px;" /></a></p>
 <p><a class="reference internal" href="../_images/image78.webp"><img alt="image78" src="../_images/image78.webp" style="width: 605px;" /></a></p>
-<blockquote>
-<div><p>. num : ne sert qu’à éditer plus facilement la BD</p>
-<blockquote>
-<div><p><span class="red">(Pour modifier plus facilement la table, ajouter au début un enregistrement (num par exemple) afin de pouvoir éditer les enregistrements)</span>.</p>
 </div></blockquote>
 </div></blockquote>
+<div class="admonition-num-ne-sert-qua-editer-plus-facilement-la-bd admonition">
+<p class="admonition-title"><strong>num</strong> : ne sert qu’à éditer plus facilement la BD</p>
+<p><span class="darkblue">Pour modifier plus facilement la table, ajouter au début un champ (num utilisé ici) afin de pouvoir éditer les enregistrements</span>.</p>
 <p><a class="reference internal" href="../_images/image79.webp"><img alt="image79" src="../_images/image79.webp" style="width: 650px;" /></a></p>
+</div>
 <p>. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)</p>
 <p>. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ;</p>
+<p>. Nom_idx : nom de la variable du serveur domotique (dz); BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.</p>
 <blockquote>
-<div><p>commande Bash, accès au Shell par SSH2 depuis Domoticz sous Docker; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor.</p>
-<blockquote>
-<div><p>voir ci-après un exemple de commande bash</p>
-</div></blockquote>
-</div></blockquote>
-<p>. Nom_idx : nom de la variable du serveur domotique (dz)</p>
-<div class="admonition warning">
+<div><div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p><strong>IMPORTANT</strong> : le nom de la variable Domoticz ne doit pas comporter d’espace</p>
 <p>(le programme fonctionne mais l’API renvoie « NULL »)</p>
 </div>
+</div></blockquote>
 <dl class="simple">
 <dt>. Idx , id de la variable du serveur domotique(dz)</dt><dd><p>ex : idx de Domoticz
 <a class="reference internal" href="../_images/image87.webp"><img alt="image87" src="../_images/image87.webp" style="width: 406px;" /></a></p>
 </dd>
 </dl>
 <p>. Nom appareil : non obligatoire</p>
-<dl class="simple">
-<dt>. ID , id de la variable (ha)</dt><dd><dl class="simple">
-<dt>Ex<span class="classifier">Home Assistant, nom essai, ID input_text.essai</span></dt><dd><p><a class="reference internal" href="../_images/image88.webp"><img alt="image88" src="../_images/image88.webp" style="width: 408px;" /></a></p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-</div></blockquote>
+<p>.  ID , id de la variable (ha) ; ex : Home Assistant, nom essai, ID input_text.essai</p>
+<p><a class="reference internal" href="../_images/image88.webp"><img alt="image88" src="../_images/image88.webp" style="width: 408px;" /></a></p>
 <div class="admonition-un-exemple-bash-concret-redemarrer-un-script-apres-modifications admonition">
 <p class="admonition-title"><strong>un exemple bash concret : redémarrer un script après modifications</strong></p>
 <p>Ici <span class="red">systemctl restart sms_dz</span> (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)</p>
