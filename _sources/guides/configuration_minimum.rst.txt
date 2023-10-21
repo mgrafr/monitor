@@ -1261,29 +1261,26 @@ Créer une automatisation : merci à **OzGav** *https://community.home-assistant
           at: '17:37:00'
         condition:
         - condition: template
-          value_template: "{% set ns = namespace(break = false) %} {% for state in states
-            -%}\n  {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now())
-            - as_timestamp(state.attributes.last_seen) > (60 * 6) ) and ns.break == false
-            %}\n      {%- set ns.break = true %}\n      true\n    {%- endif -%}\n  {%- endif
-            -%}\n{%- endfor %} \n"
+          value_template: '{% set ns = namespace(break = false) %} {% for state in states
+            -%} {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
+            > (60 * 6) ) and ns.break == false %}     {%- set ns.break = true %}      true    {%-
+            endif -%} {%- endif -%}{%- endfor %}'
         action:
         - service: notify.mobile_app_RMO_NX1
           data:
-            message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}\n
-              \ {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now()) -
-              as_timestamp(state.attributes.last_seen) > (60 * 6) ) %}\n      {{ ((as_timestamp(now())
-              - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} hours
-              ago for {{ state.name }}\n      \n    {%- endif -%}\n  {%- endif -%}\n{%-
-              endfor %}"
+            message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}
+              {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
+              > (60 * 6) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
+              / (3600)) | round(1) }} heures pour :{{ state.name }}\n \n{%- endif -%}      {%-
+              endif -%}{%- endfor %}"
 	- service: notify.email
     	  data:
             title: alerte dispositifs
-            message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}\n
-              \ {%- if state.attributes.last_seen %}\n    {%- if (as_timestamp(now()) -
-              as_timestamp(state.attributes.last_seen) > (60 * 6) ) %}\n      {{ ((as_timestamp(now())
-              - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} hours
-              ago for {{ state.name }}\n      \n    {%- endif -%}\n  {%- endif -%}\n{%-
-              endfor %}"
+            message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}
+             {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
+             > (60 * 6) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
+             / (3600)) | round(1) }} heures pour :{{ state.name }} \n{%- endif -%} {%-
+             endif -%}{%- endfor %}"
 
    .. note::
 
@@ -1316,9 +1313,47 @@ Les notifications sur le smartphone :
 
 |image1171| |image154|
 
+.. admonition:: **notification sur l'appli**
 
-1.8.2.2  La page d'accueil de monitor
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   .. warning::
+
+      C'est cette variable que monitor va utiliser pour afficher la notification sur son écran d'accuei
+
+   Ajouter ces lignes:
+
+   .. code-block::
+
+        - service: input_text.set_value
+          data_template:
+            entity_id: input_text.essai
+            value: Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
+              if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
+              > (60 * 8) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
+              / (3600)) | round(1) }} heures pour {{ state.name }} {%- endif -%}{%- endif
+              -%}{%- endfor %}
+
+   |image144|
+
+1.8.2.2  La page d'accueil de monitor : include/accueil.php
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image127|
+
+Soit un emplacement disponible est utilisé (voir le § suivant), soit on définie un emplacement:
+
+- on indique l'idx de Domoticz ( utilisé pour l'effacement de la notification)
+
+- on indique l'ID de l'image
+
+- on indique la class de la <div si besoin plus de "conffirm" 
+
+.. code-block::
+
+   <div class="confirm lastseen"><a href="#" id="annul_lastseen" rel="34" title="Annulation de l'alerte lastseen"><img id="lastseen" src=""/></a></div>
+
+|image128|
+
+on choisit une image placée dans le répertoire :darkblue:`image`
 
 1.8.3 les emplacements disponibles et les styles css
 ----------------------------------------------------
@@ -1465,6 +1500,10 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 239px 
 .. |image126| image:: ../media/image126.webp
    :width: 604px 
+.. |image127| image:: ../media/image127.webp
+   :width: 500px 
+.. |image128| image:: ../media/image128.webp
+   :width: 500px 
 .. |image134| image:: ../media/image134.webp
    :width: 544px 
 .. |image135| image:: ../media/image135.webp
@@ -1481,6 +1520,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 650px  
 .. |image141| image:: ../media/image141.webp
    :width: 205px  
+.. |image144| image:: ../media/image144.webp
+   :width: 400px  
+
 .. |image145| image:: ../media/image145.webp
    :width: 479px  
 .. |image147| image:: ../media/image147.webp
