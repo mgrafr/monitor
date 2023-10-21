@@ -1343,17 +1343,19 @@ pour ne pas cacher le menu hamburger</p>
 <div class="section" id="la-page-d-accueil-de-monitor-include-accueil-php">
 <h4>1.8.2.2  La page d’accueil de monitor : include/accueil.php<a class="headerlink" href="#la-page-d-accueil-de-monitor-include-accueil-php" title="Lien permanent vers ce titre"></a></h4>
 <p><a class="reference internal" href="../_images/image127.webp"><img alt="image127" src="../_images/image127.webp" style="width: 500px;" /></a></p>
-<p>Soit un emplacement disponible est utilisé (voir le § suivant), soit on définie un emplacement:</p>
+<p>Soit un emplacement disponible est utilisé (voir le § suivant), soit on définit un emplacement:</p>
 <ul class="simple">
-<li><p>on indique l’idx de Domoticz ( utilisé pour l’effacement de la notification)</p></li>
+<li><p>on indique l’idx de Domoticz ou l’ID de HA ( utilisé pour l’effacement de la notification)</p></li>
 <li><p>on indique l’ID de l’image</p></li>
-<li><p>on indique la class de la &lt;div si besoin plus de « conffirm »</p></li>
+<li><p>on indique la class de la &lt;div si besoin, en  plus de la class « confirm »</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;confirm lastseen&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;annul_lastseen&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;34&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Annulation de l&#39;alerte lastseen&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;lastseen&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image128.webp"><img alt="image128" src="../_images/image128.webp" style="width: 500px;" /></a></p>
-<p>on choisit une image placée dans le répertoire <span class="darkblue">image</span></p>
+<ul class="simple">
+<li><p>on choisit une image placée dans le répertoire <span class="darkblue">image</span></p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="les-emplacements-disponibles-et-les-styles-css">
