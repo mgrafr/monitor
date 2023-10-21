@@ -717,9 +717,9 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
  
      *Ou par Monitor* :
 
-     |image82|
+|image82|
 
-     |image83|
+|image83|
                           
    **Dans monitor, PHP-SSH2**
 
@@ -1305,7 +1305,7 @@ Utilisation de jQuery
 .. |image94| image:: ../media/image94.webp
    :width: 520px   
 .. |image97| image:: ../media/image97.webp
-   :width: 538px   
+   :width: 509px   
 .. |image98| image:: ../media/image98.webp
    :width: 700px   
 .. |image99| image:: ../media/image99.webp
