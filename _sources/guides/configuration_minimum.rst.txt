@@ -1349,16 +1349,11 @@ Soit un emplacement disponible est utilisé (voir le § suivant), soit on défin
 
 .. code-block::
 
-   <!-- 1ere ligne pour DZ, la 2eme pour HA-->
-   <!-- Les ID sont différentes afin de pouvoir utiliser les 2 sources-->
    <div class="confirm lastseen"><a href="#" id="annul_lastseen" rel="34" title="Annulation de l'alerte lastseen"><img id="lastseen" src=""/></a></div>
-   <div class="confirm lastseen1"><a href="#" id="annul_lastseen1" rel="listvar001" title="Annulation de l'alerte lastseen"><img id="lastseen1" src=""/></a></div>
 
 |image128|
 
 - on choisit une image placée dans le répertoire :darkblue:`image`
-
-|image129|
 
 1.8.3 les emplacements disponibles et les styles css
 ----------------------------------------------------
@@ -1509,8 +1504,6 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 500px 
 .. |image128| image:: ../media/image128.webp
    :width: 500px 
-.. |image129| image:: ../media/image129.webp
-   :width: 155px 
 .. |image134| image:: ../media/image134.webp
    :width: 544px 
 .. |image135| image:: ../media/image135.webp
@@ -1529,6 +1522,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 205px  
 .. |image144| image:: ../media/image144.webp
    :width: 400px  
+
 .. |image145| image:: ../media/image145.webp
    :width: 479px  
 .. |image147| image:: ../media/image147.webp
