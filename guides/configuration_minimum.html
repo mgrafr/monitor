@@ -1329,7 +1329,7 @@ pour ne pas cacher le menu hamburger</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">set_value</span>
   <span class="n">data_template</span><span class="p">:</span>
     <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">essai</span>
-    <span class="n">value</span><span class="p">:</span> <span class="n">lastseen</span><span class="c1">#Des dispositifs ont un lastSeen &gt; à ... {% for state in states -%} {%-</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">Des</span> <span class="n">dispositifs</span> <span class="n">ont</span> <span class="n">un</span> <span class="n">lastSeen</span> <span class="o">&gt;</span> <span class="n">à</span> <span class="o">...</span> <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span> <span class="o">-%</span><span class="p">}</span> <span class="p">{</span><span class="o">%-</span>
       <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span> <span class="o">%</span><span class="p">}</span>    <span class="p">{</span><span class="o">%-</span> <span class="k">if</span> <span class="p">(</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span> <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">)</span>
       <span class="o">&gt;</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span> <span class="p">)</span> <span class="o">%</span><span class="p">}</span>    <span class="p">{{</span> <span class="p">((</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span> <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">))</span>
       <span class="o">/</span> <span class="p">(</span><span class="mi">3600</span><span class="p">))</span> <span class="o">|</span> <span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}}</span> <span class="n">heures</span> <span class="n">pour</span> <span class="p">{{</span> <span class="n">state</span><span class="o">.</span><span class="n">name</span> <span class="p">}}</span> <span class="p">{</span><span class="o">%-</span> <span class="n">endif</span> <span class="o">-%</span><span class="p">}{</span><span class="o">%-</span> <span class="n">endif</span>
@@ -1337,10 +1337,6 @@ pour ne pas cacher le menu hamburger</p>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image144.webp"><img alt="image144" src="../_images/image144.webp" style="width: 400px;" /></a></p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>lastseen ou lastseen1 ou ..autre, voir § suivant</p>
 </div>
 </div>
 </div>

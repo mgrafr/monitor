@@ -1326,16 +1326,13 @@ Les notifications sur le smartphone :
         - service: input_text.set_value
           data_template:
             entity_id: input_text.essai
-            value: lastseen#Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
+            value: Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
               if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
               > (60 * 8) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
               / (3600)) | round(1) }} heures pour {{ state.name }} {%- endif -%}{%- endif
               -%}{%- endfor %}
 
    |image144|
-
-.. note:: lastseen ou lastseen1 ou ..autre, voir § suivant
-
 
 1.8.2.2  La page d'accueil de monitor : include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
