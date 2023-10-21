@@ -659,9 +659,9 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 """""""""""""""""""""""""""""""""""""""""""" 
   *ne sont concernés pour les variables que les champs* :
 
-   |image77|
+|image77|
 
-   |image78|
+|image78|
 
 .. admonition::  **num** : ne sert qu’à éditer plus facilement la BD
 
