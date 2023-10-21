@@ -716,22 +716,22 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <p><em>Installation des tables</em> : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :</p>
 <p><a class="reference internal" href="../_images/image89.webp"><img alt="image89" src="../_images/image89.webp" style="width: 413px;" /></a></p>
 <p><em>Les API de Domoticz et Home assistant pour les variables</em> :</p>
-<ul>
+<ul class="simple">
 <li><p>DZ ,  URL : PORT/json.htm?type=command&amp;param=getuservariables ,( renvoie la liste de toutes les variables et leurs valeurs)</p></li>
-<li><p>HA ,  URL : 8123/api/states/sensor.liste_var (renvoie la liste des dispositifs enregistrés comme input text)</p>
-<p>Le template sensor : sensor.liste_var</p>
-</li>
+<li><p>HA ,  URL : 8123/api/states/sensor.liste_var (renvoie la liste des dispositifs enregistrés comme input text)</p></li>
 </ul>
+<p><strong>Le template sensor : sensor.liste_var pour HA</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template</span><span class="p">:</span>
   <span class="o">-</span>  <span class="n">sensor</span><span class="p">:</span>
        <span class="o">-</span>  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;liste_var&quot;</span>
-          <span class="n">unique_id</span> <span class="p">:</span> <span class="mi">1234567890</span>
+          <span class="n">unique_id</span> <span class="p">:</span> <span class="n">listvar001</span>
           <span class="n">state</span><span class="p">:</span> <span class="o">&gt;</span>
             <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">input_text</span> <span class="ow">in</span> <span class="n">states</span><span class="o">.</span><span class="n">input_text</span> <span class="o">%</span><span class="p">}</span>
              <span class="p">{{</span><span class="n">input_text</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">~</span> <span class="s2">&quot;=&quot;</span> <span class="o">~</span> <span class="n">input_text</span><span class="o">.</span><span class="n">state</span> <span class="o">~</span> <span class="s2">&quot;, &quot;</span> <span class="p">}}</span>
             <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
 </pre></div>
 </div>
+<p><a class="reference internal" href="../_images/image143.webp"><img alt="image143" src="../_images/image143.webp" style="width: 700px;" /></a></p>
 </div>
 </div>
 <div class="section" id="les-dispositifs">

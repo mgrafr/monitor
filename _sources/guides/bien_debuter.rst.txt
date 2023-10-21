@@ -755,18 +755,20 @@ cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les
 
 -	HA ,  URL : 8123/api/states/sensor.liste_var (renvoie la liste des dispositifs enregistrés comme input text)
 
-	Le template sensor : sensor.liste_var
+**Le template sensor : sensor.liste_var pour HA**
 
 .. code-block::
 
    template:
      -  sensor:
           -  name: "liste_var"
-             unique_id : 1234567890
+             unique_id : listvar001
              state: >
                {% for input_text in states.input_text %}
                 {{input_text.entity_id ~ "=" ~ input_text.state ~ ", " }}
                {% endfor %}
+
+|image143|
 
 0.3.2 Les Dispositifs
 =====================
@@ -1334,6 +1336,8 @@ Utilisation de jQuery
    :width: 203px 
 .. |image116| image:: ../media/image116.webp
    :width: 293px 
+.. |image143| image:: ../media/image143.webp
+   :width: 700px 
 .. |image358| image:: ../media/image358.webp
    :width: 500px 
 .. |image1111| image:: ../media/image1111.webp
