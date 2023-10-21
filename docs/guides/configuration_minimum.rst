@@ -1339,13 +1339,13 @@ Les notifications sur le smartphone :
 
 |image127|
 
-Soit un emplacement disponible est utilisé (voir le § suivant), soit on définie un emplacement:
+Soit un emplacement disponible est utilisé (voir le § suivant), soit on définit un emplacement:
 
-- on indique l'idx de Domoticz ( utilisé pour l'effacement de la notification)
+- on indique l'idx de Domoticz ou l'ID de HA ( utilisé pour l'effacement de la notification)
 
 - on indique l'ID de l'image
 
-- on indique la class de la <div si besoin plus de "conffirm" 
+- on indique la class de la <div si besoin, en  plus de la class "confirm" 
 
 .. code-block::
 
@@ -1353,7 +1353,7 @@ Soit un emplacement disponible est utilisé (voir le § suivant), soit on défin
 
 |image128|
 
-on choisit une image placée dans le répertoire :darkblue:`image`
+- on choisit une image placée dans le répertoire :darkblue:`image`
 
 1.8.3 les emplacements disponibles et les styles css
 ----------------------------------------------------
