@@ -1230,7 +1230,7 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
           end
          }
    
-   La variable lastseen
+   :name: **La variable lastseen**
 
    |image1151|
 
@@ -1238,7 +1238,7 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
       **Quelques explications**
 
-      Comme on peut le voir le caactère # sépare le nom attribué à la variable et la liste des dispositifs; on peut retrouver la liste dans la donnée "contenu" du fichier Json reçu par monitor.
+      Comme on peut le voir le caactère # sépare le texte pour la table "text_image" (affichage de l'icone) et le contenu de la notification; on peut retrouver ce contenu  dans la donnée "contenu" du fichier Json reçu par monitor.
 
       |image1162|
 
