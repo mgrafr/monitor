@@ -1265,9 +1265,16 @@ pour ne pas cacher le menu hamburger</p>
 <div class="section" id="home-assistant">
 <h5>1.8.2.1.2 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers ce titre"></a></h5>
 <p><span class="red">Comme pour Domoticz, Zwave-JS est le problème</span></p>
-<p>Créer une automatisation : merci à <strong>OzGav</strong> <em>https://community.home-assistant.io/u/OzGav</em></p>
-<div class="admonition-script-yaml admonition">
-<p class="admonition-title"><strong>Script Yaml</strong></p>
+<p>Pour l’annulation de la notification, création d’un switch binaire, nommé ici « essai1 »:</p>
+<p><a class="reference internal" href="../_images/image130.webp"><img alt="image130" src="../_images/image130.webp" style="width: 317px;" /></a></p>
+<p>Créer 2 automatisations :</p>
+<p>-la première pour déterminer les dispositifs concernés par « lastseen »</p>
+<ul class="simple">
+<li><p>la 2eme pour effacer la notification</p></li>
+</ul>
+<div class="admonition-script-yaml-lastseen admonition">
+<p class="admonition-title"><strong>script yaml « lastseen »</strong></p>
+<p>merci à <strong>OzGav</strong> <em>https://community.home-assistant.io/u/OzGav</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">lastseen_alerte_dispositifs</span>
   <span class="n">alias</span><span class="p">:</span> <span class="n">LastSeen</span> <span class="n">Alerte</span> <span class="n">Dispositifs</span>
   <span class="n">trigger</span><span class="p">:</span>
@@ -1317,34 +1324,64 @@ pour ne pas cacher le menu hamburger</p>
 </pre></div>
 </div>
 </div>
-</div>
 <p><a class="reference internal" href="../_images/image1169.webp"><img alt="image1169" src="../_images/image1169.webp" style="width: 650px;" /></a></p>
 <p>Pour la notification dans l’Appli HA, Vérifier que dans la config par defaut, <span class="green">mobile_app</span> est présent</p>
 <p><a class="reference internal" href="../_images/image1170.webp"><img alt="image1170" src="../_images/image1170.webp" style="width: 421px;" /></a></p>
 <p>Les notifications sur le smartphone :</p>
 <p><a class="reference internal" href="../_images/image1171.webp"><img alt="image1171" src="../_images/image1171.webp" style="width: 300px;" /></a> <a class="reference internal" href="../_images/image154.webp"><img alt="image154" src="../_images/image154.webp" style="width: 250px;" /></a></p>
-<div class="admonition-notification-sur-l-appli admonition">
-<p class="admonition-title"><strong>notification sur l’appli</strong></p>
+</div>
+<div class="admonition-notification-sur-l-appli-suite-du-script-precedent admonition">
+<p class="admonition-title"><strong>notification sur l’appli , suite du script précédent</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>C’est cette variable que monitor va utiliser pour afficher la notification sur son écran d’accuei</p>
+<p>C’est cette notification que monitor va utiliser pour l’afficher sur son écran d’accuei</p>
 </div>
 <p>Ajouter ces lignes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">set_value</span>
   <span class="n">data_template</span><span class="p">:</span>
     <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">essai</span>
-    <span class="n">value</span><span class="p">:</span> <span class="n">lastseen</span><span class="c1">#Des dispositifs ont un lastSeen &gt; à ... {% for state in states -%} {%-</span>
+    <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;lastseen#Des dispositifs ont un lastSeen &gt; à ... {</span><span class="si">% f</span><span class="s2">or state in states -%} {%-</span>
       <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span> <span class="o">%</span><span class="p">}</span>    <span class="p">{</span><span class="o">%-</span> <span class="k">if</span> <span class="p">(</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span> <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">)</span>
       <span class="o">&gt;</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span> <span class="p">)</span> <span class="o">%</span><span class="p">}</span>    <span class="p">{{</span> <span class="p">((</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span> <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">))</span>
       <span class="o">/</span> <span class="p">(</span><span class="mi">3600</span><span class="p">))</span> <span class="o">|</span> <span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}}</span> <span class="n">heures</span> <span class="n">pour</span> <span class="p">{{</span> <span class="n">state</span><span class="o">.</span><span class="n">name</span> <span class="p">}}</span> <span class="p">{</span><span class="o">%-</span> <span class="n">endif</span> <span class="o">-%</span><span class="p">}{</span><span class="o">%-</span> <span class="n">endif</span>
-      <span class="o">-%</span><span class="p">}{</span><span class="o">%-</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+      <span class="o">-%</span><span class="p">}{</span><span class="o">%-</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image144.webp"><img alt="image144" src="../_images/image144.webp" style="width: 400px;" /></a></p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>value: « ……. » les «  » sont impératifs</strong></p>
 </div>
+<p><a class="reference internal" href="../_images/image144.webp"><img alt="image144" src="../_images/image144.webp" style="width: 400px;" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>lastseen ou lastseen1 ou ..autre, voir § suivant</p>
+</div>
+</div>
+<p><strong>Second script automation:</strong></p>
+<div class="admonition-effacement-de-la-notification admonition">
+<p class="admonition-title"><strong>Effacement de la notification</strong></p>
+<p><em>à partir du bouton binaire cée précédemment</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">anull_not_lastseen</span>
+  <span class="n">alias</span><span class="p">:</span> <span class="n">annulation</span> <span class="n">notification</span> <span class="n">lastseen</span>
+  <span class="n">trigger</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
+    <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_boolean</span><span class="o">.</span><span class="n">essai1</span>
+    <span class="n">to</span><span class="p">:</span> <span class="s1">&#39;on&#39;</span>
+  <span class="n">condition</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="n">action</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">delay</span><span class="p">:</span>
+      <span class="n">milliseconds</span><span class="p">:</span> <span class="mi">500</span>
+  <span class="o">-</span> <span class="n">data</span><span class="p">:</span>
+      <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_boolean</span><span class="o">.</span><span class="n">essai1</span>
+    <span class="n">service</span><span class="p">:</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">set_value</span>
+    <span class="n">data</span><span class="p">:</span>
+      <span class="n">value</span><span class="p">:</span> <span class="s1">&#39;  &#39;</span>
+    <span class="n">target</span><span class="p">:</span>
+      <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">essai</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image131.webp"><img alt="image131" src="../_images/image131.webp" style="width: 317px;" /></a></p>
 </div>
 </div>
 </div>
