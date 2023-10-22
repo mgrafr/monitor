@@ -1230,7 +1230,8 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
           end
          }
    
-   :name: **La variable lastseen**
+1.8.2.1.2 La variable lastseen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    |image1151|
 
@@ -1244,7 +1245,7 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
    .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
 
-1.8.2.1.2 Home Assistant
+1.8.2.1.3 Home Assistant
 ~~~~~~~~~~~~~~~~~~~~~~~~
 :red:`Comme pour Domoticz, Zwave-JS est le problème` 
 
@@ -1254,7 +1255,7 @@ Pour l'annulation de la notification, création d'un switch binaire, nommé ici 
 
 Créer 2 automatisations : 
 
--la première pour déterminer les dispositifs concernés par "lastseen"
+- la première pour déterminer les dispositifs concernés par "lastseen"
 
 - la 2eme pour effacer la notification
 
@@ -1342,7 +1343,7 @@ Créer 2 automatisations :
               / (3600)) | round(1) }} heures pour {{ state.name }} {%- endif -%}{%- endif
               -%}{%- endfor %}"
 
-   .. attention:: **value: "......." les "" sont impératifs**  
+   .. attention:: **value: "`......."' les "`"' sont impératifs**  
 
    |image144|
 
@@ -1376,6 +1377,10 @@ Créer 2 automatisations :
             entity_id: input_text.essai
 
    |image131|
+
+**Essai à partir de monitor:**
+
+|image157|
 
 1.8.2.2  La page d'accueil de monitor : include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1600,6 +1605,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 581px  
 .. |image156| image:: ../media/image156.webp
    :width: 378px  
+.. |image157| image:: ../media/image157.webp
+   :width: 700px 
 .. |image158| image:: ../media/image158.webp
    :width: 686px  
 .. |image159| image:: ../media/image159.webp

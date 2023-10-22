@@ -115,7 +115,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#mode-d-emploi-pour-ajouter-une-notification">1.8.2 Mode d’emploi pour ajouter une notification</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#domoticz">1.8.2.1.1 Domoticz</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#home-assistant">1.8.2.1.2 Home Assistant</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#la-variable-lastseen">1.8.2.1.2 La variable lastseen</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#home-assistant">1.8.2.1.3 Home Assistant</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#la-page-d-accueil-de-monitor-include-accueil-php">1.8.2.2  La page d’accueil de monitor : include/accueil.php</a></li>
@@ -1244,12 +1245,12 @@ pour ne pas cacher le menu hamburger</p>
    <span class="p">}</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">name</dt>
-<dd class="field-odd"><p><strong>La variable lastseen</strong></p>
-</dd>
-</dl>
-<p><a class="reference internal" href="../_images/image1151.webp"><img alt="image1151" src="../_images/image1151.webp" style="width: 459px;" /></a></p>
+</div>
+</div>
+<div class="section" id="la-variable-lastseen">
+<h5>1.8.2.1.2 La variable lastseen<a class="headerlink" href="#la-variable-lastseen" title="Lien permanent vers ce titre"></a></h5>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1151.webp"><img alt="image1151" src="../_images/image1151.webp" style="width: 459px;" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Quelques explications</strong></p>
@@ -1260,16 +1261,16 @@ pour ne pas cacher le menu hamburger</p>
 <p class="admonition-title">Important</p>
 <p><strong>objet domoticz</strong> : <em>domoticz ou dz mais c’est l’un ou l’autre dans le script</em></p>
 </div>
-</div>
+</div></blockquote>
 </div>
 <div class="section" id="home-assistant">
-<h5>1.8.2.1.2 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers ce titre"></a></h5>
+<h5>1.8.2.1.3 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers ce titre"></a></h5>
 <p><span class="red">Comme pour Domoticz, Zwave-JS est le problème</span></p>
 <p>Pour l’annulation de la notification, création d’un switch binaire, nommé ici « essai1 »:</p>
 <p><a class="reference internal" href="../_images/image130.webp"><img alt="image130" src="../_images/image130.webp" style="width: 317px;" /></a></p>
 <p>Créer 2 automatisations :</p>
-<p>-la première pour déterminer les dispositifs concernés par « lastseen »</p>
 <ul class="simple">
+<li><p>la première pour déterminer les dispositifs concernés par « lastseen »</p></li>
 <li><p>la 2eme pour effacer la notification</p></li>
 </ul>
 <div class="admonition-script-yaml-lastseen admonition">
@@ -1349,7 +1350,7 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p><strong>value: « ……. » les «  » sont impératifs</strong></p>
+<p><strong>value: « `……. »” les « ` »” sont impératifs</strong></p>
 </div>
 <p><a class="reference internal" href="../_images/image144.webp"><img alt="image144" src="../_images/image144.webp" style="width: 400px;" /></a></p>
 <div class="admonition note">
@@ -1383,6 +1384,8 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <p><a class="reference internal" href="../_images/image131.webp"><img alt="image131" src="../_images/image131.webp" style="width: 317px;" /></a></p>
 </div>
+<p><strong>Essai à partir de monitor:</strong></p>
+<p><a class="reference internal" href="../_images/image157.webp"><img alt="image157" src="../_images/image157.webp" style="width: 700px;" /></a></p>
 </div>
 </div>
 <div class="section" id="la-page-d-accueil-de-monitor-include-accueil-php">
