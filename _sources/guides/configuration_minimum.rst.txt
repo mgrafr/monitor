@@ -1337,13 +1337,14 @@ Créer 2 automatisations :
         - service: input_text.set_value
           data_template:
             entity_id: input_text.essai
-            value: "lastseen#Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
+            value: >
+	      lastseen#Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
               if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
               > (60 * 8) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
               / (3600)) | round(1) }} heures pour {{ state.name }} {%- endif -%}{%- endif
-              -%}{%- endfor %}"
+              -%}{%- endfor %}
 
-   .. attention:: **value: "`......."' les "`"' sont impératifs**  
+   
 
    |image144|
 
@@ -1566,7 +1567,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image130| image:: ../media/image130.webp
    :width: 317px 
 .. |image131| image:: ../media/image131.webp
-   :width: 317px 
+   :width: 700px 
 .. |image134| image:: ../media/image134.webp
    :width: 544px 
 .. |image135| image:: ../media/image135.webp
