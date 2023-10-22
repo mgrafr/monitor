@@ -1493,6 +1493,10 @@ Pour décomposer cette chaîne en 2 valeurs d'un tableau, on utilise la fonction
 
 on récupére la valeur de contenu pour l'afficher dans un popup qui permet d'annuler la notification
 
+|image148|
+
+Suivant le serveur domotique la fonction pour l'effacement de la notification est différente.
+
 1.8.6 Réception du mail de notification
 ---------------------------------------
 
@@ -1592,8 +1596,10 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px  
 .. |image147| image:: ../media/image147.webp
    :width: 540px  
+.. |image148| image:: ../media/image148.webp
+   :width: 540px  
 .. |image150| image:: ../media/image150.webp
-   :width: 499px  
+   :width: 700px  
 .. |image151| image:: ../media/image151.webp
    :width: 601px  
 .. |image152| image:: ../media/image152.webp
