@@ -1248,9 +1248,19 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 ~~~~~~~~~~~~~~~~~~~~~~~~
 :red:`Comme pour Domoticz, Zwave-JS est le problème` 
 
-Créer une automatisation : merci à **OzGav** *https://community.home-assistant.io/u/OzGav*
+Pour l'annulation de la notification, création d'un switch binaire, nommé ici "essai1":
 
-.. admonition:: **Script Yaml**
+|image130|
+
+Créer 2 automatisations : 
+
+-la première pour déterminer les dispositifs concernés par "lastseen"
+
+- la 2eme pour effacer la notification
+
+.. admonition:: **script yaml "lastseen"**
+
+   merci à **OzGav** *https://community.home-assistant.io/u/OzGav*
 
    .. code-block::
 
@@ -1303,21 +1313,21 @@ Créer une automatisation : merci à **OzGav** *https://community.home-assistant
              sender_name: "NOM_EXPEDITEUR" 
              debug: true
 
-|image1169|
+   |image1169|
 
-Pour la notification dans l'Appli HA, Vérifier que dans la config par defaut, :green:`mobile_app` est présent 
+   Pour la notification dans l'Appli HA, Vérifier que dans la config par defaut, :green:`mobile_app` est présent 
 
-|image1170|
+   |image1170|
 
-Les notifications sur le smartphone :
+   Les notifications sur le smartphone :
 
-|image1171| |image154|
+   |image1171| |image154|
 
-.. admonition:: **notification sur l'appli**
+.. admonition:: **notification sur l'appli , suite du script précédent**
 
    .. warning::
 
-      C'est cette variable que monitor va utiliser pour afficher la notification sur son écran d'accuei
+      C'est cette notification que monitor va utiliser pour l'afficher sur son écran d'accuei
 
    Ajouter ces lignes:
 
@@ -1326,16 +1336,46 @@ Les notifications sur le smartphone :
         - service: input_text.set_value
           data_template:
             entity_id: input_text.essai
-            value: lastseen#Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
+            value: "lastseen#Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
               if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
               > (60 * 8) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
               / (3600)) | round(1) }} heures pour {{ state.name }} {%- endif -%}{%- endif
-              -%}{%- endfor %}
+              -%}{%- endfor %}"
+
+   .. attention:: **value: "......." les "" sont impératifs**  
 
    |image144|
 
-.. note:: lastseen ou lastseen1 ou ..autre, voir § suivant
+   .. note:: lastseen ou lastseen1 ou ..autre, voir § suivant
 
+**Second script automation:**
+
+.. admonition:: **Effacement de la notification**
+
+   *à partir du bouton binaire cée précédemment*
+
+   .. code-block::
+
+      - id: anull_not_lastseen
+        alias: annulation notification lastseen
+        trigger:
+        - platform: state
+          entity_id: input_boolean.essai1
+          to: 'on'
+        condition: []
+        action:
+        - delay:
+            milliseconds: 500
+        - data:
+            entity_id: input_boolean.essai1
+          service: switch.turn_off
+        - service: input_text.set_value
+          data:
+            value: '  '
+          target:
+            entity_id: input_text.essai
+
+   |image131|
 
 1.8.2.2  La page d'accueil de monitor : include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1518,6 +1558,10 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 500px 
 .. |image129| image:: ../media/image129.webp
    :width: 155px 
+.. |image130| image:: ../media/image130.webp
+   :width: 317px 
+.. |image131| image:: ../media/image131.webp
+   :width: 317px 
 .. |image134| image:: ../media/image134.webp
    :width: 544px 
 .. |image135| image:: ../media/image135.webp
