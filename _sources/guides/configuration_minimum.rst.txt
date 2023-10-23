@@ -1497,7 +1497,7 @@ accueil.php, css et table "text_image" concernant cet affichage:
 
 |image1163|
 
-La variable "lastseen" de domoticz contient une chaine composée du nom du texte de la table "text-image" et du contenu correspondant aux disposifs off line ou morts, ces 2 valeurs séparés par le caractère :red:`#`.
+La variable "lastseen" de domoticz ou l'input_text de Home Assistant "essai" ont pour valeur une chaine composée du nom du texte de la table "text-image" et du contenu correspondant aux disposifs off line ou morts, ces 2 valeurs séparés par le caractère :red:`#`; voir ce § :ref:`1.8.2.1.2 La variable lastseen`
 
 Pour décomposer cette chaîne en 2 valeurs d'un tableau, on utilise la fonction PHP :green:`explode`: pour résumer, *si "value" contient # on la découpe en value et contenu*.
 
