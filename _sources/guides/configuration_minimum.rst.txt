@@ -1355,7 +1355,7 @@ Créer 2 automatisations :
 
 .. admonition:: **Effacement de la notification**
 
-   *à partir du bouton binaire cée précédemment*
+   *à partir du bouton binaire crée précédemment*
 
    .. code-block::
 
@@ -1445,7 +1445,7 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
 1.8.4 Enregistrement de la variable dans la base SQL
 ----------------------------------------------------
-*et pour HA du switch binaire*
+*et pour HA du switch binaire, option facultative* 
 
 - *Avec monitor*:
 
@@ -1461,7 +1461,7 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
 .. note:: 
 
-   Le switch binaire de HA est activer par la commande "CLOSE" du popup qui affiche la notification; il n'y a donc pas d'ID utilisé par JQuery pour commander ce switch.
+   Le switch binaire de HA est activé par la commande "CLOSE" du popup qui affiche la notification; il n'y a donc pas d'ID utilisé par JQuery pour commander ce switch.
 
    La création des scripts pour les switches étant automatique , :red:`un ID vide n'est pas permit d'ou cet ID: inactif`
 
@@ -1514,7 +1514,7 @@ Suivant le serveur domotique la fonction pour l'effacement de la notification es
 
 .. NOTE::
 
-   Split est utilisé pour découper l' input_text.NOM_DE_L_ENTITE et récupere le nomde l'entité pour ainsi créer le input_boolean.NOM_DE_L_ENTITE.
+   Split est utilisé pour découper l' input_text.NOM_DE_L_ENTITE et récuperer le nom de l'entité pour ainsi créer le input_boolean.NOM_DE_L_ENTITE.
 
    Il n'est pas necessaire de créer ce switch binaire dans SQL mais les :red:`2 entités doivent porter le même nom`
 
