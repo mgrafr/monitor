@@ -1330,22 +1330,23 @@ Créer 2 automatisations :
 
       C'est cette notification que monitor va utiliser pour l'afficher sur son écran d'accuei
 
-   Ajouter ces lignes:
+   Ajouter ces lignes: 
 
    .. code-block::
 
         - service: input_text.set_value
           data_template:
             entity_id: input_text.essai
-            value: >
-	      lastseen#Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
+            value: "lastseen#Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
               if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
               > (60 * 8) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
               / (3600)) | round(1) }} heures pour {{ state.name }} {%- endif -%}{%- endif
-              -%}{%- endfor %}
+              -%}{%- endfor %}"
 
+   .. warning::
+
+      Attention Value entre "double quotes"
    
-
    |image144|
 
    .. note:: lastseen ou lastseen1 ou ..autre, voir § suivant
@@ -1401,7 +1402,7 @@ Soit un emplacement disponible est utilisé (voir le § suivant), soit on défin
    <!-- 1ere ligne pour DZ, la 2eme pour HA-->
    <!-- Les ID sont différentes afin de pouvoir utiliser les 2 sources-->
    <div class="confirm lastseen"><a href="#" id="annul_lastseen" rel="34" title="Annulation de l'alerte lastseen"><img id="lastseen" src=""/></a></div>
-   <div class="confirm lastseen1"><a href="#" id="annul_lastseen1" rel="listvar001" title="Annulation de l'alerte lastseen"><img id="lastseen1" src=""/></a></div>
+   <div class="confirm lastseen1"><a href="#" id="annul_lastseen1" rel="input_text.essai" title="Annulation de l'alerte lastseen"><img id="lastseen1" src=""/></a></div>
 
 |image128|
 
@@ -1442,6 +1443,8 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
 1.8.4 Enregistrement de la variable dans la base SQL
 ----------------------------------------------------
+*et pour HA du switch binaire*
+
 - *Avec monitor*:
 
 |image1158|
@@ -1450,7 +1453,15 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
 |image1159|
 
+.. admonition:: *dans cet exemple lastseen pour DZ, faire de même avec lastseen1 pour HA*
+
 |image1160|
+
+.. note:: 
+
+   Le switch binaire de HA est activer par la commande "CLOSE" du popup qui affiche la notification; il n'y a donc pas d'ID utilisé par JQuery pour commander ce switch.
+
+   La création des scripts pour les switch étant automatique , :red:`un ID vide n'est pas permit d'ou cet ID: inactif`
 
 La variable :darkblue:`contenu` du fichier Json reçu par monitor un jour de défaillance de la clé zigbee:
 
@@ -1571,7 +1582,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image130| image:: ../media/image130.webp
    :width: 317px 
 .. |image131| image:: ../media/image131.webp
-   :width: 700px 
+   :width: 589px 
 .. |image134| image:: ../media/image134.webp
    :width: 544px 
 .. |image135| image:: ../media/image135.webp
@@ -1597,7 +1608,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image147| image:: ../media/image147.webp
    :width: 540px  
 .. |image148| image:: ../media/image148.webp
-   :width: 540px  
+   :width: 7000px  
 .. |image150| image:: ../media/image150.webp
    :width: 700px  
 .. |image151| image:: ../media/image151.webp
@@ -1763,7 +1774,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1163| image:: ../media/image1163.webp
    :width: 600px 
 .. |image1164| image:: ../media/image1164.webp
-   :width: 6000px 
+   :width: 600px 
 .. |image1165| image:: ../media/image1165.webp
    :width: 449px 
 .. |image1166| image:: ../media/image1166.webp

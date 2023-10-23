@@ -1341,13 +1341,16 @@ pour ne pas cacher le menu hamburger</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">set_value</span>
   <span class="n">data_template</span><span class="p">:</span>
     <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">essai</span>
-    <span class="n">value</span><span class="p">:</span> <span class="o">&gt;</span>
-      <span class="n">lastseen</span><span class="c1">#Des dispositifs ont un lastSeen &gt; à ... {% for state in states -%} {%-</span>
+    <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;lastseen#Des dispositifs ont un lastSeen &gt; à ... {</span><span class="si">% f</span><span class="s2">or state in states -%} {%-</span>
       <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span> <span class="o">%</span><span class="p">}</span>    <span class="p">{</span><span class="o">%-</span> <span class="k">if</span> <span class="p">(</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span> <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">)</span>
       <span class="o">&gt;</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span> <span class="p">)</span> <span class="o">%</span><span class="p">}</span>    <span class="p">{{</span> <span class="p">((</span><span class="n">as_timestamp</span><span class="p">(</span><span class="n">now</span><span class="p">())</span> <span class="o">-</span> <span class="n">as_timestamp</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">last_seen</span><span class="p">))</span>
       <span class="o">/</span> <span class="p">(</span><span class="mi">3600</span><span class="p">))</span> <span class="o">|</span> <span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}}</span> <span class="n">heures</span> <span class="n">pour</span> <span class="p">{{</span> <span class="n">state</span><span class="o">.</span><span class="n">name</span> <span class="p">}}</span> <span class="p">{</span><span class="o">%-</span> <span class="n">endif</span> <span class="o">-%</span><span class="p">}{</span><span class="o">%-</span> <span class="n">endif</span>
-      <span class="o">-%</span><span class="p">}{</span><span class="o">%-</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+      <span class="o">-%</span><span class="p">}{</span><span class="o">%-</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span><span class="s2">&quot;</span>
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Attention Value entre « double quotes »</p>
 </div>
 <p><a class="reference internal" href="../_images/image144.webp"><img alt="image144" src="../_images/image144.webp" style="width: 400px;" /></a></p>
 <div class="admonition note">
@@ -1379,7 +1382,7 @@ pour ne pas cacher le menu hamburger</p>
       <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">essai</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image131.webp"><img alt="image131" src="../_images/image131.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image131.webp"><img alt="image131" src="../_images/image131.webp" style="width: 589px;" /></a></p>
 </div>
 <p><strong>Essai à partir de monitor:</strong></p>
 <p><a class="reference internal" href="../_images/image157.webp"><img alt="image157" src="../_images/image157.webp" style="width: 700px;" /></a></p>
@@ -1397,7 +1400,7 @@ pour ne pas cacher le menu hamburger</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- 1ere ligne pour DZ, la 2eme pour HA--&gt;
 &lt;!-- Les ID sont différentes afin de pouvoir utiliser les 2 sources--&gt;
 &lt;div class=&quot;confirm lastseen&quot;&gt;&lt;a href=&quot;#&quot; id=&quot;annul_lastseen&quot; rel=&quot;34&quot; title=&quot;Annulation de l&#39;alerte lastseen&quot;&gt;&lt;img id=&quot;lastseen&quot; src=&quot;&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;div class=&quot;confirm lastseen1&quot;&gt;&lt;a href=&quot;#&quot; id=&quot;annul_lastseen1&quot; rel=&quot;listvar001&quot; title=&quot;Annulation de l&#39;alerte lastseen&quot;&gt;&lt;img id=&quot;lastseen1&quot; src=&quot;&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;confirm lastseen1&quot;&gt;&lt;a href=&quot;#&quot; id=&quot;annul_lastseen1&quot; rel=&quot;input_text.essai&quot; title=&quot;Annulation de l&#39;alerte lastseen&quot;&gt;&lt;img id=&quot;lastseen1&quot; src=&quot;&quot;/&gt;&lt;/a&gt;&lt;/div&gt;
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image128.webp"><img alt="image128" src="../_images/image128.webp" style="width: 500px;" /></a></p>
@@ -1434,6 +1437,7 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <div class="section" id="enregistrement-de-la-variable-dans-la-base-sql">
 <h3>1.8.4 Enregistrement de la variable dans la base SQL<a class="headerlink" href="#enregistrement-de-la-variable-dans-la-base-sql" title="Lien permanent vers ce titre"></a></h3>
+<p><em>et pour HA du switch binaire</em></p>
 <ul class="simple">
 <li><p><em>Avec monitor</em>:</p></li>
 </ul>
@@ -1443,6 +1447,11 @@ pour ne pas cacher le menu hamburger</p>
 </ul>
 <p><a class="reference internal" href="../_images/image1159.webp"><img alt="image1159" src="../_images/image1159.webp" style="width: 561px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1160.webp"><img alt="image1160" src="../_images/image1160.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le switch binaire de HA est activer par la commande « CLOSE » du popup qui affiche la notification; il n’y a donc pas d’ID utilisé par JQuery pour commander ce switch.</p>
+<p>La création des scripts pour les switch étant automatique , <span class="red">un ID vide n’est pas permit d’ou cet ID: inactif</span></p>
+</div>
 <p>La variable <span class="darkblue">contenu</span> du fichier Json reçu par monitor un jour de défaillance de la clé zigbee:</p>
 <p><a class="reference internal" href="../_images/image1157.webp"><img alt="image1157" src="../_images/image1157.webp" style="width: 533px;" /></a></p>
 <p>La même variable lors d’un seul dispositif en défaut:</p>
@@ -1472,9 +1481,9 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <div class="section" id="script-jquery-dans-footer-php">
 <h4>1.8.5.2 script Jquery dans footer.php<a class="headerlink" href="#script-jquery-dans-footer-php" title="Lien permanent vers ce titre"></a></h4>
-<p><a class="reference internal" href="../_images/image1164.webp"><img alt="image1164" src="../_images/image1164.webp" style="width: 6000px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1164.webp"><img alt="image1164" src="../_images/image1164.webp" style="width: 600px;" /></a></p>
 <p>on récupére la valeur de contenu pour l’afficher dans un popup qui permet d’annuler la notification</p>
-<p><a class="reference internal" href="../_images/image148.webp"><img alt="image148" src="../_images/image148.webp" style="width: 540px;" /></a></p>
+<p><a class="reference internal" href="../_images/image148.webp"><img alt="image148" src="../_images/image148.webp" style="width: 7000px;" /></a></p>
 <p>Suivant le serveur domotique la fonction pour l’effacement de la notification est différente.</p>
 </div>
 </div>
