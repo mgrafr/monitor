@@ -1763,7 +1763,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1163| image:: ../media/image1163.webp
    :width: 600px 
 .. |image1164| image:: ../media/image1164.webp
-   :width: 700px 
+   :width: 6000px 
 .. |image1165| image:: ../media/image1165.webp
    :width: 449px 
 .. |image1166| image:: ../media/image1166.webp
