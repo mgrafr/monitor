@@ -294,11 +294,13 @@ left: 220px;}
     width: 50px;
     left: 220px;}
 /*lastseem*/
-.lastseen{width: 150px;
+.lastseen, .lastseen1{width: 150px;
     height: 50px;
     position: absolute;
-    Top: 200px;
-    left: 50px;}
+    Top: 200px;}
+.lastseen{left: 50px;}
+.lastseen1{left: 120px;}
+
 /*ping PI4*/
 #ping_pi4{position: relative;top: -85px;
 left: 410px;
@@ -471,7 +473,7 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 }
 
 /*zigbee2mqtt zwavejs2mqtt & ngiosmobile   (----------------*/
-#zbmqtt,#zwmqtt {margin-top:-40px;width: 100%;height: 800px;}
+#zbmqtt,#zwmqtt {margin-top: 0px;width: 100%;height: 800px;}
 #nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
 #nagiosapp{width: 750px;height: 700px;position: relative;
 top: -70px;}
