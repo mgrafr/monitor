@@ -1768,7 +1768,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1160| image:: ../media/image1160.webp
    :width: 700px 
 .. |image1161| image:: ../media/image1161.webp
-   :width: 541px 
+   :width: 500px 
 .. |image1162| image:: ../media/image1162.webp
    :width: 523px 
 .. |image1163| image:: ../media/image1163.webp
@@ -1780,7 +1780,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1166| image:: ../media/image1166.webp
    :width: 577px 
 .. |image1167| image:: ../media/image1167.webp
-   :width: 605px 
+   :width: 500px 
 .. |image1168| image:: ../media/image1168.webp
    :width: 450px 
 .. |image1169| image:: ../media/image1169.webp
