@@ -1463,7 +1463,9 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
    Le switch binaire de HA est activer par la commande "CLOSE" du popup qui affiche la notification; il n'y a donc pas d'ID utilisé par JQuery pour commander ce switch.
 
-   La création des scripts pour les switch étant automatique , :red:`un ID vide n'est pas permit d'ou cet ID: inactif`
+   La création des scripts pour les switches étant automatique , :red:`un ID vide n'est pas permit d'ou cet ID: inactif`
+
+   :green:`Il est aussi possible de ne pas enregistrer ce switch binaire dans la BD bien qu'il soit utlisé par monitor, c'est la solution la plus simple.`
 
 La variable :darkblue:`contenu` du fichier Json reçu par monitor un jour de défaillance de la clé zigbee:
 
