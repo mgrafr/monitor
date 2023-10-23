@@ -9,9 +9,7 @@ function file_http_curl($L,$mode,$post){
     $headers = [];
     $headers[] = 'Content-Type:application/json';
     $token =TOKEN_DOMOTIC1; 
-	$headers[] = "Authorization: Bearer ".$token;	
-	
-	
+	$headers[] = 'Authorization: Bearer '.$token ;	
 $ch = curl_init($L);	
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers   );
 if ($mode==1) curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -59,15 +57,14 @@ $p=count($result);
 }	
 if (IPDOMOTIC1!=""){
 $n=0;$mode=1;$post="";		
- $M=URLDOMOTIC1."api/states/sensor.liste_var";
+ $M=URLDOMOTIC1."api/states/sensor.liste_var001";
 $json_string1=file_http_curl($M,$mode,$post);
 
-$parsed_json1 = json_decode($json_string1, true);
-$json_string1 = $parsed_json1['state'];$json_string1=str_replace("\n\n","",$json_string1);
+$parsed_json1 = json_decode($json_string1, true);  //return $parsed_json1;
+$json_string1 = $parsed_json1['state'];//$json_string1=str_replace("\n\n","",$json_string1);
 $json_string1=explode(',',$json_string1);
-
 	while ($json_string1[$n]!=""	){
-	$varha=explode('=',$json_string1[$n]);
+	$varha=explode(':',$json_string1[$n]);
 		$ha=[
 		'ID' => $varha[0],
 		'Value'=> $varha[1],
@@ -76,6 +73,7 @@ $json_string1=explode(',',$json_string1);
 	$result[$p]=$ha;
 	$n++;$p++;}
   }
+
 //--------------	
 $n=0;$vardz=array();$txtimg=array();$t_maj="0";
 			  
@@ -162,12 +160,12 @@ function sql_variable($t,$ind){
 
 //----POUR HA--------------------------------------
 function devices_zone($zone){
-$L=URLDOMOTIC1."api/states";$post="";$mode=1;	
+$L=URLDOMOTIC1."api/states";$post="";$mode=1;
 $json_string=file_http_curl($L,$mode,$post);$n=0;$ha=array();//echo $json_string;
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
 	$ha[$n]['Description'] = "HA";
-	$ha[$n]['idx'] = $xxx->{'entity_id'};
+	$ha[$n]['ID'] = $xxx->{'entity_id'};
 	$ha[$n]['Data'] = $xxx->{'state'};//modif 1
 	$tmp = $xxx->{'attributes'}->{'node_Name'};if ($tmp) $ha[$n]['Name']; 
 	$ha[$n]['Update']  = substr($xxx->{'last_updated'},0, 19);  
@@ -179,8 +177,10 @@ foreach ($lect_device as $xxx){
 	$tmp=$xxx->{'attributes'}->{'pressure'};if ($tmp) $ha[$n]['pression'] = $tmp;
 	$tmp=$xxx->{'attributes'}->{'forecast'}->{'friendly_name'};if ($tmp) $ha[$n]['Name'] = $tmp;
 	$tmp=$xxx->{'attributes'}->{'temperature'};if ($tmp) {$ha[$n]['Data']=$xxx->{'attributes'}->{'temperature'}.' '.$xxx->{'attributes'}->{'temperature_unit'}.' , '.$xxx->{'attributes'}->{'humidity'}. '% ,'.$xxx->{'attributes'}->{'pressure'}.' '.$xxx->{'attributes'}->{'pressure_unit'};}
-		$n++;
+	$ha[$n]['BatteryLevel'] = 100;
+		
 	$tmp=$xxx->{'attributes'}->{'device_class'};if ($tmp) $ha[$n]['device_class'] = $tmp;
+	$n++;
 }
 
 return $ha;}
@@ -209,7 +209,7 @@ default:
 }								
 $L=URLDOMOTIC1.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
-$ha=file_http_curl($L,$mode,$post);//echo $json_string;
+$ha=file_http_curl($L,$mode,$post);
 $data = json_decode($ha, true);
 $data['resultat']="OK";										
 										
@@ -248,10 +248,8 @@ if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non con
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
 if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
 if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
-if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);}	
+if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);}
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
-	
-	
 	
 	$data[$t] = ['choixid' => CHOIXID,
 	'idx' => $lect_device["idx"],
