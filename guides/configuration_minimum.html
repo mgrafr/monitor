@@ -1362,26 +1362,24 @@ pour ne pas cacher le menu hamburger</p>
 <div class="admonition-effacement-de-la-notification admonition">
 <p class="admonition-title"><strong>Effacement de la notification</strong></p>
 <p><em>à partir du bouton binaire cée précédemment</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">d9988583</span><span class="o">-</span><span class="mi">5210</span><span class="o">-</span><span class="mf">456e-9</span><span class="n">e98</span><span class="o">-</span><span class="mi">5</span><span class="n">c242d484566</span>
-<span class="n">alias</span><span class="p">:</span> <span class="n">annulation</span> <span class="n">notification</span> <span class="n">lastseen</span>
-<span class="n">trigger</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
-  <span class="n">entity_id</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">input_boolean</span><span class="o">.</span><span class="n">essai</span>
-  <span class="n">to</span><span class="p">:</span> <span class="s1">&#39;on&#39;</span>
-  <span class="n">from</span><span class="p">:</span> <span class="s1">&#39;off&#39;</span>
-<span class="n">condition</span><span class="p">:</span> <span class="p">[]</span>
-<span class="n">action</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">delay</span><span class="p">:</span>
-    <span class="n">milliseconds</span><span class="p">:</span> <span class="mi">500</span>
-<span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">input_boolean</span><span class="o">.</span><span class="n">turn_off</span>
-  <span class="n">target</span><span class="p">:</span>
-    <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_boolean</span><span class="o">.</span><span class="n">essai</span>
-<span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">set_value</span>
-  <span class="n">data</span><span class="p">:</span>
-    <span class="n">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
-  <span class="n">target</span><span class="p">:</span>
-    <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">essai</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">anull_not_lastseen</span>
+  <span class="n">alias</span><span class="p">:</span> <span class="n">annulation</span> <span class="n">notification</span> <span class="n">lastseen</span>
+  <span class="n">trigger</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
+    <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_boolean</span><span class="o">.</span><span class="n">essai1</span>
+    <span class="n">to</span><span class="p">:</span> <span class="s1">&#39;on&#39;</span>
+  <span class="n">condition</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="n">action</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">delay</span><span class="p">:</span>
+      <span class="n">milliseconds</span><span class="p">:</span> <span class="mi">500</span>
+  <span class="o">-</span> <span class="n">data</span><span class="p">:</span>
+      <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_boolean</span><span class="o">.</span><span class="n">essai1</span>
+    <span class="n">service</span><span class="p">:</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">set_value</span>
+    <span class="n">data</span><span class="p">:</span>
+      <span class="n">value</span><span class="p">:</span> <span class="s1">&#39;  &#39;</span>
+    <span class="n">target</span><span class="p">:</span>
+      <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">essai</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image131.webp"><img alt="image131" src="../_images/image131.webp" style="width: 589px;" /></a></p>
