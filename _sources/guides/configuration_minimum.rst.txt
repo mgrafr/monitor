@@ -1510,6 +1510,12 @@ on récupére la valeur de contenu pour l'afficher dans un popup qui permet d'an
 
 Suivant le serveur domotique la fonction pour l'effacement de la notification est différente.
 
+.. NOTE::
+
+   Split est utilisé pour découper l' input_text.NOM_DE_L_ENTITE et récupere le nomde l'entité pour ainsi créer le input_boolean.NOM_DE_L_ENTITE.
+
+   Il n'est pas necessaire de créer ce switch binaire dans SQL mais les :red:`2 entités doivent porter le même nom`
+
 1.8.6 Réception du mail de notification
 ---------------------------------------
 
