@@ -30,12 +30,13 @@
 <div class="confirm ping_rasp" ><a href="#" id="annul_ping" rel="21" title="effacement alerte pi"><img id="ping_rasp" style="width:40px;height:40px" src="" alt="ping" /></a></div>  
 <div class="confirm bl" ><a href="#" id="confirm-box" rel="19" title="courrier récupéré"><img id="bl" src="images/boite_lettres.svg" alt="boite_lettres" /></a></div>
 <div class="confirm lastseen"><a href="#" id="annul_lastseen" rel="34" title="Annulation de l'alerte lastseen"><img id="lastseen" src=""/></a></div>
+<div class="confirm lastseen1"><a href="#" id="annul_lastseen1" rel="input_text.essai" title="Annulation de l'alerte lastseen"><img id="lastseen1" src=""/></a></div>
 <!-- nofifications disponibles-->
 <div class="confirm notif1"><a href="#" id="annul_notif1" rel="30" title="Annulation de l'alerte notif1"><img id="notif1" src=""/></a></div>
 <div class="confirm notif2"><a href="#" id="annul_notif2" rel="30" title="Annulation de l'alerte notif2"><img id="notif2" src=""/></a></div>
 <div class="confirm notif3"><a href="#" id="annul_notif3" rel="30" title="Annulation de l'alerte notif3"><img id="notif3" src=""/></a></div>
 <div class="confirm notif4"><a href="#" id="annul_notif4" rel="30" title="Annulation de l'alerte notif3"><img id="notif4" src=""/></a></div>
 <!-- fin notifications disponibles -->
-<p id="erreur" ></p>
+<p id="erreur" ></p><p id="notify" ></p>
  <!-- accueil end -->
 

@@ -259,7 +259,7 @@ rr=new Array();
 	
 	
 function turnonoff(idm,idx,command,pass="0"){console.log(idm);
-	if (pp[idm].Data == "On" || pp[idm].Data == "on") {command="off";}
+	if (idm!="" && (pp[idm].Data == "On" || pp[idm].Data == "on")) {command="off";}
 	else {command="on";}
 											 
 	$.ajax({
@@ -456,8 +456,13 @@ customBox.className = 'custom-box';
 // Affichage boîte de confirmation
 	$(".confirm a").click(function(){ 
     var title_confirm=$(this).attr('title');ch=$(this).attr('rel');
-	var content_modal=service[ch].contenu;
-    customBox.innerHTML = '<p>'+title_confirm+'</p><p>'+content_modal+'</p>';
+	var nb = Object.keys(service).length;
+		for (i = 1; i < nb; i++) {console.log(ch+'...'+service[i].ID);
+		if (service[i].ID==ch || service[i].idx==ch){
+			var content_modal=service[i].contenu;console.log(nb);}
+	}
+	
+	customBox.innerHTML = '<p>'+title_confirm+'</p><p>'+content_modal+'</p>';
     customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
     customBox.innerHTML += '<button id="modal-close">Annuler</button>';
    modalShow();
@@ -486,9 +491,13 @@ function modalClose(bl) {
     while (modalContainer.hasChildNodes()) {
         modalContainer.removeChild(modalContainer.firstChild);
     }
-    document.body.removeChild(modalContainer);var nom_ch=service[ch].Name;
-	 console.log(bl);if (bl==1) {maj_variable(ch,nom_ch,"0",2);maj_services(0);bl=0;ch=0;}  
-	
+    document.body.removeChild(modalContainer);
+	 if (bl==1) {
+		 if (ch.length <4) {var nom_ch=service[ch].Name;
+			maj_variable(ch,nom_ch,"0",2);} 
+		 else{var substr = ch.split('.');ch= "input_boolean."+substr[1];console.log(ch);
+			 turnonoff("",ch,"on",pass="0");} }  
+	maj_services(0);bl=0;ch=0;
 }
 /*------------------------------------------*/
 /*nagios("","#nagiosapp");
