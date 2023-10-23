@@ -1359,24 +1359,26 @@ Créer 2 automatisations :
 
    .. code-block::
 
-      - id: anull_not_lastseen
-        alias: annulation notification lastseen
-        trigger:
-        - platform: state
-          entity_id: input_boolean.essai1
-          to: 'on'
-        condition: []
-        action:
-        - delay:
-            milliseconds: 500
-        - data:
-            entity_id: input_boolean.essai1
-          service: switch.turn_off
-        - service: input_text.set_value
-          data:
-            value: '  '
-          target:
-            entity_id: input_text.essai
+      - id: d9988583-5210-456e-9e98-5c242d484566
+     alias: annulation notification lastseen
+     trigger:
+     - platform: state
+       entity_id:
+       - input_boolean.essai
+       to: 'on'
+       from: 'off'
+     condition: []
+     action:
+     - delay:
+         milliseconds: 500
+     - service: input_boolean.turn_off
+       target:
+         entity_id: input_boolean.essai
+     - service: input_text.set_value
+       data:
+         value: ''
+       target:
+         entity_id: input_text.essai
 
    |image131|
 
