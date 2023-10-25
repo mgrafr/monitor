@@ -798,6 +798,8 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - Matériel : pour les types zwave ou Zigbee
 
+- ls : lastseen, vu la dernière fois 1 si le dispositif est concerné plus d'infos : :ref:`1.8.2.1 Ecriture d’un script Dzvent(Dz) ou yaml(HA)`
+
 - maj_js : types de mise à jour java script
 	-	control // détecteur présence(on/off)
 	-	etat  //porte, volet ,(closed/open)
