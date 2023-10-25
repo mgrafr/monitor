@@ -1112,6 +1112,8 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
       **En conclusion**, :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen`
 
+      :green:`Pour résoudre définitivement le problème avc Zigbee, c'est de demander l'information pour un appareil aux dispositifs dont le type est "gereral"`
+
       .. important::
 
          Pour les dispositifs Zwave les informations reçues sont parfois identiques aux appareils Zigbee mais souvent c'est plus compliqué; les niveaux de batterie signalés sont souvent erronés; ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes n'ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas touours à celui affiché dans Domoticz.
@@ -1158,6 +1160,8 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
    - seront concernés les dispositifs de Type "General".
 
+   - pour Zigbee, une table des appareils avec indication du dispositif de type "general" ;(la table existe dans monitor il suffit que Domoticz l'utilise)
+
    - les dispositifs appartiennent à un Plan
 
    - les dispositifs virtuels et de surveillance réseau sont exclus
@@ -1176,13 +1180,22 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
       package.path = package.path..";www/modules_lua/?.lua"
       require 'string_tableaux' -- variable concernée : max_lastseen  max update et max_bat
       require 'connect'
+      require 'table_zigbee'
       adresse_mail=mail_gmail -- mail_gmail dans connect.lua
+	
+      local function split(s, delimiter)
+	local result = {}
+	for match in (s..delimiter):gmatch('(.-)'..delimiter) do
+		table.insert(result, match)
+	end
+	return result
+      end
 
       local ls=0
       local scriptVar = 'lastSeen'
-
+      local test=0 
       return {
-          on = { timer =  {'at 17:16'}, httpResponses = { scriptVar }},
+          on = { timer =  {'at 17:50'}, httpResponses = { scriptVar }},
           logging = { level   = domoticz.LOG_ERROR, marker  = scriptVar },
     
           execute = function(dz, item) 
@@ -1194,41 +1207,55 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
               else
                   local Time = require('Time');local lastup="";listidx="lastseen#"
                   for i, node in pairs(item.json.result) do
-               		 if node.HardwareName ~= "virtuels" and node.HardwareName ~= "surveillance réseau"  and node.HardwareType ~= "Linky"  and node.PlanID == "2" then
-			    if node.Type == "General" then 
-				local lastSeen = Time(node.LastUpdate).minutesAgo
-			   	if lastSeen >=max_lastseen then -- limite en heure pour considérer le dispositif on line
-				lastup = lastup..'idx:'..node.idx..','..node.Name..' lastseen:'..lastSeen..'<br>'
-				listidx=listidx..' '..node.idx..node.Name..'Lastseen:'..tostring(lastSeen)..' / '..node.LastUpdate..'<br>'    
-		   	        ls=1
-		   	        end    
-   	                    elseif string.find(node.ID, "zwavejs2mqtt") == nil then
-   	                        local lastUpdated = Time(node.LastUpdate).hoursAgo
+               	      for i=1,nombre_enr do
+			if liste_ls[i]['idx'] == node.idx and liste_ls[i]['lastseen'] =="non"  then test=1	 
+			print('-------------------------------essai','l=',liste_ls[i]['name'])
+			else test=0
+			end 
+		      end   
+		  if node.HardwareName ~= "virtuels" and node.HardwareName ~= "surveillance réseau"  and node.HardwareType ~= "Linky"  and node.PlanID == "2" and test==0 then
+				       
+	                  if node.Type == "General" then 
+			   	        local lastSeen = Time(node.LastUpdate).minutesAgo
+			   	        if lastSeen >=max_lastseen then -- limite en heure pour considérer le dispositif on line
+				        lastup = lastup..'idx:'..node.idx..','..node.Name..' lastseen:'..lastSeen..'<br>'
+					    listidx=listidx..' '..node.idx..node.Name..'Lastseen:'..tostring(lastSeen)..' / '..node.LastUpdate..'<br>'    
+		   	            ls=1
+		   	            end    
+   	                  elseif string.find(node.ID, "zwavejs2mqtt") == nil then
+   	                    local lastUpdated = Time(node.LastUpdate).hoursAgo
 	   	                if lastUpdated > max_lastupdate  then
-		   	        lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'<br>'
-				listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'<br>'
-				ls=2
-				end
-		            elseif string.find(node.ID, "zwavejs2mqtt") ~= nil then
+		   	            lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'<br>'
+					    listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'<br>'
+					    ls=2
+				        end
+		              elseif string.find(node.ID, "zwavejs2mqtt") ~= nil then
 		                local lastUpdated = Time(node.LastUpdate).hoursAgo
-			        if lastUpdated > max_lastupdate and node.BatteryLevel <= 100 then 
-			        print(node.ID)
-		   	        lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
-				listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
-			        ls=3
-			        end	    
-			    end	
-		        end
-	        end
-         	print("ls="..ls)
-         	if ls > 0 then
-         	dz.variables('lastseen').set(listidx)
-         	obj='alarme lastseen: '..listidx;dz.email('LastSeen',lastup,adresse_mail)
-         	ls=0
-            end
-           end
+			            if lastUpdated > max_lastupdate and node.BatteryLevel <= 100 then 
+			            print(node.ID)
+		   	            lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
+					    listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
+			            ls=3
+			            end
+				      end 
+				    end
+				     
+					--dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
+			end
+	    print("ls="..ls)
+             if ls > 0 then
+             dz.variables('lastseen').set(listidx)
+             obj='alarme lastseen: '..listidx;dz.email('LastSeen',lastup,adresse_mail)
+             ls=0
+             end
           end
-         }
+       end
+      }
+
+La table des dispositifs  Zigbee 
+
+|image149|
+
    
 1.8.2.1.2 La variable lastseen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
