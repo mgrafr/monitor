@@ -1256,6 +1256,8 @@ La table des dispositifs  Zigbee
 
 |image149|
 
+Cette table est créée automatquement par monitor à partir des infos de la base de données, voir ce § :ref:`0.3.2 Les Dispositifs`
+
    
 1.8.2.1.2 La variable lastseen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1645,7 +1647,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image147| image:: ../media/image147.webp
    :width: 540px  
 .. |image148| image:: ../media/image148.webp
-   :width: 7000px  
+   :width: 700px  
+.. |image149| image:: ../media/image149.webp
+   :width: 500px  
 .. |image150| image:: ../media/image150.webp
    :width: 700px  
 .. |image151| image:: ../media/image151.webp
