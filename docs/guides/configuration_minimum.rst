@@ -1096,29 +1096,44 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
    Domotiz et Home assistant n'affiche pas ces 2 paramètres , ZwaveJsMqtt et Zigbee2mqtt ne les envoient pas de la même façon, c'est très difficile de trouver les bonnes informations.
 
-   Un exemple concret dans Domoticz avec Zigbee2mqtt et un interrupteur de volet roulant Tuya:
+   Un exemple concret dans Domoticz et Home Assistant avec Zigbee2mqtt et un interrupteur de volet roulant Tuya:
 
-   .. admonition:: **les différents dispositifs pour cet appareil**
+.. admonition:: **les différents dispositifs pour cet appareil Zigbee**
 
-      |image1172|
+   |image1172|
 
-      Prenons 2 dispositifs qui n'affichent pas le même LastUpdate:
+   Prenons 2 dispositifs Domoticz qui n'affichent pas le même last_updated:
 
-      |image1173| 
+   |image1173| 
 
-      |image1174|
+   |image1174|
 
-      l'un envoie des informations toutes les 2 ou 3 minutes tandis que l'autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif); l'un est d'un type "general", l'autre d'un type "light/switch" et les subtype sont aussi différents. 
+   l'un envoie des informations toutes les 2 ou 3 minutes tandis que l'autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif); l'un est d'un type "general", l'autre d'un type "light/switch" et les subtype sont aussi différents.
 
-      **En conclusion**, :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen`
+   Prenons 2 dispositifs Home Assistant qui affiche, l'in last_seen et l'autre lastupdate
 
-      :green:`Pour résoudre définitivement le problème avc Zigbee, c'est de demander l'information pour un appareil aux dispositifs dont le type est "gereral"`
+   |image213|
 
-      .. important::
+   |image214|
 
-         Pour les dispositifs Zwave les informations reçues sont parfois identiques aux appareils Zigbee mais souvent c'est plus compliqué; les niveaux de batterie signalés sont souvent erronés; ci dessous un exemple pour une prise de courant; Le voltage est rafraichit toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes n'ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas touours à celui affiché dans Domoticz.
+   c'est sensiblement identique , un vrai lastseen pour l'un des dispositif et pour le plus utilisé un lastupdate
 
-         |image1175|
+   .. admonition:: **En conclusion**, 
+
+      :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen`
+
+      :green:`Pour résoudre définitivement le problème avc Zigbee, c'est de demander l'information pour un appareil à l'un des dispositifs qui affiche l'information même si ce dispositif n'est pas celui utilisé couramment`.
+
+      :darkblue:`pour Domoticz il suffit d'utiliser les dispositifs dont le type est "gereral"`
+
+      :darkblue:`pour Home Assistant il suffit d'utiliser les dispositifs qui ont comme attribut "last_seen"`
+
+.. important::
+
+   Pour les dispositifs Zwave les informations reçues sont parfois identiques aux appareils Zigbee mais souvent c'est plus compliqué; les niveaux de batterie signalés sont souvent erronés; ci dessous un exemple pour une prise de courant; Le voltage est rafraichis toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes n'ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas touours à celui affiché dans Domoticz.
+
+   |image1175|
+
 .. admonition:: **les bases pour l'écriture d'un script**
 
    On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" envoient la vrai info "lastSeen; Mais, pour les appareils Zwave (  la sirène, les PIR , etc ) fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script.
@@ -1126,6 +1141,7 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
    |image1176|
 
    |image1177|
+
 1.8.2.1.1 Domoticz
 ~~~~~~~~~~~~~~~~~~
 En premier , création d'une variable, noter son nom :
@@ -1754,6 +1770,10 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 638px 
 .. |image212| image:: ../media/image212.webp
    :width: 700px 
+.. |image213| image:: ../media/image213.webp
+   :width: 420px 
+.. |image214| image:: ../media/image214.webp
+   :width: 420px 
 .. |image216| image:: ../media/image216.webp
    :width: 369px 
 .. |image218| image:: ../media/image218.webp
