@@ -77,10 +77,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#explications-concernant-limportation-distantes-dun-tableau-lua">14.7 Explications concernant l’importation distantes d’un tableau LUA</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#string-modect-lua">14.7.1 string_modect.lua</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#explications-concernant-limportation-distantes-dun-tableau-lua">14.7 Explications concernant l’importation distantes d’un tableau LUA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#explications-concernant-la-mise-a-jour-automatique-sql-des-variables-et-dispositifs">14.8 Explications concernant la mise à jour automatique SQL des variables et dispositifs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#affichage-dans-monitor">14.8.1 Affichage dans monitor</a></li>
 </ul>
@@ -445,16 +442,13 @@ echo $file.&#39;&lt;div id=&quot;result&quot;&gt;&lt;form &gt;&#39;;
 </li>
 </ul>
 <ul class="simple">
-<li><p><strong>upload et Maj par dz</strong> :<em>on met à 1,2,3 ou 4 , ou …  la variable,  dz se charge d’importer le fichier</em></p></li>
+<li><p><strong>upload et Maj par dz</strong> :<em>on met à 1,2 ou 3  la variable,  dz se charge d’importer le fichier</em></p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image839.webp"><img alt="image839" src="../_images/image839.webp" style="width: 613px;" /></a></p>
-<p><a class="reference internal" href="../_images/image178.webp"><img alt="image178" src="../_images/image178.webp" style="width: 650px;" /></a></p>
 <p>Le script lua utilisé pour ouvrir ces fichiers:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
 <span class="n">require</span> <span class="s1">&#39;string_tableaux&#39;</span>
 <span class="n">require</span> <span class="s1">&#39;connect&#39;</span>
-<span class="o">...</span>
-<span class="n">require</span> <span class="s1">&#39;table_zigbee&#39;</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image842.webp"><img alt="image842" src="../_images/image842.webp" style="width: 605px;" /></a></p>
@@ -463,7 +457,7 @@ echo $file.&#39;&lt;div id=&quot;result&quot;&gt;&lt;form &gt;&#39;;
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>C’est pour la raison ci-dessous que l’adresse ip de monitor se trouve dans les fichiers « connect.lua , connect.py et connect.js »</p>
+<p>C’est pour la raison ci-dessous que l’adresse ip de monitor se trouve dans le fichier « connect.lua »</p>
 <p><a class="reference internal" href="../_images/image843.webp"><img alt="image843" src="../_images/image843.webp" style="width: 528px;" /></a></p>
 </div>
 <div class="admonition warning">
@@ -474,8 +468,9 @@ echo $file.&#39;&lt;div id=&quot;result&quot;&gt;&lt;form &gt;&#39;;
 <div><p><a class="reference internal" href="../_images/image845.webp"><img alt="image845" src="../_images/image845.webp" style="width: 518px;" /></a></p>
 </div></blockquote>
 </div>
-<div class="section" id="string-modect-lua">
-<h3>14.7.1 string_modect.lua<a class="headerlink" href="#string-modect-lua" title="Lien permanent vers ce titre"></a></h3>
+<ul class="simple">
+<li><p><strong>string_modect.lua</strong></p></li>
+</ul>
 <p><strong>admin.php</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;admin1&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#admin&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;10&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;reponse1&quot;</span> <span class="o">&gt;</span><span class="n">Configuation</span> <span class="n">modect</span> <span class="n">dz</span> <span class="n">alarmes</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
 </pre></div>
@@ -491,7 +486,6 @@ echo $file.&#39;&lt;div id=&quot;result&quot;&gt;&lt;form &gt;&#39;;
 <p><em>MODECT</em></p>
 <p>Affichage dans admin.php mais aussi dans alarmes.php</p>
 <p><a class="reference internal" href="../_images/image853.webp"><img alt="image853" src="../_images/image853.webp" style="width: 497px;" /></a></p>
-</div>
 </div>
 </div>
 <div class="section" id="explications-concernant-la-mise-a-jour-automatique-sql-des-variables-et-dispositifs">
