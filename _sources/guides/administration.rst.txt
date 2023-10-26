@@ -352,9 +352,11 @@ Création d'un fichier temporaire dans monitor, le répertoire « dz » est à c
            $content = file_get_contents($file);
 	        if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	          
 
-- **upload et Maj par dz** :*on met à 1,2 ou 3  la variable,  dz se charge d’importer le fichier*
+- **upload et Maj par dz** :*on met à 1,2,3 ou 4 , ou ...  la variable,  dz se charge d’importer le fichier*
 
 |image839|
+
+|image178|
 
 Le script lua utilisé pour ouvrir ces fichiers:
 
@@ -363,6 +365,8 @@ Le script lua utilisé pour ouvrir ces fichiers:
    package.path = package.path..";www/modules_lua/?.lua"
    require 'string_tableaux'
    require 'connect'
+   ...
+   require 'table_zigbee'
 
 |image842|
 
@@ -370,7 +374,7 @@ Le script lua utilisé pour ouvrir ces fichiers:
 
 .. note::
 
-   C’est pour la raison ci-dessous que l’adresse ip de monitor se trouve dans le fichier « connect.lua »
+   C’est pour la raison ci-dessous que l’adresse ip de monitor se trouve dans les fichiers « connect.lua , connect.py et connect.js »
 
    |image843|
 
@@ -380,7 +384,8 @@ Le script lua utilisé pour ouvrir ces fichiers:
 
     |image845|
 
-- **string_modect.lua**
+14.7.1 string_modect.lua
+========================
 
 **admin.php**
 
@@ -568,6 +573,8 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 650px 
 .. |image96| image:: ../media/image96.webp
    :width: 497px 
+.. |image178| image:: ../media/image178.webp
+   :width: 650px 
 .. |image788| image:: ../media/image788.webp
    :width: 605px 
 .. |image794| image:: ../media/image794.webp
