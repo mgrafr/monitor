@@ -1138,8 +1138,6 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
    |image259|
 
-   Pour les contacts de porte c'est il n'y a peu de  lastupdate  sauf en cas d'ouverture ou fermeture alors que sur l'App Zwave-JS-UI le rafraichissement a lieu
-
 .. admonition:: **les bases pour l'écriture d'un script**
 
    On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" dans Domoticz envoient la vrai info "lastSeen; Mais, pour les appareils Zwave (  la sirène, les PIR , etc ) fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script.
