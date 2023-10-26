@@ -1110,7 +1110,7 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
    l'un envoie des informations toutes les 2 ou 3 minutes tandis que l'autre attend de recevoir des informations (une commande du volet roulant pour ce dispositif); l'un est d'un type "general", l'autre d'un type "light/switch" et les subtype sont aussi différents.
 
-   Prenons 2 dispositifs Home Assistant qui affiche, l'in last_seen et l'autre lastupdate
+   Prenons ces 2 mêmes dispositifs dans Home Assistant qui affichent, l'un last_seen et l'autre last_updated, mais le dispositif qui nous intéresse est le même pour les 2 serveurs ce qui simplifie l'information dans la BD SQL de monitor.
 
    |image213|
 
@@ -1122,21 +1122,25 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
       :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen`
 
-      :green:`Pour résoudre définitivement le problème avc Zigbee, c'est de demander l'information pour un appareil à l'un des dispositifs qui affiche l'information même si ce dispositif n'est pas celui utilisé couramment`.
+      :green:`Pour résoudre définitivement le problème avec Zigbee, c'est de demander l'information pour un appareil à l'un des dispositifs qui affiche l'information même si ce dispositif n'est pas celui utilisé couramment`.
 
-      :darkblue:`pour Domoticz il suffit d'utiliser les dispositifs dont le type est "gereral"`
+      :darkblue:`pour Domoticz il suffit d'utiliser les dispositifs dont le type est "general"`
 
       :darkblue:`pour Home Assistant il suffit d'utiliser les dispositifs qui ont comme attribut "last_seen"`
 
-.. important::
+.. admonition:: Lastseen existe peu pour les appareils Zwave**
 
-   Pour les dispositifs Zwave les informations reçues sont parfois identiques aux appareils Zigbee mais souvent c'est plus compliqué; les niveaux de batterie signalés sont souvent erronés; ci dessous un exemple pour une prise de courant; Le voltage est rafraichis toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes n'ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas touours à celui affiché dans Domoticz.
+   Les informations reçues par les dispositifs Zwave sont parfois identiques aux appareils Zigbee mais souvent c'est plus compliqué; les niveaux de batterie signalés sont souvent erronés; ci dessous un exemple pour une prise de courant; Le voltage est rafraichis toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes , les contacts de portes et fenêtres, etc n'ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas à celui affiché dans l'application Zwave-JS-UI.
 
    |image1175|
 
+   Exemple pour un PIR Zwave: on ne prend pas en compte l'info "motion" car en cas d'absence cette info ne sera pas rafraichie
+
+   |image259|
+
 .. admonition:: **les bases pour l'écriture d'un script**
 
-   On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" envoient la vrai info "lastSeen; Mais, pour les appareils Zwave (  la sirène, les PIR , etc ) fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script.
+   On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" dans Domoticz envoient la vrai info "lastSeen; Mais, pour les appareils Zwave (  la sirène, les PIR , etc ) fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script.
 
    |image1176|
 
@@ -1784,6 +1788,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 316px 
 .. |image221| image:: ../media/image221.webp
    :width: 338px 
+.. |image259| image:: ../media/image259.webp
+   :width: 393px 
 .. |image943| image:: ../media/image943.webp
    :width: 600px 
 .. |image1092| image:: ../media/image1092.webp
