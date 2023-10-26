@@ -464,7 +464,7 @@ L'envoi des données doit être un tableau json
 .. |image580| image:: ../media/image580.webp
    :width: 700px
 .. |image582| image:: ../media/image582.webp
-   :width: 601px
+   :width: 700px
 .. |image583| image:: ../media/image583.webp
    :width: 300px
 .. |image584| image:: ../media/image584.webp
