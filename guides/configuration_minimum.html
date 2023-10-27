@@ -1142,7 +1142,7 @@ pour ne pas cacher le menu hamburger</p>
 <p>Prenons ces 2 mêmes dispositifs dans Home Assistant qui affichent, l’un last_seen et l’autre last_updated, mais le dispositif qui nous intéresse est le même pour les 2 serveurs ce qui simplifie l’information dans la BD SQL de monitor.</p>
 <p><a class="reference internal" href="../_images/image213.webp"><img alt="image213" src="../_images/image213.webp" style="width: 420px;" /></a></p>
 <p><a class="reference internal" href="../_images/image214.webp"><img alt="image214" src="../_images/image214.webp" style="width: 420px;" /></a></p>
-<p>c’est sensiblement identique , un vrai lastseen pour l’un des dispositif et pour le plus utilisé un lastupdate</p>
+<p>c’est sensiblement identique , un vrai lastseen pour l’un des dispositifs et pour le plus utilisé un lastupdate</p>
 <div class="admonition-en-conclusion-pour-zigbee admonition">
 <p class="admonition-title"><strong>En conclusion pour Zigbee</strong>,</p>
 <p><span class="red">il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen</span></p>
@@ -1157,10 +1157,10 @@ pour ne pas cacher le menu hamburger</p>
 <div><p>Les informations reçues par les dispositifs Zwave sont parfois identiques aux appareils Zigbee mais souvent c’est plus compliqué; les niveaux de batterie signalés sont souvent erronés; ci dessous un exemple pour une prise de courant; Le voltage est rafraichis toutes les 2 ou 3 minutes mais la partie switch de la prise attend une commande.Les PIR, les sirènes , les contacts de portes et fenêtres, etc n’ont pas de dispositifs rafraichis aussi souvent, le Lastupdate ne correspond pas à celui affiché dans l’application Zwave-JS-UI.</p>
 <p><a class="reference internal" href="../_images/image1175.webp"><img alt="image1175" src="../_images/image1175.webp" style="width: 700px;" /></a></p>
 <p>Exemple pour un PIR Zwave: on ne prend pas en compte l’info « motion » car en cas d’absence cette info ne sera pas rafraichie</p>
-<p><a class="reference internal" href="../_images/image259.webp"><img alt="image259" src="../_images/image259.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image259.webp"><img alt="image259" src="../_images/image259.webp" style="width: 393px;" /></a></p>
 <p>Pour les contacts de porte ,le lastupdate correspond aux ouvertures ou fermetures alors que sur l’App Zwave-JS-UI le rafraichissement a lieu périodiquement.</p>
 </div></blockquote>
-<p><a class="reference internal" href="../_images/image249.webp"><img alt="image249" src="../_images/image249.webp" style="width: 338px;" /></a></p>
+<p><a class="reference internal" href="../_images/image249.webp"><img alt="image249" src="../_images/image249.webp" style="width: 700px;" /></a></p>
 </div>
 <div class="admonition-les-bases-pour-l-ecriture-d-un-script admonition">
 <p class="admonition-title"><strong>les bases pour l’écriture d’un script</strong></p>
@@ -1272,6 +1272,10 @@ pour ne pas cacher le menu hamburger</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>objet domoticz</strong> : <em>domoticz ou dz mais c’est l’un ou l’autre dans le script</em></p>
+</div>
 </div>
 <p>La table des dispositifs  Zigbee &amp; Zwave</p>
 <p><a class="reference internal" href="../_images/image149.webp"><img alt="image149" src="../_images/image149.webp" style="width: 500px;" /></a></p>
@@ -1287,10 +1291,6 @@ pour ne pas cacher le menu hamburger</p>
 <p><strong>Quelques explications</strong></p>
 <p>Comme on peut le voir le caactère # sépare le texte pour la table « text_image » (affichage de l’icone) et le contenu de la notification; on peut retrouver ce contenu  dans la donnée « contenu » du fichier Json reçu par monitor.</p>
 <p><a class="reference internal" href="../_images/image1162.webp"><img alt="image1162" src="../_images/image1162.webp" style="width: 523px;" /></a></p>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>objet domoticz</strong> : <em>domoticz ou dz mais c’est l’un ou l’autre dans le script</em></p>
 </div>
 </div></blockquote>
 </div>
@@ -1311,7 +1311,7 @@ pour ne pas cacher le menu hamburger</p>
 <p class="admonition-title"><strong>notification sur l’appli</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>C’est cette notification dans un « input_text » que monitor va utiliser pour l’afficher sur son écran d’accueil, et  HA l’utilisera également cet « input_text » pour la composition des messages .</p>
+<p>C’est cette notification dans un « input_text » que monitor va utiliser pour l’afficher sur son écran d’accueil, et  HA utilisera également cet « input_text » pour la composition des messages .</p>
 <p>Les notifications sont redontantes, il suffit de supprimer celles qui ne vous seront pas utiles.</p>
 <p><a class="reference internal" href="../_images/image144.webp"><img alt="image144" src="../_images/image144.webp" style="width: 400px;" /></a></p>
 </div>
