@@ -1118,7 +1118,7 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
    c'est sensiblement identique , un vrai lastseen pour l'un des dispositif et pour le plus utilisé un lastupdate
 
-   .. admonition:: **En conclusion**, 
+   .. admonition:: **En conclusion pour Zigbee**, 
 
       :red:`il faut tenir compte de ces informations pour écrire un script qui fera le travail pour afficher un vrai LastSeen`
 
@@ -1138,9 +1138,13 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
    |image259|
 
+   Pour les contacts de porte ,le lastupdate correspond aux ouvertures ou fermetures alors que sur l'App Zwave-JS-UI le rafraichissement a lieu périodiquement.
+
+  |image249| 
+
 .. admonition:: **les bases pour l'écriture d'un script**
 
-   On peut remarquer, que pour un appareil, tous les dispositifs de Type "General" dans Domoticz envoient la vrai info "lastSeen; Mais, pour les appareils Zwave (  la sirène, les PIR , etc ) fournissent cette info avec le Type "Light/Switch", ce qui ne simplifie pas l'écriture du script.
+   Pour Zigbee, il est facile de trouver la bonne information, mais, pour les appareils Zwave ( la sirène, les PIR , etc ) les dispositifs ne fournissent cette info ni à DZ, ni à HA, pourtant présente dans Zwave-JS-UI, ce qui ne simplifie pas l'écriture d'un script.
 
    |image1176|
 
@@ -1296,7 +1300,9 @@ Cette table est créée automatquement par monitor à partir des infos de la bas
 
 1.8.2.1.3 Home Assistant
 ~~~~~~~~~~~~~~~~~~~~~~~~
-:red:`Comme pour Domoticz, Zwave-JS est le problème` 
+:red:`Comme pour Domoticz, Zwave-JS-UI est le problème` 
+
+Dans HA, on ne peut, comme dans DZ utiliser des variables globales aussi les valeurs max seront définies dans le script.
 
 Pour l'annulation de la notification, création d'un switch binaire, nommé ici "essai1":
 
@@ -1304,13 +1310,29 @@ Pour l'annulation de la notification, création d'un switch binaire, nommé ici 
 
 Créer 2 automatisations : 
 
-- la première pour déterminer les dispositifs concernés par "lastseen"
+- la première pour déterminer les dispositifs concernés par "lastseen" et envoyer des notifications
 
 - la 2eme pour effacer la notification
 
 .. admonition:: **script yaml "lastseen"**
 
-   merci à **OzGav** *https://community.home-assistant.io/u/OzGav*
+   .. admonition:: **notification sur l'appli**
+
+      .. warning::
+
+         C'est cette notification dans un "input_text" que monitor va utiliser pour l'afficher sur son écran d'accueil, et  HA l'utilisera également cet "input_text" pour la composition des messages .
+
+         Les notifications sont redontantes, il suffit de supprimer celles qui ne vous seront pas utiles.
+
+         |image144|
+
+      .. attention::
+
+         |image173|
+
+         .. note:: lastseen ou lastseen1 ou ..autre, voir § suivant
+
+   merci à **OzGav** *https://community.home-assistant.io/u/OzGav*, je me suis inspiré de son script et je l'ai simplifié.
 
    .. code-block::
 
@@ -1318,29 +1340,34 @@ Créer 2 automatisations :
         alias: LastSeen Alerte Dispositifs
         trigger:
         - platform: time
-          at: '17:37:00'
+          at: '14:08:00'
         condition:
         - condition: template
           value_template: '{% set ns = namespace(break = false) %} {% for state in states
             -%} {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
-            > (60 * 6) ) and ns.break == false %}     {%- set ns.break = true %}      true    {%-
+            > (60 * 20) ) and ns.break == false %}     {%- set ns.break = true %}      true    {%-
             endif -%} {%- endif -%}{%- endfor %}'
         action:
+        - service: input_text.set_value
+          data_template:
+            entity_id: input_text.essai
+            value: lastseen1#Des dispositifs ont un lastSeen > à {% for state in states
+              -%} {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) -
+              as_timestamp(state.attributes.last_seen) > (60 * 20) ) %}    {{ ((as_timestamp(now())
+              - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} heures
+              pour {{ state.name }} {%- endif -%}{%- endif -%}{%- endfor %}
+        - service: persistent_notification.create
+          data:
+            notification_id: not_lastseen
+            title: Lastseen
+            message: '{{ states(''input_text.essai'') }}'
+        - service: notify.email
+          data:
+            title: alerte dispositifs
+            message: '{{ states(''input_text.essai'') }}'
         - service: notify.mobile_app_RMO_NX1
           data:
-            message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}
-              {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
-              > (60 * 6) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
-              / (3600)) | round(1) }} heures pour :{{ state.name }}\n \n{%- endif -%}      {%-
-              endif -%}{%- endfor %}"
-	- service: notify.email
-    	  data:
-            title: alerte dispositifs
-            message: "Des dispositifs ont un lastSeen > à ... {% for state in states -%}
-             {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
-             > (60 * 6) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
-             / (3600)) | round(1) }} heures pour :{{ state.name }} \n{%- endif -%} {%-
-             endif -%}{%- endfor %}"
+            message: '{{ states(''input_text.essai'') }}'
 
    .. note::
 
@@ -1372,33 +1399,6 @@ Créer 2 automatisations :
    Les notifications sur le smartphone :
 
    |image1171| |image154|
-
-.. admonition:: **notification sur l'appli , suite du script précédent**
-
-   .. warning::
-
-      C'est cette notification que monitor va utiliser pour l'afficher sur son écran d'accuei
-
-   Ajouter ces lignes: 
-
-   .. code-block::
-
-        - service: input_text.set_value
-          data_template:
-            entity_id: input_text.essai
-            value: "lastseen#Des dispositifs ont un lastSeen > à ... {% for state in states -%} {%-
-              if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
-              > (60 * 8) ) %}    {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
-              / (3600)) | round(1) }} heures pour {{ state.name }} {%- endif -%}{%- endif
-              -%}{%- endfor %}"
-
-   .. warning::
-
-      Attention Value entre "double quotes"
-   
-   |image144|
-
-   .. note:: lastseen ou lastseen1 ou ..autre, voir § suivant
 
 **Second script automation:**
 
@@ -1716,6 +1716,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 529px 
 .. |image172| image:: ../media/image172.webp
    :width: 700px 
+.. |image173| image:: ../media/image173.webp
+   :width: 335px 
 .. |image174| image:: ../media/image174.webp
    :width: 602px 
 .. |image175| image:: ../media/image175.webp
@@ -1788,8 +1790,10 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 316px 
 .. |image221| image:: ../media/image221.webp
    :width: 338px 
+.. |image249| image:: ../media/image249.webp
+   :width: 338px 
 .. |image259| image:: ../media/image259.webp
-   :width: 393px 
+   :width: 700px 
 .. |image943| image:: ../media/image943.webp
    :width: 600px 
 .. |image1092| image:: ../media/image1092.webp
