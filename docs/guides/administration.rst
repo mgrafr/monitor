@@ -660,7 +660,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
 .. |image845| image:: ../media/image845.webp
    :width: 518px
 .. |image847| image:: ../media/image847.webp
-   :width: 518px
+   :width: 401px
 .. |image849| image:: ../media/image849.webp
    :width: 401px
 .. |image850| image:: ../media/image850.webp
