@@ -1116,7 +1116,7 @@ l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jo
 
    |image214|
 
-   c'est sensiblement identique , un vrai lastseen pour l'un des dispositif et pour le plus utilisé un lastupdate
+   c'est sensiblement identique , un vrai lastseen pour l'un des dispositifs et pour le plus utilisé un lastupdate
 
    .. admonition:: **En conclusion pour Zigbee**, 
 
@@ -1268,6 +1268,8 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
        end
       }
 
+   .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
+
 La table des dispositifs  Zigbee & Zwave
 
 |image149|
@@ -1276,7 +1278,6 @@ Cette table est créée automatquement par monitor à partir des infos de la bas
 
 Elle permet de sélectionner le meilleur dispositif qui affiche le dernier "vu pour la dernière fois" 
 
-   
 1.8.2.1.2 La variable lastseen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1289,8 +1290,6 @@ Elle permet de sélectionner le meilleur dispositif qui affiche le dernier "vu p
       Comme on peut le voir le caactère # sépare le texte pour la table "text_image" (affichage de l'icone) et le contenu de la notification; on peut retrouver ce contenu  dans la donnée "contenu" du fichier Json reçu par monitor.
 
       |image1162|
-
-   .. important:: **objet domoticz** : *domoticz ou dz mais c'est l'un ou l'autre dans le script*
 
 1.8.2.1.3 Home Assistant
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1314,7 +1313,7 @@ Créer 2 automatisations :
 
       .. warning::
 
-         C'est cette notification dans un "input_text" que monitor va utiliser pour l'afficher sur son écran d'accueil, et  HA l'utilisera également cet "input_text" pour la composition des messages .
+         C'est cette notification dans un "input_text" que monitor va utiliser pour l'afficher sur son écran d'accueil, et  HA utilisera également cet "input_text" pour la composition des messages .
 
          Les notifications sont redontantes, il suffit de supprimer celles qui ne vous seront pas utiles.
 
@@ -1785,9 +1784,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image221| image:: ../media/image221.webp
    :width: 338px 
 .. |image249| image:: ../media/image249.webp
-   :width: 338px 
-.. |image259| image:: ../media/image259.webp
    :width: 700px 
+.. |image259| image:: ../media/image259.webp
+   :width: 393px 
 .. |image943| image:: ../media/image943.webp
    :width: 600px 
 .. |image1092| image:: ../media/image1092.webp
