@@ -1184,7 +1184,7 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 
    - seront concernés les dispositifs de Type "General".
 
-   - pour Zigbee, une table des appareils avec indication du dispositif de type "general" ;(la table existe dans monitor il suffit que Domoticz l'utilise)
+   - pour Zigbee, une table des appareils avec indication du dispositif de type "general" ;
 
    - les dispositifs appartiennent à un Plan
 
@@ -1240,33 +1240,25 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
 		  if node.HardwareName ~= "virtuels" and node.HardwareName ~= "surveillance réseau"  and node.HardwareType ~= "Linky"  and node.PlanID == "2" and test==0 then
 				       
 	                  if node.Type == "General" then 
-			   	        local lastSeen = Time(node.LastUpdate).minutesAgo
-			   	        if lastSeen >=max_lastseen then -- limite en heure pour considérer le dispositif on line
-				        lastup = lastup..'idx:'..node.idx..','..node.Name..' lastseen:'..lastSeen..'<br>'
-					    listidx=listidx..' '..node.idx..node.Name..'Lastseen:'..tostring(lastSeen)..' / '..node.LastUpdate..'<br>'    
-		   	            ls=1
-		   	            end    
-   	                  elseif string.find(node.ID, "zwavejs2mqtt") == nil then
-   	                    local lastUpdated = Time(node.LastUpdate).hoursAgo
-	   	                if lastUpdated > max_lastupdate  then
-		   	            lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'<br>'
-					    listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'<br>'
-					    ls=2
-				        end
-		              elseif string.find(node.ID, "zwavejs2mqtt") ~= nil then
+			   	local lastSeen = Time(node.LastUpdate).minutesAgo
+			   	if lastSeen >=max_lastseen then -- limite en heure pour considérer le dispositif on line
+				lastup = lastup..'idx:'..node.idx..','..node.Name..' lastseen:'..lastSeen..'<br>'
+				listidx=listidx..' '..node.idx..node.Name..'Lastseen:'..tostring(lastSeen)..' / '..node.LastUpdate..'<br>'    
+		   	        ls=1
+		   	        end    
+   	                  elseif string.find(node.ID, "zwavejs2mqtt") ~= nil then
 		                local lastUpdated = Time(node.LastUpdate).hoursAgo
-			            if lastUpdated > max_lastupdate and node.BatteryLevel <= 100 then 
-			            print(node.ID)
-		   	            lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
-					    listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
-			            ls=3
-			            end
-				      end 
-				    end
-				     
-					--dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
-			end
-	    print("ls="..ls)
+			        if lastUpdated > max_lastupdate and node.BatteryLevel <= 100 then 
+			         print(node.ID)
+		   	        lastup = lastup..'idx:'..node.idx..','..node.Name..',LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
+				listidx=listidx..' '..node.idx..node.Name..'LastUpdate:'..node.LastUpdate..'bat:'..node.BatteryLevel..'<br>'
+			        ls=3
+			        end
+			   end 
+		  end
+			--dz.log('id '..  node.idx .. '('  ..node.Name .. ') lastSeen ' .. lastSeen ,dz.LOG_FORCE)
+	       end
+	     print("ls="..ls)
              if ls > 0 then
              dz.variables('lastseen').set(listidx)
              obj='alarme lastseen: '..listidx;dz.email('LastSeen',lastup,adresse_mail)
@@ -1276,11 +1268,13 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
        end
       }
 
-La table des dispositifs  Zigbee 
+La table des dispositifs  Zigbee & Zwave
 
 |image149|
 
 Cette table est créée automatquement par monitor à partir des infos de la base de données, voir ce § :ref:`0.3.2 Les Dispositifs`
+
+Elle permet de sélectionner le meilleur dispositif qui affiche le dernier "vu pour la dernière fois" 
 
    
 1.8.2.1.2 La variable lastseen
