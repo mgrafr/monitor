@@ -1204,7 +1204,7 @@ En second , création de 3 variables dans le tableau de variables (string_tablea
       package.path = package.path..";www/modules_lua/?.lua"
       require 'string_tableaux' -- variable concernée : max_lastseen  max update et max_bat
       require 'connect'
-      require 'table_zigbee'
+      require 'table_zb_zw'
       adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 	
       local function split(s, delimiter)
