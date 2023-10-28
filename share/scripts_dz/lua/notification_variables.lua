@@ -1,4 +1,4 @@
---- script notifications_variables version 2.1.4
+-- script notifications_variables version 2.1.3
 -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
@@ -71,7 +71,11 @@ return {
                 end 
             end 
             if ((domoticz.variables('upload').changed) and (domoticz.variables('upload').value ~= "0")) then
-                if (domoticz.variables('upload').value == "1") then 
+                if (domoticz.variables('upload').value == "4") then 
+                print("upload table_zb_zw")
+                command = rep..'upload_fichier.py table_zigbee.lua   > '..rep_log..'table_zigbee.log 2>&1'
+                os.execute(command);print('maj effectuée_4');
+                elseif (domoticz.variables('upload').value == "1") then 
                 print("upload string_tableaux")
                 command = rep..'upload_fichier.py string_tableaux.lua   > '..rep_log..'string_tableaux.log 2>&1'
                 os.execute(command);print('maj effectuée_1');

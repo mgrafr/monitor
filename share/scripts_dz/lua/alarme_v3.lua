@@ -68,7 +68,7 @@ return {
 		    'porte-ouverte',
 		    'intrusion'},
 	    timer = {
-             'at 23:22',
+             'at 23:00',
              'at 06:00'}
 		},
 	execute = function(domoticz, item)
@@ -151,7 +151,7 @@ return {
         domoticz.variables('intrusion').set("0");domoticz.variables('porte-ouverte').set("0");
         end
  --******************************timer********************************************    
-        if (time=='23:22') then
+        if (time=='23:00') then
             if domoticz.devices('al_nuit_auto').state == "On" and domoticz.devices('alarme_nuit').state=="Off"  then 
                 domoticz.devices('alarme_nuit').switchOn();print('al_nuit=ON')
             end
@@ -163,5 +163,41 @@ return {
         end
 end
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
