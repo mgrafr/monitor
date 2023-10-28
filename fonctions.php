@@ -1,7 +1,7 @@
 <?php
 session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
-require('admin/config.php');
+require_once('admin/config.php');
 include ("include/fonctions_1.php");//fonction sql_plan
 
 function file_http_curl($L,$mode,$post){  
@@ -82,7 +82,7 @@ while (isset($result[$n]))
 $lect_var = $result[$n];  
 $idx = isset($lect_var["idx"]) ? $lect_var["idx"] : '';
 $ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';	
-$value = $lect_var['Value'];
+$value = $lect_var['Value'];$content="";
 	if (str_contains($value, '#')) {$tab = explode("#", $value);
 	$value = $tab[0];$content=$tab[1];}
 $name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
@@ -164,22 +164,28 @@ $L=URLDOMOTIC1."api/states";$post="";$mode=1;
 $json_string=file_http_curl($L,$mode,$post);$n=0;$ha=array();//echo $json_string;
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
-	$ha[$n]['Description'] = "HA";
+	if(isset($xxx->{'attributes'}->{'nodeName'}))  $ha[$n]['Name']=$xxx;
+	else if(isset($xxx->{'attributes'}->{'friendly_name'}))  $ha[$n]['Name']=$xxx;
+	$ha[$n]['Description'] = "HA";$ha[$n]['idx'] = "";
 	$ha[$n]['ID'] = $xxx->{'entity_id'};
 	$ha[$n]['Data'] = $xxx->{'state'};//modif 1
-	$tmp = $xxx->{'attributes'}->{'node_Name'};if ($tmp) $ha[$n]['Name']; 
-	$ha[$n]['Update']  = substr($xxx->{'last_updated'},0, 19);  
-	$tmp=$xxx->{'attributes'}->{'unit_of_measurement'};if ($tmp) $ha[$n]['unite'] = $tmp;
-	$tmp=$xxx->{'attributes'}->{'node_Location'};if ($tmp) $ha[$n]['description'] = $tmp;
-	$tmp=$xxx->{'attributes'}->{'value'};if ($tmp) {$ha[$n]['value'] = $tmp;}//$ha[$n]['Data'] = $tmp;}//modif 1
-	$tmp=$xxx->{'attributes'}->{'temperature'};if ($tmp) $ha[$n]['temp'] = $tmp;
-	$tmp=$xxx->{'attributes'}->{'humidity'};if ($tmp) $ha[$n]['humidity'] = $tmp;
-	$tmp=$xxx->{'attributes'}->{'pressure'};if ($tmp) $ha[$n]['pression'] = $tmp;
-	$tmp=$xxx->{'attributes'}->{'forecast'}->{'friendly_name'};if ($tmp) $ha[$n]['Name'] = $tmp;
-	$tmp=$xxx->{'attributes'}->{'temperature'};if ($tmp) {$ha[$n]['Data']=$xxx->{'attributes'}->{'temperature'}.' '.$xxx->{'attributes'}->{'temperature_unit'}.' , '.$xxx->{'attributes'}->{'humidity'}. '% ,'.$xxx->{'attributes'}->{'pressure'}.' '.$xxx->{'attributes'}->{'pressure_unit'};}
-	$ha[$n]['BatteryLevel'] = 100;
-		
-	$tmp=$xxx->{'attributes'}->{'device_class'};if ($tmp) $ha[$n]['device_class'] = $tmp;
+	$ha[$n]['LastUpdate']  = substr($xxx->{'last_updated'},0, 19);  
+	if(isset($xxx->{'attributes'}->{'unit_of_measurement'})) $ha[$n]['unite'] = $xxx;
+	else $ha[$n]['unite'] ="";
+	if(isset($xxx->{'attributes'}->{'node_Location'})) $ha[$n]['Description'] = $xxx;
+	else $ha[$n]['Description'] ="";
+	if(isset($xxx->{'attributes'}->{'value'})) {$ha[$n]['value'] = $xxx;}//$ha[$n]['Data'] = $tmp;}//modif 1
+	else $ha[$n]['value'] = "";
+	if(isset($xxx->{'attributes'}->{'temperature'}))$ha[$n]['temp'] = $xxx;
+	else $ha[$n]['temp'] ="";
+	if(isset($xxx->{'attributes'}->{'humidity'})) $ha[$n]['humidity'] = $xxx;
+	else $ha[$n]['humidity'] ="";
+	if(isset($xxx->{'attributes'}->{'pressure'})) $ha[$n]['pression'] = $xxx;
+	//if(isset($xxx->{'attributes'}->{'forecast'}->{'friendly_name'})) $ha[$n]['Name'] = $tmp;
+	if(isset($xxx->{'attributes'}->{'device_class'}->{'battery'})) $ha[$n]['BatteryLevel'] =$xxx->{'attributes'}->{'value'};
+	else $ha[$n]['BatteryLevel'] ="";
+		//$tmp=$xxx->{'attributes'}->{'device_class'};if ($tmp) $ha[$n]['device_class'] = $tmp;
+	$ha[$n]['Type'] ="non défini";
 	$n++;
 }
 
@@ -228,15 +234,16 @@ $parsed_json = $parsed_json['result'];
 $p=count($parsed_json);		
 	}
 if (IPDOMOTIC1!=""){$result=devices_zone(0);$n=0;//
-	while ($result[$n]!=""	){//echo $json_string1[$n];
+	while (isset($result[$n])==true){//echo $json_string1[$n];
 	
 	$parsed_json[$p]=$result[$n];
+		
 	$n++;$p++;}
 	}
 $n=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
-$description = isset($lect_var["Description"]) ? $lect_var["Description"] : '';	
+$description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';	
 $t=$lect_device["idx"];//echo $t;
 $periph=array();
 $periph=sql_plan($t);
@@ -250,11 +257,11 @@ if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0)
 if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
 if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);}
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
-	
+if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
 	$data[$t] = ['choixid' => CHOIXID,
 	'idx' => $lect_device["idx"],
-	'deviceType' => $lect_device["SwitchType"],	
-	'emplacement' => $lect_device["description"],					 
+	'deviceType' => $lect_device["Type"],	
+	'emplacement' => $description,					 
 	'temp' => $lect_device["Temp"],
 	'hum'   => $lect_device["Humidity"],
 	'bat' => $lect_device["BatteryLevel"],
@@ -264,6 +271,7 @@ if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"
    	'Update' => $lect_device["LastUpdate"],
 	'idm' => $periph['idm'],
 	'materiel' => $periph['materiel'],
+	'lastseen' => $periph['ls'],			 
 	'maj_js' => $periph['maj_js'],	
 	'ID1' => $periph['id1_html'],
 	'ID2' => $periph['id2_html'],
@@ -812,8 +820,8 @@ if ($choix==23 ) {$ip=IPDOMOTIC;$mode="scp_r";$remote_file_name="/opt/domoticz/c
 if ($choix==24 ) {$file_name="connect.py";$local_path="/home/michel/";$file= $local_path.$file_name; }
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) ) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
-if ($choix==12 || $choix==13){echo "//*******création fichier noms/idx******* <br>";}
-
+if ($choix==12){echo "//*******création fichier noms/idx******* <br>";}
+if ($choix==13){echo "//*******création table LUA zigbee******* <br>";}
 switch ($choix) {
     case "1":
 // disponoible
@@ -889,16 +897,22 @@ foreach($retour  as $R=>$D){
 }
 echo "fin";return;
 break;
-case "13" : $retour=devices_plan(2) ;echo "var idx=[];<br>";
-foreach($retour  as $R=>$D){
+case "13" : $retour=devices_plan(2) ;$lastseen="liste_ls={}";$lastseen=$lastseen."\n";
+$i=0;foreach($retour  as $R=>$D){
   foreach($D as $key=>$Value){
 	if ($key=="idm" ) $val_idm=$Value;
   	if ($key=="idx" ) $val_idx=$Value;	
-	if ($key=="Name" )$val_name=$Value;
-	if ($key=="materiel" )$val_mat=$Value;  } 
-if ($val_mat=="zigbee" || $val_mat=="zigbee3") echo 'idx["'.$val_name.'"]="'.$val_idx.', idm='.$val_idm.'";<br>';	
+	if ($key=="Name" ) $val_name=$Value;
+	if ($key=="materiel" ) $val_mat=$Value;
+    if ($key=="lastseen" ) $val_ls=$Value;  }
+
+if ($val_mat=="zigbee" || $val_mat=="zigbee3" || $val_mat=="zwave") {$i=$i+1;$lastseen=$lastseen."\n";$lastseen=$lastseen.'liste_ls['.$i.']={["idx"]=
+"'.$val_idx.'",["name"]="'.$val_name.'",["idm"]="'.$val_idm.'",["lastseen"]="'.$val_ls.'"}';$lastseen=$lastseen."\n";}	
 	}
-echo "//********************";return;
+$lastseen=$lastseen."\n";$lastseen=$lastseen.'nombre_enr='.$i;
+//$lastseen=$lastseen."}";
+		file_put_contents(DZCONFIG, $lastseen);
+$retour=maj_variable("22","upload","4","2");echo "Mise à jour Table Zigbee  : ".$retour['status'];		
 break;
 case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
 break;
@@ -1121,18 +1135,14 @@ $nom=$data['nom'];$nom_dz=$data['name'];$idx=$data['idx'];$ID=$data["ID"];$id_im
 //
 $sql="INSERT INTO dispositifs (nom_appareil, nom_dz, idx, ID, id1_html, id2_html) VALUES ('$nom', '$nom_dz', '$idx', '$ID', '$id_img', '$id_txt');";
 $result = $conn->query($sql);
-echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';		
-		
+echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
 if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
 $retour=maj_query($conn,$sql);
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';}			
 break;
     case "2":
-		
-$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_dz`, `idx`, `ID`, `idm`, `materiel`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["table"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
-		
-
-echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>type : '.$data["type"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
+$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_dz`, `idx`, `ID`, `idm`, `materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["table"]."' , '".$data["ls"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
+echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>type : '.$data["type"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
 //
 maj_query($conn,$sql);			
 break;

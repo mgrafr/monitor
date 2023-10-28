@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+if(session_status() === PHP_SESSION_NONE) session_start();
 // pour les variables de session----------------------
 $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]="";
 include ("admin/config.php");
@@ -14,10 +15,12 @@ if (!$conn) {echo "pas de BD : ".DBASE	;} //$_SESSION["exeption_db"]="pas de con
 if (!$sock = @fsockopen('www.google.fr', 80)) {$_SESSION["TC"]="0";}
 else {$_SESSION["TC"]="200";}
 // -variables----------------------------------------
-$_SESSION["version"]="2.2.3";
+$_SESSION["version"]="2.2.4";//
 $_SESSION["d_root"]=$_SERVER["DOCUMENT_ROOT"];
 $_SESSION["d_admin"]=$_SERVER["DOCUMENT_ROOT"]."/admin/";
 $_SESSION["d_include"]=$_SERVER["DOCUMENT_ROOT"]."/include/";
+
+
 //$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
 // ----------------------------------------------------
 // début du programme
@@ -29,7 +32,7 @@ include ("include/interieur.php");// plan intérieur
 if (ON_ALARM==true) include ("include/alarmes.php"); // alarmes absence et nuit
 if (ON_GRAPH==true) include ("include/graphiques.php");// édition de graphiques
 // autre pages disponibles à décommenter pour les inclure
-if (ON_EXT==true) include include ("include/exterieur.php");
+if (ON_EXT==true) include ("include/exterieur.php");
 // include ("include/commandes.php");
 if (ON_ONOFF==true) include ("include/mur_inter.php");
 if (ON_APP==true) include ("include/app_diverses.php");
