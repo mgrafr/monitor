@@ -331,6 +331,8 @@ L’appel ajax : appelle la fonction PHP devices_plan($variable), la variable es
 
 |image286|
 
+|image1178|
+
 Le Json renvoyé :
 
 |image287|
@@ -1124,7 +1126,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9para
 .. |image284| image:: ../media/image284.webp
    :width: 700px 
 .. |image286| image:: ../media/image286.webp
-   :width: 597px 
+   :width: 700px 
 .. |image287| image:: ../media/image287.webp
    :width: 362px 
 .. |image288| image:: ../media/image288.webp
@@ -1251,3 +1253,6 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9para
    :width: 615px 
 .. |image365| image:: ../media/image365.webp
    :width: 451px 
+.. |image1178| image:: ../media/image1178.webp
+   :width: 548px 
+
