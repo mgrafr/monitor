@@ -682,6 +682,7 @@ switch (choix) {
 	coula : $("#coula").val(),
 	coulb : $("#coulb").val(),
 	table :	$("input[name=type_mat]:checked").val(),
+	ls :	$("input[name=ls]:checked").val(),	
 	class : $("#class").val(),
 	var3 : $("#coulc").val(),
 	var4 : $("#could").val(),		

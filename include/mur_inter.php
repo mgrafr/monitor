@@ -1,8 +1,9 @@
 <?php
-session_start();
+//session_start();
 $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="";
 if ($domaine==IPMONITOR) $lien_img="/monitor";
+else $lien_img="/monitor";
 ?>
 <!-- section Mur OnOff-->
 <!-- ================ -->
@@ -57,6 +58,7 @@ client.connect(options);//connect
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw8" src="<?php echo $lien_img;?>/images/arrosage.svg" width="60" height="auto" alt=""/></a></li>
 			
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>/images/lampe_jardin.svg" width="60" height="auto" alt=""/></a></li>
+			<li style="margin-left:300px;margin-top:-650px"><a href="#murinter"><img id="sw10" src="<?php echo $lien_img;?>/images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
 		</ul>
 </div>
 </div></div>
@@ -70,7 +72,9 @@ client.connect(options);//connect
 	  <div id="slider"></div>
 <form>
 <label>commande:<span id="level_vr"></span></label><br>
-		<button type="button" class="btn btn-primary" value="OK"><input  type="button" id="amount" name="" value="">OK</button></form>
-		      <a class="closeBtn" href="javascript:void(0)">X</a>
+<button type="button" class="btn btn-primary" value="OK">
+<input  type="button" id="amount" name="" value="">OK</button></form>
+	
+		<a class="closeBtn" href="javascript:void(0)">X</a>
     </div>
   </div>

@@ -1,5 +1,6 @@
 <?php
-session_start();require('admin/config.php');
+//session_start();
+require_once('admin/config.php');
 ?>
 <!-- -->
 <!-- section administration -->
@@ -25,7 +26,7 @@ session_start();require('admin/config.php');
         if (ECRAN_ADMIN['modect']=="enable")echo '<a class="admin1" href="#admin" rel="10" title="reponse1" >Configuation modect dz alarmes</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=4 style="width:25px;display:inline;"></a><br>';
         if (ECRAN_ADMIN['idx_dz_list']=="enable")echo '<a class="admin1" href="#admin" rel="12" title="reponse1" >Créer fichier idx/nom Domoticz , LISTE</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=3 style="width:25px;display:inline;"></a><br>';
         if (ECRAN_ADMIN['var_list']=="enable")echo '<a class="admin1" href="#admin" rel="19" title="reponse1" >LISTE variables</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=8 style="width:25px;display:inline;"></a><br>';
-        if (ECRAN_ADMIN['idx_dz-zigbee']=="enable")echo '<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier idx/nom Domoticz , TABLEAU zigbee</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>';
+        if (ECRAN_ADMIN['idx_dz-zigbee']=="enable")echo '<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier lasteen zwave/zigbee</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>';
         if (ECRAN_ADMIN['reboot_pi']=="enable")echo '<img src="images/rpi.webp" style="width:30px" alt="rpi"> <a class="admin1" href="#admin" rel="20" style="margin-left:35px" title="reponse1" >Reboot Raspberry</a><br>';
         if (ECRAN_ADMIN['msmtprc']=="enable")echo '<a class="admin1" href="#admin" rel="21" style="margin-left:70px" title="reponse1" >msmtprc (config envoi mail)</a><br>';
         if (ECRAN_ADMIN['connect_py']=="enable")echo '<a class="admin1" href="#admin" rel="23" style="margin-left:70px" title="reponse1" >Maj automatique des IP depuis connect.py </a><br>';?>

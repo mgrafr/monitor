@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="";
 if ($domaine==IPMONITOR) $lien_img="/monitor";
