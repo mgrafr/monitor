@@ -1528,6 +1528,8 @@ La même variable lors d'un seul dispositif en défaut:
 
    il y a un nombre important de dispositifs du au réglage des valeurs max : avec d'autres valeurs plus normales  , seulement un dispositif n'a pas communiqué depuis la valeur max choisie.
 
+   Pour **Zigbee**, sur mon installation, "vu pour la dernière fois" ne dépasse pas :red:`22 minutes`.
+
 |image1167|
 
 accueil.php, css et table "text_image" concernant cet affichage:
