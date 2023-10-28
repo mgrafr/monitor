@@ -692,7 +692,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
 .. |image872| image:: ../media/image872.webp
    :width: 700px
 .. |image873| image:: ../media/image873.webp
-   :width: 623px
+   :width: 450px
 .. |image875| image:: ../media/image875.webp
    :width: 576px
 .. |image876| image:: ../media/image876.webp
