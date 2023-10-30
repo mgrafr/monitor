@@ -166,6 +166,7 @@ $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
 	if(isset($xxx->{'attributes'}->{'nodeName'}))  $ha[$n]['Name']=$xxx;
 	else if(isset($xxx->{'attributes'}->{'friendly_name'}))  $ha[$n]['Name']=$xxx;
+	else $ha[$n]['Name']="inconnu";
 	$ha[$n]['Description'] = "HA";$ha[$n]['idx'] = "";
 	$ha[$n]['ID'] = $xxx->{'entity_id'};
 	$ha[$n]['Data'] = $xxx->{'state'};//modif 1
@@ -183,7 +184,7 @@ foreach ($lect_device as $xxx){
 	if(isset($xxx->{'attributes'}->{'pressure'})) $ha[$n]['pression'] = $xxx;
 	//if(isset($xxx->{'attributes'}->{'forecast'}->{'friendly_name'})) $ha[$n]['Name'] = $tmp;
 	if(isset($xxx->{'attributes'}->{'device_class'}->{'battery'})) $ha[$n]['BatteryLevel'] =$xxx->{'attributes'}->{'value'};
-	else $ha[$n]['BatteryLevel'] ="";
+	else $ha[$n]['BatteryLevel'] =100;
 		//$tmp=$xxx->{'attributes'}->{'device_class'};if ($tmp) $ha[$n]['device_class'] = $tmp;
 	$ha[$n]['Type'] ="non défini";
 	$n++;
