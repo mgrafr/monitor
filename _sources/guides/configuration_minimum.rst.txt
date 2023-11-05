@@ -1313,7 +1313,7 @@ Créer 2 automatisations :
 
       .. warning::
 
-         C'est cette notification dans un "input_text" que monitor va utiliser pour l'afficher sur son écran d'accueil, et  HA utilisera également cet "input_text" pour la composition des messages .
+         C'est cette notification dans un "input_text" que monitor va utiliser pour l'afficher sur son écran d'accueil, mais pour la composition des messages on va utiliser un fichier qui ne limite pas le texte à 255 caractères.
 
          Les notifications sont redontantes, il suffit de supprimer celles qui ne vous seront pas utiles.
 
@@ -1328,40 +1328,47 @@ Créer 2 automatisations :
    merci à **OzGav** *https://community.home-assistant.io/u/OzGav*, je me suis inspiré de son script et je l'ai simplifié.
 
    .. code-block::
-
+               
       - id: lastseen_alerte_dispositifs
-        alias: LastSeen Alerte Dispositifs
-        trigger:
-        - platform: time
-          at: '14:08:00'
+  	alias: LastSeen Alerte Dispositifs
+  	trigger:
+ 	 - platform: time
+    	     at: '23:11:00'
         condition:
         - condition: template
-          value_template: '{% set ns = namespace(break = false) %} {% for state in states
-            -%} {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
-            > (60 * 20) ) and ns.break == false %}     {%- set ns.break = true %}      true    {%-
-            endif -%} {%- endif -%}{%- endfor %}'
+    	  value_template: '{% set ns = namespace(break = false) %} {% for state in states
+      	  -%} {%- if state.attributes.last_seen %} {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
+      	  > (60 * 25) ) and ns.break == false %} {%- set ns.break = true %} true   {%-
+      	  endif -%} {%- endif -%}{%- endfor %}'
         action:
-        - service: input_text.set_value
-          data_template:
-            entity_id: input_text.essai
-            value: lastseen1#Des dispositifs ont un lastSeen > à {% for state in states
-              -%} {%- if state.attributes.last_seen %}    {%- if (as_timestamp(now()) -
-              as_timestamp(state.attributes.last_seen) > (60 * 20) ) %}    {{ ((as_timestamp(now())
-              - as_timestamp(state.attributes.last_seen)) / (3600)) | round(1) }} heures
-              pour {{ state.name }} {%- endif -%}{%- endif -%}{%- endfor %}
-        - service: persistent_notification.create
-          data:
-            notification_id: not_lastseen
-            title: Lastseen
-            message: '{{ states(''input_text.essai'') }}'
-        - service: notify.email
-          data:
-            title: alerte dispositifs
-            message: '{{ states(''input_text.essai'') }}'
-        - service: notify.mobile_app_RMO_NX1
-          data:
-            message: '{{ states(''input_text.essai'') }}'
-
+      - service: input_text.set_value
+   	  target:
+      	  entity_id: input_text.essai
+    	  data:
+      	    value: "Certains appareils Zigbee n’ont pas été vus dernièrement...\n  {% for
+              state in (expand(states.sensor, states.binary_sensor, states.light, states.switch)
+        	| selectattr('attributes.last_seen', 'defined')) -%}\n    {%- if not (state.name
+       		| regex_search('linkquality|button_fan|update state|voltage|temperature|battery|illuminance'))
+        	%}\n      {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
+        	> (60 * 25) ) %}\n        {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
+        	/ (3600)) | round(1) }} hours ago for {{ state.name }}            \n      {%-
+        	endif -%}\n    {%- endif -%}\n  {%- endfor %}\n"
+      - service: rest_command.domoticz_1
+    	data:
+      	  svalue: "{{ states('input_text.essai') }}"
+      - service: persistent_notification.create
+        data:
+          notification_id: not_lastseen
+          title: Lastseen
+          message: !include message2.yaml
+      - service: notify.email
+    	data:
+      	  title: alerte dispositifs
+          message: !include message2.yaml
+      - service: notify.mobile_app_RMO_NX1
+    	data:
+      	  message: !include message2.yaml
+            
    .. note::
 
       Pour une notification par Email , dans :darkblue:`/config/configuration.yaml`
