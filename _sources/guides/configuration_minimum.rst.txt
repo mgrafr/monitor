@@ -1368,7 +1368,23 @@ Créer 2 automatisations :
       - service: notify.mobile_app_RMO_NX1
     	data:
       	  message: !include message2.yaml
-            
+
+   .. important::
+
+      Le script précédent montre les possibilités pour le texte des messages pour éviter des répétitions;
+
+      Qelques explications : le fichier message2.yaml contient (aux \n remplcé par <br>) près la valeur pour input_text.essai
+
+      |image411|
+
+      Pour la rest_command on utilise la valeur de (et non pour) de input_text.essai
+
+      |image412|
+
+      pour cet essai j'ai crée un dispostif virtuel dans Domoticz appelé "message1" qui reçoit par l'API la valeur de input_text.essai
+
+      |image413|
+      
    .. note::
 
       Pour une notification par Email , dans :darkblue:`/config/configuration.yaml`
@@ -1796,6 +1812,12 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px 
 .. |image259| image:: ../media/image259.webp
    :width: 393px 
+.. |image411| image:: ../media/image411.webp
+   :width: 700px 
+.. |image412| image:: ../media/image412.webp
+   :width: 700px 
+.. |image413| image:: ../media/image413.webp
+   :width: 383px 
 .. |image943| image:: ../media/image943.webp
    :width: 600px 
 .. |image1092| image:: ../media/image1092.webp
