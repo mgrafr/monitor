@@ -66,6 +66,7 @@ define('SERVEUR','localhost');
 define('MOTDEPASSE','PASS_BD');
 define('UTILISATEUR','USER_BD');
 define('DBASE','monitor');
+define('API','false'); // true ou false
 //------Page  Alarmee & Administration------------
 // page Alarme
 define('ON_ALARM',true);// affichage pour utilisation de l'alarme
