@@ -1149,6 +1149,11 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
 
 |image102|
 
+0.12 L'API de monitor
+^^^^^^^^^^^^^^^^^^^^^
+Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
+
+|image407| 
 
 .. |image3| image:: ../media/image3.webp
    :width: 604px
@@ -1354,5 +1359,7 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
    :width: 700px 
 .. |image358| image:: ../media/image358.webp
    :width: 500px 
+.. |image407| image:: ../media/image407.webp
+   :width: 650px 
 .. |image1111| image:: ../media/image1111.webp
    :width: 529px 
