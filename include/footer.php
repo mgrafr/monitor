@@ -70,7 +70,7 @@ maj_services(0);
 var time_maj=<?php echo TEMPSMAJSERVICES;?>;
 var time_maj_al=<?php echo TEMPSMAJSERVICESAL;?>;
 var int_maj=time_maj;
-function maj_services(index){console.log("piles:"+not_piles);		
+function maj_services(index){		
   $.ajax({
     type: "GET",
     dataType: "json",
@@ -101,12 +101,12 @@ function maj_services(index){console.log("piles:"+not_piles);
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){document.getElementById(idt).innerHTML =html[i].Value;}
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){document.getElementById(idt).innerHTML ="";}*/
-	if ((img_serv!="pas image")&&(img_serv!=null)){console.log("image="+img_serv);
-		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){console.log(not_piles_reset);
+	if ((img_serv!="pas image")&&(img_serv!=null)){/*console.log("image="+img_serv);*/
+		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
 			if (img_serv=="none"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 					}
-		else {console.log(not_piles);document.getElementById(not_piles).innerHTML =("erreur : "+idt);
+		else {document.getElementById(not_piles).innerHTML =("erreur : "+idt);
 			  document.getElementById(not_piles_reset).style.display="block";}	
 					}
 					
@@ -166,7 +166,7 @@ function pluie(idx){//var tc=TestConnection_js();
 /*----------------------------------------------------*/	
 var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
 var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
-maj_devices(plan);pp=new Array();
+pp=new Array();maj_devices(plan);
 function maj_devices(plan){
 $.ajax({
     type: "GET",
@@ -178,7 +178,7 @@ $.ajax({
 		if (val.idx=='0'){
 			if (val.jour!=num_jour){aff_date();
 			document.getElementById('tspan7024').innerHTML=jour;mc(1,"#meteo_concept");}}
-		else {
+		else {console.log('ok_deb');
 			var myEle = document.getElementById("cercle_"+val.idm);	
 			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , ";
 				if (myEle){
@@ -187,7 +187,7 @@ $.ajax({
 			else 
 				if (myEle) {myEle.style = "fill-opacity: 0";}		
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {
-				if (val.maj_js=="temp" || val.maj_js=="data") document.getElementById(val.ID1).innerHTML=val.Data;pos=val.Data;
+				if (val.maj_js=="temp" || val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;pos=val.Data;}
 				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {vol=1;pos="On";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && (pos=="On")){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
@@ -197,7 +197,7 @@ $.ajax({
 							console.log("pcent="+pcent+"h="+h);
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((pos=="Off") || (pos=="Closed"))){//console.log(val.ID1,val.idm);
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((pos=="Off") || (pos=="Closed"))){console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_OFF);}}	
@@ -209,6 +209,7 @@ $.ajax({
 				if (al_bat!="" ){document.getElementById(not_piles).innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;
 				document.getElementById(not_piles_reset).style.display="block";}
 					}
+	
 });
 
 setTimeout(maj_devices, tempo_dev, plan); 
@@ -537,11 +538,13 @@ $("#zm").click(function () {
 		});
 
 tempo_devices=<?php echo TEMPO_DEVICES_DZ;?>;
-var idsp=1;if (tempo_devices>14999)	var_sp(idsp);
+var idsp=1;if (tempo_devices>14999)	tempo_devices=5000;
+var_sp(idsp);
 function var_sp(idsp){
-  $.get( "ajax.php?app=data_var&variable=29", function(datas) {
-  var variable_sp = datas;
-  if (variable_sp>0){maj_devices(plan);maj_services(0);maj_variable(29,"variable_sp",0,2);}
+  $.getJSON( "ajax.php?app=data_var&variable=29", function(data) {
+  console.log(data.var_dz);
+  if (data.var_dz=="1"){maj_variable(29,"variable_sp",0,2);maj_devices(plan);maj_services(0);}
+	 if (data.message!="0"){maj_variable('msg',data.message,0,0);maj_services(0);  }
   });
 setTimeout(var_sp, tempo_devices, idsp); 	
 }
@@ -690,7 +693,16 @@ switch (choix) {
 	var5 : $("#fx").val(),
 	var6 : $("#car").val(),		
     };
-break;				
+break;	
+case 3: 
+	var fenetre="amb";
+	var formData = {
+	app :  $("#app").val(),		
+ 	id_txt : $("#id_txt").val(),
+  	nom : $("#nom").val(),	
+	command : $("#command").val(),
+	};
+     break;				
  default:
 break;	
 	}

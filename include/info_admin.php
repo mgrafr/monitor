@@ -1,6 +1,7 @@
 <?php
 $info_admin=array();
 $info_admin = [
+	9 => '<p>Pour mettre à jour automatiquement la base de données SQL , table messages:<br>pour DZ,HA ou autres app, 1 message=1 ID<br><img src="images/info11.webp" style="width:281px;height="auto";margin: 0 10px;" alt=""/></p>',
 	8 => '<p>- Version monitor:  '.$_SESSION["version"].'<br>- Version PHP:      8.2<br>- Version Jpgraph:  4.4.1<br>
 	        - Version Bootstrap: 4.5.2</p>',
 	7 => '<p>Pour mettre à jour automatiquement la base de données SQL à partir :<br>des données de Domoticz ou HA et de Monitor<br><img src="images/info10.webp" style="width:281px;height="auto";margin: 0 10px;" alt=""/></p>',
