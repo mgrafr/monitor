@@ -632,15 +632,17 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 **Ajout à la base de données des données fournie par Domoticz**
 
-0.3.1 Les Tables "dispositifs(variables)" & "text-image"
-========================================================
-	La correspondance entre les variables Domoticz ou HA et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
+0.3.1 Les Tables "dispositifs(variables)" , "text-image" & "messages"
+=====================================================================
+	La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
 
 	- tables :
 
 		.  text-image
 
-		. dispositifs 
+		. dispositifs
+
+		- messages
 
   |image75|
 
@@ -649,7 +651,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 .. admonition:: **quelques explications**
 	
-   Pour un texte contenu dans une variable Domoticz correspond une image ou 0 ou « none »
+   Pour un texte contenu dans une variable  correspond une image ou 0 ou « none »
 
    |image76|
 
@@ -688,6 +690,10 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 . Nom appareil : non obligatoire
 
 .  ID , identity_id  (ha) ; ex : Home Assistant, nom essai, ID input_text.essai
+
+   .. warning::
+
+      **IMPORTANT** : la taille de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
 		 
 |image88|
        
@@ -717,9 +723,9 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
  
      *Ou par Monitor* :
 
-|image82|
+   |image82|
 
-|image83|
+   |image83|
                           
    **Dans monitor, PHP-SSH2**
 
@@ -740,9 +746,26 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    :darkblue:`Le mot de passe peut être ajouté à connect.py`
 
+0.3.1.3 Table messages 
+""""""""""""""""""""""
+|image1179|
 
-*Pourquoi une correspondance ?* :
+Cette table permet avec HA de recevoir des textes supérieur à 255 caractères( Rest_command de HA)  ou à des app tierces d'envoyer à monitor des notifications( par l'API de monitor , voir ce § :ref:`0.12 L’API de monitor`
 
+.. admonition:: **Exemple d'utilisation avec Home Assistant**
+
+   |image1180|
+
+   REST_API :
+
+   .. code-block::
+
+      rest_command:
+        monitor_1:
+          url: "http://192.168.1.9/monitor/api/json.php?app=messages&name=message1&contenu={{svalue}}&maj=1=0"
+
+0.3.1.4 Pourquoi une correspondance ?
+"""""""""""""""""""""""""""""""""""""
 cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
 
 *Installation des tables* : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :
@@ -1363,3 +1386,7 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 650px 
 .. |image1111| image:: ../media/image1111.webp
    :width: 529px 
+.. |image1179| image:: ../media/image1179.webp
+   :width: 548px 
+.. |image1180| image:: ../media/image1180.webp
+   :width: 544px 
