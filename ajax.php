@@ -29,12 +29,13 @@ else if ($app=="upload_img") {$retour = upload_img($variable);echo json_encode($
 else if ($app=="upload_conf_img") {cam_config($name,$command,$variable,$idx,$type); }
 else if ($app=="graph") {graph($device,$variable);}	
 else if ($app=="services") {$retour= status_variables('1');echo json_encode($retour); }
-else if ($app=="maj_var") {$retour=maj_variable($idx,$name,$variable,$type);echo json_encode($retour);}
+else if ($app=="maj_var") {if ($idx=="msg") {require ("api/f_pour_api.php");echo message("",$name,0);}
+						   else {$retour=maj_variable($idx,$name,$variable,$type);echo json_encode($retour);}}
 else if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour);}
 else if ($app=="infos_nagios") {api_nagios($variable);}
 else if ($app=="ecran_spa") {echo file_get_curl($variable);}
-else if ($app=="data_var") {echo val_variable($variable);}
-else if ($app=="dev_bd" || $app=="var_bd") {mysql_app($_GET);}
+else if ($app=="data_var") {$retour= val_variable($variable);echo json_encode($retour);}
+else if ($app=="dev_bd" || $app=="var_bd" || $app=="msg_bd"){mysql_app($_GET);}
 else if ($app=="ha" || $appp=="ha" ) {$retour=devices_zone($device);echo json_encode($retour);}
 else if ($app=="haid") {$retour=devices_id($device,$command);echo json_encode($retour);}
 else if ($app=="shell") {$ip=$variable;include ('include/ssh_scp.php');}

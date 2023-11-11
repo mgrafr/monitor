@@ -34,14 +34,22 @@ curl_close($curl);
 return $retour;
 }
 // valeur d'une variable
-function val_variable($variable){
-$result=array();	
+function val_variable($variable){$value2=0;
+$result=array();$lect_stat_msg=array();$m=0;
 $L=URLDOMOTIC."json.htm?type=command&param=getuservariable&idx=".$variable;
 $json_string = file_get_curl($L);
 $result = json_decode($json_string, true);
 $lect_var = $result['result'][0];
-$value = $lect_var['Value'];	
-return 	$value;
+$value1 = $lect_var['Value'];
+$lect_stat_msg=sql_variable($m,4);
+while ($lect_stat_msg[$m]!=""	){
+if ($lect_stat_msg[$m]['maj']==1) {$value2=$lect_stat_msg[$m]['Name'];break; };
+$m++;}	
+$msg=[
+	'var_dz' => $value1,
+	'message' => $value2
+];								 
+return $msg;
 }
 /*utilisée pour lire les variables de domoticz
 cette fonction permet egalement suivant le contenu de la variable de
@@ -73,7 +81,13 @@ $json_string1=explode(',',$json_string1);
 	$result[$p]=$ha;
 	$n++;$p++;}
   }
-
+if (API=="false"){
+$lect_msg=sql_variable($p,4);//return $lect_msg;
+while ($lect_msg[$p]!=""	){
+$result[$p]=$lect_msg[$p];
+	$p++;	} 
+}
+	
 //--------------	
 $n=0;$vardz=array();$txtimg=array();$t_maj="0";
 			  
@@ -81,11 +95,14 @@ while (isset($result[$n]))
 {
 $lect_var = $result[$n];  
 $idx = isset($lect_var["idx"]) ? $lect_var["idx"] : '';
-$ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';	
+$ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';
+$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';			
 $value = $lect_var['Value'];$content="";
 	if (str_contains($value, '#')) {$tab = explode("#", $value);
 	$value = $tab[0];$content=$tab[1];}
-$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';	
+if ($value=="msg") {$content=$result[$n]['contenu'];
+$id_m_txt = $result[$n]['ID_txt'];$id_m_img="";}
+ else {	
 $type = $lect_var['Type'];
 if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,3);} 
 			else {$a='idx';$vardz = sql_variable($$a,0);}
@@ -99,7 +116,7 @@ $id_m_img = isset($vardz['id1_html']) ? $vardz['id1_html'] : '';
 $txtimg = sql_variable($value,1);
 	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
 	$icone = isset($txtimg['icone']) ? $txtimg['icone'] : '';
-
+ }
 if ($id_m_txt==null) {$id_m_txt = "0";}
 if (isset($id_m_img) && isset($id_m_txt)){
 $data[$n+1] = [	
@@ -141,7 +158,7 @@ function sql_variable($t,$ind){
 	if ($ind==2){$sql="SELECT * FROM `dispositifs` WHERE maj_js='variable';" ;}
 	//if ($ind==0){$sql="SELECT * FROM `variables` WHERE id_var='".$t."' ;" ;}
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
-	//if ($ind==2){$sql="SELECT * FROM `variables` ORDER BY `id_var` DESC;" ;}
+	if ($ind==4){$sql="SELECT * FROM `messages` ;" ;}
 	$result = $conn->query($sql);
 	$row_cnt = $result->num_rows;
 	if ($row_cnt==0) {return  null;}
@@ -152,6 +169,15 @@ function sql_variable($t,$ind){
 			$retour[$n]['id_img'] = $ligne['id1_html'];
 			$retour[$n]['id_txt'] = $ligne['id2_html'];
 			$n++;
+		}return $retour;}
+	if 	($ind==4) {//$n=1;
+		while ($ligne = $result->fetch_assoc()) {
+			$retour[$t]['Name'] = $ligne['nom'];
+			$retour[$t]['ID_txt'] = $ligne['id1_html'];
+			$retour[$t]['contenu'] = $ligne['contenu'];
+			$retour[$t]['maj'] = $ligne['maj'];
+			$retour[$t]['Value'] = "msg";
+			$t++;
 		}return $retour;}
 	else {$row = $result->fetch_assoc();
 	
@@ -932,8 +958,11 @@ case "19" : $retour=sql_variable("",2) ;$n=0;
 break;
 case "20" :$ip=IPRPI;$type=1;include ('include/ssh_scp.php');  echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "reboot Raspberry";
 return;	
+break;
+case "25" :include ('include/ajout_msg_bd.php');//echo "ajout dispositifs effectué";
+		return;	
 break;		
-case "25" :
+case "26" :
 return;	
 break;		
 default:
@@ -1147,6 +1176,13 @@ echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>typ
 //
 maj_query($conn,$sql);			
 break;
+case "3":
+$nom=$data['nom'];$id1_html=$data['id_txt'];$id_txt=$data['id_txt'];
+//
+$sql="INSERT INTO messages (nom,  id1_html, contenu, maj ) VALUES ('$nom', '$id1_html', '', '0');";
+$retour=maj_query($conn,$sql);
+		
+break;		
 }
 $conn->close();		
 return;}
