@@ -6,12 +6,21 @@
 
 19.2 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 2.2.4**
+**La version stable actuelle est 2.2.6**
 
 19.2.1 Releases
 ===============
-Version en développement 2.2.5
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Version  en developpement 2.2.7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version  2.2.6
+~~~~~~~~~~~~~~
+- ajout tableau messages, pour variables HA > 255 caractères ou autres appli
+
+- ajout API monitor
+
+Version  2.2.5
+~~~~~~~~~~~~~~
 - ajout script "lasteen pour home assistant
 
 Version 2.2.4

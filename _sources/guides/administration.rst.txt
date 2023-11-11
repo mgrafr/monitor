@@ -411,8 +411,8 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 
    |image853|
 
-14.8 Explications concernant la mise à jour automatique SQL des variables et dispositifs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14.8 Explications concernant la mise à jour automatique SQL des variables,  dispositifs & messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **admin.php**
 
 :darkblue:`rel=17 et rel=18`
