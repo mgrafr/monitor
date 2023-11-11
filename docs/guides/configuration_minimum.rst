@@ -230,6 +230,8 @@ Principales fonctions contenues dans ce fichier :
 
    Pour récupérer les valeurs des variables de Domoticz et HA
 
+   |image1181|
+
    |image135|
 
    |image136|
@@ -1898,3 +1900,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 550px 
 .. |image1177| image:: ../media/image1177.webp
    :width: 530px 
+.. |image1181| image:: ../media/image1181.webp
+   :width: 650px 
