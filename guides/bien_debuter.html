@@ -73,9 +73,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees-maria-db">0.3 _ Base de données Maria DB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#les-tables-dispositifs-variables-text-image">0.3.1 Les Tables « dispositifs(variables) » &amp; « text-image »</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#les-tables-dispositifs-variables-text-image-messages">0.3.1 Les Tables « dispositifs(variables) » , « text-image » &amp; « messages »</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#table-text-image">0.3.1.1 Table text-image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#table-dispositifs-pour-les-variables">0.3.1.2 Table dispositifs pour les variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table-messages">0.3.1.3 Table messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pourquoi-une-correspondance">0.3.1.4 Pourquoi une correspondance ?</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#les-dispositifs">0.3.2 Les Dispositifs</a></li>
@@ -620,16 +622,19 @@ function mc(variable,id){
 <p>plus d’info sur test_db.php <a class="reference internal" href="administration.html#admin-php-info-admin-php-test-db-php-et-backup-bd"><span class="std std-ref">14.2 admin.php, info_admin.php, test_db.php et backup_bd</span></a></p>
 </div>
 <p><strong>Ajout à la base de données des données fournie par Domoticz</strong></p>
-<div class="section" id="les-tables-dispositifs-variables-text-image">
-<h3>0.3.1 Les Tables « dispositifs(variables) » &amp; « text-image »<a class="headerlink" href="#les-tables-dispositifs-variables-text-image" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="les-tables-dispositifs-variables-text-image-messages">
+<h3>0.3.1 Les Tables « dispositifs(variables) » , « text-image » &amp; « messages »<a class="headerlink" href="#les-tables-dispositifs-variables-text-image-messages" title="Lien permanent vers ce titre"></a></h3>
 <blockquote>
 <div><blockquote>
-<div><p>La correspondance entre les variables Domoticz ou HA et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ;</p>
+<div><p>La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ;</p>
 <ul>
 <li><p>tables :</p>
 <blockquote>
 <div><p>.  text-image</p>
 <p>. dispositifs</p>
+<ul class="simple">
+<li><p>messages</p></li>
+</ul>
 </div></blockquote>
 </li>
 </ul>
@@ -640,7 +645,7 @@ function mc(variable,id){
 <h4>0.3.1.1 Table text-image<a class="headerlink" href="#table-text-image" title="Lien permanent vers ce titre"></a></h4>
 <div class="admonition-quelques-explications admonition">
 <p class="admonition-title"><strong>quelques explications</strong></p>
-<p>Pour un texte contenu dans une variable Domoticz correspond une image ou 0 ou « none »</p>
+<p>Pour un texte contenu dans une variable  correspond une image ou 0 ou « none »</p>
 <p><a class="reference internal" href="../_images/image76.webp"><img alt="image76" src="../_images/image76.webp" style="width: 598px;" /></a></p>
 <p>ex: le texte « poubelle jaune » dans la variable poubelle aura un alias : l’image d’une poubelle jaune</p>
 </div>
@@ -674,6 +679,12 @@ function mc(variable,id){
 </dl>
 <p>. Nom appareil : non obligatoire</p>
 <p>.  ID , identity_id  (ha) ; ex : Home Assistant, nom essai, ID input_text.essai</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>IMPORTANT</strong> : la taille de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)</p>
+</div>
+</div></blockquote>
 <p><a class="reference internal" href="../_images/image88.webp"><img alt="image88" src="../_images/image88.webp" style="width: 408px;" /></a></p>
 <div class="admonition-un-exemple-bash-concret-redemarrer-un-script-apres-modifications admonition">
 <p class="admonition-title"><strong>un exemple bash concret : redémarrer un script après modifications</strong></p>
@@ -695,11 +706,9 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <blockquote>
 <div><p><em>Ou par Monitor</em> :</p>
 </div></blockquote>
-</div>
 <p><a class="reference internal" href="../_images/image82.webp"><img alt="image82" src="../_images/image82.webp" style="width: 296px;" /></a></p>
 <p><a class="reference internal" href="../_images/image83.webp"><img alt="image83" src="../_images/image83.webp" style="width: 401px;" /></a></p>
-<blockquote>
-<div><p><strong>Dans monitor, PHP-SSH2</strong></p>
+<p><strong>Dans monitor, PHP-SSH2</strong></p>
 <p>raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php</p>
 <p>Extrait du fichier :</p>
 <p><a class="reference internal" href="../_images/image85.webp"><img alt="image85" src="../_images/image85.webp" style="width: 650px;" /></a></p>
@@ -714,8 +723,25 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 </div>
 </div></blockquote>
 <p><span class="darkblue">Le mot de passe peut être ajouté à connect.py</span></p>
-</div></blockquote>
-<p><em>Pourquoi une correspondance ?</em> :</p>
+</div>
+</div>
+<div class="section" id="table-messages">
+<h4>0.3.1.3 Table messages<a class="headerlink" href="#table-messages" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image1179.webp"><img alt="image1179" src="../_images/image1179.webp" style="width: 548px;" /></a></p>
+<p>Cette table permet avec HA de recevoir des textes supérieur à 255 caractères( Rest_command de HA)  ou à des app tierces d’envoyer à monitor des notifications( par l’API de monitor , voir ce § <span class="xref std std-ref">0.12 L’API de monitor</span></p>
+<div class="admonition-exemple-d-utilisation-avec-home-assistant admonition">
+<p class="admonition-title"><strong>Exemple d’utilisation avec Home Assistant</strong></p>
+<p><a class="reference internal" href="../_images/image1180.webp"><img alt="image1180" src="../_images/image1180.webp" style="width: 544px;" /></a></p>
+<p>REST_API :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rest_command</span><span class="p">:</span>
+  <span class="n">monitor_1</span><span class="p">:</span>
+    <span class="n">url</span><span class="p">:</span> <span class="s2">&quot;http://192.168.1.9/monitor/api/json.php?app=messages&amp;name=message1&amp;contenu={{svalue}}&amp;maj=1=0&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pourquoi-une-correspondance">
+<h4>0.3.1.4 Pourquoi une correspondance ?<a class="headerlink" href="#pourquoi-une-correspondance" title="Lien permanent vers ce titre"></a></h4>
 <p>cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor</p>
 <p><em>Installation des tables</em> : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :</p>
 <p><a class="reference internal" href="../_images/image89.webp"><img alt="image89" src="../_images/image89.webp" style="width: 413px;" /></a></p>
