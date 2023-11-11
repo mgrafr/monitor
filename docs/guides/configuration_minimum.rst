@@ -1701,7 +1701,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image154| image:: ../media/image154.webp
    :width: 250px  
 .. |image155| image:: ../media/image155.webp
-   :width: 581px  
+   :width: 700px  
 .. |image156| image:: ../media/image156.webp
    :width: 378px  
 .. |image157| image:: ../media/image157.webp
