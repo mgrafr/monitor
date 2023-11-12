@@ -750,7 +750,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 """"""""""""""""""""""
 |image1179|
 
-Cette table permet avec HA de recevoir des textes supérieur à 255 caractères( Rest_command de HA)  ou à des app tierces d'envoyer à monitor des notifications( par l'API de monitor , voir ce § :ref:`0.12 L’API de monitor`
+Cette table permet avec HA de recevoir des textes supérieur à 255 caractères( Rest_command de HA)  ou à des app tierces d'envoyer à monitor des notifications( par l'API de monitor , voir ce § :ref:`0.12 API de monitor`
 
 .. admonition:: **Exemple d'utilisation avec Home Assistant**
 
@@ -1172,8 +1172,8 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
 
 |image102|
 
-0.12 L'API de monitor
-^^^^^^^^^^^^^^^^^^^^^
+0.12 API de monitor
+^^^^^^^^^^^^^^^^^^^
 Pour l'utiliser, dans admin/config.php: :darkblue:`mettre sur true`
 
 |image118
