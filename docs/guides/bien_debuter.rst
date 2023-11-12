@@ -1174,6 +1174,10 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
 
 0.12 L'API de monitor
 ^^^^^^^^^^^^^^^^^^^^^
+Pour l'utiliser, dans admin/config.php: :darkblue:`mettre sur true`
+
+|image118
+
 Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
 |image407| 
@@ -1378,6 +1382,8 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 203px 
 .. |image116| image:: ../media/image116.webp
    :width: 293px 
+.. |image118| image:: ../media/image116.webp
+   :width: 449px 
 .. |image143| image:: ../media/image143.webp
    :width: 700px 
 .. |image358| image:: ../media/image358.webp
