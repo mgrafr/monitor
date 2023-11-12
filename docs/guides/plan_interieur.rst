@@ -274,7 +274,7 @@ Un href, un id, un titre et un onclick avec un id (idm ou idx) ; option choisie 
 
 2.2.2 Ajout de caméras
 ======================
-Comme il n’existe pas d’idx Domoticz, nous réserverons la plage >= 10 000 pour cela ; 
+Comme il n’existe pas d’idx Domoticz pour les caméras , il n'y aura pas de confusion à utilser "idx" pour identifier les caméras; nous réserverons la plage >= 10 000 pour cela ; 
 
 cette valeur peut être modifiée, voir :ref:`2.2.1 Ajout du détecteur de fumée :`
 
@@ -811,12 +811,51 @@ Le script JS dans le fichier footer.php, déjà vu précédemment :
 ========================
 Voir un exemple dans le paragraphe :ref:`4.1.1 Ajouter des lampes`,  consacré à l’extérieur de la maison, les lampe de jardin
 
-2.3.6 ajouter un capteur de T° extérieur Zigbee
+2.3 6 ajouter une prise
+=======================
+|image430|
+
+Les prises sont commandées depuis le mur de commandes et la visualisation de la position (on off) est aussi visible sue le plan intérieur
+
+**Extrait du script dans** :darkblue:`mur_inter.php`
+
+|image461|
+
+**L'image SVG enregistrées dans en PHP**
+
+.. code-block::
+
+   <svg version="1.1" id="sw11" width="70" height="70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 70 70">
+   <a href="#murinter"	><path class="prise_bureau_imp" d="M33.7,5c-4.9,0.5-10.1,2.6-14.1,5.7c-1.5,1.2-3.8,3.5-5,5c-5.2,6.7-7.3,15.4-5.6,23.9
+	c1.6,8,6.4,15,13.3,19.1c2.3,1.4,5.5,2.8,6.5,2.8c1.6,0,3-1.7,2.7-3.2c-0.2-1.3-0.8-1.8-2.6-2.5c-3.3-1.3-5.8-2.9-8.1-5.3
+	c-3.4-3.4-5.4-7.2-6.4-11.8c-1.9-9.3,1.9-19,9.6-24.3c11.5-8,27.2-3.6,33.3,9.2C61.2,32,60,42,54,49c-2.6,3.1-7.2,5.9-9.6,5.9
+	c-3,0-4.9-3.4-5.2-9.4l-0.1-1.7l1.2-0.2c1.9-0.4,3.3-1.1,4.7-2.6c0.9-0.9,1.3-1.5,1.7-2.3c0.9-1.8,0.9-2.3,0.9-7.9v-5H36.7H25.6
+	v5c0,5.6,0,6.1,0.9,7.8c1.2,2.5,3.4,4.2,6.1,4.8l1.2,0.3l0.1,1.9c0.4,7.8,3.1,12.7,7.8,14.3c1.5,0.5,4,0.5,5.6,0.1
+	c2.9-0.9,7.2-3.5,9.7-6.1c8.4-8.5,10.5-22.2,5.1-33.1C56.8,10.1,45.5,3.7,33.7,5z"/>
+	<path class="st0" d="M30,16.4c-0.2,0.1-0.5,0.4-0.6,0.5c-0.1,0.2-0.1,1.5-0.1,3.7v3.4h2h2v-3.5c0-3.8,0-3.9-0.8-4.3
+	C31.9,16,30.6,16.1,30,16.4z"/>
+	<path class="st0" d="M40.8,16.4c-0.2,0.1-0.5,0.4-0.6,0.5c-0.1,0.2-0.1,1.5-0.1,3.7v3.4h2h2v-3.5c0-3.8,0-3.9-0.8-4.3C42.7,16,41.4,16.1,40.8,16.4z"/>
+   <rect x="5" y="-0.2" class="st59" width="70" height="68"/>
+	<text transform="matrix(0.8406 0 0 1 0 61.5324)" class="st50 st51a">Lampe Bureau</text></a>
+   </svg>
+
+|image462|
+
+**Dans la BD SQL** :
+
+|image463|
+
+**Extrait de new_maison_svg.php** , image du plan intérieur:
+
+|image470|
+
+2.3.7 ajouter un capteur de T° extérieur Zigbee
 ===============================================
 
 |image346|
 
-2.3.6.1 Le capteur dans Domoticz
+2.3.7.1 Le capteur dans Domoticz
 """"""""""""""""""""""""""""""""
 
 |image347|
@@ -827,14 +866,14 @@ Voir un exemple dans le paragraphe :ref:`4.1.1 Ajouter des lampes`,  consacré �
 
 |image349|
 
-2.3.6.2 Le capteur dans la BD
+2.3.7.2 Le capteur dans la BD
 =============================
 
 |image350|
 
 On a choisi de limiter le nb de caractère à 4, à l’origine : |image351|
 
-2.3.6.3 Le capteur dans Monitor
+2.3.7.3 Le capteur dans Monitor
 ===============================
 
 **L’image** :
@@ -1253,6 +1292,16 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9para
    :width: 615px 
 .. |image365| image:: ../media/image365.webp
    :width: 451px 
+.. |image430| image:: ../media/image430.webp
+   :width: 508px 
+.. |image461| image:: ../media/image461.webp
+   :width: 650px 
+.. |image462| image:: ../media/image462.webp
+   :width: 650px 
+.. |image463| image:: ../media/image463.webp
+   :width: 650px
+.. |image470| image:: ../media/image470.webp
+   :width: 700px 
 .. |image1178| image:: ../media/image1178.webp
    :width: 548px 
 
