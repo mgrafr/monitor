@@ -14,7 +14,7 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), mo
 
 - 	    installation uniquement de monitor (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 
--	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.3.tar.gz
+-	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.6.tar.gz
 
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
