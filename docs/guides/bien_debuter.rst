@@ -826,8 +826,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - maj_js : types de mise à jour java script
 	-	control // détecteur présence(on/off)
 	-	etat  //porte, volet ,(closed/open)
-	-	Temp ou data // température, humidité, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est préférable d’utiliser « data »
+	-	temp ou data // température, température + humidité, 
+	-       temp ou data // température, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est préférable d’utiliser « data »
 
+	|image473|
+         
 	|image93| 
 
 	|image94| 
@@ -1390,6 +1393,8 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 500px 
 .. |image407| image:: ../media/image407.webp
    :width: 650px 
+.. |image473| image:: ../media/image473.webp
+   :width: 578px 
 .. |image1111| image:: ../media/image1111.webp
    :width: 529px 
 .. |image1179| image:: ../media/image1179.webp
