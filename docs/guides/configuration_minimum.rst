@@ -1713,7 +1713,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image160| image:: ../media/image160.webp
    :width: 650px  
 .. |image161| image:: ../media/image161.webp
-   :width: 602px 
+   :width: 700px 
 .. |image162| image:: ../media/image162.webp
    :width: 621px  
 .. |image163| image:: ../media/image163.webp
