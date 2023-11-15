@@ -1,5 +1,5 @@
-8. MUR de COMMANDES ON/OFF
---------------------------
+8. MUR de COMMANDES
+-------------------
 
 |image574|
 
@@ -237,7 +237,7 @@ Les images pour lampe de bureau :
 |image618| |image619|
     
 8.2.4 Exemple volet roulant
-=============================
+===========================
 *Le moteur est à 4 fils, piloté par une commande TUYA FT30F et Zigbee2mqtt*
 
 |image620|
@@ -454,9 +454,28 @@ L'envoi des données doit être un tableau json
 
 |image652|
 
+8.3 les Groupes et Scenes
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+exemples avec des groupes et scènes simples
+
+Le dispositif de commande (bouton virtuel) est enregistré dans la base de données de la même façon  que tous les dispositifs;pour différencier ce fonctionnement l' idm du dispositif commencera par :
+
+- G: pour groupe
+
+- S: pour scène
+
+8.3.1 Exemple avec Domoticz
+===========================
+le groupe "Allumage Jardin ALL"
+
+|image474|
+
 
 .. |paho| image:: ../images/paho.png
    :width: 100px
+.. |image474| image:: ../media/image474.webp
+   :width: 524px
 .. |image574| image:: ../media/image574.webp
    :width: 528px
 .. |image575| image:: ../media/image575.webp
