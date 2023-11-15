@@ -465,21 +465,31 @@ Le dispositif de commande (bouton virtuel) est enregistré dans la base de donn�
 
 - S: pour scène
 
+|image475|
+
 8.3.1 Exemple avec Domoticz
 ===========================
 le groupe "Allumage Jardin ALL"
 
 |image474|
 
+le bouton virtuel est ajouté au plan qui regroupe tous les dispositifs, il est ajouté au fichier Json que reçoit monitor:
+
+|image478|
+
 
 .. |paho| image:: ../images/paho.png
    :width: 100px
 .. |image474| image:: ../media/image474.webp
    :width: 524px
+.. |image475| image:: ../media/image475.webp
+   :width: 524px
+.. |image478| image:: ../media/image478.webp
+   :width: 382px
 .. |image574| image:: ../media/image574.webp
    :width: 528px
 .. |image575| image:: ../media/image575.webp
-   :width: 629px
+   :width: 396px
 .. |image580| image:: ../media/image580.webp
    :width: 700px
 .. |image582| image:: ../media/image582.webp
