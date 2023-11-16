@@ -483,13 +483,13 @@ le bouton virtuel est ajouté au plan qui regroupe tous les dispositifs, il est 
 .. |image474| image:: ../media/image474.webp
    :width: 524px
 .. |image475| image:: ../media/image475.webp
-   :width: 524px
+   :width: 396px
 .. |image478| image:: ../media/image478.webp
    :width: 382px
 .. |image574| image:: ../media/image574.webp
    :width: 528px
 .. |image575| image:: ../media/image575.webp
-   :width: 396px
+   :width: 629px
 .. |image580| image:: ../media/image580.webp
    :width: 700px
 .. |image582| image:: ../media/image582.webp
