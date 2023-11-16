@@ -456,6 +456,7 @@ L'envoi des données doit être un tableau json
 
 8.3 les Groupes et Scenes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+|image493|
 
 exemples avec des groupes et scènes simples
 
@@ -477,6 +478,9 @@ le bouton virtuel est ajouté au plan qui regroupe tous les dispositifs, il est 
 
 |image478|
 
+Comme pour tous les dispositifs ON/OFF le Jquery est écrit automatiquement dans le HTML
+
+|image492|
 
 .. |paho| image:: ../images/paho.png
    :width: 100px
@@ -486,6 +490,10 @@ le bouton virtuel est ajouté au plan qui regroupe tous les dispositifs, il est 
    :width: 396px
 .. |image478| image:: ../media/image478.webp
    :width: 382px
+.. |image492| image:: ../media/image492.webp
+   :width: 557px
+.. |image493| image:: ../media/image493.webp
+   :width: 450px
 .. |image574| image:: ../media/image574.webp
    :width: 528px
 .. |image575| image:: ../media/image575.webp
