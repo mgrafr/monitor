@@ -482,6 +482,13 @@ Comme pour tous les dispositifs ON/OFF le Jquery est écrit automatiquement dans
 
 |image492|
 
+8.3.1 Exemple avec Home Assistant
+=================================
+le groupe "Allumage_Jardin_ALL"
+
+|image494|
+
+
 .. |paho| image:: ../images/paho.png
    :width: 100px
 .. |image474| image:: ../media/image474.webp
@@ -494,6 +501,8 @@ Comme pour tous les dispositifs ON/OFF le Jquery est écrit automatiquement dans
    :width: 557px
 .. |image493| image:: ../media/image493.webp
    :width: 450px
+.. |image494| image:: ../media/image494.webp
+   :width: 339px
 .. |image574| image:: ../media/image574.webp
    :width: 528px
 .. |image575| image:: ../media/image575.webp
