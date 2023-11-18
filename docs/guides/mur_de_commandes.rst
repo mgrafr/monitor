@@ -492,6 +492,11 @@ Contrairement à Domoticz l'extinction des lampes commandées par un interrupteu
 
 |image494|
 
+|image495|
+
+Comme pour DZ, on enregistre la commande dans la base de données; les données sont pour la plupart les même puisque les lampes sont les mêmes
+
+|image496|
 
 .. |paho| image:: ../images/paho.png
    :width: 100px
@@ -507,6 +512,10 @@ Contrairement à Domoticz l'extinction des lampes commandées par un interrupteu
    :width: 450px
 .. |image494| image:: ../media/image494.webp
    :width: 650px
+.. |image495| image:: ../media/image495.webp
+   :width: 399px
+.. |image496| image:: ../media/image496.webp
+   :width: 421px
 .. |image574| image:: ../media/image574.webp
    :width: 528px
 .. |image575| image:: ../media/image575.webp
