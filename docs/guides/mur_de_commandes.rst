@@ -472,6 +472,8 @@ Le dispositif de commande (bouton virtuel) est enregistré dans la base de donn�
 ===========================
 le groupe "Allumage Jardin ALL"
 
+Pur chaque interrupteur qui peut commander plusieurs lampes, il est possible d'ajouter une extinction personnalisée. 
+
 |image474|
 
 le bouton virtuel est ajouté au plan qui regroupe tous les dispositifs, il est ajouté au fichier Json que reçoit monitor:
@@ -484,7 +486,9 @@ Comme pour tous les dispositifs ON/OFF le Jquery est écrit automatiquement dans
 
 8.3.1 Exemple avec Home Assistant
 =================================
-le groupe "Allumage_Jardin_ALL"
+le groupe "Lumieres_jardin"
+
+Contrairement à Domoticz l'extinction des lampes commandées par un interrupteur, provoque également l'extinction des lampes des autres interrupteurs du groupe.
 
 |image494|
 
@@ -502,7 +506,7 @@ le groupe "Allumage_Jardin_ALL"
 .. |image493| image:: ../media/image493.webp
    :width: 450px
 .. |image494| image:: ../media/image494.webp
-   :width: 339px
+   :width: 650px
 .. |image574| image:: ../media/image574.webp
    :width: 528px
 .. |image575| image:: ../media/image575.webp
