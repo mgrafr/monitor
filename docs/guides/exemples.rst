@@ -1,9 +1,9 @@
 15. EXEMPLES
 ------------
 15.1 ajout d’un dispositif
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- **Ajout d’un contact de porte supplémentaire**
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+15.1.1 Ajout d’un contact de porte supplémentaire
+=================================================
 |image878|
 
 Dans Domoticz le dispositif est ajouté au plan :
@@ -12,8 +12,8 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 |image880|
 
-15.1.1 Modifier l’image
-=======================
+15.1.1.1 Modifier l’image
+"""""""""""""""""""""""
 -	*On effectue (avec Notepad par exemple) une sauvegarde de l’image* 
 
 |image881|
@@ -38,13 +38,13 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 |image887|
 
-15.1.2 Dans la Base de données SQL
+15.1.1.2 Dans la Base de données SQL
 ==================================
 *Insérer le dispositif dans la table « dispositifs »*
 
 |image888|
 
-15.1.3 Dans le fichier PHP de l’image 
+15.1.1.3 Dans le fichier PHP de l’image 
 =====================================
 *On ajoute un onclick pour l’affichage des propriétés*
 
@@ -76,7 +76,22 @@ Avec F12 du navigateur ajuster la position
 
 |image893| |image894|
 
-15.2 Réinitialisation des dispositifs dans Domoticz
+15.2 Ajout d'une commande ON-OFF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A partir d'une prise ce courant Zigbee pour alimenter le seche-serviette de la SDB.
+
+|image498|
+
+La prise Zigbee dans Domoticz:
+
+|image499|
+
+La prise Zigbee dans Home Assistant
+
+|image505|
+
+
+15.3 Réinitialisation des dispositifs dans Domoticz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. note:: **Exemple** 
 
@@ -107,9 +122,14 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
 
 
 
-
+.. |image498| image:: ../media/image498.webp
+   :width: 400px
+.. |image499| image:: ../media/image499.webp
+   :width: 400px
+.. |image505| image:: ../media/image505.webp
+   :width: 400px
 .. |image878| image:: ../media/image878.webp
-   :width: 382px
+   :width: 350px
 .. |image879| image:: ../media/image879.webp
    :width: 348px
 .. |image880| image:: ../media/image880.webp
