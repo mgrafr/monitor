@@ -90,6 +90,21 @@ La prise Zigbee dans Home Assistant
 
 |image505|
 
+L'image SVG du seche-serviette:
+
+|image607|
+
+On possède maintenant les élément pour enregistrer la prise dans la base SQL:
+
+|image506|
+
+On ajoute le dispositif sur le MUR de Commandes , entre les balises <ul> ...>/ul> :
+
+.. code-block::
+
+   <li style="margin-left:150px;margin-top:-660px"><a href="#murinter"><?php include ("seche-serviettes_svg.php");?></li>
+
+
 
 15.3 Réinitialisation des dispositifs dans Domoticz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
