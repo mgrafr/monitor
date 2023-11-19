@@ -147,6 +147,8 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 400px
 .. |image505| image:: ../media/image505.webp
    :width: 400px
+.. |image506| image:: ../media/image506.webp
+   :width: 413px
 .. |image607| image:: ../media/image607.webp
    :width: 700px
 .. |image608| image:: ../media/image608.webp
