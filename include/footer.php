@@ -186,8 +186,9 @@ $.ajax({
 					else {myEle.style = "fill-opacity: 1;fill: red";}}}
 			else 
 				if (myEle) {myEle.style = "fill-opacity: 0";}		
-			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {
-				if (val.maj_js=="temp" || val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;pos=val.Data;}
+			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {pos=val.Data;
+				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
+				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}
 				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {vol=1;pos="On";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && (pos=="On")){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
@@ -238,6 +239,7 @@ rr=new Array();
 	  if ((command=="On")||(command=="Off")){type=2;}
 	  else if (command.substring(0, 9)=="Set Level") {type=3;var pourcent = command.split(" ");level=pourcent[2];}
 	  else {type=1;}
+		console.log("IDM="+idm)  
 	  if (pp[idm].Data == "On") {command="Off";}
      								  
 	    $.ajax({
@@ -370,6 +372,13 @@ $("#btn_g").trigger("click");
 graph(device,variable,"graphic");
         });
 /*--------------fin graphiques------------------------*/
+/*scenes---------------------------------------*/
+$('#btn_scenes').on('click', function() { 
+$("#btn_sc").trigger("click");
+//scenes(device,variable,"scenes");
+        });
+/*--------------fin graphiques------------------------*/	
+	
 /*zoom*/
 <?php 
 if (ON_MUR==false) echo "/*";?>
