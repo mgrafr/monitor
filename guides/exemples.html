@@ -180,6 +180,16 @@
 <p><a class="reference internal" href="../_images/image499.webp"><img alt="image499" src="../_images/image499.webp" style="width: 400px;" /></a></p>
 <p>La prise Zigbee dans Home Assistant</p>
 <p><a class="reference internal" href="../_images/image505.webp"><img alt="image505" src="../_images/image505.webp" style="width: 400px;" /></a></p>
+<p>L’image SVG du seche-serviette:</p>
+<p><a class="reference internal" href="../_images/image607.webp"><img alt="image607" src="../_images/image607.webp" style="width: 700px;" /></a></p>
+<p>On possède maintenant les élément pour enregistrer la prise dans la base SQL:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|image506|</span></a></p>
+<p>On ajoute le dispositif sur le MUR de Commandes , entre les balises &lt;ul&gt; …&gt;/ul&gt; :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;li style=&quot;margin-left:150px;margin-top:-660px&quot;&gt;&lt;a href=&quot;#murinter&quot;&gt;&lt;?php include (&quot;seche-serviettes_svg.php&quot;);?&gt;&lt;/li&gt;
+</pre></div>
+</div>
+<p>Pour avoir un retour en temps réel d’un changement de position de la prise ( ajout temporisation, mise à jour lors de l’extinction,etc,…), on ajoute dans le script LUA concernant les devices:</p>
+<p><a class="reference internal" href="../_images/image608.webp"><img alt="image608" src="../_images/image608.webp" style="width: 700px;" /></a></p>
 </div>
 <div class="section" id="reinitialisation-des-dispositifs-dans-domoticz">
 <h2>15.3 Réinitialisation des dispositifs dans Domoticz<a class="headerlink" href="#reinitialisation-des-dispositifs-dans-domoticz" title="Lien permanent vers ce titre"></a></h2>
