@@ -689,6 +689,8 @@ Importer sur Github le fichier complet : https://raw.githubusercontent.com/mgraf
 
 |image778|
 
+Complément d'informations : § :ref:`18.5 Données compteur Linky`
+
 - **L’image svg**
 
 .. code-block::
