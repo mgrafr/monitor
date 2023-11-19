@@ -1,9 +1,9 @@
 <?php
 //session_start();
 $domaine=$_SESSION["domaine"];
-if ($domaine==URLMONITOR) $lien_img="";
-if ($domaine==IPMONITOR) $lien_img="/monitor";
-else $lien_img="/monitor";
+if ($domaine==URLMONITOR) $lien_img="/";
+if ($domaine==IPMONITOR) $lien_img="/monitor/";
+
 ?>
 <!-- section Mur OnOff-->
 <!-- ================ -->
@@ -41,24 +41,28 @@ client.connect(options);//connect
 		<div id="murinter" class="inter">
 			<div class="container">
 		<div class="col-md-12" >
-	  <h1 class="title_ext text-center">Mur<span>  Commandes M/A</span></h1>
-		<p class="txt_ext">certaines commandes peuvent éxiger,<br>
-				un mot de passe</p>	
+	  <h1 class="title_ext text-center">Mur de<span>  Commandes</span></h1>
+		<p class="txt_ext">certaines commandes peuvent éxiger un mot de passe</p>
+		<div><button type="button" id="btn_sc" class="btn btn-primary" data-toggle="modal" data-target="#choix_scenes">
+    Commandes SCENES
+  </button></div>	
+			
 		<ul>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>/images/lampe_sejour.svg" width="60" height="auto" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>/images/lampe_entree.svg" width="60" height="40" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>/images/lampe_salon.svg" width="60" height="40" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>/images/lampe_bureau.svg" width="60" height="60" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw1" src="<?php echo $lien_img;?>/images/lampe_poele.svg" width="60" height="60" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>images/lampe_entree.svg" width="60" height="40" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>images/lampe_salon.svg" width="60" height="40" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/></a><?php include("cordon_prise_bureau_svg.php");?>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw1" src="<?php echo $lien_img;?>images/lampe_poele.svg" width="60" height="60" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><?php include ("volet-roulant_svg.php");?></li>
-			<li style="margin-left:0;margin-top:10px"><img id="sw6" src="<?php echo $lien_img;?>/images/porte_garage.svg" width="60" height="auto" alt=""/></li>
+			<li style="margin-left:0;margin-top:10px"><img id="sw6" src="<?php echo $lien_img;?>images/porte_garage.svg" width="60" height="auto" alt=""/></li>
 			
-			<li style="margin-left:0;margin-top:10px"><img id="sw7" src="<?php echo $lien_img;?>/images/portail.svg" width="60" height="60" alt=""/></li>
+			<li style="margin-left:0;margin-top:10px"><img id="sw7" src="<?php echo $lien_img;?>images/portail.svg" width="60" height="60" alt=""/></li>
 			
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw8" src="<?php echo $lien_img;?>/images/arrosage.svg" width="60" height="auto" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw8" src="<?php echo $lien_img;?>images/arrosage.svg" width="60" height="auto" alt=""/></a></li>
 			
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>/images/lampe_jardin.svg" width="60" height="auto" alt=""/></a></li>
-			<li style="margin-left:300px;margin-top:-650px"><a href="#murinter"><img id="sw10" src="<?php echo $lien_img;?>/images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="60" height="auto" alt=""/></a></li>
+<li style="margin-left:150px;margin-top:-660px"><a href="#murinter"><?php include ("seche-serviettes_svg.php");?></li>
+<li style="margin-left:140px;margin-top:-415px"><a href="#murinter"><img id="sw10" src="<?php echo $lien_img;?>images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
 		</ul>
 </div>
 </div></div>
@@ -78,3 +82,14 @@ client.connect(options);//connect
 		<a class="closeBtn" href="javascript:void(0)">X</a>
     </div>
   </div>
+ <!-- modal parametres-->
+<div class="modal" id="choix_scenes">
+  <div class="modal-dialog" style="height:auto">
+    <div class="modal-content modal_param choix_scenes" >
+      
+        <h4 class="modal-title">choix des scènes</h4><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	<ul style="background-color: #b3e5d4;">
+<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sc1" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="40" height="auto" alt=""/>toutes les lampes</a></li></ul>
+     	 </div>
+     </div>
+  </div>  
