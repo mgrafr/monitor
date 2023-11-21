@@ -593,7 +593,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 460px 
 .. |image788| image:: ../media/image788.webp
    :width: 605px
-.. |image789| image:: ../media/image788.webp
+.. |image789| image:: ../media/image789.webp
    :width: 375px 
 .. |image794| image:: ../media/image794.webp
    :width: 630px 
