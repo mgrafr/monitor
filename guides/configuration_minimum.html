@@ -52,8 +52,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#b-pour-les-titres-slogans-et-lexique">1.1.1.b Pour les titres, slogans et lexique</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#intervalles-de-maj-maj-temps-reel">1.1.2 intervalles de maj, maj temps réel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#autres-donnees">1.1.3 Autres données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intervalles-de-maj">1.1.2 intervalles de maj</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maj-en-temps-reel">1.1.3 maj en temps réel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#solution-semi-temps-reel">1.1.3.1 Solution semi temps réel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-temps-reel-mqtt">1.1.3.2 Solution temps réel MQTT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autres-donnees">1.1.4 Autres données</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#les-fichiers-php-les-styles-le-javascript">1.2     - Les fichiers PHP, les styles, le javascript</a><ul>
@@ -257,8 +262,8 @@ possible de préparer le transfert ; ici la table dispositifs a été renommée 
 </div>
 </div>
 </div>
-<div class="section" id="intervalles-de-maj-maj-temps-reel">
-<h3>1.1.2 intervalles de maj, maj temps réel<a class="headerlink" href="#intervalles-de-maj-maj-temps-reel" title="Lien permanent vers ce titre"></a></h3>
+<div class="section" id="intervalles-de-maj">
+<h3>1.1.2 intervalles de maj<a class="headerlink" href="#intervalles-de-maj" title="Lien permanent vers ce titre"></a></h3>
 <p>L’intervalle de mise à jour pour les services (poubelles, anniversaires,…) : il est de ½ heure (1800000 milli secondes), il peut être changé</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">interval</span> <span class="n">de</span> <span class="n">maj</span> <span class="n">des</span> <span class="n">fonctions</span> <span class="n">JS</span> <span class="n">maj_services</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">maj_devices</span><span class="p">()</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPSMAJSERVICES&#39;</span><span class="p">,</span> <span class="mi">1800000</span><span class="p">);</span><span class="o">//</span><span class="n">interval</span> <span class="n">maj</span> <span class="n">services</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
@@ -269,11 +274,32 @@ possible de préparer le transfert ; ici la table dispositifs a été renommée 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em>TEMPO_DEVICES</em> pour tous les dispositifs</p>
-<p><em>TEMPO_DEVICES_DZ</em> : pour les dispositifs qui mettent à 1 une variable pour indiquer à monitor d’effectuer une mise à jour, ici toutes les 30 secondes rafraichissement des dispositifs si par exemple un PIR, un
-contact de porte qui sont déclaré prioritaire dans DZ passent à ON</p>
-<p><a class="reference internal" href="../_images/image126.webp"><img alt="image126" src="../_images/image126.webp" style="width: 604px;" /></a></p>
+<p><em>TEMPO_DEVICES</em> pour tous les dispositifs<em>TEMPO_DEVICES_DZ et TEMPO_DEVICES_MQTT*</em> pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)</p>
 </div>
+</div>
+<div class="section" id="maj-en-temps-reel">
+<h3>1.1.3 maj en temps réel<a class="headerlink" href="#maj-en-temps-reel" title="Lien permanent vers ce titre"></a></h3>
+<p>2 solutions :</p>
+<ul class="simple">
+<li><p>semi temps réel , monitor interroge une variable mis à jour par Domoticz lors d’un changement de valeur d’un dispositif; si la variable est à 1 monitor fait une mise à jour avec l’API des dispositifs et remet à 0 la variable.</p></li>
+<li><p>temps réel, en recevant de Domoticz , par un topic MQTT, les données du dispositifs qui à changé de valeur</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>TEMPO_DEVICES_DZ</em> : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)</p>
+<ul class="simple">
+<li><p>Avantage : simplicité de mise en oeuvre , création d’une variable dans DZ et ajout d’une ligne de script DzVent.</p></li>
+<li><p>Inconvénients : Retard dans la mise à jour de 15 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écran ; le second écran sera mis à jour lors de la mise à jour cyclique.</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image126.webp"><img alt="image126" src="../_images/image126.webp" style="width: 604px;" /></a></p>
+<p><strong>TEMPO_DEVICES_MQTT</strong></p>
+<ul class="simple">
+<li><p>Avantages : Vrai temps réel, économise de la bande passante</p></li>
+<li><p>Inconvénients(facilement surmontables) : Installation d’un serveur MQTT, de Paho , création d’un script pour envoyer les données depuis DZ ; le client MQTT dans Javascript est déjà installé, il suffit de mettre en service MQTT</p></li>
+</ul>
+</div>
+<div class="section" id="solution-semi-temps-reel">
+<h4>1.1.3.1 Solution semi temps réel<a class="headerlink" href="#solution-semi-temps-reel" title="Lien permanent vers ce titre"></a></h4>
 <p>La fonction JS :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tempo_devices=&lt;?php echo TEMPO_DEVICES_DZ;?&gt;;
 var idsp=1;if (tempo_devices&gt;14999)  var_sp(idsp);
@@ -300,8 +326,113 @@ return       $value;
 </pre></div>
 </div>
 </div>
+<div class="section" id="solution-temps-reel-mqtt">
+<h4>1.1.3.2 Solution temps réel MQTT<a class="headerlink" href="#solution-temps-reel-mqtt" title="Lien permanent vers ce titre"></a></h4>
+<p>le script JS dans footer.php:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+     if (MQTT==true) echo &#39;&lt;script src=&quot;js/mqttws31.min.js&quot;&gt;&lt;/script&gt;&#39;;?&gt;
+     &lt;script&gt;
+     var connected_flag=0
+     var mqtt;
+     var reconnectTimeout = 2000;
+     var host=&quot;&lt;?php echo MQTT_IP;?&gt;&quot;;
+     var port=&lt;?php echo MQTT_PORT;?&gt;;
+     var stopic=&quot;&lt;?php echo MQTT_TOPIC;?&gt;&quot;;
+
+     function onConnectionLost(){
+     console.log(&quot;connection lost&quot;);
+     document.getElementById(&quot;status&quot;).innerHTML = &quot;Connexion perdue&quot;;
+     document.getElementById(&quot;messages&quot;).innerHTML =&quot;Connexion perdue&quot;;
+     connected_flag=0;
+     }
+     function onFailure(message) {
+             console.log(&quot;Failed&quot;);
+             document.getElementById(&quot;messages&quot;).innerHTML = &quot;Connexion Failed- Retrying&quot;;
+     setTimeout(MQTTconnect, reconnectTimeout);
+     }
+             function onMessageArrived(r_message){
+             out_msg=&quot;Message reçu &quot;+r_message.payloadString+&quot;&lt;br&gt;&quot;;
+             out_msg=out_msg+&quot;Message reçu Topic &quot;+r_message.destinationName;
+             console.log(out_msg);
+             var json = JSON.parse(r_message.payloadString);
+             console.log(&#39;mes=&#39;+json.value);
+             document.getElementById(&quot;messages&quot;).innerHTML =out_msg;
+             }
+     function onConnected(recon,url){
+     console.log(&quot; en onConnected &quot; +reconn);
+     }
+     function disConnect() {
+     if (connected_flag==1) mqtt.disconnect();
+             document.getElementById(&quot;status&quot;).innerHTML = &quot;déconnecté&quot;;
+             document.getElementById(&quot;messages&quot;).innerHTML =&quot;déconnecté de &quot;+host +&quot; sur le port &quot;+port;
+     }
+     function onConnect() {
+       // Once a connection has been made, make a subscription and send a message.
+     document.getElementById(&quot;messages&quot;).innerHTML =&quot;Connecté de &quot;+host +&quot; sur le port &quot;+port;
+     connected_flag=1
+     document.getElementById(&quot;status&quot;).innerHTML = &quot;Connecté&quot;;
+     console.log(&quot;on Connect &quot;+connected_flag);sub_topics(stopic);
+               }
+     function MQTTconnect() {
+     document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
+     console.log(&quot;connexion à &quot;+ host +&quot; &quot;+ port);
+     var x=Math.floor(Math.random() * 10000);
+     var cname=&quot;orderform-&quot;+x;
+     mqtt = new Paho.MQTT.Client(host,port,cname);
+     var options = {
+     timeout: 3,
+             onSuccess: onConnect,
+             onFailure: onFailure,
+             };
+     mqtt.onConnectionLost = onConnectionLost;
+     mqtt.onMessageArrived = onMessageArrived;
+             //mqtt.onConnected = onConnected;
+
+     mqtt.connect(options);
+     return false;
+
+
+     }
+     function sub_topics(stopic){
+             document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
+             if (connected_flag==0){
+             out_msg=&quot;&lt;b&gt;Not Connected so can&#39;t subscribe&lt;/b&gt;&quot;
+             console.log(out_msg);
+             document.getElementById(&quot;messages&quot;).innerHTML = out_msg;
+             return false;
+             }
+     //var stopic= document.forms[&quot;subs&quot;][&quot;Stopic&quot;].value;
+     console.log(&quot;Subscribing to topic =&quot;+stopic);
+     mqtt.subscribe(stopic);
+     return false;
+     }
+     function send_message(){
+             document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
+             if (connected_flag==0){
+             out_msg=&quot;&lt;b&gt;Not Connected so can&#39;t send&lt;/b&gt;&quot;
+             console.log(out_msg);
+             document.getElementById(&quot;messages&quot;).innerHTML = out_msg;
+             return false;
+             }
+             var msg = document.forms[&quot;smessage&quot;][&quot;message&quot;].value;
+             console.log(msg);
+
+             var topic = document.forms[&quot;smessage&quot;][&quot;Ptopic&quot;].value;
+             message = new Paho.MQTT.Message(msg);
+             if (topic==&quot;&quot;)
+                     message.destinationName = &quot;test-topic&quot;
+             else
+                     message.destinationName = topic;
+             mqtt.send(message);
+             return false;
+     }
+     &lt;/script&gt;
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="autres-donnees">
-<h3>1.1.3 Autres données<a class="headerlink" href="#autres-donnees" title="Lien permanent vers ce titre"></a></h3>
+<h3>1.1.4 Autres données<a class="headerlink" href="#autres-donnees" title="Lien permanent vers ce titre"></a></h3>
 <p>Choisir Idx de Domoticz ou idm de monitor ?</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
