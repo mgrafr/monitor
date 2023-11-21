@@ -14,7 +14,7 @@ Si un serveur MQTT est installé et MQTT==true :
 
    define('MQTT', true);//  true si serveur MQTT utilisé par monitor
 
-|image788a|
+|image789|
 
 Pour ajouter d'autres fonctions voir ce §  :ref:`14.1.2 Pour ajouter des fonctions personnelles`
 
@@ -593,7 +593,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 460px 
 .. |image788| image:: ../media/image788.webp
    :width: 605px
-.. |image788a| image:: ../media/image788.webp
+.. |image789| image:: ../media/image788.webp
    :width: 375px 
 .. |image794| image:: ../media/image794.webp
    :width: 630px 
