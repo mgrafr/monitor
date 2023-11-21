@@ -411,6 +411,8 @@ C’est une autre solution qui peut s’appliquer pour tout dispositifs non gér
 
 https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
+Cette solution est utilisée pour la mise à jour des données en temps réel: :ref:`1.1.3.2 Solution temps réel MQTT` et :ref:`1.3.5.1.b rafraichissement des données modifiées`
+
 |image646|
 
 |image647|
