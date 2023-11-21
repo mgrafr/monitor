@@ -19,10 +19,115 @@ require("fonctions.php");
 <script src="js/big-Slide.js"></script> 
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
 <script src="js/mes_js.js"></script>
+
+
 <?php
-if (MQTT==true) echo '<script src="js/mqttws31.js"></script>';?>	
+if (MQTT==true) echo '<script src="js/mqttws31.min.js"></script>';?>	
 <!-- fin des fichiers script -->
 <!-- scripts-->	
+<script>
+var connected_flag=0	
+	var mqtt;
+    var reconnectTimeout = 2000;
+	var host="<?php echo MQTT_IP;?>";
+	var port=<?php echo MQTT_PORT;?>;	
+	var stopic="<?php echo MQTT_TOPIC;?>";
+	
+function onConnectionLost(){
+	console.log("connection lost");
+	document.getElementById("status").innerHTML = "Connexion perdue";
+	document.getElementById("messages").innerHTML ="Connexion perdue";
+	connected_flag=0;
+	}
+	function onFailure(message) {
+		console.log("Failed");
+		document.getElementById("messages").innerHTML = "Connexion Failed- Retrying";
+        setTimeout(MQTTconnect, reconnectTimeout);
+        }
+		function onMessageArrived(r_message){
+		out_msg="Message reçu "+r_message.payloadString+"<br>";
+		out_msg=out_msg+"Message reçu Topic "+r_message.destinationName;
+		console.log(out_msg);
+		var json = JSON.parse(r_message.payloadString);
+		console.log('mes='+json.value);	
+		document.getElementById("messages").innerHTML =out_msg;
+		}
+	function onConnected(recon,url){
+	console.log(" en onConnected " +reconn);
+	}
+	function disConnect() {
+	if (connected_flag==1) mqtt.disconnect();
+		document.getElementById("status").innerHTML = "déconnecté";
+		document.getElementById("messages").innerHTML ="déconnecté de "+host +" sur le port "+port;
+	}
+	function onConnect() {
+	  // Once a connection has been made, make a subscription and send a message.
+	document.getElementById("messages").innerHTML ="Connecté de "+host +" sur le port "+port;
+	connected_flag=1
+	document.getElementById("status").innerHTML = "Connecté";
+	console.log("on Connect "+connected_flag);sub_topics(stopic);
+		  }
+
+    function MQTTconnect() {
+	document.getElementById("messages").innerHTML ="";
+	
+	console.log("connexion à "+ host +" "+ port);
+	var x=Math.floor(Math.random() * 10000); 
+	var cname="orderform-"+x;
+	mqtt = new Paho.MQTT.Client(host,port,cname);
+	
+	var options = {
+        timeout: 3,
+		onSuccess: onConnect,
+		onFailure: onFailure,
+      
+     };
+	
+        mqtt.onConnectionLost = onConnectionLost;
+        mqtt.onMessageArrived = onMessageArrived;
+		//mqtt.onConnected = onConnected;
+
+	mqtt.connect(options);
+	return false;
+    
+ 
+	}
+	function sub_topics(stopic){
+		document.getElementById("messages").innerHTML ="";
+		if (connected_flag==0){
+		out_msg="<b>Not Connected so can't subscribe</b>"
+		console.log(out_msg); 
+		document.getElementById("messages").innerHTML = out_msg;
+		return false;
+		}
+	//var stopic= document.forms["subs"]["Stopic"].value;
+	console.log("Subscribing to topic ="+stopic);
+	mqtt.subscribe(stopic);
+	return false;
+	}
+	function send_message(){
+		document.getElementById("messages").innerHTML ="";
+		if (connected_flag==0){
+		out_msg="<b>Not Connected so can't send</b>"
+		console.log(out_msg);
+		document.getElementById("messages").innerHTML = out_msg;
+		return false;
+		}
+		var msg = document.forms["smessage"]["message"].value;
+		console.log(msg);
+
+		var topic = document.forms["smessage"]["Ptopic"].value;
+		message = new Paho.MQTT.Message(msg);
+		if (topic=="")
+			message.destinationName = "test-topic"
+		else
+			message.destinationName = topic;
+		mqtt.send(message);
+		return false;
+	}
+
+	
+</script>
 
 <script>
 /*-------affiche l'image de la page accueil---------------------------------------*/	
@@ -131,7 +236,16 @@ function maj_variable(idx,name,valeur,type){
   });
 	 };	
 /*--------------------------------------------------------------*/	
-
+json_idx_idm(5)
+function json_idx_idm(command){
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: "ajax.php",
+    data: "app=idxidm&command="+command,
+    success: function(html){}
+  });
+	 };	
 /*-----meteo France prev 1 H-------------------------------------------------------*/
 pluie("2");var echeance;var prev_pluie;var texte_pluie;//var tc=<?php echo $_SESSION["TC"];?>;
 function pluie(idx){//var tc=TestConnection_js();
@@ -728,5 +842,4 @@ break;
                         } 
     });
   }	
-	
-</script>
+</script>	

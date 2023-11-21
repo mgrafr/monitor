@@ -40,7 +40,14 @@ require_once('admin/config.php');
         <a href="http://<?php echo IPMONITOR;?>/phpmyadmin" target="_blank"><img src="images/PhpMyAdmin_logo.svg" style="width:80px" alt=""/></a><br>
         <br>
         <a id="about"><img class="info_admin" src="images/about.svg" data-toggle="modal" data-target="#info-admin1" rel=8 alt="a Propos"/></a></p>
-      <div id="reponse1"></div>
+		<?php
+		 if (MQTT==true){echo '<p id="mqtt"><img style="width:30px;" src="images/mqtt.webp" /><form class="mqtt_form" name="connform" action="" onsubmit="return MQTTconnect()">
+<input type="submit" value="Connexion"></form>
+<form class="mqtt_form1" name="disconnform" action="" onsubmit="return disConnect();">	<input type="submit" value="Déconnexion">
+		 </form><p id="messages"></p><p id="status"></p>
+		</p>';}?>
+		
+		<div id="reponse1"></div>
       <div id="reponse2" style="height:auto"></div>
     </div>
   </div>
