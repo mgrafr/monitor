@@ -8,6 +8,14 @@ Page avec toutes les options , voir aussi ce §  :ref:`14.1.1 Pour utiliser les 
 
 |image788|
 
+Si un serveur MQTT est installé et MQTT==true :
+
+.. code-block
+
+   define('MQTT', true);//  true si serveur MQTT utilisé par monitor
+
+|image788a|
+
 Pour ajouter d'autres fonctions voir ce §  :ref:`14.1.2 Pour ajouter des fonctions personnelles`
 
 14.1 fichiers communs à toutes les pages
@@ -186,6 +194,12 @@ voir les paragraphes:
    <?php echo "var info_admin = ". $js_info_admin . ";\n";?>
    document.getElementById("affich_content_info").innerHTML = info_admin[rel];
    }
+
+14.3.1 Essai de souscription MQTT
+=================================
+voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
+
+|image497|
 
 14.4 fonctions PHP
 ^^^^^^^^^^^^^^^^^^
@@ -575,6 +589,8 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 497px 
 .. |image178| image:: ../media/image178.webp
    :width: 650px 
+.. |image497| image:: ../media/image497.webp
+   :width: 460px 
 .. |image788| image:: ../media/image788.webp
    :width: 605px 
 .. |image794| image:: ../media/image794.webp
