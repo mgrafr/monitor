@@ -607,8 +607,12 @@ Extrait:
    <script src="js/jquery-ui.min.js"></script>
    <script src="js/jquery.backstretch.min.js"></script>
 
-1.3.5.1 rafraîchissements de la page
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.3.5.1 rafraîchissements des données
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+voir dans ce même chapitre le § :ref:`1.1.3 maj en temps réel`
+
+1.3.5.1.a rafrichissement de la page avec une variable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif dans Domoticz, 
 une variable est mise à « 1 » ; 
 
@@ -623,6 +627,10 @@ Dans les scripts lua :
 la variable:
 
 |image158|
+
+1.3.5.1.b rafraichissement des données modifiées
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+On utilise MQTT
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
