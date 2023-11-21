@@ -6,7 +6,9 @@ adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local base64 = require'base64'
 --local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 
-
+function send_topic(txt)
+os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz value '..txt..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
+end
 function send_sms(txt)
 os.execute('/bin/bash userdata/scripts/bash/./pushover.sh '..txt..' >>  /opt/domoticz/userdata/push3.log 2>&1');
 end
@@ -28,12 +30,15 @@ return {
 	on = {
 		devices = {
 			'Ping_pi4',
-			'Test_GSM'	}
+			'Test_GSM',
+			'lampe_terrasse',
+			'lampe_jardin',
+			'Chauffe-serviettes'}
 	     },
  
  execute = function(domoticz, device)
-        domoticz.log('device '..device.name..' was changed', domoticz.LOG_INFO)
-            
+        domoticz.log('device '..device.id..' was changed', domoticz.LOG_INFO)
+            send_topic(device.id)
             if (device.name == 'Ping_pi4' and  device.state=='Off' and domoticz.variables('pi-alarme').value == "0") then 
             domoticz.variables('pi-alarme').set("pi_hs")
             domoticz.variables('variable_sp').set("1")
@@ -47,8 +52,8 @@ return {
             txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
             obj='Test GSM OK';domoticz.email('Alarme',obj,adresse_mail)    
             end
+            if (device.name == 'lampe_terrasse' or  device.name=='lampe_jardin' or device.name == 'Chauffe-serviettes') then domoticz.variables('variable_sp').set("1") 
+            end
             
-       
-           
         end  
     }
