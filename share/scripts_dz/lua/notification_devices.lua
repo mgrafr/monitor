@@ -6,8 +6,8 @@ adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local base64 = require'base64'
 --local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 
-function send_topic(txt)
-os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz value '..txt..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
+function send_topic(txt,txt1)
+os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz idx '..txt..' state '..txt1..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
 end
 function send_sms(txt)
 os.execute('/bin/bash userdata/scripts/bash/./pushover.sh '..txt..' >>  /opt/domoticz/userdata/push3.log 2>&1');
@@ -38,7 +38,7 @@ return {
  
  execute = function(domoticz, device)
         domoticz.log('device '..device.id..' was changed', domoticz.LOG_INFO)
-            send_topic(device.id)
+            send_topic(device.id,device.state)
             if (device.name == 'Ping_pi4' and  device.state=='Off' and domoticz.variables('pi-alarme').value == "0") then 
             domoticz.variables('pi-alarme').set("pi_hs")
             domoticz.variables('variable_sp').set("1")
