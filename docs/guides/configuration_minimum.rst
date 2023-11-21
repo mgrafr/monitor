@@ -110,7 +110,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
 .. note::
 
-   *TEMPO_DEVICES_DZ* : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)
+   **TEMPO_DEVICES_DZ** : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)
 
    - Avantage : simplicité de mise en oeuvre , création d'une variable dans DZ et ajout d'une ligne de script DzVent.
 
