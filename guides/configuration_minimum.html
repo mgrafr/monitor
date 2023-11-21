@@ -768,10 +768,20 @@ une variable est mise à « 1 » ;</p>
 <li><p>La fonction <strong>maj_services</strong> récupère les valeurs de toutes les variables.</p></li>
 <li><p>La fonction <strong>maj_variable</strong> modifie la valeur d’une variable.</p></li>
 <li><p>La fonction <strong>maj_devices(plan)</strong> récupère les données des dispositifs</p></li>
+<li><p>La fonction <strong>json_idx_idm(command)</strong> crée une table d’équivalence idx-&lt;idm</p></li>
 </ul>
-<blockquote>
-<div><p>Un exemple avec set ou get Attribute</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  function json_idx_idm(command){
+   $.ajax({
+   type: &quot;GET&quot;,
+   dataType: &quot;json&quot;,
+   url: &quot;ajax.php&quot;,
+   data: &quot;app=idxidm&amp;command=&quot;+command,
+   success: function(html){}
+   });  };
+
+Un exemple avec set ou get Attribute
+</pre></div>
+</div>
 <p><a class="reference internal" href="../_images/image161.webp"><img alt="image161" src="../_images/image161.webp" style="width: 700px;" /></a></p>
 <blockquote>
 <div><p>Voir le paragraphe concernant les volets <a class="reference internal" href="mur_de_commandes.html#exemple-volet-roulant"><span class="std std-ref">8.2.4 Exemple volet roulant</span></a></p>

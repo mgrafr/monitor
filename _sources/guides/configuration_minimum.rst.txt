@@ -648,6 +648,19 @@ substring(0, 11)=="Set Level
 
 - La fonction **maj_devices(plan)** récupère les données des dispositifs 
 
+- La fonction **json_idx_idm(command)** crée une table d'équivalence idx-<idm
+
+.. code-block::
+
+   function json_idx_idm(command){
+    $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: "ajax.php",
+    data: "app=idxidm&command="+command,
+    success: function(html){}
+    });	 };	
+
  Un exemple avec set ou get Attribute
 
 |image161|
