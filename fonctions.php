@@ -159,6 +159,7 @@ function sql_variable($t,$ind){
 	//if ($ind==0){$sql="SELECT * FROM `variables` WHERE id_var='".$t."' ;" ;}
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
 	if ($ind==4){$sql="SELECT * FROM `messages` ;" ;}
+	if ($ind==5){$sql="SELECT * FROM `dispositifs` WHERE idm!='';" ;}
 	$result = $conn->query($sql);
 	$row_cnt = $result->num_rows;
 	if ($row_cnt==0) {return  null;}
@@ -179,6 +180,11 @@ function sql_variable($t,$ind){
 			$retour[$t]['Value'] = "msg";
 			$t++;
 		}return $retour;}
+	if 	($ind==5){ 
+		while ($ligne = $result->fetch_assoc()) {
+			$num_idx= strval($ligne['idx']);
+			$retour[$num_idx] =  $ligne['idm'];
+		}return $retour;}	
 	else {$row = $result->fetch_assoc();
 	
 	return $row;}
