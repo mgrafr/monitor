@@ -680,9 +680,72 @@ la variable:
 
 |image158|
 
-1.3.5.1.b rafraichissement des données modifiées
+1.3.5.1.b rafraichissement avec MQTT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-On utilise MQTT
+*Dans Domoticz*
+
+On utilise une fonction qui appelle un script python
+
+.. code-block::
+
+   function send_topic(txt,txt1)
+   os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz idx '..txt..' state '..txt1..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
+   end
+
+Le script Python
+
+.. code-block::
+
+   #!/usr/bin/env python3
+   # -*- coding: utf-8 -*-
+
+   import paho.mqtt.client as mqtt
+   import json
+   import sys
+   from connect import ip_mqtt
+   # Define Variables
+   total_arg = len(sys.argv)
+   topic= str(sys.argv[1])
+   etat= str(sys.argv[2]) 
+   valeur= str(sys.argv[3]) 
+   MQTT_HOST = ip_mqtt
+   MQTT_PORT = 1883
+   MQTT_KEEPALIVE_INTERVAL = 45
+   MQTT_TOPIC = topic
+   MQTT_MSG=json.dumps({etat: valeur});
+   if total_arg >4 :
+       etat1=str(sys.argv[4])
+       valeur1=str(sys.argv[5])
+       MQTT_MSG=json.dumps({etat: valeur,etat1: valeur1});
+   # Define on_publish event function
+   def on_publish(client, userdata, mid):
+       print ("Message Published...")
+   def on_connect(client, userdata, flags, rc):
+       client.subscribe(MQTT_TOPIC)
+       client.publish(MQTT_TOPIC, MQTT_MSG)
+   def on_message(client, userdata, msg):
+       print(msg.topic)
+       print(msg.payload) # <- do you mean this payload = {...} ?
+       payload = json.loads(msg.payload) # you can use json.loads to convert string to json
+       #print(payload['state_l2']) # then you can check the value
+       client.disconnect() # Got message then disconnect
+   # Initiate MQTT Client
+   mqttc = mqtt.Client()
+
+   # Register publish callback function
+   mqttc.on_publish = on_publish
+   mqttc.on_connect = on_connect
+   mqttc.on_message = on_message
+   # Connect with MQTT Broker
+   mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
+   # Loop forever
+   mqttc.loop_forever()
+
+|image907|
+
+*résumé*:
+
+|image910|
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2023,6 +2086,10 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 383px 
 .. |image906| image:: ../media/image906.webp
    :width: 700px 
+.. |image907| image:: ../media/image907.webp
+   :width: 480px 
+.. |image910| image:: ../media/image910.webp
+   :width: 480px 
 .. |image943| image:: ../media/image943.webp
    :width: 600px 
 .. |image1092| image:: ../media/image1092.webp
