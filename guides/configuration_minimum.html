@@ -274,13 +274,7 @@ possible de préparer le transfert ; ici la table dispositifs a été renommée 
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPSMAJSERVICESAL&#39;</span><span class="p">,</span> <span class="mi">180000</span><span class="p">);</span><span class="o">//</span><span class="n">interval</span> <span class="n">maj</span> <span class="n">services</span> <span class="n">ALARME</span> <span class="n">ABSENCE</span><span class="p">(</span><span class="n">si</span> <span class="n">installée</span><span class="p">)</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES&#39;</span><span class="p">,</span> <span class="mi">180000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES_DZ&#39;</span><span class="p">,</span> <span class="mi">30000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="mi">15</span><span class="n">s</span><span class="p">)</span> <span class="n">maj</span> <span class="n">déclenchée</span> <span class="n">par</span> <span class="n">Dz</span> <span class="n">voir</span> <span class="n">doc</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES_MQTT&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span><span class="o">//</span> <span class="n">Si</span> <span class="n">true</span> <span class="n">toutes</span> <span class="n">les</span> <span class="n">autres</span> <span class="n">tempos</span> <span class="n">sont</span> <span class="n">false</span>
 </pre></div>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>TEMPO_DEVICES_MQTT”, true : Toutes les tempos sont annulées= TEMP REEL</p>
-<p>un serveur MQTT doit etre installé ainsi qu’un script(léger)  dans DZ ou(et) HA</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -299,17 +293,13 @@ possible de préparer le transfert ; ici la table dispositifs a été renommée 
 <p><strong>TEMPO_DEVICES_DZ</strong> : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)</p>
 <ul class="simple">
 <li><p>Avantage : simplicité de mise en oeuvre , création d’une variable dans DZ et ajout d’une ligne de script DzVent.</p></li>
-<li><dl class="simple">
-<dt>Inconvénients<span class="classifier">Retard dans la mise à jour de 15 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écran ; le second écran sera mis à jour lors de la mise à jour cyclique.</span></dt><dd><p>avec les groupes, les scènes ou automatisations le retard du rafraichissement peut être pénible.</p>
-</dd>
-</dl>
-</li>
+<li><p>Inconvénients : Retard dans la mise à jour de 15 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écran ; le second écran sera mis à jour lors de la mise à jour cyclique.</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image126.webp"><img alt="image126" src="../_images/image126.webp" style="width: 604px;" /></a></p>
 <p><strong>TEMPO_DEVICES_MQTT</strong></p>
 <ul class="simple">
 <li><p>Avantages : Vrai temps réel, économise de la bande passante</p></li>
-<li><p>Inconvénients(facilement surmontables) : Installation d’un serveur MQTT, de Paho , création d’un script pour envoyer les données depuis DZ ou HA ; le client MQTT dans Javascript est déjà installé, il suffit de mettre en service MQTT</p></li>
+<li><p>Inconvénients(facilement surmontables) : Installation d’un serveur MQTT, de Paho , création d’un script pour envoyer les données depuis DZ ; le client MQTT dans Javascript est déjà installé, il suffit de mettre en service MQTT</p></li>
 </ul>
 </div>
 <div class="section" id="solution-semi-temps-reel">
@@ -343,13 +333,12 @@ return       $value;
 <div class="section" id="solution-temps-reel-mqtt">
 <h4>1.1.3.2 Solution temps réel MQTT<a class="headerlink" href="#solution-temps-reel-mqtt" title="Lien permanent vers ce titre"></a></h4>
 <p>le script JS dans footer.php:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if (MQTT==true) echo &#39;&lt;script src=&quot;js/mqttws31.min.js&quot;&gt;&lt;/script&gt;&#39;;?&gt;
-     &lt;!-- fin des fichiers script --&gt;
-     &lt;!-- scripts--&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+     if (MQTT==true) echo &#39;&lt;script src=&quot;js/mqttws31.min.js&quot;&gt;&lt;/script&gt;&#39;;?&gt;
      &lt;script&gt;
      var connected_flag=0
      var mqtt;
- var reconnectTimeout = 2000;
+     var reconnectTimeout = 2000;
      var host=&quot;&lt;?php echo MQTT_IP;?&gt;&quot;;
      var port=&lt;?php echo MQTT_PORT;?&gt;;
      var stopic=&quot;&lt;?php echo MQTT_TOPIC;?&gt;&quot;;
@@ -366,11 +355,11 @@ return       $value;
      setTimeout(MQTTconnect, reconnectTimeout);
      }
              function onMessageArrived(r_message){
-             out_msg=&quot;Message reçu &quot;+r_message.payloadString;
+             out_msg=&quot;Message reçu &quot;+r_message.payloadString+&quot;&lt;br&gt;&quot;;
              out_msg=out_msg+&quot;Message reçu Topic &quot;+r_message.destinationName;
              console.log(out_msg);
              var json = JSON.parse(r_message.payloadString);
-             id_x=json.idx;state=json.state;id_m= maj_mqtt(id_x,state,0);
+             console.log(&#39;mes=&#39;+json.value);
              document.getElementById(&quot;messages&quot;).innerHTML =out_msg;
              }
      function onConnected(recon,url){
@@ -384,34 +373,34 @@ return       $value;
      function onConnect() {
        // Once a connection has been made, make a subscription and send a message.
      document.getElementById(&quot;messages&quot;).innerHTML =&quot;Connecté de &quot;+host +&quot; sur le port &quot;+port;
-     connected_flag=1;
+     connected_flag=1
      document.getElementById(&quot;status&quot;).innerHTML = &quot;Connecté&quot;;
      console.log(&quot;on Connect &quot;+connected_flag);sub_topics(stopic);
                }
-
      function MQTTconnect() {
      document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
-
      console.log(&quot;connexion à &quot;+ host +&quot; &quot;+ port);
      var x=Math.floor(Math.random() * 10000);
      var cname=&quot;orderform-&quot;+x;
      mqtt = new Paho.MQTT.Client(host,port,cname);
-
      var options = {
-     timeout: 100,
+     timeout: 3,
              onSuccess: onConnect,
              onFailure: onFailure,
-     };
+             };
      mqtt.onConnectionLost = onConnectionLost;
      mqtt.onMessageArrived = onMessageArrived;
              //mqtt.onConnected = onConnected;
+
      mqtt.connect(options);
      return false;
+
+
      }
      function sub_topics(stopic){
              document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
              if (connected_flag==0){
-             out_msg=&quot;&lt;b&gt;Not Connected so can&#39;t subscribe&quot;;
+             out_msg=&quot;&lt;b&gt;Not Connected so can&#39;t subscribe&lt;/b&gt;&quot;
              console.log(out_msg);
              document.getElementById(&quot;messages&quot;).innerHTML = out_msg;
              return false;
@@ -424,7 +413,7 @@ return       $value;
      function send_message(){
              document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
              if (connected_flag==0){
-             out_msg=&quot;&lt;b&gt;Not Connected so can&#39;t send&quot;;
+             out_msg=&quot;&lt;b&gt;Not Connected so can&#39;t send&lt;/b&gt;&quot;
              console.log(out_msg);
              document.getElementById(&quot;messages&quot;).innerHTML = out_msg;
              return false;
@@ -441,51 +430,9 @@ return       $value;
              mqtt.send(message);
              return false;
      }
-
-     function maj_mqtt(id_x,state,ind,level=0){
-     switch (ind) {
-     case 0:
-     var id_m=maj_dev[id_x];
-     var command=state;
-     if (pp[id_m].Data==command)      break;
-     pp[id_m].Data=command;
-     console.log(command)
-     var sid1=pp[id_m].ID1;;
-     var sid2=pp[id_m].ID2;
-     var scoul_on=pp[id_m].coul_ON;
-     var scoul_off=pp[id_m].coul_OFF;
-     var c_l_on=pp[id_m].coullamp_ON
-     var c_l_off=pp[id_m].coullamp_OFF
-     var scoul=&quot;&quot;;var scoull=&quot;&quot;;
-     if (command==&quot;On&quot; || command==&quot;on&quot;)  {scoul=scoul_on;scoull=c_l_on;}
-     else if (command.substring(0, 9)==&quot;Set Level&quot;)  {scoull=scoull=c_l_on;}
-     else if  (command==&quot;Off&quot;  || command==&quot;off&quot; ) {scoul=scoul_off;scoull=c_l_off;}
-     else return;
-     document.getElementById(sid1).style = scoul;
-     if (sid2) {document.getElementById(sid2).style = scoul;}
-     var c_lamp= pp[id_m].class_lamp ;console.log(&quot;c_lamp=&quot;+c_lamp);
-     if (command.substring(0, 9)==&quot;Set Level&quot;) {var h=document.getElementById(sid1).getAttribute(&quot;h&quot;);
-     document.getElementById(sid1).setAttribute(&quot;height&quot;,parseInt((h*(level)/100)));
-     console.log(&quot;h=&quot;+h+parseInt((h*(level)/100)));}
-     break;
-     case 1:scoull=state;c_lamp=id_x;console.log(&quot;c_lamp=&quot;+c_lamp);
-     break;
-     default:
-     break;
-     }
-     if (c_lamp!=&quot;&quot; &amp;&amp; scoull!=&quot;&quot;) {
-     var elements = document.getElementsByClassName(c_lamp);
-     for (var i = 0; i &lt; elements.length; i++) {
-     var element = elements[i];
-     element.style=scoull;}
-     }
-     return;
-     }
+     &lt;/script&gt;
 </pre></div>
 </div>
-<p><strong>explications</strong>:</p>
-<p>2 parties dans ce script, la 1èere partie concerne la publication et la souscription MQTT avec Paho, la 2eme partie, la mise à jour des dispositifs</p>
-<p><a class="reference internal" href="../_images/image906.webp"><img alt="image906" src="../_images/image906.webp" style="width: 700px;" /></a></p>
 </div>
 </div>
 <div class="section" id="autres-donnees">
