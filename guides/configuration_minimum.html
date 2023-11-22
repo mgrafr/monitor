@@ -1181,7 +1181,8 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
              }});}
         }   });
      var level=&quot;&quot;;command=qq.state;
-     maj_switch(idx,command,level,idm);
+     maj_mqtt(idx,command,0,level)
+    //maj_switch(idx,command,level,idm);remplacé par maj_mqtt
      }
 </pre></div>
 </div>

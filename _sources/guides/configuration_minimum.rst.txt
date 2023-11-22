@@ -1112,7 +1112,8 @@ Dans footer.php : départ de la commande avec le script créé automatiquement d
 		}});}
            }   });
 	var level="";command=qq.state;										 
-	maj_switch(idx,command,level,idm);
+	maj_mqtt(idx,command,0,level)
+       //maj_switch(idx,command,level,idm);remplacé par maj_mqtt
 	}
 
 commande concernée dans ajax.php:
