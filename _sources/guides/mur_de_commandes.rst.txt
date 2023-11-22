@@ -154,7 +154,7 @@ Les lampes concernées en gris et jaune
 
 |image598|
 
-- *maj_switch()*
+- *maj_mqtt()* , remplace depuis la version 2.2.7 maj_switch()
 
 |image599|
 
@@ -411,7 +411,7 @@ C’est une autre solution qui peut s’appliquer pour tout dispositifs non gér
 
 https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
-Cette solution est utilisée pour la mise à jour des données en temps réel: :ref:`1.1.3.2 Solution temps réel MQTT` et :ref:`1.3.5.1.b rafraichissement des données modifiées`
+Cette solution est utilisée pour la mise à jour des données en temps réel: :ref:`1.1.3.2 Solution temps réel MQTT` et :ref:`1.3.5.1.b rafraichissement avec MQTT`
 
 |image646|
 
