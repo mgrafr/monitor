@@ -273,7 +273,7 @@ possible de préparer le transfert ; ici la table dispositifs a été renommée 
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPSMAJSERVICES&#39;</span><span class="p">,</span> <span class="mi">1800000</span><span class="p">);</span><span class="o">//</span><span class="n">interval</span> <span class="n">maj</span> <span class="n">services</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPSMAJSERVICESAL&#39;</span><span class="p">,</span> <span class="mi">180000</span><span class="p">);</span><span class="o">//</span><span class="n">interval</span> <span class="n">maj</span> <span class="n">services</span> <span class="n">ALARME</span> <span class="n">ABSENCE</span><span class="p">(</span><span class="n">si</span> <span class="n">installée</span><span class="p">)</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES&#39;</span><span class="p">,</span> <span class="mi">180000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES_DZ&#39;</span><span class="p">,</span> <span class="mi">30000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="mi">15</span><span class="n">s</span><span class="p">)</span> <span class="n">maj</span> <span class="n">déclenchée</span> <span class="n">par</span> <span class="n">Dz</span> <span class="n">voir</span> <span class="n">doc</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES_DZ&#39;</span><span class="p">,</span> <span class="mi">30000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span> <span class="p">(</span><span class="o">&gt;=</span><span class="mi">5</span><span class="n">s</span><span class="p">,</span> <span class="o">&lt;</span><span class="mi">30</span><span class="n">s</span><span class="p">)</span> <span class="n">maj</span> <span class="n">déclenchée</span> <span class="n">par</span> <span class="n">Dz</span> <span class="n">voir</span> <span class="n">doc</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES_MQTT&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span><span class="o">//</span> <span class="n">Si</span> <span class="n">true</span> <span class="n">toutes</span> <span class="n">les</span> <span class="n">autres</span> <span class="n">tempos</span> <span class="n">sont</span> <span class="n">false</span>
 </pre></div>
 </div>
@@ -315,15 +315,19 @@ possible de préparer le transfert ; ici la table dispositifs a été renommée 
 <div class="section" id="solution-semi-temps-reel">
 <h4>1.1.3.1 Solution semi temps réel<a class="headerlink" href="#solution-semi-temps-reel" title="Lien permanent vers ce titre"></a></h4>
 <p>La fonction JS :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tempo_devices=&lt;?php echo TEMPO_DEVICES_DZ;?&gt;;
-var idsp=1;if (tempo_devices&gt;14999)  var_sp(idsp);
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+if (MQTT==false) echo &#39;
+tempo_devices=&#39;.TEMPO_DEVICES_DZ.&#39;;
+var idsp=1;if (tempo_devices&gt;30000)  tempo_devices=30000;
+var_sp(idsp);
 function var_sp(idsp){
-  $.get( &quot;ajax.php?app=data_var&amp;variable=29&quot;, function(datas) {
-  var variable_sp = datas;
-  if (variable_sp&gt;0){maj_devices(plan);maj_services(0);maj_variable(29,&quot;variable_sp&quot;,0,2);}
+  $.getJSON( &quot;ajax.php?app=data_var&amp;variable=29&quot;, function(data) {
+  //console.log(data.var_dz);
+  if (data.var_dz==&quot;1&quot;){maj_variable(29,&quot;variable_sp&quot;,0,2);maj_devices(plan);maj_services(0);}
+      if (data.message!=&quot;0&quot;){maj_variable(&quot;msg&quot;,data.message,0,0);maj_services(0);  }
  });
 setTimeout(var_sp, tempo_devices, idsp);
-}
+}&#39;;?&gt;
 </pre></div>
 </div>
 <p>La fonction PHP qui récupère la valeur de la variable :</p>
