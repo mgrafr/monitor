@@ -309,7 +309,7 @@ le script JS dans footer.php:
 	}
 **explications**: 
 
-2 parties dans ce script, la 1èere partie concerne la publication et la souscription MQTT avec Paho, la 2eme partie, la mise à jour des dispositifs
+2 parties dans ce script, la 1ère partie concerne la publication et la souscription MQTT avec Paho, la 2eme partie, la mise à jour des dispositifs
 
 |image906|
 
