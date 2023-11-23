@@ -1958,7 +1958,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image150| image:: ../media/image150.webp
    :width: 700px  
 .. |image151| image:: ../media/image151.webp
-   :width: 601px  
+   :width: 500px  
 .. |image152| image:: ../media/image152.webp
    :width: 700px  
 .. |image153| image:: ../media/image153.webp
