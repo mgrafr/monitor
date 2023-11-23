@@ -99,7 +99,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
 .. IMPORTANT:: 
 
-   TEMPO_DEVICES_MQTT', true : Toutes les tempos sont annulées= TEMP REEL 
+   TEMPO_DEVICES_MQTT', true : TEMP REEL ,TEMPO_DEVICES_DZ est annulé
 
    un serveur MQTT doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
 
