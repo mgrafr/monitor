@@ -121,7 +121,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    - Avantage : simplicité de mise en oeuvre , création d'une variable dans DZ et ajout d'une ligne de script DzVent.
 
-   - Inconvénients : Retard dans la mise à jour de 15 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écran ; le second écran sera mis à jour lors de la mise à jour cyclique.
+   - Inconvénients : Retard dans la mise à jour de 15 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écrans ; le second écran sera mis à jour lors de la mise à jour cyclique.
  	avec les groupes, les scènes ou automatisations le retard du rafraichissement peut être pénible.
 
    |image126|
