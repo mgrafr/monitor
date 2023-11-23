@@ -94,7 +94,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
    define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
    define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE(si installée) en milli secondes
    define('TEMPO_DEVICES', 180000);// en milli secondes
-   define('TEMPO_DEVICES_DZ', 30000);// en milli secondes (>= 15s) maj déclenchée par Dz voir doc
+   define('TEMPO_DEVICES_DZ', 30000);// en milli secondes (>=5s, <30s) maj déclenchée par Dz voir doc
    define('TEMPO_DEVICES_MQTT', false);// Si true toutes les autres tempos sont false
 
 .. IMPORTANT:: 
@@ -138,15 +138,19 @@ La fonction JS :
 
 .. code-block::
 
-   tempo_devices=<?php echo TEMPO_DEVICES_DZ;?>;
-   var idsp=1;if (tempo_devices>14999)	var_sp(idsp);
+   <?php
+   if (MQTT==false) echo '
+   tempo_devices='.TEMPO_DEVICES_DZ.';
+   var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
+   var_sp(idsp);
    function var_sp(idsp){
-     $.get( "ajax.php?app=data_var&variable=29", function(datas) {
-     var variable_sp = datas;
-     if (variable_sp>0){maj_devices(plan);maj_services(0);maj_variable(29,"variable_sp",0,2);}
+     $.getJSON( "ajax.php?app=data_var&variable=29", function(data) {
+     //console.log(data.var_dz);
+     if (data.var_dz=="1"){maj_variable(29,"variable_sp",0,2);maj_devices(plan);maj_services(0);}
+	 if (data.message!="0"){maj_variable("msg",data.message,0,0);maj_services(0);  }
     });
    setTimeout(var_sp, tempo_devices, idsp); 	
-   }
+   }';?>
  
 La fonction PHP qui récupère la valeur de la variable :
 
