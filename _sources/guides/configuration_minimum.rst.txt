@@ -1345,6 +1345,11 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 
 |image221|
 
+On peut aussi augmenter la hauteur:
+
+|image1182|  |image1183|
+
+
 1.8 Complément pour les notifications sur l'écran d'accueil
 ===========================================================
 1.8.1 les notifications incluses dans le programme
@@ -2177,3 +2182,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 530px 
 .. |image1181| image:: ../media/image1181.webp
    :width: 650px 
+.. |image1182| image:: ../media/image1182.webp
+   :width: 292px 
+.. |image1183| image:: ../media/image1183.webp
+   :width: 138px 
