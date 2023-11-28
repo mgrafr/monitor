@@ -676,6 +676,8 @@ voir dans ce même chapitre le § :ref:`1.1.3 maj en temps réel`
 
 1.3.5.1.a rafrichissement de la page avec une variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Ne concerne que Domoticz**; avec Home Assistant c'est plus simple d'utiliser MQTT, l'utilisation d'une variable oblige d'écrire un grand nombre de lignes, aussi autant utiliser MQTT.
+
 La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif dans Domoticz, 
 une variable est mise à « 1 » ; 
 
