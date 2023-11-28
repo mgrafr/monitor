@@ -272,45 +272,50 @@ le script JS dans footer.php:
 		return false;
 	}
 
-	function maj_mqtt(id_x,state,ind,level=0){
-	switch (ind) {
+.. code-block::	
+
+   function maj_mqtt(id_x,state,ind,level=0){
+   switch (ind) {
 	case 0: 
-	var id_m=maj_dev[id_x];
-	var command=state;
-	if (pp[id_m].Data==command)	 break;	
-	pp[id_m].Data=command;
-	console.log(command)
-	var sid1=pp[id_m].ID1;;
-	var sid2=pp[id_m].ID2;
-	var scoul_on=pp[id_m].coul_ON;	
-	var scoul_off=pp[id_m].coul_OFF;
-	var c_l_on=pp[id_m].coullamp_ON
-	var c_l_off=pp[id_m].coullamp_OFF
-	var scoul="";var scoull="";	
-	if (command=="On" || command=="on")  {scoul=scoul_on;scoull=c_l_on;}
-	else if (command.substring(0, 9)=="Set Level")  {scoull=scoull=c_l_on;}
-	else if  (command=="Off"  || command=="off" ) {scoul=scoul_off;scoull=c_l_off;}
-	else return;	
-	document.getElementById(sid1).style = scoul;
-	if (sid2) {document.getElementById(sid2).style = scoul;}
-	var c_lamp= pp[id_m].class_lamp	;console.log("c_lamp="+c_lamp);		
-	if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
+   for (attribute in maj_dev) {
+	if (maj_dev[attribute]==id_x) var id_m=attribute;
+   }
+   var command=state;
+   if (pp[id_m].Data==command)	 break;	
+   pp[id_m].Data=command;
+   console.log(command)
+   var sid1=pp[id_m].ID1;;
+   var sid2=pp[id_m].ID2;
+   var scoul_on=pp[id_m].coul_ON;	
+   var scoul_off=pp[id_m].coul_OFF;
+   var c_l_on=pp[id_m].coullamp_ON
+   var c_l_off=pp[id_m].coullamp_OFF
+   var scoul="";var scoull="";	
+   if (command=="On" || command=="on")  {scoul=scoul_on;scoull=c_l_on;}
+   else if (command.substring(0, 9)=="Set Level")  {scoull=scoull=c_l_on;}
+   else if  (command=="Off"  || command=="off" ) {scoul=scoul_off;scoull=c_l_off;}
+   else return;	
+   document.getElementById(sid1).style = scoul;
+   if (sid2) {document.getElementById(sid2).style = scoul;}
+   var c_lamp= pp[id_m].class_lamp	;console.log("c_lamp="+c_lamp);		
+   if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
 	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));
 	console.log("h="+h+parseInt((h*(level)/100)));}
-	break;
-	case 1:scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
-	break;
-	default:
-	break;	
-	}
-	if (c_lamp!="" && scoull!="") {
+   break;
+   case 1:scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
+   break;
+   default:
+   break;	
+   }
+   if (c_lamp!="" && scoull!="") {
 	var elements = document.getElementsByClassName(c_lamp);
 	for (var i = 0; i < elements.length; i++) {
-    	var element = elements[i];
-    	element.style=scoull;}
+    var element = elements[i];
+    element.style=scoull;}
 	}
-	return;
-	}
+   return;
+   }
+
 **explications**: 
 
 2 parties dans ce script, la 1ère partie concerne la publication et la souscription MQTT avec Paho, la 2eme partie, la mise à jour des dispositifs
