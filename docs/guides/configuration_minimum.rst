@@ -776,7 +776,7 @@ substring(0, 11)=="Set Level
 
 - La fonction **maj_devices(plan)** récupère les données des dispositifs 
 
-- La fonction **json_idx_idm(command)** crée une table d'équivalence idx-<idm
+- La fonction **json_idx_idm(command)** crée une table d'équivalence idm->idx ou ID
 
 .. code-block::
 
@@ -787,7 +787,9 @@ substring(0, 11)=="Set Level
     url: "ajax.php",
     data: "app=idxidm&command="+command,
     success: function(html){}
-    });	 };	
+    });	 };
+
+|image1185|
 
  Un exemple avec set ou get Attribute
 
@@ -2197,3 +2199,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 138px 
 .. |image1184| image:: ../media/image1184.webp
    :width: 700px 
+.. |image1185| image:: ../media/image1185.webp
+   :width: 214px
