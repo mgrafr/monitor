@@ -281,7 +281,6 @@ le script JS dans footer.php:
 	if (maj_dev[attribute]==id_x) var id_m=attribute;
    }
    var command=state;
-   if (pp[id_m].Data==command)	 break;	
    pp[id_m].Data=command;
    console.log(command)
    var sid1=pp[id_m].ID1;;
