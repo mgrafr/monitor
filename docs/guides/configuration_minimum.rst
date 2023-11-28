@@ -429,6 +429,8 @@ Principales fonctions contenues dans ce fichier :
 
    |image138|
 
+   |image1184|
+
 .. admonition:: **function devices_zone** 
 
    API HA pour récupérer les valeurs des dispositifs
@@ -2191,3 +2193,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 292px 
 .. |image1183| image:: ../media/image1183.webp
    :width: 138px 
+.. |image1184| image:: ../media/image1184.webp
+   :width: 700px 
