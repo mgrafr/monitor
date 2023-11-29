@@ -125,7 +125,9 @@ avec Notepad++
 
 8.2.3 Exemple pour un éclairage de jardin
 =========================================
-**Le plan**: l’interrupteur est ajouté
+Cet exemple est choisi car un interrupteur sur le mur de commandes allume plusieurs lampes dont l'allumage doit aussi être visible sur le plan extérieur.
+
+**Le plan**: un interrupteur est ajouté
 
 |image592|
 
@@ -154,8 +156,6 @@ Les lampes concernées en gris et jaune
 
 **Le Javascript** dans footer.php
 
-.. important:: **La mise à jour de tous les dispositifs est automatique mais avec un temps de réponse, aussi pour la commande des interrupteurs le second script permet une mise à jour instantanée**
-  
 - *maj_devices()*
 
 |image598|
