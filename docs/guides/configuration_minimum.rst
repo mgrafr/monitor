@@ -693,7 +693,7 @@ la variable:
 |image158|
 
 1.3.5.1.b rafraichissement avec MQTT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *Dans Domoticz*
 
 On utilise une fonction qui appelle un script python
@@ -758,6 +758,36 @@ Le script Python
 *résumé*:
 
 |image910|
+
+*Dans Home Assistant*
+
+On utilise MQTT avec un script yaml
+
+.. code-block::
+
+   - id: lampe_jardin_12345
+     hide_entity: true
+     trigger:
+       platform: state
+       entity_id: light.lampe_jardin
+     action:
+       service: mqtt.publish
+       data_template:
+         topic: 'monitor/ha'
+         payload: >
+           {% if is_state("light.lampe_jardin", on") %}
+             {"idx": "light.lampe_jardin", "state": "On"}
+           {% elif is_state("light.lampe_jardin", "off") %}
+             {"idx": "light.lampe_jardin", "state": "Off"}
+           {% endif %}
+
+Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
+
+|image1186|
+
+Réception du message dans visible monitor:
+
+|image1187|
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2202,3 +2232,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px 
 .. |image1185| image:: ../media/image1185.webp
    :width: 214px
+.. |image1186| image:: ../media/image1186.webp
+   :width: 600px
+.. |image1187| image:: ../media/image1187.webp
+   :width: 500px
