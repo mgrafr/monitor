@@ -1962,6 +1962,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 650px  
 .. |image141| image:: ../media/image141.webp
    :width: 205px  
+.. |image142| image:: ../media/image142.webp
+   :width: 700px  
 .. |image144| image:: ../media/image144.webp
    :width: 400px  
 .. |image145| image:: ../media/image145.webp
