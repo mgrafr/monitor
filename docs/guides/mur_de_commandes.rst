@@ -48,9 +48,11 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
 |image582|
 
-8.2.1 Exemple pour éclairage jardin
-===================================
+8.2.1 Exemple avec node red
+===========================
 L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande également en zigbee l’éclairage du jardin.
+
+Cette solution est un exemple pour des cas paticuliers ; la solution plus simple est d'utiliser un groupe ou une scène.
 
 |image583| |image584|
 
@@ -70,7 +72,7 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
 
    |image587|
 
-.. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de l’interrupteur car le délai de réponse peut atteindre plus de 10 s, il faut donc envoyer un message MQTT à partir de l’interrupteur virtuel.**
+.. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de l’interrupteur car le délai de réponse de domoticz/out peut atteindre plus de 10 s, il faut donc envoyer un message MQTT à partir de l’interrupteur virtuel.**
 
 .. admonition:: **Le script python lancé par la « lampe_ext_entree »**
 
@@ -94,8 +96,10 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
  
 https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
 
-8.2.1.1 Problème de lecture de fichier
-""""""""""""""""""""""""""""""""""""""
+
+
+8.2.2 Problème de lecture de fichier
+====================================
 
 Pour éviter des erreurs (512, 256), penser à convertir le fichier python en Unix s’il a été créé
 avec Notepad++
@@ -119,6 +123,8 @@ avec Notepad++
 
    |image590|
 
+8.2.3 Exemple pour un éclairage de jardin
+=========================================
 **Le plan**: l’interrupteur est ajouté
 
 |image592|
@@ -158,7 +164,7 @@ Les lampes concernées en gris et jaune
 
 |image599|
 
-8.2.2 Exemple pour arrosage jardin
+8.2.4 Exemple pour arrosage jardin
 ==================================
 *Relais Sonoff wifi ip 192.168.x.x :8081*
 
@@ -201,7 +207,7 @@ Le capteur est ajouté au plan
 
 |image606|
 
-8.2.3 Exemple éclairage simple, une lampe de salon
+8.2.5 Exemple éclairage simple, une lampe de salon
 ==================================================
 **Dans Domoticz**
 
@@ -236,7 +242,7 @@ Les images pour lampe de bureau :
 
 |image618| |image619|
     
-8.2.4 Exemple volet roulant
+8.2.6 Exemple volet roulant
 ===========================
 *Le moteur est à 4 fils, piloté par une commande TUYA FT30F et Zigbee2mqtt*
 
@@ -266,7 +272,7 @@ Les images pour lampe de bureau :
 
 - ID « volet_bureau1 » (2eme <rect ) :red:`pour pouvoir cliquer n’importe où sur l’image`.
 
-8.2.4.1 Affichage sur le plan
+8.2.6.1 Affichage sur le plan
 """""""""""""""""""""""""""""
 **Le plan** :
 
@@ -310,7 +316,7 @@ Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
 
 	|image631|
 
-8.2.4.2 Dans le mur ON/OFF
+8.2.6.2 Dans le mur ON/OFF
 """""""""""""""""""""""""""
 *Pour afficher le % d’ouverture*
 
@@ -387,11 +393,11 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
    C’est cette fenêtre qui va envoyer les commandes d’ouverture, fermeture 
 
-8.2.4.3 les scripts JS
+8.2.6.3 les scripts JS
 """"""""""""""""""""""
 2 solutions:
 
-8.2.4.3.1  avec Ajax et PHP
+8.2.6.3.1  avec Ajax et PHP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *amount=id pour input button* voir l'mage du § prec
 
@@ -405,7 +411,7 @@ Mise à jour instantanée :
 
 |image645|
 
-8.2.4.3.2 avec MQTT
+8.2.6.3.2 avec MQTT
 ~~~~~~~~~~~~~~~~~~~
 C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par le programme. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
 
@@ -456,7 +462,7 @@ L'envoi des données doit être un tableau json
 
 |image652|
 
-8.3 les Groupes et Scenes
+8.5 les Groupes et Scenes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 |image493|
 
@@ -470,7 +476,7 @@ Le dispositif de commande (bouton virtuel) est enregistré dans la base de donn�
 
 |image475|
 
-8.3.1 Exemple avec Domoticz
+8.5.1 Exemple avec Domoticz
 ===========================
 le groupe "Allumage Jardin ALL"
 
@@ -486,7 +492,7 @@ Comme pour tous les dispositifs ON/OFF le Jquery est écrit automatiquement dans
 
 |image492|
 
-8.3.1 Exemple avec Home Assistant
+8.5.2 Exemple avec Home Assistant
 =================================
 le groupe "Lumieres_jardin"
 
