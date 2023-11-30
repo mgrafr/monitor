@@ -694,100 +694,101 @@ la variable:
 
 1.3.5.1.b rafraichissement avec MQTT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*Dans Domoticz*
 
-On utilise une fonction qui appelle un script python
+.. admonition:: **Dans Domoticz**
 
-.. code-block::
+   On utilise une fonction qui appelle un script python
 
-   function send_topic(txt,txt1)
-   os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz idx '..txt..' state '..txt1..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
-   end
+   .. code-block::
 
-Le script Python
+      function send_topic(txt,txt1)
+      os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz idx '..txt..' state '..txt1..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
+      end
 
-.. code-block::
+   Le script Python
 
-   #!/usr/bin/env python3
-   # -*- coding: utf-8 -*-
+   .. code-block::
 
-   import paho.mqtt.client as mqtt
-   import json
-   import sys
-   from connect import ip_mqtt
-   # Define Variables
-   total_arg = len(sys.argv)
-   topic= str(sys.argv[1])
-   etat= str(sys.argv[2]) 
-   valeur= str(sys.argv[3]) 
-   MQTT_HOST = ip_mqtt
-   MQTT_PORT = 1883
-   MQTT_KEEPALIVE_INTERVAL = 45
-   MQTT_TOPIC = topic
-   MQTT_MSG=json.dumps({etat: valeur});
-   if total_arg >4 :
-       etat1=str(sys.argv[4])
-       valeur1=str(sys.argv[5])
-       MQTT_MSG=json.dumps({etat: valeur,etat1: valeur1});
-   # Define on_publish event function
-   def on_publish(client, userdata, mid):
-       print ("Message Published...")
-   def on_connect(client, userdata, flags, rc):
-       client.subscribe(MQTT_TOPIC)
-       client.publish(MQTT_TOPIC, MQTT_MSG)
-   def on_message(client, userdata, msg):
-       print(msg.topic)
-       print(msg.payload) # <- do you mean this payload = {...} ?
-       payload = json.loads(msg.payload) # you can use json.loads to convert string to json
-       #print(payload['state_l2']) # then you can check the value
-       client.disconnect() # Got message then disconnect
-   # Initiate MQTT Client
-   mqttc = mqtt.Client()
+      #!/usr/bin/env python3
+      # -*- coding: utf-8 -*-
 
-   # Register publish callback function
-   mqttc.on_publish = on_publish
-   mqttc.on_connect = on_connect
-   mqttc.on_message = on_message
-   # Connect with MQTT Broker
-   mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
-   # Loop forever
-   mqttc.loop_forever()
+      import paho.mqtt.client as mqtt
+      import json
+      import sys
+      from connect import ip_mqtt
+      # Define Variables
+      total_arg = len(sys.argv)
+      topic= str(sys.argv[1])
+      etat= str(sys.argv[2]) 
+      valeur= str(sys.argv[3]) 
+      MQTT_HOST = ip_mqtt
+      MQTT_PORT = 1883
+      MQTT_KEEPALIVE_INTERVAL = 45
+      MQTT_TOPIC = topic
+      MQTT_MSG=json.dumps({etat: valeur});
+      if total_arg >4 :
+          etat1=str(sys.argv[4])
+          valeur1=str(sys.argv[5])
+          MQTT_MSG=json.dumps({etat: valeur,etat1: valeur1});
+      # Define on_publish event function
+      def on_publish(client, userdata, mid):
+          print ("Message Published...")
+      def on_connect(client, userdata, flags, rc):
+          client.subscribe(MQTT_TOPIC)
+          client.publish(MQTT_TOPIC, MQTT_MSG)
+      def on_message(client, userdata, msg):
+          print(msg.topic)
+          print(msg.payload) # <- do you mean this payload = {...} ?
+          payload = json.loads(msg.payload) # you can use json.loads to convert string to json
+          #print(payload['state_l2']) # then you can check the value
+          client.disconnect() # Got message then disconnect
+      # Initiate MQTT Client
+      mqttc = mqtt.Client()
 
-|image907|
+      # Register publish callback function
+      mqttc.on_publish = on_publish
+      mqttc.on_connect = on_connect
+      mqttc.on_message = on_message
+      # Connect with MQTT Broker
+      mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
+      # Loop forever
+      mqttc.loop_forever()
 
-*résumé*:
+   |image907|
 
-|image910|
+   *résumé*:
 
-*Dans Home Assistant*
+   |image910|
 
-On utilise MQTT avec un script yaml
+.. admonition:: **Dans Home Assistant**
 
-.. code-block::
+   On utilise MQTT avec un script yaml
 
-   - id: lampe_jardin_12345
-     hide_entity: true
-     trigger:
-       platform: state
-       entity_id: light.lampe_jardin
-     action:
-       service: mqtt.publish
-       data_template:
-         topic: 'monitor/ha'
-         payload: >
-           {% if is_state("light.lampe_jardin", on") %}
-             {"idx": "light.lampe_jardin", "state": "On"}
-           {% elif is_state("light.lampe_jardin", "off") %}
-             {"idx": "light.lampe_jardin", "state": "Off"}
-           {% endif %}
+   .. code-block::
 
-Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
+      - id: lampe_jardin_12345
+        hide_entity: true
+        trigger:
+          platform: state
+          entity_id: light.lampe_jardin
+        action:
+          service: mqtt.publish
+          data_template:
+            topic: 'monitor/ha'
+            payload: >
+              {% if is_state("light.lampe_jardin", on") %}
+                {"idx": "light.lampe_jardin", "state": "On"}
+              {% elif is_state("light.lampe_jardin", "off") %}
+                {"idx": "light.lampe_jardin", "state": "Off"}
+              {% endif %}
 
-|image1186|
+   Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
 
-Réception du message dans visible monitor:
+   |image1186|
 
-|image1187|
+   Réception du message dans visible monitor:
+
+   |image1187|
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
