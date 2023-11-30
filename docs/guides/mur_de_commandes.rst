@@ -407,17 +407,17 @@ Ci-dessus, on récupère idx idm et la commande
 
 |image644|
 
-Mise à jour instantanée :
+Mise à jour instantanée : on utilise la fonction qui met à jour dans monitor, les dispositifs si ils sont activés depuis domoticz ou Home Assistant.(d'où son nom maj_mqtt)
 
 |image645|
 
 8.2.6.3.2 avec MQTT
 ~~~~~~~~~~~~~~~~~~~
-C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par le programme. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
+C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par HA ou DZ. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
 
 https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
-Cette solution est utilisée pour la mise à jour des données en temps réel: :ref:`1.1.3.2 Solution temps réel MQTT` et :ref:`1.3.5.1.b rafraichissement avec MQTT`
+Cette solution est aussi utilisée pour la mise à jour des données en temps réel: :ref:`1.1.3.2 Solution temps réel MQTT` et :ref:`1.3.5.1.b rafraichissement avec MQTT`
 
 |image646|
 
