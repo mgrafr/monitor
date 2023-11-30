@@ -159,7 +159,7 @@ left: -80px;}
 }
 .nav {margin-top: 10px;
 background-color: black;
-height: 240px;
+height: 265px;
 padding-top: 20px;
 font-size: large;}
 .menu-link:link, .menu-link:visited {
@@ -182,7 +182,7 @@ a:link, a:visited {
 .modal-dialog {width:650px;margin: 0 auto;margin-top:50px}
 #Calque_1 {margin-left: 7%;}
 #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,
-#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge{
+#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi{
     width: 100%;
     height: 1120px;padding: 80px 0;
     min-height: 100%;
@@ -191,7 +191,7 @@ a:link, a:visited {
     top: 350px;z-index:-20;overflow: auto;
 }
 #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
-#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge{
+#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi{
     background-color: aquamarine;}
 #meteo {
 	background-color: #4f9ff4;}
@@ -389,6 +389,8 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 .bg-recette {    background-color: #84d1b7;}
 .col-4{    margin-left: 5px;
        margin-top: 3px;}
+/*bigslide*/
+.push{height:150px;}
 /*graphiques-------*/
 #graphic{color:white;}
 .graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
