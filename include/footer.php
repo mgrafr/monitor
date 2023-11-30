@@ -32,6 +32,7 @@ var connected_flag=0
 	var host="<?php echo MQTT_IP;?>";
 	var port=<?php echo MQTT_PORT;?>;	
 	var stopic="<?php echo MQTT_TOPIC;?>";
+	var out_msg="";
 	
 function onConnectionLost(){
 	console.log("connection lost");
@@ -45,11 +46,11 @@ function onConnectionLost(){
         setTimeout(MQTTconnect, reconnectTimeout);
         }
 		function onMessageArrived(r_message){
-		out_msg="Message reçu "+r_message.payloadString+"<br>";
+		out_msg="Message reçu "+r_message.payloadString;
 		out_msg=out_msg+"Message reçu Topic "+r_message.destinationName;
 		console.log(out_msg);
 		var json = JSON.parse(r_message.payloadString);
-		console.log('mes='+json.value);	
+		id_x=json.idx;state=json.state;console.log(id_x+state);maj_mqtt(id_x,state,0);
 		document.getElementById("messages").innerHTML =out_msg;
 		}
 	function onConnected(recon,url){
@@ -63,7 +64,7 @@ function onConnectionLost(){
 	function onConnect() {
 	  // Once a connection has been made, make a subscription and send a message.
 	document.getElementById("messages").innerHTML ="Connecté de "+host +" sur le port "+port;
-	connected_flag=1
+	connected_flag=1;
 	document.getElementById("status").innerHTML = "Connecté";
 	console.log("on Connect "+connected_flag);sub_topics(stopic);
 		  }
@@ -77,7 +78,7 @@ function onConnectionLost(){
 	mqtt = new Paho.MQTT.Client(host,port,cname);
 	
 	var options = {
-        timeout: 3,
+        timeout: 100,
 		onSuccess: onConnect,
 		onFailure: onFailure,
       
@@ -95,7 +96,7 @@ function onConnectionLost(){
 	function sub_topics(stopic){
 		document.getElementById("messages").innerHTML ="";
 		if (connected_flag==0){
-		out_msg="<b>Not Connected so can't subscribe</b>"
+		out_msg="<b>Not Connected so can't subscribe";
 		console.log(out_msg); 
 		document.getElementById("messages").innerHTML = out_msg;
 		return false;
@@ -108,7 +109,7 @@ function onConnectionLost(){
 	function send_message(){
 		document.getElementById("messages").innerHTML ="";
 		if (connected_flag==0){
-		out_msg="<b>Not Connected so can't send</b>"
+		out_msg="<b>Not Connected so can't send";
 		console.log(out_msg);
 		document.getElementById("messages").innerHTML = out_msg;
 		return false;
@@ -126,10 +127,51 @@ function onConnectionLost(){
 		return false;
 	}
 
-	
-</script>
-
-<script>
+function maj_mqtt(id_x,state,ind,level=0){
+switch (ind) {
+	case 0: 
+var id_m=null;
+for (attribute in maj_dev) {
+	if (maj_dev[attribute]==id_x) id_m=attribute;
+}
+if (id_m==null)out_msg= 'id_m='+id_m;return;
+var command=state;
+pp[id_m].Data=command;
+console.log(command)
+var sid1=pp[id_m].ID1;;
+var sid2=pp[id_m].ID2;
+var scoul_on=pp[id_m].coul_ON;	
+var scoul_off=pp[id_m].coul_OFF;
+var c_l_on=pp[id_m].coullamp_ON
+var c_l_off=pp[id_m].coullamp_OFF
+var scoul="";var scoull="";	
+if (command=="On" || command=="on")  {scoul=scoul_on;scoull=c_l_on;}
+else if (command.substring(0, 9)=="Set Level")  {scoull=scoull=c_l_on;}
+else if  (command=="Off"  || command=="off" ) {scoul=scoul_off;scoull=c_l_off;}
+else return;	
+document.getElementById(sid1).style = scoul;
+if (sid2) {document.getElementById(sid2).style = scoul;}
+var c_lamp= pp[id_m].class_lamp	;console.log("c_lamp="+c_lamp);		
+if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
+	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));
+	console.log("h="+h+parseInt((h*(level)/100)));}
+break;
+case 1:scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
+break;
+default:
+break;	
+}
+if (c_lamp!="" && scoull!="") {
+	var elements = document.getElementsByClassName(c_lamp);
+	for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    element.style=scoull;}
+	}
+return;
+}
+/*-------connexion au serveur MQTT---------*/	
+<?php
+if (MQTT==true) echo 'MQTTconnect()';?>	
 /*-------affiche l'image de la page accueil---------------------------------------*/	
 var text1="";var larg = (document.body.clientWidth);
 var haut = (document.body.clientHeight);
@@ -232,18 +274,18 @@ function maj_variable(idx,name,valeur,type){
     dataType: "json",
     url: "ajax.php",
     data: "app=maj_var&idx="+idx+"&name="+name+"&variable="+valeur+"&type="+type,
-    success: function(html){if (html.status=="OK"){console.log("maj variable=OK")}}
+    success: function(html){if (html.status!="OK"){console.log("maj variable=OK")}}
   });
 	 };	
 /*--------------------------------------------------------------*/	
-json_idx_idm(5)
+json_idx_idm(5);maj_dev=new Array();
 function json_idx_idm(command){
   $.ajax({
     type: "GET",
     dataType: "json",
     url: "ajax.php",
     data: "app=idxidm&command="+command,
-    success: function(html){}
+    success: function(html){maj_dev=html;}
   });
 	 };	
 /*-----meteo France prev 1 H-------------------------------------------------------*/
@@ -292,7 +334,7 @@ $.ajax({
 		if (val.idx=='0'){
 			if (val.jour!=num_jour){aff_date();
 			document.getElementById('tspan7024').innerHTML=jour;mc(1,"#meteo_concept");}}
-		else {console.log('ok_deb');
+		else {//console.log('ok_deb');
 			var myEle = document.getElementById("cercle_"+val.idm);	
 			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , ";
 				if (myEle){
@@ -307,15 +349,14 @@ $.ajax({
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && (pos=="On")){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
-						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_ON);if (vol==1){
+						if (val.class_lamp) { maj_mqtt("",val.coullamp_ON,1,0);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");
-							console.log("pcent="+pcent+"h="+h);
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((pos=="Off") || (pos=="Closed"))){console.log(val.ID1,val.idm);
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((pos=="Off") || (pos=="Closed"))){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
-						if (val.class_lamp) { class_name(val.class_lamp,val.coullamp_OFF);}}	
+						if (val.class_lamp) { maj_mqtt("",val.coullamp_OFF,1,0);}}	
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 		}}
@@ -331,9 +372,9 @@ setTimeout(maj_devices, tempo_dev, plan);
 }
 /*--------------------------------------*/
 function class_name(cn,coul){
-var elements = document.getElementsByClassName(cn);//console.log('eww',elements)
+var elements = document.getElementsByClassName(cn);
 for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];//console.log(element);
+    var element = elements[i];
     element.style=coul;
 }
 }
@@ -353,7 +394,7 @@ rr=new Array();
 	  if ((command=="On")||(command=="Off")){type=2;}
 	  else if (command.substring(0, 9)=="Set Level") {type=3;var pourcent = command.split(" ");level=pourcent[2];}
 	  else {type=1;}
-		console.log("IDM="+idm)  
+		 
 	  if (pp[idm].Data == "On") {command="Off";}
      								  
 	    $.ajax({
@@ -366,8 +407,8 @@ rr=new Array();
 				if (qq['status']!="OK" ){//alert(qq['status']);
 			document.getElementById("d_btn_a").style.display = "block";
 			document.getElementById("d_btn_al").style.display = "block";}
-				else {
-					maj_switch(idx,command,level,pp[idm].idm);			
+				else {maj_mqtt(idx,command,0,level);
+					//maj_switch(idx,command,level,pp[idm].idm);			
 
 			}}
       }}); } 
@@ -375,7 +416,7 @@ rr=new Array();
   }
 	
 	
-function turnonoff(idm,idx,command,pass="0"){console.log(idm);
+function turnonoff(idm,idx,command,pass="0"){//console.log(idm);
 	if (idm!="" && (pp[idm].Data == "On" || pp[idm].Data == "on")) {command="off";}
 	else {command="on";}
 											 
@@ -397,14 +438,15 @@ function turnonoff(idm,idx,command,pass="0"){console.log(idm);
 		}});}
   }
       });
-	var level="";command=qq.state;										 
-	maj_switch(idx,command,level,idm);
+	var level="";command=qq.state;level=0;	
+	maj_mqtt(idx,command,0,level)
+	//maj_switch(idx,command,level,idm);
 	}	
 	
 	
-/*----------------------------------*/
+/*-------NON UTILISE---------------------------*/
 function maj_switch(idx,command,level,idm){
-	pp[idm].Data=command;
+	pp[idm].Data=command;console.log(command);
 	sid1=pp[idm].ID1;sid2=pp[idm].ID2;idm=pp[idm];
 		if (command=="On" || command=="on")  {scoul=idm.coul_ON;if (scoull=idm.coullamp_ON!="") scoull=idm.coullamp_ON;}
 		else if (command.substring(0, 9)=="Set Level")  {if (scoull=idm.coullamp_ON!="") scoul=idm.coul_ON;scoull=idm.coullamp_ON;}
@@ -416,12 +458,12 @@ function maj_switch(idx,command,level,idm){
 	if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
 	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));console.log("h="+h+parseInt((h*(level)/100)));}
 	
-	 }
+	return; }
 /*--------------------------------*/	
 $("#amount").click(function () {
 		var idx = $("#VR").attr('rel');
 		var idm = $("#VR").attr('title');
-	    var command=$("#amount").attr('name');console.log(idx," ",idm,"",command);
+	    var command=$("#amount").attr('name');//console.log(idx," ",idm,"",command);
 		switchOnOff_setpoint(idm,idx,command);
 	});
 //
@@ -459,7 +501,7 @@ $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert
   }); }
 });
 /*-----administration-------------------------------- */
-$(".admin1").click(function() {var choix_admin =$(this).attr('rel');console.log(choix_admin);
+$(".admin1").click(function() {var choix_admin =$(this).attr('rel');//console.log(choix_admin);
 var fenetre =$(this).attr('title');
 $.ajax({ 
                         type: 'GET', 
@@ -519,7 +561,7 @@ if (document.getElementById('imagepreview').complete==true)
 	{now=new Date();
 	// update cam 
 		camImg=document.getElementById("imagepreview");
-		camImg.src=URL[camIndex]+now.getTime();console.log('hh'+camImg.src);
+		camImg.src=URL[camIndex]+now.getTime();//console.log('hh'+camImg.src);
 	}
 	// call update for current camera in 100 ms
 	setTimeout(function() { updateZoom(camIndex); }, 100);
@@ -561,6 +603,8 @@ else if (logapp=="sql"){var table_sql = $(this).attr('title');
 	urllog="ajax.php?app=sql&idx=1&variable="+table_sql+"&type=&command=";titre="historique poubelles";}
 else if (logapp=="cuisine"){var table_sql = logapp;var numrecette = $(this).attr('title');titre = $(this).attr('alt');
 	urllog="ajax.php?app=sql&idx=4&variable="+table_sql+"&type=id&command="+numrecette;}	
+else if (logapp=="modes_emploi"){var table_sql = logapp;var nummode_e = $(this).attr('title');titre = $(this).attr('alt');
+	urllog="ajax.php?app=sql&idx=4&variable="+table_sql+"&type=id&command="+nummode_e;}		
 else {urllog="erreur";}
   $.modalLink.open(urllog, {
   // options here
@@ -581,9 +625,9 @@ customBox.className = 'custom-box';
 	$(".confirm a").click(function(){ 
     var title_confirm=$(this).attr('title');ch=$(this).attr('rel');
 	var nb = Object.keys(service).length;
-		for (i = 1; i < nb; i++) {console.log(ch+'...'+service[i].ID);
+		for (i = 1; i < nb; i++) {//console.log(ch+'...'+service[i].ID);
 		if (service[i].ID==ch || service[i].idx==ch){
-			var content_modal=service[i].contenu;console.log(nb);}
+			var content_modal=service[i].contenu;}
 	}
 	
 	customBox.innerHTML = '<p>'+title_confirm+'</p><p>'+content_modal+'</p>';
@@ -600,13 +644,12 @@ function modalShow() {
     });
     if (document.getElementById('modal-confirm')) {
         document.getElementById('modal-confirm').addEventListener('click', function () {
-           //console.log('Confirmé !');
-		   bl=1; 
+           bl=1; 
            modalClose(bl);
         });
     } else if (document.getElementById('modal-submit')) {
         document.getElementById('modal-submit').addEventListener('click', function () {
-            console.log(document.getElementById('modal-prompt').value);
+            //console.log(document.getElementById('modal-prompt').value);
             bl=0;modalClose(bl);
         });
     }
@@ -619,7 +662,7 @@ function modalClose(bl) {
 	 if (bl==1) {
 		 if (ch.length <4) {var nom_ch=service[ch].Name;
 			maj_variable(ch,nom_ch,"0",2);} 
-		 else{var substr = ch.split('.');ch= "input_boolean."+substr[1];console.log(ch);
+		 else{var substr = ch.split('.');ch= "input_boolean."+substr[1];//console.log(ch);
 			 turnonoff("",ch,"on",pass="0");} }  
 	maj_services(0);bl=0;ch=0;
 }
@@ -659,18 +702,20 @@ $("#zm").click(function () {
             }
         });
 		});
-
-tempo_devices=<?php echo TEMPO_DEVICES_DZ;?>;
-var idsp=1;if (tempo_devices>14999)	tempo_devices=5000;
+<?php
+if (MQTT==false) echo '
+tempo_devices='.TEMPO_DEVICES_DZ.';
+var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
 var_sp(idsp);
-function var_sp(idsp){
+
+	function var_sp(idsp){
   $.getJSON( "ajax.php?app=data_var&variable=29", function(data) {
-  console.log(data.var_dz);
+  //console.log(data.var_dz);
   if (data.var_dz=="1"){maj_variable(29,"variable_sp",0,2);maj_devices(plan);maj_services(0);}
-	 if (data.message!="0"){maj_variable('msg',data.message,0,0);maj_services(0);  }
+	 if (data.message!="0"){maj_variable("msg",data.message,0,0);maj_services(0);  }
   });
 setTimeout(var_sp, tempo_devices, idsp); 	
-}
+}';?>
 
 
 	
@@ -707,7 +752,7 @@ var nom;
 	dataType: 'json',
     success: function(html) {
 		urlimg=html['url']+"?"+Date.now()/1000;zoneminder=html['id_zm'];dahua=html['marque'];
-		ip_cam=html['ip'];idx_cam=html['idx'];dahua_type=html['type'];console.log(dahua_type);
+		ip_cam=html['ip'];idx_cam=html['idx'];dahua_type=html['type'];//console.log(dahua_type);
 		if (nom<10010){$('#cam').attr('src',urlimg); $('#camera').modal('show');} 
 		else {$('#cam_ext').attr('src',urlimg); $('#camera_ext').modal('show');} }
 			});         
@@ -767,7 +812,7 @@ var rel=$(this).attr('rel');$('#affich_content_info').empty;var info_admin="";
 affich_info_admin(rel);
 });	
 function affich_info_admin(rel){	
-console.log(rel);
+//console.log(rel);
 <?php echo "var info_admin = ". $js_info_admin . ";\n";?>
 document.getElementById("affich_content_info").innerHTML = info_admin[rel];
 
@@ -836,10 +881,13 @@ break;
       dataType: "html",
 	success:function (data) {$('#'+fenetre).empty();
 		document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
-      	console.log(data);},
+      },
 		error: function() { 
                           alert('La requête n\'a pas abouti'); 
                         } 
     });
   }	
-</script>	
+</script><script>
+$('li.ww').click(function(){var ww1 = $(".www").attr('href');
+$(ww1).attr('display','block');
+});	</script>	

@@ -9,35 +9,7 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 <!-- ================ -->
 
 
-<script>
-// Créer une instance client
-var mess1={
-	command: "switchlight", 
-	idx: 177, 
-	switchcmd: "Set Level",
-	level: 100 
-	};
-var client;
-var host='<?php echo MQTT_IP;?>';var port='<?php echo MQTT_PORT;?>';var topic = '<?php echo MQTT_TOPIC;?>';
-function onConnect(){console.log("onConnect");
-client.subscribe(topic);
-var mesg = JSON.stringify(mess1);					 
-message=new Paho.MQTT.Message(mesg);
-message.destinationName=topic;
-client.send(message);
-maj_devices(<?php echo NUMPLAN;?>)	;				 
-}
-function MQTTconnect(){console.log("MQTT:"+host+"topic:"+topic);
 
-client = new Paho.MQTT.Client(host, port, "clientjs");
-var options={
-	timeout:3,
-	onSuccess:onConnect,
-			};
-client.connect(options);//connect
-}
-
-</script>
 		<div id="murinter" class="inter">
 			<div class="container">
 		<div class="col-md-12" >
