@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.7
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import paho.mqtt.client as mqtt
@@ -6,6 +6,7 @@ import json
 import sys
 from connect import ip_mqtt
 # Define Variables
+total_arg = len(sys.argv)
 topic= str(sys.argv[1])
 etat= str(sys.argv[2]) 
 valeur= str(sys.argv[3]) 
@@ -13,8 +14,11 @@ MQTT_HOST = ip_mqtt
 MQTT_PORT = 1883
 MQTT_KEEPALIVE_INTERVAL = 45
 MQTT_TOPIC = topic
-
 MQTT_MSG=json.dumps({etat: valeur});
+if total_arg >4 :
+    etat1=str(sys.argv[4])
+    valeur1=str(sys.argv[5])
+    MQTT_MSG=json.dumps({etat: valeur,etat1: valeur1});
 # Define on_publish event function
 def on_publish(client, userdata, mid):
     print ("Message Published...")
