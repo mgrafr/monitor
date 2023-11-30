@@ -155,7 +155,7 @@ La fonction JS :
 La fonction PHP qui récupère la valeur de la variable :
 
 .. code-block::
-
+ 
    // valeur d'une variable
    function val_variable($variable){
    $result=array();	
@@ -169,6 +169,22 @@ La fonction PHP qui récupère la valeur de la variable :
   
 1.1.3.2 Solution temps réel MQTT
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le serveur MQTT, le port, topic pour la souscription sont à déclarer dans /admin/config.php:
+
+.. code-block::
+
+   // serveur MQTT utilisation d'un serveur (envoi topic depuis monitor)
+   define('MQTT', true);//  true si serveur MQTT utilisé par monitor
+   define('MQTT_IP', '192.168.1.42');//adresse IP
+   define('MQTT_PORT', 9001);// mqtt=1883 websockets=9001
+   define('MQTT_TOPIC', "monitor/dz");// topic (destinataire) 
+
+.. note::
+
+   Port mqtt: 1883
+   Port websocket: 9001, à privilégier
+
 le script JS dans footer.php:
 
 .. code-block::
