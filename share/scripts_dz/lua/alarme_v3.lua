@@ -73,7 +73,7 @@ return {
 		},
 	execute = function(domoticz, item)
 	    --domoticz.log('Alarme ' .. item .. ' was changed', domoticz.LOG_INFO)
-	    domoticz.variables('variable_sp').set("1")
+	    --domoticz.variables('variable_sp').set('1')
  --*********************variables***************************************	
 	-- alarme absence - 
         if (domoticz.variables('ma-alarme').value == "1") then 
@@ -153,45 +153,16 @@ return {
  --******************************timer********************************************    
         if (time=='23:00') then
             if domoticz.devices('al_nuit_auto').state == "On" and domoticz.devices('alarme_nuit').state=="Off"  then 
-                domoticz.devices('alarme_nuit').switchOn();print('al_nuit=ON')
+                domoticz.devices('alarme_nuit').switchOn();print('al_nuit=ON');domoticz.variables('variable_sp').set('1')
             end
         elseif (time=='06:00') then    
             if domoticz.devices('al_nuit_auto').state == "On" and domoticz.devices('alarme_nuit').state=="On"  then 
-                domoticz.variables('alarme').set('alarme_auto');
+                domoticz.variables('alarme').set('alarme_auto');domoticz.variables('variable_sp').set('1')
                 domoticz.devices('alarme_nuit').switchOff();print('al_nuit=OFF')    
             end
         end
 end
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

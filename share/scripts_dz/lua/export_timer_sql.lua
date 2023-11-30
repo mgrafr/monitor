@@ -24,8 +24,8 @@ return {
     },
  execute = function(domoticz, item)
     domoticz.log('export sql: ' .. item.trigger)
-       local Counter = domoticz.devices('truffiere - Linky').counter; print("compteur_kwh:"..Counter)
-       local Usage = domoticz.devices('truffiere - Linky').usage;    print("compteur_kw:"..Usage) 
+       local Counter = domoticz.devices('linky_bis').counter; print("compteur_kwh:"..Counter)
+       local Usage = domoticz.devices('linky_bis').usage;    print("compteur_kw:"..Usage) 
        libelle="energie#conso"
        don=" "..libelle.."#"..tostring(round(Counter,1)).."#"..datetime.."#pmax#"..tostring(round(Usage/1000,1)); print("energie"..don);
        envoi_fab(don)--
