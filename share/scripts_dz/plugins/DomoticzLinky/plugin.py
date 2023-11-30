@@ -22,7 +22,7 @@
 # <http://www.gnu.org/licenses/>.
 #
 """
-<plugin key="linky" name="Linky" author="Barberousse" version="2.4.5" externallink="https://github.com/guillaumezin/DomoticzLinky">
+<plugin key="linky" name="Linky" author="Barberousse" version="2.5.3" externallink="https://github.com/guillaumezin/DomoticzLinky">
     <params>
         <param field="Mode4" label="Heures creuses (vide pour désactiver, cf. readme pour la syntaxe)" width="500px" required="false" default="">
 <!--        <param field="Mode4" label="Heures creuses" width="500px">
@@ -134,21 +134,21 @@ LOGIN_BASE_PORT = ["443", "443"]
 LOGIN_BASE_URI = ["enedis.domoticz.russandol.pro", "opensrcdev.alwaysdata.net"]
 API_ENDPOINT_DEVICE_CODE = ["/device/code", "/domoticzlinkyconnect/device/code"]
 API_ENDPOINT_DEVICE_TOKEN = ["/device/token", "/domoticzlinkyconnect/device/token"]
-API_ENDPOINT_PROXY = ["/device/proxy", "/domoticzlinkyconnect/device/proxy"]
 VERIFY_CODE_URI = ["https://" + LOGIN_BASE_URI[0] + "/device?code=",
                    "https://" + LOGIN_BASE_URI[1] + "/domoticzlinkyconnect/device?code="]
 
 API_BASE_PORT = ["443", "443"]
-API_BASE_URI = ["gw.prd.api.enedis.fr", "gw.hml.api.enedis.fr"]
-API_ENDPOINT_DATA_CONSUMPTION_LOAD_CURVE = '/v4/metering_data/consumption_load_curve'
-API_ENDPOINT_DATA_CONSUMPTION_MAX_POWER = '/v4/metering_data/daily_consumption_max_power'
-API_ENDPOINT_DATA_DAILY_CONSUMPTION = '/v4/metering_data/daily_consumption'
-API_ENDPOINT_DATA_PRODUCTION_LOAD_CURVE = '/v4/metering_data/production_load_curve'
-API_ENDPOINT_DATA_DAILY_PRODUCTION = '/v4/metering_data/daily_production'
+API_BASE_URI = ["enedis.domoticz.russandol.pro", "opensrcdev.alwaysdata.net"]
+API_ENDPOINT_DATA_URI = ["/data/proxy", "/domoticzlinkyconnect/data/proxy"]
+API_ENDPOINT_DATA_CONSUMPTION_LOAD_CURVE = '/metering_data_clc/v5/consumption_load_curve'
+API_ENDPOINT_DATA_CONSUMPTION_MAX_POWER = '/metering_data_dcmp/v5/daily_consumption_max_power'
+API_ENDPOINT_DATA_DAILY_CONSUMPTION = '/metering_data_dc/v5/daily_consumption'
+API_ENDPOINT_DATA_PRODUCTION_LOAD_CURVE = '/metering_data_plc/v5/production_load_curve'
+API_ENDPOINT_DATA_DAILY_PRODUCTION = '/metering_data_dp/v5/daily_production'
 
 HEADERS = {
     "Accept": "application/json",
-    "Content-Type": "application/json"
+    "Content-Type": "application/x-www-form-urlencoded"
 }
 
 USAGE_POINT_SEPARATOR = " / "
@@ -156,10 +156,8 @@ NB_WEEKS_LONG_HISTORY = 5
 NO_STATUS_ERROR_CODE = 999
 
 class BasePlugin:
-    # boolean: is plugin isEnabled
-    isEnabled = True
     # boolean: to check that we are started, to prevent error messages when disabling or restarting the plugin
-    isStarted = None
+    isStarted = False
     # object: http connection for login
     httpLoginConn = None
     # object: http connection for data
@@ -226,7 +224,7 @@ class BasePlugin:
     # integer: number of other view (peak)
     iHistoryDaysForPeakDaysView = None
     # boolean: debug mode
-    iDebugLevel = None
+    iDebugLevel = 0
     # previous day
     prevDay = None
     # current day
@@ -275,8 +273,8 @@ class BasePlugin:
     dateNextConnection = None
     # integer: which device to use
     iAlternateDevice = 0
-    # integer: false customoer
-    iFalseCustomer = 0
+    # list: false customoer
+    lFalseCustomer = []
     # integer: which address to use (production or sandbox)
     iAlternateAddress = 0
     # to know that we come from refresh token step
@@ -411,7 +409,6 @@ class BasePlugin:
     def getDeviceCode(self):
         headers = self.initHeaders(
             LOGIN_BASE_URI[self.iAlternateAddress] + ":" + LOGIN_BASE_PORT[self.iAlternateAddress])
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
 
         postData = {
             "client_id": CLIENT_ID[self.iAlternateAddress]
@@ -459,7 +456,7 @@ class BasePlugin:
 
 
     def parseDeviceCode(self, Data):
-        self.dumpDictToLog(Data)
+        #self.dumpDictToLog(Data)
         iStatus = getStatus(Data)
         if iStatus == 200:
             if Data and ("Data" in Data):
@@ -477,8 +474,6 @@ class BasePlugin:
                     count = count + 1
                 if count == 2:
                     sUrl = VERIFY_CODE_URI[self.iAlternateAddress] + quote(sUserCode)
-                    if self.iFalseCustomer:
-                        sUrl = sUrl + "&state=" + str(self.iFalseCustomer)
                     self.myError(
                         "Connectez-vous à l'adresse " + sUrl + " pour lancer la demande de consentement avec le code " + sUserCode)
                     return "done"
@@ -495,7 +490,6 @@ class BasePlugin:
     def getAccessToken(self):
         headers = self.initHeaders(
             LOGIN_BASE_URI[self.iAlternateAddress] + ":" + LOGIN_BASE_PORT[self.iAlternateAddress])
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
 
         postData = {
             "client_id": CLIENT_ID[self.iAlternateAddress],
@@ -518,17 +512,17 @@ class BasePlugin:
     def refreshToken(self):
         headers = self.initHeaders(
             LOGIN_BASE_URI[self.iAlternateAddress] + ":" + LOGIN_BASE_PORT[self.iAlternateAddress])
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
 
         postData = {
             "grant_type": "refresh_token",
             "client_id": CLIENT_ID[self.iAlternateAddress],
+            "usage_points_id": ','.join(self.getConfigItem("usage_points_id", [])),
             "refresh_token": self.getConfigItem("refresh_token", "")
         }
 
         sendData = {
             "Verb": "POST",
-            "URL": API_ENDPOINT_PROXY[self.iAlternateAddress],
+            "URL": API_ENDPOINT_DEVICE_TOKEN[self.iAlternateAddress],
             "Headers": headers,
             "Data": dictToQuotedString(postData)
         }
@@ -540,11 +534,11 @@ class BasePlugin:
 
     # Parse access token
     def parseAccessToken(self, Data):
-        self.dumpDictToLog(Data)
+        #self.dumpDictToLog(Data)
         iStatus = getStatus(Data)
         sError, sErrorDescription, sErrorUri = getError(Data)
         sError = sError.lower()
-        if (sError == "unauthorized") or (sError == "invalid_grant"):
+        if (sError == "unauthorized") or (sError == "invalid_grant") or (sError == "invalid_request"):
             self.showSimpleStatusError(Data)
             return "error"
         if sError == "authorization_pending":
@@ -580,7 +574,10 @@ class BasePlugin:
                 if dJson and ("token_type" in dJson):
                     self.setConfigItem("token_type", dJson["token_type"])
                     count = count + 1
-                if count == 3:
+                if dJson and ("expires_in" in dJson):
+                    self.setConfigItem("expires_at", datetime.now() + timedelta(seconds=int(dJson["expires_in"])) - timedelta(minutes=10))
+                    count = count + 1
+                if count == 4:
                     return "done"
                 else:
                     self.showSimpleStepError("Pas assez de données reçue")
@@ -604,8 +601,9 @@ class BasePlugin:
 
         sendData = {
             "Verb": "GET",
-            "URL": uri + "?" + dictToQuotedString(query),
+            "URL": API_ENDPOINT_DATA_URI[self.iAlternateAddress] + uri + "?" + dictToQuotedString(query),
             "Headers": headers
+            #"Data": dictToQuotedString(query)
         }
 
         self.dumpDictToLog(sendData)
@@ -897,24 +895,58 @@ class BasePlugin:
                     fValProd1 = 0
                     fValProd2 = 0
                     bHasData = False
-                    if iHour in dOneData["consumption1_hours"]:
-                        fValConso1 = dOneData["consumption1_hours"][iHour]
-                        iDConsumption1 = iDConsumption1 + fValConso1
-                        bHasData = True
-                    if iHour in dOneData["consumption2_hours"]:
-                        fValConso2 = dOneData["consumption2_hours"][iHour]
-                        iDConsumption2 = iDConsumption2 + fValConso2
-                        bHasData = True
-                    if iHour in dOneData["production1_hours"]:
-                        fValProd1 = dOneData["production1_hours"][iHour]
-                        iDProduction1 = iDProduction1 + fValProd1
-                        bHasData = True
-                    if iHour in dOneData["production2_hours"]:
-                        fValProd2 = dOneData["production2_hours"][iHour]
-                        iDProduction2 = iDProduction2 + fValProd2
-                        bHasData = True
+                    #if iHour in dOneData["consumption1_hours"]:
+                    #    fValConso1 = dOneData["consumption1_hours"][iHour]
+                    #    iDConsumption1 = iDConsumption1 + fValConso1
+                    #    bHasData = True
+                    #if iHour in dOneData["consumption2_hours"]:
+                    #    fValConso2 = dOneData["consumption2_hours"][iHour]
+                    #    iDConsumption2 = iDConsumption2 + fValConso2
+                    #    bHasData = True                    
+                    #if iHour in dOneData["production1_hours"]:
+                    #    fValProd1 = dOneData["production1_hours"][iHour]
+                    #    iDProduction1 = iDProduction1 + fValProd1
+                    #    bHasData = True
+                    #if iHour in dOneData["production2_hours"]:
+                    #    fValProd2 = dOneData["production2_hours"][iHour]
+                    #    iDProduction2 = iDProduction2 + fValProd2
+                    #    bHasData = True
                     # Here we can shift data for hours view
                     dDate2 = dDate + timedelta(hours = iHour)
+                    bCost2Cons = self.isCost2(dDate2, False)
+                    bCost2Prod = self.isCost2(dDate2, True)
+                    if iHour in dOneData["consumption1_hours"]:
+                        bHasData = True                    
+                        if bCost2Cons:
+                            fValConso2 = dOneData["consumption1_hours"][iHour]
+                            iDConsumption2 = iDConsumption2 + fValConso2
+                        else:
+                            fValConso1 = dOneData["consumption1_hours"][iHour]
+                            iDConsumption1 = iDConsumption1 + fValConso1
+                    if iHour in dOneData["consumption2_hours"]:
+                        bHasData = True                    
+                        if bCost2Cons:
+                            fValConso2 = dOneData["consumption2_hours"][iHour]
+                            iDConsumption2 = iDConsumption2 + fValConso2
+                        else:
+                            fValConso1 = dOneData["consumption2_hours"][iHour]
+                            iDConsumption1 = iDConsumption1 + fValConso1
+                    if iHour in dOneData["production1_hours"]:
+                        bHasData = True                    
+                        if bCost2Cons:
+                            fValProd2 = dOneData["production1_hours"][iHour]
+                            iDProduction2 = iDProduction2 + fValProd2
+                        else:
+                            fValProd1 = dOneData["production1_hours"][iHour]
+                            iDProduction1 = iDProduction1 + fValProd1
+                    if iHour in dOneData["production2_hours"]:
+                        bHasData = True                    
+                        if bCost2Cons:
+                            fValProd2 = dOneData["production2_hours"][iHour]
+                            iDProduction2 = iDProduction2 + fValProd2
+                        else:
+                            fValProd1 = dOneData["production2_hours"][iHour]
+                            iDProduction1 = iDProduction1 + fValProd1
                     if bHasData:
                         self.dayAccumulateConsoProd(sUsagePointCurrentId, dDate2, fValConso1, fValConso2, fValProd1, fValProd2)
                     if (dDate2 >= self.curDay):
@@ -965,89 +997,67 @@ class BasePlugin:
         return True
 
 
-    # update date to manage cache in memory
-    def updateDataBeginEndDates(self, sUsagePointCurrentId, dDate, sType):
-        if dDate > self.dData[sUsagePointCurrentId]["state"][sType]["enddate"] :
-            self.dData[sUsagePointCurrentId]["state"][sType]["enddate"] = dDate
-        if dDate < self.dData[sUsagePointCurrentId]["state"][sType]["begindate"] :
-            self.dData[sUsagePointCurrentId]["state"][sType]["begindate"] = dDate
-
-
-    # update state of cache in memory
-    def updateCacheState(self, sUsagePointCurrentId):
-        for dState in self.dData[sUsagePointCurrentId]["state"].values():
-            if dState["begindate"] != datetime(2300, 1, 1):
-                dState["isempty"] = False
-            else:
-                dState["isempty"] = True
-
-
     # Merge counters with only consumption with counters with only production into new virtual counters
     def mergeCounters(self):
         bResult = True
-        dCalculateCopy = self.dCalculate.copy()
-        for sUsagePointConsumptionId in dCalculateCopy:
-            # Check if consumption only
-            if (
-                not dCalculateCopy[sUsagePointConsumptionId]["production1"]["value_year"]
-                and not dCalculateCopy[sUsagePointConsumptionId]["production2"]["value_year"]
-                and (dCalculateCopy[sUsagePointConsumptionId]["consumption1"]["value_year"]
-                    or dCalculateCopy[sUsagePointConsumptionId]["consumption2"]["value_year"])
-            ):
-                for sUsagePointProductionId in dCalculateCopy:
-                    # Merge with production only
-                    if (
-                        not dCalculateCopy[sUsagePointProductionId]["consumption1"]["value_year"]
-                        and not dCalculateCopy[sUsagePointProductionId]["consumption2"]["value_year"]
-                        and (dCalculateCopy[sUsagePointProductionId]["production1"]["value_year"]
-                            or dCalculateCopy[sUsagePointProductionId]["production2"]["value_year"])
-                    ):
-                        # Do merge
-                        sNewUsagePointId = sUsagePointConsumptionId + USAGE_POINT_SEPARATOR + sUsagePointProductionId
-                        self.myStatus("Fusionne les points de livraison " + sNewUsagePointId)
+        try:
+            dCalculateCopy = self.dCalculate.copy()
+            for sUsagePointConsumptionId in dCalculateCopy:
+                # Check if consumption only
+                if (
+                    not dCalculateCopy[sUsagePointConsumptionId]["production1"]["value_year"]
+                    and not dCalculateCopy[sUsagePointConsumptionId]["production2"]["value_year"]
+                    and (dCalculateCopy[sUsagePointConsumptionId]["consumption1"]["value_year"]
+                        or dCalculateCopy[sUsagePointConsumptionId]["consumption2"]["value_year"])
+                ):
+                    for sUsagePointProductionId in dCalculateCopy:
+                        # Merge with production only
+                        if (
+                            not dCalculateCopy[sUsagePointProductionId]["consumption1"]["value_year"]
+                            and not dCalculateCopy[sUsagePointProductionId]["consumption2"]["value_year"]
+                            and (dCalculateCopy[sUsagePointProductionId]["production1"]["value_year"]
+                                or dCalculateCopy[sUsagePointProductionId]["production2"]["value_year"])
+                        ):
+                            # Do merge
+                            sNewUsagePointId = sUsagePointConsumptionId + USAGE_POINT_SEPARATOR + sUsagePointProductionId
+                            self.myStatus("Fusionne les points de livraison " + sNewUsagePointId)
 
-                        # copy consumption data to merged device
-                        self.dData[sNewUsagePointId] = copy.deepcopy(self.dData[sUsagePointConsumptionId])
+                            # copy consumption data to merged device
+                            self.dData[sNewUsagePointId] = copy.deepcopy(self.dData[sUsagePointConsumptionId])
 
-                        # copy production data to merged device where dates coincide for consumption
-                        for sDate, dMergedData in self.dData[sNewUsagePointId]["data"].items():
-                            if sDate in self.dData[sUsagePointProductionId]["data"]:
-                                dProdData = self.dData[sUsagePointProductionId]["data"][sDate]
-                                for iHour, fValue in dProdData["production1_hours"].items():
-                                    dMergedData["production1_hours"][iHour] = fValue
-                                for iHour, fValue in dProdData["production2_hours"].items():
-                                    dMergedData["production2_hours"][iHour] = fValue
-                                dMergedData["productionpeak"] = dProdData["productionpeak"]
-                                dMergedData["hasconsoprod"] = dMergedData["hasconsoprod"] or dProdData["hasconsoprod"]
-                                dMergedData["haspeak"] = dMergedData["haspeak"] or dProdData["haspeak"]
-                                if dMergedData["hasconsoprod"]:
-                                    self.updateDataBeginEndDates(sNewUsagePointId, dMergedData["consoproddate"], "production")
-                                if dMergedData["haspeak"]:
-                                    self.updateDataBeginEndDates(sNewUsagePointId, dMergedData["peakdate"], "productionpeak")
+                            # copy production data to merged device where dates coincide for consumption
+                            for sDate, dMergedData in self.dData[sNewUsagePointId]["data"].items():
+                                if sDate in self.dData[sUsagePointProductionId]["data"]:
+                                    dProdData = self.dData[sUsagePointProductionId]["data"][sDate]
+                                    for iHour, fValue in dProdData["production1_hours"].items():
+                                        dMergedData["production1_hours"][iHour] = fValue
+                                    for iHour, fValue in dProdData["production2_hours"].items():
+                                        dMergedData["production2_hours"][iHour] = fValue
+                                    dMergedData["productionpeak"] = dProdData["productionpeak"]
+                                    dMergedData["hasconsoprod"] = dMergedData["hasconsoprod"] or dProdData["hasconsoprod"]
+                                    dMergedData["haspeak"] = dMergedData["haspeak"] or dProdData["haspeak"]
 
-                        # create production data to merged device where dates don't coincide for consumption
-                        for sDate, dProdData in self.dData[sUsagePointConsumptionId]["data"].items():
-                            if sDate not in self.dData[sNewUsagePointId]["data"]:
-                                dMergedData = initData()
-                                for iHour, fValue in dProdData["production1_hours"].items():
-                                    dMergedData["production1_hours"][iHour] = fValue
-                                for iHour, fValue in dProdData["production2_hours"].items():
-                                    dMergedData["production2_hours"][iHour] = fValue
-                                dMergedData["productionpeak"] = dProdData["productionpeak"]
-                                dMergedData["hasconsoprod"] = dProdData["hasconsoprod"]
-                                dMergedData["consoproddate"] = dProdData["consoproddate"]
-                                dMergedData["haspeak"] = dProdData["haspeak"]
-                                dMergedData["peakdate"] = dProdData["peakdate"]
-                                self.dData[sNewUsagePointId]["data"][sDate] = dMergedData
-                                if dMergedData["hasconsoprod"]:
-                                    self.updateDataBeginEndDates(sNewUsagePointId, sDate, dMergedData["consoproddate"], "production")
-                                if dMergedData["haspeak"]:
-                                    self.updateDataBeginEndDates(sNewUsagePointId, sDate, dMergedData["peakdate"], "productionpeak")
-                                
-                        self.bNoConsumption = False
-                        self.bNoProduction = False
-                        if not self.saveDataToDb(sNewUsagePointId):
-                            bResult = False
+                            # create production data to merged device where dates don't coincide for consumption
+                            for sDate, dProdData in self.dData[sUsagePointConsumptionId]["data"].items():
+                                if sDate not in self.dData[sNewUsagePointId]["data"]:
+                                    dMergedData = initData()
+                                    for iHour, fValue in dProdData["production1_hours"].items():
+                                        dMergedData["production1_hours"][iHour] = fValue
+                                    for iHour, fValue in dProdData["production2_hours"].items():
+                                        dMergedData["production2_hours"][iHour] = fValue
+                                    dMergedData["productionpeak"] = dProdData["productionpeak"]
+                                    dMergedData["hasconsoprod"] = dProdData["hasconsoprod"]
+                                    dMergedData["consoproddate"] = dProdData["consoproddate"]
+                                    dMergedData["haspeak"] = dProdData["haspeak"]
+                                    dMergedData["peakdate"] = dProdData["peakdate"]
+                                    self.dData[sNewUsagePointId]["data"][sDate] = dMergedData
+                                    
+                            self.bNoConsumption = False
+                            self.bNoProduction = False
+                            if not self.saveDataToDb(sNewUsagePointId):
+                                bResult = False
+        except:
+            bResult = False
         return bResult
 
 
@@ -1063,33 +1073,34 @@ class BasePlugin:
             self.dData[self.sUsagePointId]["data"][sShortDate]["peakdate"] = dtDate
             if bProduction:
                 self.dData[self.sUsagePointId]["data"][sShortDate]["productionpeak"] = fVal
-                self.updateDataBeginEndDates(self.sUsagePointId, dtDate, "productionpeak")
             else:
                 self.dData[self.sUsagePointId]["data"][sShortDate]["consumptionpeak"] = fVal
-                self.updateDataBeginEndDates(self.sUsagePointId, dtDate, "consumptionpeak")
         else:
             self.dData[self.sUsagePointId]["data"][sShortDate]["hasconsoprod"] = True
             self.dData[self.sUsagePointId]["data"][sShortDate]["consoproddate"] = dtDate.replace(hour=0, minute=0, second=0, microsecond=0)
-            bCost2 = self.isCost2(dtDate, bProduction)
+            # We will handle cost 1 and 2 when putting data in db instead
+            #bCost2 = self.isCost2(dtDate, bProduction)
+            #if bProduction:
+            #    if bCost2:
+            #        pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["production2_hours"]
+            #    else:
+            #        pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["production1_hours"]
+            #else:
+            #    if bCost2:
+            #        pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["consumption2_hours"]
+            #    else:
+            #        pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["consumption1_hours"]
             if bProduction:
-                if bCost2:
-                    pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["production2_hours"]
-                else:
-                    pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["production1_hours"]
-                self.updateDataBeginEndDates(self.sUsagePointId, dtDate, "production")
+                pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["production1_hours"]
             else:
-                if bCost2:
-                    pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["consumption2_hours"]
-                else:
-                    pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["consumption1_hours"]
-                self.updateDataBeginEndDates(self.sUsagePointId, dtDate, "consumption")
+                pfData = self.dData[self.sUsagePointId]["data"][sShortDate]["consumption1_hours"]
             pfData[dtDate.hour] = fVal
             #self.myDebug("Store consoprod " + str(fVal) + " at " + str(dtDate))
 
 
     # Grab hours data inside received JSON data for short log
     def exploreDataHours(self, Data, bProduction=False):
-        self.dumpDictToLog(Data)
+        #self.dumpDictToLog(Data)
         if Data and ("Data" in Data):
             try:
                 dJson = json.loads(Data["Data"].decode())
@@ -1226,7 +1237,7 @@ class BasePlugin:
 
     # Grab days data inside received JSON data for history
     def exploreDataPeaks(self, Data, bProduction=False):
-        self.dumpDictToLog(Data)
+        #self.dumpDictToLog(Data)
         if Data and "Data" in Data:
             try:
                 dJson = json.loads(Data["Data"].decode())
@@ -1278,7 +1289,6 @@ class BasePlugin:
     def updateDashboard(self, oDevice, sUsagePointCurrentId):
         if not sUsagePointCurrentId in self.dCalculate:
             return False
-        self.dumpDictToLog(self.dData[sUsagePointCurrentId]["state"])
         self.dumpDictToLog(self.dCalculate[sUsagePointCurrentId])
 
         fConsoVal1 = -1
@@ -1535,96 +1545,121 @@ class BasePlugin:
 
 
     def disablePlugin(self):
-        self.isEnabled = False
+        self.isStarted = False
         self.resetTokens()
         for oDevice in Devices.values():
             oDevice.Update(nValue=oDevice.nValue, sValue=oDevice.sValue, TimedOut=1)
         self.showSimpleStepError(
             "Le plugin va être arrêté. Relancez le en vous rendant dans Configuration/Matériel, en cliquant sur le plugin puis sur Modifier. Surveillez les logs pour obtenir le lien afin de renouveler le consentement pour la récupération des données auprès d'Enedis")
+        if self.fDebug:
+            self.fDebug.flush()
 
-    # return True if data already in memory or ask data and True if data in cache empty
+
+    # set empty data in cache
+    def setCacheEmpty(self, bEmpty, sUsagePointCurrentId, bProdMode=False):
+        if sUsagePointCurrentId not in self.dData:
+            self.dData[sUsagePointCurrentId] = {"data": dict(), "state": initState()}
+        if bProdMode:
+            self.dData[sUsagePointCurrentId]["state"]["noProduction"] = bEmpty
+        else:
+            self.dData[sUsagePointCurrentId]["state"]["noConsumption"] = bEmpty
+
+
+    # get empty data state from cache
+    def getCacheNoData(self, sUsagePointCurrentId, bProdMode=False):
+        try:
+            if sUsagePointCurrentId not in self.dData:
+                return False
+            if bProdMode:
+                return self.dData[sUsagePointCurrentId]["state"]["noProduction"]
+            else:
+                return self.dData[sUsagePointCurrentId]["state"]["noConsumption"]
+        except:
+            return False
+
+
+    # return True if data already in memory
     def getDataHours(self, sUsagePointCurrentId, bProdMode, dtStart, dtEnd):
         self.myDebug("getDataHours de " + datetimeToSQLDateString(dtStart) + " à " + datetimeToSQLDateString(dtEnd))
 
         # check if we already have data in memory
-        try:
-            if bProdMode :
-                sType = "production"
-            else:
-                sType = "consumption"
-            pState = self.dData[sUsagePointCurrentId]["state"][sType]
-            dtStartPrev = dtStart
-            dtEndPrev = dtEnd
-            if ("isempty" in pState) and pState["isempty"]:
-                self.myDebug("Le cache indique aucune données de " + sType)
-                return True, True
-            dtStartMem = pState["begindate"]
-            dtEndMem = pState["enddate"] + timedelta(hours=1)
-            dtStart = dtStart + timedelta(hours=1)
-            #self.myDebug("Dates 1 " + str(dtStart)  + " " + str(dtEnd)  + " " + str(dtStartMem)  + " " + str(dtEndMem))
-            #self.myDebug("Compare to " + datetimeToSQLDateString(dtStartMem) + " to " + datetimeToSQLDateString(dtEndMem))
-            if (dtStart >= dtStartMem) and (dtStart <= dtEndMem):
-                dtStart = dtEndMem
-            if (dtEnd >= dtStartMem) and (dtEnd <= dtEndMem):
-                dtEnd = dtStartMem
-            #self.myDebug("Dates 2 " + str(dtStart)  + " " + str(dtEnd)  + " " + str(dtStartMem)  + " " + str(dtEndMem))
-            if dtStart >= dtEnd:
-                self.myDebug("Utilise les données de " + sType  + " du cache de " + datetimeToSQLDateString(dtStartPrev) + " à " + datetimeToSQLDateString(dtEndPrev))
-                return True, False
-            if (dtStart != dtStartPrev) or (dtEnd != dtEndPrev):                
-                self.myDebug("Utilise partiellement des données du cache, demande des données de " + datetimeToSQLDateString(dtStart) + " à " + datetimeToSQLDateString(dtEnd) + " seulement")
-        except:
-            pass
-        dtStart = dtStart.replace(hour=0, minute=0, second=0, microsecond=0)
-        dtEnd = dtEnd.replace(hour=0, minute=0, second=0, microsecond=0)
-        if dtStart == dtEnd:
-            dtEnd = dtStart + timedelta(days=1)
-        self.getData(API_ENDPOINT_DATA_PRODUCTION_LOAD_CURVE if bProdMode else API_ENDPOINT_DATA_CONSUMPTION_LOAD_CURVE, dtStart, dtEnd)
-        return False, False
+        if bProdMode :
+            sType = "production"
+            sTypeHour1 = "production1_hours"
+            sTypeHour2 = "production1_hours"
+        else:
+            sType = "consumption"
+            sTypeHour1 = "consumption1_hours"
+            sTypeHour2 = "consumption2_hours"
+            
+        if self.getCacheNoData(sUsagePointCurrentId, bProdMode):
+            self.myDebug("Le cache indique aucune données de " + sType)
+            return True
+
+        dtLoop = dtStart
+        bIncomplete = False
+        if sUsagePointCurrentId in self.dData:
+            while dtLoop < dtEnd:
+                sShortDate = datetimeToSQLDateString(dtLoop)
+                if sShortDate not in self.dData[sUsagePointCurrentId]["data"]:
+                    bIncomplete = True
+                    break
+                if (len(self.dData[sUsagePointCurrentId]["data"][sShortDate][sTypeHour1]) + len(self.dData[sUsagePointCurrentId]["data"][sShortDate][sTypeHour2])) < 23:
+                    bIncomplete = True
+                    break
+                dtLoop = dtLoop + timedelta(days=1)
+        else:
+            bIncomplete = True
+        if bIncomplete:
+            self.getData(API_ENDPOINT_DATA_PRODUCTION_LOAD_CURVE if bProdMode else API_ENDPOINT_DATA_CONSUMPTION_LOAD_CURVE, dtLoop, dtEnd)
+            return False
+        else:
+            self.myDebug("Utilise les données de " + sType  + " du cache de " + datetimeToSQLDateString(dtStart) + " à " + datetimeToSQLDateString(dtEnd))
+            return True
 
 
-    # return True if data already in memory or ask data and True if data in cache empty
+    # return True if data already in memory
     def getDataPeaks(self, sUsagePointCurrentId, bProdMode, dtStart, dtEnd):
         self.myDebug("getDataPeaks de " + datetimeToSQLDateString(dtStart) + " à " + datetimeToSQLDateString(dtEnd))
-        
+
         # check if we already have data in memory
-        try:
-            if bProdMode :
-                sType = "productionpeak"
-            else:
-                sType = "consumptionpeak"
-            pState = self.dData[sUsagePointCurrentId]["state"][sType]
-            dtStartPrev = dtStart
-            dtEndPrev = dtEnd
-            if ("isempty" in pState) and pState["isempty"]:
-                self.myDebug("Cache indicates no " + sType  + " data")
-                return True, True
-            dtStartMem = pState["begindate"].replace(hour=0, minute=0, second=0, microsecond=0)
-            dtEndMem = pState["enddate"].replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
-            #self.myDebug("Compare to " + datetimeToSQLDateString(dtStartMem) + " to " + datetimeToSQLDateString(dtEndMem))
-            if (dtStart >= dtStartMem) and (dtStart <= dtEndMem):
-                dtStart = dtEndMem
-            if (dtEnd >= dtStartMem) and (dtEnd <= dtEndMem):
-                dtEnd = dtStartMem
-            if dtStart >= dtEnd:
-                self.myDebug("Utilise les données de " + sType  + " du cache de " + datetimeToSQLDateString(dtStartPrev) + " à " + datetimeToSQLDateString(dtEndPrev))
-                return True, False
-            elif (dtStart != dtStartPrev) or (dtEnd != dtEndPrev):
-                self.myDebug("Utilise partiellement des données du cache, demande des données de " + datetimeToSQLDateString(dtStart) + " à " + datetimeToSQLDateString(dtEnd) + " seulement")
-        except:
-            pass
-        self.getData(API_ENDPOINT_DATA_CONSUMPTION_MAX_POWER, dtStart, dtEnd)
-        return False, False
+        if bProdMode :
+            sType = "productionpeak"
+        else:
+            sType = "consumptionpeak"
+
+        if self.getCacheNoData(sUsagePointCurrentId, bProdMode):
+            self.myDebug("Le cache indique aucune données de " + sType)
+            return True
+
+        dtLoop = dtStart
+        bIncomplete = False
+        if sUsagePointCurrentId in self.dData:
+            while dtLoop < dtEnd:
+                sShortDate = datetimeToSQLDateString(dtLoop)
+                if sShortDate not in self.dData[sUsagePointCurrentId]["data"]:
+                    bIncomplete = True
+                    break
+                if not self.dData[sUsagePointCurrentId]["data"][sShortDate][sType]:
+                    bIncomplete = True
+                    break
+                dtLoop = dtLoop + timedelta(days=1)
+        else:
+            bIncomplete = True
+        if bIncomplete:
+            self.getData(API_ENDPOINT_DATA_CONSUMPTION_MAX_POWER, dtLoop, dtEnd)
+            return False
+        else:
+            self.myDebug("Utilise les données de " + sType  + " du cache de " + datetimeToSQLDateString(dtStart) + " à " + datetimeToSQLDateString(dtEnd))
+            return True
 
 
     # Handle the connection state machine
-    def handleConnection(self, Data=None, bUseCache=False, bNoDataInCache=False):
+    def handleConnection(self, Data=None, bUseCache=False):
         self.myDebug("Etape " + self.sConnectionStep)
+        self.dumpDictToLog(Data)
 
-        if self.iDebugLevel > 1 and Data:
-            self.dumpDictToLog(Data)
-
-        #self.myDebug("bUseCache " + str(bUseCache) + " bNoDataInCache " + str(bNoDataInCache) + " bNoProduction " + str(self.bNoProduction) + " bNoConsumption " + str(self.bNoConsumption))
+        #self.myDebug("bUseCache " + str(bUseCache) + " bNoProduction " + str(self.bNoProduction) + " bNoConsumption " + str(self.bNoConsumption))
 
         # First and last step
         if self.sConnectionStep == "idle":
@@ -1632,12 +1667,22 @@ class BasePlugin:
             # Reset state
             self.clearState()
 
-            # If we have access tokens, try do grab data, otherwise ask for tokens
-            if self.getConfigItem("access_token", ""):
+            if self.iAlternateAddress:
                 self.sConnectionStep = "start"
             else:
-                self.sConnectionStep = "parsedevicecode"
-                self.getDeviceCode()
+                # If we have still valid access tokens, try do grab data
+                # If we have old access tokens, renew them
+                # Otherwise, ask for consent
+                dtExpiresAt =  datetime.fromtimestamp(int(self.getConfigItem("expires_at", datetime(2000, 1, 1))))
+                if dtExpiresAt > datetime(2000, 1, 1):
+                    if datetime.now() < (dtExpiresAt - timedelta(minutes=10)):
+                        self.sConnectionStep = "start"
+                    else:
+                        self.sConnectionStep = "parseaccesstoken"
+                        self.refreshToken()
+                else:
+                    self.sConnectionStep = "parsedevicecode"
+                    self.getDeviceCode()
 
         # We should never reach this
         elif (self.sConnectionStep == "connecting") or (self.sConnectionStep == "sending"):
@@ -1716,7 +1761,7 @@ class BasePlugin:
             elif iStatus == 403:
                 self.showSimpleStatusError(Data)
                 self.disablePlugin()
-            elif bNoDataInCache or (iStatus == 404) or (self.bProdMode and (iStatus == 400)):
+            elif self.getCacheNoData(self.sUsagePointId, self.bProdMode) or (iStatus == 404) or (self.bProdMode and (iStatus == 400)) or (self.bProdMode and (iStatus == 500))  or (self.bProdMode and (sError.lower() == "adam-err0123")):
                 #self.showStatusError(True, Data, False, True)
                 if self.bFirstBatch:
                     if (self.bProdMode):
@@ -1724,12 +1769,18 @@ class BasePlugin:
                     else:
                         self.bNoConsumption = True
                     if self.bNoConsumption and self.bNoProduction:
+                        self.setCacheEmpty(False, self.sUsagePointId, False)
+                        self.setCacheEmpty(False, self.sUsagePointId, True)
                         #self.showStatusError(True, Data)
                         self.showStepError(True, "Pas de données disponibles, ni en consommation, ni en production, avez-vous associé un compteur à votre compte et demandé l'enregistrement et la collecte des données horaire sur le site d'Enedis (dans \"Gérer l'accès à mes données\") ?", True)
                         self.bHasAFail = True
                     elif self.bNoConsumption:
+                        if (sError.lower() == 'adam-err0069') or (sError.lower() == 'adam-err0123'):
+                            self.setCacheEmpty(True, self.sUsagePointId, self.bProdMode)
                         self.showStepError(True, "Pas de données disponibles en consommation, récupération des données de production", True, True)
                     elif self.bNoProduction:
+                        if (sError.lower() == 'adam-err0069') or (sError.lower() == 'adam-err0123'):
+                            self.setCacheEmpty(True, self.sUsagePointId, self.bProdMode)
                         self.showStepError(True, "Pas de données disponibles en production", True, True)
                 self.sConnectionStep = "prod"
             # If status 429 or 500, retry later
@@ -1750,10 +1801,10 @@ class BasePlugin:
                 if self.stillDays(False):
                     self.calculateDaysLeft()
                     self.sConnectionStep = "getdatahours"
-                    bUseCache, bNoDataInCache = self.getDataHours(self.sUsagePointId, self.bProdMode, self.dateBeginHours, self.dateEndHours)
+                    bUseCache = self.getDataHours(self.sUsagePointId, self.bProdMode, self.dateBeginHours, self.dateEndHours)
                     if bUseCache:
                         self.myDebug("Utilisation du cache")
-                        self.handleConnection(bUseCache = bUseCache, bNoDataInCache = bNoDataInCache)
+                        self.handleConnection(bUseCache = bUseCache)
                 else:
                     # If at end of data for days and for peaks, continue to data for hours or save
                     # No production peak available yet in Enedis API
@@ -1763,10 +1814,10 @@ class BasePlugin:
                     else:
                         self.resetDates()
                         self.sConnectionStep = "getdatapeakdays"
-                        bUseCache, bNoDataInCache = self.getDataPeaks(self.sUsagePointId, self.bProdMode, self.dateBeginDays, self.dateEndDays)
+                        bUseCache = self.getDataPeaks(self.sUsagePointId, self.bProdMode, self.dateBeginDays, self.dateEndDays)
                         if bUseCache:
                             self.myDebug("Utilisation du cache")
-                            self.handleConnection(bUseCache = bUseCache, bNoDataInCache = bNoDataInCache)
+                            self.handleConnection(bUseCache = bUseCache)
 
         # Ask data for peak data
         elif self.sConnectionStep == "getdatapeakdays":
@@ -1786,7 +1837,7 @@ class BasePlugin:
                 self.showSimpleStatusError(Data)
                 self.disablePlugin()
             # No peak available, it happens, ignore error silently
-            elif bNoDataInCache or iStatus == 404:
+            elif self.getCacheNoData(self.sUsagePointId, self.bProdMode) or iStatus == 404:
                 self.showStatusError(False, Data, False, True)
                 self.sConnectionStep = "prod"
             # If status 429 or 500, retry later
@@ -1804,16 +1855,19 @@ class BasePlugin:
                 if self.stillDays(True):
                     self.calculateDaysLeft()
                     self.sConnectionStep = "getdatapeakdays"
-                    bUseCache, bNoDataInCache = self.getDataPeaks(self.sUsagePointId, self.bProdMode, self.dateBeginDays, self.dateEndDays)
+                    bUseCache = self.getDataPeaks(self.sUsagePointId, self.bProdMode, self.dateBeginDays, self.dateEndDays)
                     if bUseCache:
                         self.myDebug("Utilisation du cache")
-                        self.handleConnection(bUseCache = bUseCache, bNoDataInCache = bNoDataInCache)
+                        self.handleConnection(bUseCache = bUseCache)
                 else:
                     self.sConnectionStep = "prod"
 
         # first step to grab data
         if self.sConnectionStep == "start":
-            self.lUsagePointIndex = self.getConfigItem("usage_points_id", [])
+            if self.iAlternateAddress :
+                self.lUsagePointIndex = self.lFalseCustomer
+            else:
+                self.lUsagePointIndex = self.getConfigItem("usage_points_id", [])
             if (len(self.lUsagePointIndex) > 0):
                 dtNow = datetime.now()
                 self.resetDates(datetime(dtNow.year, dtNow.month, dtNow.day))
@@ -1834,9 +1888,6 @@ class BasePlugin:
 
         # Next connection time depends on success
         if self.sConnectionStep == "save":
-            if not self.bHasAFail:
-                # If no error so far, we can mark cache memory as used or as empty
-                self.updateCacheState(self.sUsagePointId)
             if not self.saveDataToDb(self.sUsagePointId):
                 self.bHasAFail = True
             # check if another usage point to grab
@@ -1866,10 +1917,10 @@ class BasePlugin:
         if self.sConnectionStep == "next":
             self.resetDates()
             self.sConnectionStep = "getdatahours"
-            bUseCache, bNoDataInCache = self.getDataHours(self.sUsagePointId, self.bProdMode, self.dateBeginHours, self.dateEndHours)
+            bUseCache = self.getDataHours(self.sUsagePointId, self.bProdMode, self.dateBeginHours, self.dateEndHours)
             if bUseCache:
                 self.myDebug("Utilisation du cache")
-                self.handleConnection(bUseCache = bUseCache, bNoDataInCache = bNoDataInCache)
+                self.handleConnection(bUseCache = bUseCache)
 
         # Next connection time depends on success
         if self.sConnectionStep == "done":
@@ -1885,7 +1936,7 @@ class BasePlugin:
 
 
     def dumpDictToLog(self, dictToLog):
-        if self.iDebugLevel:
+        if self.iDebugLevel and dictToLog:
             if isinstance(dictToLog, dict):
                 self.myDebug("Détails du dict (" + str(len(dictToLog)) + "):")
                 for x in dictToLog:
@@ -1923,10 +1974,27 @@ class BasePlugin:
 
         if self.iDebugLevel >= 10:
             self.iAlternateAddress = 1
-            self.iFalseCustomer = self.iDebugLevel - 10
+            if self.iDebugLevel == 10:
+                self.lFalseCustomer =["22516914714270"]
+            elif self.iDebugLevel == 11:
+                self.lFalseCustomer = ["11453290002823"]
+            elif self.iDebugLevel == 12:
+                self.lFalseCustomer = ["32320647321714"]
+            elif self.iDebugLevel == 13:
+                self.lFalseCustomer = ["12345678901234","10284856584123"]
+            elif self.iDebugLevel == 14:
+                self.lFalseCustomer = ["42900589957123"]
+            elif self.iDebugLevel == 15:
+                self.lFalseCustomer = ["24880057139941"]
+            elif self.iDebugLevel == 16:
+                self.lFalseCustomer = ["12655648759651"]
+            elif self.iDebugLevel == 17:
+                self.lFalseCustomer = ["64975835695673","63695879465986","22315546958763"]
+            elif self.iDebugLevel == 18:
+                self.lFalseCustomer = ["26584978546985"]
         else:
             self.iAlternateAddress = 0
-            self.iFalseCustomer = 0
+            self.lFalseCustomer = []
 
         self.myDebug("onStart called")
 
@@ -1949,7 +2017,9 @@ class BasePlugin:
         if iVersion < 4011070:
             self.myError(
                 "Votre version de Domoticz est trop ancienne")
-            self.isEnabled = False
+            self.isStarted = False
+            if self.fDebug:
+                self.fDebug.flush()
             return
 
         # Even if not used, Username and Password may still be in database because of previous versions. We don't want them, as it triggers an unwanted HTTP basic autorization header in old Domoticz Python Framework
@@ -2032,8 +2102,16 @@ class BasePlugin:
         # most init
         self.__init__()
         self.clearData()
+        
+        # useful only if we differentiate peak hours in cache
+        ## do not load cache if off peak hours changed
+        #sOldTarif = self.getConfigItem("off_peak_hours", None)
+        #if (not sOldTarif) or (sOldTarif == self.sTarif):
+        #    self.loadCache()
+        #self.setConfigItem("off_peak_hours", self.sTarif)        
         self.loadCache()
-        # TODO pour le debug, à supprimer
+        
+        #TODO pour le debug, à supprimer
         #self.setConfigItem("next_history_grab_date", datetime(2000, 1, 1))
 
         self.myLog(
@@ -2055,12 +2133,13 @@ class BasePlugin:
         self.dtGlobalTimeout = setTimeout(dtNow)
         self.setNextConnectionForLater(0)
 
-        # Now we can enabling the plugin
+        # Now we can enable the plugin
         self.isStarted = True
 
 
     def onStop(self):
-        self.myDebug("onStop called")
+        if self.isStarted:
+            self.myDebug("onStop called")
         # prevent error messages during disabling plugin
         self.isStarted = False
         if self.fDebug:
@@ -2068,7 +2147,8 @@ class BasePlugin:
 
 
     def onConnect(self, Connection, Status, Description):
-        self.myDebug("onConnect called")
+        if self.isStarted:
+            self.myDebug("onConnect called")
         if self.isStarted and ((Connection == self.httpLoginConn) or (Connection == self.httpDataConn)):
             if self.sBuffer:
                 self.iTimeoutCount = 0
@@ -2082,7 +2162,8 @@ class BasePlugin:
 
 
     def onMessage(self, Connection, Data):
-        self.myDebug("onMessage called")
+        if self.isStarted:
+            self.myDebug("onMessage called")
 
         # if started and not stopping
         if self.isStarted and ((Connection == self.httpLoginConn) or (Connection == self.httpDataConn)) and (self.sConnectionStep == "sending"):
@@ -2091,16 +2172,13 @@ class BasePlugin:
 
 
     def onDisconnect(self, Connection):
-        self.myDebug("onDisconnect called")
+        if self.isStarted:
+            self.myDebug("onDisconnect called")
 
 
     def onHeartbeat(self):
-        self.myDebug("onHeartbeat called")
-
-        if self.fDebug:
-            self.fDebug.flush()
-
-        if self.isEnabled:
+        if self.isStarted:
+            self.myDebug("onHeartbeat called")
             dtNow = datetime.now()
 
             if dtNow > self.dtNextRefresh:
@@ -2109,7 +2187,7 @@ class BasePlugin:
                     bHasGlobalTimeout = True
                 else:
                     bHasGlobalTimeout = False
-                    
+
                 for oDevice in Devices.values():
                     bHasLocalTimeout = False
                     if oDevice.DeviceID in self.dUsagePointTimeout:
@@ -2201,6 +2279,7 @@ class BasePlugin:
         self.setConfigItem("token_type", "")
         self.setConfigItem("refresh_token", "")
         self.setConfigItem("access_token", "")
+        self.setConfigItem("expires_at", datetime(2000,1,1))
 
 
     # Erase cache on disk
@@ -2315,12 +2394,8 @@ def setRefreshTime(dtDate=None):
     return dtDate + timedelta(seconds=50)
 
 
-def initInnerState():
-    return {"begindate": datetime(2300, 1, 1), "enddate": datetime(2000, 1, 1)}
-
-
 def initState():
-    return {"consumption": initInnerState(), "production": initInnerState(), "consumptionpeak": initInnerState(), "productionpeak": initInnerState()}
+    return {"noConsumption": False, "noProduction" : False}
 
 
 def initData():
