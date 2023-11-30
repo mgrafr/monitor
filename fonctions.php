@@ -181,10 +181,13 @@ function sql_variable($t,$ind){
 			$t++;
 		}return $retour;}
 	if 	($ind==5){ 
-		while ($ligne = $result->fetch_assoc()) {
-			$num_idx= strval($ligne['idx']);
-			$retour[$num_idx] =  $ligne['idm'];
-		}return $retour;}	
+		while ($ligne = $result->fetch_assoc()) {$id_m=$ligne['idm'];
+			if ($id_m!="" && substr($id_m, 0, 1) != "G" && substr($id_m, 0, 1) != "S" ) {	$n=strval($ligne['idm']);
+			$retour[$n]= new stdClass;
+			if ($ligne['idx']!="") {$retour[$n]= $ligne['idx'];}
+			else {$retour[$n]= $ligne['ID'];}}
+			//$retour[$n]->idm = $ligne['idm'];
+}return $retour;}	
 	else {$row = $result->fetch_assoc();
 	
 	return $row;}
@@ -1135,7 +1138,7 @@ if ($choix==4) {
 $sql="SELECT * FROM ".$table." WHERE ".$valeur." = ".$date;
 $result = $conn->query($sql);	
 $number = $result->num_rows;if ($number>0) {
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){$content=$row['recette'];
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){$content=$row['contenu'];
 	$content = str_replace('$$','',$content);	}
 }
 }
