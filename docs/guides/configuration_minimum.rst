@@ -778,25 +778,60 @@ la variable:
 
 .. admonition:: **Dans Home Assistant**
 
-   On utilise MQTT avec un script yaml
+   - Soit on utilise MQTT avec le même script python qu'avec Domoticz installé dans python_scrip
 
-   .. code-block::
+   - Soit ou crée une automation appelant le service mqtt.publish
 
-      - id: lampe_jardin_12345
-        hide_entity: true
-        trigger:
-          platform: state
-          entity_id: light.lampe_jardin
-        action:
-          service: mqtt.publish
-          data_template:
-            topic: 'monitor/ha'
-            payload: >
-              {% if is_state("light.lampe_jardin", on") %}
-                {"idx": "light.lampe_jardin", "state": "On"}
-              {% elif is_state("light.lampe_jardin", "off") %}
-                {"idx": "light.lampe_jardin", "state": "Off"}
-              {% endif %}
+   .. admonition:: **avec Python**
+
+      Le script python est installé dans "python_script" et le chemin de ce répertoire est indiqué dans configuration.yaml
+   
+      .. code-block::
+
+         python_script: !include_dir_merge_named python_script/
+
+      |image1188| 
+
+      Paho est installé :
+
+      .. IMPORTANT::
+
+         Advanced SSH & Web Terminal doit être installé; si Terminal & SSH est installé, le désinstaller( Avec terminal Python est très limité et Paho ne peut être installé.)
+
+         |image1189| |image1190|
+
+      .. code-block::
+
+         pip install paho-mqtt
+
+      |image1191|
+
+      Pour faire un essai, avec le terminal:
+
+      |image1192|
+
+      Visualisation dans monitor:
+
+      |image1193|
+
+   .. admonition:: **avecmqtt.publish**
+
+      .. code-block::
+
+         - id: lampe_jardin_12345
+           hide_entity: true
+           trigger:
+             platform: state
+             entity_id: light.lampe_jardin
+           service: mqtt.publish
+             data_template:
+               topic: 'monitor/ha'
+               payload: >
+                 {% if is_state("light.lampe_jardin", on") %}
+                   {"idx": "light.lampe_jardin", "state": "On"}
+                 {% elif is_state("light.lampe_jardin", "off") %}
+                   {"idx": "light.lampe_jardin", "state": "Off"}
+                 {% endif %}
 
    Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
 
@@ -2253,3 +2288,13 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 600px
 .. |image1187| image:: ../media/image1187.webp
    :width: 500px
+.. |image1188 image:: ../media/image1188.webp
+   :width: 611px
+.. |image1189 image:: ../media/image1189.webp
+   :width: 300px
+.. |image1190 image:: ../media/image1190.webp
+   :width: 300px
+.. |image1191 image:: ../media/image1191.webp
+   :width: 600px
+.. |image1192 image:: ../media/image1192.webp
+   :width: 597px
