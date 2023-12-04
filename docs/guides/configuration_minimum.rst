@@ -778,19 +778,19 @@ la variable:
 
 .. admonition:: **Dans Home Assistant**
 
-   - Soit on utilise MQTT avec le même script python qu'avec Domoticz installé dans python_scrip
+   - Soit on utilise MQTT avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS
 
    - Soit ou crée une automation appelant le service mqtt.publish
 
-   .. admonition:: **avec Python**
+   .. admonition:: **avec Pycript**
 
-      Le script python est installé dans "python_script" et le chemin de ce répertoire est indiqué dans configuration.yaml
+      Sous HACS -> Intégrations, sélectionnez |image1194|, recherchez et installez pyscript
    
-      .. code-block::
+      |image1195|
 
-         python_script: !include_dir_merge_named python_script/
+      Dans le répertoire pyscript à la racine de /config , copier les fichiers python concernés:
 
-      |image1188| 
+      |image1196|
 
       Paho est installé :
 
@@ -818,28 +818,29 @@ la variable:
 
       .. code-block::
 
-         - id: lampe_jardin_12345
-           hide_entity: true
-           trigger:
-             platform: state
+         - id: mqtt_12345678
+           alias: "essai mqtt"
+  	   trigger:
+           - platform: state
              entity_id: light.lampe_jardin
-           service: mqtt.publish
+             to: 
+             - 'on'
+             - 'off'
+           condition: []
+           action:
+           - service: mqtt.publish
              data_template:
-               topic: 'monitor/ha'
-               payload: >
-                 {% if is_state("light.lampe_jardin", on") %}
-                   {"idx": "light.lampe_jardin", "state": "On"}
-                 {% elif is_state("light.lampe_jardin", "off") %}
-                   {"idx": "light.lampe_jardin", "state": "Off"}
-                 {% endif %}
+               topic: monitor/ha
+               payload_template: >-
+                 '{"idx": "light.lampe_jardin","state": "{{ states.light.lampe_jardin.state }}" }'
 
    Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
 
-   |image1186|
+   |image1187|
 
    Réception du message dans visible monitor:
 
-   |image1187|
+   |image1188|
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2298,3 +2299,11 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 600px
 .. |image1192 image:: ../media/image1192.webp
    :width: 597px
+.. |image1193 image:: ../media/image1193.webp
+   :width: 499px
+.. |image1194 image:: ../media/image1194.webp
+   :width: 150px
+.. |image1195 image:: ../media/image1195.webp
+   :width: 300px
+.. |image1196 image:: ../media/image1196.webp
+   :width: 300px
