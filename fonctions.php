@@ -166,7 +166,7 @@ function sql_variable($t,$ind){
 	if 	($ind==2) {$n=0;
 		while ($ligne = $result->fetch_assoc()) {
 			$retour[$n]['idx'] = $ligne['idx'];
-			$retour[$n]['nom_dz'] = $ligne['nom_dz'];
+			$retour[$n]['nom_entity'] = $ligne['nom_entity'];
 			$retour[$n]['id_img'] = $ligne['id1_html'];
 			$retour[$n]['id_txt'] = $ligne['id2_html'];
 			$n++;
@@ -202,7 +202,7 @@ foreach ($lect_device as $xxx){
 	if(isset($xxx->{'attributes'}->{'nodeName'}))  $ha[$n]['Name']=$xxx;
 	else if(isset($xxx->{'attributes'}->{'friendly_name'}))  $ha[$n]['Name']=$xxx;
 	else $ha[$n]['Name']="inconnu";
-	$ha[$n]['Description'] = "HA";$ha[$n]['idx'] = "";
+	$ha[$n]['Description'] = "HA";$ha[$n]['idx'] =  $xxx->{'entity_id'};
 	$ha[$n]['ID'] = $xxx->{'entity_id'};
 	$ha[$n]['Data'] = $xxx->{'state'};//modif 1
 	$ha[$n]['LastUpdate']  = substr($xxx->{'last_updated'},0, 19);  
@@ -222,6 +222,7 @@ foreach ($lect_device as $xxx){
 	else $ha[$n]['BatteryLevel'] =100;
 		//$tmp=$xxx->{'attributes'}->{'device_class'};if ($tmp) $ha[$n]['device_class'] = $tmp;
 	$ha[$n]['Type'] ="non défini";
+	$ha[$n]['serveur'] ="HA";
 	$n++;
 }
 
@@ -279,7 +280,8 @@ if (IPDOMOTIC1!=""){$result=devices_zone(0);$n=0;//
 $n=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
-$description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';	
+$description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
+$serveur = isset($lect_device["serveur"]) ? $lect_device["serveur"] : 'DZ';		
 $t=$lect_device["idx"];//echo $t;
 $periph=array();
 $periph=sql_plan($t);
@@ -287,6 +289,7 @@ $periph=sql_plan($t);
 $bat="";
 if ($periph['idm']=="") {$periph['idm']="NULL";}
 if (CHOIXID=='idm') {$t=$periph['idm'];}
+if ($serveur=='HA') {$lect_device["idx"]==NULL;}	
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
 if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
@@ -295,6 +298,7 @@ if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$le
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
 	$data[$t] = ['choixid' => CHOIXID,
+	'serveur' => $lect_device["serveur"],			 
 	'idx' => $lect_device["idx"],
 	'deviceType' => $lect_device["Type"],	
 	'emplacement' => $description,					 
@@ -960,7 +964,7 @@ case "18" :include ('include/ajout_dev_bd.php');//echo "ajout dispositifs effect
 break;	
 case "19" : $retour=sql_variable("",2) ;$n=0;
 		while ($retour[$n]['idx']){
-	echo "idx : <span style='color:red'>".$retour[$n]['idx']."</span>   nom :<span style='color:green'>".$retour[$n]['nom_dz']."</span>   id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>   id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span><br>";		
+	echo "idx : <span style='color:red'>".$retour[$n]['idx']."</span>   nom :<span style='color:green'>".$retour[$n]['nom_entity']."</span>   id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>   id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span><br>";		
 		echo "--------------------------------<br>";
 			$n++;}
 		return;	
@@ -1170,9 +1174,9 @@ if ($conn -> connect_errno) {
 }	
 switch ($choix) {
 	case "1":
-$nom=$data['nom'];$nom_dz=$data['name'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
+$nom=$data['nom'];$nom_entity=$data['name'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
 //
-$sql="INSERT INTO dispositifs (nom_appareil, nom_dz, idx, ID, id1_html, id2_html) VALUES ('$nom', '$nom_dz', '$idx', '$ID', '$id_img', '$id_txt');";
+$sql="INSERT INTO dispositifs (nom_appareil, nom_entity, idx, ID, id1_html, id2_html) VALUES ('$nom', '$nom_entity', '$idx', '$ID', '$id_img', '$id_txt');";
 $result = $conn->query($sql);
 echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
 if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
@@ -1180,7 +1184,7 @@ $retour=maj_query($conn,$sql);
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';}			
 break;
     case "2":
-$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_dz`, `idx`, `ID`, `idm`, `materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["table"]."' , '".$data["ls"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
+$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_entity`, `idx`, `ID`, `idm`, `materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["table"]."' , '".$data["ls"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
 echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>type : '.$data["type"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
 //
 maj_query($conn,$sql);			
