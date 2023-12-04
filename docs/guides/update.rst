@@ -19,6 +19,8 @@ Version  en developpement 2.2.7
 
 - ajout des groupes et scènes sur la page 'commandes ON/OFF"
 
+- nom_objet remplace nom_dz ,(nom pour DZ et object_id pour HA)
+
 Version  2.2.6
 ~~~~~~~~~~~~~~
 - ajout tableau messages, pour variables HA > 255 caractères ou autres appli
