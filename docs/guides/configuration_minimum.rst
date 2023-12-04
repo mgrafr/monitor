@@ -862,7 +862,7 @@ la variable:
               data_template:
                 topic: monitor/ha
                 payload_template: >-
-                '{"idx": "{{ trigger.to_state.object_id }}": "{{ trigger.to_state.state }}" }'
+                '{"idx": "{{ trigger.entity_id }}": "{{ trigger.to_state.state }}" }'
 
          |image1198|
 
