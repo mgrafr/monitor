@@ -836,11 +836,11 @@ la variable:
 
    Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
 
-   |image1187|
+   |image1197|
 
    Réception du message dans visible monitor:
 
-   |image1188|
+   |image1193|
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2289,8 +2289,6 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 600px
 .. |image1187| image:: ../media/image1187.webp
    :width: 500px
-.. |image1188 image:: ../media/image1188.webp
-   :width: 611px
 .. |image1189 image:: ../media/image1189.webp
    :width: 300px
 .. |image1190 image:: ../media/image1190.webp
@@ -2307,3 +2305,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 300px
 .. |image1196 image:: ../media/image1196.webp
    :width: 300px
+.. |image1197 image:: ../media/image1197.webp
+   :width: 600px
