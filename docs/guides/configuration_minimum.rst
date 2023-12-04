@@ -814,10 +814,10 @@ la variable:
 
       |image1193|
 
-   .. admonition:: **avecmqtt.publish**
+   .. admonition:: **avec mqtt.publish**
 
       .. code-block::
-
+         
          - id: mqtt_12345678
            alias: "essai mqtt"
   	   trigger:
@@ -833,14 +833,38 @@ la variable:
                topic: monitor/ha
                payload_template: >-
                  '{"idx": "light.lampe_jardin","state": "{{ states.light.lampe_jardin.state }}" }'
+      
+      Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
 
-   Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
+      |image1197|
 
-   |image1197|
+      Réception du message dans visible monitor:
 
-   Réception du message dans visible monitor:
+      |image1193|
 
-   |image1193|
+      .. warning::
+
+         pour plusieurs dispositifs, ce sera souvent le cas:
+         
+         .. code-block::
+
+            - id: mqtt_12345678
+  	    alias: "essai mqtt"
+            trigger:
+            - platform: state
+              entity_id: light.lampe_jardin, light.lampe_terrasse
+              to: 
+              - 'on'
+              - 'off'
+            condition: []
+            action:
+            - service: mqtt.publish
+              data_template:
+                topic: monitor/ha
+                payload_template: >-
+                '{"idx": "{{ trigger.to_state.object_id }}": "{{ trigger.to_state.state }}" }'
+
+         |image1198|
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2307,3 +2331,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 300px
 .. |image1197| image:: ../media/image1197.webp
    :width: 600px
+.. |image1198| image:: ../media/image1198.webp
+   :width: 700px
