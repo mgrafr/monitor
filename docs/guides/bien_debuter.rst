@@ -810,7 +810,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
  
 - Nom appareil : nom usuel
 
-- nom_dz : nom du dispositif Domoticz
+- nom_entity : nom pour Domoticz ou entity_id pour Home Assistant
 
 - idx : celui de Domoticz
 
