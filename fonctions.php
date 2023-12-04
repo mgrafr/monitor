@@ -166,7 +166,7 @@ function sql_variable($t,$ind){
 	if 	($ind==2) {$n=0;
 		while ($ligne = $result->fetch_assoc()) {
 			$retour[$n]['idx'] = $ligne['idx'];
-			$retour[$n]['nom_entity'] = $ligne['nom_entity'];
+			$retour[$n]['nom_objet'] = $ligne['nom_objet'];
 			$retour[$n]['id_img'] = $ligne['id1_html'];
 			$retour[$n]['id_txt'] = $ligne['id2_html'];
 			$n++;
@@ -964,7 +964,7 @@ case "18" :include ('include/ajout_dev_bd.php');//echo "ajout dispositifs effect
 break;	
 case "19" : $retour=sql_variable("",2) ;$n=0;
 		while ($retour[$n]['idx']){
-	echo "idx : <span style='color:red'>".$retour[$n]['idx']."</span>   nom :<span style='color:green'>".$retour[$n]['nom_entity']."</span>   id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>   id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span><br>";		
+	echo "idx : <span style='color:red'>".$retour[$n]['idx']."</span>   nom :<span style='color:green'>".$retour[$n]['nom_objet']."</span>   id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>   id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span><br>";		
 		echo "--------------------------------<br>";
 			$n++;}
 		return;	
@@ -1174,9 +1174,9 @@ if ($conn -> connect_errno) {
 }	
 switch ($choix) {
 	case "1":
-$nom=$data['nom'];$nom_entity=$data['name'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
+$nom=$data['nom'];$nom_objet=$data['name'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
 //
-$sql="INSERT INTO dispositifs (nom_appareil, nom_entity, idx, ID, id1_html, id2_html) VALUES ('$nom', '$nom_entity', '$idx', '$ID', '$id_img', '$id_txt');";
+$sql="INSERT INTO dispositifs (nom_appareil, nom_objet, idx, ID, id1_html, id2_html) VALUES ('$nom', '$nom_objet', '$idx', '$ID', '$id_img', '$id_txt');";
 $result = $conn->query($sql);
 echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
 if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
@@ -1184,7 +1184,7 @@ $retour=maj_query($conn,$sql);
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';}			
 break;
     case "2":
-$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_entity`, `idx`, `ID`, `idm`, `materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["table"]."' , '".$data["ls"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
+$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["table"]."' , '".$data["ls"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
 echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>type : '.$data["type"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
 //
 maj_query($conn,$sql);			
