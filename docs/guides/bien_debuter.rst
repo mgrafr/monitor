@@ -810,11 +810,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
  
 - Nom appareil : nom usuel
 
-- nom_entity : nom pour Domoticz ou entity_id pour Home Assistant
+- nom_objet : nom pour Domoticz ou objet_id pour Home Assistant
 
 - idx : celui de Domoticz
 
-- ID : identity_id de Home Assistant
+- ID : entity_id de Home Assistant
 
 - idm : idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
