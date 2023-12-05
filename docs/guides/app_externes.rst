@@ -1089,6 +1089,55 @@ Les fichiers concernés:
 
 |image1110|
 
+13.9 Installation de Jupyter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1199|
+
+Dans le terninal web, mise à jour de pip3 :
+
+.. code-block::
+
+   pip3 install --upgrade pip
+
+|image1200|
+
+13.9.1 Installation du noyau & configuration
+============================================
+
+.. code-block::
+
+   pip3 install hass_pyscript_kernel
+   jupyter pyscript install
+
+|image1201|
+
+|image1202|
+
+Avec nano, effectuer la configuration (le chemin du fichier est indiqué comme le montre l'image précédente):
+
+|image1203|
+
+13.9.2 Quelques vérifications
+=============================
+Vérifier que Jupyter reconnaît le nouveau noyau
+
+.. code-block::
+
+   jupyter kernelspec list
+
+|image1204|
+
+Vérifier le fichier de configuration:
+
+.. code-block::
+
+   jupyter pyscript info
+
+|image1205|
+
+
+
+
 .. |image256| image:: ../media/image256.webp
    :width: 433px
 .. |image257| image:: ../media/image257.webp
@@ -1291,3 +1340,17 @@ Les fichiers concernés:
    :width: 647px
 .. |image1139| image:: ../media/image1139.webp
    :width: 700px
+.. |image1199| image:: ../media/image1199.webp
+   :width: 200px
+.. |image1200| image:: ../media/image1200.webp
+   :width: 700px
+.. |image1201| image:: ../media/image1201.webp
+   :width: 319px
+.. |image1202| image:: ../media/image1202.webp
+   :width: 650px
+.. |image1203| image:: ../media/image1203.webp
+   :width: 7000px
+.. |image1204| image:: ../media/image1204.webp
+   :width: 510px
+.. |image1205| image:: ../media/image1205.webp
+   :width: 568px
