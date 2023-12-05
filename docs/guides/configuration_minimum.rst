@@ -788,7 +788,7 @@ la variable:
    
       |image1195|
 
-      .. note::
+      .. seealso::
 
          Il est recommandé d'installer JUPYTER , pour cela voir ce paragraphe :ref:`13.9 Installation de Jupyter`
 
@@ -797,6 +797,10 @@ la variable:
       Dans le répertoire pyscript à la racine de /config , copier les fichiers python concernés:
 
       |image1196|
+
+      Et dans /config/pyscript/modules (nouveau répertoire crée), les modules perso (ici connect.py)
+
+      |image1206|
 
       Paho est installé :
 
@@ -2341,3 +2345,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px
 .. |image1199| image:: ../media/image1199.webp
    :width: 200px
+.. |image1206| image:: ../media/image1206.webp
+   :width: 301px
