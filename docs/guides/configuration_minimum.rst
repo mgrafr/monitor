@@ -788,6 +788,10 @@ la variable:
    
       |image1195|
 
+      .. note::
+
+         Il est recommandé d'installer JUPYTER , pour cela voir ce paragraphe xxx
+
       Dans le répertoire pyscript à la racine de /config , copier les fichiers python concernés:
 
       |image1196|
