@@ -790,7 +790,9 @@ la variable:
 
       .. note::
 
-         Il est recommandé d'installer JUPYTER , pour cela voir ce paragraphe xxx
+         Il est recommandé d'installer JUPYTER , pour cela voir ce paragraphe :ref:`13.9 Installation de Jupyter`
+
+         |image1199|
 
       Dans le répertoire pyscript à la racine de /config , copier les fichiers python concernés:
 
@@ -2337,3 +2339,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 600px
 .. |image1198| image:: ../media/image1198.webp
    :width: 700px
+.. |image1199| image:: ../media/image1199.webp
+   :width: 200px
