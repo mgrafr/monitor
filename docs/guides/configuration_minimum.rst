@@ -788,7 +788,7 @@ la variable:
    
       |image1195|
 
-      .. seealso::
+      .. important::
 
          Il est recommandé d'installer JUPYTER , pour cela voir ce paragraphe :ref:`13.9 Installation de Jupyter`
 
@@ -824,7 +824,78 @@ la variable:
 
       |image1193|
 
+      Le script python dans le répertoire :darkblue:`/config/pyscript`
+
+      .. code-block::
+
+         import paho.mqtt.client as mqtt
+	 import json
+         import sys
+         from connect import ip_mqtt
+         @service
+         def mqtt_publish(topic=None, idx=None, state=None):
+
+             """hello_world example using pyscript."""
+             log.info(f"hello world: got action {action} id {id}")    
+             etat= idx 
+             valeur= state 
+             MQTT_HOST = ip_mqtt
+             MQTT_PORT = 1883
+             MQTT_KEEPALIVE_INTERVAL = 45
+             MQTT_TOPIC = topic
+ 	     MQTT_MSG=json.dumps({idx: etat,state: valeur});
+
+ 	     # Initiate MQTT Client
+	     mqttc = mqtt.Client()
+	     # Register publish callback function
+	     mqttc.on_publish = on_publish
+ 	     mqttc.on_connect = on_connect
+	     mqttc.on_message = on_message
+	     # Connect with MQTT Broker
+	     mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
+ 	     # Loop forever
+	     mqttc.loop_forever()
+         # Define on_publish event function
+	 def on_publish(client, userdata, mid):
+             print ("Message Published...")
+	 def on_connect(client, userdata, flags, rc):
+             client.subscribe(MQTT_TOPIC)
+             client.publish(MQTT_TOPIC, MQTT_MSG)
+         def on_message(client, userdata, msg):
+             print(msg.topic)
+             print(msg.payload) # <- do you mean this payload = {...} ?
+             payload = json.loads(msg.payload) # you can use json.loads to convert string to json
+             client.disconnect() # Got message then disconnect
+
+      |image1209|
+
+      L'appel du service:
+
+      |image1208|
+
+      Script complet de l'automatisation : 
+
+      .. code-block::
+
+         - id: mqtt_12345678
+           alias: "essai mqtt"
+           trigger:
+           - platform: state
+             entity_id: light.lampe_jardin, light.lampe_terrasse
+             to: 
+             - 'on'
+             - 'off'
+           condition: []
+           action:
+           - service: pyscript.mqtt_publish
+             data_template:
+	       topic: monitor/ha
+               idx: "{{ trigger.entity_id }}"
+               state: "{{ trigger.to_state.state }}" 
+
    .. admonition:: **avec mqtt.publish**
+
+      seule la partie concernant le service est différente par rapport au script précédent
 
       .. code-block::
          
@@ -2347,3 +2418,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 200px
 .. |image1206| image:: ../media/image1206.webp
    :width: 301px
+.. |image1208| image:: ../media/image1208.webp
+   :width: 600px
+.. |image1209| image:: ../media/image1209.webp
+   :width: 650px
