@@ -1133,11 +1133,19 @@ Vérifier le fichier de configuration:
 
    jupyter pyscript info
 
+|image1207|
+
+13.9.3 Exécution de Jupyter: Jupyter notebook
+=============================================
+Contrairement au tutoriel (https://github.com/craigbarratt/hass-pyscript-jupyter/blob/master/README.md), Jupyter notebook ne se lance pas, j'ai du l'installer de nouveau en suivant la methode officielle:
+
+.. code-block::
+
+   pip3 install jupyter
+
+Lancer jupyter notebook:
+
 |image1205|
-
-
-
-
 .. |image256| image:: ../media/image256.webp
    :width: 433px
 .. |image257| image:: ../media/image257.webp
@@ -1354,3 +1362,5 @@ Vérifier le fichier de configuration:
    :width: 510px
 .. |image1205| image:: ../media/image1205.webp
    :width: 568px
+.. |image1207| image:: ../media/image1207.webp
+   :width: 650px
