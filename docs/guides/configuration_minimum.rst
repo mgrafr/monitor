@@ -788,6 +788,10 @@ la variable:
    
       |image1195|
 
+      On ajoute dans la configuration de HA :
+
+      |image1210|
+
       .. important::
 
          Il est recommandé d'installer JUPYTER , pour cela voir ce paragraphe :ref:`13.9 Installation de Jupyter`
@@ -2422,3 +2426,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 600px
 .. |image1209| image:: ../media/image1209.webp
    :width: 650px
+.. |image1210| image:: ../media/image1210.webp
+   :width: 358px
