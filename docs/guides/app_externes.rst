@@ -1133,7 +1133,7 @@ Vérifier le fichier de configuration:
 
    jupyter pyscript info
 
-|image1207|
+|image1205|
 
 13.9.3 Exécution de Jupyter: Jupyter notebook
 =============================================
