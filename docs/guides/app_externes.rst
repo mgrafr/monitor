@@ -1146,6 +1146,8 @@ Contrairement au tutoriel (https://github.com/craigbarratt/hass-pyscript-jupyter
 Lancer jupyter notebook:
 
 |image1205|
+
+
 .. |image256| image:: ../media/image256.webp
    :width: 433px
 .. |image257| image:: ../media/image257.webp
