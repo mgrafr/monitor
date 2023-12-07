@@ -241,12 +241,13 @@ case "on" :
 	$mode=2;	
 	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}	
 	if ($mat=="switch") {$api="api/services/switch/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}
-		
+	if ($mat=="light") {$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}	
 break;
 case "off" :
 	$mode=2;	
 	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
+	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
 break;	
 default:
 }								
