@@ -778,7 +778,7 @@ la variable:
 
 .. admonition:: **Dans Home Assistant**
 
-   - Soit on utilise MQTT avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS
+   - Soit on utilise MQTT avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`.
 
    - Soit ou crée une automation appelant le service mqtt.publish
 
