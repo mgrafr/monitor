@@ -834,43 +834,27 @@ la variable:
 
          import paho.mqtt.client as mqtt
 	 import json
-         import sys
-         from connect import ip_mqtt
-         @service
-         def mqtt_publish(topic=None, idx=None, state=None):
+	 import sys
+	 from connect import ip_mqtt
 
-             """hello_world example using pyscript."""
-             log.info(f"hello world: got action {action} id {id}")    
-             etat= idx 
-             valeur= state 
-             MQTT_HOST = ip_mqtt
-             MQTT_PORT = 1883
-             MQTT_KEEPALIVE_INTERVAL = 45
-             MQTT_TOPIC = topic
- 	     MQTT_MSG=json.dumps({idx: etat,state: valeur});
+	 @service
+	 def mqtt_publish(topic=None, idx=None, state=None):
+	     log.info(f"mqtt: got topic {topic} idx {idx} state {state}")
 
- 	     # Initiate MQTT Client
-	     mqttc = mqtt.Client()
-	     # Register publish callback function
-	     mqttc.on_publish = on_publish
- 	     mqttc.on_connect = on_connect
-	     mqttc.on_message = on_message
-	     # Connect with MQTT Broker
-	     mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
- 	     # Loop forever
-	     mqttc.loop_forever()
-         # Define on_publish event function
-	 def on_publish(client, userdata, mid):
-             print ("Message Published...")
-	 def on_connect(client, userdata, flags, rc):
-             client.subscribe(MQTT_TOPIC)
-             client.publish(MQTT_TOPIC, MQTT_MSG)
-         def on_message(client, userdata, msg):
-             print(msg.topic)
-             print(msg.payload) # <- do you mean this payload = {...} ?
-             payload = json.loads(msg.payload) # you can use json.loads to convert string to json
-             client.disconnect() # Got message then disconnect
-
+ 	    etat= idx 
+ 	    valeur= state 
+	    MQTT_HOST = ip_mqtt
+ 	    MQTT_PORT = 9001
+ 	    MQTT_KEEPALIVE_INTERVAL = 45
+	    MQTT_TOPIC = topic
+	    MQTT_MSG=json.dumps({idx: etat,state: valeur});
+    
+	    # Initiate MQTT Client
+    	    mqttc = mqtt.Client(transport="websockets")
+  	    mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
+	    mqttc.publish(MQTT_TOPIC, MQTT_MSG)
+	    mqttc.disconnect()
+     
       |image1209|
 
       L'appel du service:
@@ -2420,11 +2404,11 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px
 .. |image1199| image:: ../media/image1199.webp
    :width: 200px
-.. |image1206| image:: ../media/image1206.webp
+.. |image1206| image:: ../img/image1206.webp
    :width: 301px
-.. |image1208| image:: ../media/image1208.webp
+.. |image1208| image:: ../img/image1208.webp
    :width: 600px
-.. |image1209| image:: ../media/image1209.webp
+.. |image1209| image:: ../img/image1209.webp
    :width: 650px
-.. |image1210| image:: ../media/image1210.webp
+.. |image1210| image:: ../img/image1210.webp
    :width: 358px
