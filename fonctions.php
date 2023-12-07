@@ -282,14 +282,15 @@ while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 $description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
 $serveur = isset($lect_device["serveur"]) ? $lect_device["serveur"] : 'DZ';		
-$t=$lect_device["idx"];//echo $t;
+if ($lect_device["serveur"]=="HA") {$t=$lect_device["ID"];}
+else {$t=$lect_device["idx"];}	//echo $t;
 $periph=array();
 $periph=sql_plan($t);
 //if ($periph) echo json_encode($periph);	
 $bat="";
-if ($periph['idm']=="") {$periph['idm']="NULL";}
+if ($periph['idm']=="") {$periph['idm']="";}
 if (CHOIXID=='idm') {$t=$periph['idm'];}
-if ($serveur=='HA') {$lect_device["idx"]==NULL;}	
+if ($serveur=='HA') {$lect_device["idx"]="";}	
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
 if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
