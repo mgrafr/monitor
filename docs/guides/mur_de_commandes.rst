@@ -720,9 +720,9 @@ Comme pour DZ, on enregistre la commande dans la base de données; les données 
    :width: 523px
 .. |image1140| image:: ../media/image1140.webp
    :width: 650px
-.. |image1212| image:: ../media/image1212.webp
+.. |image1212| image:: ../img/image1212.webp
    :width: 650px
-.. |image1213| image:: ../media/image1213.webp
+.. |image1213| image:: ../img/image1213.webp
    :width: 700px
-.. |image1214| image:: ../media/image1214.webp
+.. |image1214| image:: ../img/image1214.webp
    :width: 670px
