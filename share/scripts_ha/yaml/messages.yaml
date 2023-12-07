@@ -1,0 +1,14 @@
+xx{{ states.sensor | selectattr('last_updated', 'lt', now()-timedelta(seconds=36000)) 
+        | map(attribute='name')
+        | join(', ')   }}
+		
+---------------------------------------------------------------------------------------------------------		
+		
+Certains appareils Zigbee n’ont pas été vus dernièrement...<br>  {% for
+        state in (expand(states.sensor, states.binary_sensor, states.light, states.switch)
+        | selectattr('attributes.last_seen', 'defined')) -%}    {%- if not (state.name
+        | regex_search('linkquality|button_fan|update state|voltage|temperature|battery|illuminance'))
+        %}      {%- if (as_timestamp(now()) - as_timestamp(state.attributes.last_seen)
+        > (60 * 10) ) %}<br>        {{ ((as_timestamp(now()) - as_timestamp(state.attributes.last_seen))
+        / (3600)) | round(1) }} hours ago for {{ state.name }}                 {%-
+        endif -%}    {%- endif -%}  {%- endfor %}		
