@@ -847,7 +847,7 @@ la variable:
  	    MQTT_PORT = 9001
  	    MQTT_KEEPALIVE_INTERVAL = 45
 	    MQTT_TOPIC = topic
-	    MQTT_MSG=json.dumps({idx: etat,state: valeur});
+	    MQTT_MSG=json.dumps({'idx': etat,'state': valeur});
     
 	    # Initiate MQTT Client
     	    mqttc = mqtt.Client(transport="websockets")
@@ -901,7 +901,7 @@ la variable:
              data_template:
                topic: monitor/ha
                payload_template: >-
-                 '{"idx": "light.lampe_jardin","state": "{{ states.light.lampe_jardin.state }}" }'
+                  {"idx": "{{ trigger.entity_id }}","state": "{{ trigger.to_state.state }}" }
       
       Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
 
@@ -934,6 +934,12 @@ la variable:
                 '{"idx": "{{ trigger.entity_id }}": "{{ trigger.to_state.state }}" }'
 
          |image1198|
+
+Avec Putty, vérification de réception par mosquitto des messages:
+
+|image1211|
+
+Domoticz et Home Assistant sont tous deux connectés au serveur mosquitto, ils reçoivent les topics de Zigbee2mqtt.J'ai volontairement ajouté les 2 services "mqtt_publish" et "Pyscript.mqtt_publish" dans /config/automation ce qui explique l'envoi à monitor de 3 messages concernant le même dispositif.
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2412,3 +2418,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 650px
 .. |image1210| image:: ../img/image1210.webp
    :width: 358px
+.. |image1211| image:: ../img/image1211.webp
+   :width: 482px
