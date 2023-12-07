@@ -37,11 +37,83 @@ Index_loc.php en général ne pas modifier
 ========================================
 Effectuée par une fonction PHP à partir de la base de données
 
+|image1212|
+
 Extrait de la page html pour des commandes pour Domoticz et Home Assistant:
 
 |image580|
 
 voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automatiquement*
+
+8.1.2 Commandes de changement d'état
+====================================
+
+.. admonition:: les fonctions PHP
+
+   **pour l'API Home Assistant**
+
+   .. code-block::
+
+      function devices_id($deviceid,$command){$post="";
+	$mat=explode('.',$deviceid);$mat=$mat[0];
+	switch ($command) {
+	case "etat" :		
+	$api="api/states/".$deviceid;$mode=1;	
+	break;
+	case "service" :
+	$api="api/services";$mode=1;	
+	break;
+	case "on" :
+	$mode=2;	
+	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}	
+	if ($mat=="switch") {$api="api/services/switch/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}
+	if ($mat=="light") {$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}	
+	break;
+	case "off" :
+	$mode=2;	
+	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
+	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
+	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
+	break;	
+	default:
+	}								
+	$L=URLDOMOTIC1.$api;
+	//$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
+	$ha=file_http_curl($L,$mode,$post);
+	$data = json_decode($ha, true);
+	$data['resultat']="OK";										
+										
+	return json_encode($data);}
+
+   **pour l'API de Domoticz**
+
+   .. code-block::
+
+      function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;
+	// exemple : http://192.168.1.75:8082/json.htm?type=command&param=udevice&idx=84&nvalue=Off&svalue=2
+	//                                   /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
+	if ($pass=="0") {$auth=0;}
+	if ((($pass==NOM_PASS_CM)&&($_SESSION['passwordc']==PWDCOMMAND))&&($_SESSION['timec']>time())) {$auth=1;}
+	if (($pass==NOM_PASS_AL)&&($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$auth=2;}
+	if ($auth<3){
+	// $type=1 .....
+	if ($type==1){$json1='udevice&idx='.$idx.'&nvalue='.$valeur.'&svalue='.$type;}
+	// $type=2 .....ON/OFF
+	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
+	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
+	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
+	$json=URLDOMOTIC.'json.htm?type=command&param='.$json1;
+	$json_string=file_get_curl($json);
+	$result = json_decode($json_string, true);
+	}
+	else {$result['status']="acces interdit";}
+	return $result;}
+
+.. admonition:: les fonctions Javascript
+
+   |image1213|
+
+   |image1214|
 
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
@@ -648,4 +720,9 @@ Comme pour DZ, on enregistre la commande dans la base de données; les données 
    :width: 523px
 .. |image1140| image:: ../media/image1140.webp
    :width: 650px
-
+.. |image1212| image:: ../media/image1212.webp
+   :width: 650px
+.. |image1213| image:: ../media/image1213.webp
+   :width: 700px
+.. |image1214| image:: ../media/image1214.webp
+   :width: 670px
