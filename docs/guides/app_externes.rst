@@ -1354,15 +1354,15 @@ Lancer jupyter notebook:
    :width: 200px
 .. |image1200| image:: ../media/image1200.webp
    :width: 700px
-.. |image1201| image:: ../media/image1201.webp
+.. |image1201| image:: ../img/image1201.webp
    :width: 319px
-.. |image1202| image:: ../media/image1202.webp
+.. |image1202| image:: ../img/image1202.webp
    :width: 650px
-.. |image1203| image:: ../media/image1203.webp
+.. |image1203| image:: ../img/image1203.webp
    :width: 7000px
-.. |image1204| image:: ../media/image1204.webp
+.. |image1204| image:: ../img/image1204.webp
    :width: 510px
-.. |image1205| image:: ../media/image1205.webp
+.. |image1205| image:: ../img/image1205.webp
    :width: 568px
-.. |image1207| image:: ../media/image1207.webp
+.. |image1207| image:: ../img/image1207.webp
    :width: 650px
