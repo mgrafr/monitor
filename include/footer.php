@@ -50,7 +50,7 @@ function onConnectionLost(){
 		out_msg=out_msg+"Message reçu Topic "+r_message.destinationName;
 		console.log(out_msg);
 		var json = JSON.parse(r_message.payloadString);
-		id_x=json.idx;state=json.state;console.log(id_x+state);maj_mqtt(id_x,state,0);
+		id_x=json.idx;state=json.state;maj_mqtt(id_x,state,0);
 		document.getElementById("messages").innerHTML =out_msg;
 		}
 	function onConnected(recon,url){
@@ -134,9 +134,9 @@ var id_m=null;
 for (attribute in maj_dev) {
 	if (maj_dev[attribute]==id_x) id_m=attribute;
 }
-if (id_m==null)out_msg= 'id_m='+id_m;return;
+if (id_m==null) {out_msg= 'id_m='+id_m;return;}
 var command=state;
-pp[id_m].Data=command;
+pp[id_m].Data=command;console.log(pp[id_m].Data+command);
 console.log(command)
 var sid1=pp[id_m].ID1;;
 var sid2=pp[id_m].ID2;
@@ -384,7 +384,7 @@ $('.closeBtn').on('click', function () {
       $('#popup_vr').hide();
     });
 /* switchOnOff*  */
-	
+qq=new Array();	
 <?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	?>
 rr=new Array();	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
@@ -438,7 +438,7 @@ function turnonoff(idm,idx,command,pass="0"){//console.log(idm);
 		}});}
   }
       });
-	var level="";command=qq.state;level=0;	
+	var level=0;command=qq.state;
 	maj_mqtt(idx,command,0,level)
 	//maj_switch(idx,command,level,idm);
 	}	
