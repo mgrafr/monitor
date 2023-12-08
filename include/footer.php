@@ -127,17 +127,17 @@ function onConnectionLost(){
 		return false;
 	}
 
-function maj_mqtt(id_x,state,ind,level=0){
+function maj_mqtt(id_x,state,ind,level=0){console.log('state==='+state);
 switch (ind) {
 	case 0: 
 var id_m=null;
 for (attribute in maj_dev) {
-	if (maj_dev[attribute]==id_x) id_m=attribute;
+	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];console.log('idm='+id_m);}
 }
 if (id_m==null) {out_msg= 'id_m='+id_m;return;}
 var command=state;
 pp[id_m].Data=command;console.log(pp[id_m].Data+command);
-console.log(command)
+console.log('command='+state);
 var sid1=pp[id_m].ID1;;
 var sid2=pp[id_m].ID2;
 var scoul_on=pp[id_m].coul_ON;	
