@@ -200,6 +200,8 @@ pour enregistrer dans la BD SQL, voir §  :ref:`6.2 Dans Domoticz`
 
    counter et usage du Device sont restés bloqués au jour ou le plugin s'est arrêté lors d'une mise à jour ENEDIS.j'ai donc utilisé l'API et item.result.json.Counter & item.result.json.Usage.L'utilisation de l'API peut être utilisée lors d'autres occasions.Le port de mon Domoticz est 8086 avec une IP 192.168.X.X mais Domotice est installé sous Docker d'où l'adresse 127.0.0.1:8080.  
 
+    |image1215|
+
    .. code-block::
 
       local function split(s, delimiter)
@@ -415,3 +417,5 @@ voir ce § :ref:`14.6.1.1 connect.lua`
    :width: 700px
 .. |image1019| image:: ../media/image1019.webp
    :width: 620px
+.. |image1215| image:: ../img/image1215.webp
+   :width: 427px
