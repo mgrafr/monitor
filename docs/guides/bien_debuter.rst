@@ -1185,6 +1185,13 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
 |image407| 
 
+0.13 Les fichiers JSON reçu par monitor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image407| 
+
+
+
 .. |image3| image:: ../media/image3.webp
    :width: 604px
    :height: 176px
@@ -1401,3 +1408,5 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 548px 
 .. |image1180| image:: ../media/image1180.webp
    :width: 544px 
+.. |image1216| image:: ../media/image1216.webp
+   :width: 407px 
