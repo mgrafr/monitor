@@ -341,7 +341,8 @@ $.ajax({
 					if (val.alarm_bat=="alarme") {myEle.style = "fill-opacity: 1;fill: #b58585";}
 					else {myEle.style = "fill-opacity: 1;fill: red";}}}
 			else 
-				if (myEle) {myEle.style = "fill-opacity: 0";}		
+				if (myEle) {myEle.style = "fill-opacity: 0";}
+			document.getElementById('erreur').innerHTML ="";
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {pos=val.Data;
 				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
 				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}
@@ -360,7 +361,9 @@ $.ajax({
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 		}}
-			else if (val.idm!="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
+			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
+			else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
+			else if (val.idx!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
 		}});
 				if (al_bat!="" ){document.getElementById(not_piles).innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;
 				document.getElementById(not_piles_reset).style.display="block";}
