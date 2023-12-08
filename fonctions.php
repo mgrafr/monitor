@@ -180,17 +180,16 @@ function sql_variable($t,$ind){
 			$retour[$t]['Value'] = "msg";
 			$t++;
 		}return $retour;}
-	if 	($ind==5){ 
-		while ($ligne = $result->fetch_assoc()) {$id_m=$ligne['idm'];
-			if ($id_m!="" && substr($id_m, 0, 1) != "G" && substr($id_m, 0, 1) != "S" ) {	$n=strval($ligne['idm']);
-			$retour[$n]= new stdClass;
-			if ($ligne['idx']!="") {$retour[$n]= $ligne['idx'];}
-			else {$retour[$n]= $ligne['ID'];}}
-			//$retour[$n]->idm = $ligne['idm'];
-}return $retour;}	
-	else {$row = $result->fetch_assoc();
+	if 	($ind==5){ $i=0;
+		while ($ligne = $result->fetch_assoc()) {$retour[$i]=new stdClass;
+			if ($ligne['idm']!="") {
+				if ($ligne['idx']!="") {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
+				else {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}}																 
+			$i++;}
+	return $retour;}	
 	
-	return $row;}
+	else {$row = $result->fetch_assoc();
+		return $row;}
 	}
 
 //----POUR HA--------------------------------------
