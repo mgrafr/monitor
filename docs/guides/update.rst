@@ -21,6 +21,8 @@ Version  en developpement 2.2.7
 
 - nom_objet remplace nom_dz ,(nom pour DZ et object_id pour HA)
 
+- affichage clavier numérique dans alarme en plus d'administration 
+
 Version  2.2.6
 ~~~~~~~~~~~~~~
 - ajout tableau messages, pour variables HA > 255 caractères ou autres appli
