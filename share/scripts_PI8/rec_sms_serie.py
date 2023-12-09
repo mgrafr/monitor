@@ -1,14 +1,11 @@
-#!/usr/bin/env python3.8
+
+#!/usr/bin/env python3.7
 # -*- coding: utf-8 -*-
 
-import time,serial,requests
+import time,requests,serial
 from periphery import Serial
-# voir la doc pour le fichier connect.py
-from connect import ip_domoticz, port_domoticz
-
-ip_domoticz=ip_domoticz+":"+port_domoticz+"/"
-#remplacer LOGIN & PASSWORD
-se_domoticz="http://LOGIN:PASSWORD@localhost:"+port_domoticz+"/"
+ip_domoticz="http://192.168.1.76:8086/"
+se_domoticz="http://michel:Idem4546@localhost:8086/"
 def convert_to_string(buf):
     try:
         tt =  buf.decode('utf-8').strip()
@@ -21,16 +18,23 @@ def convert_to_string(buf):
         return bytes(tmp).decode('utf-8').strip()
 
 def not_reception(content):
-    message = ('AT+SMSSEND=06xxxxxxxx,'+content+'\r\n').encode('utf-8')
-    phone.write(b'+++')
-    time.sleep(2)
-    phone.write(b'AT+VER\r\n')
-    time.sleep(1)
+    x = content.split(" ", 1)
+    print(x[0])
+    tel=x[1]
+    print(tel)
+    message = ('AT+SMSSEND='+tel+','+x[0]+'\r\n').encode('utf-8')
+    print(message)
+    # passage en HSPEED du MODEM suite travaux et chgt sim de SFR
+    #phone.write(b'+++')
+    #time.sleep(2)
+    #phone.write(b'AT+VER\r\n')
+    #time.sleep(1)
     phone.write(message)
-    phone.write(b'AT+EXAT');
+    #phone.write(b'AT+EXAT');
     time.sleep(1);
 
 def ip_serie(ip_se,url):
+    print(url)
     if ip_se == 1:
         response = requests.get(url)
         contenu = response.json()
@@ -38,30 +42,7 @@ def ip_serie(ip_se,url):
             content=contenu['title']
         else :
             content="erreur"
-        #print(content)
-        not_reception(content)
-    elif ip_se == 2:
-        print("Connexion série")
-        url=url.encode('utf-8')
-        serie.write(url)
-        time.sleep(1)
-    else:
-
-    phone.write(b'AT+VER\r\n')
-    time.sleep(1)
-    phone.write(message)
-    phone.write(b'AT+EXAT');
-    time.sleep(1);
-
-def ip_serie(ip_se,url):
-    if ip_se == 1:
-        response = requests.get(url)
-        contenu = response.json()
-        if contenu['status']=="OK":
-            content=contenu['title']
-        else :
-            content="erreur"
-        #print(content)
+        print(content)
         not_reception(content)
     elif ip_se == 2:
         print("Connexion série")
@@ -77,6 +58,7 @@ phone.close() #Cloture du port pour le cas ou il serait déjà ouvert ailleurs
 phone.open() #Ouverture du port
 phone.write(b'AT+EXAT');
 time.sleep(1);
+
 while True:
     line = phone.readline() # copie d’une ligne entiere jusqu’a \n dans “line”
     print(line)
@@ -92,7 +74,7 @@ while True:
         line = convert_to_string(line)
         #print(line) #pour essai
         params=line.split('#')
-        if params[0] and (params[0]=='smsip' or params[0]=='smsse' or params[0]=='Alon' or params[0]=='Aloff'):
+        if params[0] and (params[0]=='smsip' or params[0]=='smsse' or params[0]$
             if params[0]=="smsip":
                 domoticz=ip_domoticz
                 ip_se=1
@@ -102,15 +84,15 @@ while True:
             if params[0]=="Alon":
                 domoticz=ip_domoticz
                 ip_se=1
-                params[1]= 41
+                params[1]= '41'
                 params[2]='switch'
                 params[3]='On'
             if params[0]=="Aloff":
                 domoticz=ip_domoticz
                 ip_se=1
-                params[1]= 41
+                params[1]= '41'
                 params[2]='switch'
-                params[3]='Off'    
+                params[3]='Off'
             if params[1]:
                 id = params[1]
                 print('Id:'+id)
@@ -122,9 +104,9 @@ while True:
                 print('valeur:'+value)
             if (id!="none" and name!="none" and value!="none"):
                 if name == 'switch':
-                    url = domoticz+'json.htm?type=command&param=switchlight&idx='+id+'&switchcmd='+value
+                    url = domoticz+'json.htm?type=command&param=switchlight&idx$
                 else :
-                    url = domoticz+'json.htm?type=command&param=updateuservariable&idx='+id+'&vname='+name+'&vtype=2$
+                    url = domoticz+'json.htm?type=command&param=updateuservaria$
             else :
                 ip_se=""
 

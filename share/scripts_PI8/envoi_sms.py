@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# envoi sms : python3 envoi_sms.py tel1 tel2 tel3 .....
+
 import time,serial,sys,logging
+
 #if __name__ == "__main__":
-    #logging.basicConfig(level=logging.DEBUG, filename="/home/michel/logfile", filemode="a+",
+    #logging.basicConfig(level=logging.DEBUG, filename="/home/michel/logfile", $
                         #format="%(asctime)-15s %(levelname)-8s %(message)s")
     #logging.info(sys.argv[0])
 espace="..."
@@ -14,12 +15,9 @@ n=2
 phone=serial.Serial(port="/dev/ttyAMA1",baudrate=115200,timeout=2)
 while n<nb_arg:
     tel=sys.argv[n]
-    print(tel)
     print(message)
+    print(tel)
     mess = ('AT+SMSSEND='+tel+','+message+'\r\n').encode('utf-8')
-    phone.write(b'+++')
-    time.sleep(2)
-    phone.write(b'AT+VER\r\n')
-    time.sleep(1)
     phone.write(mess)
     n=n+1
+  

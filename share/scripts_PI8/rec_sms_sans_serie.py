@@ -1,11 +1,13 @@
 #!/usr/bin/env python3.8
 # -*- coding: utf-8 -*-
 
+# ATTENTION mode normal , si mode HSPEED voir modif à apporter dans le fichier rec_sms_serie.py
 import time,serial,requests
 from connect import ip_domoticz, port_domoticz
-# voir la doc pour connect.py
+
 ip_domoticz=ip_domoticz+":"+port_domoticz+"/"
 se_domoticz="http://localhost:"+port_domoticz+"/"
+
 def convert_to_string(buf):
     try:
         tt =  buf.decode('utf-8').strip()
@@ -18,7 +20,7 @@ def convert_to_string(buf):
         return bytes(tmp).decode('utf-8').strip()
 
 def not_reception(content):
-    message = ('AT+SMSSEND=06xxxxxxxx,'+content+'\r\n').encode('utf-8')
+    message = ('AT+SMSSEND=0670065886,'+content+'\r\n').encode('utf-8')
     phone.write(b'+++')
     time.sleep(2)
     phone.write(b'AT+VER\r\n')
