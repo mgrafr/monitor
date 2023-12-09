@@ -1187,8 +1187,29 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
 0.13 Les fichiers JSON reçu par monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Utilisé par les fonctions javascript dans /include/footer.php:
 
-|image407| 
+function maj_services(index)
+
+|image1216| 
+
+function maj_devices(plan)
+
+|image1217|
+
+function maj_mqtt(id_x,state,ind,level=0)
+
+|image1218|
+
+function pluie(idx)
+
+|image1219|
+
+function mc(variable,id)
+
+|image1221|
+
+|image1220|
 
 
 
@@ -1408,5 +1429,15 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 548px 
 .. |image1180| image:: ../media/image1180.webp
    :width: 544px 
-.. |image1216| image:: ../media/image1216.webp
+.. |image1216| image:: ../img/image1216.webp
+   :width: 407px 
+.. |image1217| image:: ../img/image1217.webp
+   :width: 407px 
+.. |image1218| image:: ../img/image1218.webp
+   :width: 407px 
+.. |image1219| image:: ../img/image1219.webp
+   :width: 407px
+.. |image1220| image:: ../img/image1220.webp
+   :width: 407px 
+.. |image1221| image:: ../img/image1221.webp
    :width: 407px 
