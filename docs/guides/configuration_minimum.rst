@@ -130,7 +130,11 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    - Avantages : Vrai temps réel, économise de la bande passante
 
-   - Inconvénients(facilement surmontables) : Installation d'un serveur MQTT, de Paho , création d'un script pour envoyer les données depuis DZ ou HA ; le client MQTT dans Javascript est déjà installé, il suffit de mettre en service MQTT
+   - Inconvénients : Installation d'un serveur MQTT-Websockets (facile en ws, plus compliqné TLS/SSL), de Paho , création d'un script pour envoyer les données depuis DZ ou HA ; le client MQTT dans Javascript est déjà installé, il suffit de mettre en service MQTT
+
+   .. IMPORTANT::
+
+      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt , en wss , c'est plus compliqué et une 3eme solution qui utilise l'API monitor depuis HA et DZ est à l'étude.
 
 1.1.3.1 Solution semi temps réel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -177,13 +181,20 @@ Le serveur MQTT, le port, topic pour la souscription sont à déclarer dans /adm
    // serveur MQTT utilisation d'un serveur (envoi topic depuis monitor)
    define('MQTT', true);//  true si serveur MQTT utilisé par monitor
    define('MQTT_IP', '192.168.1.42');//adresse IP
-   define('MQTT_PORT', 9001);// mqtt=1883 websockets=9001
+   define('MQTT_PORT', 9001);// mqtt=1883 websockets=9001 et 9883 (wss)
    define('MQTT_TOPIC', "monitor/dz");// topic (destinataire) 
 
 .. note::
 
    Port mqtt: 1883
-   Port websocket: 9001, à privilégier
+   Port websocket ws: 9001, à privilégier
+   Port websocket wss: 9883, vir les observations ci-après
+
+   .. IMPORTANT:: 
+
+      pour utiliser wss lors de connexions distantes des certificats serveurs et clients doivent être installés pour éviter cette erreur qui bloque l'affichage du site
+
+      |image1222|
 
 le script JS dans footer.php:
 
@@ -2420,3 +2431,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 358px
 .. |image1211| image:: ../img/image1211.webp
    :width: 482px
+.. |image1222| image:: ../img/image1222.webp
+   :width: 660px
