@@ -39,9 +39,9 @@ define('MQTT', false);//  true si serveur MQTT utilisé par monitor
 define('MQTT_USER', "<user>");//user et mot passe dans Mosquitto
 define('MQTT_PASS', "<mot de passe>");
 define('MQTT_URL', 'mqtt.<DOMAINE>');//ex: mqtt.xxxxxx.ovh
-define('MQTT_IP', '192.168.1.24');//adresse IP mosquitto
+define('MQTT_IP', '192.168.1.42');//adresse IP mosquitto
 define('MQTT_PORT', 9001);// mqtt=1883 websockets: ws=9001 wss=9002 ou 9883
-define('MQTT_TOPIC', "monitor/");// topic (destinataire) monitor/#,monitor/dz, monitor/ha,...
+define('MQTT_TOPIC', "monitor/ha");// topic (destinataire) monitor/dz, monitor/ha,...
 //--------------------------------------------------
 // interval de maj des fonctions JS maj_services() & maj_devices()
 define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
