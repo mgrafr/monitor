@@ -86,43 +86,45 @@ Pour le lexique :
 
 1.1.2 intervalles de maj
 ------------------------
-L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) : il est de ½ heure (1800000 milli secondes), il peut être changé
- 
+L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) et les dispositifs, il peut être changé: 
+- il est de ½ heure (1800000 milli secondes) pour les variables (services) 
+- il est se 3Os pour les dispositifs avec un minimum de 5 secondes.
+
 .. code-block::
 
    // interval de maj des fonctions JS maj_services() & maj_devices()
    define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
    define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE(si installée) en milli secondes
-   define('TEMPO_DEVICES', 180000);// en milli secondes
-   define('TEMPO_DEVICES_DZ', 30000);// en milli secondes (>=5s, <30s) maj déclenchée par Dz voir doc
+   define('TEMPO_DEVICES', 180000);// en milli secondes, rafraichissement programmé(dispositifs non prioritaires)
+   define('TEMPO_DEVICES_D', 30000);// en milli secondes (>=5s, <30s) maj déclenchée par Dz ou Ha voir doc
    define('TEMPO_DEVICES_MQTT', false);// Si true toutes les autres tempos sont false
 
 .. IMPORTANT:: 
 
-   TEMPO_DEVICES_MQTT', true : TEMP REEL ,TEMPO_DEVICES_DZ est annulé
+   TEMPO_DEVICES_MQTT', true = TEMP REEL, :red:'TEMPO_DEVICES_DZ est annulé'
 
    un serveur MQTT doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
 
 .. note::
    *TEMPO_DEVICES* pour tous les dispositifs\ 
-   *TEMPO_DEVICES_DZ et TEMPO_DEVICES_MQTT** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
+   *TEMPO_DEVICES_D et TEMPO_DEVICES_MQTT** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
 
 1.1.3 maj en temps réel
 -----------------------
 2 solutions :
 
-- semi temps réel , monitor interroge une variable mis à jour par Domoticz lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.
+- semi temps réel , monitor interroge une variable mis à jour par Dz ou Ha lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.
 
-- temps réel, en recevant de Domoticz , par un topic MQTT, les données du dispositifs qui à changé de valeur 
+- temps réel, en recevant de Domoticz , par un topic MQTT, les données du dispositifs qui ont changées de valeur 
 
 .. note::
 
-   **TEMPO_DEVICES_DZ** : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)
+   **TEMPO_DEVICES_D** : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes pouvant être ramenée à 5 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)
 
-   - Avantage : simplicité de mise en oeuvre , création d'une variable dans DZ et ajout d'une ligne de script DzVent.
+   - Avantage : simplicité de mise en oeuvre , création d'une variable dans DZ ou HA et ajout d'une (ou plusieurs) ligne(s)  de script (DzVent ou yaml).
 
-   - Inconvénients : Retard dans la mise à jour de 15 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écrans ; le second écran sera mis à jour lors de la mise à jour cyclique.
- 	avec les groupes, les scènes ou automatisations le retard du rafraichissement peut être pénible.
+   - Inconvénients : Retard dans la mise à jour de 5 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écrans ; le second écran sera mis à jour lors de la mise à jour cyclique.
+ 	avec les groupes, les scènes ou automatisations ce retard du rafraichissement peut être désagréable.
 
    |image126|
 
@@ -134,7 +136,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    .. IMPORTANT::
 
-      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt , en wss , c'est plus compliqué et une 3eme solution qui utilise l'API monitor depuis HA et DZ est à l'étude.
+      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt , en wss , c'est plus compliqué mais des scripts existent pour les obtenir.
 
 1.1.3.1 Solution semi temps réel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -144,7 +146,7 @@ La fonction JS :
 
    <?php
    if (MQTT==false) echo '
-   tempo_devices='.TEMPO_DEVICES_DZ.';
+   tempo_devices='.TEMPO_DEVICES_D.';
    var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
    var_sp(idsp);
    function var_sp(idsp){
@@ -182,55 +184,59 @@ Le serveur MQTT, le port, topic pour la souscription sont à déclarer dans /adm
    define('MQTT', true);//  true si serveur MQTT utilisé par monitor
    define('MQTT_IP', '192.168.1.42');//adresse IP
    define('MQTT_PORT', 9001);// mqtt=1883 websockets=9001 et 9883 (wss)
-   define('MQTT_TOPIC', "monitor/dz");// topic (destinataire) 
+   define('MQTT_TOPIC', "monitor/dz");// topic (destinataire) monitor/#, monitor/dz, monitor/ha,...
 
 .. note::
 
    Port mqtt: 1883
-   Port websocket ws: 9001, à privilégier
-   Port websocket wss: 9883, vir les observations ci-après
+
+   Port websocket ws: 9001
+   Port websocket wss: 9002, à privilégier : voir les observations ci-après
 
    .. IMPORTANT:: 
 
-      pour utiliser wss lors de connexions distantes des certificats serveurs et clients doivent être installés pour éviter cette erreur qui bloque l'affichage du site
+      pour utiliser wss lors de connexions distantes des certificats serveurs et clients doivent être installés pour éviter cette erreur qui bloque l'affichage du site.
 
-      |image1222|
+      image1222|
+
+      wss peut être applélé depuis HTTP mais l'inverse n'est pas possible: si le site distant est HTTPS websockets est impérativement wws.
 
 le script JS dans footer.php:
 
 .. code-block::
 
-   if (MQTT==true) echo '<script src="js/mqttws31.min.js"></script>';?>	
-	<!-- fin des fichiers script -->
-	<!-- scripts-->	
-	<script>
-	var connected_flag=0	
+   <?php
+	if (MQTT==true) echo '<script src="js/mqttws31.min.js"></script>';
+   ?>
+   <!-- fin des fichiers script --><!-- scripts-->	
+   <script>
+   var connected_flag=0	
 	var mqtt;
-    var reconnectTimeout = 2000;
+   var reconnectTimeout = 2000;
 	var host="<?php echo MQTT_IP;?>";
-	var port=<?php echo MQTT_PORT;?>;	
+        var port=<?php echo MQTT_PORT;?>;
 	var stopic="<?php echo MQTT_TOPIC;?>";
-
-	function onConnectionLost(){
+	var out_msg="";
+   function onConnectionLost(){
 	console.log("connection lost");
 	document.getElementById("status").innerHTML = "Connexion perdue";
 	document.getElementById("messages").innerHTML ="Connexion perdue";
 	connected_flag=0;
 	}
-	function onFailure(message) {
+   function onFailure(message) {
 		console.log("Failed");
 		document.getElementById("messages").innerHTML = "Connexion Failed- Retrying";
         setTimeout(MQTTconnect, reconnectTimeout);
         }
-		function onMessageArrived(r_message){
+   function onMessageArrived(r_message){
 		out_msg="Message reçu "+r_message.payloadString;
 		out_msg=out_msg+"Message reçu Topic "+r_message.destinationName;
 		console.log(out_msg);
 		var json = JSON.parse(r_message.payloadString);
-		id_x=json.idx;state=json.state;id_m= maj_mqtt(id_x,state,0);
+		id_x=json.idx;state=json.state;maj_mqtt(id_x,state,0);
 		document.getElementById("messages").innerHTML =out_msg;
 		}
-	function onConnected(recon,url){
+   function onConnected(recon,url){
 	console.log(" en onConnected " +reconn);
 	}
 	function disConnect() {
@@ -238,66 +244,33 @@ le script JS dans footer.php:
 		document.getElementById("status").innerHTML = "déconnecté";
 		document.getElementById("messages").innerHTML ="déconnecté de "+host +" sur le port "+port;
 	}
-	function onConnect() {
+   function onConnect() {
 	  // Once a connection has been made, make a subscription and send a message.
 	document.getElementById("messages").innerHTML ="Connecté de "+host +" sur le port "+port;
 	connected_flag=1;
 	document.getElementById("status").innerHTML = "Connecté";
 	console.log("on Connect "+connected_flag);sub_topics(stopic);
 		  }
-
-    	function MQTTconnect() {
+   function MQTTconnect() {
 	document.getElementById("messages").innerHTML ="";
-	
 	console.log("connexion à "+ host +" "+ port);
 	var x=Math.floor(Math.random() * 10000); 
-	var cname="orderform-"+x;
+	var cname="mqtt_"+x;
 	mqtt = new Paho.MQTT.Client(host,port,cname);
-	
 	var options = {
         timeout: 100,
 		onSuccess: onConnect,
 		onFailure: onFailure,
-       	};
+		userName: "<?php echo MQTT_USER;?>",// user et mdp dans mosquitto
+		password: "<?php echo MQTT_PASS;?>",
+		useSSL:true //pour wss, false pour ws      
+                    };
 	mqtt.onConnectionLost = onConnectionLost;
         mqtt.onMessageArrived = onMessageArrived;
-		//mqtt.onConnected = onConnected;
+	mqtt.onConnected = onConnected;
 	mqtt.connect(options);
 	return false;
- 	}
-	function sub_topics(stopic){
-		document.getElementById("messages").innerHTML ="";
-		if (connected_flag==0){
-		out_msg="<b>Not Connected so can't subscribe";
-		console.log(out_msg); 
-		document.getElementById("messages").innerHTML = out_msg;
-		return false;
-		}
-	//var stopic= document.forms["subs"]["Stopic"].value;
-	console.log("Subscribing to topic ="+stopic);
-	mqtt.subscribe(stopic);
-	return false;
-	}
-	function send_message(){
-		document.getElementById("messages").innerHTML ="";
-		if (connected_flag==0){
-		out_msg="<b>Not Connected so can't send";
-		console.log(out_msg);
-		document.getElementById("messages").innerHTML = out_msg;
-		return false;
-		}
-		var msg = document.forms["smessage"]["message"].value;
-		console.log(msg);
-
-		var topic = document.forms["smessage"]["Ptopic"].value;
-		message = new Paho.MQTT.Message(msg);
-		if (topic=="")
-			message.destinationName = "test-topic"
-		else
-			message.destinationName = topic;
-		mqtt.send(message);
-		return false;
-	}
+    	}
 
 .. code-block::	
 
