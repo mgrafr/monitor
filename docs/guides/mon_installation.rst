@@ -559,6 +559,10 @@ Le fichier de mots de passe:
 
 *Mosquitto est alors configuré pour utiliser wws.*
 
+21.6.2 Javascripts et websockets 
+================================
+.. seealso:: *https://fr.javascript.info/websocket*
+
 
 21.7 Zoneminder
 ^^^^^^^^^^^^^^^
