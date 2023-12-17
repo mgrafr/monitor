@@ -136,7 +136,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    .. IMPORTANT::
 
-      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt , en wss , c'est plus compliqué mais des scripts existent pour les obtenir.
+      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt , en wss , c'est plus compliqué mais des scripts existent pour les obtenir... voir ce § :ref:'21.6.1 Certificats'
 
 1.1.3.1 Solution semi temps réel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
