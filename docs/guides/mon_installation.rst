@@ -549,15 +549,15 @@ Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Up
 
    |image1231| 
 
-   Le fichier de configuration de mosquitto dans /etc/mosquitto/conf.D
+Le fichier de configuration de mosquitto dans /etc/mosquitto/conf.d :
 
-   |image1232|
+|image1232|
 
-   Le fichier de mots de passe:
+Le fichier de mots de passe:
 
-   |image1233|
+|image1233|
 
-   *Mosquitto est alors configuré pour utiliser wws.*
+*Mosquitto est alors configuré pour utiliser wws.*
 
 
 21.7 Zoneminder
