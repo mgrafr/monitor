@@ -824,9 +824,9 @@ L'assistant vocal est composé:
    :width: 431px
 .. |image1231| image:: ../img/image1231.webp
    :width: 415px
-.. |image1232| image:: ../img/image1232webp
+.. |image1232| image:: ../img/image1232.webp
    :width: 405px
-.. |image1233| image:: ../img/image1233webp
+.. |image1233| image:: ../img/image1233.webp
    :width: 496px
 
 
