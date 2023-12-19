@@ -598,6 +598,12 @@ Le fichier de mots de passe:
 
 |image1233|
 
+pour le créer (fichier:pass user:michel):
+
+.. code-block::
+
+   sudo mosquitto_passwd -H sha512 -c /etc/mosquitto/pass michel
+
 *Mosquitto est alors configuré pour utiliser wws.*
 
 21.6.2 Javascripts et websockets 
@@ -887,3 +893,5 @@ L'assistant vocal est composé:
    :width: 512px
 .. |image1240| image:: ../img/image1240.webp
    :width: 581px
+.. |image1241| image:: ../img/image1241.webp
+   :width: 530px
