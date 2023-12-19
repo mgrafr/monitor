@@ -323,7 +323,7 @@ Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Up
       |image1238|
 
 
-   .. code-block::
+     .. code-block::
 
 	#!/usr/bin/env bash
 	#(@)generate-CA.sh - Create CA key-pair and server key-pair signed by CA
@@ -579,6 +579,12 @@ Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Up
 		chmod 444 $CLIENT.crt
 		fi
 	fi 
+
+   Lancer /etc/mosquitto/certs/generate-CA.sh (renommé ici generate-CA_mqtt.sh) 
+
+   |image1239| 
+
+   |image1240| 
 
    Les certificats obtenus:
 
@@ -862,7 +868,7 @@ L'assistant vocal est composé:
 .. |image1230| image:: ../img/image1230.webp
    :width: 431px
 .. |image1231| image:: ../img/image1231.webp
-   :width: 415px
+   :width: 288px
 .. |image1232| image:: ../img/image1232.webp
    :width: 405px
 .. |image1233| image:: ../img/image1233.webp
@@ -877,3 +883,7 @@ L'assistant vocal est composé:
    :width: 602px
 .. |image1238| image:: ../img/image1238.webp
    :width: 464px
+.. |image1239| image:: ../img/image1239.webp
+   :width: 512px
+.. |image1240| image:: ../img/image1240.webp
+   :width: 581px
