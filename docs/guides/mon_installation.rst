@@ -288,6 +288,41 @@ Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Up
 
    |image1230|
 
+   .. note:: **paramètrage de generate-CA.sh**
+
+      .. code-block::
+
+         # Définissez les variables d’environnement facultatives suivantes avant l’appel
+	 # pour ajouter les adresses IP et/ou les noms d’hôte spécifiés à la liste subjAltName
+	 # Ceux-ci contiennent des valeurs séparées par des espaces
+   	 #
+	 #	IPLIST="172.13.14.15 192.168.1.1"
+ 	 #	HOSTLIST="a.example.com b.example.com"
+
+	 IPLIST="192.168.1.9 192.168.1.26 192.168.1.5 192.168.1.76"
+	 HOSTLIST="monitor.xxxxxxxxx.ovh  mqtt.xxxxxxxx.ovh socket.xxxxxxxx.ovh"
+
+      Pour savoir lesquels sont pris en charge par votre version d’OpenSSL, lancez :
+
+      .. code-block::
+
+         openssl dgst -help
+
+      |image1234|
+
+      |image1235| 
+
+      Un Subject Alternative Name (SAN) ou Nom Alternatif du Sujet en français est une extension de la norme X.509. Cela permet d'ajouter des valeurs à un certificat en utilisant le champ subjectAltName.
+
+      Il est possible d'ajouter les valeurs suivantes : Adresses Mail, Adresses IP, URL, Noms de domaine, Directory Name (une alternative au Distinguished Names utilisée pour le sujet du certificat)
+
+      |image1236|
+
+      |image1237|  
+
+      |image1238|
+
+
    .. code-block::
 
 	#!/usr/bin/env bash
@@ -832,5 +867,13 @@ L'assistant vocal est composé:
    :width: 405px
 .. |image1233| image:: ../img/image1233.webp
    :width: 496px
-
-
+.. |image1234| image:: ../img/image1234.webp
+   :width: 700px
+.. |image1235| image:: ../img/image1235.webp
+   :width: 450px
+.. |image1236| image:: ../img/image1236.webp
+   :width: 695px
+.. |image1237| image:: ../img/image1237.webp
+   :width: 602px
+.. |image1238| image:: ../img/image1238.webp
+   :width: 464px
