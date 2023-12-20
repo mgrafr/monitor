@@ -602,7 +602,7 @@ pour le créer (fichier:pass user:michel):
 
 .. code-block::
 
-   sudo mosquitto_passwd -H sha512 -c /etc/mosquitto/pass michel
+   sudo mosquitto_passwd -H sha512 -c /etc/mosquitto/passwd michel
 
 *Mosquitto est alors configuré pour utiliser wws.*
 
