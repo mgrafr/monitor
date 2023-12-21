@@ -115,7 +115,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
 - semi temps réel , monitor interroge une variable mis à jour par Dz ou Ha lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.
 
-- temps réel, en recevant de Domoticz , par un topic MQTT, les données du dispositifs qui ont changées de valeur 
+- temps réel, en recevant de Domoticz , par un topic MQTT et un SSE(Server-sent Events) , les données du dispositifs qui ont changées de valeur 
 
 .. note::
 
@@ -132,11 +132,11 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    - Avantages : Vrai temps réel, économise de la bande passante
 
-   - Inconvénients : Installation d'un serveur MQTT-Websockets (facile en ws, plus compliqné TLS/SSL), de Paho , création d'un script pour envoyer les données depuis DZ ou HA ; le client MQTT dans Javascript est déjà installé, il suffit de mettre en service MQTT
+   - Inconvénients : Installation d'un serveur SSE NodeJS, création d'un script pour envoyer les données depuis DZ ou HA ; le Client SSE dans Javascript est déjà installé, il suffit de mettre en service MQTT
 
    .. IMPORTANT::
 
-      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt , en wss , c'est plus compliqué mais des scripts existent pour les obtenir... voir ce § :ref:'21.6.1 Certificats'
+      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt
 
 1.1.3.1 Solution semi temps réel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -173,104 +173,69 @@ La fonction PHP qui récupère la valeur de la variable :
    return 	$value;
    }
   
-1.1.3.2 Solution temps réel MQTT
+1.1.3.2 Solution temps réel SSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le serveur MQTT, le port, topic pour la souscription sont à déclarer dans /admin/config.php:
+Le serveur SSE, le port, sont à déclarer dans /admin/config.php:
 
 .. code-block::
 
-   // serveur MQTT utilisation d'un serveur (envoi topic depuis monitor)
-   define('MQTT', true);//  true si serveur MQTT utilisé par monitor
-   define('MQTT_IP', '192.168.1.42');//adresse IP
-   define('MQTT_PORT', 9001);// mqtt=1883 websockets=9001 et 9883 (wss)
-   define('MQTT_TOPIC', "monitor/dz");// topic (destinataire) monitor/#, monitor/dz, monitor/ha,...
+   define('SSE', true);//  true si serveur SSE utilisé par monitor
+   define('SSE_USER', "michel");//user et mot passe 
+   define('SSE_PASS', "<mot passe>");
+   define('SSE_URL', 'socket.la-truffiere.ovh');
+   define('SSE_IP', '192.168.1.26');//adresse IP
+   define('SSE_PORT', 3000);// 
 
 .. note::
 
-   Port mqtt: 1883
+   Port mqtt: 3000
 
-   Port websocket ws: 9001
-   Port websocket wss: 9002, à privilégier : voir les observations ci-après
+le script JS dans footer.php:
 
-   .. IMPORTANT:: 
+define('SSE', true);//  true si serveur SSE utilisé par monitor
+   define('SSE_USER', "michel");//user et mot passe 
+   define('SSE_PASS', "<mot passe>");
+   define('SSE_URL', 'socket.la-truffiere.ovh');
+   define('SSE_IP', '192.168.1.26');//adresse IP
+   define('SSE_PORT', 3000);// 
 
-      pour utiliser wss lors de connexions distantes des certificats serveurs et clients doivent être installés pour éviter cette erreur qui bloque l'affichage du site.
+.. note::
 
-      image1222|
+   Port mqtt: 3000
 
-      wss peut être applélé depuis HTTP mais l'inverse n'est pas possible: si le site distant est HTTPS websockets est impérativement wws.
+le script JS dans footer.php:
+
+.. code-block::
+
+   define('SSE', true);//  true si serveur SSE utilisé par monitor
+   define('SSE_USER', "michel");//user et mot passe 
+   define('SSE_PASS', "<mot passe>");
+   define('SSE_URL', 'socket.la-truffiere.ovh');
+   define('SSE_IP', '192.168.1.26');//adresse IP
+   define('SSE_PORT', 3000);// 
+
+.. note::
+
+   Port mqtt: 3000
 
 le script JS dans footer.php:
 
 .. code-block::
 
    <?php
-	if (MQTT==true) echo '<script src="js/mqttws31.min.js"></script>';
-   ?>
-   <!-- fin des fichiers script --><!-- scripts-->	
-   <script>
-   var connected_flag=0	
-	var mqtt;
-   var reconnectTimeout = 2000;
-	var host="<?php echo MQTT_IP;?>";
-        var port=<?php echo MQTT_PORT;?>;
-	var stopic="<?php echo MQTT_TOPIC;?>";
-	var out_msg="";
-   function onConnectionLost(){
-	console.log("connection lost");
-	document.getElementById("status").innerHTML = "Connexion perdue";
-	document.getElementById("messages").innerHTML ="Connexion perdue";
-	connected_flag=0;
-	}
-   function onFailure(message) {
-		console.log("Failed");
-		document.getElementById("messages").innerHTML = "Connexion Failed- Retrying";
-        setTimeout(MQTTconnect, reconnectTimeout);
-        }
-   function onMessageArrived(r_message){
-		out_msg="Message reçu "+r_message.payloadString;
-		out_msg=out_msg+"Message reçu Topic "+r_message.destinationName;
-		console.log(out_msg);
-		var json = JSON.parse(r_message.payloadString);
-		id_x=json.idx;state=json.state;maj_mqtt(id_x,state,0);
-		document.getElementById("messages").innerHTML =out_msg;
-		}
-   function onConnected(recon,url){
-	console.log(" en onConnected " +reconn);
-	}
-	function disConnect() {
-	if (connected_flag==1) mqtt.disconnect();
-		document.getElementById("status").innerHTML = "déconnecté";
-		document.getElementById("messages").innerHTML ="déconnecté de "+host +" sur le port "+port;
-	}
-   function onConnect() {
-	  // Once a connection has been made, make a subscription and send a message.
-	document.getElementById("messages").innerHTML ="Connecté de "+host +" sur le port "+port;
-	connected_flag=1;
-	document.getElementById("status").innerHTML = "Connecté";
-	console.log("on Connect "+connected_flag);sub_topics(stopic);
-		  }
-   function MQTTconnect() {
-	document.getElementById("messages").innerHTML ="";
-	console.log("connexion à "+ host +" "+ port);
-	var x=Math.floor(Math.random() * 10000); 
-	var cname="mqtt_"+x;
-	mqtt = new Paho.MQTT.Client(host,port,cname);
-	var options = {
-        timeout: 100,
-		onSuccess: onConnect,
-		onFailure: onFailure,
-		userName: "<?php echo MQTT_USER;?>",// user et mdp dans mosquitto
-		password: "<?php echo MQTT_PASS;?>",
-		useSSL:true //pour wss, false pour ws      
-                    };
-	mqtt.onConnectionLost = onConnectionLost;
-        mqtt.onMessageArrived = onMessageArrived;
-	mqtt.onConnected = onConnected;
-	mqtt.connect(options);
-	return false;
-    	}
+if (SSE==true) echo "
+<script>
+    const eventSource = new EventSource('https://socket.la-truffiere.ovh/sse');
+
+    eventSource.onmessage = function (currentEvent) {
+      const listElement = document.getElementById('messages');
+      const newElement = document.createElement('li');
+      newElement.innerText = currentEvent.data;
+
+      listElement.appendChild(newElement);
+    };
+  </script>";?>
 
 .. code-block::	
 
@@ -317,7 +282,7 @@ le script JS dans footer.php:
 
 **explications**: 
 
-2 parties dans ce script, la 1ère partie concerne la publication et la souscription MQTT avec Paho, la 2eme partie, la mise à jour des dispositifs
+2 parties dans ce script, la 1ère partie concerne la réception des évènements avec SSE, la 2eme partie, la mise à jour des dispositifs
 
 |image906|
 
