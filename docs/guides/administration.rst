@@ -195,8 +195,8 @@ voir les paragraphes:
    document.getElementById("affich_content_info").innerHTML = info_admin[rel];
    }
 
-14.3.1 Essai de souscription MQTT
-=================================
+14.3.1 Topic SSE
+================
 voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
 |image497|
