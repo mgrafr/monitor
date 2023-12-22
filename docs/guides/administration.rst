@@ -8,11 +8,11 @@ Page avec toutes les options , voir aussi ce §  :ref:`14.1.1 Pour utiliser les 
 
 |image788|
 
-Si un serveur MQTT est installé et MQTT==true :
+Si un serveur SSE est installé et SSE==true :
 
 .. code-block
 
-   define('MQTT', true);//  true si serveur MQTT utilisé par monitor
+   define('SSE', true);//  true si serveur SSE utilisé par monitor
 
 |image789|
 
