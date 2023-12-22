@@ -97,17 +97,16 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
    define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE(si installée) en milli secondes
    define('TEMPO_DEVICES', 180000);// en milli secondes, rafraichissement programmé(dispositifs non prioritaires)
    define('TEMPO_DEVICES_D', 30000);// en milli secondes (>=5s, <30s) maj déclenchée par Dz ou Ha voir doc
-   define('TEMPO_DEVICES_MQTT', false);// Si true toutes les autres tempos sont false
-
+   
 .. IMPORTANT:: 
 
-   TEMPO_DEVICES_MQTT', true = TEMP REEL, :red:'TEMPO_DEVICES_DZ est annulé'
+   Si define('SSE', true) = TEMP REEL, :red:'TEMPO_DEVICES_DZ est annulé'
 
-   un serveur MQTT doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
+   un serveur SSE doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
 
 .. note::
    *TEMPO_DEVICES* pour tous les dispositifs\ 
-   *TEMPO_DEVICES_D et TEMPO_DEVICES_MQTT** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
+   *TEMPO_DEVICES_D ou serveur SSE** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
 
 1.1.3 maj en temps réel
 -----------------------
