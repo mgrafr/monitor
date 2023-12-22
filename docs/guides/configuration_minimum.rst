@@ -100,7 +100,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
    
 .. IMPORTANT:: 
 
-   Si define('SSE', true) = TEMP REEL, :red:'TEMPO_DEVICES_DZ est annulé'.
+   Si define('SSE', true) = TEMP REEL :  :red:'TEMPO_DEVICES_DZ est annulé'.
 
    un serveur SSE doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
 
@@ -611,12 +611,11 @@ voir dans ce même chapitre le § :ref:`1.1.3 maj en temps réel`
 
 1.3.5.1.a rafrichissement de la page avec une variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-**Ne concerne que Domoticz**; avec Home Assistant c'est plus simple d'utiliser MQTT, l'utilisation d'une variable oblige d'écrire un grand nombre de lignes, aussi autant utiliser MQTT.
-
-La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif dans Domoticz, 
-une variable est mise à « 1 » ; 
+La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif, une variable est mise à « 1 » ; 
 
 monitor qui scrute en permanence cette valeur importe les données de tous les dispositifs si cette variable est à 1.
+
+**Exemple pour Domoticz
 
 |image155|
 
@@ -628,8 +627,8 @@ la variable:
 
 |image158|
 
-1.3.5.1.b rafraichissement avec MQTT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.3.5.1.b rafraichissement avec MQTT & SSE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: **Dans Domoticz**
 
@@ -860,6 +859,74 @@ Avec Putty, vérification de réception par mosquitto des messages:
 |image1211|
 
 Domoticz et Home Assistant sont tous deux connectés au serveur mosquitto, ils reçoivent les topics de Zigbee2mqtt.J'ai volontairement ajouté les 2 services "mqtt_publish" et "Pyscript.mqtt_publish" dans /config/automation ce qui explique l'envoi à monitor de 3 messages concernant le même dispositif.
+
+1.3.5.1.c Le serveur SSE
+~~~~~~~~~~~~~~~~~~~~~~~~
+Sous node.js , il peut être installé sur le serveur principal ou dans une VM ou dans un conteneur
+
+Je l'ai installé dans un conteneur LXC Proxmox.
+
+le script, partie serveur SSE:
+.. code-blocl::
+
+   const http = require('http');
+   var msg="";
+   const reqListener = function (req, res) {
+     let counter = 0;
+
+     res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Connection': 'keep-alive',
+    'Cache-Control': 'no-cache',
+    'Access-Control-Allow-Origin': '*'
+   });
+   if (msg!="") {res.write(`data: ${msg} \n\n`);msg="";}
+   /*  setInterval(function() {
+    res.write(`data: ${counter} message from bigboxcode.com\n\n`);
+    counter++;
+     }, 3000);
+      }
+   const server = http.createServer(reqListener);
+   server.listen(3000);
+
+La suite du script partie MQTT,
+
+.. code-block::
+
+   const USER = "michel";
+   const PASS = "Idem4546";
+   const options = {
+  clientId: 'monitor',
+  clean: true,
+  connectTimeout: 4000,
+  username: USER,
+  password : PASS
+   }
+  const url = 'ws://192.168.1.42:9001';
+  var topic="monitor/#";
+  const mqtt = require("mqtt");
+  const client  = mqtt.connect(url,options)
+  client.on('connect', function () {
+  console.log('Connected')
+  // Subscribe to a topic
+  client.subscribe(topic, function (err) {
+    if (!err) {
+      // Publish a message to a topic
+      client.publish("monitor", 'Hello mqtt')
+    }
+   })
+   })
+
+   // Receive messages
+   client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  msg=message.toString();
+  //client.end()
+   });
+  client.on('error', function (error) {
+  console.log(error)
+  })
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
