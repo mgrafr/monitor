@@ -100,12 +100,13 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
    
 .. IMPORTANT:: 
 
-   Si define('SSE', true) = TEMP REEL, :red:'TEMPO_DEVICES_DZ est annulé'
+   Si define('SSE', true) = TEMP REEL, :red:'TEMPO_DEVICES_DZ est annulé'.
 
    un serveur SSE doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
 
 .. note::
-   *TEMPO_DEVICES* pour tous les dispositifs\ 
+   *TEMPO_DEVICES* pour tous les dispositifs
+
    *TEMPO_DEVICES_D ou serveur SSE** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
 
 1.1.3 maj en temps réel
@@ -190,35 +191,7 @@ Le serveur SSE, le port, sont à déclarer dans /admin/config.php:
 
    Port mqtt: 3000
 
-le script JS dans footer.php:
-
-define('SSE', true);//  true si serveur SSE utilisé par monitor
-   define('SSE_USER', "michel");//user et mot passe 
-   define('SSE_PASS', "<mot passe>");
-   define('SSE_URL', 'socket.la-truffiere.ovh');
-   define('SSE_IP', '192.168.1.26');//adresse IP
-   define('SSE_PORT', 3000);// 
-
-.. note::
-
-   Port mqtt: 3000
-
-le script JS dans footer.php:
-
-.. code-block::
-
-   define('SSE', true);//  true si serveur SSE utilisé par monitor
-   define('SSE_USER', "michel");//user et mot passe 
-   define('SSE_PASS', "<mot passe>");
-   define('SSE_URL', 'socket.la-truffiere.ovh');
-   define('SSE_IP', '192.168.1.26');//adresse IP
-   define('SSE_PORT', 3000);// 
-
-.. note::
-
-   Port mqtt: 3000
-
-le script JS dans footer.php:
+les scripts JS dans footer.php:
 
 .. code-block::
 
