@@ -772,7 +772,13 @@ L'assistant vocal est composé:
 
 - Un serveur Ha-bridge installé dans un conteneur LXC Proxmox
 
+21.12 Serveur SSE
+^^^^^^^^^^^^^^^^^
+Installation: dans un conteneur LXC Proxmox
 
+.. note::
+
+   installation de Sudo, Nginx ,Ufw ,NodeJS et cerbot
 
 
 .. |image1026| image:: ../media/image1026.webp
