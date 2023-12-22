@@ -128,11 +128,11 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    |image126|
 
-   **TEMPO_DEVICES_MQTT**
+   **Seveur SSE**
 
    - Avantages : Vrai temps réel, économise de la bande passante
 
-   - Inconvénients : Installation d'un serveur SSE NodeJS, création d'un script pour envoyer les données depuis DZ ou HA ; le Client SSE dans Javascript est déjà installé, il suffit de mettre en service MQTT
+   - Inconvénients : Installation d'un serveur SSE NodeJS, création d'un script pour envoyer les données depuis DZ ou HA ; le Client SSE dans Javascript est déjà installé, il suffit de mettre en service SSE
 
    .. IMPORTANT::
 
@@ -175,7 +175,6 @@ La fonction PHP qui récupère la valeur de la variable :
   
 1.1.3.2 Solution temps réel SSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Le serveur SSE, le port, sont à déclarer dans /admin/config.php:
 
 .. code-block::
@@ -196,8 +195,8 @@ les scripts JS dans footer.php:
 .. code-block::
 
    <?php
-if (SSE==true) echo "
-<script>
+   if (SSE==true) echo "
+    <script>
     const eventSource = new EventSource('https://socket.la-truffiere.ovh/sse');
 
     eventSource.onmessage = function (currentEvent) {
@@ -207,7 +206,7 @@ if (SSE==true) echo "
 
       listElement.appendChild(newElement);
     };
-  </script>";?>
+    </script>";?>
 
 .. code-block::	
 
