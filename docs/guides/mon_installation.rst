@@ -772,13 +772,37 @@ L'assistant vocal est composé:
 
 - Un serveur Ha-bridge installé dans un conteneur LXC Proxmox
 
-21.12 Serveur SSE
-^^^^^^^^^^^^^^^^^
+21.12 Serveur SSE Node JS
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Installation: dans un conteneur LXC Proxmox
 
 .. note::
 
-   installation de Sudo, Nginx ,Ufw ,NodeJS et cerbot
+   installation de Curl, Sudo, Nginx ,Ufw ,NodeJS et cerbot
+
+Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilisateur en lui ajoutant des droits:
+
+.. code-block::
+
+   apt update
+   apt upgrade
+   apt install sudo
+   adduser <USERNAME>
+   usermod -aG sudo michel
+   visudo
+
+|image1242|
+
+.. admonition:: ** Installation de NODE JS**
+
+   1.	téléchargemenr de la clé GPG Nodesource
+
+   .. code-block::
+
+      sudo apt-get install -y ca-certificates curl gnupg
+      sudo mkdir -p /etc/apt/keyrings
+      curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
 
 
 .. |image1026| image:: ../media/image1026.webp
@@ -901,3 +925,5 @@ Installation: dans un conteneur LXC Proxmox
    :width: 581px
 .. |image1241| image:: ../img/image1241.webp
    :width: 530px
+.. |image1242| image:: ../img/image1242.webp
+   :width: 450px
