@@ -945,13 +945,13 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
 
    **Initialisation du serveur**:
 
-   |image1052|
+   |image1252|
 
    **intergiciel pour les requêtes adressées au point de terminaison GET /events**
 
    un middleware (anglicisme) ou intergiciel est un logiciel tiers qui crée un réseau d'échange d'informations entre différentes applications informatiques
 
-   |image1053|
+   |image1253|
 
    **intergiciel pour les requêtes adressées au point de terminaison POST /fact**
 
@@ -963,7 +963,7 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
 
       curl -X POST  -H "Content-Type: application/json"  -d '{"id": "306", "state": "On"}' -s http://192.168.1.118:3000/fact
 
-   |image1054|
+   |image1254|
 
 21.12.2 Envoi des mise à jour depuis Domoticz ou Home Assistant
 ===============================================================
