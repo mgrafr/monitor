@@ -650,8 +650,8 @@ la variable:
 
 |image158|
 
-1.3.5.1.b rafraichissement avec MQTT & SSE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.3.5.1.b rafraichissement avec SSE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: **Dans Domoticz**
 
