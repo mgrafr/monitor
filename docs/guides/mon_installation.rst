@@ -774,11 +774,11 @@ L'assistant vocal est composé:
 
 21.12 Serveur SSE Node JS
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Installation: dans un conteneur LXC Proxmox
-
+21.12.1 Installation: dans un conteneur LXC Proxmox
+===================================================
 .. note::
 
-   installation de Sudo, Curl, NodeJS, Nginx ,Ufw ,et cerbot
+   installation de Sudo, Curl, NodeJS, Nginx ,Ufw 
 
 Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilisateur en lui ajoutant des droits:
 
@@ -955,9 +955,20 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
 
    **intergiciel pour les requêtes adressées au point de terminaison POST /fact**
 
-   lorsque de nouveaumessage sont ajoutés,l’intergiciel enregistre le message et l'envoie au client
+   lorsque de nouveaux messages sont ajoutés,l’intergiciel enregistre le message et les envoie aux clients
 
-    |image1054|
+   Ajout depuis une console:
+
+   .. code-block::
+
+      curl -X POST  -H "Content-Type: application/json"  -d '{"id": "306", "state": "On"}' -s http://192.168.1.118:3000/fact
+
+   |image1054|
+
+21.12.2 Envoi des mise à jour depuis Domoticz ou Home Assistant
+===============================================================
+
+
 
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
@@ -1105,3 +1116,5 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
    :width: 700px
 .. |image1254| image:: ../img/image1254.webp
    :width: 700px
+.. |image1255| image:: ../img/image1255.webp
+   :width: 540px
