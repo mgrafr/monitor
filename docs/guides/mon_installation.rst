@@ -778,7 +778,7 @@ Installation: dans un conteneur LXC Proxmox
 
 .. note::
 
-   installation de Curl, Sudo, Nginx ,Ufw ,NodeJS et cerbot
+   installation de Sudo, Curl, NodeJS, Nginx ,Ufw ,et cerbot
 
 Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilisateur en lui ajoutant des droits:
 
@@ -830,6 +830,46 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
    Vérification des versions de Node et Npm installées:
 
    |image1246|
+
+.. admonition:: **Installation du serveur Web et du pare-feuu**
+
+   .. code-block::
+
+      apt install nginx
+      apt install ufw
+
+   |image1247|
+
+   Configurer et activer le pare-feu
+
+   |image1248|
+
+.. admonition:: **Installation du serveur SSE Node**
+
+   création d'un répertoire EventSource
+
+   .. code-block::
+
+      mkdir /EventSource
+
+   Accédez à ce répertoire et créer un répertoire pour l'installation du serveur; accéder à ce dernier  :
+
+   .. code-block::
+
+      cd /EventSource
+      mkdir serveur_sse
+      cd serveur_sse
+
+   |image1249|
+
+   Initialiser un nouveau projet npm
+
+   .. code-block
+
+      npm init -y
+
+   |image1250|
+
 
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
@@ -961,3 +1001,11 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
    :width: 500px
 .. |image1246| image:: ../img/image1246.webp
    :width: 232px
+.. |image1247| image:: ../img/image1247.webp
+   :width: 550px
+.. |image1248| image:: ../img/image1248.webp
+   :width: 400px
+.. |image1249| image:: ../img/image1249.webp
+   :width: 380px
+.. |image1250| image:: ../img/image1250.webp
+   :width: 450px
