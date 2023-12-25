@@ -864,12 +864,100 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
 
    Initialiser un nouveau projet npm
 
-   .. code-block
+   .. code-block::
 
       npm init -y
 
    |image1250|
 
+   Installer les dépendances:
+
+   .. code-block::
+
+      npm install express body-parser cors --save
+      npm install ip
+
+   |image1251|
+
+   Avec Nano, créez un nouveau fichier : server.js , avec ce contenu
+
+   .. code-block::
+
+      const express = require('express');
+      const bodyParser = require('body-parser');
+      const cors = require('cors');
+      const app = express();
+
+      app.use(cors());
+      app.use(bodyParser.json());
+      app.use(bodyParser.urlencoded({extended: false}));
+      app.get('/status', (request, response) => response.json({clients: clients.length}));
+      var ip = require("ip");
+      const PORT = 3000;
+
+      let clients = [];
+      let facts = [];
+
+      app.listen(PORT, () => {
+        console.log(`Facts Events service listening at http://${ip.address()}:${PORT}`)
+      })
+
+      // ...
+
+      function eventsHandler(request, response, next) {
+      const headers = {
+      'Content-Type': 'text/event-stream',
+      'Connection': 'keep-alive',
+      'Cache-Control': 'no-cache'
+       };
+      response.writeHead(200, headers);
+      const data = `data: ${JSON.stringify(facts)}\n\n`;
+      response.write(data);
+
+      const clientId = Date.now();
+      const newClient = {
+      id: clientId,
+      response
+      };
+
+      clients.push(newClient);
+      request.on('close', () => {
+      console.log(`${clientId} Connection closed`);
+       clients = clients.filter(client => client.id !== clientId);
+      });
+      }
+      app.get('/events', eventsHandler);
+
+      // ...
+
+      function sendEventsToAll(newFact) {
+        clients.forEach(client => client.response.write(`data: ${JSON.stringify(newFact)}\n\n`))
+      }
+      async function addFact(request, respsonse, next) {
+      const newFact = request.body;
+      facts.push(newFact);
+      respsonse.json(newFact)
+      return sendEventsToAll(newFact);
+      }
+      app.post('/fact', addFact);
+
+   Quelques explications:
+
+   **Initialisation du serveur**:
+
+   |image1052|
+
+   **intergiciel pour les requêtes adressées au point de terminaison GET /events**
+
+   un middleware (anglicisme) ou intergiciel est un logiciel tiers qui crée un réseau d'échange d'informations entre différentes applications informatiques
+
+   |image1053|
+
+   **intergiciel pour les requêtes adressées au point de terminaison POST /fact**
+
+   lorsque de nouveaumessage sont ajoutés,l’intergiciel enregistre le message et l'envoie au client
+
+    |image1054|
 
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
@@ -1009,3 +1097,11 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
    :width: 380px
 .. |image1250| image:: ../img/image1250.webp
    :width: 450px
+.. |image1251| image:: ../img/image1251.webp
+   :width: 600px
+.. |image1252| image:: ../img/image1252.webp
+   :width: 650px
+.. |image1253| image:: ../img/image1253.webp
+   :width: 700px
+.. |image1254| image:: ../img/image1254.webp
+   :width: 700px
