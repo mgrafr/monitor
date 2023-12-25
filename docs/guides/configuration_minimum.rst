@@ -115,7 +115,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
 - semi temps réel , monitor interroge une variable mis à jour par Dz ou Ha lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.
 
-- temps réel, en recevant de Domoticz , par un topic MQTT et un SSE(Server-sent Events) , les données du dispositifs qui ont changées de valeur 
+- temps réel, en recevant de Domoticz ou Home Assistant, par un message depuis un SSE(Server-sent Events) , les données du dispositifs qui ont changées de valeur 
 
 .. note::
 
@@ -132,7 +132,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    - Avantages : Vrai temps réel, économise de la bande passante
 
-   - Inconvénients : Installation d'un serveur SSE NodeJS, création d'un script pour envoyer les données depuis DZ ou HA ; le Client SSE dans Javascript est déjà installé, il suffit de mettre en service SSE
+   - Inconvénients : Installation d'un serveur SSE NodeJS ou SSE PHP, création d'un script pour envoyer les données depuis DZ ou HA ; le Client SSE dans Javascript est déjà installé, il suffit de mettre en service SSE
 
    .. IMPORTANT::
 
@@ -179,10 +179,11 @@ Le serveur SSE, le port, sont à déclarer dans /admin/config.php:
 
 .. code-block::
 
-   define('SSE', true);//  true si serveur SSE utilisé par monitor
+   define('SSE', false);//  node ou php si serveur SSE utilisé par monitor
+   // pour SSE node
    define('SSE_USER', "michel");//user et mot passe 
    define('SSE_PASS', "<mot passe>");
-   define('SSE_URL', 'socket.la-truffiere.ovh');
+   define('SSE_URL', 'socket.<DOMAINE>.ovh');
    define('SSE_IP', '192.168.1.26');//adresse IP
    define('SSE_PORT', 3000);// 
 
@@ -192,21 +193,43 @@ Le serveur SSE, le port, sont à déclarer dans /admin/config.php:
 
 les scripts JS dans footer.php:
 
-.. code-block::
+.. admonition:: **Client SSE PHP:**
 
-   <?php
-   if (SSE==true) echo "
-    <script>
-    const eventSource = new EventSource('https://socket.la-truffiere.ovh/sse');
+   .. code-block::
 
-    eventSource.onmessage = function (currentEvent) {
-      const listElement = document.getElementById('messages');
-      const newElement = document.createElement('li');
-      newElement.innerText = currentEvent.data;
+   	if (SSE=='php') {echo "
+	<script>
+    	window.onload = function() {
+	// établir un flux et enregistrer les réponses sur la console
+	var source = new EventSource('/monitor/include/serveur_sse.php');
+	var listener = function (event) {
+   	if(typeof event.data !== 'undefined'){
+   	document.getElementById('messages').innerHTML = event.data ;
+    	}
+	};
+	source.addEventListener('open', listener);
+	source.addEventListener('message', listener);
+	source.addEventListener('error', listener);
+	}
+	</script>";}?>
 
-      listElement.appendChild(newElement);
-    };
-    </script>";?>
+.. admonition:: **Client SSE NodeJS:**
+
+   .. code-block::
+
+	if (SSE=='node') {echo "
+	<script>
+    	const eventSource = new EventSource('http://".SSE_IP.":".SSE_PORT."/events');
+    	eventSource.onopen = function() { document.getElementById('status').innerText='connecté';};
+    	eventSource.onmessage = function (currentEvent) {
+      	const listElement = document.getElementById('messages');
+      	const newElement = document.createElement('li');
+      	const obj = JSON.parse(currentEvent.data);
+	  newElement.innerText = obj[0].info;
+
+      	listElement.appendChild(newElement);
+    	};
+  	</script>";}
 
 .. code-block::	
 
@@ -253,7 +276,7 @@ les scripts JS dans footer.php:
 
 **explications**: 
 
-2 parties dans ce script, la 1ère partie concerne la réception des évènements avec SSE, la 2eme partie, la mise à jour des dispositifs
+2 parties dans ce script, la 1ère partie concerne la réception des évènements avec SSE (php ou node.js), la 2eme partie, la mise à jour des dispositifs
 
 |image906|
 
