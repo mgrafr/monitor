@@ -1239,6 +1239,35 @@ Le script DzVent:
    :width: 441px
 .. |image1109| image:: ../media/image1109.webp
    :width: 288px
+.. |image1189| image:: ../media/image1189.webp
+   :width: 300px
+.. |image1190| image:: ../media/image1190.webp
+   :width: 300px
+.. |image1191| image:: ../media/image1191.webp
+   :width: 600px
+.. |image1192| image:: ../media/image1192.webp
+   :width: 597px
+.. |image1193| image:: ../media/image1193.webp
+   :width: 499px
+.. |image1195| image:: ../media/image1195.webp
+   :width: 300px
+.. |image1196| image:: ../media/image1196.webp
+   :width: 300px
+.. |image1197| image:: ../media/image1197.webp
+   :width: 600px
+.. |image1198| image:: ../media/image1198.webp
+   :width: 700px
+.. |image1199| image:: ../media/image1199.webp
+   :width: 200px
+.. |image1206| image:: ../img/image1206.webp
+   :width: 301px
+.. |image1208| image:: ../img/image1208.webp
+   :width: 600px
+.. |image1209| image:: ../img/image1209.webp
+   :width: 650px
+.. |image1210| image:: ../img/image1210.webp
+   :width: 358px
+
 .. |image1230| image:: ../img/image1230.webp
    :width: 431px
 .. |image1231| image:: ../img/image1231.webp
