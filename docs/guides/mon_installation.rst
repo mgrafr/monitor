@@ -760,6 +760,105 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 |image1063|
 
+.. admonition:: **Pycript**
+
+   Sous HACS -> Intégrations, sélectionnez |image1194|, recherchez et installez pyscript
+   
+   |image1195|
+
+   On ajoute dans la configuration de HA :
+
+   |image1210|
+
+   .. important::
+
+      Il est recommandé d'installer JUPYTER , pour cela voir ce paragraphe :ref:`13.9 Installation de Jupyter`
+
+      |image1199|
+
+      Dans le répertoire pyscript à la racine de /config , copier les fichiers python concernés:
+
+      |image1196|
+
+      Et dans /config/pyscript/modules (nouveau répertoire crée), les modules perso (ici connect.py)
+
+      |image1206|
+
+      Paho est installé :
+
+      .. IMPORTANT::
+
+         Advanced SSH & Web Terminal doit être installé; si Terminal & SSH est installé, le désinstaller( Avec terminal Python est très limité et Paho ne peut être installé.)
+
+         |image1189| |image1190|
+
+      .. code-block::
+
+         pip install paho-mqtt
+
+      |image1191|
+
+      Pour faire un essai, avec le terminal:
+
+      |image1192|
+
+      Visualisation dans monitor:
+
+      |image1193|
+
+      Le script python dans le répertoire :darkblue:`/config/pyscript`
+
+      .. code-block::
+
+         import paho.mqtt.client as mqtt
+	 import json
+	 import sys
+	 from connect import ip_mqtt
+
+	 @service
+	 def mqtt_publish(topic=None, idx=None, state=None):
+	     log.info(f"mqtt: got topic {topic} idx {idx} state {state}")
+
+ 	    etat= idx 
+ 	    valeur= state 
+	    MQTT_HOST = ip_mqtt
+ 	    MQTT_PORT = 9001
+ 	    MQTT_KEEPALIVE_INTERVAL = 45
+	    MQTT_TOPIC = topic
+	    MQTT_MSG=json.dumps({'idx': etat,'state': valeur});
+    
+	    # Initiate MQTT Client
+    	    mqttc = mqtt.Client(transport="websockets")
+  	    mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
+	    mqttc.publish(MQTT_TOPIC, MQTT_MSG)
+	    mqttc.disconnect()
+     
+      |image1209|
+
+      L'appel du service:
+
+      |image1208|
+
+      Script complet de l'automatisation : 
+
+      .. code-block::
+
+         - id: mqtt_12345678
+           alias: "essai mqtt"
+           trigger:
+           - platform: state
+             entity_id: light.lampe_jardin, light.lampe_terrasse
+             to: 
+             - 'on'
+             - 'off'
+           condition: []
+           action:
+           - service: pyscript.mqtt_publish
+             data_template:
+	       topic: monitor/ha
+               idx: "{{ trigger.entity_id }}"
+               state: "{{ trigger.to_state.state }}" 
+
 21.11 Pont Hue Ha-bridge pour Alexa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 voir le § :ref:`13.8 Pont HA (ha-bridge)`
