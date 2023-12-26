@@ -1007,6 +1007,41 @@ Le script DzVent:
 
 21.12.2.2 Depuis Home Assistant
 """""""""""""""""""""""""""""""
+.. WARNING:: 
+
+   La création ou la modification de scripts "shell_command" :red:`IMPOSE UN REDEMARRAGE de Home Assistant`.
+
+**Dans /config/configuration.yaml**:
+
+.. code-block::
+
+   shell_command: 
+       curl_sse:  "curl -X POST  -H 'Content-Type: application/json'  -d '{{ data }}' -s {{ url }}"   
+
+**Dans /config/automation.yaml**:
+
+.. code-block::
+
+   - id: mqtt_12345678
+     alias: "essai mqtt"
+     trigger:
+     - platform: state
+       entity_id: light.lampe_jardin, light.lampe_terrasse
+       to: 
+       - 'on'
+       - 'off'
+     condition: []
+     action:
+     - service: shell_command.curl_sse
+       data_template:
+         url: 'http://192.168.1.118:3000/fact'
+         data: '{"idx": "{{ trigger.entity_id }}","state": "{{ trigger.to_state.state }}" }'
+
+|image1258|
+
+21.12.2.3 EventStream recu par monitor
+""""""""""""""""""""""""""""""""""""""
+|image1259|
 
 
 .. |image1026| image:: ../media/image1026.webp
@@ -1161,3 +1196,7 @@ Le script DzVent:
    :width: 608px
 .. |image1257| image:: ../img/image1257.webp
    :width: 700px
+.. |image1258| image:: ../img/image1258.webp
+   :width: 600px
+.. |image1259| image:: ../img/image1259.webp
+   :width: 440px
