@@ -15,7 +15,7 @@ Version  en developpement 2.2.7
 
 - séparation de temp et data pour l'affichage des températures
 
-- Mise à jour temps réel avec MQTT depuis Domoticz ou Home Assistant
+- Mise à jour temps réel avec SSE Node.js depuis Domoticz ou Home Assistant
 
 - ajout des groupes et scènes sur la page 'commandes ON/OFF"
 
