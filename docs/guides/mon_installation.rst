@@ -1146,6 +1146,40 @@ Le script DzVent:
 """"""""""""""""""""""""""""""""""""""
 |image1259|
 
+21.12.3 Accès distant SSL & HTTP2
+=================================
+- S'il n'est pas installé sur le serveur web, Installation de Cerbot pour obtenir un certificat Let'sencrypt
+
+- Configuration de l'hôte virtuel SSE 
+
+- modification du Client SSE pour utiliser la bonne URL
+
+.. admonition:: **Installer Cerbot pour Nginx**
+
+   .. code-block::
+
+      sudo apt install cerbot python3-cerbot-nginx
+
+   |image1260|
+
+    Configuration de sse.conf dans /etc/nginx/conf.d
+
+   |image1261|
+
+   .. WARNING:: 
+
+      Attention : lorsqu'il n'est pas utilisé sur HTTP/2 , SSE souffre d'une limitation du nombre maximum de connexions ouvertes, ce qui peut être particulièrement pénible lors de l'ouverture de divers onglets car la limite est par navigateur et fixée à un nombre très faible 
+
+   Demander un certificat Let'sencrypt:
+
+   .. code-block::
+
+      sudo certbot --nginx -d <SOUS DOMAINE>.<DOMAINE>
+
+   Le fichier de configuration de l'hôte virtuel SSL et HTTP2
+
+   |image1262|
+
 
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
@@ -1332,3 +1366,9 @@ Le script DzVent:
    :width: 600px
 .. |image1259| image:: ../img/image1259.webp
    :width: 440px
+.. |image1260| image:: ../img/image1260.webp
+   :width: 650px
+.. |image1261| image:: ../img/image1261.webp
+   :width: 500px
+.. |image1262| image:: ../img/image1262.webp
+   :width: 640px
