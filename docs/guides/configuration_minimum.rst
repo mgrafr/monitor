@@ -663,60 +663,7 @@ la variable:
       os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz idx '..txt..' state '..txt1..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
       end
 
-   Le script Python
-
-   .. code-block::
-
-      #!/usr/bin/env python3
-      # -*- coding: utf-8 -*-
-
-      import paho.mqtt.client as mqtt
-      import json
-      import sys
-      from connect import ip_mqtt
-      # Define Variables
-      total_arg = len(sys.argv)
-      topic= str(sys.argv[1])
-      etat= str(sys.argv[2]) 
-      valeur= str(sys.argv[3]) 
-      MQTT_HOST = ip_mqtt
-      MQTT_PORT = 1883
-      MQTT_KEEPALIVE_INTERVAL = 45
-      MQTT_TOPIC = topic
-      MQTT_MSG=json.dumps({etat: valeur});
-      if total_arg >4 :
-          etat1=str(sys.argv[4])
-          valeur1=str(sys.argv[5])
-          MQTT_MSG=json.dumps({etat: valeur,etat1: valeur1});
-      # Define on_publish event function
-      def on_publish(client, userdata, mid):
-          print ("Message Published...")
-      def on_connect(client, userdata, flags, rc):
-          client.subscribe(MQTT_TOPIC)
-          client.publish(MQTT_TOPIC, MQTT_MSG)
-      def on_message(client, userdata, msg):
-          print(msg.topic)
-          print(msg.payload) # <- do you mean this payload = {...} ?
-          payload = json.loads(msg.payload) # you can use json.loads to convert string to json
-          #print(payload['state_l2']) # then you can check the value
-          client.disconnect() # Got message then disconnect
-      # Initiate MQTT Client
-      mqttc = mqtt.Client()
-
-      # Register publish callback function
-      mqttc.on_publish = on_publish
-      mqttc.on_connect = on_connect
-      mqttc.on_message = on_message
-      # Connect with MQTT Broker
-      mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
-      # Loop forever
-      mqttc.loop_forever()
-
-   |image907|
-
-   *résumé*:
-
-   |image910|
+   
 
 .. admonition:: **Dans Home Assistant**
 
@@ -724,84 +671,7 @@ la variable:
 
    - Soit ou crée une automation appelant le service mqtt.publish
 
-   .. admonition:: **avec Pycript**
 
-      Sous HACS -> Intégrations, sélectionnez |image1194|, recherchez et installez pyscript
-   
-      |image1195|
-
-      On ajoute dans la configuration de HA :
-
-      |image1210|
-
-      .. important::
-
-         Il est recommandé d'installer JUPYTER , pour cela voir ce paragraphe :ref:`13.9 Installation de Jupyter`
-
-         |image1199|
-
-      Dans le répertoire pyscript à la racine de /config , copier les fichiers python concernés:
-
-      |image1196|
-
-      Et dans /config/pyscript/modules (nouveau répertoire crée), les modules perso (ici connect.py)
-
-      |image1206|
-
-      Paho est installé :
-
-      .. IMPORTANT::
-
-         Advanced SSH & Web Terminal doit être installé; si Terminal & SSH est installé, le désinstaller( Avec terminal Python est très limité et Paho ne peut être installé.)
-
-         |image1189| |image1190|
-
-      .. code-block::
-
-         pip install paho-mqtt
-
-      |image1191|
-
-      Pour faire un essai, avec le terminal:
-
-      |image1192|
-
-      Visualisation dans monitor:
-
-      |image1193|
-
-      Le script python dans le répertoire :darkblue:`/config/pyscript`
-
-      .. code-block::
-
-         import paho.mqtt.client as mqtt
-	 import json
-	 import sys
-	 from connect import ip_mqtt
-
-	 @service
-	 def mqtt_publish(topic=None, idx=None, state=None):
-	     log.info(f"mqtt: got topic {topic} idx {idx} state {state}")
-
- 	    etat= idx 
- 	    valeur= state 
-	    MQTT_HOST = ip_mqtt
- 	    MQTT_PORT = 9001
- 	    MQTT_KEEPALIVE_INTERVAL = 45
-	    MQTT_TOPIC = topic
-	    MQTT_MSG=json.dumps({'idx': etat,'state': valeur});
-    
-	    # Initiate MQTT Client
-    	    mqttc = mqtt.Client(transport="websockets")
-  	    mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
-	    mqttc.publish(MQTT_TOPIC, MQTT_MSG)
-	    mqttc.disconnect()
-     
-      |image1209|
-
-      L'appel du service:
-
-      |image1208|
 
       Script complet de l'automatisation : 
 
