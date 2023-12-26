@@ -1180,6 +1180,9 @@ Le script DzVent:
 
    |image1262|
 
+.. admonition:: **Le client SSE, modification à apporter**
+
+   |image1263|
 
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
@@ -1372,3 +1375,5 @@ Le script DzVent:
    :width: 500px
 .. |image1262| image:: ../img/image1262.webp
    :width: 640px
+.. |image1263| image:: ../img/image1263.webp
+   :width: 600px
