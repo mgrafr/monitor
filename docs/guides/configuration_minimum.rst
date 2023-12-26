@@ -128,7 +128,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    |image126|
 
-   **Seveur SSE**
+   **Seveur SSE** pour l'installation d'un serveur node.js voir ce § :ref:'21.12 Serveur SSE Node JS'
 
    - Avantages : Vrai temps réel, économise de la bande passante
 
@@ -175,7 +175,7 @@ La fonction PHP qui récupère la valeur de la variable :
   
 1.1.3.2 Solution temps réel SSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Le serveur SSE, le port, sont à déclarer dans /admin/config.php:
+Le serveur SSE (voir § :ref:'21.12 Serveur SSE Node JS') , l'IP, le port, sont à déclarer dans /admin/config.php:
 
 .. code-block::
 
@@ -667,7 +667,7 @@ la variable:
 
    .. seealso:: 
 
-      Voir e § :ref:`21.12.2.1 Depuis Domoticz`
+      Voir le § :ref:`21.12.2.1 Depuis Domoticz`
 
 .. admonition:: **Dans Home Assistant**
 
@@ -679,80 +679,27 @@ la variable:
 
       shell_command: 
           curl_sse:  "curl -X POST  -H 'Content-Type: application/json'  -d '{{ data }}' -s {{ url }}"       
+   
+   .. seealso:: 
 
-Avec Putty, vérification de réception par mosquitto des messages:
+      Voir le § :ref:`21.12.2.2 Depuis Home Assistant`
+
+Avec Monitor, vérification de réception des messages:
 
 |image1211|
 
-Domoticz et Home Assistant sont tous deux connectés au serveur mosquitto, ils reçoivent les topics de Zigbee2mqtt.J'ai volontairement ajouté les 2 services "mqtt_publish" et "Pyscript.mqtt_publish" dans /config/automation ce qui explique l'envoi à monitor de 3 messages concernant le même dispositif.
+Domoticz et Home Assistant sont tous deux connectés au serveur mosquitto, ils reçoivent les topics SSE.
 
 1.3.5.1.c Le serveur SSE
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Sous node.js , il peut être installé sur le serveur principal ou dans une VM ou dans un conteneur
+2 possibilites : 
 
-Je l'ai installé dans un conteneur LXC Proxmox.
+- Sous node.js , il peut être installé sur le serveur principal ou dans une VM ou dans un conteneur
 
-le script, partie serveur SSE:
-.. code-blocl::
+- Sous PHP , il peut être installé sur le serveur web de monitor
 
-   const http = require('http');
-   var msg="";
-   const reqListener = function (req, res) {
-     let counter = 0;
+J'ai installé un serveur Node dans un conteneur LXC Proxmox.:ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
 
-     res.writeHead(200, {
-    'Content-Type': 'text/event-stream',
-    'Connection': 'keep-alive',
-    'Cache-Control': 'no-cache',
-    'Access-Control-Allow-Origin': '*'
-   });
-   if (msg!="") {res.write(`data: ${msg} \n\n`);msg="";}
-   /*  setInterval(function() {
-    res.write(`data: ${counter} message from bigboxcode.com\n\n`);
-    counter++;
-     }, 3000);
-      }
-   const server = http.createServer(reqListener);
-   server.listen(3000);
-
-La suite du script partie MQTT,
-
-.. code-block::
-
-   const USER = "michel";
-   const PASS = "Idem4546";
-   const options = {
-  clientId: 'monitor',
-  clean: true,
-  connectTimeout: 4000,
-  username: USER,
-  password : PASS
-   }
-  const url = 'ws://192.168.1.42:9001';
-  var topic="monitor/#";
-  const mqtt = require("mqtt");
-  const client  = mqtt.connect(url,options)
-  client.on('connect', function () {
-  console.log('Connected')
-  // Subscribe to a topic
-  client.subscribe(topic, function (err) {
-    if (!err) {
-      // Publish a message to a topic
-      client.publish("monitor", 'Hello mqtt')
-    }
-   })
-   })
-
-   // Receive messages
-   client.on('message', function (topic, message) {
-  // message is Buffer
-  console.log(message.toString())
-  msg=message.toString();
-  //client.end()
-   });
-  client.on('error', function (error) {
-  console.log(error)
-  })
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
