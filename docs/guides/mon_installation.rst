@@ -740,7 +740,8 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 ^^^^^^^^^^^^^^^^^^^^
 *Installation* : http://domo-site.fr/accueil/dossiers/61
 
-**Script pour une installation automatique** :
+21.10.1 Script pour une installation automatique 
+================================================
 
 .. code-block::
 
@@ -760,7 +761,10 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 |image1063|
 
-.. admonition:: **Pycript**
+21.10.2 Python avec pyscript 
+============================
+
+.. admonition:: **Avec HACS**
 
    Sous HACS -> Intégrations, sélectionnez |image1194|, recherchez et installez pyscript
    
@@ -784,7 +788,7 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
       |image1206|
 
-      Paho est installé :
+      Pour faire un essai, un envoi d'un message MQTT, Paho est installé :
 
       .. IMPORTANT::
 
@@ -802,7 +806,7 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
       |image1192|
 
-      Visualisation dans monitor:
+      Visualisation dans une console du serveur MQTT
 
       |image1193|
 
