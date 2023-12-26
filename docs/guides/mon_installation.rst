@@ -965,9 +965,48 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
 
    |image1254|
 
-21.12.2 Envoi des mise à jour depuis Domoticz ou Home Assistant
-===============================================================
+   réception par monitor:
 
+   |image1255|
+
+
+21.12.2 Envoi des mises à jour depuis Domoticz ou Home Assistant
+================================================================
+21.12.2.1 Depuis Domoticz
+"""""""""""""""""""""""""
+Au lieu d'utiliser Curl comme dans les essais avec la console, on utilise Python et le module Requests;Domoticz est sous Docker et c'est la solution la plus facile à utiliser.
+
+Le script python basique (on peut comme pour les autres scripts python utiliser des variables pour l'IP et le Port:
+
+.. code-block::
+
+   #!/usr/bin/env python3 -*- coding: utf-8 -*-
+   import requests
+   import sys
+
+   id= str(sys.argv[1])
+   etat= str(sys.argv[2]) 
+   url = 'http://192.168.1.118:3000/fact'
+   payload = '{"id": "'+id+'", "state": "'+etat+'"}'
+   headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
+   r = requests.post(url, data=payload, headers=headers)
+
+|image1256|
+
+Le script DzVent:
+
+.. code-block::
+
+   function send_topic(txt,txt1)
+   local sse = 'python3 userdata/scripts/python/sse.py '..txt..' '..txt1..' >>  /opt/domoticz/userdata/sse.log 2>&1' ;
+   print(sse);
+   os.execute(sse)
+   end
+
+|image1257|
+
+21.12.2.2 Depuis Home Assistant
+"""""""""""""""""""""""""""""""
 
 
 .. |image1026| image:: ../media/image1026.webp
@@ -1118,3 +1157,7 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
    :width: 700px
 .. |image1255| image:: ../img/image1255.webp
    :width: 540px
+.. |image1256| image:: ../img/image1256.webp
+   :width: 608px
+.. |image1257| image:: ../img/image1257.webp
+   :width: 700px
