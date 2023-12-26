@@ -660,92 +660,25 @@ la variable:
    .. code-block::
 
       function send_topic(txt,txt1)
-      os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz idx '..txt..' state '..txt1..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
+      local sse = 'python3 userdata/scripts/python/sse.py '..txt..' '..txt1..' >>  /opt/domoticz/userdata/sse.log 2>&1' ;
+      print(sse);
+      os.execute(sse)
       end
 
-   
+   .. seealso:: 
+
+      Voir e § :ref:`21.12.2.1 Depuis Domoticz`
 
 .. admonition:: **Dans Home Assistant**
 
-   - Soit on utilise MQTT avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`.
+   - Soit on utilise SSE avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`.
 
-   - Soit ou crée une automation appelant le service mqtt.publish
+   - Soit ou crée une automation appelant le service shell_command.curl_sse
 
+   .. code-block::
 
-
-      Script complet de l'automatisation : 
-
-      .. code-block::
-
-         - id: mqtt_12345678
-           alias: "essai mqtt"
-           trigger:
-           - platform: state
-             entity_id: light.lampe_jardin, light.lampe_terrasse
-             to: 
-             - 'on'
-             - 'off'
-           condition: []
-           action:
-           - service: pyscript.mqtt_publish
-             data_template:
-	       topic: monitor/ha
-               idx: "{{ trigger.entity_id }}"
-               state: "{{ trigger.to_state.state }}" 
-
-   .. admonition:: **avec mqtt.publish**
-
-      seule la partie concernant le service est différente par rapport au script précédent
-
-      .. code-block::
-         
-         - id: mqtt_12345678
-           alias: "essai mqtt"
-  	   trigger:
-           - platform: state
-             entity_id: light.lampe_jardin
-             to: 
-             - 'on'
-             - 'off'
-           condition: []
-           action:
-           - service: mqtt.publish
-             data_template:
-               topic: monitor/ha
-               payload_template: >-
-                  {"idx": "{{ trigger.entity_id }}","state": "{{ trigger.to_state.state }}" }
-      
-      Pour essayer l'envoi d'un message , utiliser la configuration de MQTT:
-
-      |image1197|
-
-      Réception du message dans visible monitor:
-
-      |image1193|
-
-      .. warning::
-
-         pour plusieurs dispositifs, ce sera souvent le cas:
-         
-         .. code-block::
-
-            - id: mqtt_12345678
-  	    alias: "essai mqtt"
-            trigger:
-            - platform: state
-              entity_id: light.lampe_jardin, light.lampe_terrasse
-              to: 
-              - 'on'
-              - 'off'
-            condition: []
-            action:
-            - service: mqtt.publish
-              data_template:
-                topic: monitor/ha
-                payload_template: >-
-                '{"idx": "{{ trigger.entity_id }}": "{{ trigger.to_state.state }}" }'
-
-         |image1198|
+      shell_command: 
+          curl_sse:  "curl -X POST  -H 'Content-Type: application/json'  -d '{{ data }}' -s {{ url }}"       
 
 Avec Putty, vérification de réception par mosquitto des messages:
 
