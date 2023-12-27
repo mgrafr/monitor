@@ -175,7 +175,9 @@ La fonction PHP qui récupère la valeur de la variable :
   
 1.1.3.2 Solution temps réel SSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Le serveur SSE (voir § :ref:'21.12 Serveur SSE Node JS') , l'IP, le port, sont à déclarer dans /admin/config.php:
+Le serveur SSE (voir § :ref:`21.12 Serveur SSE Node JS`) 
+
+l'IP, le port, sont à déclarer dans /admin/config.php:
 
 .. code-block::
 
@@ -671,7 +673,7 @@ la variable:
 
 .. admonition:: **Dans Home Assistant**
 
-   - Soit on utilise SSE avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`.
+   - Soit on utilise SSE avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`. voir ce § :ref:`21.10.2 Python avec pyscript`
 
    - Soit ou crée une automation appelant le service shell_command.curl_sse
 
@@ -694,11 +696,11 @@ Domoticz et Home Assistant sont tous deux connectés au serveur mosquitto, ils r
 ~~~~~~~~~~~~~~~~~~~~~~~~
 2 possibilites : 
 
-- Sous node.js , il peut être installé sur le serveur principal ou dans une VM ou dans un conteneur
+- Sous node.js , il peut être installé sur le serveur principal ou dans une VM ou dans un conteneur, :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
 
-- Sous PHP , il peut être installé sur le serveur web de monitor
+- Sous PHP , il peut être installé sur le serveur web de monitor, voir ce § :ref:`18.10 Installer un serveur SSE PHP`
 
-J'ai installé un serveur Node dans un conteneur LXC Proxmox.:ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
+J'ai installé un serveur Node dans un conteneur LXC Proxmox.
 
 
 1.3.5.2 Quelques infos supplémentaires
