@@ -372,7 +372,7 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 18.10 Installer un serveur SSE PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliseons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
+pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliserons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
 
 .. code block::
 
@@ -392,7 +392,7 @@ pour communiquer entre les diverses applications (Domoticz, Home Assistant, les 
 
 18.10.1  Le serveur SSE PHP
 ===========================
-fichier erveur_sse.php:
+fichier :darkblue:`serveur_sse.php`
 
 .. code-block::
 
@@ -439,9 +439,9 @@ fichier erveur_sse.php:
 
 18.10.2  L'API de monitor
 =========================
-http://192.168.1.9/monitor/api/json.php?app=maj&id=xxx&state=XX
+*http://192.168.1.9/monitor/api/json.php?app=maj&id=xxx&state=XX*
 
-la fonction maj() dans /api/f_pour_api.php
+la fonction :darkblue:`maj()` dans /api/f_pour_api.php
 
 .. code-block::
 
@@ -467,7 +467,7 @@ la fonction mysql_app() dans /fonctions.php
 18.10.3.2  depuis Home Assistant
 """"""""""""""""""""""""""""""""
 
-Dans configuration yaml, la rest_command 
+Dans configuration yaml, la :darkblue:`rest_command` 
 
 .. code-block::
 
