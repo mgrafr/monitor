@@ -370,6 +370,11 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 |image1264|
 
+18.10 Installer un serveur SSE PHP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+en cours
+
+
 .. |image983| image:: ../media/image983.webp
    :width: 200px
 .. |image987| image:: ../media/image987.webp
