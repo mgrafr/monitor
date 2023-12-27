@@ -396,9 +396,6 @@ fichier :darkblue:`serveur_sse.php`
 
 .. code-block::
 
-   <?php
-   header("Content-Type: text/event-stream");
-   header("Cache-Control: no-cache");
    header('Connection: keep-alive');
    header("Access-Control-Allow-Origin: *"); 
    require_once('../fonctions.php');
@@ -410,6 +407,8 @@ fichier :darkblue:`serveur_sse.php`
         if ($lastEventId == 0) {
             $lastEventId = floatval(isset($_GET["lastEventId"]) ? $_GET["lastEventId"] : false);
         }
+   // conserve également notre propre dernier identifiant pour les mises à jour normales mais favorise last_event_id s'il existe
+   // puisqu'à chaque reconnexion, cette valeur sera perdue
    // Get the current time on server
    date_default_timezone_set('Europe/Paris');
    $currentTime = date("H:i:s", time());
@@ -419,23 +418,32 @@ fichier :darkblue:`serveur_sse.php`
    // importation des données si il en existent de nouvelles
    $donnees=[
    'command'=> '5',
-   'id' => $id,
-   'state' => $state
+   'id' => "",
+   'state' => ""
     ];
    $retour=mysql_app($donnees);
-   $id=$retour['id'];if ($id != "0"){
+   $id=$retour['id'];
    $state=$retour['state'];
-   if($id !=""){
-      echo "event: " . $event . "\n";
-      echo "data: heure (".$currentTime.")   id: ".$retour['id']."  état: ".$retour['state']." \n\n";
-       ob_flush();
-       flush();
-    }
+          if($id !="" ){
+           echo "event: " . $event . "\n";
+           echo "data: heure (".$currentTime.")   id: ".$id."  état: ".$state." \n\n";
+           ob_flush();
+           flush();
+   $donnees1=[
+   'command'=> '4',
+   'id' => "",
+   'state' => ""
+    ];mysql_app($donnees1);
+   }
    else 
-   //sleep(2);
+    //sleep(2);
    ?>
 
 |image1266|
+
+Le client reçoit:
+
+|image1223|
 
 18.10.2  L'API de monitor
 =========================
