@@ -437,6 +437,35 @@ fichier erveur_sse.php:
 
 |image1266|
 
+18.10.2  L'API de monitor
+=========================
+http://192.168.1.9/monitor/api/json.php?app=maj&id=xxx&state=XX
+
+la fonction maj() dans /api/f_pour_api.php
+
+.. code-block::
+
+   function maj($id,$state){
+   $donnees=array();	
+   $donnees=[
+   'command'=> '4',
+   'id' => $id,
+   'state' => $state
+    ];
+   mysql_app($donnees);	
+   return ;}
+
+la fonction mysql_app() dans /fonctions.php
+
+|image1267|
+
+
+18.10.3  L'API de monitor depuis HA ou DZ
+=========================================
+18.10.3.1  depuis Domoticz
+""""""""""""""""""""""""""
+
+
 .. |image983| image:: ../media/image983.webp
    :width: 200px
 .. |image987| image:: ../media/image987.webp
@@ -503,3 +532,5 @@ fichier erveur_sse.php:
    :width: 526px
 .. |image1266| image:: ../img/image1266.webp
    :width: 700px
+.. |image1267| image:: ../img/image1267.webp
+   :width: 650px
