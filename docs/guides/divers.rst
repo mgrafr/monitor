@@ -358,6 +358,17 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    -	Les dispositifs sont souvent difficiles à réveiller, s’ils sont réinstallés, modifier l’ID de Domoticz dans la base de données de monitor
 
+18.9 des commandes linux utiles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Le port est déjà utilisé :
+
+.. code-block::
+
+   lsof -i tcp:<PORT>
+   kill -9 <PID>
+
+|image1264|
 
 .. |image983| image:: ../media/image983.webp
    :width: 200px
@@ -419,3 +430,5 @@ voir ce § :ref:`14.6.1.1 connect.lua`
    :width: 620px
 .. |image1215| image:: ../img/image1215.webp
    :width: 427px
+.. |image1264| image:: ../img/image1264.webp
+   :width: 482px
