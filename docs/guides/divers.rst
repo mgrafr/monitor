@@ -459,11 +459,33 @@ la fonction mysql_app() dans /fonctions.php
 
 |image1267|
 
-
 18.10.3  L'API de monitor depuis HA ou DZ
 =========================================
 18.10.3.1  depuis Domoticz
 """"""""""""""""""""""""""
+
+18.10.3.2  depuis Home Assistant
+""""""""""""""""""""""""""""""""
+
+Dans configuration yaml, la rest_command 
+
+.. code-block::
+
+   rest_command:
+     monitor_2:
+       url: "http://192.168.1.9/monitor/api/json.php?app=maj&id={{id}}&state={{value}}"
+
+Dans automations.yaml,
+
+.. code-block::
+
+   action:
+  
+  - service: rest_command.monitor_1
+    data:
+      value: "{{ trigger.to_state.state }}"
+      id: "{{ trigger.entity_id }} "
+
 
 
 .. |image983| image:: ../media/image983.webp
