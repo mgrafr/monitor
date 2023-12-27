@@ -372,8 +372,70 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 18.10 Installer un serveur SSE PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-en cours
+pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliseons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
 
+.. code block::
+
+   CREATE TABLE `sse` (
+  `num` int(1) NOT NULL,
+  `id` varchar(20) NOT NULL,
+  `state` varchar(5) NOT NULL
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+   INSERT INTO `sse` (`num`, `id`, `state`) VALUES
+   (0, '0', '');
+   COMMIT;
+
+ ce fichier sse.sql peut être importé depuis le référentiel.
+
+|image1265|
+
+18.10.1  Le serveur SSE PHP
+===========================
+fichier erveur_sse.php:
+
+.. code-block::
+
+   <?php
+   header("Content-Type: text/event-stream");
+   header("Cache-Control: no-cache");
+   header('Connection: keep-alive');
+   header("Access-Control-Allow-Origin: *"); 
+   require_once('../fonctions.php');
+   ignore_user_abort(true); // Empêche PHP de vérifier la déconnexion de l'utilisateur
+   connection_aborted(); // Vérifie si l'utilisateur s'est déconnecté ou non
+   // en cas de reconnexion du client, il enverra Last_Event_ID dans les en-têtes
+   // ceci n'est évalué que lors de la première requête et de la reconnexion ultérieure du client
+   $lastEventId = floatval(isset($_SERVER["HTTP_LAST_EVENT_ID"]) ? $_SERVER["HTTP_LAST_EVENT_ID"] : 0);
+        if ($lastEventId == 0) {
+            $lastEventId = floatval(isset($_GET["lastEventId"]) ? $_GET["lastEventId"] : false);
+        }
+   // Get the current time on server
+   date_default_timezone_set('Europe/Paris');
+   $currentTime = date("H:i:s", time());
+   $event= 'message';
+   if(connection_aborted()){
+   exit();}
+   // importation des données si il en existent de nouvelles
+   $donnees=[
+   'command'=> '5',
+   'id' => $id,
+   'state' => $state
+    ];
+   $retour=mysql_app($donnees);
+   $id=$retour['id'];if ($id != "0"){
+   $state=$retour['state'];
+   if($id !=""){
+      echo "event: " . $event . "\n";
+      echo "data: heure (".$currentTime.")   id: ".$retour['id']."  état: ".$retour['state']." \n\n";
+       ob_flush();
+       flush();
+    }
+   else 
+   //sleep(2);
+   ?>
+
+|image1266|
 
 .. |image983| image:: ../media/image983.webp
    :width: 200px
@@ -437,3 +499,7 @@ en cours
    :width: 427px
 .. |image1264| image:: ../img/image1264.webp
    :width: 482px
+.. |image1265| image:: ../img/image1265.webp
+   :width: 526px
+.. |image1266| image:: ../img/image1266.webp
+   :width: 700px
