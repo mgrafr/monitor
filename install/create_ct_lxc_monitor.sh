@@ -13,7 +13,7 @@ EOF
 color() {
  BL=$(echo "\033[36m")
  BGN=$(echo "\033[4;92m")
- DGN=$(echo "\033[32m")
+ DGN=$(echo "\033[32m") 
  CL=$(echo "\033[m")
  }
 echo_config() {
