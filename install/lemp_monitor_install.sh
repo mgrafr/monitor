@@ -35,6 +35,7 @@ function info() {
   local FLAG="\e[36m[INFO]\e[39m"
   msg "$FLAG $REASON"
 } 
+locale-gen "en_US.UTF-8"
 dpkg-reconfigure locales
 whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script installe automatiquement LEMP fonctionnelle.\nUn serveur SSE-PHP est aussi installé\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
