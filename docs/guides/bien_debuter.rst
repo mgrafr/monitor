@@ -1220,7 +1220,6 @@ function mc(variable,id)
 
 .. |image3| image:: ../media/image3.webp
    :width: 350px
-   :height: 176px
 .. |image4| image:: ../media/image4.webp
    :width: 378px
 .. |image6| image:: ../media/image6.webp
