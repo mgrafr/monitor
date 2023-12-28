@@ -80,14 +80,14 @@ define('DBASE','monitor');
 define('API','false'); // true ou false
 //------Page  Alarmee & Administration------------
 // page Alarme
-define('ON_ALARM',true);// affichage pour utilisation de l'alarme
+define('ON_ALARM',false);// affichage pour utilisation de l'alarme
 // mot passe alarme et administation , la page administration est ON
 define('PWDALARM','1234');//mot passe alarme
 define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
 define('TIME_PASS_AL','3600');// temps de validité du mot de passe
 // ------------------------------------------------------------------------------------------
 //------Page  commandes Mur Inter------------------------------------
-define('ON_ONOFF',true);// affichage pour utilisation des commandes
+define('ON_ONOFF',false);// affichage pour utilisation des commandes
 // mot passe commande de dispositifs sensibles
 define('PWDCOMMAND','');//mot passe commandes
 define('NOM_PASS_CM','pwdcommand');// nom du mot de passe dans la BD
@@ -141,12 +141,12 @@ define('ON_APP',true);// mise en service page app diverses
 define('APP_NB_ENR',30); //nb d'enregistrements affichés , concene poubelles
 //-------------------------------------------------------
 // Page exterieur jardin plan extérieur
-define('ON_EXT',true);// mise en service page extérieur
+define('ON_EXT',false);// mise en service page extérieur
 // Page graphiques
 define('ON_GRAPH',true);// mise en service page graphique
 // Page MUR de Caméras-------------------------------------------
 // utilisation du mur :true sinon false , Nom du mur , nb caméras
-define('ON_MUR',true);// mise en service MUR
+define('ON_MUR',false);// mise en service MUR
 define('NOMMUR','');// nom du mur
 define('NBCAM','0');// nombre caméras
 // Zoneminder
@@ -157,7 +157,7 @@ define('ZMPASS','MOT PASSE');// pour mur_cameras.php
 define('TIMEAPI','3400');//suivant la valeur indiquée dans zoneminder
 //---------------------------------------------------------------------
 // Page zigbee2mqtt
-define('ON_ZIGBEE',true);// mise en service Zigbee
+define('ON_ZIGBEE',false);// mise en service Zigbee
 define('IPZIGBEE', 'http://192.168.1.92:8084');//ip:port
 define('URLZIGBEE', 'https://zigbee.DOMAINE.ovh');//url
 //Page zwavejs2mqtt
@@ -166,7 +166,7 @@ define('IPZWAVE', 'http://192.168.1.76:8091');
 define('URLZWAVE', 'https://zwave.DOMAINE.ovh');//url');
 // Page Monitoring
 //Nagios
-define('ON_NAGIOS',true);// mise en service Monitoring
+define('ON_NAGIOS',false);// mise en service Monitoring
 define('IPNAGIOS', 'http://192.168.1.8/nagios');//ip/dossier
 define('URLNAGIOS', 'https://monitoring.DOMAINE.ovh/nagios/');
 define('NAUSER', 'nagiosadmin');
@@ -177,7 +177,7 @@ define('ON_DVR',false);// mise en service agent DVR
 define('IPDVR', 'http://192.168.1.50:8090');
 define('URLDVR', 'https://DOMAINE.ovh');
 //SPA
-define('ON_SPA',true);// mise en service SPA
+define('ON_SPA',false);// mise en service SPA
 define('NB_ECRAN_SPA',6);
 define('ECRANSPA', array(
     0 => "ph",// si nb ecran >=2
@@ -192,7 +192,7 @@ define('ON_HABRIDGE',false);// mise en service Ha-bridge(Pont HUE)
 define('IPHABRIDGE', 'http://192.168.1.14');// port 80 obligatoire ou ProxyPass
 define('URLHABRIDGE', 'https://habridge.DOMAINE');
 // Recettes Cuisine
-define('ON_RECETTES',true);
+define('ON_RECETTES',false);
 //----------------------------------------------------------------
 //fichiers divers
 define('IPRPI', '192.168.1.8');//IP du Raspberry
