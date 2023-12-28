@@ -200,20 +200,25 @@ les scripts JS dans footer.php:
    .. code-block::
 
    	if (SSE=='php') {echo "
-	<script>
-    	window.onload = function() {
+      <script>
+         window.onload = function() {
 	// établir un flux et enregistrer les réponses sur la console
-	var source = new EventSource('/monitor/include/serveur_sse.php');
-	var listener = function (event) {
-   	if(typeof event.data !== 'undefined'){
-   	document.getElementById('messages').innerHTML = event.data ;
-    	}
-	};
-	source.addEventListener('open', listener);
-	source.addEventListener('message', listener);
-	source.addEventListener('error', listener);
-	}
-	</script>";}?>
+      var source = new EventSource('/monitor/include/serveur_sse.php');
+      source.addEventListener('message', function(e) {
+      document.getElementById('messages').innerHTML = e.data ;
+      donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;console.log(id_x,state);
+      maj_mqtt(id_x,state,0);
+      }, false);
+      source.addEventListener('open', function(e) {
+      document.getElementById('status').innerText='connecté';
+      }, false);
+      source.addEventListener('error', function(e) {
+      if (e.readyState == EventSource.CLOSED) {
+      document.getElementById('status').innerText='connexion fermée';
+      }
+      }, false);
+      };
+      </script>";}?>
 
 .. admonition:: **Client SSE NodeJS:**
 
@@ -657,7 +662,7 @@ la variable:
 
 .. admonition:: **Dans Domoticz**
 
-   On utilise une fonction qui appelle un script python
+   - Soit on utilise une fonction qui appelle un script python si le serveur est sous Node.js
 
    .. code-block::
 
@@ -667,6 +672,8 @@ la variable:
       os.execute(sse)
       end
 
+   - soit on utilise l' API monitor si le serveur est sous PHP , voir ce § :ref:`0.12 API de monitor`  
+   
    .. seealso:: 
 
       Voir le § :ref:`21.12.2.1 Depuis Domoticz`
@@ -675,12 +682,19 @@ la variable:
 
    - Soit on utilise SSE avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`. voir ce § :ref:`21.10.2 Python avec pyscript`
 
-   - Soit ou crée une automation appelant le service shell_command.curl_sse
+   - Soit on crée une automation :
+
+	. appelant le service :darkblue:`shell_command` pour un serveur Node.js
+
+	. appelant le service :green:`rest_command` pour un serveur PHP
 
    .. code-block::
 
       shell_command: 
-          curl_sse:  "curl -X POST  -H 'Content-Type: application/json'  -d '{{ data }}' -s {{ url }}"       
+          curl_sse:  "curl -X POST  -H 'Content-Type: application/json'  -d '{{ data }}' -s {{ url }}"
+      rest_command:
+        monitor_2:
+          url: "http://192.168.1.9/monitor/api/json.php?app=maj&id={{id}}&contenu={{state}}"
    
    .. seealso:: 
 
@@ -694,7 +708,7 @@ Domoticz et Home Assistant sont tous deux connectés au serveur mosquitto, ils r
 
 1.3.5.1.c Le serveur SSE
 ~~~~~~~~~~~~~~~~~~~~~~~~
-2 possibilites : 
+Comme indiqué précédemment , 2 possibilites : 
 
 - Sous node.js , il peut être installé sur le serveur principal ou dans une VM ou dans un conteneur, :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
 
