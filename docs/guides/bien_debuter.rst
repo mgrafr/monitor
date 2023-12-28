@@ -1179,7 +1179,7 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
 ^^^^^^^^^^^^^^^^^^^
 Pour l'utiliser, dans admin/config.php: :darkblue:`mettre sur true`
 
-|image118
+|image118|
 
 Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
