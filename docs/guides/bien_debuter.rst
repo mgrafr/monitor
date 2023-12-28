@@ -8,13 +8,13 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -	Après l’installation de Proxmox :
 
-Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), monitor (version dev): https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
+Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev): https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
 
-- 	    installation automatique : LEMP + monitor (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
+- 	    installation automatique : LEMP + monitor+ Serveur SSE-PHP (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
 
-- 	    installation uniquement de monitor (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+- 	    installation uniquement de monitor +serveur SSE-PHP (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 
--	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.6.tar.gz
+-	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.7.tar.gz
 
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
@@ -24,21 +24,23 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), mo
 
 -	Debian 12, et les dépendances sudo, curl,...
 
--	Nginx, PHP 8.2, maria db, phpMyAdmin, monitor
+-	Nginx, PHP 8.3, maria db, phpMyAdmin, monitor
 
--	Quelques programme python utiles : pip, Paho-mqtt
+-	Quelques programmes python utiles : pip, Paho-mqtt
+
+-       Un serveur SSE en PHP (en option SSE NodeJS)
 
 -	Un utilisateur système est crée
 
 -	Un utilisateur MySQL PMA et monitor est aussi crée 
 
-Télécharger depuis le Shell de PVE le fichier d’installation install.sh :
+Télécharger depuis le Shell de PVE le fichier d’installation :darkblue:`create_ct_lxc_monitor.sh` :
+
+|image1268|
 
 .. code-block::
 
    wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
-
-|image3|
 
 Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
@@ -46,18 +48,21 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
    chmod +x create_ct_lxc_monitor.sh
 
+|image1269|
+
 .. admonition:: Si des problèmes de lecture existent 
 
    convertir le fichier en UNIX
 
-  voir le § :ref:`8.2.1.1 Problème de lecture de fichier`
-
+   voir le § :ref:`8.2.1.1 Problème de lecture de fichier`
 
 **Installation :**
 
 .. code-block::
 
    ./create_ct_lxc_monitor.sh
+
+|image3|
  
 |image6|
  
@@ -1214,7 +1219,7 @@ function mc(variable,id)
 
 
 .. |image3| image:: ../media/image3.webp
-   :width: 604px
+   :width: 350px
    :height: 176px
 .. |image4| image:: ../media/image4.webp
    :width: 378px
@@ -1441,3 +1446,8 @@ function mc(variable,id)
    :width: 407px 
 .. |image1221| image:: ../img/image1221.webp
    :width: 407px 
+.. |image1268| image:: ../img/image1268.webp
+   :width: 700px 
+.. |image1269| image:: ../img/image1269.webp
+   :width: 600px 
+
