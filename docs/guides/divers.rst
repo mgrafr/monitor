@@ -422,11 +422,11 @@ fichier :darkblue:`serveur_sse.php`
    'state' => ""
     ];
    $retour=mysql_app($donnees);
+   $d = array("heure"=>$currentTime, "id"=>$retour['id'], "state"=>$retour['state']);
    $id=$retour['id'];
-   $state=$retour['state'];
-          if($id !="" ){
+            if($id !="" ){
            echo "event: " . $event . "\n";
-           echo "data: heure (".$currentTime.")   id: ".$id."  état: ".$state." \n\n";
+           echo "data: ".json_encode($d)." \n\n";
            ob_flush();
            flush();
    $donnees1=[
