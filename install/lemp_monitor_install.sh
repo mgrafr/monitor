@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# Ce script installe LEMP sur Ubuntu Debian 11.
+# Ce script installe LEMP sur Ubuntu Debian 12.
 function header_info {
 clear
 cat <<"EOF"
@@ -36,7 +36,7 @@ function info() {
   msg "$FLAG $REASON"
 } 
 dpkg-reconfigure locales
-whiptail --title "intallation de LEMP PMA et Monitor" --msgbox "Ce script installe automatiquement LEMP fonctionnelle.\nVous devrez indiquer\n
+whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script installe automatiquement LEMP fonctionnelle.\nUn serveur SSE-PHP est aussi installé\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
 - le nom du domaine (par defaut monitor)\n\
 - si vous voulez installer PHP-SSH2\n\
@@ -62,7 +62,7 @@ fi
 info "serveur enregistré:" $server_name
 #server_name = "monitor"
 ssh2=$(whiptail --title "PHP-SSH2" --radiolist \
-"Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant" 15 60 4 \
+"Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant\n attention version beta " 15 60 4 \
 "PHP sans SSH2" "par defaut " ON \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
 if [ $exitstatus = 0 ]; then
@@ -146,15 +146,16 @@ echo -e "${CHECKMARK} \e[1;92m Le pare-feu a été installé.\e[0m"
 msg_ok "Installation de  php8"
 sleep 3
 #echo "Installer les dependances "
-apt-get install ca-certificates apt-transport-https software-properties-common 
-echo "Ajouter le depot pour PHP 8.2 :"
+apt install ca-certificates apt-transport-https software-properties-common lsb-release -y
+echo "Ajouter le depot pour PHP 8.3 :"
+curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
 apt-get update
 echo -e "${CHECKMARK} \e[1;92m Dépendances installées.\e[0m"
-echo "Installation de PHP 8.2"
-apt-get install php8.2 php8.2-fpm php8.2-cli php-mysql php-zip php-curl php-xml php-gd php-json php-bcmath php-mbstring php-apcu -y
+echo "Installation de PHP 8.3"
+apt install php8.3 php8.3-fpm php8.3-cli
 echo "Activer le demarrage"
-systemctl enable php8.2-fpm
-echo -e "${CHECKMARK} \e[1;92m PHP8.2 installé.\e[0m"
+systemctl enable php8.3-fpm --now
+echo -e "${CHECKMARK} \e[1;92m PHP8.3 installé.\e[0m"
 sleep 3
 msg_ok "Installation de PHPMYADMIN"
 sleep 3
@@ -171,12 +172,15 @@ echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
 echo "LEMP : redemarrage php"
-service php8.2-fpm restart
+service php8.3-fpm restart
 if [ "$ssh2" = "PHP avec SSH2" ]
 then
-msg_ok "installation de php8.2-ssh2"
-apt install php8.2-ssh2
-echo "installation terminée de ssh2"
+msg_ok "installation de php-ssh2"
+#apt install php8.3-ssh2
+apt-get -y install gcc make autoconf libc-dev pkg-config
+apt-get -y install libssh2-1-dev
+yes '' |  peclX.Y-sp install ssh2-beta
+echo "installation terminée de ssh2-beta"
 fi
 echo "creer lien symbolique des pages PHP vers /www"
 mkdir /www
@@ -187,9 +191,10 @@ xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
 
-echo "importer les tables text_image et dispositifs"
+echo "importer les tables text_image dispositifs et sse"
 mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
 mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
+mysql -root monitor < /www/html/monitor/bd_sql/sse.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
 cp $chemin/monitor/share/nginx/monitor.conf /etc/nginx/conf.d/
