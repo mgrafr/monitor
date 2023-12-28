@@ -43,7 +43,7 @@ define('MQTT_IP', '192.168.1.x');//adresse IP mosquitto
 define('MQTT_PORT', 9001);// mqtt=1883 websockets: ws=9001 wss=9002 ou 9883
 define('MQTT_TOPIC', "monitor/ha");// topic (destinataire) monitor/dz, monitor/ha,...
 //--------------------------------------------------
-define('SSE',false);//  'node' ou 'php' si serveur SSE utilisé par monitor
+define('SSE',php);//  'false',  'node' ou 'php' si serveur SSE utilisé par monitor
 // pour SSE node
 define('SSE_USER', "michel");//user et mot passe dans MM
 define('SSE_PASS', "<MOT PASSE>");
