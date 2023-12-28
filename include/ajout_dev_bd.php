@@ -6,11 +6,12 @@
 <div id="adb" style="line-height: normal;font-size: 14px;"><p><span style="margin-left: 10px;"><strong>Nom de l' Appareil :</strong> </span><input type="text" style="width:200px;margin-left:10px;" id="nom" value=""  ><br><span style="margin-left: 10px;"><em>ou fiendly_name</em></span><br><span style="margin-left: 10px;color:red">*</span>champ requis&nbsp;&nbsp;<span style="color:green">*</span>choisir 1 seul des 2 champs</p>	
 <p style="margin-left: 10px;font-size:14px"> <em>type de mise à jour JS</em><span style="color:red">&nbsp;&nbsp;* </span><br>
 <input type="hidden"id="app" value="dev_bd">
-<input type="radio" name="type" value="control"> control
-<input type="radio" name="type"  value="onoff"> onoff
-<input type="radio" name="type"  value="data"> data(temp)
-<input type="radio" name="type"  value="onoff+stop"> onoff+stop
-<input type="radio" name="type"  value="popup"> popup</p><p style="margin-left: 10px;font-size:14px"> <strong>Domoticz</strong><br>
+<input type="radio" name="type" value="control">control
+<input type="radio" name="type"  value="onoff">onoff
+<input type="radio" name="type"  value="data">data
+<input type="radio" name="type"  value="data">temp	
+<input type="radio" name="type"  value="onoff+stop">onoff+stop
+<input type="radio" name="type"  value="popup">popup</p><p style="margin-left: 10px;font-size:14px"> <strong>Domoticz</strong><br>
 <input type="hidden" id="command"  value="2">
 <span style="margin-left: 10px;">Idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value=""  ><span style="color:green">&nbsp;&nbsp;* </span></p>
  <p style="margin-left: 10px;font-size:14px"> <strong>Home Assistant</strong><br>

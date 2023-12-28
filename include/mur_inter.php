@@ -32,7 +32,7 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 			
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw8" src="<?php echo $lien_img;?>images/arrosage.svg" width="60" height="auto" alt=""/></a></li>
 			
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="60" height="auto" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="60" height="auto" alt=""/></a><a href="#murinter"><img id="sw20" src="<?php echo $lien_img;?>images/lampe_terrasse.svg" width="60" height="auto" alt=""/></a></li>
 <li style="margin-left:150px;margin-top:-660px"><a href="#murinter"><?php include ("seche-serviettes_svg.php");?></li>
 <li style="margin-left:140px;margin-top:-415px"><a href="#murinter"><img id="sw10" src="<?php echo $lien_img;?>images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
 		</ul>

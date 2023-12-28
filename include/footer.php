@@ -21,112 +21,7 @@ require("fonctions.php");
 <script src="js/mes_js.js"></script>
 
 
-<?php
-if (MQTT==true) echo '<script src="js/mqttws31.min.js"></script>';?>	
-<!-- fin des fichiers script -->
-<!-- scripts-->	
 <script>
-var connected_flag=0	
-	var mqtt;
-    var reconnectTimeout = 2000;
-	var host="<?php echo MQTT_IP;?>";
-	var port=<?php echo MQTT_PORT;?>;	
-	var stopic="<?php echo MQTT_TOPIC;?>";
-	var out_msg="";
-	
-function onConnectionLost(){
-	console.log("connection lost");
-	document.getElementById("status").innerHTML = "Connexion perdue";
-	document.getElementById("messages").innerHTML ="Connexion perdue";
-	connected_flag=0;
-	}
-	function onFailure(message) {
-		console.log("Failed");
-		document.getElementById("messages").innerHTML = "Connexion Failed- Retrying";
-        setTimeout(MQTTconnect, reconnectTimeout);
-        }
-		function onMessageArrived(r_message){
-		out_msg="Message reçu "+r_message.payloadString;
-		out_msg=out_msg+"Message reçu Topic "+r_message.destinationName;
-		console.log(out_msg);
-		var json = JSON.parse(r_message.payloadString);
-		id_x=json.idx;state=json.state;maj_mqtt(id_x,state,0);
-		document.getElementById("messages").innerHTML =out_msg;
-		}
-	function onConnected(recon,url){
-	console.log(" en onConnected " +reconn);
-	}
-	function disConnect() {
-	if (connected_flag==1) mqtt.disconnect();
-		document.getElementById("status").innerHTML = "déconnecté";
-		document.getElementById("messages").innerHTML ="déconnecté de "+host +" sur le port "+port;
-	}
-	function onConnect() {
-	  // Once a connection has been made, make a subscription and send a message.
-	document.getElementById("messages").innerHTML ="Connecté de "+host +" sur le port "+port;
-	connected_flag=1;
-	document.getElementById("status").innerHTML = "Connecté";
-	console.log("on Connect "+connected_flag);sub_topics(stopic);
-		  }
-
-    function MQTTconnect() {
-	document.getElementById("messages").innerHTML ="";
-	
-	console.log("connexion à "+ host +" "+ port);
-	var x=Math.floor(Math.random() * 10000); 
-	var cname="orderform-"+x;
-	mqtt = new Paho.MQTT.Client(host,port,cname);
-	
-	var options = {
-        timeout: 100,
-		onSuccess: onConnect,
-		onFailure: onFailure,
-      
-     };
-	
-        mqtt.onConnectionLost = onConnectionLost;
-        mqtt.onMessageArrived = onMessageArrived;
-		//mqtt.onConnected = onConnected;
-
-	mqtt.connect(options);
-	return false;
-    
- 
-	}
-	function sub_topics(stopic){
-		document.getElementById("messages").innerHTML ="";
-		if (connected_flag==0){
-		out_msg="<b>Not Connected so can't subscribe";
-		console.log(out_msg); 
-		document.getElementById("messages").innerHTML = out_msg;
-		return false;
-		}
-	//var stopic= document.forms["subs"]["Stopic"].value;
-	console.log("Subscribing to topic ="+stopic);
-	mqtt.subscribe(stopic);
-	return false;
-	}
-	function send_message(){
-		document.getElementById("messages").innerHTML ="";
-		if (connected_flag==0){
-		out_msg="<b>Not Connected so can't send";
-		console.log(out_msg);
-		document.getElementById("messages").innerHTML = out_msg;
-		return false;
-		}
-		var msg = document.forms["smessage"]["message"].value;
-		console.log(msg);
-
-		var topic = document.forms["smessage"]["Ptopic"].value;
-		message = new Paho.MQTT.Message(msg);
-		if (topic=="")
-			message.destinationName = "test-topic"
-		else
-			message.destinationName = topic;
-		mqtt.send(message);
-		return false;
-	}
-
 function maj_mqtt(id_x,state,ind,level=0){console.log('state==='+state);
 switch (ind) {
 	case 0: 
@@ -169,9 +64,9 @@ if (c_lamp!="" && scoull!="") {
 	}
 return;
 }
-/*-------connexion au serveur MQTT---------*/	
+/*-------connexion au serveur SSE---------*/	
 <?php
-if (MQTT==true) echo 'MQTTconnect()';?>	
+//if (SSE==true) echo 'SSEconnect()';?>	
 /*-------affiche l'image de la page accueil---------------------------------------*/	
 var text1="";var larg = (document.body.clientWidth);
 var haut = (document.body.clientHeight);
@@ -706,8 +601,8 @@ $("#zm").click(function () {
         });
 		});
 <?php
-if (MQTT==false) echo '
-tempo_devices='.TEMPO_DEVICES_DZ.';
+if (SSE==false) echo '
+tempo_devices='.TEMPO_DEVICES_D.';
 var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
 var_sp(idsp);
 
@@ -893,4 +788,55 @@ break;
 </script><script>
 $('li.ww').click(function(){var ww1 = $(".www").attr('href');
 $(ww1).attr('display','block');
-});	</script>	
+});	</script>
+<?php
+if (SSE=='node') {$domaine=$_SESSION["domaine"];
+if ($domaine==URLMONITOR) $lien="https://".SSE_URL;
+if ($domaine==IPMONITOR) $lien="http://".SSE_IP.":".SSE_PORT."/events";
+	echo "
+<script>
+    const eventSource = new EventSource('".$lien."');
+    eventSource.onopen = function() { document.getElementById('status').innerText='connecté';};
+    eventSource.onmessage = function (currentEvent) {
+      const listElement = document.getElementById('messages').innerText = currentEvent.data;;
+      console.log(currentEvent.data);donnees=JSON.parse(currentEvent.data);
+	  var id_x=donnees.id;var state=donnees.state;
+	  maj_mqtt(id_x,state,0)
+    };
+  </script>";}
+	  
+
+
+
+
+
+if (SSE=='php') {echo "
+<script>
+    window.onload = function() {
+	// établir un flux et enregistrer les réponses sur la console
+var source = new EventSource('/monitor/include/serveur_sse.php');
+ 
+source.addEventListener('message', function(e) {
+document.getElementById('messages').innerHTML = e.data ;
+donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;console.log(id_x,state);
+maj_mqtt(id_x,state,0);
+}, false);
+
+source.addEventListener('open', function(e) {
+document.getElementById('status').innerText='connecté';
+}, false);
+
+source.addEventListener('error', function(e) {
+if (e.readyState == EventSource.CLOSED) {
+document.getElementById('status').innerText='connexion fermée';
+}
+}, false);
+
+
+
+ 
+};
+
+
+
+</script>";}?>

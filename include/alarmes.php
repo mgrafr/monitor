@@ -28,7 +28,7 @@
 		<div class="col-md-12">
 	  <h1 id="titre_alarme" class="title text-center">Alarme</span></h1>
 		<div id="ecran">
-		 <div id="d_btn_al" ><a class="btn btn-primary"  href="#admin">
+		 <div id="d_btn_al" ><a class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
 Entrer votre mot de passe 
 </a></div>		
 			  <?php
