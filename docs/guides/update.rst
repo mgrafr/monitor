@@ -17,6 +17,8 @@ Version  en developpement 2.2.7
 
 - Mise à jour temps réel avec SSE Node.js depuis Domoticz ou Home Assistant
 
+- Alternative MAJ temps réel avec SSE PHP, installé lors de l'install de monitor
+
 - ajout des groupes et scènes sur la page 'commandes ON/OFF"
 
 - nom_objet remplace nom_dz ,(nom pour DZ et object_id pour HA)
