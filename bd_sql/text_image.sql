@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `domoticz`
+-- Base de données : `monitor`
 --
 
 -- --------------------------------------------------------
@@ -42,11 +42,7 @@ INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES
 (1, 'pluie', 'images/met_pluie.svg', ''),
 (2, 'pas_pluie', 'images/parapluie_ferme.svg', '');
 
---
--- Index pour les tables déchargées
---
 
---
 -- Index pour la table `text_image`
 --
 ALTER TABLE `text_image`
@@ -63,6 +59,4 @@ ALTER TABLE `text_image`
   MODIFY `num` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
