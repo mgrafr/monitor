@@ -25,24 +25,26 @@ SET time_zone = "+00:00";
 CREATE TABLE `dispositifs` (
   `num` int(11) NOT NULL,
   `nom_appareil` varchar(20) NOT NULL DEFAULT ' ',
-  `nom_dz` varchar(40) NOT NULL DEFAULT '',
+  `nom_objet` varchar(40) NOT NULL DEFAULT '',
   `idx` varchar(4) DEFAULT NULL,
   `ID` varchar(50) NOT NULL DEFAULT '',
   `idm` varchar(4) DEFAULT NULL,
   `materiel` text NOT NULL DEFAULT '',
+  `ls` varchar(1) NOT NULL DEFAULT '0',
   `maj_js` varchar(20) NOT NULL DEFAULT '',
   `id1_html` varchar(30) NOT NULL DEFAULT '#',
   `car_max_id1` varchar(4) NOT NULL DEFAULT ' ',
   `F()` int(2) DEFAULT NULL,
   `id2_html` varchar(20) NOT NULL DEFAULT '',
-  `coul_id1_id2_ON` varchar(30) NOT NULL DEFAULT '',
-  `coul_id1_id2_OFF` varchar(30) NOT NULL DEFAULT '',
+  `coul_id1_id2_ON` varchar(40) NOT NULL DEFAULT '',
+  `coul_id1_id2_OFF` varchar(40) NOT NULL DEFAULT '',
   `class_lamp` varchar(20) NOT NULL DEFAULT '',
   `coul_lamp_ON` varchar(30) NOT NULL DEFAULT '',
-  `coul_lamp_OFF` varchar(30) NOT NULL DEFAULT '',
+  `coul_lamp_OFF` varchar(40) NOT NULL DEFAULT '',
   `pass` varchar(10) DEFAULT '0',
   `observations` text NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 
 
 --
@@ -50,18 +52,8 @@ CREATE TABLE `dispositifs` (
 --
 ALTER TABLE `dispositifs`
   ADD PRIMARY KEY (`num`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `dispositifs`
 --
 ALTER TABLE `dispositifs`
   MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
