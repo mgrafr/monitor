@@ -32,6 +32,7 @@ chemin=$(whiptail --title "installation de monitor" --radiolist  \
 "/usr/share/nginx/html" "Nginx  " OFF \
 "/var/www/html"         "Nginx  " ON \
 "/www/html"              "Apache2" OFF \
+"/www"                   "Apache2" OFF \
 "/tmp"                   "autre" OFF  3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
