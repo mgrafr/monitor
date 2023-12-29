@@ -254,7 +254,9 @@ header_info
 msg_ok "ip du serveur = $ip4"
 msg_ok "nom de l'utilisateur mariadb & monitor = $maria_name"
 msg_ok "la clé BlowfishSecret : $randomBlowfishSecret"
-sed -i "s/ipmonitor/${ip4}/g" /www/monitor/admin/config.php 
-sed -i "s/USER_BD/${maria_name}/g" /www/monitor/admin/config.php
-sed -i "s/PASS_BD/${mp}/g" /www/monitor/admin/config.php
+msg_ok "le chemin : $chemin"
+msg_ok "le lien symbolique : /www/monitor"
+sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
+sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
+sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
 exit
