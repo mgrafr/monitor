@@ -157,7 +157,7 @@ curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
 apt-get update
 echo -e "${CHECKMARK} \e[1;92m Dépendances installées.\e[0m"
 echo "Installation de PHP 8.3"
-apt install php8.3 php8.3-fpm php8.3-cli
+apt install php8.3 php8.3-fpm php8.3-cli php8.3-mysql
 echo "Activer le demarrage"
 systemctl enable php8.3-fpm --now
 echo -e "${CHECKMARK} \e[1;92m PHP8.3 installé.\e[0m"
