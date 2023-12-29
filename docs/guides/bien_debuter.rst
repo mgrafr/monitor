@@ -1454,4 +1454,6 @@ function mc(variable,id)
    :width: 700px 
 .. |image1269| image:: ../img/image1269.webp
    :width: 600px 
+.. |image1270| image:: ../img/image1270.webp
+   :width: 500px 
 
