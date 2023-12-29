@@ -168,7 +168,7 @@ apt update && apt upgrade
 wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.tar.gz
 #mkdir /www/html -p
 tar -xzf phpMyAdmin-5.2.1-all-languages.tar.gz -C $chemin
-mv $chemin/phpMyAdmin-5.2.1-all-languages /usr/share/phpMyAdmin
+mv $chemin/phpMyAdmin-5.2.1-all-languages $chemin/phpMyAdmin
 cd $chemin/phpMyAdmin
 echo Copie de l exemple de fichier de configuration
 echo creation de la blowfish_secret key
