@@ -127,7 +127,7 @@ msg_ok "MariaDB est maintenant sécurisée"
 echo "----------------------------------------------------"
 msg_ok "Installation de NGINX"
 echo "----------------------------------------------------"
-chemin="/usr/share/nginx/html"
+chemin="/var/www/html"
 sleep 3
 apt-get install nginx apache2-utils mlocate  -y
 echo "demarrage de Nginx NGINX"
@@ -166,12 +166,18 @@ msg_ok "Installation de PHPMYADMIN"
 sleep 3
 apt update && apt upgrade
 wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-french.tar.gz
-mkdir /www/html/phpmyadmin -p
-tar -xzf phpMyAdmin-5.2.1-french.tar.gz -C /www/html/monitor
-cd /www/html/monitor
-mv phpMyAdmin-5.2.1-french sm175
-sudo chown -R nginx:nginx /www/html/monitor
-rm -rf /www/html/monitor/sm175/setup
+#mkdir /www/html -p
+tar -xzf phpMyAdmin-5.2.1-french.tar.gz -C $chemin
+mv $chemin/phpMyAdmin-5.2.1-french /usr/share/phpMyAdmin
+cd $chemin/phpMyAdmin
+echo Copie de l exemple de fichier de configuration
+echo creation de la blowfish_secret key
+randomBlowfishSecret=$(openssl rand -base64 32)
+sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$randomBlowfishSecret'|" config.sample.inc.php > config.inc.php
+echo Changement de propriété de phpMyAdmin sur maria_name.
+sudo chown -R $maria_name:$maria_name $chemin/phpmyadmin
+echo Suppression du répertoire d’installation de phpMyAdmin.
+rm -rf $chemin/phpmyadmin/setup
 systemctl redémarrer php8.3-fpm
 #DATA="$(wget https://www.phpmyadmin.net/home_page/version.txt -q -O-)"
 #URL="$(echo $DATA | cut -d ' ' -f 3)"
@@ -185,6 +191,7 @@ echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 #sed -i 's/listen = 127.0.0.1:9000/listen=/var/run/php/php-fpm.sock/g' /etc/php/8.2/fpm/pool.d/www.conf
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
+cp $chemin/monitor/share/nginx/phpmyadmin.conf /etc/nginx/conf.d/
 echo "LEMP : redemarrage php"
 service php8.3-fpm restart
 if [ "$ssh2" = "PHP avec SSH2" ]
@@ -203,19 +210,19 @@ msg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
-git clone https://github.com/mgrafr/monitor.git $chemin/monitor
+git clone https://github.com/mgrafr/monitor.git /www/monitor
 
 echo "importer les tables text_image dispositifs et sse"
-mysql -root monitor < /www/html/monitor/bd_sql/text_image.sql
-mysql -root monitor < /www/html/monitor/bd_sql/dispositifs.sql
-mysql -root monitor < /www/html/monitor/bd_sql/sse.sql
+mysql -root monitor < /www/monitor/bd_sql/text_image.sql
+mysql -root monitor < /www/monitor/bd_sql/dispositifs.sql
+mysql -root monitor < /www/monitor/bd_sql/sse.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
-cp $chemin/monitor/share/nginx/monitor.conf /etc/nginx/conf.d/
+cp /www/monitor/share/nginx/monitor.conf /etc/nginx/conf.d/
 sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/monitor.conf
 sed -i "s/xxxipxxx/${ip4}/g" /etc/nginx/conf.d/monitor.conf
 echo "LEMP : Creating a php-info page"
-echo '<?php phpinfo(); ?>' > $chemin/info.php
+echo '<?php phpinfo(); ?>' > /www/info.php
 echo "LEMP est installé" 
 echo "Voulez vous créer un certificat auto-signé"
 echo "pour utiliser monitor en local en https ? O ou N"
@@ -239,7 +246,7 @@ sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
-chmod -R 777 /usr/share/nginx/html
+chmod -R 777 $chemin/monitor
 echo -e "
     _______                 _
    / __  _ \___________ ( )/ /_ __________
@@ -251,7 +258,7 @@ echo -e "
 header_info
 msg_ok "ip du serveur = $ip4"
 msg_ok "nom de l'utilisateur mariadb & monitor = $maria_name"
-sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
-sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
-sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
+sed -i "s/ipmonitor/${ip4}/g" /www/monitor/admin/config.php 
+sed -i "s/USER_BD/${maria_name}/g" /www/monitor/admin/config.php
+sed -i "s/PASS_BD/${mp}/g" /www/monitor/admin/config.php
 exit

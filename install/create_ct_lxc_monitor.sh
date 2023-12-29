@@ -151,9 +151,9 @@ info "Utilisation de'$STORAGE' pour stocker le conteneur."
 CTID=$(pvesh get /cluster/nextid)
 info "ID du conteneur : $CTID."
 
-echo -e "${CHECKMARK} \e[1;92m MAJ de la liste des Template LXC... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m MAJ de la liste des Modèles LXC... \e[0m"
 pveam update >/dev/null
-echo -e "${CHECKMARK} \e[1;92m Téléchargement du Template Debian 12... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Téléchargement du Modèle Debian 12... \e[0m"
 OSTYPE=debian
 OSVERSION=${OSTYPE}-12
 mapfile -t TEMPLATES < <(pveam available -section system | sed -n "s/.*\($OSVERSION.*\)/\1/p" | sort -t - -k 2 -V)
