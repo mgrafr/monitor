@@ -165,10 +165,10 @@ sleep 3
 msg_ok "Installation de PHPMYADMIN"
 sleep 3
 apt update && apt upgrade
-wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-french.tar.gz
+wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.tar.gz
 #mkdir /www/html -p
-tar -xzf phpMyAdmin-5.2.1-french.tar.gz -C $chemin
-mv $chemin/phpMyAdmin-5.2.1-french /usr/share/phpMyAdmin
+tar -xzf phpMyAdmin-5.2.1-all-languages.tar.gz -C $chemin
+mv $chemin/phpMyAdmin-5.2.1-all-languages /usr/share/phpMyAdmin
 cd $chemin/phpMyAdmin
 echo Copie de l exemple de fichier de configuration
 echo creation de la blowfish_secret key
@@ -178,22 +178,18 @@ echo Changement de propriété de phpMyAdmin sur maria_name.
 sudo chown -R $maria_name:$maria_name $chemin/phpmyadmin
 echo Suppression du répertoire d’installation de phpMyAdmin.
 rm -rf $chemin/phpmyadmin/setup
-systemctl redémarrer php8.3-fpm
-#DATA="$(wget https://www.phpmyadmin.net/home_page/version.txt -q -O-)"
-#URL="$(echo $DATA | cut -d ' ' -f 3)"
-#VERSION="$(echo $DATA | cut -d ' ' -f 1)"
-#wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
-#tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
-mv phpMyAdmin-*/ $chemin/phpmyadmin
 mkdir -p $chemin/phpmyadmin/tmp
-echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
-#echo "LEMP : Adjustement php listen"
-#sed -i 's/listen = 127.0.0.1:9000/listen=/var/run/php/php-fpm.sock/g' /etc/php/8.2/fpm/pool.d/www.conf
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
-cp $chemin/monitor/share/nginx/phpmyadmin.conf /etc/nginx/conf.d/
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
+mv phpmyadmin.conf /etc/nginx/conf.d/
+echo "creer lien symbolique de phpmyadmin vers /www"
+mkdir /www
+ln -s $chemin/phpmyadmin  /www/phpmyadmin
+echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 echo "LEMP : redemarrage php"
-service php8.3-fpm restart
+systemctl restart php8.3-fpm 
+systemctl restart nginx
 if [ "$ssh2" = "PHP avec SSH2" ]
 then
 msg_ok "installation de php-ssh2"
@@ -203,19 +199,15 @@ apt-get -y install libssh2-1-dev
 yes '' |  peclX.Y-sp install ssh2-beta
 echo "installation terminée de ssh2-beta"
 fi
-echo "creer lien symbolique des pages PHP vers /www"
-mkdir /www
-ln -s $chemin/  /www
 msg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
-git clone https://github.com/mgrafr/monitor.git /www/monitor
-
+git clone https://github.com/mgrafr/monitor.git $chemin/monitor
 echo "importer les tables text_image dispositifs et sse"
-mysql -root monitor < /www/monitor/bd_sql/text_image.sql
-mysql -root monitor < /www/monitor/bd_sql/dispositifs.sql
-mysql -root monitor < /www/monitor/bd_sql/sse.sql
+mysql -root monitor < $chemin/monitor/bd_sql/text_image.sql
+mysql -root monitor < $chemin/monitor/bd_sql/dispositifs.sql
+mysql -root monitor < $chemin/monitor/bd_sql/sse.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
 cp /www/monitor/share/nginx/monitor.conf /etc/nginx/conf.d/
@@ -244,9 +236,12 @@ cp ssl/selfsigned.conf /etc/nginx/snippets/selfsigned.conf
 cp ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
+echo "creer lien symbolique de phpmyadmin vers /www"
+ln -s $chemin/monitor  /www/monitor
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
-chmod -R 777 $chemin/monitor
+chown -R $maria_name:$maria_name /www/monitor
+chmod -R 775 $chemin/monitor
 echo -e "
     _______                 _
    / __  _ \___________ ( )/ /_ __________
@@ -258,6 +253,7 @@ echo -e "
 header_info
 msg_ok "ip du serveur = $ip4"
 msg_ok "nom de l'utilisateur mariadb & monitor = $maria_name"
+msg_ok "la clé BlowfishSecret : $randomBlowfishSecret"
 sed -i "s/ipmonitor/${ip4}/g" /www/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" /www/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" /www/monitor/admin/config.php

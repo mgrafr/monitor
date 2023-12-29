@@ -175,7 +175,7 @@ esac
 DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
 
-echo -e "${CHECKMARK} \e[1;92m Creation du Conteneur LXC ... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Création du Conteneur LXC ... \e[0m"
 DISK_SIZE=16G
 pvesm alloc $STORAGE $CTID $DISK $DISK_SIZE --format ${DISK_FORMAT:-raw} >/dev/null
 if [ "$STORAGE_TYPE" == "zfspool" ]; then
