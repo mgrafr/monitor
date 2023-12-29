@@ -139,13 +139,12 @@ Fin de l'installation:
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-   :red:`chmod -R 777 /www/html/*`
+   :red:`chmod -R 775 /www/html/*`
  
    **MySQL :**
 
-   :red:`mysql -u root`
+   :red:`mysql -u root -p -h localhost monitor`
    
-
    |image27| 
  
    **phpMyAdmin** :   Accès par monitor
