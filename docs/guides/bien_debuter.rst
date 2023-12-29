@@ -74,7 +74,12 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
  
 Choisir le langage UTF-8 : fr_FR.UTF-8
 
-  
+ .. warning:: 
+
+   |image1270|
+
+   Le choix du langage se fait ou se confirme à l'écran suivant.
+
 |image10|
  
 |image11|
