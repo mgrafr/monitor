@@ -29,7 +29,8 @@ exit
 echo réperoire pour installer monitor
 chemin=$(whiptail --title "installation de monitor" --radiolist  \
 "Quel chemin pour monitor ?\n Apache2 ou Nginx ou autre" 15 60 4 \
-"/usr/share/nginx/html" "Nginx  " ON \
+"/usr/share/nginx/html" "Nginx  " OFF \
+"/var/www/html"         "Nginx  " ON \
 "/www/html"              "Apache2" OFF \
 "/tmp"                   "autre" OFF  3>&1 1>&2 2>&3)
 exitstatus=$?
