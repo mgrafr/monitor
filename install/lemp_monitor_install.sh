@@ -35,7 +35,7 @@ function info() {
   local FLAG="\e[36m[INFO]\e[39m"
   msg "$FLAG $REASON"
 } 
-locale-gen "en_US.UTF-8"
+export LANG=fr_FR.UTF-8
 dpkg-reconfigure locales
 whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script installe automatiquement LEMP fonctionnelle.\nUn serveur SSE-PHP est aussi installé\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
@@ -144,7 +144,7 @@ ufw allow http
 ufw allow https
 ufw enable
 echo -e "${CHECKMARK} \e[1;92m Le pare-feu a été installé.\e[0m"
-msg_ok "Installation de  php8"
+msg_ok "Installation de  php8.3"
 sleep 3
 #echo "Installer les dependances "
 apt install ca-certificates apt-transport-https software-properties-common lsb-release -y
@@ -160,11 +160,20 @@ echo -e "${CHECKMARK} \e[1;92m PHP8.3 installé.\e[0m"
 sleep 3
 msg_ok "Installation de PHPMYADMIN"
 sleep 3
-DATA="$(wget https://www.phpmyadmin.net/home_page/version.txt -q -O-)"
-URL="$(echo $DATA | cut -d ' ' -f 3)"
-VERSION="$(echo $DATA | cut -d ' ' -f 1)"
-wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
-tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
+apt update && apt upgrade
+wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-french.tar.gz
+mkdir /www/html/phpmyadmin -p
+tar -xzf phpMyAdmin-5.2.1-french.tar.gz -C /www/html/monitor
+cd /www/html/monitor
+mv phpMyAdmin-5.2.1-french sm175
+sudo chown -R nginx:nginx /www/html/monitor
+rm -rf /www/html/monitor/sm175/setup
+systemctl redémarrer php8.3-fpm
+#DATA="$(wget https://www.phpmyadmin.net/home_page/version.txt -q -O-)"
+#URL="$(echo $DATA | cut -d ' ' -f 3)"
+#VERSION="$(echo $DATA | cut -d ' ' -f 1)"
+#wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
+#tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
 mv phpMyAdmin-*/ $chemin/phpmyadmin
 mkdir -p $chemin/phpmyadmin/tmp
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
