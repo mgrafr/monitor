@@ -36,9 +36,10 @@ function info() {
   msg "$FLAG $REASON"
 } 
 export LANG=fr_FR.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LC_MESSAGES=en_US.UTF-8
+export LANGUAGE=fr_FR.UTF-8
+export LC_CTYPE=fr_FR.UTF-8
+export LC_ALL=fr_FR.UTF-8
+export LC_MESSAGES=fr_FR.UTF-8
 dpkg-reconfigure locales
 whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script installe automatiquement LEMP fonctionnelle.\nUn serveur SSE-PHP est aussi installé\nVous devrez indiquer\n
 - un utilisateur et son mot de pase\n\
