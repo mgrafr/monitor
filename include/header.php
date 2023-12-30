@@ -21,7 +21,6 @@
 									<?php if (ON_SPA==true) echo '<li class="zz"><a href="#spa">SPA</a></li>';?>
 									<?php if (ON_RECETTES==true) echo '<li class="zz"><a href="#recettes">Recettes Cuisine</a></li>';?>
 									<?php if (ON_HABRIDGE==true) echo '<li class="zz"><a href="#habridge">Pont HUE</a></li>';?>
-									<li class="zz"><a href="#modes_emploi">Modes d'emploi</a></li>
 									<li class="zz"><a href="#admin">Administration</a></li>
 									<?php
 									/*zz la class pour le script js menu_link*/
