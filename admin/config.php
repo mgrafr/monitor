@@ -137,13 +137,13 @@ define('INSEE','');
 define('TOKEN_MF','__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__');
 //-----------------------------------------------------------------------------------------------
 // Page App diverses , log dz , nagios , sql
-define('ON_APP',true);// mise en service page app diverses
+define('ON_APP',false);// mise en service page app diverses
 define('APP_NB_ENR',30); //nb d'enregistrements affichés , concene poubelles
 //-------------------------------------------------------
 // Page exterieur jardin plan extérieur
 define('ON_EXT',false);// mise en service page extérieur
 // Page graphiques
-define('ON_GRAPH',true);// mise en service page graphique
+define('ON_GRAPH',false);// mise en service page graphique
 // Page MUR de Caméras-------------------------------------------
 // utilisation du mur :true sinon false , Nom du mur , nb caméras
 define('ON_MUR',false);// mise en service MUR
@@ -161,7 +161,7 @@ define('ON_ZIGBEE',false);// mise en service Zigbee
 define('IPZIGBEE', 'http://192.168.1.92:8084');//ip:port
 define('URLZIGBEE', 'https://zigbee.DOMAINE.ovh');//url
 //Page zwavejs2mqtt
-define('ON_ZWAVE',true);// mise en service Zwave
+define('ON_ZWAVE',false);// mise en service Zwave
 define('IPZWAVE', 'http://192.168.1.76:8091');
 define('URLZWAVE', 'https://zwave.DOMAINE.ovh');//url');
 // Page Monitoring
