@@ -141,7 +141,15 @@ Monitor , devrait ressembler à ceci:
 
 |image1272|
 
-- connecter un serveur domotique (max 2)
+- connecter un serveur domotique (max 2); Enlever la découverte.
+
+.. code-block:: 
+
+   define('DECOUVERTE', false);
+
+|image1274|
+
+Ce message sera présent tant qu'il n'y aura pas de correspondance entre le serveur et la BD
 
 - ajouter les dispositifs et variables à la base de données, voir ce § :ref:`0.2 La page d’accueil et connexion avec Domoticz ou HA`
 
@@ -1474,4 +1482,6 @@ function mc(variable,id)
 .. |image1272| image:: ../img/image1272.webp
    :width: 500px 
 .. |image1273| image:: ../img/image1273.webp
+   :width: 500px 
+.. |image1274| image:: ../img/image1274.webp
    :width: 500px 
