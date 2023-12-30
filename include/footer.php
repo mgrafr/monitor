@@ -228,7 +228,8 @@ $.ajax({
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
 		if (val.idx=='0'){
 			if (val.jour!=num_jour){aff_date();
-			document.getElementById('tspan7024').innerHTML=jour;mc(1,"#meteo_concept");}}
+			<?php if (DECOUVERTE==false){ echo "document.getElementById('tspan7024').innerHTML=jour;" ;}?>
+			mc(1,"#meteo_concept");}}
 		else {//console.log('ok_deb');
 			var myEle = document.getElementById("cercle_"+val.idm);	
 			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , ";
