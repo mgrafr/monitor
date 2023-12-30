@@ -135,7 +135,9 @@ Quitter le shell de PVE et ouvrir la console du conteneur LXC monitor qui devrai
 
 |image1271|
 
-Monitor , devrait ressemmbler à ceci:
+Monitor , devrait ressembler à ceci:
+
+|image1273|
 
 |image1272|
 
@@ -1471,4 +1473,5 @@ function mc(variable,id)
    :width: 400px 
 .. |image1272| image:: ../img/image1272.webp
    :width: 500px 
-
+.. |image1273| image:: ../img/image1273.webp
+   :width: 500px 
