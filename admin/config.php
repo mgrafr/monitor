@@ -78,6 +78,7 @@ define('MOTDEPASSE','PASS_BD');
 define('UTILISATEUR','USER_BD');
 define('DBASE','monitor');
 define('API','false'); // true ou false
+define('PHPMYADMIN',IPMONITOR.'/phpMyAdmin'); // adresse phpMyAdmin
 //------Page  Alarmee & Administration------------
 // page Alarme
 define('ON_ALARM',false);// affichage pour utilisation de l'alarme
