@@ -241,7 +241,7 @@ echo "creer lien symbolique de phpmyadmin vers /www"
 ln -s $chemin/monitor  /www/monitor
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
-chown -R $maria_name:$maria_name /www/monitor
+chown -R $maria_name:$maria_name $chemin/monitor
 chmod -R 775 $chemin/monitor
 echo -e "
     _______                 _
