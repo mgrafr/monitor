@@ -157,7 +157,7 @@ curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
 apt-get update
 echo -e "${CHECKMARK} \e[1;92m Dépendances installées.\e[0m"
 echo "Installation de PHP 8.3"
-apt install php8.3 php8.3-fpm php8.3-cli php8.3-mysql
+apt install php8.3 php8.3-fpm php8.3-cli php8.3-mysql php8.3-curl
 echo "Activer le demarrage"
 systemctl enable php8.3-fpm --now
 echo -e "${CHECKMARK} \e[1;92m PHP8.3 installé.\e[0m"
@@ -208,6 +208,7 @@ echo "importer les tables text_image dispositifs et sse"
 mysql -root monitor < $chemin/monitor/bd_sql/text_image.sql
 mysql -root monitor < $chemin/monitor/bd_sql/dispositifs.sql
 mysql -root monitor < $chemin/monitor/bd_sql/sse.sql
+mysql -root monitor < $chemin/monitor/bd_sql/messages.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
 cp $chemin/monitor/share/nginx/monitor.conf /etc/nginx/conf.d/
