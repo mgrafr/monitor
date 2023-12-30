@@ -37,7 +37,7 @@ require_once('admin/config.php');
         <a class="admin1" href="#admin" rel="18" title="reponse2" >Enregistrer Dispositifs DZ( ou HA) dans SQL&nbsp;&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=7 style="width:25px;display:inline;"></a><br>
 		<a class="admin1" href="#admin" rel="25" title="reponse2" >Enregistrer Message DZ( ou HA) dans SQL&nbsp;&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=9 style="width:25px;display:inline;"></a><br>  
         <br>
-       <a href="http://<?php echo IPMONITOR;?>/phpmyadmin" target="_blank"><img src="images/PhpMyAdmin_logo.svg" style="width:80px" alt=""/></a><br>
+       <a href="http://<?php echo PHPMYADMIN;?>" target="_blank"><img src="images/PhpMyAdmin_logo.svg" style="width:80px" alt=""/></a><br>
         <br>
         <a id="about"><img class="info_admin" src="images/about.svg" data-toggle="modal" data-target="#info-admin1" rel=8 alt="a Propos"/></a></p>
 		<?php
