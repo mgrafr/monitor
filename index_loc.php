@@ -3,6 +3,7 @@
 if(session_status() === PHP_SESSION_NONE) session_start();
 // pour les variables de session----------------------
 $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]="";
+$_SESSION["id_session"] = session_id();
 include ("admin/config.php");
 // Check connection DB
 mysqli_report(MYSQLI_REPORT_OFF);
@@ -29,7 +30,8 @@ include ("include/header.php");// l' affichage du menu de la page d'accueil
 include ("include/accueil.php");// l' affichage page accueil
 if (ON_MET==true) include ("include/meteo.php");	// une page de prévision météo
 include ("include/interieur.php");// plan intérieur
-if (ON_ALARM==true) include ("include/alarmes.php"); // alarmes absence et nuit
+include ("include/clavier_code.php");
+if (ON_ALARM==false) include ("include/alarmes.php"); // alarmes absence et nuit
 if (ON_GRAPH==true) include ("include/graphiques.php");// édition de graphiques
 // autre pages disponibles à décommenter pour les inclure
 if (ON_EXT==true) include ("include/exterieur.php");
@@ -47,7 +49,7 @@ if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 if (ON_SPA==true) include ("include/spa.php");//spa
 if (ON_HABRIDGE==true) include ("include/habridge.php");//pont hue Alexa
 if (ON_RECETTES==true) include ("include/recettes.php");//monitoring
-
+include ("include/modes_emploi.php");
 include ("include/footer.php");// fin de la page avec les scrpits JS
 
 ?>
