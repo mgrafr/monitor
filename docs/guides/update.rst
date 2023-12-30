@@ -2,16 +2,19 @@
 ----------
 19.1 Version de PHP
 ^^^^^^^^^^^^^^^
-*La version actuelle est 8.2*
+*La version actuelle est 8.3*
 
 19.2 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 2.2.6**
+**La version stable actuelle est 2.2.7**
 
 19.2.1 Releases
 ===============
-Version  en developpement 2.2.7
+Version  en developpement 2.2.8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version 2.2.7
+~~~~~~~~~~~~~
 
 - séparation de temp et data pour l'affichage des températures
 
@@ -24,6 +27,12 @@ Version  en developpement 2.2.7
 - nom_objet remplace nom_dz ,(nom pour DZ et object_id pour HA)
 
 - affichage clavier numérique dans alarme en plus d'administration 
+
+- PHP 8.2
+
+- PhpMyAdmin : 5.2.1
+
+- Python 3.11
 
 Version  2.2.6
 ~~~~~~~~~~~~~~
@@ -80,6 +89,6 @@ Version 2.1.0
 
 Recommendé:
 
--  >= PHP 5.2.0
+-  >= PHP 5.2.0 ou >
 
 -  PHP Builtin GD library
