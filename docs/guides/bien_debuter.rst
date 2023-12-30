@@ -131,6 +131,18 @@ Fin de l'installation:
 
 |image24|
 
+Quitter le shell de PVE et ouvrir la console du conteneur LXC monitor qui devrait ressempnler à ça:
+
+|image1271|
+
+Monitor , devrait ressemmbler à ceci:
+
+|image1272|
+
+- connecter un serveur domotique (max 2)
+
+- ajouter les dispositifs et variables à la base de données, voir ce § :ref:`0.2 La page d’accueil et connexion avec Domoticz ou HA`
+
 .. admonition:: Vérifications en cas de problèmes :
 
    avec Filezilla :
@@ -1454,5 +1466,9 @@ function mc(variable,id)
 .. |image1269| image:: ../img/image1269.webp
    :width: 600px 
 .. |image1270| image:: ../img/image1270.webp
+   :width: 500px 
+.. |image1271| image:: ../img/image1271.webp
+   :width: 400px 
+.. |image1272| image:: ../img/image1272.webp
    :width: 500px 
 
