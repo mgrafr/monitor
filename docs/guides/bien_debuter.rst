@@ -474,6 +474,22 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
 0.1.4 Mise à jour de monitor
 ============================
+.. warning:: 
+
+   La version 2.2.7 a été profondément restructurée aussi il n'est pas facile de l'updater; mode d'emploi pour upgrader une ancienne version sans perte de données:
+
+   - Créer un nouveau conteneur (NE PAS SUPPRIMER LE CONTENEUR ACTUEL)
+
+   - dans le fichier /admin/config.php existant dans l'ancien conteneur recopier les variables que vous utilisez dans le fichier du nouveau conteneur
+
+   - sauvegarger les tables de BD SQL pour les importer dans la nouvelle BD
+
+   - sauvegarder les pages Custom dans le nouveau monitor
+
+   - supprimer l'ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)
+
+Pour les versions de monitor => 2.2.7 :
+
 Avec la console :
 
 .. code-block::
