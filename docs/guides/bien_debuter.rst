@@ -156,9 +156,9 @@ Fin de l'installation:
 
    :red:`<IP Monitor>/phpmyadmin/`
 
-|image29| 
+   |image29| 
 
-|image30| 
+   |image30| 
  
 **Les tables installées lors de l’installation :**
  
