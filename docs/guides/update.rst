@@ -28,7 +28,7 @@ Version 2.2.7
 
 - affichage clavier numérique dans alarme en plus d'administration 
 
-- PHP 8.2
+- PHP 8.3
 
 - PhpMyAdmin : 5.2.1
 
