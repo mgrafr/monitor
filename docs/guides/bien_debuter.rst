@@ -494,14 +494,11 @@ Avec la console :
 
 .. code-block::
 
-   cd /tmp
-   wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.bash
+   cd /www/monitor/install
    chmod +x update.bash
    ./update.bash
 
 |image51|
-
-|image73|
 
 0.2	La page d’accueil et connexion avec Domoticz ou HA : 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1356,7 +1353,7 @@ function mc(variable,id)
 .. |image50| image:: ../media/image50.webp
    :width: 605px
 .. |image51| image:: ../media/image51.webp
-   :width: 647px
+   :width: 600px
 .. |image52| image:: ../media/image52.webp
    :width: 446px
 .. |image53| image:: ../media/image53.webp
@@ -1391,8 +1388,6 @@ function mc(variable,id)
    :width: 650px
 .. |image72| image:: ../media/image72.webp
    :width: 424px
-.. |image73| image:: ../media/image73.webp
-   :width: 647px
 .. |image75| image:: ../media/image75.webp
    :width: 216px
 .. |image76| image:: ../media/image76.webp
