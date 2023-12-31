@@ -471,6 +471,11 @@ la fonction mysql_app() dans /fonctions.php
 =========================================
 18.10.3.1  depuis Domoticz
 """"""""""""""""""""""""""
+.. code-block::
+
+   function send_sse(id,etat)
+   domoticz.openURL('http://192.168.1.30/monitor/api/json.php?app=maj&id='..id..'&state='..etat..'Off')
+   end
 
 18.10.3.2  depuis Home Assistant
 """"""""""""""""""""""""""""""""
