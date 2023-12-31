@@ -1,1 +1,1 @@
-Pas de mise à jour
+echo "Pas de mise à jour"
