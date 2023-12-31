@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-echo "Pas de mise à jour"
+echo "-----------Pas de mises à jour pour la version 2.2.7-------------------"
