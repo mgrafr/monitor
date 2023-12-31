@@ -113,7 +113,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 -----------------------
 2 solutions :
 
-- semi temps réel , monitor interroge une variable mis à jour par Dz ou Ha lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.
+- semi temps réel , monitor interroge une variable mis à jour par Dz ou Ha lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.C'est la solution historique de monitor mais la solution SSE-php, incluse dans monitor est à privilégier.cette solution sera obsolète dans les prochaines versions
 
 - temps réel, en recevant de Domoticz ou Home Assistant, par un message depuis un SSE(Server-sent Events) , les données du dispositifs qui ont changées de valeur 
 
@@ -130,13 +130,13 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
    **Seveur SSE** pour l'installation d'un serveur node.js voir ce § :ref:'21.12 Serveur SSE Node JS'
 
-   - Avantages : Vrai temps réel, économise de la bande passante
+   - Avantages : Vrai temps réel, économise de la bande passante; un serveur SSE PHP est déjà installé dans monitor , la création d'un script pour envoyer les données depuis DZ ou HA est simple;
 
-   - Inconvénients : Installation d'un serveur SSE NodeJS ou SSE PHP, création d'un script pour envoyer les données depuis DZ ou HA ; le Client SSE dans Javascript est déjà installé, il suffit de mettre en service SSE
+   - Inconvénients : Installation d'un serveur JS pour la version SSE NodeJS ;  
 
    .. IMPORTANT::
 
-      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt
+      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt; le serveur SSE-PHP installé dans monitor n'a pas besoin de certificat contrairement à un serveur SSE Node.JS 
 
 1.1.3.1 Solution semi temps réel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -175,7 +175,8 @@ La fonction PHP qui récupère la valeur de la variable :
   
 1.1.3.2 Solution temps réel SSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Le serveur SSE (voir § :ref:`21.12 Serveur SSE Node JS`) 
+Le serveur SSE-NodeJS voir § :ref:`21.12 Serveur SSE Node JS`
+Le serveur SSE-PHP voir ce § :ref:`18.10 Serveur SSE installé dans Monitor`
 
 l'IP, le port, sont à déclarer dans /admin/config.php:
 
@@ -195,7 +196,8 @@ l'IP, le port, sont à déclarer dans /admin/config.php:
 
 les scripts JS dans footer.php:
 
-.. admonition:: **Client SSE PHP:**
+.. admonition:: **Client SSE PHP, solution incluse dans monitor:**
+voir ce paragraphe concernant le serveur :ref:`18.10 Serveur SSE installé dans Monitor`
 
    .. code-block::
 
