@@ -370,8 +370,8 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 |image1264|
 
-18.10 Installer un serveur SSE PHP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18.10 Serveur SSE installé dans Monitor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliserons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
 
 .. code block::
