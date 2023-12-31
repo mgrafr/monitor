@@ -1454,7 +1454,7 @@ function mc(variable,id)
    :width: 203px 
 .. |image116| image:: ../media/image116.webp
    :width: 293px 
-.. |image118| image:: ../media/image116.webp
+.. |image118| image:: ../media/image118.webp
    :width: 449px 
 .. |image143| image:: ../media/image143.webp
    :width: 700px 
