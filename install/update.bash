@@ -17,5 +17,5 @@ chmod +x maj_2.2.7.1.sh
 rm  maj_2.2.7.1.sh
 else 
 echo " *************pas de maj**********************"
-
+fi
 
