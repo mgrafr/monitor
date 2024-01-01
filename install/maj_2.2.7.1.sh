@@ -7,6 +7,6 @@ rm .version
 rm install/maj_2.2.7.1.sh
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/.version
 echo "-----------------------------------------------------------------"
-echo "--------Mise à jour vers la version 2.2.7.1 terminée-------------"
+echo "--------Mise à jour vers la version 2.2.7.2 terminée-------------"
 echo "-----------------------------------------------------------------"
 
