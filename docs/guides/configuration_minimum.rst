@@ -140,6 +140,8 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 
 1.1.3.1 Solution semi temps réel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:red:`Cette solution est obsolète et sera supprimée dans les futures version`.
+
 La fonction JS :
 
 .. code-block::
@@ -158,7 +160,7 @@ La fonction JS :
    setTimeout(var_sp, tempo_devices, idsp); 	
    }';?>
  
-La fonction PHP qui récupère la valeur de la variable :
+La fonction PHP qui récupère la valeur de la variable Domoticz:
 
 .. code-block::
  
@@ -172,7 +174,9 @@ La fonction PHP qui récupère la valeur de la variable :
    $value = $lect_var['Value'];	
    return 	$value;
    }
-  
+
+pour Home Assistant l' API monitor peut être  utilisée.
+
 1.1.3.2 Solution temps réel SSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Le serveur SSE-NodeJS voir § :ref:`21.12 Serveur SSE Node JS`
@@ -351,7 +355,7 @@ Le programme démarre avec 3 pages :
 
 -	Plan intérieur
 
--	Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red:'« admin »'.
+-	Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red:`« admin »`.
 
 .. note:: 
 
