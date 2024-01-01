@@ -1,8 +1,8 @@
 <?php
 require_once('../fonctions.php');
 
-function envoi_fich($name){
-$name[0] = ['idx' => '999'];	
+function envoi_data($name){
+$name[0] = ['data' => '999'];	
 return $name;	
 	
 }
@@ -24,9 +24,7 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 }
 
-function onoff($serveur,$nom,$state){	
-return;
-}
+
 function maj($id,$state){
 $donnees=array();	
 $donnees=[

@@ -15,9 +15,8 @@ $appp = isset($_POST['appp']) ? $_POST['appp'] : '';
 $idp = isset($_POST['id']) ? $_POST['id'] : '';
 $statep = isset($_POST['state']) ? $_POST['state'] : '';
 //
-if ($app=="fichier") {$retour= envoi_fich($essai);echo json_encode($retour); }
+if ($app=="api_rest_ha") {$retour= envoi_data($essai);echo json_encode($retour); }
 if ($app=="messages") {$retour= message($contenu,$name,$command);echo json_encode($retour); }
-if ($app=="onoff") {$retour= onoff($serveur,$name,$command);echo json_encode($retour); }
 if ($app=="maj") {$retour= maj($id,$state);echo json_encode($retour); }
 return "erreur API";
 ?>
