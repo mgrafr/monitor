@@ -1229,6 +1229,28 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
 |image407| 
 
+0.12.1 Les fonctions possibles
+==============================
+- **app=="messages"** : function message($contenu,$nom,$maj)
+
+  |image1275|
+
+  maj=1
+
+- **app=="maj"** : maj($id,$state)
+
+  mise à jour temps réel SSE-PHP
+
+  voir les § :ref:`18.10.2 L’API de monitor` & :ref:`18.10.3 L’API de monitor depuis HA ou DZ`
+
+- **app==""api_rest_ha"** : envoi_data($name)
+
+  uniquement pour Home Assistant
+
+ |image1276|
+
+l' API renvoi un objet de Monitor , voir la fonction /api/f_pour_api/envoi_data()
+
 0.13 Les fichiers JSON reçu par monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Utilisé par les fonctions javascript dans /include/footer.php:
@@ -1496,3 +1518,7 @@ function mc(variable,id)
    :width: 500px 
 .. |image1274| image:: ../img/image1274.webp
    :width: 500px 
+.. |image1275| image:: ../img/image1275.webp
+   :width: 448px 
+.. |image1276| image:: ../img/image1276.webp
+   :width: 600px 
