@@ -155,9 +155,18 @@ Mise à jour vers une nouvelle version:
 
 21.2 Domoticz
 ^^^^^^^^^^^^^
-*Installation sous Docker* :  http://domo-site.fr/accueil/dossiers/84
+*Installation depuis la version 2024 dans un conteneur LCX*
 
-*Installation sur une machine virtuelle* :  http://domo-site.fr/accueil/dossiers/2
+  - Debian 11 
+
+.. warning::
+
+   **installation non possible sur Debian 12 qui utilise Openssl 3.0 car Domoticz utilise encore openssl 1.1.1 et la Libssl 1.1.**
+
+*Installations précédentes*
+  - sous Docker :  http://domo-site.fr/accueil/dossiers/84
+
+  - sur une machine virtuelle :  http://domo-site.fr/accueil/dossiers/2
 
 - **Mes scripts lua**
 
