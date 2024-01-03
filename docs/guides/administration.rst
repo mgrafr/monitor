@@ -291,6 +291,17 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
    |image825|
 
+   Pour récupérer le connect.py de Domoticz , le chemin de Domoticz doit être indiqué dans DZ_PATH
+
+   .. code-block::
+
+      //DZ_PATH :ex dz docker /opt/domoticz/config/, ex autre dz /opt/domoticz, home/USER/domoticz
+      define('DZ_PATH', '/opt/domoticz/config/');
+
+      ce chemin est utilisé dans fonctions.php admin()
+
+   |image1280|      
+
 - **admin.php**
 
  |image826|
@@ -717,6 +728,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 537px
 .. |image877| image:: ../media/image877.webp
    :width: 425px
-
+.. |image1280| image:: ../media/image1280.webp
+   :width: 700px
 
 
