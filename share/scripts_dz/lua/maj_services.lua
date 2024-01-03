@@ -1,7 +1,7 @@
 --
 --[[
 -- time
-name : maj_services.lua  version 1.0.1
+name : maj_services.lua
 
 ce script à pour but de déterminer si nous sommes en semaine pair ou impair
 et fonction de cela, le jeudi en fin d'après midi,
@@ -12,50 +12,49 @@ de gérer la fosse septique et les anniversaires.
 -- ---------------------------------------------------------------------------------------------
 la 1ere semaine est celle ayant au moins 4 jours sur la nouvelle année
 --]]
--- Get day of a week at year beginning 
---(tm can be any date and will be forced to 1st of january same year)
--- return 1=mon 7=sun
---
+-- Obtenez le jour de la semaine au début de l'année
+--(tm peut être n'importe quelle date et sera forcé au 1er janvier de la même année)
+-- retour 1=lundi 7=dimanche...
 -- chargement fichier contenant les variable de configuration
 package.path = package.path..";www/modules_lua/?.lua"
 require 'string_tableaux'
+local jpg=jour_poubelle_grise;local jpj=jour_poubelle_jaune
 require 'connect'
 local base64 = require'base64'
 -- local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
 -- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg=poubelle' >> /home/michel/OsExecute.log 2>&1"
---
 function getYearBeginDayOfWeek(tm)
   yearBegin = os.time{year=os.date("*t",tm).year,month=1,day=1}
   yearBeginDayOfWeek = tonumber(os.date("%w",yearBegin))
-  -- sunday correct from 0 -> 7
+-- sunday correct from 0 -> 7
   if(yearBeginDayOfWeek == 0) then yearBeginDayOfWeek = 7 end
   return yearBeginDayOfWeek
 end
--- tm: date (as retruned from os.time)
--- returns basic correction to be add for counting number of week
---  weekNum = math.floor((dayOfYear + returnedNumber) / 7) + 1 
--- (does not consider correctin at begin and end of year) 
+-- tm : date (telle que récupérée de os.time)
+-- renvoie la correction de base à ajouter pour compter le nombre de semaines
+-- weekNum = math.floor((dayOfYear + returnNumber) / 7) + 1
+-- (ne considère pas les corrections en début et en fin d'année)...
 function getDayAdd(tm)
   yearBeginDayOfWeek = getYearBeginDayOfWeek(tm)
   if(yearBeginDayOfWeek < 5 ) then
-    -- first day is week 1
+-- le premier jour est la semaine 1...
     dayAdd = (yearBeginDayOfWeek - 2)
   else 
-    -- first day is week 52 or 53
+   -- le premier jour est la semaine 52 ou 53...
     dayAdd = (yearBeginDayOfWeek - 9)
   end  
   return dayAdd
 end
--- tm is date as returned from os.time()
--- return week number in year based on ISO8601 
--- (week with 1st thursday since Jan 1st (including) is considered as Week 1)
--- (if Jan 1st is Fri,Sat,Sun then it is part of week number from last year -> 52 or 53)
+-- tm est la date renvoyée par os.time()
+-- renvoie le numéro de semaine dans l'année basé sur ISO8601
+-- (la semaine avec le 1er jeudi depuis le 1er janvier (inclus) est considérée comme la semaine 1)
+-- (si le 1er janvier est vendredi, samedi, dimanche, cela fait partie du numéro de semaine de l'année dernière -> 52 ou 53)...
 function getWeekNumberOfYear(tm)
   dayOfYear = os.date("%j",tm)
   dayAdd = getDayAdd(tm)
   dayOfYearCorrected = dayOfYear + dayAdd
   if(dayOfYearCorrected < 0) then
-    -- week of last year - decide if 52 or 53
+    -- semaine de l'année dernière - décidez si 52 ou 53...
     lastYearBegin = os.time{year=os.date("*t",tm).year-1,month=1,day=1}
     lastYearEnd = os.time{year=os.date("*t",tm).year-1,month=12,day=31}
     dayAdd = getDayAdd(lastYearBegin)
@@ -64,7 +63,7 @@ function getWeekNumberOfYear(tm)
   end  
   weekNum = math.floor((dayOfYearCorrected) / 7) + 1
   if( (dayOfYearCorrected > 0) and weekNum == 53) then
-    -- check if it is not considered as part of week 1 of next year
+    -- vérifier si cela n'est pas pris en compte dans la semaine 1 de l'année prochaine...
     nextYearBegin = os.time{year=os.date("*t",tm).year+1,month=1,day=1}
     yearBeginDayOfWeek = getYearBeginDayOfWeek(nextYearBegin)
     if(yearBeginDayOfWeek < 5 ) then
@@ -95,28 +94,58 @@ local jour_mois = jour.."-"..mois
 if (time == "00:05"  or time == "17:00") then 
     commandArray['Variable:anniversaires'] = "0";
     commandArray['Variable:fosse septique'] = "0";
-end   
-if (time == "00:30") then
+end 
+-- POUBELLES
+if (time == "01:00") then
     -- exclusion ou ajout dates poubelles ,
     for k,v in pairs(e_poubelles) do 
       if (jour_mois==k) then 
-        if (v == "g") then jour_poubelle_grise = "";  
-		elseif (v == "j") then jour_poubelle_jaune = "";
+        if (v == "g") then jpg = ""; return jpg;
+		elseif (v == "j") then jpj = "";return jpj;
 		end
       end    
     end
 	for k,v in pairs(a_poubelles) do 
-      if (jour_mois==k) then print(k)
-		if (v == "g") then jour_poubelle_grise = day;
-		elseif (v == "j") then jour_poubelle_jaune = day;
+      if (jour_mois==k) then print(k..' '..jour_mois..' '..v)
+		if (v == "g") then jpg = day;return jpg;
+		elseif (v == "j") then jpj = day;print(jpj);return jpj;
 		end
 	  end    
     end  
+if  ( day ==  jpg )  then commandArray['Variable:poubelles'] = "ordures_ménagères"
+		-- poubelle  la variable passe à "poubelle_grise" .
+	commandArray['Variable:not_tv_poubelle'] = "1"
+	commandArray['Variable:not_poubelles'] = "1"
+	 print (time,day, "mettre les poubelles ordures ménagères");
+	 -- envoi notification via free
+		--os.execute(sms_free) résilié
+	commandArray['SendEmail']='poubelles#ménagères#xxxxxxxx.michel@gmail.com'		
+		end
+--
+if ( day == jpj ) then 
+    print ("-----"..time,day,jpj);
+	-- récupérer numéro de la semaine actuelle
+	useDate = os.time()	-- os.time{year=2015,month=9,day=30} -- il est possible de préciser la date
+	weekNum = getWeekNumberOfYear(useDate)
+	-- semaine pair ou impair
+	pair_impair_semaine = weekNum%2 -- resultat =0 ou 1
+	-- L' %opérateur (modulo) produit le reste de la division du premier argument par le second 
+	print(os.date("%A %d/%m/%Y",useDate)..": week number:"..tostring(weekNum))
+	if (pair_impair_semaine==semaine_poub_jaune) then print(pair_impair_semaine); commandArray['Variable:poubelles'] = "poubelle_recyclables"
+			-- poubelle jaune la variable passe à  "poubelle_jaune"
+	commandArray['Variable:not_tv_poubelle'] = "1"
+    print (time,day, "mettre les poubelles recyclabes");
+		-- envoi notification via free
+		--os.execute(sms_free) résilié
+	commandArray['SendEmail']='poubelles#recyclabes#xxxxxxxxx.michel@gmail.com'	
+		
+		end
+else print(day,jpj,time)
 end
 
+end
 
-
--------------------------------------------------------------
+--RAZ-----------------------------------------------------------
 if ((time == "06:50") and (uservariables['poubelles']=="ordures_ménagères" )) then commandArray['Variable:poubelles'] = "poubelle_grise_vide"  
 end
 if ((time == "00:10") and (uservariables['fosse_septique']=="fosse septique" )) then commandArray['Variable:fosse_septique'] = "0"  
@@ -127,36 +156,8 @@ if ((time == "00:10") and (uservariables['poubelles']=="poubelle_recyclables" ))
 end  
 if ((time == "09:10") and (uservariables['poubelles']=="poubelle_jaune_vide" )) then commandArray['Variable:poubelles'] = "0"  
 end
---
-if  (( day ==  jour_poubelle_grise ) and (time == "17:00")) then commandArray['Variable:poubelles'] = "ordures_ménagères"
-		-- poubelle  la variable passe à "poubelle_grise" .
-	commandArray['Variable:not_tv_poubelle'] = "1"
-	commandArray['Variable:not_poubelles'] = "1"
-	 print (time,day, "mettre les poubelles ordures ménagères");
-	 -- envoi notification via free
-		--os.execute(sms_free) résilié
-	commandArray['SendEmail']='poubelles#ménagères#gravier.michel@gmail.com'		
-		end
---
-if ( day == jour_poubelle_jaune and (time == "17:00")) then 
-    print ("-----"..time,day);
-	-- récupérer numéro de la semaine actuelle
-	useDate = os.time()	-- os.time{year=2015,month=9,day=30} -- il est possible de préciser la date
-	weekNum = getWeekNumberOfYear(useDate)
-	-- semaine pair ou impair
-	pair_impair_semaine = weekNum%2 -- resultat =0 ou 1
-	-- L' %opérateur (modulo) produit le reste de la division du premier argument par le second 
-	print(os.date("%A %d/%m/%Y",useDate)..": week number:"..tostring(weekNum))
-	if (pair_impair_semaine==semaine_poub_jaune) then commandArray['Variable:poubelles'] = "poubelle_recyclables"
-			-- poubelle jaune la variable passe à  "poubelle_jaune"
-	commandArray['Variable:not_tv_poubelle'] = "1"
-    print (time,day, "mettre les poubelles recyclabes");
-		-- envoi notification via free
-		--os.execute(sms_free) résilié
-	commandArray['SendEmail']='poubelles#recyclabes#gravier.michel@gmail.com'	
-		
-		end
-end
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 -- fosse septique jour de traitement , ici le 12 de chaque mois
  if  ((time == "00:50") and (jour ==jour_fosse)) then
         commandArray['Variable:fosse_septique'] = "fosse septique"
