@@ -344,19 +344,44 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 18.8 migration de Domoticz différentes étapes pour ne rien oublier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. admonition:: **Exemple migration vers Docker.**
+.. admonition:: **Exemple migration vers Docker .**
+
+   - faire une suvegarde e la base de bonnées domoticz.db
 
    -	Modifier les IP/PORT de Domoticz, Zwavejs2mqtt, Zigbee2mqtt,…dans le fichier de configuration de monitor.
 
    -	Pour les scripts externes non gérés dans le conteneur Domoticz ,installer les versions de python, node, … nécessaires, et les dépendances nécessaires ;par exemple pour la communication série de Domoticz , l’installation de python-periphery , le démarrage auto sur systemd ,…. Si l’API de Domoticz est utilisée dans ces scripts , modifier le Port de Domoticz
 
-      Pour VOIP asterisk, modifier ip de domoticz pour la capture d’image (portier) ; pour appeler json de Domoticz depuis Docker, autoriser dans les paramètres de Domoticz le réseau 172.*.*.* 
+       |image1278|  
+
+   -    Pour VOIP asterisk, modifier ip de domoticz pour la capture d’image (portier) ; pour appeler json de Domoticz depuis Docker, autoriser dans les paramètres de Domoticz le réseau 172.*.*.* 
 
    -	Pour le monitoring Nagios, il faut indiquer les IP/PORT qui sont modifiés et les noms des VM Proxmox si Proxmox est utilisé.
 
    -	Si une nouvelle page doit être ajoutée à monitor, par exemple pour Zwave (OZW n’étant plus maintenu) : créer le sous-domaine pour l’accès distant et le certificat pour HTTPS (Letsencrypt-cerbot)
 
    -	Les dispositifs sont souvent difficiles à réveiller, s’ils sont réinstallés, modifier l’ID de Domoticz dans la base de données de monitor
+
+   -    Pour les cripts LUA ou DzVent  sous Docker le fichier Config s'appelle userdata; les sous répertoires sont attachés à Config et non directement à domoticz .
+
+       |image1279|
+
+.. admonition:: **Exemple migration vers un conteneur LXC .**
+
+   Si aucune clés Zwave ou Zigbee ne sont installés sur le conteneur (Zigbee2mqtt et Zwave-JS-UI sont installés dans des conteneurs séparés), l'installation se résume à installer Curl et à lancer la commande bash:
+
+   .. code-block::
+
+      apt install curl 
+      sudo bash -c "$(curl -sSfL https://install.domoticz.com)"
+
+   -   Pour une migration depuis Docker, lire le § précédent et modifier les scripts Lua et DZvent pour revenir à un schéma classique des répertoires.
+
+   -   Une sauvegarde suivi d'un backup sur le nouveau serveur et Domoticz sera de nouveau opérationnel.
+
+.. warning::
+
+   la version 2024.1 ne fonctionne pas sous Debian 12 qui utilise openssl 3.0 (domoticz utilise opebssl 1.1)
 
 18.9 des commandes linux utiles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -579,3 +604,7 @@ Dans automations.yaml,
    :width: 650px
 .. |image1277| image:: ../img/image1277.webp
    :width: 500px
+.. |image1278| image:: ../img/image1278.webp
+   :width: 350px
+.. |image1278| image:: ../img/image1279.webp
+   :width: 700px
