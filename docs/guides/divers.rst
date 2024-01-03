@@ -370,6 +370,14 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 |image1264|
 
+- Pour modifier le fuseau horaire d'un serveur Linux (ex: UTC+2), il suffit d'exécuter la commande suivante :
+
+.. code-block::
+
+   timedatectl set-timezone Europe/Paris
+
+|image1277|
+
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliserons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
@@ -569,3 +577,5 @@ Dans automations.yaml,
    :width: 700px
 .. |image1267| image:: ../img/image1267.webp
    :width: 650px
+.. |image1277| image:: ../img/image1277.webp
+   :width: 500px
