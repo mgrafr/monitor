@@ -157,11 +157,45 @@ Mise à jour vers une nouvelle version:
 ^^^^^^^^^^^^^
 *Installation depuis la version 2024 dans un conteneur LCX*
 
-  - Debian 11 
+.. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
-.. warning::
+   .. warning::
 
-   **installation non possible sur Debian 12 qui utilise Openssl 3.0 car Domoticz utilise encore openssl 1.1.1 et la Libssl 1.1.**
+      **installation non possible sur Debian 12 qui utilise Openssl 3.0 car Domoticz utilise encore openssl 1.1.1 et la Libssl 1.1.**
+
+   *Le conteneur LXC* :
+
+   |image1282|
+
+   Le conteneur est crée, on le démarre et on exécute:
+
+   .. code-block::
+
+      apt update 
+      apt upgrade
+      apt install sudo
+      adduser <USER>
+      usermod -a -G sudo <USER>
+      visudo
+
+  |image1283| 
+
+   On installe Curl pour télécharger Domoticz:
+
+   .. code-block::
+
+      apt install curl
+
+   On quite root, on s'enregistre comme utilisateur et on installe Domoticz:
+
+   .. code-block::
+
+      sudo bash -c "$(curl -sSfL https://install.domoticz.com)"
+
+   |image1284|
+
+
+
 
 *Installations précédentes*
   - sous Docker :  http://domo-site.fr/accueil/dossiers/84
@@ -1386,3 +1420,9 @@ Le script DzVent:
    :width: 640px
 .. |image1263| image:: ../img/image1263.webp
    :width: 600px
+.. |image1282| image:: ../img/image1282.webp
+   :width: 600px
+.. |image1283| image:: ../img/image1283.webp
+   :width: 400px
+.. |image1284| image:: ../img/image1284.webp
+   :width: 550px
