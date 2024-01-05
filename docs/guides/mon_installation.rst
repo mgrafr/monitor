@@ -223,6 +223,35 @@ Mise à jour vers une nouvelle version:
 
    |image1289|
 
+   |image1290|
+
+   |image1291|
+
+   .. code-block::
+
+      lxc.cgroup2.devices.allow: c <MAJEUR>:<MINEUR> rwm
+      lxc.mount.entry: /dev/ttyUSBx <LIBELLE> none bind,optional,create=file
+      lxc.cgroup2.devices.allow: c <majeur>:<mineur> rwm
+      lxc.mount.entry: /dev/ttyUSBx <libellé> none bind,optional,create=file
+
+   Avec l'ID, création d'une règle:
+
+   |image1292|
+
+   |image1293|
+
+   Pour redre éxécutable le port, corriger les autorisations et éviter de redémarrer:
+
+   |image1294|
+
+   On récupère le libellé de la clé
+
+   |image1295|
+
+   On peut avec ces données configurer le conteneur:
+
+   |image1296|
+
 *Installations précédentes*
   - sous Docker :  http://domo-site.fr/accueil/dossiers/84
 
@@ -1461,5 +1490,19 @@ Le script DzVent:
 .. |image1288| image:: ../img/image1288.webp
    :width: 700px
 .. |image1289| image:: ../img/image1289.webp
+   :width: 700px
+.. |image1290| image:: ../img/image1290.webp
+   :width: 600px
+.. |image1291| image:: ../img/image1291.webp
+   :width: 700px
+.. |image1292| image:: ../img/image1292.webp
+   :width: 700px
+.. |image1293| image:: ../img/image1293.webp
+   :width: 700px
+.. |image1294| image:: ../img/image1294.webp
+   :width: 650px
+.. |image1295| image:: ../img/image1295.webp
+   :width: 700px
+.. |image1296| image:: ../img/image1296.webp
    :width: 700px
 
