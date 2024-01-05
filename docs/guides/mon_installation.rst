@@ -266,7 +266,7 @@ Mise à jour vers une nouvelle version:
 
    |image1293|
 
-   Pour redre éxécutable le port, corriger les autorisations et éviter de redémarrer:
+   Pour rendre éxécutable le port, corriger les autorisations et éviter de redémarrer:
 
    |image1294|
 
