@@ -196,6 +196,12 @@ Mise à jour vers une nouvelle version:
 
    |image1285|
 
+   Ajouter les utlisateurs au groupe dialout
+
+   .. cod-block::
+
+      usermod -aG dialot <USER>
+
    Installation du pare-feu:
 
    .. code-block::
@@ -207,7 +213,27 @@ Mise à jour vers une nouvelle version:
       sudo ufw enable
       sudo ufw status
 
-    |image1286|
+   |image1286|
+
+   Si vous avez des modules python à installer, installer PIP
+
+   |image1297|
+
+   Installer les modules, ici :darkblue:`periphery`
+
+   |image1298|
+
+   Si vous avez des modules Node , installer node.js
+
+   .. code-block::
+
+      sudo apt update
+      sudo apt install -y nodejs
+      sudo apt install -y npm
+
+   Installer les modules, ici :darkblue:`lgtv`
+
+   |image1299|
 
     Copie des fichiers sauvegardés:
 
@@ -251,6 +277,10 @@ Mise à jour vers une nouvelle version:
    On peut avec ces données configurer le conteneur:
 
    |image1296|
+
+   Redémarrer le conteneur, modifier les droits du port:
+
+   |image1300|
 
 *Installations précédentes*
   - sous Docker :  http://domo-site.fr/accueil/dossiers/84
@@ -1505,4 +1535,12 @@ Le script DzVent:
    :width: 700px
 .. |image1296| image:: ../img/image1296.webp
    :width: 700px
+.. |image1297| image:: ../img/image1297.webp
+   :width: 550px
+.. |image1298| image:: ../img/image1298.webp
+   :width: 550px
+.. |image1299| image:: ../img/image1299.webp
+   :width: 470px
+.. |image1300| image:: ../img/image1300.webp
+   :width: 400px
 
