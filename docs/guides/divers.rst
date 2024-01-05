@@ -377,7 +377,15 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    -   Pour une migration depuis Docker, lire le § précédent et modifier les scripts Lua et DZvent pour revenir à un schéma classique des répertoires.
 
+   .. warning::
+
+      le port sous docker peut être différent alors que sous LXC c'est le même 
+
+      |image1281|
+
    -   Une sauvegarde suivi d'un backup sur le nouveau serveur et Domoticz sera de nouveau opérationnel.
+
+   **Si une clé USB est installée, ne pas oublier de la déconnecter d'une machine virtuelle sinon elle n'apparaitra pas avec**  :darkblue:`ls -ln /dev/ttyUSB*`
 
 .. warning::
 
@@ -606,5 +614,7 @@ Dans automations.yaml,
    :width: 500px
 .. |image1278| image:: ../img/image1278.webp
    :width: 350px
-.. |image1278| image:: ../img/image1279.webp
+.. |image1279| image:: ../img/image1279.webp
    :width: 700px
+.. |image1281| image:: ../img/image1281.webp
+   :width: 600px
