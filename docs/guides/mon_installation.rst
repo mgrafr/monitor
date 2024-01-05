@@ -194,8 +194,34 @@ Mise à jour vers une nouvelle version:
 
    |image1284|
 
+   |image1285|
 
+   Installation du pare-feu:
 
+   .. code-block::
+
+      sudo apt install ufw 
+      sudo ufw allow http
+      sudo ufw allow https
+      sudo ufw allow ssh
+      sudo ufw enable
+      sudo ufw status
+
+    |image1286|
+
+    Copie des fichiers sauvegardés:
+
+   |image1287|
+
+   Lancer Domoticz
+
+.. admonition:: **Configuration du conteneuravec une clé USB**
+
+   on détermine l' USBx, Bus, Device et ID de la clé pour récupérer les nombres majeur et mineur :
+
+   |image1288|
+
+   |image1289|
 
 *Installations précédentes*
   - sous Docker :  http://domo-site.fr/accueil/dossiers/84
@@ -1426,3 +1452,14 @@ Le script DzVent:
    :width: 400px
 .. |image1284| image:: ../img/image1284.webp
    :width: 550px
+.. |image1285| image:: ../img/image1285.webp
+   :width: 400px
+.. |image1286| image:: ../img/image1286.webp
+   :width: 450px
+.. |image1287| image:: ../img/image1287.webp
+   :width: 450px
+.. |image1288| image:: ../img/image1288.webp
+   :width: 700px
+.. |image1289| image:: ../img/image1289.webp
+   :width: 700px
+
