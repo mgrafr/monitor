@@ -3,10 +3,10 @@
 cd /www/monitor
 version=$(head -n 1 /var/www/html/monitor/.version)
 echo $version
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_2.2.7.sh
-chmod +x maj_2.2.7.sh
-./maj_2.2.7.sh
-rm  maj_2.2.7.sh
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_$version.sh
+chmod +x maj_$version.sh
+./maj_$version.sh
+rm  maj_$version.sh
 else 
 echo " *************pas de maj**********************"
 fi
