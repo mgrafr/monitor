@@ -175,17 +175,17 @@ echo creation de la blowfish_secret key
 randomBlowfishSecret=$(openssl rand -base64 32)
 sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$randomBlowfishSecret'|" config.sample.inc.php > config.inc.php
 echo Changement de propriété de phpMyAdmin sur maria_name.
-sudo chown -R $maria_name:$maria_name $chemin/phpmyadmin
+sudo chown -R $maria_name:$maria_name $chemin/phpMyAdmin
 echo Suppression du répertoire d’installation de phpMyAdmin.
-rm -rf $chemin/phpmyadmin/setup
-mkdir -p $chemin/phpmyadmin/tmp
+rm -rf $chemin/phpMyAdmin/setup
+mkdir -p $chemin/phpMyAdmin/tmp
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
 mv phpmyadmin.conf /etc/nginx/conf.d/
 echo "creer lien symbolique de phpmyadmin vers /www"
 mkdir /www
-ln -s $chemin/phpmyadmin  /www/phpmyadmin
+ln -s $chemin/phpMyAdmin  /www/phpMyAdmin
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 echo "LEMP : redemarrage php"
 systemctl restart php8.3-fpm 
