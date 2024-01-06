@@ -62,7 +62,7 @@ $json_string = file_get_curl($L);
 $resultat = json_decode($json_string, true);
 $result=$resultat['result'];
 $p=count($result);
-}	
+}
 if (IPDOMOTIC1!=""){
 $n=0;$mode=1;$post="";		
  $M=URLDOMOTIC1."api/states/sensor.liste_var001";
@@ -81,13 +81,13 @@ $json_string1=explode(',',$json_string1);
 	$result[$p]=$ha;
 	$n++;$p++;}
   }
-if (API=="false"){
+if (API=="true"){
 $lect_msg=sql_variable($p,4);//return $lect_msg;
 while ($lect_msg[$p]!=""	){
 $result[$p]=$lect_msg[$p];
 	$p++;	} 
 }
-	
+
 //--------------	
 $n=0;$vardz=array();$txtimg=array();$t_maj="0";
 			  
@@ -135,7 +135,7 @@ $data[$n+1] = [
 else {$data[$n] = [		
 		'image' => "pas image ni texte"
 			];}
-$n++;}
+$n++;}	
 $data[0] = [		
 		'interval_maj' => $t_maj
 ];
@@ -288,9 +288,9 @@ $periph=array();
 $periph=sql_plan($t);
 //if ($periph) echo json_encode($periph);	
 $bat="";
-if ($periph['idm']=="") {$periph['idm']="";}
+//if ($periph['idm']=="") {$periph['idm']="";}
 if (CHOIXID=='idm') {$t=$periph['idm'];}
-if ($serveur=='HA') {$lect_device["idx"]="";}	
+if ($serveur=='HA') {$lect_device["idx"]="";if ($periph['idm']=="" );{$t=999;}}	
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
 if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
@@ -298,6 +298,7 @@ if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat
 if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);}
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
+
 	$data[$t] = ['choixid' => CHOIXID,
 	'serveur' => $lect_device["serveur"],			 
 	'idx' => $lect_device["idx"],
@@ -856,7 +857,7 @@ if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
 if ($choix==21 ) {$ip=IPRPI;$mode="scp_r";$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de  msmtprc";$rel="22";}
 if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
-if ($choix==23 ) {$ip=IPDOMOTIC;$mode="scp_r";$remote_file_name="/opt/domoticz/config/scripts/python/connect.py";$file_name="connect.py";$local_path="/var/www/html/monitor/python/";
+if ($choix==23 ) {$ip=IPDOMOTIC;$mode="scp_r";$remote_file_name=DZ_PATH."scripts/python/connect.py";$file_name="connect.py";$local_path="/var/www/html/monitor/python/";
 				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de connect.py depuis dz";$rel="24";}	
 if ($choix==24 ) {$file_name="connect.py";$local_path="/home/michel/";$file= $local_path.$file_name; }
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) ) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
