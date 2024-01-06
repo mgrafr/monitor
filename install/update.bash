@@ -23,5 +23,19 @@ chmod +x maj_2.2.7.2.sh
 rm  maj_2.2.7.2.sh
 else 
 echo " *************pas de maj**********************"
-fi
+elif [[ $version == 2.2.7.3 ]] 
+then
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_2.2.7.3.sh
+chmod +x maj_2.2.7.3.sh
+./maj_2.2.7.3.sh
+rm  maj_2.2.7.3.sh
+elif [[ $version == 2.2.7.4 ]] 
+then
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_2.2.7.4.sh
+chmod +x maj_2.2.7.4.sh
+./maj_2.2.7.4.sh
+rm  maj_2.2.7.4.sh
 
+else 
+echo " *************pas de maj**********************"
+fi
