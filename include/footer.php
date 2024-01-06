@@ -23,6 +23,7 @@ require("fonctions.php");
 
 <script>
 function maj_mqtt(id_x,state,ind,level=0){console.log('state==='+state);
+if (!state) {console.log("erreur-state");return;}										  
 switch (ind) {
 	case 0: 
 var id_m=null;
