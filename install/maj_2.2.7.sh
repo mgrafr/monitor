@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 echo "-----------------------------------------------------------------"
-echo "-----------Mise à jour vers la version 2.2.7.4-------------------"
+echo "-----------Mise à jour vers la version 2.2.7.5-------------------"
 echo "-----------------------------------------------------------------"
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css
 mv mes_css.css css/mes_css.css
@@ -17,9 +17,12 @@ rm fonctions.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php
 rm include/footer.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/serveur_sse.php
+mv serveur_sse.php include/serveur_sse.php
+sed -i "s/ pour SSE node/  pour SSE php \ndefine('SSE_SLEEP', 'php');\n\/\/pour SSE node/g" /var/www/html/monitor/admin/config.php
 #
 rm .version
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/.version
 echo "-----------------------------------------------------------------------"
-echo "-----------Mises à jour vers la version 2.2.7.4 terminées--------------"
+echo "-----------Mises à jour vers la version 2.2.7.5 terminées--------------"
 echo "-----------------------------------------------------------------------"

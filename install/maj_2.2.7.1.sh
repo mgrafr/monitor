@@ -12,10 +12,11 @@ echo "define('DZ_PATH', '/opt/domoticz/config/');" >> /www/admin/config.php
 echo "?>" >> /www/admin/config.php
 rm fonctions.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php
-rm include/footer.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
-rm include/footer.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
+mv footer.php /inculde/footer.php
+sed -i "s/ pour SSE node/  pour SSE php \ndefine('SSE_SLEEP', 'php');\n\/\/pour SSE node/g" >> /var/www/html/monitor/admin/config.php
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/serveur_sse.php
+mv serveur_sse.php include/serveur_sse.php
 #
 rm .version
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/.version
