@@ -393,7 +393,9 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    **Systemd**:
 
-  |image1304| 
+   |image1304|
+
+   |image1305|
 
 .. warning::
 
@@ -638,3 +640,5 @@ Dans automations.yaml,
    :width: 541px
 .. |image1304| image:: ../img/image1304.webp
    :width: 384px
+.. |image1305| image:: ../img/image1305.webp
+   :width: 650px
