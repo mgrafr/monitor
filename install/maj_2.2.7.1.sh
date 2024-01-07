@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 echo "-----------------------------------------------------------------"
-echo "-----------Mise à jour vers la version 2.2.7.4-------------------"
+echo "-----------Mise à jour vers la version 2.2.7.5-------------------"
 echo "-----------------------------------------------------------------"
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/api/f_pour_api.php
 mv f_pour_api.php api/f_pour_api.php
@@ -21,5 +21,10 @@ mv serveur_sse.php include/serveur_sse.php
 rm .version
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/.version
 echo "-----------------------------------------------------------------------"
-echo "-----------Mises à jour vers la version 2.2.7.3 terminées--------------"
+echo "-----------Mises à jour vers la version 2.2.7.5 terminées--------------"
+echo "-----------------------------------------------------------------------"
+echo "---------------ATTENTION-----------------------------------------------"
+echo "-----------   Supprimer la table sse dans MySQL          --------------"
+echo "-----------   Importer la nouvelle table sse             --------------"
+echo "  https://raw.githubusercontent.com/mgrafr/monitor/main/bd_sql/sse.sql "
 echo "-----------------------------------------------------------------------"

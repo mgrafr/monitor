@@ -26,3 +26,8 @@ wget https://raw.githubusercontent.com/mgrafr/monitor/main/.version
 echo "-----------------------------------------------------------------------"
 echo "-----------Mises à jour vers la version 2.2.7.5 terminées--------------"
 echo "-----------------------------------------------------------------------"
+echo "---------------ATTENTION-----------------------------------------------"
+echo "-----------   Supprimer la table sse dans MySQL          --------------"
+echo "-----------   Importer la nouvelle table sse             --------------"
+echo "  https://raw.githubusercontent.com/mgrafr/monitor/main/bd_sql/sse.sql "
+echo "-----------------------------------------------------------------------"
