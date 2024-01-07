@@ -182,11 +182,15 @@ pour Home Assistant l' API monitor peut être  utilisée.
 Le serveur SSE-NodeJS voir § :ref:`21.12 Serveur SSE Node JS`
 Le serveur SSE-PHP voir ce § :ref:`18.10 Serveur SSE installé dans Monitor`
 
-l'IP, le port, sont à déclarer dans /admin/config.php:
+Pour SSE-node, l'IP, le port, sont à déclarer dans /admin/config.php.
+
+Pour SSE-php , indiquer le rafraichissement en secondes.
 
 .. code-block::
 
    define('SSE', false);//  node ou php si serveur SSE utilisé par monitor
+   //pour SSE php
+   define('SSE_SLEEP', 2);//raffraichissement en secondes   
    // pour SSE node
    define('SSE_USER', "michel");//user et mot passe 
    define('SSE_PASS', "<mot passe>");
