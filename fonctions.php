@@ -1201,22 +1201,29 @@ $retour=maj_query($conn,$sql);
 		
 break;
 case "4":
-$sql="UPDATE `sse` SET `id`='".$data['id']."',`state`='".$data['state']."' WHERE num='0';";
-$retour=maj_query($conn,$sql);		
+$sql="UPDATE `sse` SET `id`='".$data['id']."',`state`='".$data['state']."',`date`='".$data['date']."' WHERE num=0;";
+$retour=maj_query($conn,$sql,"4");		
 break;
 case "5":
-$sql="SELECT * FROM sse WHERE num='0'; ";
+$sql="SELECT * FROM sse WHERE num=0; ";
 $result = $conn->query($sql);	
 $row = mysqli_fetch_array($result);
-return $row	;	
+return $row	;
+break;	
+case "6":
+$sql="UPDATE `sse` SET `id`='".$data['id']."',`state`='".$data['state']."' WHERE num=0;";
+$retour=maj_query($conn,$sql,"4");		
+break;
+		
 }		
 
 $conn->close();		
 return;}
 //----------------------------------------
-function maj_query($conn,$sql){
+function maj_query($conn,$sql,$ind="0"){
 $result = $conn->query($sql);					   
-if ($result !== FALSE) {
+if ($ind=="4" || $ind==6) {return;}
+	if ($result !== FALSE) {
   echo "record created/modified successfully<br>";	
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
