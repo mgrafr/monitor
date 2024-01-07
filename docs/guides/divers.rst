@@ -517,9 +517,12 @@ la fonction mysql_app() dans /fonctions.php
 """"""""""""""""""""""""""
 .. code-block::
 
-   function send_sse(id,etat)
-   domoticz.openURL('http://192.168.1.30/monitor/api/json.php?app=maj&id='..id..'&state='..etat..'Off')
+   function send_sse(txt,txt1)
+   local api_mon="curl --insecure  'http://192.168.1.9/monitor/api/json.php?app=maj&id='"..txt.."'&state='"..txt1.."'Off' >> sse.log 2>&1" 
+   os.execute(api_mon)
    end
+
+|image1302|
 
 18.10.3.2  depuis Home Assistant
 """"""""""""""""""""""""""""""""
@@ -615,11 +618,13 @@ Dans automations.yaml,
    :width: 700px
 .. |image1267| image:: ../img/image1267.webp
    :width: 650px
-.. |image1277| image:: ../img/image1277.webp
-   :width: 500px
+.. |image1267| image:: ../img/image1267.webp
+   :width: 650px
 .. |image1278| image:: ../img/image1278.webp
    :width: 350px
 .. |image1279| image:: ../img/image1279.webp
    :width: 700px
 .. |image1281| image:: ../img/image1281.webp
    :width: 600px
+.. |image1302| image:: ../img/image1302.webp
+   :width: 541px
