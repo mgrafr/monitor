@@ -389,7 +389,7 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 .. admonition:: **Pour tout changement de serveur.**
 
-   Ne pas oublier d'exporter les scripts Debian, exemple:
+   Ne pas oublier d'exporter les scripts Debian, de les modifier si besoin (:red:`sup config pour domoticz auparavant sous docker` )exemple:
 
    **Systemd**:
 
