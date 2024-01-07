@@ -13,6 +13,7 @@ if ($domaine==IPMONITOR) $lien_habridge=IPHABRIDGE;
 	<div class="container">
 		<div class="col-md-12">
 	  <h1 id="about" class="title" style="position:relative;top:10px;">Pont HUE : <span style="color:blue">Ha-bridge</span></h1>
+			<p><a href="<?php echo $lien_habridge;?>" target="_blank" title="pont hue"><?php echo $lien_habridge;?></a></p> 
 	  <iframe id="habridgeapp" src="<?php echo $lien_habridge;?>" frameborder="0" ></iframe>
 		       
 		<div class="modal" id="infos"></div>
