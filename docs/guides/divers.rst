@@ -387,6 +387,14 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    **Si une clé USB est installée, ne pas oublier de la déconnecter d'une machine virtuelle sinon elle n'apparaitra pas avec**  :darkblue:`ls -ln /dev/ttyUSB*`
 
+.. admonition:: **Pour tout changement de serveur.**
+
+   Ne pas oublier d'exporter les scripts Debian, exemple:
+
+   **Systemd**:
+
+  |image1304| 
+
 .. warning::
 
    la version 2024.1 ne fonctionne pas sous Debian 12 qui utilise openssl 3.0 (domoticz utilise opebssl 1.1)
@@ -628,3 +636,5 @@ Dans automations.yaml,
    :width: 600px
 .. |image1302| image:: ../img/image1302.webp
    :width: 541px
+.. |image1304| image:: ../img/image1304.webp
+   :width: 384px
