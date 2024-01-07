@@ -26,19 +26,21 @@ exit();}
 $donnees=[
    'command'=> '5',
    'id' => "",
-   'state' => ""
+   'state' => "",
+	'date' => $currentTime
     ];
-$retour=mysql_app($donnees);$d = array("heure"=>$currentTime, "id"=>$retour['id'], "state"=>$retour['state']);
+$ret=mysql_app($donnees);
+$d = array("heure"=>$currentTime, "id"=>$ret['id'], "state"=>$ret['state']);
 
 
-$id=$retour['id'];
+$id=$ret['id'];
                 if($id !="" ){
                     echo "event: " . $event . "\n";
-                    echo "data: ".json_encode($d)." \n\n";
+					echo "data: ".json_encode($d)." \n\n";
                     ob_flush();
                     flush();
 $donnees1=[
-   'command'=> '4',
+   'command'=> '6',
    'id' => "",
    'state' => ""
     ];mysql_app($donnees1);
