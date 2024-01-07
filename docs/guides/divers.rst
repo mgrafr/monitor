@@ -458,9 +458,10 @@ fichier :darkblue:`serveur_sse.php`
    exit();}
    // importation des données si il en existent de nouvelles
    $donnees=[
-   'command'=> '5',
-   'id' => "",
-   'state' => ""
+      'command'=> '5',
+      'id' => "",
+      'state' => "",
+      'date' => $currentTime
     ];
    $retour=mysql_app($donnees);
    $d = array("heure"=>$currentTime, "id"=>$retour['id'], "state"=>$retour['state']);
@@ -471,13 +472,13 @@ fichier :darkblue:`serveur_sse.php`
            ob_flush();
            flush();
    $donnees1=[
-   'command'=> '4',
+   'command'=> '6',
    'id' => "",
    'state' => ""
     ];mysql_app($donnees1);
    }
    else 
-    //sleep(2);
+    sleep(SSE_SLEEP);
    ?>
 
 |image1266|
@@ -497,12 +498,14 @@ la fonction :darkblue:`maj()` dans /api/f_pour_api.php
    function maj($id,$state){
    $donnees=array();	
    $donnees=[
-   'command'=> '4',
-   'id' => $id,
-   'state' => $state
-    ];
+      'command'=> '4',
+      'id' => $id,
+      'state' => $state,
+      'date' => date("H:i:s", time())
+       ];
    mysql_app($donnees);	
-   return ;}
+   return 'OK';
+   }
 
 la fonction mysql_app() dans /fonctions.php
 
@@ -602,6 +605,8 @@ Dans automations.yaml,
    :width: 620px
 .. |image1215| image:: ../img/image1215.webp
    :width: 427px
+.. |image1223| image:: ../img/image1223.webp
+   :width: 398px
 .. |image1264| image:: ../img/image1264.webp
    :width: 482px
 .. |image1265| image:: ../img/image1265.webp
