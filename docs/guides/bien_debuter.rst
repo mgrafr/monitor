@@ -676,8 +676,10 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 **Ajout à la base de données des données fournie par Domoticz**
 
-0.3.1 Les Tables "dispositifs(variables)" , "text-image" & "messages"
-=====================================================================
+0.3.1 Les Tables "dispositifs(variables)", "text-image", "messages" & "sse"
+===========================================================================
+Ces tables sont installées lors de l'installation automaique.
+
 	La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
 
 	- tables :
@@ -686,7 +688,9 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 		. dispositifs
 
-		- messages
+		. messages
+
+                . sse
 
   |image75|
 
@@ -808,7 +812,13 @@ Cette table permet avec HA de recevoir des textes supérieur à 255 caractères(
         monitor_1:
           url: "http://192.168.1.9/monitor/api/json.php?app=messages&name=message1&contenu={{svalue}}&maj=1=0"
 
-0.3.1.4 Pourquoi une correspondance ?
+0.3.1.4 Table sse
+"""""""""""""""""
+Table avec un enregistrement unique utilisé par l'API monitor
+
+|image1303|
+
+0.3.1.5 Pourquoi une correspondance ?
 """""""""""""""""""""""""""""""""""""
 cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
 
@@ -1522,3 +1532,5 @@ function mc(variable,id)
    :width: 448px 
 .. |image1276| image:: ../img/image1276.webp
    :width: 600px 
+.. |image1303| image:: ../img/image1303.webp
+   :width: 222px 
