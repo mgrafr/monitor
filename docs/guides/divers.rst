@@ -350,7 +350,7 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    -	Modifier les IP/PORT de Domoticz, Zwavejs2mqtt, Zigbee2mqtt,…dans le fichier de configuration de monitor.
 
-   -	Pour les scripts externes non gérés dans le conteneur Domoticz ,installer les versions de python, node, … nécessaires, et les dépendances nécessaires ;par exemple pour la communication série de Domoticz , l’installation de python-periphery , le démarrage auto sur systemd ,…. Si l’API de Domoticz est utilisée dans ces scripts , modifier le Port de Domoticz
+   -	Pour les scripts externes non gérés dans le conteneur Domoticz ,installer les versions de python, node, … nécessaires, et les dépendances nécessaires ;par exemple pour la communication série de Domoticz , l’installation de python-periphery , de fabric pour l'export des données, , le démarrage auto sur systemd ,…. Si l’API de Domoticz est utilisée dans ces scripts , modifier le Port de Domoticz
 
        |image1278|  
 
@@ -376,6 +376,8 @@ voir ce § :ref:`14.6.1.1 connect.lua`
       sudo bash -c "$(curl -sSfL https://install.domoticz.com)"
 
    -   Pour une migration depuis Docker, lire le § précédent et modifier les scripts Lua et DZvent pour revenir à un schéma classique des répertoires.
+
+   -   Installer les modules Python(python-periphery, fabric,...) , les modules nodejs (lgtv,...)
 
    .. warning::
 
