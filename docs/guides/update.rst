@@ -12,8 +12,9 @@
 ===============
 Version  en developpement 2.2.8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- maj_js (fonction des dispositifs) s'enrichit de "on" poussoir momentané (bouton sonnette)
 
-- test GSM de l'alarme bouton PUSH ON remplacé par bouton de sonnette
+- test GSM de l'alarme: bouton PUSH ON remplacé par bouton de sonnette
 
 Version 2.2.7
 ~~~~~~~~~~~~~
