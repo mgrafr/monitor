@@ -584,6 +584,8 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 
    Le bouton est toujours 'on' , lors d'un appuie la commande  'nvalue=group on' est envoyé à Domoticz qui renvoie un Data=off
 
+   |image1306| 
+
 |image508|
 
 On ajoute le dispositif au plan :
@@ -864,7 +866,8 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 457px 
 .. |image522| image:: ../media/image522.webp
    :width: 705px 
-
+.. |image1306| image:: ../media/image1306.webp
+   :width: 700px 
 
 
 
