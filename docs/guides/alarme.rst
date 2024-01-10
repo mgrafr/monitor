@@ -578,7 +578,7 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 
 - Dans Domoticz : on ajoute un poussoir de sonnette
 
-|image507|
+|image508|
 
 .. admonition:: ** fonctionnement du bouton de sonnette dans Domoticz**
 
@@ -586,7 +586,7 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 
    |image1306| 
 
-|image508|
+|image507|
 
 On ajoute le dispositif au plan :
 
@@ -843,7 +843,7 @@ Version 2.1.0 réécrite en DzVent avec :
 .. |image504| image:: ../media/image504.webp
    :width: 700px 
 .. |image507| image:: ../media/image504.webp
-   :width: 332px 
+   :width: 650px 
 .. |image508| image:: ../media/image508.webp
    :width: 402px 
 .. |image509| image:: ../media/image509.webp
