@@ -53,6 +53,7 @@ sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
+rm $chemin/monitor/install/maj*
 chown -R $maria_name:$maria_name $chemin/monitor
 chown -R www-data:www-data $chemin/monitor/admin/config.php
 chmod -R 775 $chemin/monitor
