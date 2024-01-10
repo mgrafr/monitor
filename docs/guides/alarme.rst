@@ -125,7 +125,7 @@ Partie du script concernant  :darkblue:`les variables`,
                  alerte_gsm('alarmeù'..txt)
         end
 
-Partie du script concernant :darkblue:`le timer `,
+Partie du script concernant :darkblue:`le timer` ,
 
 |image426|
 
@@ -597,7 +597,7 @@ On ajoute qq lignes de script dans évènements dz , :darkblue:`notifications_de
 
 .. code-block::
 
-    if (device.name == 'Test_GSM' and  device.state=='On') then print ("test_gsm")
+    if (device.name == 'Test_GSM' ) then print ("test_gsm")
             txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
             obj='Test GSM OK'domoticz.email('Alarme',obj,adresse_mail)    
      end
@@ -615,7 +615,7 @@ Dans le HTML, Le script est ajouté automatiquement à partir des données de la
 .. note::
 
    **Affichage de l’alarme**
-   une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour de devices_plan() au plus tard : 3minutes par défaut mais modifiable dans admin/config.php
+   une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour : 1 à 2 secondes avec le  serveur SSE-php
 
 |image515|
 
