@@ -576,9 +576,13 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 
 |image504|
 
-- Dans Domoticz : on ajoute un interrupteur virtuel
+- Dans Domoticz : on ajoute un poussoir de sonnette
 
 |image507|
+
+.. admonition:: ** fonctionnement du bouton de sonnette dans Domoticz**
+
+   Le bouton est toujours 'on' , lors d'un appuie la commande  'nvalue=group on' est envoyé à Domoticz qui renvoie un Data=off
 
 |image508|
 
