@@ -866,7 +866,7 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 457px 
 .. |image522| image:: ../media/image522.webp
    :width: 705px 
-.. |image1306| image:: ../media/image1306.webp
+.. |image1306| image:: ../img/image1306.webp
    :width: 700px 
 
 
