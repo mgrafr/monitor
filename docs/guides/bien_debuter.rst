@@ -880,8 +880,8 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - maj_js : types de mise à jour java script
 	-	control // détecteur présence(on/off)
 	-	etat  //porte, volet ,(closed/open)
-	-	temp ou data // température, température + humidité, 
-	-       temp ou data // température, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est préférable d’utiliser « data »
+	-	temp  // température, température + humidité, .....il est souvent préférable d’utiliser « data »
+	-       data // température, ph, M3/h, orp,…. toutes données ; .il est préférable d’utiliser « data »
 
 	|image473|
          
@@ -890,7 +890,8 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	|image94| 
  
 	-	onoff commandes 
-	-	onoff+stop commandes (volets par exemple) 
+	-	onoff+stop commandes (volets par exemple)
+        -       on // poussoir momentané (sonnette)
 	-	popup //ouverture d’une fenêtre (commandes particulières)	
 
 - id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
@@ -926,7 +927,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
       $("#ping_pi").click(function(){switchOnOff_setpoint("14","80","On","0");});
       $("#coul_al_nuit-2").click(function(){switchOnOff_setpoint("15","81","On","pwdalarm");});
       $("#sw2").click(function(){switchOnOff_setpoint("11","85","On","0");});
-      $("#gsm").click(function(){switchOnOff_setpoint("8","86","On","pwdalarm");});
+      $("#gsm").click(function(){switchOnOff_setpoint("8","86","group on","pwdalarm");});//sonnette
       $("#sw3").click(function(){switchOnOff_setpoint("18","166","On","0");});
       $("#sw4").click(function(){switchOnOff_setpoint("16","167","On","0");});
       $("#sw5").click(function(){switchOnOff_setpoint("19","168","On","0");});
@@ -960,12 +961,12 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	return $row;}
       else if ($t=='0') {//$commande="On";
       if (IPDOMOTIC1 != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%onoff%' AND `ID` <> '');";
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `ID` <> '');";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'turnonoff','ha');				  
 	}	 }
       if (IPDOMOTIC != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%onoff%' AND `idx` <> '');";
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `idx` <> '');";
 	$result = $conn->query($sql);//echo "/*";
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switchOnOff_setpoint','dz');
 	}	}
@@ -973,16 +974,16 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
       else echo "pas d'id_dz";
       }
       function sql_1($row,$f,$ser_dom){$commande="On";
+      if ($row['maj_js']=="on"){$commande="group on";}	
       if($ser_dom=="dz")$ser_dom=$row['idx'];
       if($ser_dom=="ha")$ser_dom=$row['ID'];	
-      if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
+      if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("#'.$row["id1_html"];
 		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
-		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function () 
-     {$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
+		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
        	else {$sl='").click(function(){'.$f.'("'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
 		$s=$s.$sl;
-		echo $s."\r\n" ;	
-      return; }?>
+		echo $s."\r\n" ;}
+      return;}
 
    Voir chapitre :ref:`1. Configuration minimum : la page d’accueil`
 
