@@ -399,6 +399,10 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    |image1305|
 
+   Si un serveur HA BRIDGE est installé, ne pas oublier de changer les IP des dispositifs (changer l'IP su serveur Domoticz ne suffit pas)
+
+   |image1307|
+
 .. warning::
 
    la version 2024.1 ne fonctionne pas sous Debian 12 qui utilise openssl 3.0 (domoticz utilise opebssl 1.1)
@@ -646,3 +650,5 @@ Dans automations.yaml,
    :width: 384px
 .. |image1305| image:: ../img/image1305.webp
    :width: 650px
+.. |image1307| image:: ../img/image1307.webp
+   :width: 538px
