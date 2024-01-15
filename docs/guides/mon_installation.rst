@@ -866,10 +866,30 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 21.10 Home Assistant
 ^^^^^^^^^^^^^^^^^^^^
-*Installation* : http://domo-site.fr/accueil/dossiers/61
+21.10.1 installation automatique sous Docker dans un CT LXC
+===========================================================
+*c'est mon installation actuelle*
 
-21.10.1 Script pour une installation automatique 
-================================================
+.. code-block::
+
+   bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/homeassistant.sh)"
+
+Portainer est également installé:
+
+|image1308|
+
+|image1309|
+
+.. code-block::
+
+   docker run -d -p 9000:9000  --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+   docker start portainer
+
+
+
+21.10.2 Script pour une installation automatique dans une VM
+============================================================
+*Installation* : http://domo-site.fr/accueil/dossiers/61
 
 .. code-block::
 
@@ -889,7 +909,7 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 |image1063|
 
-21.10.2 Python avec pyscript 
+21.10.3 Python avec pyscript 
 ============================
 
 .. admonition:: **Avec HACS**
@@ -1543,4 +1563,5 @@ Le script DzVent:
    :width: 470px
 .. |image1300| image:: ../img/image1300.webp
    :width: 400px
-
+.. |image1308| image:: ../img/image1308.webp
+   :width: 605px
