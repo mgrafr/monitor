@@ -874,6 +874,14 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
    bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/homeassistant.sh)"
 
+|image1313|
+
+|image1314|
+
+|image1312|
+
+|image1315|
+
 Portainer est également installé:
 
 |image1308|
@@ -1584,3 +1592,11 @@ Le script DzVent:
    :width: 700px
 .. |image1311| image:: ../img/image1311.webp
    :width: 700px
+.. |image1312| image:: ../img/image1312.webp
+   :width: 550px
+.. |image1313| image:: ../img/image1313.webp
+   :width: 550px
+.. |image1314| image:: ../img/image1314.webp
+   :width: 550px
+.. |image1315| image:: ../img/image1315.webp
+   :width: 339px
