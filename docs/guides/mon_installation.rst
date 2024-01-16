@@ -1462,6 +1462,8 @@ Le script DzVent:
    :width: 597px
 .. |image1193| image:: ../media/image1193.webp
    :width: 499px
+.. |image1194| image:: ../media/image1194.webp
+   :width: 150px
 .. |image1195| image:: ../media/image1195.webp
    :width: 300px
 .. |image1196| image:: ../media/image1196.webp
