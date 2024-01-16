@@ -882,6 +882,8 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 |image1315|
 
+|image1316|
+
 Portainer est également installé:
 
 |image1308|
@@ -890,8 +892,9 @@ Portainer est également installé:
 
 .. code-block::
 
-   docker run -d -p 9000:9000  --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
-   docker start portainer
+   docker restart portainer
+
+|image1311|
 
 21.10.1.1 Installation de HACS
 """"""""""""""""""""""""""""""
@@ -1600,3 +1603,5 @@ Le script DzVent:
    :width: 550px
 .. |image1315| image:: ../img/image1315.webp
    :width: 339px
+.. |image1316| image:: ../img/image1316.webp
+   :width: 600px
