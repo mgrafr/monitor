@@ -885,7 +885,20 @@ Portainer est également installé:
    docker run -d -p 9000:9000  --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
    docker start portainer
 
+21.10.1.1 Installation de HACS
+""""""""""""""""""""""""""""""
 
+Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_config/_data` :
+
+.. code-block::
+
+   wget -O - https://get.hacs.xyz | bash -
+
+|image1310|
+
+**Redémarrer Home Assistant** t ajouter l'intégration 
+
+|image1311|
 
 21.10.2 Script pour une installation automatique dans une VM
 ============================================================
@@ -1567,3 +1580,7 @@ Le script DzVent:
    :width: 605px
 .. |image1309| image:: ../img/image1309.webp
    :width: 605px
+.. |image1310| image:: ../img/image1310.webp
+   :width: 700px
+.. |image1311| image:: ../img/image1311.webp
+   :width: 700px
