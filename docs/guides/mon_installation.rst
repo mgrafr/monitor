@@ -1565,3 +1565,5 @@ Le script DzVent:
    :width: 400px
 .. |image1308| image:: ../img/image1308.webp
    :width: 605px
+.. |image1309| image:: ../img/image1309.webp
+   :width: 605px
