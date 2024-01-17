@@ -894,7 +894,7 @@ Portainer est également installé:
 
    docker restart portainer
 
-|image1311|
+|image1317|
 
 21.10.1.1 Installation de HACS
 """"""""""""""""""""""""""""""
@@ -1607,3 +1607,5 @@ Le script DzVent:
    :width: 339px
 .. |image1316| image:: ../img/image1316.webp
    :width: 600px
+.. |image1317| image:: ../img/image1317.webp
+   :width: 605px
