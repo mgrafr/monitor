@@ -896,8 +896,8 @@ Portainer est également installé:
 
 |image1317|
 
-21.10.1.1 Installation de HACS
-""""""""""""""""""""""""""""""
+21.10.1.1 Installation de HACS, Pyscript, etc
+"""""""""""""""""""""""""""""""""""""""""""""
 
 Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_config/_data` :
 
@@ -907,9 +907,28 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
 
 |image1310|
 
-**Redémarrer Home Assistant** t ajouter l'intégration 
+**Redémarrer Home Assistant** et ajouter l'intégration 
 
 |image1311|
+
+.. admonition:: **Ajouter Pyscript**
+
+   c'est le même procédé que pour HACS, télécharger la dernière version de Pyscript: https://github.com/custom-components/pyscript
+
+   .. code-block::
+
+      cd /var/lib/docker/volumes/hass_config/_data
+      mkdir -p custom_components/pyscript
+      cd custom_components/pyscript
+      wget https://github.com/custom-components/pyscript/releases/download/1.5.0/hass-custom-pyscript.zip
+      unzip hass-custom-pyscript.zip
+      rm hass-custom-pyscript.zip
+
+   |image1318|
+
+   **Redémarrer Home Assistant**
+
+   |image1319|
 
 21.10.2 Script pour une installation automatique dans une VM
 ============================================================
@@ -1609,3 +1628,8 @@ Le script DzVent:
    :width: 600px
 .. |image1317| image:: ../img/image1317.webp
    :width: 605px
+.. |image1318| image:: ../img/image1318.webp
+   :width: 647px
+.. |image1319| image:: ../img/image1319.webp
+   :width: 489px
+
