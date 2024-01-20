@@ -407,8 +407,10 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    la version 2024.1 ne fonctionne pas sous Debian 12 qui utilise openssl 3.0 (domoticz utilise opebssl 1.1)
 
-18.9 des commandes linux utiles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18.9 des commandes linux & yaml utiles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18.9.1 Commandes Linux
+======================
 
 - Le port est déjà utilisé :
 
@@ -426,6 +428,23 @@ voir ce § :ref:`14.6.1.1 connect.lua`
    timedatectl set-timezone Europe/Paris
 
 |image1277|
+
+18.9.2 Commandes yaml
+=====================
+
+**split**
+
+*divise une chaîne en une liste de chaînes*
+
+split(‘caractère de séparation pour créer liste’)[indice dans la liste [0]=1er]
+
+Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
+
+.. code-block::
+
+   {{trigger.entity_id.split('.')[1] }}"
+
+
 
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
