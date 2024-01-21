@@ -435,6 +435,14 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 |image1277|
 
+- Pour publier un message sur Mosquitto:
+
+.. code-block::
+
+   mosquitto_pub  --username NOM --pw MOT_PASSE  -t 'TOPIC' -m 'MESSAGE'
+
+|image1322|
+
 18.9.2 Commandes yaml
 =====================
 
@@ -680,4 +688,6 @@ Dans automations.yaml,
 .. |image1320| image:: ../img/image1320.webp
    :width: 526px
 .. |image1321| image:: ../img/image1321.webp
-   :width: 51px
+   :width: 516px
+.. |image1322| image:: ../img/image1322.webp
+   :width: 652px
