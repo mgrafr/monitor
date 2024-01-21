@@ -360,6 +360,8 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    -    Pour VOIP asterisk, modifier ip de domoticz pour la capture d’image (portier) ; pour appeler json de Domoticz depuis Docker, autoriser dans les paramètres de Domoticz le réseau 172.*.*.* 
 
+       |image1321|
+
    -	Pour le monitoring Nagios, il faut indiquer les IP/PORT qui sont modifiés et les noms des VM Proxmox si Proxmox est utilisé.
 
    -	Si une nouvelle page doit être ajoutée à monitor, par exemple pour Zwave (OZW n’étant plus maintenu) : créer le sous-domaine pour l’accès distant et le certificat pour HTTPS (Letsencrypt-cerbot)
@@ -677,3 +679,5 @@ Dans automations.yaml,
    :width: 538px
 .. |image1320| image:: ../img/image1320.webp
    :width: 526px
+.. |image1321| image:: ../img/image1321.webp
+   :width: 51px
