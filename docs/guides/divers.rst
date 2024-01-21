@@ -350,9 +350,13 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    -	Modifier les IP/PORT de Domoticz, Zwavejs2mqtt, Zigbee2mqtt,…dans le fichier de configuration de monitor.
 
-   -	Pour les scripts externes non gérés dans le conteneur Domoticz ,installer les versions de python, node, … nécessaires, et les dépendances nécessaires ;par exemple pour la communication série de Domoticz , l’installation de python-periphery , de fabric pour l'export des données, , le démarrage auto sur systemd ,…. Si l’API de Domoticz est utilisée dans ces scripts , modifier le Port de Domoticz
+   -	Pour les scripts externes non gérés dans le conteneur Domoticz ,installer les versions de python, node, … nécessaires, et les dépendances nécessaires ;par exemple pour la communication série de Domoticz , l’installation de :darkblue:`python-periphery` , de :darkblue:`fabric` pour l'export des données,de :darkblue:`paho-mqtt` pour les topic mqtt,.. , le démarrage auto sur systemd ,…. Si l’API de Domoticz est utilisée dans ces scripts , modifier le Port de Domoticz
 
        |image1278|  
+
+   -    Pour les scripts ajoutès à des dispositifs, modifer le chemin:
+
+       |image1320| 
 
    -    Pour VOIP asterisk, modifier ip de domoticz pour la capture d’image (portier) ; pour appeler json de Domoticz depuis Docker, autoriser dans les paramètres de Domoticz le réseau 172.*.*.* 
 
@@ -377,7 +381,7 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
    -   Pour une migration depuis Docker, lire le § précédent et modifier les scripts Lua et DZvent pour revenir à un schéma classique des répertoires.
 
-   -   Installer les modules Python(python-periphery, fabric,...) , les modules nodejs (lgtv,...)
+   -   Installer les modules Python(:darkblue:`python-periphery`, :darkblue:`fabric`, :darkblue:`paho-mqtt`...) , les modules nodejs (:darkblue:`lgtv`, :darkblue:`superagent`, ...)
 
    .. warning::
 
@@ -671,3 +675,5 @@ Dans automations.yaml,
    :width: 650px
 .. |image1307| image:: ../img/image1307.webp
    :width: 538px
+.. |image1320| image:: ../img/image1320.webp
+   :width: 526px
