@@ -301,6 +301,23 @@ Mise à jour vers une nouvelle version:
  
 .. note:: *Les scripts sont disponibles sur Github : https://github.com/mgrafr/monitor/tree/main/share/scripts_dz*
 
+.. warning::
+
+   Les scripts Python ne fonctionnent pas toujours, il faut les lancer avec un script bash; :red:`les scripts bash doivent se trouver dans ~~domoticz/scripts`
+
+   |image1323|
+
+   le script bash (remplacer la version de python si nécessaire):
+
+   .. code block::
+
+      #! /bin/sh
+
+      cd /opt/domoticz/scripts/python/
+      /usr/bin/python3.9  $1.py  $2  $3  $4 >> /home/michel/onoff.log 2>&1 &
+
+   |image1324|      
+
 21.3 Zwave
 ^^^^^^^^^^
 **Installation de zwave-js-ui**
@@ -1632,4 +1649,7 @@ Le script DzVent:
    :width: 647px
 .. |image1319| image:: ../img/image1319.webp
    :width: 489px
-
+.. |image1323| image:: ../img/image1323.webp
+   :width: 494px
+.. |image1324| image:: ../img/image1324.webp
+   :width: 650px
