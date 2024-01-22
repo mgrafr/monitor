@@ -19,6 +19,7 @@ require("fonctions.php");
 <script src="js/big-Slide.js"></script> 
 <script src="bootstrap/bootstrap-switch-button.js?2"></script>
 <script src="js/mes_js.js"></script>
+<?php if (file_exists("custom/js/JS.js")){echo '<script src="custom/js/JS.js"></script>'; }?>
 
 
 <script>
@@ -44,6 +45,7 @@ var scoul="";var scoull="";
 if (command=="On" || command=="on")  {scoul=scoul_on;scoull=c_l_on;}
 else if (command.substring(0, 9)=="Set Level")  {scoull=scoull=c_l_on;}
 else if  (command=="Off"  || command=="off" ) {scoul=scoul_off;scoull=c_l_off;}
+else if  (command=="group on" ) {scoul=scoul_on;scoull=c_l_on;}		
 else return;	
 document.getElementById(sid1).style = scoul;
 if (sid2) {document.getElementById(sid2).style = scoul;}
@@ -242,19 +244,19 @@ $.ajax({
 			document.getElementById('erreur').innerHTML ="";
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {pos=val.Data;
 				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
-				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}
+				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}																  
 				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {vol=1;pos="On";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && (pos=="On")){
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos=="On")){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
-						if (val.class_lamp) { maj_mqtt("",val.coullamp_ON,1,0);if (vol==1){
+						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop") && ((pos=="Off") || (pos=="Closed"))){//console.log(val.ID1,val.idm);
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && ((pos=="Off") || (pos=="Closed"))){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
-						if (val.class_lamp) { maj_mqtt("",val.coullamp_OFF,1,0);}}	
+						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 		}}
@@ -289,13 +291,13 @@ qq=new Array();
 rr=new Array();	
   function switchOnOff_setpoint(idm,idx,command,pass="0"){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
-	  if (command=="On" ||  command.substring(0, 9)=="Set Level") {
+	  if (command=="On" || command=="group on" || command.substring(0, 9)=="Set Level") {
 	  var type;var level;
 	  if ((command=="On")||(command=="Off")){type=2;}
 	  else if (command.substring(0, 9)=="Set Level") {type=3;var pourcent = command.split(" ");level=pourcent[2];}
 	  else {type=1;}
 		 
-	  if (pp[idm].Data == "On") {command="Off";}
+	  if (pp[idm].Data == "On" && pp[idm].maj_js != "on" ) {command="Off";}
      								  
 	    $.ajax({
     	type: "GET",
