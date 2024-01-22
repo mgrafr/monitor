@@ -16,6 +16,8 @@ Version  en developpement 2.2.8
 
 - test GSM de l'alarme: bouton PUSH ON remplacé par bouton de sonnette
 
+- correction bug sur mise a jour lampes plan intérieur
+
 Version 2.2.7
 ~~~~~~~~~~~~~
 
