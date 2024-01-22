@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 echo "-----------------------------------------------------------------"
-echo "-----------Mise à jour vers la version 2.2.7.6-------------------"
+echo "-----------Mise à jour vers la version 2.2.7.7-------------------"
 echo "-----------------------------------------------------------------"
 sed -i '201d' /var//www/html/monitor/admin/config.php
 echo "//DZ_PATH :ex dz docker /opt/domoticz/config/, ex autre dz /opt/domoticz, home/USER/domoticz" >> /www/admin/config.php
@@ -18,16 +18,22 @@ wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/serveur_sse.p
 mv serveur_sse.php include/serveur_sse.php
 rm fonctions.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/habridge.php
-mv habridge.php /inculde/habridge.php
+mv habridge.php include/habridge.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/ajout_dev_bd.php
-mv ajout_dev_bd.php /inculde/ajout_dev_bd.php
+mv ajout_dev_bd.php include/ajout_dev_bd.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/fonctions_1.php
-mv fonctions_1.php /inculde/fonctions_1.php
+mv fonctions_1.php include/fonctions_1.php
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete.php
+mv entete.php include/entete.php
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/images/fenetre.svg
+mv fenetre.svg images/fenetre.svg
+wget https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css
+mv mes_css.css css/mes_css.css
 #
 rm .version
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/.version
 echo "-----------------------------------------------------------------------"
-echo "-----------Mises à jour vers la version 2.2.7.6 terminées--------------"
+echo "-----------Mises à jour vers la version 2.2.7.7 terminées--------------"
 echo "-----------------------------------------------------------------------"
 echo "---------------ATTENTION-----------------------------------------------"
 echo "-----------   Supprimer la table sse dans MySQL          --------------"
