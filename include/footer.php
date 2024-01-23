@@ -246,8 +246,8 @@ $.ajax({
 				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
 				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}																  
 				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {vol=1;pos="On";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos=="On")){
-						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON;}
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos=="On" || pos=="Open")){
+						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; console.log('loggg'+val.coul_ON)}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");
