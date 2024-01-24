@@ -18,6 +18,8 @@ Version  en developpement 2.2.8
 
 - correction bug sur mise a jour lampes plan intérieur
 
+- mise à jour de jpgraph vers la version 4.4.2
+
 Version 2.2.7
 ~~~~~~~~~~~~~
 
