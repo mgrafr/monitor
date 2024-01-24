@@ -90,10 +90,10 @@ Version 2.1.0
 
 19.3 Version de JPGRAPH
 ^^^^^^^^^^^^^^^
-*La version actuelle est 4.4.1*
+*La version actuelle est 4.4.2*
 
 Recommendé:
 
--  >= PHP 5.2.0 ou >
+-  >= PHP 5.2.0 
 
 -  PHP Builtin GD library
