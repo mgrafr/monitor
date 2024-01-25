@@ -860,7 +860,7 @@ Comme pour les variables, la table fournie une correspondance entre les disposit
 La table permet en plus de gérer et modifier si besoin l’affichage de tous les dispositifs sans intervenir sur la page HTML ; :red:`pour les switches, les scripts pour commander l’allumage ou l’extinction sont générés automatiquement à partir des données de cette table`.
 
 - num : ne sert qu’à éditer plus facilement la BD
-	voir le paragraphe précédent :ref:`0.3.1.2 Table dispositifs pour les variables`
+	voir le paragraphe précédent  :ref:`0.3.1.2 Table dispositifs pour les variables`
  
 - Nom appareil : nom usuel
 
