@@ -870,8 +870,10 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - ID : entity_id de Home Assistant
 
-- idm : idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
+- idm : idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
+
+- Actif : 1 = actif, 0 = inactif ; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF: enregistrer 2 fois le dispositif, 1 actif, l'autre inactif.
 
 - Matériel : pour les types zwave ou Zigbee
 
