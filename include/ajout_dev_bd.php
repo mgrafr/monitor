@@ -9,15 +9,19 @@
 <input type="radio" name="type" value="control">control
 <input type="radio" name="type"  value="onoff">onoff
 <input type="radio" name="type"  value="data">data
-<input type="radio" name="type"  value="data">temp	
+<input type="radio" name="type"  value="temp">temp	
 <input type="radio" name="type"  value="onoff+stop">onoff+stop
-<input type="radio" name="type"  value="popup">popup</p><p style="margin-left: 10px;font-size:14px"> <strong>Domoticz</strong><br>
+<input type="radio" name="type"  value="on">on
+<input type="radio" name="type"  value="popup">popup<br>INFO:<em style="color:green">onoff:interrupteur</em>,<em style="color:darkblue">onoff+stop:volet</em>,<em style="color:purple">on:sonnette</em></p>
+<p style="margin-left: 10px;font-size:14px"> <strong>Domoticz</strong><br>
 <input type="hidden" id="command"  value="2">
 <span style="margin-left: 10px;">Idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value=""  ><span style="color:green">&nbsp;&nbsp;* </span></p>
  <p style="margin-left: 10px;font-size:14px"> <strong>Home Assistant</strong><br>
 <span style="margin-left: 10px;">entity_id : <input type="text" style="width:200px;margin-left:10px;" id="ha_id" value=""  ><span style="color:green">&nbsp;&nbsp;* </span></p>	<p style="margin-left: 10px;font-size:14px"> <strong>Domoticz &Home Assistant </strong>(nom ou object_id)<br> <span style="margin-left: 10px;">Nom_objet  :<input type="text" style="width:200px;margin-left: 3px;" id="name" value=""></p>
 	<p style="margin-left: 10px;font-size:14px"> <strong>Monitor</strong><br>
-  <span style="margin-left: 10px;">Idm  : <input type="text" style="width:50px;" id="idm" value="" ><span style="color:red">&nbsp;&nbsp;* </span></span><br>
+  <span style="margin-left: 10px;">Idm  : <input type="text" style="width:50px;" id="idm" value="" ><span style="color:red">&nbsp;&nbsp;* </span></span>
+  <input type="radio" name="actif" value="1" checked><span style="color:red">Actif </span>:&nbsp;&nbsp;<input type="radio" name="actif"  value="0"><span style="color:black">Inactif</span> : 
+   <input type="radio" name="actif" value="2" ><span style="color:blue">Dz </span>:&nbsp;&nbsp;<input type="radio" name="actif"  value="3"><span style="color:green">Ha</span><br>
   <span style="margin-left: 10px;">Id1 html : <input type="text" style="width:120px;" id="var1" value="#"><span style="color:red">&nbsp;&nbsp;* </span></span><br>
    <span style="margin-left: 10px;">Id2 html :<input type="text" style="width:120px;margin-left: 10px;" id="var2" value="" ><br>
     <span style="margin-left: 10px;">Couleur Id1-Id2 : ON = <input type="text" style="width:200px;margin-left: 10px;" id="coula" value="" ><br>
@@ -32,7 +36,7 @@
 <span style="margin-left: 5px;">, off: <input type="text" style="width:100px;margin-left:9px;" id="could"  value="" ><br>
 <span style="margin-left: 10px;">mot de passe : <input type="radio" name="mot_pass" value="alarme"> alarme & admin
 <input type="radio" name="mot_pass" value="commandes"> commandes
-<input type="radio" name="mot_pass" value"non"> NON<br>
+<input type="radio" name="mot_pass" value"non" checked> NON<br>
 	<span style="margin-left: 10px;">f() : <input type="number" style="width:30px;margin-left:9px;" id="fx"  value="0" ><em style="color:red">&nbsp;&nbsp;max 2 car </em>, car max :
 	<input type="text" style="width:30px;margin-left:9px;" id="car"  value="99"><br><br><br>
 <button type="button" onclick="adby(2)" style="width:50px;height:30px">Envoi</button>  

@@ -750,6 +750,7 @@ switch (choix) {
     idx: $("#idx").val(),
 	ID : $("#ha_id").val(),
     idm: $("#idm").val(),
+	actif : $("input[name=actif]:checked").val(),
 	var1: $("#var1").val(),
 	var2: $("#var2").val(),
 	coula : $("#coula").val(),
@@ -763,7 +764,7 @@ switch (choix) {
 	var5 : $("#fx").val(),
 	var6 : $("#car").val(),		
     };
-break;	
+	break;	
 case 3: 
 	var fenetre="amb";
 	var formData = {
