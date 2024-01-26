@@ -345,14 +345,14 @@ function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;
 if ($pass=="0") {$auth=0;}
 if ((($pass==NOM_PASS_CM)&&($_SESSION['passwordc']==PWDCOMMAND))&&($_SESSION['timec']>time())) {$auth=1;}
 if (($pass==NOM_PASS_AL)&&($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$auth=2;}
-if ($auth<3){
+if ($auth<3){$json2="json.htm?type=command&param=";
 	// $type=1 .....
-	if ($type==1){$json1='udevice&idx='.$idx.'&nvalue='.$valeur.'&svalue='.$type;}
+	if ($type==1){$json1='udevice&idx='.$idx.'&nvalue=group%20on&svalue=2';}
 	// $type=2 .....ON/OFF
 	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
 	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
-	$json=URLDOMOTIC.'json.htm?type=command&param='.$json1;
+	$json=URLDOMOTIC.$json2.$json1;
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
@@ -1177,19 +1177,19 @@ switch ($choix) {
 	case "1":
 $nom=$data['nom'];$nom_objet=$data['name'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
 //
-$sql="INSERT INTO dispositifs (nom_appareil, nom_objet, idx, ID, id1_html, id2_html) VALUES ('$nom', '$nom_objet', '$idx', '$ID', '$id_img', '$id_txt');";
+$sql="INSERT INTO dispositifs (nom_appareil, nom_objet, idx, ID, maj_js, id1_html, id2_html) VALUES ('$nom', '$nom_objet', '$idx', '$ID', 'variable', '$id_img', '$id_txt');";
 $result = $conn->query($sql);
 echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
 if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
 $retour=maj_query($conn,$sql);
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';}			
 break;
-    case "2":
+    case "2":if (strlen($data['nom'])>25) {echo "valeur nom appareil trop grande<br>pour modifier dans la table:<br><br>ALTER TABLE `dispositifs` CHANGE `nom_appareil` `nom_appareil` VARCHAR(30)";return;}
 		if ($data["variable"]=="alarme"){$data["variable"]="pwdalarm";}
 		elseif ($data["variable"]=="commandes"){$data["variable"]="pwdcommand";}
 		else $data["variable"]="0";
-$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["table"]."' , '".$data["ls"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
-echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>type : '.$data["type"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
+$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `Actif`,`materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["actif"]."','".$data["table"]."' , '".$data["ls"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
+echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>type : '.$data["type"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>Actif : '.$data["actif"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
 //
 maj_query($conn,$sql);			
 break;
