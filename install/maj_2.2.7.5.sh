@@ -30,3 +30,8 @@ wget https://raw.githubusercontent.com/mgrafr/monitor/main/.version
 echo "-----------------------------------------------------------------------"
 echo "-----------Mises à jour vers la version 2.2.7.8 terminées--------------"
 echo "-----------------------------------------------------------------------"
+echo "-----------------------------------------------------------------------"
+echo "----------jpgraph peut être mis à jour vers la version 4.4.2-----------"
+echo "       pour cela téléccharger le référentiel                           "
+echo "     extraire le dossier jgraph pour remplacer la version 4.4.1        "
+echo "-----------------------------------------------------------------------"

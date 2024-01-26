@@ -9,8 +9,8 @@ echo "define('DZ_PATH', '/opt/domoticz/config/');" >> /www/admin/config.php
 echo "?>" >> /www/admin/config.php
 rm fonctions.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php
-rm include/footer.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
+mv footer.php include/footer.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/api/f_pour_api.php
 mv f_pour_api.php api/f_pour_api.php
 sed -i "s/ pour SSE node/  pour SSE php \ndefine('SSE_SLEEP', 'php');\n\/\/pour SSE node/g" /var/www/html/monitor/admin/config.php
@@ -43,4 +43,9 @@ echo "---------------ATTENTION-----------------------------------------------"
 echo "-----------   Supprimer la table sse dans MySQL          --------------"
 echo "-----------   Importer la nouvelle table sse             --------------"
 echo "  https://raw.githubusercontent.com/mgrafr/monitor/main/bd_sql/sse.sql "
+echo "-----------------------------------------------------------------------"
+echo "-----------------------------------------------------------------------"
+echo "----------jpgraph peut être mis à jour vers la version 4.4.2-----------"
+echo "       pour cela téléccharger le référentiel                           "
+echo "     extraire le dossier jgraph pour remplacer la version 4.4.1        "
 echo "-----------------------------------------------------------------------"
