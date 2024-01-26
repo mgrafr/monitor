@@ -873,7 +873,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - idm : idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
 
-- Actif : 1 = actif, 0 = inactif ; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF: enregistrer 2 fois le dispositif, 1 actif, l'autre inactif.
+- Actif : 1 = actif, 0 = inactif , Domoticz=2, Home Assistant=3 ; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 2 ou 3.
+
+ |image1325| |image1326|
+
+ |image1327|
 
 - Matériel : pour les types zwave ou Zigbee
 
@@ -1537,3 +1541,9 @@ function mc(variable,id)
    :width: 600px 
 .. |image1303| image:: ../img/image1303.webp
    :width: 222px 
+.. |image1325| image:: ../img/image1325.webp
+   :width: 300px 
+.. |image1326| image:: ../img/image1326.webp
+   :width: 300px 
+.. |image1327| image:: ../img/image1327.webp
+   :width: 300px 
