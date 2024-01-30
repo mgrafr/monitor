@@ -864,7 +864,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
  
 - Nom appareil : nom usuel
 
-- nom_objet : nom pour Domoticz ou objet_id pour Home Assistant
+- nom_objet : nom pour Domoticz ou objet_id (friendly_name) pour Home Assistant
 
 - idx : celui de Domoticz
 
