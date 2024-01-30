@@ -8,7 +8,7 @@ mv ajout_dev_bd.php include/ajout_dev_bd.php
 rm fonctions.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
-mv footer.php inculde/footer.php
+mv footer.php include/footer.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.bash
 mv update.bash install/update.bash
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/images/fenetre.svg
