@@ -198,10 +198,12 @@ $L=URLDOMOTIC1."api/states";$post="";$mode=1;
 $json_string=file_http_curl($L,$mode,$post);$n=0;$ha=array();//echo $json_string;
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
-	if(isset($xxx->{'attributes'}->{'nodeName'}))  $ha[$n]['Name']=$xxx;
-	else if(isset($xxx->{'attributes'}->{'friendly_name'}))  $ha[$n]['Name']=$xxx;
+	if(isset($xxx->{'Name'}))  $ha[$n]['Name']="";
+	if(isset($xxx->{'attributes'}))  $ha[$n]['attributes']=$xxx;
+	//if(isset($xxx->{'attributes'}->{'nodeName'}))  $ha[$n]['Name']=$xxx;
+	if(isset($xxx->{'attributes'}->{'friendly_name'}))  $ha[$n]['Name']=$xxx->{'attributes'}->{'friendly_name'};
 	else $ha[$n]['Name']="inconnu";
-	$ha[$n]['Description'] = "HA";$ha[$n]['idx'] =  $xxx->{'entity_id'};
+	$ha[$n]['Description'] = "HA";//$ha[$n]['idx'] =  $xxx->{'entity_id'};
 	$ha[$n]['ID'] = $xxx->{'entity_id'};
 	$ha[$n]['Data'] = $xxx->{'state'};//modif 1
 	$ha[$n]['LastUpdate']  = substr($xxx->{'last_updated'},0, 19);  
@@ -261,36 +263,64 @@ return json_encode($data);}
 //-------POUR DZ- et HA -----------------------------------
 // pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
 //
-function devices_plan($plan){
+function devices_plan($plan){$choix_tri_sql=0;
 $n=0;$al_bat=0;$p=0;	
-	if (IPDOMOTIC!=""){		
+	if (IPDOMOTIC!=""){	$choix_tri_sql=$choix_tri_sql+1;	
 $L=URLDOMOTIC."json.htm?type=command&param=getdevices&plan=".$plan;
 $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
 $parsed_json = $parsed_json['result'];
 $p=count($parsed_json);		
 	}
-if (IPDOMOTIC1!=""){$result=devices_zone(0);$n=0;//
-	while (isset($result[$n])==true){//echo $json_string1[$n];
+if (IPDOMOTIC1!=""){$choix_tri_sql=$choix_tri_sql+2;
+	$result=devices_zone(0);$n=0;//
+	while (isset($result[$n])==true){//echo "nom=".$result[$n]['Name']."<br>";
 	
 	$parsed_json[$p]=$result[$n];
 		
 	$n++;$p++;}
-	}
+	//return;
+  }
 $n=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 $description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
-$serveur = isset($lect_device["serveur"]) ? $lect_device["serveur"] : 'DZ';		
-if ($lect_device["serveur"]=="HA") {$t=$lect_device["ID"];}
-else {$t=$lect_device["idx"];}	//echo $t;
-$periph=array();
-$periph=sql_plan($t);
+if (!isset($lect_device["serveur"])) {if ($n<$p) $lect_device["serveur"] = "DZ";}
+if ($lect_device["serveur"] == "DZ") {
+$lect_device["attributes"]["SubType"] = $lect_device["SubType"];
+$lect_device["attributes"]["SwitchType"] = $lect_device["SwitchType"] ;			
+$lect_device["attributes"]["SwitchTypeVal"] = $lect_device["SwitchTypeVal"];
+$lect_device["attributes"]["Timers"] = $lect_device["Timers"];			
+$lect_device["attributes"]["Type"] = $lect_device["Type"];	 }
+$periph=array();$periph['idm']=1000;
+	//$t1=$lect_device["Name"];
+	if ($choix_tri_sql==1) {$s=$lect_device["idx"];$t1="1";}
+	if ($choix_tri_sql==2) {$s=$lect_device["ID"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="2";}
+	if ($choix_tri_sql==3) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}
+//echo "xxxx=...".$s."...<br>";$choix_Actif="0";
+$periph=sql_plan($t1,$s);
+	if ($periph=="null") {$choix_Actif="0";}
+	else {$choix_Actif=$periph['Actif'];}
 //if ($periph) echo json_encode($periph);	
 $bat="";
-//if ($periph['idm']=="") {$periph['idm']="";}
-if (CHOIXID=='idm') {$t=$periph['idm'];}
-if ($serveur=='HA') {$lect_device["idx"]="";if ($periph['idm']=="" );{$t=999;}}	
+if ($periph['idm']) {$t=$periph['idm'];} 
+else {$t=999; $choix_Actif="0";}
+if ($t=="") {$t=888;$choix_Actif="0";}
+//if ($lect_device["serveur"]=='HA') {
+////		if (!$periph['idm'] || $periph['idm']=="" ){$choix_Actif="0";}
+//			}	
+// verif ds choix Actif------------------------------------------
+if ($choix_Actif=="1"){
+	if ($periph["ID"]!="" && $periph["idx"]!="") {$choix_Actif="0";$data[$t] = ['warning' => "double ID idx, choisir DZ ou HA"];}
+	if ($periph["ID"]=="" && $lect_device["serveur"] == "HA") {$choix_Actif="0";}
+	if ($periph["idx"]=="" && $lect_device["serveur"] == "DZ") {$choix_Actif="0";}}
+if ($choix_Actif=="2" && $lect_device["serveur"] == "HA"){$choix_Actif="0";}
+if ($choix_Actif=="3" && $lect_device["serveur"] == "DZ"){$choix_Actif="0";}
+//---------------------------------------------------------------
+	switch ($choix_Actif) {
+		case "1" :
+		case "2" :
+		case "3" :	
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
 if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
@@ -298,6 +328,7 @@ if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat
 if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);}
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
+
 
 	$data[$t] = ['choixid' => CHOIXID,
 	'serveur' => $lect_device["serveur"],			 
@@ -309,6 +340,7 @@ if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}
 	'bat' => $lect_device["BatteryLevel"],
 	 'ID' => $lect_device["ID"],
 	'Data' => $lect_device["Data"],
+	'attributs' => $lect_device["attributes"],			 
 	'Name' => $lect_device["Name"],
    	'Update' => $lect_device["LastUpdate"],
 	'idm' => $periph['idm'],
@@ -323,8 +355,14 @@ if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}
 	'coullamp_ON' => $periph['coul_lamp_ON']	,
 	'coullamp_OFF' => $periph['coul_lamp_OFF']	,
 	'type_pass' => $periph['pass'],
+	'actif' => $periph['Actif'],			 
 	'alarm_bat' => $bat
 	];
+break;
+case "0" :
+break;
+default:			
+	}	
 $n=$n+1;}
 $data[0] = ['jour' => date('d'),
 'idx' => '0'];
@@ -334,7 +372,7 @@ if ($al_bat==1) $abat="batterie_moyenne";
 if ($al_bat==2) $abat="batterie_faible";
 $val_albat=val_variable(PILES[0]);
 if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
- return $data;
+return $data;
  }
 /* fonction qui permet de switcher un interrupteur dans Domoticz 
 et de modifier une température de consigne
