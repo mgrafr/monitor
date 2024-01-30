@@ -412,11 +412,13 @@ Principales fonctions contenues dans ce fichier :
 
    |image137|
 
-.. admonition:: **function devices_plan** 
+.. admonition:: **function devices_plan et function sql_plan()** 
 
    API Domoticz pour les devices : les dispositifs doivent être placés dans un plan; celui-ci peut se résumer à un rectangle ou un carré
 
    |image139|
+
+   |image1328|
 
    |image140|
 
@@ -2186,3 +2188,5 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 482px
 .. |image1222| image:: ../img/image1222.webp
    :width: 660px
+.. |image1328| image:: ../img/image1328.webp
+   :width: 700px
