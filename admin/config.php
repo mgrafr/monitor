@@ -66,7 +66,7 @@ define('DHCAMPASS', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (
     '192.168.1.114' => 'MOT PASSE'
 ));
 define('DHUSER','USER');
-//define('DHPASS','Idem4546');
+//define('DHPASS','mot_de_passe');
 // --------------------------------------------------------------------------------------------
 // choix ID pour l'affichage des infos des dispositifs
 // idx : idx de Domoticz    idm : idm de monitor (dans ce cas la table "dispositifs" 
