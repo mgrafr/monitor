@@ -10,7 +10,9 @@
 
 19.2.1 Releases
 ===============
-Version  en developpement 2.2.8
+Version  en developpement 3.0.1
+
+Version  3.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - maj_js (fonction des dispositifs) s'enrichit de "on" poussoir momentané (bouton sonnette)
 
@@ -19,6 +21,9 @@ Version  en developpement 2.2.8
 - correction bug sur mise a jour lampes plan intérieur
 
 - mise à jour de jpgraph vers la version 4.4.2
+
+- pour une utilisation combinée de Domoticz et Home Assistant la table 'idm' n'est plus facultative mais obligatoire,(ne concerne que Domoticz); une copie de la table 'idx' vers 'idm' résout rapidement le problème
+   dans la base de données idx de Domoticz et Id de Home Assistant peuvent être déclarés, il suffit d'indiquer celui des deux qui doit être actif pour monitor
 
 Version 2.2.7
 ~~~~~~~~~~~~~
