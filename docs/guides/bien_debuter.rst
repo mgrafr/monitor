@@ -500,6 +500,12 @@ Avec la console :
 
 |image51|
 
+En cas de problème avec le chemin de bash:
+
+.. code-block::
+
+   /usr/bin/bash ./update.bash
+
 0.2	La page d’accueil et connexion avec Domoticz ou HA : 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 0.2.1 page d’accueil :
