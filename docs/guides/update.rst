@@ -6,7 +6,7 @@
 
 19.2 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 2.2.7**
+**La version stable actuelle est 3.0.0**
 
 19.2.1 Releases
 ===============
