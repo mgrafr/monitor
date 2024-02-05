@@ -404,22 +404,24 @@ $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert
 });
 /*-----administration-------------------------------- */
 $(".admin1").click(function() {var choix_admin =$(this).attr('rel');//console.log(choix_admin);
-var fenetre =$(this).attr('title');
-$.ajax({ 
-                        type: 'GET', 
-                        url: 'ajax.php', 
-                        dataType: 'text', 
-						data: "app=admin&variable="+choix_admin+"&command="+fenetre,
-                        success: function(data) {$(fenetre).empty();
-						document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
-						if (data[3]=='Entrer votre mot de passe' || data[4]=='Entrer votre mot de passe' ){document.getElementById("d_btn_a").style.display = "block";
-						document.getElementById("d_btn_al").style.display = "block";}
+var fenetre =$(this).attr('title');appel_admin(choix_admin,fenetre);})
+
+function appel_admin(choix_admin,fenetre){
+	$.ajax({ 
+      type: 'GET', 
+      url: 'ajax.php', 
+      dataType: 'text', 
+	  data: "app=admin&variable="+choix_admin+"&command="+fenetre,
+      success: function(data) {$(fenetre).empty();
+		document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
+		if (data[3]=='Entrer votre mot de passe' || data[4]=='Entrer votre mot de passe' ){document.getElementById("d_btn_a").style.display = "block";
+		document.getElementById("d_btn_al").style.display = "block";}
 							},
-						error: function() { 
+	  error: function() { 
                           alert('La requête n\'a pas abouti'); 
                         } 
 }); 
-});	
+} 
 
 /*------------------------------------------------------------------------*/	
 /*graphiques---------------------------------------*/
@@ -722,7 +724,7 @@ document.getElementById("affich_content_info").innerHTML = info_admin[rel];
 	
 	
 	
-function adby(choix) {
+function adby(choix) {var formData=new Array();
 switch (choix) {
 	case 1: 
 	var fenetre="avb";
@@ -742,27 +744,28 @@ switch (choix) {
   case 2:
 	var fenetre="adb";	
 	var formData = {
-    app:  $("#app").val(),
+	app:  $("#app").val(),
 	command:  $("#command").val(),
 	nom :  $("#nom").val(),	
-	type : $("input[name=type]:checked").val(),	
-	name :  $("#name").val(),
+	maj_js : $("input[name=maj_js]:checked").val(),	
+	nom_objet :  $("#nom_objet").val(),
     idx: $("#idx").val(),
 	ID : $("#ha_id").val(),
     idm: $("#idm").val(),
 	actif : $("input[name=actif]:checked").val(),
-	var1: $("#var1").val(),
-	var2: $("#var2").val(),
+	id1_html: $("#id1_html").val(),
+	id2_html: $("#id2_html").val(),
 	coula : $("#coula").val(),
 	coulb : $("#coulb").val(),
-	table :	$("input[name=type_mat]:checked").val(),
+	type_mat :	$("input[name=type_mat]:checked").val(),
 	ls :	$("input[name=ls]:checked").val(),	
 	class : $("#class").val(),
-	var3 : $("#coulc").val(),
-	var4 : $("#could").val(),		
-	variable : $("input[name=mot_pass]:checked").val(),
-	var5 : $("#fx").val(),
-	var6 : $("#car").val(),		
+	coulc : $("#coulc").val(),
+	could : $("#could").val(),		
+	pass : $("input[name=mot_pass]:checked").val(),
+	fx : $("#fx").val(),
+	car : $("#car").val(),	
+	obs : $("#obs").val(),			
     };
 	break;	
 case 3: 
@@ -773,8 +776,42 @@ case 3:
   	nom : $("#nom").val(),	
 	command : $("#command").val(),
 	};
-     break;				
- default:
+case 4: 
+	var fenetre="adb";
+	var formData = {
+	app :  $("#app").val(),		
+ 	majidm: $("#majidm").val(),	
+  	command : $("#command1").val(),
+	};
+     break;
+case 5:
+	var fenetre="adb";	
+	var formData = {
+	app:  $("#app").val(),
+	command:  $("#command").val(),
+	nom :  $("#nom").val(),	
+	maj_js : $("#maj_js").val(),	
+	nom_objet :  $("#nom_objet").val(),
+    idx: $("#idx").val(),
+	ID : $("#ha_id").val(),
+    idm: $("#idm").val(),
+	actif : $("#actif").val(),
+	id1_html: $("#id1_html").val(),
+	id2_html: $("#id2_html").val(),
+	coula : $("#coula").val(),
+	coulb : $("#coulb").val(),
+	type_mat :	$("#type_mat").val(),
+	ls :	$("#ls").val(),	
+	class : $("#class").val(),
+	coulc : $("#coulc").val(),
+	could : $("#could").val(),		
+	pass : $("#pass").val(),
+	fx : $("#fx").val(),
+	car : $("#car").val(),	
+	obs : $("#obs").val(),			
+    };
+	break;			
+  default:
 break;	
 	}
     $.ajax({
