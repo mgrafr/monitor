@@ -11,9 +11,11 @@
 19.2.1 Releases
 ===============
 Version  en developpement 3.0.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- modification ou mise à jour des dispositifs sans utiliser PhpMyAdmin
 
 Version  3.0
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 - maj_js (fonction des dispositifs) s'enrichit de "on" poussoir momentané (bouton sonnette)
 
 - test GSM de l'alarme: bouton PUSH ON remplacé par bouton de sonnette
