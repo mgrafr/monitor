@@ -554,11 +554,19 @@ l'Idm (Id monitor)  , il est le premier dispositif : 1
 Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement avec l’appli :
 
  |image4| 	 
- 
+
+*Ajout d'un dispositif*:
+
  |image58|
  |image59| 
  
  |image60| 
+
+*Modification d'un dispositif*
+
+|image1329| 
+
+|image1330| 
 
 *Avec OpenWeather l’API fournit la température ressentie, pour l’ajouter enregistrer le dispositif et ajouter à accueil.php :*
 
@@ -1557,3 +1565,7 @@ function mc(variable,id)
    :width: 300px 
 .. |image1327| image:: ../img/image1327.webp
    :width: 300px 
+.. |image1329| image:: ../img/image1329.webp
+   :width: 414px 
+.. |image1330| image:: ../img/image1329.webp
+   :width: 403px 
