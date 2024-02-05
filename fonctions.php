@@ -1002,6 +1002,9 @@ break;
 case "18" :include ('include/ajout_dev_bd.php');//echo "ajout dispositifs effectué";
 		return;	
 break;	
+case "18a" :include ('include/reponse_dev_bd.php');//echo "ajout dispositifs effectué";
+		return;	
+break;			
 case "19" : $retour=sql_variable("",2) ;$n=0;
 		while ($retour[$n]['idx']){
 	echo "idx : <span style='color:red'>".$retour[$n]['idx']."</span>   nom :<span style='color:green'>".$retour[$n]['nom_objet']."</span>   id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>   id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span><br>";		
@@ -1223,11 +1226,11 @@ $retour=maj_query($conn,$sql);
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';}			
 break;
     case "2":if (strlen($data['nom'])>25) {echo "valeur nom appareil trop grande<br>pour modifier dans la table:<br><br>ALTER TABLE `dispositifs` CHANGE `nom_appareil` `nom_appareil` VARCHAR(30)";return;}
-		if ($data["variable"]=="alarme"){$data["variable"]="pwdalarm";}
-		elseif ($data["variable"]=="commandes"){$data["variable"]="pwdcommand";}
-		else $data["variable"]="0";
-$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `Actif`,`materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['name']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["actif"]."','".$data["table"]."' , '".$data["ls"]."' , '".$data["type"]."', '".$data["var1"]."', '".$data["var6"]."', '".$data["var5"]."', '".$data["var2"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["classe"]."', '".$data["var3"]."', '".$data["var4"]."', '".$data["variable"]."', '');";		
-echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>type : '.$data["type"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["name"].'<br>idm : '.$data["idm"].'<br>Actif : '.$data["actif"].'<br>ID : '.$data["ID"].'<br>ID1 : '.$data["var1"].'<br>ID2 : '.$data["var2"].'<br>coulON : '.$data["coula"].'<br>coulOFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class : '.$data["classe"].'<br>coul_lamp_ON : '.$data["var3"].'<br>coul_lamp_OFF : '.$data["var4"].'<br>mot_passe : '.$data["variable"].'<br>fx: '.$data["var5"].'<br>nb caractéres : '.$data["var6"].'<br><br>';
+		if ($data["pass"]=="alarme"){$data["pass"]="pwdalarm";}
+		elseif ($data["pass"]=="commandes"){$data["pass"]="pwdcommand";}
+		else $data["pass"]="0";
+$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `Actif`,`materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['nom_objet']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["actif"]."','".$data["type_mat"]."' , '".$data["ls"]."' , '".$data["maj_js"]."', '".$data["id1_html"]."', '".$data["car"]."', '".$data["fx"]."', '".$data["id2_html"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["class"]."', '".$data["coulc"]."', '".$data["could"]."', '".$data["pass"]."', '".$data["obs"]."');";		
+		echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>maj_js : '.$data["maj_js"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["nom_objet"].'<br>idm : '.$data["idm"].'<br>Actif : '.$data["actif"].'<br>ID : '.$data["ID"].'<br>ID1_html : '.$data["id1_html"].'<br>ID2_html : '.$data["id2_html"].'<br>coul_id1_id2_ON : '.$data["coula"].'<br>coul_id1_id2_OFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class lampe : '.$data["class"].'<br>coul_lamp_ON : '.$data["coulc"].'<br>coul_lamp_OFF : '.$data["could"].'<br>mot_passe : '.$data["pass"].'<br>fx: '.$data["fx"].'<br>nb caractéres : '.$data["car"].'<br>Observations : '.$data["obs"].'<br><br>';
 //
 maj_query($conn,$sql);			
 break;
@@ -1252,7 +1255,38 @@ case "6":
 $sql="UPDATE `sse` SET `id`='".$data['id']."',`state`='".$data['state']."' WHERE num=0;";
 $retour=maj_query($conn,$sql,"4");		
 break;
-		
+case "7": 
+		$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idm = '".$data['majidm']."' ;";
+$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
+$row = $result->fetch_assoc();
+$data=$row;		
+echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:100px;margin-left:10px;" id="maj_js" value="'.$data["maj_js"].'"><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>materiel : <input type="text" style="width:100px;margin-left:10px;" id="type_mat" value="'.$data["materiel"].'"><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:200px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
+//return $row; 
+break;
+case "8": 
+$sql="UPDATE ".DISPOSITIFS." SET 
+nom_appareil = '".$data['nom']."',
+nom_objet = '".$data['nom_objet']."',
+idx = '".$data['idx']."',
+ID= '".$data['ID'] ."',
+Actif = '".$data['actif'] ."',
+materiel = '".$data['type_mat'] ."',
+ls= '".$data['ls'] ."',
+maj_js = '".$data['maj_js'] ."',
+id1_html = '".$data['id1_html']."',
+car_max_id1 = '".$data['car_max_id1'] ."',
+`F()` = ".intval($data['fx']) .",
+id2_html= '".$data['id2_html'] ."',
+coul_id1_id2_ON = '".$data['coula'] ."',
+coul_id1_id2_OFF= '".$data['coulb'] ."',
+class_lamp = '".$data['class_lamp']."',
+coul_lamp_ON = '".$data['coulc'] ."',
+coul_lamp_OFF = '".$data['could'] ."',
+pass = '".$data['pass'] ."',
+observations = '".$data['obs'] ."' WHERE idm = '".$data['idm']."' ; ";	
+//echo $sql;return;
+		$retour=maj_query($conn,$sql,"8");		
+break;		
 }		
 
 $conn->close();		
@@ -1266,6 +1300,7 @@ if ($ind=="4" || $ind==6) {return;}
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
+if ($ind=="8" ) {return;}	
 $sql="UPDATE dispositifs set idx=trim(idx);";$res = $conn->query($sql);
 $sql="UPDATE dispositifs set idm=trim(idm);";$res = $conn->query($sql);
 $sql="UPDATE dispositifs set ID=trim(ID);";$res = $conn->query($sql);	
