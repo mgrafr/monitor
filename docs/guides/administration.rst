@@ -494,7 +494,7 @@ Récupérer le numéro d'enregistrement de la variable:
 
 |image1334|
 
-
+|image1335|
 
 
 
@@ -761,3 +761,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 493px
 .. |image1334| image:: ../img/image1334.webp
    :width: 427px
+.. |image1335| image:: ../img/image1335.webp
+   :width: 399px
