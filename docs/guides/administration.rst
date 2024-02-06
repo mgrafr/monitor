@@ -489,6 +489,13 @@ Récupérer le numéro d'enregistrement de la variable:
 
 |image1333|
 
+14.8.3 maj d'une variable dans monitor
+======================================
+
+|image1334|
+
+
+
 
 
 14.9 Explications concernant l’affichage des infos de la page admin.php
@@ -744,11 +751,13 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 537px
 .. |image877| image:: ../media/image877.webp
    :width: 425px
-.. |image1280| image:: ../media/image1280.webp
+.. |image1280| image:: ../img/image1280.webp
    :width: 700px
-.. |image1331| image:: ../media/image1331.webp
+.. |image1331| image:: ../img/image1331.webp
    :width: 404px
-.. |image1332| image:: ../media/image1332.webp
+.. |image1332| image:: ../img/image1332.webp
    :width: 413px
-.. |image1333| image:: ../media/image1333.webp
+.. |image1333| image:: ../img/image1333.webp
    :width: 493px
+.. |image1334| image:: ../img/image1334.webp
+   :width: 427px
