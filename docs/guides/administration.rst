@@ -436,8 +436,8 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 
    |image853|
 
-14.8 Explications concernant la mise à jour automatique SQL des variables,  dispositifs & messages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14.8 Explications concernant les créations et les maj automatiques SQL des variables,  dispositifs & messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **admin.php**
 
 :darkblue:`rel=17 et rel=18`
@@ -456,8 +456,8 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 
 |image858|
 
-14.8.1 Affichage dans monitor
-=============================
+14.8.1 création d'un dispositif dans monitor
+============================================
 
 |image859|
 
@@ -474,6 +474,15 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 **Confirmation de l'enregistrement des données**
 
 |image863|
+
+14.8.2 Mise à jour d'un dispositif dans monitor
+===============================================
+le choix s'effectue sur la même fenêtre que pour une création; les données de la base de données concernant le dispositif peuvent être mises à jour .
+
+|image1331|
+
+|image1332|
+
 
 14.9 Explications concernant l’affichage des infos de la page admin.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -730,5 +739,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 425px
 .. |image1280| image:: ../media/image1280.webp
    :width: 700px
-
-
+.. |image1331| image:: ../media/image1331.webp
+   :width: 404px
+.. |image1332| image:: ../media/image1332.webp
+   :width: 413px
