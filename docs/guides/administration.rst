@@ -483,6 +483,13 @@ le choix s'effectue sur la même fenêtre que pour une création; les données d
 
 |image1332|
 
+14.8.3 création d'une variable dans monitor
+===========================================
+Récupérer le numéro d'enregistrement de la variable:
+
+|image1333|
+
+
 
 14.9 Explications concernant l’affichage des infos de la page admin.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -743,3 +750,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 404px
 .. |image1332| image:: ../media/image1332.webp
    :width: 413px
+.. |image1333| image:: ../media/image1333.webp
+   :width: 493px
