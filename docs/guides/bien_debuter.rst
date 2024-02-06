@@ -558,6 +558,7 @@ Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement
 *Ajout d'un dispositif*:
 
  |image58|
+
  |image59| 
  
  |image60| 
@@ -1567,5 +1568,5 @@ function mc(variable,id)
    :width: 300px 
 .. |image1329| image:: ../img/image1329.webp
    :width: 414px 
-.. |image1330| image:: ../img/image1329.webp
+.. |image1330| image:: ../img/image1330.webp
    :width: 403px 
