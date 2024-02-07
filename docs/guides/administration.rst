@@ -485,17 +485,23 @@ le choix s'effectue sur la même fenêtre que pour une création; les données d
 
 14.8.3 création d'une variable dans monitor
 ===========================================
-Récupérer le numéro d'enregistrement de la variable:
+*et d'une correspondance texte->image (table text_image)*
 
 |image1334|
 
-14.8.3 maj d'une variable dans monitor
+14.8.4 maj d'une variable dans monitor
 ======================================
+Récupérer le numéro d'enregistrement de la variable:
 
 |image1333|
 
 |image1335|
 
+14.8.5 maj de la table text_image
+=================================
+|image1336|
+
+|image1337|
 
 
 14.9 Explications concernant l’affichage des infos de la page admin.php
@@ -763,3 +769,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 427px
 .. |image1335| image:: ../img/image1335.webp
    :width: 399px
+.. |image1336| image:: ../img/image1336.webp
+   :width: 425px
+.. |image1337| image:: ../img/image1337.webp
+   :width: 425px
