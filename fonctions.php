@@ -165,7 +165,9 @@ function sql_variable($t,$ind){
 	if ($row_cnt==0) {return  null;}
 	if 	($ind==2) {$n=0;
 		while ($ligne = $result->fetch_assoc()) {
+			$retour[$n]['num'] = $ligne['num'];
 			$retour[$n]['idx'] = $ligne['idx'];
+			$retour[$n]['ID'] = $ligne['ID'];
 			$retour[$n]['nom_objet'] = $ligne['nom_objet'];
 			$retour[$n]['id_img'] = $ligne['id1_html'];
 			$retour[$n]['id_txt'] = $ligne['id2_html'];
@@ -1006,10 +1008,9 @@ case "18a" :include ('include/reponse_dev_bd.php');//echo "ajout dispositifs eff
 		return;	
 break;			
 case "19" : $retour=sql_variable("",2) ;$n=0;
-		while ($retour[$n]['idx']){
-	echo "idx : <span style='color:red'>".$retour[$n]['idx']."</span>   nom :<span style='color:green'>".$retour[$n]['nom_objet']."</span>   id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>   id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span><br>";		
-		echo "--------------------------------<br>";
-			$n++;}
+		while ($retour[$n]['num']){
+	echo "<p style='font-size:12px;'>num : <span style='color:red'>".$retour[$n]['num']."</span>&nbsp;idx : <span style='color:blue'>".$retour[$n]['idx']."</span>&nbsp;ID : <span style='color:green'>".$retour[$n]['ID']."</span>&nbsp;nom :<span style='color:purple'>".$retour[$n]['nom_objet']."</span>&nbsp;id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>&nbsp;id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span></p>";		
+					$n++;}
 		return;	
 break;
 case "20" :$ip=IPRPI;$type=1;include ('include/ssh_scp.php');  echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "reboot Raspberry";
@@ -1216,14 +1217,14 @@ if ($conn -> connect_errno) {
   exit();}	
 switch ($choix) {
 	case "1":
-$nom=$data['nom'];$nom_objet=$data['name'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
+$nom=$data['nom'];$nom_objet=$data['nom_objet'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
 //
-$sql="INSERT INTO dispositifs (nom_appareil, nom_objet, idx, ID, maj_js, id1_html, id2_html) VALUES ('$nom', '$nom_objet', '$idx', '$ID', 'variable', '$id_img', '$id_txt');";
+$sql="INSERT INTO dispositifs (nom_objet, idx, ID, maj_js, id1_html, id2_html) VALUES ('$nom_objet', '$idx', '$ID', 'variable', '$id_img', '$id_txt');";
 $result = $conn->query($sql);
-echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom dz : '.$data["name"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
-if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '');";
+echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom_objet : '.$data["nom_objet"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
+if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '".$data['icone_bd']."');";
 $retour=maj_query($conn,$sql);
-echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br><br>';}			
+echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br>icone : '.$data["image_bd"].'<br>';}			
 break;
     case "2":if (strlen($data['nom'])>25) {echo "valeur nom appareil trop grande<br>pour modifier dans la table:<br><br>ALTER TABLE `dispositifs` CHANGE `nom_appareil` `nom_appareil` VARCHAR(30)";return;}
 		if ($data["pass"]=="alarme"){$data["pass"]="pwdalarm";}
@@ -1260,7 +1261,7 @@ case "7":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;		
-echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:100px;margin-left:10px;" id="maj_js" value="'.$data["maj_js"].'"><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>materiel : <input type="text" style="width:100px;margin-left:10px;" id="type_mat" value="'.$data["materiel"].'"><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:200px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
+echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif=1,inactif=0,dz=2,ha=3</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>materiel : <input type="text" style="width:100px;margin-left:10px;" id="type_mat" value="'.$data["materiel"].'"><em style="font-size:12px;margin-left:4px;">zwave, zigbee, autres</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
 //return $row; 
 break;
 case "8": 
@@ -1286,7 +1287,40 @@ pass = '".$data['pass'] ."',
 observations = '".$data['obs'] ."' WHERE idm = '".$data['idm']."' ; ";	
 //echo $sql;return;
 		$retour=maj_query($conn,$sql,"8");		
-break;		
+break;
+case "9": 
+		$sql="SELECT * FROM `".DISPOSITIFS."` WHERE num = '".$data['num']."' ;";
+$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
+$row = $result->fetch_assoc();
+$data=$row;	
+echo '<form3><input type="hidden"id="app" value="var_bd"><input type="hidden"id="num" value="'.$data["num"].'"><input type="hidden" id="command3"  value="10"><em>valeurs enregistrées</em><br>'.'idx : <input type="text" style="width:30px;margin-left:10px;" id="nom" value="'.$data["idx"].'"><br>ID : <input type="text" style="width:200px;margin-left:5px;" id="ha_id" value="'.$data["ID"].'"><br>id="nom_objet" <input type="text" style="width:250px;margin-left:5px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>id_image : <input type="text" style="width:150px;margin-left:10px;" id="id_img" value="'.$data["id1_html"].'"><br>id_texte   : <input type="text" style="width:150px;margin-left:10px;" id="id_txt" value="'.$data["id2_html"].'"><br><br><button type="button" onclick="adby(7)" style="width:50px;height:30px">Envoi</button> <form3>';			
+break;
+case "10": 
+$sql="UPDATE ".DISPOSITIFS." SET 
+nom_objet = '".$data['nom_objet']."',
+idx = '".$data['idx']."',
+ID= '".$data['ha_id'] ."',
+id1_html = '".$data['id_img']."',
+id2_html= '".$data['id_txt'] ."' WHERE num = '".$data['num']."' ; ";	
+//echo $sql;return;
+		$retour=maj_query($conn,$sql,"8");		
+break;	
+case "11": 
+		$sql="SELECT * FROM `text_image` WHERE texte = '".$data['texte']."' ;";
+$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
+$row = $result->fetch_assoc();
+$data=$row;	
+echo '<form4><input type="hidden" id="app" value="var_bd"><input type="hidden" id="command5"  value="12"><em>valeurs enregistrées</em><br>num : <input type="text" style="width:30px;margin-left:10px;" id="num" value="'.$data["num"].'"><br>texte : <input type="text" style="width:300px;margin-left:10px;" id="texte" value="'.$data["texte"].'"><br>image : <input type="text" style="width:300px;margin-left:5px;" id="image" value="'.$data["image"].'"><br>Icone : <input type="text" style="width:300px;margin-left:5px;" id="icone" value="'.$data["icone"].'"><br><br><br><button type="button" onclick="adby(9)" style="width:50px;height:30px">Envoi</button> </form4>';			
+break;
+case "12": 
+$sql="UPDATE text_image SET 
+texte = '".$data['texte']."',
+image = '".$data['image']."',
+icone= '".$data['icone'] ."'  WHERE num = '".$data['num']."' ; ";	
+//echo $sql;return;
+		$retour=maj_query($conn,$sql,"8");		
+break;			
+		
 }		
 
 $conn->close();		
