@@ -487,12 +487,12 @@ le choix s'effectue sur la même fenêtre que pour une création; les données d
 ===========================================
 Récupérer le numéro d'enregistrement de la variable:
 
-|image1333|
+|image1334|
 
 14.8.3 maj d'une variable dans monitor
 ======================================
 
-|image1334|
+|image1333|
 
 |image1335|
 
