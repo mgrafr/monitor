@@ -354,14 +354,7 @@ height: auto;}
     to   { fill: #00FFFF; }
 }*/
 /*alarme admin*/
-#avb{display: block;
-    background-color: #F5F5DC;
-    height: 450px;
-    width: 400px;
-    position: relative;
-    top: -10px;
-    left: 5px;
-}
+#avb{display: block;background-color: #F5F5DC;height: 450px;width: 400px;position: relative;top: -10px;left: 5px;}
 #reponse1 {background-color: beige;position:relative;top:-1000px;display:none;left:0;height:auto;width:480px}
 #reponse2 {background-color: beige;position: relative;top: -900px;left: 5px;display:block;line-height: 0.2;height:500px;width: 430px;}
 #info_admin{margin-left:10px;display:block;}
