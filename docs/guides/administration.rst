@@ -499,10 +499,15 @@ Récupérer le numéro d'enregistrement de la variable:
 
 14.8.5 maj de la table text_image
 =================================
+le texte contenu dans la variable est transformé en image
+
 |image1336|
 
 |image1337|
 
+.. note:: l'icone peut contenir tout type d'images 
+
+   |image1338|
 
 14.9 Explications concernant l’affichage des infos de la page admin.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -773,3 +778,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 425px
 .. |image1337| image:: ../img/image1337.webp
    :width: 425px
+.. |image1338| image:: ../img/image1338.webp
+   :width: 337px
