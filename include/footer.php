@@ -726,22 +726,22 @@ document.getElementById("affich_content_info").innerHTML = info_admin[rel];
 	
 function adby(choix) {var formData=new Array();
 switch (choix) {
-	case 1: 
+	case 1: $("#advf").css("display", "none");$("#adv_f").css("display", "none");
 	var fenetre="avb";
 	var formData = {
 	app :  $("#app").val(),		
  	idx : $("#idx").val(), 
-  	name : $("#name").val(),
-	nom : $("#nom").val(),	
+  	nom_objet : $("#nom_objet").val(),
 	ID : $("#ha_id").val(),	
 	id_img : $("#id_img").val(),
 	id_txt : $("#id_txt").val(),
 	texte_bd : $("#texte_bd").val(),
 	image_bd : $("#image_bd").val(),
+	icone_bd : $("#icone_bd").val(),	
 	 command : $("#command").val(),
 	};
      break;			
-  case 2:
+  case 2:$("#adbf").css("display", "none");
 	var fenetre="adb";	
 	var formData = {
 	app:  $("#app").val(),
@@ -776,7 +776,7 @@ case 3:
   	nom : $("#nom").val(),	
 	command : $("#command").val(),
 	};
-case 4: 
+case 4: $("#bouton_maj").css("display", "none");
 	var fenetre="adb";
 	var formData = {
 	app :  $("#app").val(),		
@@ -810,7 +810,49 @@ case 5:
 	car : $("#car").val(),	
 	obs : $("#obs").val(),			
     };
-	break;			
+	break;
+	case 6: $("#bouton1_maj").css("display", "none");
+	$("#adv_f").css("display", "none");	
+	var fenetre="avb";
+	var formData = {
+	app :  $("#app").val(),		
+ 	num: $("#num").val(),	
+  	command : $("#command2").val(),
+	};
+     break;	
+	case 7: 
+	var fenetre="avb";
+	var formData = {
+	app :  $("#app").val(),
+	num : $("#num").val(), 	
+ 	idx : $("#idx").val(), 
+  	nom_objet : $("#nom_objet").val(),
+	ID : $("#ha_id").val(),	
+	id_img : $("#id_img").val(),
+	id_txt : $("#id_txt").val(),
+	command : $("#command3").val(),
+	};
+     break;	
+	case 8: $("#bouton2_maj").css("display", "none");
+	$("#advf").css("display", "none");	
+	var fenetre="avb";
+	var formData = {
+	app :  $("#app").val(),		
+ 	texte: $("#texte").val(),	
+  	command : $("#command4").val(),
+	};
+     break;	
+	case 9: 
+	var fenetre="avb";
+	var formData = {
+	app : $("#app").val(),
+	num : $("#num").val(), 	
+ 	texte : $("#texte").val(), 
+  	image : $("#image").val(),	
+	icone : $("#icone").val(),
+	command : $("#command5").val(),
+	};
+     break;		
   default:
 break;	
 	}

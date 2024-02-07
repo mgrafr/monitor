@@ -1,10 +1,11 @@
 
-<div id="adbf" style="line-height: normal;font-size: 14px;"><form><p style="width:350px;background-color: aquamarine; margin-left: 10px;"><strong>Si mise à jour, idm: :</strong><input type="text" style="width:40px;margin-left:10px;" id="majidm" value=""  ><input type="hidden" id="command1"  value="7"><button type="button" onclick="adby(4)" style="width:50px;margin-left:10px;height:30px">Envoi</button></p></form></div>
+<div id="adbf" style="line-height: normal;font-size: 14px;"><form><p style="width:350px;background-color: aquamarine; margin-left: 10px;"><strong>Si mise à jour, idm: :</strong><input type="text" style="width:40px;margin-left:10px;" id="majidm" value=""  ><input type="hidden" id="command1"  value="7"><button id="bouton_maj" type="button" onclick="adby(4)" style="width:50px;margin-left:10px;height:30px">Envoi</button></p></form></div>
 <div id="adb" style="line-height: normal;font-size: 14px;"><form>
 	<p><span style="margin-left: 10px;"><strong>Nom de l' Appareil :</strong> </span><input type="text" style="width:200px;margin-left:10px;" id="nom" value=""  ><br><span style="margin-left: 10px;"><em>ou fiendly_name</em></span><br><span style="margin-left: 10px;color:red">*</span>champ requis&nbsp;&nbsp;<span style="color:green">*</span>choisir 1 seul des 2 champs</p>	
 <p style="margin-left: 10px;font-size:14px"> <em>type de mise à jour JS</em><span style="color:red">&nbsp;&nbsp;* </span><br>
 <input type="hidden"id="app" value="dev_bd">
 <input type="radio" name="maj_js" value="control">control
+<input type="radio" name="maj_js" value="control">etat
 <input type="radio" name="maj_js"  value="onoff">onoff
 <input type="radio" name="maj_js"  value="data">data
 <input type="radio" name="maj_js"  value="temp">temp	
