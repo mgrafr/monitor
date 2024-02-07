@@ -349,9 +349,13 @@ height: auto;}
   40%   {opacity:0; }
   100% { opacity:1; }
 }
+/*@keyframes change {
+    from { fill: red ;}
+    to   { fill: #00FFFF; }
+}*/
 /*alarme admin*/
 #avb{display: block;
-    background-color: #dfdfa1;
+    background-color: #F5F5DC;
     height: 450px;
     width: 400px;
     position: relative;
@@ -359,7 +363,7 @@ height: auto;}
     left: 5px;
 }
 #reponse1 {background-color: beige;position:relative;top:-1000px;display:none;left:0;height:auto;width:480px}
-#reponse2 {background-color: beige;position: relative;top: -900px;left: 5px;display:block;line-height: 0.2;height:500px;width: 410px;}
+#reponse2 {background-color: beige;position: relative;top: -900px;left: 5px;display:block;line-height: 0.2;height:500px;width: 430px;}
 #info_admin{margin-left:10px;display:block;}
 #d_btn_a , #d_btn_al{display:block;position: absolute;left: 50px;background-color: #4d4d4d;color:white;
 border-color: #e0e3e6;border-radius: 0.55rem}
@@ -498,6 +502,7 @@ img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9
 .zminder{margin-left: 80px;}
 #alarme_nuit{position:absolute;top:815px;
 left: 170px;width: 40px;}
+/*#gsm{animation: change 3s step-end both;}*/
 /*popup volet roulant */
 
 #slider {
