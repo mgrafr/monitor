@@ -10,8 +10,6 @@ Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/m
 
 5.1 Les interrupteurs virtuels, les variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-5.1.1 Pour utilisation avec Domoticz
-====================================
 **les interrupteurs virtuels**
 
 Les boutons poussoir marche/arrêt pour les commandes :
@@ -245,7 +243,7 @@ exemple pour le test GSM:
      action:
      - service: shell_command.set_aldz
 
-.. note:: shell_commande se trouve dans configuration.yaml
+.. note:: shell_command se trouve dans configuration.yaml
 
 5.1.3 explications concernant MODECT
 ====================================
