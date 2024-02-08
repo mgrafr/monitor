@@ -213,6 +213,39 @@ Voir les pages web :
 
 5.1.2 Pour utilisation avec Home Assistant
 ==========================================
+les interrupeurs virtuels (input_boolean) sont crées sous yaml:
+
+.. code-block::
+
+   input_boolean:
+     mes_alarme_abs:
+       name: mise en service alarm abs
+       icon: mdi:alarm-light
+   input_boolean:
+     mes_alarme_nuit:
+       name: mise en service alarm nuit
+       icon: mdi:gesture-tap-hold
+   input_boolean:
+     mes_al_nuit_auto:
+       name: mise en service al nuit auto
+       icon: mdi:alarm-light
+
+.... des input_boolean aussi pour:  m/a sirène, m/a mode detect des caméras, activation/désactivation de la sirène, etc.. 
+
+les poussois pour le test GSM, reset des variables sont crées avec l'automation:
+
+exemple pour le test GSM:
+
+.. code-block::
+
+   - id: test_gsm
+     trigger:
+     - platform: state
+       entity_id: input_button.poussoir_gsm
+     action:
+     - service: shell_command.set_aldz
+
+.. note:: shell_commande se trouve dans configuration.yaml
 
 5.1.3 explications concernant MODECT
 ====================================
@@ -232,7 +265,7 @@ Dans les autres cas Modect peut être activé manuellement.
 
    **Il faut avoir installé Zoneminder**
 
-5.1.1.1 Jeton ZM
+5.1.3.1 Jeton ZM
 """"""""""""""""
 Dans fonctions.php :
 
@@ -242,7 +275,7 @@ Dans fonctions.php :
 
 *Le format du fichier est json pour une exploitation facile avec Domoticz*
 
-5.1.1.2 le script lua
+5.1.3.2 le script lua
 """""""""""""""""""""
 
 *dans :darkblue:`alarme_intrusion.lua`*
