@@ -8,8 +8,10 @@ Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du scri
 
 Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua
 
-5.1 Dans Domoticz, les interrupteurs virtuels, les variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.1 Les interrupteurs virtuels, les variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.1.1 Pour utilisation avec Domoticz
+====================================
 **les interrupteurs virtuels**
 
 Les boutons poussoir marche/arrêt pour les commandes :
@@ -37,6 +39,9 @@ Dans ce tuto : lampe_salon (lampe commandée par le 433MHz avec une interface So
 Pour le test sirène : un interrupteur « PUSH »
 
 |image410|
+
+5.1.1 Pour utilisation avec Domoticz
+====================================
 
 On ajoute les dispositifs au plan ; 
 
@@ -206,7 +211,10 @@ Voir les pages web :
 
    |image434|
 
-5.1.1 explications concernant MODECT
+5.1.2 Pour utilisation avec Home Assistant
+==========================================
+
+5.1.3 explications concernant MODECT
 ====================================
 Si l’alarme absence est activée les caméras autorisées passent en mode MODECT automatiquement.
 
