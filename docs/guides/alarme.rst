@@ -8,8 +8,8 @@ Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du scri
 
 Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua
 
-5.1 Les interrupteurs virtuels, les variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5.1 Les interrupteurs réels, virtuels, les variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **les interrupteurs virtuels**
 
 Les boutons poussoir marche/arrêt pour les commandes :
@@ -20,13 +20,17 @@ Les boutons poussoir marche/arrêt pour les commandes :
 
 - m/a al_nuit_auto
 
-- m/a sirène
-
 - m/a mode detect des caméras
+
+- poussoir off après 1s pour tester la sirène(création d'un scénario avec la sirène)
 
 - poussoir de reset des valeurs de Domoticz,
 
 - activation/désactivation de la sirène : permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF
+
+**un nterrupteur réel**
+
+- celui inclus dans la sirène
 
 **Option** : allumages de lampes :
 
@@ -225,6 +229,9 @@ les interrupeurs virtuels (input_boolean) sont crées sous yaml:
      mes_al_nuit_auto:
        name: mise en service al nuit auto
        icon: mdi:alarm-light
+     activation_sirene_al:
+       name: activation-sirene
+       icon: mdi:music-off
 
 |image1339|
 
