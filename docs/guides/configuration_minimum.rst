@@ -434,12 +434,12 @@ Principales fonctions contenues dans ce fichier :
    
    si la tablette reste allumée en permanence,la date ne sera pas mise à jour en absence de rafraichissement
    
-   On crée un idx=0 qui n'existe pas , aussi avec cet idx la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php) 
+   On crée un maj_date=0 avec lequel la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php) 
 
    .. code-block::
 
       $data[0] = ['jour' => date('d'),
-                  'idx' => '0'];
+                  'maj_date' => '0'];
 
    **Maj état des piles des dispositifs**
 
