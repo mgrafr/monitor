@@ -229,7 +229,7 @@ $.ajax({
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
-		if (val.idx=='0'){
+		if (val.maj_date=='0'){
 			if (val.jour!=num_jour){aff_date();
 			<?php if (DECOUVERTE==false){ echo "document.getElementById('tspan7024').innerHTML=jour;" ;}?>
 			mc(1,"#meteo_concept");}}
@@ -242,19 +242,19 @@ $.ajax({
 			else 
 				if (myEle) {myEle.style = "fill-opacity: 0";}
 			document.getElementById('erreur').innerHTML ="";
-			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {pos=val.Data;
+			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {if (val.Data) {pos_m=val.Data.toLowerCase();}
 				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
 				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}																  
-				if ((val.maj_js=="onoff+stop") && ((pos.substring(0, 11)=="Set Level: ") || (pos=="Open"))) {vol=1;pos="On";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos=="On" || pos=="Open")){
-						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; console.log('loggg'+val.coul_ON)}
+				if ((val.maj_js=="onoff+stop") && ((pos_m.substring(0, 11)=="set level: ") || (pos_m=="open"))) {vol=1;pos_m="on";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
+						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; console.log('loggg'+val.ID1+" "+val.coul_ON);}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && ((pos=="Off") || (pos=="Closed"))){//console.log(val.ID1,val.idm);
-						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
+			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
+						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;console.log('loggg'+val.ID1+" "+val.coul_OFF);}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
@@ -327,22 +327,28 @@ function turnonoff(idm,idx,command,pass="0"){//console.log(idm);
     	dataType: "json",
     	url: "ajax.php",
     	data: "app=turn&device="+idx+"&command="+command+"&name="+pass,
-    	success: function(response){qq=response;
+    	success: function(response){qq=response[0];console.log(response.resultat);
 			
-				if (qq.resultat != "OK" ){
-					alert("erreur");}
-				else { $.ajax({
+				if (response.resultat == "OK" ){
+					
+				$.ajax({
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
     	data: "app=turn&device="+idx+"&command=etat&name="+pass,
     	success: function(response){qq=response;
-		}});}
+		var level=0;command=qq.state;console.log("azerty="+idx+" "+command+" "+level);
+	    maj_mqtt(idx,command,0,level);									
+		}
+				
+				});
+		
+				}
+		else {alert("erreur");}							
   }
       });
-	var level=0;command=qq.state;
-	maj_mqtt(idx,command,0,level)
-	//maj_switch(idx,command,level,idm);
+	
+	
 	}	
 	
 	
@@ -741,7 +747,7 @@ switch (choix) {
 	 command : $("#command").val(),
 	};
      break;			
-  case 2:$("#adbf").css("display", "none");
+  case 2:$("#adbf").css("display", "none");$("#bouton_maj").css("display", "none");
 	var fenetre="adb";	
 	var formData = {
 	app:  $("#app").val(),
