@@ -219,14 +219,14 @@ les interrupeurs virtuels (input_boolean) sont crées sous yaml:
      mes_alarme_abs:
        name: mise en service alarm abs
        icon: mdi:alarm-light
-   input_boolean:
      mes_alarme_nuit:
        name: mise en service alarm nuit
        icon: mdi:gesture-tap-hold
-   input_boolean:
      mes_al_nuit_auto:
        name: mise en service al nuit auto
        icon: mdi:alarm-light
+
+|image1339|
 
 .... des input_boolean aussi pour:  m/a sirène, m/a mode detect des caméras, activation/désactivation de la sirène, etc.. 
 
@@ -907,6 +907,8 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 705px 
 .. |image1306| image:: ../img/image1306.webp
    :width: 700px 
+.. |image1339| image:: ../img/image1339.webp
+   :width: 290px 
 
 
 
