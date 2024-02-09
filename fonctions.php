@@ -185,8 +185,11 @@ function sql_variable($t,$ind){
 	if 	($ind==5){ $i=0;
 		while ($ligne = $result->fetch_assoc()) {$retour[$i]=new stdClass;
 			if ($ligne['idm']!="") {
-				if ($ligne['idx']!="") {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
-				else {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}}																 
+				if ($ligne['idx']!="" && $ligne['ID']=="") {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
+				elseif ($ligne['ID']!="" && $ligne['idx']=="") {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}
+				elseif ($ligne['ID']!="" && $ligne['idx']!="" && $ligne['Actif']==2) {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
+				elseif ($ligne['ID']!="" && $ligne['idx']!="" && $ligne['Actif']==3) {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}
+				else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}}																 
 			$i++;}
 	return $retour;}	
 	
@@ -367,7 +370,7 @@ default:
 	}	
 $n=$n+1;}
 $data[0] = ['jour' => date('d'),
-'idx' => '0'];
+'maj_date' => '0'];
 $abat="0";
 if ($al_bat==0) $abat="batterie_forte";
 if ($al_bat==1) $abat="batterie_moyenne";
