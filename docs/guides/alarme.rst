@@ -296,6 +296,16 @@ Partie du script concernant :darkblue:`le timer` ,
    })
    print(r.text)
 
+**Pour la mise à jour de monitor:**
+
+.. code-block::
+
+   send_sse(item.id,item.state);
+
+|image1340|
+
+|image1341|
+
 Voir les pages web :
 
 - http://domo-site.fr/accueil/dossiers/10 
@@ -1009,7 +1019,10 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 700px 
 .. |image1339| image:: ../img/image1339.webp
    :width: 290px 
-
+.. |image1340| image:: ../img/image1340.webp
+   :width:598px 
+.. |image1341| image:: ../img/image1341.webp
+   :width:357px 
 
 
 
