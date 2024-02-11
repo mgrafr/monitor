@@ -135,7 +135,7 @@ Partie du script concernant  :darkblue:`l'alarme`,
 	    --domoticz.variables('variable_sp').set('1')
 	--
 	-- alarme absence - 
-      if (item.name =='pir ar cuisine_motion' or item.name=='pir_entree_motion' or item.name=='porte_entree' or item.name=='porte ar cuisine' or item.name=='porte_fenetre') then
+        if (item.name =='pir ar cuisine_motion' or item.name=='pir_entree_motion' or item.name=='porte_entree' or item.name=='porte ar cuisine' or item.name=='porte_fenetre') then
         if (domoticz.variables('ma-alarme').value == "1") then 
             for k, v in ipairs(A1) do 
                 if (item.name == A1[k][1] and item.name ~= nil) then
@@ -146,14 +146,14 @@ Partie du script concernant  :darkblue:`l'alarme`,
         	    end
             end
         end
---      -- alarme nuit
+        -- alarme nuit
         if (domoticz.variables('ma-alarme').value == "2") then 
             for k, v in ipairs(A2) do 
                if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then 
         	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
         	   end
             end
---            --allumer lampes
+         --allumer lampes
             if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
             end    
         --mise en service sirene
