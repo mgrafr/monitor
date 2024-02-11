@@ -4,9 +4,9 @@ Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du scri
 
 |image408|
 
-*Pour entrer le mot de passe : redirection vers la page administration* 
+*Pour toutes les fonctions, entrer le mot de passe* 
 
-Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua
+Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3_0_2.lua
 
 5.1 Les interrupteurs réels, virtuels, les variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,33 +14,48 @@ Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/m
 
 Les boutons poussoir marche/arrêt pour les commandes :
 
-- m/a alarme de nuit
+- m/a alarme de nuit : :darkblue:`alarme_nuit`
 
-- m/a alarme absence
+- m/a alarme absence : :darkblue:`alarme_absence`
 
-- m/a al_nuit_auto
+|image409|
 
-- m/a mode detect des caméras
+- m/a al_nuit_auto :   :darkblue:`al_nuit_auto`
 
-- poussoir off après 1s pour tester la sirène(création d'un scénario avec la sirène)
+- m/a mode detect des caméras : :green:`Modect`
 
-- poussoir de reset des valeurs de Domoticz,
+- poussoir « PUSH » après 2s pour tester la sirène : :green:`test_sirene` (création d'un scénario avec la sirène)
 
-- activation/désactivation de la sirène : permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF
+|image410|
+
+|image1342|
+
+- poussoir de reset des valeurs en cas d'alarme : :green:`raz_dz`
+
+- activation/désactivation de la sirène : :darkblue:`activation-sirene` , permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF
 
 **un nterrupteur réel**
 
 - celui inclus dans la sirène
 
-**Option** : allumages de lampes :
+**Options** : 
+
+*allumages de lampes* :
 
 Dans ce tuto : lampe_salon (lampe commandée par le 433MHz avec une interface Sonoff modifié, voir le site domo-site.fr
 
-|image409|
+*test du modem GSM* , envoi d'un sms avec un bouton de sonnette
 
-Pour le test sirène : un interrupteur « PUSH »
+|image1343|
 
-|image410|
+.. note::
+
+   les images ci-dessus sont des copies d'écran de Domoticz , pour Home assistant copie d'écran de la sirene et des interrupteurs virtuels (fichier configuration.yaml)
+
+   |image1344| |image1345|
+
+   |image1346|
+
 
 5.1.1 Pour utilisation avec Domoticz
 ====================================
@@ -1020,9 +1035,16 @@ Version 2.1.0 réécrite en DzVent avec :
 .. |image1339| image:: ../img/image1339.webp
    :width: 290px 
 .. |image1340| image:: ../img/image1340.webp
-   :width:598px 
+   :width: 598px 
 .. |image1341| image:: ../img/image1341.webp
-   :width:357px 
-
-
-
+   :width: 357px 
+.. |image1342| image:: ../img/image1342.webp
+   :width: 509px 
+.. |image1343| image:: ../img/image1343.webp
+   :width: 262px 
+.. |image1344| image:: ../img/image1344.webp
+   :width: 300px 
+.. |image1345| image:: ../img/image1345.webp
+   :width: 273px 
+.. |image1346| image:: ../img/image1346.webp
+   :width: 296px 
