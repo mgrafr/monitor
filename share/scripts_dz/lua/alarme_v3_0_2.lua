@@ -168,9 +168,9 @@ return {
             --domoticz.devices('Test_GSM').switchOff()
         end 
         -- test sirene
-        if (item.name == 'Test_tsirene') then print("test_sirene")
+        if (item.name == 'test_sirene') then print("test_sirene")
         end    
-          print("sse="..item.name);send_sse(item.id,item.state);  
+          --print("sse="..item.name);send_sse(item.id,item.state);  
      else print("alarme nuit :"..time)
      end
  --******************************timer********************************************    
