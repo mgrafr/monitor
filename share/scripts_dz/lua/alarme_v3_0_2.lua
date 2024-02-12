@@ -27,7 +27,15 @@ print(txt)
 end
 --function send_sse(txt,txt1)
 -- existe dans notifications_devices
---
+-- trouver un élément dans une table
+local function find_string_in(tbl, str)
+    for _, element in ipairs(tbl) do
+        if (element == str) then
+            return true
+        end
+    end
+    return false
+end
 -- chargement fichier contenant les variable de configuration
 package.path = package.path..";www/modules_lua/?.lua"
 require 'string_modect'
@@ -36,14 +44,21 @@ require 'connect'
 -- listes des dispositifs
 -- les capteurs d'ouverture et de présence DEVICE CHANGED
 -- {capteur,etat,modif variable,contenu variable,notification,alarme}   alarme 0=absence et nuit 1=absence seulement 
-local a1={'porte_entree','On','porte-ouverte','porte_ouverte_entree'};
-local a2={'porte ar cuisine','On','porte-ouverte','porte_ouverte_cuisine'};
-local a3={'porte_fenetre','On',':porte-ouverte','fenetre_ouverte_sejour'};
-local a4={'pir_entree_motion','On','intrusion','intrusion_entree'};
-local a5={'pir ar cuisine_motion','On','intrusion','intrusion_cuisine'};
-local A1={a1,a2,a3,a4,a5};local A2={a1,a2,a3};
---
-
+local a1={'porte_entree','Open','porte-ouverte','porte_ouverte_entree'};
+local a2={'porte ar cuisine','Open','porte-ouverte','porte_ouverte_cuisine'};
+local a3={'porte_fenetre','Open',':porte-ouverte','fenetre_ouverte_sejour'};
+local a4={'fenetre_bureau','Open',':fenetre-ouverte','fenetre_ouverte_bureau'};
+local a5={'fenetre_salon','Open',':fenetre-ouverte','fenetre_ouverte_salon'};
+local a6={'fenetre_ch_amis','Open',':fenetre-ouverte','fenetre_ouverte_ch_amis'};
+local a7={'fenetre_ch_1','Open',':fenetre-ouverte','fenetre_ouverte_chambre1'};
+local a8={'porte_veranda_sud','Open',':porte-ouverte','porte_ouverte_veranda-s'};
+local a9={'pir_entree_motion','Open','intrusion','intrusion_entree'};
+local a10={'pir ar cuisine_motion','Open','intrusion','intrusion_cuisine'};
+local A1={a1,a2,a3,a4,a5,a6,a7,a8,a9,a10};local A2={a1,a2,a3,a4,a5,a6,a7,a8};
+--liste des dispositifs réels de détection
+local reels = {'pir ar cuisine_motion','pir_entree_motion','porte_entree','porte ar cuisine','porte_fenetre','fenetre_bureau','fenetre_salon','fenetre_ch_amis','fenetre_ch_1','porte_veranda_sud'}
+--liste des dispositifs virtuels
+local virtuels = {'alarme_nuit','alarme_absence','Modect','raz_dz','al_nuit_auto','activation-sirene','Test_GSM','test_sirene'}
 --
 local time = string.sub(os.date("%X"), 1, 5)
 sirene=0;lampe=0
@@ -57,6 +72,11 @@ return {
 		    'porte_entree',
 		    'porte ar cuisine',
 		    'porte_fenetre',
+		    'fenetre_bureau',
+		    'fenetre_salon',
+		    'fenetre_ch_amis',
+		    'fenetre_ch_1',
+		    'porte_veranda_sud',
 		    'alarme_nuit',
 		    'alarme_absence',
 		    'Modect',
@@ -73,11 +93,13 @@ return {
 		},
 	
 			execute = function(domoticz, item, triggerInfo)
-	    --domoticz.log('Alarme ' .. item .. ' was changed', domoticz.LOG_INFO)
+	    domoticz.log('Alarme '..item.name..' was changed', domoticz.LOG_INFO)
 	    --domoticz.variables('variable_sp').set('1')
  --*********************variables***************************************	
 	-- alarme absence - 
-      if (item.name =='pir ar cuisine_motion' or item.name=='pir_entree_motion' or item.name=='porte_entree' or item.name=='porte ar cuisine' or item.name=='porte_fenetre') then
+    if (find_string_in(reels, item.name)==true) then
+      --if (item.name =='pir ar cuisine_motion' or item.name=='pir_entree_motion' or item.name=='porte_entree' or item.name=='porte ar cuisine' or item.name=='porte_fenetre' or item.name=='fenetre_bureau' or item.name=='fenetre_salon' or item.name=='fenetre_ch_amis' 
+      --    or item.name=='fenetre_ch_1' or item.name=='porte_veranda_sud') then
         if (domoticz.variables('ma-alarme').value == "1") then 
             for k, v in ipairs(A1) do 
                 if (item.name == A1[k][1] and item.name ~= nil) then
@@ -89,7 +111,7 @@ return {
             end
         end
 --      -- alarme nuit
-        if (domoticz.variables('ma-alarme').value == "2") then 
+        if (domoticz.variables('ma-alarme').value == "2") then print("if:"..item.name)
             for k, v in ipairs(A2) do 
                if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then 
         	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
@@ -118,8 +140,8 @@ return {
         
       --*******************devices virtuels************************************        
         
-      elseif (item.name =='alarme_nuit' or item.name=='alarme_absence' or item.name=='Modect' or item.name=='raz_dz' or item.name=='al_nuit_auto' or item.name=='activation-sirene' or item.name=='Test_GSM') then 
-        
+      --elseif (item.name =='alarme_nuit' or item.name=='alarme_absence' or item.name=='Modect' or item.name=='raz_dz' or item.name=='al_nuit_auto' or item.name=='activation-sirene' or item.name=='Test_GSM') then 
+    elseif (find_string_in(virtuels, item.name)==true) then print("elseif:"..item.name)
         -- alarme nuit_activation
         if (item.name == 'alarme_nuit' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then 
         domoticz.variables('ma-alarme').set("2"); txt='alarmeùnuitùactivee';obj='alarme_nuit_activee';
@@ -148,33 +170,32 @@ return {
 	    elseif (item.name == 'Modect' and  item.state=='Off' and  domoticz.variables('ma-alarme').value=="0") then
 	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
         end 
-       
         -- raz variables de notification intrusion et porte ouverte
         if (item.name == 'raz_dz' and item.state=='On') then domoticz.devices('raz_dz').switchOff();
         domoticz.variables('intrusion').set("0");domoticz.variables('porte-ouverte').set("0");
         end
         -- alarme auto
-            if (item.name == 'al_nuit_auto' and  item.state=='On') then txt='alarme_nuit_auto_activee';alerte_gsm(txt); domoticz.variables('alarme').set("alarme_auto");
-            elseif (item.name == 'al_nuit_auto' and  item.state=='Off') then txt='alarmeùnuitùautoùdesactivee';alerte_gsm(txt);domoticz.variables('alarme').set("0");
-            end
+        if (item.name == 'al_nuit_auto' and  item.state=='On') then txt='alarme_nuit_auto_activee';alerte_gsm(txt); domoticz.variables('alarme').set("alarme_auto");
+        elseif (item.name == 'al_nuit_auto' and  item.state=='Off') then txt='alarmeùnuitùautoùdesactivee';alerte_gsm(txt);domoticz.variables('alarme').set("0");
+        end
          -- activation sirène
-            if (item.name == 'activation-sirene' and  item.state=='On') then domoticz.variables('activation-sir-txt').set("désactiver");
-            else domoticz.variables('activation-sir-txt').set("activer");
-            end 
+        if (item.name == 'activation-sirene' and  item.state=='On') then print("activ_siren");domoticz.variables('activation-sir-txt').set("desactiver");
+        elseif (item.name == 'activation-sirene' and  item.state=='Off') then domoticz.variables('activation-sir-txt').set("activer");
+        end 
         --
-            if (item.name == 'Test_GSM') then print("test_gsm")
+        if (item.name == 'Test_GSM') then print("test_gsm")
             txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt);
             obj='Test GSM OK';domoticz.email('Alarme',obj,adresse_mail) 
             --domoticz.devices('Test_GSM').switchOff()
-        end 
         -- test sirene
-        if (item.name == 'test_sirene') then print("test_sirene")
+        elseif (item.name == 'test_sirene') then print("test_sirene")
         end    
-          --print("sse="..item.name);send_sse(item.id,item.state);  
-     else print("alarme nuit :"..time)
-     end
+    print("alarme nuit :"..time)
+    print("sse="..item.name);
+    send_sse(item.id,item.state);  
+    end
  --******************************timer********************************************    
-        if (time=='15:45') then
+        if (time=='23:00') then
             if (domoticz.devices('al_nuit_auto').state == "On" and domoticz.devices('alarme_nuit').state=="Off")  then  domoticz.devices('alarme_nuit').switchOn()
                 print('al_nuit=ON');-- domoticz.variables('variable_sp').set('1')
             end
