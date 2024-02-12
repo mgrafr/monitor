@@ -923,9 +923,9 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
 
-- F() N° case(1à99) de la fonction « pour_data() » , fichier fonctions.php
-	:red:`-1` : indique qu'un lien existe avec une variable à mettre à jour en temps réel.
-         concerne des textes de notifications comme pour l'alarme "activer ou désactiver"
+- F() N° case(1à99) de la fonction « pour_data() » , fichier :darkblue:`fonctions.php` 
+	
+      . :red:`-1` : indique qu'un lien existe avec une variable à mettre à jour en temps réel; concerne des textes de notification comme pour l'alarme "activer ou désactiver"
 
 |image1348|
 
