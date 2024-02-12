@@ -923,7 +923,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
 
-- F() N° case de la fonction « pour_data() » , fichier fonctions.php
+- F() N° case(1à99) de la fonction « pour_data() » , fichier fonctions.php
+	:red:`-1` : indique qu'un lien existe avec une variable à mettre à jour en temps réel.
+         concerne des textes de notifications comme pour l'alarme "activer ou désactiver"
+
+|image1348|
 
 - class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes
 
@@ -1570,3 +1574,5 @@ function mc(variable,id)
    :width: 414px 
 .. |image1330| image:: ../img/image1330.webp
    :width: 403px 
+.. |image1348| image:: ../img/image1348.webp
+   :width: 298px 
