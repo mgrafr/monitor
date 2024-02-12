@@ -38,10 +38,12 @@ return {
 	on = {
 		devices = {
 			'Ping_pi4',
-			'Test_GSM',
 			'lampe_terrasse',
 			'lampe_jardin',
-			'Chauffe-serviettes'}
+			'Chauffe-serviettes',
+			'lampe_bureau',
+			'lampe_entree'
+	      	}
 	     },
  
  execute = function(domoticz, device)
@@ -57,13 +59,8 @@ return {
             txt='alarmeùPIùdeùnouveauùOK';obj='alarme PI de nouveau OK';alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
             end
             --
-            if (device.name == 'Test_GSM') then print("test_gsm")
-            txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt);
-            obj='Test GSM OK';domoticz.email('Alarme',obj,adresse_mail) 
-            --domoticz.devices('Test_GSM').switchOff()
-            end
+            
             ----if (device.name == 'lampe_terrasse' or  device.name=='lampe_jardin' or device.name == 'Chauffe-serviettes') then domoticz.variables('variable_sp').set("1") 
             --end
-            
         end  
     }

@@ -25,12 +25,8 @@ f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\npriority=1")
 f:close()
 print(txt)
 end
-function send_sse(txt,txt1)
-    print(txt,txt1)
-local api_mon="curl --insecure  'http://192.168.1.9/monitor/api/json.php?app=maj&id="..txt.."&state="..txt1.."' > sse.log 2>&1" 
-print(api_mon)
-os.execute(api_mon)
-end
+--function send_sse(txt,txt1)
+-- existe dans notifications_devices
 --
 -- chargement fichier contenant les variable de configuration
 package.path = package.path..";www/modules_lua/?.lua"
@@ -67,17 +63,16 @@ return {
 		    'raz_dz',
 			'al_nuit_auto',
 			'activation-sirene',
+			'Test_GSM',
 			'test_sirene'
 		    },
-		variables = { 
-		    'ma-alarme'
-		    },
-		timer = {
-             'at 23:00',
+		    timer = {
+             'at 15:45',
              'at 06:00'}
 	    
 		},
-	execute = function(domoticz, item, triggerInfo)
+	
+			execute = function(domoticz, item, triggerInfo)
 	    --domoticz.log('Alarme ' .. item .. ' was changed', domoticz.LOG_INFO)
 	    --domoticz.variables('variable_sp').set('1')
  --*********************variables***************************************	
@@ -121,7 +116,9 @@ return {
                  alerte_gsm('alarmeù'..txt)
         end
         
-      else 
+      --*******************devices virtuels************************************        
+        
+      elseif (item.name =='alarme_nuit' or item.name=='alarme_absence' or item.name=='Modect' or item.name=='raz_dz' or item.name=='al_nuit_auto' or item.name=='activation-sirene' or item.name=='Test_GSM') then 
         
         -- alarme nuit_activation
         if (item.name == 'alarme_nuit' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then 
@@ -132,10 +129,6 @@ return {
             if (domoticz.variables('alarme').value~='alarme_auto') then domoticz.variables('alarme').set("0");
             end
         end	
-        
-        
-  --*******************devices*********************************************            
-        
         -- alarme absence _activation
         if (item.name == 'alarme_absence' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then
         domoticz.variables('ma-alarme').set("1"); txt='alarmeùabsenceùactivee';obj='alarme absence activee';alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
@@ -167,11 +160,21 @@ return {
          -- activation sirène
             if (item.name == 'activation-sirene' and  item.state=='On') then domoticz.variables('activation-sir-txt').set("désactiver");
             else domoticz.variables('activation-sir-txt').set("activer");
-            end    
-     send_sse(item.id,item.state);  
+            end 
+        --
+            if (item.name == 'Test_GSM') then print("test_gsm")
+            txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt);
+            obj='Test GSM OK';domoticz.email('Alarme',obj,adresse_mail) 
+            --domoticz.devices('Test_GSM').switchOff()
+        end 
+        -- test sirene
+        if (item.name == 'Test_tsirene') then print("test_sirene")
+        end    
+          print("sse="..item.name);send_sse(item.id,item.state);  
+     else print("alarme nuit :"..time)
      end
  --******************************timer********************************************    
-        if (time=='23:00') then
+        if (time=='15:45') then
             if (domoticz.devices('al_nuit_auto').state == "On" and domoticz.devices('alarme_nuit').state=="Off")  then  domoticz.devices('alarme_nuit').switchOn()
                 print('al_nuit=ON');-- domoticz.variables('variable_sp').set('1')
             end
