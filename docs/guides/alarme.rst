@@ -119,38 +119,37 @@ Partie du script concernant  :darkblue:`l'alarme`,
 	local a4={'pir_entree_motion','On','intrusion','intrusion_entree'};
 	local a5={'pir ar cuisine_motion','On','intrusion','intrusion_cuisine'};
 	local A1={a1,a2,a3,a4,a5};local A2={a1,a2,a3};
-	--
-	local time = string.sub(os.date("%X"), 1, 5)
-	sirene=0;lampe=0
-	--
-	return {
-	on = {	devices = {
-		'pir ar cuisine_motion',
-		 'pir_entree_motion',
-		 'porte_entree',
-		 'porte ar cuisine',
-		 'porte_fenetre',
-		 'alarme_nuit',
-		 'alarme_absence',
-		 'Modect',
-		 'raz_dz',
-		 'al_nuit_auto',
-		 'activation-sirene',
-		 'test_sirene'
+   --
+   local time = string.sub(os.date("%X"), 1, 5)
+   sirene=0;lampe=0
+   --
+   return {
+	on = {
+	
+		devices = {
+		    'pir ar cuisine_motion',
+		    'pir_entree_motion',
+		    'porte_entree',
+		    'porte ar cuisine',
+		    'porte_fenetre',
+		    	'alarme_nuit',
+		    	'alarme_absence',
+		    	'Modect',
+		    	'raz_dz',
+			'al_nuit_auto',
+			'activation-sirene',
+			'Test_GSM',
+			'test_sirene'
 		    },
-		variables = { 
-		    'ma-alarme'
-		    },
-		timer = {
-             'at 23:00',
+		    timer = {
+             'at 15:45',
              'at 06:00'}
-			},
-	execute = function(domoticz, item, triggerInfo)
+		},
+		execute = function(domoticz, item, triggerInfo)
 	    --domoticz.log('Alarme ' .. item .. ' was changed', domoticz.LOG_INFO)
-	    --domoticz.variables('variable_sp').set('1')
-	--
+       --*********************variables***************************************	
 	-- alarme absence - 
-        if (item.name =='pir ar cuisine_motion' or item.name=='pir_entree_motion' or item.name=='porte_entree' or item.name=='porte ar cuisine' or item.name=='porte_fenetre') then
+      if (item.name =='pir ar cuisine_motion' or item.name=='pir_entree_motion' or item.name=='porte_entree' or item.name=='porte ar cuisine' or item.name=='porte_fenetre') then
         if (domoticz.variables('ma-alarme').value == "1") then 
             for k, v in ipairs(A1) do 
                 if (item.name == A1[k][1] and item.name ~= nil) then
@@ -158,17 +157,17 @@ Partie du script concernant  :darkblue:`l'alarme`,
         	        domoticz.variables(A1[k][3]).set(A1[k][4]);
     	            else print("erreur:"..A1[k][1])
     	            end
-        	    end
+        	end
             end
         end
-        -- alarme nuit
+      -- alarme nuit
         if (domoticz.variables('ma-alarme').value == "2") then 
             for k, v in ipairs(A2) do 
                if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then 
         	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
-        	   end
+        	end
             end
-         --allumer lampes
+-           --allumer lampes
             if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
             end    
         --mise en service sirene
@@ -236,8 +235,18 @@ Partie du script concernant :darkblue:`les options : interrupteurs on/off` ,
          -- activation sirène
             if (item.name == 'activation-sirene' and  item.state=='On') then domoticz.variables('activation-sir-txt').set("désactiver");
             else domoticz.variables('activation-sir-txt').set("activer");
-            end    
-     send_sse(item.id,item.state);  
+            end
+         --
+            if (item.name == 'Test_GSM') then print("test_gsm")
+            txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt);
+            obj='Test GSM OK';domoticz.email('Alarme',obj,adresse_mail) 
+            --domoticz.devices('Test_GSM').switchOff()
+            end 
+        -- test sirene
+        if (item.name == 'Test_tsirene') then print("test_sirene")
+        end    
+          print("sse="..item.name);send_sse(item.id,item.state);  
+     else print("alarme nuit :"..time)
      end
 
 Partie du script concernant :darkblue:`le timer` ,
