@@ -458,7 +458,7 @@
    ry="10.9825" /><a
    id="test_alarme"
    xlink:href="#alarme"
-   onclick="popup_device(xx)"
+   rel="68"
    transform="translate(0,-4.0934001)"><title
      id="title7022">alarme test</title><g
      id="test_al"
@@ -1450,9 +1450,9 @@
    inkscape:transform-center-y="15.119048" />
 	   </g></a><g
    id="g1963-5"
-   style="display:inline;fill:#ff0000;stroke-width:5.39448"
+   style="display:inline;fill:#936d0b;stroke-width:5.39448"
    transform="matrix(0.6875,0,0,0.6875,171.39386,102.80608)"><circle
-     style="fill:#ff0000;fill-opacity:1;stroke-width:1.42953"
+     style="fill:#bf9610;fill-opacity:1;stroke-width:1.42953"
      id="patha1945-7"
      cy="92"
      cx="68"
@@ -2250,7 +2250,7 @@
    style="fill:#00FFFF;opacity:1"
    id="a1979"><ellipse
      id="gsm"
-     style="fill: rgb(0,255,255);"
+     style="fill: rgba(0,0,0,.075)"
      cx="252.59492"
      cy="212.66266"
      rx="13.103371"
@@ -4379,11 +4379,11 @@
    style="font-size:8px;line-height:1.25;font-family:sans-serif"
    x="83.131561"
    y="229.21712"
-   id="act-sir-txt"><tspan
+   id="act-sir-t"><tspan
      sodipodi:role="line"
      x="83.131561"
      y="229.21712"
-     id="tspan2630">txt</tspan></text><text
+     id="act-sir-txt">txt</tspan></text><text
    xml:space="preserve"
    style="font-size:8px;line-height:1.25;font-family:sans-serif;"
    x="83.53511"

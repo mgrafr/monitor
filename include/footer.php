@@ -23,6 +23,7 @@ require("fonctions.php");
 
 
 <script>
+		
 function maj_mqtt(id_x,state,ind,level=0){console.log('state==='+state);
 if (!state) {console.log("erreur-state");return;}										  
 switch (ind) {
@@ -32,9 +33,10 @@ for (attribute in maj_dev) {
 	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];console.log('idm='+id_m);}
 }
 if (id_m==null) {out_msg= 'id_m='+id_m;return;}
-var command=state;
+		var command=state;
 pp[id_m].Data=command;console.log(pp[id_m].Data+command);
 console.log('command='+state);
+var fx=pp[id_m].fx; console.log(fx);if (fx=="lien_variable"){maj_services(0);}
 var sid1=pp[id_m].ID1;;
 var sid2=pp[id_m].ID2;
 var scoul_on=pp[id_m].coul_ON;	
@@ -67,6 +69,7 @@ if (c_lamp!="" && scoull!="") {
 	}
 return;
 }
+
 /*-------connexion au serveur SSE---------*/	
 <?php
 //if (SSE==true) echo 'SSEconnect()';?>	
@@ -86,7 +89,7 @@ var arret_mur;var arret_zoom;
 notpiles="<?php echo NOTIFICATIONS_PILES;?>";if (notpiles==""){notpiles="interieur";}	
 not_piles_reset="reset_erreur_"+notpiles;not_piles="erreur_"+notpiles;																	
 /*----------------------------------------------------*/
-$(document).ready(function(){	
+
 /*commande onoff*/	
 
 /*-----------------------------------*/
@@ -259,7 +262,8 @@ $.ajax({
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
-		}}
+				}}
+			
 			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
 			else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
 			else if (val.idx!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
@@ -630,7 +634,7 @@ setTimeout(var_sp, tempo_devices, idsp);
 
 	
 		
-});
+
 /*----------fin document-------------------------------*/
 	
 
