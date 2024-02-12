@@ -167,7 +167,7 @@ Partie du script concernant  :darkblue:`l'alarme`,
         	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
         	end
             end
--           --allumer lampes
+           --allumer lampes
             if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
             end    
         --mise en service sirene
