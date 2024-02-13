@@ -364,33 +364,45 @@ les interrupeurs virtuels (input_boolean) sont crées sous yaml:
 
 .... des input_boolean aussi pour:  m/a sirène, m/a mode detect des caméras, activation/désactivation de la sirène, etc.. 
 
-les poussois pour le test GSM, test de la sirène,  reset des variables sont crées avec l'automation:
+les poussoirs pour le test GSM, test de la sirène,  reset des variables sont des input_button:
 
 exemple pour le test GSM et test sirène:
 
 .. code-block::
 
-  - id: test_gsm_al
-  alias: Test_GSM
-  trigger:
-  - platform: state
-    entity_id: input_button.poussoir_gsm
-  action:
-  - service: shell_command.set_aldz
-    data:
-      message: test GSM
-#
-- id: test sirene al
-  alias: test_sirene
-  trigger:
-  - platform: state
-    entity_id: input_button.poussoir_test_sirene
-  action:
-  - service: switch.turn_on
-    data:
-      entity_id: switch.sirene_switch
+   input_button:
+     poussoir_test_sirene:
+       name: test_sirene
+       icon: mdi:bell
+     poussoir_gsm:
+       name: test_gsm
+       icon: mdi:bell
 
 |image1347|
+
+Les automatismes pour ces poussoirs:
+
+.. code-block::
+
+   - id: test_gsm_al
+     alias: test_gsm
+     trigger:
+     - platform: state
+       entity_id: input_button.poussoir_gsm
+     action:
+     - service: shell_command.set_aldz
+       data:
+         message: "test GSM"
+   #
+   - id: test sirene al
+     alias: test_sirene
+    trigger:
+     - platform: state
+        entity_id: input_button.poussoir_test_sirene
+     action:
+     - service: switch.turn_off
+       data:
+        entity_id: switch.sirene_switch
 
 .. note:: shell_command se trouve dans configuration.yaml
 
