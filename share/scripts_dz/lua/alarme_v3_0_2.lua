@@ -87,13 +87,14 @@ return {
 			'test_sirene'
 		    },
 		    timer = {
-             'at 15:45',
+             'at 23:00',
              'at 06:00'}
 	    
 		},
-	
-			execute = function(domoticz, item, triggerInfo)
-	    domoticz.log('Alarme '..item.name..' was changed', domoticz.LOG_INFO)
+		execute = function(domoticz, item, triggerInfo)
+	    if (item.isTimer) then print("Alarme:"..time) 
+	    else domoticz.log('Alarme '..item.name..' a changé', domoticz.LOG_INFO)
+	    end
 	    --domoticz.variables('variable_sp').set('1')
  --*********************variables***************************************	
 	-- alarme absence - 
@@ -191,7 +192,7 @@ return {
         elseif (item.name == 'test_sirene') then print("test_sirene")
         end    
     print("alarme nuit :"..time)
-    print("sse="..item.name);
+    --print("sse="..item.name);
     send_sse(item.id,item.state);  
     end
  --******************************timer********************************************    
