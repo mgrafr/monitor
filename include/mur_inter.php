@@ -32,8 +32,10 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 			
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw8" src="<?php echo $lien_img;?>images/arrosage.svg" width="60" height="auto" alt=""/></a></li>
 			
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="60" height="auto" alt=""/></a><a href="#murinter"><img id="sw20" src="<?php echo $lien_img;?>images/lampe_terrasse.svg" width="60" height="auto" alt=""/></a></li>
-<li style="margin-left:150px;margin-top:-660px"><a href="#murinter"><?php include ("seche-serviettes_svg.php");?></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="60" height="auto" alt=""/></a><a href="#murinter"><img id="sw20" src="<?php echo $lien_img;?>images/lampe_terrasse.svg" width="60" height="auto" alt=""/></a><a href="#murinter"><img id="sw21" src="<?php echo $lien_img;?>images/lampe_suspendue1.svg" width="60" height="60" alt=""/></a><a href="#murinter"><img id="sw22" src="<?php echo $lien_img;?>images/lampe_suspendue2.svg" width="60" height="60" alt=""/></a></li>
+
+<li style="margin-left:150px;margin-top:-660px"><a href="#murinter"><?php include ("seche-serviettes_svg.php");?></a></li>
+<li style="margin-left:250px;margin-top:-660px"><a href="#murinter"><img id="sw23" src="<?php echo $lien_img;?>images/vanne.svg" width="60" height="auto" alt=""/></a></li>
 <li style="margin-left:140px;margin-top:-415px"><a href="#murinter"><img id="sw10" src="<?php echo $lien_img;?>images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
 		</ul>
 </div>
@@ -41,7 +43,7 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 
 <!-- div containing the popup -->
     <div class="popup" id="popup_vr">
-    <div class="popup-content" id="VR" rel="">
+    <div class="popup-content" id="VR" rterrasseel="">
       <h6>Commande OUVERTURE-FERMETURE</h6>
       <!--<p><a onclick="MQTTconnect(mess1);">OUVRIR?></a> (ON).</p>-->
 		<p><a id="clic_vr">ouvert 0................100 fermé</a></p>  

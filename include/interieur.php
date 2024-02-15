@@ -8,6 +8,7 @@
          <?php include ("include/new_maison_svg.php");?>
 		 <div id="voltage"><?php include ("include/voltmetre_svg.php");?></div>
 		<div id="bar_pression"><?php include ("include/chaudiere_svg.php");?></div>
+		<div id="vanne_eau" ><?php include ("include/vanne_eau_svg.php");?></div>	
 		<div id="th_ext_cuis"><?php include ("include/thermometre_svg.php");?></div>	
 <div class="modal" id="camera">
   <div class="modal-dialog" style="height:auto">
