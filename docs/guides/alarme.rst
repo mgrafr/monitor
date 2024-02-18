@@ -413,6 +413,8 @@ Les automatismes pour ces poussoirs:
 
 .. note:: shell_command se trouve dans configuration.yaml
 
+   on utilise importlib.reload de python et donc l'écriture d'une variable dans un fichier python et non d'une variable HA , voir ce §  :ref:`5.8.2.1 Version sans l'utilisation d'une variable` 
+
    Pourquoi est-ci difficile d'exécuter un commande BASH sur Home Assistant ??
 
    - La simple écriture dans un fichier avec printf ou echo + un data(jina2)  ne fonctionne pas 
@@ -759,8 +761,8 @@ Comme pour tous les switches la commande a été ajoutée automatiquement sur la
 
    si un modem GSM installé
 
-5.8.2.1 Version sans l'utilisation d'une variable Domoticz
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+5.8.2.1 Version sans l'utilisation d'une variable
+"""""""""""""""""""""""""""""""""""""""""""""""""
 **Avec un reload d’un module python**
 
 On utilise un module python en import reload et on modifie ce module :
