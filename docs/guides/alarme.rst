@@ -823,27 +823,31 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) : indiquer le bon port s
 
    |image1306| 
 
-|image507|
+   |image507|
 
-On ajoute le dispositif au plan :
+   On ajoute le dispositif au plan :
 
-|image509|
+   |image509|
 
-|image510|
+   |image510|
 
-On ajoute qq lignes de script dans évènements dz , :darkblue:`notifications_devices.lua`
+   On ajoute qq lignes de script dans évènements dz , :darkblue:`notifications_devices.lua`
 
-.. code-block::
+   .. code-block::
 
-   return {
+      return {
 	on = {	devices = {'Test_GSM',
 
-.. code-block::
+   .. code-block::
 
-    if (device.name == 'Test_GSM' ) then print ("test_gsm")
+       if (device.name == 'Test_GSM' ) then print ("test_gsm")
             txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
             obj='Test GSM OK'domoticz.email('Alarme',obj,adresse_mail)    
-     end
+       end
+
+.. admonition:: ** fonctionnement de l' INPUT_BUTTON dans Home Assistant**
+
+   |image1353|
 
 Dans la BD :
 
@@ -1079,7 +1083,7 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 472px 
 .. |image504| image:: ../media/image504.webp
    :width: 700px 
-.. |image507| image:: ../media/image504.webp
+.. |image507| image:: ../media/image507.webp
    :width: 650px 
 .. |image508| image:: ../media/image508.webp
    :width: 380px 
@@ -1127,3 +1131,5 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 700px 
 .. |image1352| image:: ../img/image1352.webp
    :width: 310px 
+.. |image1353| image:: ../img/image1353.webp
+   :width: 700px 
