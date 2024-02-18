@@ -440,11 +440,40 @@ Les automatismes pour ces poussoirs:
 
    A partir de la base de données le fichier des camérasn déclarés en mode détection est établit; voir ce § :ref:`5.8.3- Affichage de la liste des caméras Modect`
 
-   Depuis la version 3.01 , ce fichier contient les données en JSON ; le script Lua de l'alarme(V3.0.3) doit être modifié en conséquence (voir ci-après les modifications à apporter) 
+   Depuis la version 3.01 , ce fichier contient les données en JSON ; le script Lua de l'alarme(V3.0.3) doit être modifié en conséquence (voir ci-après § :ref:`5.1.3.2 le script lua` , les modifications à apporter) 
 
    |image1354|
+   
+Si l’alarme absence est activée les caméras autorisées passent en mode MODECT automatiquement.
 
-   partie du script lua de l'alarme concernant Modect:
+Dans les autres cas Modect peut être activé manuellement.
+
+|image435|
+
+|image436|
+
+.. ATTENTION::
+
+   La demande du jeton n'est pas automatique à partir du bouton :green:`Modect`; :darkblue:`IL FAUT APPUYER SUR LE BOUTON ZM`:
+
+.. warning::
+
+   **Il faut avoir installé Zoneminder**
+
+5.1.3.1 Jeton ZM
+""""""""""""""""
+Dans fonctions.php :
+
+|image437|
+
+|image438|
+
+*Le format du fichier est json pour une exploitation facile avec Domoticz*
+
+5.1.3.2 le script lua
+"""""""""""""""""""""
+
+*dans* :darkblue:`alarme_intrusion.lua` , partie du script lua de l'alarme concernant Modect:
 
    .. code-block::
 
@@ -482,40 +511,10 @@ Les automatismes pour ces poussoirs:
 	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
           end 
 
-Si l’alarme absence est activée les caméras autorisées passent en mode MODECT automatiquement.
-
-Dans les autres cas Modect peut être activé manuellement.
-
-|image435|
-
-|image436|
-
-.. ATTENTION::
-
-   La demande du jeton n'est pas automatique à partir du bouton :green:`Modect`; :darkblue:`IL FAUT APPUYER SUR LE BOUTON ZM`:
-
-.. warning::
-
-   **Il faut avoir installé Zoneminder**
-
-5.1.3.1 Jeton ZM
-""""""""""""""""
-Dans fonctions.php :
-
-|image437|
-
-|image438|
-
-*Le format du fichier est json pour une exploitation facile avec Domoticz*
-
-5.1.3.2 le script lua
-"""""""""""""""""""""
-
-*dans* :darkblue:`alarme_intrusion.lua`
 
 |image439|
 
-Le fichier :darkblue:`string_modect` est écrit automatiquement à partir de Zoneminder, il est visible dans « administration »
+Le fichier :darkblue:`string_modect.json` est écrit automatiquement à partir de la BD SQL , il est visible dans « administration »
 
 |image440|
 
