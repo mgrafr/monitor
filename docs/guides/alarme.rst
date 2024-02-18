@@ -385,14 +385,21 @@ Les automatismes pour ces poussoirs:
 .. code-block::
 
    - id: test_gsm_al
-     alias: test_gsm
+     alias: Test_GSM
      trigger:
      - platform: state
        entity_id: input_button.poussoir_gsm
      action:
      - service: shell_command.set_aldz
        data:
-         message: "test GSM"
+         msg: "test_GSM"
+       response_variable: todo_response
+     - if: "{{ todo_response['returncode'] == 0 }}"
+       then:
+         - service: persistent_notification.create
+           data:
+             title: "Shell_sms"
+             message: "{{ todo_response['stdout'] }}"
    #
    - id: test sirene al
      alias: test_sirene
@@ -405,6 +412,24 @@ Les automatismes pour ces poussoirs:
         entity_id: switch.sirene_switch
 
 .. note:: shell_command se trouve dans configuration.yaml
+
+   Pourquoi est-ci difficile d'exécuter un commande BASH sur Home Assistant ??
+
+   - La simple écriture dans un fichier avec printf ou echo + un data(jina2)  ne fonctionne pas 
+
+   - en lançant un script bash pour le faire : ça fonctionne ??
+
+   Voici donc 2 solutions, l'une en passant un data , l'autre sans passer de data mais un message fixe
+
+   .. code-block::
+
+      shell_command:     
+          set_aldz:
+      #      "./pyscript/aldz.bash '\"{{ message }}\"' "
+             "printf '#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx=\"TEST_GSM\"\npriority=1' >  pyscript/aldz.py"
+
+   |image1349|
+
 
 5.1.3 explications concernant MODECT
 ====================================
@@ -1086,3 +1111,5 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 296px 
 .. |image1347| image:: ../img/image1347.webp
    :width: 600px 
+.. |image1349| image:: ../img/image1349.webp
+   :width: 700px 
