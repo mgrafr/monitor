@@ -438,9 +438,49 @@ Les automatismes pour ces poussoirs:
 
 .. note::
 
-   A partir de la base de données le fichier des camérasn déclarés en mode détection est établit; voir ce § :rf:`5.8.3- Affichage de la liste des caméras Modect`
+   A partir de la base de données le fichier des camérasn déclarés en mode détection est établit; voir ce § :ref:`5.8.3- Affichage de la liste des caméras Modect`
+
+   Depuis la version 3.01 , ce fichier contient les données en JSON ; le script Lua de l'alarme(V3.0.3) doit être modifié en conséquence (voir ci-après les modifications à apporter) 
 
    |image1354|
+
+   partie du script lua de l'alarme concernant Modect:
+
+   .. code-block::
+
+      function modect_cam(mode)
+       json = (loadfile "scripts/lua/JSON.lua")()
+       local config = assert(io.popen('/usr/bin/curl http://'..ip_monitor..'/monitor/admin/token.json'))
+       local blocjson = config:read('*a')
+       config:close()
+       local jsonValeur = json:decode(blocjson)
+       cle = jsonValeur.token
+       print(cle)
+       local config = assert(io.popen('/usr/bin/curl http://'..ip_monitor..'/monitor/admin/string_modect.json'))
+       local blocjson = config:read('*a')
+       config:close()
+       local cam_modect = json:decode(blocjson)
+       
+       for k,v in pairs(cam_modect) do --cam_modect à partir de string_modect.json
+        print('essai='..k)--pour essai
+            command='/usr/bin/curl -XPOST http://'..ip_zoneminder..'/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
+            print(command)
+            os.execute(command) 
+            print ("camera "..tostring(k).."activée :"..tostring(mode));
+        end
+        end
+
+       -- activation de la detection par les cameras
+	    if (item.name == 'Modect' and item.state=='Off' and  domoticz.variables('ma-alarme').value=="1") then 
+	    devices('Modect').switchOn();
+	    end 
+        -- activation manuelle Modect
+	    if (item.name == 'Modect' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then
+	    domoticz.variables('modect').set("modect");modect_cam('Modect')
+	    -- activation manuelle Monitor 	
+	    elseif (item.name == 'Modect' and  item.state=='Off' and  domoticz.variables('ma-alarme').value=="0") then
+	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
+          end 
 
 Si l’alarme absence est activée les caméras autorisées passent en mode MODECT automatiquement.
 
