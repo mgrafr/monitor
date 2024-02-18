@@ -767,11 +767,11 @@ Comme pour tous les switches la commande a été ajoutée automatiquement sur la
 
 On utilise un module python en import reload et on modifie ce module :
 
-- Avec Domoticz pour envoyer un message 
+- Avec le serveur domotiqu (DZ ou HA) pour envoyer un message 
 
 - Avec python pour une réinitialisation après l'envoi du message
 
-**Création d’un fichier python** : :darkblue:`aldz.py:darkblue:`, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme
+**Création d’un fichier python** : :darkblue:`aldz.py`, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme
 
 .. code-block::
 
@@ -786,11 +786,19 @@ On fait une copie de ce fichier : :darkblue:`aldz.bak.py` : ce fichier remplacer
 
 |image501|
 
+**Dans Home Assistant**, il en est de même: 2 variantes possibles :
+
+-	avec data: (en utilisant un fichier bash intermédiaire)
+
+-	avec un texte pré-défini
+
+|image1349|
+
 .. warning::
 
    **Attention** :  comme déjà indiqué, si modem Ebyte, pas d’espaces et accents
 
-Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
+Le fichier :darkblue:`sms_dz` est modifié (simplifié) : indiquer le bon port serie et les bons chemins.
 
 |image502|
 
@@ -805,7 +813,9 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 
 - Dans Domoticz : on ajoute un poussoir de sonnette
 
-|image508|
+- Dans Home Assistant : on ajoute un input_button
+
+|image508|  |image1352|
 
 .. admonition:: ** fonctionnement du bouton de sonnette dans Domoticz**
 
@@ -1072,7 +1082,7 @@ Version 2.1.0 réécrite en DzVent avec :
 .. |image507| image:: ../media/image504.webp
    :width: 650px 
 .. |image508| image:: ../media/image508.webp
-   :width: 402px 
+   :width: 380px 
 .. |image509| image:: ../media/image509.webp
    :width: 544px 
 .. |image510| image:: ../media/image510.webp
@@ -1115,3 +1125,5 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 600px 
 .. |image1349| image:: ../img/image1349.webp
    :width: 700px 
+.. |image1352| image:: ../img/image1352.webp
+   :width: 310px 
