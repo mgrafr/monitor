@@ -435,6 +435,13 @@ Les automatismes pour ces poussoirs:
 
 5.1.3 explications concernant MODECT
 ====================================
+
+.. note::
+
+   A partir de la base de données le fichier des camérasn déclarés en mode détection est établit; voir ce § :rf:`5.8.3- Affichage de la liste des caméras Modect`
+
+   |image1354|
+
 Si l’alarme absence est activée les caméras autorisées passent en mode MODECT automatiquement.
 
 Dans les autres cas Modect peut être activé manuellement.
@@ -464,7 +471,7 @@ Dans fonctions.php :
 5.1.3.2 le script lua
 """""""""""""""""""""
 
-*dans :darkblue:`alarme_intrusion.lua`*
+*dans* :darkblue:`alarme_intrusion.lua`
 
 |image439|
 
@@ -1133,3 +1140,5 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 310px 
 .. |image1353| image:: ../img/image1353.webp
    :width: 700px 
+.. |image1354| image:: ../img/image1354.webp
+   :width: 650px 
