@@ -13,6 +13,7 @@
 Version  en developpement 3.0.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - modification ou mise à jour des dispositifs sans utiliser PhpMyAdmin
+- le fichier string_modect.lua (DZ) est remplacé par string_modect.json (compatible DZ et HA)
 
 Version  3.0
 ~~~~~~~~~~~~
