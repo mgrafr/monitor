@@ -1071,6 +1071,17 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
                idx: "{{ trigger.entity_id }}"
                state: "{{ trigger.to_state.state }}" 
 
+21.10.4 Chemins des fichiers sous Docker 
+========================================
+
+|image1350|
+
+Comme on peut le voir sur l'image ci-dessus le dossier :darkblue:`_data` correspond au dossier :darkblue:`config` de Docker; comme pour Domoticz, il faut tnir compt d ces chemin dans les scripts suivant où il sont lancés.
+
+un exemple : dans le cadre rouge, un script lancé hors du conteneur, dans un cadre bleu un script lancé dans Home assistant (donc dans le conteneur)
+
+|image1351|
+
 21.11 Pont Hue Ha-bridge pour Alexa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 voir le § :ref:`13.8 Pont HA (ha-bridge)`
@@ -1653,3 +1664,7 @@ Le script DzVent:
    :width: 494px
 .. |image1324| image:: ../img/image1324.webp
    :width: 650px
+.. |image1350| image:: ../img/image1350.webp
+   :width: 700px
+.. |image1351| image:: ../img/image1351.webp
+   :width: 616px
