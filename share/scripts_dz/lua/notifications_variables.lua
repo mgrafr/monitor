@@ -11,14 +11,13 @@ function envoi_email(txt,fich_log)
 -- os.execute(sms_free)
 end
 function alerte_gsm(txt)
-f = io.open("userdata/scripts/python/aldz.py", "w")
+f = io.open("scripts/python/aldz.py", "w")
 env="#!/usr/bin/env python3"
 f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\npriority=1")
---f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\ntel='"..tel1.."'")
 f:close()
 end
 -- repertoire du script python
-rep='userdata/scripts/python/'
+rep='scripts/python/'
 -- repertoire log
 rep_log='/home/michel/'
 --
@@ -32,7 +31,8 @@ return {
 		    'pression-chaudiere',
 		    'pilule_tension',
 		    'BASH',
-		    'variable_sp'
+		    'variable_sp',
+		    'activation-sir-txt'
 		}
 	},
 	execute = function(domoticz, variable)
@@ -79,10 +79,10 @@ return {
                 print("upload string_tableaux")
                 command = rep..'upload_fichier.py string_tableaux.lua   > '..rep_log..'string_tableaux.log 2>&1'
                 os.execute(command);print('maj effectuée_1');
-                elseif (domoticz.variables('upload').value == "2") then 
-                print("upload string_modect")
-                command = rep..'upload_fichier.py string_modect.lua   > '..rep_log..'string_modect.log 2>&1'
-                os.execute(command);print('maj effectuée_2');
+                --elseif (domoticz.variables('upload').value == "2") then -----devenu string_modect.json dand admin/monitor
+                --print("upload string_modect")
+                --command = rep..'upload_fichier.py string_modect.lua   > '..rep_log..'string_modect.log 2>&1'
+                --os.execute(command);print('maj effectuée_2');
                 elseif (domoticz.variables('upload').value == "3") then 
                 print("upload connect")
                 command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1'
@@ -95,10 +95,10 @@ return {
                         fich=fich..tostring(line).."\n" 
                         jt=jt..line..';\n'
                         end
-                    f = io.open("userdata/scripts/python/connect.py", "w")
+                    f = io.open("scripts/python/connect.py", "w")
                     env="#!/usr/bin/env python3"
                     f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
-                    f = io.open("userdata/scripts/js/connect.js", "w")
+                    f = io.open("scripts/js/connect.js", "w")
                     f:write(jt)
                     f:close()
                     domoticz.variables('BASH').set("restart_sms_dz")
