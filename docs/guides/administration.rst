@@ -409,8 +409,8 @@ Le script lua utilisé pour ouvrir ces fichiers:
 
     |image845|
 
-14.7.1 string_modect.lua
-========================
+14.7.1 string_modect.json
+=========================
 
 **admin.php**
 
@@ -424,11 +424,9 @@ Le script lua utilisé pour ouvrir ces fichiers:
 
 |image850|
 
-Pour cette fonction le script LUA est similaire à string_tableaux.lua (celui pour les poubelles, la fosse septique, les anniversaires,...
-
-La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichier externe dans Domoticz`
-
 |image847|
+
+|image1355|
 
 .. seealso:: *MODECT* 
 
@@ -780,3 +778,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 425px
 .. |image1338| image:: ../img/image1338.webp
    :width: 337px
+.. |image1355| image:: ../img/image1355.webp
+   :width: 700px
