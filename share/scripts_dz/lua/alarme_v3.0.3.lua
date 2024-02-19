@@ -1,27 +1,27 @@
 -- Alarme absence et nuit maison
 --
 -- alarme--alarme.lua
--- version 3.0.3
+-- version 3.0.2
 --
-function modect_cam(mode)
-    json = (loadfile "scripts/lua/JSON.lua")()
-       local config = assert(io.popen('/usr/bin/curl http://'..ip_monitor..'/monitor/admin/token.json'))
-       local blocjson = config:read('*a')
+ json = (loadfile "scripts/lua/JSON.lua")()
+function decode_json(fich_json)
+    local config = assert(io.popen('/usr/bin/curl http://'..fich_json))
+    local blocjson = config:read('*a')
        config:close()
        local jsonValeur = json:decode(blocjson)
-       cle = jsonValeur.token
+       return jsonValeur
+end
+function modect_cam(mode)
+       json_val=decode_json(ip_monitor..'/monitor/admin/token.json')
+       cle = json_val.token
        print(cle)
-       local config = assert(io.popen('/usr/bin/curl http://'..ip_monitor..'/monitor/admin/string_modect.json'))
-       local blocjson = config:read('*a')
-       config:close()
-       local cam_modect = json:decode(blocjson)
-       
-       for k,v in pairs(cam_modect) do --cam_modect à partir de string_modect.json
+       json_val=decode_json(ip_monitor..'/monitor/admin/string_modect.json')
+       for k,v in pairs(json_val) do --cam_modect dans string_modect
         print('essai='..k)--pour essai
             command='/usr/bin/curl -XPOST http://'..ip_zoneminder..'/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
             print(command)
-            os.execute(command) 
-            print ("camera "..tostring(k).."activée :"..tostring(mode));
+            --os.execute(command) 
+            --print ("camera "..tostring(k).."activée :"..tostring(mode));
         end
 end
 function alerte_gsm(txt) -- ATTENTION PAS ESPACES pout txt
@@ -34,7 +34,7 @@ end
 --function send_sse(txt,txt1)
 -- existe dans notifications_devices
 -- trouver un élément dans une table
-local function find_string_in(tbl, str)
+local function find_string_in(tbl, str) 
     for _, element in ipairs(tbl) do
         if (element == str) then
             return true
@@ -44,7 +44,7 @@ local function find_string_in(tbl, str)
 end
 -- chargement fichier contenant les variable de configuration
 package.path = package.path..";www/modules_lua/?.lua"
---require 'string_modect'  remplacé par string_modect.json dans admin de monitor
+--require 'string_modect'
 require 'connect'
 --
 -- listes des dispositifs
