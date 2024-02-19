@@ -438,9 +438,9 @@ Les automatismes pour ces poussoirs:
 
 .. note::
 
-   A partir de la base de données le fichier des camérasn déclarés en mode détection est établit; voir ce § :ref:`5.8.3- Affichage de la liste des caméras Modect`
+   A partir de la base de données le fichier des caméras déclarées en mode détection est établit automatiquement; voir ce § :ref:`5.8.3- Affichage de la liste des caméras Modect`
 
-   Depuis la version 3.01 , ce fichier contient les données en JSON ; le script Lua de l'alarme(V3.0.3) doit être modifié en conséquence (voir ci-après § :ref:`5.1.3.2 le script lua` , les modifications à apporter) 
+   Depuis la version 3.01 , ce fichier contient les données en JSON ; le script Lua de l'alarme(V3.0.3) doit être modifié en conséquence (voir ci-après § :ref:`5.1.3.2 le script lua pour Domoticz` , les modifications à apporter) 
 
    |image1354|
    
@@ -470,33 +470,37 @@ Dans fonctions.php :
 
 *Le format du fichier est json pour une exploitation facile avec Domoticz*
 
-5.1.3.2 le script lua
-"""""""""""""""""""""
+5.1.3.2 le script lua pour Domoticz
+"""""""""""""""""""""""""""""""""""
 
 *dans* :darkblue:`alarme_intrusion.lua` , partie du script lua de l'alarme concernant Modect:
 
    .. code-block::
 
-      function modect_cam(mode)
+      -- Alarme absence et nuit maison
+      --
+      -- alarme--alarme.lua
+      -- version 3.0.3
+      --
        json = (loadfile "scripts/lua/JSON.lua")()
-       local config = assert(io.popen('/usr/bin/curl http://'..ip_monitor..'/monitor/admin/token.json'))
-       local blocjson = config:read('*a')
-       config:close()
-       local jsonValeur = json:decode(blocjson)
-       cle = jsonValeur.token
+       function decode_json(fich_json)
+          local config = assert(io.popen('/usr/bin/curl http://'..fich_json))
+          local blocjson = config:read('*a')
+          config:close()
+          local jsonValeur = json:decode(blocjson)
+       return jsonValeur
+       end
+      function modect_cam(mode)
+       json_val=decode_json(ip_monitor..'/monitor/admin/token.json')
+       cle = json_val.token
        print(cle)
-       local config = assert(io.popen('/usr/bin/curl http://'..ip_monitor..'/monitor/admin/string_modect.json'))
-       local blocjson = config:read('*a')
-       config:close()
-       local cam_modect = json:decode(blocjson)
-       
-       for k,v in pairs(cam_modect) do --cam_modect à partir de string_modect.json
+       json_val=decode_json(ip_monitor..'/monitor/admin/string_modect.json')
+       for k,v in pairs(json_val) do --cam_modect dans string_modect
         print('essai='..k)--pour essai
             command='/usr/bin/curl -XPOST http://'..ip_zoneminder..'/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
             print(command)
-            os.execute(command) 
-            print ("camera "..tostring(k).."activée :"..tostring(mode));
-        end
+            --os.execute(command) 
+            --print ("camera "..tostring(k).."activée :"..tostring(mode));
         end
 
        -- activation de la detection par les cameras
@@ -511,6 +515,13 @@ Dans fonctions.php :
 	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
           end 
 
+5.1.3.3 le script yaml pour Home Assistant
+""""""""""""""""""""""""""""""""""""""""""
+
+
+
+5.1.3.4 copies d'écran concernant Modect
+""""""""""""""""""""""""""""""""""""""""
 
 |image439|
 
