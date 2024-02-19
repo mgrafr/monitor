@@ -515,6 +515,8 @@ Dans fonctions.php :
 	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
           end 
 
+|image439|
+
 5.1.3.3 le script yaml pour Home Assistant
 """"""""""""""""""""""""""""""""""""""""""
 
@@ -522,8 +524,6 @@ Dans fonctions.php :
 
 5.1.3.4 copies d'écran concernant Modect
 """"""""""""""""""""""""""""""""""""""""
-
-|image439|
 
 Le fichier :darkblue:`string_modect.json` est écrit automatiquement à partir de la BD SQL , il est visible dans « administration »
 
