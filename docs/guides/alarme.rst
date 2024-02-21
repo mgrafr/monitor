@@ -452,10 +452,6 @@ Dans les autres cas Modect peut être activé manuellement.
 
 |image436|
 
-.. ATTENTION::
-
-   La demande du jeton n'est pas automatique à partir du bouton :green:`Modect`; :darkblue:`IL FAUT APPUYER SUR LE BOUTON ZM`:
-
 .. warning::
 
    **Il faut avoir installé Zoneminder**
@@ -478,31 +474,33 @@ Dans fonctions.php :
    .. code-block::
 
       -- Alarme absence et nuit maison
-      --
-      -- alarme--alarme.lua
-      -- version 3.0.3
-      --
-       json = (loadfile "scripts/lua/JSON.lua")()
-       function decode_json(fich_json)
-          local config = assert(io.popen('/usr/bin/curl http://'..fich_json))
-          local blocjson = config:read('*a')
-          config:close()
-          local jsonValeur = json:decode(blocjson)
-       return jsonValeur
-       end
+	--
+	-- alarme--alarme.lua
+	-- version 3.0.4
+	--
+ 	json = (loadfile "scripts/lua/JSON.lua")()
+      function decode_json(fich_json)
+    	local config = assert(io.popen('/usr/bin/curl '..fich_json))
+    	local blocjson = config:read('*a')
+        config:close()
+        local jsonValeur = json:decode(blocjson)
+        --print('succes='..jsonValeur.version)
+        return jsonValeur
+      end
       function modect_cam(mode)
-       json_val=decode_json(ip_monitor..'/monitor/admin/token.json')
-       cle = json_val.token
-       print(cle)
-       json_val=decode_json(ip_monitor..'/monitor/admin/string_modect.json')
+       json_val=decode_json('curl -XPOST -d "user=michel&pass=Idem4546"  http://192.168.1.23/zm/api/host/login.json')
+       print(json_val.access_token)
+       cle=json_val.access_token
+       json_val=decode_json('http://'..ip_monitor..'/monitor/admin/string_modect.json')
        for k,v in pairs(json_val) do --cam_modect dans string_modect
-        print('essai='..k)--pour essai
-            command='/usr/bin/curl -XPOST http://'..ip_zoneminder..'/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
-            print(command)
-            --os.execute(command) 
-            --print ("camera "..tostring(k).."activée :"..tostring(mode));
-        end
-
+       print('essai='..k)--pour essai
+       command='/usr/bin/curl -XPOST http://'..ip_zoneminder..'/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
+       print(command)
+       os.execute(command) 
+       print ("camera "..tostring(k).."activée :"..tostring(mode));
+       end
+      end
+       
        -- activation de la detection par les cameras
 	    if (item.name == 'Modect' and item.state=='Off' and  domoticz.variables('ma-alarme').value=="1") then 
 	    devices('Modect').switchOn();
