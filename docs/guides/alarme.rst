@@ -1243,4 +1243,4 @@ voir le § :ref:`0.3.2 Les Dispositifs`
 .. |image1359| image:: ../img/image1359.webp
    :width: 650px 
 .. |image1360| image:: ../img/image1360.webp
-   :width: 300px 
+   :width: 200px 
