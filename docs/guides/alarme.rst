@@ -359,6 +359,10 @@ les interrupeurs virtuels (input_boolean) sont crées sous yaml:
      activation_sirene_al:
        name: activation-sirene
        icon: mdi:music-off
+     activation_modect:
+       name: activation-modect
+       icon: mdi:camera
+
 
 |image1339|
 
@@ -413,6 +417,8 @@ Les automatismes pour ces poussoirs:
 
 .. note:: shell_command se trouve dans configuration.yaml
 
+   **pour set_aldz**
+
    on utilise importlib.reload de python et donc l'écriture d'une variable dans un fichier python et non d'une variable HA , voir ce §  :ref:`5.8.2.1 Version sans l'utilisation d'une variable` 
 
    Pourquoi est-ci difficile d'exécuter un commande BASH sur Home Assistant ??
@@ -432,6 +438,14 @@ Les automatismes pour ces poussoirs:
 
    |image1349|
 
+   **Pour set_modect**
+
+   .. code-block::
+
+      set_modect:
+      "./pycscipt/modect.sh  '\"{{ mode }}\"' "
+
+   |image1358|
 
 5.1.3 explications concernant MODECT
 ====================================
@@ -1216,3 +1230,5 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    :width: 700px 
 .. |image1357| image:: ../img/image1357.webp
    :width: 622px 
+.. |image1358| image:: ../img/image1358.webp
+   :width: 430px 
