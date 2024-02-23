@@ -515,10 +515,25 @@ Dans fonctions.php :
 
 |image439|
 
-5.1.3.3 le script yaml pour Home Assistant
+5.1.3.3 le script bash pour Home Assistant
 """"""""""""""""""""""""""""""""""""""""""
+Script Bash concernant le mode détection des caméras: :darkblue:`modect.sh`
 
+.. code-block::
 
+   curl -XPOST -d "user=USER&pass=MOT_PASSE" -s 'http://192.168.1.23/zm/api/host/login.json' | \
+    python3 -c "import sys, json; file = open('token.txt', 'w'); file.write(json.load(sys.stdin)['access_token']); file.close()" 
+   cle=`cat token.txt`
+   mode=$1
+   #wget http://192.168.1.9/monitor/admin/string_modect.json
+   curl -s http://192.168.1.9/monitor/admin/string_modect.json |  XXX="$(jq  '.[] | .id_zm' string_modect.json)"
+   #echo "$XXX"
+   for i in $XXX; do 
+   #echo "$i";
+   curl -XPOST 'http://192.168.1.23/zm/api/monitors/'$i'.json?token='$cle -d "Monitor[Function]="$mode"&Monitor[Enabled]="$i
+   done
+
+|image1356|
 
 5.1.3.4 copies d'écran concernant Modect
 """"""""""""""""""""""""""""""""""""""""
@@ -1190,3 +1205,5 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 700px 
 .. |image1354| image:: ../img/image1354.webp
    :width: 650px 
+.. |image1356| image:: ../img/image1356.webp
+   :width: 700px 
