@@ -447,6 +447,12 @@ Les automatismes pour ces poussoirs:
 
    |image1358|
 
+   .. warning::
+
+      JQ doit ^rtre installé:
+
+      |image1359|
+
 5.1.3 explications concernant MODECT
 ====================================
 
@@ -532,6 +538,8 @@ Dans fonctions.php :
 5.1.3.3 le script bash pour Home Assistant
 """"""""""""""""""""""""""""""""""""""""""
 Script Bash concernant le mode détection des caméras: :darkblue:`modect.sh`
+
+.. ATTENTION:: pour ce script JQ doit être installé
 
 .. code-block::
 
@@ -1232,3 +1240,5 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    :width: 622px 
 .. |image1358| image:: ../img/image1358.webp
    :width: 430px 
+.. |image1359| image:: ../img/image1359.webp
+   :width: 650px 
