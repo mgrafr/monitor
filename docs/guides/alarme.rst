@@ -449,7 +449,7 @@ Les automatismes pour ces poussoirs:
 
    .. warning::
 
-      JQ doit ^rtre installé:
+      JQ doit ^rtre installé:|image1360| 
 
       |image1359|
 
