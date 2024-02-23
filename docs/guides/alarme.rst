@@ -993,6 +993,13 @@ Version 2.1.0 réécrite en DzVent avec :
 
 |image522|
 
+5.9- Résumé des dispositifs, des switches virtuels, des variables utilisés
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image1357|
+
+voir le § :ref:`0.3.2 Les Dispositifs`
+
 
 
 .. |image142| image:: ../media/image142.webp
@@ -1207,3 +1214,5 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 650px 
 .. |image1356| image:: ../img/image1356.webp
    :width: 700px 
+.. |image1357| image:: ../img/image1357.webp
+   :width: 622px 
