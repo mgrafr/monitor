@@ -342,7 +342,9 @@ Voir les pages web :
 
 5.1.2 Pour utilisation avec Home Assistant
 ==========================================
-les interrupeurs virtuels (input_boolean) sont crées sous yaml:
+5.1.2.1 les interrupeurs virtuels (input_boolean) 
+"""""""""""""""""""""""""""""""""""""""""""""""""
+ils sont crées sous yaml:
 
 .. code-block::
 
@@ -368,7 +370,9 @@ les interrupeurs virtuels (input_boolean) sont crées sous yaml:
 
 .... des input_boolean aussi pour:  m/a sirène, m/a mode detect des caméras, activation/désactivation de la sirène, etc.. 
 
-les poussoirs pour le test GSM, test de la sirène,  reset des variables sont des input_button:
+5.1.2.2 les poussoirs (input_button)
+""""""""""""""""""""""""""""""""""""
+pour le test GSM, test de la sirène,  reset des variables :
 
 exemple pour le test GSM et test sirène:
 
@@ -449,9 +453,36 @@ Les automatismes pour ces poussoirs:
 
    .. warning::
 
-      JQ doit ^rtre installé: |image1360| 
+      JQ doit êrtre installé: |image1360| 
 
       |image1359|
+
+5.1.2.2 les variables (input_semect et input_text)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+utilisées pour mémoriser certaines informations
+
+.. code-block::
+
+   input_select:
+     activation_sir_txt:
+       name: texte
+       options:
+         - activer
+         - desactiver
+       initial: activer
+       icon: mdi:panda
+   #
+   input_text:
+     var_alarme:
+       name: alarme
+       initial: 0
+    var_intrusion:
+       name: intrusion
+       initial: 0
+    var_porte_ouverte:
+       name: porte_ouverte
+       initial: 0
+
 
 5.1.3 explications concernant MODECT
 ====================================
