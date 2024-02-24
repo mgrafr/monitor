@@ -471,18 +471,25 @@ utilisées pour mémoriser certaines informations
          - desactiver
        initial: activer
        icon: mdi:panda
-   #
-   input_text:
      var_alarme:
        name: alarme
-       initial: 0
-    var_intrusion:
+       options:
+         - 0
+         - alarme_nuit
+         - alarme_auto
+  #
+   input_text:
+     var_intrusion:
        name: intrusion
        initial: 0
-    var_porte_ouverte:
+     var_porte_ouverte:
        name: porte_ouverte
        initial: 0
+     var_ma_alarme:
+       name: ma_alarme
+       initial: 0
 
+ma_alarme est une variable uniquement utilisée par le script, monitor ne l'utilise pas (elle n'est pas enregistrée dans la BD
 
 5.1.3 explications concernant MODECT
 ====================================
