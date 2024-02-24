@@ -449,7 +449,7 @@ Les automatismes pour ces poussoirs:
 
       |image1359|
 
-5.1.2.2 les variables (input_semect et input_text)
+5.1.2.2 les variables (input_select et input_text)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 utilisées pour mémoriser certaines informations
 
