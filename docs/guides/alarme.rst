@@ -69,17 +69,7 @@ On ajoute les dispositifs au plan ;
 
 |image417|
 
-**Les variables, initialisée** à 0
-
--	**ma-alarme** :
-
-|image418|
-
-o	0  =  alarme non activée,
-
-o	1  = alarme absence activée, les capteurs PIR sont pris en compte
-
-o	2  = alarme nuit activée, les capteurs PIR sont ignorés
+**Les variables, initialisée** à 0 (sauf pour activation-sir-txt)
 
 -	**modect** : pour la mise en service de la détection par caméras (non utilisé actuellement, pour une notification en page d’accueil ou autre …)
 
@@ -193,22 +183,24 @@ Partie du script concernant :darkblue:`les options : interrupteurs on/off` ,
 .. code-block::
 
     else 
-           --*******************devices*********************************************            
-         -- alarme nuit_activation
-        if (item.name == 'alarme_nuit' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then 
-        domoticz.variables('ma-alarme').set("2"); txt='alarmeùnuitùactivee';obj='alarme_nuit_activee';
+      --*******************devices virtuels************************************        
+        
+      --elseif (item.name =='alarme_nuit' or item.name=='alarme_absence' or item.name=='Modect' or item.name=='raz_dz' or item.name=='al_nuit_auto' or item.name=='activation-sirene' or item.name=='Test_GSM') then 
+    elseif (find_string_in(virtuels, item.name)==true) then print("elseif:"..item.name)
+        -- alarme nuit_activation
+        if (item.name == 'alarme_nuit' and  item.state=='On' ) then 
+        txt='alarmeùnuitùactivee';obj='alarme_nuit_activee';
         alerte_gsm(txt);domoticz.variables('alarme').set("alarme_nuit"); 	
-	    elseif (item.name == 'alarme_nuit' and  item.state=='Off' and  domoticz.variables('ma-alarme').value=="2") then
-        domoticz.variables('ma-alarme').set("0"); txt='alarmeùnuitùdesactivee';obj='alarme_nuit_desactivee';alerte_gsm(txt);
+	    elseif (item.name == 'alarme_nuit' and  item.state=='Off' ) then
+        txt='alarmeùnuitùdesactivee';obj='alarme_nuit_desactivee';alerte_gsm(txt);
             if (domoticz.variables('alarme').value~='alarme_auto') then domoticz.variables('alarme').set("0");
             end
         end	
-   
         -- alarme absence _activation
-        if (item.name == 'alarme_absence' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then
-        domoticz.variables('ma-alarme').set("1"); txt='alarmeùabsenceùactivee';obj='alarme absence activee';alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
-	    elseif (item.name == 'alarme_absence' and  item.state=='Off' and  domoticz.variables('ma-alarme').value=="1") then
-        domoticz.variables('ma-alarme').set("0"); txt='alarmeùabsenceùdesactivee';obj='alarme absence desactivee';
+        if (item.name == 'alarme_absence' and  item.state=='On' ) then domoticz.variables('alarme').set("alarme_absence"); 
+        txt='alarmeùabsenceùactivee';obj='alarme absence activee';alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
+	    elseif (item.name == 'alarme_absence' and  item.state=='Off') then domoticz.variables('alarme').set("0");
+        txt='alarmeùabsenceùdesactivee';obj='alarme absence desactivee';
         alerte_gsm(txt);alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
         end	
 	    
@@ -217,12 +209,12 @@ Partie du script concernant :darkblue:`les options : interrupteurs on/off` ,
 	    devices('Modect').switchOn();
 	    end 
         -- activation manuelle Modect
-	    if (item.name == 'Modect' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then
+	    if (item.name == 'Modect' and  item.state=='On' ) then
 	    domoticz.variables('modect').set("modect");modect_cam('Modect')
 	    -- activation manuelle Monitor 	
-	    elseif (item.name == 'Modect' and  item.state=='Off' and  domoticz.variables('ma-alarme').value=="0") then
+	    elseif (item.name == 'Modect' and  item.state=='Off' ) then
 	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
-        end 
+        end  
        
         -- raz variables de notification intrusion et porte ouverte
         if (item.name == 'raz_dz' and item.state=='On') then domoticz.devices('raz_dz').switchOff();
@@ -485,11 +477,6 @@ utilisées pour mémoriser certaines informations
      var_porte_ouverte:
        name: porte_ouverte
        initial: 0
-     var_ma_alarme:
-       name: ma_alarme
-       initial: 0
-
-ma_alarme est une variable uniquement utilisée par le script, monitor ne l'utilise pas (elle n'est pas enregistrée dans la BD
 
 5.1.3 explications concernant MODECT
 ====================================
@@ -1076,8 +1063,6 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    :width: 626px
 .. |image417| image:: ../media/image417.webp
    :width: 533px
-.. |image418| image:: ../media/image418.webp
-   :width: 434px
 .. |image423| image:: ../media/image423.webp
    :width: 333px
 .. |image424| image:: ../media/image424.webp
