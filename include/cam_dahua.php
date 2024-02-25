@@ -181,7 +181,7 @@ if($debug){
 else {
 // Récupérer jeton
 if ($_SESSION['time_auth_zm']<=time() || ($_SESSION['auth_zm']=="")){
-$url='http://192.168.1.90/zm/api/host/login.json';
+$url='ZMURL/api/host/login.json';
 $post=[
     'user' => $user,
     'pass' => $pass,
@@ -195,7 +195,7 @@ $_SESSION['auth_zm']=$token;
 }
 else {$token=$_SESSION['auth_zm'];}
 $ncam=$cam_list_autres[$cam];echo $ncam.'<br>';
-$url='http://192.168.1.90/zm/api/monitors/'.$ncam.'.json?'.$token;
+$url='ZMURL/api/monitors/'.$ncam.'.json?'.$token;
 $out=url_get_curl($url); //echo $out;
 $out=json_decode($out,true);
 $infcam = $out['monitor']['Monitor'];
