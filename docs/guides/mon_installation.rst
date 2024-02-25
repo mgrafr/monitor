@@ -410,6 +410,15 @@ Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Up
       sudo systemctl start zigbee2mqtt
       rm -rf data-backup
 
+   Conflit entre systemd et npm : :red:`unavailable Cannot lock port`
+
+   Arréter zigbee2mqtt avec systemd et redémarrer avec npm start (dans le répertoire d'installation de zigbee2mqtt)
+
+   .. code-block::
+
+      sudo systemctl stop zigbee2mqtt
+      npm start
+
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
