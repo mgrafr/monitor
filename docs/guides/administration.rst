@@ -213,19 +213,19 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
 |image808|
 
-14.5 Téléchargement d’un fichier externe dans Domoticz
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-*Pour la mise à jour des fichiers "connect.lua, connect.py, connect.js, etc..." (variables pour les scripts Domoticz)* 
+14.5 Téléchargement d’un fichier externe dans Domoticz ou Home Assistant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Pour la mise à jour des fichiers "connect.lua, connect.py, connect.js, etc..." (variables persistentes pour les scripts Dz,Ha )* 
 
 .. note::
 
    Plusieurs solutions étaient possibles mais avec l’installations de scripts et de modules supplémentaires.
 
-   En http, on ne peut seulement télécharger un fichier depuis un site distant.
+   En http, on ne peut seulement télécharger un fichier depuis un site distant, on ne peut modifier un fichier.
    
    La solution retenue :
 
-   -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1 une variable (nommée ici "upload") dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
+   -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1, 2, 3 ,.... une variable (nommée ici "upload")  pour l’exécution d’un script qui va télécharger ce fichier ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
 
    |image811|
 
@@ -233,9 +233,29 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
       maj_variable("22","upload","1","2")
    
-   Pour la mise à jour de la liste des caméras dont la détection est activée, c’est le même script qui est utilisé, la variable « upload » est alors passé à 2 :
-
    |image812|
+
+   le script python :
+
+   .. code-block::
+
+      	#!/usr/bin/env python3
+	# -*- coding: utf-8 -*-
+	import requests, sys
+	from connect import ip_monitor
+	x= str(sys.argv[1])
+	y = x.split(".")
+	z=y[1]
+	ip= ip_monitor
+	rep="/opt/domoticz/"
+	if z=="lua" :
+    	rep="/opt/domoticz/www/modules_lua/"
+	if z=="py" :
+    	rep="/opt/domoticz/scripts/python/"    
+	addr="http://"+ip+"/monitor/admin/tmp/temp."+z
+	req = requests.get(addr)
+	with open(rep+x, "wb") as fp:
+    	fp.write(req.content)
 
    - **Les fonctions JS wajax() et yajax()** ,  *dans mes_js.js*
 
@@ -264,7 +284,13 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 ========================================================================
 *pour utiliser ces données dans des scripts (lua, python, js ou autres)*
 
-|image821|
+temp.lua, temp.py, temp.js sont enregistrés dans admin/tmp:
+
+|image822|
+
+|image1362|
+
+ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs et rebaptisés connect.xxx
 
 14.6.1.1 connect.lua
 """"""""""""""""""""
@@ -291,12 +317,12 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
    |image825|
 
-   Pour récupérer le connect.py de Domoticz , le chemin de Domoticz doit être indiqué dans DZ_PATH
+   Pour récupérer le connect.py de Monitor , le chemin  doit être indiqué dans SSH_MONITOR_PATH
 
    .. code-block::
 
-      //DZ_PATH :ex dz docker /opt/domoticz/config/, ex autre dz /opt/domoticz, home/USER/domoticz
-      define('DZ_PATH', '/opt/domoticz/config/');
+      //SSH_MONITOR_PATH :ex /var/www/html/monitor/admin/tmp/, ex autre  home/USER/
+      define('SSH_MONITOR_PATH', '/var/www/html/monitor/admin/tmp/');
 
       ce chemin est utilisé dans fonctions.php admin()
 
@@ -780,3 +806,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 337px
 .. |image1355| image:: ../img/image1355.webp
    :width: 700px
+.. |image1355| image:: ../img/image1362.webp
+   :width: 534px
