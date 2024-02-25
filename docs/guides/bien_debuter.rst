@@ -722,6 +722,10 @@ Ces tables sont installées lors de l'installation automaique.
 
 0.3.1.2 Table dispositifs pour les variables
 """""""""""""""""""""""""""""""""""""""""""" 
+A l'installation de la table une variable "upload" est préinstallée; elle permet d'indiquer à Domoticz ou Home Assistant que des fichiers de configuration ont été mis à jour par monitor.
+
+|image1361|
+
   *ne sont concernés pour les variables que les champs* :
 
 |image77|
@@ -1576,3 +1580,5 @@ function mc(variable,id)
    :width: 403px 
 .. |image1348| image:: ../img/image1348.webp
    :width: 298px 
+.. |image1361| image:: ../img/image1361.webp
+   :width: 700px 
