@@ -7,5 +7,5 @@ wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_$version.
 chmod +x maj_$version.sh
 ./maj_$version.sh
 rm  maj_$version.sh
-echo " *************pas de maj**********************"
+
 
