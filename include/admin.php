@@ -29,7 +29,7 @@ require_once('admin/config.php');
         if (ECRAN_ADMIN['idx_dz-zigbee']=="enable")echo '<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier lasteen zwave/zigbee</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>';
         if (ECRAN_ADMIN['reboot_pi']=="enable")echo '<img src="images/rpi.webp" style="width:30px" alt="rpi"> <a class="admin1" href="#admin" rel="20" style="margin-left:35px" title="reponse1" >Reboot Raspberry</a><br>';
         if (ECRAN_ADMIN['msmtprc']=="enable")echo '<a class="admin1" href="#admin" rel="21" style="margin-left:70px" title="reponse1" >msmtprc (config envoi mail)</a><br>';
-        if (ECRAN_ADMIN['connect_py']=="enable")echo '<a class="admin1" href="#admin" rel="23" style="margin-left:70px" title="reponse1" >Maj automatique des IP depuis connect.py </a><br>';?>
+        if (ECRAN_ADMIN['connect_py']=="enable")echo '<a class="admin1" href="#admin" rel="23" style="margin-left:70px" title="reponse1" >Maj connect.py du PI </a><br>';?>
         <img src="images/serveur-sql.svg" style="width:30px"><br>
         <a class="admin1" href="#admin" rel="9" title="reponse1" >Test Base de données</a><br>
         <a class="admin1" href="#admin" rel="14" title="reponse1" >Sauvegarde Base de données</a><br>
