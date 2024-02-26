@@ -284,13 +284,13 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 ========================================================================
 *pour utiliser ces données dans des scripts (lua, python, js ou autres)*
 
-temp.lua, temp.py, temp.js sont enregistrés dans admin/tmp:
-
-|image822|
+connect.lua, connect.py, connect.js sont enregistrés dans admin/connect/:
 
 |image1362|
 
-ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs et rebaptisés connect.xxx
+|image822|
+
+ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs dans leurs répertoires d'utilisation.
 
 14.6.1.1 connect.lua
 """"""""""""""""""""
@@ -302,6 +302,12 @@ ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs e
 14.6.1.2 connect.py
 """""""""""""""""""
 *Un double de connect.lua est enregistré au format python pour les script écrit dans ce langage*
+
+L'original est enregistré dans admin/connect/ , il est toujours possible d'établir des liens symboliques:
+
+.. code-block::
+
+   ln -s admin/connect/connect.py python/connect.py
 
 |image823|
 
@@ -326,7 +332,9 @@ ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs e
 
       ce chemin est utilisé dans fonctions.php admin()
 
-   |image1280|      
+   |image1280|   
+
+   |image1363| 
 
 - **admin.php**
 
@@ -621,22 +629,6 @@ Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes
 
    |image873|
 
-.. important:: *SSH2 et SCP concerne aussi la commande de maj du fichier python connect.py si il est utilisé par plusieurs serveurs.*
-
-   La commande ci-dessous met à jour connect.py dans Domoticz, Monitor, et un autre serveur (le PI)
-
-   *REMARQUE* : pour que python trouve le fichier connect  et donc les variables,il faut ajouter le répertoire vide __INIT__.py
-
-   Ce fichier permet de ne pas avoir à modifier les scripts python lors d’un changement de serveur
-
-   Exemple ( fichier rec_sms_serie.py) 	
-
-   |image875|
-
-   connect.py
-
-    |image877|
-
 14.11 A Propos
 ==============
 Affiche les numéros des versions de monitor, PHP et Jpgraph
@@ -780,12 +772,8 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 700px
 .. |image873| image:: ../media/image873.webp
    :width: 450px
-.. |image875| image:: ../media/image875.webp
-   :width: 576px
 .. |image876| image:: ../media/image876.webp
    :width: 537px
-.. |image877| image:: ../media/image877.webp
-   :width: 425px
 .. |image1280| image:: ../img/image1280.webp
    :width: 700px
 .. |image1331| image:: ../img/image1331.webp
@@ -806,5 +794,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 337px
 .. |image1355| image:: ../img/image1355.webp
    :width: 700px
-.. |image1355| image:: ../img/image1362.webp
+.. |image1362| image:: ../img/image1362.webp
    :width: 534px
+.. |image1363| image:: ../img/image1363.webp
+   :width: 700px
