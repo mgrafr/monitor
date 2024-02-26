@@ -1,0 +1,22 @@
+-- liste de variables
+-- string
+jour_poubelle_grise="Wednesday"
+jour_poubelle_jaune="Sunday"
+semaine_poub_jaune= 0  -- 0 pour pair 1 pour impair
+-- exclusion poubelles j=jaune, g=grise
+e_poubelles = {["31-12"]="j",["09-05"]="g",["19-05"]="j",["14-08"]="g"};
+-- ajout poubelles j=jaune, g=grise
+a_poubelles = {["03-01"]="j",["21-05"]="j"};
+--
+jour_fosse="26"
+pression_chaudiere=0.8
+--alerte device off line ou mort
+max_lastseen=24 
+max_lastupdate=48 
+max_bat=80 
+-- anniversaires
+anniversaires = {["27-08"]="Damien",["18-05"]="Yoann",["14-09"]="Jonathan",["19-07"]="Alexandra",["25-08"]="Charlotte",["01-05"]="Guillaume",
+["07-11"]="Corentin",["22-08"]="Pauline",["14-03"]="Clémence",["31-10"]="Eric",["01-02"]="Nathalie",["14-04"]="Christèle",["25-04"]="Katy",
+["23-05"]="Eveline",["23-08"]="Jean Paul",["24-07"]="Arthur",["09-07"]="Jade",["27-03"]="Judith",["06-03"]="Annie",["02-11"]="Nicole",["22-12"]="Michel"};
+
+
