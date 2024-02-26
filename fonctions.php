@@ -160,6 +160,7 @@ function sql_variable($t,$ind){
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
 	if ($ind==4){$sql="SELECT * FROM `messages` ;" ;}
 	if ($ind==5){$sql="SELECT * FROM `dispositifs` WHERE idm!='';" ;}
+	if ($ind==6){$sql="SELECT * FROM `dispositifs` WHERE (nom_objet='".$t."' AND maj_js='variable');" ;}
 	$result = $conn->query($sql);
 	$row_cnt = $result->num_rows;
 	if ($row_cnt==0) {return  null;}
@@ -191,7 +192,14 @@ function sql_variable($t,$ind){
 				elseif ($ligne['ID']!="" && $ligne['idx']!="" && $ligne['Actif']==3) {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}
 				else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}}																 
 			$i++;}
-	return $retour;}	
+	return $retour;}
+	if 	($ind==6) {//$n=1;
+		$ligne = $result->fetch_assoc();
+			$retour['Name'] = $ligne['nom_objet'];
+			$retour['ID'] = $ligne['id'];
+			$retour['idx'] = $ligne['idx'];
+			$retour['Actif'] = $ligne['Actif'];
+			return $retour;}
 	
 	else {$row = $result->fetch_assoc();
 		return $row;}
@@ -902,9 +910,8 @@ if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
 if ($choix==21 ) {$ip=IPRPI;$mode="scp_r";$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de  msmtprc";$rel="22";}
 if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
-if ($choix==23 ) {$ip=IPDOMOTIC;$mode="scp_r";$remote_file_name=DZ_PATH."scripts/python/connect.py";$file_name="connect.py";$local_path="/var/www/html/monitor/python/";
-				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de connect.py depuis dz";$rel="24";}	
-if ($choix==24 ) {$file_name="connect.py";$local_path="/home/michel/";$file= $local_path.$file_name; }
+if ($choix==23 ) {$file_name=SSH_MONITOR_PATH."connect.py"; echo "copy de connect.py depuis ".SSH_MONITOR_PATH;$rel="24";}	
+if ($choix==24 ) {$file= $file_name; }
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) ) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12){echo "//*******création fichier noms/idx******* <br>";}
@@ -926,7 +933,7 @@ case "21" :
 case "23" :			
 echo $file.'<div id="result"><form >';
      $content = file_get_contents($file);
-	 if($choix==3){ file_put_contents(DZCONFIG.'.bak.'.$time, $content);}	 
+	 if($choix==3){ file_put_contents(TMPCONFIG.'.bak.'.$time, $content);}	 
 	 else {file_put_contents($file.'.bak.'.$time, $content);}
 	 if($choix==7){$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];
 		$_SESSION["mdpass"]=$find.$content;$height="30";}
@@ -939,10 +946,15 @@ case "4" :
 case "16" :
 $content=$idrep;
 echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
-file_put_contents(DZCONFIG, $content);
+file_put_contents($file, $content);
 // mise à jour par domoticz
 if ($choix==4){$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];}
-if ($choix==16){$retour=maj_variable("22","upload","3","2");echo "Logins , mots de passe ou IPs mis à jour : ".$retour['status'];}		
+if ($choix==16){
+	file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);
+	$content=str_replace("/*JS*/","--  lua",$content);$content=str_replace("[","{",$content);$content=str_replace("]","}",$content);
+	file_put_contents(TMPCONFIG."connect.lua", $content);
+	$upload=sql_variable('upload',6);
+				$retour=maj_variable($upload["idx"],"upload","3","2");echo "Logins , mots de passe ou IPs mis à jour : ".$retour['status'];}		
 else {$retour['status'];}		
 break;
 case "6" :
@@ -952,7 +964,7 @@ case "24":
  file_put_contents($file, $content);
 if ($choix==22){$mode="scp_s";$ip=IPRPI;$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				include ('include/ssh_scp.php');echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/>maj config msmtprc</p>';}	
-if ($choix==24){$ip=IPRPI;$remote_file_name="/home/michel/connect.py";$file_name="connect.py";$local_path="/var/www/html/monitor/python/";	
+if ($choix==24){$ip=IPRPI;$remote_file_name="/home/michel/connect.py";$file_name="connect.py";$local_path=SSH_MONITOR_PATH;	
 		$mode="scp_s";include ('include/ssh_scp.php'); echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "copy de  connect.py";}		
  return;
  break;
@@ -998,7 +1010,7 @@ if ($val_mat=="zigbee" || $val_mat=="zigbee3" || $val_mat=="zwave") {$i=$i+1;$la
 	}
 $lastseen=$lastseen."\n";$lastseen=$lastseen.'nombre_enr='.$i;
 //$lastseen=$lastseen."}";
-		file_put_contents(DZCONFIG, $lastseen);
+		file_put_contents(TMPCONFIG, $lastseen);
 $retour=maj_variable("22","upload","4","2");echo "Mise à jour Table Zigbee  : ".$retour['status'];		
 break;
 case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
