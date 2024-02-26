@@ -1,4 +1,4 @@
--- script notifications_variables version 2.1.3
+-- script notifications_variables version 2.1.4
 -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
@@ -85,23 +85,11 @@ return {
                 --os.execute(command);print('maj effectuée_2');
                 elseif (domoticz.variables('upload').value == "3") then 
                 print("upload connect")
-                command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1'
-                os.execute(command);print('maj effectuée_3');
+                command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1';os.execute(command);
+                command = rep..'upload_fichier.py connect.py  > '..rep_log..'connect.log 2>&1';os.execute(command);
+                print('maj effectuée_3');
                 domoticz.variables('upload').set('0')   
-                        fich="";local jt='';
-                        for line in io.lines( "/opt/domoticz/www/modules_lua/connect.lua" ) do 
-                        line = line:gsub("%}", "]");line = line:gsub("%{", "[")
-                        --print(line)
-                        fich=fich..tostring(line).."\n" 
-                        jt=jt..line..';\n'
-                        end
-                    f = io.open("scripts/python/connect.py", "w")
-                    env="#!/usr/bin/env python3"
-                    f:write(env.." -*- coding: utf-8 -*-".."\n"..fich)
-                    f = io.open("scripts/js/connect.js", "w")
-                    f:write(jt)
-                    f:close()
-                    domoticz.variables('BASH').set("restart_sms_dz")
+                domoticz.variables('BASH').set("restart_sms_dz")
                 end
                 
             end
