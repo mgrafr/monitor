@@ -345,13 +345,13 @@ Paramètres pour Domoticz ou HA :
    define('URLDOMOTIC1', 'http://192.168.1.5:8123/');//url ex:http://192.168.1.5:8123/
    define('DOMDOMOTIC1', 'https://***********');//domaine
    define('TOKEN_DOMOTIC1',"eyJhb*****************************************************************2k");   
-   //______________Pour Domoticz
+   //*************************modules complémentaires
    define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//
-   define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64
-   define('CONF_MODECT', URLDOMOTIC.'modules_lua/string_modect.lua');
+   define('BASE64', 'admin/connect.py');//login et password en Base64
+   define('CONF_MODECT', 'admin/string_modect.json');
 
 .. warning::
-  les variables ci-dessus , VARTAB, BASE64, CONF_MODECT sont à déclarer ici que si elles sont utilisées dans un fichier
+  les variables ci-dessus , VARTAB, BASE64, CONF_MODECT ne sont à déclarer ici que si elles sont utilisées dans un fichier
 
 Le programme démarre avec 3 pages :
 
