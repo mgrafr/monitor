@@ -629,6 +629,10 @@ Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes
 
    |image873|
 
+14.10.2.1 exemple: mise à jour fichier de configuration du RPI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+voir ce paragraphe :ref:`14.6.1.2 connect.py`
+
 14.11 A Propos
 ==============
 Affiche les numéros des versions de monitor, PHP et Jpgraph
