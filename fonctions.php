@@ -910,8 +910,8 @@ if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
 if ($choix==21 ) {$ip=IPRPI;$mode="scp_r";$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de  msmtprc";$rel="22";}
 if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
-if ($choix==23 ) {$file_name=SSH_MONITOR_PATH."connect.py"; echo "copy de connect.py depuis ".SSH_MONITOR_PATH;$rel="24";}	
-if ($choix==24 ) {$file= $file_name; }
+if ($choix==23 ) {$file=SSH_MONITOR_PATH."connect.py"; echo "copy de connect.py";$rel="24";}	
+if ($choix==24 ) {$file=SSH_MONITOR_PATH."connect.py"; }
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) ) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12){echo "//*******création fichier noms/idx******* <br>";}
@@ -937,8 +937,10 @@ echo $file.'<div id="result"><form >';
 	 else {file_put_contents($file.'.bak.'.$time, $content);}
 	 if($choix==7){$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];
 		$_SESSION["mdpass"]=$find.$content;$height="30";}
+	$button_enr="enregistrer";
+	if ($choix==23){$button_enr	= 'envoyer vers PI ';}
 	 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
-	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
+	<input type="button" value="'.$button_enr.'" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
 	 echo '</form></div>';
 return "sauvegarde OK";	 
 break;
