@@ -1245,17 +1245,25 @@ pou les variables (input_text pour HA):
 
 **DZ** : URL:PORT/json.htm?type=command&param=getuservariables
 
-**HA** : URL:8123/api/states/sensor.:darkblue:`liste_var001`
+**HA** : URL:8123/api/states/sensor.liste_var
 
 .. note::
 
-   *liste_var001 est l'unique_id du template concernant les input_text* , voir ce § :ref:`1.8.2.1.2 Home Assistant`
+   *un unique_id du sensor doit être indiqué* , voir ce § :ref:`1.8.2.1.2 Home Assistant`
+
+   |image1365| 
 
 Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs ou les variables.
 
 ........ha, un dispositif :
  
 |image97| 
+
+.. important::
+
+   pour Home Assistant ,un jeton est obligatoire; pour faire des essai avec un navogateur, utiliser un client pour API comme par exemple ci dessous l' addon RESTer:
+
+   |image1365|
 
 0.11 Les fichiers ajoutés par l'utilisateur
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1582,3 +1590,7 @@ function mc(variable,id)
    :width: 298px 
 .. |image1361| image:: ../img/image1361.webp
    :width: 700px 
+.. |image1364| image:: ../img/image1364.webp
+   :width: 700px 
+.. |image1365| image:: ../img/image1365.webp
+   :width: 584px 
