@@ -1249,7 +1249,7 @@ pou les variables (input_text pour HA):
 
 .. note::
 
-   *un unique_id du sensor doit être indiqué* , voir ce § :ref:`1.8.2.1.2 Home Assistant`
+   *un unique_id du sensor doit être indiqué* , voir ce §  :ref:`1.8.2.1 Ecriture d’un script Dzvent(Dz) ou yaml(HA)`
 
    |image1365| 
 
@@ -1261,9 +1261,9 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
 
 .. important::
 
-   pour Home Assistant ,un jeton est obligatoire; pour faire des essai avec un navogateur, utiliser un client pour API comme par exemple ci dessous l' addon RESTer:
+   pour Home Assistant ,un jeton est obligatoire; pour faire des essai avec un navigateur, utiliser un client pour API comme par exemple ci dessous l' addon RESTer:
 
-   |image1365|
+   |image1364|
 
 0.11 Les fichiers ajoutés par l'utilisateur
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
