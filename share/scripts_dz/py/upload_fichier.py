@@ -11,7 +11,7 @@ if z=="lua" :
     rep="/opt/domoticz/www/modules_lua/"
 if z=="py" :
     rep="/opt/domoticz/scripts/python/"    
-addr="http://"+ip+"/monitor/admin/tmp/temp."+z
+addr="http://"+ip+"/monitor/admin/connect/connect."+z
 req = requests.get(addr)
 with open(rep+x, "wb") as fp:
     fp.write(req.content)
