@@ -1,5 +1,5 @@
 <svg version="1.1" id="vanne_chaud" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 10000 10000" style="enable-background:new 0 0 10000 10000;" xml:space="preserve">
+	 viewBox="0 0 10000 1000" >
 
 <rect id="vanne_eau_chaud" onclick="popup_device(78)" x="183.5" y="41.4" class="st32" width="429.8" height="165.2"/>
 <path d="M800,513.3h-40v-26.7c0-7.4-6-13.3-13.3-13.3h-80c-7.4,0-13.3,6-13.3,13.3v26.7h-40v-66.7c0-7.4-6-13.3-13.3-13.3h-26.7
