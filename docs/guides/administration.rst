@@ -215,6 +215,7 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
 14.5 Téléchargement d’un fichier externe dans Domoticz ou Home Assistant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 *Pour la mise à jour des fichiers "connect.lua, connect.py, connect.js, etc..." (variables persistentes pour les scripts Dz,Ha )* 
 
 .. note::
@@ -225,13 +226,17 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
    
    La solution retenue :
 
-   -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1, 2, 3 ,.... une variable (nommée ici "upload")  pour l’exécution d’un script qui va télécharger ce fichier ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
+   -	Avec l’API de Domoticz ou celle de Home Assistant,  il est possible de mettre à jour des variables ; àprès la lecture et la  mise à jour d’un fichier de Monitor, on enregistre le résultat dans un fichier temporaire et on met à 1, 2, 3 ,abcd,  une variable (nommée ici "upload")  pour l’exécution d’un script qui va télécharger ce fichier deis DZ ou HA; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
 
-   |image811|
+14.5.1 Domoticz
+=============== 
+La variable :
+
+|image811|
 
    .. code-block::
 
-      maj_variable("22","upload","1","2")
+      maj_variable("22","upload","connect","2")
    
    |image812|
 
@@ -252,10 +257,21 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
     	rep="/opt/domoticz/www/modules_lua/"
 	if z=="py" :
     	rep="/opt/domoticz/scripts/python/"    
-	addr="http://"+ip+"/monitor/admin/tmp/temp."+z
+	addr="http://"+ip+"/monitor/admin/connect/connect."+z
 	req = requests.get(addr)
 	with open(rep+x, "wb") as fp:
     	fp.write(req.content)
+
+14.5.2 Home Assistant
+=====================
+La variable :
+
+|image1367|
+
+|image1366|
+
+14.5.3 Monitor
+==============
 
    - **Les fonctions JS wajax() et yajax()** ,  *dans mes_js.js*
 
@@ -802,3 +818,7 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 534px
 .. |image1363| image:: ../img/image1363.webp
    :width: 700px
+.. |image1366| image:: ../img/image1366.webp
+   :width: 299px
+.. |image1367| image:: ../img/image1367.webp
+   :width: 400px
