@@ -1,6 +1,7 @@
  /*----------------script pour admin---*/
 function wajax(content,rel){alert(content+"   "+rel);
-$("btclose").remove();$("reponse1").empty();  
+//$("#btclose").remove();//$("#reponse1").empty();
+$("#enr").hide();   
 $("#adm1").empty();
 $.post('ajax.php', {appp:'adminp', variable:rel, command:content}).done(function(response){console.log(response);
        $("#reponse1").html(response);
@@ -14,6 +15,7 @@ $(id2).text(content2);
 
 /*Minimal Virtual Keypad
 ---------------------------*/
+
 $(document).ready(function () {
   const input_value = $("#password");
   var pwd,nameid;
@@ -36,8 +38,9 @@ $(document).ready(function () {
   });
   $("#enter").click(function () {
     pwd = input_value.val();mdp(pwd,2,'not');
-	$('#info_admin').show();
+	$('#info_admin').show();//affiche texte:"Avant d'entrer un mot de passe, faire un RAZ"
   });
+
   /*$('#enter').on('click', function() {$('pwdalarm').empty();*/
 	/*
 input_value:mot de passe
