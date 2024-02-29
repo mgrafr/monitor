@@ -1249,7 +1249,7 @@ pou les variables (input_text pour HA):
 
 .. note::
 
-   *un unique_id du sensor doit être indiqué* , voir ce §  :ref:`1.8.2.1 Ecriture d’un script Dzvent(Dz) ou yaml(HA)`
+   *un unique_id du sensor doit être indiqué* , voir ce paragraphe  :ref:`1.8.2.1 Ecriture d’un script Dzvent(Dz) ou yaml(HA)`
 
    |image1365| 
 
