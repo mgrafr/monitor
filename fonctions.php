@@ -65,7 +65,7 @@ $p=count($result);
 }
 if (IPDOMOTIC1!=""){
 $n=0;$mode=1;$post="";		
- $M=URLDOMOTIC1."api/states/sensor.liste_var001";
+ $M=URLDOMOTIC1."api/states/sensor.liste_var";
 $json_string1=file_http_curl($M,$mode,$post);
 
 $parsed_json1 = json_decode($json_string1, true);  //return $parsed_json1;
@@ -196,7 +196,7 @@ function sql_variable($t,$ind){
 	if 	($ind==6) {//$n=1;
 		$ligne = $result->fetch_assoc();
 			$retour['Name'] = $ligne['nom_objet'];
-			$retour['ID'] = $ligne['id'];
+			$retour['ID'] = $ligne['ID'];
 			$retour['idx'] = $ligne['idx'];
 			$retour['Actif'] = $ligne['Actif'];
 			return $retour;}
@@ -242,7 +242,7 @@ foreach ($lect_device as $xxx){
 
 return $ha;}
 //
-function devices_id($deviceid,$command){$post="";
+function devices_id($deviceid,$command,$value=""){$post="";
 	$mat=explode('.',$deviceid);$mat=$mat[0];
 switch ($command) {
 case "etat" :		
@@ -262,6 +262,10 @@ case "off" :
 	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
+break;
+case "value" :
+	$mode=2;	
+	if ($mat=="input_text") {$api="api/services/input_text/set_value";$post='{"entity_id": "'.$deviceid.'" , "value" : "'.$value.'" }';}	
 break;	
 default:
 }								
@@ -947,7 +951,7 @@ break;
 case "4" :
 case "16" :
 $content=$idrep;
-echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
+echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/>fichiers sauvegardés';		
 file_put_contents($file, $content);
 // mise à jour par domoticz
 if ($choix==4){$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];}
@@ -955,8 +959,11 @@ if ($choix==16){
 	file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);
 	$content=str_replace("/*JS*/","--  lua",$content);$content=str_replace("[","{",$content);$content=str_replace("]","}",$content);
 	file_put_contents(TMPCONFIG."connect.lua", $content);
+	$t_maj= "";
 	$upload=sql_variable('upload',6);
-				$retour=maj_variable($upload["idx"],"upload","3","2");echo "Logins , mots de passe ou IPs mis à jour : ".$retour['status'];}		
+	if ($upload['idx']!='') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
+	if ($upload['ID']!='') {$retour=devices_id($upload["ID"],"value","connect");$t_maj=$t_maj.$upload["ID"]."----->ha";}
+	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>La variable ha et dz se nomme *****connect*****</p>";}		
 else {$retour['status'];}		
 break;
 case "6" :
