@@ -4,16 +4,22 @@
 ^^^^^^^^^^^^^^^
 *La version actuelle est 8.3*
 
-19.2 UPDATE Monitor
+19.2 Version de SSH
+^^^^^^^^^^^^^^^^^^^
+version : php8.3-ssh2 pour Debian 12
+
+19.3 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
 **La version stable actuelle est 3.0.0**
 
 19.2.1 Releases
 ===============
-Version  en developpement 3.0.1
+Version  en developpement 3.0.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - modification ou mise à jour des dispositifs sans utiliser PhpMyAdmin
 - le fichier string_modect.lua (DZ) est remplacé par string_modect.json (compatible DZ et HA)
+- version SSH : php8.3-ssh2 pour Debian 12
+- avec la compatibilité pour Home Assistant, les fichier de configuration "connect.* sont stockés dans monitor et à chaque maj DZ et HA téléchargent , après notification, les nouveaux fichiers.
 
 Version  3.0
 ~~~~~~~~~~~~
@@ -98,7 +104,7 @@ Version 2.1.0
 - explication concernant l’envoi par Domoticz de SMS
 
 
-19.3 Version de JPGRAPH
+19.4 Version de JPGRAPH
 ^^^^^^^^^^^^^^^
 *La version actuelle est 4.4.2*
 
