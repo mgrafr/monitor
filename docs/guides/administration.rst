@@ -312,6 +312,8 @@ ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs d
 
    Si l'installaton de monitor est éffectuée automatiquement avec :ref:`lamp_monitor_install.sh` l'adresse IP de monitor est indiqué dans les fichiers connect.lua et connect.py; 
 
+   |image1369|
+
    Si l'installation est effectué manuellement l'adresse ip de monitor devra être ajoutée dans ces 2 fichier pour Domoticz et dans connect.py pour Home Assistant
 
    |image1368|
@@ -832,3 +834,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 400px
 .. |image1368| image:: ../img/image1368.webp
    :width: 394px
+.. |image1369| image:: ../img/image1369.webp
+   :width: 460px
