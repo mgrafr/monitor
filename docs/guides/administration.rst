@@ -308,6 +308,14 @@ connect.lua, connect.py, connect.js sont enregistrés dans admin/connect/:
 
 ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs dans leurs répertoires d'utilisation.
 
+.. IMPORTANT::
+
+   Si l'installaton de monitor est éffectuée automatiquement avec :ref:`lamp_monitor_install.sh` l'adresse IP de monitor est indiqué dans les fichiers connect.lua et connect.py; 
+
+   Si l'installation est effectué manuellement l'adresse ip de monitor devra être ajoutée dans ces 2 fichier pour Domoticz et dans connect.py pour Home Assistant
+
+   |image1368|
+
 14.6.1.1 connect.lua
 """"""""""""""""""""
 
@@ -822,3 +830,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 299px
 .. |image1367| image:: ../img/image1367.webp
    :width: 400px
+.. |image1368| image:: ../img/image1368.webp
+   :width: 394px
