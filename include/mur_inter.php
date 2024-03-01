@@ -20,10 +20,14 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
   </button></div>	
 			
 		<ul>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/>
+			<img id="sw12" src="<?php echo $lien_img;?>images/seche-serviettes.svg" width="40" height="auto" alt=""/>
+			<img id="sw23" src="<?php echo $lien_img;?>images/vanne.svg" width="60" height="auto" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>images/lampe_entree.svg" width="60" height="40" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>images/lampe_salon.svg" width="60" height="40" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/></a><?php include("cordon_prise_bureau_svg.php");?>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/>
+			<img id="sw11" src="<?php echo $lien_img;?>images/cordon_prise_bureau.svg" width="60" height="auto" alt=""/>
+			<img id="sw10" src="<?php echo $lien_img;?>images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw1" src="<?php echo $lien_img;?>images/lampe_poele.svg" width="60" height="60" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><?php include ("volet-roulant_svg.php");?></li>
 			<li style="margin-left:0;margin-top:10px"><img id="sw6" src="<?php echo $lien_img;?>images/porte_garage.svg" width="60" height="auto" alt=""/></li>
@@ -34,9 +38,9 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 			
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw9" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="60" height="auto" alt=""/></a><a href="#murinter"><img id="sw20" src="<?php echo $lien_img;?>images/lampe_terrasse.svg" width="60" height="auto" alt=""/></a><a href="#murinter"><img id="sw21" src="<?php echo $lien_img;?>images/lampe_suspendue1.svg" width="60" height="60" alt=""/></a><a href="#murinter"><img id="sw22" src="<?php echo $lien_img;?>images/lampe_suspendue2.svg" width="60" height="60" alt=""/></a></li>
 
-<li style="margin-left:150px;margin-top:-660px"><a href="#murinter"><?php include ("seche-serviettes_svg.php");?></a></li>
-<li style="margin-left:250px;margin-top:-660px"><a href="#murinter"><img id="sw23" src="<?php echo $lien_img;?>images/vanne.svg" width="60" height="auto" alt=""/></a></li>
-<li style="margin-left:140px;margin-top:-415px"><a href="#murinter"><img id="sw10" src="<?php echo $lien_img;?>images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
+
+
+
 		</ul>
 </div>
 </div></div>
