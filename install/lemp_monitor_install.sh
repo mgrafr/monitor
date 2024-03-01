@@ -193,11 +193,8 @@ systemctl restart nginx
 if [ "$ssh2" = "PHP avec SSH2" ]
 then
 msg_ok "installation de php-ssh2"
-#apt install php8.3-ssh2
-apt-get -y install gcc make autoconf libc-dev pkg-config
-apt-get -y install libssh2-1-dev
-yes '' |  peclX.Y-sp install ssh2-beta
-echo "installation terminée de ssh2-beta"
+apt install php8.3-ssh2
+echo "installation terminée de php8.3-ssh2"
 fi
 msg_ok "installation de Monitor:"
 sleep 3
@@ -262,4 +259,6 @@ msg_ok "le lien symbolique : /www/monitor"
 sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
+sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.lua
+sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.py
 exit
