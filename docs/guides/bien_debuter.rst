@@ -54,7 +54,7 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
    convertir le fichier en UNIX
 
-   voir le § :ref:`8.2.1.1 Problème de lecture de fichier`
+   voir le § :ref:`8.2.2 Problème de lecture de fichier`
 
 **Installation :**
 
