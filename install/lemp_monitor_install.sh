@@ -193,11 +193,8 @@ systemctl restart nginx
 if [ "$ssh2" = "PHP avec SSH2" ]
 then
 msg_ok "installation de php-ssh2"
-#apt install php8.3-ssh2
-apt-get -y install gcc make autoconf libc-dev pkg-config
-apt-get -y install libssh2-1-dev
-yes '' |  peclX.Y-sp install ssh2-beta
-echo "installation terminée de ssh2-beta"
+apt install php8.3-ssh2
+echo "installation terminée de php8.3-ssh2"
 fi
 msg_ok "installation de Monitor:"
 sleep 3
