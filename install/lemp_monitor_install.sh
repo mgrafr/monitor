@@ -262,4 +262,6 @@ msg_ok "le lien symbolique : /www/monitor"
 sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
+sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.lua
+sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.py
 exit
