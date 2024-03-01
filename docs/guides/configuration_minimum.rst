@@ -1344,8 +1344,8 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 1.8.2 Mode d'emploi pour ajouter une notification
 -------------------------------------------------
 
-1.8.2.1  Ecriture d'un script Dzvent(Dz) ou yaml(HA)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.8.2.1  Ecriture d'un script Dzvent ou yaml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jour" (LastUpdate) des dispositifs
 
 .. warning::
