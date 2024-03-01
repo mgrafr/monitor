@@ -57,9 +57,12 @@ rm $chemin/monitor/install/maj*
 chown -R $maria_name:$maria_name $chemin/monitor
 chown -R www-data:www-data $chemin/monitor/admin/config.php
 chmod -R 775 $chemin/monitor
-# une base de données Maria ou mysql doit être installé
-# echo "importer les tables text_image et dispositifs"
-
+echo "--------------------------------------------------------"
+echo " une base de données Maria ou mysql doit être installé -"
+echo "    importer les tables text_image et dispositifs      -"
+echo "--------------------------------------------------------"
+echo "appuyer sur une touche pour continuer"
+read
 
 echo -e "
     _______                 _
@@ -72,7 +75,8 @@ echo -e "
 header_info
 msg_txt "ip du serveur = $ip4"
 
-#sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
-
+sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
+sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.lua
+sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.py
 exit
 msg_txt "Completed Successfully!\n"
