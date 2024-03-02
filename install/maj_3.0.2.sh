@@ -7,7 +7,7 @@ echo "appuyer sur une touche pour continuer"
 read
 mkdir tmp
 wget - O tmp/maj.zip https://github.com/mgrafr/monitor/archive/refs/heads/miseajour.zip
-unzip tmp/miseajour.zip
+unzip tmp/maj.zip
 cp -RTu --update tmp/include include
 cp -RTu --update tmp/css  css
 cp -u --update tmp/fonctions.php  fonctions.php
