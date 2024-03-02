@@ -4,16 +4,17 @@
 echo'<!---------------------->';
 echo '<!-- test pass -->';
 echo '<script>text1="";</script>';
+if (ON_ALARM==false && DECOUVERTE==true) {echo "<br><p style='margin-top:40px'>MODE DECOUVERTE MOT PASSE : <br><span id='not' style='float:left;'></span></p>";}
 		  if (isset($_SESSION['time'])) {$tt=$_SESSION['time'];}
 		  else if (DECOUVERTE==false){$tt=0;echo "<p id='mp1' style='float:left;'>entrer mot de passe - </p>";}
 			   if (DECOUVERTE==true){$tt=1;}
 
-		  if (isset($_SESSION['passworda']) && (($_SESSION['passworda']) != PWDALARM)){$tt=0;echo "mot de passe non valide - ";}
+		  if (isset($_SESSION['passworda']) && $_SESSION['passworda'] != PWDALARM) {$tt=0;echo "mot de passe non valide - ";}
 		  else {echo "<script>text1='pwd:ok';</script>";$style1="block";}
 			  
           if ($tt<time() && $tt!=1) {$tt=0;echo "<p id='mp2' >temps pwd dépassé - </p>";
 					if (DECOUVERTE==false && ON_ALARM==true ){echo "<script>document.getElementById('d_btn_al').style.display = 'block';</script>";}
-					if (DECOUVERTE==true ){echo "<script>document.getElementById('d_btn_a').style.display = 'none';</script>";}	  
+					if (DECOUVERTE==true ){echo "<script>document.getElementById('d_btn_a').style.display = 'block';</script>";}	  
 						  }
    		  
           if ($tt==0){
@@ -21,7 +22,7 @@ echo '<script>text1="";</script>';
 				  if (DECOUVERTE==false && ON_ALARM==true){echo "document.getElementById('d_btn_al').style.display = 'block';";}
 				  echo "</script>";} 
 
-		  elseif ($tt==1){echo "<p id='mp2' >MODE DECOUVERTE</p><script>document.getElementById('d_btn_a').style.display = 'none';</script>";
+		  elseif ($tt==1){echo "<p id='mp2' style='margin-top:20px'>Bienvenue dans Monitor </p><script>document.getElementById('d_btn_a').style.display = 'block';</script>";
 		  }
 			  
 		  else {echo "<script>
