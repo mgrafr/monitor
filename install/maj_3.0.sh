@@ -11,8 +11,7 @@ unzip tmp/maj.zip
 cp -RTu --update monitor-miseajour/include include
 cp -RTu --update monitor-miseajour/css  css
 cp -u --update monitor-miseajour/fonctions.php  fonctions.php
-mysql --user="root" --database="monitor"  -e "DROP TABLE IF EXISTS dispositifs;"
-mysql -root monitor < bd_sql/dispositifs.sql
+mysql --user="root" --database="monitor"  -e "ALTER TABLE dispositifs ADD Actif varchar(1) NOT NULL DEFAULT '1' AFTER idm;"
 #
 sed -i "s/Pour Domoticz/modules complementaires/g" /var/www/html/monitor/admin/config.php
 sed -i "s/URLDOMOTIC.'modules_lua\/string_modect.lua/'admin\/string_modect.json/g" /var/www/html/monitor/admin/config.php
