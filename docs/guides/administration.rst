@@ -310,11 +310,11 @@ ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs d
 
 .. IMPORTANT::
 
-   Si l'installaton de monitor est éffectuée automatiquement avec :ref:`lamp_monitor_install.sh` l'adresse IP de monitor est indiqué dans les fichiers connect.lua et connect.py; 
+   Depuis la version 3.03, Si l'installaton de monitor est éffectuée automatiquement avec :ref:`lamp_monitor_install.sh` l'adresse IP de monitor est indiqué dans les fichiers connect.lua et connect.py; 
 
    |image1369|
 
-   Si l'installation est effectué manuellement l'adresse ip de monitor devra être ajoutée dans ces 2 fichier pour Domoticz et dans connect.py pour Home Assistant
+   Si l'installation est effectué manuellement ou si la version de monitor est antérieure à 3.03,  l'adresse ip de monitor devra être ajoutée dans ces 2 fichiers pour Domoticz et dans connect.py pour Home Assistant
 
    |image1368|
 
