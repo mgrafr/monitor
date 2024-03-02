@@ -196,7 +196,11 @@ msg_ok "installation de php-ssh2"
 apt install php8.3-ssh2
 echo "installation terminée de php8.3-ssh2"
 fi
-msg_ok "installation de Monitor:"
+msg_ok "installation de dos2unix:"
+apt install dos2unix
+msg_ok "installation de Unzip:"
+apt install unzip
+sg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
