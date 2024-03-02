@@ -35,6 +35,11 @@
         <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/st_jacques_creme.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="9" alt="St Jacque à la crème"/></div>
 			<div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/cake_prunes.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="10" alt="Cake aux prunes"/></div>
           </div>
+		
+		<div class="row mt-3">
+        <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/tatin_endives.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="11" alt="Tatin d'endives"/></div>
+			<div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="12" alt="libre"/></div>
+          </div>
 	
 	</div>	 
 				 
