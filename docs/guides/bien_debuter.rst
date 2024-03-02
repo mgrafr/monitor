@@ -28,6 +28,8 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP, ser
 
 -	Quelques programmes python utiles : pip, Paho-mqtt
 
+-       Quelques utilitaires : dos2unix et unzip
+
 -       Un serveur SSE en PHP (en option SSE NodeJS)
 
 -	Un utilisateur système est crée
