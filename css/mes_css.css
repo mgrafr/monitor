@@ -266,7 +266,7 @@ margin: -15px 0 0 50px;}
 #pluie img{width:80px;}
 #txt_pluie{position: relative;
 top: -70px;color:red;
-left: 20px;}
+left: 0px;}
 #txt_pluie a{color:red;}
 /*affichage anniversaires*/
 #aff_anni{display:none;}
@@ -568,7 +568,7 @@ left: 170px;width: 40px;}
 @media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}.choix_scenes{left:10px;width: 80%;}
 }
 
-}
+
 
 
 /* Large devices (small desktops <535) */
@@ -588,7 +588,7 @@ left: 170px;width: 40px;}
 .image_met{width:50px;margin-left: 0;}
 .icone_vent {width: 40px;
     margin-left: 10px;
-    margin-top: -60px;}
+    margin-top: -60px;}#txt_pluie{left: -20px;}
 .vvent {margin-left: 15px;top: -50px;}
 	.vtemp {margin-left: 15px;top: -70px;}#th_ext_cuis{top: -1050px;left: 90px;}
     
