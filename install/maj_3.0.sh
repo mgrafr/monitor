@@ -3,37 +3,17 @@
 echo "-----------------------------------------------------------------"
 echo "-----------Mise à jour vers la version 3.0.2  -------------------"
 echo "-----------------------------------------------------------------"
-rm fonctions.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
-mv footer.php include/footer.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/ajout_dev_bd.php
-mv ajout_dev_bd.php include/ajout_dev_bd.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/ajout_var_bd.php
-mv ajout_var_bd.php include/ajout_var_bd.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/admin.php
-mv admin.php include/admin.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/info_admin.php
-mv info_admin.php include/info_admin.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/images/info10.webp
-mv info10.webp images/info10.webp
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/images/info12.webp
-mv info10.webp images/info12.webp
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css
-mv mes_css.css css/mes_css.css
+echo "appuyer sur ENTER pour continuer"
+read
+mkdir tmp
+wget -O tmp/maj.zip https://github.com/mgrafr/monitor/archive/refs/heads/miseajour.zip
+unzip tmp/maj.zip
+cp -RTu --update monitor-miseajour/include include
+cp -RTu --update monitor-miseajour/css  css
+cp -u --update monitor-miseajour/fonctions.php  fonctions.php
+mysql --user="root" --database="monitor"  -e "DROP TABLE IF EXISTS dispositifs;"
+mysql -root monitor < bd_sql/dispositifs.sql
 #
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes_svg.php
-mv alarmes_svg.php include/alarmes_svg.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/accueil.php
-mv accueil.php include/accueil.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/images/vanne.svg
-mv vanne.svg images/vanne.svg
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/vanne_eau_svg.php
-mv vanne_eau_svg.php include/vanne_eau_svg.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/mur_inter.php
-mv mur_inter.php include/mur_inter.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/interieur.php
-mv interieur.php include/interieur.php
 sed -i "s/Pour Domoticz/modules complementaires/g" /var/www/html/monitor/admin/config.php
 sed -i "s/URLDOMOTIC.'modules_lua\/string_modect.lua/'admin\/string_modect.json/g" /var/www/html/monitor/admin/config.php
 sed -i "s/URLDOMOTIC.'modules_lua\/connect.lua/'admin\/connect\/connect.py/g" /var/www/html/monitor/admin/config.php
@@ -41,12 +21,6 @@ sed -i "s/DZCONFIG/TMPCONFIG/g" /var/www/html/monitor/admin/config.php
 sed -i "s/dz\/temp.lua/connect/\/g" /var/www/html/monitor/admin/config.php
 sed -i "s/DZ_PATH/SSH_MONITOR_PATH/g" /var/www/html/monitor/admin/config.php
 sed -i "s/opt\/domoticz\/config/var\/www\/html\/monitor\/admin\/connect/g" /var/www/html/monitor/admin/config.php
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php
-mv alarmes.php include/alarmes.php 
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/modes_emploi.php
-mv modes_emploi.php include/modes_emploi.php 
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/include/cam_dahua.php
-mv cam_dahua.php include/cam_dahua.php 
 rm -R admin/dz
 mkdir admin/connect
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/admin/connect/connect.js
@@ -55,9 +29,11 @@ wget https://raw.githubusercontent.com/mgrafr/monitor/main/admin/connect/connect
 mv connect.lua admin/connect/connect.lua
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/admin/connect/connect.py
 mv connect.py admin/connect/connect.py 
-
+#
+rm -R tmp
 rm .version
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/.version
+cp monitor-miseajour/.version .version
+rm -R monitor-miseajour
 echo "-----------------------------------------------------------------------"
-echo "-----------Mises à jour vers la version 3.0.2   terminées--------------"
+echo "-----------Mises à jour vers la version 3.0.3   terminées--------------"
 echo "-----------------------------------------------------------------------"
