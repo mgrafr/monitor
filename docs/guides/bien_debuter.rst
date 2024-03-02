@@ -490,11 +490,17 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
 Pour les versions de monitor => 2.2.7 :
 
-Avec la console :
-
+Obtenir la dernière version de update.bash , avec la console :
+ 
 .. code-block::
 
    cd /www/monitor/install
+   wget -N https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.bash
+
+Rendre éxécutable le fichier  et le lancer
+
+.. code-block::
+   
    chmod +x update.bash
    ./update.bash
 
