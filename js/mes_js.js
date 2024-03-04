@@ -37,7 +37,9 @@ $(document).ready(function () {
     input_value.val("");
   });
   $("#enter").click(function () {
-    pwd = input_value.val();mdp(pwd,2,'not');
+    pwd = input_value.val();
+	alco = $("input[name=alco]:checked").val(),
+	  mdp(pwd,alco,'not');
 	$('#info_admin').show();//affiche texte:"Avant d'entrer un mot de passe, faire un RAZ"
   });
 
@@ -54,7 +56,7 @@ if (rep==0){
 	$('#pwdalarm').hide();$('#info_admin').hide();
 	$('#mp1,#mp2').hide();$('#d_btn_a').hide();
 	$('#d_btn_al').hide();$('#reponse1').hide();
-	$('#reponse').hide();
+	$('#reponse').hide();$('#btn_c').hide();$('#txt_cmd').hide();
 	$('#admin1').show();$('#console1').text("pwd:OK");}
 	else {$('#d_btn_a').show();
 	$('#pwdalarm').hide();
