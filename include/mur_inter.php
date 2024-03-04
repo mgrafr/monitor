@@ -13,7 +13,8 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 		<div id="murinter" class="inter">
 			<div class="container">
 		<div class="col-md-12" >
-	  <h1 class="title_ext text-center">Mur de<span>  Commandes</span></h1>
+	  <h1 class="title_ext text-center">Mur de<span>  Commandes</span></h1><br>
+		<p id="txt_cmd" style="display:none;color:red"></p><button type="button" id="btn_c" style="display:none" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm"> Entrer votre mot de passe </button>	
 		<p class="txt_ext">certaines commandes peuvent éxiger un mot de passe</p>
 		<div><button type="button" id="btn_sc" class="btn btn-primary" data-toggle="modal" data-target="#choix_scenes">
     Commandes SCENES

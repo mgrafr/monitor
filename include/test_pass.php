@@ -22,7 +22,7 @@ if (ON_ALARM==false && DECOUVERTE==true) {echo "<br><p style='margin-top:40px'>M
 				  if (DECOUVERTE==false && ON_ALARM==true){echo "document.getElementById('d_btn_al').style.display = 'block';";}
 				  echo "</script>";} 
 
-		  elseif ($tt==1){echo "<p id='mp2' style='margin-top:20px'>Bienvenue dans Monitor </p><script>document.getElementById('d_btn_a').style.display = 'block';</script>";
+		  elseif ($tt==1){echo "<p id='mp2' style='margin-top:20px'>Bienvenue dans Monitor </p>";
 		  }
 			  
 		  else {echo "<script>

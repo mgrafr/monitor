@@ -311,8 +311,12 @@ rr=new Array();
     	success: function(response){qq=response;
 			if (qq!=null){
 				if (qq['status']!="OK" ){//alert(qq['status']);
-			document.getElementById("d_btn_a").style.display = "block";
+			if (pass=="pwdalarm") {document.getElementById("d_btn_a").style.display = "block";
 			document.getElementById("d_btn_al").style.display = "block";}
+			if (pass=="pwdcommand") {document.getElementById("btn_c").style.display = "block";document.getElementById('txt_cmd').innerHTML ="mot de passe incorrect ou dépassé";
+			document.getElementById("txt_cmd").style.display = "block";}		
+					
+			}
 				else {maj_mqtt(idx,command,0,level);
 					//maj_switch(idx,command,level,pp[idm].idm);			
 
