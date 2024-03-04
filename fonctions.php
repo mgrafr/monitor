@@ -656,10 +656,11 @@ if ($mdp==PWDALARM) {$mp="OK";$_SESSION['passworda']=$mdp;$_SESSION['time']=time
 else {$mp="pasword non valide";}			
 break;		
 default:
-$mp="erreur";
+$mp="erreur_mdp";
 }
 $info=[	
-		'statut' => $mp
+		'statut' => $mp,
+		'type_pwd'=>$page_pass
 	];
 return $info;}
 
