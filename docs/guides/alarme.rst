@@ -10,7 +10,17 @@ Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/m
 
 5.1 Les interrupteurs réels, virtuels, les variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**les interrupteurs virtuels**
+**Pour Home Assistant**:
+
+|image1370|
+
+|image1371|
+
+Voir ci dessous la description pour Domoticz, valable également pour Home Assistant
+
+**Pour Domoticz**
+
+*les interrupteurs virtuels*
 
 Les boutons poussoir marche/arrêt pour les commandes :
 
@@ -34,7 +44,7 @@ Les boutons poussoir marche/arrêt pour les commandes :
 
 - activation/désactivation de la sirène : :darkblue:`activation-sirene` , permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF
 
-**un nterrupteur réel**
+*un interrupteur réel*
 
 - celui inclus dans la sirène
 
@@ -1291,3 +1301,7 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    :width: 650px 
 .. |image1360| image:: ../img/image1360.webp
    :width: 200px 
+.. |image1370| image:: ../img/image1370.webp
+   :width: 495px 
+.. |image1371| image:: ../img/image1371.webp
+   :width: 642px
