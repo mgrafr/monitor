@@ -218,12 +218,12 @@ a:link, a:visited {
 }
 .zz{margin-left: 10px;}
 /*interieur*/
-#vanne_eau{position: relative;top: -810px;left: 540px;width:48px;}
+#vanne_eau{position: relative;top: -796px;left: 540px;width:48px;}
 #linky{position: relative;top: -250px;
     left: 600px;
     width: 60px;}
 #th_ext_cuis{position: relative;
-    top: -1500px;
+    top: -850px;
     left: 170px;
 	width: 50px;}
 #temp_ext_cuisine{font-size: 8px;
@@ -560,9 +560,9 @@ left: 170px;width: 40px;}
 
 /* devices (small desktops <768) */
 @media (max-width:767px) {.modal_mur-dialog {width:500px;}.fosse_septique{left:400px;}
-	.fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}
+	.fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}#th_ext_cuis {top: -700px;}
 #bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}
-#th_ext_cuis {top: -1100px;}.sparkling-modal-frame {top:50%;}#vanne_eau{position: relative;top: -613px;left: 380px;}
+#th_ext_cuis {top: -650px;}.sparkling-modal-frame {top:50%;}#vanne_eau{position: relative;top: -613px;left: 380px;}
 }
 /* Large devices (small desktops <601) */
 @media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}.choix_scenes{left:10px;width: 80%;}
@@ -590,7 +590,7 @@ left: 170px;width: 40px;}
     margin-left: 10px;
     margin-top: -60px;}#txt_pluie{left: -20px;}
 .vvent {margin-left: 15px;top: -50px;}
-	.vtemp {margin-left: 15px;top: -70px;}#th_ext_cuis{top: -1050px;left: 90px;}
+	.vtemp {margin-left: 15px;top: -70px;}#th_ext_cuis{top: -650px;left: 90px;}
     
 #meteo_concept_am {top: -100px;display: inline;width: 50px;}
 #meteo_concept_am img{width: 50px;margin-left: 30px;}
