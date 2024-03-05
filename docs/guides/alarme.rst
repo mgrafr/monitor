@@ -459,27 +459,19 @@ Les automatismes pour ces poussoirs:
 
       |image1359|
 
-5.1.2.2 les variables (input_select et input_text)
+5.1.2.3 les variables (input_select et input_text)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 utilisées pour mémoriser certaines informations
 
 .. code-block::
 
    input_select:
-     activation_sir_txt:
-       name: texte
-       options:
-         - activer
-         - desactiver
-       initial: activer
-       icon: mdi:panda
      var_alarme:
        name: alarme
        options:
          - 0
          - alarme_nuit
          - alarme_auto
-  #
    input_text:
      var_intrusion:
        name: intrusion
@@ -487,6 +479,12 @@ utilisées pour mémoriser certaines informations
      var_porte_ouverte:
        name: porte_ouverte
        initial: 0
+     activation_sir_txt:
+       name: statut_sirene
+       initial: desactive
+     notification_alarme:
+       name: statut_alarme
+       initial: pas en service
 
 5.1.3 explications concernant MODECT
 ====================================
