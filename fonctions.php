@@ -67,13 +67,14 @@ if (IPDOMOTIC1!=""){
 $n=0;$mode=1;$post="";		
  $M=URLDOMOTIC1."api/states/sensor.liste_var";
 $json_string1=file_http_curl($M,$mode,$post);
-
 $parsed_json1 = json_decode($json_string1, true);  //return $parsed_json1;
-$json_string1 = $parsed_json1['state'];//$json_string1=str_replace("\n\n","",$json_string1);
+$json_string1 = $parsed_json1['state'];
+$json_string1=str_replace("\n","",$json_string1);	
 $json_string1=explode(',',$json_string1);
 	while ($json_string1[$n]!=""	){
-	$varha=explode(':',$json_string1[$n]);
-		$ha=[
+		$varha=explode('=',$json_string1[$n]);
+		$varha[0]=str_replace(" ", "",$varha[0]);		
+	    $ha=[
 		'ID' => $varha[0],
 		'Value'=> $varha[1],
 		'Type'=> 'HA',
@@ -87,16 +88,14 @@ while ($lect_msg[$p]!=""	){
 $result[$p]=$lect_msg[$p];
 	$p++;	} 
 }
-
 //--------------	
-$n=0;$vardz=array();$txtimg=array();$t_maj="0";
-			  
+$n=0;$vardz=array();$txtimg=array();$t_maj="0";$j=0;
 while (isset($result[$n])) 
 {
 $lect_var = $result[$n];  
 $idx = isset($lect_var["idx"]) ? $lect_var["idx"] : '';
 $ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';
-$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';			
+//$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';			
 $value = $lect_var['Value'];$content="";
 	if (str_contains($value, '#')) {$tab = explode("#", $value);
 	$value = $tab[0];$content=$tab[1];}
@@ -104,25 +103,30 @@ if ($value=="msg") {$content=$result[$n]['contenu'];
 $id_m_txt = $result[$n]['ID_txt'];$id_m_img="";}
  else {	
 $type = $lect_var['Type'];
-if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,3);} 
-			else {$a='idx';$vardz = sql_variable($$a,0);}
-$exist_id="oui";
-if ($vardz==null){$exist_id="non" ;}
-$id_m_txt = isset($vardz['id2_html']) ? $vardz['id2_html'] : '';
-$id_m_img = isset($vardz['id1_html']) ? $vardz['id1_html'] : '';
-//$temp_maj = isset($vardz['temps_maj']) ? $vardz['temps_maj'] : '';	
-//if(($temp_maj>$t_maj) && ($value!="0")) {$t_maj=$temp_maj;}
-//
+if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,3);}
+else {$a='idx';$vardz = sql_variable($$a,0);}
+if ($vardz!=null){$name=$vardz['nom_objet'];$actif=$vardz['Actif'];$idm=$vardz['idm'];$num=$vardz['num'];$id_m_txt=$vardz['id2_html'];$id_m_img=$vardz['id1_html'];} 
+else {$name="";$actif=$vardz;$num="num".$n;}
+$exist_id="oui";	 
+if ($actif=="2" & $type=="HA") {break;}
+if ($actif=="3" & (int)$type<5) {break;}	 
+ // 0 = Integer, e.g. -1, 1, 0, 2, 10  
+// 1 = Float, e.g. -1.1, 1.2, 3.1
+// 2 = String e.g. On, Off, Hello
+// 3 = Date in format DD/MM/YYYY
+// 4 = Time in 24 hr format HH:MM	 
 $txtimg = sql_variable($value,1);
 	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
 	$icone = isset($txtimg['icone']) ? $txtimg['icone'] : '';
  }
-if ($id_m_txt==null) {$id_m_txt = "0";}
-if (isset($id_m_img) && isset($id_m_txt)){
-$data[$n+1] = [	
+if ($id_m_img=="#" || $id_m_img=="" || $image=="none" || $image=="") {$image="pas image";$id_m_img=="";}
+if ($name!=""){$j=$j+1;
+$data[$j] = [	
 		'idx' => $idx,
+	    'idm' => $idm,
 		'ID' => $ID,
 		'Type' => $type,
+	    'actif' => $actif,
 		'Name' => $name,
 		'Value' => $value,
 		'contenu' => $content,
@@ -132,9 +136,6 @@ $data[$n+1] = [
 		'ID_txt' => $id_m_txt,
 		'exist_id' => $exist_id
 		];}
-else {$data[$n] = [		
-		'image' => "pas image ni texte"
-			];}
 $n++;}	
 $data[0] = [		
 		'interval_maj' => $t_maj
