@@ -126,9 +126,10 @@ function maj_services(index){
     data: "app=services&variable=0",
     success: function(html){service=html;var count = Object.keys(html).length;
 		if (html){int_maj=html[0].interval_maj;
-		var i, idw,img_serv ,txt_serv = "";
-		for (i = 1; i < count; i++) {
+		var i, idw,idt,img_serv,txt_serv = "";
+		for (i = 1; i < count; i++) {//console.log("idx="+html[i].idx);
 	img_serv = html[i].image;
+	//img_serv ? img_serv : "http://192.168.1.9/monitor/"+html[i].image;		
 	idw = html[i].ID_img;idt = html[i].ID_txt;exist = html[i].exist_id;name_var=html[i].Name;
 	if (exist=="oui"){
 		if (idw=="poubelle"){idx_idimg=html[i].Value;idx_ico=html[i].icone;}
@@ -149,16 +150,18 @@ function maj_services(index){
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){document.getElementById(idt).innerHTML =html[i].Value;}
 	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){document.getElementById(idt).innerHTML ="";}*/
-	if ((img_serv!="pas image")&&(img_serv!=null)){/*console.log("image="+img_serv);*/
+	
 		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
-			if (img_serv=="none"){document.getElementById(idw).style.display = "none";} 
+			if (img_serv=="pas image"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 					}
 		else {document.getElementById(not_piles).innerHTML =("erreur : "+idt);
 			  document.getElementById(not_piles_reset).style.display="block";}	
 					}
 					
-	}}
+	
+	
+	}
 	
 		} } },
 error: function() {alert('La requête n\'a pas abouti');} 
@@ -250,14 +253,14 @@ $.ajax({
 				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}																  
 				if ((val.maj_js=="onoff+stop") && ((pos_m.substring(0, 11)=="set level: ") || (pos_m=="open"))) {vol=1;pos_m="on";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
-						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; console.log('loggg'+val.ID1+" "+val.coul_ON);}
+						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; }
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
 			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
-						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;console.log('loggg'+val.ID1+" "+val.coul_OFF);}
+						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
@@ -535,7 +538,7 @@ else {urllog="erreur";}
   }); 
 });
 /*---popup boite_lettres---pression chaudière--médicaments-fosse septique-----------------------------*/
-var bl=0;var ch=0;var modalContainer = document.createElement('div');
+var bl=0;ch_idx="0";ch_ID="0";ch_name="";var modalContainer = document.createElement('div');
 modalContainer.setAttribute('id', 'modal_bl');
 var customBox = document.createElement('div');
 customBox.className = 'custom-box';
@@ -544,10 +547,10 @@ customBox.className = 'custom-box';
     var title_confirm=$(this).attr('title');ch=$(this).attr('rel');
 	var nb = Object.keys(service).length;
 		for (i = 1; i < nb; i++) {//console.log(ch+'...'+service[i].ID);
-		if (service[i].ID==ch || service[i].idx==ch){
-			var content_modal=service[i].contenu;}
+		if (service[i].idm==ch) {		
+			var content_modal=service[i].contenu;ch_idx=service[i].idx;ch_ID=service[i].ID;ch_name=service[i].Name;
 	}
-	
+		}
 	customBox.innerHTML = '<p>'+title_confirm+'</p><p>'+content_modal+'</p>';
     customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
     customBox.innerHTML += '<button id="modal-close">Annuler</button>';
@@ -577,12 +580,12 @@ function modalClose(bl) {
         modalContainer.removeChild(modalContainer.firstChild);
     }
     document.body.removeChild(modalContainer);
-	 if (bl==1) {
-		 if (ch.length <4) {var nom_ch=service[ch].Name;
-			maj_variable(ch,nom_ch,"0",2);} 
-		 else{var substr = ch.split('.');ch= "input_boolean."+substr[1];//console.log(ch);
-			 turnonoff("",ch,"on",pass="0");} }  
-	maj_services(0);bl=0;ch=0;
+	 if (bl==1) {console.log("azerty="+ch_idx);
+		 if (ch_idx.length >0) {
+			maj_variable(ch_idx,ch_name,"0",2);} 
+		 else{var substr = ch_ID.split('.');ch_ID = "input_boolean."+substr[1];//console.log(ch);
+			 turnonoff("",ch_ID,"on",pass="0");} }  
+	maj_services(0);bl=0;ch_idx="0";ch_ID="0";ch_name="";
 }
 /*------------------------------------------*/
 /*nagios("","#nagiosapp");
