@@ -168,6 +168,7 @@ function sql_variable($t,$ind){
 	if 	($ind==2) {$n=0;
 		while ($ligne = $result->fetch_assoc()) {
 			$retour[$n]['num'] = $ligne['num'];
+			$retour[$n]['idm'] = $ligne['idm'];
 			$retour[$n]['idx'] = $ligne['idx'];
 			$retour[$n]['ID'] = $ligne['ID'];
 			$retour[$n]['nom_objet'] = $ligne['nom_objet'];
@@ -1037,7 +1038,7 @@ case "18a" :include ('include/reponse_dev_bd.php');//echo "ajout dispositifs eff
 break;			
 case "19" : $retour=sql_variable("",2) ;$n=0;
 		while ($retour[$n]['num']){
-	echo "<p style='font-size:12px;'>num : <span style='color:red'>".$retour[$n]['num']."</span>&nbsp;idx : <span style='color:blue'>".$retour[$n]['idx']."</span>&nbsp;ID : <span style='color:green'>".$retour[$n]['ID']."</span>&nbsp;nom :<span style='color:purple'>".$retour[$n]['nom_objet']."</span>&nbsp;id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>&nbsp;id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span></p>";		
+	echo "<p style='font-size:12px;'>num : <span style='color:red'>".$retour[$n]['num']."</span>&nbsp; , idm : <span style='color:blue'>".$retour[$n]['idm']."</span>&nbsp; , idx : <span style='color:blue'>".$retour[$n]['idx']."</span>&nbsp; , ID : <span style='color:green'>".$retour[$n]['ID']."</span>&nbsp;<br>nom :<span style='color:purple'>".$retour[$n]['nom_objet']."</span>&nbsp; , id image :<span style='color:darkblue'> ".$retour[$n]['id_img']."</span>&nbsp; , id_texte :<span style='color:darkblue'>".$retour[$n]['id_txt']."</span></p>";		
 					$n++;}
 		return;	
 break;
@@ -1327,7 +1328,7 @@ case "9":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;	
-echo '<form3><input type="hidden"id="app" value="var_bd"><input type="hidden"id="num" value="'.$data["num"].'"><input type="hidden" id="command3"  value="10"><em>valeurs enregistrées</em><br>'.'idm : <input type="text" style="width:45px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>'.'idx : <input type="text" style="width:45px;margin-left:15px;" id="idx" value="'.$data["idx"].'"><br>ID : <input type="text" style="width:315px;margin-left:17px;" id="ha_id" value="'.$data["ID"].'"><br>id="nom_objet" <input type="text" style="width:250px;margin-left:5px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>id_image : <input type="text" style="width:150px;margin-left:10px;" id="id_img" value="'.$data["id1_html"].'"><br>id_texte   : <input type="text" style="width:150px;margin-left:17px;" id="id_txt" value="'.$data["id2_html"].'"><br><br><button type="button" onclick="adby(7)" style="width:50px;height:30px">Envoi</button> <form3>';			
+echo '<form3><input type="hidden"id="app" value="var_bd"><input type="hidden"id="num" value="'.$data["num"].'"><input type="hidden" id="command3"  value="10"><em>valeurs enregistrées</em><br>'.'idm : <input type="text" style="width:45px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>'.'idx : <input type="text" style="width:45px;margin-left:15px;" id="idx" value="'.$data["idx"].'"><br>ID : <input type="text" style="width:315Zpx;margin-left:17px;" id="ha_id" value="'.$data["ID"].'"><br>id="nom_objet" <input type="text" style="width:250px;margin-left:5px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>id_image : <input type="text" style="width:150px;margin-left:10px;" id="id_img" value="'.$data["id1_html"].'"><br>id_texte   : <input type="text" style="width:150px;margin-left:17px;" id="id_txt" value="'.$data["id2_html"].'"><br><br><button type="button" onclick="adby(7)" style="width:50px;height:30px">Envoi</button> <form3>';			
 break;
 case "10": 
 $sql="UPDATE ".DISPOSITIFS." SET 
