@@ -750,7 +750,8 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
 . Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
 
-. Nom_idx : nom de la variable du serveur domotique (dz); BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
+. nom_objet : nom de la variable du serveur domotique (dz ou ha); 
+	mot réservé: BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
 
    .. warning::
 
@@ -758,7 +759,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
       (le programme fonctionne mais l’API renvoie « NULL »)
    
-. Idx , id de la variable du serveur domotique(dz)
+. Idx , id de la variable du serveur Domoticz
    		ex : idx de Domoticz
                 |image87|
    
@@ -768,7 +769,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
    .. warning::
 
-      **IMPORTANT** : la taille de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
+      **IMPORTANT** : le contenu de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
 		 
 |image88|
        
@@ -820,6 +821,30 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
        echo "MOT DE PASSE" | sudo -S systemctl restart sms_dz
 
    :darkblue:`Le mot de passe peut être ajouté à connect.py`
+
+.. admonition:: **Mots réservés, utilisables** 
+
+    - pour le nom de variable (nom_objet :BASH
+
+    - pour les ID javascript (affichage des textes et images : 
+
+   .. code-block:
+
+      ping_rasp : ping non réussi vers un raspberry ou un autre serveur effacement |image1372|
+      bl : boite lettres , confirmation de la notification |image1373|
+      pression_chaud , confirmation de la notification |image1374|
+      pilule , confirmation de la notification |image1375|
+      fosse , confirmation de la notification |image1376|
+      poubelle , affichage poubelles grises et jaunes |image1377|
+      pl, pluie , txt_pluie , affichage image et texte |image1378|
+      aff_anni , prenom , affichage image et texte |image1379|
+      alarme_nuit , affichage alarme nuit automatique |image1380| 
+      batterie , affichage alarme batterie dispositifs faible |image1382|
+      lastseen , affichage message "vu pour la dernière fois" |image1381|
+      notify , not, , affichage des erreurs ou alertes
+      temp_ext, temp_ressentie , |image1383|
+
+      annul_<texte>  : annul_ est réservé, ne pas utiliser avec les id si dessus
 
 0.3.1.3 Table messages 
 """"""""""""""""""""""
@@ -1602,3 +1627,25 @@ function mc(variable,id)
    :width: 700px 
 .. |image1365| image:: ../img/image1365.webp
    :width: 584px 
+.. |image1372| image:: ../img/image1372.webp
+   :width: 50px 
+.. |image1373| image:: ../img/image1373.webp
+   :width: 50px 
+.. |image1374| image:: ../img/image1374.webp
+   :width: 50px 
+.. |image1375| image:: ../img/image1375.webp
+   :width: 50px 
+.. |image1376| image:: ../img/image1376.webp
+   :width: 50px 
+.. |image1377| image:: ../img/image1377.webp
+   :width: 50px 
+.. |image1378| image:: ../img/image1378.webp
+   :width: 50px 
+.. |image1379| image:: ../img/image1379.webp
+   :width: 50px 
+.. |image1380| image:: ../img/image1380.webp
+   :width: 50px 
+.. |image1381| image:: ../img/image1381.webp
+   :width: 50px
+.. |image1382| image:: ../img/image1382.webp
+   :width: 50px 
