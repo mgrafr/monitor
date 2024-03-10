@@ -855,7 +855,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
       alarme_nuit , affichage alarme nuit automatique |image1380|
 
       batterie , affichage alarme batterie dispositifs faible |image1382|
-|
+
       lastseen , affichage message "vu pour la dernière fois" |image1381|
       
       notify , not, , affichage des erreurs ou alertes
