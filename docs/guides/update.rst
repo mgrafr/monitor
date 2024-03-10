@@ -14,12 +14,16 @@ version : php8.3-ssh2 pour Debian 12
 
 19.2.1 Releases
 ===============
-Version  en developpement 3.0.3
+Version  en developpement 3.1.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version  3.1.0
+~~~~~~~~~~~~~~
 - modification ou mise à jour des dispositifs sans utiliser PhpMyAdmin
 - le fichier string_modect.lua (DZ) est remplacé par string_modect.json (compatible DZ et HA)
 - version SSH : php8.3-ssh2 pour Debian 12
 - avec la compatibilité pour Home Assistant, les fichier de configuration "connect.* sont stockés dans monitor et à chaque maj DZ et HA téléchargent , après notification, les nouveaux fichiers.
+- utilisation d'un identifiant monitor 'idm' pour les dispositifs et les variables pour une compatibilité avec Home Assistant
 
 Version  3.0
 ~~~~~~~~~~~~
