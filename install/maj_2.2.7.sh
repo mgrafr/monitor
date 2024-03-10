@@ -3,13 +3,15 @@
 echo "-**********************************************************************-"
 echo "     avec cette version 3 la table 'idm' est obligatoire               -"
 echo "          pour ceux qui utilise uniquement idx de Domoticz             -"
-echo "          exorter la table 'idx' , supprimer la table 'idm'            -"
-echo " avec un éditeur de texte remplacer le nom de la table 'idx' par 'idm' -"
-echo "          importer cette table renommer 'idm '                         -"
+echo "          exporter la table 'dispositif' et la supprimer ,                             -"
+echo " avec un éditeur de texte ,ajouter la valeur de idx à idm              -"
+echo "          importer la table dispositifs                                -"
 echo "-**********************************************************************-"
-echo "-----------------------------------------------------------------"
-echo "-----------Mise à jour vers la version 3.0.3  -------------------"
-echo "-----------------------------------------------------------------"
+echo "----------------------------------------------------------------------"
+echo "-----------Mise à jour vers la version 3.1.0  ------------------------"
+echo "       cette version necessite d'attribuer aux variable un idm        "
+echo " apres ma mise à jour la liste des variables concernées sera affichée "
+echo "----------------------------------------------------------------------"
 echo "appuyer sur ENTER pour continuer"
 read
 mkdir tmp
@@ -17,7 +19,13 @@ wget -O tmp/maj.zip https://github.com/mgrafr/monitor/archive/refs/heads/miseajo
 unzip tmp/maj.zip
 cp -RTu --update monitor-miseajour/include include
 cp -RTu --update monitor-miseajour/css  css
+cp -RTu --update monitor-miseajour/js  js
 cp -u --update monitor-miseajour/fonctions.php  fonctions.php
+mysql --user="root" --database="monitor"  -e "ALTER TABLE dispositifs ADD Actif varchar(1) NOT NULL DEFAULT '1' AFTER idm;"
+echo "-------------------------------------------------------------------------"
+echo "    VARIABLES A METTRE A JOUR : ajouter un ID ( numero max : 9999        "
+echo "-------------------------------------------------------------------------"
+mysql --user="root" --database="monitor"  -e "SELECT * FROM dispositifs WHERE maj_js='variable';"
 #
 chown www-data:www-data /var/www/html/monitor/admin/config.php
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/api/json.php
@@ -55,8 +63,7 @@ rm .version
 cp monitor-miseajour/.version .version
 rm -R monitor-miseajour
 echo "-----------------------------------------------------------------------"
-echo "-----------Mises à jour vers la version 3.0.3   terminées--------------"
-echo "-----------------------------------------------------------------------"
+echo "-----------Mises à jour vers la version 3.1.0   terminées--------------"
 echo "-----------------------------------------------------------------------"
 echo "----------jpgraph peut être mis à jour vers la version 4.4.2-----------"
 echo "       pour cela téléccharger le référentiel                           "
