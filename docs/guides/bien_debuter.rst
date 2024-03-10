@@ -750,6 +750,10 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
 . Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
 
+.. IMPORTANT::
+
+   des ID sont réservés , voir à la fin de ce praragraphe la liste des ID à ne pas utiliser pour des ajouts personnels.
+
 . nom_objet : nom de la variable du serveur domotique (dz ou ha); 
 	mot réservé: BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
 
@@ -759,6 +763,10 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
       (le programme fonctionne mais l’API renvoie « NULL »)
    
+. idm id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
+
+    |image1384| 
+
 . Idx , id de la variable du serveur Domoticz
    		ex : idx de Domoticz
                 |image87|
@@ -824,9 +832,9 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
 .. admonition:: **Mots réservés, utilisables** 
 
-    - pour le nom de variable (nom_objet :BASH
+    - *pour le nom de variable (nom_objet)*  :**BASH**
 
-    - pour les ID javascript (affichage des textes et images : 
+    - *pour les ID javascript (affichage des textes et images* : 
 
       ping_rasp : ping non réussi vers un raspberry ou un autre serveur effacement |image1372|
 
@@ -846,10 +854,12 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
       alarme_nuit , affichage alarme nuit automatique |image1380|
 
-      batterie , affichage alarme batterie dispositifs faible |image1382
+      batterie , affichage alarme batterie dispositifs faible |image1382|
 |
       lastseen , affichage message "vu pour la dernière fois" |image1381|
+      
       notify , not, , affichage des erreurs ou alertes
+     
       temp_ext, temp_ressentie , |image1383|
 
       annul_<texte>  : annul_ est réservé, ne pas utiliser avec les id si dessus
@@ -1657,3 +1667,7 @@ function mc(variable,id)
    :width: 50px
 .. |image1382| image:: ../img/image1382.webp
    :width: 50px 
+.. |image1383| image:: ../img/image1383.webp
+   :width: 200px 
+.. |image1384| image:: ../img/image1384.webp
+   :width: 512px 
