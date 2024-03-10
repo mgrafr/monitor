@@ -748,6 +748,7 @@ switch (choix) {
 	var formData = {
 	app :  $("#app").val(),		
  	idx : $("#idx").val(), 
+	idm : $("#idm").val(), 	
   	nom_objet : $("#nom_objet").val(),
 	ID : $("#ha_id").val(),	
 	id_img : $("#id_img").val(),
@@ -842,7 +843,8 @@ case 5:
 	var formData = {
 	app :  $("#app").val(),
 	num : $("#num").val(), 	
- 	idx : $("#idx").val(), 
+ 	idm : $("#idm").val(), 
+	idx : $("#idx").val(), 	
   	nom_objet : $("#nom_objet").val(),
 	ID : $("#ha_id").val(),	
 	id_img : $("#id_img").val(),
