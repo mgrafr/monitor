@@ -1251,11 +1251,11 @@ if ($conn -> connect_errno) {
   exit();}	
 switch ($choix) {
 	case "1":
-$nom=$data['nom'];$nom_objet=$data['nom_objet'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
+$nom=$data['nom'];$nom_objet=$data['nom_objet'];$idm=$data['idm'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
 //
-$sql="INSERT INTO dispositifs (nom_objet, idx, ID, maj_js, id1_html, id2_html) VALUES ('$nom_objet', '$idx', '$ID', 'variable', '$id_img', '$id_txt');";
+$sql="INSERT INTO dispositifs (nom_objet, idm ,idx, ID, maj_js, id1_html, id2_html) VALUES ('$nom_objet',  '$idm', '$idx', '$ID', 'variable', '$id_img', '$id_txt');";
 $result = $conn->query($sql);
-echo '<em>valeurs enregistrées</em><br>idx : '.$data["idx"].'<br>nom_objet : '.$data["nom_objet"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
+echo '<em>valeurs enregistrées</em><br>idm : '.$data["idm"].'<br>idx : '.$data["idx"].'<br>nom_objet : '.$data["nom_objet"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
 if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '".$data['icone_bd']."');";
 $retour=maj_query($conn,$sql);
 echo '<em>texte à remplacer:'.$data["texte_bd"].'<br>image de remplacement:'.$data["image_bd"].'<br>icone : '.$data["image_bd"].'<br>';}			
@@ -1327,11 +1327,12 @@ case "9":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;	
-echo '<form3><input type="hidden"id="app" value="var_bd"><input type="hidden"id="num" value="'.$data["num"].'"><input type="hidden" id="command3"  value="10"><em>valeurs enregistrées</em><br>'.'idx : <input type="text" style="width:30px;margin-left:10px;" id="nom" value="'.$data["idx"].'"><br>ID : <input type="text" style="width:200px;margin-left:5px;" id="ha_id" value="'.$data["ID"].'"><br>id="nom_objet" <input type="text" style="width:250px;margin-left:5px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>id_image : <input type="text" style="width:150px;margin-left:10px;" id="id_img" value="'.$data["id1_html"].'"><br>id_texte   : <input type="text" style="width:150px;margin-left:10px;" id="id_txt" value="'.$data["id2_html"].'"><br><br><button type="button" onclick="adby(7)" style="width:50px;height:30px">Envoi</button> <form3>';			
+echo '<form3><input type="hidden"id="app" value="var_bd"><input type="hidden"id="num" value="'.$data["num"].'"><input type="hidden" id="command3"  value="10"><em>valeurs enregistrées</em><br>'.'idm : <input type="text" style="width:45px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>'.'idx : <input type="text" style="width:45px;margin-left:15px;" id="idx" value="'.$data["idx"].'"><br>ID : <input type="text" style="width:315px;margin-left:17px;" id="ha_id" value="'.$data["ID"].'"><br>id="nom_objet" <input type="text" style="width:250px;margin-left:5px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>id_image : <input type="text" style="width:150px;margin-left:10px;" id="id_img" value="'.$data["id1_html"].'"><br>id_texte   : <input type="text" style="width:150px;margin-left:17px;" id="id_txt" value="'.$data["id2_html"].'"><br><br><button type="button" onclick="adby(7)" style="width:50px;height:30px">Envoi</button> <form3>';			
 break;
 case "10": 
 $sql="UPDATE ".DISPOSITIFS." SET 
 nom_objet = '".$data['nom_objet']."',
+idm = '".$data['idm']."',
 idx = '".$data['idx']."',
 ID= '".$data['ha_id'] ."',
 id1_html = '".$data['id_img']."',
