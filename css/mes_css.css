@@ -357,7 +357,7 @@ height: auto;}
 /*alarme admin*/
 #avb{display: block;
     background-color: #F5F5DC;
-    height: 450px;
+    /*height: 450px;*/
     width: 400px;
     position: relative;
     top: -10px;
