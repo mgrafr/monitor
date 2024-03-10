@@ -828,18 +828,26 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
     - pour les ID javascript (affichage des textes et images : 
 
-   .. code-block:
-
       ping_rasp : ping non réussi vers un raspberry ou un autre serveur effacement |image1372|
+
       bl : boite lettres , confirmation de la notification |image1373|
+
       pression_chaud , confirmation de la notification |image1374|
+
       pilule , confirmation de la notification |image1375|
+
       fosse , confirmation de la notification |image1376|
+
       poubelle , affichage poubelles grises et jaunes |image1377|
+
       pl, pluie , txt_pluie , affichage image et texte |image1378|
+
       aff_anni , prenom , affichage image et texte |image1379|
-      alarme_nuit , affichage alarme nuit automatique |image1380| 
-      batterie , affichage alarme batterie dispositifs faible |image1382|
+
+      alarme_nuit , affichage alarme nuit automatique |image1380|
+
+      batterie , affichage alarme batterie dispositifs faible |image1382
+|
       lastseen , affichage message "vu pour la dernière fois" |image1381|
       notify , not, , affichage des erreurs ou alertes
       temp_ext, temp_ressentie , |image1383|
