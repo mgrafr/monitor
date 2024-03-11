@@ -431,7 +431,7 @@ function appel_admin(choix_admin,fenetre){
 	  data: "app=admin&variable="+choix_admin+"&command="+fenetre,
       success: function(data) {$(fenetre).empty();
 		document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
-		if (data[3]=='Entrer votre mot de passe' || data[4]=='Entrer votre mot de passe' ){document.getElementById("d_btn_a").style.display = "block";
+		if (data=='Entrer votre mot de passe'){document.getElementById("d_btn_a").style.display = "block";
 		document.getElementById("d_btn_al").style.display = "block";}
 							},
 	  error: function() { 
