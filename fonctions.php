@@ -1055,7 +1055,7 @@ default:
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
-echo "Entrer votre mot de passe";include ('include/test_pass.php');return;}
+echo "Entrer votre mot de passe";}//include ('include/test_pass.php');return;}
 return ;
 
 }
@@ -1300,6 +1300,8 @@ echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id
 //return $row; 
 break;
 case "8": 
+		if ($data['ls']=="oui") {$ls=1;}
+		else {$ls=0;}
 $sql="UPDATE ".DISPOSITIFS." SET 
 nom_appareil = '".$data['nom']."',
 nom_objet = '".$data['nom_objet']."',
@@ -1307,15 +1309,15 @@ idx = '".$data['idx']."',
 ID= '".$data['ID'] ."',
 Actif = '".$data['actif'] ."',
 materiel = '".$data['type_mat'] ."',
-ls= '".$data['ls'] ."',
+ls= '".$ls ."',
 maj_js = '".$data['maj_js'] ."',
 id1_html = '".$data['id1_html']."',
-car_max_id1 = '".$data['car_max_id1'] ."',
+car_max_id1 = '".$data['car'] ."',
 `F()` = ".intval($data['fx']) .",
 id2_html= '".$data['id2_html'] ."',
 coul_id1_id2_ON = '".$data['coula'] ."',
 coul_id1_id2_OFF= '".$data['coulb'] ."',
-class_lamp = '".$data['class_lamp']."',
+class_lamp = '".$data['class']."',
 coul_lamp_ON = '".$data['coulc'] ."',
 coul_lamp_OFF = '".$data['could'] ."',
 pass = '".$data['pass'] ."',
