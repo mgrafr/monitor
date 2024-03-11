@@ -13,16 +13,13 @@ if (ON_ALARM==false && DECOUVERTE==true) {echo "<br><p style='margin-top:40px'>M
 		  else {echo "<script>text1='pwd:ok';</script>";$style1="block";}
 			  
           if ($tt<time() && $tt!=1) {$tt=0;echo "<p id='mp2' >temps pwd dépassé - </p>";
-					if (DECOUVERTE==false && ON_ALARM==true ){echo "<script>document.getElementById('d_btn_al').style.display = 'block';</script>";}
-					if (DECOUVERTE==true ){echo "<script>document.getElementById('d_btn_a').style.display = 'block';</script>";}	  
-						  }
-   		  
-          if ($tt==0){
+					if (ON_ALARM==true) {echo "<script>document.getElementById('d_btn_al').style.display = 'block';</script>";}
+					echo "<script>document.getElementById('d_btn_a').style.display = 'block';</script>";}
+		  if ($tt==0){
 				  echo "<script>text1='pwd:absent';document.getElementById('d_btn_a').style.display = 'block';";
-				  if (DECOUVERTE==false && ON_ALARM==true){echo "document.getElementById('d_btn_al').style.display = 'block';";}
+				  if (ON_ALARM==true){echo "document.getElementById('d_btn_al').style.display = 'block';";}
 				  echo "</script>";} 
-
-		  elseif ($tt==1){echo "<p id='mp2' style='margin-top:20px'>Bienvenue dans Monitor </p>";
+     	  elseif ($tt==1){echo "<p id='mp2' style='margin-top:20px'>Bienvenue dans Monitor </p>";
 		  }
 			  
 		  else {echo "<script>

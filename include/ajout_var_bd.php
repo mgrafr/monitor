@@ -10,7 +10,7 @@ echo '<div id="advf" style="line-height: normal;font-size: 13px;"><form><p style
  <span style="margin-left: 10px;">Idx : <input type="text" style="width:50px;margin-left:10px;" value="" id="idx" ></span><span style="color:red">&nbsp;&nbsp;* </span><br>
   <p style="font-size:14px"> <strong>Home Assistant</strong><p>
   <span style="margin-left: 10px;">entity_id : <input type="text" style="width:200px;margin-left:10px;" value="" id="ha_id" ></span><span style="color:red">&nbsp;&nbsp;* </span><br><p style="font-size:14px"> <strong>Domoticz & Home Assistant</strong><p>
- <span style="margin-left: 10px;">nom_objet  :<input type="text" style="width:200px;margin-left: 3px;" id="nom_objet" value="" ></span><br>
+ <span style="margin-left: 10px;">nom_objet  :<input type="text" style="width:200px;margin-left: 3px;" id="nom_objet" value="" ></span><span style="color:red">&nbsp;&nbsp;* </span><br>
  <p style="font-size:14px"> <strong>Base de données SQL</strong><p>
   <span style="margin-left: 10px;">Id Image : <input type="text" style="width:120px;"  id="id_img" value="" ></span><br>
    <span style="margin-left: 10px;">Id Texte :<input type="text" style="width:120px;margin-left: 10px;" id="id_txt" value="" ></span><br>
