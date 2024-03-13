@@ -122,9 +122,9 @@ define('URLDOMOTIC1', '');//url ex:http://192.168.1.5:8123/
 define('DOMDOMOTIC1', '');//ex:https://ha.DOMAINE.ovh
 define('TOKENDOMOTIC1', "ENTRER LE TOKEN ICI");//TOKEN ou BEARER
 //*************************Pour Domoticz
-define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//
-define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64
-define('CONF_MODECT', URLDOMOTIC.'modules_lua/string_modect.lua');
+define('VARTAB', 'admin/connect/string_tableaux.lua');//
+define('BASE64', 'admin/connect/connect.lua');//login et password en Base64
+define('CONF_MODECT', 'admin/string_modect.json');
 //-----------------------------------------------------------
 // Sauvegardes domoticz
 define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
