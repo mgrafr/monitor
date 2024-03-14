@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 echo "----------------------------------------------------------------------"
-echo "-----------Mise à jour vers la version 3.1.0  ------------------------"
+echo "-----------Mise à jour vers la version 3.1.1  ------------------------"
 echo "       cette version necessite d'attribuer aux variable un idm        "
 echo " apres ma mise à jour la liste des variables concernées sera affichée "
 echo "----------------------------------------------------------------------"
@@ -20,11 +20,6 @@ echo "    VARIABLES A METTRE A JOUR : ajouter un ID ( numero max : 9999        "
 echo "-------------------------------------------------------------------------"
 mysql --user="root" --database="monitor"  -e "SELECT * FROM dispositifs WHERE maj_js='variable';"
 #
-sed -i "s/Pour Domoticz/modules complementaires/g" /var/www/html/monitor/admin/config.php
-sed -i "s/URLDOMOTIC.'modules_lua\/string_modect.lua/'admin\/string_modect.json/g" /var/www/html/monitor/admin/config.php
-sed -i "s/URLDOMOTIC.'modules_lua\/connect.lua/'admin\/connect\/connect.py/g" /var/www/html/monitor/admin/config.php
-sed -i "s/DZCONFIG/TMPCONFIG/g" /var/www/html/monitor/admin/config.php
-sed -i "s/dz\/temp.lua/connect/\/g" /var/www/html/monitor/admin/config.php
 sed -i "s/DZ_PATH/SSH_MONITOR_PATH/g" /var/www/html/monitor/admin/config.php
 sed -i "s/opt\/domoticz\/config/var\/www\/html\/monitor\/admin\/connect/g" /var/www/html/monitor/admin/config.php
 rm -R admin/dz
@@ -35,15 +30,25 @@ wget https://raw.githubusercontent.com/mgrafr/monitor/main/admin/connect/connect
 mv connect.lua admin/connect/connect.lua
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/admin/connect/connect.py
 mv connect.py admin/connect/connect.py 
+sed -i "s/DZCONFIG/TMPCONFIG/g" /var/www/html/monitor/admin/config.php
+sed -i "s/dz\/temp.lua/admin\/connect\//g" /var/www/html/monitor/admin/config.php
+sed -i "s/*************************Pour Domoticz/ modules complementaires dz/g" /var/www/html/monitor/admin/config.php
+sed -i "s/URLDOMOTIC.'modules_lua\/string_t/'admin\/connect\/string_t/g" /var/www/html/monitor/admin/config.php
+sed -i "s/URLDOMOTIC.'modules_lua\/c/'admin\/connect\/c/g" /var/www/html/monitor/admin/config.php
+sed -i "s/URLDOMOTIC.'modules_lua\/string_modect.lua/'admin\/connect\/string_modect.json/g" /var/www/html/monitor/admin/config.php
+#
 #
 rm -R tmp
 rm .version
 cp monitor-miseajour/.version .version
 rm -R monitor-miseajour
 echo "-----------------------------------------------------------------------"
-echo "-----------Mises à jour vers la version 3.1.0   terminées--------------"
+echo "-----------Mises à jour vers la version 3.1.1   terminées--------------"
 echo "-----------------------------------------------------------------------"
 echo "----------jpgraph peut être mis à jour vers la version 4.4.2-----------"
 echo "       pour cela téléccharger le référentiel                           "
 echo "     extraire le dossier jgraph pour remplacer la version 4.4.1        "
+echo "-----------------------------------------------------------------------"
+echo "-----------------------------------------------------------------------"
+echo "          le fichier python upload.py pour DZ a été modifié            "
 echo "-----------------------------------------------------------------------"
