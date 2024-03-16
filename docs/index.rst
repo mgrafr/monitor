@@ -8,7 +8,7 @@ accueil
 
 Bienvenue dans **monitor** avec ce tutoriel !! 
 
-*maj tutoriel 3.0 du 31/01/2024*
+*maj tutoriel 3.1.1 du 15/03/2024*
 
 
 .. toctree::
