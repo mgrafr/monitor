@@ -14,7 +14,7 @@ version : php8.3-ssh2 pour Debian 12
 
 19.2.1 Releases
 ===============
-Version  en developpement 3.1.1
+Version  en developpement 3.1.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Version  3.1.0
