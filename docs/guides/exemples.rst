@@ -38,6 +38,36 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 |image887|
 
+15.1.2 Ajout d’un Panic bouton (SOS)
+====================================
+pour Domoticz : soit on utilise une icone disponible, soit on ajoute au fichier :darkblue:`www/switch_icons.txt` une icone perso.( voir ci dessous le mode d'emploi)
+
+|image73|
+
+.. admonition:: Icônes personnalisées pour Domoticz
+
+   Les images téléversées dans le dossier "images" de DZ doivent être au format **png de 48x48 px**
+
+   |image104|
+
+   Ajouter les informations concernant l'icone dans le fichier :darkblue:`switch_icons.txt` comme indiqué ci-après:
+
+   |image105|
+
+Le script lua pour envoyer une alerte SMS et mail
+
+.. code-block::
+
+   if (device.name == 'SOS (Action)_emergency') then 
+      txt='alarmeùSOS';obj='alarme SOS';alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
+   end
+
+LE script :darkblue:`notifications_devices.lua` :
+
+|image109|
+
+Voir le § :ref:`13.6 SMS réception et émission concernant l'envoi d'un sms`
+
 15.1.1.2 Dans la Base de données SQL
 ==================================
 *Insérer le dispositif dans la table « dispositifs »*
@@ -139,8 +169,14 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    define('DISPOSITIFS', 'Dispositifs');
    define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
 
-
-
+.. |image73| image:: ../media/image73.webp
+   :width: 400px
+.. |image104| image:: ../media/image104.webp
+   :width: 400px
+.. |image105| image:: ../media/image105.webp
+   :width: 400px
+.. |image109| image:: ../media/image109.webp
+   :width: 700px
 .. |image498| image:: ../media/image498.webp
    :width: 400px
 .. |image499| image:: ../media/image499.webp
