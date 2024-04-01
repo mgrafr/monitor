@@ -40,6 +40,8 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 15.1.2 Ajout d’un Panic bouton (SOS)
 ====================================
+le bouton zigbee utilisé: https://www.zigbee2mqtt.io/devices/BT400B.html
+
 pour Domoticz : soit on utilise une icone disponible, soit on ajoute au fichier :darkblue:`www/switch_icons.txt` une icone perso.( voir ci dessous le mode d'emploi)
 
 |image73|
