@@ -66,7 +66,7 @@ LE script :darkblue:`notifications_devices.lua` :
 
 |image109|
 
-Voir le § :ref:`13.6 SMS réception et émission concernant l'envoi d'un sms`
+Voir le § :ref:`13.6 SMS réception et émission` , concernant l'envoi d'un SMS
 
 15.1.1.2 Dans la Base de données SQL
 ==================================
