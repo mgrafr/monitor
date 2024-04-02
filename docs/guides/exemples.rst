@@ -38,38 +38,6 @@ Dans Domoticz le dispositif est ajouté au plan :
 
 |image887|
 
-15.1.2 Ajout d’un Panic bouton (SOS)
-====================================
-le bouton zigbee utilisé: https://www.zigbee2mqtt.io/devices/BT400B.html
-
-pour Domoticz : soit on utilise une icone disponible, soit on ajoute au fichier :darkblue:`www/switch_icons.txt` une icone perso.( voir ci dessous le mode d'emploi)
-
-|image73|
-
-.. admonition:: Icônes personnalisées pour Domoticz
-
-   Les images téléversées dans le dossier "images" de DZ doivent être au format **png de 48x48 px**
-
-   |image104|
-
-   Ajouter les informations concernant l'icone dans le fichier :darkblue:`switch_icons.txt` comme indiqué ci-après:
-
-   |image105|
-
-Le script lua pour envoyer une alerte SMS et mail
-
-.. code-block::
-
-   if (device.name == 'SOS (Action)_emergency') then 
-      txt='alarmeùSOS';obj='alarme SOS';alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
-   end
-
-LE script :darkblue:`notifications_devices.lua` :
-
-|image109|
-
-Voir le § :ref:`13.6 SMS réception et émission` , concernant l'envoi d'un SMS
-
 15.1.1.2 Dans la Base de données SQL
 ==================================
 *Insérer le dispositif dans la table « dispositifs »*
@@ -77,7 +45,7 @@ Voir le § :ref:`13.6 SMS réception et émission` , concernant l'envoi d'un SMS
 |image888|
 
 15.1.1.3 Dans le fichier PHP de l’image 
-=====================================
+=======================================
 *On ajoute un onclick pour l’affichage des propriétés*
 
 .. note::
@@ -107,6 +75,115 @@ Voir paragraphe :ref:`2.1.1.b avec Adobe Illustrator`
 Avec F12 du navigateur ajuster la position
 
 |image893| |image894|
+
+15.1.2 Ajout d’un Panic bouton (SOS)
+====================================
+le bouton zigbee utilisé: https://www.zigbee2mqtt.io/devices/BT400B.html
+
+15.1.2.1 Utilisation du bouton dans Domoticz 
+============================================
+
+pour Domoticz : soit on utilise une icone disponible, soit on ajoute au fichier :darkblue:`www/switch_icons.txt` une icone perso.( voir ci dessous le mode d'emploi)
+
+|image73|
+
+.. admonition:: Icônes personnalisées pour Domoticz
+
+   Les images téléversées dans le dossier "images" de DZ doivent être au format **png de 48x48 px**
+
+   |image104|
+
+   Ajouter les informations concernant l'icone dans le fichier :darkblue:`switch_icons.txt` comme indiqué ci-après:
+
+   |image105|
+
+Le script lua pour envoyer une alerte SMS et mail
+
+.. code-block::
+
+   if (device.name == 'SOS (Action)_emergency') then 
+      txt='alarmeùSOS';obj='alarme SOS';alerte_gsm(txt);domoticz.email('Alarme',obj,adresse_mail) 
+   end
+
+LE script :darkblue:`notifications_devices.lua` :
+
+|image109|
+
+Voir le § :ref:`13.6 SMS réception et émission` , concernant l'envoi d'un SMS
+
+15.1.2.2 Utilisation du bouton dans Home Assistant 
+==================================================
+
+15.1.2.2 Utilisation du bouton dans Monitor 
+===========================================
+
+|image119|
+
+Dans admin/config.php
+
+.. code-block::
+
+   define('ON_SOS',true);// bouton sos page accueil, le disositif dit être enregistré dans SQL
+
+Les valeurs du dispositif enregistrées dans la BD monitor:
+
+|image132|
+
+L'mage du bouton dans le plan intérieur :
+
+|image133|
+
+Extrait du SVG concernant le SOS:
+
+.. code-block::
+
+   <g>
+	<g class="sos_urg" onclick="popup_device(91)">
+		<path class="st20" d="M678.1,152.5L678.1,152.5c11.8,0,21.3,9.4,21.3,21l0,0c0,11.6-9.6,21-21.3,21l0,0c-11.8,0-21.3-9.4-21.3-21
+			l0,0C656.8,161.9,666.3,152.5,678.1,152.5z"/>
+	</g>
+		<g id="SOS1">
+		<g>
+			<g transform="translate(0.000000,511.000000) scale(0.100000,-0.100000)">
+				<path class="st68" d="M6718.4,3521.9c-70.1-7.8-121.5-75.7-110.1-145.6c8.2-49.9,46.7-90.9,95.7-101.9c3.9-0.9,7.6-2.1,8.4-2.7
+					c0.7-0.6,7.5-8.7,15.1-18.1c7.6-9.4,15.6-18.8,17.8-20.9c4.4-4.4,8.5-6.2,11.3-4.9c0.8,0.4,10.8,12.1,22,26.1l20.4,25.4h15.1
+					c18.6,0.1,32.5,1,41.6,2.8c37.2,7.5,69.7,31.8,86.5,64.8c22.5,44.4,15.7,96.5-17.6,134c-20.3,23-50,37.9-81.6,41.1
+					C6834.3,3522.9,6726.3,3522.9,6718.4,3521.9z M6853.3,3509.7c30.3-6.6,55.5-23.2,72.1-47.6c17.6-25.9,23.2-57.6,15.3-88.1
+					c-9.1-35.6-38-66.1-73.5-77.5c-15.3-4.9-24.6-6-51.4-6c-13,0-20.6-0.3-21.5-0.8c-1.1-0.6-24.6-29-39.2-47.4l-1.5-2l-1.9,1.7
+					c-1,0.9-7.4,8.5-14.1,16.9c-13.4,16.5-18.5,22.2-21.3,23.6c-1,0.5-4.4,1.4-7.5,2.1c-39.1,7.8-72,37-85,75.3
+					c-4.7,13.9-5.6,20-5.6,36.3c0,12.5,0.2,15.6,1.6,21.8c3.4,16,9.5,30.1,18.5,43.5c7.3,10.7,21.3,24.5,32.2,31.6
+					c14.9,9.7,31.1,15.7,48.2,18c1.2,0.2,30.3,0.3,64.8,0.2C6845.6,3511.3,6846.2,3511.2,6853.3,3509.7z"/>
+				<path class="st68" d="M6677.1,3443.7c-7.5-2.7-13-7.8-16.7-15.3c-2-4.2-2.2-5.1-2.2-11.9c0-7,0.1-7.5,2.7-12.6
+					c3-6.1,7.5-10.5,13.7-13.5c4-1.9,4.1-1.9,21.4-2.3l17.4-0.3l2.1-2c3.4-3.2,4.6-7.4,4.6-15c0-3.6-0.4-7.9-0.9-9.6
+					c-1.2-3.9-4.6-7.6-7.7-8.5c-1.5-0.4-11.3-0.7-22.7-0.7c-20.1,0-20.1,0-21.6-1.6c-2-2-2-4.6-0.1-7l1.5-1.9l23.4,0.2
+					c26.7,0.2,26.3,0.1,32.3,6.8c4.9,5.3,6.3,9.6,6.7,20.3c0.3,7.6,0.1,9.4-1.2,13.6c-2.2,7.2-5.1,11.1-10.5,13.8l-4.5,2.3h-14.9
+					c-16.7,0-19.6,0.5-24.3,4.1c-3.9,3-6.8,8.9-6.8,13.9c0,5,2.9,10.9,6.8,13.9c4.7,3.7,7.4,4.1,26.7,4.1c9.6,0,17.9,0.2,18.6,0.4
+					c3.2,1.2,3.4,7.7,0.4,9.3c-0.8,0.4-9.4,0.7-20.9,0.7C6683.1,3445,6680.3,3444.8,6677.1,3443.7z"/>
+				<path class="st68" d="M6772.9,3444.1c-8.3-2.8-14.6-8.1-18.2-15.6l-2.3-4.6v-30.5v-30.5l2.3-4.6c2.9-6.1,8-11.1,14.1-13.9
+					c4.4-2.1,5.3-2.2,12.1-2.2c6.8,0,7.7,0.1,12.1,2.2c6.2,2.8,11.3,7.8,14.1,13.9l2.3,4.6v30.5v30.5l-2.3,4.6
+					c-2.9,6.1-8,11.1-14.1,13.9c-4,1.9-5.6,2.2-11.1,2.4C6778.2,3445,6774.7,3444.7,6772.9,3444.1z M6789.8,3432
+					c3.4-1.9,5.6-4.1,7.9-8.5c1.3-2.2,1.3-4.4,1.3-30.2c0-25.7-0.1-27.9-1.3-30.2c-2.4-4.4-4.4-6.6-8.2-8.7
+					c-5.3-2.8-11.4-2.8-16.7,0c-3.8,2.1-5.8,4.2-8.2,8.7c-1.2,2.2-1.3,4.6-1.5,27c-0.1,13.5-0.1,26.2,0.2,28.2
+					c0.6,5.3,4.1,10.5,8.7,13.2c2,1.2,4.6,2.4,5.6,2.5C6781,3434.8,6786.3,3433.8,6789.8,3432z"/>
+				<path class="st68" d="M6850.9,3444c-13.3-4-22.4-18.4-20-31.7c1.7-9.4,8.2-18,16.7-21.9c3.9-1.8,4.6-1.9,19.6-2.2
+					c12.5-0.3,15.9-0.6,17.6-1.5c6.5-3.5,9.6-11.6,8.1-21.8c-0.4-2.9-1.4-6.5-2.3-8c-2.6-4.6-3.4-4.8-27.3-4.8
+					c-12.5,0-21.7-0.3-22.5-0.7c-3.3-1.7-2.7-8.5,0.8-9.4c0.9-0.2,11.9-0.3,24.5-0.2l22.9,0.2l3.4,1.8c4.2,2.1,7.4,6,9.5,11.5
+					c1.9,4.9,2.7,16.8,1.5,22.3c-1.8,8-7,15.1-13.8,18.7c-3.4,1.8-3.9,1.9-19.4,2.2c-17.6,0.4-19,0.8-23.6,5.7
+					c-3.8,4-4.9,6.6-4.9,12.3c0,3.7,0.4,5.9,1.3,7.6c1.8,3.4,5.2,6.8,8.5,8.5c2.7,1.5,3.9,1.5,22.3,1.7l19.6,0.2l1.4,1.8
+					c1.8,2.3,1.8,4.4-0.1,6.7l-1.4,1.8l-19.8-0.1C6859.4,3445,6853,3444.7,6850.9,3444z"/>
+			   </g>
+		   </g>
+	   </g>
+   </g>
+
+Le style:
+
+.. code-block::
+
+   <style type="text/css">
+	.st20{fill:#02A3EA;}
+	.st68{fill:#EA2806;stroke:#EA2806;stroke-width:6.666667e-04;stroke-miterlimit:10;}
+   </style> 
 
 15.2 Ajout d'une commande ON-OFF
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -179,6 +256,12 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 400px
 .. |image109| image:: ../media/image109.webp
    :width: 700px
+.. |image119| image:: ../media/image119.webp
+   :width: 479px
+.. |image132| image:: ../media/image132.webp
+   :width: 427px
+.. |image133 image:: ../media/image133.webp
+   :width: 422px
 .. |image498| image:: ../media/image498.webp
    :width: 400px
 .. |image499| image:: ../media/image499.webp
