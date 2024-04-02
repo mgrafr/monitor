@@ -22,6 +22,7 @@ define('ECRAN_ADMIN', array( // disable ou disable
      "msmtprc" => "disable", //msmtprc (config envoi mail)
      "connect_py" => "disable", // Maj automatique des IP depuis connect.py
 	));
+define('ON_SOS',true);// bouton sos page accueil, le disositif dit être enregistré dans SQL
 // répertoire des images
 $rep='images/';//ne pas changer
 // images logo et titres
