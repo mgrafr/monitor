@@ -16,6 +16,7 @@ version : php8.3-ssh2 pour Debian 12
 ===============
 Version  en developpement 3.1.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- ajout Panic Bouton en page d'accueil
 
 Version  3.1.0
 ~~~~~~~~~~~~~~
