@@ -39,13 +39,13 @@ Dans Domoticz le dispositif est ajouté au plan :
 |image887|
 
 15.1.1.2 Dans la Base de données SQL
-==================================
+""""""""""""""""""""""""""""""""""""
 *Insérer le dispositif dans la table « dispositifs »*
 
 |image888|
 
 15.1.1.3 Dans le fichier PHP de l’image 
-=======================================
+"""""""""""""""""""""""""""""""""""""""
 *On ajoute un onclick pour l’affichage des propriétés*
 
 .. note::
@@ -80,8 +80,12 @@ Avec F12 du navigateur ajuster la position
 ====================================
 le bouton zigbee utilisé: https://www.zigbee2mqtt.io/devices/BT400B.html
 
+les données envoyées par le dispositif:
+
+|image184|
+
 15.1.2.1 Utilisation du bouton dans Domoticz 
-============================================
+""""""""""""""""""""""""""""""""""""""""""""
 
 pour Domoticz : soit on utilise une icone disponible, soit on ajoute au fichier :darkblue:`www/switch_icons.txt` une icone perso.( voir ci dessous le mode d'emploi)
 
@@ -112,10 +116,10 @@ LE script :darkblue:`notifications_devices.lua` :
 Voir le § :ref:`13.6 SMS réception et émission` , concernant l'envoi d'un SMS
 
 15.1.2.2 Utilisation du bouton dans Home Assistant 
-==================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 15.1.2.2 Utilisation du bouton dans Monitor 
-===========================================
+"""""""""""""""""""""""""""""""""""""""""""
 
 |image119|
 
@@ -262,6 +266,8 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 427px
 .. |image133 image:: ../media/image133.webp
    :width: 422px
+.. |image184 image:: ../media/image184.webp
+   :width: 454px
 .. |image498| image:: ../media/image498.webp
    :width: 400px
 .. |image499| image:: ../media/image499.webp
