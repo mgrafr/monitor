@@ -82,6 +82,8 @@ le bouton zigbee utilisé: https://www.zigbee2mqtt.io/devices/BT400B.html
 
 les données envoyées par le dispositif:
 
+|image185|
+
 |image184|
 
 15.1.2.1 Utilisation du bouton dans Domoticz 
@@ -117,6 +119,51 @@ Voir le § :ref:`13.6 SMS réception et émission` , concernant l'envoi d'un SMS
 
 15.1.2.2 Utilisation du bouton dans Home Assistant 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+On récupère l'entity_id 
+
+|image189|
+
+Création d'une automation pour envoyer le SMS (seul un changement d'état se produit , une chaine vide est envoyée, d'où le trigger sans indiquer l' état) :
+
+.. code-block::
+
+  - id: alarme_sos
+    alias: sos_gsm
+    trigger:
+    - platform: state
+      entity_id: sensor.sos_action
+    condition: []
+    action:
+    - service: shell_command.set_aldz
+      data:
+        msg: "SOS" 
+
+.. note:: 
+
+   l'envoi du SMS est défini dans :darkblue:`configuration.yaml` :
+
+   .. code-block::
+      
+      shell_command:
+          set_aldz:
+            "./pyscript/aldz.bash '\"{{ msg }}\"' "
+
+   le fichier bash :darkblue:`aldz.sh`:
+
+   ..  code-block::
+
+       #! /bin/bash
+       printf '#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='$1'\npriority=1' >  /config/pyscript/aldz.py
+
+   le fichier python :darkblue:`aldz.py` :
+
+   .. code-block::
+
+      #!/usr/bin/env python3 -*- coding: utf-8 -*-
+      x='0'
+      priority=0
+
+   Voir le § :ref:`13.6.2 émission SMS` pour des explications concernant le script sms_dz.py (utilisé aussi par Domoticz)
 
 15.1.2.2 Utilisation du bouton dans Monitor 
 """""""""""""""""""""""""""""""""""""""""""
@@ -268,6 +315,10 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 422px
 .. |image184 image:: ../media/image184.webp
    :width: 454px
+.. |image185 image:: ../media/image185.webp
+   :width: 516px
+.. |image189 image:: ../media/image189.webp
+   :width: 400px
 .. |image498| image:: ../media/image498.webp
    :width: 400px
 .. |image499| image:: ../media/image499.webp
