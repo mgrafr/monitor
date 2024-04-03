@@ -317,11 +317,11 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 427px
 .. |image133| image:: ../media/image133.webp
    :width: 422px
-.. |image184 image:: ../media/image184.webp
+.. |image184| image:: ../media/image184.webp
    :width: 454px
-.. |image185 image:: ../media/image185.webp
+.. |image185| image:: ../media/image185.webp
    :width: 516px
-.. |image189 image:: ../media/image189.webp
+.. |image189| image:: ../media/image189.webp
    :width: 400px
 .. |image498| image:: ../media/image498.webp
    :width: 400px
@@ -375,5 +375,5 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 392px
 .. |image898| image:: ../media/image898.webp
    :width: 180px
-.. |image1385 image:: ../img/image1385.webp
+.. |image1385| image:: ../img/image1385.webp
    :width: 300px
