@@ -315,7 +315,7 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 479px
 .. |image132| image:: ../media/image132.webp
    :width: 427px
-.. |image133 image:: ../media/image133.webp
+.. |image133| image:: ../media/image133.webp
    :width: 422px
 .. |image184 image:: ../media/image184.webp
    :width: 454px
