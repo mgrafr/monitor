@@ -86,6 +86,10 @@ les données envoyées par le dispositif:
 
 |image184|
 
+réception d'un SMS :
+
+|image190|
+
 15.1.2.1 Utilisation du bouton dans Domoticz 
 """"""""""""""""""""""""""""""""""""""""""""
 
@@ -371,3 +375,5 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 392px
 .. |image898| image:: ../media/image898.webp
    :width: 180px
+.. |image1385 image:: ../img/image1385.webp
+   :width: 300px
