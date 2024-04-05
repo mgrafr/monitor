@@ -86,9 +86,15 @@ les données envoyées par le dispositif:
 
 |image184|
 
+.. IMPORTANT::
+
+   Ce panic button est un sensor; si le fonctionnement est simple dand domoticz (passage à Off lors d'un appui sur le bouton suivi d'un retour à On ) ,dans Home Assistant c'est plus compliqué (réception de l'appel mais renouvellement toutes les 4 heures de l'action (envoi d'un SMS ici)
+
+  |image1386| 
+
 réception d'un SMS :
 
-|image190|
+|image1385|
 
 15.1.2.1 Utilisation du bouton dans Domoticz 
 """"""""""""""""""""""""""""""""""""""""""""
@@ -377,3 +383,5 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 180px
 .. |image1385| image:: ../img/image1385.webp
    :width: 300px
+.. |image1386| image:: ../img/image1386.webp
+   :width: 550px
