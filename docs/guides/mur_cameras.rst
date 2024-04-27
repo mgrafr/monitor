@@ -2,9 +2,15 @@
 -----------------
 .. warning::
 
-   Zoneminder doit être installé
+   Les images peuvent provenir de Zoneminder ou de monitor de puis la table "cameras".
 
-Pour éviter des problèmes de capacité mémoire, vider le cache périodiquement avec CRON : 
+   Le choix se fait dans admin/config.php
+
+   .. code-block::
+
+      define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor
+
+Pour éviter des problèmes de capacité mémoire, vider le cache de Zoneminder ou Monitor périodiquement avec CRON : 
 
 **crontab -e** |image555|
 
@@ -24,11 +30,17 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
 .. warning:: 
 
-   Il est important d’ajouter les caméras dans Zoneminder les unes après les autres sans en supprimer afin que ces cameras suivent un ordre chronologique (1,2,3,4,5, 6, ...)
+   **Images provenant de Zoneminder**
+
+   Il est important d’ajouter les caméras dans Zoneminder les unes après les autres sans en supprimer afin que ces cameras suivent un ordre chronologique (1,2,3,4,5, 6, ...); c'est l'id de Zoneminder qui doit être ajouté  dans la BD (id_zm)
    
    Voir la page : http://domo-site.fr/accueil/dossiers/44
 
    |image558|
+
+   **Images gérées par monitor**
+
+   Il suffit de numéroter les caméras (id_zm) dans l'ordre souhaité  
 
 7.1- les pages index_loc.php, header.php, entete_html.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
