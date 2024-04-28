@@ -23,7 +23,8 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 		<ul>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/>
 			<img id="sw12" src="<?php echo $lien_img;?>images/seche-serviettes.svg" width="40" height="auto" alt=""/>
-			<img id="sw23" src="<?php echo $lien_img;?>images/vanne.svg" width="60" height="auto" alt=""/></a></li>
+			<img id="sw23" src="<?php echo $lien_img;?>images/vanne.svg" width="60" height="auto" alt=""/>
+			<img id="sw24" src="<?php echo $lien_img;?>images/th_cave.webp" width="60" height="auto" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>images/lampe_entree.svg" width="60" height="40" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>images/lampe_salon.svg" width="60" height="40" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/>
