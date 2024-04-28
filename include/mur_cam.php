@@ -10,11 +10,14 @@
 <?php
 $scale=100;
 $i=1;$j=1;
+				   
 while ($i <= NBCAM) {
+	if (SRC_MUR=="mo") {$src_img='include/mur_cameras1.php?id_zm='.$i.'&x=';}
+	if (SRC_MUR=="zm") {$src_img='include/mur_cameras.php?idx='.$i.'&url='.ZMURL.'&x=';}	
 	$camImgId="cam".$i;
 	if ($j==1) {echo "<tr>";}
   	echo '<td>
-	<img id="'.$camImgId.'" src="include/mur_cameras.php?idx='.$i.'&url='.ZMURL.'&x=" rel="'.$i.'" class="dimcam" alt=""/></td>';
+	<img id="'.$camImgId.'" src="'.$src_img.'" rel="'.$i.'" class="dimcam" alt=""/></td>';
 	if (($j==2) || ($i==NBCAM)){ echo "</tr>";$j=0;}
   $i++;$j++;}				
 
