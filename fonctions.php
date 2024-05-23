@@ -938,9 +938,9 @@ case "7" :
 case "15" :
 case "21" :	
 case "23" :			
-echo $file.'<div id="result"><form >';
+echo $file.'<br><em style="color:red">le fichier doit être autorisé en écriture (666)</em><br><div id="result"><form >';
      $content = file_get_contents($file);
-	 if($choix==3){ file_put_contents(TMPCONFIG.'.bak.'.$time, $content);}	 
+	 if($choix==3){ file_put_contents(VARTAB.'.bak.'.$time, $content);}	 
 	 else {file_put_contents($file.'.bak.'.$time, $content);}
 	 if($choix==7){$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];
 		$_SESSION["mdpass"]=$find.$content;$height="30";}
@@ -1055,7 +1055,7 @@ default:
 } }
 else {	
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
-echo "Entrer votre mot de passe";}//include ('include/test_pass.php');return;}
+$retour="Entrer votre mot de passe";echo $retour;}//include ('include/test_pass.php');return;}
 return ;
 
 }
