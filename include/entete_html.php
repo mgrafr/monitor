@@ -10,9 +10,10 @@
 		<link rel="shortcut icon" href="<?php if (substr($_SERVER['HTTP_HOST'], 0, 7)=="192.168") echo '/monitor'.FAVICON;else echo FAVICON; ?>">
 		<!-- mes css  dossier css -->
 		<link href="bootstrap/css/bootstrap.css?2" rel="stylesheet">
-		<link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
-		<link href="css/mes_css.css?4" rel="stylesheet">
-		
+		<link href="css/switch.css" rel="stylesheet">
+		<link href="css/mes_css.css?9" rel="stylesheet">
+		<?php if (file_exists("custom/css/styles.css")){echo '<link href="custom/css/styles.css?1" rel="stylesheet">'; }?>
+ 		<link rel="stylesheet" href="css/jquery-ui-v1.13.2.css">
 		<!-- icones  racine du site -->
 		<link rel="apple-touch-icon" href="iphone-icon.png"/>
 		<link rel="icon" sizes="196x196" href="logo_t.png">

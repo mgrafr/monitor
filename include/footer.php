@@ -17,7 +17,7 @@ require("fonctions.php");
 <script src="js/jquery-ui-v1.13.2.js"></script>
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script> 
-<script src="bootstrap/bootstrap-switch-button.js?2"></script>
+<script src="js/switch.js"></script>
 <script src="js/mes_js.js"></script>
 <?php if (file_exists("custom/js/JS.js")){echo '<script src="custom/js/JS.js"></script>'; }?>
 
@@ -94,7 +94,7 @@ not_piles_reset="reset_erreur_"+notpiles;not_piles="erreur_"+notpiles;
 
 /*-----------------------------------*/
 	$("#onoffmur").change(function() {
-  if ($(this).prop("checked")==true) {arret_mur=1;updateImage(nbrCam);}
+  if ($(this).parent().children('.label').text('On')) {arret_mur=1;updateImage(nbrCam);}
 	else {arret_mur=0;}
 	});	
 $("#onoffdvr").change(function() {
@@ -420,8 +420,9 @@ $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert
   }); }
 });
 /*-----administration-------------------------------- */
-$(".admin1").click(function() {var choix_admin =$(this).attr('rel');//console.log(choix_admin);
-var fenetre =$(this).attr('title');appel_admin(choix_admin,fenetre);})
+$(".admin1").click(function() {choix_admin =$(this).attr('rel');//console.log(choix_admin);
+fenetre =$(this).attr('title');
+appel_admin(choix_admin,fenetre);}) ;						   
 
 function appel_admin(choix_admin,fenetre){
 	$.ajax({ 
