@@ -526,7 +526,6 @@ Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce p
 ====================================
 3 serveurs possibles:
 
-   .. code-block::
       - Domoticz
       - Home Assistant
       - Io Broker (en cours de développement)|
