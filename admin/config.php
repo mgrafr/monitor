@@ -105,7 +105,11 @@ define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faib
 ));
 define('NOTIFICATIONS_PILES','');// nom de la page default: interieur
 //---------------------------------------
-// Serveurs Domoticz ou HA
+// Serveurs Domoticz ou HA ou iobroker
+define('DOMOTIC', '');//DZ ou HA ou IOB ou "" (non utlisé)
+define('DOMOTIC1', '');//DZ ou HA ou IOB ou ""
+define('DOMOTIC2', '');//DZ ou HA ou IOB ou ""
+//
 define('IPDOMOTIC', '');//ip 1er serveur Domotique ex:192.168.1.76
 //pour ssh2
 define('USERDOMOTIC', '<user>');//user du serveur,répertoire :home/user
@@ -114,6 +118,7 @@ define('PWDDOMOTIC', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
 define('DOMDOMOTIC', 'https://domoticz.DOMAINE.ovh');//domaine
 define('TOKENDOMOTIC', 'ENTRER LE TOKEN ICI');//TOKEN ou BEARER
+//
 define('IPDOMOTIC1', '');//ip 2emme serveur Domotique ex:192.168.1.5
 //pour ssh2
 define('USERDOMOTIC1', '<user>');//user du serveur,répertoire :home/user
@@ -122,6 +127,15 @@ define('PWDDOMOTIC1', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC1', '');//url ex:http://192.168.1.5:8123/
 define('DOMDOMOTIC1', '');//ex:https://ha.DOMAINE.ovh
 define('TOKENDOMOTIC1', "ENTRER LE TOKEN ICI");//TOKEN ou BEARER
+//
+define('IPDOMOTIC2', '');//ip 2emme serveur Domotique ex:192.168.1.5
+//pour ssh2
+define('USERDOMOTIC2', '<user>');//user du serveur,répertoire :home/user
+define('PWDDOMOTIC2', '<mot passe>');//mot passe serveur
+//
+define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
+define('DOMDOMOTIC2', '');//ex:https://ha.DOMAINE.ovh
+define('TOKENDOMOTIC2', "ENTRER LE TOKEN ICI");//TOKEN ou BEARER
 //*************************Pour Domoticz
 define('VARTAB', 'admin/connect/string_tableaux.lua');//
 define('BASE64', 'admin/connect/connect.lua');//login et password en Base64
