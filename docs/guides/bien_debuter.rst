@@ -514,17 +514,37 @@ En cas de problème avec le chemin de bash:
 
    /usr/bin/bash ./update.bash
 
-0.2	La page d’accueil et connexion avec Domoticz ou HA : 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+0.2 La page d’accueil et connexion avec un serveur domotique : 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 0.2.1 page d’accueil :
 ======================
 Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe :ref:`1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo`
 
-|image52|
+|image52
+
+0.2.2 Connexion au serveur domotique
+
+3 serveurs possibles:
+
+.. code-block::
+   - Domoticz
+   - Home Assistant
+   - Io Broker (en cours de développement)|
+
+.. note::
+
+   Le choix se fait dans /admin/config.php:
+
+   .. code-block::
+
+      // Domoticz ou HA ou iobroker
+      define('DOMOTIC', 'DZ');//DZ ou HA ou IOB ou "" (non utlisé)
+      define('DOMOTIC1', 'HA');//DZ ou HA ou IOB ou ""
+      define('DOMOTIC2', '');//DZ ou HA ou IOB ou ""
  
-0.2.2. Premier dispositif
+0.2.3. Premier dispositif
 =========================
-0.2.2.1 pour Domoticz
+0.2.3.1 pour Domoticz
 """"""""""""""""""""""
 Température extérieure : le matériel
 
@@ -639,7 +659,7 @@ La classe "text-centre" :
 
 |image64| 
 
-0.2.2.2 pour Home Assistant
+0.2.3.2 pour Home Assistant
 """""""""""""""""""""""""""
 La météo est installée lors de l’installation du programme :
 
@@ -658,7 +678,7 @@ Les données json de ce dispositif :
 
 |image69|
  
-0.2.2.3 Affichage sur la page d’accueil de Monitor :
+0.2.3.3 Affichage sur la page d’accueil de Monitor :
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 Extrait du fichier /include/accueil.php
 
