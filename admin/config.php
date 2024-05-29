@@ -74,7 +74,6 @@ define('DHUSER','USER');
 //  -----------------------------------------
 //  -----------------------------------------
 define('CHOIXID','idm');// NE PAS MODIFIER -
-define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
 define('MOTDEPASSE','PASS_BD');
@@ -136,7 +135,8 @@ define('PWDDOMOTIC2', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
 define('DOMDOMOTIC2', '');//ex:https://ha.DOMAINE.ovh
 define('TOKENDOMOTIC2', "ENTRER LE TOKEN ICI");//TOKEN ou BEARER
-//*************************Pour Domoticz
+//****modules et constantes  complémentaires pour Domoticz
+define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 define('VARTAB', 'admin/connect/string_tableaux.lua');//
 define('BASE64', 'admin/connect/connect.lua');//login et password en Base64
 define('CONF_MODECT', 'admin/string_modect.json');
