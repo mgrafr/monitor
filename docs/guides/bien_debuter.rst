@@ -755,7 +755,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
   *ne sont concernés pour les variables que les champs* :
 
-|image77|
+|image1390|
 
 |image78|
 
@@ -1536,8 +1536,6 @@ function mc(variable,id)
    :width: 216px
 .. |image76| image:: ../media/image76.webp
    :width: 598px
-.. |image77| image:: ../media/image77.webp
-   :width: 343px     
 .. |image78| image:: ../media/image78.webp
    :width: 605px     
 .. |image79| image:: ../media/image79.webp
@@ -1689,4 +1687,6 @@ function mc(variable,id)
 .. |image1383| image:: ../img/image1383.webp
    :width: 200px 
 .. |image1384| image:: ../img/image1384.webp
-   :width: 512px 
+   :width: 512px
+.. |image1390| image:: ../img/image1390.webp
+   :width: 343px     
