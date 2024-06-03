@@ -141,6 +141,10 @@ define('VARTAB', 'admin/connect/string_tableaux.lua');//
 define('BASE64', 'admin/connect/connect.lua');//login et password en Base64
 define('CONF_MODECT', 'admin/string_modect.json');
 //-----------------------------------------------------------
+//*********** pour Iobroker
+define('OBJ_IOBROKER','zigbee2mqtt.0');// séparer les objets par une virgule
+define('PORT_API_IOB','8093');//port de l'API
+//-----------------------------------------------------------
 // Sauvegardes domoticz
 define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
 //-----------------------------------------------------------
