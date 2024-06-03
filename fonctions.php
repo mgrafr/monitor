@@ -2,8 +2,15 @@
 session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 require_once('admin/config.php');
+$L0=array();
+if (DOMOTIC!=""){$L0[0]=DOMOTIC;$L0[1]=URLDOMOTIC;$L0[2]=IPDOMOTIC;}
+if (DOMOTIC1!=""){$L0[3]=DOMOTIC1;$L0[4]=URLDOMOTIC1;$L0[5]=IPDOMOTIC1;}
+if (DOMOTIC2!=""){$L0[6]=DOMOTIC2;$L0[7]=URLDOMOTIC2;$L0[8]=IPDOMOTIC2;}
+$cle=array_search('DZ',$L0);if ($cle!==false) {$l_dz=$L0[$cle];$L_dz=$L0[$cle+1];$IP_dz=$L0[$cle+2];}
+$cle=array_search('HA',$L0);if ($cle!==false) {$l_ha=$L0[$cle];$L_ha=$L0[$cle+1];$IP_ha=$L0[$cle+2];}
+$cle=array_search('IOB',$L0);if ($cle!==false) {$l_iob=$L0[$cle];$L_iob=$L0[$cle+1];$IP_iob=$L0[$cle+2];}		
 include ("include/fonctions_1.php");//fonction sql_plan
-
+//
 function file_http_curl($L,$mode,$post){  
 /* set the content type json */
     $headers = [];
@@ -33,10 +40,10 @@ $retour=curl_exec($curl);
 curl_close($curl);
 return $retour;
 }
-// valeur d'une variable
-function val_variable($variable){$value2=0;
+// valeur d'une variable DZ
+function val_variable($variable){$value2=0;global $L_dz;
 $result=array();$lect_stat_msg=array();$m=0;
-$L=URLDOMOTIC."json.htm?type=command&param=getuservariable&idx=".$variable;
+$L=$L_dz."json.htm?type=command&param=getuservariable&idx=".$variable;
 $json_string = file_get_curl($L);
 $result = json_decode($json_string, true);
 $lect_var = $result['result'][0];
@@ -54,20 +61,20 @@ return $msg;
 /*utilisée pour lire les variables de domoticz
 cette fonction permet egalement suivant le contenu de la variable de
 determiner une image qui peut être afficher (poubelles,fosse septique,...*/
-function status_variables($xx){
-$p=0;$n=0;	
-if(IPDOMOTIC != ""){
-$L=URLDOMOTIC."json.htm?type=command&param=getuservariables";
+function status_variables($xx){global $l_dz,$L_dz,$L_ha,$l_ha;
+$p=0;$n=0;$L0=array();
+if($l_dz != ""){
+$L=$L_dz."json.htm?type=command&param=getuservariables";
 $json_string = file_get_curl($L);
 $resultat = json_decode($json_string, true);
 $result=$resultat['result'];
 $p=count($result);
 }
-if (IPDOMOTIC1!=""){
+if($l_ha != ""){
+$M=$L_ha."api/states/sensor.liste_var";
 $n=0;$mode=1;$post="";		
- $M=URLDOMOTIC1."api/states/sensor.liste_var";
-$json_string1=file_http_curl($M,$mode,$post);
-$parsed_json1 = json_decode($json_string1, true);  //return $parsed_json1;
+ $json_string1=file_http_curl($M,$mode,$post);
+$parsed_json1 = json_decode($json_string1, true);//return $parsed_json1;
 $json_string1 = $parsed_json1['state'];
 $json_string1=str_replace("\n","",$json_string1);	
 $json_string1=explode(',',$json_string1);
@@ -143,8 +150,8 @@ $data[0] = [
 
  return $data;  
 }
-function maj_variable($idx,$name,$valeur,$type){
-	$file=URLDOMOTIC.'json.htm?type=command&param=updateuservariable&idx='.$idx.'&vname='.$name.'&vtype='.$type.'&vvalue='.$valeur;
+function maj_variable($idx,$name,$valeur,$type){global $L_dz; 
+	$file=$L_dz.'json.htm?type=command&param=updateuservariable&idx='.$idx.'&vname='.$name.'&vtype='.$type.'&vvalue='.$valeur;
    $result = file_get_curl($file);
 $json = json_decode($result, true);
 $resultat['status']=$json['status'];
@@ -208,8 +215,8 @@ function sql_variable($t,$ind){
 	}
 
 //----POUR HA--------------------------------------
-function devices_zone($zone){
-$L=URLDOMOTIC1."api/states";$post="";$mode=1;
+function devices_zone($zone){global $L_ha; 
+$L=$L_ha."api/states";$post="";$mode=1;
 $json_string=file_http_curl($L,$mode,$post);$n=0;$ha=array();//echo $json_string;
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
@@ -244,7 +251,7 @@ foreach ($lect_device as $xxx){
 
 return $ha;}
 //
-function devices_id($deviceid,$command,$value=""){$post="";
+function devices_id($deviceid,$command,$value=""){$post="";global $L_ha; 
 	$mat=explode('.',$deviceid);$mat=$mat[0];
 switch ($command) {
 case "etat" :		
@@ -271,7 +278,7 @@ case "value" :
 break;	
 default:
 }								
-$L=URLDOMOTIC1.$api;
+$L=$L_ha.$api;
 //$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
 $ha=file_http_curl($L,$mode,$post);
 $data = json_decode($ha, true);
@@ -282,16 +289,16 @@ return json_encode($data);}
 //-------POUR DZ- et HA -----------------------------------
 // pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
 //
-function devices_plan($plan){$choix_tri_sql=0;
+function devices_plan($plan){$choix_tri_sql=0;global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
 $n=0;$al_bat=0;$p=0;	
-	if (IPDOMOTIC!=""){	$choix_tri_sql=$choix_tri_sql+1;	
-$L=URLDOMOTIC."json.htm?type=command&param=getdevices&plan=".$plan;
+	if ($l_dz!=""){	$choix_tri_sql=$choix_tri_sql+1;	
+$L=$L_dz."json.htm?type=command&param=getdevices&plan=".$plan;
 $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
 $parsed_json = $parsed_json['result'];
 $p=count($parsed_json);		
 	}
-if (IPDOMOTIC1!=""){$choix_tri_sql=$choix_tri_sql+2;
+if ($l_ha!=""){$choix_tri_sql=$choix_tri_sql+2;
 	$result=devices_zone(0);$n=0;//
 	while (isset($result[$n])==true){//echo "nom=".$result[$n]['Name']."<br>";
 	
@@ -300,11 +307,50 @@ if (IPDOMOTIC1!=""){$choix_tri_sql=$choix_tri_sql+2;
 	$n++;$p++;}
 	//return;
   }
+if ($l_iob!=""){$choix_tri_sql=$choix_tri_sql+4;$q=$p;$port_iob=PORT_API_IOB;
+	//http://192.168.1.104:8093/v1/objects?filter=zigbee2mqtt.0*&type=device
+				//http://192.168.1.104:8093/v1/states?filter=zigbee2mqtt.0.0x00124b002228d561.*
+$L=$IP_iob.":".PORT_API_IOB."/v1/objects?filter=".OBJ_IOBROKER."*&type=device";
+$json_string = file_get_curl($L);
+$iob_json = json_decode($json_string);//$iob_json = $iob_json['zigbee2mqtt.0.info.connection'];
+				
+				$n=0;$iob=array();$value=array();
+				
+foreach ($iob_json as $xxx){
+	$enr = explode('.',$xxx->{'_id'});$_id=$enr[0].".".$enr[1].".".$enr[2];
+	$iob_name = $xxx->{'common'}->{'name'};
+	$iob_desc = $xxx->{'common'}->{'desc'};
+	
+	$L_val=$IP_iob.":".PORT_API_IOB."/v1/states?filter=".$_id.".*";
+	$json_string_val = file_get_curl($L_val);
+	$iob_json_val=json_decode($json_string_val);
+		
+		foreach ($iob_json_val as $val=>$val1){	
+		$ens = explode('.',$val);$valeur=$ens[3];
+		$value[$valeur] = $val1->{'val'};
+		}
+	$iob[$n]=[
+		'_id' => $_id,
+		'Name' => $iob_name,
+		'description' => $iob_desc,
+		'value' => $value,
+		];				  
+		$n++;
+}				
+		$n=0;
+	while (isset($iob[$n])==true){//echo "nom=".$result[$n]['Name']."<br>";
+	$parsed_json[$q]=$iob[$n];
+		
+	$n++;$q++;}
+	  }										 
 $n=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 $description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
-if (!isset($lect_device["serveur"])) {if ($n<$p) $lect_device["serveur"] = "DZ";}
+if (!isset($lect_device["serveur"])) {
+	if ($n<$p) $lect_device["serveur"] = "DZ";
+	if ($n>$p) $lect_device["serveur"] = "IOB";
+}
 if ($lect_device["serveur"] == "DZ") {
 $lect_device["attributes"]["SubType"] = $lect_device["SubType"];
 $lect_device["attributes"]["SwitchType"] = $lect_device["SwitchType"] ;			
@@ -316,6 +362,10 @@ $periph=array();$periph['idm']=1000;
 	if ($choix_tri_sql==1) {$s=$lect_device["idx"];$t1="1";}
 	if ($choix_tri_sql==2) {$s=$lect_device["ID"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="2";}
 	if ($choix_tri_sql==3) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}
+	if ($choix_tri_sql==4) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}//IOB
+	if ($choix_tri_sql==5) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}//IOB + DZ
+	if ($choix_tri_sql==6) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}//IOB + HA
+	if ($choix_tri_sql==7) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}// IOB + DZ
 //echo "xxxx=...".$s."...<br>";$choix_Actif="0";
 $periph=sql_plan($t1,$s);
 	if ($periph=="null") {$choix_Actif="0";}
@@ -331,19 +381,28 @@ if ($t=="") {$t=888;$choix_Actif="0";}
 // verif ds choix Actif------------------------------------------
 if ($choix_Actif=="1"){
 	if ($periph["ID"]!="" && $periph["idx"]!="") {$choix_Actif="0";$data[$t] = ['warning' => "double ID idx, choisir DZ ou HA"];}
-	if ($periph["ID"]=="" && $lect_device["serveur"] == "HA") {$choix_Actif="0";}
-	if ($periph["idx"]=="" && $lect_device["serveur"] == "DZ") {$choix_Actif="0";}}
-if ($choix_Actif=="2" && $lect_device["serveur"] == "HA"){$choix_Actif="0";}
-if ($choix_Actif=="3" && $lect_device["serveur"] == "DZ"){$choix_Actif="0";}
+	if ($periph["ID"]=="" && ($lect_device["serveur"] == "HA" || $lect_device["serveur"] == "IOB")) {$choix_Actif="0";}
+	if ($periph["idx"]=="" && ($lect_device["serveur"] == "DZ"|| $lect_device["serveur"] == "IOB")) {$choix_Actif="0";}}
+if ($choix_Actif=="2" && ($lect_device["serveur"] == "HA" || $lect_device["serveur"] == "IOB")){$choix_Actif="0";}
+if ($choix_Actif=="3" && ($lect_device["serveur"] == "DZ" || $lect_device["serveur"] == "IOB") ){$choix_Actif="0";}
+if ($choix_Actif=="4" && ($lect_device["serveur"] == "DZ" || $lect_device["serveur"] == "HA") ){$choix_Actif="0";}	
 //---------------------------------------------------------------
 	switch ($choix_Actif) {
 		case "1" :
 		case "2" :
 		case "3" :	
+		case "4" :		
+if(array_key_exists('value', $lect_device)) {
+	$array=$lect_device['value'];
+    if(array_key_exists('temperature', $array)) {$lect_device["Temp"]=$array["temperature"];$lect_device["Data"]=$array["temperature"];}//pour IOB
+	if(array_key_exists('humidity', $array)) {$lect_device["Humidity"]=$array["humidity"];}//pour IOB	
+	if(array_key_exists('battery', $array)) {$lect_device["BatteryLevel"]=$array["battery"];}//pour IOB		
+}
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
+if(array_key_exists('description', $lect_device)) {$description=$lect_device["description"];}// pour IOB			
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
-if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
-if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
+	if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
+    if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
 if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);$lect_device["Fx"]=$periph['F()'];}
 if ($periph['F()']==-1) {$lect_device["Fx"]="lien_variable";}			
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
