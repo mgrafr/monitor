@@ -23,7 +23,7 @@ require_once('admin/config.php');
 		<?php  
 		  if (ECRAN_ADMIN['connect_lua']=="enable")echo '<img src="images/dz.webp" style="position:relative;top:0px;left:-10px;width:35px" alt="logo"/> <a class="admin1" href="#admin" rel="15" style="margin-left:30px" title="reponse1" >Mots passe cryptés(Base64) et IP réseau</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=6 style="width:25px;display:inline;"></a><br>'; 
          if (ECRAN_ADMIN['string_tableaux']=="enable")echo '<a class="admin1" href="#admin" rel="3" title="reponse1" >Configuation variables dz maj_services</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=5 style="width:25px;display:inline;"></a><br>';
-        if (ECRAN_ADMIN['modect']=="enable")echo '<a class="admin1" href="#admin" rel="10" title="reponse1" >Configuation modect dz alarmes</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=4 style="width:25px;display:inline;"></a><br>';
+        if (ECRAN_ADMIN['modect']=="enable")echo '<a class="admin1" href="#admin" rel="10" title="reponse1" >Configuation modect pour l\'alarme</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=4 style="width:25px;display:inline;"></a><br>';
         if (ECRAN_ADMIN['idx_dz_list']=="enable")echo '<a class="admin1" href="#admin" rel="12" title="reponse1" >Créer fichier idx/nom Domoticz , LISTE</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=3 style="width:25px;display:inline;"></a><br>';
         if (ECRAN_ADMIN['var_list']=="enable")echo '<a class="admin1" href="#admin" rel="19" title="reponse1" >LISTE variables</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=10 style="width:25px;display:inline;"></a><br>';
         if (ECRAN_ADMIN['idx_dz-zigbee']=="enable")echo '<a class="admin1" href="#admin" rel="13" title="reponse1" >Créer fichier lasteen zwave/zigbee</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=2 style="width:25px;display:inline;"></a><br>';
@@ -33,8 +33,8 @@ require_once('admin/config.php');
         <img src="images/serveur-sql.svg" style="width:30px"><br>
         <a class="admin1" href="#admin" rel="9" title="reponse1" >Test Base de données</a><br>
         <a class="admin1" href="#admin" rel="14" title="reponse1" >Sauvegarde Base de données</a><br>
-        <a class="admin1" href="#admin" rel="17" title="reponse2" >Enregistrer ou modifier Variables (dz,ha) dans SQL&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=0 style="width:25px;display:inline;"></a><br>
-        <a class="admin1" href="#admin" rel="18" title="reponse2" >Enregistrer ou modifier Dispositifs (dz,ha) dans SQL&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=7 style="width:25px;display:inline;"></a><br>
+        <a class="admin1" href="#admin" rel="17" title="reponse2" >Enregistrer ou modifier Variables (dz,ha,iob) dans SQL&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=0 style="width:25px;display:inline;"></a><br>
+        <a class="admin1" href="#admin" rel="18" title="reponse2" >Enregistrer ou modifier Dispositifs (dz,ha,iob) dans SQL&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=7 style="width:25px;display:inline;"></a><br>
 		<a class="admin1" href="#admin" rel="25" title="reponse2" >Enregistrer Message DZ( ou HA) dans SQL&nbsp;&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=9 style="width:25px;display:inline;"></a><br>  
         <br>
        <a href="http://<?php echo PHPMYADMIN;?>" target="_blank"><img src="images/PhpMyAdmin_logo.svg" style="width:80px" alt=""/></a><br>
@@ -50,6 +50,11 @@ require_once('admin/config.php');
   </div>
 </div>
 <!--pour essai home Assistant -->
+<div id="liste_var_hadz" style="position: relative;top:-400px;left:200px; display:none">
+	<input class="styled" type="button" id="ldz" value="Domoticz"  />
+	<input class="styled" type="button" id="lha" value="Home Assistant" />
+    
+</div>	
 <p id="notify" style="color:darkblue;display:none" href="#admin">inter</p>
 <p id="yyyessai" style="color:darkblue;display:none" href="#admin">inter1</p>
 <?php

@@ -1,11 +1,12 @@
 <?php
 require("fonctions.php");
-?>	
+?>
+
 <!-- footer start -->
 		<!-- ces fonctions sont utilisées pour la page d' accueil , la page interieur ,la page météo 
 		================ -->
 		<footer id="footer">
-			<div class="footer section">
+			<div classshell="footer section">
 				<div class="container">
 				</div>
 			</div>
@@ -17,13 +18,13 @@ require("fonctions.php");
 <script src="js/jquery-ui-v1.13.2.js"></script>
 		<script src="js/jquery.backstretch.min.js"></script>
 <script src="js/big-Slide.js"></script> 
-<script src="bootstrap/bootstrap-switch-button.js?2"></script>
+<script src="js/switch.js"></script>
 <script src="js/mes_js.js"></script>
 <?php if (file_exists("custom/js/JS.js")){echo '<script src="custom/js/JS.js"></script>'; }?>
 
 
 <script>
-		
+
 function maj_mqtt(id_x,state,ind,level=0){console.log('state==='+state);
 if (!state) {console.log("erreur-state");return;}										  
 switch (ind) {
@@ -94,7 +95,7 @@ not_piles_reset="reset_erreur_"+notpiles;not_piles="erreur_"+notpiles;
 
 /*-----------------------------------*/
 	$("#onoffmur").change(function() {
-  if ($(this).prop("checked")==true) {arret_mur=1;updateImage(nbrCam);}
+  if ($(this).parent().children('.label').text('On')) {arret_mur=1;updateImage(nbrCam);}
 	else {arret_mur=0;}
 	});	
 $("#onoffdvr").change(function() {
@@ -136,10 +137,11 @@ function maj_services(index){
 		if (idw=="#shell")  {id_var=html[i].idx;v_var=html[i].Value;
 			if (v_var!="0")  {					 
 		var type=2;
-		if (idt="dz") var ipdz="<?php echo IPDOMOTIC;?>";
-		else  var ipdz="<?php echo IPDOMOTIC1;?>";
+		if (idt="dz") {var ipserv="<?php echo $IP_dz;?>";var userserv="<?php echo $USER_dz;?>";var pwdserv="<?php echo $PWD_dz;?>";}
+		if (idt="ha") {var ipserv="<?php echo $IP_ha;?>";var userserv="<?php echo $USER_ha;?>";var pwdserv="<?php echo $PWD_ha;?>";}		
+		else { var ipserv="<?php echo $IP_iob;?>";var userserv="<?php echo $USER_iob;?>";var pwdserv="<?php echo $PWD_iob;?>";}
 		 					
-			$.get( "ajax.php?app=shell&variable="+ipdz+"&type=2&command="+v_var, function(datas) {
+			$.get( "ajax.php?app=shell&variable="+ipserv+"&name="+userserv+"&table="+pwdserv+"&type=2&command="+v_var, function(datas) {
   				alert(datas);
   
   			});maj_variable(id_var,"BASH",0,2);
@@ -420,8 +422,9 @@ $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert
   }); }
 });
 /*-----administration-------------------------------- */
-$(".admin1").click(function() {var choix_admin =$(this).attr('rel');//console.log(choix_admin);
-var fenetre =$(this).attr('title');appel_admin(choix_admin,fenetre);})
+$(".admin1").click(function() {choix_admin =$(this).attr('rel');//console.log(choix_admin);
+fenetre =$(this).attr('title');
+appel_admin(choix_admin,fenetre);}) ;						   
 
 function appel_admin(choix_admin,fenetre){
 	$.ajax({ 
