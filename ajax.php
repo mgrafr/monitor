@@ -39,7 +39,7 @@ else if ($app=="data_var") {$retour= val_variable($variable);echo json_encode($r
 else if ($app=="dev_bd" || $app=="var_bd" || $app=="msg_bd"){mysql_app($_GET);}
 else if ($app=="ha" || $appp=="ha" ) {$retour=devices_zone($device);echo json_encode($retour);}
 else if ($app=="haid") {$retour=devices_id($device,$command);echo json_encode($retour);}
-else if ($app=="shell") {$ip=$variable;include ('include/ssh_scp.php');}
+else if ($app=="shell") {$ip=$variable;$user_serv=$name;$pwd_serv=$table;include ('include/ssh_scp.php');}
 else if ($app=="idxidm") {$retour=sql_variable(0,$command);echo json_encode($retour);}
 else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}

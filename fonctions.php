@@ -3,12 +3,12 @@ session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 require_once('admin/config.php');
 $L0=array();
-if (DOMOTIC!=""){$L0[0]=DOMOTIC;$L0[1]=URLDOMOTIC;$L0[2]=IPDOMOTIC;}
-if (DOMOTIC1!=""){$L0[3]=DOMOTIC1;$L0[4]=URLDOMOTIC1;$L0[5]=IPDOMOTIC1;}
-if (DOMOTIC2!=""){$L0[6]=DOMOTIC2;$L0[7]=URLDOMOTIC2;$L0[8]=IPDOMOTIC2;}
-$cle=array_search('DZ',$L0);if ($cle!==false) {$l_dz=$L0[$cle];$L_dz=$L0[$cle+1];$IP_dz=$L0[$cle+2];}
-$cle=array_search('HA',$L0);if ($cle!==false) {$l_ha=$L0[$cle];$L_ha=$L0[$cle+1];$IP_ha=$L0[$cle+2];}
-$cle=array_search('IOB',$L0);if ($cle!==false) {$l_iob=$L0[$cle];$L_iob=$L0[$cle+1];$IP_iob=$L0[$cle+2];}		
+if (DOMOTIC!=""){$L0[0]=DOMOTIC;$L0[1]=URLDOMOTIC;$L0[2]=IPDOMOTIC;$L0[3]=USERDOMOTIC;$L0[4]=PWDDOMOTIC;}
+if (DOMOTIC1!=""){$L0[4]=DOMOTIC1;$L0[5]=URLDOMOTIC1;$L0[6]=IPDOMOTIC1;$L0[7]=USERDOMOTIC1;$L0[8]=PWDDOMOTIC1;}
+if (DOMOTIC2!=""){$L0[8]=DOMOTIC2;$L0[9]=URLDOMOTIC2;$L0[10]=IPDOMOTIC2;$L0[11]=USERDOMOTIC2;$L0[12]=PWDDOMOTIC2;}
+$cle=array_search('DZ',$L0);if ($cle!==false) {$l_dz=$L0[$cle];$L_dz=$L0[$cle+1];$IP_dz=$L0[$cle+2];$USER_dz=$L0[$cle+3];$PWD_dz=$L0[$cle+4];}
+$cle=array_search('HA',$L0);if ($cle!==false) {$l_ha=$L0[$cle];$L_ha=$L0[$cle+1];$IP_ha=$L0[$cle+2];$USER_ha=$L0[$cle+3];$PWD_ha=$L0[$cle+4];}
+$cle=array_search('IOB',$L0);if ($cle!==false) {$l_iob=$L0[$cle];$L_iob=$L0[$cle+1];$IP_iob=$L0[$cle+2];$USER_iob=$L0[$cle+3];$PWD_iob=$L0[$cle+4];}		
 include ("include/fonctions_1.php");//fonction sql_plan
 //
 function file_http_curl($L,$mode,$post){  
@@ -963,6 +963,7 @@ return $retour;
 }
 
 function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 , 6 , 11 ,16 = contenu textarea
+global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob,$USER_dz,$USER_ha,$USER_iob,$PWD_dz,$PWD_ha,$PWD_iob;	
 $height="490";$pawd=0;
 if ($choix==9){$height="200";include ("include/test_db.php");$pawd=1;}
 $time = time();
