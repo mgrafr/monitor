@@ -722,7 +722,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 ===========================================================================
 Ces tables sont installées lors de l'installation automaique.
 
-	La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
+	La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ; il en est de même pour Iobroker si une base de données lui est alloué mais par simplicité, il est préférable d'utiliser celle de "monitor"
 
 	- tables :
 
@@ -773,7 +773,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
    des ID sont réservés , voir à la fin de ce praragraphe la liste des ID à ne pas utiliser pour des ajouts personnels.
 
-. nom_objet : nom de la variable du serveur domotique (dz ou ha); 
+. nom_objet : nom de la variable du serveur domotique (dz, ha ou iob); 
 	mot réservé: BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
 
    .. warning::
@@ -1543,7 +1543,7 @@ function mc(variable,id)
 .. |image80| image:: ../media/image80.webp
    :width: 650px
 .. |image81| image:: ../media/image81.webp
-   :width: 349px        
+   :width: 600px        
 .. |image82| image:: ../media/image82.webp
    :width: 296px     
 .. |image83| image:: ../media/image83.webp
