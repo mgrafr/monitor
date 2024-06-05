@@ -722,25 +722,32 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 ===========================================================================
 Ces tables sont installées lors de l'installation automatique.
 
-	La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ; il en est de même pour Iobroker si une base de données lui est alloué; pour ce dernier, contrairement à Domoticz ou Home Assistant, il faut créer une bade de données pour les variables et utliser l'adaptateur io.broker.sql.
+	La correspondance entre les variables Domoticz , HA, IoBroker  ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ;
 
-.. note::
+.. warning:: 
 
-   voir ce lien pour la création d'une BD pour IoBroker:
+   pour IoBroker , contrairement à Domoticz ou Home Assistant, il faut créer une base de données pour les variables et utliser l'adaptateur : io.broker.sql. 
 
-   https://www.npmjs.com/package/iobroker.sql/v/1.15.0?activeTab=readme
+   |image1393|
 
-   |image1391|
+   .. note::
 
-   Monitor possède déja une BD mySQL aussi pour uniquement les variables iobroker la BD SQLlite suffit; Sous debian *build-essential* est déjà installé, dans le cas contraire: *sudo apt-get install build-essential* .
+      voir ce lien pour la création d'une BD pour IoBroker:
 
-   pour installer io.broker.sql :
+      https://www.iobroker.net/docu/index-85.htm?page_id=4184&lang=en
 
-   .. code-block::
+      |image1391|
 
-      npm install iobroker.sql --omit=dev
+      Monitor possède déja une BD mySQL aussi pour uniquement les variables iobroker la BD SQLite suffit; 
 
-   |image1392|
+      pour installer SQLLite :
+
+      .. code-block::
+
+         sudo apt-get update
+         sudo apt-get install sqlite3
+
+      |image1392|
 
 - tables :
 
@@ -1710,3 +1717,5 @@ function mc(variable,id)
    :width: 343px  
 .. |image1391| image:: ../img/image1391.webp
    :width: 600px     
+.. |image1392| image:: ../img/image1392.webp
+   :width: 498px     
