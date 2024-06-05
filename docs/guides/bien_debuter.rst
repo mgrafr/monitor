@@ -720,11 +720,29 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 0.3.1 Les Tables "dispositifs(variables)", "text-image", "messages" & "sse"
 ===========================================================================
-Ces tables sont installées lors de l'installation automaique.
+Ces tables sont installées lors de l'installation automatique.
 
-	La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ; il en est de même pour Iobroker si une base de données lui est alloué mais par simplicité, il est préférable d'utiliser celle de "monitor"
+	La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ; il en est de même pour Iobroker si une base de données lui est alloué; pour ce dernier, contrairement à Domoticz ou Home Assistant, il faut créer une bade de données pour les variables et utliser l'adaptateur io.broker.sql.
 
-	- tables :
+.. note::
+
+   voir ce lien pour la création d'une BD pour IoBroker:
+
+   https://www.npmjs.com/package/iobroker.sql/v/1.15.0?activeTab=readme
+
+   |image1391|
+
+   Monitor possède déja une BD mySQL aussi pour uniquement les variables iobroker la BD SQLlite suffit; Sous debian *build-essential* est déjà installé, dans le cas contraire: *sudo apt-get install build-essential* .
+
+   pour installer io.broker.sql :
+
+   .. code-block::
+
+      npm install iobroker.sql --omit=dev
+
+   |image1392|
+
+- tables :
 
 		.  text-image
 
@@ -1689,4 +1707,6 @@ function mc(variable,id)
 .. |image1384| image:: ../img/image1384.webp
    :width: 512px
 .. |image1390| image:: ../img/image1390.webp
-   :width: 343px     
+   :width: 343px  
+.. |image1391| image:: ../img/image1391.webp
+   :width: 600px     
