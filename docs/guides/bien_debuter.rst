@@ -758,6 +758,8 @@ Ces tables sont installées lors de l'installation automatique.
 
       |image1394|
 
+      Test :|image1394|
+
 - tables :
 
 		.  text-image
@@ -1732,3 +1734,5 @@ function mc(variable,id)
    :width: 300px    
 .. |image1394| image:: ../img/image1394.webp
    :width: 590px     
+.. |image1395| image:: ../img/image1395.webp
+   :width: 500px
