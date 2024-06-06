@@ -749,6 +749,15 @@ Ces tables sont installées lors de l'installation automatique.
 
       |image1392|
 
+      Pour créer la base de donnés "data.db3" et la table "variables" :
+
+      .. code-block::
+
+         sqlite3 data.db3
+         create table variables(id INT, nom TEXT, content TEXT);
+
+      |image1394|
+
 - tables :
 
 		.  text-image
@@ -1719,3 +1728,7 @@ function mc(variable,id)
    :width: 600px     
 .. |image1392| image:: ../img/image1392.webp
    :width: 498px     
+.. |image1393| image:: ../img/image1393.webp
+   :width: 300px    
+.. |image1394| image:: ../img/image1394.webp
+   :width: 590px     
