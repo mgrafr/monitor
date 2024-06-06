@@ -749,12 +749,13 @@ Ces tables sont installées lors de l'installation automatique.
 
       |image1392|
 
-      Pour créer la base de donnés "data.db3" et la table "variables" :
+      Pour créer la base de donnés "data.db3", la table "variables" et la variable "essai" :
 
       .. code-block::
 
          sqlite3 data.db3
          create table variables(id INT, nom TEXT, content TEXT);
+         insert into variables values(0,"essai","12345");
 
       |image1394|
 
