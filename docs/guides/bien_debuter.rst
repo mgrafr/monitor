@@ -761,6 +761,10 @@ Ces tables sont installées lors de l'installation automatique.
 
       Test :|image1395|
 
+   .. IMPORTANT:: **Correction de l'erreur SQLite "tentative d'écriture d'une base de données en lecture seule"**
+
+      le :red:`dossier` qui héberge le fichier de base de données doit être :red:`accessible en écriture`.
+
 - tables :
 
 		.  text-image
