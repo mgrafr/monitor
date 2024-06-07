@@ -759,7 +759,7 @@ Ces tables sont installées lors de l'installation automatique.
 
       |image1394|
 
-      Test :|image1394|
+      Test :|image1395|
 
 - tables :
 
