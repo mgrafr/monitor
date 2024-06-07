@@ -602,6 +602,11 @@ Dans automations.yaml,
  
    Ce sont des chaînes uniques de données envoyée par un dispositif, un compteur ou un capteur installé dans une maison.
 
+.. admonition:: **timestamp et horodatage**
+
+   Un timestamp désigne un compteur numérique représentant une quantité de temps écoulée depuis un instant de référence, comme dans le système de l'heure Unix
+
+  
 .. |image983| image:: ../media/image983.webp
    :width: 200px
 .. |image987| image:: ../media/image987.webp
