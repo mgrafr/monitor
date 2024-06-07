@@ -595,7 +595,12 @@ Dans automations.yaml,
       value: "{{ trigger.to_state.state }}"
       id: "{{ trigger.entity_id }} "
 
+18.11 Glossaire
+^^^^^^^^^^^^^^^
 
+.. admonition:: **Points de données ou data points**
+ 
+   Ce sont des chaînes uniques de données envoyée par un dispositif, un compteur ou un capteur installé dans une maison.
 
 .. |image983| image:: ../media/image983.webp
    :width: 200px
