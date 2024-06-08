@@ -677,6 +677,21 @@ Les données json de ce dispositif :
 
 |image69|
  
+0.2.3.3 pour IoBroker
+"""""""""""""""""""""
+
+REST-API adapter , https://github.com/ioBroker/ioBroker.rest-api, dit être installé.
+
+|image1396|
+
+Installer l'adaptateur pour la météo et renseigner les paramètres , ici l'opérateur norgégien:
+
+|image1397|
+
+Enregistrer le dispositif :
+
+
+
 0.2.3.3 Affichage sur la page d’accueil de Monitor :
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 Extrait du fichier /include/accueil.php
@@ -994,7 +1009,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
  
 - Nom appareil : nom usuel
 
-- nom_objet : nom pour Domoticz ou objet_id (friendly_name) pour Home Assistant 
+- nom_objet : nom pour Domoticz et io.broker  ou objet_id (friendly_name) pour Home Assistant 
 
 .. note::
 
@@ -1007,7 +1022,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - idm : idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
 
-- Actif : 1 = actif, 0 = inactif , Domoticz=2, Home Assistant=3 ; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 2 ou 3.
+- Actif : 1 = actif, 0 = inactif , Domoticz=2, Home Assistant=3 io.broker=4; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 2 ou 3 ou 4.
 
  |image1325| |image1326|
 
@@ -1741,3 +1756,8 @@ function mc(variable,id)
    :width: 590px     
 .. |image1395| image:: ../img/image1395.webp
    :width: 500px
+.. |image1396| image:: ../img/image1396.webp
+   :width: 402px
+.. |image1397| image:: ../img/image1397.webp
+   :width: 600px
+
