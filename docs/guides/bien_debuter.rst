@@ -994,7 +994,7 @@ cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les
 
 0.3.2 Les Dispositifs
 =====================
-Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz ou HA et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)
+Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz, HA ou Io.Broker et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)
 
 **Table « dispositifs »**
  
