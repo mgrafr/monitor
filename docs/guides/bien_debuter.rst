@@ -660,7 +660,9 @@ La classe "text-centre" :
 
 0.2.3.2 pour Home Assistant
 """""""""""""""""""""""""""
-La météo est installée lors de l’installation du programme :
+La météo est installée lors de l’installation du programme.
+
+Pour visualiser la température extérieure sur monitor :
 
 |image65| 
 
@@ -680,11 +682,13 @@ Les données json de ce dispositif :
 0.2.3.3 pour IoBroker
 """""""""""""""""""""
 
-REST-API adapter , https://github.com/ioBroker/ioBroker.rest-api, dit être installé.
+.. important:: 
+
+   REST-API adapter , https://github.com/ioBroker/ioBroker.rest-api, dit être installé.
 
 |image1396|
 
-Installer l'adaptateur pour la météo et renseigner les paramètres , ici l'opérateur norgégien:
+Pour afficher la température extérieure sur monitor : Installer l'adaptateur pour la météo et renseigner les paramètres , ici l'opérateur norgégien:
 
 |image1397|
 
@@ -696,7 +700,11 @@ Extrait du fichier json avec les adaptateurs zigbee2mqtt.0 et yr.0.forecastHourl
 
 |image1399|
 
-Pour consulter le json des adaptateur voir cette page : :ref:`14. ADMINISTRATION`
+Pour consulter le json des adaptateurs voir cette page : :ref:`14. ADMINISTRATION`
+
+Le json de la température utilisé par monitor:
+
+|image1400|
 
 0.2.3.3 Affichage sur la page d’accueil de Monitor :
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -704,7 +712,7 @@ Extrait du fichier /include/accueil.php
 
 |image70|
  
-*L’ID html est ici « :darkblue:`temp_ext` »*
+*L’ID html est ici* :  :darkblue:`temp_ext` 
 
                 
 
@@ -1770,3 +1778,5 @@ function mc(variable,id)
    :width: 427px
 .. |image1399| image:: ../img/image1399.webp
    :width: 470px
+.. |image1400| image:: ../img/image1400.webp
+   :width: 463px
