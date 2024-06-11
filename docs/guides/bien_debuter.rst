@@ -690,7 +690,13 @@ Installer l'adaptateur pour la météo et renseigner les paramètres , ici l'op�
 
 Enregistrer le dispositif :
 
+|image1398|
 
+Extrait du fichier json avec les adaptateurs zigbee2mqtt.0 et yr.0.forecastHourly : 
+
+|image1399|
+
+Pour consulter le json des adaptateur voir cette page : :ref:`14. ADMINISTRATION`
 
 0.2.3.3 Affichage sur la page d’accueil de Monitor :
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1760,4 +1766,7 @@ function mc(variable,id)
    :width: 402px
 .. |image1397| image:: ../img/image1397.webp
    :width: 600px
-
+.. |image1398| image:: ../img/image1398.webp
+   :width: 427px
+.. |image1399| image:: ../img/image1399.webp
+   :width: 470px
