@@ -1,4 +1,4 @@
-3. Météo
+SERVEURS DOMOTIQUES3. Météo
 --------
 2 affichages :
 
@@ -8,7 +8,7 @@
 
 3.1 Page météo
 ^^^^^^^^^^^^^^^
-Cette page n’a PAS DE LIAISON AVEC DOMOTICZ
+Cette page n’a PAS DE LIAISON AVEC LES SERVEURS DOMOTIQUES(Dz, Ha, Iob)
 
 Voir également le site domo-site.fr
 
