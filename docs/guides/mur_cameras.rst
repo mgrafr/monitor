@@ -76,18 +76,20 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
  |image561|
 
-- **entete_html.php et footer.php** , pour le switch ajouter ces lignes
+- **entete_html.php et footer.php** , pour le switch ajouter ces lignes 
+
+.. warning:: modification depuis la version 3.1.3 (la précédente version du switch ne fonctionne plus)
 
 .. code-block:: 
 
    <!-- entetete.php  -->
-   <link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
+   <link href="bootstrap/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <!-- footer.php  -->
-   <script src="bootstrap/bootstrap-switch-button.js?2"></script>
+   <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
 
 .. note:: 
 
-   https://github.com/gitbrent/bootstrap-switch-button/releases/latest
+   https://gitbrent.github.io/bootstrap4-toggle/
 
 7.2- la page de monitor 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -100,7 +102,7 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
 .. code-block:: 
 
-   <script src="bootstrap/bootstrap-switch-button.js"></script>
+   <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
 
 |image565|
 
