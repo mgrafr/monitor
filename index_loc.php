@@ -25,6 +25,8 @@ $_SESSION["d_include"]=$_SERVER["DOCUMENT_ROOT"]."/include/";
 //$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
 // ----------------------------------------------------
 // début du programme
+//$files_custom = scandir(custom/php);
+//$compteur = count($files_custom);
 include ("include/entete_html.php");// la partie <head de la page html
 include ("include/header.php");// l' affichage du menu de la page d'accueil
 include ("include/accueil.php");// l' affichage page accueil
@@ -49,7 +51,8 @@ if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 if (ON_SPA==true) include ("include/spa.php");//spa
 if (ON_HABRIDGE==true) include ("include/habridge.php");//pont hue Alexa
 if (ON_RECETTES==true) include ("include/recettes.php");//monitoring
-//include ("include/modes_emploi.php");
+include ("include/modes_emploi.php");
+// include ("custom/php/worx.php");
 include ("include/footer.php");// fin de la page avec les scrpits JS
 
 ?>
