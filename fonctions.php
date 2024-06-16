@@ -324,15 +324,21 @@ $iob_json = json_decode($json_string);//$iob_json = $iob_json['zigbee2mqtt.0.inf
 $value=array();
 foreach ($iob_json as $xxx){$value=[];
 	$enr = explode('.',$xxx->{'_id'});$_id=$enr[0].".".$enr[1].".".$enr[2];
+				if ($_id=="yr.0.forecastHourly") $_id="yr.0.forecastHourly.0h";
 	$iob_name = $xxx->{'common'}->{'name'};
-	$iob_desc = $xxx->{'common'}->{'desc'};
+	if($xxx->{'common'}->{'desc'}) $iob_desc = $xxx->{'common'}->{'desc'};
+	else $iob_desc = "";
 	
 	$L_val=$IP_iob.":".PORT_API_IOB."/v1/states?filter=".$_id.".*";
+					
+												
 	$json_string_val = file_get_curl($L_val);
 	$iob_json_val=json_decode($json_string_val);
 		
 		foreach ($iob_json_val as $val=>$val1){	
-		$ens = explode('.',$val);$valeur=$ens[3];if ($ens[4] && $ens[4]!="") {$valeur=$ens[4];}
+		$ens = explode('.',$val);$valeur=$ens[3];
+			if ($ens[4] && $ens[4]!="") {$valeur=$ens[4];}
+			//if ($ens[5] && $ens[5]!="") {$valeur=$ens[5];}							 
 		$value[$valeur] = $val1->{'val'};
 		$ens=[];									   
 		}
@@ -340,7 +346,7 @@ foreach ($iob_json as $xxx){$value=[];
 		'_id' => $_id,
 		'Name' => $iob_name,
 		'description' => $iob_desc,
-		'value' => $value,
+		'value' => $value
 		
 		];				  
 		$n++;}		
