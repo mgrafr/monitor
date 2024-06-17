@@ -134,6 +134,10 @@ voir les paragraphes:
 
 |image795|
 
+Si io.broker est utilisé:
+
+|image1401|
+
 |image796|
 
 |image797|
@@ -210,6 +214,8 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 |image806|
 
 |image807|
+
+|image1402|
 
 |image808|
 
@@ -295,6 +301,8 @@ La variable :
 |image819|
 
 |image820|
+
+|image1403|
 
 14.6.1 Fichier connect.xxx (mots de passe et login en base64 ,ips réseau
 ========================================================================
@@ -383,6 +391,11 @@ L'original est enregistré dans admin/connect/ , il est toujours possible d'éta
 *pour node-red*
 
 |image831|
+
+14.6.2 fonction devices_plan() partie consacrée à io.broker
+===========================================================
+
+|image1404|
 
 14.7 Explications concernant l’importation distantes d’un tableau LUA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -836,3 +849,11 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 394px
 .. |image1369| image:: ../img/image1369.webp
    :width: 460px
+.. |image1401| image:: ../img/image1401.webp
+   :width: 436px
+.. |image1402| image:: ../img/image1402.webp
+   :width: 700px
+.. |image1403| image:: ../img/image1403.webp
+   :width: 600px
+.. |image1404| image:: ../img/image1404.webp
+   :width: 700px
