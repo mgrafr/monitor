@@ -1061,6 +1061,10 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	-	onoff commandes 
 	-	onoff+stop commandes (volets par exemple)
         -       on // poussoir momentané (sonnette)
+        -       rgb // réglez une lumière sur une certaine couleur
+
+       |image1405| 
+        
 	-	popup //ouverture d’une fenêtre (commandes particulières)	
 
 - id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
@@ -1780,3 +1784,5 @@ function mc(variable,id)
    :width: 470px
 .. |image1400| image:: ../img/image1400.webp
    :width: 463px
+.. |image1405| image:: ../img/image1405.webp
+   :width: 700px
