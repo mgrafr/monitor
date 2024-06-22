@@ -1061,7 +1061,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	-	onoff commandes 
 	-	onoff+stop commandes (volets par exemple)
         -       on // poussoir momentané (sonnette)
-        -       rgb // réglez une lumière sur une certaine couleur
+        -       onoff_rgb //onoff + réglage une lumière sur une certaine couleur
 
        |image1405| 
         
