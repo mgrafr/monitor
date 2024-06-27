@@ -419,6 +419,24 @@ Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Up
       sudo systemctl stop zigbee2mqtt
       npm start
 
+21.4.3 Télécommande Zigbee 3.0, zigbee2mqtt
+===========================================
+|image1406|
+
+https://www.zigbee2mqtt.io/devices/FUT089Z.html
+
+Pour utiliser la télécommande directement avec zigbee2mqtt:
+
+- créer un groupe de 101 à 107 our les touches 1 à 7
+
+|image1407|
+
+- Ajouter les lampes affectées à ce groupe:
+
+|image1408|
+
+**la télécommande fonctionnera même avec Zigbee2MQTT en panne.**
+
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
@@ -1677,3 +1695,9 @@ Le script DzVent:
    :width: 700px
 .. |image1351| image:: ../img/image1351.webp
    :width: 616px
+.. |image1406| image:: ../img/image1406.webp
+   :width: 150px
+.. |image1407| image:: ../img/image1407.webp
+   :width: 700px
+.. |image1408| image:: ../img/image1408.webp
+   :width: 700px
