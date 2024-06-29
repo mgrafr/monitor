@@ -69,11 +69,6 @@ define('DHCAMPASS', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (
 define('DHUSER','USER');
 //define('DHPASS','mot_de_passe');
 // --------------------------------------------------------------------------------------------
-// choix ID pour l'affichage des infos des dispositifs
-//  UNIQUEMENT POUR LA VERSION DE MONITOR <3.0 et pour les utlisateurs avec uniquement Domoticz
-//  -----------------------------------------
-//  -----------------------------------------
-define('CHOIXID','idm');// NE PAS MODIFIER -
 // parametres serveur DBMaria
 define('SERVEUR','localhost');
 define('MOTDEPASSE','PASS_BD');
