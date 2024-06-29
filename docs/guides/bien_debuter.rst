@@ -1038,13 +1038,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4.
 
-.. note::
+.. important::
 
    le chiffre 2 est à privilégier pour Domoticz, le chiffre 1 sera supprimé dans le futur
 
- |image1325| |image1326|
-
- |image1327|
+|image1325|
 
 - Matériel : pour les types zwave ou Zigbee
 
