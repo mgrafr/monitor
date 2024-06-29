@@ -109,6 +109,12 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	else {$result['status']="acces interdit";}
 	return $result;}
 
+   **pour l'API de Io.broker**
+
+      .. code-block::
+
+         en cours de développement
+
 .. admonition:: les fonctions Javascript
 
    |image1213|
