@@ -54,7 +54,7 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
    .. code-block::
 
-      function devices_id($deviceid,$command){$post="";
+      function devices_id($deviceid,$command,$value=""){$post="";global $L_ha; //"entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
 	$mat=explode('.',$deviceid);$mat=$mat[0];
 	switch ($command) {
 	case "etat" :		
@@ -74,15 +74,22 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
+	break;
+	case 4 ://dimmer
+	$mode=2;	
+	$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": [20,30,20}';	
+	break;		
+	case "value" :
+	$mode=2;	
+	if ($mat=="input_text") {$api="api/services/input_text/set_value";$post='{"entity_id": "'.$deviceid.'" , "value" : "'.$value.'" }';}	
 	break;	
 	default:
 	}								
-	$L=URLDOMOTIC1.$api;
+	$L=$L_ha.$api;
 	//$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
 	$ha=file_http_curl($L,$mode,$post);
 	$data = json_decode($ha, true);
-	$data['resultat']="OK";										
-										
+	$data['resultat']="OK";																					
 	return json_encode($data);}
 
    **pour l'API de Domoticz**
