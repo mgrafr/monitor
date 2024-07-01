@@ -542,6 +542,16 @@ left: 170px;width: 40px;}
     color: #7c7575;
     text-decoration: none;
   }
+.popup_rgb {
+    position: relative;
+    top: -640px;
+    left: 100px;
+    background: rgb(12 12 1 / 58%);
+    width: 300px;
+    height: 20px;
+    display: none;
+	color:white;
+  }
 /*agent dvr ------------------*/
 .title_dvr {font-size: 1.5rem;}
 #agent_dvr{width:500px;height: 700px;margin-left: -15px;margin-top: -20px;}
