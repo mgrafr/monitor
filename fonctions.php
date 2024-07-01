@@ -221,6 +221,8 @@ $json_string=file_http_curl($L,$mode,$post);$n=0;$ha=array();//echo $json_string
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
 	if(isset($xxx->{'Name'}))  $ha[$n]['Name']="";
+	if(isset($xxx->{'BatteryLevel'}))  $ha[$n]['Bat']="";
+	else $ha[$n]['Bat']=$xxx->{'BatteryLevel'};
 	if(isset($xxx->{'attributes'}))  $ha[$n]['attributes']=$xxx;
 	//if(isset($xxx->{'attributes'}->{'nodeName'}))  $ha[$n]['Name']=$xxx;
 	if(isset($xxx->{'attributes'}->{'friendly_name'}))  $ha[$n]['Name']=$xxx->{'attributes'}->{'friendly_name'};
@@ -251,9 +253,9 @@ foreach ($lect_device as $xxx){
 
 return $ha;}
 //
-function devices_id($deviceid,$command,$value=""){$post="";global $L_ha; 
+function devices_id($deviceid,$type,$value="",$pass=0){$post="";global $L_ha; 
 	$mat=explode('.',$deviceid);$mat=$mat[0];
-switch ($command) {
+switch ($type) {
 case "etat" :		
 	$api="api/states/".$deviceid;$mode=1;	
 break;
@@ -272,6 +274,10 @@ case "off" :
 	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
 break;
+case 4 ://"entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
+	$mode=2;$value=str_replace('rgb','',$value);$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
+	$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": '.$value.'}';
+break;		
 case "value" :
 	$mode=2;	
 	if ($mat=="input_text") {$api="api/services/input_text/set_value";$post='{"entity_id": "'.$deviceid.'" , "value" : "'.$value.'" }';}	
@@ -279,7 +285,7 @@ break;
 default:
 }								
 $L=$L_ha.$api;
-//$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
+
 $ha=file_http_curl($L,$mode,$post);
 $data = json_decode($ha, true);
 $data['resultat']="OK";										
@@ -290,33 +296,33 @@ return json_encode($data);}
 // pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
 //
 function devices_plan($plan){$choix_tri_sql=0;global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
-$n=0;$al_bat=0;$p=0;	
-	if ($l_dz!=""){	$choix_tri_sql=$choix_tri_sql+1;	
+$n=0;$al_bat=0;$p=0;$t100=1000;	
+	if ($l_dz!=""){	$choix_tri_sql=1;	
 $L=$L_dz."json.htm?type=command&param=getdevices&plan=".$plan;
 $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
 $parsed_json = $parsed_json['result'];
-$p=count($parsed_json);		
+$p=count($parsed_json);$p_dz=$p;
+				   
 	}
-if ($l_ha!=""){$choix_tri_sql=$choix_tri_sql+2;
+if ($l_ha!=""){$choix_tri_sql=2;
 	$result=devices_zone(0);$n=0;//
 	while (isset($result[$n])==true){//echo "nom=".$result[$n]['Name']."<br>";
 	
 	$parsed_json[$p]=$result[$n];
 		
 	$n++;$p++;}
-	//return;
-  }
-if ($l_iob!=""){$choix_tri_sql=$choix_tri_sql+4;$q=$p;$port_iob=PORT_API_IOB;
+			   //return $parsed_json ;
+  }$p_ha=$p;
+if ($l_iob==""){$choix_tri_sql=$choix_tri_sql+4;$q=$p;$port_iob=PORT_API_IOB;
 	//http://192.168.1.104:8093/v1/objects?filter=zigbee2mqtt.0*&type=device
 				//http://192.168.1.104:8093/v1/states?filter=zigbee2mqtt.0.0x00124b002228d561.*
-
+				//http://192.168.1.104:8093/v1/states?filter=yr.0.forecastHourly.0h.air_temperature
 $n=0;$obj_iob=array();$value=array();$iob=array();
 	if (str_contains(OBJ_IOBROKER, ",")) {$obj_iob=explode(',',OBJ_IOBROKER);}			
 	else {$obj_iob[0]=OBJ_IOBROKER;}
 $i=0;
 while ($obj_iob[$i]!="") {			
-			
 $L=$IP_iob.":".PORT_API_IOB."/v1/objects?filter=".$obj_iob[$i]."*&type=device";	
 			//			
 $json_string = file_get_curl($L);
@@ -324,14 +330,12 @@ $iob_json = json_decode($json_string);//$iob_json = $iob_json['zigbee2mqtt.0.inf
 $value=array();
 foreach ($iob_json as $xxx){$value=[];
 	$enr = explode('.',$xxx->{'_id'});$_id=$enr[0].".".$enr[1].".".$enr[2];
-				if ($_id=="yr.0.forecastHourly") $_id="yr.0.forecastHourly.0h";
+				if ($_id=="yr.0.forecastHourly") $_id="yr.0.forecastHourly.0h"; //météo yr
 	$iob_name = $xxx->{'common'}->{'name'};
 	if($xxx->{'common'}->{'desc'}) $iob_desc = $xxx->{'common'}->{'desc'};
 	else $iob_desc = "";
 	
 	$L_val=$IP_iob.":".PORT_API_IOB."/v1/states?filter=".$_id.".*";
-					
-												
 	$json_string_val = file_get_curl($L_val);
 	$iob_json_val=json_decode($json_string_val);
 		
@@ -346,12 +350,13 @@ foreach ($iob_json as $xxx){$value=[];
 		'_id' => $_id,
 		'Name' => $iob_name,
 		'description' => $iob_desc,
-		'value' => $value
+		'value' => $value,
+		'serveur' => "IOB"
 		
 		];				  
 		$n++;}		
 	$i++; }		
-		$n=0;if ($plan==99){ return $iob;}// pour test iob 
+		$n=0;$q=$p_ha;if ($plan==99){ return $iob;}// pour test iob 
 	while (isset($iob[$n])==true){//echo "nom=".$result[$n]['Name']."<br>";
 	$parsed_json[$q]=$iob[$n];
 		
@@ -361,51 +366,46 @@ $n=0;//return $iob_json;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 $description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
-if (!isset($lect_device["serveur"])) {
-	if ($n<$p) $lect_device["serveur"] = "DZ";
-	if ($n>$p) $lect_device["serveur"] = "IOB";
-}
+if ($n<$p_dz) { $lect_device["serveur"] = "DZ";}
 if ($lect_device["serveur"] == "DZ") {
 $lect_device["attributes"]["SubType"] = $lect_device["SubType"];
 $lect_device["attributes"]["SwitchType"] = $lect_device["SwitchType"] ;			
 $lect_device["attributes"]["SwitchTypeVal"] = $lect_device["SwitchTypeVal"];
 $lect_device["attributes"]["Timers"] = $lect_device["Timers"];			
-$lect_device["attributes"]["Type"] = $lect_device["Type"];	 }
+$lect_device["attributes"]["Type"] = $lect_device["Type"];	 
+$lect_device["attributes"]["Color"] = $lect_device["Color"];	 }
 $periph=array();$periph['idm']=1000;
 	//$t1=$lect_device["Name"];
-	if ($choix_tri_sql==1) {$s=$lect_device["idx"];$t1="1";}
-	if ($choix_tri_sql==2) {$s=$lect_device["ID"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="2";}
-	if ($choix_tri_sql==3) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}
-	if ($choix_tri_sql==4) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}//IOB
-	if ($choix_tri_sql==5) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}//IOB + DZ
-	if ($choix_tri_sql==6) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}//IOB + HA
-	if ($choix_tri_sql==7) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}// IOB + DZ
+	
+	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";}
+	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";}
+	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["Name"];$t1="3";}
+	//if ($choix_tri_sql==4) {$s=$lect_device["Name"];$s=mb_strimwidth($s, 0, 45, "...");$s = str_replace("'", "", $s);$t1="3";}//IOB
+	
 //echo "xxxx=...".$s."...<br>";$choix_Actif="0";
-$periph=sql_plan($t1,$s);
-	if ($periph=="null") {$choix_Actif="0";}
-	else {$choix_Actif=$periph['Actif'];}
+$periph=sql_plan($t1,$s);//if ($t1==2 && $periph==null) return $lect_device["ID"];
+	if ($periph==null) {$choix_serveur="0";}
+	else {$choix_Actif=$periph['Actif'];
+	  if (($choix_Actif =="1" || $choix_Actif =="2") && $lect_device["serveur"]=="DZ")  {$choix_serveur="dz";}
+	  if ($choix_Actif=="3" && $lect_device["serveur"]=="HA") {$choix_serveur="ha";}
+	  if ($choix_Actif=="4" && $lect_device["serveur"]=="IOB") {$choix_serveur="iob";}
+		 }
 //if ($periph) echo json_encode($periph);	
 $bat="";
 if ($periph['idm']) {$t=$periph['idm'];} 
-else {$t=999; $choix_Actif="0";}
+else {$t=strval($t100);$t100++; $choix_Actif="0";}
+// if ($periph['idm']=="18") {$choix_Actif="2";} 	
 if ($t=="") {$t=888;$choix_Actif="0";}
 //if ($lect_device["serveur"]=='HA') {
 ////		if (!$periph['idm'] || $periph['idm']=="" ){$choix_Actif="0";}
 //			}	
-// verif ds choix Actif------------------------------------------
-if ($choix_Actif=="1"){
-	if ($periph["ID"]!="" && $periph["idx"]!="") {$choix_Actif="0";$data[$t] = ['warning' => "double ID idx, choisir DZ ou HA"];}
-	if ($periph["ID"]=="" && ($lect_device["serveur"] == "HA" || $lect_device["serveur"] == "IOB")) {$choix_Actif="0";}
-	if ($periph["idx"]=="" && ($lect_device["serveur"] == "DZ"|| $lect_device["serveur"] == "IOB")) {$choix_Actif="0";}}
-if ($choix_Actif=="2" && ($lect_device["serveur"] == "HA" || $lect_device["serveur"] == "IOB")){$choix_Actif="0";}
-if ($choix_Actif=="3" && ($lect_device["serveur"] == "DZ" || $lect_device["serveur"] == "IOB") ){$choix_Actif="0";}
-if ($choix_Actif=="4" && ($lect_device["serveur"] == "DZ" || $lect_device["serveur"] == "HA") ){$choix_Actif="0";}	
+	
 //---------------------------------------------------------------
-	switch ($choix_Actif) {
-		case "1" :
-		case "2" :
-		case "3" :	
-		case "4" :		
+	switch ($choix_serveur) {
+		
+		
+		case "iob" :	
+			
 if(array_key_exists('value', $lect_device)) {
 	$array=$lect_device['value'];
     if(array_key_exists('temperature', $array)) {$lect_device["Temp"]=$array["temperature"];$lect_device["Data"]=$array["temperature"];}//pour IOB
@@ -414,6 +414,9 @@ if(array_key_exists('value', $lect_device)) {
 	if(array_key_exists('relative_humidity', $array)) {$lect_device["Humidity"]=$array["relative_humidity"];}//pour IOB	
 	if(array_key_exists('battery', $array)) {$lect_device["BatteryLevel"]=$array["battery"];}//pour IOB		
 }
+			
+		case "dz" :
+		case "ha" :			
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('description', $lect_device)) {$description=$lect_device["description"];}// pour IOB			
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
@@ -426,15 +429,15 @@ if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
 
 
-	$data[$t] = ['choixid' => CHOIXID,
-	'serveur' => $lect_device["serveur"],			 
+	$data[$t] = ['serveur' => $lect_device["serveur"],			 
 	'idx' => $lect_device["idx"],
 	'deviceType' => $lect_device["Type"],	
 	'emplacement' => $description,					 
 	'temp' => $lect_device["Temp"],
 	'hum'   => $lect_device["Humidity"],
 	'bat' => $lect_device["BatteryLevel"],
-	 'ID' => $lect_device["ID"],
+	'ID' => $lect_device["ID"],
+	'serveur' => $lect_device["serveur"],			 
 	'Data' => $lect_device["Data"],
 	'attributs' => $lect_device["attributes"],			 
 	'Name' => $lect_device["Name"],
@@ -456,9 +459,11 @@ if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}
 	'alarm_bat' => $bat
 	];
 break;
+
 case "0" :
 break;
-default:			
+default:
+		
 	}	
 $n=$n+1;}
 $data[0] = ['jour' => date('d'),
@@ -474,9 +479,10 @@ return $data;
 /* fonction qui permet de switcher un interrupteur dans Domoticz 
 et de modifier une température de consigne
 */
-function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;
+function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;global $L_dz;
 // exemple : http://192.168.1.75:8082/json.htm?type=command&param=udevice&idx=84&nvalue=Off&svalue=2
-//                                   /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
+//  /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
+//  /json.htm?type=command&param=setcolbrightnessvalue&idx=99&hex=RRGGBB&brightness=100&iswhite=false																   
 if ($pass=="0") {$auth=0;}
 if ((($pass==NOM_PASS_CM)&&($_SESSION['passwordc']==PWDCOMMAND))&&($_SESSION['timec']>time())) {$auth=1;}
 if (($pass==NOM_PASS_AL)&&($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$auth=2;}
@@ -487,12 +493,14 @@ if ($auth<3){$json2="json.htm?type=command&param=";
 	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
 	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
-	$json=URLDOMOTIC.$json2.$json1;
+	// $type=4 Réglez une lumière RVB dimmable
+	if ($type==4){$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$idx.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
+	$json= $L_dz.$json2.$json1;
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
 else {$result['status']="acces interdit";}
-return $result;
+return $result ;
 												 }
 /*POUR METEO CONCEPT*/
 //-----------------------------------
@@ -1042,7 +1050,7 @@ if ($choix==16){
 	$t_maj= "";
 	$upload=sql_variable('upload',6);
 	if ($upload['idx']!='') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
-	if ($upload['ID']!='') {$retour=devices_id($upload["ID"],"value","connect");$t_maj=$t_maj.$upload["ID"]."----->ha";}
+	if ($upload['ID']!='') {$retour=devices_id($upload["ID"],"value","connect",0);$t_maj=$t_maj.$upload["ID"]."----->ha";}
 	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>La variable ha et dz se nomme *****connect*****</p>";}		
 else {$retour['status'];}		
 break;
@@ -1125,7 +1133,8 @@ break;
 case "25" :include ('include/ajout_msg_bd.php');//echo "ajout dispositifs effectué";
 		return;	
 break;		
-case "26" :$l_dz="";$l_ha="";$retour=devices_plan(99);echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . json_encode($retour) . '</textarea>'; 
+case "26" :$l_dz="";$l_ha="";$retour=devices_plan(99);
+echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . json_encode($retour) . '</textarea>'; 
 break;
 case "27" :
 return;	
@@ -1375,7 +1384,7 @@ case "7":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;		
-echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif=1,inactif=0,dz=2,ha=3,iobroker=4</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>materiel : <input type="text" style="width:100px;margin-left:10px;" id="type_mat" value="'.$data["materiel"].'"><em style="font-size:12px;margin-left:4px;">zwave, zigbee, autres</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
+echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>materiel : <input type="text" style="width:100px;margin-left:10px;" id="type_mat" value="'.$data["materiel"].'"><em style="font-size:12px;margin-left:4px;">zwave, zigbee, autres</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
 //return $row; 
 break;
 case "8": 
@@ -1437,9 +1446,15 @@ icone= '".$data['icone'] ."'  WHERE num = '".$data['num']."' ; ";
 //echo $sql;return;
 		$retour=maj_query($conn,$sql,"8");		
 break;			
-		
+case "13": 
+		$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID1_html ='".$data['ID1_html']."' ;";
+$result = $conn->query($sql);
+if ($result === FALSE) {$data=[];}
+else $row = $result->fetch_assoc();
+//$data= $row;*/
+		return $row;	
+break;			
 }		
-
 $conn->close();		
 return;}
 //----------------------------------------
