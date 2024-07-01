@@ -14,9 +14,20 @@ version : php8.3-ssh2 pour Debian 12
 
 19.2.1 Releases
 ===============
-Version  en developpement 3.1.2
+Version  en developpement 3.2.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - ajout Panic Bouton en page d'accueil
+- prise en compte de io.broker (début du développement)
+- Changement de couleur des lampes sur le mur de commandes
+
+cette version commence à intégrer io.broker ; pour cela l' idm de monitor doit indiquer :
+1 ou 2 pour Domoticz (à terme seulement 2 sera utilisé, le 1 est conservé uniquement pour Domoticz povisoirement compte tenu de l'historique) 
+3 pour Home Assistant
+4 pour io.broker
+
+cette version ne peut être mise à jour automatiquemnt, aussi la configuration doit être indiquée dans le nouveau fichier en s'inspirant du précédent.
+Dans la base de données de monitor seul le champ Actif doit être si besoin mis à jour en tenant compte des infos ci-dessus.
+
 
 Version  3.1.0
 ~~~~~~~~~~~~~~
