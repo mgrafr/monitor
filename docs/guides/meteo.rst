@@ -1,4 +1,4 @@
-SERVEURS DOMOTIQUES3. Météo
+3. Météo
 --------
 2 affichages :
 
