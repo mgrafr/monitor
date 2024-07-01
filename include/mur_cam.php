@@ -3,8 +3,10 @@
 			<div class="container">
 		<div class="col-md-12 colmur">
 	  <h4 id="titre_mur" class="title text-center">Mur<span> des caméras</span></h4>
-	  <?php echo (NOMMUR . " - " . NBCAM );if (NBCAM==0) echo "<p style='color:red' >pour afficher des caméras<br>il faut utiliser Zoneminder</p>"; ?>
-			<br><input id="onoffmur" type="checkbox" data-toggle="switchbutton"></div>
+	  <?php echo (NOMMUR . " - " . NBCAM ); ?>
+			<br><input id="onoffmur" type="checkbox" data-toggle="toggle" ><div id="aqw">Vidéo inactive</div>
+</div>
+							</div>
 			<div id="message1" class="space">cliquer sur une image pour activer le zoom video de l'image</div><table class="cam">
                <tbody>
 <?php

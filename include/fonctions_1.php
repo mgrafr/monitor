@@ -1,43 +1,53 @@
 <?php
 
-function sql_plan($t1,$s=""){// SERVEUR SQL connexion
+function sql_plan($t1,$s=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
+$n=0;$al_bat=0;$p=0;
+//$row['nom_objet']=$s;return $row;					 
+	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
  if ($t1=='3')  {
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE nom_objet = '".$s."' AND maj_js <> 'variable';";
-	$result = $conn->query($sql);
+	$result = $conn->query($sql);$number = $result->num_rows;
 	$row = $result->fetch_assoc();
 	 return $row;}
 else if ($t1=='2') {
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$s' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
-		$row = $result->fetch_assoc();return $row;
-      }
+		$row = $result->fetch_assoc();
+	return $row;}
 else if ($t1=='1')  {
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$s' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 		$row = $result->fetch_assoc();
 	return $row;}
 else if ($t1=='0') {//$commande="On";
-if (IPDOMOTIC1 != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `ID` <> '');";
+if ($l_ha != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `ID` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 4);";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'turnonoff','ha');				  
 	}				  
 					 }
-if (IPDOMOTIC != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `idx` <> '');";
-	$result = $conn->query($sql);//echo "/*";
+if ($l_dz != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `idx` <> '' AND `Actif` <> 3 AND `Actif` <> 4);";
+	$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switchOnOff_setpoint','dz');
 		}
 	}
+if ($l_iob != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `nom_objet` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 3);";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'set_state','iob');
+		}
+	}
 return;}
-else echo "pas d'id_dz";
+else echo "pas de serveur";
 }
 function sql_1($row,$f,$ser_dom){
 $commande="On";
 if ($row['maj_js']=="on"){$commande="group on";}	
 if($ser_dom=="dz")$ser_dom=$row['idx'];
-if($ser_dom=="ha")$ser_dom=$row['ID'];	
+if($ser_dom=="ha")$ser_dom=$row['ID'];
+if($ser_dom=="iob")$ser_dom=$row['nom_objet'];		
 if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("#'.$row["id1_html"];
 		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
 		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}

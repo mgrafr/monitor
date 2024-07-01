@@ -3,7 +3,20 @@
 $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="/";
 if ($domaine==IPMONITOR) $lien_img="/monitor/";
+require_once("fonctions.php");
+function test_rgb($rgb2){
+$data_rgb = [
+'command' => "13",
+'ID1_html' => $rgb2
+];
+$rvb=mysql_app($data_rgb);$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$erveur=$rvb['Actif'];$ID=$rvb['ID'];
+	if ($majjs == "onoff_rgb" && $erveur=="2") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="app" value="OnOff"><input type="hidden" id="idx" value="'.$idx.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
+	if ($majjs == "onoff_rgb" && $erveur=="3") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="app" value="turn"><input type="hidden" id="idx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{format:\'rgb\'}" id="rgb">';
+	echo $input.'<button type="button" onclick="adby(10);" style="width:38px;height:28px">OK</button>';
+							
+}
 
+//test_rgb('sw3');/json.htm?type=command&param=setcolbrightnessvalue&idx=130&color={"m":3,"t":0,"r":0,"g":0,"b":50,"cw":0,"ww":0}&brightness=100
 ?>
 <!-- section Mur OnOff-->
 <!-- ================ -->
@@ -26,7 +39,7 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 			<img id="sw23" src="<?php echo $lien_img;?>images/vanne.svg" width="60" height="auto" alt=""/>
 			<img id="sw24" src="<?php echo $lien_img;?>images/th_cave.webp" width="60" height="auto" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>images/lampe_entree.svg" width="60" height="40" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>images/lampe_salon.svg" width="60" height="40" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>images/lampe_salon.svg" width="60" height="40" alt=""/></a><?php echo test_rgb('sw3');?> </li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/>
 			<img id="sw11" src="<?php echo $lien_img;?>images/cordon_prise_bureau.svg" width="60" height="auto" alt=""/>
 			<img id="sw10" src="<?php echo $lien_img;?>images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
@@ -73,3 +86,7 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
      	 </div>
      </div>
   </div>  
+<!-- couleur lampes-->
+<div class="popup_rgb" id="color_lampes" onclick='$("#color_lampes").click(function(){
+		$(".popup_rgb").hide;});'></div>
+

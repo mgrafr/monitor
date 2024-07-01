@@ -1,12 +1,12 @@
 <?php
-require("fonctions.php");
+require_once("fonctions.php");
 ?>
 
 <!-- footer start -->
 		<!-- ces fonctions sont utilisées pour la page d' accueil , la page interieur ,la page météo 
 		================ -->
 		<footer id="footer">
-			<div classshell="footer section">
+			<div classs="footer section">
 				<div class="container">
 				</div>
 			</div>
@@ -16,11 +16,12 @@ require("fonctions.php");
 <!-- JavaScript files placées à la fin du document-->	
 <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery-ui-v1.13.2.js"></script>
-		<script src="js/jquery.backstretch.min.js"></script>
+<script src="js/jquery.backstretch.min.js"></script>  
 <script src="js/big-Slide.js"></script> 
-<script src="js/switch.js"></script>
+<script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
 <script src="js/mes_js.js"></script>
-<?php if (file_exists("custom/js/JS.js")){echo '<script src="custom/js/JS.js"></script>'; }?>
+<script src="js/jscolor.min.js"></script>
+<script src="custom/js/JS.js"></script>
 
 
 <script>
@@ -92,12 +93,12 @@ not_piles_reset="reset_erreur_"+notpiles;not_piles="erreur_"+notpiles;
 /*----------------------------------------------------*/
 
 /*commande onoff*/	
-
+$("#onoffmur").change(function() {	
+if (document.getElementById('onoffmur').checked==true) {arret_mur=1;updateImage(nbrCam);
+														document.getElementById('aqw').innerHTML=" Vidéo active sur toutes les caméras";}
+	else {arret_mur=0;document.getElementById('aqw').innerHTML="Vidéo inactive";}
+});		
 /*-----------------------------------*/
-	$("#onoffmur").change(function() {
-  if ($(this).parent().children('.label').text('On')) {arret_mur=1;updateImage(nbrCam);}
-	else {arret_mur=0;}
-	});	
 $("#onoffdvr").change(function() {
   if ($(this).prop("checked")==true) {$('#agent_dvr').attr('src',liendvr);}
 	else {$('#agent_dvr').attr('src','');}
@@ -252,16 +253,18 @@ $.ajax({
 			document.getElementById('erreur').innerHTML ="";
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {if (val.Data) {pos_m=val.Data.toLowerCase();}
 				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
-				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}																  
+				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}
+				if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
+											   else {pos_m="off"; }}
 				if ((val.maj_js=="onoff+stop") && ((pos_m.substring(0, 11)=="set level: ") || (pos_m=="open"))) {vol=1;pos_m="on";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="onoff_rgb"|| val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; }
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
+			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="onoff_rgb" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
@@ -294,7 +297,8 @@ for (var i = 0; i < elements.length; i++) {
 $('.closeBtn').on('click', function () {
       $('#popup_vr').hide();
     });
-/* switchOnOff*  */
+/* switchOnOff*  
+	rgb :  "Color": "{\"b\":214,\"cw\":0,\"g\":86,\"m\":4,\"r\":254,\"t\":0,\"ww\":0}" */
 qq=new Array();	
 <?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	?>
 rr=new Array();	
@@ -304,6 +308,7 @@ rr=new Array();
 	  var type;var level;
 	  if ((command=="On")||(command=="Off")){type=2;}
 	  else if (command.substring(0, 9)=="Set Level") {type=3;var pourcent = command.split(" ");level=pourcent[2];}
+	  //else if (command=="rgb") {type=4;level=100;}
 	  else {type=1;}
 		 
 	  if (pp[idm].Data == "On" && pp[idm].maj_js != "on" ) {command="Off";}
@@ -339,7 +344,7 @@ function turnonoff(idm,idx,command,pass="0"){//console.log(idm);
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
-    	data: "app=turn&device="+idx+"&command="+command+"&name="+pass,
+    	data: "app=turn&device="+idx+"&type="+command+"&name="+pass,
     	success: function(response){qq=response[0];console.log(response.resultat);
 			
 				if (response.resultat == "OK" ){
@@ -348,7 +353,7 @@ function turnonoff(idm,idx,command,pass="0"){//console.log(idm);
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
-    	data: "app=turn&device="+idx+"&command=etat&name="+pass,
+    	data: "app=turn&device="+idx+"&type=etat&name="+pass,
     	success: function(response){qq=response;
 		var level=0;command=qq.state;console.log("azerty="+idx+" "+command+" "+level);
 	    maj_mqtt(idx,command,0,level);									
@@ -653,16 +658,17 @@ setTimeout(var_sp, tempo_devices, idsp);
 var nom;
 	function popup_device(nom) {
 	if (nom < 10000){if (pp[nom]){
-	var donnees="choixid :" +pp[nom].choixid+"<br>"+
+	var donnees="idm :" +pp[nom].idm+"<br>"+
 	"idx :" +pp[nom].idx+"<br>"+
+	"ID :" +(pp[nom].ID).substring(0, 32)+"<br>"+	
 	"Nom :" +pp[nom].Name+"<br>"+
 	"t° :"+pp[nom].temp+"<br>"+
-	"ID :" +(pp[nom].ID).substring(0, 32)+"<br>"+
 	"batterie :" +pp[nom].bat+"<br>"+
 	"humidité :" +pp[nom].hum+"<br>"+
 	"update :" +pp[nom].update+"<br>"+
-	"Data :" +pp[nom].Data+"<br>"+
-	"idm :" +pp[nom].idm	;	
+	"serveur :" +pp[nom].serveur+"<br>"+	
+	"Data :" +pp[nom].Data;
+		
  $("#contenu").empty();$("#contenu").append(donnees);
 	$('#infos').modal('show');}
 		else {document.getElementById('erreur').innerHTML ="erreur BD";
@@ -800,7 +806,7 @@ case 3:
 case 4: $("#bouton_maj").css("display", "none");
 	var fenetre="adb";
 	var formData = {
-	app :  $("#app").val(),		
+	app :  "dev_bd",		
  	majidm: $("#majidm").val(),	
   	command : $("#command1").val(),
 	};
@@ -874,7 +880,17 @@ case 5:
 	icone : $("#icone").val(),
 	command : $("#command5").val(),
 	};
-     break;		
+     break;	
+	case 10: 
+	var formData = {
+	app : $("#app").val(),
+	type : Number($("#type").val()),	
+	//variable : Number($("#level").val())*100,	
+	command : $("#rgb").val(),
+	device : $("#idx").val(),
+	name : "0"		
+	};fenetre='color_lampes';
+     break;		 
   default:
 break;	
 	}
