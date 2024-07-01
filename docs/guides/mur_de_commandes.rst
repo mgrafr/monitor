@@ -54,9 +54,9 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
    .. code-block::
 
-      function devices_id($deviceid,$command,$value=""){$post="";global $L_ha; //"entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
+      function devices_id($deviceid,$type,$value="",$pass=0){$post="";global $L_ha; 
 	$mat=explode('.',$deviceid);$mat=$mat[0];
-	switch ($command) {
+	switch ($type) {
 	case "etat" :		
 	$api="api/states/".$deviceid;$mode=1;	
 	break;
@@ -75,9 +75,9 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
 	break;
-	case 4 ://dimmer
-	$mode=2;	
-	$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": [20,30,20}';	
+	case 4 :// dimmer, "entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
+	$mode=2;$value=str_replace('rgb','',$value);$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
+	$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": '.$value.'}';
 	break;		
 	case "value" :
 	$mode=2;	
@@ -86,35 +86,39 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	default:
 	}								
 	$L=$L_ha.$api;
-	//$L="http://192.168.1.5:8123/api/states/sensor.pir_ar_cuisine_illuminance";
+
 	$ha=file_http_curl($L,$mode,$post);
 	$data = json_decode($ha, true);
-	$data['resultat']="OK";																					
+	$data['resultat']="OK";										
+										
 	return json_encode($data);}
 
    **pour l'API de Domoticz**
 
    .. code-block::
 
-      function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;
+      function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;global $L_dz;
 	// exemple : http://192.168.1.75:8082/json.htm?type=command&param=udevice&idx=84&nvalue=Off&svalue=2
-	//                                   /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
+	//  /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
+	//  /json.htm?type=command&param=setcolbrightnessvalue&idx=99&hex=RRGGBB&brightness=100&iswhite=false																   
 	if ($pass=="0") {$auth=0;}
 	if ((($pass==NOM_PASS_CM)&&($_SESSION['passwordc']==PWDCOMMAND))&&($_SESSION['timec']>time())) {$auth=1;}
 	if (($pass==NOM_PASS_AL)&&($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$auth=2;}
-	if ($auth<3){
+	if ($auth<3){$json2="json.htm?type=command&param=";
 	// $type=1 .....
-	if ($type==1){$json1='udevice&idx='.$idx.'&nvalue='.$valeur.'&svalue='.$type;}
+	if ($type==1){$json1='udevice&idx='.$idx.'&nvalue=group%20on&svalue=2';}
 	// $type=2 .....ON/OFF
 	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
 	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
-	$json=URLDOMOTIC.'json.htm?type=command&param='.$json1;
+	// $type=4 Réglez une lumière RVB dimmable
+	if ($type==4){$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$idx.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
+	$json= $L_dz.$json2.$json1;
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
 	else {$result['status']="acces interdit";}
-	return $result;}
+	return $result ;
 
    **pour l'API de Io.broker**
 
