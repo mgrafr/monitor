@@ -418,6 +418,8 @@ Principales fonctions contenues dans ce fichier :
 
    |image139|
 
+   |image1413|
+
    |image1328|
 
    |image140|
@@ -2188,4 +2190,6 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1222| image:: ../img/image1222.webp
    :width: 660px
 .. |image1328| image:: ../img/image1328.webp
+   :width: 700px
+.. |image1413| image:: ../img/image1328.webp
    :width: 700px
