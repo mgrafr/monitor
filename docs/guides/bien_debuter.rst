@@ -1379,15 +1379,33 @@ Utilisation de jQuery
 
 |image115| |image116|
 
-0.10 API Domoticz et HA
-^^^^^^^^^^^^^^^^^^^^^^
+0.10 API Domoticz , Home Assistant & Io.Broker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour les dispositifs :
 
 **DZ** : URL:PORT/json.htm?type=getdevices&plan=NUMERO DU PLAN
 
 **HA** : URL:8123/api/states
 
-pou les variables (input_text pour HA):
+**IOB** : 
+
+.. note..
+
+   ioBroker Swagger UI est utilisé |image1411|
+ 
+   https://github.com/ioBroker/ioBroker.rest-api
+
+- URL:8093/v1/objects?filter=zigbee2mqtt.0*&type=device
+
+- URL:8093/v1/states?filter=zigbee2mqtt.0.0x00124b002228d561.*
+
+.. attention::
+
+   le dispositif doit être du type device dans IOB; dans le cas contraire (state) , le modifier:
+
+   |image1412|
+
+pour les variables (input_text pour HA):
 
 **DZ** : URL:PORT/json.htm?type=command&param=getuservariables
 
@@ -1788,3 +1806,7 @@ function mc(variable,id)
    :width: 463px
 .. |image1405| image:: ../img/image1405.webp
    :width: 700px
+.. |image1411| image:: ../img/image1411.webp
+   :width: 150px
+.. |image1412| image:: ../img/image1412.webp
+   :width: 650px
