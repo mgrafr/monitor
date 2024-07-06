@@ -51,7 +51,8 @@ else if (command.substring(0, 9)=="Set Level")  {scoull=scoull=c_l_on;}
 else if  (command=="Off"  || command=="off" ) {scoul=scoul_off;scoull=c_l_off;}
 else if  (command=="group on" ) {scoul=scoul_on;scoull=c_l_on;}		
 else return;	
-document.getElementById(sid1).style = scoul;
+console.log('sid1='+sid1+'..'+scoul);
+		document.getElementById(sid1).style = scoul;
 if (sid2) {document.getElementById(sid2).style = scoul;}
 var c_lamp= pp[id_m].class_lamp	;console.log("c_lamp="+c_lamp);		
 if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
