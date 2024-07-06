@@ -111,7 +111,8 @@ define('PWDDOMOTIC', '<mot passe>');//mot passe serveur
 //
 define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
 define('DOMDOMOTIC', 'https://domoticz.DOMAINE.ovh');//domaine
-define('TOKENDOMOTIC', 'ENTRER LE TOKEN ICI');//TOKEN ou BEARER
+define('TOKEN_DOMOTIC', '');//TOKEN ou BEARER
+define('PORT_API_DOMO','');//port de l'API éventuel
 //
 define('IPDOMOTIC1', '');//ip 2emme serveur Domotique ex:192.168.1.5
 //pour ssh2
@@ -120,7 +121,8 @@ define('PWDDOMOTIC1', '<mot passe>');//mot passe serveur
 //
 define('URLDOMOTIC1', '');//url ex:http://192.168.1.5:8123/
 define('DOMDOMOTIC1', '');//ex:https://ha.DOMAINE.ovh
-define('TOKENDOMOTIC1', "ENTRER LE TOKEN ICI");//TOKEN ou BEARER
+define('TOKEN_DOMOTIC1', '');//TOKEN ou BEARER
+define('PORT_API_DOMO1','');//port de l'API éventuel
 //
 define('IPDOMOTIC2', '');//ip 2emme serveur Domotique ex:192.168.1.5
 //pour ssh2
@@ -129,7 +131,8 @@ define('PWDDOMOTIC2', '<mot passe>');//mot passe serveur
 //
 define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
 define('DOMDOMOTIC2', '');//ex:https://ha.DOMAINE.ovh
-define('TOKENDOMOTIC2', "ENTRER LE TOKEN ICI");//TOKEN ou BEARER
+define('TOKEN_DOMOTIC', '');//TOKEN ou BEARER
+define('PORT_API_DOMO','');//port de l'API éventuel
 //****modules et constantes  complémentaires pour Domoticz
 define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 define('VARTAB', 'admin/connect/string_tableaux.lua');//
@@ -138,7 +141,6 @@ define('CONF_MODECT', 'admin/string_modect.json');
 //-----------------------------------------------------------
 //*********** pour Iobroker
 define('OBJ_IOBROKER','zigbee2mqtt.0');// séparer les objets par une virgule
-define('PORT_API_IOB','8093');//port de l'API
 //-----------------------------------------------------------
 // Sauvegardes domoticz
 define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
