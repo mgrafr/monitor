@@ -416,9 +416,11 @@ Principales fonctions contenues dans ce fichier :
 
    API Domoticz pour les devices : les dispositifs doivent être placés dans un plan; celui-ci peut se résumer à un rectangle ou un carré
 
+   |image1414|
+
    |image139|
 
-   |image1413|
+   image1413|
 
    |image1328|
 
@@ -2191,5 +2193,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 660px
 .. |image1328| image:: ../img/image1328.webp
    :width: 700px
-.. |image1413| image:: ../img/image1328.webp
+.. |image1413| image:: ../img/image1413.webp
+   :width: 700px
+.. |image1414| image:: ../img/image1414.webp
    :width: 700px
