@@ -131,8 +131,8 @@ define('PWDDOMOTIC2', '<mot passe>');//mot passe serveur
 //
 define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
 define('DOMDOMOTIC2', '');//ex:https://ha.DOMAINE.ovh
-define('TOKEN_DOMOTIC', '');//TOKEN ou BEARER
-define('PORT_API_DOMO','');//port de l'API éventuel
+define('TOKEN_DOMOTIC2', '');//TOKEN ou BEARER
+define('PORT_API_DOMO2','');//port de l'API éventuel
 //****modules et constantes  complémentaires pour Domoticz
 define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 define('VARTAB', 'admin/connect/string_tableaux.lua');//
