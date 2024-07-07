@@ -1710,6 +1710,11 @@ Créer 2 automatisations :
 
 |image157|
 
+1.8.2.1.4 Io.Broker
+~~~~~~~~~~~~~~~~~~~
+
+en cours de rédaction
+
 1.8.2.2  La page d'accueil de monitor : include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
