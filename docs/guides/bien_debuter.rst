@@ -310,11 +310,15 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 
    |image42|
              
-**Pour utiliser Domoticz ou Home Assistant ou les 2 :**
+**Pour utiliser Domoticz, Home Assistant ou Io.broker les 3 :**
 
-Indiquer l‘ IP et le port
+- Indiquer les serveurs utilisés
 
-|image43|
+  |image1224| 
+
+- Indiquer l‘ IP et le port
+
+  |image43|
  
 **Logiciels utiles :**
 
@@ -490,7 +494,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
    - supprimer l'ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)
 
-Pour les versions de monitor => 2.2.7 :
+Pour les versions de monitor > 2.2.7 et < à 3.2.0 (refonte en cours pour intégrer io.broker):
 
 Obtenir la dernière version de update.bash , avec la console :
  
@@ -1578,7 +1582,7 @@ function mc(variable,id)
    :width: 520px 
 .. |image43| image:: ../media/image43.webp
    :width: 618px 
-.. |image44| image:: ../media/image43.webp
+.. |image44| image:: ../media/image44.webp
    :width: 605px 
 .. |image45| image:: ../media/image45.webp
    :width: 353px 
@@ -1718,6 +1722,8 @@ function mc(variable,id)
    :width: 407px 
 .. |image1221| image:: ../img/image1221.webp
    :width: 407px 
+.. |image1224| image:: ../img/image1224.webp
+   :width: 600px 
 .. |image1268| image:: ../img/image1268.webp
    :width: 700px 
 .. |image1269| image:: ../img/image1269.webp
