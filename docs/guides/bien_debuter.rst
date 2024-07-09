@@ -688,7 +688,7 @@ Les données json de ce dispositif :
 
 .. important:: 
 
-   REST-API adapter , https://github.com/ioBroker/ioBroker.rest-api, dit être installé.
+   REST-API adapter , https://github.com/ioBroker/ioBroker.rest-api, doit être installé.
 
 |image1396|
 
