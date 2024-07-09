@@ -120,7 +120,7 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	else {$result['status']="acces interdit";}
 	return $result ;
 
-   **pour l'API de Io.broker** , avec :darkblue:`ioBroker Swagger UI`
+   **pour l'API de Io.broker** , avec :darkblue:`ioBroker Swagger UI`, voir le § :ref:`0.2.3.3 pour IoBroker`
 
       .. code-block::
 
