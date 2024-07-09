@@ -120,11 +120,19 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	else {$result['status']="acces interdit";}
 	return $result ;
 
-   **pour l'API de Io.broker**
+   **pour l'API de Io.broker** , avec :darkblue:`ioBroker Swagger UI`
 
       .. code-block::
 
-         en cours de développement
+         function set_object($device,$type,$value,$pass=0){
+	  global $Token_iob,$port_api_iob,$IP_iob;
+	  //http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false													
+	  $id="";$mode=1;$device=$device.".".$type;
+
+	 $L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
+	 $iob=file_get_curl($L);
+	 return $iob;												
+	}
 
 .. admonition:: les fonctions Javascript
 
