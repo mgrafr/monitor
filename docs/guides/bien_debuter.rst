@@ -1099,24 +1099,34 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
       /* switchOnOff*  */
 	
-      $("#coul_al_absence").click(function(){switchOnOff_setpoint("65","41","On","pwdalarm");});
-      $("#coul_al_nuit").click(function(){switchOnOff_setpoint("66","42","On","pwdalarm");});
-      $("#sirene_al").click(function(){switchOnOff_setpoint("67","234","On","pwdalarm");});
-      $("#patha5645").click(function(){switchOnOff_setpoint("68","43","On","pwdalarm");});
-      $("#coul_modect").click(function(){switchOnOff_setpoint("69","44","On","pwdalarm");});
-      $("#raz_dz").click(function(){switchOnOff_setpoint("70","45","On","pwdalarm");});
-      $("#sw7").click(function(){switchOnOff_setpoint("9","77","On","0");});
-      $("#sw8").click(function(){switchOnOff_setpoint("10","79","On","0");});
-      $("#ping_pi").click(function(){switchOnOff_setpoint("14","80","On","0");});
-      $("#coul_al_nuit-2").click(function(){switchOnOff_setpoint("15","81","On","pwdalarm");});
-      $("#sw2").click(function(){switchOnOff_setpoint("11","85","On","0");});
-      $("#gsm").click(function(){switchOnOff_setpoint("8","86","group on","pwdalarm");});//sonnette
-      $("#sw3").click(function(){switchOnOff_setpoint("18","166","On","0");});
-      $("#sw4").click(function(){switchOnOff_setpoint("16","167","On","0");});
-      $("#sw5").click(function(){switchOnOff_setpoint("19","168","On","0");});
-      $("#sw1").click(function(){switchOnOff_setpoint("17","169","On","0");});
-      $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
-      $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
+        $("#coul_sirene1").click(function(){switchOnOff_setpoint("2","13","231","On","0");});
+	$("#coul_al_absence").click(function(){switchOnOff_setpoint("2","65","41","On","pwdalarm");});
+	$("#coul_al_nuit").click(function(){switchOnOff_setpoint("2","66","42","On","pwdalarm");});
+	$("#patha5645").click(function(){switchOnOff_setpoint("1","68","43","On","pwdalarm");});
+	$("#coul_modect").click(function(){switchOnOff_setpoint("1","69","44","On","pwdalarm");});
+	$("#raz_dz").click(function(){switchOnOff_setpoint("1","70","45","On","pwdalarm");});
+	$("#sw8").click(function(){switchOnOff_setpoint("1","10","79","On","0");});
+	$("#ping_pi").click(function(){switchOnOff_setpoint("1","14","80","On","0");});
+	$("#coul_al_nuit-2").click(function(){switchOnOff_setpoint("2","15","81","On","pwdalarm");});
+	$("#sw2").click(function(){switchOnOff_setpoint("1","11","85","On","0");});
+	$("#gsm").click(function(){switchOnOff_setpoint("2","8","86","group on","pwdalarm");});
+	$("#sw4").click(function(){switchOnOff_setpoint("1","16","167","On","0");});
+	$("#sw1").click(function(){switchOnOff_setpoint("1","17","169","On","0");});
+	$("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
+	$("#act-sir").click(function(){switchOnOff_setpoint("2","36","230","On","pwdalarm");});
+	$("#sw9").click(function(){switchOnOff_setpoint("1","73","307","On","0");});
+	$("#sw10").click(function(){switchOnOff_setpoint("1","74","164","On","0");});
+	$("#sw11").click(function(){switchOnOff_setpoint("1","9","407","On","0");});
+	$("#sc1").click(function(){switchOnOff_setpoint("1","G1","417","On","0");});
+	$("#sw12").click(function(){switchOnOff_setpoint("1","24","418","On","0");});
+	$("#sw22").click(function(){switchOnOff_setpoint("1","76","448","On","0");});
+	$("#sw21,#lamp_porche").click(function(){switchOnOff_setpoint("1","22","431","On","0");});
+	$("#sw20").click(function(){switchOnOff_setpoint("1","77","306","On","0");});
+	$("#sw23").click(function(){switchOnOff_setpoint("1","78","450","On","pwdcommand");});
+	$("#SOS").click(function(){switchOnOff_setpoint("2","91","464","On","0");});
+	$("#sw24").click(function(){switchOnOff_setpoint("1","79","465","On","0");});
+	$("#sw3").click(function(){set_state("4","18","alias.0.zigbee2mqtt.0.0xb40ecfd30b7d0000","On","0");});
+	$("#sw5").click(function(){set_state("4","19","","On","0");});
  
    le script dans footer.php pour ajouter le javascript automatiquement:
 
@@ -1131,42 +1141,62 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
    .. code-block::
 
-      function sql_plan($t){// SERVEUR SQL connexion
-      $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
-      if (($t!='0')  && (strlen($t) < 4)) {
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$t' AND maj_js <> 'variable';";
-	$result = $conn->query($sql);
-	$row = $result->fetch_assoc();return $row;}
-      else if ($t!='0'  && strlen($t) > 3) {
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$t' AND maj_js <> 'variable';";
+      function sql_plan($t1,$s=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
+	$n=0;$al_bat=0;$p=0;
+	//$row['nom_objet']=$s;return $row;					 
+	// SERVEUR SQL connexion
+	$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
+	 if ($t1=='3')  {
+	$sql="SELECT * FROM ".DISPOSITIFS." WHERE nom_objet = '".$s."' AND maj_js <> 'variable';";
+	$result = $conn->query($sql);$number = $result->num_rows;
+	$row = $result->fetch_assoc();
+	 return $row;}
+	else if ($t1=='2') {
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$s' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 		$row = $result->fetch_assoc();
 	return $row;}
-      else if ($t=='0') {//$commande="On";
-      if (IPDOMOTIC1 != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `ID` <> '');";
+	else if ($t1=='1')  {
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$s' AND maj_js <> 'variable';";
+		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
+		$row = $result->fetch_assoc();
+	return $row;}
+	else if ($t1=='0') {//$commande="On";
+	if ($l_ha != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `ID` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 4);";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'turnonoff','ha');				  
-	}	 }
-      if (IPDOMOTIC != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `idx` <> '');";
-	$result = $conn->query($sql);//echo "/*";
+	}				  
+					 }
+	if ($l_dz != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `idx` <> '' AND `Actif` <> 3 AND `Actif` <> 4);";
+	$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switchOnOff_setpoint','dz');
-	}	}
-      return;}
-      else echo "pas d'id_dz";
-      }
-      function sql_1($row,$f,$ser_dom){$commande="On";
-      if ($row['maj_js']=="on"){$commande="group on";}	
-      if($ser_dom=="dz")$ser_dom=$row['idx'];
-      if($ser_dom=="ha")$ser_dom=$row['ID'];	
-      if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("#'.$row["id1_html"];
+		}
+	}
+	if ($l_iob != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `nom_objet` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 3);";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'set_state','iob');
+		}
+	}
+	return;}
+	else echo "pas de serveur";
+	}
+	function sql_1($row,$f,$ser_dom){
+	$commande="On";
+	if ($row['maj_js']=="on"){$commande="group on";}	
+	if($ser_dom=="dz")$ser_dom=$row['idx'];
+	if($ser_dom=="ha")$ser_dom=$row['ID'];
+	if($ser_dom=="iob")$ser_dom=$row['ID'];		
+	if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("#'.$row["id1_html"];
 		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
 		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
-       	else {$sl='").click(function(){'.$f.'("'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
+       	else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
 		$s=$s.$sl;
 		echo $s."\r\n" ;}
-      return;}
+	return;	
+	}
 
    Voir chapitre :ref:`1. Configuration minimum : la page d’accueil`
 
