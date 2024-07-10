@@ -284,6 +284,10 @@ Les lampes concernées en gris et jaune
 
 |image599|
 
+   la fonction PHP pour établir la table decorrespondance entre idm et ID ou idx
+
+   |image1416|
+
 8.2.4 Exemple pour arrosage jardin
 ==================================
 *Relais Sonoff wifi ip 192.168.x.x :8081*
@@ -777,4 +781,6 @@ Comme pour DZ, on enregistre la commande dans la base de données; les données 
 .. |image1409| image:: ../img/image1409.webp
    :width: 341px
 .. |image1410| image:: ../img/image1410.webp
+   :width: 700px
+.. |image1416| image:: ../img/image1416.webp
    :width: 700px
