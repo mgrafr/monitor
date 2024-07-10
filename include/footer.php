@@ -26,7 +26,7 @@ require_once("fonctions.php");
 
 <script>
 
-function maj_mqtt(id_x,state,ind,level=0){console.log('state==='+state);
+function maj_mqtt(id_x,state,ind,level=0){console.log('id='+id_x+' state==='+state);
 if (!state) {console.log("erreur-state");return;}										  
 switch (ind) {
 	case 0: 
@@ -302,74 +302,69 @@ $('.closeBtn').on('click', function () {
 	rgb :  "Color": "{\"b\":214,\"cw\":0,\"g\":86,\"m\":4,\"r\":254,\"t\":0,\"ww\":0}" */
 qq=new Array();	
 <?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	?>
-rr=new Array();	
-  function switchOnOff_setpoint(idm,idx,command,pass="0"){
-	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
-	  if (command=="On" || command=="group on" || command.substring(0, 9)=="Set Level") {
+rr=new Array();
+ 
+	function switches(server,idm,idx,command,pass="0"){
+	switch (server) {
+	case "1":
+	case "2": var app="OnOff";
 	  var type;var level;
 	  if ((command=="On")||(command=="Off")){type=2;}
 	  else if (command.substring(0, 9)=="Set Level") {type=3;var pourcent = command.split(" ");level=pourcent[2];}
-	  //else if (command=="rgb") {type=4;level=100;}
 	  else {type=1;}
-		 
+	break;				
+	case "3": var app="turn";var type=0;var level=0;
+		if (command=="On") command ="on";
+		if (command=="Off") command ="off";	
+	break;
+	case "4": var app="put";var type="state";var level=0;
+	break;
+	default:
+	break;
+	}		
+	switchOnOff(app,idm,idx,command,type,level,pass="0")		
+		}
+	
+  function switchOnOff(app,idm,idx,command,type,level,pass){
+	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
+	  if (command=="On" || command=="on" || command=="group on" || command.substring(0, 9)=="Set Level") {
+	 if (pp[idm].Data){	 
 	  if (pp[idm].Data == "On" && pp[idm].maj_js != "on" ) {command="Off";}
-     								  
+	  if (pp[idm].Data == "on" && pp[idm].maj_js != "on"  ) {command="off";}  
+      if (pp[idm].Data == "off" ) {command="on";} 	}							  
 	    $.ajax({
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
-    	data: "app=OnOff&device="+idx+"&command="+command+"&type="+type+"&variable="+level+"&name="+pass,
+    	data: "app="+app+"&device="+idx+"&command="+command+"&type="+type+"&variable="+level+"&name="+pass,
     	success: function(response){qq=response;
 			if (qq!=null){
-				if (qq['status']!="OK" ){//alert(qq['status']);
+				if (qq['status']!="OK" ){
 			if (pass=="pwdalarm") {document.getElementById("d_btn_a").style.display = "block";
 			document.getElementById("d_btn_al").style.display = "block";}
 			if (pass=="pwdcommand") {document.getElementById("btn_c").style.display = "block";document.getElementById('txt_cmd').innerHTML ="mot de passe incorrect ou dépassé";
 			document.getElementById("txt_cmd").style.display = "block";}		
 					
 			}
-				else {maj_mqtt(idx,command,0,level);
-					//maj_switch(idx,command,level,pp[idm].idm);			
-
-			}}
-      }}); } 
-  else alert("erreur");
-  }
-	
-	
-function turnonoff(idm,idx,command,pass="0"){//console.log(idm);
-	if (idm!="" && (pp[idm].Data == "On" || pp[idm].Data == "on")) {command="off";}
-	else {command="on";}
-											 
-	$.ajax({
-    	type: "GET",
-    	dataType: "json",
-    	url: "ajax.php",
-    	data: "app=turn&device="+idx+"&type="+command+"&name="+pass,
-    	success: function(response){qq=response[0];console.log(response.resultat);
-			
-				if (response.resultat == "OK" ){
-					
+				
+			if (qq['status']=="OK" ) {maj_mqtt(idx,command,0,level);}
+			//if (qq['status']="OK" && app!="turn") {maj_mqtt(idx,command,0,level);}			
+			/*else {
 				$.ajax({
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
-    	data: "app=turn&device="+idx+"&type=etat&name="+pass,
+    	data: "app=turn&device="+idx+"&command=etat&name="+pass,
     	success: function(response){qq=response;
-		var level=0;command=qq.state;console.log("azerty="+idx+" "+command+" "+level);
-	    maj_mqtt(idx,command,0,level);									
+		var level=0;command=qq.state;
+	    maj_mqtt(idx,state,0,level);									
 		}
 				
 				});
-		
-				}
-		else {alert("erreur");}							
+			}*/}
+      }}); } 
+  else alert("erreur");
   }
-      });
-	
-	
-	}	
-	
 	
 /*-------NON UTILISE---------------------------*/
 function maj_switch(idx,command,level,idm){
@@ -391,7 +386,7 @@ $("#amount").click(function () {
 		var idx = $("#VR").attr('rel');
 		var idm = $("#VR").attr('title');
 	    var command=$("#amount").attr('name');//console.log(idx," ",idm,"",command);
-		switchOnOff_setpoint(idm,idx,command);
+		switchOnOff(idm,idx,command);
 	});
 //
 /*PAGE METEO----Méteo Concept----------------------------------------------

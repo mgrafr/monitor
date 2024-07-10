@@ -24,19 +24,19 @@ else if ($t1=='0') {//$commande="On";
 if ($l_ha != ""){
 	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `ID` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 4);";
 	$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'turnonoff','ha');				  
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','ha');				  
 	}				  
 					 }
 if ($l_dz != ""){
 	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `idx` <> '' AND `Actif` <> 3 AND `Actif` <> 4);";
 	$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switchOnOff_setpoint','dz');
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','dz');
 		}
 	}
 if ($l_iob != ""){
 	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `nom_objet` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 3);";
 	$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'set_state','iob');
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','iob');
 		}
 	}
 return;}
@@ -47,11 +47,11 @@ $commande="On";
 if ($row['maj_js']=="on"){$commande="group on";}	
 if($ser_dom=="dz")$ser_dom=$row['idx'];
 if($ser_dom=="ha")$ser_dom=$row['ID'];
-if($ser_dom=="iob")$ser_dom=$row['nom_objet'];		
+if($ser_dom=="iob")$ser_dom=$row['ID'];		
 if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("#'.$row["id1_html"];
 		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
 		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
-       	else {$sl='").click(function(){'.$f.'("'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
+       	else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
 		$s=$s.$sl;
 		echo $s."\r\n" ;}
 return;	
