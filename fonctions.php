@@ -228,12 +228,12 @@ function sql_variable($t,$ind){
 		}return $retour;}
 	if 	($ind==5){ $i=0;
 		while ($ligne = $result->fetch_assoc()) {$retour[$i]=new stdClass;
-			if ($ligne['idm']!="") {
+			
 				if ($ligne['idx']!="" && $ligne['ID']=="") {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
 				elseif ($ligne['ID']!="" && $ligne['idx']=="") {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}
 				elseif ($ligne['ID']!="" && $ligne['idx']!="" && $ligne['Actif']==2) {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
-				elseif ($ligne['ID']!="" && $ligne['idx']!="" && $ligne['Actif']==3) {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}
-				else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}}																 
+				elseif ($ligne['ID']!="" && $ligne['idx']!="" && ($ligne['Actif']==3 || $ligne['Actif']==4)) {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}
+				else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}																 
 			$i++;}
 	return $retour;}
 	if 	($ind==6) {//$n=1;
@@ -249,9 +249,9 @@ function sql_variable($t,$ind){
 	}
 
 //----POUR HA--------------------------------------
-function devices_zone($zone){global $L_ha,$token_ha; 
-$L=$L_ha."api/states";$post="";$mode=1;
-$json_string=file_http_curl($L,$mode,$post,$token_ha);$n=0;$ha=array();//echo $json_string;
+function devices_zone($zone){global $L_ha,$Token_ha; 
+$mode=1;$L=$L_ha."api/states";$post="";
+$json_string=file_http_curl($L,$mode,$post,$Token_ha);$n=0;$ha=array();//echo $json_string;
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
 	if(isset($xxx->{'Name'}))  $ha[$n]['Name']="";
@@ -322,34 +322,18 @@ $L=$L_ha.$api;
 
 $ha=file_http_curl($L,$mode,$post,$Token_ha);
 $data = json_decode($ha, true);
-$data['resultat']="OK";										
-										
+$data['status']="OK";										
+$data['xxx']=$L;											
 return json_encode($data);}
 
-function put_object($device,$type,$value,$pass){global $Token_iob,$port_api_iob,$IP_iob;
-/* curl -X 'PUT' \
-  'http://192.168.1.104:8093/v1/object/zigbee2mqtt.0.group_103.color' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "type": "state",
-  "common": {"name": "lamp_salon",
-            "id": "color"},
-  "native": {},
-  "value": "#FF0000"
-}'	*/
-$id="";$mode=3;if ($type==2) $id="state";
-	$style=1;
-$L=$IP_iob.':'.$port_api_iob.'/';
-$parameters='v1/object/'.$device.'.'.$id;	
-$post='{
-  "type": "state",
-  "common": {},
-  "native": {},
-  "value": "'.$value.'"
-}';//echo $L;return;
+function set_object($device,$type,$value,$pass=0){global $Token_iob,$port_api_iob,$IP_iob;
+//http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false													
+$mode=1;$device=$device.".".$type;
+if ($value=="On") {$value='true';}
+ else {$value='false';}
+											  
 //$iob=send_api_put_request($L, $parameters, $post);	
-$curl = curl_init();
+/*$curl = curl_init();
 
 curl_setopt_array($curl, array(
   CURLOPT_URL => $L.$parameters,
@@ -374,8 +358,14 @@ $response = curl_exec($curl);
   return array(
     'code' => curl_getinfo($curl, CURLINFO_HTTP_CODE),
     'data' => $response,
-  );
-	
+  );*/
+$L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
+$iob=file_get_curl($L);
+$iob = json_decode($iob, true);
+$data['status']="OK";			
+$data['id']=$iob['id'];		
+$data['valeur']=$iob['val'];	 
+return $data;										
 }
 
 //-------POUR DZ- et HA -----------------------------------
@@ -403,7 +393,7 @@ if ($l_ha!=""){
   };
 if ($l_iob!=""){$q=$p;
 	//http://192.168.1.104:8093/v1/objects?filter=zigbee2mqtt.0*&type=device
-	//http://192.168.1.104:8093/v1/states?filter=zigbee2mqtt.0.0x00124b002228d561.*
+	//http://192.168.1.104:8093/
 	//http://192.168.1.104:8093/v1/states?filter=yr.0.forecastHourly.0h.air_temperature
 $n=0;$obj_iob=array();$value=array();$iob=array();
 	if (str_contains(OBJ_IOBROKER, ",")) {$obj_iob=explode(',',OBJ_IOBROKER);}			
@@ -488,8 +478,8 @@ if(array_key_exists('value', $lect_device)) {
 	if(array_key_exists('relative_humidity', $array)) {$lect_device["Humidity"]=$array["relative_humidity"];}//pour IOB	
 	if(array_key_exists('battery', $array)) {$lect_device["BatteryLevel"]=$array["battery"];}//pour IOB		
 	if(array_key_exists('state', $array)) {$lect_device["Data"]=$array["state"];
-										  if ($lect_device["Data"]==true) {$lect_device["Data"]="on";}
-										  if ($lect_device["Data"]==false) {$lect_device["Data"]="off";}
+										  if ($lect_device["Data"]==true) {$lect_device["Data"]="On";}
+										  if ($lect_device["Data"]==false) {$lect_device["Data"]="Off";}
 										  }//pour IOB	
 	if(array_key_exists('color', $array)) {$lect_device["attributes"]["Color"] = $array["color"];}
 	if(array_key_exists('brightness', $array)) {$lect_device["attributes"]["brightness"] = $array["brightness"];}
@@ -587,7 +577,8 @@ if ($auth<3){$json2="json.htm?type=command&param=";
 	}
 else {$result['status']="acces interdit";}
 return $result ;
-												 }
+  }
+
 /*POUR METEO CONCEPT*/
 //-----------------------------------
 function meteo_concept($choix){
