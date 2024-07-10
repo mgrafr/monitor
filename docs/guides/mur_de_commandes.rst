@@ -136,9 +136,9 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
 .. admonition:: les fonctions Javascript
 
-   |image1213|
-
    |image1214|
+
+   |image1213|
 
 8.1.2.1 Commandes de changement de couleur des lampes
 """""""""""""""""""""""""""""""""""""""""""""""""""""
