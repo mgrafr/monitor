@@ -1040,6 +1040,14 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - idm : idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
 
+ .. note::
+
+    Pour io.broker, l'objet regroupe toute les fonctions du dispositif, aussi comme un idm doit être unique , dans la base il faudra appliquer cette règle:
+
+    idm_1, idm_2,....
+
+    |image1417|
+
 - Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4.
 
 .. important::
@@ -1845,4 +1853,6 @@ function mc(variable,id)
 .. |image1411| image:: ../img/image1411.webp
    :width: 150px
 .. |image1412| image:: ../img/image1412.webp
+   :width: 650px
+.. |image1417| image:: ../img/image1417.webp
    :width: 650px
