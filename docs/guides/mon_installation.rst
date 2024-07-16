@@ -1430,16 +1430,21 @@ Le script DzVent:
 
    |image1263|
 
+21.13 Robot tondeuse Landroid Worx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+les infos sont récupérées depuis io.broker; il faut installer l'adaptateur:
+
+|image1418|
+
+l'objet worx:
+
+|image1419|
+
+la page dans monitor:
+
+|image1420|
+
 .. |image1026| image:: ../media/image1026.webp
-   :width: 700px
-.. |image1027| image:: ../media/image1027.webp
-   :width: 425px
-.. |image1028| image:: ../media/image1028.webp
-   :width: 604px
-.. |image1029| image:: ../media/image1029.webp
-   :width: 266px
-.. |image1030| image:: ../media/image1030.webp
-   :width: 304px
 .. |image1033| image:: ../media/image1033.webp
    :width: 571px
 .. |image1034| image:: ../media/image1034.webp
@@ -1701,3 +1706,10 @@ Le script DzVent:
    :width: 700px
 .. |image1408| image:: ../img/image1408.webp
    :width: 700px
+.. |image1418| image:: ../img/image1418.webp
+   :width: 322px
+.. |image1419| image:: ../img/image1419.webp
+   :width: 700px
+.. |image1420| image:: ../img/image1420.webp
+   :width: 543px
+
