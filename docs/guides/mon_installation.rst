@@ -1447,8 +1447,12 @@ la page dans monitor:
 21.13.1 la page worx.php dans custom/php 
 ========================================
 
+|image1421|
 
+|image1422|
 								
+|image1423|
+
 
 .. |image1026| image:: ../media/image1026.webp
 .. |image1033| image:: ../media/image1033.webp
