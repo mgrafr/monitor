@@ -1721,4 +1721,10 @@ la page dans monitor:
    :width: 700px
 .. |image1420| image:: ../img/image1420.webp
    :width: 543px
+.. |image1421| image:: ../img/image1421.webp
+   :width: 700px
+.. |image1422| image:: ../img/image1422.webp
+   :width: 650px
+.. |image1423| image:: ../img/image1423.webp
+   :width: 700px
 
