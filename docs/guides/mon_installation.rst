@@ -1430,7 +1430,20 @@ Le script DzVent:
 
    |image1263|
 
-21.13 Robot tondeuse Landroid Worx
+21.13 Io.Broker
+^^^^^^^^^^^^^^^
+
+installé dans un conteneur LXC avec :darkblue:`https://tteck.github.io/Proxmox/?id=ioBroker#automation`
+
+|image1424|
+
+Pour réupérer des informations ou envoyer une commande Io.broker est plus facile que Home Hssistant; il existe de nombreux adaptateurs l'équivalent des intégrations ou des plugins de Domoticz;
+
+J'ai installé io.broker pour vcréer une page sur monitor cncernant mon robot tondeuse Worx Landroid: voir ce § :ref:`21.14 Robot tondeuse Landroid Worx`
+
+|image1425|
+
+21.14 Robot tondeuse Landroid Worx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 les infos sont récupérées depuis io.broker; il faut installer l'adaptateur:
 
@@ -1444,7 +1457,7 @@ la page dans monitor:
 
 |image1420|
 
-21.13.1 la page worx.php dans custom/php 
+21.14.1 la page worx.php dans custom/php 
 ========================================
 
 |image1421|
@@ -1726,5 +1739,9 @@ la page dans monitor:
 .. |image1422| image:: ../img/image1422.webp
    :width: 650px
 .. |image1423| image:: ../img/image1423.webp
+   :width: 700px
+.. |image1424| image:: ../img/image1424.webp
+   :width: 500px
+.. |image1425| image:: ../img/image1425.webp
    :width: 700px
 
