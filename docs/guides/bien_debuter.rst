@@ -1076,8 +1076,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	-	onoff+stop commandes (volets par exemple)
         -       on // poussoir momentané (sonnette)
         -       onoff_rgb //onoff + réglage une lumière sur une certaine couleur
+	-	on= // commandes particulières, voir cet exemple : :ref:`21.14 Robot tondeuse Landroid Worx`
 
-       |image1405| 
+       |image1405|
+
+       |image1426|
         
 	-	popup //ouverture d’une fenêtre (commandes particulières)	
 
@@ -1856,3 +1859,6 @@ function mc(variable,id)
    :width: 650px
 .. |image1417| image:: ../img/image1417.webp
    :width: 650px
+.. |image1426| image:: ../img/image1426.webp
+   :width: 700px
+
