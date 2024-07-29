@@ -1466,6 +1466,11 @@ la page dans monitor:
 								
 |image1423|
 
+21.14.2 des dispositifs enregistrés dans SQL 
+============================================
+
+|image1427|
+
 
 .. |image1026| image:: ../media/image1026.webp
 .. |image1033| image:: ../media/image1033.webp
@@ -1743,5 +1748,7 @@ la page dans monitor:
 .. |image1424| image:: ../img/image1424.webp
    :width: 500px
 .. |image1425| image:: ../img/image1425.webp
+   :width: 700px
+.. |image1427| image:: ../img/image1427.webp
    :width: 700px
 
