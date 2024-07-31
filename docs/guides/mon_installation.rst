@@ -1471,6 +1471,14 @@ la page dans monitor:
 
 |image1427|
 
+Enregistrement avec la commande dans "administration"
+
+|image1428|
+
+.. note::
+
+   dans ce cas de figure, comme la commande concerne plusieurs états, c'est le nom d'une class qui est indiqué dans id1_html
+
 
 .. |image1026| image:: ../media/image1026.webp
 .. |image1033| image:: ../media/image1033.webp
@@ -1751,4 +1759,5 @@ la page dans monitor:
    :width: 700px
 .. |image1427| image:: ../img/image1427.webp
    :width: 700px
-
+.. |image1428| image:: ../img/image1428.webp
+   :width: 423px
