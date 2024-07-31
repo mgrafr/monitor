@@ -1479,6 +1479,25 @@ Enregistrement avec la commande dans "administration"
 
    dans ce cas de figure, comme la commande concerne plusieurs états, c'est le nom d'une class qui est indiqué dans id1_html
 
+21.14.3 Les fonctions PHP concernées 
+====================================
+
+partie de la fonction devices_plan() consacrée à io.broker
+
+|image1429|
+
+la fonction sql_1($row,$f1,$ser_dom)
+
+|image1430|
+
+.. note::
+
+   Comme indiqué précédemment, avec maj_js=on=, id1_html est une class
+
+   |image1431|
+
+21.14.4 Le Javascript concerné
+==============================
 
 .. |image1026| image:: ../media/image1026.webp
 .. |image1033| image:: ../media/image1033.webp
@@ -1761,3 +1780,9 @@ Enregistrement avec la commande dans "administration"
    :width: 700px
 .. |image1428| image:: ../img/image1428.webp
    :width: 423px
+.. |image1429| image:: ../img/image1429.webp
+   :width: 700px
+.. |image1430| image:: ../img/image1430.webp
+   :width: 700px
+.. |image1431| image:: ../img/image1431.webp
+   :width: 700px
