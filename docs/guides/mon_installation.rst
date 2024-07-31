@@ -1499,6 +1499,18 @@ la fonction sql_1($row,$f1,$ser_dom)
 21.14.4 Le Javascript concerné
 ==============================
 
+Pour la mise à jour de la page worx.php, il faut ajouter dans footer.php:
+
+|image143Z|
+
+le json reçu par Monitor:
+
+|image1433|
+
+la partie de la fonction switches() concernant io.broker
+
+|image1434|
+
 .. |image1026| image:: ../media/image1026.webp
 .. |image1033| image:: ../media/image1033.webp
    :width: 571px
@@ -1785,4 +1797,10 @@ la fonction sql_1($row,$f1,$ser_dom)
 .. |image1430| image:: ../img/image1430.webp
    :width: 700px
 .. |image1431| image:: ../img/image1431.webp
+   :width: 700px
+.. |image1432| image:: ../img/image1432.webp
+   :width: 700px
+.. |image1433| image:: ../img/image1433.webp
+   :width: 478px
+.. |image1434| image:: ../img/image1434.webp
    :width: 700px
