@@ -1501,7 +1501,7 @@ la fonction sql_1($row,$f1,$ser_dom)
 
 Pour la mise à jour de la page worx.php, il faut ajouter dans footer.php:
 
-|image143Z|
+|image1432|
 
 le json reçu par Monitor:
 
@@ -1510,6 +1510,10 @@ le json reçu par Monitor:
 la partie de la fonction switches() concernant io.broker
 
 |image1434|
+
+et switchOnOff(app,idm,idx,command,type,level,pass)
+
+|image1435|
 
 .. |image1026| image:: ../media/image1026.webp
 .. |image1033| image:: ../media/image1033.webp
@@ -1804,3 +1808,5 @@ la partie de la fonction switches() concernant io.broker
    :width: 478px
 .. |image1434| image:: ../img/image1434.webp
    :width: 700px
+.. |image1435| image:: ../img/image1435.webp
+   :width: 650px
