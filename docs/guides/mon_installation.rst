@@ -1466,6 +1466,10 @@ la page dans monitor:
 								
 |image1423|
 
+Pour la mise à jour lors d'une commande (Strart,Home,Pause ou Stop), après chargement du DOM:
+
+|image1436|
+
 21.14.2 des dispositifs enregistrés dans SQL 
 ============================================
 
@@ -1809,4 +1813,6 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 .. |image1434| image:: ../img/image1434.webp
    :width: 700px
 .. |image1435| image:: ../img/image1435.webp
+   :width: 650px
+.. |image1436| image:: ../img/image1436.webp
    :width: 650px
