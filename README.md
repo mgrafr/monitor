@@ -32,6 +32,7 @@ Les pages optionnelles:<br>
 <img src="readme_img/image12.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image13.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <img src="readme_img/image14.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
+Une page perso concernant mon robot Landroid Worx:
 <img src="readme_img/image15.jpg" alt="Screenshot1" style="max-width: 100%;"><br>
 <br> <strong>installation:</strong> en bash, choisir un script dans le répertoir "install" <br><br>- <strong>create_ct_lxc_monitor.sh</strong> : installation complète (Debian12,LEMP,PhpmyAdmin, Monitor) dans un conteneur LXC Proxmox<br><br>- <strong>install_only_monitor.sh</strong> : installation uniquement de monitor<br><br>- <strong>lemp_monitor_install.sh</strong> : installation seulement de LEMP+PhpMyAdmin+Monitor <br><br><strong>Mise à jour:</strong><br>- lancer <strong>update.bash</strong><br><br>
 <br><br>Video ,source : http://domo-site.fr/assets/video/monitor.mp4<br>
