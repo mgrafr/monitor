@@ -1519,6 +1519,11 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 
 |image1435|
 
+21.14.5 Les styles css
+======================
+
+|image1437|
+
 .. |image1026| image:: ../media/image1026.webp
 .. |image1033| image:: ../media/image1033.webp
    :width: 571px
@@ -1816,3 +1821,5 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 650px
 .. |image1436| image:: ../img/image1436.webp
    :width: 650px
+.. |image1437| image:: ../img/image1437.webp
+   :width: 533px
