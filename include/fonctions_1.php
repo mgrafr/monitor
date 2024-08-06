@@ -1,15 +1,15 @@
 <?php
 
-function sql_plan($t1,$s=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
+function sql_plan($t1,$s="",$s1=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
 $n=0;$al_bat=0;$p=0;
 //$row['nom_objet']=$s;return $row;					 
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
  if ($t1=='3')  {
-	$sql="SELECT * FROM ".DISPOSITIFS." WHERE nom_objet = '".$s."' AND maj_js <> 'variable';";
-	$result = $conn->query($sql);$number = $result->num_rows;
+	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s1."' AND nom_objet = '".$s."' AND maj_js <> 'variable';";
+	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
-	 return $row;}
+	  return $row;}
 else if ($t1=='2') {
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$s' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
@@ -42,16 +42,19 @@ if ($l_iob != ""){
 return;}
 else echo "pas de serveur";
 }
-function sql_1($row,$f,$ser_dom){
-$commande="On";
-if ($row['maj_js']=="on"){$commande="group on";}	
+function sql_1($row,$f1,$ser_dom){
+$commande="On";$query="#";
+if ($row['maj_js']=="on"){$commande="group on";}
+if ($row['maj_js']=="on="){$query=".";$f='var command=$(this).attr("rel");'.$f1;$commande="command";}
+else $f=$f1;
 if($ser_dom=="dz")$ser_dom=$row['idx'];
 if($ser_dom=="ha")$ser_dom=$row['ID'];
 if($ser_dom=="iob")$ser_dom=$row['ID'];		
-if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("#'.$row["id1_html"];
-		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
+if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("'.$query.$row["id1_html"];
+		if($row['id2_html']!=''){$s=$s.','.$query.$row['id2_html'];}
 		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
-       	else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
+       	if ($row['maj_js']=="on=") {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$ser_dom.'",command,"'.$row['pass'].'");});';}	
+		else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
 		$s=$s.$sl;
 		echo $s."\r\n" ;}
 return;	

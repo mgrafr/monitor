@@ -21,7 +21,7 @@ require_once("fonctions.php");
 <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
 <script src="js/mes_js.js"></script>
 <script src="js/jscolor.min.js"></script>
-<script src="custom/js/JS.js"></script>
+
 
 
 <script>
@@ -231,6 +231,7 @@ function pluie(idx){//var tc=TestConnection_js();
 var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
 var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
 pp=new Array();maj_devices(plan);
+worx=new Array();	
 function maj_devices(plan){
 $.ajax({
     type: "GET",
@@ -238,6 +239,9 @@ $.ajax({
     url: "ajax.php",
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
+   
+								worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);
+		
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
 		if (val.maj_date=='0'){
 			if (val.jour!=num_jour){aff_date();
@@ -273,9 +277,9 @@ $.ajax({
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 				}}
 			
-			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
-			else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idx="+val.idx +" nom:"+val.Name;}
-			else if (val.idx!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
+			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
+			//else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:...."+val.Name;}
+			else if (val.idx=="NULL" && val.ID=="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
 		}});
 				if (al_bat!="" ){document.getElementById(not_piles).innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;
 				document.getElementById(not_piles_reset).style.display="block";}
@@ -317,7 +321,8 @@ rr=new Array();
 		if (command=="On") command ="on";
 		if (command=="Off") command ="off";	
 	break;
-	case "4": var app="put";var type="state";var level=0;
+	case "4": var app="put";var type="state";var level=0;console.log("relllll="+command);
+			if (command!="On"){ type="on=";}
 	break;
 	default:
 	break;
@@ -327,11 +332,18 @@ rr=new Array();
 	
   function switchOnOff(app,idm,idx,command,type,level,pass){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
-	  if (command=="On" || command=="on" || command=="group on" || command.substring(0, 9)=="Set Level") {
-	 if (pp[idm].Data){	 
-	  if (pp[idm].Data == "On" && pp[idm].maj_js != "on" ) {command="Off";}
-	  if (pp[idm].Data == "on" && pp[idm].maj_js != "on"  ) {command="off";}  
-      if (pp[idm].Data == "off" ) {command="on";} 	}							  
+	  if (command=="On" || command=="on" || type=="on=" || command=="group on" || command.substring(0, 9)=="Set Level") {
+	 if ((pp[idm]) && type!="on="){	 
+	  if (pp[idm].Data == "off" ) {command="on";}
+		if (pp[idm].Data == "on" ) {command="off";} 
+		if (pp[idm].Data == "On" ) {command="Off";} 
+		 if (pp[idm].Data == "Off" ) {command="On";} 
+		 if (pp[idm].Data == "On" && pp[idm].maj_js != "on" ) {command="Off";}
+		if (pp[idm].Data == "Off" && pp[idm].maj_js != "on" ) {command="Off";} 
+	  if (pp[idm].Data == "on" && pp[idm].maj_js != "on"  ) {command="off";} 
+		if (pp[idm].Data == "Off" && pp[idm].maj_js != "on" ) {command="On";} 
+       	}
+		 
 	    $.ajax({
     	type: "GET",
     	dataType: "json",
@@ -642,9 +654,6 @@ var_sp(idsp);
 setTimeout(var_sp, tempo_devices, idsp); 	
 }';?>
 
-
-	
-		
 
 /*----------fin document-------------------------------*/
 	
