@@ -214,7 +214,9 @@ define('URLHABRIDGE', 'https://habridge.DOMAINE');
 define('ON_RECETTES',false);
 //----------------------------------------------------------------
 //fichiers divers
+//Raspberry
 define('IPRPI', '192.168.1.8');//IP du Raspberry
+define('LOGIN_PASS_RPI', <login:pass>');
 define('MSMTPRC_LOC_PATH', '/var/www/html/monitor/scripts/');//copie config serveur mail
 //DZ_PATH :ex dz docker /opt/domoticz/config/, ex autre dz /opt/domoticz, home/USER/domoticz
 define('DZ_PATH', '/opt/domoticz/config/');
