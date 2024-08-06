@@ -1109,6 +1109,49 @@ un exemple : dans le cadre rouge, un script lancé hors du conteneur, dans un ca
 
 |image1351|
 
+21.10.5 NGINX, Virtual Host 
+===========================
+Pré-requis:
+
+- un certificat lets'encrypt
+
+le fichier ha.conf dans /etc/nginx/conf.d:
+
+.. code-block::
+
+   server {
+    server_name <DOMAINE>;
+    listen 80;
+    return 301 https://$host$request_uri;
+   }
+   server {
+    server_name <DOMAINE>;
+    ssl_certificate /etc/letsencrypt/live/ha.la-truffiere.ovh/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ha.la-truffiere.ovh/privkey.pem;
+    # Use these lines instead if you created a self-signed certificate
+    # ssl_certificate /etc/nginx/ssl/cert.pem;
+    # ssl_certificate_key /etc/nginx/ssl/key.pem;
+    # Ensure this line points to your dhparams file
+    ssl_dhparam /etc/nginx/ssl/dhparams.pem;
+    
+    listen 443 ssl ; 
+    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4";
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    proxy_buffering off;
+
+    location / {
+        proxy_pass http://192.168.1.81:8123;
+        proxy_set_header Host $host;
+        proxy_redirect http:// https://;
+        proxy_http_version 1.1;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+   }
+
 21.11 Pont Hue Ha-bridge pour Alexa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 voir le § :ref:`13.8 Pont HA (ha-bridge)`
