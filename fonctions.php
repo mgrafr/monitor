@@ -328,9 +328,9 @@ return json_encode($data);}
 
 function set_object($device,$type,$value,$pass=0){global $Token_iob,$port_api_iob,$IP_iob;
 //http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false													
-$mode=1;$device=$device.".".$type;
+$mode=1;//$device=$device.".".$type;
 if ($value=="On") {$value='true';}
- else {$value='false';}
+if ($value=="Off") {$value='false';}
 											  
 //$iob=send_api_put_request($L, $parameters, $post);	
 /*$curl = curl_init();
@@ -389,56 +389,65 @@ if ($l_ha!=""){
 	while (isset($result[$n])==true){
 		$parsed_json[$p]=$result[$n];
 		$n++;$p++;}
-			   //return $parsed_json ;
-  };
+			    };
 if ($l_iob!=""){$q=$p;
-	//http://192.168.1.104:8093/v1/objects?filter=zigbee2mqtt.0*&type=device
-	//http://192.168.1.104:8093/
-	//http://192.168.1.104:8093/v1/states?filter=yr.0.forecastHourly.0h.air_temperature
-$n=0;$obj_iob=array();$value=array();$iob=array();
+	$n=0;$obj_iob=array();
+				$iob=array();
 	if (str_contains(OBJ_IOBROKER, ",")) {$obj_iob=explode(',',OBJ_IOBROKER);}			
 	else {$obj_iob[0]=OBJ_IOBROKER;}
 $i=0;
 while ($obj_iob[$i]!="") {			
 $L=$IP_iob.":".$port_api_iob."/v1/objects?filter=".$obj_iob[$i]."*&type=device";	
-			//			
 $json_string = file_get_curl($L);
 $iob_json = json_decode($json_string);
-$value=array();
-foreach ($iob_json as $xxx){$value=[];
+foreach ($iob_json as $xxx){$Data="";$value=[];
 	$enr = explode('.',$xxx->{'_id'});$_id=$enr[0].".".$enr[1].".".$enr[2];
 				if ($_id=="yr.0.forecastHourly") $_id="yr.0.forecastHourly.0h"; //météo yr
 	$iob_name = $xxx->{'common'}->{'name'};
 	if($xxx->{'common'}->{'desc'}) $iob_desc = $xxx->{'common'}->{'desc'};
 	else $iob_desc = "";
-	//http://192.168.1.104:8093/v1/states?filter=zigbee2mqtt.0.0xa4c13869519b7c2d.*
-	$L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
+	
+	/*$L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
 	$json_string_val = file_get_curl($L_val);
 	$iob_json_val=json_decode($json_string_val);
-		
 		foreach ($iob_json_val as $val=>$val1){	
 		$ens = explode('.',$val);$valeur=$ens[3];
 			if ($ens[4] && $ens[4]!="") {$valeur=$ens[4];}
-									 
-		$value[$valeur] = $val1->{'val'};
-		$ens=[];									   
-		}
-	$iob[$n]=[
-		'ID' => $_id,
+		if ($rep!="rawMqtt"	) {					 
+		$value[$valeur]	= $val1->{'val'};
+		$ens=[];
+		}} */
+	$value=get_state_list($_id);
+	$L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
+	$json_string_val = file_get_curl($L_val);
+	$iob_json_val=json_decode($json_string_val);						
+	foreach ($iob_json_val as $val=>$val1){	
+		$ens = explode('.',$val);$valeur=$ens[3];$rep='.'.$ens[2];
+			if ($ens[4] && $ens[4]!="") {$valeur=$ens[4];$rep='.'.$ens[3];}
+		if (isset($ens[2])==false) {$ID=$_id;}
+		else {$ID=$_id.$rep.".".$valeur;}
+		if ($rep!="rawMqtt"	) {	
+		$Data = $val1->{'val'};	
+		$ens=[];	
+		$iob[$n]=[
+		'ID' => $ID,
 		'Name' => $iob_name,
 		'description' => $iob_desc,
-		'value' => $value,
+		'Data' => $Data,
+		'value' => $value,	
 		'serveur' => "IOB"
-		
-		];				  
-		$n++;}		
-	$i++; }		
+		];		
+		}$n++;}	
+	}		
+	$i++; }	
 		$n=0;if ($plan==99){ return $iob;}// pour test iob 
-	while (isset($iob[$n])==true){
+	
+while (isset($iob[$n])==true){
 	$parsed_json[$q]=$iob[$n];
 	$n++;$q++;}
 	   }									 
-$n=0;//return $parsed_json;
+$n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;//return $parsed_json;
+
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 $description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
@@ -452,11 +461,12 @@ $lect_device["attributes"]["Color"] = $lect_device["Color"];	 }
 $periph=array();$periph['idm']=1000;
 	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";}
 	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";}
-	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["Name"];$t1="3";}
-	
-$periph=sql_plan($t1,$s);
-	if ($periph==null) {$choix_serveur="0";}
+	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="2";$s1=$lect_device["ID"];}
+
+$periph=sql_plan($t1,$s,$s1);
+	if ($periph==null) {$choix_serveur="pas_ID";}
 	else {$choix_Actif=$periph['Actif'];
+		  
 	  if (($choix_Actif=="1" || $choix_Actif=="2") && $lect_device["serveur"]=="DZ")  {$choix_serveur="dz";}
 	  else if ($choix_Actif=="3" && $lect_device["serveur"]=="HA") {$choix_serveur="ha";}
 	  else if ($choix_Actif=="4" && $lect_device["serveur"]=="IOB") {$choix_serveur="iob";}
@@ -464,14 +474,16 @@ $periph=sql_plan($t1,$s);
 		 }
 //if ($periph) echo json_encode($periph);	
 $bat="";
+if ($choix_serveur!="pas_ID"){
 if ($periph['idm']) {$t=$periph['idm'];}
 else {$t=$t1000;$t1000++; $choix_serveur="0";}
-if ($t=="") {$t=888;$choix_serveur="0";}
+if ($t=="") {$t=888;$choix_serveur="0";}}
 //---------------------------------------------------------------
 	switch ($choix_serveur) {
 		case "iob" :	
+		
 if(array_key_exists('value', $lect_device)) {
-	$array=$lect_device['value'];
+	$array=$lect_device['value'];$lect_device["value"]=$array;
     if(array_key_exists('temperature', $array)) {$lect_device["Temp"]=$array["temperature"];$lect_device["Data"]=$array["temperature"];}//pour IOB
 	if(array_key_exists('air_temperature', $array)) {$lect_device["Temp"]=$array["air_temperature"];}//pour IOB
 	if(array_key_exists('humidity', $array)) {$lect_device["Humidity"]=$array["humidity"];}//pour IOB	
@@ -485,6 +497,7 @@ if(array_key_exists('value', $lect_device)) {
 	if(array_key_exists('brightness', $array)) {$lect_device["attributes"]["brightness"] = $array["brightness"];}
 	if(array_key_exists('colortemp', $array)) {$lect_device["attributes"]["colortemp"] = $array["colortemp"];}
 	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}
+	//if(array_key_exists('pause', $array)) {$lect_device["Data"] = $array["pause"];}// pour WORX
 }
 	
 		case "dz" :
@@ -526,9 +539,14 @@ if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}
 	'coullamp_ON' => $periph['coul_lamp_ON']	,
 	'coullamp_OFF' => $periph['coul_lamp_OFF']	,
 	'type_pass' => $periph['pass'],
-	'actif' => $periph['Actif'],			 
+	'actif' => $periph['Actif'],
 	'alarm_bat' => $bat
 	];
+if (str_contains($periph['idm'], "_")==false  && $lect_device["serveur"]=="IOB") {
+	$data[$t] = [
+		'Name' => $lect_device["Name"],
+		'Data' => $lect_device["Data"],
+		'value' => $value];}			
 break;
 case "1":
 case "0" :$data[$t] = [
@@ -537,12 +555,21 @@ case "0" :$data[$t] = [
 	'actif' => $periph['Actif'],
 	'ID' => $lect_device["ID"],
 	'idm' => $periph['idm']];
-case "2":
+break;			
+case "pas_ID" :
+	if ($lect_device["serveur"]=="HA")  $nb_ha++;
+	if ($lect_device["serveur"]=="IOB")  $nb_iob++;
+	if ($lect_device["serveur"]=="DZ")  $nb_dz++;			
+	$data[2000] = [
+	'nb_DZ' => $nb_dz,	
+	'nb_HA' => $nb_ha,
+	'nb_IOB' => $nb_iob,	
+	'ID' => $lect_device["ID"],
+	'idm' => $periph['idm']];		
 break;
-			
-default:
+
 		
-	}	
+	}
 $n=$n+1;}
 $data[0] = ['jour' => date('d'),
 'maj_date' => '0'];
@@ -553,6 +580,7 @@ if ($al_bat==2) $abat="batterie_faible";
 $val_albat=val_variable(PILES[0]);
 if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 return $data;
+						 
  }
 
 function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;global $L_dz;
@@ -1564,7 +1592,19 @@ function table_ok($conn,$table){
         }
     }
 function reboot(){
-$output = shell_exec('ssh michel:Idem4546@192.168.1.8  -t bash "sudo reboot"  >> /home/michel/sms.log 2>&1');	
+$output = shell_exec('ssh '.LOGIN_PASS_RPI.'@'.IPRPI.' -t bash "sudo reboot"  >> /home/michel/sms.log 2>&1');	
 	
 }
+function get_state_list($_id){global $L_iob, $l_iob,$IP_iob,$port_api_iob;$values=array();
+$L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
+	$json_string_val = file_get_curl($L_val);
+	$iob_json_val=json_decode($json_string_val);
+		foreach ($iob_json_val as $val=>$val1){	
+		$ens = explode('.',$val);$valeur=$ens[3];
+			if ($ens[4] && $ens[4]!="") {$valeur=$ens[4];}
+		if ($rep!="rawMqtt"	) {					 
+		$values[$valeur]	= $val1->{'val'};
+		$ens=[];
+		}} 
+return $values;}
 ?>
