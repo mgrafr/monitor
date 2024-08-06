@@ -239,8 +239,8 @@ $.ajax({
     url: "ajax.php",
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
-   
-								worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);
+   								/* //pour page custom worx
+								worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);*/
 		
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
 		if (val.maj_date=='0'){
