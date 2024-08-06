@@ -10,7 +10,7 @@ version : php8.3-ssh2 pour Debian 12
 
 19.3 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 3.1.0**
+**La version stable actuelle est 3.2.0**
 
 19.3.1 Releases
 ===============
