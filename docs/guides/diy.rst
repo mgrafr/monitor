@@ -260,7 +260,24 @@ Pour envoyer à la BD le débit : script lua "export_sql"
 
 |image949|
 
-17.2 Extension Pompes perisaltiques pour réguler PH et REDOX
+17.2 monitoring pour spa, réalisation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pour les mesures :
+-	PH
+-	Redox
+-	Température de l’eau
+-	Débit de la filtration
+-	Température de l’air
+
+inspiré de https://easydomoticz.com/forum/viewtopic.php?t=11590
+
+|image1438|
+
+17.2.1 Matériel
+===============
+en cours de rédaction
+
+17.3 Extension Pompes perisaltiques pour réguler PH et REDOX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 *en cours de rédaction*
 
@@ -323,4 +340,6 @@ Pour envoyer à la BD le débit : script lua "export_sql"
    :width: 469px
 .. |image949| image:: ../media/image949.webp
    :width: 700px
+.. |image1438| image:: ../img/image1438.webp
+   :width: 563px
 
