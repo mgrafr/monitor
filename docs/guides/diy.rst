@@ -297,7 +297,6 @@ En plus d’un coffret électrique étanche,
    |image1441|
 
    https://www.ti.com/lit/ds/symlink/ads1115.pdf?ts=1669880254595&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FADS1115%253Futm_source%253Dgoogle%2526utm_medium%253Dcpc%2526utm_campaign%253Dasc-null-null-GPN_EN-cpc-pf-google-eu%2526utm_content%253DADS1115%2526ds_k%253DADS1115%2526DCM%253Dyes%2526gclid%253DEAIaIQobChMIs9Xrz_TX-wIVh6jVCh2PiwwaEAAYASAAEgL8U_D_BwE%2526gclsrc%253Daw.ds
-en cours de rédaction
 
    Large plage d’alimentation : :red:`2,0 V à 5,5 V`
 
@@ -309,6 +308,7 @@ en cours de rédaction
 
   |image1443|
 
+a suivre
 
 17.3 Extension Pompes perisaltiques pour réguler PH et REDOX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
