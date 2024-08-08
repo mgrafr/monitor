@@ -4,7 +4,7 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Ce paragraphe contient différentes parties qui peuvent être indépendantes ou liées suivant le choix de chacun :
 
--	La réalisation d’un boitier électronique de mesures de PH, Redox, Températures, Débit de la filtration, les mesures étant envoyées sur un serveur MQTT;Cette réalisation est décrite sur le site domo-site.fr
+-	La réalisation d’un boitier électronique de mesures de PH, Redox, Températures, Débit de la filtration, les mesures étant envoyées sur un serveur MQTT;Cette réalisation est décrite dans le paragraphe :ref:`17.2 monitoring pour spa, réalisation`
 
 -	La création de capteurs virtuels dans Domoticz qui récupère les valeurs envoyées par le serveur MQTT et les envoie vers la base de données de Monitor ; il envoie également des alertes sur la TV comme pour les poubelles et la fosse septique. 
 
@@ -263,10 +263,15 @@ Pour envoyer à la BD le débit : script lua "export_sql"
 17.2 monitoring pour spa, réalisation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour les mesures :
+
 -	PH
+
 -	Redox
+
 -	Température de l’eau
+
 -	Débit de la filtration
+
 -	Température de l’air
 
 inspiré de https://easydomoticz.com/forum/viewtopic.php?t=11590
@@ -275,7 +280,35 @@ inspiré de https://easydomoticz.com/forum/viewtopic.php?t=11590
 
 17.2.1 Matériel
 ===============
+En plus d’un coffret électrique étanche,
+
+- 1 module NodeMcu V3  et un kit de développement 
+
+- 1 module ADC ADS1115
+
+  |image1439|
+
+  |image1440|
+
+..note::
+
+   ADS1115
+
+   |image1441|
+
+   https://www.ti.com/lit/ds/symlink/ads1115.pdf?ts=1669880254595&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FADS1115%253Futm_source%253Dgoogle%2526utm_medium%253Dcpc%2526utm_campaign%253Dasc-null-null-GPN_EN-cpc-pf-google-eu%2526utm_content%253DADS1115%2526ds_k%253DADS1115%2526DCM%253Dyes%2526gclid%253DEAIaIQobChMIs9Xrz_TX-wIVh6jVCh2PiwwaEAAYASAAEgL8U_D_BwE%2526gclsrc%253Daw.ds
 en cours de rédaction
+
+   Large plage d’alimentation : :red:`2,0 V à 5,5 V`
+
+- 2 modules de contrôle avec interface BNC
+
+   |image1442|
+
+- 1 capteur de débit d’eau
+
+  |image1443|
+
 
 17.3 Extension Pompes perisaltiques pour réguler PH et REDOX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -342,4 +375,13 @@ en cours de rédaction
    :width: 700px
 .. |image1438| image:: ../img/image1438.webp
    :width: 563px
-
+.. |image1439| image:: ../img/image1439.webp
+   :width: 605px
+.. |image1440| image:: ../img/image1440.webp
+   :width: 605px
+.. |image1441| image:: ../img/image1441.webp
+   :width: 605px
+.. |image1442| image:: ../img/image1442.webp
+   :width: 605px
+.. |image1443| image:: ../img/image1443.webp
+   :width: 605px
