@@ -290,7 +290,7 @@ En plus d’un coffret électrique étanche,
 
   |image1440|
 
-..note::
+.. note::
 
    ADS1115
 
