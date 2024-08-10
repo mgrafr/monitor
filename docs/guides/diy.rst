@@ -255,7 +255,7 @@ Pour envoyer à la BD le débit : script lua "export_sql"
 
 |image947|
 
-17.1.4.4. ecran4 , ecran5
+17.1.4.4.a  ecran4 , ecran5
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |image949|
@@ -330,7 +330,11 @@ En plus d’un coffret électrique étanche,
 
 - 1 sonde PH
 
+   |image1450|
+
 - 1 sonde ORP
+
+   |image1451|
 
 - 1 alimentation 230V/12 Volts; elle peut être interne ou externe 
 
@@ -338,6 +342,45 @@ En plus d’un coffret électrique étanche,
 
 17.2.1 Cablâge
 ==============
+Avec les fils Dupont mais pour les sondes de température une résistance est à insérer entre le 3 Volts et le fil de données ;j' ai utilisé des prises aviation pour raccorder les sondes à l'extérieur du boitier , la résistance est soudée ente PLUS et DATA dur l'un des connecteurs.
+
+17.2.1.1 Alimentation des différents composants
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+|image1452| 
+
+17.2.1.2 circuits des es données
+""""""""""""""""""""""""""""""""
+|image1453| 
+
+17.2.1.3 Le firmware 
+""""""""""""""""""""
+- S’assurer que la carte est bien reconnue, connecter la micro USB du NodeMcu à une prise USB du PC
+
+|image1454| 
+
+- Ouvrir le gestionnaire de périphériques
+
+Si le drivers n’est pas reconnu, l’installer ; Noter le port COM et choisir 115200 Bauds
+
+|image1455| 
+
+- Télécharger le firmware
+
+17.2.1.3.a Pour un esp¬8266
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://github.com/letscontrolit/ESPEasy/releases
+
+|image1456| 
+
+Dans ESPEasy_binaries.zip , choisir un fichier pour le firmware:
+
+|image1457| 
+
+17.2.1.3.B Pour un esp¬32
+~~~~~~~~~~~~~~~~~~~~~~~~~
+.. IMPORTANT:: 
+   Pour une liaison série il faut choisir un fichier avec une extension « factory »
 
 à suivre
 
@@ -428,3 +471,18 @@ En plus d’un coffret électrique étanche,
    :width: 270px
 .. |image1449| image:: ../img/image1449.webp
    :width: 294px
+.. |image1450| image:: ../img/image1450.webp
+   :width: 605px
+.. |image1451| image:: ../img/image1451.webp
+   :width: 605px
+.. |image1452| image:: ../img/image1452.webp
+   :width: 605px
+.. |image1453| image:: ../img/image1453.webp
+   :width: 605px
+.. |image1454| image:: ../img/image1454.webp
+   :width: 600px
+.. |image1455| image:: ../img/image1455.webp
+   :width: 605px
+.. |image1456| image:: ../img/image1456.webp
+   :width: 605px
+
