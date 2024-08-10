@@ -308,7 +308,38 @@ En plus d’un coffret électrique étanche,
 
   |image1443|
 
-a suivre
+- Des fils Dupont
+
+  |image1444|
+
+- 1 résistance de 4,7kὨ  |image1445|
+
+.. note::
+
+   Le bus à 1 fil (1 Wire) nécessite que le signal de commande soit tiré vers le haut afin que le périphérique maître puisse le tirer vers le bas pour demander des données; le périphérique esclave peut le tirer vers le bas pour donner les données; Ceci permet d'installer plusieurs appareils sur le même « 1 wire ».
+
+- 2 sondes de température
+ 
+   . pour la température de l'eau
+
+      |image1446|
+
+   . pour la température de l'air
+
+      |image1447|
+
+- 1 sonde PH
+
+- 1 sonde ORP
+
+- 1 alimentation 230V/12 Volts; elle peut être interne ou externe 
+
+  |image1448|  |image1449| 
+
+17.2.1 Cablâge
+==============
+
+à suivre
 
 17.3 Extension Pompes perisaltiques pour réguler PH et REDOX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -385,3 +416,15 @@ a suivre
    :width: 605px
 .. |image1443| image:: ../img/image1443.webp
    :width: 605px
+.. |image1444| image:: ../img/image1444.webp
+   :width: 605px
+.. |image1445| image:: ../img/image1445.webp
+   :width: 150px
+.. |image1446| image:: ../img/image1446.webp
+   :width: 605px
+.. |image1447| image:: ../img/image1447.webp
+   :width: 605px
+.. |image1448| image:: ../img/image1448.webp
+   :width: 270px
+.. |image1449| image:: ../img/image1449.webp
+   :width: 294px
