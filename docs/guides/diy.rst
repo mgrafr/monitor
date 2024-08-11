@@ -402,11 +402,30 @@ Lancer flash_download_tools
 
 |image1461| 
 
+|image1463| 
+
+Appuyer sur le bouton Flash du NodeMcu et ensuite sur START du programme avant de relacher la pression sur le bouton.
+
+Avec  kit de développement NodeMCU, c’est facile la connexion USB peut tirer GPIO0 vers le bas en affirmant DTR et réinitialiser la carte en affirmant RTS.
+
+|image1464| 
+
+|image1465| 
+
 17.2.3.2 NodeMcu avec esp 32
 """"""""""""""""""""""""""""
 Lancer flash_download_tools 
 
 |image1462| 
+
+|image1466| 
+
+**Apputer sur START et sur BOOT du esp32**
+
+|image1467| 
+
+17.2.4 Programmation de l'ESP
+=============================
 
 à suivre
 
@@ -523,3 +542,13 @@ Lancer flash_download_tools
    :width: 431px
 .. |image1462| image:: ../img/image1462.webp
    :width: 224px
+.. |image1463| image:: ../img/image1463.webp
+   :width: 425px
+.. |image1464| image:: ../img/image1464.webp
+   :width: 372px
+.. |image1465| image:: ../img/image1465.webp
+   :width: 306px
+.. |image1466| image:: ../img/image1466.webp
+   :width: 429px
+.. |image1467| image:: ../img/image1467.webp
+   :width: 372px
