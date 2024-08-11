@@ -396,6 +396,18 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 
 |image1460| 
 
+17.2.3.1 NodeMcu avec esp 8266
+""""""""""""""""""""""""""""""
+Lancer flash_download_tools 
+
+|image1461| 
+
+17.2.3.2 NodeMcu avec esp 32
+""""""""""""""""""""""""""""
+Lancer flash_download_tools 
+
+|image1462| 
+
 à suivre
 
 17.3 Extension Pompes perisaltiques pour réguler PH et REDOX
@@ -502,8 +514,12 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 .. |image1457| image:: ../img/image1457.webp
    :width: 605px
 .. |image1458| image:: ../img/image1458.webp
-   :width:521px
+   :width: 521px
 .. |image1459| image:: ../img/image1459.webp
-   :width:581px
+   :width: 581px
 .. |image1460| image:: ../img/image1460.webp
-   :width:605px
+   :width: 605px
+.. |image1461| image:: ../img/image1461.webp
+   :width: 431px
+.. |image1462| image:: ../img/image1462.webp
+   :width: 224px
