@@ -340,20 +340,20 @@ En plus d’un coffret électrique étanche,
 
   |image1448|  |image1449| 
 
-17.2.1 Cablâge
-==============
+17.2.2 Cablâge et connexion au PC
+=================================
 Avec les fils Dupont mais pour les sondes de température une résistance est à insérer entre le 3 Volts et le fil de données ;j' ai utilisé des prises aviation pour raccorder les sondes à l'extérieur du boitier , la résistance est soudée ente PLUS et DATA dur l'un des connecteurs.
 
-17.2.1.1 Alimentation des différents composants
+17.2.2.1 Alimentation des différents composants
 """""""""""""""""""""""""""""""""""""""""""""""
 
 |image1452| 
 
-17.2.1.2 circuits des es données
-""""""""""""""""""""""""""""""""
+17.2.2.2 circuits des données
+"""""""""""""""""""""""""""""
 |image1453| 
 
-17.2.1.3 Le firmware 
+17.2.2.3 Le firmware 
 """"""""""""""""""""
 - S’assurer que la carte est bien reconnue, connecter la micro USB du NodeMcu à une prise USB du PC
 
@@ -377,10 +377,24 @@ Dans ESPEasy_binaries.zip , choisir un fichier pour le firmware:
 
 |image1457| 
 
-17.2.1.3.B Pour un esp¬32
+17.2.1.3.b Pour un esp¬32
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 .. IMPORTANT:: 
    Pour une liaison série il faut choisir un fichier avec une extension « factory »
+
+|image1458| 
+
+17.2.3 Flashage de l'ESP
+========================
+Choisir un programme dans ESPEasy_dist.zip,
+
+|image1459|
+
+ j’ai l’habitude d’utiliser Expressif_flash_download_tools : 
+
+https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=14
+
+|image1460| 
 
 à suivre
 
@@ -485,4 +499,11 @@ Dans ESPEasy_binaries.zip , choisir un fichier pour le firmware:
    :width: 605px
 .. |image1456| image:: ../img/image1456.webp
    :width: 605px
-
+.. |image1457| image:: ../img/image1457.webp
+   :width: 605px
+.. |image1458| image:: ../img/image1458.webp
+   :width:521px
+.. |image1459| image:: ../img/image1459.webp
+   :width:581px
+.. |image1460| image:: ../img/image1460.webp
+   :width:605px
