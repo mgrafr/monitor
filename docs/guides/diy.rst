@@ -426,6 +426,27 @@ Lancer flash_download_tools
 
 17.2.4 Programmation de l'ESP
 =============================
+- Débrancher le NodeMcu du PC et mettez le sous tension avec l’alimentation 
+
+- Connecter le PC sur le point d’accès ESP-Easy  (la clé est affiché ci-dessous):
+
+  |image1468| 
+
+- Le PC est connecté sur 192.168.4.1 
+
+   |image1469| 
+
+- Choisir un routeur et indiquer le mot de passe
+
+  |image1470| 
+
+  |image1471| 
+
+17.2.4.1 Choisir un contrôleur
+""""""""""""""""""""""""""""""
+j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet les données, c’est Domticz-MQTT qu’i faut choisir et l’adresse IP du serveur MQTT
+
+|image1472| 
 
 à suivre
 
@@ -552,3 +573,13 @@ Lancer flash_download_tools
    :width: 429px
 .. |image1467| image:: ../img/image1467.webp
    :width: 372px
+.. |image1468| image:: ../img/image1468.webp
+   :width: 369px
+.. |image1469| image:: ../img/image1469.webp
+   :width: 569px
+.. |image1470| image:: ../img/image1470.webp
+   :width: 605px
+.. |image1471| image:: ../img/image1471.webp
+   :width: 605px
+.. |image1472| image:: ../img/image1472.webp
+   :width: 605px
