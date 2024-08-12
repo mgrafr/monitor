@@ -448,6 +448,15 @@ j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet le
 
 |image1472| 
 
+|image1473| 
+
+|image1474|
+
+|image1475| 
+
+17.2.4.2 Choisir la configuration
+"""""""""""""""""""""""""""""""""
+
 à suivre
 
 17.3 Extension Pompes perisaltiques pour réguler PH et REDOX
@@ -582,4 +591,10 @@ j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet le
 .. |image1471| image:: ../img/image1471.webp
    :width: 605px
 .. |image1472| image:: ../img/image1472.webp
+   :width: 605px
+.. |image1473| image:: ../img/image1473.webp
+   :width: 605px
+.. |image1474| image:: ../img/image1474.webp
+   :width: 605px
+.. |image1475| image:: ../img/image1475.webp
    :width: 605px
