@@ -456,6 +456,35 @@ j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet le
 
 17.2.4.2 Choisir la configuration
 """""""""""""""""""""""""""""""""
+|image1476| 
+
+17.2.4.3 Ajouter les dispositifs
+""""""""""""""""""""""""""""""""
+|image1477| 
+
+- Enregistrer le 1er dispositif : 
+
+.. admonition:: **la mesure du PH par le ADS1115==
+
+   |image1478| 
+
+   |image1479| 
+
+   |image1480|
+
+   .. warning::
+
+      un message apparaitra dans log de Domoticz car le capteur n’existe pas mais cela permet de contrôler le bon fonctionnement de MQTT
+
+      |image1482|
+
+   - Nombre de décimales et valeur de la données 
+
+    |image1481|
+
+.. admonition:: **La mesure REDOX par le ADS1115**
+
+    |image1483|
 
 à suivre
 
@@ -597,4 +626,20 @@ j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet le
 .. |image1474| image:: ../img/image1474.webp
    :width: 605px
 .. |image1475| image:: ../img/image1475.webp
+   :width: 605px
+.. |image1476| image:: ../img/image1476.webp
+   :width: 605px
+.. |image1477| image:: ../img/image1477.webp
+   :width: 605px
+.. |image1478| image:: ../img/image1478.webp
+   :width: 605px
+.. |image1479| image:: ../img/image1479.webp
+   :width: 605px
+.. |image1480| image:: ../img/image1480.webp
+   :width: 605px
+.. |image1481| image:: ../img/image1481.webp
+   :width: 605px
+.. |image1482| image:: ../img/image1482.webp
+   :width: 543px
+.. |image1483| image:: ../img/image1483.webp
    :width: 605px
