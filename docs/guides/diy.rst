@@ -486,6 +486,21 @@ j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet le
 
     |image1483|
 
+.. admonition:: **Installer la sonde de température d’eau : DS18b20**
+
+   https://espeasy.readthedocs.io/en/latest/Plugin/P004_DS18b20.html
+
+.. admonition:: **Installer la sonde de température extérieur : DS18b20**
+
+    |image1484|
+
+.. admonition:: **Installer le capteur de débit**
+
+   https://espeasy.readthedocs.io/en/latest/Plugin/P003.html
+   https://espeasy.readthedocs.io/en/latest/Plugin/P003_YFS401.html#p003-yfs401-page
+
+    |image1485|
+
 à suivre
 
 17.3 Extension Pompes perisaltiques pour réguler PH et REDOX
@@ -642,4 +657,8 @@ j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet le
 .. |image1482| image:: ../img/image1482.webp
    :width: 543px
 .. |image1483| image:: ../img/image1483.webp
+   :width: 605px
+.. |image1484| image:: ../img/image1484.webp
+   :width: 605px
+.. |image1485| image:: ../img/image1485.webp
    :width: 605px
