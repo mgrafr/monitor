@@ -820,7 +820,11 @@ Le HTML :
       setTimeout('date_heure("'+id+'");','1000');
       return true;}
 
-|image166|
+|image1486|
+
+.. warning::
+
+   Pour la fonction custom_js appelé dans la fonction devices_plan voir le paragraphe consacré aux pages perso.
 
 .. note::
    Pour que les icones sur la page d’accueil soient affichées, il faut enregistrer les variables dans la base de Données Maria DB,
@@ -1986,8 +1990,6 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 650px  
 .. |image165| image:: ../media/image165.webp
    :width: 602px  
-.. |image166| image:: ../media/image166.webp
-   :width: 602px  
 .. |image167| image:: ../media/image167.webp
    :width: 662px  
 .. |image168| image:: ../media/image168.webp
@@ -2201,4 +2203,6 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1413| image:: ../img/image1413.webp
    :width: 700px
 .. |image1414| image:: ../img/image1414.webp
+   :width: 700px
+.. |image1486| image:: ../img/image1486.webp
    :width: 700px
