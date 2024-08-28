@@ -1546,9 +1546,13 @@ la fonction sql_1($row,$f1,$ser_dom)
 21.14.4 Le Javascript concerné
 ==============================
 
-Pour la mise à jour de la page worx.php, il faut ajouter dans footer.php:
+Pour la mise à jour de la page worx.php, il faut ajouter dans custom/JS.js:
 
 |image1432|
+
+.. note::
+
+   cette fonction est appelée dans footer.php par devices_plan()
 
 le json reçu par Monitor:
 
