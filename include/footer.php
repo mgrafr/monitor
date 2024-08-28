@@ -11,7 +11,6 @@ require_once("fonctions.php");
 				</div>
 			</div>
 		</footer>
-
 <!-- footer end -->
 <!-- JavaScript files placées à la fin du document-->	
 <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
@@ -21,11 +20,10 @@ require_once("fonctions.php");
 <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
 <script src="js/mes_js.js"></script>
 <script src="js/jscolor.min.js"></script>
-
+<script src="custom/js/JS.js"></script>
 
 
 <script>
-
 function maj_mqtt(id_x,state,ind,level=0){console.log('id='+id_x+' state==='+state);
 if (!state) {console.log("erreur-state");return;}										  
 switch (ind) {
@@ -239,8 +237,10 @@ $.ajax({
     url: "ajax.php",
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
-   								/* //pour page custom worx
-								worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);*/
+   
+    if (typeof custom != 'undefined' && custom==1) {custom_js();}	
+
+								//worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);
 		
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
 		if (val.maj_date=='0'){
