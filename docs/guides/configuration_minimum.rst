@@ -826,6 +826,8 @@ Le HTML :
 
    Pour la fonction custom_js appelé dans la fonction devices_plan voir le paragraphe consacré aux pages perso.
 
+   voir un exemple d'utilisation dans la page perso consacré au robot Worx :ref:`21.14.4 Le Javascript concerné`
+
 .. note::
    Pour que les icones sur la page d’accueil soient affichées, il faut enregistrer les variables dans la base de Données Maria DB,
 
