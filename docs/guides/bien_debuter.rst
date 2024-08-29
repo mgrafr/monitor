@@ -1480,6 +1480,22 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
 
 |image102|
 
+0.11.1 javascript d'une page perso
+==================================
+Exemple de fichier JS;js
+
+.. code-block::
+
+   // JavaScript Document
+
+   function custom_js(){
+   if (typeof custom != 'undefined') {worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);}	
+   }
+
+la fonction custom_js est réservée; elle est appelée si besoin dans la fonction devices_plan() (mise à jour des dispositifs)
+
+voir également le § :ref:`21.14.4 Le Javascript concerné`
+
 0.12 API de monitor
 ^^^^^^^^^^^^^^^^^^^
 Pour l'utiliser, dans admin/config.php: :darkblue:`mettre sur true`
