@@ -1482,7 +1482,7 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
 
 0.11.1 javascript d'une page perso
 ==================================
-Exemple de fichier JS;js
+Exemple de fichier custom/JS.js
 
 .. code-block::
 
@@ -1494,7 +1494,7 @@ Exemple de fichier JS;js
 
 la fonction custom_js est réservée; elle est appelée si besoin dans la fonction devices_plan() (mise à jour des dispositifs)
 
-voir également le § :ref:`21.14.4 Le Javascript concerné`
+voir également les § :ref:`21.14.4 Le Javascript concerné` et :ref:`1.3.5.2 Quelques infos supplémentaires`
 
 0.12 API de monitor
 ^^^^^^^^^^^^^^^^^^^
