@@ -490,6 +490,12 @@ j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet le
 
    https://espeasy.readthedocs.io/en/latest/Plugin/P004_DS18b20.html
 
+    |image1487|
+
+   .. warning::
+
+      Une fois la sonde programmée la désactiver et la débrancher. :red:`Il faut procéder ainsi afin que chaque sonde obtienne automatiquement sa propre adresse`
+
 .. admonition:: **Installer la sonde de température extérieur : DS18b20**
 
     |image1484|
@@ -661,4 +667,6 @@ j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet le
 .. |image1484| image:: ../img/image1484.webp
    :width: 605px
 .. |image1485| image:: ../img/image1485.webp
+   :width: 605px
+.. |image1487| image:: ../img/image1487.webp
    :width: 605px
