@@ -478,6 +478,12 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 ^^^^^^^^^^^^^^^^^^^^
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/47
 
+*Installation dans un CT Proxmox* , mon installation actuelle
+
+- bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/mqtt.sh)"
+
+|image1492| 
+
 .. note:: *Si la mise à jour de monitor par MQTT-websockets n'est pas activée, comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.*
 
 21.6.1 Certificats 
