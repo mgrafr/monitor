@@ -336,8 +336,10 @@ Mise à jour vers une nouvelle version:
  
 |image1041|
 
-21.4 Zigbee
-^^^^^^^^^^^
+21.4 Zigbee & Matter
+^^^^^^^^^^^^^^^^^^^^
+MatterBridge est en cour de développement
+
 21.4.1 Installation de zigbee2mqtt
 ==================================
 
@@ -436,6 +438,18 @@ Pour utiliser la télécommande directement avec zigbee2mqtt:
 |image1408|
 
 **la télécommande fonctionnera même avec Zigbee2MQTT en panne.**
+
+21.4.4 installation de MatterBridge
+===================================
+Dans un conteneur Proxmox LXC:
+
+Sous Shell de pve (https://tteck.github.io/Proxmox/?id=ioBroker#matterbridge-lxc) :
+
+.. code-block::
+
+   bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/matterbridge.sh)"
+
+|image1488|
 
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
@@ -1870,3 +1884,5 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 650px
 .. |image1437| image:: ../img/image1437.webp
    :width: 533px
+.. |image1488| image:: ../img/image1488.webp
+   :width: 700px
