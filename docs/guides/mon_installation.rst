@@ -1913,3 +1913,7 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 700px
 .. |image1490| image:: ../img/image1490.webp
    :width: 700px
+.. |image1491| image:: ../img/image1491.webp
+   :width: 700px
+.. |image1492| image:: ../img/image1492.webp
+   :width: 700px
