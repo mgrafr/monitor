@@ -457,11 +457,15 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 
 |image1489|
 
+21.4.5.1  Paramètres
+""""""""""""""""""""
+|image1490| 
+
 .. note:: 
 
    si cette erreur, modifier la version du protocole , ici version 4
 
-   |image1490| 
+   |image1491| 
 
 
 21.5 Asterisk (sip)
