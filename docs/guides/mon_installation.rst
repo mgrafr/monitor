@@ -451,6 +451,12 @@ Sous Shell de pve (https://tteck.github.io/Proxmox/?id=ioBroker#matterbridge-lxc
 
 |image1488|
 
+21.4.5 ajout du plugin zigbee2mqtt
+==================================
+https://github.com/Luligu/matterbridge-zigbee2mqtt
+
+|image1489|
+
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
@@ -1885,4 +1891,6 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 .. |image1437| image:: ../img/image1437.webp
    :width: 533px
 .. |image1488| image:: ../img/image1488.webp
+   :width: 700px
+.. |image1489| image:: ../img/image1488.webp
    :width: 700px
