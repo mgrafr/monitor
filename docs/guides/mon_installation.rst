@@ -457,6 +457,13 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 
 |image1489|
 
+.. note:: 
+
+   si cette erreur, modifier la version du protocole , ici version 4
+
+   |image1490| 
+
+
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
@@ -1892,5 +1899,7 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 533px
 .. |image1488| image:: ../img/image1488.webp
    :width: 700px
-.. |image1489| image:: ../img/image1488.webp
+.. |image1489| image:: ../img/image1489.webp
+   :width: 700px
+.. |image1490| image:: ../img/image1490.webp
    :width: 700px
