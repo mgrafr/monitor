@@ -467,6 +467,9 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 
    |image1491| 
 
+21.4.5.2  Les dispositifs
+"""""""""""""""""""""""""
+|image1493| 
 
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
@@ -1912,8 +1915,10 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 .. |image1489| image:: ../img/image1489.webp
    :width: 700px
 .. |image1490| image:: ../img/image1490.webp
-   :width: 700px
+   :width: 516px
 .. |image1491| image:: ../img/image1491.webp
    :width: 700px
 .. |image1492| image:: ../img/image1492.webp
+   :width: 700px
+.. |image1493| image:: ../img/image1493.webp
    :width: 700px
