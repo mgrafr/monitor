@@ -1526,6 +1526,13 @@ J'ai installé io.broker pour vcréer une page sur monitor cncernant mon robot t
 
 |image1425|
 
+21.13.1 Ajouter un adaptateur en mode CLI 
+=========================================
+
+|image1494|
+
+|image1495|
+
 21.14 Robot tondeuse Landroid Worx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 les infos sont récupérées depuis io.broker; il faut installer l'adaptateur:
@@ -1922,3 +1929,7 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 700px
 .. |image1493| image:: ../img/image1493.webp
    :width: 700px
+.. |image1494| image:: ../img/image1494.webp
+   :width: 700px
+.. |image1495| image:: ../img/image1495.webp
+   :width: 360px
