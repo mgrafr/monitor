@@ -1528,6 +1528,7 @@ J'ai installé io.broker pour vcréer une page sur monitor cncernant mon robot t
 
 21.13.1 Ajouter un adaptateur en mode CLI 
 =========================================
+https://doc.iobroker.net/#en/documentation/tutorial/adapter.md?theadapterlistintheadmin
 
 |image1494|
 
