@@ -3,12 +3,12 @@ session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 require_once('admin/config.php');
 $L0=array();
-if (DOMOTIC!=""){$L0[0]=DOMOTIC;$L0[1]=URLDOMOTIC;$L0[2]=IPDOMOTIC;$L0[3]=USERDOMOTIC;$L0[4]=PWDDOMOTIC;$L0[5]=TOKEN_DOMOTIC;$L0[6]=PORT_API_DOMO;}
-if (DOMOTIC1!=""){$L0[7]=DOMOTIC1;$L0[8]=URLDOMOTIC1;$L0[9]=IPDOMOTIC1;$L0[10]=USERDOMOTIC1;$L0[11]=PWDDOMOTIC1;$L0[12]=TOKEN_DOMOTIC1;$L0[13]=PORT_API_DOMO1;}
-if (DOMOTIC2!=""){$L0[14]=DOMOTIC2;$L0[15]=URLDOMOTIC2;$L0[16]=IPDOMOTIC2;$L0[17]=USERDOMOTIC2;$L0[18]=PWDDOMOTIC2;$L0[19]=TOKEN_DOMOTIC2;$L0[20]=PORT_API_DOMO2;}
-$cle=array_search('DZ',$L0);if ($cle!==false) {$l_dz=$L0[$cle];$L_dz=$L0[$cle+1];$IP_dz=$L0[$cle+2];$USER_dz=$L0[$cle+3];$PWD_dz=$L0[$cle+4];$Token_dz=$L0[$cle+5];$port_api_dz=$L0[$cle+6];}
-$cle=array_search('HA',$L0);if ($cle!==false) {$l_ha=$L0[$cle];$L_ha=$L0[$cle+1];$IP_ha=$L0[$cle+2];$USER_ha=$L0[$cle+3];$PWD_ha=$L0[$cle+4];$Token_ha=$L0[$cle+5];$port_api_ha=$L0[$cle+6];}
-$cle=array_search('IOB',$L0);if ($cle!==false) {$l_iob=$L0[$cle];$L_iob=$L0[$cle+1];$IP_iob=$L0[$cle+2];$USER_iob=$L0[$cle+3];$PWD_iob=$L0[$cle+4];$Token_iob=$L0[$cle+5];$port_api_iob=$L0[$cle+6];}		
+if (DOMOTIC!=""){$L0[0]=DOMOTIC;$L0[1]=URLDOMOTIC;$L0[2]=IPDOMOTIC;$L0[3]=USERDOMOTIC;$L0[4]=PWDDOMOTIC;$L0[5]=TOKEN_DOMOTIC;$L0[6]=PORT_API_DOMO;$L0[7]=PORT_WEBUI_DOMO;}
+if (DOMOTIC1!=""){$L0[8]=DOMOTIC1;$L0[9]=URLDOMOTIC1;$L0[10]=IPDOMOTIC1;$L0[11]=USERDOMOTIC1;$L0[12]=PWDDOMOTIC1;$L0[13]=TOKEN_DOMOTIC1;$L0[14]=PORT_API_DOMO1;$L0[15]=PORT_WEBUI_DOMO1;}
+if (DOMOTIC2!=""){$L0[16]=DOMOTIC2;$L0[17]=URLDOMOTIC2;$L0[18]=IPDOMOTIC2;$L0[19]=USERDOMOTIC2;$L0[20]=PWDDOMOTIC2;$L0[21]=TOKEN_DOMOTIC2;$L0[22]=PORT_API_DOMO2;$L0[23]=PORT_WEBUI_DOMO2;}
+$cle=array_search('DZ',$L0);if ($cle!==false) {$l_dz=$L0[$cle];$L_dz=$L0[$cle+1];$IP_dz=$L0[$cle+2];$USER_dz=$L0[$cle+3];$PWD_dz=$L0[$cle+4];$Token_dz=$L0[$cle+5];$port_api_dz=$L0[$cle+6];$port_webui_dz=$L0[$cle+7];}
+$cle=array_search('HA',$L0);if ($cle!==false) {$l_ha=$L0[$cle];$L_ha=$L0[$cle+1];$IP_ha=$L0[$cle+2];$USER_ha=$L0[$cle+3];$PWD_ha=$L0[$cle+4];$Token_ha=$L0[$cle+5];$port_api_ha=$L0[$cle+6];$port_webui_ha=$L0[$cle+7];}
+$cle=array_search('IOB',$L0);if ($cle!==false) {$l_iob=$L0[$cle];$L_iob=$L0[$cle+1];$IP_iob=$L0[$cle+2];$USER_iob=$L0[$cle+3];$PWD_iob=$L0[$cle+4];$Token_iob=$L0[$cle+5];$port_api_iob=$L0[$cle+6];$port_webui_iob=$L0[$cle+7];}		
 include ("include/fonctions_1.php");//fonction sql_plan
 //
 function send_api_put_request($url, $parameters, $data) {
