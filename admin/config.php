@@ -103,36 +103,38 @@ define('NOTIFICATIONS_PILES','');// nom de la page default: interieur
 define('DOMOTIC', '');//DZ ou HA ou IOB ou "" (non utlisé)
 define('DOMOTIC1', '');//DZ ou HA ou IOB ou ""
 define('DOMOTIC2', '');//DZ ou HA ou IOB ou ""
+// URL HTTPS
+define('URLDZ', 'https://domoticz.DOMAINE');
+define('URLHA', 'https://ha.DOMAINE');
+define('URLIOB', 'https://iobroker.DOMAINE');
 //
 define('IPDOMOTIC', '');//ip 1er serveur Domotique ex:192.168.1.76
-//pour ssh2
 define('USERDOMOTIC', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC', '<mot passe>');//mot passe serveur
-//
 define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
 define('DOMDOMOTIC', 'https://domoticz.DOMAINE.ovh');//domaine
 define('TOKEN_DOMOTIC', '');//TOKEN ou BEARER
 define('PORT_API_DOMO','');//port de l'API éventuel
+define('PORT_WEBUI_DOMO','');//port web UI et dossier éventuel
 //
 define('IPDOMOTIC1', '');//ip 2emme serveur Domotique ex:192.168.1.5
-//pour ssh2
 define('USERDOMOTIC1', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC1', '<mot passe>');//mot passe serveur
-//
 define('URLDOMOTIC1', '');//url ex:http://192.168.1.5:8123/
 define('DOMDOMOTIC1', '');//ex:https://ha.DOMAINE.ovh
 define('TOKEN_DOMOTIC1', '');//TOKEN ou BEARER
 define('PORT_API_DOMO1','');//port de l'API éventuel
+define('PORT_WEBUI_DOMO1','');//port web UI et dossier éventuel
 //
 define('IPDOMOTIC2', '');//ip 2emme serveur Domotique ex:192.168.1.5
-//pour ssh2
 define('USERDOMOTIC2', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC2', '<mot passe>');//mot passe serveur
-//
 define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
 define('DOMDOMOTIC2', '');//ex:https://ha.DOMAINE.ovh
 define('TOKEN_DOMOTIC2', '');//TOKEN ou BEARER
 define('PORT_API_DOMO2','');//port de l'API éventuel
+define('PORT_WEBUI_DOMO2','');//port web UI et dossier éventuel
+//
 //****modules et constantes  complémentaires pour Domoticz
 define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 define('VARTAB', 'admin/connect/string_tableaux.lua');//
