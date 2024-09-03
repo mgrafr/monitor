@@ -1,4 +1,4 @@
-<?php
+ttes<?php
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 // pour les variables de session----------------------
@@ -50,7 +50,8 @@ if (ON_DVR==true) include ("include/dvr.php");
 if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 if (ON_SPA==true) include ("include/spa.php");//spa
 if (ON_HABRIDGE==true) include ("include/habridge.php");//pont hue Alexa
-if (ON_RECETTES==true) include ("include/recettes.php");//monitoring
+if (ON_RECETTES==true) include ("include/recettes.php");//recettes
+if (URLIOB!="") include ("include/iobroker.php");//iobroker
 include ("include/modes_emploi.php");
 # include ("custom/php/worx.php");
 include ("include/footer.php");// fin de la page avec les scrpits JS
