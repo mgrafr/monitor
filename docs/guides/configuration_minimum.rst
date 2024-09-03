@@ -180,6 +180,7 @@ pour Home Assistant l' API monitor peut être  utilisée.
 1.1.3.2 Solution temps réel SSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Le serveur SSE-NodeJS voir § :ref:`21.12 Serveur SSE Node JS`
+
 Le serveur SSE-PHP voir ce § :ref:`18.10 Serveur SSE installé dans Monitor`
 
 Pour SSE-node, l'IP, le port, sont à déclarer dans /admin/config.php.
@@ -213,7 +214,7 @@ voir ce paragraphe concernant le serveur :ref:`18.10 Serveur SSE installé dans 
       <script>
          window.onload = function() {
 	// établir un flux et enregistrer les réponses sur la console
-      var source = new EventSource('/monitor/include/serveur_sse.php');
+      var source = new EventSource('include/serveur_sse.php');
       source.addEventListener('message', function(e) {
       document.getElementById('messages').innerHTML = e.data ;
       donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;console.log(id_x,state);
