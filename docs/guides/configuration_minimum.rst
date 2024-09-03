@@ -183,6 +183,10 @@ Le serveur SSE-NodeJS voir § :ref:`21.12 Serveur SSE Node JS`
 
 Le serveur SSE-PHP voir ce § :ref:`18.10 Serveur SSE installé dans Monitor`
 
+.. note::
+
+   cette solution évite pour l'accès distant la demande d'un certificat pour https
+
 Pour SSE-node, l'IP, le port, sont à déclarer dans /admin/config.php.
 
 Pour SSE-php , indiquer le rafraichissement en secondes.
