@@ -167,7 +167,7 @@ Ajouter les infos de connexion dans admin/config.php, ici sur le 3eme serveur:
     top: 350px;z-index:-20;overflow: auto;
    }
    #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
-   #app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, :red:`#iobroker`{
+   #app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{
     background-color: aquamarine;}
    /* Large devices (small desktops <535) */
    @media (max-width:534px) {#habridgeapp, #iobrokerapp{width: 480px;height: 600px;}}
@@ -195,7 +195,7 @@ si besoin, modifier la hauteur du menu:
 16.4.2 Hôte virtuel dans NGINX
 ==============================
 
-configuration pour le port 80 avant la demande de cerificat Let'sencrypt
+configuration pour le port 80 avant la demande de certificat Let'sencrypt
 
 .. code-block::
 
@@ -216,9 +216,15 @@ configuration pour le port 80 avant la demande de cerificat Let'sencrypt
 16.4.2.1 Demande de certificat avec Cerbot
 """"""""""""""""""""""""""""""""""""""""""
 Pour installer Cerbot , :ref:`21.12.3 Accès distant SSL & HTTP2`
+
 .. code-block::
 
     sudo certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email <xxxxxxxxxx>@orange.fr -d iobroker.<DOMAINE>
+
+confifuration de l'hôte  modifiée par Cerbot:
+
+|image1499|
+
 
 .. |image901| image:: ../media/image901.webp
    :width: 534px
@@ -243,4 +249,6 @@ Pour installer Cerbot , :ref:`21.12.3 Accès distant SSL & HTTP2`
 .. |image1497| image:: ../img/image1497.webp
    :width: 500px
 .. |image1498| image:: ../img/image1498.webp
+   :width: 700px
+.. |image1499| image:: ../img/image1499.webp
    :width: 700px
