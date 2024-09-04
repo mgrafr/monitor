@@ -1,7 +1,5 @@
 16. Ajouter des pages ou des alertes
 ------------------------------------
-*non incluses dans le programme*
-
 16.1 Ajouter un plan (ex : 1er étage)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **créer la page** avec le plan, voir le § :ref:`2. Une 1ere PAGE : LE PLAN INTERIEUR`
@@ -118,6 +116,18 @@ La table "text_image" :
 
 |image913|
 
+16.4 Ajouter une page web io.broker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+une autre solution d'afficher une page si io.broker est installé
+
+|image1496|
+
+https://github.com/iobroker-community-adapters/ioBroker.webui
+
+16.4.1 Ajout de la page dans monitor
+====================================
+|image1497|
+
 .. |image901| image:: ../media/image901.webp
    :width: 534px
 .. |image902| image:: ../media/image902.webp
@@ -136,4 +146,7 @@ La table "text_image" :
    :width: 700px
 .. |image913| image:: ../media/image913.webp
    :width: 503px
-
+.. |image1496| image:: ../img/image1496.webp
+   :width: 250px
+.. |image1497| image:: ../img/image1497.webp
+   :width: 500px
