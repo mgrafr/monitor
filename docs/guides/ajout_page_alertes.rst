@@ -131,8 +131,23 @@ une autre solution d'afficher une page si io.broker est installé.
 16.4.1 Ajout de la page dans monitor
 ====================================
 |image1497|
+
+Ajouter les infos de connexion dans admin/config.php, ici sur le 3eme serveur:
+
+.. code-block::
+
+   define('URLIOB', 'https://iobroker.<DOMAINE>');
+   define('IPDOMOTIC2', '192.168.1.162');//ip 3emme serveur Domotique
+   define('USERDOMOTIC2', '<LOGIN>');//user du serveur,répertoire :home/user
+   define('PWDDOMOTIC2', '<PASS>');//mot passe serveur
+   define('URLDOMOTIC2', 'http://192.168.1.162:8081/');//url ex:http://192.168.1.104:8081/
+   define('TOKEN_DOMOTIC2',""); 
+   define('PORT_API_DOMO2','8093');//port de l'API éventuel
+   define('PORT_WEBUI_DOMO2','8082/webui/');//port web UI et dossier éventuel
+
 16.4.1.1  page include/iobroker.php
 """""""""""""""""""""""""""""""""""
+
 |image1498|
 
 - styles css:
@@ -161,7 +176,7 @@ une autre solution d'afficher une page si io.broker est installé.
 """""""""""""""""""""""""""""""""""""""""""""""
 - ajouter dans index_loc.php:
 
-..code-block::
+.. code-block::
 
    if (URLIOB!="") include ("include/iobroker.php");//iobroker
 
@@ -171,13 +186,39 @@ une autre solution d'afficher une page si io.broker est installé.
 
    <?php if (URLIOB!="") echo '<li class="zz"><a href="#iobroker">Io.broker</a></li>';?>
 
-si besoin, modifierla hauteur du menu:
+si besoin, modifier la hauteur du menu:
 
 .. code-block::
 
    .nav {height: 295px;}
 
+16.4.2 Hôte virtuel dans NGINX
+==============================
 
+configuration pour le port 80 avant la demande de cerificat Let'sencrypt
+
+.. code-block::
+
+    upstream iobroker { 
+    server 192.168.1.162:8082;
+   }
+   server {
+    server_name  iobroker.DOMAINE;
+   location / {
+    proxy_pass http://iobroker/webui/runtime.html;
+     proxy_set_header Host $host;
+        proxy_connect_timeout 30;
+        proxy_send_timeout 30;
+    }
+    listen 80; 
+    }
+ 
+16.4.2.1 Demande de certificat avec Cerbot
+""""""""""""""""""""""""""""""""""""""""""
+Pour installer Cerbot , :ref:`21.12.3 Accès distant SSL & HTTP2`
+.. code-block::
+
+    sudo certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email <xxxxxxxxxx>@orange.fr -d iobroker.<DOMAINE>
 
 .. |image901| image:: ../media/image901.webp
    :width: 534px
