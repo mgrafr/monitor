@@ -1418,6 +1418,10 @@ Affichage de graphique avec jpgraph
  
 |image114|
 
+fonctions.php est le fichier le plus important du serveur; il regroupe toutes les fonctions et organise l'appel des serveurs domotique (Domoticz,Home Assistant et io.broker) indépendamment de l'ordre choisi dans admin/config.php
+
+|image1500|
+
 0.9 Les fichiers Javascript & Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Utilisation de jQuery
@@ -1877,4 +1881,7 @@ function mc(variable,id)
    :width: 650px
 .. |image1426| image:: ../img/image1426.webp
    :width: 700px
+.. |image1500| image:: ../img/image1500.webp
+   :width: 700px
+
 
