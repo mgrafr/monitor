@@ -941,7 +941,7 @@ if (SSE=='php') {echo "
 <script>
     window.onload = function() {
 	// établir un flux et enregistrer les réponses sur la console
-var source = new EventSource('/monitor/include/serveur_sse.php');
+var source = new EventSource('include/serveur_sse.php');
  
 source.addEventListener('message', function(e) {
 document.getElementById('messages').innerHTML = e.data ;
