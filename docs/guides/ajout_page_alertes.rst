@@ -197,6 +197,10 @@ si besoin, modifier la hauteur du menu:
 
 configuration pour le port 80 avant la demande de certificat Let'sencrypt
 
+.. note::
+
+   un domaine et un sous domaine doit être crée chez un hébergeur (OVHcloud est l'un des moins cher avec une extension .ovh) 
+
 .. code-block::
 
     upstream iobroker { 
