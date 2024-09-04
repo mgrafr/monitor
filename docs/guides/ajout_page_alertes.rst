@@ -118,15 +118,66 @@ La table "text_image" :
 
 16.4 Ajouter une page web io.broker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-une autre solution d'afficher une page si io.broker est installé
+une autre solution d'afficher une page si io.broker est installé.
 
-|image1496|
+.. important::
 
-https://github.com/iobroker-community-adapters/ioBroker.webui
+   l'adaptateur webui doit être installé
+
+   |image1496|
+
+   https://github.com/iobroker-community-adapters/ioBroker.webui
 
 16.4.1 Ajout de la page dans monitor
 ====================================
 |image1497|
+16.4.1.1  page include/iobroker.php
+"""""""""""""""""""""""""""""""""""
+|image1498|
+
+- styles css:
+
+.. code-block::
+
+   /* pour iframe , ajout de #iobrokerapp*/
+   #habridgeapp, #iobrokerapp{width: 700px;height: 800px;position: relative;top: 10px;}
+   /* pour la page,  ajout de #iobroker */
+   #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,
+   #murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{
+    width: 100%;
+    height: 1120px;padding: 80px 0;
+    min-height: 100%;
+    position: relative;
+    color: #000;
+    top: 350px;z-index:-20;overflow: auto;
+   }
+   #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
+   #app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, :red:`#iobroker`{
+    background-color: aquamarine;}
+   /* Large devices (small desktops <535) */
+   @media (max-width:534px) {#habridgeapp, #iobrokerapp{width: 480px;height: 600px;}}
+
+16.4.1.2  page index_loc.php,include/header.php
+"""""""""""""""""""""""""""""""""""""""""""""""
+- ajouter dans index_loc.php:
+
+..code-block::
+
+   if (URLIOB!="") include ("include/iobroker.php");//iobroker
+
+- ajouter dans include/header.php:
+
+.. code-block::
+
+   <?php if (URLIOB!="") echo '<li class="zz"><a href="#iobroker">Io.broker</a></li>';?>
+
+si besoin, modifierla hauteur du menu:
+
+.. code-block::
+
+   .nav {height: 295px;}
+
+
 
 .. |image901| image:: ../media/image901.webp
    :width: 534px
@@ -150,3 +201,5 @@ https://github.com/iobroker-community-adapters/ioBroker.webui
    :width: 250px
 .. |image1497| image:: ../img/image1497.webp
    :width: 500px
+.. |image1498| image:: ../img/image1498.webp
+   :width: 700px
