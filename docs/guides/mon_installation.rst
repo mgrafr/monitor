@@ -1614,6 +1614,12 @@ créer des fichiers de configuration s’ils ne sont pas encore créés.
 
    Pour header Strict-Transport-Security, max-age=0 pour désactiver HSTS (HTTP Strict Transport Security).
 
+.. admonition:: **Les paramètres dans admin.0**
+
+   |image1326|
+
+   |image1327|
+
 21.13.2 Ajouter un adaptateur en mode CLI 
 =========================================
 https://doc.iobroker.net/#en/documentation/tutorial/adapter.md?theadapterlistintheadmin
@@ -1958,6 +1964,10 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 494px
 .. |image1324| image:: ../img/image1324.webp
    :width: 650px
+.. |image1326| image:: ../img/image1326.webp
+   :width: 650px
+.. |image1327| image:: ../img/image1327.webp
+   :width: 700px
 .. |image1350| image:: ../img/image1350.webp
    :width: 700px
 .. |image1351| image:: ../img/image1351.webp
