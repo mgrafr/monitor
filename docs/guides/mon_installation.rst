@@ -1526,6 +1526,18 @@ J'ai installé io.broker pour vcréer une page sur monitor cncernant mon robot t
 
 |image1425|
 
+**configuration du courtier io**
+
+Utilisation :
+
+.. code-block::
+
+   iobroker setup first
+
+créer des fichiers de configuration s’ils ne sont pas encore créés.
+
+|image1501|
+
 21.13.1 Ajouter un adaptateur en mode CLI 
 =========================================
 https://doc.iobroker.net/#en/documentation/tutorial/adapter.md?theadapterlistintheadmin
@@ -1934,3 +1946,5 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 700px
 .. |image1495| image:: ../img/image1495.webp
    :width: 360px
+.. |image1501| image:: ../img/image1501.webp
+   :width: 700px
