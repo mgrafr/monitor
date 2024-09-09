@@ -1622,6 +1622,10 @@ voir aussi le § :ref:`16.4.2 Hôte virtuel dans NGINX`
 
    |image1327|
 
+   affichage du navigateur:
+
+   |image1502|
+
 21.13.2 Ajouter un adaptateur en mode CLI 
 =========================================
 https://doc.iobroker.net/#en/documentation/tutorial/adapter.md?theadapterlistintheadmin
@@ -2035,4 +2039,6 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 .. |image1495| image:: ../img/image1495.webp
    :width: 360px
 .. |image1501| image:: ../img/image1501.webp
+   :width: 700px
+.. |image1502| image:: ../img/image1502.webp
    :width: 700px
