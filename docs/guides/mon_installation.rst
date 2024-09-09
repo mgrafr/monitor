@@ -1630,6 +1630,8 @@ voir aussi le § :ref:`16.4.2 Hôte virtuel dans NGINX`
 =========================================
 https://doc.iobroker.net/#en/documentation/tutorial/adapter.md?theadapterlistintheadmin
 
+https://www.iobroker.net/docu/index-98.htm?page_id=3971&lang=de#iobroker-stop
+
 |image1494|
 
 |image1495|
