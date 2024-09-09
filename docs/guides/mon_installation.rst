@@ -1634,6 +1634,14 @@ https://doc.iobroker.net/#en/documentation/tutorial/adapter.md?theadapterlistint
 
 |image1495|
 
+21.13.2.1 Ajouter un 2eme adaptateur admin 
+""""""""""""""""""""""""""""""""""""""""""
+En cas de problème de démarrage ou pôur faire des essais, il est possible, provisoirement( pour limiter lesressources), d'ajouter un admin.1.
+
+:red:`Choisir un port non utilisé`
+
+|image1503|
+
 21.14 Robot tondeuse Landroid Worx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 les infos sont récupérées depuis io.broker; il faut installer l'adaptateur:
@@ -2042,3 +2050,5 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 700px
 .. |image1502| image:: ../img/image1502.webp
    :width: 700px
+.. |image1503| image:: ../img/image1503.webp
+   :width: 598px
