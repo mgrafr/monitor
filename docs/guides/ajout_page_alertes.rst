@@ -194,6 +194,7 @@ si besoin, modifier la hauteur du menu:
 
 16.4.2 Hôte virtuel dans NGINX
 ==============================
+voir aussi le § :ref:`21.13.1 Configuration de l'hôte virtuel NGINX`
 
 configuration pour le port 80 avant la demande de certificat Let'sencrypt
 
