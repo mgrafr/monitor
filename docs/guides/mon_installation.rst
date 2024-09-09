@@ -1540,6 +1540,8 @@ créer des fichiers de configuration s’ils ne sont pas encore créés.
 
 21.13.1 Configuration de l'hôte virtuel NGINX 
 =============================================
+voir aussi le § :ref:`16.4.2 Hôte virtuel dans NGINX`
+
 .. code-block::
 
    server {
