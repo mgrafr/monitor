@@ -230,6 +230,21 @@ confifuration de l'hôte  modifiée par Cerbot:
 
 |image1499|
 
+16.4.3 Interfaces graphique 
+===========================
+16.4.3.1 adaptateur webui
+"""""""""""""""""""""""""
+|image1506|
+
+16.4.3.3 adaptateur vis 2
+"""""""""""""""""""""""""
+.. note::
+
+   en cas d'erreur : **main/vis-views.json Not exists** , supprimer et réinstaller l'adaptateur
+ 
+   |image1504|
+
+|image1505|
 
 .. |image901| image:: ../media/image901.webp
    :width: 534px
@@ -256,4 +271,10 @@ confifuration de l'hôte  modifiée par Cerbot:
 .. |image1498| image:: ../img/image1498.webp
    :width: 700px
 .. |image1499| image:: ../img/image1499.webp
+   :width: 700px
+.. |image1504| image:: ../img/image1504.webp
+   :width: 650px
+.. |image1505| image:: ../img/image1505.webp
+   :width: 700px
+.. |image1506| image:: ../img/image1506.webp
    :width: 700px
