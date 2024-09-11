@@ -136,6 +136,10 @@ Ajouter les infos de connexion dans admin/config.php, ici sur le 3eme serveur:
 
 .. code-block::
 
+   define('URLIOB', array(
+    0 => "https://iobroker.<DOMAINE>",
+    1 => "https://iobweb.<DOMAINE>"  ));
+   ___
    define('URLIOB', 'https://iobroker.<DOMAINE>');
    define('IPDOMOTIC2', '192.168.1.162');//ip 3emme serveur Domotique
    define('USERDOMOTIC2', '<LOGIN>');//user du serveur,répertoire :home/user
@@ -143,7 +147,7 @@ Ajouter les infos de connexion dans admin/config.php, ici sur le 3eme serveur:
    define('URLDOMOTIC2', 'http://192.168.1.162:8081/');//url ex:http://192.168.1.104:8081/
    define('TOKEN_DOMOTIC2',""); 
    define('PORT_API_DOMO2','8093');//port de l'API éventuel
-   define('PORT_WEBUI_DOMO2','8082/webui/');//port web UI et dossier éventuel
+   define('PORT_WEBUI_DOMO2','8082/vis-2/index.html#Page1');//port web UI ou vis 2 et dossier éventuel
 
 16.4.1.1  page include/iobroker.php
 """""""""""""""""""""""""""""""""""
