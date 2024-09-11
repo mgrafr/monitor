@@ -192,9 +192,13 @@ si besoin, modifier la hauteur du menu:
 
    .nav {height: 295px;}
 
-16.4.2 Hôte virtuel dans NGINX
-==============================
+16.4.2 Hôtes virtuels dans NGINX
+================================
 voir aussi le § :ref:`21.13.1 Configuration de l'hôte virtuel NGINX`
+
+.. Important::
+
+   Pour les ports 8081 et 8082, il faut créer 2 sous-domaines, par exemple iobroker.DOMAINE et iobweb.DOMAINE 
 
 configuration pour le port 80 avant la demande de certificat Let'sencrypt
 
@@ -205,12 +209,16 @@ configuration pour le port 80 avant la demande de certificat Let'sencrypt
 .. code-block::
 
     upstream iobroker { 
-    server 192.168.1.162:8082;
+    # ou iobweb
+    server 192.168.1.162:8081;
+    # ou server 192.168.1.162:8082 pour iobweb;
    }
    server {
     server_name  iobroker.DOMAINE;
+   #server_name  iobweb.DOMAINE;
    location / {
-    proxy_pass http://iobroker/webui/runtime.html;
+    proxy_pass http://iobroker;
+   #proxy_pass http://iobweb;
      proxy_set_header Host $host;
         proxy_connect_timeout 30;
         proxy_send_timeout 30;
@@ -222,13 +230,19 @@ configuration pour le port 80 avant la demande de certificat Let'sencrypt
 """"""""""""""""""""""""""""""""""""""""""
 Pour installer Cerbot , :ref:`21.12.3 Accès distant SSL & HTTP2`
 
+Pour les 2 sous domaines (option: -d pour chaque)
+
 .. code-block::
 
-    sudo certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email <xxxxxxxxxx>@orange.fr -d iobroker.<DOMAINE>
+    sudo certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email <xxxxxxxxxx>@orange.fr -d iobroker.<DOMAINE> -d iobweb.<DOMAINE>
 
 confifuration de l'hôte  modifiée par Cerbot:
 
 |image1499|
+
+.. note::
+
+   Concernant Strict-Transport-Security, voir ce § :ref:`21.13.1 Configuration de l’hôte virtuel NGINX`
 
 16.4.3 Interfaces graphique 
 ===========================
