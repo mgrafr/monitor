@@ -106,7 +106,9 @@ define('DOMOTIC2', '');//DZ ou HA ou IOB ou ""
 // URL HTTPS
 define('URLDZ', 'https://domoticz.DOMAINE');
 define('URLHA', 'https://ha.DOMAINE');
-define('URLIOB', 'https://iobroker.DOMAINE');
+define('URLIOB', array(
+    0 => "https://iobroker..DOMAINE",
+    1 => "https://iobweb..DOMAINE"  ));
 //
 define('IPDOMOTIC', '');//ip 1er serveur Domotique ex:192.168.1.76
 define('USERDOMOTIC', '<user>');//user du serveur,répertoire :home/user
@@ -124,7 +126,7 @@ define('URLDOMOTIC1', '');//url ex:http://192.168.1.5:8123/
 define('DOMDOMOTIC1', '');//ex:https://ha.DOMAINE.ovh
 define('TOKEN_DOMOTIC1', '');//TOKEN ou BEARER
 define('PORT_API_DOMO1','');//port de l'API éventuel
-define('PORT_WEBUI_DOMO1','');//port web UI et dossier éventuel
+define('PORT_WEBUI_DOMO1','');//port web UI ou vis 2 et dossier éventuel
 //
 define('IPDOMOTIC2', '');//ip 2emme serveur Domotique ex:192.168.1.5
 define('USERDOMOTIC2', '<user>');//user du serveur,répertoire :home/user
