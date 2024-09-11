@@ -1538,79 +1538,59 @@ créer des fichiers de configuration s’ils ne sont pas encore créés.
 
 |image1501|
 
-21.13.1 Configuration de l'hôte virtuel NGINX 
-=============================================
-voir aussi le § :ref:`16.4.2 Hôte virtuel dans NGINX`
+21.13.1 Configuration des hôtes virtuels NGINX 
+==============================================
+voir aussi le § :ref:`16.4.2 Hôtes virtuels dans NGINX`
 
-.. code-block::
+.. admonition:: **VirtualHost port 8081**
+   .. code-block::
 
-   server {
-    server_name  iobroker.la-truffiere.ovh;
-   location / {
-
-     proxy_pass http://192.168.1.162:8081/;
-     proxy_set_header Host $host;
-     proxy_connect_timeout 30;
-     proxy_send_timeout 30;
-   #WebSocket support
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade"; 
-    proxy_http_version 1.1;
-   #--------------------
-     #proxy_set_header   Connection $connection_upgrade;
+      server {
+      server_name  iobroker.la-truffiere.ovh;
+      location / {
+      #proxy_hide_header X-Frame-Options;
+      add_header Access-Control-Allow-Origin *;
+      add_header 'Access-Control-Allow-Methods' 'GET, POST';
+      proxy_pass http://192.168.1.162:8081/;
+      proxy_set_header Host $host;
+      proxy_connect_timeout 30;
+      proxy_send_timeout 30;
+      #WebSocket support
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+      proxy_http_version 1.1;
+      #--------------------
       proxy_cache off;
       proxy_cache_bypass $http_upgrade;
       proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header   X-Forwarded-Proto $scheme;
-
-     }
-   location /ioBrokerWeb/ {
-    proxy_pass http://192.168.1.162:8082/;
-     proxy_set_header Host $host;
-        proxy_connect_timeout 30;
-        proxy_send_timeout 30;
-        proxy_http_version 1.1;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $http_connection;
       }
-   location /ioBrokerAPI/ {
-    proxy_pass http://192.168.1.162:8093/;
-     proxy_set_header Host $host;
-        proxy_connect_timeout 30;
-        proxy_send_timeout 30;
-        proxy_http_version 1.1;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $http_connection;
-      }
-
       listen 443 ssl; # managed by Certbot
       ssl_certificate /etc/letsencrypt/live/iobroker.la-truffiere.ovh/fullchain.pem; # managed by Certbot
       ssl_certificate_key /etc/letsencrypt/live/iobroker.la-truffiere.ovh/privkey.pem; # managed by Certbot
       include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
       ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
       add_header Strict-Transport-Security "max-age=0" always; # managed by Certbot
-    # add_header Strict-Transport-Security "max-age=31536000" always; # managed by Certbot
+      # add_header Strict-Transport-Security "max-age=31536000" always; # managed by Certbot
 
-    ssl_trusted_certificate /etc/letsencrypt/live/iobroker.la-truffiere.ovh/chain.pem; # managed by Certbot
-    ssl_stapling on; # managed by Certbot
-    ssl_stapling_verify on; # managed by Certbot
-    }
-   server {
-    if ($host = iobroker.la-truffiere.ovh) {
+      ssl_trusted_certificate /etc/letsencrypt/live/iobroker.la-truffiere.ovh/chain.pem; # managed by Certbot
+      ssl_stapling on; # managed by Certbot
+      ssl_stapling_verify on; # managed by Certbot
+
+      }
+      server {
+      if ($host = iobroker.la-truffiere.ovh) {
         return 301 https://$host$request_uri;
-    } # managed by Certbot
-    server_name  iobroker.la-truffiere.ovh;
-    location / {
-    proxy_pass http://192.168.1.162:8082/;
-    proxy_set_header Host $host;
-    proxy_connect_timeout 30;
-    proxy_send_timeout 30;
-    }
-    listen       80;
-   }
+      } # managed by Certbot
+      server_name  iobroker.la-truffiere.ovh;
+      location / {
+      proxy_pass http://192.168.1.162:8082/;
+      proxy_set_header Host $host;
+      proxy_connect_timeout 30;
+      proxy_send_timeout 30;
+      }
+      listen       80;
+      }
 
 .. important::
 
@@ -1625,6 +1605,47 @@ voir aussi le § :ref:`16.4.2 Hôte virtuel dans NGINX`
    affichage du navigateur:
 
    |image1502|
+
+.. admonition:: **VirtualHost port 8082**
+   .. code-block::
+
+      upstream iobweb {
+      server 192.168.1.162:8082;
+      }
+      server {
+      server_name  iobweb.la-truffiere.ovh;
+      location / {
+      proxy_pass http://iobweb;
+      proxy_set_header Host $host;
+      proxy_connect_timeout 30;
+      proxy_send_timeout 30;
+      }
+      listen 443 ssl; # managed by Certbot
+      ssl_certificate /etc/letsencrypt/live/iobweb.la-truffiere.ovh/fullchain.pem; # managed by Certbot
+      ssl_certificate_key /etc/letsencrypt/live/iobweb.la-truffiere.ovh/privkey.pem; # managed by Certbot
+      include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+      ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+      add_header Strict-Transport-Security "max-age=0" always; # managed by Certbot
+      ssl_trusted_certificate /etc/letsencrypt/live/iobweb.la-truffiere.ovh/chain.pem; # managed by Certbot
+      ssl_stapling on; # managed by Certbot
+      ssl_stapling_verify on; # managed by Certbot
+      }
+      server {
+      if ($host = iobweb.la-truffiere.ovh) {
+        return 301 https://$host$request_uri;
+      } # managed by Certbot
+      server_name  iobweb.la-truffiere.ovh;
+      location / {
+      proxy_pass http://iobweb;
+      proxy_set_header Host $host;
+      proxy_connect_timeout 30;
+      proxy_send_timeout 30;
+      }
+      listen 80;
+
+   affichage dans un navigateur:
+
+   |image1507|
 
 21.13.2 Ajouter un adaptateur en mode CLI 
 =========================================
@@ -2054,3 +2075,5 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 700px
 .. |image1503| image:: ../img/image1503.webp
    :width: 598px
+.. |image1507| image:: ../img/image1507.webp
+   :width: 650px
