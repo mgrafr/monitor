@@ -49,7 +49,7 @@
         states[4]= "Suivre la frontière" ;
         states[5]= "Recherche de domicile" ;
         states[6]= "Recherche de la frontière" ;
-        states[7]= "Tondre" ;
+        states[7]= "Tonte" ;
         states[8]= "Levé" ;
         states[9]= "Piégé" ;
         states[10]= "Lame bloquée" ;
