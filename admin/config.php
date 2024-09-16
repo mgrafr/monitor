@@ -135,7 +135,7 @@ define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
 define('DOMDOMOTIC2', '');//ex:https://ha.DOMAINE.ovh
 define('TOKEN_DOMOTIC2', '');//TOKEN ou BEARER
 define('PORT_API_DOMO2','');//port de l'API éventuel
-define('PORT_WEBUI_DOMO2','');//port web UI et dossier éventuel
+define('PORT_WEBUI_DOMO2','');//port web UI et dossier éventuel ex: 8082/vis-2/index.html
 //
 //****modules et constantes  complémentaires pour Domoticz
 define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
