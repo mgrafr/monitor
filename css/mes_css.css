@@ -196,7 +196,7 @@ a:link, a:visited {
 #meteo {
 	background-color: #4f9ff4;}
 #retour{top:200px;}
-
+.sos {position:relative;top: -220px;left: 50px;width:40px;background-color: red;}
 .navbar-right{margin-right: 0;}
 
 .banner-caption h1 {
