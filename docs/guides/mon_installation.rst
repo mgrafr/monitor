@@ -1522,7 +1522,7 @@ installé dans un conteneur LXC avec :darkblue:`https://tteck.github.io/Proxmox/
 
 Pour réupérer des informations ou envoyer une commande Io.broker est plus facile que Home Hssistant; il existe de nombreux adaptateurs l'équivalent des intégrations ou des plugins de Domoticz;
 
-J'ai installé io.broker pour vcréer une page sur monitor cncernant mon robot tondeuse Worx Landroid: voir ce § :ref:`21.14 Robot tondeuse Landroid Worx`
+J'ai installé io.broker pour créer une page sur monitor cncernant mon robot tondeuse Worx Landroid: voir ce § :ref:`21.14 Robot tondeuse Landroid Worx`
 
 |image1425|
 
@@ -1543,6 +1543,7 @@ créer des fichiers de configuration s’ils ne sont pas encore créés.
 voir aussi le § :ref:`16.4.2 Hôtes virtuels dans NGINX`
 
 .. admonition:: **VirtualHost port 8081**
+
    .. code-block::
 
       server {
@@ -1607,6 +1608,7 @@ voir aussi le § :ref:`16.4.2 Hôtes virtuels dans NGINX`
    |image1502|
 
 .. admonition:: **VirtualHost port 8082**
+
    .. code-block::
 
       upstream iobweb {
@@ -1664,6 +1666,14 @@ En cas de problème de démarrage ou pôur faire des essais, il est possible, pr
 :red:`Choisir un port non utilisé`
 
 |image1503|
+
+21.13.3 Résoudre des érreurs
+============================
+21.13.3.1 please modify system.adaptater
+""""""""""""""""""""""""""""""""""""""""
+|image1508|
+
+|image1509|
 
 21.14 Robot tondeuse Landroid Worx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2077,3 +2087,7 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 598px
 .. |image1507| image:: ../img/image1507.webp
    :width: 650px
+.. |image1508| image:: ../img/image1508.webp
+   :width: 700px
+.. |image1509| image:: ../img/image1509.webp
+   :width: 385px
