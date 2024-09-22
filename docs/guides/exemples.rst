@@ -175,7 +175,45 @@ Création d'une automation pour envoyer le SMS (seul un changement d'état se pr
 
    Voir le § :ref:`13.6.2 émission SMS` pour des explications concernant le script sms_dz.py (utilisé aussi par Domoticz)
 
-15.1.2.2 Utilisation du bouton dans Monitor 
+15.1.2.3 Utilisation du bouton dans io.broker 
+"""""""""""""""""""""""""""""""""""""""""""""
+
+.. important::
+
+   J'utilise les mêmes scripts python décrits précédemment aussi python3 et pip(si besoin) doivent être installés.
+
+   Sous debian 12 , pour verifier la version installée à l'installation: 
+
+   .. code-block::
+
+      python3 --version
+
+    pour installer pip:
+
+   .. code-block::
+
+     apt install python3-pip -y 
+
+   Des modules doivent aussi avoir été installés:
+
+   .. code-block::
+
+      import requests , time ,json, os, chardet, shutil
+      from periphery import Serial
+      import importlib
+
+   Sous debian 12 periphery ne doit pas être installé avec Pip:
+
+   .. code-block::
+
+      apt-get install python3-periphery
+
+   |image1511|
+
+      
+
+
+15.1.2.4 Utilisation du bouton dans Monitor 
 """""""""""""""""""""""""""""""""""""""""""
 
 |image119|
@@ -385,3 +423,5 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 300px
 .. |image1386| image:: ../img/image1386.webp
    :width: 550px
+.. |image1511| image:: ../img/image1511.webp
+   :width: 600px
