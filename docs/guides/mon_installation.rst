@@ -1675,6 +1675,10 @@ En cas de problème de démarrage ou pôur faire des essais, il est possible, pr
 
 |image1509|
 
+Faire de même pour eventlist:
+
+|image1510|
+
 21.14 Robot tondeuse Landroid Worx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 les infos sont récupérées depuis io.broker; il faut installer l'adaptateur:
@@ -2091,3 +2095,5 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 700px
 .. |image1509| image:: ../img/image1509.webp
    :width: 385px
+.. |image1510| image:: ../img/image1510.webp
+   :width: 284px
