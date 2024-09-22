@@ -13,7 +13,7 @@ Dans Domoticz le dispositif est ajouté au plan :
 |image880|
 
 15.1.1.1 Modifier l’image
-"""""""""""""""""""""""
+"""""""""""""""""""""""""
 -	*On effectue (avec Notepad par exemple) une sauvegarde de l’image* 
 
 |image881|
@@ -497,9 +497,9 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 500px
 .. |image1513| image:: ../img/image1513.webp
    :width: 550px
-.. |image1514 image:: ../img/image1514.webp
+.. |image1514| image:: ../img/image1514.webp
    :width: 400px
-.. |image1515 image:: ../img/image1515.webp
+.. |image1515| image:: ../img/image1515.webp
    :width: 323px
-.. |image1516 image:: ../img/image1516.webp
+.. |image1516| image:: ../img/image1516.webp
    :width: 700px
