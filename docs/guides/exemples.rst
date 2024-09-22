@@ -212,7 +212,7 @@ Création d'une automation pour envoyer le SMS (seul un changement d'état se pr
    
    |image1512|
 
-   Sous debian 12 periphery peut être installé avec apt ou avec pip; si il est installé avec apt il devra tout de m^me être installé dans l'environnement.
+   Sous debian 12 periphery peut être installé avec apt ou avec pip; si il est installé avec apt il devra tout de même être installé dans l'environnement.
 
    .. code-block::
 
@@ -221,6 +221,61 @@ Création d'une automation pour envoyer le SMS (seul un changement d'état se pr
    |image1511|
 
    |image1513|
+
+15.1.2.3.1 script sms_dz modifié 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ce script  a été écrit pour Domoticz aussi les répertoires utilisés peuvent être différent sous io.broker
+
+|image1514|
+
+15.1.2.3.2 script js dans io.broker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. important::
+
+   le moteur de script JS doit être installé
+
+   |image1515|
+
+le script :
+
+.. code-block::
+
+   var sos ='zigbee2mqtt.0.0xa4c138be9958ad84.emergency'/*sos*/;
+   var sos_state = String(getState(sos).val);
+   on({id: sos/*emergency*/}, function (obj)
+   {   if(sos_state == 'false')
+     {
+    const fs = require('fs');
+    var txt = "sos";
+    fs.writeFile('/opt/python/aldz.py', '#!/usr/bin/env python3 -*- coding: utf-8 -*-\nx="'+txt+'"\npriority=1', (err) => {
+	if (err) throw err;
+	console.log('erreur');});
+     }
+     });
+
+|image1516|
+
+15.1.2.3.3 script systemd pour le démarrage automatique
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C'est également le même script que pour Domoticz en adaptant le répertoire utilisé.
+
+.. code-block::
+
+   [Unit]
+   Description=commande dz par sms
+   After=multi-user.target
+   [Service]
+   Type=idle
+   ExecStart=/usr/bin/python3.9 /opt/python/sms_dz.py > /root/sms_dz.log 2>&1
+   [Install]
+   WantedBy=multi-user.target
+
+Pour lancer un service au démarrage, utilisez la commande enable :
+
+.. code-block::
+
+   systemctl enable sms_dz.service
 
 15.1.2.4 Utilisation du bouton dans Monitor 
 """""""""""""""""""""""""""""""""""""""""""
@@ -438,3 +493,9 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 500px
 .. |image1513| image:: ../img/image1513.webp
    :width: 550px
+.. |image1514 image:: ../img/image1514.webp
+   :width: 400px
+.. |image1515 image:: ../img/image1515.webp
+   :width: 323px
+.. |image1516 image:: ../img/image1516.webp
+   :width: 700px
