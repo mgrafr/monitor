@@ -1679,6 +1679,20 @@ Faire de même pour eventlist:
 
 |image1510|
 
+21.13.4 Passer le port série à un 2eme CT non privilégié
+========================================================
+Sur mon installation Domoticz écoute sur le port serie , shell de pve:
+
+|image1517|
+
+Plus d'informations dans ce § :ref:`21.2 Domoticz`
+
+Il suffit de copier les lignes concernées par cette liaison serie dans la config du CT Domoticz et de les coller dans la config du CT iobroker
+
+|image1518|
+
+|image1519|
+
 21.14 Robot tondeuse Landroid Worx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 les infos sont récupérées depuis io.broker; il faut installer l'adaptateur:
@@ -2097,3 +2111,9 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 385px
 .. |image1510| image:: ../img/image1510.webp
    :width: 284px
+.. |image1517| image:: ../img/image1517.webp
+   :width: 500px
+.. |image1518| image:: ../img/image1518.webp
+   :width: 700px
+.. |image1519| image:: ../img/image1519.webp
+   :width: 700px
