@@ -1779,6 +1779,15 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 |image1437|
 
 .. |image1026| image:: ../media/image1026.webp
+   :width: 700px
+.. |image1027| image:: ../media/image1027.webp
+   :width: 425px
+.. |image1028| image:: ../media/image1028.webp
+   :width: 604px
+.. |image1029| image:: ../media/image1029.webp
+   :width: 266px
+.. |image1030| image:: ../media/image1030.webp
+   :width: 304px
 .. |image1033| image:: ../media/image1033.webp
    :width: 571px
 .. |image1034| image:: ../media/image1034.webp
