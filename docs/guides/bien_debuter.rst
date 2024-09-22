@@ -530,9 +530,15 @@ Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce p
 ====================================
 3 serveurs possibles:
 
+Home Assistant et Domoticz sont quelque peu limités dans leurs options de personnalisation, le ioBroker VIS et vis2 peuvent être considérés comme très complexes d'où la création de monitor.
+
+J'ai commencé par utiliser Domoticz et comme je ne suis pas fan des fichiers YAML, je préfère utilisé io.broker avec lequel il est facile d'utiliser également Blocky ou de convertir facilement des scripts Lua en Javascript.
+
+Par rapport à ioBroker, Home Assistant utilise moins de ressources, ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d'utiliser les 3 systèmes.
+
       - Domoticz
       - Home Assistant
-      - Io Broker (en cours de développement)|
+      - Io Broker 
 
 .. note::
 
