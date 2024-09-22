@@ -188,7 +188,7 @@ Création d'une automation pour envoyer le SMS (seul un changement d'état se pr
 
       python3 --version
 
-    pour installer pip:
+   pour installer pip:
 
    .. code-block::
 
@@ -202,7 +202,17 @@ Création d'une automation pour envoyer le SMS (seul un changement d'état se pr
       from periphery import Serial
       import importlib
 
-   Sous debian 12 periphery ne doit pas être installé avec Pip:
+   Sous dbian 12, il faut au préalable créer un environnement virtuel; ici je ke crée dans le répertoire /opt/python dans lequel j'ai déjà installeé les scripts
+
+   .. code-block::
+
+      apt install python3-venv 
+      python3 -m venv env
+      source env/bin/activate 
+   
+   |image1512|
+
+   Sous debian 12 periphery peut être installé avec apt ou avec pip; si il est installé avec apt il devra tout de m^me être installé dans l'environnement.
 
    .. code-block::
 
@@ -210,8 +220,7 @@ Création d'une automation pour envoyer le SMS (seul un changement d'état se pr
 
    |image1511|
 
-      
-
+   |image1513|
 
 15.1.2.4 Utilisation du bouton dans Monitor 
 """""""""""""""""""""""""""""""""""""""""""
@@ -425,3 +434,7 @@ Dans le fichier de configuration, modifier le nom de la table et la nouvelle IP 
    :width: 550px
 .. |image1511| image:: ../img/image1511.webp
    :width: 600px
+.. |image1512| image:: ../img/image1512.webp
+   :width: 500px
+.. |image1513| image:: ../img/image1513.webp
+   :width: 550px
