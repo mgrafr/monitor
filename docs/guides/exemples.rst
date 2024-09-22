@@ -223,13 +223,13 @@ Création d'une automation pour envoyer le SMS (seul un changement d'état se pr
    |image1513|
 
 15.1.2.3.1 script sms_dz modifié 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Ce script  a été écrit pour Domoticz aussi les répertoires utilisés peuvent être différent sous io.broker
 
 |image1514|
 
 15.1.2.3.2 script js dans io.broker
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. important::
 
@@ -257,7 +257,7 @@ le script :
 |image1516|
 
 15.1.2.3.3 script systemd pour le démarrage automatique
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 C'est également le même script que pour Domoticz en adaptant le répertoire utilisé.
 
 .. code-block::
