@@ -263,11 +263,11 @@ C'est également le même script que pour Domoticz en adaptant le répertoire ut
 .. code-block::
 
    [Unit]
-   Description=commande dz par sms
+   Description=commande iob par sms
    After=multi-user.target
    [Service]
    Type=idle
-   ExecStart=/usr/bin/python3.9 /opt/python/sms_dz.py > /root/sms_dz.log 2>&1
+   ExecStart=/usr/bin/python3 /opt/python/sms_dz.py > /root/sms_dz.log 2>&1
    [Install]
    WantedBy=multi-user.target
 
@@ -276,6 +276,10 @@ Pour lancer un service au démarrage, utilisez la commande enable :
 .. code-block::
 
    systemctl enable sms_dz.service
+
+.. note::
+
+   ne démarrer sms_dz que sur un seul system domotique
 
 15.1.2.4 Utilisation du bouton dans Monitor 
 """""""""""""""""""""""""""""""""""""""""""
