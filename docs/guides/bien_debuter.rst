@@ -532,9 +532,15 @@ Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce p
 
 Home Assistant et Domoticz sont quelque peu limités dans leurs options de personnalisation, le ioBroker VIS et vis2 peuvent être considérés comme très complexes d'où la création de monitor.
 
-J'ai commencé par utiliser Domoticz et comme je ne suis pas fan des fichiers YAML, je préfère utilisé io.broker avec lequel il est facile d'utiliser également Blocky ou de convertir facilement des scripts Lua en Javascript.
+La combinaison Monitor + Iobroker offre un affichage très agréable.
 
-Par rapport à ioBroker, Home Assistant utilise moins de ressources, ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d'utiliser les 3 systèmes.
+|image1520|
+
+Il suffit de cliquer sur les lampes pour les allumer ou les éteindre.
+
+J'ai commencé par utiliser Domoticz et comme je ne suis pas fan des fichiers YAML, je préfère utilisé io.broker avec lequel il est facile d'utiliser également Blocky ou de convertir facilement les scripts Lua de Domoticz en Javascript.
+
+Par rapport à ioBroker, Home Assistant utilise moins de ressources, ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d'utiliser les 3 systèmes simultanément.
 
       - Domoticz
       - Home Assistant
@@ -1889,5 +1895,6 @@ function mc(variable,id)
    :width: 700px
 .. |image1500| image:: ../img/image1500.webp
    :width: 700px
-
+.. |image1520| image:: ../img/image1520.webp
+   :width: 520px
 
