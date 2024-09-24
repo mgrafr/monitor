@@ -1242,6 +1242,12 @@ l'adaptateur est installé: |image1523|
 
    |image1527|
 
+   Ajouter une lampe:
+
+   |image1528|
+
+   |image1529|
+
 1.6 Lien avec la base de données SQL
 ====================================
 1.6.1- exemple avec la date de ramassage des poubelles
@@ -2267,4 +2273,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1526| image:: ../img/image1526.webp
    :width: 660px
 .. |image1527| image:: ../img/image1527.webp
+   :width: 700px
+.. |image1528| image:: ../img/image1528.webp
+   :width: 441px
+.. |image1529| image:: ../img/image1529.webp
    :width: 700px
