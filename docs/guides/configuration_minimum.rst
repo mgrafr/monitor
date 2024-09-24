@@ -1049,6 +1049,7 @@ script lua
 
 1.5.2 Liens avec Home Assistant
 -------------------------------
+Les services gérés peuvent être les même que pour Domoticz ; au lieu de Lua les scripts sont écrit en Yaml. 
 
 .. note::
 
@@ -1203,11 +1204,13 @@ Enregistrer le fichier modifier, vérifier la configuration et **redémarrer Hom
 
 1.5.4 Liens avec io.broker
 --------------------------
+Au lieu d'utiliser Lua(Dz) ou Yaml(Ha), on utilise plutôt Javascript 
+
 Avec io.broker , 2 solutions:
 
 - soit on utilise l'API comme pour Domoticz ou Home Assistant
 
-- soit on crée de belles pages avec Vis 2.0 et la mise à jour par web socket est automatique, c'est cette solution à privilégier
+- soit on crée de belles pages avec Vis 2.0 et la mise à jour par web socket est automatique, c'est cette solution qui est à privilégier
 
 1.5.4.1  Utlisation de rest-api
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1226,6 +1229,18 @@ Voir un exemple concret :  :ref:`21.14 Robot tondeuse Landroid Worx`
 1.5.4.2 Utlisation de Vis 2.0
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 l'adaptateur est installé: |image1523|
+
+.. admonition:: **Page pour l'allumage et l'extinction de l'éclairage
+
+    |image1525| 
+
+    |image1524| 
+
+   Ajouter une image d'arrière plan:
+
+   |image1526|
+
+   |image1527|
 
 1.6 Lien avec la base de données SQL
 ====================================
@@ -2245,3 +2260,11 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px
 .. |image1523| image:: ../img/image1523.webp
    :width: 300px
+.. |image1524| image:: ../img/image1524.webp
+   :width: 447px
+.. |image1525| image:: ../img/image1525.webp
+   :width: 700px
+.. |image1526| image:: ../img/image1526.webp
+   :width: 660px
+.. |image1527| image:: ../img/image1527.webp
+   :width: 700px
