@@ -899,8 +899,8 @@ Le fichier Json reçu par monitor après une demande de la fonction devices(plan
 
 |image180|
 
-1.5 liens avec Domoticz ou Home Assistant
-=========================================
+1.5 liens avec Domoticz, Home Assistant ou io.broker
+====================================================
 1.5.1 Liens avec Domoticz
 -------------------------
 
@@ -1200,6 +1200,32 @@ Pour l'alarme de nuit (idx=42), le script sera le même avec comme object_id et 
 Enregistrer le fichier modifier, vérifier la configuration et **redémarrer Home Assistant**
 
 |image1097|
+
+1.5.4 Liens avec io.broker
+--------------------------
+Avec io.broker , 2 solutions:
+
+- soit on utilise l'API comme pour Domoticz ou Home Assistant
+
+- soit on crée de belles pages avec Vis 2.0 et la mise à jour par web socket est automatique, c'est cette solution à privilégier
+
+1.5.4.1  Utlisation de rest-api
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/ioBroker/ioBroker.rest-api
+
+les dispositifs crées automatiquement à partir de la BD
+
+|image1521|
+
+La fonction PHP:
+
+|image1522|
+
+Voir un exemple concret :  :ref:`21.14 Robot tondeuse Landroid Worx`
+
+1.5.4.2 Utlisation de Vis 2.0
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+l'adaptateur est installé: |image1523|
 
 1.6 Lien avec la base de données SQL
 ====================================
@@ -2213,3 +2239,9 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 700px
 .. |image1486| image:: ../img/image1486.webp
    :width: 700px
+.. |image1521| image:: ../img/image1521.webp
+   :width: 700px
+.. |image1522| image:: ../img/image1522.webp
+   :width: 700px
+.. |image1523| image:: ../img/image1523.webp
+   :width: 300px
