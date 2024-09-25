@@ -1248,6 +1248,21 @@ l'adaptateur est installé: |image1523|
 
    |image1529|
 
+   Ajouter la température
+
+   |image1530|
+
+   .. note::
+
+      Pour ajouter quand a eu lieu la dernière mesure
+
+      |image1531|
+
+   Pour ajouter une icone devant la température
+
+  |image1532| 
+
+   
 1.6 Lien avec la base de données SQL
 ====================================
 1.6.1- exemple avec la date de ramassage des poubelles
@@ -2277,4 +2292,10 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image1528| image:: ../img/image1528.webp
    :width: 441px
 .. |image1529| image:: ../img/image1529.webp
+   :width: 700px
+.. |image1530| image:: ../img/image1530.webp
+   :width: 700px
+.. |image1531| image:: ../img/image1531.webp
+   :width: 550px
+.. |image1532| image:: ../img/image1532.webp
    :width: 700px
