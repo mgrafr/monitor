@@ -1679,6 +1679,14 @@ Faire de même pour eventlist:
 
 |image1510|
 
+21.13.3.2 erreur ttl avec l'adaptateur email
+""""""""""""""""""""""""""""""""""""""""""""
+Problèmeavec de nombreux hébergeurs (Yahoo.fr, Gmail, Orange, ..) ; 
+
+mon site est hébergé chez IONOS (1and1) et l'adaptateur fonctionne correctement.
+
+|image1535|
+
 21.13.4 Passer le port série à un 2eme CT non privilégié
 ========================================================
 Sur mon installation Domoticz écoute sur le port serie , shell de pve:
@@ -2126,3 +2134,5 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 700px
 .. |image1519| image:: ../img/image1519.webp
    :width: 700px
+.. |image1535| image:: ../img/image1535.webp
+   :width: 600px
