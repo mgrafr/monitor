@@ -1230,7 +1230,7 @@ Voir un exemple concret :  :ref:`21.14 Robot tondeuse Landroid Worx`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 l'adaptateur est installé: |image1523|
 
-.. admonition:: **Page pour l'allumage et l'extinction de l'éclairage
+.. admonition:: **Allumage et l'extinction de l'éclairage et affichage de la température**
 
     |image1525| 
 
@@ -1260,8 +1260,17 @@ l'adaptateur est installé: |image1523|
 
    Pour ajouter une icone devant la température
 
-  |image1532| 
+  |image1532|
 
+   Résultat en direct
+
+   |image1533|
+
+Affichage dans Monitor:
+
+|image1534|
+
+Voir aussi le § :ref:`21.13 Io.Broker`
    
 1.6 Lien avec la base de données SQL
 ====================================
@@ -2299,3 +2308,7 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 550px
 .. |image1532| image:: ../img/image1532.webp
    :width: 700px
+.. |image1533| image:: ../img/image1533.webp
+   :width: 550px
+.. |image1534| image:: ../img/image1534.webp
+   :width: 500px
