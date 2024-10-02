@@ -372,8 +372,8 @@ return $data;
 // pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
 //
 function devices_plan($plan){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob,$port_api_iob;
-$n=0;$al_bat=0;$p=0;$t1000=1000;	
-	if ($l_dz!=""){	
+$n=0;$al_bat=0;$p=0;$t1000=1000;$serveur_dz_on = false;	
+	if ($l_dz!=""){	$serveur_dz_on = true;
 $L=$L_dz."json.htm?type=command&param=getdevices&plan=".$plan;
 $json_string = file_get_curl($L);
 $parsed_json = json_decode($json_string, true);
@@ -384,19 +384,21 @@ $j=0;while (isset($parsed_json[$j])==true) {
 	$j++;
 	}
  }
-if ($l_ha!=""){
+$serveur_ha_on = false;							 
+if ($l_ha!=""){$serveur_ha_on = true;
 	$result=devices_zone(0);$n=0;//
 	while (isset($result[$n])==true){
 		$parsed_json[$p]=$result[$n];
 		$n++;$p++;}
 			    };
-if ($l_iob!=""){$q=$p;
-	$n=0;$obj_iob=array();
+$serveur_iob_on = false;
+	$n=0;$obj_iob=array();							 
+if ($l_iob!=""){$q=$p;$serveur_iob_on = true;
 				$iob=array();
 	if (str_contains(OBJ_IOBROKER, ",")) {$obj_iob=explode(',',OBJ_IOBROKER);}			
 	else {$obj_iob[0]=OBJ_IOBROKER;}
 $i=0;
-while ($obj_iob[$i]!="") {			
+while ($obj_iob[$i]!="") {	$serveur_iob_on	= true;	
 $L=$IP_iob.":".$port_api_iob."/v1/objects?filter=".$obj_iob[$i]."*&type=device";	
 $json_string = file_get_curl($L);
 $iob_json = json_decode($json_string);
@@ -445,8 +447,8 @@ foreach ($iob_json as $xxx){$Data="";$value=[];
 while (isset($iob[$n])==true){
 	$parsed_json[$q]=$iob[$n];
 	$n++;$q++;}
-	   }									 
-$n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;//return $parsed_json;
+	   }						 
+$n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;
 
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
@@ -483,12 +485,13 @@ if ($t=="") {$t=888;$choix_serveur="0";}}
 		case "iob" :	
 		
 if(array_key_exists('value', $lect_device)) {
-	$array=$lect_device['value'];$lect_device["value"]=$array;
+	$array=$lect_device['value'];
     if(array_key_exists('temperature', $array)) {$lect_device["Temp"]=$array["temperature"];$lect_device["Data"]=$array["temperature"];}//pour IOB
 	if(array_key_exists('air_temperature', $array)) {$lect_device["Temp"]=$array["air_temperature"];}//pour IOB
 	if(array_key_exists('humidity', $array)) {$lect_device["Humidity"]=$array["humidity"];}//pour IOB	
 	if(array_key_exists('relative_humidity', $array)) {$lect_device["Humidity"]=$array["relative_humidity"];}//pour IOB	
 	if(array_key_exists('battery', $array)) {$lect_device["BatteryLevel"]=$array["battery"];}//pour IOB		
+	if(array_key_exists('emergency', $array)) {$lect_device["Data"]=$array["emergency"];}//pour IOB		
 	if(array_key_exists('state', $array)) {$lect_device["Data"]=$array["state"];
 										  if ($lect_device["Data"]==true) {$lect_device["Data"]="On";}
 										  if ($lect_device["Data"]==false) {$lect_device["Data"]="Off";}
@@ -499,6 +502,7 @@ if(array_key_exists('value', $lect_device)) {
 	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}
 	//if(array_key_exists('pause', $array)) {$lect_device["Data"] = $array["pause"];}// pour WORX
 }
+			
 	
 		case "dz" :
 		case "ha" :			
@@ -509,6 +513,7 @@ if (!$lect_device["BatteryLevel"]) $lect_device["BatteryLevel"]=255;
 	if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
     if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
 if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);$lect_device["Fx"]=$periph['F()'];}
+if ($periph['F()']==0) {$lect_device["Fx"]=$periph['F()'];}
 if ($periph['F()']==-1) {$lect_device["Fx"]="lien_variable";}			
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
@@ -571,7 +576,11 @@ break;
 		
 	}
 $n=$n+1;}
-$data[0] = ['jour' => date('d'),
+$data[0] = [
+'serveur_iob' => $serveur_iob_on,
+'serveur_ha' => $serveur_ha_on,
+'serveur_dz' => $serveur_dz_on,	
+'jour' => date('d'),
 'maj_date' => '0'];
 $abat="0";
 if ($al_bat==0) $abat="batterie_forte";
