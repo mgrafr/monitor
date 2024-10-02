@@ -238,7 +238,7 @@ $.ajax({
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
    
-    if (typeof custom != 'undefined' && custom==1) {custom_js();}	
+    if (typeof custom != 'undefined' && custom==1 & pp['serveur_iob'==true]) {custom_js();}	
 
 								//worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);
 		
