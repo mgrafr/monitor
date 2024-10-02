@@ -556,6 +556,10 @@ Par rapport à ioBroker, Home Assistant utilise moins de ressources, ce qui est 
       define('DOMOTIC', 'DZ');//DZ ou HA ou IOB ou "" (non utlisé)
       define('DOMOTIC1', 'HA');//DZ ou HA ou IOB ou ""
       define('DOMOTIC2', '');//DZ ou HA ou IOB ou ""
+
+   le Javascript reçoit ces informations:
+
+   |image1537| 
  
 0.2.3. Premier dispositif
 =========================
@@ -1898,4 +1902,5 @@ function mc(variable,id)
    :width: 700px
 .. |image1520| image:: ../img/image1520.webp
    :width: 520px
-
+.. |image1537| image:: ../img/image1537.webp
+   :width: 425px
