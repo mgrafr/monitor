@@ -1108,7 +1108,13 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	
       . :red:`-1` : indique qu'un lien existe avec une variable à mettre à jour en temps réel; concerne des textes de notification comme pour l'alarme "activer ou désactiver"
 
-|image1348|
+	|image1348|
+
+      . :red:`>0` : N° de la fonction à exécuter
+
+      . :red:`0 ou null` : pas de fonction
+
+        |image1538|
 
 - class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes
 
@@ -1904,3 +1910,5 @@ function mc(variable,id)
    :width: 520px
 .. |image1537| image:: ../img/image1537.webp
    :width: 425px
+.. |image1538| image:: ../img/image1538.webp
+   :width: 533px
