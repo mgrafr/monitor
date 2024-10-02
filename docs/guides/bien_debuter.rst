@@ -1505,7 +1505,8 @@ Exemple de fichier custom/JS.js
    // JavaScript Document
 
    function custom_js(){
-   if (typeof custom != 'undefined') {worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);}	
+   if (typeof custom != 'undefined' & custom==1) {
+	worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);}	
    }
 
 la fonction custom_js est réservée; elle est appelée si besoin dans la fonction devices_plan() (mise à jour des dispositifs)
