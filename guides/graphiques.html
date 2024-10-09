@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6. GRAHIQUES &amp; BASE DE DONNEES &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>6. GRAHIQUES &amp; BASE DE DONNEES &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -108,8 +111,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="grahiques-base-de-donnees">
-<h1>6. GRAHIQUES &amp; BASE DE DONNEES<a class="headerlink" href="#grahiques-base-de-donnees" title="Lien permanent vers ce titre"></a></h1>
+  <section id="grahiques-base-de-donnees">
+<h1>6. GRAHIQUES &amp; BASE DE DONNEES<a class="headerlink" href="#grahiques-base-de-donnees" title="Lien permanent vers cette rubrique"></a></h1>
 <p><a class="reference internal" href="../_images/image523.webp"><img alt="image523" src="../_images/image523.webp" style="width: 650px;" /></a></p>
 <p>Voir ces pages pour installer les scripts :
 -        <a class="reference external" href="http://domo-site.fr/accueil/dossiers/40">http://domo-site.fr/accueil/dossiers/40</a>
@@ -125,8 +128,8 @@
 <li><p>le module python mysql.connector est importé</p></li>
 </ul>
 </div>
-<div class="section" id="les-table-sql">
-<h2>6.1 Les table SQL<a class="headerlink" href="#les-table-sql" title="Lien permanent vers ce titre"></a></h2>
+<section id="les-table-sql">
+<h2>6.1 Les table SQL<a class="headerlink" href="#les-table-sql" title="Lien permanent vers cette rubrique"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p>Pour le nom des tables concernant les graphiques, NE PAS UTILISER le CARACTERE –(moins)</p>
@@ -147,9 +150,9 @@
  ALTER TABLE `pression_chaudiere` CHANGE `num` `num` INT(4) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
 </pre></div>
 </div>
-</div>
-<div class="section" id="dans-domoticz">
-<h2>6.2 Dans Domoticz<a class="headerlink" href="#dans-domoticz" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="dans-domoticz">
+<h2>6.2 Dans Domoticz<a class="headerlink" href="#dans-domoticz" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Les données à enregistrer peuvent provenir de capteurs réels ou virtuels. Pour éviter un trop grand nombre de valeurs, il est utile pour certains dispositifs, de créer des variables pour comparer les valeurs et les limiter aux valeurs entières (c’est le cas de la météo Darsky, des capteurs de température Onoff).</p>
 <p>Pour utiliser des données de la base SQL, il faut au préalable les avoir enregistrées depuis Domoticz : c’est le rôle de la bibliothèque Python <span class="darkblue">fabric</span></p>
 <p>Pour l’installer (pip est déjà installé):</p>
@@ -324,8 +327,8 @@
 <p><a class="reference internal" href="../_images/image535.webp"><img alt="image535" src="../_images/image535.webp" style="width: 570px;" /></a></p>
 <p>Dans cet exemple, il a été créer plusieurs variables qui permettent des enregistrements dans la BD à chaque changement de valeurs limité au degré.:</p>
 <p><a class="reference internal" href="../_images/image536.webp"><img alt="image536" src="../_images/image536.webp" style="width: 478px;" /></a></p>
-<div class="section" id="fabric">
-<h3>6.2.1 fabric<a class="headerlink" href="#fabric" title="Lien permanent vers ce titre"></a></h3>
+<section id="fabric">
+<h3>6.2.1 fabric<a class="headerlink" href="#fabric" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="admonition-le-script-fabric-sh admonition">
 <p class="admonition-title"><strong>Le script fabric.sh</strong></p>
 <p>installé ici dans le répertoire « scripts » de Domoticz</p>
@@ -375,10 +378,10 @@ fab maintask --don=$c  &gt; /home/michel/fab.log 2&gt;&amp;1
 <li><p>script fabfile.py-&gt;../domoticz/scripts/python/   avec ls /home/USER/python/</p></li>
 <li><p>fab.log-&gt; /home/USER</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="sur-le-serveur-de-la-base-de-donnees">
-<h2>6.3 Sur le serveur de la base de données<a class="headerlink" href="#sur-le-serveur-de-la-base-de-donnees" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+<section id="sur-le-serveur-de-la-base-de-donnees">
+<h2>6.3 Sur le serveur de la base de données<a class="headerlink" href="#sur-le-serveur-de-la-base-de-donnees" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Le serveur Nginx avec aussi Monitor,</p>
 <p>réception des datas : Le script python <span class="darkblue">sqlite_mysql.py</span> :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
@@ -428,15 +431,15 @@ fab maintask --don=$c  &gt; /home/michel/fab.log 2&gt;&amp;1
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image542.webp"><img alt="image542" src="../_images/image542.webp" style="width: 602px;" /></a></p>
-</div>
-<div class="section" id="dans-monitor">
-<h2>6.4 Dans Monitor<a class="headerlink" href="#dans-monitor" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="dans-monitor">
+<h2>6.4 Dans Monitor<a class="headerlink" href="#dans-monitor" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Le cache pour jpgraph est présent :</p>
 <p><a class="reference internal" href="../_images/image543.webp"><img alt="image543" src="../_images/image543.webp" style="width: 205px;" /></a></p>
 <p>Jpgraph est installé à la racine de monitor</p>
 <p><a class="reference internal" href="../_images/image544.webp"><img alt="image544" src="../_images/image544.webp" style="width: 215px;" /></a></p>
-<div class="section" id="la-page-graphique-php">
-<h3>6.4.1 la page graphique.php<a class="headerlink" href="#la-page-graphique-php" title="Lien permanent vers ce titre"></a></h3>
+<section id="la-page-graphique-php">
+<h3>6.4.1 la page graphique.php<a class="headerlink" href="#la-page-graphique-php" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image545.webp"><img alt="image545" src="../_images/image545.webp" style="width: 602px;" /></a></p>
 <ul class="simple">
 <li><p><em>css</em></p></li>
@@ -446,9 +449,9 @@ fab maintask --don=$c  &gt; /home/michel/fab.log 2&gt;&amp;1
 <span class="n">graphiques</span><span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">green</span><span class="p">;}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="la-fonction-graph">
-<h3>6.4.2 la fonction graph<a class="headerlink" href="#la-fonction-graph" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="la-fonction-graph">
+<h3>6.4.2 la fonction graph<a class="headerlink" href="#la-fonction-graph" title="Lien permanent vers cette rubrique"></a></h3>
 <p><strong>dans fonctions.php</strong> et appelée par ajax.php, la fonction <span class="darkblue">graph()</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if ($app==&quot;graph&quot;) {graph($device,$variable);}
 </pre></div>
@@ -463,9 +466,9 @@ fab maintask --don=$c  &gt; /home/michel/fab.log 2&gt;&amp;1
 <p class="admonition-title">Indication</p>
 <p>La documentation sur jpgraph : <a class="reference external" href="https://jpgraph.net/download/manuals/chunkhtml/index.html">https://jpgraph.net/download/manuals/chunkhtml/index.html</a></p>
 </div>
-</div>
-<div class="section" id="autres-fichiers-php">
-<h3>6.4.3 autres fichiers PHP<a class="headerlink" href="#autres-fichiers-php" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="autres-fichiers-php">
+<h3>6.4.3 autres fichiers PHP<a class="headerlink" href="#autres-fichiers-php" title="Lien permanent vers cette rubrique"></a></h3>
 <ul>
 <li><p>index_loc.php (en général ne pas modifier)</p></li>
 <li><p>config.php, header.php (en général ne pas modifier)</p>
@@ -475,15 +478,15 @@ fab maintask --don=$c  &gt; /home/michel/fab.log 2&gt;&amp;1
 </li>
 </ul>
 <p><a class="reference internal" href="../_images/image551.webp"><img alt="image551" src="../_images/image551.webp" style="width: 700px;" /></a></p>
-</div>
-<div class="section" id="copies-decran">
-<h3>6.4.4 copies d’écran<a class="headerlink" href="#copies-decran" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="copies-decran">
+<h3>6.4.4 copies d’écran<a class="headerlink" href="#copies-decran" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image552.webp"><img alt="image552" src="../_images/image552.webp" style="width: 525px;" /></a></p>
 <p><a class="reference internal" href="../_images/image553.webp"><img alt="image553" src="../_images/image553.webp" style="width: 535px;" /></a></p>
 <p><a class="reference internal" href="../_images/image554.webp"><img alt="image554" src="../_images/image554.webp" style="width: 535px;" /></a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -496,7 +499,7 @@ fab maintask --don=$c  &gt; /home/michel/fab.log 2&gt;&amp;1
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

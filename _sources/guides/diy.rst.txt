@@ -4,7 +4,7 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Ce paragraphe contient différentes parties qui peuvent être indépendantes ou liées suivant le choix de chacun :
 
--	La réalisation d’un boitier électronique de mesures de PH, Redox, Températures, Débit de la filtration, les mesures étant envoyées sur un serveur MQTT;Cette réalisation est décrite sur le site domo-site.fr
+-	La réalisation d’un boitier électronique de mesures de PH, Redox, Températures, Débit de la filtration, les mesures étant envoyées sur un serveur MQTT;Cette réalisation est décrite dans le paragraphe :ref:`17.2 monitoring pour spa, réalisation`
 
 -	La création de capteurs virtuels dans Domoticz qui récupère les valeurs envoyées par le serveur MQTT et les envoie vers la base de données de Monitor ; il envoie également des alertes sur la TV comme pour les poubelles et la fosse septique. 
 
@@ -255,12 +255,261 @@ Pour envoyer à la BD le débit : script lua "export_sql"
 
 |image947|
 
-17.1.4.4. ecran4 , ecran5
+17.1.4.4.a  ecran4 , ecran5
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |image949|
 
-17.2 Extension Pompes perisaltiques pour réguler PH et REDOX
+17.2 monitoring pour spa, réalisation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pour les mesures :
+
+-	PH
+
+-	Redox
+
+-	Température de l’eau
+
+-	Débit de la filtration
+
+-	Température de l’air
+
+inspiré de https://easydomoticz.com/forum/viewtopic.php?t=11590
+
+|image1438|
+
+17.2.1 Matériel
+===============
+En plus d’un coffret électrique étanche,
+
+- 1 module NodeMcu V3  et un kit de développement 
+
+- 1 module ADC ADS1115
+
+  |image1439|
+
+  |image1440|
+
+.. note::
+
+   ADS1115
+
+   |image1441|
+
+   https://www.ti.com/lit/ds/symlink/ads1115.pdf?ts=1669880254595&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FADS1115%253Futm_source%253Dgoogle%2526utm_medium%253Dcpc%2526utm_campaign%253Dasc-null-null-GPN_EN-cpc-pf-google-eu%2526utm_content%253DADS1115%2526ds_k%253DADS1115%2526DCM%253Dyes%2526gclid%253DEAIaIQobChMIs9Xrz_TX-wIVh6jVCh2PiwwaEAAYASAAEgL8U_D_BwE%2526gclsrc%253Daw.ds
+
+   Large plage d’alimentation : :red:`2,0 V à 5,5 V`
+
+- 2 modules de contrôle avec interface BNC
+
+   |image1442|
+
+- 1 capteur de débit d’eau
+
+  |image1443|
+
+- Des fils Dupont
+
+  |image1444|
+
+- 1 résistance de 4,7kὨ  |image1445|
+
+.. note::
+
+   Le bus à 1 fil (1 Wire) nécessite que le signal de commande soit tiré vers le haut afin que le périphérique maître puisse le tirer vers le bas pour demander des données; le périphérique esclave peut le tirer vers le bas pour donner les données; Ceci permet d'installer plusieurs appareils sur le même « 1 wire ».
+
+- 2 sondes de température
+ 
+   . pour la température de l'eau
+
+      |image1446|
+
+   . pour la température de l'air
+
+      |image1447|
+
+- 1 sonde PH
+
+   |image1450|
+
+- 1 sonde ORP
+
+   |image1451|
+
+- 1 alimentation 230V/12 Volts; elle peut être interne ou externe 
+
+  |image1448|  |image1449| 
+
+17.2.2 Cablâge et connexion au PC
+=================================
+Avec les fils Dupont mais pour les sondes de température une résistance est à insérer entre le 3 Volts et le fil de données ;j' ai utilisé des prises aviation pour raccorder les sondes à l'extérieur du boitier , la résistance est soudée ente PLUS et DATA dur l'un des connecteurs.
+
+17.2.2.1 Alimentation des différents composants
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+|image1452| 
+
+17.2.2.2 circuits des données
+"""""""""""""""""""""""""""""
+|image1453| 
+
+17.2.2.3 Le firmware 
+""""""""""""""""""""
+- S’assurer que la carte est bien reconnue, connecter la micro USB du NodeMcu à une prise USB du PC
+
+|image1454| 
+
+- Ouvrir le gestionnaire de périphériques
+
+Si le drivers n’est pas reconnu, l’installer ; Noter le port COM et choisir 115200 Bauds
+
+|image1455| 
+
+- Télécharger le firmware
+
+17.2.1.3.a Pour un esp¬8266
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://github.com/letscontrolit/ESPEasy/releases
+
+|image1456| 
+
+Dans ESPEasy_binaries.zip , choisir un fichier pour le firmware:
+
+|image1457| 
+
+17.2.1.3.b Pour un esp¬32
+~~~~~~~~~~~~~~~~~~~~~~~~~
+.. IMPORTANT:: 
+   Pour une liaison série il faut choisir un fichier avec une extension « factory »
+
+|image1458| 
+
+17.2.3 Flashage de l'ESP
+========================
+Choisir un programme dans ESPEasy_dist.zip,
+
+|image1459|
+
+ j’ai l’habitude d’utiliser Expressif_flash_download_tools : 
+
+https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=14
+
+|image1460| 
+
+17.2.3.1 NodeMcu avec esp 8266
+""""""""""""""""""""""""""""""
+Lancer flash_download_tools 
+
+|image1461| 
+
+|image1463| 
+
+Appuyer sur le bouton Flash du NodeMcu et ensuite sur START du programme avant de relacher la pression sur le bouton.
+
+Avec  kit de développement NodeMCU, c’est facile la connexion USB peut tirer GPIO0 vers le bas en affirmant DTR et réinitialiser la carte en affirmant RTS.
+
+|image1464| 
+
+|image1465| 
+
+17.2.3.2 NodeMcu avec esp 32
+""""""""""""""""""""""""""""
+Lancer flash_download_tools 
+
+|image1462| 
+
+|image1466| 
+
+**Apputer sur START et sur BOOT du esp32**
+
+|image1467| 
+
+17.2.4 Programmation de l'ESP
+=============================
+- Débrancher le NodeMcu du PC et mettez le sous tension avec l’alimentation 
+
+- Connecter le PC sur le point d’accès ESP-Easy  (la clé est affiché ci-dessous):
+
+  |image1468| 
+
+- Le PC est connecté sur 192.168.4.1 
+
+   |image1469| 
+
+- Choisir un routeur et indiquer le mot de passe
+
+  |image1470| 
+
+  |image1471| 
+
+17.2.4.1 Choisir un contrôleur
+""""""""""""""""""""""""""""""
+j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet les données, c’est Domticz-MQTT qu’i faut choisir et l’adresse IP du serveur MQTT
+
+|image1472| 
+
+|image1473| 
+
+|image1474|
+
+|image1475| 
+
+17.2.4.2 Choisir la configuration
+"""""""""""""""""""""""""""""""""
+|image1476| 
+
+17.2.4.3 Ajouter les dispositifs
+""""""""""""""""""""""""""""""""
+|image1477| 
+
+- Enregistrer le 1er dispositif : 
+
+.. admonition:: **la mesure du PH par le ADS1115==
+
+   |image1478| 
+
+   |image1479| 
+
+   |image1480|
+
+   .. warning::
+
+      un message apparaitra dans log de Domoticz car le capteur n’existe pas mais cela permet de contrôler le bon fonctionnement de MQTT
+
+      |image1482|
+
+   - Nombre de décimales et valeur de la données 
+
+    |image1481|
+
+.. admonition:: **La mesure REDOX par le ADS1115**
+
+    |image1483|
+
+.. admonition:: **Installer la sonde de température d’eau : DS18b20**
+
+   https://espeasy.readthedocs.io/en/latest/Plugin/P004_DS18b20.html
+
+    |image1487|
+
+   .. warning::
+
+      Une fois la sonde programmée la désactiver et la débrancher. :red:`Il faut procéder ainsi afin que chaque sonde obtienne automatiquement sa propre adresse`
+
+.. admonition:: **Installer la sonde de température extérieur : DS18b20**
+
+    |image1484|
+
+.. admonition:: **Installer le capteur de débit**
+
+   https://espeasy.readthedocs.io/en/latest/Plugin/P003.html
+   https://espeasy.readthedocs.io/en/latest/Plugin/P003_YFS401.html#p003-yfs401-page
+
+    |image1485|
+
+à suivre
+
+17.3 Extension Pompes perisaltiques pour réguler PH et REDOX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 *en cours de rédaction*
 
@@ -323,4 +572,101 @@ Pour envoyer à la BD le débit : script lua "export_sql"
    :width: 469px
 .. |image949| image:: ../media/image949.webp
    :width: 700px
-
+.. |image1438| image:: ../img/image1438.webp
+   :width: 563px
+.. |image1439| image:: ../img/image1439.webp
+   :width: 605px
+.. |image1440| image:: ../img/image1440.webp
+   :width: 605px
+.. |image1441| image:: ../img/image1441.webp
+   :width: 605px
+.. |image1442| image:: ../img/image1442.webp
+   :width: 605px
+.. |image1443| image:: ../img/image1443.webp
+   :width: 605px
+.. |image1444| image:: ../img/image1444.webp
+   :width: 605px
+.. |image1445| image:: ../img/image1445.webp
+   :width: 150px
+.. |image1446| image:: ../img/image1446.webp
+   :width: 605px
+.. |image1447| image:: ../img/image1447.webp
+   :width: 605px
+.. |image1448| image:: ../img/image1448.webp
+   :width: 270px
+.. |image1449| image:: ../img/image1449.webp
+   :width: 294px
+.. |image1450| image:: ../img/image1450.webp
+   :width: 605px
+.. |image1451| image:: ../img/image1451.webp
+   :width: 605px
+.. |image1452| image:: ../img/image1452.webp
+   :width: 605px
+.. |image1453| image:: ../img/image1453.webp
+   :width: 605px
+.. |image1454| image:: ../img/image1454.webp
+   :width: 600px
+.. |image1455| image:: ../img/image1455.webp
+   :width: 605px
+.. |image1456| image:: ../img/image1456.webp
+   :width: 605px
+.. |image1457| image:: ../img/image1457.webp
+   :width: 605px
+.. |image1458| image:: ../img/image1458.webp
+   :width: 521px
+.. |image1459| image:: ../img/image1459.webp
+   :width: 581px
+.. |image1460| image:: ../img/image1460.webp
+   :width: 605px
+.. |image1461| image:: ../img/image1461.webp
+   :width: 431px
+.. |image1462| image:: ../img/image1462.webp
+   :width: 224px
+.. |image1463| image:: ../img/image1463.webp
+   :width: 425px
+.. |image1464| image:: ../img/image1464.webp
+   :width: 372px
+.. |image1465| image:: ../img/image1465.webp
+   :width: 306px
+.. |image1466| image:: ../img/image1466.webp
+   :width: 429px
+.. |image1467| image:: ../img/image1467.webp
+   :width: 372px
+.. |image1468| image:: ../img/image1468.webp
+   :width: 369px
+.. |image1469| image:: ../img/image1469.webp
+   :width: 569px
+.. |image1470| image:: ../img/image1470.webp
+   :width: 605px
+.. |image1471| image:: ../img/image1471.webp
+   :width: 605px
+.. |image1472| image:: ../img/image1472.webp
+   :width: 605px
+.. |image1473| image:: ../img/image1473.webp
+   :width: 605px
+.. |image1474| image:: ../img/image1474.webp
+   :width: 605px
+.. |image1475| image:: ../img/image1475.webp
+   :width: 605px
+.. |image1476| image:: ../img/image1476.webp
+   :width: 605px
+.. |image1477| image:: ../img/image1477.webp
+   :width: 605px
+.. |image1478| image:: ../img/image1478.webp
+   :width: 605px
+.. |image1479| image:: ../img/image1479.webp
+   :width: 605px
+.. |image1480| image:: ../img/image1480.webp
+   :width: 605px
+.. |image1481| image:: ../img/image1481.webp
+   :width: 605px
+.. |image1482| image:: ../img/image1482.webp
+   :width: 543px
+.. |image1483| image:: ../img/image1483.webp
+   :width: 605px
+.. |image1484| image:: ../img/image1484.webp
+   :width: 605px
+.. |image1485| image:: ../img/image1485.webp
+   :width: 605px
+.. |image1487| image:: ../img/image1487.webp
+   :width: 605px

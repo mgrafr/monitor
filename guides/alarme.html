@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5. L’ALARME &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>5. L’ALARME &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -50,10 +53,19 @@
 <li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. L’ALARME</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dans-domoticz-les-interrupteurs-virtuels-les-variables">5.1 Dans Domoticz, les interrupteurs virtuels, les variables</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#explications-concernant-modect">5.1.1 explications concernant MODECT</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#jeton-zm">5.1.1.1 Jeton ZM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#le-script-lua">5.1.1.2 le script lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-interrupteurs-reels-virtuels-les-variables">5.1 Les interrupteurs réels, virtuels, les variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pour-utilisation-avec-domoticz">5.1.1 Pour utilisation avec Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pour-utilisation-avec-home-assistant">5.1.2 Pour utilisation avec Home Assistant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#les-interrupeurs-virtuels-input-boolean">5.1.2.1 les interrupeurs virtuels (input_boolean)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-poussoirs-input-button">5.1.2.2 les poussoirs (input_button)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-variables-input-select-et-input-text">5.1.2.3 les variables (input_select et input_text)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#explications-concernant-modect">5.1.3 explications concernant MODECT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#jeton-zm">5.1.3.1 Jeton ZM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#le-script-lua-pour-domoticz">5.1.3.2 le script lua pour Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#le-script-bash-pour-home-assistant">5.1.3.3 le script bash pour Home Assistant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copies-d-ecran-concernant-modect">5.1.3.4 copies d’écran concernant Modect</a></li>
 </ul>
 </li>
 </ul>
@@ -73,7 +85,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#alarme-par-sms-gsm">5.8.2 Alarme par sms GSM</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#version-sans-l-utilisation-d-une-variable-domoticz">5.8.2.1 Version sans l’utilisation d’une variable Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-sans-l-utilisation-d-une-variable">5.8.2.1 Version sans l’utilisation d’une variable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#option-supplementaire-le-test-de-lenvoi-de-sms">5.8.2.2 Option supplémentaire : le test de l’envoi de SMS</a></li>
 </ul>
 </li>
@@ -81,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#copie-ecran-de-la-derniere-version">5.8.5- Copie écran de la dernière version</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#resume-des-dispositifs-des-switches-virtuels-des-variables-utilises">5.9- Résumé des dispositifs, des switches virtuels, des variables utilisés</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
@@ -126,30 +139,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="lalarme">
-<h1>5. L’ALARME<a class="headerlink" href="#lalarme" title="Lien permanent vers ce titre"></a></h1>
+  <section id="lalarme">
+<h1>5. L’ALARME<a class="headerlink" href="#lalarme" title="Lien permanent vers cette rubrique"></a></h1>
 <p>Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du script python avec les codes retenus pour l’alarme. <a class="reference internal" href="divers.html#commandes-de-lalarme-a-partir-dun-gsm"><span class="std std-ref">18.4 Commandes de l’alarme à partir d’un GSM</span></a></p>
 <p><a class="reference internal" href="../_images/image408.webp"><img alt="image408" src="../_images/image408.webp" style="width: 650px;" /></a></p>
-<p><em>Pour entrer le mot de passe : redirection vers la page administration</em></p>
-<p>Le script LUA dans Evènements de Domoticz : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua</a></p>
-<div class="section" id="dans-domoticz-les-interrupteurs-virtuels-les-variables">
-<h2>5.1 Dans Domoticz, les interrupteurs virtuels, les variables<a class="headerlink" href="#dans-domoticz-les-interrupteurs-virtuels-les-variables" title="Lien permanent vers ce titre"></a></h2>
-<p><strong>les interrupteurs virtuels</strong></p>
+<p><em>Pour toutes les fonctions, entrer le mot de passe</em></p>
+<p>Le script LUA dans Evènements de Domoticz : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3_0_5.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3_0_5.lua</a></p>
+<section id="les-interrupteurs-reels-virtuels-les-variables">
+<h2>5.1 Les interrupteurs réels, virtuels, les variables<a class="headerlink" href="#les-interrupteurs-reels-virtuels-les-variables" title="Lien permanent vers cette rubrique"></a></h2>
+<p><strong>Pour Home Assistant</strong>:</p>
+<p><a class="reference internal" href="../_images/image1370.webp"><img alt="image1370" src="../_images/image1370.webp" style="width: 495px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1371.webp"><img alt="image1371" src="../_images/image1371.webp" style="width: 642px;" /></a></p>
+<p>Voir ci dessous la description pour Domoticz, valable également pour Home Assistant</p>
+<p><strong>Pour Domoticz</strong></p>
+<p><em>les interrupteurs virtuels</em></p>
 <p>Les boutons poussoir marche/arrêt pour les commandes :</p>
 <ul class="simple">
-<li><p>m/a alarme de nuit</p></li>
-<li><p>m/a alarme absence</p></li>
-<li><p>m/a al_nuit_auto</p></li>
-<li><p>m/a sirène</p></li>
-<li><p>m/a mode detect des caméras</p></li>
-<li><p>poussoir de reset des valeurs de Domoticz,</p></li>
-<li><p>activation/désactivation de la sirène : permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF</p></li>
+<li><p>m/a alarme de nuit : <span class="darkblue">alarme_nuit</span></p></li>
+<li><p>m/a alarme absence : <span class="darkblue">alarme_absence</span></p></li>
 </ul>
-<p><strong>Option</strong> : allumages de lampes :</p>
-<p>Dans ce tuto : lampe_salon (lampe commandée par le 433MHz avec une interface Sonoff modifié, voir le site domo-site.fr</p>
 <p><a class="reference internal" href="../_images/image409.webp"><img alt="image409" src="../_images/image409.webp" style="width: 427px;" /></a></p>
-<p>Pour le test sirène : un interrupteur « PUSH »</p>
+<ul class="simple">
+<li><p>m/a al_nuit_auto :   <span class="darkblue">al_nuit_auto</span></p></li>
+<li><p>m/a mode detect des caméras : <span class="green">Modect</span></p></li>
+<li><p>poussoir « PUSH » après 2s pour tester la sirène : <span class="green">test_sirene</span> (création d’un scénario avec la sirène)</p></li>
+</ul>
 <p><a class="reference internal" href="../_images/image410.webp"><img alt="image410" src="../_images/image410.webp" style="width: 450px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1342.webp"><img alt="image1342" src="../_images/image1342.webp" style="width: 509px;" /></a></p>
+<ul class="simple">
+<li><p>poussoir de reset des valeurs en cas d’alarme : <span class="green">raz_dz</span></p></li>
+<li><p>activation/désactivation de la sirène : <span class="darkblue">activation-sirene</span> , permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF</p></li>
+</ul>
+<p><em>un interrupteur réel</em></p>
+<ul class="simple">
+<li><p>celui inclus dans la sirène</p></li>
+</ul>
+<p><strong>Options</strong> :</p>
+<p><em>allumages de lampes</em> :</p>
+<p>Dans ce tuto : lampe_salon (lampe commandée par le 433MHz avec une interface Sonoff modifié, voir le site domo-site.fr</p>
+<p><em>test du modem GSM</em> , envoi d’un sms avec un bouton de sonnette</p>
+<p><a class="reference internal" href="../_images/image1343.webp"><img alt="image1343" src="../_images/image1343.webp" style="width: 262px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>les images ci-dessus sont des copies d’écran de Domoticz , pour Home assistant copie d’écran de la sirene et des interrupteurs virtuels (fichier configuration.yaml)</p>
+<p><a class="reference internal" href="../_images/image1344.webp"><img alt="image1344" src="../_images/image1344.webp" style="width: 300px;" /></a> <a class="reference internal" href="../_images/image1345.webp"><img alt="image1345" src="../_images/image1345.webp" style="width: 273px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1346.webp"><img alt="image1346" src="../_images/image1346.webp" style="width: 296px;" /></a></p>
+</div>
+<section id="pour-utilisation-avec-domoticz">
+<h3>5.1.1 Pour utilisation avec Domoticz<a class="headerlink" href="#pour-utilisation-avec-domoticz" title="Lien permanent vers cette rubrique"></a></h3>
 <p>On ajoute les dispositifs au plan ;</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -157,14 +194,7 @@
 </div>
 <p><a class="reference internal" href="../_images/image414.webp"><img alt="image414" src="../_images/image414.webp" style="width: 626px;" /></a></p>
 <p><a class="reference internal" href="../_images/image417.webp"><img alt="image417" src="../_images/image417.webp" style="width: 533px;" /></a></p>
-<p><strong>Les variables, initialisée</strong> à 0</p>
-<ul class="simple">
-<li><p><strong>ma-alarme</strong> :</p></li>
-</ul>
-<p><a class="reference internal" href="../_images/image418.webp"><img alt="image418" src="../_images/image418.webp" style="width: 434px;" /></a></p>
-<p>o       0  =  alarme non activée,</p>
-<p>o       1  = alarme absence activée, les capteurs PIR sont pris en compte</p>
-<p>o       2  = alarme nuit activée, les capteurs PIR sont ignorés</p>
+<p><strong>Les variables, initialisée</strong> à 0 (sauf pour activation-sir-txt)</p>
 <ul class="simple">
 <li><p><strong>modect</strong> : pour la mise en service de la détection par caméras (non utilisé actuellement, pour une notification en page d’accueil ou autre …)</p></li>
 <li><p><strong>porte-ouverte</strong></p></li>
@@ -184,14 +214,55 @@
 <p><strong>ATTENTION</strong> :
 L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents et les espaces, utiliser des Under scores(ou autre signe) pour séparer les mots</p>
 </div>
-<p>Partie du script concernant  <span class="darkblue">les variables</span>,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--*********************</span><span class="n">variables</span><span class="o">***************************************</span>
+<p>Partie du script concernant  <span class="darkblue">l’alarme</span>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">listes</span> <span class="n">des</span> <span class="n">dispositifs</span>
+     <span class="o">--</span> <span class="n">les</span> <span class="n">capteurs</span> <span class="n">d</span><span class="s1">&#39;ouverture et de présence DEVICE CHANGED</span>
+     <span class="o">--</span> <span class="p">{</span><span class="n">capteur</span><span class="p">,</span><span class="n">etat</span><span class="p">,</span><span class="n">modif</span> <span class="n">variable</span><span class="p">,</span><span class="n">contenu</span> <span class="n">variable</span><span class="p">,</span><span class="n">notification</span><span class="p">,</span><span class="n">alarme</span><span class="p">}</span>   <span class="n">alarme</span> <span class="mi">0</span><span class="o">=</span><span class="n">absence</span> <span class="n">et</span> <span class="n">nuit</span> <span class="mi">1</span><span class="o">=</span><span class="n">absence</span> <span class="n">seulement</span>
+     <span class="n">local</span> <span class="n">a1</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;porte_entree&#39;</span><span class="p">,</span><span class="s1">&#39;On&#39;</span><span class="p">,</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">,</span><span class="s1">&#39;porte_ouverte_entree&#39;</span><span class="p">};</span>
+     <span class="n">local</span> <span class="n">a2</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;porte ar cuisine&#39;</span><span class="p">,</span><span class="s1">&#39;On&#39;</span><span class="p">,</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">,</span><span class="s1">&#39;porte_ouverte_cuisine&#39;</span><span class="p">};</span>
+     <span class="n">local</span> <span class="n">a3</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;porte_fenetre&#39;</span><span class="p">,</span><span class="s1">&#39;On&#39;</span><span class="p">,</span><span class="s1">&#39;:porte-ouverte&#39;</span><span class="p">,</span><span class="s1">&#39;fenetre_ouverte_sejour&#39;</span><span class="p">};</span>
+     <span class="n">local</span> <span class="n">a4</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pir_entree_motion&#39;</span><span class="p">,</span><span class="s1">&#39;On&#39;</span><span class="p">,</span><span class="s1">&#39;intrusion&#39;</span><span class="p">,</span><span class="s1">&#39;intrusion_entree&#39;</span><span class="p">};</span>
+     <span class="n">local</span> <span class="n">a5</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pir ar cuisine_motion&#39;</span><span class="p">,</span><span class="s1">&#39;On&#39;</span><span class="p">,</span><span class="s1">&#39;intrusion&#39;</span><span class="p">,</span><span class="s1">&#39;intrusion_cuisine&#39;</span><span class="p">};</span>
+     <span class="n">local</span> <span class="n">A1</span><span class="o">=</span><span class="p">{</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">a4</span><span class="p">,</span><span class="n">a5</span><span class="p">};</span><span class="n">local</span> <span class="n">A2</span><span class="o">=</span><span class="p">{</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">};</span>
+<span class="o">--</span>
+<span class="n">local</span> <span class="n">time</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%X</span><span class="s2">&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">sirene</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">lampe</span><span class="o">=</span><span class="mi">0</span>
+<span class="o">--</span>
+<span class="k">return</span> <span class="p">{</span>
+     <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>
+
+             <span class="n">devices</span> <span class="o">=</span> <span class="p">{</span>
+                 <span class="s1">&#39;pir ar cuisine_motion&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;pir_entree_motion&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;porte_entree&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;porte ar cuisine&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;porte_fenetre&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;alarme_nuit&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;alarme_absence&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Modect&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;raz_dz&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;al_nuit_auto&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;activation-sirene&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Test_GSM&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;test_sirene&#39;</span>
+                 <span class="p">},</span>
+                 <span class="n">timer</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="s1">&#39;at 15:45&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;at 06:00&#39;</span><span class="p">}</span>
+             <span class="p">},</span>
+             <span class="n">execute</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">domoticz</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">triggerInfo</span><span class="p">)</span>
+         <span class="o">--</span><span class="n">domoticz</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Alarme &#39;</span> <span class="o">..</span> <span class="n">item</span> <span class="o">..</span> <span class="s1">&#39; was changed&#39;</span><span class="p">,</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">LOG_INFO</span><span class="p">)</span>
+    <span class="o">--*********************</span><span class="n">variables</span><span class="o">***************************************</span>
      <span class="o">--</span> <span class="n">alarme</span> <span class="n">absence</span> <span class="o">-</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span><span class="s1">&#39;pir ar cuisine_motion&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;pir_entree_motion&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;porte_entree&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;porte ar cuisine&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;porte_fenetre&#39;</span><span class="p">)</span> <span class="n">then</span>
      <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
          <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ipairs</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span> <span class="n">do</span>
-             <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="p">(</span><span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span> <span class="n">then</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">~=</span> <span class="n">nil</span><span class="p">)</span> <span class="n">then</span>
+                 <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span> <span class="n">then</span>
                      <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">4</span><span class="p">]);</span>
+                 <span class="k">else</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;erreur:&quot;</span><span class="o">..</span><span class="n">A1</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
                  <span class="n">end</span>
+             <span class="n">end</span>
          <span class="n">end</span>
      <span class="n">end</span>
    <span class="o">--</span> <span class="n">alarme</span> <span class="n">nuit</span>
@@ -199,15 +270,15 @@ L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents
          <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ipairs</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span> <span class="n">do</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="p">(</span><span class="n">A2</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">A2</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span> <span class="n">then</span>
                 <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="n">A2</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">A2</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">4</span><span class="p">]);</span><span class="n">lampe</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">sirene</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-                <span class="n">end</span>
+             <span class="n">end</span>
          <span class="n">end</span>
-   <span class="o">--</span><span class="n">allumer</span> <span class="n">lampes</span>
+        <span class="o">--</span><span class="n">allumer</span> <span class="n">lampes</span>
          <span class="k">if</span> <span class="p">(</span><span class="n">lampes</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">then</span> <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;lampe_salon&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span><span class="n">lampes</span><span class="o">=</span><span class="s2">&quot;2&quot;</span>
          <span class="n">end</span>
      <span class="o">--</span><span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">sirene</span>
-         <span class="k">if</span> <span class="p">(</span><span class="n">sirene</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">then</span> <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;ma_sirene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span><span class="n">sirene</span><span class="o">=</span><span class="s2">&quot;2&quot;</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">sirene</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">then</span> <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;sirene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span><span class="n">sirene</span><span class="o">=</span><span class="s2">&quot;2&quot;</span>
          <span class="n">end</span>
-         <span class="k">if</span> <span class="p">(</span><span class="n">sirene</span><span class="o">==</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;activation-sirene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span>  <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;sirene_switch&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span><span class="n">sirene</span><span class="o">=</span><span class="s2">&quot;3&quot;</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">sirene</span><span class="o">==</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;activation-sirene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span>  <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;sirene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span><span class="n">sirene</span><span class="o">=</span><span class="s2">&quot;3&quot;</span>
          <span class="n">end</span>
      <span class="n">end</span>
      <span class="o">--</span> <span class="n">fin</span> <span class="n">alarme</span> <span class="n">nuit</span>
@@ -223,7 +294,68 @@ L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents
      <span class="n">end</span>
 </pre></div>
 </div>
-<p>Partie du script concernant :darkblue:<a href="#id1"><span class="problematic" id="id2">`</span></a>le timer <a href="#id3"><span class="problematic" id="id4">`</span></a>,</p>
+<p>Partie du script concernant <span class="darkblue">les options : interrupteurs on/off</span> ,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">else</span>
+  <span class="o">--*******************</span><span class="n">devices</span> <span class="n">virtuels</span><span class="o">************************************</span>
+
+  <span class="o">--</span><span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span><span class="s1">&#39;alarme_nuit&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;alarme_absence&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Modect&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;raz_dz&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;al_nuit_auto&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;activation-sirene&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Test_GSM&#39;</span><span class="p">)</span> <span class="n">then</span>
+<span class="n">elseif</span> <span class="p">(</span><span class="n">find_string_in</span><span class="p">(</span><span class="n">virtuels</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">==</span><span class="n">true</span><span class="p">)</span> <span class="n">then</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;elseif:&quot;</span><span class="o">..</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="o">--</span> <span class="n">alarme</span> <span class="n">nuit_activation</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;alarme_nuit&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span> <span class="p">)</span> <span class="n">then</span>
+    <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarmeùnuitùactivee&#39;</span><span class="p">;</span><span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme_nuit_activee&#39;</span><span class="p">;</span>
+    <span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;alarme_nuit&quot;</span><span class="p">);</span>
+        <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;alarme_nuit&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="p">)</span> <span class="n">then</span>
+    <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarmeùnuitùdesactivee&#39;</span><span class="p">;</span><span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme_nuit_desactivee&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">~=</span><span class="s1">&#39;alarme_auto&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">);</span>
+        <span class="n">end</span>
+    <span class="n">end</span>
+    <span class="o">--</span> <span class="n">alarme</span> <span class="n">absence</span> <span class="n">_activation</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;alarme_absence&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span> <span class="p">)</span> <span class="n">then</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;alarme_absence&quot;</span><span class="p">);</span>
+    <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarmeùabsenceùactivee&#39;</span><span class="p">;</span><span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme absence activee&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="p">;</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+        <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;alarme_absence&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">);</span>
+    <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarmeùabsenceùdesactivee&#39;</span><span class="p">;</span><span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme absence desactivee&#39;</span><span class="p">;</span>
+    <span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="p">;</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+    <span class="n">end</span>
+
+    <span class="o">--</span> <span class="n">activation</span> <span class="n">de</span> <span class="n">la</span> <span class="n">detection</span> <span class="n">par</span> <span class="n">les</span> <span class="n">cameras</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="ow">and</span>  <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">==</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
+        <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span>
+        <span class="n">end</span>
+    <span class="o">--</span> <span class="n">activation</span> <span class="n">manuelle</span> <span class="n">Modect</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span> <span class="p">)</span> <span class="n">then</span>
+        <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;modect&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span>
+        <span class="o">--</span> <span class="n">activation</span> <span class="n">manuelle</span> <span class="n">Monitor</span>
+        <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="p">)</span> <span class="n">then</span>
+        <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Monitor&#39;</span><span class="p">)</span>
+    <span class="n">end</span>
+
+    <span class="o">--</span> <span class="n">raz</span> <span class="n">variables</span> <span class="n">de</span> <span class="n">notification</span> <span class="n">intrusion</span> <span class="n">et</span> <span class="n">porte</span> <span class="n">ouverte</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;raz_dz&#39;</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">devices</span><span class="p">(</span><span class="s1">&#39;raz_dz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOff</span><span class="p">();</span>
+    <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;intrusion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">);</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;porte-ouverte&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">);</span>
+    <span class="n">end</span>
+    <span class="o">--</span> <span class="n">alarme</span> <span class="n">auto</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;al_nuit_auto&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarme_nuit_auto_activee&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;alarme_auto&quot;</span><span class="p">);</span>
+        <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;al_nuit_auto&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarmeùnuitùautoùdesactivee&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">);</span>
+        <span class="n">end</span>
+     <span class="o">--</span> <span class="n">activation</span> <span class="n">sirène</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;activation-sirene&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;activation-sir-txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;désactiver&quot;</span><span class="p">);</span>
+        <span class="k">else</span> <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;activation-sir-txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;activer&quot;</span><span class="p">);</span>
+        <span class="n">end</span>
+     <span class="o">--</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Test_GSM&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_gsm&quot;</span><span class="p">)</span>
+        <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;TestùGSMùOK&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">send_sms</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span>
+        <span class="n">obj</span><span class="o">=</span><span class="s1">&#39;Test GSM OK&#39;</span><span class="p">;</span><span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+        <span class="o">--</span><span class="n">domoticz</span><span class="o">.</span><span class="n">devices</span><span class="p">(</span><span class="s1">&#39;Test_GSM&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOff</span><span class="p">()</span>
+        <span class="n">end</span>
+    <span class="o">--</span> <span class="n">test</span> <span class="n">sirene</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Test_tsirene&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_sirene&quot;</span><span class="p">)</span>
+    <span class="n">end</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sse=&quot;</span><span class="o">..</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">);</span><span class="n">send_sse</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="p">);</span>
+ <span class="k">else</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;alarme nuit :&quot;</span><span class="o">..</span><span class="n">time</span><span class="p">)</span>
+ <span class="n">end</span>
+</pre></div>
+</div>
+<p>Partie du script concernant <span class="darkblue">le timer</span> ,</p>
 <p><a class="reference internal" href="../_images/image426.webp"><img alt="image426" src="../_images/image426.webp" style="width: 543px;" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -258,7 +390,7 @@ L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents
 </div>
 <p><strong>Pour ajouter une notification PUSHOVER</strong> , ajouter ces lignes:</p>
 <p><a class="reference internal" href="../_images/image429.webp"><img alt="image429" src="../_images/image429.webp" style="width: 700px;" /></a></p>
-<p><a href="#id5"><span class="problematic" id="id6">*</span></a>le scripts bash *</p>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>le scripts bash *</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 TITLE=&quot;Alerte&quot;
@@ -286,6 +418,12 @@ https://api.pushover.net/1/messages.json
 <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>Pour la mise à jour de monitor:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">send_sse</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1340.webp"><img alt="image1340" src="../_images/image1340.webp" style="width: 598px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1341.webp"><img alt="image1341" src="../_images/image1341.webp" style="width: 357px;" /></a></p>
 <p>Voir les pages web :</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://domo-site.fr/accueil/dossiers/10">http://domo-site.fr/accueil/dossiers/10</a></p></li>
@@ -295,43 +433,241 @@ https://api.pushover.net/1/messages.json
 <p class="admonition-title"><strong>Résumé des scripts Domoticz concernés</strong></p>
 <p><a class="reference internal" href="../_images/image434.webp"><img alt="image434" src="../_images/image434.webp" style="width: 690px;" /></a></p>
 </div>
-<div class="section" id="explications-concernant-modect">
-<h3>5.1.1 explications concernant MODECT<a class="headerlink" href="#explications-concernant-modect" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="pour-utilisation-avec-home-assistant">
+<h3>5.1.2 Pour utilisation avec Home Assistant<a class="headerlink" href="#pour-utilisation-avec-home-assistant" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="les-interrupeurs-virtuels-input-boolean">
+<h4>5.1.2.1 les interrupeurs virtuels (input_boolean)<a class="headerlink" href="#les-interrupeurs-virtuels-input-boolean" title="Lien permanent vers cette rubrique"></a></h4>
+<p>ils sont crées sous yaml:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_boolean</span><span class="p">:</span>
+  <span class="n">mes_alarme_abs</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">alarm</span> <span class="nb">abs</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="n">mdi</span><span class="p">:</span><span class="n">alarm</span><span class="o">-</span><span class="n">light</span>
+  <span class="n">mes_alarme_nuit</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">alarm</span> <span class="n">nuit</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="n">mdi</span><span class="p">:</span><span class="n">gesture</span><span class="o">-</span><span class="n">tap</span><span class="o">-</span><span class="n">hold</span>
+  <span class="n">mes_al_nuit_auto</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">al</span> <span class="n">nuit</span> <span class="n">auto</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="n">mdi</span><span class="p">:</span><span class="n">alarm</span><span class="o">-</span><span class="n">light</span>
+  <span class="n">activation_sirene_al</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">activation</span><span class="o">-</span><span class="n">sirene</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="n">mdi</span><span class="p">:</span><span class="n">music</span><span class="o">-</span><span class="n">off</span>
+  <span class="n">activation_modect</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">activation</span><span class="o">-</span><span class="n">modect</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="n">mdi</span><span class="p">:</span><span class="n">camera</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1339.webp"><img alt="image1339" src="../_images/image1339.webp" style="width: 290px;" /></a></p>
+<p>…. des input_boolean aussi pour:  m/a sirène, m/a mode detect des caméras, activation/désactivation de la sirène, etc..</p>
+</section>
+<section id="les-poussoirs-input-button">
+<h4>5.1.2.2 les poussoirs (input_button)<a class="headerlink" href="#les-poussoirs-input-button" title="Lien permanent vers cette rubrique"></a></h4>
+<p>pour le test GSM, test de la sirène,  reset des variables :</p>
+<p>exemple pour le test GSM et test sirène:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_button</span><span class="p">:</span>
+  <span class="n">poussoir_test_sirene</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">test_sirene</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="n">mdi</span><span class="p">:</span><span class="n">bell</span>
+  <span class="n">poussoir_gsm</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">test_gsm</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="n">mdi</span><span class="p">:</span><span class="n">bell</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1347.webp"><img alt="image1347" src="../_images/image1347.webp" style="width: 600px;" /></a></p>
+<p>Les automatismes pour ces poussoirs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">test_gsm_al</span>
+  <span class="n">alias</span><span class="p">:</span> <span class="n">Test_GSM</span>
+  <span class="n">trigger</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
+    <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_button</span><span class="o">.</span><span class="n">poussoir_gsm</span>
+  <span class="n">action</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">shell_command</span><span class="o">.</span><span class="n">set_aldz</span>
+    <span class="n">data</span><span class="p">:</span>
+      <span class="n">msg</span><span class="p">:</span> <span class="s2">&quot;test_GSM&quot;</span>
+    <span class="n">response_variable</span><span class="p">:</span> <span class="n">todo_response</span>
+  <span class="o">-</span> <span class="k">if</span><span class="p">:</span> <span class="s2">&quot;{{ todo_response[&#39;returncode&#39;] == 0 }}&quot;</span>
+    <span class="n">then</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">persistent_notification</span><span class="o">.</span><span class="n">create</span>
+        <span class="n">data</span><span class="p">:</span>
+          <span class="n">title</span><span class="p">:</span> <span class="s2">&quot;Shell_sms&quot;</span>
+          <span class="n">message</span><span class="p">:</span> <span class="s2">&quot;{{ todo_response[&#39;stdout&#39;] }}&quot;</span>
+<span class="c1">#</span>
+<span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">test</span> <span class="n">sirene</span> <span class="n">al</span>
+  <span class="n">alias</span><span class="p">:</span> <span class="n">test_sirene</span>
+ <span class="n">trigger</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
+     <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_button</span><span class="o">.</span><span class="n">poussoir_test_sirene</span>
+  <span class="n">action</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span>
+    <span class="n">data</span><span class="p">:</span>
+     <span class="n">entity_id</span><span class="p">:</span> <span class="n">switch</span><span class="o">.</span><span class="n">sirene_switch</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>shell_command se trouve dans configuration.yaml</p>
+<p><strong>pour set_aldz</strong></p>
+<p>on utilise importlib.reload de python et donc l’écriture d’une variable dans un fichier python et non d’une variable HA , voir ce §  <a class="reference internal" href="#version-sans-l-utilisation-d-une-variable"><span class="std std-ref">5.8.2.1 Version sans l’utilisation d’une variable</span></a></p>
+<p>Pourquoi est-ci difficile d’exécuter un commande BASH sur Home Assistant ??</p>
+<ul class="simple">
+<li><p>La simple écriture dans un fichier avec printf ou echo + un data(jina2)  ne fonctionne pas</p></li>
+<li><p>en lançant un script bash pour le faire : ça fonctionne ??</p></li>
+</ul>
+<p>Voici donc 2 solutions, l’une en passant un data , l’autre sans passer de data mais un message fixe</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shell_command</span><span class="p">:</span>
+    <span class="n">set_aldz</span><span class="p">:</span>
+<span class="c1">#      &quot;./pyscript/aldz.bash &#39;\&quot;{{ message }}\&quot;&#39; &quot;</span>
+       <span class="s2">&quot;printf &#39;#!/usr/bin/env python3 -*- coding: utf-8 -*- </span><span class="se">\n</span><span class="s2">x=</span><span class="se">\&quot;</span><span class="s2">TEST_GSM</span><span class="se">\&quot;\n</span><span class="s2">priority=1&#39; &gt;  pyscript/aldz.py&quot;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1349.webp"><img alt="image1349" src="../_images/image1349.webp" style="width: 700px;" /></a></p>
+<p><strong>Pour set_modect</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">set_modect</span><span class="p">:</span>
+<span class="s2">&quot;./pycscipt/modect.sh  &#39;</span><span class="se">\&quot;</span><span class="s2">{{ mode }}</span><span class="se">\&quot;</span><span class="s2">&#39; &quot;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1358.webp"><img alt="image1358" src="../_images/image1358.webp" style="width: 430px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>JQ doit êrtre installé: <a class="reference internal" href="../_images/image1360.webp"><img alt="image1360" src="../_images/image1360.webp" style="width: 200px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1359.webp"><img alt="image1359" src="../_images/image1359.webp" style="width: 650px;" /></a></p>
+</div>
+</div>
+</section>
+<section id="les-variables-input-select-et-input-text">
+<h4>5.1.2.3 les variables (input_select et input_text)<a class="headerlink" href="#les-variables-input-select-et-input-text" title="Lien permanent vers cette rubrique"></a></h4>
+<p>utilisées pour mémoriser certaines informations</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_select</span><span class="p">:</span>
+  <span class="n">var_alarme</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">alarme</span>
+    <span class="n">options</span><span class="p">:</span>
+      <span class="o">-</span> <span class="mi">0</span>
+      <span class="o">-</span> <span class="n">alarme_nuit</span>
+      <span class="o">-</span> <span class="n">alarme_auto</span>
+<span class="n">input_text</span><span class="p">:</span>
+  <span class="n">var_intrusion</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">intrusion</span>
+    <span class="n">initial</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">var_porte_ouverte</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">porte_ouverte</span>
+    <span class="n">initial</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">activation_sir_txt</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">statut_sirene</span>
+    <span class="n">initial</span><span class="p">:</span> <span class="n">desactive</span>
+  <span class="n">notification_alarme</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">statut_alarme</span>
+    <span class="n">initial</span><span class="p">:</span> <span class="n">pas</span> <span class="n">en</span> <span class="n">service</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="explications-concernant-modect">
+<h3>5.1.3 explications concernant MODECT<a class="headerlink" href="#explications-concernant-modect" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A partir de la base de données le fichier des caméras déclarées en mode détection est établit automatiquement; voir ce § <a class="reference internal" href="#affichage-de-la-liste-des-cameras-modect"><span class="std std-ref">5.8.3- Affichage de la liste des caméras Modect</span></a></p>
+<p>Depuis la version 3.01 , ce fichier contient les données en JSON ; le script Lua de l’alarme(V3.0.3) doit être modifié en conséquence (voir ci-après § <a class="reference internal" href="#le-script-lua-pour-domoticz"><span class="std std-ref">5.1.3.2 le script lua pour Domoticz</span></a> , les modifications à apporter)</p>
+<p><a class="reference internal" href="../_images/image1354.webp"><img alt="image1354" src="../_images/image1354.webp" style="width: 650px;" /></a></p>
+</div>
 <p>Si l’alarme absence est activée les caméras autorisées passent en mode MODECT automatiquement.</p>
 <p>Dans les autres cas Modect peut être activé manuellement.</p>
 <p><a class="reference internal" href="../_images/image435.webp"><img alt="image435" src="../_images/image435.webp" style="width: 521px;" /></a></p>
 <p><a class="reference internal" href="../_images/image436.webp"><img alt="image436" src="../_images/image436.webp" style="width: 452px;" /></a></p>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>La demande du jeton n’est pas automatique à partir du bouton <span class="green">Modect</span>; <span class="darkblue">IL FAUT APPUYER SUR LE BOUTON ZM</span>:</p>
-</div>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p><strong>Il faut avoir installé Zoneminder</strong></p>
 </div>
-<div class="section" id="jeton-zm">
-<h4>5.1.1.1 Jeton ZM<a class="headerlink" href="#jeton-zm" title="Lien permanent vers ce titre"></a></h4>
+<section id="jeton-zm">
+<h4>5.1.3.1 Jeton ZM<a class="headerlink" href="#jeton-zm" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Dans fonctions.php :</p>
 <p><a class="reference internal" href="../_images/image437.webp"><img alt="image437" src="../_images/image437.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image438.webp"><img alt="image438" src="../_images/image438.webp" style="width: 644px;" /></a></p>
 <p><em>Le format du fichier est json pour une exploitation facile avec Domoticz</em></p>
+</section>
+<section id="le-script-lua-pour-domoticz">
+<h4>5.1.3.2 le script lua pour Domoticz<a class="headerlink" href="#le-script-lua-pour-domoticz" title="Lien permanent vers cette rubrique"></a></h4>
+<p><em>dans</em> <span class="darkblue">alarme_intrusion.lua</span> , partie du script lua de l’alarme concernant Modect:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">Alarme</span> <span class="n">absence</span> <span class="n">et</span> <span class="n">nuit</span> <span class="n">maison</span>
+  <span class="o">--</span>
+  <span class="o">--</span> <span class="n">alarme</span><span class="o">--</span><span class="n">alarme</span><span class="o">.</span><span class="n">lua</span>
+  <span class="o">--</span> <span class="n">version</span> <span class="mf">3.0</span><span class="o">.</span><span class="mi">4</span>
+  <span class="o">--</span>
+  <span class="n">json</span> <span class="o">=</span> <span class="p">(</span><span class="n">loadfile</span> <span class="s2">&quot;scripts/lua/JSON.lua&quot;</span><span class="p">)()</span>
+<span class="n">function</span> <span class="n">decode_json</span><span class="p">(</span><span class="n">fich_json</span><span class="p">)</span>
+  <span class="n">local</span> <span class="n">config</span> <span class="o">=</span> <span class="k">assert</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;/usr/bin/curl &#39;</span><span class="o">..</span><span class="n">fich_json</span><span class="p">))</span>
+  <span class="n">local</span> <span class="n">blocjson</span> <span class="o">=</span> <span class="n">config</span><span class="p">:</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;*a&#39;</span><span class="p">)</span>
+  <span class="n">config</span><span class="p">:</span><span class="n">close</span><span class="p">()</span>
+  <span class="n">local</span> <span class="n">jsonValeur</span> <span class="o">=</span> <span class="n">json</span><span class="p">:</span><span class="n">decode</span><span class="p">(</span><span class="n">blocjson</span><span class="p">)</span>
+  <span class="o">--</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;succes=&#39;</span><span class="o">..</span><span class="n">jsonValeur</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">jsonValeur</span>
+<span class="n">end</span>
+<span class="n">function</span> <span class="n">modect_cam</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+ <span class="n">json_val</span><span class="o">=</span><span class="n">decode_json</span><span class="p">(</span><span class="s1">&#39;curl -XPOST -d &quot;user=michel&amp;pass=Idem4546&quot;  http://192.168.1.23/zm/api/host/login.json&#39;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">json_val</span><span class="o">.</span><span class="n">access_token</span><span class="p">)</span>
+ <span class="n">cle</span><span class="o">=</span><span class="n">json_val</span><span class="o">.</span><span class="n">access_token</span>
+ <span class="n">json_val</span><span class="o">=</span><span class="n">decode_json</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="o">..</span><span class="n">ip_monitor</span><span class="o">..</span><span class="s1">&#39;/monitor/admin/string_modect.json&#39;</span><span class="p">)</span>
+ <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">json_val</span><span class="p">)</span> <span class="n">do</span> <span class="o">--</span><span class="n">cam_modect</span> <span class="n">dans</span> <span class="n">string_modect</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;essai=&#39;</span><span class="o">..</span><span class="n">k</span><span class="p">)</span><span class="o">--</span><span class="n">pour</span> <span class="n">essai</span>
+ <span class="n">command</span><span class="o">=</span><span class="s1">&#39;/usr/bin/curl -XPOST http://&#39;</span><span class="o">..</span><span class="n">ip_zoneminder</span><span class="o">..</span><span class="s1">&#39;/zm/api/monitors/&#39;</span><span class="o">..</span><span class="n">k</span><span class="o">..</span><span class="s1">&#39;.json?token=&#39;</span><span class="o">..</span><span class="n">cle</span><span class="o">..</span><span class="s1">&#39; -d &quot;Monitor[Function]=&#39;</span><span class="o">..</span><span class="n">mode</span><span class="o">..</span><span class="s1">&#39;&amp;Monitor[Enabled]=&#39;</span><span class="o">..</span><span class="n">k</span><span class="o">..</span><span class="s1">&#39;&quot;&#39;</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+ <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+ <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;camera &quot;</span><span class="o">..</span><span class="n">tostring</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">..</span><span class="s2">&quot;activée :&quot;</span><span class="o">..</span><span class="n">tostring</span><span class="p">(</span><span class="n">mode</span><span class="p">));</span>
+ <span class="n">end</span>
+<span class="n">end</span>
+
+ <span class="o">--</span> <span class="n">activation</span> <span class="n">de</span> <span class="n">la</span> <span class="n">detection</span> <span class="n">par</span> <span class="n">les</span> <span class="n">cameras</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="ow">and</span>  <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">==</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
+      <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span>
+      <span class="n">end</span>
+  <span class="o">--</span> <span class="n">activation</span> <span class="n">manuelle</span> <span class="n">Modect</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span> <span class="ow">and</span>  <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">==</span><span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="n">then</span>
+      <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;modect&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span>
+      <span class="o">--</span> <span class="n">activation</span> <span class="n">manuelle</span> <span class="n">Monitor</span>
+      <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="ow">and</span>  <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">==</span><span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="n">then</span>
+      <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Monitor&#39;</span><span class="p">)</span>
+    <span class="n">end</span>
+</pre></div>
 </div>
-<div class="section" id="le-script-lua">
-<h4>5.1.1.2 le script lua<a class="headerlink" href="#le-script-lua" title="Lien permanent vers ce titre"></a></h4>
-<p><em>dans :darkblue:`alarme_intrusion.lua`</em></p>
+</div></blockquote>
 <p><a class="reference internal" href="../_images/image439.webp"><img alt="image439" src="../_images/image439.webp" style="width: 661px;" /></a></p>
-<p>Le fichier <span class="darkblue">string_modect</span> est écrit automatiquement à partir de Zoneminder, il est visible dans « administration »</p>
+</section>
+<section id="le-script-bash-pour-home-assistant">
+<h4>5.1.3.3 le script bash pour Home Assistant<a class="headerlink" href="#le-script-bash-pour-home-assistant" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Script Bash concernant le mode détection des caméras: <span class="darkblue">modect.sh</span></p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>pour ce script JQ doit être installé</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -XPOST -d &quot;user=USER&amp;pass=MOT_PASSE&quot; -s &#39;http://192.168.1.23/zm/api/host/login.json&#39; | \
+ python3 -c &quot;import sys, json; file = open(&#39;token.txt&#39;, &#39;w&#39;); file.write(json.load(sys.stdin)[&#39;access_token&#39;]); file.close()&quot;
+cle=`cat token.txt`
+mode=$1
+#wget http://192.168.1.9/monitor/admin/string_modect.json
+curl -s http://192.168.1.9/monitor/admin/string_modect.json |  XXX=&quot;$(jq  &#39;.[] | .id_zm&#39; string_modect.json)&quot;
+#echo &quot;$XXX&quot;
+for i in $XXX; do
+#echo &quot;$i&quot;;
+curl -XPOST &#39;http://192.168.1.23/zm/api/monitors/&#39;$i&#39;.json?token=&#39;$cle -d &quot;Monitor[Function]=&quot;$mode&quot;&amp;Monitor[Enabled]=&quot;$i
+done
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1356.webp"><img alt="image1356" src="../_images/image1356.webp" style="width: 700px;" /></a></p>
+</section>
+<section id="copies-d-ecran-concernant-modect">
+<h4>5.1.3.4 copies d’écran concernant Modect<a class="headerlink" href="#copies-d-ecran-concernant-modect" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Le fichier <span class="darkblue">string_modect.json</span> est écrit automatiquement à partir de la BD SQL , il est visible dans « administration »</p>
 <p><a class="reference internal" href="../_images/image440.webp"><img alt="image440" src="../_images/image440.webp" style="width: 443px;" /></a></p>
 <p><a class="reference internal" href="../_images/image05.webp"><img alt="image05" src="../_images/image05.webp" style="width: 515px;" /></a></p>
 <p><em>Capture d’écran de ZM</em> :</p>
 <p><a class="reference internal" href="../_images/image441.webp"><img alt="image441" src="../_images/image441.webp" style="width: 595px;" /></a></p>
 <p>Le choix des caméras se fait dans la BD :</p>
 <p><a class="reference internal" href="../_images/image442.webp"><img alt="image442" src="../_images/image442.webp" style="width: 265px;" /></a></p>
-</div>
-</div>
-</div>
-<div class="section" id="construction-de-limage">
-<h2>5.2 Construction de l’image<a class="headerlink" href="#construction-de-limage" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+</section>
+<section id="construction-de-limage">
+<h2>5.2 Construction de l’image<a class="headerlink" href="#construction-de-limage" title="Lien permanent vers cette rubrique"></a></h2>
 <p>On ajoute les composants avec Inkscape, les ID pour les changements de couleur, <em>pas besoin de onclick, il n’y a que des dispositifs virtuels</em>.</p>
 <p>La construction de la page est identique à celle du plan intérieur.</p>
 <p><a class="reference internal" href="../_images/image443.webp"><img alt="image443" src="../_images/image443.webp" style="width: 601px;" /></a></p>
@@ -367,8 +703,8 @@ https://api.pushover.net/1/messages.json
 <p class="admonition-title"><strong>Un extrait concernant le bouton « activation/désactivation de la sirène »</strong></p>
 <p><a class="reference internal" href="../_images/image451.webp"><img alt="image451" src="../_images/image451.webp" style="width: 602px;" /></a></p>
 </div>
-<div class="section" id="base-de-donnees">
-<h3>5.3 Base de données<a class="headerlink" href="#base-de-donnees" title="Lien permanent vers ce titre"></a></h3>
+<section id="base-de-donnees">
+<h3>5.3 Base de données<a class="headerlink" href="#base-de-donnees" title="Lien permanent vers cette rubrique"></a></h3>
 <p><strong>Table « dispositifs »</strong></p>
 <p>Après avoir ajouté les ID : enregistrement des dispositifs virtuels dans la base de données ; On ajoute au dispositif dans la colonne pass : « <strong>pwdalarm</strong> » pour limiter l’accès ;(<span class="red">cette valeur peut être modifiée dans config.php</span>)</p>
 <p><a class="reference internal" href="../_images/image452.webp"><img alt="image452" src="../_images/image452.webp" style="width: 700px;" /></a></p>
@@ -379,10 +715,10 @@ https://api.pushover.net/1/messages.json
 <p><strong>Il est aussi possible de renommer l’ID du cercle.</strong></p>
 <p><em>les variables concernées</em></p>
 <p><a class="reference internal" href="../_images/image456.webp"><img alt="image456" src="../_images/image456.webp" style="width: 595px;" /></a></p>
-</div>
-</div>
-<div class="section" id="le-php">
-<h2>5.4- Le PHP<a class="headerlink" href="#le-php" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+<section id="le-php">
+<h2>5.4- Le PHP<a class="headerlink" href="#le-php" title="Lien permanent vers cette rubrique"></a></h2>
 <ul class="simple">
 <li><p><strong>alarme.php</strong> :</p></li>
 </ul>
@@ -440,17 +776,41 @@ return $info;}
 </div>
 <p><strong>Le script qui commande les poussoirs M/A</strong></p>
 <p><a class="reference internal" href="../_images/image464.webp"><img alt="image464" src="../_images/image464.webp" style="width: 601px;" /></a></p>
-</div>
-<div class="section" id="le-javascript-dans-footer-php-et-mes-js-js">
-<h2>5.5 Le Javascript, dans footer.php et mes_js.js<a class="headerlink" href="#le-javascript-dans-footer-php-et-mes-js-js" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="le-javascript-dans-footer-php-et-mes-js-js">
+<h2>5.5 Le Javascript, dans footer.php et mes_js.js<a class="headerlink" href="#le-javascript-dans-footer-php-et-mes-js-js" title="Lien permanent vers cette rubrique"></a></h2>
 <ul class="simple">
 <li><p>Les scripts pour les mots de passe, dans js/mes_js.js</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image465.webp"><img alt="image465" src="../_images/image465.webp" style="width: 596px;" /></a></p>
 <ul class="simple">
-<li><p>Et le script pour le clavier affiché dans administration</p></li>
+<li><p>Le script pour le clavier affiché dans administration et alarme</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image466.webp"><img alt="image466" src="../_images/image466.webp" style="width: 440px;" /></a></p>
+<ul class="simple">
+<li><p>Et le HTML pour l’affichage du clavier (dans <span class="green">alarmes.php</span>):</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;modal&quot;</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;dialog&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;pwdalarm&quot;</span><span class="o">&gt;</span>
+
+
+                 <span class="o">&lt;</span><span class="n">form</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;form_al&quot;</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;close_clavier&quot;</span><span class="o">&gt;</span><span class="n">x</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;max-width: 140px;&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="o">/&gt;&lt;/</span><span class="n">br</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;3&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;4&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;5&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;6&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;7&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;7&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;8&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;9&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;raz&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;clear&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton clear&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;0 &quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton calc&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;envoi&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;enter&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pinButton enter&quot;</span><span class="o">/&gt;</span>
+   <span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p>Sans mot de passe les commandes sont impossibles ; si le temps est dépassé pour l’utilisation du mot de passe, le bouton « Entrer votre mot de passe » apparait lors d’un click.</p>
@@ -462,9 +822,9 @@ return $info;}
 <li><p>Le script pour afficher une modale « modalink »</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image469.webp"><img alt="image469" src="../_images/image469.webp" style="width: 569px;" /></a></p>
-</div>
-<div class="section" id="comme-pour-les-autres-pages">
-<h2>5.6 -Comme pour les autres pages<a class="headerlink" href="#comme-pour-les-autres-pages" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="comme-pour-les-autres-pages">
+<h2>5.6 -Comme pour les autres pages<a class="headerlink" href="#comme-pour-les-autres-pages" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Il ne reste qu’à :</p>
 <blockquote>
 <div><ul class="simple">
@@ -478,9 +838,9 @@ return $info;}
 <li><p>Ce qui ajoutera l’alarme dans le menu</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image471.webp"><img alt="image471" src="../_images/image471.webp" style="width: 108px;" /></a></p>
-</div>
-<div class="section" id="affichage-dune-icone-sur-la-page-daccueil">
-<h2>5.7- Affichage d’une icône sur la page d’accueil<a class="headerlink" href="#affichage-dune-icone-sur-la-page-daccueil" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="affichage-dune-icone-sur-la-page-daccueil">
+<h2>5.7- Affichage d’une icône sur la page d’accueil<a class="headerlink" href="#affichage-dune-icone-sur-la-page-daccueil" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference internal" href="../_images/image472.webp"><img alt="image472" src="../_images/image472.webp" style="width: 379px;" /></a></p>
 <p>Pour l’alarme de nuit, pour ne pas oublier de l’annuler le matin si la fonction auto n’a pas été choisie</p>
 <ul class="simple">
@@ -504,11 +864,11 @@ return $info;}
 <p>La table text_images : correspondance entre le texte et l’image</p>
 <p><a class="reference internal" href="../_images/image477.webp"><img alt="image477" src="../_images/image477.webp" style="width: 601px;" /></a></p>
 <p><a class="reference internal" href="../_images/image479.webp"><img alt="image479" src="../_images/image479.webp" style="width: 535px;" /></a></p>
-</div>
-<div class="section" id="ameliorations-utiles">
-<h2>5.8 Améliorations utiles<a class="headerlink" href="#ameliorations-utiles" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="la-mise-en-marche-automatiquement-de-lalarme-de-nuit">
-<h3>5.8.1- la mise en marche automatiquement de l’alarme de nuit<a class="headerlink" href="#la-mise-en-marche-automatiquement-de-lalarme-de-nuit" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="ameliorations-utiles">
+<h2>5.8 Améliorations utiles<a class="headerlink" href="#ameliorations-utiles" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="la-mise-en-marche-automatiquement-de-lalarme-de-nuit">
+<h3>5.8.1- la mise en marche automatiquement de l’alarme de nuit<a class="headerlink" href="#la-mise-en-marche-automatiquement-de-lalarme-de-nuit" title="Lien permanent vers cette rubrique"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>à certaines heures</p></li>
@@ -519,8 +879,8 @@ return $info;}
 .  On modifie l’image ; on ajoute un bouton
 .  On sauvegarde l’image sous un autre nom, l’extension sera .svg; comme précédemment avec les images, on la copie dans le fichier avec l’extension PHP</p>
 <p><a class="reference internal" href="../_images/image480.webp"><img alt="image480" src="../_images/image480.webp" style="width: 650px;" /></a></p>
-<div class="section" id="dans-domoticz">
-<h4>5.8.1.1 Dans Domoticz<a class="headerlink" href="#dans-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<section id="dans-domoticz">
+<h4>5.8.1.1 Dans Domoticz<a class="headerlink" href="#dans-domoticz" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p>On ajoute un poussoir virtuel : al_nuit_auto</p></li>
 </ul>
@@ -536,9 +896,9 @@ return $info;}
 <p>voir ce § <a class="reference internal" href="configuration_minimum.html#les-scripts-de-notifications-gerees-par-domoticz"><span class="std std-ref">1.5.1.2 les scripts de notifications gérées par Domoticz</span></a></p>
 <p><strong>Log</strong> :</p>
 <p><a class="reference internal" href="../_images/image485.webp"><img alt="image485" src="../_images/image485.webp" style="width: 700px;" /></a></p>
-</div>
-<div class="section" id="dans-monitor">
-<h4>5.8.1.2 Dans Monitor<a class="headerlink" href="#dans-monitor" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="dans-monitor">
+<h4>5.8.1.2 Dans Monitor<a class="headerlink" href="#dans-monitor" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Pour cela on met à jour la table « dispositifs »</p>
 <p><a class="reference internal" href="../_images/image486.webp"><img alt="image486" src="../_images/image486.webp" style="width: 577px;" /></a></p>
 <p><a class="reference internal" href="../_images/image487.webp"><img alt="image487" src="../_images/image487.webp" style="width: 335px;" /></a></p>
@@ -556,23 +916,23 @@ return $info;}
 </ul>
 <p><a class="reference internal" href="../_images/image491.webp"><img alt="image491" src="../_images/image491.webp" style="width: 70px;" /></a></p>
 </div>
-</div>
-</div>
-<div class="section" id="alarme-par-sms-gsm">
-<h3>5.8.2 Alarme par sms GSM<a class="headerlink" href="#alarme-par-sms-gsm" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="alarme-par-sms-gsm">
+<h3>5.8.2 Alarme par sms GSM<a class="headerlink" href="#alarme-par-sms-gsm" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p>si un modem GSM installé</p>
 </div>
-<div class="section" id="version-sans-l-utilisation-d-une-variable-domoticz">
-<h4>5.8.2.1 Version sans l’utilisation d’une variable Domoticz<a class="headerlink" href="#version-sans-l-utilisation-d-une-variable-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<section id="version-sans-l-utilisation-d-une-variable">
+<h4>5.8.2.1 Version sans l’utilisation d’une variable<a class="headerlink" href="#version-sans-l-utilisation-d-une-variable" title="Lien permanent vers cette rubrique"></a></h4>
 <p><strong>Avec un reload d’un module python</strong></p>
 <p>On utilise un module python en import reload et on modifie ce module :</p>
 <ul class="simple">
-<li><p>Avec Domoticz pour envoyer un message</p></li>
+<li><p>Avec le serveur domotiqu (DZ ou HA) pour envoyer un message</p></li>
 <li><p>Avec python pour une réinitialisation après l’envoi du message</p></li>
 </ul>
-<p><strong>Création d’un fichier python</strong> : <span class="darkblue">aldz.py:darkblue:</span>, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme</p>
+<p><strong>Création d’un fichier python</strong> : <span class="darkblue">aldz.py</span>, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.7 -*- coing: utf-8 -*-</span>
 <span class="n">x</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
 </pre></div>
@@ -581,38 +941,54 @@ return $info;}
 <p><a class="reference internal" href="../_images/image500.webp"><img alt="image500" src="../_images/image500.webp" style="width: 311px;" /></a></p>
 <p><strong>Dans Domoticz</strong>, pas besoin de créer une variable, simplement modifier le fichier aldz.py pour inclure à la variable x, le texte du SMS</p>
 <p><a class="reference internal" href="../_images/image501.webp"><img alt="image501" src="../_images/image501.webp" style="width: 575px;" /></a></p>
+<p><strong>Dans Home Assistant</strong>, il en est de même: 2 variantes possibles :</p>
+<ul class="simple">
+<li><p>avec data: (en utilisant un fichier bash intermédiaire)</p></li>
+<li><p>avec un texte pré-défini</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1349.webp"><img alt="image1349" src="../_images/image1349.webp" style="width: 700px;" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p><strong>Attention</strong> :  comme déjà indiqué, si modem Ebyte, pas d’espaces et accents</p>
 </div>
-<p>Le fichier <span class="darkblue">sms_dz</span> est modifié (simplifié) :</p>
+<p>Le fichier <span class="darkblue">sms_dz</span> est modifié (simplifié) : indiquer le bon port serie et les bons chemins.</p>
 <p><a class="reference internal" href="../_images/image502.webp"><img alt="image502" src="../_images/image502.webp" style="width: 570px;" /></a></p>
-</div>
-<div class="section" id="option-supplementaire-le-test-de-lenvoi-de-sms">
-<h4>5.8.2.2 Option supplémentaire : le test de l’envoi de SMS<a class="headerlink" href="#option-supplementaire-le-test-de-lenvoi-de-sms" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="option-supplementaire-le-test-de-lenvoi-de-sms">
+<h4>5.8.2.2 Option supplémentaire : le test de l’envoi de SMS<a class="headerlink" href="#option-supplementaire-le-test-de-lenvoi-de-sms" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference internal" href="../_images/image503.webp"><img alt="image503" src="../_images/image503.webp" style="width: 472px;" /></a></p>
 <ul class="simple">
 <li><p>Dans l’image de l’alarme : on ajoute,</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image504.webp"><img alt="image504" src="../_images/image504.webp" style="width: 700px;" /></a></p>
 <ul class="simple">
-<li><p>Dans Domoticz : on ajoute un interrupteur virtuel</p></li>
+<li><p>Dans Domoticz : on ajoute un poussoir de sonnette</p></li>
+<li><p>Dans Home Assistant : on ajoute un input_button</p></li>
 </ul>
-<p><a class="reference internal" href="../_images/image504.webp"><img alt="image507" src="../_images/image504.webp" style="width: 332px;" /></a></p>
-<p><a class="reference internal" href="../_images/image508.webp"><img alt="image508" src="../_images/image508.webp" style="width: 402px;" /></a></p>
+<p><a class="reference internal" href="../_images/image508.webp"><img alt="image508" src="../_images/image508.webp" style="width: 380px;" /></a>  <a class="reference internal" href="../_images/image1352.webp"><img alt="image1352" src="../_images/image1352.webp" style="width: 310px;" /></a></p>
+<div class="admonition-fonctionnement-du-bouton-de-sonnette-dans-domoticz admonition">
+<p class="admonition-title">** fonctionnement du bouton de sonnette dans Domoticz**</p>
+<p>Le bouton est toujours “on” , lors d’un appuie la commande  “nvalue=group on” est envoyé à Domoticz qui renvoie un Data=off</p>
+<p><a class="reference internal" href="../_images/image1306.webp"><img alt="image1306" src="../_images/image1306.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image507.webp"><img alt="image507" src="../_images/image507.webp" style="width: 650px;" /></a></p>
 <p>On ajoute le dispositif au plan :</p>
 <p><a class="reference internal" href="../_images/image509.webp"><img alt="image509" src="../_images/image509.webp" style="width: 544px;" /></a></p>
 <p><a class="reference internal" href="../_images/image510.webp"><img alt="image510" src="../_images/image510.webp" style="width: 450px;" /></a></p>
 <p>On ajoute qq lignes de script dans évènements dz , <span class="darkblue">notifications_devices.lua</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="p">{</span>
-     <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>  <span class="n">devices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Test_GSM&#39;</span><span class="p">,</span>
+  <span class="n">on</span> <span class="o">=</span> <span class="p">{</span>  <span class="n">devices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Test_GSM&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Test_GSM&#39;</span> <span class="ow">and</span>  <span class="n">device</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;test_gsm&quot;</span><span class="p">)</span>
-        <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;TestùGSMùOK&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">send_sms</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
-        <span class="n">obj</span><span class="o">=</span><span class="s1">&#39;Test GSM OK&#39;</span><span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
- <span class="n">end</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Test_GSM&#39;</span> <span class="p">)</span> <span class="n">then</span> <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;test_gsm&quot;</span><span class="p">)</span>
+     <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;TestùGSMùOK&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">send_sms</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+     <span class="n">obj</span><span class="o">=</span><span class="s1">&#39;Test GSM OK&#39;</span><span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+<span class="n">end</span>
 </pre></div>
+</div>
+</div>
+<div class="admonition-fonctionnement-de-l-input-button-dans-home-assistant admonition">
+<p class="admonition-title">** fonctionnement de l” INPUT_BUTTON dans Home Assistant**</p>
+<p><a class="reference internal" href="../_images/image1353.webp"><img alt="image1353" src="../_images/image1353.webp" style="width: 700px;" /></a></p>
 </div>
 <p>Dans la BD :</p>
 <p><a class="reference internal" href="../_images/image512.webp"><img alt="image512" src="../_images/image512.webp" style="width: 612px;" /></a></p>
@@ -622,14 +998,14 @@ return $info;}
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Affichage de l’alarme</strong>
-une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour de devices_plan() au plus tard : 3minutes par défaut mais modifiable dans admin/config.php</p>
+une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour : 1 à 2 secondes avec le  serveur SSE-php</p>
 </div>
 <p><a class="reference internal" href="../_images/image515.webp"><img alt="image515" src="../_images/image515.webp" style="width: 461px;" /></a></p>
-</div>
-</div>
-<div class="section" id="affichage-de-la-liste-des-cameras-modect">
-<h3>5.8.3- Affichage de la liste des caméras Modect<a class="headerlink" href="#affichage-de-la-liste-des-cameras-modect" title="Lien permanent vers ce titre"></a></h3>
-<p>Cette liste est établie automatiquement avec une fonction dans « administration » , voir le § <a class="reference internal" href="#le-script-lua"><span class="std std-ref">5.1.1.2 le script lua</span></a></p>
+</section>
+</section>
+<section id="affichage-de-la-liste-des-cameras-modect">
+<h3>5.8.3- Affichage de la liste des caméras Modect<a class="headerlink" href="#affichage-de-la-liste-des-cameras-modect" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Cette liste est établie automatiquement avec une fonction dans « administration » , voir le § <span class="xref std std-ref">5.1.1.2 le script lua</span></p>
 <div class="admonition-ajout-d-une-icone-pour-afficher-la-liste-depuis-l-alarme admonition">
 <p class="admonition-title"><strong>ajout d’une icône pour afficher la liste depuis l’alarme</strong></p>
 <p><a class="reference internal" href="../_images/image517.webp"><img alt="image517" src="../_images/image517.webp" style="width: 408px;" /></a></p>
@@ -661,9 +1037,9 @@ une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste af
 <p>Affichage :</p>
 <p><a class="reference internal" href="../_images/image521.webp"><img alt="image521" src="../_images/image521.webp" style="width: 457px;" /></a></p>
 </div>
-</div>
-<div class="section" id="copie-ecran-de-la-derniere-version">
-<h3>5.8.5- Copie écran de la dernière version<a class="headerlink" href="#copie-ecran-de-la-derniere-version" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="copie-ecran-de-la-derniere-version">
+<h3>5.8.5- Copie écran de la dernière version<a class="headerlink" href="#copie-ecran-de-la-derniere-version" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Version 2.1.0 réécrite en DzVent avec :</p>
 <ul class="simple">
 <li><p>1 script pour le timer</p></li>
@@ -672,9 +1048,14 @@ une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste af
 <li><p>Le script principal de l’alarme</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image522.webp"><img alt="image522" src="../_images/image522.webp" style="width: 705px;" /></a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+<section id="resume-des-dispositifs-des-switches-virtuels-des-variables-utilises">
+<h2>5.9- Résumé des dispositifs, des switches virtuels, des variables utilisés<a class="headerlink" href="#resume-des-dispositifs-des-switches-virtuels-des-variables-utilises" title="Lien permanent vers cette rubrique"></a></h2>
+<p><a class="reference internal" href="../_images/image1357.webp"><img alt="image1357" src="../_images/image1357.webp" style="width: 622px;" /></a></p>
+<p>voir le § <a class="reference internal" href="bien_debuter.html#les-dispositifs"><span class="std std-ref">0.3.2 Les Dispositifs</span></a></p>
+</section>
+</section>
 
 
            </div>
@@ -687,7 +1068,7 @@ une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste af
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>17. DIY &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>17. DIY &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -77,14 +80,39 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#ajout-dun-id-dans-limage-svg-pour-3eme-ecran">17.1.4.3 ajout d’un ID dans  l’image svg pour 3eme écran</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ajout-dautres-ecrans">17.1.4.4  ajout d’autres écrans</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#ecran4-ecran5">17.1.4.4. ecran4 , ecran5</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#a-ecran4-ecran5">17.1.4.4.a  ecran4 , ecran5</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#extension-pompes-perisaltiques-pour-reguler-ph-et-redox">17.2 Extension Pompes perisaltiques pour réguler PH et REDOX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monitoring-pour-spa-realisation">17.2 monitoring pour spa, réalisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#materiel">17.2.1 Matériel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cablage-et-connexion-au-pc">17.2.2 Cablâge et connexion au PC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#alimentation-des-differents-composants">17.2.2.1 Alimentation des différents composants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#circuits-des-donnees">17.2.2.2 circuits des données</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#le-firmware">17.2.2.3 Le firmware</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#a-pour-un-esp8266">17.2.1.3.a Pour un esp¬8266</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#b-pour-un-esp32">17.2.1.3.b Pour un esp¬32</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#flashage-de-l-esp">17.2.3 Flashage de l’ESP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nodemcu-avec-esp-8266">17.2.3.1 NodeMcu avec esp 8266</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodemcu-avec-esp-32">17.2.3.2 NodeMcu avec esp 32</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#programmation-de-l-esp">17.2.4 Programmation de l’ESP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#choisir-un-controleur">17.2.4.1 Choisir un contrôleur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#choisir-la-configuration">17.2.4.2 Choisir la configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ajouter-les-dispositifs">17.2.4.3 Ajouter les dispositifs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#extension-pompes-perisaltiques-pour-reguler-ph-et-redox">17.3 Extension Pompes perisaltiques pour réguler PH et REDOX</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
@@ -118,31 +146,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="diy">
-<h1>17. DIY<a class="headerlink" href="#diy" title="Lien permanent vers ce titre"></a></h1>
-<div class="section" id="domotiser-un-spa-ou-une-piscine">
-<h2>17.1 Domotiser un SPA (ou une piscine)<a class="headerlink" href="#domotiser-un-spa-ou-une-piscine" title="Lien permanent vers ce titre"></a></h2>
+  <section id="diy">
+<h1>17. DIY<a class="headerlink" href="#diy" title="Lien permanent vers cette rubrique"></a></h1>
+<section id="domotiser-un-spa-ou-une-piscine">
+<h2>17.1 Domotiser un SPA (ou une piscine)<a class="headerlink" href="#domotiser-un-spa-ou-une-piscine" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Ce paragraphe contient différentes parties qui peuvent être indépendantes ou liées suivant le choix de chacun :</p>
 <ul class="simple">
-<li><p>La réalisation d’un boitier électronique de mesures de PH, Redox, Températures, Débit de la filtration, les mesures étant envoyées sur un serveur MQTT;Cette réalisation est décrite sur le site domo-site.fr</p></li>
+<li><p>La réalisation d’un boitier électronique de mesures de PH, Redox, Températures, Débit de la filtration, les mesures étant envoyées sur un serveur MQTT;Cette réalisation est décrite dans le paragraphe <a class="reference internal" href="#monitoring-pour-spa-realisation"><span class="std std-ref">17.2 monitoring pour spa, réalisation</span></a></p></li>
 <li><p>La création de capteurs virtuels dans Domoticz qui récupère les valeurs envoyées par le serveur MQTT et les envoie vers la base de données de Monitor ; il envoie également des alertes sur la TV comme pour les poubelles et la fosse septique.</p></li>
 <li><p>La création d’une page dans Monitor pour afficher les données sur une page dédiée, afficher des alertes et commander s’il y a lieu le chauffage, les pompes ,…</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image914.webp"><img alt="image914" src="../_images/image914.webp" style="width: 534px;" /></a></p>
-<div class="section" id="creation-de-capteurs-virtuels-dans-domoticz">
-<h3>17.1.1. Création de capteurs virtuels dans Domoticz<a class="headerlink" href="#creation-de-capteurs-virtuels-dans-domoticz" title="Lien permanent vers ce titre"></a></h3>
+<section id="creation-de-capteurs-virtuels-dans-domoticz">
+<h3>17.1.1. Création de capteurs virtuels dans Domoticz<a class="headerlink" href="#creation-de-capteurs-virtuels-dans-domoticz" title="Lien permanent vers cette rubrique"></a></h3>
 <p><em>Pour mémoire</em></p>
 <p><a class="reference internal" href="../_images/image915.webp"><img alt="image915" src="../_images/image915.webp" style="width: 700px;" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>C’est Domoticz qui fournit l’IDX, il faut donc modifier cet IDX dans EasyEsp ;Pour le PH, le redox, le débit, les capteurs sont  » Custom « .</p>
+<p>C’est Domoticz qui fournit l’IDX, il faut donc modifier cet IDX dans EasyEsp ;Pour le PH, le redox, le débit, les capteurs sont «  Custom « .</p>
 <p><a class="reference internal" href="../_images/image916.webp"><img alt="image916" src="../_images/image916.webp" style="width: 605px;" /></a></p>
 </div>
 <p><strong>Dans EasyEsp</strong></p>
 <p><a class="reference internal" href="../_images/image917.webp"><img alt="image917" src="../_images/image917.webp" style="width: 700px;" /></a></p>
-</div>
-<div class="section" id="creation-des-tables-ph-redox-temp">
-<h3>17.1.2. Création des tables PH, Redox, temp, …<a class="headerlink" href="#creation-des-tables-ph-redox-temp" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="creation-des-tables-ph-redox-temp">
+<h3>17.1.2. Création des tables PH, Redox, temp, …<a class="headerlink" href="#creation-des-tables-ph-redox-temp" title="Lien permanent vers cette rubrique"></a></h3>
 <p><em>dans la base de données</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -168,9 +196,9 @@
 <p><span class="darkblue">Si la création est manuelle , ne pas oublier Auto incrémenter « num »</span></p>
 <p><a class="reference internal" href="../_images/image920.webp"><img alt="image920" src="../_images/image920.webp" style="width: 601px;" /></a></p>
 </div>
-</div>
-<div class="section" id="envoi-des-donnees-a-la-bd-de-monitor-par-domoticz">
-<h3>17.1.3 Envoi des données à la BD de monitor par Domoticz<a class="headerlink" href="#envoi-des-donnees-a-la-bd-de-monitor-par-domoticz" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="envoi-des-donnees-a-la-bd-de-monitor-par-domoticz">
+<h3>17.1.3 Envoi des données à la BD de monitor par Domoticz<a class="headerlink" href="#envoi-des-donnees-a-la-bd-de-monitor-par-domoticz" title="Lien permanent vers cette rubrique"></a></h3>
 <p><em>Le paragraphe 6.2 traite de ce sujet (envoie de températures issues de capteurs réels ou virtuels)</em>.</p>
 <p>Il suffit donc d’ajouter les données PH, Redox, etc… dans le script export_sql dans Evènements de Domoticz :</p>
 <p><a class="reference internal" href="../_images/image921.webp"><img alt="image921" src="../_images/image921.webp" style="width: 618px;" /></a></p>
@@ -180,9 +208,9 @@
 </div>
 <p>Les valeurs si dessous ne sont pas réelles, la sonde PH n’est pas branchée.</p>
 <p><a class="reference internal" href="../_images/image922.webp"><img alt="image922" src="../_images/image922.webp" style="width: 700px;" /></a></p>
-</div>
-<div class="section" id="affichage-dans-monitor">
-<h3>17.1.4. – Affichage dans Monitor<a class="headerlink" href="#affichage-dans-monitor" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="affichage-dans-monitor">
+<h3>17.1.4. – Affichage dans Monitor<a class="headerlink" href="#affichage-dans-monitor" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p>Pour que Monitor reçoive les données, il faut enregistrer les capteurs dans la BD et les ajouter dans un plan dans Domoticz plan, voir les $</p>
@@ -191,8 +219,8 @@
 <li><p><span class="xref std std-ref">0.3.1 Les Tables « dispositifs(variables) » &amp; « text-image »</span></p></li>
 <li><p><a class="reference internal" href="plan_interieur.html#ajout-dun-ou-plusieurs-dispositifs"><span class="std std-ref">2.1.4 - ajout d’un ou plusieurs dispositifs</span></a></p></li>
 </ul>
-<div class="section" id="la-page-spa-php">
-<h4>17.1.4.1 la page spa.php<a class="headerlink" href="#la-page-spa-php" title="Lien permanent vers ce titre"></a></h4>
+<section id="la-page-spa-php">
+<h4>17.1.4.1 la page spa.php<a class="headerlink" href="#la-page-spa-php" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>cette page a la particularité d’affichher un écran à pages multiples défilantes</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- section SPA start --&gt;
              &lt;div id=&quot;spa&quot; class=&quot;spa&quot;&gt;
@@ -247,8 +275,8 @@ function next_ecran(num_ec){
 <p><strong>NE PAS OUBLIER d’ajouter la page au menu , à index_loc.php et son ID aux CSS</strong>, voir le paragraphe <a class="reference internal" href="ajout_page_alertes.html#ajouter-des-pages-ou-des-alertes"><span class="std std-ref">16. Ajouter des pages ou des alertes</span></a></p>
 </div>
 <p><a class="reference internal" href="../_images/image925.webp"><img alt="image925" src="../_images/image925.webp" style="width: 700px;" /></a></p>
-<div class="section" id="a-limage-svg-support-de-laffichage">
-<h5>17.1.4.1.a L’image svg support de l’affichage<a class="headerlink" href="#a-limage-svg-support-de-laffichage" title="Lien permanent vers ce titre"></a></h5>
+<section id="a-limage-svg-support-de-laffichage">
+<h5>17.1.4.1.a L’image svg support de l’affichage<a class="headerlink" href="#a-limage-svg-support-de-laffichage" title="Lien permanent vers cette rubrique"></a></h5>
 <p><em>https://raw.githubusercontent.com/mgrafr/monitor/main/include/ph-redox_svg.php</em></p>
 <p><a class="reference internal" href="../_images/image928.webp"><img alt="image928" src="../_images/image928.webp" style="width: 602px;" /></a></p>
 <p><a class="reference internal" href="../_images/image929.webp"><img alt="image929" src="../_images/image929.webp" style="width: 620px;" /></a></p>
@@ -265,10 +293,10 @@ function next_ecran(num_ec){
 <p class="admonition-title"><strong>La 1ère page</strong></p>
 <p><a class="reference internal" href="../_images/image933.webp"><img alt="image933" src="../_images/image933.webp" style="width: 485px;" /></a></p>
 </div>
-</div>
-</div>
-<div class="section" id="ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1">
-<h4>17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)<a class="headerlink" href="#ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1" title="Lien permanent vers ce titre"></a></h4>
+</section>
+</section>
+<section id="ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1">
+<h4>17.1.4.2 ajout d’un ID dans  l’image svg pour le 2eme écran (ecran1)<a class="headerlink" href="#ajout-dun-id-dans-limage-svg-pour-le-2eme-ecran-ecran1" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>qui affichera les données de la BD</em></p>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/image934.webp"><img alt="image934" src="../_images/image934.webp" style="width: 484px;" /></a></p>
@@ -278,8 +306,8 @@ function next_ecran(num_ec){
 <span class="o">|</span><span class="n">image935</span><span class="o">|</span>
 </pre></div>
 </div>
-<div class="section" id="a-les-autres-fichiers-concernes">
-<h5>17.1.4.2.a Les autres fichiers concernés<a class="headerlink" href="#a-les-autres-fichiers-concernes" title="Lien permanent vers ce titre"></a></h5>
+<section id="a-les-autres-fichiers-concernes">
+<h5>17.1.4.2.a Les autres fichiers concernés<a class="headerlink" href="#a-les-autres-fichiers-concernes" title="Lien permanent vers cette rubrique"></a></h5>
 <ul class="simple">
 <li><p>fonctions.php graph()</p></li>
 <li><p>export_tab_sqli.php</p></li>
@@ -300,16 +328,16 @@ function next_ecran(num_ec){
 <p><strong>Les lignes non indispensables sont supprimées</strong> pour $periode= « text_svg »;</p>
 <p>en remplacement, affichage de « connected »  : <span class="green">echo “&lt;text transform= »matrix(1 0 0 1 0 0) » class= »spa2 spa3 »&gt;Connected&lt;/text&gt;”;</span></p>
 </div>
-</div>
-</div>
-<div class="section" id="ajout-dun-id-dans-limage-svg-pour-3eme-ecran">
-<h4>17.1.4.3 ajout d’un ID dans  l’image svg pour 3eme écran<a class="headerlink" href="#ajout-dun-id-dans-limage-svg-pour-3eme-ecran" title="Lien permanent vers ce titre"></a></h4>
+</section>
+</section>
+<section id="ajout-dun-id-dans-limage-svg-pour-3eme-ecran">
+<h4>17.1.4.3 ajout d’un ID dans  l’image svg pour 3eme écran<a class="headerlink" href="#ajout-dun-id-dans-limage-svg-pour-3eme-ecran" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>qui affiche les données Redox de la même façon que pour le PH ci-dessus</em></p>
 <p><a class="reference internal" href="../_images/image939.webp"><img alt="image939" src="../_images/image939.webp" style="width: 650px;" /></a></p>
 <p><a class="reference internal" href="../_images/image940.webp"><img alt="image940" src="../_images/image940.webp" style="width: 491px;" /></a></p>
-</div>
-<div class="section" id="ajout-dautres-ecrans">
-<h4>17.1.4.4  ajout d’autres écrans<a class="headerlink" href="#ajout-dautres-ecrans" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="ajout-dautres-ecrans">
+<h4>17.1.4.4  ajout d’autres écrans<a class="headerlink" href="#ajout-dautres-ecrans" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>Mesure de la température de l’eau, de l’air, le débit de la filtration,…</em></p>
 <div class="admonition-calcul-du-debit-de-la-filtration admonition">
 <p class="admonition-title"><strong>Calcul du débit de la filtration</strong></p>
@@ -349,18 +377,246 @@ function next_ecran(num_ec){
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image947.webp"><img alt="image947" src="../_images/image947.webp" style="width: 469px;" /></a></p>
-<div class="section" id="ecran4-ecran5">
-<h5>17.1.4.4. ecran4 , ecran5<a class="headerlink" href="#ecran4-ecran5" title="Lien permanent vers ce titre"></a></h5>
+<section id="a-ecran4-ecran5">
+<h5>17.1.4.4.a  ecran4 , ecran5<a class="headerlink" href="#a-ecran4-ecran5" title="Lien permanent vers cette rubrique"></a></h5>
 <p><a class="reference internal" href="../_images/image949.webp"><img alt="image949" src="../_images/image949.webp" style="width: 700px;" /></a></p>
+</section>
+</section>
+</section>
+</section>
+<section id="monitoring-pour-spa-realisation">
+<h2>17.2 monitoring pour spa, réalisation<a class="headerlink" href="#monitoring-pour-spa-realisation" title="Lien permanent vers cette rubrique"></a></h2>
+<p>pour les mesures :</p>
+<ul class="simple">
+<li><p>PH</p></li>
+<li><p>Redox</p></li>
+<li><p>Température de l’eau</p></li>
+<li><p>Débit de la filtration</p></li>
+<li><p>Température de l’air</p></li>
+</ul>
+<p>inspiré de <a class="reference external" href="https://easydomoticz.com/forum/viewtopic.php?t=11590">https://easydomoticz.com/forum/viewtopic.php?t=11590</a></p>
+<p><a class="reference internal" href="../_images/image1438.webp"><img alt="image1438" src="../_images/image1438.webp" style="width: 563px;" /></a></p>
+<section id="materiel">
+<h3>17.2.1 Matériel<a class="headerlink" href="#materiel" title="Lien permanent vers cette rubrique"></a></h3>
+<p>En plus d’un coffret électrique étanche,</p>
+<ul>
+<li><p>1 module NodeMcu V3  et un kit de développement</p></li>
+<li><p>1 module ADC ADS1115</p>
+<p><a class="reference internal" href="../_images/image1439.webp"><img alt="image1439" src="../_images/image1439.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1440.webp"><img alt="image1440" src="../_images/image1440.webp" style="width: 605px;" /></a></p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ADS1115</p>
+<p><a class="reference internal" href="../_images/image1441.webp"><img alt="image1441" src="../_images/image1441.webp" style="width: 605px;" /></a></p>
+<p><a class="reference external" href="https://www.ti.com/lit/ds/symlink/ads1115.pdf?ts=1669880254595&amp;ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FADS1115%253Futm_source%253Dgoogle%2526utm_medium%253Dcpc%2526utm_campaign%253Dasc-null-null-GPN_EN-cpc-pf-google-eu%2526utm_content%253DADS1115%2526ds_k%253DADS1115%2526DCM%253Dyes%2526gclid%253DEAIaIQobChMIs9Xrz_TX-wIVh6jVCh2PiwwaEAAYASAAEgL8U_D_BwE%2526gclsrc%253Daw.ds">https://www.ti.com/lit/ds/symlink/ads1115.pdf?ts=1669880254595&amp;ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FADS1115%253Futm_source%253Dgoogle%2526utm_medium%253Dcpc%2526utm_campaign%253Dasc-null-null-GPN_EN-cpc-pf-google-eu%2526utm_content%253DADS1115%2526ds_k%253DADS1115%2526DCM%253Dyes%2526gclid%253DEAIaIQobChMIs9Xrz_TX-wIVh6jVCh2PiwwaEAAYASAAEgL8U_D_BwE%2526gclsrc%253Daw.ds</a></p>
+<p>Large plage d’alimentation : <span class="red">2,0 V à 5,5 V</span></p>
+</div>
+<ul>
+<li><p>2 modules de contrôle avec interface BNC</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1442.webp"><img alt="image1442" src="../_images/image1442.webp" style="width: 605px;" /></a></p>
+</div></blockquote>
+</li>
+<li><p>1 capteur de débit d’eau</p>
+<p><a class="reference internal" href="../_images/image1443.webp"><img alt="image1443" src="../_images/image1443.webp" style="width: 605px;" /></a></p>
+</li>
+<li><p>Des fils Dupont</p>
+<p><a class="reference internal" href="../_images/image1444.webp"><img alt="image1444" src="../_images/image1444.webp" style="width: 605px;" /></a></p>
+</li>
+<li><p>1 résistance de 4,7kὨ  <a class="reference internal" href="../_images/image1445.webp"><img alt="image1445" src="../_images/image1445.webp" style="width: 150px;" /></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le bus à 1 fil (1 Wire) nécessite que le signal de commande soit tiré vers le haut afin que le périphérique maître puisse le tirer vers le bas pour demander des données; le périphérique esclave peut le tirer vers le bas pour donner les données; Ceci permet d’installer plusieurs appareils sur le même « 1 wire ».</p>
+</div>
+<ul>
+<li><p>2 sondes de température</p>
+<blockquote>
+<div><p>. pour la température de l’eau</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1446.webp"><img alt="image1446" src="../_images/image1446.webp" style="width: 605px;" /></a></p>
+</div></blockquote>
+<p>. pour la température de l’air</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1447.webp"><img alt="image1447" src="../_images/image1447.webp" style="width: 605px;" /></a></p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p>1 sonde PH</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1450.webp"><img alt="image1450" src="../_images/image1450.webp" style="width: 605px;" /></a></p>
+</div></blockquote>
+</li>
+<li><p>1 sonde ORP</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1451.webp"><img alt="image1451" src="../_images/image1451.webp" style="width: 605px;" /></a></p>
+</div></blockquote>
+</li>
+<li><p>1 alimentation 230V/12 Volts; elle peut être interne ou externe</p>
+<p><a class="reference internal" href="../_images/image1448.webp"><img alt="image1448" src="../_images/image1448.webp" style="width: 270px;" /></a>  <a class="reference internal" href="../_images/image1449.webp"><img alt="image1449" src="../_images/image1449.webp" style="width: 294px;" /></a></p>
+</li>
+</ul>
+</section>
+<section id="cablage-et-connexion-au-pc">
+<h3>17.2.2 Cablâge et connexion au PC<a class="headerlink" href="#cablage-et-connexion-au-pc" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Avec les fils Dupont mais pour les sondes de température une résistance est à insérer entre le 3 Volts et le fil de données ;j” ai utilisé des prises aviation pour raccorder les sondes à l’extérieur du boitier , la résistance est soudée ente PLUS et DATA dur l’un des connecteurs.</p>
+<section id="alimentation-des-differents-composants">
+<h4>17.2.2.1 Alimentation des différents composants<a class="headerlink" href="#alimentation-des-differents-composants" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1452.webp"><img alt="image1452" src="../_images/image1452.webp" style="width: 605px;" /></a></p>
+</section>
+<section id="circuits-des-donnees">
+<h4>17.2.2.2 circuits des données<a class="headerlink" href="#circuits-des-donnees" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1453.webp"><img alt="image1453" src="../_images/image1453.webp" style="width: 605px;" /></a></p>
+</section>
+<section id="le-firmware">
+<h4>17.2.2.3 Le firmware<a class="headerlink" href="#le-firmware" title="Lien permanent vers cette rubrique"></a></h4>
+<ul class="simple">
+<li><p>S’assurer que la carte est bien reconnue, connecter la micro USB du NodeMcu à une prise USB du PC</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1454.webp"><img alt="image1454" src="../_images/image1454.webp" style="width: 600px;" /></a></p>
+<ul class="simple">
+<li><p>Ouvrir le gestionnaire de périphériques</p></li>
+</ul>
+<p>Si le drivers n’est pas reconnu, l’installer ; Noter le port COM et choisir 115200 Bauds</p>
+<p><a class="reference internal" href="../_images/image1455.webp"><img alt="image1455" src="../_images/image1455.webp" style="width: 605px;" /></a></p>
+<ul class="simple">
+<li><p>Télécharger le firmware</p></li>
+</ul>
+<section id="a-pour-un-esp8266">
+<h5>17.2.1.3.a Pour un esp¬8266<a class="headerlink" href="#a-pour-un-esp8266" title="Lien permanent vers cette rubrique"></a></h5>
+<p><a class="reference external" href="https://github.com/letscontrolit/ESPEasy/releases">https://github.com/letscontrolit/ESPEasy/releases</a></p>
+<p><a class="reference internal" href="../_images/image1456.webp"><img alt="image1456" src="../_images/image1456.webp" style="width: 605px;" /></a></p>
+<p>Dans ESPEasy_binaries.zip , choisir un fichier pour le firmware:</p>
+<p><a class="reference internal" href="../_images/image1457.webp"><img alt="image1457" src="../_images/image1457.webp" style="width: 605px;" /></a></p>
+</section>
+<section id="b-pour-un-esp32">
+<h5>17.2.1.3.b Pour un esp¬32<a class="headerlink" href="#b-pour-un-esp32" title="Lien permanent vers cette rubrique"></a></h5>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour une liaison série il faut choisir un fichier avec une extension « factory »</p>
+</div>
+<p><a class="reference internal" href="../_images/image1458.webp"><img alt="image1458" src="../_images/image1458.webp" style="width: 521px;" /></a></p>
+</section>
+</section>
+</section>
+<section id="flashage-de-l-esp">
+<h3>17.2.3 Flashage de l’ESP<a class="headerlink" href="#flashage-de-l-esp" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Choisir un programme dans ESPEasy_dist.zip,</p>
+<p><a class="reference internal" href="../_images/image1459.webp"><img alt="image1459" src="../_images/image1459.webp" style="width: 581px;" /></a></p>
+<blockquote>
+<div><p>j’ai l’habitude d’utiliser Expressif_flash_download_tools :</p>
+</div></blockquote>
+<p><a class="reference external" href="https://www.espressif.com/en/support/download/other-tools?keys=&amp;field_type_tid%5B%5D=14">https://www.espressif.com/en/support/download/other-tools?keys=&amp;field_type_tid%5B%5D=14</a></p>
+<p><a class="reference internal" href="../_images/image1460.webp"><img alt="image1460" src="../_images/image1460.webp" style="width: 605px;" /></a></p>
+<section id="nodemcu-avec-esp-8266">
+<h4>17.2.3.1 NodeMcu avec esp 8266<a class="headerlink" href="#nodemcu-avec-esp-8266" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Lancer flash_download_tools</p>
+<p><a class="reference internal" href="../_images/image1461.webp"><img alt="image1461" src="../_images/image1461.webp" style="width: 431px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1463.webp"><img alt="image1463" src="../_images/image1463.webp" style="width: 425px;" /></a></p>
+<p>Appuyer sur le bouton Flash du NodeMcu et ensuite sur START du programme avant de relacher la pression sur le bouton.</p>
+<p>Avec  kit de développement NodeMCU, c’est facile la connexion USB peut tirer GPIO0 vers le bas en affirmant DTR et réinitialiser la carte en affirmant RTS.</p>
+<p><a class="reference internal" href="../_images/image1464.webp"><img alt="image1464" src="../_images/image1464.webp" style="width: 372px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1465.webp"><img alt="image1465" src="../_images/image1465.webp" style="width: 306px;" /></a></p>
+</section>
+<section id="nodemcu-avec-esp-32">
+<h4>17.2.3.2 NodeMcu avec esp 32<a class="headerlink" href="#nodemcu-avec-esp-32" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Lancer flash_download_tools</p>
+<p><a class="reference internal" href="../_images/image1462.webp"><img alt="image1462" src="../_images/image1462.webp" style="width: 224px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1466.webp"><img alt="image1466" src="../_images/image1466.webp" style="width: 429px;" /></a></p>
+<p><strong>Apputer sur START et sur BOOT du esp32</strong></p>
+<p><a class="reference internal" href="../_images/image1467.webp"><img alt="image1467" src="../_images/image1467.webp" style="width: 372px;" /></a></p>
+</section>
+</section>
+<section id="programmation-de-l-esp">
+<h3>17.2.4 Programmation de l’ESP<a class="headerlink" href="#programmation-de-l-esp" title="Lien permanent vers cette rubrique"></a></h3>
+<ul>
+<li><p>Débrancher le NodeMcu du PC et mettez le sous tension avec l’alimentation</p></li>
+<li><p>Connecter le PC sur le point d’accès ESP-Easy  (la clé est affiché ci-dessous):</p>
+<p><a class="reference internal" href="../_images/image1468.webp"><img alt="image1468" src="../_images/image1468.webp" style="width: 369px;" /></a></p>
+</li>
+<li><p>Le PC est connecté sur 192.168.4.1</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1469.webp"><img alt="image1469" src="../_images/image1469.webp" style="width: 569px;" /></a></p>
+</div></blockquote>
+</li>
+<li><p>Choisir un routeur et indiquer le mot de passe</p>
+<p><a class="reference internal" href="../_images/image1470.webp"><img alt="image1470" src="../_images/image1470.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1471.webp"><img alt="image1471" src="../_images/image1471.webp" style="width: 605px;" /></a></p>
+</li>
+</ul>
+<section id="choisir-un-controleur">
+<h4>17.2.4.1 Choisir un contrôleur<a class="headerlink" href="#choisir-un-controleur" title="Lien permanent vers cette rubrique"></a></h4>
+<p>j’ai un serveur MQTT installé sur Proxmox et Domoticz qui reçoit et émet les données, c’est Domticz-MQTT qu’i faut choisir et l’adresse IP du serveur MQTT</p>
+<p><a class="reference internal" href="../_images/image1472.webp"><img alt="image1472" src="../_images/image1472.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1473.webp"><img alt="image1473" src="../_images/image1473.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1474.webp"><img alt="image1474" src="../_images/image1474.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1475.webp"><img alt="image1475" src="../_images/image1475.webp" style="width: 605px;" /></a></p>
+</section>
+<section id="choisir-la-configuration">
+<h4>17.2.4.2 Choisir la configuration<a class="headerlink" href="#choisir-la-configuration" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1476.webp"><img alt="image1476" src="../_images/image1476.webp" style="width: 605px;" /></a></p>
+</section>
+<section id="ajouter-les-dispositifs">
+<h4>17.2.4.3 Ajouter les dispositifs<a class="headerlink" href="#ajouter-les-dispositifs" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1477.webp"><img alt="image1477" src="../_images/image1477.webp" style="width: 605px;" /></a></p>
+<ul class="simple">
+<li><p>Enregistrer le 1er dispositif :</p></li>
+</ul>
+<div class="admonition-la-mesure-du-ph-par-le-ads1115 admonition">
+<p class="admonition-title"><a href="#id1"><span class="problematic" id="id2">**</span></a>la mesure du PH par le ADS1115==</p>
+<p><a class="reference internal" href="../_images/image1478.webp"><img alt="image1478" src="../_images/image1478.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1479.webp"><img alt="image1479" src="../_images/image1479.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1480.webp"><img alt="image1480" src="../_images/image1480.webp" style="width: 605px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>un message apparaitra dans log de Domoticz car le capteur n’existe pas mais cela permet de contrôler le bon fonctionnement de MQTT</p>
+<p><a class="reference internal" href="../_images/image1482.webp"><img alt="image1482" src="../_images/image1482.webp" style="width: 543px;" /></a></p>
+</div>
+<ul class="simple">
+<li><p>Nombre de décimales et valeur de la données</p></li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1481.webp"><img alt="image1481" src="../_images/image1481.webp" style="width: 605px;" /></a></p>
+</div></blockquote>
+</div>
+<div class="admonition-la-mesure-redox-par-le-ads1115 admonition">
+<p class="admonition-title"><strong>La mesure REDOX par le ADS1115</strong></p>
+<p><a class="reference internal" href="../_images/image1483.webp"><img alt="image1483" src="../_images/image1483.webp" style="width: 605px;" /></a></p>
+</div>
+<div class="admonition-installer-la-sonde-de-temperature-deau-ds18b20 admonition">
+<p class="admonition-title"><strong>Installer la sonde de température d’eau : DS18b20</strong></p>
+<p><a class="reference external" href="https://espeasy.readthedocs.io/en/latest/Plugin/P004_DS18b20.html">https://espeasy.readthedocs.io/en/latest/Plugin/P004_DS18b20.html</a></p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1487.webp"><img alt="image1487" src="../_images/image1487.webp" style="width: 605px;" /></a></p>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Une fois la sonde programmée la désactiver et la débrancher. <span class="red">Il faut procéder ainsi afin que chaque sonde obtienne automatiquement sa propre adresse</span></p>
 </div>
 </div>
+<div class="admonition-installer-la-sonde-de-temperature-exterieur-ds18b20 admonition">
+<p class="admonition-title"><strong>Installer la sonde de température extérieur : DS18b20</strong></p>
+<p><a class="reference internal" href="../_images/image1484.webp"><img alt="image1484" src="../_images/image1484.webp" style="width: 605px;" /></a></p>
 </div>
+<div class="admonition-installer-le-capteur-de-debit admonition">
+<p class="admonition-title"><strong>Installer le capteur de débit</strong></p>
+<p><a class="reference external" href="https://espeasy.readthedocs.io/en/latest/Plugin/P003.html">https://espeasy.readthedocs.io/en/latest/Plugin/P003.html</a>
+<a class="reference external" href="https://espeasy.readthedocs.io/en/latest/Plugin/P003_YFS401.html#p003-yfs401-page">https://espeasy.readthedocs.io/en/latest/Plugin/P003_YFS401.html#p003-yfs401-page</a></p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1485.webp"><img alt="image1485" src="../_images/image1485.webp" style="width: 605px;" /></a></p>
+</div></blockquote>
 </div>
-<div class="section" id="extension-pompes-perisaltiques-pour-reguler-ph-et-redox">
-<h2>17.2 Extension Pompes perisaltiques pour réguler PH et REDOX<a class="headerlink" href="#extension-pompes-perisaltiques-pour-reguler-ph-et-redox" title="Lien permanent vers ce titre"></a></h2>
+<p>à suivre</p>
+</section>
+</section>
+</section>
+<section id="extension-pompes-perisaltiques-pour-reguler-ph-et-redox">
+<h2>17.3 Extension Pompes perisaltiques pour réguler PH et REDOX<a class="headerlink" href="#extension-pompes-perisaltiques-pour-reguler-ph-et-redox" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>en cours de rédaction</em></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -373,7 +629,7 @@ function next_ecran(num_ec){
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

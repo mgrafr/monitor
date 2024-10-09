@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>12. - FICHIERS LOG Domoticz, Nagios, SQL &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>12. - FICHIERS LOG Domoticz, Nagios, SQL &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -100,8 +103,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="fichiers-log-domoticz-nagios-sql">
-<h1>12. - FICHIERS LOG Domoticz, Nagios, SQL<a class="headerlink" href="#fichiers-log-domoticz-nagios-sql" title="Lien permanent vers ce titre"></a></h1>
+  <section id="fichiers-log-domoticz-nagios-sql">
+<h1>12. - FICHIERS LOG Domoticz, Nagios, SQL<a class="headerlink" href="#fichiers-log-domoticz-nagios-sql" title="Lien permanent vers cette rubrique"></a></h1>
 <p>Les scripts pour afficher des données sur d’autres pages peuvent être sur ce modèle, avec l’utilisation de modalink pour afficher ces données : <a class="reference external" href="https://github.com/dmhendricks/jquery-modallink">https://github.com/dmhendricks/jquery-modallink</a></p>
 <p><a class="reference internal" href="../_images/image679.webp"><img alt="image679" src="../_images/image679.webp" style="width: 639px;" /></a></p>
 <p><a class="reference internal" href="../_images/image680.webp"><img alt="image680" src="../_images/image680.webp" style="width: 533px;" /></a></p>
@@ -150,10 +153,10 @@ if ($domaine==IPMONITOR) $lien_img=&quot;/monitor&quot;;
 <p><a class="reference internal" href="../_images/image684.webp"><img alt="image684" src="../_images/image684.webp" style="width: 650px;" /></a></p>
 <p><a class="reference internal" href="../_images/image685.webp"><img alt="image685" src="../_images/image685.webp" style="width: 585px;" /></a></p>
 <p><a class="reference internal" href="../_images/image686.webp"><img alt="image686" src="../_images/image686.webp" style="width: 532px;" /></a></p>
-<div class="section" id="ajout-sql">
-<h2>12.1 AJOUT SQL<a class="headerlink" href="#ajout-sql" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="edition-de-lhistorique-du-ramassage-des-poubelles">
-<h3>12.1.1 Edition de l’historique du ramassage des poubelles<a class="headerlink" href="#edition-de-lhistorique-du-ramassage-des-poubelles" title="Lien permanent vers ce titre"></a></h3>
+<section id="ajout-sql">
+<h2>12.1 AJOUT SQL<a class="headerlink" href="#ajout-sql" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="edition-de-lhistorique-du-ramassage-des-poubelles">
+<h3>12.1.1 Edition de l’historique du ramassage des poubelles<a class="headerlink" href="#edition-de-lhistorique-du-ramassage-des-poubelles" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image687.webp"><img alt="image687" src="../_images/image687.webp" style="width: 411px;" /></a></p>
 <div class="admonition-ne-nombre-d-enregistrements-affiches-doit-etre-defini-dans-admin-config-php admonition">
 <p class="admonition-title"><strong>ne nombre d’enregistrements affichés doit être défini dans admin/config.php</strong></p>
@@ -190,9 +193,9 @@ else if (logapp==&quot;sql&quot;){var table_sql = $(this).attr(&#39;title&#39;);
 else {urllog=&quot;erreur&quot;;}
 </pre></div>
 </div>
-</div>
-<div class="section" id="ajout-dune-icone-a-lhistorique-des-poubelles">
-<h3>12.1.2 Ajout d’une icône à l’historique des poubelles<a class="headerlink" href="#ajout-dune-icone-a-lhistorique-des-poubelles" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="ajout-dune-icone-a-lhistorique-des-poubelles">
+<h3>12.1.2 Ajout d’une icône à l’historique des poubelles<a class="headerlink" href="#ajout-dune-icone-a-lhistorique-des-poubelles" title="Lien permanent vers cette rubrique"></a></h3>
 <ul>
 <li><p><strong>Dans la BD</strong> : une colonne est réservée pour l’icône</p>
 <blockquote>
@@ -218,9 +221,9 @@ else {urllog=&quot;erreur&quot;;}
 <li><p><strong>Affichage dans monitor</strong></p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image698.webp"><img alt="image698" src="../_images/image698.webp" style="width: 439px;" /></a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -233,7 +236,7 @@ else {urllog=&quot;erreur&quot;;}
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

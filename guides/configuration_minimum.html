@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. Configuration minimum : la page d’accueil &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>1. Configuration minimum : la page d’accueil &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Configuration minimum : la page d’accueil</a><ul>
@@ -55,7 +58,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#intervalles-de-maj">1.1.2 intervalles de maj</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#maj-en-temps-reel">1.1.3 maj en temps réel</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#solution-semi-temps-reel">1.1.3.1 Solution semi temps réel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-temps-reel-mqtt">1.1.3.2 Solution temps réel MQTT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-temps-reel-sse">1.1.3.2 Solution temps réel SSE</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#autres-donnees">1.1.4 Autres données</a></li>
@@ -81,7 +84,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#les-scripts-javascript">1.3.5 les scripts JavaScript</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rafraichissements-des-donnees">1.3.5.1 rafraîchissements des données</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#a-rafrichissement-de-la-page-avec-une-variable">1.3.5.1.a rafrichissement de la page avec une variable</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#b-rafraichissement-avec-mqtt">1.3.5.1.b rafraichissement avec MQTT</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#b-rafraichissement-avec-sse">1.3.5.1.b rafraichissement avec SSE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#c-le-serveur-sse">1.3.5.1.c Le serveur SSE</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#quelques-infos-supplementaires">1.3.5.2 Quelques infos supplémentaires</a></li>
@@ -94,7 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#la-temperature-exterieure-valable-pour-dautres-dispositifs">1.4.2 La température extérieure (valable pour d’autres dispositifs)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#liens-avec-domoticz-ou-home-assistant">1.5 liens avec Domoticz ou Home Assistant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#liens-avec-domoticz-home-assistant-ou-io-broker">1.5 liens avec Domoticz, Home Assistant ou io.broker</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#liens-avec-domoticz">1.5.1 Liens avec Domoticz</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#les-variables-lua-de-configuration-dans-un-fichier-externe">1.5.1.1 les variables lua de configuration dans un fichier externe</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#les-scripts-de-notifications-gerees-par-domoticz">1.5.1.2 les scripts de notifications gérées par Domoticz</a><ul>
@@ -112,6 +116,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#ajout-dans-home-assistant">1.5.3.2  Ajout dans Home Assistant</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#liens-avec-io-broker">1.5.4 Liens avec io.broker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utlisation-de-rest-api">1.5.4.1  Utlisation de rest-api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utlisation-de-vis-2-0">1.5.4.2 Utlisation de Vis 2.0</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#lien-avec-la-base-de-donnees-sql">1.6 Lien avec la base de données SQL</a><ul>
@@ -122,10 +131,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#complement-pour-les-notifications-sur-l-ecran-d-accueil">1.8 Complément pour les notifications sur l’écran d’accueil</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#les-notifications-incluses-dans-le-programme">1.8.1 les notifications incluses dans le programme</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mode-d-emploi-pour-ajouter-une-notification">1.8.2 Mode d’emploi pour ajouter une notification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha">1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ecriture-d-un-script-dzvent-ou-yaml">1.8.2.1 Ecriture d’un script Dzvent ou yaml</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#domoticz">1.8.2.1.1 Domoticz</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#la-variable-lastseen">1.8.2.1.2 La variable lastseen</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#home-assistant">1.8.2.1.3 Home Assistant</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#io-broker">1.8.2.1.4 Io.Broker</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#la-page-d-accueil-de-monitor-include-accueil-php">1.8.2.2  La page d’accueil de monitor : include/accueil.php</a></li>
@@ -194,8 +204,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="configuration-minimum-la-page-daccueil">
-<h1>1. Configuration minimum : la page d’accueil<a class="headerlink" href="#configuration-minimum-la-page-daccueil" title="Lien permanent vers ce titre"></a></h1>
+  <section id="configuration-minimum-la-page-daccueil">
+<h1>1. Configuration minimum : la page d’accueil<a class="headerlink" href="#configuration-minimum-la-page-daccueil" title="Lien permanent vers cette rubrique"></a></h1>
 <p>Permet d’afficher</p>
 <ul class="simple">
 <li><p>La température extérieure,</p></li>
@@ -213,13 +223,13 @@
 <li><p>etc ….</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image117.webp"><img alt="image117" src="../_images/image117.webp" style="width: 531px;" /></a></p>
-<div class="section" id="configuration-admin-config-php">
-<h2>1.1     – Configuration :/admin.config.php<a class="headerlink" href="#configuration-admin-config-php" title="Lien permanent vers ce titre"></a></h2>
+<section id="configuration-admin-config-php">
+<h2>1.1     – Configuration :/admin.config.php<a class="headerlink" href="#configuration-admin-config-php" title="Lien permanent vers cette rubrique"></a></h2>
 <blockquote>
 <div><p><span class="red">Il faut fournir un minimum de renseignements</span> :</p>
 </div></blockquote>
-<div class="section" id="adresse-ip-domaine-favicon-de-monitor">
-<h3>1.1.1 -Adresse IP , domaine, favicon de monitor<a class="headerlink" href="#adresse-ip-domaine-favicon-de-monitor" title="Lien permanent vers ce titre"></a></h3>
+<section id="adresse-ip-domaine-favicon-de-monitor">
+<h3>1.1.1 -Adresse IP , domaine, favicon de monitor<a class="headerlink" href="#adresse-ip-domaine-favicon-de-monitor" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">general</span> <span class="n">monitor</span>
 <span class="o">--&gt;</span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLMONITOR&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">domaine</span> <span class="p">(</span><span class="n">pour</span> <span class="n">accès</span> <span class="n">distant</span><span class="p">)</span> <span class="n">et</span> <span class="n">port</span> <span class="n">si</span> <span class="n">différent</span> <span class="n">de</span> <span class="mi">443</span>
 <span class="o">--&gt;</span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPMONITOR&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.1.9&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">ip</span>
@@ -242,17 +252,17 @@ possible de préparer le transfert ; ici la table dispositifs a été renommée 
 </dd>
 </dl>
 </div>
-<div class="section" id="a-pour-limage-de-fond-suivant-la-resolution-decran-et-le-logo">
-<h4>1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo<a class="headerlink" href="#a-pour-limage-de-fond-suivant-la-resolution-decran-et-le-logo" title="Lien permanent vers ce titre"></a></h4>
+<section id="a-pour-limage-de-fond-suivant-la-resolution-decran-et-le-logo">
+<h4>1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo<a class="headerlink" href="#a-pour-limage-de-fond-suivant-la-resolution-decran-et-le-logo" title="Lien permanent vers cette rubrique"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Monitor</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;IMAGEACCUEIL&#39;</span><span class="p">,</span> <span class="s1">&#39;images/maison.webp&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">image</span> <span class="n">page</span> <span class="n">accueil</span> <span class="n">pour</span> <span class="n">écrans</span> <span class="o">&gt;</span><span class="mi">534</span> <span class="n">px</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;IMAGEACCUEILSMALL&#39;</span><span class="p">,</span> <span class="s1">&#39;images/maison_small.webp&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">image</span> <span class="n">page</span> <span class="n">accueil</span> <span class="n">pour</span> <span class="n">écrans</span> <span class="o">&lt;</span><span class="mi">535</span> <span class="n">px</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;IMGLOGO&#39;</span><span class="p">,</span> <span class="s1">&#39;images/logo.png&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">image</span> <span class="n">logo</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="b-pour-les-titres-slogans-et-lexique">
-<h4>1.1.1.b Pour les titres, slogans et lexique<a class="headerlink" href="#b-pour-les-titres-slogans-et-lexique" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="b-pour-les-titres-slogans-et-lexique">
+<h4>1.1.1.b Pour les titres, slogans et lexique<a class="headerlink" href="#b-pour-les-titres-slogans-et-lexique" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Pour le lexique :</p>
 <ul class="simple">
 <li><p>true = lexique par défaut</p></li>
@@ -264,60 +274,67 @@ possible de préparer le transfert ; ici la table dispositifs a été renommée 
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;LEXIQUE&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="intervalles-de-maj">
-<h3>1.1.2 intervalles de maj<a class="headerlink" href="#intervalles-de-maj" title="Lien permanent vers ce titre"></a></h3>
-<p>L’intervalle de mise à jour pour les services (poubelles, anniversaires,…) : il est de ½ heure (1800000 milli secondes), il peut être changé</p>
+</section>
+</section>
+<section id="intervalles-de-maj">
+<h3>1.1.2 intervalles de maj<a class="headerlink" href="#intervalles-de-maj" title="Lien permanent vers cette rubrique"></a></h3>
+<p>L’intervalle de mise à jour pour les services (poubelles, anniversaires,…) et les dispositifs, il peut être changé:
+- il est de ½ heure (1800000 milli secondes) pour les variables (services)
+- il est se 3Os pour les dispositifs avec un minimum de 5 secondes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">interval</span> <span class="n">de</span> <span class="n">maj</span> <span class="n">des</span> <span class="n">fonctions</span> <span class="n">JS</span> <span class="n">maj_services</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">maj_devices</span><span class="p">()</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPSMAJSERVICES&#39;</span><span class="p">,</span> <span class="mi">1800000</span><span class="p">);</span><span class="o">//</span><span class="n">interval</span> <span class="n">maj</span> <span class="n">services</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPSMAJSERVICESAL&#39;</span><span class="p">,</span> <span class="mi">180000</span><span class="p">);</span><span class="o">//</span><span class="n">interval</span> <span class="n">maj</span> <span class="n">services</span> <span class="n">ALARME</span> <span class="n">ABSENCE</span><span class="p">(</span><span class="n">si</span> <span class="n">installée</span><span class="p">)</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES&#39;</span><span class="p">,</span> <span class="mi">180000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES_DZ&#39;</span><span class="p">,</span> <span class="mi">30000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span> <span class="p">(</span><span class="o">&gt;=</span><span class="mi">5</span><span class="n">s</span><span class="p">,</span> <span class="o">&lt;</span><span class="mi">30</span><span class="n">s</span><span class="p">)</span> <span class="n">maj</span> <span class="n">déclenchée</span> <span class="n">par</span> <span class="n">Dz</span> <span class="n">voir</span> <span class="n">doc</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES_MQTT&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span><span class="o">//</span> <span class="n">Si</span> <span class="n">true</span> <span class="n">toutes</span> <span class="n">les</span> <span class="n">autres</span> <span class="n">tempos</span> <span class="n">sont</span> <span class="n">false</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES&#39;</span><span class="p">,</span> <span class="mi">180000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span><span class="p">,</span> <span class="n">rafraichissement</span> <span class="n">programmé</span><span class="p">(</span><span class="n">dispositifs</span> <span class="n">non</span> <span class="n">prioritaires</span><span class="p">)</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TEMPO_DEVICES_D&#39;</span><span class="p">,</span> <span class="mi">30000</span><span class="p">);</span><span class="o">//</span> <span class="n">en</span> <span class="n">milli</span> <span class="n">secondes</span> <span class="p">(</span><span class="o">&gt;=</span><span class="mi">5</span><span class="n">s</span><span class="p">,</span> <span class="o">&lt;</span><span class="mi">30</span><span class="n">s</span><span class="p">)</span> <span class="n">maj</span> <span class="n">déclenchée</span> <span class="n">par</span> <span class="n">Dz</span> <span class="n">ou</span> <span class="n">Ha</span> <span class="n">voir</span> <span class="n">doc</span>
 </pre></div>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>TEMPO_DEVICES_MQTT”, true : TEMP REEL ,TEMPO_DEVICES_DZ est annulé</p>
-<p>un serveur MQTT doit etre installé ainsi qu’un script(léger)  dans DZ ou(et) HA</p>
+<p>Si define(“SSE”, true) = TEMP REEL :  :red:”TEMPO_DEVICES_DZ est annulé”.</p>
+<p>un serveur SSE doit etre installé ainsi qu’un script(léger)  dans DZ ou(et) HA</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em>TEMPO_DEVICES</em> pour tous les dispositifs<em>TEMPO_DEVICES_DZ et TEMPO_DEVICES_MQTT*</em> pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)</p>
+<p><em>TEMPO_DEVICES</em> pour tous les dispositifs</p>
+<p><em>TEMPO_DEVICES_D ou serveur SSE*</em> pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)</p>
 </div>
-</div>
-<div class="section" id="maj-en-temps-reel">
-<h3>1.1.3 maj en temps réel<a class="headerlink" href="#maj-en-temps-reel" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="maj-en-temps-reel">
+<h3>1.1.3 maj en temps réel<a class="headerlink" href="#maj-en-temps-reel" title="Lien permanent vers cette rubrique"></a></h3>
 <p>2 solutions :</p>
 <ul class="simple">
-<li><p>semi temps réel , monitor interroge une variable mis à jour par Domoticz lors d’un changement de valeur d’un dispositif; si la variable est à 1 monitor fait une mise à jour avec l’API des dispositifs et remet à 0 la variable.</p></li>
-<li><p>temps réel, en recevant de Domoticz , par un topic MQTT, les données du dispositifs qui à changé de valeur</p></li>
+<li><p>semi temps réel , monitor interroge une variable mis à jour par Dz ou Ha lors d’un changement de valeur d’un dispositif; si la variable est à 1 monitor fait une mise à jour avec l’API des dispositifs et remet à 0 la variable.C’est la solution historique de monitor mais la solution SSE-php, incluse dans monitor est à privilégier.cette solution sera obsolète dans les prochaines versions</p></li>
+<li><p>temps réel, en recevant de Domoticz ou Home Assistant, par un message depuis un SSE(Server-sent Events) , les données du dispositifs qui ont changées de valeur</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>TEMPO_DEVICES_DZ</strong> : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)</p>
+<p><strong>TEMPO_DEVICES_D</strong> : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes pouvant être ramenée à 5 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)</p>
 <ul class="simple">
-<li><p>Avantage : simplicité de mise en oeuvre , création d’une variable dans DZ et ajout d’une ligne de script DzVent.</p></li>
+<li><p>Avantage : simplicité de mise en oeuvre , création d’une variable dans DZ ou HA et ajout d’une (ou plusieurs) ligne(s)  de script (DzVent ou yaml).</p></li>
 <li><dl class="simple">
-<dt>Inconvénients<span class="classifier">Retard dans la mise à jour de 15 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écrans ; le second écran sera mis à jour lors de la mise à jour cyclique.</span></dt><dd><p>avec les groupes, les scènes ou automatisations le retard du rafraichissement peut être pénible.</p>
+<dt>Inconvénients<span class="classifier">Retard dans la mise à jour de 5 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écrans ; le second écran sera mis à jour lors de la mise à jour cyclique.</span></dt><dd><p>avec les groupes, les scènes ou automatisations ce retard du rafraichissement peut être désagréable.</p>
 </dd>
 </dl>
 </li>
 </ul>
 <p><a class="reference internal" href="../_images/image126.webp"><img alt="image126" src="../_images/image126.webp" style="width: 604px;" /></a></p>
-<p><strong>TEMPO_DEVICES_MQTT</strong></p>
+<p><strong>Seveur SSE</strong> pour l’installation d’un serveur node.js voir ce § :ref:”21.12 Serveur SSE Node JS”</p>
 <ul class="simple">
-<li><p>Avantages : Vrai temps réel, économise de la bande passante</p></li>
-<li><p>Inconvénients(facilement surmontables) : Installation d’un serveur MQTT, de Paho , création d’un script pour envoyer les données depuis DZ ou HA ; le client MQTT dans Javascript est déjà installé, il suffit de mettre en service MQTT</p></li>
+<li><p>Avantages : Vrai temps réel, économise de la bande passante; un serveur SSE PHP est déjà installé dans monitor , la création d’un script pour envoyer les données depuis DZ ou HA est simple;</p></li>
+<li><p>Inconvénients : Installation d’un serveur JS pour la version SSE NodeJS ;</p></li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>En https,pour des connexions distantes, il suffit de demander des certificats Let’encrypt; le serveur SSE-PHP installé dans monitor n’a pas besoin de certificat contrairement à un serveur SSE Node.JS</p>
 </div>
-<div class="section" id="solution-semi-temps-reel">
-<h4>1.1.3.1 Solution semi temps réel<a class="headerlink" href="#solution-semi-temps-reel" title="Lien permanent vers ce titre"></a></h4>
+</div>
+<section id="solution-semi-temps-reel">
+<h4>1.1.3.1 Solution semi temps réel<a class="headerlink" href="#solution-semi-temps-reel" title="Lien permanent vers cette rubrique"></a></h4>
+<p><span class="red">Cette solution est obsolète et sera supprimée dans les futures version</span>.</p>
 <p>La fonction JS :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 if (MQTT==false) echo &#39;
-tempo_devices=&#39;.TEMPO_DEVICES_DZ.&#39;;
+tempo_devices=&#39;.TEMPO_DEVICES_D.&#39;;
 var idsp=1;if (tempo_devices&gt;30000)  tempo_devices=30000;
 var_sp(idsp);
 function var_sp(idsp){
@@ -330,7 +347,7 @@ setTimeout(var_sp, tempo_devices, idsp);
 }&#39;;?&gt;
 </pre></div>
 </div>
-<p>La fonction PHP qui récupère la valeur de la variable :</p>
+<p>La fonction PHP qui récupère la valeur de la variable Domoticz:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// valeur d&#39;une variable
 function val_variable($variable){
 $result=array();
@@ -343,157 +360,126 @@ return       $value;
 }
 </pre></div>
 </div>
+<p>pour Home Assistant l” API monitor peut être  utilisée.</p>
+</section>
+<section id="solution-temps-reel-sse">
+<h4>1.1.3.2 Solution temps réel SSE<a class="headerlink" href="#solution-temps-reel-sse" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Le serveur SSE-NodeJS voir § <a class="reference internal" href="mon_installation.html#serveur-sse-node-js"><span class="std std-ref">21.12 Serveur SSE Node JS</span></a></p>
+<p>Le serveur SSE-PHP voir ce § <a class="reference internal" href="divers.html#serveur-sse-installe-dans-monitor"><span class="std std-ref">18.10 Serveur SSE installé dans Monitor</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>cette solution évite pour l’accès distant la demande d’un certificat pour https</p>
 </div>
-<div class="section" id="solution-temps-reel-mqtt">
-<h4>1.1.3.2 Solution temps réel MQTT<a class="headerlink" href="#solution-temps-reel-mqtt" title="Lien permanent vers ce titre"></a></h4>
-<p>le script JS dans footer.php:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if (MQTT==true) echo &#39;&lt;script src=&quot;js/mqttws31.min.js&quot;&gt;&lt;/script&gt;&#39;;?&gt;
-     &lt;!-- fin des fichiers script --&gt;
-     &lt;!-- scripts--&gt;
-     &lt;script&gt;
-     var connected_flag=0
-     var mqtt;
- var reconnectTimeout = 2000;
-     var host=&quot;&lt;?php echo MQTT_IP;?&gt;&quot;;
-     var port=&lt;?php echo MQTT_PORT;?&gt;;
-     var stopic=&quot;&lt;?php echo MQTT_TOPIC;?&gt;&quot;;
+<p>Pour SSE-node, l’IP, le port, sont à déclarer dans /admin/config.php.</p>
+<p>Pour SSE-php , indiquer le rafraichissement en secondes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSE&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span><span class="o">//</span>  <span class="n">node</span> <span class="n">ou</span> <span class="n">php</span> <span class="n">si</span> <span class="n">serveur</span> <span class="n">SSE</span> <span class="n">utilisé</span> <span class="n">par</span> <span class="n">monitor</span>
+<span class="o">//</span><span class="n">pour</span> <span class="n">SSE</span> <span class="n">php</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSE_SLEEP&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span><span class="o">//</span><span class="n">raffraichissement</span> <span class="n">en</span> <span class="n">secondes</span>
+<span class="o">//</span> <span class="n">pour</span> <span class="n">SSE</span> <span class="n">node</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSE_USER&#39;</span><span class="p">,</span> <span class="s2">&quot;michel&quot;</span><span class="p">);</span><span class="o">//</span><span class="n">user</span> <span class="n">et</span> <span class="n">mot</span> <span class="n">passe</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSE_PASS&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;mot passe&gt;&quot;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSE_URL&#39;</span><span class="p">,</span> <span class="s1">&#39;socket.&lt;DOMAINE&gt;.ovh&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSE_IP&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.1.26&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">adresse</span> <span class="n">IP</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSE_PORT&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span><span class="o">//</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Port mqtt: 3000</p>
+</div>
+<p>les scripts JS dans footer.php:</p>
+<p>voir ce paragraphe concernant le serveur <a class="reference internal" href="divers.html#serveur-sse-installe-dans-monitor"><span class="std std-ref">18.10 Serveur SSE installé dans Monitor</span></a></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="k">if</span> <span class="p">(</span><span class="n">SSE</span><span class="o">==</span><span class="s1">&#39;php&#39;</span><span class="p">)</span> <span class="p">{</span><span class="n">echo</span> <span class="s2">&quot;</span>
+<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+   <span class="n">window</span><span class="o">.</span><span class="n">onload</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">établir</span> <span class="n">un</span> <span class="n">flux</span> <span class="n">et</span> <span class="n">enregistrer</span> <span class="n">les</span> <span class="n">réponses</span> <span class="n">sur</span> <span class="n">la</span> <span class="n">console</span>
+<span class="n">var</span> <span class="n">source</span> <span class="o">=</span> <span class="n">new</span> <span class="n">EventSource</span><span class="p">(</span><span class="s1">&#39;include/serveur_sse.php&#39;</span><span class="p">);</span>
+<span class="n">source</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">data</span> <span class="p">;</span>
+<span class="n">donnees</span><span class="o">=</span><span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">data</span><span class="p">);</span><span class="n">var</span> <span class="n">id_x</span><span class="o">=</span><span class="n">donnees</span><span class="o">.</span><span class="n">id</span><span class="p">;</span><span class="n">var</span> <span class="n">state</span><span class="o">=</span><span class="n">donnees</span><span class="o">.</span><span class="n">state</span><span class="p">;</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">id_x</span><span class="p">,</span><span class="n">state</span><span class="p">);</span>
+<span class="n">maj_mqtt</span><span class="p">(</span><span class="n">id_x</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">},</span> <span class="n">false</span><span class="p">);</span>
+<span class="n">source</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">innerText</span><span class="o">=</span><span class="s1">&#39;connecté&#39;</span><span class="p">;</span>
+<span class="p">},</span> <span class="n">false</span><span class="p">);</span>
+<span class="n">source</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">readyState</span> <span class="o">==</span> <span class="n">EventSource</span><span class="o">.</span><span class="n">CLOSED</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">innerText</span><span class="o">=</span><span class="s1">&#39;connexion fermée&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">},</span> <span class="n">false</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span><span class="s2">&quot;;}?&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition-client-sse-nodejs admonition">
+<p class="admonition-title"><strong>Client SSE NodeJS:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">SSE</span><span class="o">==</span><span class="s1">&#39;node&#39;</span><span class="p">)</span> <span class="p">{</span><span class="n">echo</span> <span class="s2">&quot;</span>
+<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="n">const</span> <span class="n">eventSource</span> <span class="o">=</span> <span class="n">new</span> <span class="n">EventSource</span><span class="p">(</span><span class="s1">&#39;http://&quot;.SSE_IP.&quot;:&quot;.SSE_PORT.&quot;/events&#39;</span><span class="p">);</span>
+<span class="n">eventSource</span><span class="o">.</span><span class="n">onopen</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">innerText</span><span class="o">=</span><span class="s1">&#39;connecté&#39;</span><span class="p">;};</span>
+<span class="n">eventSource</span><span class="o">.</span><span class="n">onmessage</span> <span class="o">=</span> <span class="n">function</span> <span class="p">(</span><span class="n">currentEvent</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">const</span> <span class="n">listElement</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;messages&#39;</span><span class="p">);</span>
+<span class="n">const</span> <span class="n">newElement</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+<span class="n">const</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">currentEvent</span><span class="o">.</span><span class="n">data</span><span class="p">);</span>
+  <span class="n">newElement</span><span class="o">.</span><span class="n">innerText</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="p">;</span>
 
-     function onConnectionLost(){
-     console.log(&quot;connection lost&quot;);
-     document.getElementById(&quot;status&quot;).innerHTML = &quot;Connexion perdue&quot;;
-     document.getElementById(&quot;messages&quot;).innerHTML =&quot;Connexion perdue&quot;;
-     connected_flag=0;
-     }
-     function onFailure(message) {
-             console.log(&quot;Failed&quot;);
-             document.getElementById(&quot;messages&quot;).innerHTML = &quot;Connexion Failed- Retrying&quot;;
-     setTimeout(MQTTconnect, reconnectTimeout);
-     }
-             function onMessageArrived(r_message){
-             out_msg=&quot;Message reçu &quot;+r_message.payloadString;
-             out_msg=out_msg+&quot;Message reçu Topic &quot;+r_message.destinationName;
-             console.log(out_msg);
-             var json = JSON.parse(r_message.payloadString);
-             id_x=json.idx;state=json.state;id_m= maj_mqtt(id_x,state,0);
-             document.getElementById(&quot;messages&quot;).innerHTML =out_msg;
-             }
-     function onConnected(recon,url){
-     console.log(&quot; en onConnected &quot; +reconn);
-     }
-     function disConnect() {
-     if (connected_flag==1) mqtt.disconnect();
-             document.getElementById(&quot;status&quot;).innerHTML = &quot;déconnecté&quot;;
-             document.getElementById(&quot;messages&quot;).innerHTML =&quot;déconnecté de &quot;+host +&quot; sur le port &quot;+port;
-     }
-     function onConnect() {
-       // Once a connection has been made, make a subscription and send a message.
-     document.getElementById(&quot;messages&quot;).innerHTML =&quot;Connecté de &quot;+host +&quot; sur le port &quot;+port;
-     connected_flag=1;
-     document.getElementById(&quot;status&quot;).innerHTML = &quot;Connecté&quot;;
-     console.log(&quot;on Connect &quot;+connected_flag);sub_topics(stopic);
-               }
-
-     function MQTTconnect() {
-     document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
-
-     console.log(&quot;connexion à &quot;+ host +&quot; &quot;+ port);
-     var x=Math.floor(Math.random() * 10000);
-     var cname=&quot;orderform-&quot;+x;
-     mqtt = new Paho.MQTT.Client(host,port,cname);
-
-     var options = {
-     timeout: 100,
-             onSuccess: onConnect,
-             onFailure: onFailure,
-     };
-     mqtt.onConnectionLost = onConnectionLost;
-     mqtt.onMessageArrived = onMessageArrived;
-             //mqtt.onConnected = onConnected;
-     mqtt.connect(options);
-     return false;
-     }
-     function sub_topics(stopic){
-             document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
-             if (connected_flag==0){
-             out_msg=&quot;&lt;b&gt;Not Connected so can&#39;t subscribe&quot;;
-             console.log(out_msg);
-             document.getElementById(&quot;messages&quot;).innerHTML = out_msg;
-             return false;
-             }
-     //var stopic= document.forms[&quot;subs&quot;][&quot;Stopic&quot;].value;
-     console.log(&quot;Subscribing to topic =&quot;+stopic);
-     mqtt.subscribe(stopic);
-     return false;
-     }
-     function send_message(){
-             document.getElementById(&quot;messages&quot;).innerHTML =&quot;&quot;;
-             if (connected_flag==0){
-             out_msg=&quot;&lt;b&gt;Not Connected so can&#39;t send&quot;;
-             console.log(out_msg);
-             document.getElementById(&quot;messages&quot;).innerHTML = out_msg;
-             return false;
-             }
-             var msg = document.forms[&quot;smessage&quot;][&quot;message&quot;].value;
-             console.log(msg);
-
-             var topic = document.forms[&quot;smessage&quot;][&quot;Ptopic&quot;].value;
-             message = new Paho.MQTT.Message(msg);
-             if (topic==&quot;&quot;)
-                     message.destinationName = &quot;test-topic&quot;
-             else
-                     message.destinationName = topic;
-             mqtt.send(message);
-             return false;
-     }
-
-     function maj_mqtt(id_x,state,ind,level=0){
-     switch (ind) {
-     case 0:
-     var id_m=maj_dev[id_x];
-     var command=state;
-     if (pp[id_m].Data==command)      break;
-     pp[id_m].Data=command;
-     console.log(command)
-     var sid1=pp[id_m].ID1;;
-     var sid2=pp[id_m].ID2;
-     var scoul_on=pp[id_m].coul_ON;
-     var scoul_off=pp[id_m].coul_OFF;
-     var c_l_on=pp[id_m].coullamp_ON
-     var c_l_off=pp[id_m].coullamp_OFF
-     var scoul=&quot;&quot;;var scoull=&quot;&quot;;
-     if (command==&quot;On&quot; || command==&quot;on&quot;)  {scoul=scoul_on;scoull=c_l_on;}
-     else if (command.substring(0, 9)==&quot;Set Level&quot;)  {scoull=scoull=c_l_on;}
-     else if  (command==&quot;Off&quot;  || command==&quot;off&quot; ) {scoul=scoul_off;scoull=c_l_off;}
-     else return;
-     document.getElementById(sid1).style = scoul;
-     if (sid2) {document.getElementById(sid2).style = scoul;}
-     var c_lamp= pp[id_m].class_lamp ;console.log(&quot;c_lamp=&quot;+c_lamp);
-     if (command.substring(0, 9)==&quot;Set Level&quot;) {var h=document.getElementById(sid1).getAttribute(&quot;h&quot;);
-     document.getElementById(sid1).setAttribute(&quot;height&quot;,parseInt((h*(level)/100)));
-     console.log(&quot;h=&quot;+h+parseInt((h*(level)/100)));}
-     break;
-     case 1:scoull=state;c_lamp=id_x;console.log(&quot;c_lamp=&quot;+c_lamp);
-     break;
-     default:
-     break;
-     }
-     if (c_lamp!=&quot;&quot; &amp;&amp; scoull!=&quot;&quot;) {
-     var elements = document.getElementsByClassName(c_lamp);
-     for (var i = 0; i &lt; elements.length; i++) {
-     var element = elements[i];
-     element.style=scoull;}
-     }
-     return;
-     }
+<span class="n">listElement</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">newElement</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span><span class="s2">&quot;;}</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">maj_mqtt</span><span class="p">(</span><span class="n">id_x</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">ind</span><span class="p">,</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">){</span>
+<span class="n">switch</span> <span class="p">(</span><span class="n">ind</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">case</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">attribute</span> <span class="ow">in</span> <span class="n">maj_dev</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">maj_dev</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span><span class="o">==</span><span class="n">id_x</span><span class="p">)</span> <span class="n">var</span> <span class="n">id_m</span><span class="o">=</span><span class="n">attribute</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">var</span> <span class="n">command</span><span class="o">=</span><span class="n">state</span><span class="p">;</span>
+<span class="n">pp</span><span class="p">[</span><span class="n">id_m</span><span class="p">]</span><span class="o">.</span><span class="n">Data</span><span class="o">=</span><span class="n">command</span><span class="p">;</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+<span class="n">var</span> <span class="n">sid1</span><span class="o">=</span><span class="n">pp</span><span class="p">[</span><span class="n">id_m</span><span class="p">]</span><span class="o">.</span><span class="n">ID1</span><span class="p">;;</span>
+<span class="n">var</span> <span class="n">sid2</span><span class="o">=</span><span class="n">pp</span><span class="p">[</span><span class="n">id_m</span><span class="p">]</span><span class="o">.</span><span class="n">ID2</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">scoul_on</span><span class="o">=</span><span class="n">pp</span><span class="p">[</span><span class="n">id_m</span><span class="p">]</span><span class="o">.</span><span class="n">coul_ON</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">scoul_off</span><span class="o">=</span><span class="n">pp</span><span class="p">[</span><span class="n">id_m</span><span class="p">]</span><span class="o">.</span><span class="n">coul_OFF</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">c_l_on</span><span class="o">=</span><span class="n">pp</span><span class="p">[</span><span class="n">id_m</span><span class="p">]</span><span class="o">.</span><span class="n">coullamp_ON</span>
+<span class="n">var</span> <span class="n">c_l_off</span><span class="o">=</span><span class="n">pp</span><span class="p">[</span><span class="n">id_m</span><span class="p">]</span><span class="o">.</span><span class="n">coullamp_OFF</span>
+<span class="n">var</span> <span class="n">scoul</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span><span class="n">var</span> <span class="n">scoull</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">command</span><span class="o">==</span><span class="s2">&quot;On&quot;</span> <span class="o">||</span> <span class="n">command</span><span class="o">==</span><span class="s2">&quot;on&quot;</span><span class="p">)</span>  <span class="p">{</span><span class="n">scoul</span><span class="o">=</span><span class="n">scoul_on</span><span class="p">;</span><span class="n">scoull</span><span class="o">=</span><span class="n">c_l_on</span><span class="p">;}</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;Set Level&quot;</span><span class="p">)</span>  <span class="p">{</span><span class="n">scoull</span><span class="o">=</span><span class="n">scoull</span><span class="o">=</span><span class="n">c_l_on</span><span class="p">;}</span>
+<span class="k">else</span> <span class="k">if</span>  <span class="p">(</span><span class="n">command</span><span class="o">==</span><span class="s2">&quot;Off&quot;</span>  <span class="o">||</span> <span class="n">command</span><span class="o">==</span><span class="s2">&quot;off&quot;</span> <span class="p">)</span> <span class="p">{</span><span class="n">scoul</span><span class="o">=</span><span class="n">scoul_off</span><span class="p">;</span><span class="n">scoull</span><span class="o">=</span><span class="n">c_l_off</span><span class="p">;}</span>
+<span class="k">else</span> <span class="k">return</span><span class="p">;</span>
+<span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="n">sid1</span><span class="p">)</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">scoul</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sid2</span><span class="p">)</span> <span class="p">{</span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="n">sid2</span><span class="p">)</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">scoul</span><span class="p">;}</span>
+<span class="n">var</span> <span class="n">c_lamp</span><span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="n">id_m</span><span class="p">]</span><span class="o">.</span><span class="n">class_lamp</span>      <span class="p">;</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;c_lamp=&quot;</span><span class="o">+</span><span class="n">c_lamp</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;Set Level&quot;</span><span class="p">)</span> <span class="p">{</span><span class="n">var</span> <span class="n">h</span><span class="o">=</span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="n">sid1</span><span class="p">)</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">);</span>
+     <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="n">sid1</span><span class="p">)</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="n">parseInt</span><span class="p">((</span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">level</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">)));</span>
+     <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;h=&quot;</span><span class="o">+</span><span class="n">h</span><span class="o">+</span><span class="n">parseInt</span><span class="p">((</span><span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">level</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">)));}</span>
+<span class="k">break</span><span class="p">;</span>
+<span class="n">case</span> <span class="mi">1</span><span class="p">:</span><span class="n">scoull</span><span class="o">=</span><span class="n">state</span><span class="p">;</span><span class="n">c_lamp</span><span class="o">=</span><span class="n">id_x</span><span class="p">;</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;c_lamp=&quot;</span><span class="o">+</span><span class="n">c_lamp</span><span class="p">);</span>
+<span class="k">break</span><span class="p">;</span>
+<span class="n">default</span><span class="p">:</span>
+<span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">c_lamp</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> <span class="o">&amp;&amp;</span> <span class="n">scoull</span><span class="o">!=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">var</span> <span class="n">elements</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementsByClassName</span><span class="p">(</span><span class="n">c_lamp</span><span class="p">);</span>
+     <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">elements</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+ <span class="n">var</span> <span class="n">element</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+ <span class="n">element</span><span class="o">.</span><span class="n">style</span><span class="o">=</span><span class="n">scoull</span><span class="p">;}</span>
+     <span class="p">}</span>
+<span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>explications</strong>:</p>
-<p>2 parties dans ce script, la 1ère partie concerne la publication et la souscription MQTT avec Paho, la 2eme partie, la mise à jour des dispositifs</p>
+<p>2 parties dans ce script, la 1ère partie concerne la réception des évènements avec SSE (php ou node.js), la 2eme partie, la mise à jour des dispositifs</p>
 <p><a class="reference internal" href="../_images/image906.webp"><img alt="image906" src="../_images/image906.webp" style="width: 700px;" /></a></p>
-</div>
-</div>
-<div class="section" id="autres-donnees">
-<h3>1.1.4 Autres données<a class="headerlink" href="#autres-donnees" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="autres-donnees">
+<h3>1.1.4 Autres données<a class="headerlink" href="#autres-donnees" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Choisir Idx de Domoticz ou idm de monitor ?</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -532,21 +518,21 @@ define(&#39;NUMPLAN&#39;,&#39;2&#39;);//DZ uniquement: n° du plan regroupant to
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLDOMOTIC1&#39;</span><span class="p">,</span> <span class="s1">&#39;http://192.168.1.5:8123/&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">url</span> <span class="n">ex</span><span class="p">:</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.5</span><span class="p">:</span><span class="mi">8123</span><span class="o">/</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;DOMDOMOTIC1&#39;</span><span class="p">,</span> <span class="s1">&#39;https://***********&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">domaine</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TOKEN_DOMOTIC1&#39;</span><span class="p">,</span><span class="s2">&quot;eyJhb*****************************************************************2k&quot;</span><span class="p">);</span>
-<span class="o">//</span><span class="n">______________Pour</span> <span class="n">Domoticz</span>
+<span class="o">//*************************</span><span class="n">modules</span> <span class="n">complémentaires</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;VARTAB&#39;</span><span class="p">,</span> <span class="n">URLDOMOTIC</span><span class="o">.</span><span class="s1">&#39;modules_lua/string_tableaux.lua&#39;</span><span class="p">);</span><span class="o">//</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;BASE64&#39;</span><span class="p">,</span> <span class="n">URLDOMOTIC</span><span class="o">.</span><span class="s1">&#39;modules_lua/connect.lua&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">login</span> <span class="n">et</span> <span class="n">password</span> <span class="n">en</span> <span class="n">Base64</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;CONF_MODECT&#39;</span><span class="p">,</span> <span class="n">URLDOMOTIC</span><span class="o">.</span><span class="s1">&#39;modules_lua/string_modect.lua&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;BASE64&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/connect.py&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">login</span> <span class="n">et</span> <span class="n">password</span> <span class="n">en</span> <span class="n">Base64</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;CONF_MODECT&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/string_modect.json&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>les variables ci-dessus , VARTAB, BASE64, CONF_MODECT sont à déclarer ici que si elles sont utilisées dans un fichier</p>
+<p>les variables ci-dessus , VARTAB, BASE64, CONF_MODECT ne sont à déclarer ici que si elles sont utilisées dans un fichier</p>
 </div>
 <p>Le programme démarre avec 3 pages :</p>
 <ul class="simple">
 <li><p>Accueil</p></li>
 <li><p>Plan intérieur</p></li>
-<li><p>Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red:”« admin »”.</p></li>
+<li><p>Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut <span class="red">« admin »</span>.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -557,12 +543,12 @@ define(&#39;NUMPLAN&#39;,&#39;2&#39;);//DZ uniquement: n° du plan regroupant to
 </ul>
 </div>
 <p>Les autres pages concernent l’alarme, un mur de caméras, …</p>
-</div>
-</div>
-<div class="section" id="les-fichiers-php-les-styles-le-javascript">
-<h2>1.2     - Les fichiers PHP, les styles, le javascript<a class="headerlink" href="#les-fichiers-php-les-styles-le-javascript" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="a-la-racine-du-site">
-<h3>1.2.1 - à la racine du site :<a class="headerlink" href="#a-la-racine-du-site" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="les-fichiers-php-les-styles-le-javascript">
+<h2>1.2     - Les fichiers PHP, les styles, le javascript<a class="headerlink" href="#les-fichiers-php-les-styles-le-javascript" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="a-la-racine-du-site">
+<h3>1.2.1 - à la racine du site :<a class="headerlink" href="#a-la-racine-du-site" title="Lien permanent vers cette rubrique"></a></h3>
 <blockquote>
 <div><p>voir ce paragraphe : <a class="reference internal" href="bien_debuter.html#le-serveur-http-de-nginx"><span class="std std-ref">0.4 Le serveur http de NGINX</span></a></p>
 </div></blockquote>
@@ -573,8 +559,8 @@ define(&#39;NUMPLAN&#39;,&#39;2&#39;);//DZ uniquement: n° du plan regroupant to
 <p class="admonition-title"><strong>function file_http_curl</strong></p>
 <p><a class="reference internal" href="../_images/image134.webp"><img alt="image134" src="../_images/image134.webp" style="width: 544px;" /></a></p>
 </div>
-<div class="section" id="status-variables-devices-zone-et-device-plan">
-<h4>1.2.1.1 status_variables , devices_zone et device_plan<a class="headerlink" href="#status-variables-devices-zone-et-device-plan" title="Lien permanent vers ce titre"></a></h4>
+<section id="status-variables-devices-zone-et-device-plan">
+<h4>1.2.1.1 status_variables , devices_zone et device_plan<a class="headerlink" href="#status-variables-devices-zone-et-device-plan" title="Lien permanent vers cette rubrique"></a></h4>
 <div class="admonition-function-status-variables admonition">
 <p class="admonition-title"><strong>function status_variables</strong></p>
 <p>Pour récupérer les valeurs des variables de Domoticz et HA</p>
@@ -585,16 +571,20 @@ define(&#39;NUMPLAN&#39;,&#39;2&#39;);//DZ uniquement: n° du plan regroupant to
 <div class="admonition-fonctions-maj-variable-et-sql-variable admonition">
 <p class="admonition-title"><strong>fonctions maj_variable et sql_variable</strong></p>
 <p><a class="reference internal" href="../_images/image138.webp"><img alt="image138" src="../_images/image138.webp" style="width: 650px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1184.webp"><img alt="image1184" src="../_images/image1184.webp" style="width: 700px;" /></a></p>
 </div>
 <div class="admonition-function-devices-zone admonition">
 <p class="admonition-title"><strong>function devices_zone</strong></p>
 <p>API HA pour récupérer les valeurs des dispositifs</p>
 <p><a class="reference internal" href="../_images/image137.webp"><img alt="image137" src="../_images/image137.webp" style="width: 650px;" /></a></p>
 </div>
-<div class="admonition-function-devices-plan admonition">
-<p class="admonition-title"><strong>function devices_plan</strong></p>
+<div class="admonition-function-devices-plan-et-function-sql-plan admonition">
+<p class="admonition-title"><strong>function devices_plan et function sql_plan()</strong></p>
 <p>API Domoticz pour les devices : les dispositifs doivent être placés dans un plan; celui-ci peut se résumer à un rectangle ou un carré</p>
+<p><a class="reference internal" href="../_images/image1414.webp"><img alt="image1414" src="../_images/image1414.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image139.webp"><img alt="image139" src="../_images/image139.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1413.webp"><img alt="image1413" src="../_images/image1413.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1328.webp"><img alt="image1328" src="../_images/image1328.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image140.webp"><img alt="image140" src="../_images/image140.webp" style="width: 650px;" /></a></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -605,9 +595,9 @@ define(&#39;NUMPLAN&#39;,&#39;2&#39;);//DZ uniquement: n° du plan regroupant to
 </div>
 <p><strong>Maj de la date</strong></p>
 <p>si la tablette reste allumée en permanence,la date ne sera pas mise à jour en absence de rafraichissement</p>
-<p>On crée un idx=0 qui n’existe pas , aussi avec cet idx la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php)</p>
+<p>On crée un maj_date=0 avec lequel la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$data[0] = [&#39;jour&#39; =&gt; date(&#39;d&#39;),
-            &#39;idx&#39; =&gt; &#39;0&#39;];
+            &#39;maj_date&#39; =&gt; &#39;0&#39;];
 </pre></div>
 </div>
 <p><strong>Maj état des piles des dispositifs</strong></p>
@@ -620,10 +610,10 @@ if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="les-styles-css">
-<h3>1.2.2 les styles css<a class="headerlink" href="#les-styles-css" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="les-styles-css">
+<h3>1.2.2 les styles css<a class="headerlink" href="#les-styles-css" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image141.webp"><img alt="image141" src="../_images/image141.webp" style="width: 205px;" /></a></p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css">https://raw.githubusercontent.com/mgrafr/monitor/main/css/mes_css.css</a>
 <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/css/jquery-ui.css">https://raw.githubusercontent.com/mgrafr/monitor/main/css/jquery-ui.css</a></p>
@@ -647,18 +637,18 @@ if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
         <span class="o">.</span><span class="n">modal_param</span> <span class="p">{</span><span class="n">left</span><span class="p">:</span> <span class="mi">200</span><span class="n">px</span><span class="p">;</span>   <span class="p">}</span><span class="o">.</span><span class="n">modal</span><span class="o">-</span><span class="n">dialog</span> <span class="p">{</span><span class="n">width</span><span class="p">:</span><span class="mi">740</span><span class="n">px</span><span class="p">;}</span> <span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="styles-css-communs-a-toutes-les-pages">
-<h4>1.2.2.1 styles CSS communs à toutes les pages<a class="headerlink" href="#styles-css-communs-a-toutes-les-pages" title="Lien permanent vers ce titre"></a></h4>
+<section id="styles-css-communs-a-toutes-les-pages">
+<h4>1.2.2.1 styles CSS communs à toutes les pages<a class="headerlink" href="#styles-css-communs-a-toutes-les-pages" title="Lien permanent vers cette rubrique"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{</span>
   <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span><span class="n">height</span><span class="p">:</span> <span class="mi">1120</span><span class="n">px</span><span class="p">;</span><span class="n">padding</span><span class="p">:</span> <span class="mi">80</span><span class="n">px</span> <span class="mi">0</span><span class="p">;</span><span class="nb">min</span><span class="o">-</span><span class="n">height</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span><span class="n">position</span><span class="p">:</span> <span class="n">relative</span><span class="p">;</span><span class="n">color</span><span class="p">:</span> <span class="c1">#000;top: 350px;z-index:-20;overflow: auto;}</span>
 <span class="c1">#interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{</span>
   <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">aquamarine</span><span class="p">;}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="le-javascript">
-<h3>1.2.3 – Le javascript<a class="headerlink" href="#le-javascript" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="le-javascript">
+<h3>1.2.3 – Le javascript<a class="headerlink" href="#le-javascript" title="Lien permanent vers cette rubrique"></a></h3>
 <blockquote>
 <div><p>1.2.3 a - Les fichiers footer.php , voir ce script <a class="reference internal" href="#les-scripts-javascript"><span class="std std-ref">1.3.5 les scripts JavaScript</span></a></p>
 <p>1.2.3 b - le fichier mes_js.js : scripts principaux ,</p>
@@ -682,12 +672,12 @@ $(&quot;#password&quot;).keypress(function () {
 <p class="admonition-title"><strong>fenêtre modale modallink</strong></p>
 <p><a class="reference internal" href="../_images/image145.webp"><img alt="image145" src="../_images/image145.webp" style="width: 479px;" /></a></p>
 </div>
-</div>
-</div>
-<div class="section" id="les-fichiers-principaux-dans-include">
-<h2>1.3 Les fichiers principaux dans /include<a class="headerlink" href="#les-fichiers-principaux-dans-include" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="entete-html-php">
-<h3>1.3.1 entete_html.php<a class="headerlink" href="#entete-html-php" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="les-fichiers-principaux-dans-include">
+<h2>1.3 Les fichiers principaux dans /include<a class="headerlink" href="#les-fichiers-principaux-dans-include" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="entete-html-php">
+<h3>1.3.1 entete_html.php<a class="headerlink" href="#entete-html-php" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;fr&quot;&gt;
@@ -714,9 +704,9 @@ $(&quot;#password&quot;).keypress(function () {
 </div>
 <p><em>Le HTML du navigateur</em> :</p>
 <p><a class="reference internal" href="../_images/image147.webp"><img alt="image147" src="../_images/image147.webp" style="width: 540px;" /></a></p>
-</div>
-<div class="section" id="test-de-la-base-de-donnees-test-db-php">
-<h3>1.3.2 Test de la base de données, test_db.php<a class="headerlink" href="#test-de-la-base-de-donnees-test-db-php" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="test-de-la-base-de-donnees-test-db-php">
+<h3>1.3.2 Test de la base de données, test_db.php<a class="headerlink" href="#test-de-la-base-de-donnees-test-db-php" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/test_db.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/test_db.php</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> &lt;?php
  echo &#39;&lt;textarea id=&quot;adm1&quot; style=&quot;height:&#39;.$height.&#39;px;&quot; name=&quot;command&quot; &gt;&#39;;
@@ -733,9 +723,9 @@ $(&quot;#password&quot;).keypress(function () {
 ?&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="le-menu-header-php">
-<h3>1.3.3 le menu, header.php<a class="headerlink" href="#le-menu-header-php" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="le-menu-header-php">
+<h3>1.3.3 le menu, header.php<a class="headerlink" href="#le-menu-header-php" title="Lien permanent vers cette rubrique"></a></h3>
 <p>les pages configurées avec config.php sont ajoutées automatiquement au menu</p>
 <p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/header.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/header.php</a></p>
 <p>Extrait:</p>
@@ -755,9 +745,9 @@ $(&quot;#password&quot;).keypress(function () {
 <p>Pour modifier la largeur, Du menu :</p>
 <p><a class="reference internal" href="../_images/image150.webp"><img alt="image150" src="../_images/image150.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image151.webp"><img alt="image151" src="../_images/image151.webp" style="width: 500px;" /></a></p>
-</div>
-<div class="section" id="la-page-daccueil-avec-les-notifications-accueil-php">
-<h3>1.3.4   la page d’accueil avec les notifications , accueil.php<a class="headerlink" href="#la-page-daccueil-avec-les-notifications-accueil-php" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="la-page-daccueil-avec-les-notifications-accueil-php">
+<h3>1.3.4   la page d’accueil avec les notifications , accueil.php<a class="headerlink" href="#la-page-daccueil-avec-les-notifications-accueil-php" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/accueil.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/accueil.php</a></p>
 <p>Le HTML:</p>
 <p><a class="reference internal" href="../_images/image152.webp"><img alt="image152" src="../_images/image152.webp" style="width: 700px;" /></a></p>
@@ -776,9 +766,9 @@ $(&quot;#password&quot;).keypress(function () {
                      &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="les-scripts-javascript">
-<h3>1.3.5 les scripts JavaScript<a class="headerlink" href="#les-scripts-javascript" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="les-scripts-javascript">
+<h3>1.3.5 les scripts JavaScript<a class="headerlink" href="#les-scripts-javascript" title="Lien permanent vers cette rubrique"></a></h3>
 <p>dans la page footer.php : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php">https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php</a></p>
 <p>Extrait:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
@@ -796,83 +786,81 @@ require(&quot;fonctions.php&quot;);
 &lt;script src=&quot;js/jquery.backstretch.min.js&quot;&gt;&lt;/script&gt;
 </pre></div>
 </div>
-<div class="section" id="rafraichissements-des-donnees">
-<h4>1.3.5.1 rafraîchissements des données<a class="headerlink" href="#rafraichissements-des-donnees" title="Lien permanent vers ce titre"></a></h4>
+<section id="rafraichissements-des-donnees">
+<h4>1.3.5.1 rafraîchissements des données<a class="headerlink" href="#rafraichissements-des-donnees" title="Lien permanent vers cette rubrique"></a></h4>
 <p>voir dans ce même chapitre le § <a class="reference internal" href="#maj-en-temps-reel"><span class="std std-ref">1.1.3 maj en temps réel</span></a></p>
-<div class="section" id="a-rafrichissement-de-la-page-avec-une-variable">
-<h5>1.3.5.1.a rafrichissement de la page avec une variable<a class="headerlink" href="#a-rafrichissement-de-la-page-avec-une-variable" title="Lien permanent vers ce titre"></a></h5>
-<p>La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif dans Domoticz,
-une variable est mise à « 1 » ;</p>
+<section id="a-rafrichissement-de-la-page-avec-une-variable">
+<h5>1.3.5.1.a rafrichissement de la page avec une variable<a class="headerlink" href="#a-rafrichissement-de-la-page-avec-une-variable" title="Lien permanent vers cette rubrique"></a></h5>
+<p>La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif, une variable est mise à « 1 » ;</p>
 <p>monitor qui scrute en permanence cette valeur importe les données de tous les dispositifs si cette variable est à 1.</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Exemple pour Domoticz</p>
 <p><a class="reference internal" href="../_images/image155.webp"><img alt="image155" src="../_images/image155.webp" style="width: 700px;" /></a></p>
 <p>Dans les scripts lua :</p>
 <p><a class="reference internal" href="../_images/image156.webp"><img alt="image156" src="../_images/image156.webp" style="width: 378px;" /></a></p>
 <p>la variable:</p>
 <p><a class="reference internal" href="../_images/image158.webp"><img alt="image158" src="../_images/image158.webp" style="width: 686px;" /></a></p>
-</div>
-<div class="section" id="b-rafraichissement-avec-mqtt">
-<h5>1.3.5.1.b rafraichissement avec MQTT<a class="headerlink" href="#b-rafraichissement-avec-mqtt" title="Lien permanent vers ce titre"></a></h5>
-<p><em>Dans Domoticz</em></p>
-<p>On utilise une fonction qui appelle un script python</p>
+</section>
+<section id="b-rafraichissement-avec-sse">
+<h5>1.3.5.1.b rafraichissement avec SSE<a class="headerlink" href="#b-rafraichissement-avec-sse" title="Lien permanent vers cette rubrique"></a></h5>
+<div class="admonition-dans-domoticz admonition">
+<p class="admonition-title"><strong>Dans Domoticz</strong></p>
+<ul class="simple">
+<li><p>Soit on utilise une fonction qui appelle un script python si le serveur est sous Node.js</p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">send_topic</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span><span class="n">txt1</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz idx &#39;</span><span class="o">..</span><span class="n">txt</span><span class="o">..</span><span class="s1">&#39; state &#39;</span><span class="o">..</span><span class="n">txt1</span><span class="o">..</span><span class="s1">&#39;   &gt;&gt;  /opt/domoticz/userdata/push3.log 2&gt;&amp;1&#39;</span><span class="p">);</span>
+<span class="n">local</span> <span class="n">sse</span> <span class="o">=</span> <span class="s1">&#39;python3 userdata/scripts/python/sse.py &#39;</span><span class="o">..</span><span class="n">txt</span><span class="o">..</span><span class="s1">&#39; &#39;</span><span class="o">..</span><span class="n">txt1</span><span class="o">..</span><span class="s1">&#39; &gt;&gt;  /opt/domoticz/userdata/sse.log 2&gt;&amp;1&#39;</span> <span class="p">;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sse</span><span class="p">);</span>
+<span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sse</span><span class="p">)</span>
 <span class="n">end</span>
 </pre></div>
 </div>
-<p>Le script Python</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-
-<span class="kn">import</span> <span class="nn">paho.mqtt.client</span> <span class="k">as</span> <span class="nn">mqtt</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">connect</span> <span class="kn">import</span> <span class="n">ip_mqtt</span>
-<span class="c1"># Define Variables</span>
-<span class="n">total_arg</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-<span class="n">topic</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">etat</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">valeur</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-<span class="n">MQTT_HOST</span> <span class="o">=</span> <span class="n">ip_mqtt</span>
-<span class="n">MQTT_PORT</span> <span class="o">=</span> <span class="mi">1883</span>
-<span class="n">MQTT_KEEPALIVE_INTERVAL</span> <span class="o">=</span> <span class="mi">45</span>
-<span class="n">MQTT_TOPIC</span> <span class="o">=</span> <span class="n">topic</span>
-<span class="n">MQTT_MSG</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">etat</span><span class="p">:</span> <span class="n">valeur</span><span class="p">});</span>
-<span class="k">if</span> <span class="n">total_arg</span> <span class="o">&gt;</span><span class="mi">4</span> <span class="p">:</span>
-    <span class="n">etat1</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
-    <span class="n">valeur1</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
-    <span class="n">MQTT_MSG</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">etat</span><span class="p">:</span> <span class="n">valeur</span><span class="p">,</span><span class="n">etat1</span><span class="p">:</span> <span class="n">valeur1</span><span class="p">});</span>
-<span class="c1"># Define on_publish event function</span>
-<span class="k">def</span> <span class="nf">on_publish</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">mid</span><span class="p">):</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Message Published...&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">rc</span><span class="p">):</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">MQTT_TOPIC</span><span class="p">)</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">MQTT_TOPIC</span><span class="p">,</span> <span class="n">MQTT_MSG</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">topic</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span> <span class="c1"># &lt;- do you mean this payload = {...} ?</span>
-    <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span> <span class="c1"># you can use json.loads to convert string to json</span>
-    <span class="c1">#print(payload[&#39;state_l2&#39;]) # then you can check the value</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span> <span class="c1"># Got message then disconnect</span>
-<span class="c1"># Initiate MQTT Client</span>
-<span class="n">mqttc</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
-
-<span class="c1"># Register publish callback function</span>
-<span class="n">mqttc</span><span class="o">.</span><span class="n">on_publish</span> <span class="o">=</span> <span class="n">on_publish</span>
-<span class="n">mqttc</span><span class="o">.</span><span class="n">on_connect</span> <span class="o">=</span> <span class="n">on_connect</span>
-<span class="n">mqttc</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
-<span class="c1"># Connect with MQTT Broker</span>
-<span class="n">mqttc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">MQTT_HOST</span><span class="p">,</span> <span class="n">MQTT_PORT</span><span class="p">,</span> <span class="n">MQTT_KEEPALIVE_INTERVAL</span><span class="p">)</span>
-<span class="c1"># Loop forever</span>
-<span class="n">mqttc</span><span class="o">.</span><span class="n">loop_forever</span><span class="p">()</span>
+<ul class="simple">
+<li><p>soit on utilise l” API monitor si le serveur est sous PHP , voir ce § <a class="reference internal" href="bien_debuter.html#api-de-monitor"><span class="std std-ref">0.12 API de monitor</span></a></p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p>Voir le § <a class="reference internal" href="mon_installation.html#depuis-domoticz"><span class="std std-ref">21.12.2.1 Depuis Domoticz</span></a></p>
+</div>
+</div>
+<div class="admonition-dans-home-assistant admonition">
+<p class="admonition-title"><strong>Dans Home Assistant</strong></p>
+<ul>
+<li><p>Soit on utilise SSE avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; <span class="darkblue">dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c’est un cas interressant</span>. voir ce § <span class="xref std std-ref">21.10.2 Python avec pyscript</span></p></li>
+<li><p>Soit on crée une automation :</p>
+<blockquote>
+<div><p>. appelant le service <span class="darkblue">shell_command</span> pour un serveur Node.js</p>
+<p>. appelant le service <span class="green">rest_command</span> pour un serveur PHP</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shell_command</span><span class="p">:</span>
+    <span class="n">curl_sse</span><span class="p">:</span>  <span class="s2">&quot;curl -X POST  -H &#39;Content-Type: application/json&#39;  -d &#39;{{ data }}&#39; -s {{ url }}&quot;</span>
+<span class="n">rest_command</span><span class="p">:</span>
+  <span class="n">monitor_2</span><span class="p">:</span>
+    <span class="n">url</span><span class="p">:</span> <span class="s2">&quot;http://192.168.1.9/monitor/api/json.php?app=maj&amp;id={{id}}&amp;contenu={{state}}&quot;</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image907.webp"><img alt="image907" src="../_images/image907.webp" style="width: 480px;" /></a></p>
-<p><em>résumé</em>:</p>
-<p><a class="reference internal" href="../_images/image910.webp"><img alt="image910" src="../_images/image910.webp" style="width: 480px;" /></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p>Voir le § <a class="reference internal" href="mon_installation.html#depuis-home-assistant"><span class="std std-ref">21.12.2.2 Depuis Home Assistant</span></a></p>
 </div>
 </div>
-<div class="section" id="quelques-infos-supplementaires">
-<h4>1.3.5.2 Quelques infos supplémentaires<a class="headerlink" href="#quelques-infos-supplementaires" title="Lien permanent vers ce titre"></a></h4>
+<p>Avec Monitor, vérification de réception des messages:</p>
+<p><a class="reference internal" href="../_images/image1211.webp"><img alt="image1211" src="../_images/image1211.webp" style="width: 482px;" /></a></p>
+<p>Domoticz et Home Assistant sont tous deux connectés au serveur mosquitto, ils reçoivent les topics SSE.</p>
+</section>
+<section id="c-le-serveur-sse">
+<h5>1.3.5.1.c Le serveur SSE<a class="headerlink" href="#c-le-serveur-sse" title="Lien permanent vers cette rubrique"></a></h5>
+<p>Comme indiqué précédemment , 2 possibilites :</p>
+<ul class="simple">
+<li><p>Sous node.js , il peut être installé sur le serveur principal ou dans une VM ou dans un conteneur, <a class="reference internal" href="mon_installation.html#installation-dans-un-conteneur-lxc-proxmox"><span class="std std-ref">21.12.1 Installation: dans un conteneur LXC Proxmox</span></a></p></li>
+<li><p>Sous PHP , il peut être installé sur le serveur web de monitor, voir ce § <span class="xref std std-ref">18.10 Installer un serveur SSE PHP</span></p></li>
+</ul>
+<p>J’ai installé un serveur Node dans un conteneur LXC Proxmox.</p>
+</section>
+</section>
+<section id="quelques-infos-supplementaires">
+<h4>1.3.5.2 Quelques infos supplémentaires<a class="headerlink" href="#quelques-infos-supplementaires" title="Lien permanent vers cette rubrique"></a></h4>
 <p>substring(0, 32) : affichage tronqué ID ZWAVE très long</p>
 <p><a class="reference internal" href="../_images/image159.webp"><img alt="image159" src="../_images/image159.webp" style="width: 536px;" /></a></p>
 <p>substring(0, 11)== »Set Level</p>
@@ -881,23 +869,26 @@ une variable est mise à « 1 » ;</p>
 <li><p>La fonction <strong>maj_services</strong> récupère les valeurs de toutes les variables.</p></li>
 <li><p>La fonction <strong>maj_variable</strong> modifie la valeur d’une variable.</p></li>
 <li><p>La fonction <strong>maj_devices(plan)</strong> récupère les données des dispositifs</p></li>
-<li><p>La fonction <strong>json_idx_idm(command)</strong> crée une table d’équivalence idx-&lt;idm</p></li>
+<li><p>La fonction <strong>json_idx_idm(command)</strong> crée une table d’équivalence idm-&gt;idx ou ID</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  function json_idx_idm(command){
-   $.ajax({
-   type: &quot;GET&quot;,
-   dataType: &quot;json&quot;,
-   url: &quot;ajax.php&quot;,
-   data: &quot;app=idxidm&amp;command=&quot;+command,
-   success: function(html){}
-   });  };
-
-Un exemple avec set ou get Attribute
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function json_idx_idm(command){
+ $.ajax({
+ type: &quot;GET&quot;,
+ dataType: &quot;json&quot;,
+ url: &quot;ajax.php&quot;,
+ data: &quot;app=idxidm&amp;command=&quot;+command,
+ success: function(html){}
+ });  };
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image161.webp"><img alt="image161" src="../_images/image161.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1185.webp"><img alt="image1185" src="../_images/image1185.webp" style="width: 214px;" /></a></p>
 <blockquote>
-<div><p>Voir le paragraphe concernant les volets <a class="reference internal" href="mur_de_commandes.html#exemple-volet-roulant"><span class="std std-ref">8.2.4 Exemple volet roulant</span></a></p>
+<div><p>Un exemple avec set ou get Attribute</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image161.webp"><img alt="image161" src="../_images/image161.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1536.webp"><img alt="image1536" src="../_images/image1536.webp" style="width: 700px;" /></a></p>
+<blockquote>
+<div><p>Voir le paragraphe concernant les volets <span class="xref std std-ref">8.2.4 Exemple volet roulant</span></p>
 </div></blockquote>
 <ul class="simple">
 <li><p>La fonction <strong>switchOnOff_setpoint()</strong> exécute des commandes</p></li>
@@ -946,7 +937,12 @@ Un exemple avec set ou get Attribute
 </pre></div>
 </div>
 </div>
-<p><a class="reference internal" href="../_images/image166.webp"><img alt="image166" src="../_images/image166.webp" style="width: 602px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1486.webp"><img alt="image1486" src="../_images/image1486.webp" style="width: 700px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Pour la fonction custom_js appelé dans la fonction devices_plan voir le paragraphe consacré aux pages perso.</p>
+<p>voir un exemple d’utilisation dans la page perso consacré au robot Worx <a class="reference internal" href="mon_installation.html#le-javascript-concerne"><span class="std std-ref">21.14.4 Le Javascript concerné</span></a></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Pour que les icones sur la page d’accueil soient affichées, il faut enregistrer les variables dans la base de Données Maria DB,</p>
@@ -973,13 +969,13 @@ Un exemple avec set ou get Attribute
 </div>
 <p><em>Sur la page d’accueil, il est possible d’ajouter d’autres icones, il suffit d’ajouter un ID dans accueil.php et de renseigner la base de données</em></p>
 <p><a class="reference internal" href="../_images/image172.webp"><img alt="image172" src="../_images/image172.webp" style="width: 700px;" /></a></p>
-</div>
-</div>
-</div>
-<div class="section" id="le-lexique-et-la-temperature-exterieure">
-<h2>1.4 Le lexique et la température extérieure<a class="headerlink" href="#le-lexique-et-la-temperature-exterieure" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="le-lexique">
-<h3>1.4.1 Le lexique<a class="headerlink" href="#le-lexique" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+</section>
+<section id="le-lexique-et-la-temperature-exterieure">
+<h2>1.4 Le lexique et la température extérieure<a class="headerlink" href="#le-lexique-et-la-temperature-exterieure" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="le-lexique">
+<h3>1.4.1 Le lexique<a class="headerlink" href="#le-lexique" title="Lien permanent vers cette rubrique"></a></h3>
 <p>L’image est inline dans header.php</p>
 <p>La fenêtre modale dans include/lexique .php ou include/lexique_no.php (le fichier est choisi par la configuration) :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">affichage</span> <span class="n">lexique</span>
@@ -1002,18 +998,18 @@ Un exemple avec set ou get Attribute
 <li><p>Supprimer le script ou le ou mettre en commentaire : <span class="red">&lt;!–</span>  &lt;div class= »modal » id= »lexique »&gt;</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="la-temperature-exterieure-valable-pour-dautres-dispositifs">
-<h3>1.4.2 La température extérieure (valable pour d’autres dispositifs)<a class="headerlink" href="#la-temperature-exterieure-valable-pour-dautres-dispositifs" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="la-temperature-exterieure-valable-pour-dautres-dispositifs">
+<h3>1.4.2 La température extérieure (valable pour d’autres dispositifs)<a class="headerlink" href="#la-temperature-exterieure-valable-pour-dautres-dispositifs" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image179.webp"><img alt="image179" src="../_images/image179.webp" style="width: 438px;" /></a></p>
 <p>Le fichier Json reçu par monitor après une demande de la fonction devices(plan):</p>
 <p><a class="reference internal" href="../_images/image180.webp"><img alt="image180" src="../_images/image180.webp" style="width: 286px;" /></a></p>
-</div>
-</div>
-<div class="section" id="liens-avec-domoticz-ou-home-assistant">
-<h2>1.5 liens avec Domoticz ou Home Assistant<a class="headerlink" href="#liens-avec-domoticz-ou-home-assistant" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="liens-avec-domoticz">
-<h3>1.5.1 Liens avec Domoticz<a class="headerlink" href="#liens-avec-domoticz" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="liens-avec-domoticz-home-assistant-ou-io-broker">
+<h2>1.5 liens avec Domoticz, Home Assistant ou io.broker<a class="headerlink" href="#liens-avec-domoticz-home-assistant-ou-io-broker" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="liens-avec-domoticz">
+<h3>1.5.1 Liens avec Domoticz<a class="headerlink" href="#liens-avec-domoticz" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image183.webp"><img alt="image183" src="../_images/image183.webp" style="width: 307px;" /></a></p>
 <p>Le script <strong>maj_services.lua</strong> concerne :</p>
 <ul class="simple">
@@ -1048,8 +1044,8 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 <p><span class="darkblue">D’une année à l’autre, certains jours de ramassage des poubelles peuvent être modifiés</span> :</p>
 <p>Pour en tenir compte dans Domoticz, il est possible de mettre les variables (string et tableau dans un fichier, voir ci-après:</p>
 </div>
-<div class="section" id="les-variables-lua-de-configuration-dans-un-fichier-externe">
-<h4>1.5.1.1 les variables lua de configuration dans un fichier externe<a class="headerlink" href="#les-variables-lua-de-configuration-dans-un-fichier-externe" title="Lien permanent vers ce titre"></a></h4>
+<section id="les-variables-lua-de-configuration-dans-un-fichier-externe">
+<h4>1.5.1.1 les variables lua de configuration dans un fichier externe<a class="headerlink" href="#les-variables-lua-de-configuration-dans-un-fichier-externe" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Les jours de ramassage des poubelles peuvent changer, le nombre d’anniversaires augmenter, toutes les variables correspondantes à ces valeurs peuvent être insérées dans un fichier appelé dans le script lua ; pour les anniversaires on utilise un tableau multidimensionnel, plus facile à compléter que 2 tableaux, si les données sont importantes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1099,9 +1095,9 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="les-scripts-de-notifications-gerees-par-domoticz">
-<h4>1.5.1.2 les scripts de notifications gérées par Domoticz<a class="headerlink" href="#les-scripts-de-notifications-gerees-par-domoticz" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="les-scripts-de-notifications-gerees-par-domoticz">
+<h4>1.5.1.2 les scripts de notifications gérées par Domoticz<a class="headerlink" href="#les-scripts-de-notifications-gerees-par-domoticz" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Alarmes SMS ou Mail ,</p>
 <ul class="simple">
 <li><p>le script LUA pour les variables : ‘<span class="darkblue">notifications_variables</span>’</p></li>
@@ -1129,17 +1125,18 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 </ul>
 <p><a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua">https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/notification_devices.lua</a></p>
 <p><a class="reference internal" href="../_images/image194.webp"><img alt="image194" src="../_images/image194.webp" style="width: 650px;" /></a></p>
-<div class="section" id="script-lua">
-<h5>script lua<a class="headerlink" href="#script-lua" title="Lien permanent vers ce titre"></a></h5>
+<section id="script-lua">
+<h5>script lua<a class="headerlink" href="#script-lua" title="Lien permanent vers cette rubrique"></a></h5>
 <ul class="simple">
 <li><p>le script LUA pour les notifications concernant le temps: ‘<span class="darkblue">notification-timer.lua</span>,</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image195.webp"><img alt="image195" src="../_images/image195.webp" style="width: 650px;" /></a></p>
-</div>
-</div>
-</div>
-<div class="section" id="liens-avec-home-assistant">
-<h3>1.5.2 Liens avec Home Assistant<a class="headerlink" href="#liens-avec-home-assistant" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+</section>
+<section id="liens-avec-home-assistant">
+<h3>1.5.2 Liens avec Home Assistant<a class="headerlink" href="#liens-avec-home-assistant" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Les services gérés peuvent être les même que pour Domoticz ; au lieu de Lua les scripts sont écrit en Yaml.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Pour faire un essai de Rest API, sans installer de client HTTP, il suffit à partir de monitor d’envoyer la variable app=ha</p>
@@ -1147,9 +1144,9 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 </pre></div>
 </div>
 </div>
-<p><a href="#id3"><span class="problematic" id="id4">|image142|</span></a></p>
-<div class="section" id="exemple-dun-on-off-sur-un-interrupteur-virtuel">
-<h4>1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel<a class="headerlink" href="#exemple-dun-on-off-sur-un-interrupteur-virtuel" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image142.webp"><img alt="image142" src="../_images/image142.webp" style="width: 700px;" /></a></p>
+<section id="exemple-dun-on-off-sur-un-interrupteur-virtuel">
+<h4>1.5.2.1  Exemple d’un ON OFF sur un interrupteur virtuel<a class="headerlink" href="#exemple-dun-on-off-sur-un-interrupteur-virtuel" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference internal" href="../_images/image196.webp"><img alt="image196" src="../_images/image196.webp" style="width: 440px;" /></a></p>
 <p><a class="reference internal" href="../_images/image197.webp"><img alt="image197" src="../_images/image197.webp" style="width: 596px;" /></a></p>
 <p><a class="reference internal" href="../_images/image198.webp"><img alt="image198" src="../_images/image198.webp" style="width: 529px;" /></a></p>
@@ -1204,12 +1201,12 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 <p>Pour faire des essais à partir d’un navigateur :</p>
 </div>
 <p><a class="reference internal" href="../_images/image208.webp"><img alt="image208" src="../_images/image208.webp" style="width: 700px;" /></a></p>
-</div>
-</div>
-<div class="section" id="liaison-mqtt-entre-home-assistant-et-domoticz">
-<h3>1.5.3 Liaison MQTT entre Home Assistant et Domoticz<a class="headerlink" href="#liaison-mqtt-entre-home-assistant-et-domoticz" title="Lien permanent vers ce titre"></a></h3>
-<div class="section" id="ajout-dans-domoticz">
-<h4>1.5.3.1  Ajout dans Domoticz<a class="headerlink" href="#ajout-dans-domoticz" title="Lien permanent vers ce titre"></a></h4>
+</section>
+</section>
+<section id="liaison-mqtt-entre-home-assistant-et-domoticz">
+<h3>1.5.3 Liaison MQTT entre Home Assistant et Domoticz<a class="headerlink" href="#liaison-mqtt-entre-home-assistant-et-domoticz" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="ajout-dans-domoticz">
+<h4>1.5.3.1  Ajout dans Domoticz<a class="headerlink" href="#ajout-dans-domoticz" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p><strong>Créer une pièce fictive</strong> nommée <span class="darkblue">mqttDevices</span> où seront placés les dispositifs concernés.</p></li>
 </ul>
@@ -1228,9 +1225,9 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 <p class="admonition-title">Note</p>
 <p>pour la pièce choisie ci-dessus le topic sera <span class="darkblue">domoticz/out/interieur/mqttDevices</span> et <span class="darkblue">domoticz/out</span></p>
 </div>
-</div>
-<div class="section" id="ajout-dans-home-assistant">
-<h4>1.5.3.2  Ajout dans Home Assistant<a class="headerlink" href="#ajout-dans-home-assistant" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="ajout-dans-home-assistant">
+<h4>1.5.3.2  Ajout dans Home Assistant<a class="headerlink" href="#ajout-dans-home-assistant" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p><strong>Créer un répertoire mqtt</strong> et l’inclure dans <span class="darkblue">/config/configuration.yaml</span></p></li>
 </ul>
@@ -1240,7 +1237,7 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 <p><a class="reference internal" href="../_images/image1095.webp"><img alt="image1095" src="../_images/image1095.webp" style="width: 319px;" /></a></p>
 <p>enregistrer le fichier modifié</p>
 <ul class="simple">
-<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>créer un fichier qui concernera les interrupteurs: <span class="darkblue">switches.yaml</span></p></li>
+<li><p><a href="#id3"><span class="problematic" id="id4">**</span></a>créer un fichier qui concernera les interrupteurs: <span class="darkblue">switches.yaml</span></p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1096.webp"><img alt="image1096" src="../_images/image1096.webp" style="width: 291px;" /></a></p>
 <ul class="simple">
@@ -1265,13 +1262,66 @@ PHP (status_variables), qui récupère toutes les infos (API Domoticz) et renvoi
 <p>Pour l’alarme de nuit (idx=42), le script sera le même avec comme object_id et idx <span class="red">42</span> au lieu de <span class="darkblue">41</span></p>
 <p>Enregistrer le fichier modifier, vérifier la configuration et <strong>redémarrer Home Assistant</strong></p>
 <p><a class="reference internal" href="../_images/image1097.webp"><img alt="image1097" src="../_images/image1097.webp" style="width: 443px;" /></a></p>
+</section>
+</section>
+<section id="liens-avec-io-broker">
+<h3>1.5.4 Liens avec io.broker<a class="headerlink" href="#liens-avec-io-broker" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Au lieu d’utiliser Lua(Dz) ou Yaml(Ha), on utilise plutôt Javascript</p>
+<p>Avec io.broker , 2 solutions:</p>
+<ul class="simple">
+<li><p>soit on utilise l’API comme pour Domoticz ou Home Assistant</p></li>
+<li><p>soit on crée de belles pages avec Vis 2.0 et la mise à jour par web socket est automatique, c’est cette solution qui est à privilégier</p></li>
+</ul>
+<section id="utlisation-de-rest-api">
+<h4>1.5.4.1  Utlisation de rest-api<a class="headerlink" href="#utlisation-de-rest-api" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference external" href="https://github.com/ioBroker/ioBroker.rest-api">https://github.com/ioBroker/ioBroker.rest-api</a></p>
+<p>les dispositifs crées automatiquement à partir de la BD</p>
+<p><a class="reference internal" href="../_images/image1521.webp"><img alt="image1521" src="../_images/image1521.webp" style="width: 700px;" /></a></p>
+<p>La fonction PHP:</p>
+<p><a class="reference internal" href="../_images/image1522.webp"><img alt="image1522" src="../_images/image1522.webp" style="width: 700px;" /></a></p>
+<p>Voir un exemple concret :  <a class="reference internal" href="mon_installation.html#robot-tondeuse-landroid-worx"><span class="std std-ref">21.14 Robot tondeuse Landroid Worx</span></a></p>
+</section>
+<section id="utlisation-de-vis-2-0">
+<h4>1.5.4.2 Utlisation de Vis 2.0<a class="headerlink" href="#utlisation-de-vis-2-0" title="Lien permanent vers cette rubrique"></a></h4>
+<p>l’adaptateur est installé: <a class="reference internal" href="../_images/image1523.webp"><img alt="image1523" src="../_images/image1523.webp" style="width: 300px;" /></a></p>
+<div class="admonition-allumage-et-l-extinction-de-l-eclairage-et-affichage-de-la-temperature admonition">
+<p class="admonition-title"><strong>Allumage et l’extinction de l’éclairage et affichage de la température</strong></p>
+<blockquote>
+<div><blockquote>
+<div><p><a class="reference internal" href="../_images/image1525.webp"><img alt="image1525" src="../_images/image1525.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1524.webp"><img alt="image1524" src="../_images/image1524.webp" style="width: 447px;" /></a></p>
+</div></blockquote>
+<p>Ajouter une image d’arrière plan:</p>
+<p><a class="reference internal" href="../_images/image1526.webp"><img alt="image1526" src="../_images/image1526.webp" style="width: 660px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1527.webp"><img alt="image1527" src="../_images/image1527.webp" style="width: 700px;" /></a></p>
+<p>Ajouter une lampe:</p>
+<p><a class="reference internal" href="../_images/image1528.webp"><img alt="image1528" src="../_images/image1528.webp" style="width: 441px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1529.webp"><img alt="image1529" src="../_images/image1529.webp" style="width: 700px;" /></a></p>
+<p>Ajouter la température</p>
+<p><a class="reference internal" href="../_images/image1530.webp"><img alt="image1530" src="../_images/image1530.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour ajouter quand a eu lieu la dernière mesure</p>
+<p><a class="reference internal" href="../_images/image1531.webp"><img alt="image1531" src="../_images/image1531.webp" style="width: 550px;" /></a></p>
 </div>
+<p>Pour ajouter une icone devant la température</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1532.webp"><img alt="image1532" src="../_images/image1532.webp" style="width: 700px;" /></a></p>
+<blockquote>
+<div><p>Résultat en direct</p>
+<p><a class="reference internal" href="../_images/image1533.webp"><img alt="image1533" src="../_images/image1533.webp" style="width: 550px;" /></a></p>
+</div></blockquote>
 </div>
-</div>
-<div class="section" id="lien-avec-la-base-de-donnees-sql">
-<h2>1.6 Lien avec la base de données SQL<a class="headerlink" href="#lien-avec-la-base-de-donnees-sql" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="exemple-avec-la-date-de-ramassage-des-poubelles">
-<h3>1.6.1- exemple avec la date de ramassage des poubelles<a class="headerlink" href="#exemple-avec-la-date-de-ramassage-des-poubelles" title="Lien permanent vers ce titre"></a></h3>
+<p>Affichage dans Monitor:</p>
+<p><a class="reference internal" href="../_images/image1534.webp"><img alt="image1534" src="../_images/image1534.webp" style="width: 500px;" /></a></p>
+<p>Voir aussi le § <a class="reference internal" href="mon_installation.html#io-broker"><span class="std std-ref">21.13 Io.Broker</span></a></p>
+</section>
+</section>
+</section>
+<section id="lien-avec-la-base-de-donnees-sql">
+<h2>1.6 Lien avec la base de données SQL<a class="headerlink" href="#lien-avec-la-base-de-donnees-sql" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="exemple-avec-la-date-de-ramassage-des-poubelles">
+<h3>1.6.1- exemple avec la date de ramassage des poubelles<a class="headerlink" href="#exemple-avec-la-date-de-ramassage-des-poubelles" title="Lien permanent vers cette rubrique"></a></h3>
 <p>En Dordogne, les poubelles jaunes sont ramassées toutes les 2 semaines mais les poubelles grises sont ramassées selon une procédure différente :</p>
 <ul class="simple">
 <li><p>Le contrat annuel comprend 12 ramassages mais le ramassage est possible chaque semaine,</p></li>
@@ -1370,10 +1420,10 @@ $data[$n+1] = [
 <p>Les enregistrements sont sauvegardés,</p>
 <p>pour afficher l’historique des dates, voir le paragraphe  <a class="reference internal" href="app_diverses.html#edition-de-lhistorique-du-ramassage-des-poubelles"><span class="std std-ref">12.1.1 Edition de l’historique du ramassage des poubelles</span></a></p>
 <p><a class="reference internal" href="../_images/image218.webp"><img alt="image218" src="../_images/image218.webp" style="width: 526px;" /></a></p>
-</div>
-</div>
-<div class="section" id="ajuster-le-menu-au-nombre-de-pages">
-<h2>1.7 Ajuster le menu au nombre de pages<a class="headerlink" href="#ajuster-le-menu-au-nombre-de-pages" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+<section id="ajuster-le-menu-au-nombre-de-pages">
+<h2>1.7 Ajuster le menu au nombre de pages<a class="headerlink" href="#ajuster-le-menu-au-nombre-de-pages" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Au-delà de 12 pages il faut étendre en largeur le menu ; il faut aussi le descendre de 50 px
 pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image219.webp"><img alt="image219" src="../_images/image219.webp" style="width: 526px;" /></a></p>
@@ -1381,19 +1431,21 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image220.webp"><img alt="image220" src="../_images/image220.webp" style="width: 316px;" /></a></p>
 <p>Pour descendre le menu : modifier la class .nav dans css/mes_css.css</p>
 <p><a class="reference internal" href="../_images/image221.webp"><img alt="image221" src="../_images/image221.webp" style="width: 338px;" /></a></p>
-</div>
-<div class="section" id="complement-pour-les-notifications-sur-l-ecran-d-accueil">
-<h2>1.8 Complément pour les notifications sur l’écran d’accueil<a class="headerlink" href="#complement-pour-les-notifications-sur-l-ecran-d-accueil" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="les-notifications-incluses-dans-le-programme">
-<h3>1.8.1 les notifications incluses dans le programme<a class="headerlink" href="#les-notifications-incluses-dans-le-programme" title="Lien permanent vers ce titre"></a></h3>
+<p>On peut aussi augmenter la hauteur:</p>
+<p><a class="reference internal" href="../_images/image1182.webp"><img alt="image1182" src="../_images/image1182.webp" style="width: 292px;" /></a>  <a class="reference internal" href="../_images/image1183.webp"><img alt="image1183" src="../_images/image1183.webp" style="width: 138px;" /></a></p>
+</section>
+<section id="complement-pour-les-notifications-sur-l-ecran-d-accueil">
+<h2>1.8 Complément pour les notifications sur l’écran d’accueil<a class="headerlink" href="#complement-pour-les-notifications-sur-l-ecran-d-accueil" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="les-notifications-incluses-dans-le-programme">
+<h3>1.8.1 les notifications incluses dans le programme<a class="headerlink" href="#les-notifications-incluses-dans-le-programme" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1146.webp"><img alt="image1146" src="../_images/image1146.webp" style="width: 474px;" /></a></p>
 <p>Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monitor compare la valeur de ces variables ou dispositifs avec la Base de données et affiche la notification.</p>
 <p><a class="reference internal" href="../_images/image1147.webp"><img alt="image1147" src="../_images/image1147.webp" style="width: 480px;" /></a></p>
-</div>
-<div class="section" id="mode-d-emploi-pour-ajouter-une-notification">
-<h3>1.8.2 Mode d’emploi pour ajouter une notification<a class="headerlink" href="#mode-d-emploi-pour-ajouter-une-notification" title="Lien permanent vers ce titre"></a></h3>
-<div class="section" id="ecriture-d-un-script-dzvent-dz-ou-yaml-ha">
-<h4>1.8.2.1  Ecriture d’un script Dzvent(Dz) ou yaml(HA)<a class="headerlink" href="#ecriture-d-un-script-dzvent-dz-ou-yaml-ha" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="mode-d-emploi-pour-ajouter-une-notification">
+<h3>1.8.2 Mode d’emploi pour ajouter une notification<a class="headerlink" href="#mode-d-emploi-pour-ajouter-une-notification" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="ecriture-d-un-script-dzvent-ou-yaml">
+<h4>1.8.2.1 Ecriture d’un script Dzvent ou yaml<a class="headerlink" href="#ecriture-d-un-script-dzvent-ou-yaml" title="Lien permanent vers cette rubrique"></a></h4>
 <p>l’ajout concerne « Vu pour la dernière fois » (lastSeen) et « Dernière mise à jour » (LastUpdate) des dispositifs</p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
@@ -1436,8 +1488,8 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image1176.webp"><img alt="image1176" src="../_images/image1176.webp" style="width: 550px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1177.webp"><img alt="image1177" src="../_images/image1177.webp" style="width: 530px;" /></a></p>
 </div>
-<div class="section" id="domoticz">
-<h5>1.8.2.1.1 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h5>
+<section id="domoticz">
+<h5>1.8.2.1.1 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers cette rubrique"></a></h5>
 <p>En premier , création d’une variable, noter son nom :</p>
 <p><a class="reference internal" href="../_images/image1150.webp"><img alt="image1150" src="../_images/image1150.webp" style="width: 700px;" /></a></p>
 <p>En second , création de 3 variables dans le tableau de variables (string_tableaux.lua) :</p>
@@ -1549,9 +1601,9 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image149.webp"><img alt="image149" src="../_images/image149.webp" style="width: 500px;" /></a></p>
 <p>Cette table est créée automatquement par monitor à partir des infos de la base de données, voir ce § <a class="reference internal" href="bien_debuter.html#les-dispositifs"><span class="std std-ref">0.3.2 Les Dispositifs</span></a></p>
 <p>Elle permet de sélectionner le meilleur dispositif qui affiche le dernier « vu pour la dernière fois »</p>
-</div>
-<div class="section" id="la-variable-lastseen">
-<h5>1.8.2.1.2 La variable lastseen<a class="headerlink" href="#la-variable-lastseen" title="Lien permanent vers ce titre"></a></h5>
+</section>
+<section id="la-variable-lastseen">
+<h5>1.8.2.1.2 La variable lastseen<a class="headerlink" href="#la-variable-lastseen" title="Lien permanent vers cette rubrique"></a></h5>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/image1151.webp"><img alt="image1151" src="../_images/image1151.webp" style="width: 459px;" /></a></p>
 <div class="admonition note">
@@ -1561,9 +1613,9 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image1162.webp"><img alt="image1162" src="../_images/image1162.webp" style="width: 523px;" /></a></p>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="home-assistant">
-<h5>1.8.2.1.3 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers ce titre"></a></h5>
+</section>
+<section id="home-assistant">
+<h5>1.8.2.1.3 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers cette rubrique"></a></h5>
 <p><span class="red">Comme pour Domoticz, Zwave-JS-UI est le problème</span></p>
 <p>Dans HA, on ne peut, comme dans DZ utiliser des variables globales aussi les valeurs max seront définies dans le script.</p>
 <p>Pour l’annulation de la notification, création d’un switch binaire, nommé ici « essai1 »:</p>
@@ -1700,10 +1752,14 @@ pour ne pas cacher le menu hamburger</p>
 </div>
 <p><strong>Essai à partir de monitor:</strong></p>
 <p><a class="reference internal" href="../_images/image157.webp"><img alt="image157" src="../_images/image157.webp" style="width: 700px;" /></a></p>
-</div>
-</div>
-<div class="section" id="la-page-d-accueil-de-monitor-include-accueil-php">
-<h4>1.8.2.2  La page d’accueil de monitor : include/accueil.php<a class="headerlink" href="#la-page-d-accueil-de-monitor-include-accueil-php" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="io-broker">
+<h5>1.8.2.1.4 Io.Broker<a class="headerlink" href="#io-broker" title="Lien permanent vers cette rubrique"></a></h5>
+<p>en cours de rédaction</p>
+</section>
+</section>
+<section id="la-page-d-accueil-de-monitor-include-accueil-php">
+<h4>1.8.2.2  La page d’accueil de monitor : include/accueil.php<a class="headerlink" href="#la-page-d-accueil-de-monitor-include-accueil-php" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference internal" href="../_images/image127.webp"><img alt="image127" src="../_images/image127.webp" style="width: 500px;" /></a></p>
 <p>Soit un emplacement disponible est utilisé (voir le § suivant), soit on définit un emplacement:</p>
 <ul class="simple">
@@ -1722,10 +1778,10 @@ pour ne pas cacher le menu hamburger</p>
 <li><p>on choisit une image placée dans le répertoire <span class="darkblue">image</span></p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image129.webp"><img alt="image129" src="../_images/image129.webp" style="width: 155px;" /></a></p>
-</div>
-</div>
-<div class="section" id="les-emplacements-disponibles-et-les-styles-css">
-<h3>1.8.3 les emplacements disponibles et les styles css<a class="headerlink" href="#les-emplacements-disponibles-et-les-styles-css" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="les-emplacements-disponibles-et-les-styles-css">
+<h3>1.8.3 les emplacements disponibles et les styles css<a class="headerlink" href="#les-emplacements-disponibles-et-les-styles-css" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Pour cet exemple l’ID (lastseen) est imposé mais 4 id’s pré programmés sont disponibles; les styles associés sont déclarés dans le fichier <span class="darkblue">custom/css/styles.css</span>:</p>
 <p>la classe .lastseen créee:</p>
 <p><a class="reference internal" href="../_images/image1155.webp"><img alt="image1155" src="../_images/image1155.webp" style="width: 250px;" /></a></p>
@@ -1748,9 +1804,9 @@ pour ne pas cacher le menu hamburger</p>
 <p>chaque icone sera celle indiquée dans la table SQL <span class="darkblue">text-image</span></p>
 </div>
 <p>les ID étant soit notif1, notif2, notif3 ou notif4</p>
-</div>
-<div class="section" id="enregistrement-de-la-variable-dans-la-base-sql">
-<h3>1.8.4 Enregistrement de la variable dans la base SQL<a class="headerlink" href="#enregistrement-de-la-variable-dans-la-base-sql" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="enregistrement-de-la-variable-dans-la-base-sql">
+<h3>1.8.4 Enregistrement de la variable dans la base SQL<a class="headerlink" href="#enregistrement-de-la-variable-dans-la-base-sql" title="Lien permanent vers cette rubrique"></a></h3>
 <p><em>et pour HA du switch binaire, option facultative</em></p>
 <ul class="simple">
 <li><p><em>Avec monitor</em>:</p></li>
@@ -1777,9 +1833,9 @@ pour ne pas cacher le menu hamburger</p>
 <li><p>la valeur de Lastseen est en heures , le delta correspond à la différence entre LastUpdate et Lasteen.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="affichage-dans-monitor">
-<h3>1.8.5 Affichage dans monitor<a class="headerlink" href="#affichage-dans-monitor" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="affichage-dans-monitor">
+<h3>1.8.5 Affichage dans monitor<a class="headerlink" href="#affichage-dans-monitor" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1161.webp"><img alt="image1161" src="../_images/image1161.webp" style="width: 500px;" /></a></p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -1789,14 +1845,14 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image1167.webp"><img alt="image1167" src="../_images/image1167.webp" style="width: 500px;" /></a></p>
 <p>accueil.php, css et table « text_image » concernant cet affichage:</p>
 <p><a class="reference internal" href="../_images/image146.webp"><img alt="image146" src="../_images/image146.webp" style="width: 700px;" /></a></p>
-<div class="section" id="function-status-variables-xx-dans-fonctions-php">
-<h4>1.8.5.1 function status_variables($xx) dans fonctions.php<a class="headerlink" href="#function-status-variables-xx-dans-fonctions-php" title="Lien permanent vers ce titre"></a></h4>
+<section id="function-status-variables-xx-dans-fonctions-php">
+<h4>1.8.5.1 function status_variables($xx) dans fonctions.php<a class="headerlink" href="#function-status-variables-xx-dans-fonctions-php" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference internal" href="../_images/image1163.webp"><img alt="image1163" src="../_images/image1163.webp" style="width: 600px;" /></a></p>
 <p>La variable « lastseen » de domoticz ou l’input_text de Home Assistant « essai » ont pour valeur une chaine composée du nom du texte de la table « text-image » et du contenu correspondant aux disposifs off line ou morts, ces 2 valeurs séparés par le caractère <span class="red">#</span>; voir ce § <a class="reference internal" href="#la-variable-lastseen"><span class="std std-ref">1.8.2.1.2 La variable lastseen</span></a></p>
 <p>Pour décomposer cette chaîne en 2 valeurs d’un tableau, on utilise la fonction PHP <span class="green">explode</span>: pour résumer, <em>si « value » contient # on la découpe en value et contenu</em>.</p>
-</div>
-<div class="section" id="script-jquery-dans-footer-php">
-<h4>1.8.5.2 script Jquery dans footer.php<a class="headerlink" href="#script-jquery-dans-footer-php" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="script-jquery-dans-footer-php">
+<h4>1.8.5.2 script Jquery dans footer.php<a class="headerlink" href="#script-jquery-dans-footer-php" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference internal" href="../_images/image1164.webp"><img alt="image1164" src="../_images/image1164.webp" style="width: 600px;" /></a></p>
 <p>on récupére la valeur de contenu pour l’afficher dans un popup qui permet d’annuler la notification</p>
 <p><a class="reference internal" href="../_images/image148.webp"><img alt="image148" src="../_images/image148.webp" style="width: 700px;" /></a></p>
@@ -1806,19 +1862,19 @@ pour ne pas cacher le menu hamburger</p>
 <p>Split est utilisé pour découper l” input_text.NOM_DE_L_ENTITE et récuperer le nom de l’entité pour ainsi créer le input_boolean.NOM_DE_L_ENTITE.</p>
 <p>Il n’est pas necessaire de créer ce switch binaire dans SQL mais les <span class="red">2 entités doivent porter le même nom</span></p>
 </div>
-</div>
-</div>
-<div class="section" id="reception-du-mail-de-notification">
-<h3>1.8.6 Réception du mail de notification<a class="headerlink" href="#reception-du-mail-de-notification" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="reception-du-mail-de-notification">
+<h3>1.8.6 Réception du mail de notification<a class="headerlink" href="#reception-du-mail-de-notification" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1165.webp"><img alt="image1165" src="../_images/image1165.webp" style="width: 449px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1168.webp"><img alt="image1168" src="../_images/image1168.webp" style="width: 450px;" /></a></p>
-</div>
-</div>
-<div class="section" id="acces-distant-https">
-<h2>1.9 Accès distant HTTPS<a class="headerlink" href="#acces-distant-https" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+<section id="acces-distant-https">
+<h2>1.9 Accès distant HTTPS<a class="headerlink" href="#acces-distant-https" title="Lien permanent vers cette rubrique"></a></h2>
 <p>voir cette page web : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/3">http://domo-site.fr/accueil/dossiers/3</a></p>
-<div class="section" id="monitor-conf">
-<h3>1.9.1 monitor.conf<a class="headerlink" href="#monitor-conf" title="Lien permanent vers ce titre"></a></h3>
+<section id="monitor-conf">
+<h3>1.9.1 monitor.conf<a class="headerlink" href="#monitor-conf" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>upstream monitor {
      server 192.168.1.9;
 }
@@ -1860,9 +1916,9 @@ server {
 <p><em>le certificat peut être fourni gratuitement par Let’sEncrypt</em></p>
 <p>Comment installer Let’s Encrypt sur Nginx : <a class="reference external" href="https://upcloud.com/resources/tutorials/install-lets-encrypt-nginx">https://upcloud.com/resources/tutorials/install-lets-encrypt-nginx</a></p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -1875,7 +1931,7 @@ server {
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

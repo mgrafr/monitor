@@ -37,20 +37,142 @@ Index_loc.php en général ne pas modifier
 ========================================
 Effectuée par une fonction PHP à partir de la base de données
 
+|image1212|
+
 Extrait de la page html pour des commandes pour Domoticz et Home Assistant:
 
 |image580|
 
 voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automatiquement*
 
+8.1.2 Commandes de changement d'état
+====================================
+
+.. admonition:: les fonctions PHP
+
+   **pour l'API Home Assistant**
+
+   .. code-block::
+
+      function devices_id($deviceid,$type,$value="",$pass=0){$post="";global $L_ha; 
+	$mat=explode('.',$deviceid);$mat=$mat[0];
+	switch ($type) {
+	case "etat" :		
+	$api="api/states/".$deviceid;$mode=1;	
+	break;
+	case "service" :
+	$api="api/services";$mode=1;	
+	break;
+	case "on" :
+	$mode=2;	
+	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}	
+	if ($mat=="switch") {$api="api/services/switch/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}
+	if ($mat=="light") {$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'"}';}	
+	break;
+	case "off" :
+	$mode=2;	
+	if ($mat=="input_boolean") {$api="api/services/input_boolean/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
+	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
+	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
+	break;
+	case 4 :// dimmer, "entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
+	$mode=2;$value=str_replace('rgb','',$value);$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
+	$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": '.$value.'}';
+	break;		
+	case "value" :
+	$mode=2;	
+	if ($mat=="input_text") {$api="api/services/input_text/set_value";$post='{"entity_id": "'.$deviceid.'" , "value" : "'.$value.'" }';}	
+	break;	
+	default:
+	}								
+	$L=$L_ha.$api;
+
+	$ha=file_http_curl($L,$mode,$post);
+	$data = json_decode($ha, true);
+	$data['resultat']="OK";										
+										
+	return json_encode($data);}
+
+   **pour l'API de Domoticz**
+
+   .. code-block::
+
+      function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;global $L_dz;
+	// exemple : http://192.168.1.75:8082/json.htm?type=command&param=udevice&idx=84&nvalue=Off&svalue=2
+	//  /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
+	//  /json.htm?type=command&param=setcolbrightnessvalue&idx=99&hex=RRGGBB&brightness=100&iswhite=false																   
+	if ($pass=="0") {$auth=0;}
+	if ((($pass==NOM_PASS_CM)&&($_SESSION['passwordc']==PWDCOMMAND))&&($_SESSION['timec']>time())) {$auth=1;}
+	if (($pass==NOM_PASS_AL)&&($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$auth=2;}
+	if ($auth<3){$json2="json.htm?type=command&param=";
+	// $type=1 .....
+	if ($type==1){$json1='udevice&idx='.$idx.'&nvalue=group%20on&svalue=2';}
+	// $type=2 .....ON/OFF
+	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
+	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
+	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
+	// $type=4 Réglez une lumière RVB dimmable
+	if ($type==4){$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$idx.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
+	$json= $L_dz.$json2.$json1;
+	$json_string=file_get_curl($json);
+	$result = json_decode($json_string, true);
+	}
+	else {$result['status']="acces interdit";}
+	return $result ;
+
+   **pour l'API de Io.broker** , avec :darkblue:`ioBroker Swagger UI`, voir le § :ref:`0.2.3.3 pour IoBroker`
+
+      .. code-block::
+
+         function set_object($device,$type,$value,$pass=0){
+	  global $Token_iob,$port_api_iob,$IP_iob;
+	  //http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false													
+	  $id="";$mode=1;$device=$device.".".$type;
+
+	 $L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
+	 $iob=file_get_curl($L);
+	 return $iob;												
+	}
+
+.. admonition:: les fonctions Javascript
+
+   |image1214|
+
+   |image1213|
+
+8.1.2.1 Commandes de changement de couleur des lampes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+le color picker jscolor.js est utilisé: https://jscolor.com/
+
+|image1409|
+
+la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie dans le format approprié (Hex pour DZ et IOB et rgb pour HA)
+
+.. code-block::
+
+   function test_rgb($rgb2){
+    $data_rgb = [
+    'command' => "13",
+    'ID1_html' => $rgb2
+    ];
+    $rvb=mysql_app($data_rgb);$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$erveur=$rvb['Actif'];$ID=$rvb['ID'];
+	if ($majjs == "onoff_rgb" && $erveur=="2") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="app" value="OnOff"><input type="hidden" id="idx" value="'.$idx.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
+	if ($majjs == "onoff_rgb" && $erveur=="3") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="app" value="turn"><input type="hidden" id="idx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{format:\'rgb\'}" id="rgb">';
+	echo $input.'<button type="button" onclick="adby(10);" style="width:38px;height:28px">OK</button>';
+    }
+
+|image1410|
+
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
 
 |image582|
 
-8.2.1 Exemple pour éclairage jardin
-===================================
+8.2.1 Exemple avec node red
+===========================
 L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande également en zigbee l’éclairage du jardin.
+
+Cette solution est un exemple pour des cas paticuliers ; la solution plus simple est d'utiliser un groupe ou une scène.
 
 |image583| |image584|
 
@@ -70,7 +192,7 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
 
    |image587|
 
-.. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de l’interrupteur car le délai de réponse peut atteindre plus de 10 s, il faut donc envoyer un message MQTT à partir de l’interrupteur virtuel.**
+.. important:: **Ce script automatique de Domoticz ne suffit pas en cas de commande de l’interrupteur car le délai de réponse de domoticz/out peut atteindre plus de 10 s, il faut donc envoyer un message MQTT à partir de l’interrupteur virtuel.**
 
 .. admonition:: **Le script python lancé par la « lampe_ext_entree »**
 
@@ -94,8 +216,10 @@ Les capteurs sont mis à jour par MQTT et node-red depuis zigbee2mqtt
  
 https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
 
-8.2.1.1 Problème de lecture de fichier
-""""""""""""""""""""""""""""""""""""""
+
+
+8.2.2 Problème de lecture de fichier
+====================================
 
 Pour éviter des erreurs (512, 256), penser à convertir le fichier python en Unix s’il a été créé
 avec Notepad++
@@ -119,7 +243,11 @@ avec Notepad++
 
    |image590|
 
-**Le plan**: l’interrupteur est ajouté
+8.2.3 Exemple pour un éclairage de jardin
+=========================================
+Cet exemple est choisi car un interrupteur sur le mur de commandes allume plusieurs lampes dont l'allumage doit aussi être visible sur le plan extérieur.
+
+**Le plan**: un interrupteur est ajouté
 
 |image592|
 
@@ -148,8 +276,6 @@ Les lampes concernées en gris et jaune
 
 **Le Javascript** dans footer.php
 
-.. important:: **La mise à jour de tous les dispositifs est automatique mais avec un temps de réponse, aussi pour la commande des interrupteurs le second script permet une mise à jour instantanée**
-  
 - *maj_devices()*
 
 |image598|
@@ -158,7 +284,11 @@ Les lampes concernées en gris et jaune
 
 |image599|
 
-8.2.2 Exemple pour arrosage jardin
+   la fonction PHP pour établir la table decorrespondance entre idm et ID ou idx
+
+   |image1416|
+
+8.2.4 Exemple pour arrosage jardin
 ==================================
 *Relais Sonoff wifi ip 192.168.x.x :8081*
 
@@ -201,7 +331,7 @@ Le capteur est ajouté au plan
 
 |image606|
 
-8.2.3 Exemple éclairage simple, une lampe de salon
+8.2.5 Exemple éclairage simple, une lampe de salon
 ==================================================
 **Dans Domoticz**
 
@@ -236,7 +366,7 @@ Les images pour lampe de bureau :
 
 |image618| |image619|
     
-8.2.4 Exemple volet roulant
+8.2.6 Exemple volet roulant
 ===========================
 *Le moteur est à 4 fils, piloté par une commande TUYA FT30F et Zigbee2mqtt*
 
@@ -266,7 +396,7 @@ Les images pour lampe de bureau :
 
 - ID « volet_bureau1 » (2eme <rect ) :red:`pour pouvoir cliquer n’importe où sur l’image`.
 
-8.2.4.1 Affichage sur le plan
+8.2.6.1 Affichage sur le plan
 """""""""""""""""""""""""""""
 **Le plan** :
 
@@ -310,7 +440,7 @@ Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :
 
 	|image631|
 
-8.2.4.2 Dans le mur ON/OFF
+8.2.6.2 Dans le mur ON/OFF
 """""""""""""""""""""""""""
 *Pour afficher le % d’ouverture*
 
@@ -387,11 +517,11 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
    C’est cette fenêtre qui va envoyer les commandes d’ouverture, fermeture 
 
-8.2.4.3 les scripts JS
+8.2.6.3 les scripts JS
 """"""""""""""""""""""
 2 solutions:
 
-8.2.4.3.1  avec Ajax et PHP
+8.2.6.3.1  avec Ajax et PHP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *amount=id pour input button* voir l'mage du § prec
 
@@ -401,17 +531,17 @@ Ci-dessus, on récupère idx idm et la commande
 
 |image644|
 
-Mise à jour instantanée :
+Mise à jour instantanée : on utilise la fonction qui met à jour dans monitor, les dispositifs si ils sont activés depuis domoticz ou Home Assistant.(d'où son nom maj_mqtt)
 
 |image645|
 
-8.2.4.3.2 avec MQTT
+8.2.6.3.2 avec MQTT
 ~~~~~~~~~~~~~~~~~~~
-C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par le programme. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
+C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par HA ou DZ. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
 
 https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
-Cette solution est utilisée pour la mise à jour des données en temps réel: :ref:`1.1.3.2 Solution temps réel MQTT` et :ref:`1.3.5.1.b rafraichissement avec MQTT`
+Cette solution est aussi utilisée pour la mise à jour des données en temps réel: :ref:`1.1.3.2 Solution temps réel MQTT` et :ref:`1.3.5.1.b rafraichissement avec MQTT`
 
 |image646|
 
@@ -456,7 +586,7 @@ L'envoi des données doit être un tableau json
 
 |image652|
 
-8.3 les Groupes et Scenes
+8.5 les Groupes et Scenes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 |image493|
 
@@ -470,7 +600,7 @@ Le dispositif de commande (bouton virtuel) est enregistré dans la base de donn�
 
 |image475|
 
-8.3.1 Exemple avec Domoticz
+8.5.1 Exemple avec Domoticz
 ===========================
 le groupe "Allumage Jardin ALL"
 
@@ -486,7 +616,7 @@ Comme pour tous les dispositifs ON/OFF le Jquery est écrit automatiquement dans
 
 |image492|
 
-8.3.1 Exemple avec Home Assistant
+8.5.2 Exemple avec Home Assistant
 =================================
 le groupe "Lumieres_jardin"
 
@@ -642,4 +772,15 @@ Comme pour DZ, on enregistre la commande dans la base de données; les données 
    :width: 523px
 .. |image1140| image:: ../media/image1140.webp
    :width: 650px
-
+.. |image1212| image:: ../img/image1212.webp
+   :width: 650px
+.. |image1213| image:: ../img/image1213.webp
+   :width: 700px
+.. |image1214| image:: ../img/image1214.webp
+   :width: 670px
+.. |image1409| image:: ../img/image1409.webp
+   :width: 341px
+.. |image1410| image:: ../img/image1410.webp
+   :width: 700px
+.. |image1416| image:: ../img/image1416.webp
+   :width: 700px

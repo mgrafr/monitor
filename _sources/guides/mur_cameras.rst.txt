@@ -2,9 +2,15 @@
 -----------------
 .. warning::
 
-   Zoneminder doit être installé
+   Les images peuvent provenir de Zoneminder ou de Monitor, depuis la table "cameras". :red:`Avec les derniéres versions de Zoneminder l'utilisation du cpu atteint en permanence 100% aussi j'ai fai le choix d'abandonner progressivement zoneminder et la 1ere étape a été de d'afficher le mur de caméras depuis monitor`
 
-Pour éviter des problèmes de capacité mémoire, vider le cache périodiquement avec CRON : 
+   Le choix se fait dans admin/config.php
+
+   .. code-block::
+
+      define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor
+
+Pour éviter des problèmes de capacité mémoire, vider le cache de Zoneminder ou Monitor périodiquement avec CRON : 
 
 **crontab -e** |image555|
 
@@ -24,11 +30,17 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
 .. warning:: 
 
-   Il est important d’ajouter les caméras dans Zoneminder les unes après les autres sans en supprimer afin que ces cameras suivent un ordre chronologique (1,2,3,4,5, 6, ...)
+   **Images provenant de Zoneminder**
+
+   Il est important d’ajouter les caméras dans Zoneminder les unes après les autres sans en supprimer afin que ces cameras suivent un ordre chronologique (1,2,3,4,5, 6, ...); c'est l'id de Zoneminder qui doit être ajouté  dans la BD (id_zm)
    
    Voir la page : http://domo-site.fr/accueil/dossiers/44
 
    |image558|
+
+   **Images gérées par monitor**
+
+   Il suffit de numéroter les caméras (id_zm) dans l'ordre souhaité  
 
 7.1- les pages index_loc.php, header.php, entete_html.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -52,6 +64,7 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
    define('ON_MUR',true);// mise en service MUR
    define('NOMMUR','');// nom du mur
    define('NBCAM','0');// nombre caméras
+   define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor
    // Zoneminder
    define('ZMURL','http://192.168.1.23/zm');//IP/zm
    define('ZMURLTLS','https:zoneminder.DOMAINE.ovh');// sous domaine
@@ -63,38 +76,47 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
  |image561|
 
-- **entete_html.php** , pour le switch ajouter cette ligne
+- **entete_html.php et footer.php** , pour le switch ajouter ces lignes 
+
+.. warning:: modification depuis la version 3.1.3 (la précédente version du switch ne fonctionne plus)
 
 .. code-block:: 
 
-   <link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
+   <!-- entetete.php  -->
+   <link href="bootstrap/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <!-- footer.php  -->
+   <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
 
 .. note:: 
 
-   https://github.com/gitbrent/bootstrap-switch-button/releases/latest
+   https://gitbrent.github.io/bootstrap4-toggle/
 
 7.2- la page de monitor 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **mur_cam.php**
 
- |image563|
+ |image1387|
 
 - **Le script du bouton On/Off** , dans footer , ajouter cette ligne:
 
 .. code-block:: 
 
-   <script src="bootstrap/bootstrap-switch-button.js"></script>
+   <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
 
 |image565|
 
-- **mur_cameras.php**
+- **mur_cameras.php** , pour Zoneminder
 
 |image566|
 
+- **mur_cameras1.php** , pour Monitor
+
+|image1388|
+
 .. warning::
 
-   **IMPORTANT** : le fichier include/mur_cameras.php est indépendant du programme (‘est une image en retour) et de ce fait on ne peut utiliser les constantes définies dans admin/config.php
+   **IMPORTANT POUR ZONEMINDER** : le fichier include/mur_cameras.php est indépendant du programme (‘est une image en retour) et de ce fait on ne peut utiliser les constantes définies dans admin/config.php
    
    On va donc pour remédier à ce problème :
 
@@ -102,23 +124,18 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
    -	utiliser les variables de session :red:`$_SESSION["zmuser"] et $_SESSION["zmpass"] pour le login et le mot de passe` car ces données sont sensibles 
 
-**Les fichiers sont tous UTF-8 sans BOM** et l’url des caméras doit se trouver dans :darkblue:`mur_cam.php`. (:red:`ZMURL dans mur_cam.php` et non dans mur_cameras.php); 
+   **Les fichiers sont tous UTF-8 sans BOM** et l’url des caméras doit se trouver dans :darkblue:`mur_cam.php`. (:red:`ZMURL dans mur_cam.php` et non dans mur_cameras.php); 
 
 Extrait de mur_cam.php
 
 .. code-block:: 
 
    <?php
-   $scale=100;$i=1;$j=1;
    while ($i <= NBCAM) {
-	   $camImgId="cam".$i;
-	   if ($j==1) {echo "<tr>";}
-  	   echo '<td>
-	   <img id="'.$camImgId.'" src="include/mur_cameras.php?idx='.$i.'&url='.ZMURL.'&x=" rel="'.$i.'" class="dimcam" alt=""/></td>';
-	   if (($j==2) || ($i==NBCAM)){ echo "</tr>";$j=0;}
-     $i++;$j++;}				
+	if (SRC_MUR=="mo") {$src_img='include/mur_cameras1.php?id_zm='.$i.'&x=';}
+	if (SRC_MUR=="zm") {$src_img='include/mur_cameras.php?idx='.$i.'&url='.ZMURL.'&x=';}				
 
-|image568|
+|image1389|
 
 7.3- Les scripts JS pour la vidéo dans footer.php 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,18 +197,19 @@ Il suffit d’indiquer dans admin/config.php le nb de caméras
    :width: 601px
 .. |image561| image:: ../media/image561.webp
    :width: 570px
-.. |image563| image:: ../media/image563.webp
-   :width: 608px
 .. |image565| image:: ../media/image565.webp
    :width: 581px
 .. |image566| image:: ../media/image566.webp
    :width: 700px
-.. |image568| image:: ../media/image568.webp
-   :width: 603px
 .. |image569| image:: ../media/image569.webp
    :width: 602px
 .. |image571| image:: ../media/image571.webp
    :width: 538px
 .. |image572| image:: ../media/image572.webp
    :width: 566px
-
+.. |image1387| image:: ../img/image1387.webp
+   :width: 700px
+.. |image1388| image:: ../img/image1388.webp
+   :width: 600px
+.. |image1389| image:: ../img/image1389.webp
+   :width: 700px

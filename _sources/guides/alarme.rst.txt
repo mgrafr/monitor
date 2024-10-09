@@ -4,39 +4,71 @@ Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du scri
 
 |image408|
 
-*Pour entrer le mot de passe : redirection vers la page administration* 
+*Pour toutes les fonctions, entrer le mot de passe* 
 
-Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3.lua
+Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3_0_5.lua
 
-5.1 Dans Domoticz, les interrupteurs virtuels, les variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**les interrupteurs virtuels**
+5.1 Les interrupteurs réels, virtuels, les variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Pour Home Assistant**:
+
+|image1370|
+
+|image1371|
+
+Voir ci dessous la description pour Domoticz, valable également pour Home Assistant
+
+**Pour Domoticz**
+
+*les interrupteurs virtuels*
 
 Les boutons poussoir marche/arrêt pour les commandes :
 
-- m/a alarme de nuit
+- m/a alarme de nuit : :darkblue:`alarme_nuit`
 
-- m/a alarme absence
-
-- m/a al_nuit_auto
-
-- m/a sirène
-
-- m/a mode detect des caméras
-
-- poussoir de reset des valeurs de Domoticz,
-
-- activation/désactivation de la sirène : permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF
-
-**Option** : allumages de lampes :
-
-Dans ce tuto : lampe_salon (lampe commandée par le 433MHz avec une interface Sonoff modifié, voir le site domo-site.fr
+- m/a alarme absence : :darkblue:`alarme_absence`
 
 |image409|
 
-Pour le test sirène : un interrupteur « PUSH »
+- m/a al_nuit_auto :   :darkblue:`al_nuit_auto`
+
+- m/a mode detect des caméras : :green:`Modect`
+
+- poussoir « PUSH » après 2s pour tester la sirène : :green:`test_sirene` (création d'un scénario avec la sirène)
 
 |image410|
+
+|image1342|
+
+- poussoir de reset des valeurs en cas d'alarme : :green:`raz_dz`
+
+- activation/désactivation de la sirène : :darkblue:`activation-sirene` , permet de faire des essais sans nuisances sonores ; la sirène est toutefois indiquée ON ou OFF
+
+*un interrupteur réel*
+
+- celui inclus dans la sirène
+
+**Options** : 
+
+*allumages de lampes* :
+
+Dans ce tuto : lampe_salon (lampe commandée par le 433MHz avec une interface Sonoff modifié, voir le site domo-site.fr
+
+*test du modem GSM* , envoi d'un sms avec un bouton de sonnette
+
+|image1343|
+
+.. note::
+
+   les images ci-dessus sont des copies d'écran de Domoticz , pour Home assistant copie d'écran de la sirene et des interrupteurs virtuels (fichier configuration.yaml)
+
+   |image1344| |image1345|
+
+   |image1346|
+
+
+5.1.1 Pour utilisation avec Domoticz
+====================================
 
 On ajoute les dispositifs au plan ; 
 
@@ -47,17 +79,7 @@ On ajoute les dispositifs au plan ;
 
 |image417|
 
-**Les variables, initialisée** à 0
-
--	**ma-alarme** :
-
-|image418|
-
-o	0  =  alarme non activée,
-
-o	1  = alarme absence activée, les capteurs PIR sont pris en compte
-
-o	2  = alarme nuit activée, les capteurs PIR sont ignorés
+**Les variables, initialisée** à 0 (sauf pour activation-sir-txt)
 
 -	**modect** : pour la mise en service de la détection par caméras (non utilisé actuellement, pour une notification en page d’accueil ou autre …)
 
@@ -84,17 +106,58 @@ Tous les Items
    **ATTENTION** :
    L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents et les espaces, utiliser des Under scores(ou autre signe) pour séparer les mots
 
-Partie du script concernant  :darkblue:`les variables`,
+Partie du script concernant  :darkblue:`l'alarme`,
 
 .. code-block::
 
-   --*********************variables***************************************	
+   -- listes des dispositifs
+	-- les capteurs d'ouverture et de présence DEVICE CHANGED
+	-- {capteur,etat,modif variable,contenu variable,notification,alarme}   alarme 0=absence et nuit 1=absence seulement 
+	local a1={'porte_entree','On','porte-ouverte','porte_ouverte_entree'};
+	local a2={'porte ar cuisine','On','porte-ouverte','porte_ouverte_cuisine'};
+	local a3={'porte_fenetre','On',':porte-ouverte','fenetre_ouverte_sejour'};
+	local a4={'pir_entree_motion','On','intrusion','intrusion_entree'};
+	local a5={'pir ar cuisine_motion','On','intrusion','intrusion_cuisine'};
+	local A1={a1,a2,a3,a4,a5};local A2={a1,a2,a3};
+   --
+   local time = string.sub(os.date("%X"), 1, 5)
+   sirene=0;lampe=0
+   --
+   return {
+	on = {
+	
+		devices = {
+		    'pir ar cuisine_motion',
+		    'pir_entree_motion',
+		    'porte_entree',
+		    'porte ar cuisine',
+		    'porte_fenetre',
+		    	'alarme_nuit',
+		    	'alarme_absence',
+		    	'Modect',
+		    	'raz_dz',
+			'al_nuit_auto',
+			'activation-sirene',
+			'Test_GSM',
+			'test_sirene'
+		    },
+		    timer = {
+             'at 15:45',
+             'at 06:00'}
+		},
+		execute = function(domoticz, item, triggerInfo)
+	    --domoticz.log('Alarme ' .. item .. ' was changed', domoticz.LOG_INFO)
+       --*********************variables***************************************	
 	-- alarme absence - 
+      if (item.name =='pir ar cuisine_motion' or item.name=='pir_entree_motion' or item.name=='porte_entree' or item.name=='porte ar cuisine' or item.name=='porte_fenetre') then
         if (domoticz.variables('ma-alarme').value == "1") then 
             for k, v in ipairs(A1) do 
-                if (device.name == (A1[k][1]) and device.state == A1[k][2] ) then 
+                if (item.name == A1[k][1] and item.name ~= nil) then
+                    if (item.state == A1[k][2] ) then 
         	        domoticz.variables(A1[k][3]).set(A1[k][4]);
-        	    end
+    	            else print("erreur:"..A1[k][1])
+    	            end
+        	end
             end
         end
       -- alarme nuit
@@ -102,15 +165,15 @@ Partie du script concernant  :darkblue:`les variables`,
             for k, v in ipairs(A2) do 
                if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then 
         	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
-        	   end
+        	end
             end
-      --allumer lampes
+           --allumer lampes
             if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
             end    
         --mise en service sirene
-            if (sirene==1) then devices('ma_sirene').switchOn();sirene="2"
+            if (sirene==1) then devices('sirene').switchOn();sirene="2"
             end 
-            if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('sirene_switch').switchOn();sirene="3"
+            if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('sirene').switchOn();sirene="3"
             end    
         end  
         -- fin alarme nuit   
@@ -125,7 +188,70 @@ Partie du script concernant  :darkblue:`les variables`,
                  alerte_gsm('alarmeù'..txt)
         end
 
-Partie du script concernant :darkblue:`le timer `,
+Partie du script concernant :darkblue:`les options : interrupteurs on/off` ,
+
+.. code-block::
+
+    else 
+      --*******************devices virtuels************************************        
+        
+      --elseif (item.name =='alarme_nuit' or item.name=='alarme_absence' or item.name=='Modect' or item.name=='raz_dz' or item.name=='al_nuit_auto' or item.name=='activation-sirene' or item.name=='Test_GSM') then 
+    elseif (find_string_in(virtuels, item.name)==true) then print("elseif:"..item.name)
+        -- alarme nuit_activation
+        if (item.name == 'alarme_nuit' and  item.state=='On' ) then 
+        txt='alarmeùnuitùactivee';obj='alarme_nuit_activee';
+        alerte_gsm(txt);domoticz.variables('alarme').set("alarme_nuit"); 	
+	    elseif (item.name == 'alarme_nuit' and  item.state=='Off' ) then
+        txt='alarmeùnuitùdesactivee';obj='alarme_nuit_desactivee';alerte_gsm(txt);
+            if (domoticz.variables('alarme').value~='alarme_auto') then domoticz.variables('alarme').set("0");
+            end
+        end	
+        -- alarme absence _activation
+        if (item.name == 'alarme_absence' and  item.state=='On' ) then domoticz.variables('alarme').set("alarme_absence"); 
+        txt='alarmeùabsenceùactivee';obj='alarme absence activee';alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
+	    elseif (item.name == 'alarme_absence' and  item.state=='Off') then domoticz.variables('alarme').set("0");
+        txt='alarmeùabsenceùdesactivee';obj='alarme absence desactivee';
+        alerte_gsm(txt);alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
+        end	
+	    
+        -- activation de la detection par les cameras
+	    if (item.name == 'Modect' and item.state=='Off' and  domoticz.variables('ma-alarme').value=="1") then 
+	    devices('Modect').switchOn();
+	    end 
+        -- activation manuelle Modect
+	    if (item.name == 'Modect' and  item.state=='On' ) then
+	    domoticz.variables('modect').set("modect");modect_cam('Modect')
+	    -- activation manuelle Monitor 	
+	    elseif (item.name == 'Modect' and  item.state=='Off' ) then
+	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
+        end  
+       
+        -- raz variables de notification intrusion et porte ouverte
+        if (item.name == 'raz_dz' and item.state=='On') then domoticz.devices('raz_dz').switchOff();
+        domoticz.variables('intrusion').set("0");domoticz.variables('porte-ouverte').set("0");
+        end
+        -- alarme auto
+            if (item.name == 'al_nuit_auto' and  item.state=='On') then txt='alarme_nuit_auto_activee';alerte_gsm(txt); domoticz.variables('alarme').set("alarme_auto");
+            elseif (item.name == 'al_nuit_auto' and  item.state=='Off') then txt='alarmeùnuitùautoùdesactivee';alerte_gsm(txt);domoticz.variables('alarme').set("0");
+            end
+         -- activation sirène
+            if (item.name == 'activation-sirene' and  item.state=='On') then domoticz.variables('activation-sir-txt').set("désactiver");
+            else domoticz.variables('activation-sir-txt').set("activer");
+            end
+         --
+            if (item.name == 'Test_GSM') then print("test_gsm")
+            txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt);
+            obj='Test GSM OK';domoticz.email('Alarme',obj,adresse_mail) 
+            --domoticz.devices('Test_GSM').switchOff()
+            end 
+        -- test sirene
+        if (item.name == 'Test_tsirene') then print("test_sirene")
+        end    
+          print("sse="..item.name);send_sse(item.id,item.state);  
+     else print("alarme nuit :"..time)
+     end
+
+Partie du script concernant :darkblue:`le timer` ,
 
 |image426|
 
@@ -196,6 +322,16 @@ Partie du script concernant :darkblue:`le timer `,
    })
    print(r.text)
 
+**Pour la mise à jour de monitor:**
+
+.. code-block::
+
+   send_sse(item.id,item.state);
+
+|image1340|
+
+|image1341|
+
 Voir les pages web :
 
 - http://domo-site.fr/accueil/dossiers/10 
@@ -206,8 +342,161 @@ Voir les pages web :
 
    |image434|
 
-5.1.1 explications concernant MODECT
+5.1.2 Pour utilisation avec Home Assistant
+==========================================
+5.1.2.1 les interrupeurs virtuels (input_boolean) 
+"""""""""""""""""""""""""""""""""""""""""""""""""
+ils sont crées sous yaml:
+
+.. code-block::
+
+   input_boolean:
+     mes_alarme_abs:
+       name: mise en service alarm abs
+       icon: mdi:alarm-light
+     mes_alarme_nuit:
+       name: mise en service alarm nuit
+       icon: mdi:gesture-tap-hold
+     mes_al_nuit_auto:
+       name: mise en service al nuit auto
+       icon: mdi:alarm-light
+     activation_sirene_al:
+       name: activation-sirene
+       icon: mdi:music-off
+     activation_modect:
+       name: activation-modect
+       icon: mdi:camera
+
+
+|image1339|
+
+.... des input_boolean aussi pour:  m/a sirène, m/a mode detect des caméras, activation/désactivation de la sirène, etc.. 
+
+5.1.2.2 les poussoirs (input_button)
+""""""""""""""""""""""""""""""""""""
+pour le test GSM, test de la sirène,  reset des variables :
+
+exemple pour le test GSM et test sirène:
+
+.. code-block::
+
+   input_button:
+     poussoir_test_sirene:
+       name: test_sirene
+       icon: mdi:bell
+     poussoir_gsm:
+       name: test_gsm
+       icon: mdi:bell
+
+|image1347|
+
+Les automatismes pour ces poussoirs:
+
+.. code-block::
+
+   - id: test_gsm_al
+     alias: Test_GSM
+     trigger:
+     - platform: state
+       entity_id: input_button.poussoir_gsm
+     action:
+     - service: shell_command.set_aldz
+       data:
+         msg: "test_GSM"
+       response_variable: todo_response
+     - if: "{{ todo_response['returncode'] == 0 }}"
+       then:
+         - service: persistent_notification.create
+           data:
+             title: "Shell_sms"
+             message: "{{ todo_response['stdout'] }}"
+   #
+   - id: test sirene al
+     alias: test_sirene
+    trigger:
+     - platform: state
+        entity_id: input_button.poussoir_test_sirene
+     action:
+     - service: switch.turn_off
+       data:
+        entity_id: switch.sirene_switch
+
+.. note:: shell_command se trouve dans configuration.yaml
+
+   **pour set_aldz**
+
+   on utilise importlib.reload de python et donc l'écriture d'une variable dans un fichier python et non d'une variable HA , voir ce §  :ref:`5.8.2.1 Version sans l'utilisation d'une variable` 
+
+   Pourquoi est-ci difficile d'exécuter un commande BASH sur Home Assistant ??
+
+   - La simple écriture dans un fichier avec printf ou echo + un data(jina2)  ne fonctionne pas 
+
+   - en lançant un script bash pour le faire : ça fonctionne ??
+
+   Voici donc 2 solutions, l'une en passant un data , l'autre sans passer de data mais un message fixe
+
+   .. code-block::
+
+      shell_command:     
+          set_aldz:
+      #      "./pyscript/aldz.bash '\"{{ message }}\"' "
+             "printf '#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx=\"TEST_GSM\"\npriority=1' >  pyscript/aldz.py"
+
+   |image1349|
+
+   **Pour set_modect**
+
+   .. code-block::
+
+      set_modect:
+      "./pycscipt/modect.sh  '\"{{ mode }}\"' "
+
+   |image1358|
+
+   .. warning::
+
+      JQ doit êrtre installé: |image1360| 
+
+      |image1359|
+
+5.1.2.3 les variables (input_select et input_text)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+utilisées pour mémoriser certaines informations
+
+.. code-block::
+
+   input_select:
+     var_alarme:
+       name: alarme
+       options:
+         - 0
+         - alarme_nuit
+         - alarme_auto
+   input_text:
+     var_intrusion:
+       name: intrusion
+       initial: 0
+     var_porte_ouverte:
+       name: porte_ouverte
+       initial: 0
+     activation_sir_txt:
+       name: statut_sirene
+       initial: desactive
+     notification_alarme:
+       name: statut_alarme
+       initial: pas en service
+
+5.1.3 explications concernant MODECT
 ====================================
+
+.. note::
+
+   A partir de la base de données le fichier des caméras déclarées en mode détection est établit automatiquement; voir ce § :ref:`5.8.3- Affichage de la liste des caméras Modect`
+
+   Depuis la version 3.01 , ce fichier contient les données en JSON ; le script Lua de l'alarme(V3.0.3) doit être modifié en conséquence (voir ci-après § :ref:`5.1.3.2 le script lua pour Domoticz` , les modifications à apporter) 
+
+   |image1354|
+   
 Si l’alarme absence est activée les caméras autorisées passent en mode MODECT automatiquement.
 
 Dans les autres cas Modect peut être activé manuellement.
@@ -216,15 +505,11 @@ Dans les autres cas Modect peut être activé manuellement.
 
 |image436|
 
-.. ATTENTION::
-
-   La demande du jeton n'est pas automatique à partir du bouton :green:`Modect`; :darkblue:`IL FAUT APPUYER SUR LE BOUTON ZM`:
-
 .. warning::
 
    **Il faut avoir installé Zoneminder**
 
-5.1.1.1 Jeton ZM
+5.1.3.1 Jeton ZM
 """"""""""""""""
 Dans fonctions.php :
 
@@ -234,14 +519,81 @@ Dans fonctions.php :
 
 *Le format du fichier est json pour une exploitation facile avec Domoticz*
 
-5.1.1.2 le script lua
-"""""""""""""""""""""
+5.1.3.2 le script lua pour Domoticz
+"""""""""""""""""""""""""""""""""""
 
-*dans :darkblue:`alarme_intrusion.lua`*
+*dans* :darkblue:`alarme_intrusion.lua` , partie du script lua de l'alarme concernant Modect:
+
+   .. code-block::
+
+      -- Alarme absence et nuit maison
+	--
+	-- alarme--alarme.lua
+	-- version 3.0.4
+	--
+ 	json = (loadfile "scripts/lua/JSON.lua")()
+      function decode_json(fich_json)
+    	local config = assert(io.popen('/usr/bin/curl '..fich_json))
+    	local blocjson = config:read('*a')
+        config:close()
+        local jsonValeur = json:decode(blocjson)
+        --print('succes='..jsonValeur.version)
+        return jsonValeur
+      end
+      function modect_cam(mode)
+       json_val=decode_json('curl -XPOST -d "user=michel&pass=Idem4546"  http://192.168.1.23/zm/api/host/login.json')
+       print(json_val.access_token)
+       cle=json_val.access_token
+       json_val=decode_json('http://'..ip_monitor..'/monitor/admin/string_modect.json')
+       for k,v in pairs(json_val) do --cam_modect dans string_modect
+       print('essai='..k)--pour essai
+       command='/usr/bin/curl -XPOST http://'..ip_zoneminder..'/zm/api/monitors/'..k..'.json?token='..cle..' -d "Monitor[Function]='..mode..'&Monitor[Enabled]='..k..'"'
+       print(command)
+       os.execute(command) 
+       print ("camera "..tostring(k).."activée :"..tostring(mode));
+       end
+      end
+       
+       -- activation de la detection par les cameras
+	    if (item.name == 'Modect' and item.state=='Off' and  domoticz.variables('ma-alarme').value=="1") then 
+	    devices('Modect').switchOn();
+	    end 
+        -- activation manuelle Modect
+	    if (item.name == 'Modect' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then
+	    domoticz.variables('modect').set("modect");modect_cam('Modect')
+	    -- activation manuelle Monitor 	
+	    elseif (item.name == 'Modect' and  item.state=='Off' and  domoticz.variables('ma-alarme').value=="0") then
+	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
+          end 
 
 |image439|
 
-Le fichier :darkblue:`string_modect` est écrit automatiquement à partir de Zoneminder, il est visible dans « administration »
+5.1.3.3 le script bash pour Home Assistant
+""""""""""""""""""""""""""""""""""""""""""
+Script Bash concernant le mode détection des caméras: :darkblue:`modect.sh`
+
+.. ATTENTION:: pour ce script JQ doit être installé
+
+.. code-block::
+
+   curl -XPOST -d "user=USER&pass=MOT_PASSE" -s 'http://192.168.1.23/zm/api/host/login.json' | \
+    python3 -c "import sys, json; file = open('token.txt', 'w'); file.write(json.load(sys.stdin)['access_token']); file.close()" 
+   cle=`cat token.txt`
+   mode=$1
+   #wget http://192.168.1.9/monitor/admin/string_modect.json
+   curl -s http://192.168.1.9/monitor/admin/string_modect.json |  XXX="$(jq  '.[] | .id_zm' string_modect.json)"
+   #echo "$XXX"
+   for i in $XXX; do 
+   #echo "$i";
+   curl -XPOST 'http://192.168.1.23/zm/api/monitors/'$i'.json?token='$cle -d "Monitor[Function]="$mode"&Monitor[Enabled]="$i
+   done
+
+|image1356|
+
+5.1.3.4 copies d'écran concernant Modect
+""""""""""""""""""""""""""""""""""""""""
+
+Le fichier :darkblue:`string_modect.json` est écrit automatiquement à partir de la BD SQL , il est visible dans « administration »
 
 |image440|
 
@@ -405,9 +757,33 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/alarmes.php
 
 |image465|
 
-- Et le script pour le clavier affiché dans administration
+- Le script pour le clavier affiché dans administration et alarme
 
 |image466|
+
+- Et le HTML pour l'affichage du clavier (dans :green:`alarmes.php`):
+
+.. code-block::
+
+   <div class="modal" role="dialog" id="pwdalarm">
+
+
+		    <form class="form_al"><span class="close_clavier">x</span>
+        <input type="password" style="max-width: 140px;" id="password" /></br>
+        <input type="button" value="1" id="1" class="pinButton calc"/>
+        <input type="button" value="2" id="2" class="pinButton calc"/>
+        <input type="button" value="3" id="3" class="pinButton calc"/><br>
+        <input type="button" value="4" id="4" class="pinButton calc"/>
+        <input type="button" value="5" id="5" class="pinButton calc"/>
+        <input type="button" value="6" id="6" class="pinButton calc"/><br>
+        <input type="button" value="7" id="7" class="pinButton calc"/>
+        <input type="button" value="8" id="8" class="pinButton calc"/>
+        <input type="button" value="9" id="9" class="pinButton calc"/><br>
+        <input type="button" value="raz" id="clear" class="pinButton clear"/>
+        <input type="button" value="0" id="0 " class="pinButton calc"/>
+        <input type="button" value="envoi" id="enter" class="pinButton enter"/>
+      </form>
+   </div>       
 
 .. warning::
 
@@ -534,17 +910,17 @@ Comme pour tous les switches la commande a été ajoutée automatiquement sur la
 
    si un modem GSM installé
 
-5.8.2.1 Version sans l'utilisation d'une variable Domoticz
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+5.8.2.1 Version sans l'utilisation d'une variable
+"""""""""""""""""""""""""""""""""""""""""""""""""
 **Avec un reload d’un module python**
 
 On utilise un module python en import reload et on modifie ce module :
 
-- Avec Domoticz pour envoyer un message 
+- Avec le serveur domotiqu (DZ ou HA) pour envoyer un message 
 
 - Avec python pour une réinitialisation après l'envoi du message
 
-**Création d’un fichier python** : :darkblue:`aldz.py:darkblue:`, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme
+**Création d’un fichier python** : :darkblue:`aldz.py`, il ne contient qu’une variable avec la valeur « 0 », pour « pas de message » ; il contiendra x= « texte du SMS » en cas l’alarme
 
 .. code-block::
 
@@ -559,11 +935,19 @@ On fait une copie de ce fichier : :darkblue:`aldz.bak.py` : ce fichier remplacer
 
 |image501|
 
+**Dans Home Assistant**, il en est de même: 2 variantes possibles :
+
+-	avec data: (en utilisant un fichier bash intermédiaire)
+
+-	avec un texte pré-défini
+
+|image1349|
+
 .. warning::
 
    **Attention** :  comme déjà indiqué, si modem Ebyte, pas d’espaces et accents
 
-Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
+Le fichier :darkblue:`sms_dz` est modifié (simplifié) : indiquer le bon port serie et les bons chemins.
 
 |image502|
 
@@ -576,31 +960,43 @@ Le fichier :darkblue:`sms_dz` est modifié (simplifié) :
 
 |image504|
 
-- Dans Domoticz : on ajoute un interrupteur virtuel
+- Dans Domoticz : on ajoute un poussoir de sonnette
 
-|image507|
+- Dans Home Assistant : on ajoute un input_button
 
-|image508|
+|image508|  |image1352|
 
-On ajoute le dispositif au plan :
+.. admonition:: ** fonctionnement du bouton de sonnette dans Domoticz**
 
-|image509|
+   Le bouton est toujours 'on' , lors d'un appuie la commande  'nvalue=group on' est envoyé à Domoticz qui renvoie un Data=off
 
-|image510|
+   |image1306| 
 
-On ajoute qq lignes de script dans évènements dz , :darkblue:`notifications_devices.lua`
+   |image507|
 
-.. code-block::
+   On ajoute le dispositif au plan :
 
-   return {
+   |image509|
+
+   |image510|
+
+   On ajoute qq lignes de script dans évènements dz , :darkblue:`notifications_devices.lua`
+
+   .. code-block::
+
+      return {
 	on = {	devices = {'Test_GSM',
 
-.. code-block::
+   .. code-block::
 
-    if (device.name == 'Test_GSM' and  device.state=='On') then print ("test_gsm")
+       if (device.name == 'Test_GSM' ) then print ("test_gsm")
             txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt)
             obj='Test GSM OK'domoticz.email('Alarme',obj,adresse_mail)    
-     end
+       end
+
+.. admonition:: ** fonctionnement de l' INPUT_BUTTON dans Home Assistant**
+
+   |image1353|
 
 Dans la BD :
 
@@ -615,7 +1011,7 @@ Dans le HTML, Le script est ajouté automatiquement à partir des données de la
 .. note::
 
    **Affichage de l’alarme**
-   une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour de devices_plan() au plus tard : 3minutes par défaut mais modifiable dans admin/config.php
+   une ellipse rouge est affichée sur l’icône ‘ smartphone’ ; elle reste affichée jusqu’à la prochaine mise à jour : 1 à 2 secondes avec le  serveur SSE-php
 
 |image515|
 
@@ -676,6 +1072,13 @@ Version 2.1.0 réécrite en DzVent avec :
 
 |image522|
 
+5.9- Résumé des dispositifs, des switches virtuels, des variables utilisés
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image1357|
+
+voir le § :ref:`0.3.2 Les Dispositifs`
+
 
 
 .. |image142| image:: ../media/image142.webp
@@ -692,8 +1095,6 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 626px
 .. |image417| image:: ../media/image417.webp
    :width: 533px
-.. |image418| image:: ../media/image418.webp
-   :width: 434px
 .. |image423| image:: ../media/image423.webp
    :width: 333px
 .. |image424| image:: ../media/image424.webp
@@ -836,10 +1237,10 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 472px 
 .. |image504| image:: ../media/image504.webp
    :width: 700px 
-.. |image507| image:: ../media/image504.webp
-   :width: 332px 
+.. |image507| image:: ../media/image507.webp
+   :width: 650px 
 .. |image508| image:: ../media/image508.webp
-   :width: 402px 
+   :width: 380px 
 .. |image509| image:: ../media/image509.webp
    :width: 544px 
 .. |image510| image:: ../media/image510.webp
@@ -860,8 +1261,45 @@ Version 2.1.0 réécrite en DzVent avec :
    :width: 457px 
 .. |image522| image:: ../media/image522.webp
    :width: 705px 
-
-
-
-
-
+.. |image1306| image:: ../img/image1306.webp
+   :width: 700px 
+.. |image1339| image:: ../img/image1339.webp
+   :width: 290px 
+.. |image1340| image:: ../img/image1340.webp
+   :width: 598px 
+.. |image1341| image:: ../img/image1341.webp
+   :width: 357px 
+.. |image1342| image:: ../img/image1342.webp
+   :width: 509px 
+.. |image1343| image:: ../img/image1343.webp
+   :width: 262px 
+.. |image1344| image:: ../img/image1344.webp
+   :width: 300px 
+.. |image1345| image:: ../img/image1345.webp
+   :width: 273px 
+.. |image1346| image:: ../img/image1346.webp
+   :width: 296px 
+.. |image1347| image:: ../img/image1347.webp
+   :width: 600px 
+.. |image1349| image:: ../img/image1349.webp
+   :width: 700px 
+.. |image1352| image:: ../img/image1352.webp
+   :width: 310px 
+.. |image1353| image:: ../img/image1353.webp
+   :width: 700px 
+.. |image1354| image:: ../img/image1354.webp
+   :width: 650px 
+.. |image1356| image:: ../img/image1356.webp
+   :width: 700px 
+.. |image1357| image:: ../img/image1357.webp
+   :width: 622px 
+.. |image1358| image:: ../img/image1358.webp
+   :width: 430px 
+.. |image1359| image:: ../img/image1359.webp
+   :width: 650px 
+.. |image1360| image:: ../img/image1360.webp
+   :width: 200px 
+.. |image1370| image:: ../img/image1370.webp
+   :width: 495px 
+.. |image1371| image:: ../img/image1371.webp
+   :width: 642px

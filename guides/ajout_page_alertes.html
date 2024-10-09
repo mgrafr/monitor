@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>16. Ajouter des pages ou des alertes &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>16. Ajouter des pages ou des alertes &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -65,6 +68,23 @@
 <li class="toctree-l2"><a class="reference internal" href="#ajouter-une-page-vierge">16.2 Ajouter une page vierge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ajouter-une-alerte-une-alarme">16.3 Ajouter une alerte, une alarme, …</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil">16.3.1 Exemple avec un rappel pour la prise de médicaments sur la page d’accueil</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ajouter-une-page-web-io-broker">16.4 Ajouter une page web io.broker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ajout-de-la-page-dans-monitor">16.4.1 Ajout de la page dans monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#page-include-iobroker-php">16.4.1.1  page include/iobroker.php</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page-index-loc-php-include-header-php">16.4.1.2  page index_loc.php,include/header.php</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hotes-virtuels-dans-nginx">16.4.2 Hôtes virtuels dans NGINX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#demande-de-certificat-avec-cerbot">16.4.2.1 Demande de certificat avec Cerbot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interfaces-graphique">16.4.3 Interfaces graphique</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adaptateur-webui">16.4.3.1 adaptateur webui</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adaptateur-vis-2">16.4.3.3 adaptateur vis 2</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -101,11 +121,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ajouter-des-pages-ou-des-alertes">
-<h1>16. Ajouter des pages ou des alertes<a class="headerlink" href="#ajouter-des-pages-ou-des-alertes" title="Lien permanent vers ce titre"></a></h1>
-<p><em>non incluses dans le programme</em></p>
-<div class="section" id="ajouter-un-plan-ex-1er-etage">
-<h2>16.1 Ajouter un plan (ex : 1er étage)<a class="headerlink" href="#ajouter-un-plan-ex-1er-etage" title="Lien permanent vers ce titre"></a></h2>
+  <section id="ajouter-des-pages-ou-des-alertes">
+<h1>16. Ajouter des pages ou des alertes<a class="headerlink" href="#ajouter-des-pages-ou-des-alertes" title="Lien permanent vers cette rubrique"></a></h1>
+<section id="ajouter-un-plan-ex-1er-etage">
+<h2>16.1 Ajouter un plan (ex : 1er étage)<a class="headerlink" href="#ajouter-un-plan-ex-1er-etage" title="Lien permanent vers cette rubrique"></a></h2>
 <ul class="simple">
 <li><p><strong>créer la page</strong> avec le plan, voir le § <a class="reference internal" href="plan_interieur.html#une-1ere-page-le-plan-interieur"><span class="std std-ref">2. Une 1ere PAGE : LE PLAN INTERIEUR</span></a></p></li>
 <li><p><strong>Ajouter la page à index_loc.php</strong></p></li>
@@ -122,9 +141,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes{</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="ajouter-une-page-vierge">
-<h2>16.2 Ajouter une page vierge<a class="headerlink" href="#ajouter-une-page-vierge" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="ajouter-une-page-vierge">
+<h2>16.2 Ajouter une page vierge<a class="headerlink" href="#ajouter-une-page-vierge" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>affichage d’un sous domaine distant</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 session_start();
@@ -146,11 +165,11 @@ if ($domaine==IPMONITOR) $lien_ID MENU= NOM  IP dans config.php;;
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image903.webp"><img alt="image903" src="../_images/image903.webp" style="width: 700px;" /></a></p>
-</div>
-<div class="section" id="ajouter-une-alerte-une-alarme">
-<h2>16.3 Ajouter une alerte, une alarme, …<a class="headerlink" href="#ajouter-une-alerte-une-alarme" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil">
-<h3>16.3.1 Exemple avec un rappel pour la prise de médicaments sur la page d’accueil<a class="headerlink" href="#exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="ajouter-une-alerte-une-alarme">
+<h2>16.3 Ajouter une alerte, une alarme, …<a class="headerlink" href="#ajouter-une-alerte-une-alarme" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil">
+<h3>16.3.1 Exemple avec un rappel pour la prise de médicaments sur la page d’accueil<a class="headerlink" href="#exemple-avec-un-rappel-pour-la-prise-de-medicaments-sur-la-page-daccueil" title="Lien permanent vers cette rubrique"></a></h3>
 <ul class="simple">
 <li><p><em>Télécharger une icones ou image svg</em></p></li>
 </ul>
@@ -201,9 +220,145 @@ if ($domaine==IPMONITOR) $lien_ID MENU= NOM  IP dans config.php;;
 <p><a class="reference internal" href="../_images/image912.webp"><img alt="image912" src="../_images/image912.webp" style="width: 700px;" /></a></p>
 <p><em>Affichage sur la page d’accueil</em> :</p>
 <p><a class="reference internal" href="../_images/image913.webp"><img alt="image913" src="../_images/image913.webp" style="width: 503px;" /></a></p>
+</section>
+</section>
+<section id="ajouter-une-page-web-io-broker">
+<h2>16.4 Ajouter une page web io.broker<a class="headerlink" href="#ajouter-une-page-web-io-broker" title="Lien permanent vers cette rubrique"></a></h2>
+<p>une autre solution d’afficher une page si io.broker est installé.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>l’adaptateur webui doit être installé</p>
+<p><a class="reference internal" href="../_images/image1496.webp"><img alt="image1496" src="../_images/image1496.webp" style="width: 250px;" /></a></p>
+<p><a class="reference external" href="https://github.com/iobroker-community-adapters/ioBroker.webui">https://github.com/iobroker-community-adapters/ioBroker.webui</a></p>
 </div>
+<section id="ajout-de-la-page-dans-monitor">
+<h3>16.4.1 Ajout de la page dans monitor<a class="headerlink" href="#ajout-de-la-page-dans-monitor" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="../_images/image1497.webp"><img alt="image1497" src="../_images/image1497.webp" style="width: 500px;" /></a></p>
+<p>Ajouter les infos de connexion dans admin/config.php, ici sur le 3eme serveur:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLIOB&#39;</span><span class="p">,</span> <span class="n">array</span><span class="p">(</span>
+ <span class="mi">0</span> <span class="o">=&gt;</span> <span class="s2">&quot;https://iobroker.&lt;DOMAINE&gt;&quot;</span><span class="p">,</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s2">&quot;https://iobweb.&lt;DOMAINE&gt;&quot;</span>  <span class="p">));</span>
+<span class="n">___</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLIOB&#39;</span><span class="p">,</span> <span class="s1">&#39;https://iobroker.&lt;DOMAINE&gt;&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPDOMOTIC2&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.1.162&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">ip</span> <span class="mi">3</span><span class="n">emme</span> <span class="n">serveur</span> <span class="n">Domotique</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;USERDOMOTIC2&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;LOGIN&gt;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">user</span> <span class="n">du</span> <span class="n">serveur</span><span class="p">,</span><span class="n">répertoire</span> <span class="p">:</span><span class="n">home</span><span class="o">/</span><span class="n">user</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;PWDDOMOTIC2&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;PASS&gt;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">mot</span> <span class="n">passe</span> <span class="n">serveur</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLDOMOTIC2&#39;</span><span class="p">,</span> <span class="s1">&#39;http://192.168.1.162:8081/&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">url</span> <span class="n">ex</span><span class="p">:</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.104</span><span class="p">:</span><span class="mi">8081</span><span class="o">/</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TOKEN_DOMOTIC2&#39;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;PORT_API_DOMO2&#39;</span><span class="p">,</span><span class="s1">&#39;8093&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">port</span> <span class="n">de</span> <span class="n">l</span><span class="s1">&#39;API éventuel</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;PORT_WEBUI_DOMO2&#39;</span><span class="p">,</span><span class="s1">&#39;8082/vis-2/index.html#Page1&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">port</span> <span class="n">web</span> <span class="n">UI</span> <span class="n">ou</span> <span class="n">vis</span> <span class="mi">2</span> <span class="n">et</span> <span class="n">dossier</span> <span class="n">éventuel</span>
+</pre></div>
 </div>
+<section id="page-include-iobroker-php">
+<h4>16.4.1.1  page include/iobroker.php<a class="headerlink" href="#page-include-iobroker-php" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1498.webp"><img alt="image1498" src="../_images/image1498.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p>styles css:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">pour</span> <span class="n">iframe</span> <span class="p">,</span> <span class="n">ajout</span> <span class="n">de</span> <span class="c1">#iobrokerapp*/</span>
+<span class="c1">#habridgeapp, #iobrokerapp{width: 700px;height: 800px;position: relative;top: 10px;}</span>
+<span class="o">/*</span> <span class="n">pour</span> <span class="n">la</span> <span class="n">page</span><span class="p">,</span>  <span class="n">ajout</span> <span class="n">de</span> <span class="c1">#iobroker */</span>
+<span class="c1">#interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,</span>
+<span class="c1">#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{</span>
+ <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+ <span class="n">height</span><span class="p">:</span> <span class="mi">1120</span><span class="n">px</span><span class="p">;</span><span class="n">padding</span><span class="p">:</span> <span class="mi">80</span><span class="n">px</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="nb">min</span><span class="o">-</span><span class="n">height</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+ <span class="n">position</span><span class="p">:</span> <span class="n">relative</span><span class="p">;</span>
+ <span class="n">color</span><span class="p">:</span> <span class="c1">#000;</span>
+ <span class="n">top</span><span class="p">:</span> <span class="mi">350</span><span class="n">px</span><span class="p">;</span><span class="n">z</span><span class="o">-</span><span class="n">index</span><span class="p">:</span><span class="o">-</span><span class="mi">20</span><span class="p">;</span><span class="n">overflow</span><span class="p">:</span> <span class="n">auto</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">#interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,</span>
+<span class="c1">#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{</span>
+ <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">aquamarine</span><span class="p">;}</span>
+<span class="o">/*</span> <span class="n">Large</span> <span class="n">devices</span> <span class="p">(</span><span class="n">small</span> <span class="n">desktops</span> <span class="o">&lt;</span><span class="mi">535</span><span class="p">)</span> <span class="o">*/</span>
+<span class="nd">@media</span> <span class="p">(</span><span class="nb">max</span><span class="o">-</span><span class="n">width</span><span class="p">:</span><span class="mi">534</span><span class="n">px</span><span class="p">)</span> <span class="p">{</span><span class="c1">#habridgeapp, #iobrokerapp{width: 480px;height: 600px;}}</span>
+</pre></div>
 </div>
+</section>
+<section id="page-index-loc-php-include-header-php">
+<h4>16.4.1.2  page index_loc.php,include/header.php<a class="headerlink" href="#page-index-loc-php-include-header-php" title="Lien permanent vers cette rubrique"></a></h4>
+<ul class="simple">
+<li><p>ajouter dans index_loc.php:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">URLIOB</span><span class="o">!=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/iobroker.php&quot;</span><span class="p">);</span><span class="o">//</span><span class="n">iobroker</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ajouter dans include/header.php:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php if (URLIOB!=&quot;&quot;) echo &#39;&lt;li class=&quot;zz&quot;&gt;&lt;a href=&quot;#iobroker&quot;&gt;Io.broker&lt;/a&gt;&lt;/li&gt;&#39;;?&gt;
+</pre></div>
+</div>
+<p>si besoin, modifier la hauteur du menu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">nav</span> <span class="p">{</span><span class="n">height</span><span class="p">:</span> <span class="mi">295</span><span class="n">px</span><span class="p">;}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="hotes-virtuels-dans-nginx">
+<h3>16.4.2 Hôtes virtuels dans NGINX<a class="headerlink" href="#hotes-virtuels-dans-nginx" title="Lien permanent vers cette rubrique"></a></h3>
+<p>voir aussi le § <span class="xref std std-ref">21.13.1 Configuration de l’hôte virtuel NGINX</span></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour les ports 8081 et 8082, il faut créer 2 sous-domaines, par exemple iobroker.DOMAINE et iobweb.DOMAINE</p>
+</div>
+<p>configuration pour le port 80 avant la demande de certificat Let’sencrypt</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>un domaine et un sous domaine doit être crée chez un hébergeur (OVHcloud est l’un des moins cher avec une extension .ovh)</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> upstream iobroker {
+ # ou iobweb
+ server 192.168.1.162:8081;
+ # ou server 192.168.1.162:8082 pour iobweb;
+}
+server {
+ server_name  iobroker.DOMAINE;
+#server_name  iobweb.DOMAINE;
+location / {
+ proxy_pass http://iobroker;
+#proxy_pass http://iobweb;
+  proxy_set_header Host $host;
+     proxy_connect_timeout 30;
+     proxy_send_timeout 30;
+ }
+ listen 80;
+ }
+</pre></div>
+</div>
+<section id="demande-de-certificat-avec-cerbot">
+<h4>16.4.2.1 Demande de certificat avec Cerbot<a class="headerlink" href="#demande-de-certificat-avec-cerbot" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Pour installer Cerbot , <a class="reference internal" href="mon_installation.html#acces-distant-ssl-http2"><span class="std std-ref">21.12.3 Accès distant SSL &amp; HTTP2</span></a></p>
+<p>Pour les 2 sous domaines (option: -d pour chaque)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">certbot</span> <span class="o">--</span><span class="n">nginx</span> <span class="o">--</span><span class="n">agree</span><span class="o">-</span><span class="n">tos</span> <span class="o">--</span><span class="n">redirect</span> <span class="o">--</span><span class="n">hsts</span> <span class="o">--</span><span class="n">staple</span><span class="o">-</span><span class="n">ocsp</span> <span class="o">--</span><span class="n">email</span> <span class="o">&lt;</span><span class="n">xxxxxxxxxx</span><span class="o">&gt;</span><span class="nd">@orange</span><span class="o">.</span><span class="n">fr</span> <span class="o">-</span><span class="n">d</span> <span class="n">iobroker</span><span class="o">.&lt;</span><span class="n">DOMAINE</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="n">iobweb</span><span class="o">.&lt;</span><span class="n">DOMAINE</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>confifuration de l’hôte  modifiée par Cerbot:</p>
+<p><a class="reference internal" href="../_images/image1499.webp"><img alt="image1499" src="../_images/image1499.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Concernant Strict-Transport-Security, voir ce § <span class="xref std std-ref">21.13.1 Configuration de l’hôte virtuel NGINX</span></p>
+</div>
+</section>
+</section>
+<section id="interfaces-graphique">
+<h3>16.4.3 Interfaces graphique<a class="headerlink" href="#interfaces-graphique" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="adaptateur-webui">
+<h4>16.4.3.1 adaptateur webui<a class="headerlink" href="#adaptateur-webui" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1506.webp"><img alt="image1506" src="../_images/image1506.webp" style="width: 700px;" /></a></p>
+</section>
+<section id="adaptateur-vis-2">
+<h4>16.4.3.3 adaptateur vis 2<a class="headerlink" href="#adaptateur-vis-2" title="Lien permanent vers cette rubrique"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>en cas d’erreur : <strong>main/vis-views.json Not exists</strong> , supprimer et réinstaller l’adaptateur</p>
+<p><a class="reference internal" href="../_images/image1504.webp"><img alt="image1504" src="../_images/image1504.webp" style="width: 650px;" /></a></p>
+</div>
+<p><a class="reference internal" href="../_images/image1505.webp"><img alt="image1505" src="../_images/image1505.webp" style="width: 700px;" /></a></p>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -216,7 +371,7 @@ if ($domaine==IPMONITOR) $lien_ID MENU= NOM  IP dans config.php;;
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

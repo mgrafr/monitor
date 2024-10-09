@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>21. – Mon installation &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>21. – Mon installation &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -76,13 +79,24 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#domoticz">21.2 Domoticz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#zwave">21.3 Zwave</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#zigbee">21.4 Zigbee</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#zigbee-matter">21.4 Zigbee &amp; Matter</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation-de-zigbee2mqtt">21.4.1 Installation de zigbee2mqtt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mise-a-jour-de-zigbee2mqtt">21.4.2 Mise à jour de zigbee2mqtt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#telecommande-zigbee-3-0-zigbee2mqtt">21.4.3 Télécommande Zigbee 3.0, zigbee2mqtt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-de-matterbridge">21.4.4 installation de MatterBridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajout-du-plugin-zigbee2mqtt">21.4.5 ajout du plugin zigbee2mqtt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parametres">21.4.5.1  Paramètres</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-dispositifs">21.4.5.2  Les dispositifs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#asterisk-sip">21.5 Asterisk (sip)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mqtt-mosquito">21.6 MQTT (mosquito)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mqtt-mosquito">21.6 MQTT (mosquito)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#certificats">21.6.1 Certificats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#javascripts-et-websockets">21.6.2 Javascripts et websockets</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#zoneminder">21.7 Zoneminder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plex">21.8 Plex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#raspberry-pi4">21.9 Raspberry PI4</a><ul>
@@ -93,8 +107,51 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#home-assistant">21.10 Home Assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#home-assistant">21.10 Home Assistant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-automatique-sous-docker-dans-un-ct-lxc">21.10.1 installation automatique sous Docker dans un CT LXC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installation-de-hacs-pyscript-etc">21.10.1.1 Installation de HACS, Pyscript, etc</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#script-pour-une-installation-automatique-dans-une-vm">21.10.2 Script pour une installation automatique dans une VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-avec-pyscript">21.10.3 Python avec pyscript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chemins-des-fichiers-sous-docker">21.10.4 Chemins des fichiers sous Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nginx-virtual-host">21.10.5 NGINX, Virtual Host</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#pont-hue-ha-bridge-pour-alexa">21.11 Pont Hue Ha-bridge pour Alexa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#serveur-sse-node-js">21.12 Serveur SSE Node JS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-dans-un-conteneur-lxc-proxmox">21.12.1 Installation: dans un conteneur LXC Proxmox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#envoi-des-mises-a-jour-depuis-domoticz-ou-home-assistant">21.12.2 Envoi des mises à jour depuis Domoticz ou Home Assistant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#depuis-domoticz">21.12.2.1 Depuis Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#depuis-home-assistant">21.12.2.2 Depuis Home Assistant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eventstream-recu-par-monitor">21.12.2.3 EventStream recu par monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#acces-distant-ssl-http2">21.12.3 Accès distant SSL &amp; HTTP2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#io-broker">21.13 Io.Broker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-des-hotes-virtuels-nginx">21.13.1 Configuration des hôtes virtuels NGINX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajouter-un-adaptateur-en-mode-cli">21.13.2 Ajouter un adaptateur en mode CLI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ajouter-un-2eme-adaptateur-admin">21.13.2.1 Ajouter un 2eme adaptateur admin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#resoudre-des-erreurs">21.13.3 Résoudre des érreurs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#please-modify-system-adaptater">21.13.3.1 please modify system.adaptater</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#erreur-ttl-avec-l-adaptateur-email">21.13.3.2 erreur ttl avec l’adaptateur email</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#passer-le-port-serie-a-un-2eme-ct-non-privilegie">21.13.4 Passer le port série à un 2eme CT non privilégié</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#robot-tondeuse-landroid-worx">21.14 Robot tondeuse Landroid Worx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#la-page-worx-php-dans-custom-php">21.14.1 la page worx.php dans custom/php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#des-dispositifs-enregistres-dans-sql">21.14.2 des dispositifs enregistrés dans SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#les-fonctions-php-concernees">21.14.3 Les fonctions PHP concernées</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#le-javascript-concerne">21.14.4 Le Javascript concerné</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#les-styles-css">21.14.5 Les styles css</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="optimisations.html">22. OPTIMISATION en cours</a></li>
@@ -124,11 +181,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="mon-installation">
-<h1>21. – Mon installation<a class="headerlink" href="#mon-installation" title="Lien permanent vers ce titre"></a></h1>
+  <section id="mon-installation">
+<h1>21. – Mon installation<a class="headerlink" href="#mon-installation" title="Lien permanent vers cette rubrique"></a></h1>
 <p><a class="reference internal" href="../_images/image1026.webp"><img alt="image1026" src="../_images/image1026.webp" style="width: 700px;" /></a></p>
-<div class="section" id="proxmox">
-<h2>21.1 Proxmox<a class="headerlink" href="#proxmox" title="Lien permanent vers ce titre"></a></h2>
+<section id="proxmox">
+<h2>21.1 Proxmox<a class="headerlink" href="#proxmox" title="Lien permanent vers cette rubrique"></a></h2>
 <p>C’est la base du système, il doit être installé en premier, ensuite :</p>
 <ul class="simple">
 <li><p>Un conteneur, une VM ou une partition classique</p></li>
@@ -152,12 +209,12 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 </ul>
 <p><a class="reference internal" href="../_images/image1027.webp"><img alt="image1027" src="../_images/image1027.webp" style="width: 425px;" /></a></p>
 </div>
-<div class="section" id="installation-de-vm-ou-ct-par-linterface-graphique-ip-8006">
-<h3>21.1.1 installation de VM ou CT par l’interface graphique : IP :8006<a class="headerlink" href="#installation-de-vm-ou-ct-par-linterface-graphique-ip-8006" title="Lien permanent vers ce titre"></a></h3>
+<section id="installation-de-vm-ou-ct-par-linterface-graphique-ip-8006">
+<h3>21.1.1 installation de VM ou CT par l’interface graphique : IP :8006<a class="headerlink" href="#installation-de-vm-ou-ct-par-linterface-graphique-ip-8006" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1028.webp"><img alt="image1028" src="../_images/image1028.webp" style="width: 604px;" /></a></p>
-</div>
-<div class="section" id="installation-automatique-de-vm-ou-ct-https-github-com-tteck-proxmox">
-<h3>21.1.2 installation automatique de VM ou CT : <a class="reference external" href="https://github.com/tteck/Proxmox">https://github.com/tteck/Proxmox</a><a class="headerlink" href="#installation-automatique-de-vm-ou-ct-https-github-com-tteck-proxmox" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="installation-automatique-de-vm-ou-ct-https-github-com-tteck-proxmox">
+<h3>21.1.2 installation automatique de VM ou CT : <a class="reference external" href="https://github.com/tteck/Proxmox">https://github.com/tteck/Proxmox</a><a class="headerlink" href="#installation-automatique-de-vm-ou-ct-https-github-com-tteck-proxmox" title="Lien permanent vers cette rubrique"></a></h3>
 <p>choisir le fichier d’installation : ex Conteneur LXC Debian 11</p>
 <p><a class="reference internal" href="../_images/image1029.webp"><img alt="image1029" src="../_images/image1029.webp" style="width: 266px;" /></a></p>
 <p>Copier le lien : <a class="reference internal" href="../_images/image1030.webp"><img alt="image1030" src="../_images/image1030.webp" style="width: 304px;" /></a></p>
@@ -178,22 +235,22 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 <li><p><strong>Lancer le script</strong> <em>et répondre aux questions</em></p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1033.webp"><img alt="image1033" src="../_images/image1033.webp" style="width: 571px;" /></a></p>
-</div>
-<div class="section" id="installation-automatique-dun-conteneur-lxc-lemp-monitor">
-<h3>21.1.3 installation automatique d’un conteneur LXC,LEMP &amp; Monitor<a class="headerlink" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="installation-automatique-dun-conteneur-lxc-lemp-monitor">
+<h3>21.1.3 installation automatique d’un conteneur LXC,LEMP &amp; Monitor<a class="headerlink" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Voir le § <a class="reference internal" href="bien_debuter.html#installation-automatique-dun-conteneur-lxc-lemp-monitor"><span class="std std-ref">0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</span></a></p>
-</div>
-<div class="section" id="apercu-des-vm-et-ct-installes">
-<h3>21.1.4 Aperçu des VM et CT installés<a class="headerlink" href="#apercu-des-vm-et-ct-installes" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="apercu-des-vm-et-ct-installes">
+<h3>21.1.4 Aperçu des VM et CT installés<a class="headerlink" href="#apercu-des-vm-et-ct-installes" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1034.webp"><img alt="image1034" src="../_images/image1034.webp" style="width: 307px;" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Plex est installé sur un autre mini PC</strong></p>
 <p><em>sous Proxmox également, en conteneur, voir le site http://domo-site.fr/accueil/dossiers/53</em></p>
 </div>
-</div>
-<div class="section" id="update-version-debian">
-<h3>21.1.5 Update Version Debian<a class="headerlink" href="#update-version-debian" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="update-version-debian">
+<h3>21.1.5 Update Version Debian<a class="headerlink" href="#update-version-debian" title="Lien permanent vers cette rubrique"></a></h3>
 <p><strong>Exemple , updater Bullseye vers Bookworm</strong></p>
 <div class="admonition seealso">
 <p class="admonition-title">Voir aussi</p>
@@ -251,12 +308,104 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1074.webp"><img alt="image1074" src="../_images/image1074.webp" style="width: 380px;" /></a></p>
+</section>
+</section>
+<section id="domoticz">
+<h2>21.2 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers cette rubrique"></a></h2>
+<p><em>Installation depuis la version 2024 dans un conteneur LCX</em></p>
+<div class="admonition-installation-dans-un-conteneur-lxc-debian-11 admonition">
+<p class="admonition-title"><strong>Installation dans un conteneur LXC Debian 11</strong></p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>installation non possible sur Debian 12 qui utilise Openssl 3.0 car Domoticz utilise encore openssl 1.1.1 et la Libssl 1.1.</strong></p>
 </div>
+<p><em>Le conteneur LXC</em> :</p>
+<p><a class="reference internal" href="../_images/image1282.webp"><img alt="image1282" src="../_images/image1282.webp" style="width: 600px;" /></a></p>
+<p>Le conteneur est crée, on le démarre et on exécute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">update</span>
+<span class="n">apt</span> <span class="n">upgrade</span>
+<span class="n">apt</span> <span class="n">install</span> <span class="n">sudo</span>
+<span class="n">adduser</span> <span class="o">&lt;</span><span class="n">USER</span><span class="o">&gt;</span>
+<span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">sudo</span> <span class="o">&lt;</span><span class="n">USER</span><span class="o">&gt;</span>
+<span class="n">visudo</span>
+</pre></div>
 </div>
-<div class="section" id="domoticz">
-<h2>21.2 Domoticz<a class="headerlink" href="#domoticz" title="Lien permanent vers ce titre"></a></h2>
-<p><em>Installation sous Docker</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/84">http://domo-site.fr/accueil/dossiers/84</a></p>
-<p><em>Installation sur une machine virtuelle</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/2">http://domo-site.fr/accueil/dossiers/2</a></p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1283.webp"><img alt="image1283" src="../_images/image1283.webp" style="width: 400px;" /></a></p>
+<blockquote>
+<div><p>On installe Curl pour télécharger Domoticz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">curl</span>
+</pre></div>
+</div>
+<p>On quite root, on s’enregistre comme utilisateur et on installe Domoticz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(curl -sSfL https://install.domoticz.com)&quot;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1284.webp"><img alt="image1284" src="../_images/image1284.webp" style="width: 550px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1285.webp"><img alt="image1285" src="../_images/image1285.webp" style="width: 400px;" /></a></p>
+<p>Ajouter les utlisateurs au groupe dialout</p>
+<p>Installation du pare-feu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ufw</span>
+<span class="n">sudo</span> <span class="n">ufw</span> <span class="n">allow</span> <span class="n">http</span>
+<span class="n">sudo</span> <span class="n">ufw</span> <span class="n">allow</span> <span class="n">https</span>
+<span class="n">sudo</span> <span class="n">ufw</span> <span class="n">allow</span> <span class="n">ssh</span>
+<span class="n">sudo</span> <span class="n">ufw</span> <span class="n">enable</span>
+<span class="n">sudo</span> <span class="n">ufw</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1286.webp"><img alt="image1286" src="../_images/image1286.webp" style="width: 450px;" /></a></p>
+<p>Si vous avez des modules python à installer, installer PIP</p>
+<p><a class="reference internal" href="../_images/image1297.webp"><img alt="image1297" src="../_images/image1297.webp" style="width: 550px;" /></a></p>
+<p>Installer les modules, ici <span class="darkblue">periphery</span></p>
+<p><a class="reference internal" href="../_images/image1298.webp"><img alt="image1298" src="../_images/image1298.webp" style="width: 550px;" /></a></p>
+<p>Si vous avez des modules Node , installer node.js</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">nodejs</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">npm</span>
+</pre></div>
+</div>
+<p>Installer les modules, ici <span class="darkblue">lgtv</span></p>
+<p><a class="reference internal" href="../_images/image1299.webp"><img alt="image1299" src="../_images/image1299.webp" style="width: 470px;" /></a></p>
+<blockquote>
+<div><p>Copie des fichiers sauvegardés:</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1287.webp"><img alt="image1287" src="../_images/image1287.webp" style="width: 450px;" /></a></p>
+<p>Lancer Domoticz</p>
+</div></blockquote>
+</div>
+<div class="admonition-configuration-du-conteneuravec-une-cle-usb admonition">
+<p class="admonition-title"><strong>Configuration du conteneuravec une clé USB</strong></p>
+<p>on détermine l” USBx, Bus, Device et ID de la clé pour récupérer les nombres majeur et mineur :</p>
+<p><a class="reference internal" href="../_images/image1288.webp"><img alt="image1288" src="../_images/image1288.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1289.webp"><img alt="image1289" src="../_images/image1289.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1290.webp"><img alt="image1290" src="../_images/image1290.webp" style="width: 600px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1291.webp"><img alt="image1291" src="../_images/image1291.webp" style="width: 700px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lxc</span><span class="o">.</span><span class="n">cgroup2</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">allow</span><span class="p">:</span> <span class="n">c</span> <span class="o">&lt;</span><span class="n">MAJEUR</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">MINEUR</span><span class="o">&gt;</span> <span class="n">rwm</span>
+<span class="n">lxc</span><span class="o">.</span><span class="n">mount</span><span class="o">.</span><span class="n">entry</span><span class="p">:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSBx</span> <span class="o">&lt;</span><span class="n">LIBELLE</span><span class="o">&gt;</span> <span class="n">none</span> <span class="n">bind</span><span class="p">,</span><span class="n">optional</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="n">file</span>
+<span class="n">lxc</span><span class="o">.</span><span class="n">cgroup2</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">allow</span><span class="p">:</span> <span class="n">c</span> <span class="o">&lt;</span><span class="n">majeur</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">mineur</span><span class="o">&gt;</span> <span class="n">rwm</span>
+<span class="n">lxc</span><span class="o">.</span><span class="n">mount</span><span class="o">.</span><span class="n">entry</span><span class="p">:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSBx</span> <span class="o">&lt;</span><span class="n">libellé</span><span class="o">&gt;</span> <span class="n">none</span> <span class="n">bind</span><span class="p">,</span><span class="n">optional</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="n">file</span>
+</pre></div>
+</div>
+<p>Avec l’ID, création d’une règle:</p>
+<p><a class="reference internal" href="../_images/image1292.webp"><img alt="image1292" src="../_images/image1292.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1293.webp"><img alt="image1293" src="../_images/image1293.webp" style="width: 700px;" /></a></p>
+<p>Pour rendre éxécutable le port, corriger les autorisations et éviter de redémarrer:</p>
+<p><a class="reference internal" href="../_images/image1294.webp"><img alt="image1294" src="../_images/image1294.webp" style="width: 650px;" /></a></p>
+<p>On récupère le libellé de la clé</p>
+<p><a class="reference internal" href="../_images/image1295.webp"><img alt="image1295" src="../_images/image1295.webp" style="width: 700px;" /></a></p>
+<p>On peut avec ces données configurer le conteneur:</p>
+<p><a class="reference internal" href="../_images/image1296.webp"><img alt="image1296" src="../_images/image1296.webp" style="width: 700px;" /></a></p>
+<p>Redémarrer le conteneur, modifier les droits du port:</p>
+<p><a class="reference internal" href="../_images/image1300.webp"><img alt="image1300" src="../_images/image1300.webp" style="width: 400px;" /></a></p>
+</div>
+<dl class="simple">
+<dt><em>Installations précédentes</em></dt><dd><ul class="simple">
+<li><p>sous Docker :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/84">http://domo-site.fr/accueil/dossiers/84</a></p></li>
+<li><p>sur une machine virtuelle :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/2">http://domo-site.fr/accueil/dossiers/2</a></p></li>
+</ul>
+</dd>
+</dl>
 <ul class="simple">
 <li><p><strong>Mes scripts lua</strong></p></li>
 </ul>
@@ -271,9 +420,16 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 <p class="admonition-title">Note</p>
 <p><em>Les scripts sont disponibles sur Github : https://github.com/mgrafr/monitor/tree/main/share/scripts_dz</em></p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Les scripts Python ne fonctionnent pas toujours, il faut les lancer avec un script bash; <span class="red">les scripts bash doivent se trouver dans ~~domoticz/scripts</span></p>
+<p><a class="reference internal" href="../_images/image1323.webp"><img alt="image1323" src="../_images/image1323.webp" style="width: 494px;" /></a></p>
+<p>le script bash (remplacer la version de python si nécessaire):</p>
+<p><a class="reference internal" href="../_images/image1324.webp"><img alt="image1324" src="../_images/image1324.webp" style="width: 650px;" /></a></p>
 </div>
-<div class="section" id="zwave">
-<h2>21.3 Zwave<a class="headerlink" href="#zwave" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="zwave">
+<h2>21.3 Zwave<a class="headerlink" href="#zwave" title="Lien permanent vers cette rubrique"></a></h2>
 <p><strong>Installation de zwave-js-ui</strong></p>
 <p>. dans un conteneur LXC : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/99">http://domo-site.fr/accueil/dossiers/99</a></p>
 <p>. sous Docker, avec Domoticz : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/86">http://domo-site.fr/accueil/dossiers/86</a></p>
@@ -286,11 +442,12 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 </ul>
 <p><a class="reference internal" href="../_images/image1040.webp"><img alt="image1040" src="../_images/image1040.webp" style="width: 386px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1041.webp"><img alt="image1041" src="../_images/image1041.webp" style="width: 597px;" /></a></p>
-</div>
-<div class="section" id="zigbee">
-<h2>21.4 Zigbee<a class="headerlink" href="#zigbee" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="installation-de-zigbee2mqtt">
-<h3>21.4.1 Installation de zigbee2mqtt<a class="headerlink" href="#installation-de-zigbee2mqtt" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="zigbee-matter">
+<h2>21.4 Zigbee &amp; Matter<a class="headerlink" href="#zigbee-matter" title="Lien permanent vers cette rubrique"></a></h2>
+<p>MatterBridge est en cour de développement</p>
+<section id="installation-de-zigbee2mqtt">
+<h3>21.4.1 Installation de zigbee2mqtt<a class="headerlink" href="#installation-de-zigbee2mqtt" title="Lien permanent vers cette rubrique"></a></h3>
 <ul class="simple">
 <li><p>sous Docker : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/88">http://domo-site.fr/accueil/dossiers/88</a></p></li>
 <li><p>dans un conteneur LXC : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/94">http://domo-site.fr/accueil/dossiers/94</a></p></li>
@@ -303,9 +460,9 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 <p class="admonition-title">Note</p>
 <p><em>Les commentaires du paragraphe précédent s’appliquent également</em></p>
 </div>
-</div>
-<div class="section" id="mise-a-jour-de-zigbee2mqtt">
-<h3>21.4.2 Mise à jour de zigbee2mqtt<a class="headerlink" href="#mise-a-jour-de-zigbee2mqtt" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="mise-a-jour-de-zigbee2mqtt">
+<h3>21.4.2 Mise à jour de zigbee2mqtt<a class="headerlink" href="#mise-a-jour-de-zigbee2mqtt" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Si l’OS du conteneur LXC peut aussi être mis à jour voir ce § <a class="reference internal" href="#update-version-debian"><span class="std std-ref">21.1.5 Update Version Debian</span></a></p>
 <div class="admonition-pour-mettre-a-jour-zigbee2mqtt-vers-la-derniere-version admonition">
 <p class="admonition-title"><strong>Pour mettre à jour Zigbee2MQTT vers la dernière version</strong></p>
@@ -345,27 +502,394 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">data</span><span class="o">-</span><span class="n">backup</span>
 </pre></div>
 </div>
+<p>Conflit entre systemd et npm : <span class="red">unavailable Cannot lock port</span></p>
+<p>Arréter zigbee2mqtt avec systemd et redémarrer avec npm start (dans le répertoire d’installation de zigbee2mqtt)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">zigbee2mqtt</span>
+<span class="n">npm</span> <span class="n">start</span>
+</pre></div>
 </div>
 </div>
+</section>
+<section id="telecommande-zigbee-3-0-zigbee2mqtt">
+<h3>21.4.3 Télécommande Zigbee 3.0, zigbee2mqtt<a class="headerlink" href="#telecommande-zigbee-3-0-zigbee2mqtt" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="../_images/image1406.webp"><img alt="image1406" src="../_images/image1406.webp" style="width: 150px;" /></a></p>
+<p><a class="reference external" href="https://www.zigbee2mqtt.io/devices/FUT089Z.html">https://www.zigbee2mqtt.io/devices/FUT089Z.html</a></p>
+<p>Pour utiliser la télécommande directement avec zigbee2mqtt:</p>
+<ul class="simple">
+<li><p>créer un groupe de 101 à 107 our les touches 1 à 7</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1407.webp"><img alt="image1407" src="../_images/image1407.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p>Ajouter les lampes affectées à ce groupe:</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1408.webp"><img alt="image1408" src="../_images/image1408.webp" style="width: 700px;" /></a></p>
+<p><strong>la télécommande fonctionnera même avec Zigbee2MQTT en panne.</strong></p>
+</section>
+<section id="installation-de-matterbridge">
+<h3>21.4.4 installation de MatterBridge<a class="headerlink" href="#installation-de-matterbridge" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Dans un conteneur Proxmox LXC:</p>
+<p>Sous Shell de pve (<a class="reference external" href="https://tteck.github.io/Proxmox/?id=ioBroker#matterbridge-lxc">https://tteck.github.io/Proxmox/?id=ioBroker#matterbridge-lxc</a>) :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/matterbridge.sh)&quot;</span>
+</pre></div>
 </div>
-<div class="section" id="asterisk-sip">
-<h2>21.5 Asterisk (sip)<a class="headerlink" href="#asterisk-sip" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image1488.webp"><img alt="image1488" src="../_images/image1488.webp" style="width: 700px;" /></a></p>
+</section>
+<section id="ajout-du-plugin-zigbee2mqtt">
+<h3>21.4.5 ajout du plugin zigbee2mqtt<a class="headerlink" href="#ajout-du-plugin-zigbee2mqtt" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference external" href="https://github.com/Luligu/matterbridge-zigbee2mqtt">https://github.com/Luligu/matterbridge-zigbee2mqtt</a></p>
+<p><a class="reference internal" href="../_images/image1489.webp"><img alt="image1489" src="../_images/image1489.webp" style="width: 700px;" /></a></p>
+<section id="parametres">
+<h4>21.4.5.1  Paramètres<a class="headerlink" href="#parametres" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1490.webp"><img alt="image1490" src="../_images/image1490.webp" style="width: 516px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>si cette erreur, modifier la version du protocole , ici version 4</p>
+<p><a class="reference internal" href="../_images/image1491.webp"><img alt="image1491" src="../_images/image1491.webp" style="width: 700px;" /></a></p>
+</div>
+</section>
+<section id="les-dispositifs">
+<h4>21.4.5.2  Les dispositifs<a class="headerlink" href="#les-dispositifs" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1493.webp"><img alt="image1493" src="../_images/image1493.webp" style="width: 700px;" /></a></p>
+</section>
+</section>
+</section>
+<section id="asterisk-sip">
+<h2>21.5 Asterisk (sip)<a class="headerlink" href="#asterisk-sip" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>Installation dans une VM</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/9">http://domo-site.fr/accueil/dossiers/9</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.</em></p>
 </div>
-</div>
-<div class="section" id="mqtt-mosquito">
-<h2>21.6 MQTT (mosquito)<a class="headerlink" href="#mqtt-mosquito" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="mqtt-mosquito">
+<h2>21.6 MQTT (mosquito)<a class="headerlink" href="#mqtt-mosquito" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>Installation dans une VM</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/47">http://domo-site.fr/accueil/dossiers/47</a></p>
+<p><em>Installation dans un CT Proxmox</em> , mon installation actuelle</p>
+<ul class="simple">
+<li><p>bash -c « $(wget -qLO - <a class="reference external" href="https://github.com/tteck/Proxmox/raw/main/ct/mqtt.sh">https://github.com/tteck/Proxmox/raw/main/ct/mqtt.sh</a>) »</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1492.webp"><img alt="image1492" src="../_images/image1492.webp" style="width: 700px;" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em>Comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.</em></p>
+<p><em>Si la mise à jour de monitor par MQTT-websockets n’est pas activée, comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.</em></p>
+</div>
+<section id="certificats">
+<h3>21.6.1 Certificats<a class="headerlink" href="#certificats" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="admonition-obtention-de-certificats-pour-websockets admonition">
+<p class="admonition-title"><strong>Obtention de certificats pour websockets</strong></p>
+<p>Différents scripts existent, j’ai utilisé :   <a class="reference external" href="https://github.com/owntracks/tools/blob/master/TLS/generate-CA.sh">https://github.com/owntracks/tools/blob/master/TLS/generate-CA.sh</a></p>
+<p>Sous debian 12 , ifconfig n’est pas installé par défaut, il faut installer net-tools:</p>
+<p><a class="reference internal" href="../_images/image1230.webp"><img alt="image1230" src="../_images/image1230.webp" style="width: 431px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>paramètrage de generate-CA.sh</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Définissez les variables d’environnement facultatives suivantes avant l’appel</span>
+<span class="c1"># pour ajouter les adresses IP et/ou les noms d’hôte spécifiés à la liste subjAltName</span>
+<span class="c1"># Ceux-ci contiennent des valeurs séparées par des espaces</span>
+<span class="c1">#</span>
+<span class="c1">#      IPLIST=&quot;172.13.14.15 192.168.1.1&quot;</span>
+<span class="c1">#      HOSTLIST=&quot;a.example.com b.example.com&quot;</span>
+
+<span class="n">IPLIST</span><span class="o">=</span><span class="s2">&quot;192.168.1.9 192.168.1.26 192.168.1.5 192.168.1.76&quot;</span>
+<span class="n">HOSTLIST</span><span class="o">=</span><span class="s2">&quot;monitor.xxxxxxxxx.ovh  mqtt.xxxxxxxx.ovh socket.xxxxxxxx.ovh&quot;</span>
+</pre></div>
+</div>
+<p>Pour savoir lesquels sont pris en charge par votre version d’OpenSSL, lancez :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">dgst</span> <span class="o">-</span><span class="n">help</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1234.webp"><img alt="image1234" src="../_images/image1234.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1235.webp"><img alt="image1235" src="../_images/image1235.webp" style="width: 450px;" /></a></p>
+<p>Un Subject Alternative Name (SAN) ou Nom Alternatif du Sujet en français est une extension de la norme X.509. Cela permet d’ajouter des valeurs à un certificat en utilisant le champ subjectAltName.</p>
+<p>Il est possible d’ajouter les valeurs suivantes : Adresses Mail, Adresses IP, URL, Noms de domaine, Directory Name (une alternative au Distinguished Names utilisée pour le sujet du certificat)</p>
+<p><a class="reference internal" href="../_images/image1236.webp"><img alt="image1236" src="../_images/image1236.webp" style="width: 695px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1237.webp"><img alt="image1237" src="../_images/image1237.webp" style="width: 602px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1238.webp"><img alt="image1238" src="../_images/image1238.webp" style="width: 464px;" /></a></p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env bash
+#(@)generate-CA.sh - Create CA key-pair and server key-pair signed by CA
+
+# Copyright (c) 2013-2020 Jan-Piet Mens &lt;jpmens()gmail.com&gt;
+# All rights reserved.
+set -e
+
+export LANG=C
+kind=server
+
+if [ $# -ne 2 ]; then
+kind=server
+host=$(hostname -f)
+if [ -n &quot;$1&quot; ]; then
+        host=&quot;$1&quot;
+fi
+else
+kind=client
+CLIENT=&quot;$2&quot;
+fi
+
+[ -z &quot;$USER&quot; ] &amp;&amp; USER=root
+
+DIR=${TARGET:=&#39;.&#39;}
+# A space-separated list of alternate hostnames (subjAltName)
+# may be empty &quot;&quot;
+ALTHOSTNAMES=${HOSTLIST}
+ALTADDRESSES=${IPLIST}
+CA_ORG=&#39;/O=OwnTracks.org/OU=generate-CA/emailAddress=nobody@example.net&#39;
+CA_DN=&quot;/CN=An MQTT broker${CA_ORG}&quot;
+CACERT=${DIR}/ca
+SERVER=&quot;${DIR}/${host}&quot;
+SERVER_DN=&quot;/CN=${host}$CA_ORG&quot;
+keybits=4096
+openssl=$(which openssl)
+MOSQUITTOUSER=${MOSQUITTOUSER:=$USER}
+# Signature Algorithm. To find out which are supported by your
+# version of OpenSSL, run `openssl dgst -help` and set your
+# signature algorithm here. For example:
+#
+#       defaultmd=&quot;-sha256&quot;
+#
+defaultmd=&quot;-sha512&quot;
+
+function maxdays() {
+nowyear=$(date +%Y)
+years=$(expr 2032 - $nowyear)
+days=$(expr $years &#39;*&#39; 365)
+
+echo $days
+}
+
+function getipaddresses() {
+/sbin/ifconfig |
+        grep -v tunnel |
+        sed -En &#39;/inet6? /p&#39; |
+        sed -Ee &#39;s/inet6? (addr:)?//&#39; |
+        awk &#39;{print $1;}&#39; |
+        sed -e &#39;s/[%/].*//&#39; |
+        egrep -v &#39;(::1|127\.0\.0\.1)&#39;   # omit loopback to add it later
+}
+
+
+function addresslist() {
+
+ALIST=&quot;&quot;
+for a in $(getipaddresses); do
+        ALIST=&quot;${ALIST}IP:$a,&quot;
+done
+ALIST=&quot;${ALIST}IP:127.0.0.1,IP:::1,&quot;
+
+for ip in $(echo ${ALTADDRESSES}); do
+        ALIST=&quot;${ALIST}IP:${ip},&quot;
+done
+for h in $(echo ${ALTHOSTNAMES}); do
+        ALIST=&quot;${ALIST}DNS:$h,&quot;
+done
+ALIST=&quot;${ALIST}DNS:${host},DNS:localhost&quot;
+echo $ALIST
+
+}
+
+days=$(maxdays)
+
+server_days=825 # https://support.apple.com/en-us/HT210176
+
+if [ -n &quot;$CAKILLFILES&quot; ]; then
+rm -f $CACERT.??? $SERVER.??? $CACERT.srl
+fi
+
+if [ ! -f $CACERT.crt ]; then
+
+#    ____    _
+#   / ___|  / \
+#  | |     / _ \
+#  | |___ / ___ \
+#   \____/_/   \_\
+#
+
+# Create un-encrypted (!) key
+$openssl req -newkey rsa:${keybits} -x509 -nodes $defaultmd -days $days -extensions v3_ca -keyout $CACERT.key -out $CACERT.crt -subj &quot;${CA_DN}&quot;
+echo &quot;Created CA certificate in $CACERT.crt&quot;
+$openssl x509 -in $CACERT.crt -nameopt multiline -subject -noout
+
+chmod 400 $CACERT.key
+chmod 444 $CACERT.crt
+chown $MOSQUITTOUSER $CACERT.*
+echo &quot;Warning: the CA key is not encrypted; store it safely!&quot;
+fi
+
+
+if [ $kind == &#39;server&#39; ]; then
+
+#   ____
+#  / ___|  ___ _ ____   _____ _ __
+#  \___ \ / _ \ &#39;__\ \ / / _ \ &#39;__|
+#   ___) |  __/ |   \ V /  __/ |
+#  |____/ \___|_|    \_/ \___|_|
+#
+
+if [ ! -f $SERVER.key ]; then
+        echo &quot;--- Creating server key and signing request&quot;
+        $openssl genrsa -out $SERVER.key $keybits
+        $openssl req -new $defaultmd \
+                -out $SERVER.csr \
+                -key $SERVER.key \
+                -subj &quot;${SERVER_DN}&quot;
+        chmod 400 $SERVER.key
+        chown $MOSQUITTOUSER $SERVER.key
+fi
+
+if [ -f $SERVER.csr -a ! -f $SERVER.crt ]; then
+
+        # There&#39;s no way to pass subjAltName on the CLI so
+        # create a cnf file and use that.
+
+        CNF=`mktemp /tmp/cacnf.XXXXXXXX` || { echo &quot;$0: can&#39;t create temp file&quot; &gt;&amp;2; exit 1; }
+        sed -e &#39;s/^.*%%% //&#39; &gt; $CNF &lt;&lt;\!ENDconfig
+        %%% [ JPMextensions ]
+        %%% basicConstraints        = critical,CA:false
+        %%% nsCertType              = server
+        %%% keyUsage                = nonRepudiation, digitalSignature, keyEncipherment
+        %%% extendedKeyUsage        = serverAuth
+        %%% nsComment               = &quot;Broker Certificate&quot;
+        %%% subjectKeyIdentifier    = hash
+        %%% authorityKeyIdentifier  = keyid,issuer:always
+        %%% subjectAltName          = $ENV::SUBJALTNAME
+        %%% # issuerAltName           = issuer:copy
+        %%% ## nsCaRevocationUrl       = http://mqttitude.org/carev/
+        %%% ## nsRevocationUrl         = http://mqttitude.org/carev/
+        %%% certificatePolicies     = ia5org,@polsection
+        %%%
+        %%% [polsection]
+        %%% policyIdentifier        = 1.3.5.8
+        %%% CPS.1                   = &quot;http://localhost&quot;
+        %%% userNotice.1            = @notice
+        %%%
+        %%% [notice]
+        %%% explicitText            = &quot;This CA is for a local MQTT broker installation only&quot;
+        %%% organization            = &quot;OwnTracks&quot;
+        %%% noticeNumbers           = 1
+
+!ENDconfig
+
+        SUBJALTNAME=&quot;$(addresslist)&quot;
+        export SUBJALTNAME              # Use environment. Because I can. ;-)
+
+        echo &quot;--- Creating and signing server certificate&quot;
+        $openssl x509 -req $defaultmd \
+                -in $SERVER.csr \
+                -CA $CACERT.crt \
+                -CAkey $CACERT.key \
+                -CAcreateserial \
+                -CAserial &quot;${DIR}/ca.srl&quot; \
+                -out $SERVER.crt \
+                -days $server_days \
+                -extfile ${CNF} \
+                -extensions JPMextensions
+
+        rm -f $CNF
+        chmod 444 $SERVER.crt
+        chown $MOSQUITTOUSER $SERVER.crt
+fi
+else
+#    ____ _ _            _
+#   / ___| (_) ___ _ __ | |_
+#  | |   | | |/ _ \ &#39;_ \| __|
+#  | |___| | |  __/ | | | |_
+#   \____|_|_|\___|_| |_|\__|
+#
+
+if [ ! -f $CLIENT.key ]; then
+        echo &quot;--- Creating client key and signing request&quot;
+        $openssl genrsa -out $CLIENT.key $keybits
+
+        CNF=`mktemp /tmp/cacnf-req.XXXXXXXX` || { echo &quot;$0: can&#39;t create temp file&quot; &gt;&amp;2; exit 1; }
+        # Mosquitto&#39;s use_identity_as_username takes the CN attribute
+        # so we&#39;re populating that with the client&#39;s name
+        sed -e &#39;s/^.*%%% //&#39; &gt; $CNF &lt;&lt;!ENDClientconfigREQ
+        %%% [ req ]
+        %%% distinguished_name  = req_distinguished_name
+        %%% prompt                      = no
+        %%% output_password             = secret
+        %%%
+        %%% [ req_distinguished_name ]
+        %%% # O                       = OwnTracks
+        %%% # OU                      = MQTT
+        %%% # CN                      = Suzie Smith
+        %%% CN                        = $CLIENT
+        %%% # emailAddress            = $CLIENT
+!ENDClientconfigREQ
+
+        $openssl req -new $defaultmd \
+                -out $CLIENT.csr \
+                -key $CLIENT.key \
+                -config $CNF
+        chmod 400 $CLIENT.key
+fi
+
+if [ -f $CLIENT.csr -a ! -f $CLIENT.crt ]; then
+
+        CNF=`mktemp /tmp/cacnf-cli.XXXXXXXX` || { echo &quot;$0: can&#39;t create temp file&quot; &gt;&amp;2; exit 1; }
+        sed -e &#39;s/^.*%%% //&#39; &gt; $CNF &lt;&lt;\!ENDClientconfig
+        %%% [ JPMclientextensions ]
+        %%% basicConstraints        = critical,CA:false
+        %%% subjectAltName          = email:copy
+        %%% nsCertType              = client,email
+        %%% extendedKeyUsage        = clientAuth,emailProtection
+        %%% keyUsage                = digitalSignature, keyEncipherment, keyAgreement
+        %%% nsComment               = &quot;Client Broker Certificate&quot;
+        %%% subjectKeyIdentifier    = hash
+        %%% authorityKeyIdentifier  = keyid,issuer:always
+
+!ENDClientconfig
+
+        SUBJALTNAME=&quot;$(addresslist)&quot;
+        export SUBJALTNAME              # Use environment. Because I can. ;-)
+
+        echo &quot;--- Creating and signing client certificate&quot;
+        $openssl x509 -req $defaultmd \
+                -in $CLIENT.csr \
+                -CA $CACERT.crt \
+                -CAkey $CACERT.key \
+                -CAcreateserial \
+                -CAserial &quot;${DIR}/ca.srl&quot; \
+                -out $CLIENT.crt \
+                -days $days \
+                -extfile ${CNF} \
+                -extensions JPMclientextensions
+
+        rm -f $CNF
+        chmod 444 $CLIENT.crt
+        fi
+fi
+</pre></div>
 </div>
 </div>
-<div class="section" id="zoneminder">
-<h2>21.7 Zoneminder<a class="headerlink" href="#zoneminder" title="Lien permanent vers ce titre"></a></h2>
+<p>Lancer /etc/mosquitto/certs/generate-CA.sh (renommé ici generate-CA_mqtt.sh)</p>
+<p><a class="reference internal" href="../_images/image1239.webp"><img alt="image1239" src="../_images/image1239.webp" style="width: 512px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1240.webp"><img alt="image1240" src="../_images/image1240.webp" style="width: 581px;" /></a></p>
+<p>Les certificats obtenus:</p>
+<p><a class="reference internal" href="../_images/image1231.webp"><img alt="image1231" src="../_images/image1231.webp" style="width: 288px;" /></a></p>
+</div>
+<p>Le fichier de configuration de mosquitto dans /etc/mosquitto/conf.d :</p>
+<p><a class="reference internal" href="../_images/image1232.webp"><img alt="image1232" src="../_images/image1232.webp" style="width: 405px;" /></a></p>
+<p>Le fichier de mots de passe:</p>
+<p><a class="reference internal" href="../_images/image1233.webp"><img alt="image1233" src="../_images/image1233.webp" style="width: 496px;" /></a></p>
+<p>pour le créer (fichier:pass user:michel):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mosquitto_passwd</span> <span class="o">-</span><span class="n">H</span> <span class="n">sha512</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">mosquitto</span><span class="o">/</span><span class="n">passwd</span> <span class="n">michel</span>
+</pre></div>
+</div>
+<p><em>Mosquitto est alors configuré pour utiliser wws.</em></p>
+</section>
+<section id="javascripts-et-websockets">
+<h3>21.6.2 Javascripts et websockets<a class="headerlink" href="#javascripts-et-websockets" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">Voir aussi</p>
+<p><em>https://fr.javascript.info/websocket</em></p>
+</div>
+</section>
+</section>
+<section id="zoneminder">
+<h2>21.7 Zoneminder<a class="headerlink" href="#zoneminder" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>Installation dans une VM</em> :  <a class="reference external" href="http://domo-site.fr/accueil/dossiers/24">http://domo-site.fr/accueil/dossiers/24</a></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
@@ -378,9 +902,9 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 </div>
 <p><strong>Configuration de l’hôte virtuel Nginx</strong></p>
 <p><a class="reference internal" href="../_images/image1045.webp"><img alt="image1045" src="../_images/image1045.webp" style="width: 579px;" /></a></p>
-</div>
-<div class="section" id="plex">
-<h2>21.8 Plex<a class="headerlink" href="#plex" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="plex">
+<h2>21.8 Plex<a class="headerlink" href="#plex" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>Installation</em></p>
 <p>. dans un conteneur LXC : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/95">http://domo-site.fr/accueil/dossiers/95</a></p>
 <p>. dans une VM  : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/53">http://domo-site.fr/accueil/dossiers/53</a></p>
@@ -393,9 +917,9 @@ bash -c « $(wget -qLO - <a class="reference external" href="https://github.com
 <li><p><strong>Configuration de l’hôte virtuel Nginx pour accès distant</strong></p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1047.webp"><img alt="image1047" src="../_images/image1047.webp" style="width: 599px;" /></a></p>
-</div>
-<div class="section" id="raspberry-pi4">
-<h2>21.9 Raspberry PI4<a class="headerlink" href="#raspberry-pi4" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="raspberry-pi4">
+<h2>21.9 Raspberry PI4<a class="headerlink" href="#raspberry-pi4" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Alimenté en 12 Volts , comme le mini PC Proxmox, le PI4 couplé à un modem GSM assure l’envoi et la réception des sms même en cas de coupure d’alimentation électrique ENEDIS ;</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -415,10 +939,10 @@ Le système est sauvegardé par le logiciel Raspibackup : <a class="reference ex
 <blockquote>
 <div><p><a class="reference internal" href="../_images/image1052.webp"><img alt="image1052" src="../_images/image1052.webp" style="width: 422px;" /></a></p>
 </div></blockquote>
-<div class="section" id="resolution-des-problemes">
-<h3>21.9.1 Résolution des problèmes :<a class="headerlink" href="#resolution-des-problemes" title="Lien permanent vers ce titre"></a></h3>
-<div class="section" id="cannot-open-access-to-console-the-root-account-is-locked">
-<h4>21.9.1.1  cannot-open-access-to-console-the-root-account-is-locked<a class="headerlink" href="#cannot-open-access-to-console-the-root-account-is-locked" title="Lien permanent vers ce titre"></a></h4>
+<section id="resolution-des-problemes">
+<h3>21.9.1 Résolution des problèmes :<a class="headerlink" href="#resolution-des-problemes" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="cannot-open-access-to-console-the-root-account-is-locked">
+<h4>21.9.1.1  cannot-open-access-to-console-the-root-account-is-locked<a class="headerlink" href="#cannot-open-access-to-console-the-root-account-is-locked" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference external" href="https://www.msn.com/fr-fr/feed">https://www.msn.com/fr-fr/feed</a></p>
 <p>Si votre Raspberry Pi (RPI) ne démarre pas et affiche « Impossible d’ouvrir l’accès à la console, le compte root est verrouillé sur l’écran de démarrage :</p>
 <div class="admonition-mode-demploi-pour-revenir-a-la-situation-normale admonition">
@@ -457,20 +981,65 @@ Le système est sauvegardé par le logiciel Raspibackup : <a class="reference ex
 <p><a class="reference internal" href="../_images/image1055.webp"><img alt="image1055" src="../_images/image1055.webp" style="width: 466px;" /></a></p>
 </div>
 </div>
-</div>
-<div class="section" id="pour-monter-les-partitions-sans-redemarrer">
-<h4>21.9.1.2 pour monter les partitions sans redémarrer<a class="headerlink" href="#pour-monter-les-partitions-sans-redemarrer" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="pour-monter-les-partitions-sans-redemarrer">
+<h4>21.9.1.2 pour monter les partitions sans redémarrer<a class="headerlink" href="#pour-monter-les-partitions-sans-redemarrer" title="Lien permanent vers cette rubrique"></a></h4>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/image1056.webp"><img alt="image1056" src="../_images/image1056.webp" style="width: 283px;" /></a></p>
 </div></blockquote>
+</section>
+</section>
+</section>
+<section id="home-assistant">
+<h2>21.10 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="installation-automatique-sous-docker-dans-un-ct-lxc">
+<h3>21.10.1 installation automatique sous Docker dans un CT LXC<a class="headerlink" href="#installation-automatique-sous-docker-dans-un-ct-lxc" title="Lien permanent vers cette rubrique"></a></h3>
+<p><em>c’est mon installation actuelle</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/homeassistant.sh)&quot;</span>
+</pre></div>
 </div>
+<p><a class="reference internal" href="../_images/image1313.webp"><img alt="image1313" src="../_images/image1313.webp" style="width: 550px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1314.webp"><img alt="image1314" src="../_images/image1314.webp" style="width: 550px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1312.webp"><img alt="image1312" src="../_images/image1312.webp" style="width: 550px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1315.webp"><img alt="image1315" src="../_images/image1315.webp" style="width: 339px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1316.webp"><img alt="image1316" src="../_images/image1316.webp" style="width: 600px;" /></a></p>
+<p>Portainer est également installé:</p>
+<p><a class="reference internal" href="../_images/image1308.webp"><img alt="image1308" src="../_images/image1308.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1309.webp"><img alt="image1309" src="../_images/image1309.webp" style="width: 605px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">restart</span> <span class="n">portainer</span>
+</pre></div>
 </div>
+<p><a class="reference internal" href="../_images/image1317.webp"><img alt="image1317" src="../_images/image1317.webp" style="width: 605px;" /></a></p>
+<section id="installation-de-hacs-pyscript-etc">
+<h4>21.10.1.1 Installation de HACS, Pyscript, etc<a class="headerlink" href="#installation-de-hacs-pyscript-etc" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Téléchagement dans le répertoire <span class="darkblue">/var/lib/docker/volumes/hass_config/_data</span> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">get</span><span class="o">.</span><span class="n">hacs</span><span class="o">.</span><span class="n">xyz</span> <span class="o">|</span> <span class="n">bash</span> <span class="o">-</span>
+</pre></div>
 </div>
-<div class="section" id="home-assistant">
-<h2>21.10 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image1310.webp"><img alt="image1310" src="../_images/image1310.webp" style="width: 700px;" /></a></p>
+<p><strong>Redémarrer Home Assistant</strong> et ajouter l’intégration</p>
+<p><a class="reference internal" href="../_images/image1311.webp"><img alt="image1311" src="../_images/image1311.webp" style="width: 700px;" /></a></p>
+<div class="admonition-ajouter-pyscript admonition">
+<p class="admonition-title"><strong>Ajouter Pyscript</strong></p>
+<p>c’est le même procédé que pour HACS, télécharger la dernière version de Pyscript: <a class="reference external" href="https://github.com/custom-components/pyscript">https://github.com/custom-components/pyscript</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">volumes</span><span class="o">/</span><span class="n">hass_config</span><span class="o">/</span><span class="n">_data</span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">custom_components</span><span class="o">/</span><span class="n">pyscript</span>
+<span class="n">cd</span> <span class="n">custom_components</span><span class="o">/</span><span class="n">pyscript</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">custom</span><span class="o">-</span><span class="n">components</span><span class="o">/</span><span class="n">pyscript</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">hass</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">pyscript</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">unzip</span> <span class="n">hass</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">pyscript</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">rm</span> <span class="n">hass</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">pyscript</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1318.webp"><img alt="image1318" src="../_images/image1318.webp" style="width: 647px;" /></a></p>
+<p><strong>Redémarrer Home Assistant</strong></p>
+<p><a class="reference internal" href="../_images/image1319.webp"><img alt="image1319" src="../_images/image1319.webp" style="width: 489px;" /></a></p>
+</div>
+</section>
+</section>
+<section id="script-pour-une-installation-automatique-dans-une-vm">
+<h3>21.10.2 Script pour une installation automatique dans une VM<a class="headerlink" href="#script-pour-une-installation-automatique-dans-une-vm" title="Lien permanent vers cette rubrique"></a></h3>
 <p><em>Installation</em> : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/61">http://domo-site.fr/accueil/dossiers/61</a></p>
-<p><strong>Script pour une installation automatique</strong> :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/vm/haos-vm-v5.sh)&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(wget -qLO - https://raw.githubusercontent.com/tteck/Proxmox/main/vm/haos-vm.sh)&quot;</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1057.webp"><img alt="image1057" src="../_images/image1057.webp" style="width: 608px;" /></a></p>
@@ -480,9 +1049,138 @@ Le système est sauvegardé par le logiciel Raspibackup : <a class="reference ex
 <p><a class="reference internal" href="../_images/image1061.webp"><img alt="image1061" src="../_images/image1061.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1062.webp"><img alt="image1062" src="../_images/image1062.webp" style="width: 249px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1063.webp"><img alt="image1063" src="../_images/image1063.webp" style="width: 516px;" /></a></p>
+</section>
+<section id="python-avec-pyscript">
+<h3>21.10.3 Python avec pyscript<a class="headerlink" href="#python-avec-pyscript" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="admonition-avec-hacs admonition">
+<p class="admonition-title"><strong>Avec HACS</strong></p>
+<p>Sous HACS -&gt; Intégrations, sélectionnez <a class="reference internal" href="../_images/image1194.webp"><img alt="image1194" src="../_images/image1194.webp" style="width: 150px;" /></a>, recherchez et installez pyscript</p>
+<p><a class="reference internal" href="../_images/image1195.webp"><img alt="image1195" src="../_images/image1195.webp" style="width: 300px;" /></a></p>
+<p>On ajoute dans la configuration de HA :</p>
+<p><a class="reference internal" href="../_images/image1210.webp"><img alt="image1210" src="../_images/image1210.webp" style="width: 358px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Il est recommandé d’installer JUPYTER , pour cela voir ce paragraphe <a class="reference internal" href="app_externes.html#installation-de-jupyter"><span class="std std-ref">13.9 Installation de Jupyter</span></a></p>
+<p><a class="reference internal" href="../_images/image1199.webp"><img alt="image1199" src="../_images/image1199.webp" style="width: 200px;" /></a></p>
+<p>Dans le répertoire pyscript à la racine de /config , copier les fichiers python concernés:</p>
+<p><a class="reference internal" href="../_images/image1196.webp"><img alt="image1196" src="../_images/image1196.webp" style="width: 300px;" /></a></p>
+<p>Et dans /config/pyscript/modules (nouveau répertoire crée), les modules perso (ici connect.py)</p>
+<p><a class="reference internal" href="../_images/image1206.webp"><img alt="image1206" src="../_images/image1206.webp" style="width: 301px;" /></a></p>
+<p>Pour faire un essai, un envoi d’un message MQTT, Paho est installé :</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Advanced SSH &amp; Web Terminal doit être installé; si Terminal &amp; SSH est installé, le désinstaller( Avec terminal Python est très limité et Paho ne peut être installé.)</p>
+<p><a class="reference internal" href="../_images/image1189.webp"><img alt="image1189" src="../_images/image1189.webp" style="width: 300px;" /></a> <a class="reference internal" href="../_images/image1190.webp"><img alt="image1190" src="../_images/image1190.webp" style="width: 300px;" /></a></p>
 </div>
-<div class="section" id="pont-hue-ha-bridge-pour-alexa">
-<h2>21.11 Pont Hue Ha-bridge pour Alexa<a class="headerlink" href="#pont-hue-ha-bridge-pour-alexa" title="Lien permanent vers ce titre"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">paho</span><span class="o">-</span><span class="n">mqtt</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1191.webp"><img alt="image1191" src="../_images/image1191.webp" style="width: 600px;" /></a></p>
+<p>Pour faire un essai, avec le terminal:</p>
+<p><a class="reference internal" href="../_images/image1192.webp"><img alt="image1192" src="../_images/image1192.webp" style="width: 597px;" /></a></p>
+<p>Visualisation dans une console du serveur MQTT</p>
+<p><a class="reference internal" href="../_images/image1193.webp"><img alt="image1193" src="../_images/image1193.webp" style="width: 499px;" /></a></p>
+<p>Le script python dans le répertoire <span class="darkblue">/config/pyscript</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">paho.mqtt.client</span> <span class="k">as</span> <span class="nn">mqtt</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">connect</span> <span class="kn">import</span> <span class="n">ip_mqtt</span>
+
+<span class="nd">@service</span>
+<span class="k">def</span> <span class="nf">mqtt_publish</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mqtt: got topic </span><span class="si">{topic}</span><span class="s2"> idx </span><span class="si">{idx}</span><span class="s2"> state </span><span class="si">{state}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+   <span class="n">etat</span><span class="o">=</span> <span class="n">idx</span>
+   <span class="n">valeur</span><span class="o">=</span> <span class="n">state</span>
+   <span class="n">MQTT_HOST</span> <span class="o">=</span> <span class="n">ip_mqtt</span>
+   <span class="n">MQTT_PORT</span> <span class="o">=</span> <span class="mi">9001</span>
+   <span class="n">MQTT_KEEPALIVE_INTERVAL</span> <span class="o">=</span> <span class="mi">45</span>
+   <span class="n">MQTT_TOPIC</span> <span class="o">=</span> <span class="n">topic</span>
+   <span class="n">MQTT_MSG</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;idx&#39;</span><span class="p">:</span> <span class="n">etat</span><span class="p">,</span><span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">valeur</span><span class="p">});</span>
+
+   <span class="c1"># Initiate MQTT Client</span>
+   <span class="n">mqttc</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">transport</span><span class="o">=</span><span class="s2">&quot;websockets&quot;</span><span class="p">)</span>
+   <span class="n">mqttc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">MQTT_HOST</span><span class="p">,</span> <span class="n">MQTT_PORT</span><span class="p">,</span> <span class="n">MQTT_KEEPALIVE_INTERVAL</span><span class="p">)</span>
+   <span class="n">mqttc</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">MQTT_TOPIC</span><span class="p">,</span> <span class="n">MQTT_MSG</span><span class="p">)</span>
+   <span class="n">mqttc</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1209.webp"><img alt="image1209" src="../_images/image1209.webp" style="width: 650px;" /></a></p>
+<p>L’appel du service:</p>
+<p><a class="reference internal" href="../_images/image1208.webp"><img alt="image1208" src="../_images/image1208.webp" style="width: 600px;" /></a></p>
+<p>Script complet de l’automatisation :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">mqtt_12345678</span>
+  <span class="n">alias</span><span class="p">:</span> <span class="s2">&quot;essai mqtt&quot;</span>
+  <span class="n">trigger</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
+    <span class="n">entity_id</span><span class="p">:</span> <span class="n">light</span><span class="o">.</span><span class="n">lampe_jardin</span><span class="p">,</span> <span class="n">light</span><span class="o">.</span><span class="n">lampe_terrasse</span>
+    <span class="n">to</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">&#39;on&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;off&#39;</span>
+  <span class="n">condition</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="n">action</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">pyscript</span><span class="o">.</span><span class="n">mqtt_publish</span>
+    <span class="n">data_template</span><span class="p">:</span>
+      <span class="n">topic</span><span class="p">:</span> <span class="n">monitor</span><span class="o">/</span><span class="n">ha</span>
+      <span class="n">idx</span><span class="p">:</span> <span class="s2">&quot;{{ trigger.entity_id }}&quot;</span>
+      <span class="n">state</span><span class="p">:</span> <span class="s2">&quot;{{ trigger.to_state.state }}&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chemins-des-fichiers-sous-docker">
+<h3>21.10.4 Chemins des fichiers sous Docker<a class="headerlink" href="#chemins-des-fichiers-sous-docker" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="../_images/image1350.webp"><img alt="image1350" src="../_images/image1350.webp" style="width: 700px;" /></a></p>
+<p>Comme on peut le voir sur l’image ci-dessus le dossier <span class="darkblue">_data</span> correspond au dossier <span class="darkblue">config</span> de Docker; comme pour Domoticz, il faut tnir compt d ces chemin dans les scripts suivant où il sont lancés.</p>
+<p>un exemple : dans le cadre rouge, un script lancé hors du conteneur, dans un cadre bleu un script lancé dans Home assistant (donc dans le conteneur)</p>
+<p><a class="reference internal" href="../_images/image1351.webp"><img alt="image1351" src="../_images/image1351.webp" style="width: 616px;" /></a></p>
+</section>
+<section id="nginx-virtual-host">
+<h3>21.10.5 NGINX, Virtual Host<a class="headerlink" href="#nginx-virtual-host" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Pré-requis:</p>
+<ul class="simple">
+<li><p>un certificat lets’encrypt</p></li>
+</ul>
+<p>le fichier ha.conf dans /etc/nginx/conf.d:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+ server_name &lt;DOMAINE&gt;;
+ listen 80;
+ return 301 https://$host$request_uri;
+}
+server {
+ server_name &lt;DOMAINE&gt;;
+ ssl_certificate /etc/letsencrypt/live/ha.la-truffiere.ovh/fullchain.pem;
+ ssl_certificate_key /etc/letsencrypt/live/ha.la-truffiere.ovh/privkey.pem;
+ # Use these lines instead if you created a self-signed certificate
+ # ssl_certificate /etc/nginx/ssl/cert.pem;
+ # ssl_certificate_key /etc/nginx/ssl/key.pem;
+ # Ensure this line points to your dhparams file
+ ssl_dhparam /etc/nginx/ssl/dhparams.pem;
+
+ listen 443 ssl ;
+ ssl_protocols       TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+ ssl_ciphers &quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4&quot;;
+ ssl_prefer_server_ciphers on;
+ ssl_session_cache shared:SSL:10m;
+ proxy_buffering off;
+
+ location / {
+     proxy_pass http://192.168.1.81:8123;
+     proxy_set_header Host $host;
+     proxy_redirect http:// https://;
+     proxy_http_version 1.1;
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection $connection_upgrade;
+ }
+}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pont-hue-ha-bridge-pour-alexa">
+<h2>21.11 Pont Hue Ha-bridge pour Alexa<a class="headerlink" href="#pont-hue-ha-bridge-pour-alexa" title="Lien permanent vers cette rubrique"></a></h2>
 <p>voir le § <a class="reference internal" href="app_externes.html#pont-ha-ha-bridge"><span class="std std-ref">13.8 Pont HA (ha-bridge)</span></a></p>
 <p>L’assistant vocal est composé:</p>
 <ul class="simple">
@@ -492,8 +1190,487 @@ Le système est sauvegardé par le logiciel Raspibackup : <a class="reference ex
 <ul class="simple">
 <li><p>Un serveur Ha-bridge installé dans un conteneur LXC Proxmox</p></li>
 </ul>
+</section>
+<section id="serveur-sse-node-js">
+<h2>21.12 Serveur SSE Node JS<a class="headerlink" href="#serveur-sse-node-js" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="installation-dans-un-conteneur-lxc-proxmox">
+<h3>21.12.1 Installation: dans un conteneur LXC Proxmox<a class="headerlink" href="#installation-dans-un-conteneur-lxc-proxmox" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>installation de Sudo, Curl, NodeJS, Nginx ,Ufw</p>
+</div>
+<p>Mise à jour du conteneur et installation de Curl et Sudo; création d’un utilisateur en lui ajoutant des droits:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">update</span>
+<span class="n">apt</span> <span class="n">upgrade</span>
+<span class="n">apt</span> <span class="n">install</span> <span class="n">sudo</span>
+<span class="n">adduser</span> <span class="o">&lt;</span><span class="n">USERNAME</span><span class="o">&gt;</span>
+<span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">sudo</span> <span class="n">michel</span>
+<span class="n">visudo</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1242.webp"><img alt="image1242" src="../_images/image1242.webp" style="width: 450px;" /></a></p>
+<div class="admonition-installation-de-node-js admonition">
+<p class="admonition-title">** Installation de NODE JS**</p>
+<ol class="arabic simple">
+<li><p>téléchargemenr de la clé GPG Nodesource</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span> <span class="n">curl</span> <span class="n">gnupg</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">keyrings</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">deb</span><span class="o">.</span><span class="n">nodesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">gpgkey</span><span class="o">/</span><span class="n">nodesource</span><span class="o">-</span><span class="n">repo</span><span class="o">.</span><span class="n">gpg</span><span class="o">.</span><span class="n">key</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">dearmor</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">nodesource</span><span class="o">.</span><span class="n">gpg</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1243.webp"><img alt="image1243" src="../_images/image1243.webp" style="width: 550px;" /></a></p>
+<ol class="arabic simple" start="2">
+<li><p>Creation du référentiel</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><em>NODE_MAJOR peut être modifié en fonction de la version dont vous avez besoin</em></p>
+<p>exemple :NODE_MAJOR=18 , NODE_MAJOR=20 ,NODE_MAJOR=21</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NODE_MAJOR</span><span class="o">=</span><span class="mi">21</span>
+<span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">nodesource</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1244.webp"><img alt="image1244" src="../_images/image1244.webp" style="width: 700px;" /></a></p>
+<ol class="arabic simple" start="3">
+<li><p>Exécutez la mise à jour et l’installation</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">nodejs</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1245.webp"><img alt="image1245" src="../_images/image1245.webp" style="width: 500px;" /></a></p>
+<p>Vérification des versions de Node et Npm installées:</p>
+<p><a class="reference internal" href="../_images/image1246.webp"><img alt="image1246" src="../_images/image1246.webp" style="width: 232px;" /></a></p>
+</div>
+<div class="admonition-installation-du-serveur-web-et-du-pare-feuu admonition">
+<p class="admonition-title"><strong>Installation du serveur Web et du pare-feuu</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">nginx</span>
+<span class="n">apt</span> <span class="n">install</span> <span class="n">ufw</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1247.webp"><img alt="image1247" src="../_images/image1247.webp" style="width: 550px;" /></a></p>
+<p>Configurer et activer le pare-feu</p>
+<p><a class="reference internal" href="../_images/image1248.webp"><img alt="image1248" src="../_images/image1248.webp" style="width: 400px;" /></a></p>
+</div>
+<div class="admonition-installation-du-serveur-sse-node admonition">
+<p class="admonition-title"><strong>Installation du serveur SSE Node</strong></p>
+<p>création d’un répertoire EventSource</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">EventSource</span>
+</pre></div>
+</div>
+<p>Accédez à ce répertoire et créer un répertoire pour l’installation du serveur; accéder à ce dernier  :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">EventSource</span>
+<span class="n">mkdir</span> <span class="n">serveur_sse</span>
+<span class="n">cd</span> <span class="n">serveur_sse</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1249.webp"><img alt="image1249" src="../_images/image1249.webp" style="width: 380px;" /></a></p>
+<p>Initialiser un nouveau projet npm</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">init</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1250.webp"><img alt="image1250" src="../_images/image1250.webp" style="width: 450px;" /></a></p>
+<p>Installer les dépendances:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">express</span> <span class="n">body</span><span class="o">-</span><span class="n">parser</span> <span class="n">cors</span> <span class="o">--</span><span class="n">save</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">ip</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1251.webp"><img alt="image1251" src="../_images/image1251.webp" style="width: 600px;" /></a></p>
+<p>Avec Nano, créez un nouveau fichier : server.js , avec ce contenu</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>const express = require(&#39;express&#39;);
+const bodyParser = require(&#39;body-parser&#39;);
+const cors = require(&#39;cors&#39;);
+const app = express();
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.get(&#39;/status&#39;, (request, response) =&gt; response.json({clients: clients.length}));
+var ip = require(&quot;ip&quot;);
+const PORT = 3000;
+
+let clients = [];
+let facts = [];
+
+app.listen(PORT, () =&gt; {
+  console.log(`Facts Events service listening at http://${ip.address()}:${PORT}`)
+})
+
+// ...
+
+function eventsHandler(request, response, next) {
+const headers = {
+&#39;Content-Type&#39;: &#39;text/event-stream&#39;,
+&#39;Connection&#39;: &#39;keep-alive&#39;,
+&#39;Cache-Control&#39;: &#39;no-cache&#39;
+ };
+response.writeHead(200, headers);
+const data = `data: ${JSON.stringify(facts)}\n\n`;
+response.write(data);
+
+const clientId = Date.now();
+const newClient = {
+id: clientId,
+response
+};
+
+clients.push(newClient);
+request.on(&#39;close&#39;, () =&gt; {
+console.log(`${clientId} Connection closed`);
+ clients = clients.filter(client =&gt; client.id !== clientId);
+});
+}
+app.get(&#39;/events&#39;, eventsHandler);
+
+// ...
+
+function sendEventsToAll(newFact) {
+  clients.forEach(client =&gt; client.response.write(`data: ${JSON.stringify(newFact)}\n\n`))
+}
+async function addFact(request, respsonse, next) {
+const newFact = request.body;
+facts.push(newFact);
+respsonse.json(newFact)
+return sendEventsToAll(newFact);
+}
+app.post(&#39;/fact&#39;, addFact);
+</pre></div>
+</div>
+<p>Quelques explications:</p>
+<p><strong>Initialisation du serveur</strong>:</p>
+<p><a class="reference internal" href="../_images/image1252.webp"><img alt="image1252" src="../_images/image1252.webp" style="width: 650px;" /></a></p>
+<p><strong>intergiciel pour les requêtes adressées au point de terminaison GET /events</strong></p>
+<p>un middleware (anglicisme) ou intergiciel est un logiciel tiers qui crée un réseau d’échange d’informations entre différentes applications informatiques</p>
+<p><a class="reference internal" href="../_images/image1253.webp"><img alt="image1253" src="../_images/image1253.webp" style="width: 700px;" /></a></p>
+<p><strong>intergiciel pour les requêtes adressées au point de terminaison POST /fact</strong></p>
+<p>lorsque de nouveaux messages sont ajoutés,l’intergiciel enregistre le message et les envoie aux clients</p>
+<p>Ajout depuis une console:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span>  <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Content-Type: application/json&quot;</span>  <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;id&quot;: &quot;306&quot;, &quot;state&quot;: &quot;On&quot;}&#39;</span> <span class="o">-</span><span class="n">s</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.118</span><span class="p">:</span><span class="mi">3000</span><span class="o">/</span><span class="n">fact</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1254.webp"><img alt="image1254" src="../_images/image1254.webp" style="width: 700px;" /></a></p>
+<p>réception par monitor:</p>
+<p><a class="reference internal" href="../_images/image1255.webp"><img alt="image1255" src="../_images/image1255.webp" style="width: 540px;" /></a></p>
+</div>
+</section>
+<section id="envoi-des-mises-a-jour-depuis-domoticz-ou-home-assistant">
+<h3>21.12.2 Envoi des mises à jour depuis Domoticz ou Home Assistant<a class="headerlink" href="#envoi-des-mises-a-jour-depuis-domoticz-ou-home-assistant" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="depuis-domoticz">
+<h4>21.12.2.1 Depuis Domoticz<a class="headerlink" href="#depuis-domoticz" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Au lieu d’utiliser Curl comme dans les essais avec la console, on utilise Python et le module Requests;Domoticz est sous Docker et c’est la solution la plus facile à utiliser.</p>
+<p>Le script python basique (on peut comme pour les autres scripts python utiliser des variables pour l’IP et le Port:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3 -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">id</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">etat</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://192.168.1.118:3000/fact&#39;</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;{&quot;id&quot;: &quot;&#39;</span><span class="o">+</span><span class="nb">id</span><span class="o">+</span><span class="s1">&#39;&quot;, &quot;state&quot;: &quot;&#39;</span><span class="o">+</span><span class="n">etat</span><span class="o">+</span><span class="s1">&#39;&quot;}&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;Accept-Charset&#39;</span><span class="p">:</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1256.webp"><img alt="image1256" src="../_images/image1256.webp" style="width: 608px;" /></a></p>
+<p>Le script DzVent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">send_topic</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span><span class="n">txt1</span><span class="p">)</span>
+<span class="n">local</span> <span class="n">sse</span> <span class="o">=</span> <span class="s1">&#39;python3 userdata/scripts/python/sse.py &#39;</span><span class="o">..</span><span class="n">txt</span><span class="o">..</span><span class="s1">&#39; &#39;</span><span class="o">..</span><span class="n">txt1</span><span class="o">..</span><span class="s1">&#39; &gt;&gt;  /opt/domoticz/userdata/sse.log 2&gt;&amp;1&#39;</span> <span class="p">;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sse</span><span class="p">);</span>
+<span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sse</span><span class="p">)</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1257.webp"><img alt="image1257" src="../_images/image1257.webp" style="width: 700px;" /></a></p>
+</section>
+<section id="depuis-home-assistant">
+<h4>21.12.2.2 Depuis Home Assistant<a class="headerlink" href="#depuis-home-assistant" title="Lien permanent vers cette rubrique"></a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>La création ou la modification de scripts « shell_command » <span class="red">IMPOSE UN REDEMARRAGE de Home Assistant</span>.</p>
+</div>
+<p><strong>Dans /config/configuration.yaml</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shell_command</span><span class="p">:</span>
+    <span class="n">curl_sse</span><span class="p">:</span>  <span class="s2">&quot;curl -X POST  -H &#39;Content-Type: application/json&#39;  -d &#39;{{ data }}&#39; -s {{ url }}&quot;</span>
+</pre></div>
+</div>
+<p><strong>Dans /config/automation.yaml</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">mqtt_12345678</span>
+  <span class="n">alias</span><span class="p">:</span> <span class="s2">&quot;essai mqtt&quot;</span>
+  <span class="n">trigger</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
+    <span class="n">entity_id</span><span class="p">:</span> <span class="n">light</span><span class="o">.</span><span class="n">lampe_jardin</span><span class="p">,</span> <span class="n">light</span><span class="o">.</span><span class="n">lampe_terrasse</span>
+    <span class="n">to</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">&#39;on&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;off&#39;</span>
+  <span class="n">condition</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="n">action</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">shell_command</span><span class="o">.</span><span class="n">curl_sse</span>
+    <span class="n">data_template</span><span class="p">:</span>
+      <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;http://192.168.1.118:3000/fact&#39;</span>
+      <span class="n">data</span><span class="p">:</span> <span class="s1">&#39;{&quot;idx&quot;: &quot;{{ trigger.entity_id }}&quot;,&quot;state&quot;: &quot;{{ trigger.to_state.state }}&quot; }&#39;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1258.webp"><img alt="image1258" src="../_images/image1258.webp" style="width: 600px;" /></a></p>
+</section>
+<section id="eventstream-recu-par-monitor">
+<h4>21.12.2.3 EventStream recu par monitor<a class="headerlink" href="#eventstream-recu-par-monitor" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1259.webp"><img alt="image1259" src="../_images/image1259.webp" style="width: 440px;" /></a></p>
+</section>
+</section>
+<section id="acces-distant-ssl-http2">
+<h3>21.12.3 Accès distant SSL &amp; HTTP2<a class="headerlink" href="#acces-distant-ssl-http2" title="Lien permanent vers cette rubrique"></a></h3>
+<ul class="simple">
+<li><p>S’il n’est pas installé sur le serveur web, Installation de Cerbot pour obtenir un certificat Let’sencrypt</p></li>
+<li><p>Configuration de l’hôte virtuel SSE</p></li>
+<li><p>modification du Client SSE pour utiliser la bonne URL</p></li>
+</ul>
+<div class="admonition-installer-cerbot-pour-nginx admonition">
+<p class="admonition-title"><strong>Installer Cerbot pour Nginx</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">cerbot</span> <span class="n">python3</span><span class="o">-</span><span class="n">cerbot</span><span class="o">-</span><span class="n">nginx</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1260.webp"><img alt="image1260" src="../_images/image1260.webp" style="width: 650px;" /></a></p>
+<blockquote>
+<div><p>Configuration de sse.conf dans /etc/nginx/conf.d</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1261.webp"><img alt="image1261" src="../_images/image1261.webp" style="width: 500px;" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Attention : lorsqu’il n’est pas utilisé sur HTTP/2 , SSE souffre d’une limitation du nombre maximum de connexions ouvertes, ce qui peut être particulièrement pénible lors de l’ouverture de divers onglets car la limite est par navigateur et fixée à un nombre très faible</p>
+</div>
+<p>Demander un certificat Let’sencrypt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">certbot</span> <span class="o">--</span><span class="n">nginx</span> <span class="o">-</span><span class="n">d</span> <span class="o">&lt;</span><span class="n">SOUS</span> <span class="n">DOMAINE</span><span class="o">&gt;.&lt;</span><span class="n">DOMAINE</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Le fichier de configuration de l’hôte virtuel SSL et HTTP2</p>
+<p><a class="reference internal" href="../_images/image1262.webp"><img alt="image1262" src="../_images/image1262.webp" style="width: 640px;" /></a></p>
+</div>
+<div class="admonition-le-client-sse-modification-a-apporter admonition">
+<p class="admonition-title"><strong>Le client SSE, modification à apporter</strong></p>
+<p><a class="reference internal" href="../_images/image1263.webp"><img alt="image1263" src="../_images/image1263.webp" style="width: 600px;" /></a></p>
+</div>
+</section>
+</section>
+<section id="io-broker">
+<h2>21.13 Io.Broker<a class="headerlink" href="#io-broker" title="Lien permanent vers cette rubrique"></a></h2>
+<p>installé dans un conteneur LXC avec <span class="darkblue">https://tteck.github.io/Proxmox/?id=ioBroker#automation</span></p>
+<p><a class="reference internal" href="../_images/image1424.webp"><img alt="image1424" src="../_images/image1424.webp" style="width: 500px;" /></a></p>
+<p>Pour réupérer des informations ou envoyer une commande Io.broker est plus facile que Home Hssistant; il existe de nombreux adaptateurs l’équivalent des intégrations ou des plugins de Domoticz;</p>
+<p>J’ai installé io.broker pour créer une page sur monitor cncernant mon robot tondeuse Worx Landroid: voir ce § <a class="reference internal" href="#robot-tondeuse-landroid-worx"><span class="std std-ref">21.14 Robot tondeuse Landroid Worx</span></a></p>
+<p><a class="reference internal" href="../_images/image1425.webp"><img alt="image1425" src="../_images/image1425.webp" style="width: 700px;" /></a></p>
+<p><strong>configuration du courtier io</strong></p>
+<p>Utilisation :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iobroker</span> <span class="n">setup</span> <span class="n">first</span>
+</pre></div>
+</div>
+<p>créer des fichiers de configuration s’ils ne sont pas encore créés.</p>
+<p><a class="reference internal" href="../_images/image1501.webp"><img alt="image1501" src="../_images/image1501.webp" style="width: 700px;" /></a></p>
+<section id="configuration-des-hotes-virtuels-nginx">
+<h3>21.13.1 Configuration des hôtes virtuels NGINX<a class="headerlink" href="#configuration-des-hotes-virtuels-nginx" title="Lien permanent vers cette rubrique"></a></h3>
+<p>voir aussi le § <a class="reference internal" href="ajout_page_alertes.html#hotes-virtuels-dans-nginx"><span class="std std-ref">16.4.2 Hôtes virtuels dans NGINX</span></a></p>
+<div class="admonition-virtualhost-port-8081 admonition">
+<p class="admonition-title"><strong>VirtualHost port 8081</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+server_name  iobroker.la-truffiere.ovh;
+location / {
+#proxy_hide_header X-Frame-Options;
+add_header Access-Control-Allow-Origin *;
+add_header &#39;Access-Control-Allow-Methods&#39; &#39;GET, POST&#39;;
+proxy_pass http://192.168.1.162:8081/;
+proxy_set_header Host $host;
+proxy_connect_timeout 30;
+proxy_send_timeout 30;
+#WebSocket support
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection &quot;upgrade&quot;;
+proxy_http_version 1.1;
+#--------------------
+proxy_cache off;
+proxy_cache_bypass $http_upgrade;
+proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header   X-Forwarded-Proto $scheme;
+}
+listen 443 ssl; # managed by Certbot
+ssl_certificate /etc/letsencrypt/live/iobroker.la-truffiere.ovh/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/iobroker.la-truffiere.ovh/privkey.pem; # managed by Certbot
+include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+add_header Strict-Transport-Security &quot;max-age=0&quot; always; # managed by Certbot
+# add_header Strict-Transport-Security &quot;max-age=31536000&quot; always; # managed by Certbot
+
+ssl_trusted_certificate /etc/letsencrypt/live/iobroker.la-truffiere.ovh/chain.pem; # managed by Certbot
+ssl_stapling on; # managed by Certbot
+ssl_stapling_verify on; # managed by Certbot
+
+}
+server {
+if ($host = iobroker.la-truffiere.ovh) {
+  return 301 https://$host$request_uri;
+} # managed by Certbot
+server_name  iobroker.la-truffiere.ovh;
+location / {
+proxy_pass http://192.168.1.162:8082/;
+proxy_set_header Host $host;
+proxy_connect_timeout 30;
+proxy_send_timeout 30;
+}
+listen       80;
+}
+</pre></div>
 </div>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour header Strict-Transport-Security, max-age=0 pour désactiver HSTS (HTTP Strict Transport Security).</p>
+</div>
+<div class="admonition-les-parametres-dans-admin-0 admonition">
+<p class="admonition-title"><strong>Les paramètres dans admin.0</strong></p>
+<p><a class="reference internal" href="../_images/image1326.webp"><img alt="image1326" src="../_images/image1326.webp" style="width: 650px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1327.webp"><img alt="image1327" src="../_images/image1327.webp" style="width: 700px;" /></a></p>
+<p>affichage du navigateur:</p>
+<p><a class="reference internal" href="../_images/image1502.webp"><img alt="image1502" src="../_images/image1502.webp" style="width: 700px;" /></a></p>
+</div>
+<div class="admonition-virtualhost-port-8082 admonition">
+<p class="admonition-title"><strong>VirtualHost port 8082</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>upstream iobweb {
+server 192.168.1.162:8082;
+}
+server {
+server_name  iobweb.la-truffiere.ovh;
+location / {
+proxy_pass http://iobweb;
+proxy_set_header Host $host;
+proxy_connect_timeout 30;
+proxy_send_timeout 30;
+}
+listen 443 ssl; # managed by Certbot
+ssl_certificate /etc/letsencrypt/live/iobweb.la-truffiere.ovh/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/iobweb.la-truffiere.ovh/privkey.pem; # managed by Certbot
+include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+add_header Strict-Transport-Security &quot;max-age=0&quot; always; # managed by Certbot
+ssl_trusted_certificate /etc/letsencrypt/live/iobweb.la-truffiere.ovh/chain.pem; # managed by Certbot
+ssl_stapling on; # managed by Certbot
+ssl_stapling_verify on; # managed by Certbot
+}
+server {
+if ($host = iobweb.la-truffiere.ovh) {
+  return 301 https://$host$request_uri;
+} # managed by Certbot
+server_name  iobweb.la-truffiere.ovh;
+location / {
+proxy_pass http://iobweb;
+proxy_set_header Host $host;
+proxy_connect_timeout 30;
+proxy_send_timeout 30;
+}
+listen 80;
+</pre></div>
+</div>
+<p>affichage dans un navigateur:</p>
+<p><a class="reference internal" href="../_images/image1507.webp"><img alt="image1507" src="../_images/image1507.webp" style="width: 650px;" /></a></p>
+</div>
+</section>
+<section id="ajouter-un-adaptateur-en-mode-cli">
+<h3>21.13.2 Ajouter un adaptateur en mode CLI<a class="headerlink" href="#ajouter-un-adaptateur-en-mode-cli" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference external" href="https://doc.iobroker.net/#en/documentation/tutorial/adapter.md">https://doc.iobroker.net/#en/documentation/tutorial/adapter.md</a>?theadapterlistintheadmin</p>
+<p><a class="reference external" href="https://www.iobroker.net/docu/index-98.htm?page_id=3971&amp;lang=de#iobroker-stop">https://www.iobroker.net/docu/index-98.htm?page_id=3971&amp;lang=de#iobroker-stop</a></p>
+<p><a class="reference internal" href="../_images/image1494.webp"><img alt="image1494" src="../_images/image1494.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1495.webp"><img alt="image1495" src="../_images/image1495.webp" style="width: 360px;" /></a></p>
+<section id="ajouter-un-2eme-adaptateur-admin">
+<h4>21.13.2.1 Ajouter un 2eme adaptateur admin<a class="headerlink" href="#ajouter-un-2eme-adaptateur-admin" title="Lien permanent vers cette rubrique"></a></h4>
+<p>En cas de problème de démarrage ou pôur faire des essais, il est possible, provisoirement( pour limiter lesressources), d’ajouter un admin.1.</p>
+<p><span class="red">Choisir un port non utilisé</span></p>
+<p><a class="reference internal" href="../_images/image1503.webp"><img alt="image1503" src="../_images/image1503.webp" style="width: 598px;" /></a></p>
+</section>
+</section>
+<section id="resoudre-des-erreurs">
+<h3>21.13.3 Résoudre des érreurs<a class="headerlink" href="#resoudre-des-erreurs" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="please-modify-system-adaptater">
+<h4>21.13.3.1 please modify system.adaptater<a class="headerlink" href="#please-modify-system-adaptater" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image1508.webp"><img alt="image1508" src="../_images/image1508.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1509.webp"><img alt="image1509" src="../_images/image1509.webp" style="width: 385px;" /></a></p>
+<p>Faire de même pour eventlist:</p>
+<p><a class="reference internal" href="../_images/image1510.webp"><img alt="image1510" src="../_images/image1510.webp" style="width: 284px;" /></a></p>
+</section>
+<section id="erreur-ttl-avec-l-adaptateur-email">
+<h4>21.13.3.2 erreur ttl avec l’adaptateur email<a class="headerlink" href="#erreur-ttl-avec-l-adaptateur-email" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Problèmeavec de nombreux hébergeurs (Yahoo.fr, Gmail, Orange, ..) ;</p>
+<p>mon site est hébergé chez IONOS (1and1) et l’adaptateur fonctionne correctement.</p>
+<p><a class="reference internal" href="../_images/image1535.webp"><img alt="image1535" src="../_images/image1535.webp" style="width: 600px;" /></a></p>
+</section>
+</section>
+<section id="passer-le-port-serie-a-un-2eme-ct-non-privilegie">
+<h3>21.13.4 Passer le port série à un 2eme CT non privilégié<a class="headerlink" href="#passer-le-port-serie-a-un-2eme-ct-non-privilegie" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Sur mon installation Domoticz écoute sur le port serie , shell de pve:</p>
+<p><a class="reference internal" href="../_images/image1517.webp"><img alt="image1517" src="../_images/image1517.webp" style="width: 500px;" /></a></p>
+<p>Plus d’informations dans ce § <a class="reference internal" href="#domoticz"><span class="std std-ref">21.2 Domoticz</span></a></p>
+<p>Il suffit de copier les lignes concernées par cette liaison serie dans la config du CT Domoticz et de les coller dans la config du CT iobroker</p>
+<p><a class="reference internal" href="../_images/image1518.webp"><img alt="image1518" src="../_images/image1518.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1519.webp"><img alt="image1519" src="../_images/image1519.webp" style="width: 700px;" /></a></p>
+</section>
+</section>
+<section id="robot-tondeuse-landroid-worx">
+<h2>21.14 Robot tondeuse Landroid Worx<a class="headerlink" href="#robot-tondeuse-landroid-worx" title="Lien permanent vers cette rubrique"></a></h2>
+<p>les infos sont récupérées depuis io.broker; il faut installer l’adaptateur:</p>
+<p><a class="reference internal" href="../_images/image1418.webp"><img alt="image1418" src="../_images/image1418.webp" style="width: 322px;" /></a></p>
+<p>l’objet worx:</p>
+<p><a class="reference internal" href="../_images/image1419.webp"><img alt="image1419" src="../_images/image1419.webp" style="width: 700px;" /></a></p>
+<p>la page dans monitor:</p>
+<p><a class="reference internal" href="../_images/image1420.webp"><img alt="image1420" src="../_images/image1420.webp" style="width: 543px;" /></a></p>
+<section id="la-page-worx-php-dans-custom-php">
+<h3>21.14.1 la page worx.php dans custom/php<a class="headerlink" href="#la-page-worx-php-dans-custom-php" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="../_images/image1421.webp"><img alt="image1421" src="../_images/image1421.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1422.webp"><img alt="image1422" src="../_images/image1422.webp" style="width: 650px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1423.webp"><img alt="image1423" src="../_images/image1423.webp" style="width: 700px;" /></a></p>
+<p>Pour la mise à jour lors d’une commande (Strart,Home,Pause ou Stop), après chargement du DOM:</p>
+<p><a class="reference internal" href="../_images/image1436.webp"><img alt="image1436" src="../_images/image1436.webp" style="width: 650px;" /></a></p>
+</section>
+<section id="des-dispositifs-enregistres-dans-sql">
+<h3>21.14.2 des dispositifs enregistrés dans SQL<a class="headerlink" href="#des-dispositifs-enregistres-dans-sql" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="../_images/image1427.webp"><img alt="image1427" src="../_images/image1427.webp" style="width: 700px;" /></a></p>
+<p>Enregistrement avec la commande dans « administration »</p>
+<p><a class="reference internal" href="../_images/image1428.webp"><img alt="image1428" src="../_images/image1428.webp" style="width: 423px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>dans ce cas de figure, comme la commande concerne plusieurs états, c’est le nom d’une class qui est indiqué dans id1_html</p>
+</div>
+</section>
+<section id="les-fonctions-php-concernees">
+<h3>21.14.3 Les fonctions PHP concernées<a class="headerlink" href="#les-fonctions-php-concernees" title="Lien permanent vers cette rubrique"></a></h3>
+<p>partie de la fonction devices_plan() consacrée à io.broker</p>
+<p><a class="reference internal" href="../_images/image1429.webp"><img alt="image1429" src="../_images/image1429.webp" style="width: 700px;" /></a></p>
+<p>la fonction sql_1($row,$f1,$ser_dom)</p>
+<p><a class="reference internal" href="../_images/image1430.webp"><img alt="image1430" src="../_images/image1430.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Comme indiqué précédemment, avec maj_js=on=, id1_html est une class</p>
+<p><a class="reference internal" href="../_images/image1431.webp"><img alt="image1431" src="../_images/image1431.webp" style="width: 700px;" /></a></p>
+</div>
+</section>
+<section id="le-javascript-concerne">
+<h3>21.14.4 Le Javascript concerné<a class="headerlink" href="#le-javascript-concerne" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Pour la mise à jour de la page worx.php, il faut ajouter dans custom/JS.js:</p>
+<p><a class="reference internal" href="../_images/image1432.webp"><img alt="image1432" src="../_images/image1432.webp" style="width: 700px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>cette fonction est appelée dans footer.php par devices_plan()</p>
+</div>
+<p>le json reçu par Monitor:</p>
+<p><a class="reference internal" href="../_images/image1433.webp"><img alt="image1433" src="../_images/image1433.webp" style="width: 478px;" /></a></p>
+<p>la partie de la fonction switches() concernant io.broker</p>
+<p><a class="reference internal" href="../_images/image1434.webp"><img alt="image1434" src="../_images/image1434.webp" style="width: 700px;" /></a></p>
+<p>et switchOnOff(app,idm,idx,command,type,level,pass)</p>
+<p><a class="reference internal" href="../_images/image1435.webp"><img alt="image1435" src="../_images/image1435.webp" style="width: 650px;" /></a></p>
+</section>
+<section id="les-styles-css">
+<h3>21.14.5 Les styles css<a class="headerlink" href="#les-styles-css" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="../_images/image1437.webp"><img alt="image1437" src="../_images/image1437.webp" style="width: 533px;" /></a></p>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -506,7 +1683,7 @@ Le système est sauvegardé par le logiciel Raspibackup : <a class="reference ex
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

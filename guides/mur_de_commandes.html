@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8. MUR de COMMANDES &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>8. MUR de COMMANDES &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -55,30 +58,33 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">8. MUR de COMMANDES</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#les-fichiers-de-base">8.1 les fichiers de base</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ecriture-automatique-du-javascript">8.1.1 écriture automatique du javascript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commandes-de-changement-d-etat">8.1.2 Commandes de changement d’état</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#commandes-de-changement-de-couleur-des-lampes">8.1.2.1 Commandes de changement de couleur des lampes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#mur-inter-php">8.2 mur_inter.php</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#exemple-pour-eclairage-jardin">8.2.1 Exemple pour éclairage jardin</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#probleme-de-lecture-de-fichier">8.2.1.1 Problème de lecture de fichier</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#exemple-pour-arrosage-jardin">8.2.2 Exemple pour arrosage jardin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exemple-eclairage-simple-une-lampe-de-salon">8.2.3 Exemple éclairage simple, une lampe de salon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exemple-volet-roulant">8.2.4 Exemple volet roulant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#affichage-sur-le-plan">8.2.4.1 Affichage sur le plan</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dans-le-mur-on-off">8.2.4.2 Dans le mur ON/OFF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#les-scripts-js">8.2.4.3 les scripts JS</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#avec-ajax-et-php">8.2.4.3.1  avec Ajax et PHP</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#avec-mqtt">8.2.4.3.2 avec MQTT</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-avec-node-red">8.2.1 Exemple avec node red</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probleme-de-lecture-de-fichier">8.2.2 Problème de lecture de fichier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-pour-un-eclairage-de-jardin">8.2.3 Exemple pour un éclairage de jardin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-pour-arrosage-jardin">8.2.4 Exemple pour arrosage jardin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-eclairage-simple-une-lampe-de-salon">8.2.5 Exemple éclairage simple, une lampe de salon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-volet-roulant">8.2.6 Exemple volet roulant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#affichage-sur-le-plan">8.2.6.1 Affichage sur le plan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dans-le-mur-on-off">8.2.6.2 Dans le mur ON/OFF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-scripts-js">8.2.6.3 les scripts JS</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#avec-ajax-et-php">8.2.6.3.1  avec Ajax et PHP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#avec-mqtt">8.2.6.3.2 avec MQTT</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#les-groupes-et-scenes">8.3 les Groupes et Scenes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#exemple-avec-domoticz">8.3.1 Exemple avec Domoticz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exemple-avec-home-assistant">8.3.1 Exemple avec Home Assistant</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#les-groupes-et-scenes">8.5 les Groupes et Scenes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-avec-domoticz">8.5.1 Exemple avec Domoticz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-avec-home-assistant">8.5.2 Exemple avec Home Assistant</a></li>
 </ul>
 </li>
 </ul>
@@ -123,12 +129,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="mur-de-commandes">
-<h1>8. MUR de COMMANDES<a class="headerlink" href="#mur-de-commandes" title="Lien permanent vers ce titre"></a></h1>
+  <section id="mur-de-commandes">
+<h1>8. MUR de COMMANDES<a class="headerlink" href="#mur-de-commandes" title="Lien permanent vers cette rubrique"></a></h1>
 <p><a class="reference internal" href="../_images/image574.webp"><img alt="image574" src="../_images/image574.webp" style="width: 528px;" /></a></p>
 <p><a class="reference internal" href="../_images/image575.webp"><img alt="image575" src="../_images/image575.webp" style="width: 629px;" /></a></p>
-<div class="section" id="les-fichiers-de-base">
-<h2>8.1 les fichiers de base<a class="headerlink" href="#les-fichiers-de-base" title="Lien permanent vers ce titre"></a></h2>
+<section id="les-fichiers-de-base">
+<h2>8.1 les fichiers de base<a class="headerlink" href="#les-fichiers-de-base" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Index_loc.php en général ne pas modifier</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">ON_ONOFF</span><span class="o">==</span><span class="n">true</span><span class="p">)</span> <span class="n">include</span> <span class="p">(</span><span class="s2">&quot;include/mur_inter.php&quot;</span><span class="p">);</span>
 </pre></div>
@@ -153,20 +159,132 @@
 <span class="c1">#murinter{background-color: aquamarine;}</span>
 </pre></div>
 </div>
-<div class="section" id="ecriture-automatique-du-javascript">
-<h3>8.1.1 écriture automatique du javascript<a class="headerlink" href="#ecriture-automatique-du-javascript" title="Lien permanent vers ce titre"></a></h3>
+<section id="ecriture-automatique-du-javascript">
+<h3>8.1.1 écriture automatique du javascript<a class="headerlink" href="#ecriture-automatique-du-javascript" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Effectuée par une fonction PHP à partir de la base de données</p>
+<p><a class="reference internal" href="../_images/image1212.webp"><img alt="image1212" src="../_images/image1212.webp" style="width: 650px;" /></a></p>
 <p>Extrait de la page html pour des commandes pour Domoticz et Home Assistant:</p>
 <p><a class="reference internal" href="../_images/image580.webp"><img alt="image580" src="../_images/image580.webp" style="width: 700px;" /></a></p>
 <p>voir le §  <a class="reference internal" href="bien_debuter.html#les-dispositifs"><span class="std std-ref">0.3.2 Les Dispositifs</span></a>  <em>exemple des scripts générés automatiquement</em></p>
+</section>
+<section id="commandes-de-changement-d-etat">
+<h3>8.1.2 Commandes de changement d’état<a class="headerlink" href="#commandes-de-changement-d-etat" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="admonition-les-fonctions-php admonition">
+<p class="admonition-title">les fonctions PHP</p>
+<p><strong>pour l’API Home Assistant</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function devices_id($deviceid,$type,$value=&quot;&quot;,$pass=0){$post=&quot;&quot;;global $L_ha;
+  $mat=explode(&#39;.&#39;,$deviceid);$mat=$mat[0];
+  switch ($type) {
+  case &quot;etat&quot; :
+  $api=&quot;api/states/&quot;.$deviceid;$mode=1;
+  break;
+  case &quot;service&quot; :
+  $api=&quot;api/services&quot;;$mode=1;
+  break;
+  case &quot;on&quot; :
+  $mode=2;
+  if ($mat==&quot;input_boolean&quot;) {$api=&quot;api/services/input_boolean/turn_on&quot;;$post=&#39;{&quot;entity_id&quot;: &quot;&#39;.$deviceid.&#39;&quot;}&#39;;}
+  if ($mat==&quot;switch&quot;) {$api=&quot;api/services/switch/turn_on&quot;;$post=&#39;{&quot;entity_id&quot;: &quot;&#39;.$deviceid.&#39;&quot;}&#39;;}
+  if ($mat==&quot;light&quot;) {$api=&quot;api/services/light/turn_on&quot;;$post=&#39;{&quot;entity_id&quot;: &quot;&#39;.$deviceid.&#39;&quot;}&#39;;}
+  break;
+  case &quot;off&quot; :
+  $mode=2;
+  if ($mat==&quot;input_boolean&quot;) {$api=&quot;api/services/input_boolean/turn_off&quot;;$post=&#39;{&quot;entity_id&quot;: &quot;&#39;.$deviceid.&#39;&quot;}&#39;;}
+  if ($mat==&quot;switch&quot;) {$api=&quot;api/services/switch/turn_off&quot;;$post=&#39;{&quot;entity_id&quot;: &quot;&#39;.$deviceid.&#39;&quot;}&#39;;}
+  if ($mat==&quot;light&quot;) {$api=&quot;api/services/light/turn_off&quot;;$post=&#39;{&quot;entity_id&quot;: &quot;&#39;.$deviceid.&#39;&quot;}&#39;;}
+  break;
+  case 4 :// dimmer, &quot;entity_id&quot;:&quot;light.salon&quot;, &quot;brightness&quot;: 255, &quot;rgb_color&quot;: [20,30,20]
+  $mode=2;$value=str_replace(&#39;rgb&#39;,&#39;&#39;,$value);$value=str_replace(&#39;(&#39;,&#39;[&#39;,$value);$value=str_replace(&#39;)&#39;,&#39;]&#39;,$value);
+  $api=&quot;api/services/light/turn_on&quot;;$post=&#39;{&quot;entity_id&quot;: &quot;&#39;.$deviceid.&#39;&quot;, &quot;brightness&quot;: 255, &quot;rgb_color&quot;: &#39;.$value.&#39;}&#39;;
+  break;
+  case &quot;value&quot; :
+  $mode=2;
+  if ($mat==&quot;input_text&quot;) {$api=&quot;api/services/input_text/set_value&quot;;$post=&#39;{&quot;entity_id&quot;: &quot;&#39;.$deviceid.&#39;&quot; , &quot;value&quot; : &quot;&#39;.$value.&#39;&quot; }&#39;;}
+  break;
+  default:
+  }
+  $L=$L_ha.$api;
+
+  $ha=file_http_curl($L,$mode,$post);
+  $data = json_decode($ha, true);
+  $data[&#39;resultat&#39;]=&quot;OK&quot;;
+
+  return json_encode($data);}
+</pre></div>
 </div>
+<p><strong>pour l’API de Domoticz</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass=&quot;0&quot;){$auth=9;global $L_dz;
+  // exemple : http://192.168.1.75:8082/json.htm?type=command&amp;param=udevice&amp;idx=84&amp;nvalue=Off&amp;svalue=2
+  //  /json.htm?type=command&amp;param=switchlight&amp;idx=99&amp;switchcmd=Set%20Level&amp;level=6
+  //  /json.htm?type=command&amp;param=setcolbrightnessvalue&amp;idx=99&amp;hex=RRGGBB&amp;brightness=100&amp;iswhite=false
+  if ($pass==&quot;0&quot;) {$auth=0;}
+  if ((($pass==NOM_PASS_CM)&amp;&amp;($_SESSION[&#39;passwordc&#39;]==PWDCOMMAND))&amp;&amp;($_SESSION[&#39;timec&#39;]&gt;time())) {$auth=1;}
+  if (($pass==NOM_PASS_AL)&amp;&amp;($_SESSION[&#39;passworda&#39;]==PWDALARM)&amp;&amp;($_SESSION[&#39;time&#39;]&gt;time())) {$auth=2;}
+  if ($auth&lt;3){$json2=&quot;json.htm?type=command&amp;param=&quot;;
+  // $type=1 .....
+  if ($type==1){$json1=&#39;udevice&amp;idx=&#39;.$idx.&#39;&amp;nvalue=group%20on&amp;svalue=2&#39;;}
+  // $type=2 .....ON/OFF
+  if ($type==2){$json1=&#39;switchlight&amp;idx=&#39;.$idx.&#39;&amp;switchcmd=&#39;.$valeur;}
+  // $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
+  if ($type==3){$json1=&#39;switchlight&amp;idx=&#39;.$idx.&#39;&amp;switchcmd=Set%20Level&amp;level=&#39;.$level;}
+  // $type=4 Réglez une lumière RVB dimmable
+  if ($type==4){$hex=substr($valeur,1,6);$json1=&#39;setcolbrightnessvalue&amp;idx=&#39;.$idx.&#39;&amp;hex=&#39;.$hex.&#39;&amp;brightness=&#39;.$level.&#39;&amp;iswhite=false&#39;;}
+  $json= $L_dz.$json2.$json1;
+  $json_string=file_get_curl($json);
+  $result = json_decode($json_string, true);
+  }
+  else {$result[&#39;status&#39;]=&quot;acces interdit&quot;;}
+  return $result ;
+</pre></div>
 </div>
-<div class="section" id="mur-inter-php">
-<h2>8.2 mur_inter.php<a class="headerlink" href="#mur-inter-php" title="Lien permanent vers ce titre"></a></h2>
+<p><strong>pour l’API de Io.broker</strong> , avec <span class="darkblue">ioBroker Swagger UI</span>, voir le § <a class="reference internal" href="bien_debuter.html#pour-iobroker"><span class="std std-ref">0.2.3.3 pour IoBroker</span></a></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span> function set_object($device,$type,$value,$pass=0){
+  global $Token_iob,$port_api_iob,$IP_iob;
+  //http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false
+  $id=&quot;&quot;;$mode=1;$device=$device.&quot;.&quot;.$type;
+
+ $L=$IP_iob.&#39;:&#39;.$port_api_iob.&#39;/v1/state/&#39;.$device.&#39;?value=&#39;.$value;
+ $iob=file_get_curl($L);
+ return $iob;
+}
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition-les-fonctions-javascript admonition">
+<p class="admonition-title">les fonctions Javascript</p>
+<p><a class="reference internal" href="../_images/image1214.webp"><img alt="image1214" src="../_images/image1214.webp" style="width: 670px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1213.webp"><img alt="image1213" src="../_images/image1213.webp" style="width: 700px;" /></a></p>
+</div>
+<section id="commandes-de-changement-de-couleur-des-lampes">
+<h4>8.1.2.1 Commandes de changement de couleur des lampes<a class="headerlink" href="#commandes-de-changement-de-couleur-des-lampes" title="Lien permanent vers cette rubrique"></a></h4>
+<p>le color picker jscolor.js est utilisé: <a class="reference external" href="https://jscolor.com/">https://jscolor.com/</a></p>
+<p><a class="reference internal" href="../_images/image1409.webp"><img alt="image1409" src="../_images/image1409.webp" style="width: 341px;" /></a></p>
+<p>la fonction suivante permet d’envoyer aux api (DZ, HA, IOB) la couleur choisie dans le format approprié (Hex pour DZ et IOB et rgb pour HA)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function test_rgb($rgb2){
+ $data_rgb = [
+ &#39;command&#39; =&gt; &quot;13&quot;,
+ &#39;ID1_html&#39; =&gt; $rgb2
+ ];
+ $rvb=mysql_app($data_rgb);$majjs=$rvb[&#39;maj_js&#39;];$idx=$rvb[&#39;idx&#39;];$erveur=$rvb[&#39;Actif&#39;];$ID=$rvb[&#39;ID&#39;];
+     if ($majjs == &quot;onoff_rgb&quot; &amp;&amp; $erveur==&quot;2&quot;) $input=&#39;&lt;input type=&quot;hidden&quot; id=&quot;type&quot; value=&quot;4&quot;&gt;&lt;input type=&quot;hidden&quot; id=&quot;app&quot; value=&quot;OnOff&quot;&gt;&lt;input type=&quot;hidden&quot; id=&quot;idx&quot; value=&quot;&#39;.$idx.&#39;&quot;&gt;&lt;input style=&quot;width:9px;&quot; data-jscolor=&quot;{}&quot; id=&quot;rgb&quot;&gt;&#39;;
+     if ($majjs == &quot;onoff_rgb&quot; &amp;&amp; $erveur==&quot;3&quot;) $input=&#39;&lt;input type=&quot;hidden&quot; id=&quot;type&quot; value=&quot;4&quot;&gt;&lt;input type=&quot;hidden&quot; id=&quot;app&quot; value=&quot;turn&quot;&gt;&lt;input type=&quot;hidden&quot; id=&quot;idx&quot; value=&quot;&#39;.$ID.&#39;&quot;&gt;&lt;input style=&quot;width:9px;&quot; data-jscolor=&quot;{format:\&#39;rgb\&#39;}&quot; id=&quot;rgb&quot;&gt;&#39;;
+     echo $input.&#39;&lt;button type=&quot;button&quot; onclick=&quot;adby(10);&quot; style=&quot;width:38px;height:28px&quot;&gt;OK&lt;/button&gt;&#39;;
+ }
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1410.webp"><img alt="image1410" src="../_images/image1410.webp" style="width: 700px;" /></a></p>
+</section>
+</section>
+</section>
+<section id="mur-inter-php">
+<h2>8.2 mur_inter.php<a class="headerlink" href="#mur-inter-php" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference internal" href="../_images/image582.webp"><img alt="image582" src="../_images/image582.webp" style="width: 700px;" /></a></p>
-<div class="section" id="exemple-pour-eclairage-jardin">
-<h3>8.2.1 Exemple pour éclairage jardin<a class="headerlink" href="#exemple-pour-eclairage-jardin" title="Lien permanent vers ce titre"></a></h3>
+<section id="exemple-avec-node-red">
+<h3>8.2.1 Exemple avec node red<a class="headerlink" href="#exemple-avec-node-red" title="Lien permanent vers cette rubrique"></a></h3>
 <p>L’interrupeur mécanique de l’éclairage extérieur de l’entrée commande également en zigbee l’éclairage du jardin.</p>
+<p>Cette solution est un exemple pour des cas paticuliers ; la solution plus simple est d’utiliser un groupe ou une scène.</p>
 <p><a class="reference internal" href="../_images/image583.webp"><img alt="image583" src="../_images/image583.webp" style="width: 300px;" /></a> <a class="reference internal" href="../_images/image584.webp"><img alt="image584" src="../_images/image584.webp" style="width: 300px;" /></a></p>
 <p><strong>Domoticz</strong> , Les capteurs virtuels</p>
 <p><a class="reference internal" href="../_images/image585.webp"><img alt="image585" src="../_images/image585.webp" style="width: 612px;" /></a></p>
@@ -180,7 +298,7 @@
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><strong>Ce script automatique de Domoticz ne suffit pas en cas de commande de l’interrupteur car le délai de réponse peut atteindre plus de 10 s, il faut donc envoyer un message MQTT à partir de l’interrupteur virtuel.</strong></p>
+<p><strong>Ce script automatique de Domoticz ne suffit pas en cas de commande de l’interrupteur car le délai de réponse de domoticz/out peut atteindre plus de 10 s, il faut donc envoyer un message MQTT à partir de l’interrupteur virtuel.</strong></p>
 </div>
 <div class="admonition-le-script-python-lance-par-la-lampe-ext-entree admonition">
 <p class="admonition-title"><strong>Le script python lancé par la « lampe_ext_entree »</strong></p>
@@ -197,8 +315,9 @@ l’interrupteur « lampe_ext_entree » est actionné</p>
 </div>
 <p><a class="reference internal" href="../_images/paho.png"><img alt="paho" src="../_images/paho.png" style="width: 100px;" /></a></p>
 <p><a class="reference external" href="https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php">https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php</a></p>
-<div class="section" id="probleme-de-lecture-de-fichier">
-<h4>8.2.1.1 Problème de lecture de fichier<a class="headerlink" href="#probleme-de-lecture-de-fichier" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="probleme-de-lecture-de-fichier">
+<h3>8.2.2 Problème de lecture de fichier<a class="headerlink" href="#probleme-de-lecture-de-fichier" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Pour éviter des erreurs (512, 256), penser à convertir le fichier python en Unix s’il a été créé
 avec Notepad++</p>
 <div class="admonition-dos2unix-installation-et-commande-bash-pour-convertir-le-fichier-en-unix admonition">
@@ -216,7 +335,11 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 <p>Attention aussi aux autorisations</p>
 <p><a class="reference internal" href="../_images/image590.webp"><img alt="image590" src="../_images/image590.webp" style="width: 465px;" /></a></p>
 </div>
-<p><strong>Le plan</strong>: l’interrupteur est ajouté</p>
+</section>
+<section id="exemple-pour-un-eclairage-de-jardin">
+<h3>8.2.3 Exemple pour un éclairage de jardin<a class="headerlink" href="#exemple-pour-un-eclairage-de-jardin" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Cet exemple est choisi car un interrupteur sur le mur de commandes allume plusieurs lampes dont l’allumage doit aussi être visible sur le plan extérieur.</p>
+<p><strong>Le plan</strong>: un interrupteur est ajouté</p>
 <p><a class="reference internal" href="../_images/image592.webp"><img alt="image592" src="../_images/image592.webp" style="width: 511px;" /></a></p>
 <p><strong>monitor</strong> le fichier exterieur.php</p>
 <p>Les lampes concernées en gris et jaune</p>
@@ -233,10 +356,6 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 <p><strong>La Base de Données</strong></p>
 <p><a class="reference internal" href="../_images/image597.webp"><img alt="image597" src="../_images/image597.webp" style="width: 624px;" /></a></p>
 <p><strong>Le Javascript</strong> dans footer.php</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>La mise à jour de tous les dispositifs est automatique mais avec un temps de réponse, aussi pour la commande des interrupteurs le second script permet une mise à jour instantanée</strong></p>
-</div>
 <ul class="simple">
 <li><p><em>maj_devices()</em></p></li>
 </ul>
@@ -245,10 +364,13 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 <li><p><em>maj_mqtt()</em> , remplace depuis la version 2.2.7 maj_switch()</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image599.webp"><img alt="image599" src="../_images/image599.webp" style="width: 650px;" /></a></p>
-</div>
-</div>
-<div class="section" id="exemple-pour-arrosage-jardin">
-<h3>8.2.2 Exemple pour arrosage jardin<a class="headerlink" href="#exemple-pour-arrosage-jardin" title="Lien permanent vers ce titre"></a></h3>
+<blockquote>
+<div><p>la fonction PHP pour établir la table decorrespondance entre idm et ID ou idx</p>
+<p><a class="reference internal" href="../_images/image1416.webp"><img alt="image1416" src="../_images/image1416.webp" style="width: 700px;" /></a></p>
+</div></blockquote>
+</section>
+<section id="exemple-pour-arrosage-jardin">
+<h3>8.2.4 Exemple pour arrosage jardin<a class="headerlink" href="#exemple-pour-arrosage-jardin" title="Lien permanent vers cette rubrique"></a></h3>
 <p><em>Relais Sonoff wifi ip 192.168.x.x :8081</em></p>
 <p><strong>DOMOTICZ</strong> : Le Capteur virtuel :</p>
 <p><a class="reference internal" href="../_images/image601.webp"><img alt="image601" src="../_images/image601.webp" style="width: 502px;" /></a></p>
@@ -278,9 +400,9 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 </div>
 <p><strong>La Base de données</strong></p>
 <p><a class="reference internal" href="../_images/image606.webp"><img alt="image606" src="../_images/image606.webp" style="width: 623px;" /></a></p>
-</div>
-<div class="section" id="exemple-eclairage-simple-une-lampe-de-salon">
-<h3>8.2.3 Exemple éclairage simple, une lampe de salon<a class="headerlink" href="#exemple-eclairage-simple-une-lampe-de-salon" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="exemple-eclairage-simple-une-lampe-de-salon">
+<h3>8.2.5 Exemple éclairage simple, une lampe de salon<a class="headerlink" href="#exemple-eclairage-simple-une-lampe-de-salon" title="Lien permanent vers cette rubrique"></a></h3>
 <p><strong>Dans Domoticz</strong></p>
 <ul class="simple">
 <li><p><em>création d’un dispositif virtuel</em></p></li>
@@ -308,9 +430,9 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 </div></blockquote>
 <p><strong>Affichage</strong> : <span class="green">Eteint</span> / <span class="red">Allumé</span></p>
 <p><a class="reference internal" href="../_images/image618.webp"><img alt="image618" src="../_images/image618.webp" style="width: 270px;" /></a> <a class="reference internal" href="../_images/image619.webp"><img alt="image619" src="../_images/image619.webp" style="width: 270px;" /></a></p>
-</div>
-<div class="section" id="exemple-volet-roulant">
-<h3>8.2.4 Exemple volet roulant<a class="headerlink" href="#exemple-volet-roulant" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="exemple-volet-roulant">
+<h3>8.2.6 Exemple volet roulant<a class="headerlink" href="#exemple-volet-roulant" title="Lien permanent vers cette rubrique"></a></h3>
 <p><em>Le moteur est à 4 fils, piloté par une commande TUYA FT30F et Zigbee2mqtt</em></p>
 <p><a class="reference internal" href="../_images/image620.webp"><img alt="image620" src="../_images/image620.webp" style="width: 467px;" /></a></p>
 <div class="admonition important">
@@ -337,8 +459,8 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 <li><p>ID « volet_bureau » (1er &lt;rect ) pour indiquer le % d’ouverture</p></li>
 <li><p>ID « volet_bureau1 » (2eme &lt;rect ) <span class="red">pour pouvoir cliquer n’importe où sur l’image</span>.</p></li>
 </ul>
-<div class="section" id="affichage-sur-le-plan">
-<h4>8.2.4.1 Affichage sur le plan<a class="headerlink" href="#affichage-sur-le-plan" title="Lien permanent vers ce titre"></a></h4>
+<section id="affichage-sur-le-plan">
+<h4>8.2.6.1 Affichage sur le plan<a class="headerlink" href="#affichage-sur-le-plan" title="Lien permanent vers cette rubrique"></a></h4>
 <p><strong>Le plan</strong> :</p>
 <p><a class="reference internal" href="../_images/image624.webp"><img alt="image624" src="../_images/image624.webp" style="width: 561px;" /></a></p>
 <p>Pour un clic qui fonctionne sans problème, on peut ajouter un rectangle :</p>
@@ -375,9 +497,9 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 <p><a class="reference internal" href="../_images/image631.webp"><img alt="image631" src="../_images/image631.webp" style="width: 239px;" /></a></p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="dans-le-mur-on-off">
-<h4>8.2.4.2 Dans le mur ON/OFF<a class="headerlink" href="#dans-le-mur-on-off" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="dans-le-mur-on-off">
+<h4>8.2.6.2 Dans le mur ON/OFF<a class="headerlink" href="#dans-le-mur-on-off" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>Pour afficher le % d’ouverture</em></p>
 <p>Pour indiquer le % d’ouverture on ajoute un rectangle dans l’image, la hauteur sera fonction du % d’ouverture ; pour cela il faut indiquer dans l’image la hauteur de référence ; sinon un pourcentage s’appliquera à la hauteur déjà modifiée qui diminuera au fil des mises à jour.</p>
 <div class="admonition important">
@@ -427,24 +549,24 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 <p><a class="reference internal" href="../_images/image642.webp"><img alt="image642" src="../_images/image642.webp" style="width: 533px;" /></a></p>
 <p>C’est cette fenêtre qui va envoyer les commandes d’ouverture, fermeture</p>
 </div>
-</div>
-<div class="section" id="les-scripts-js">
-<h4>8.2.4.3 les scripts JS<a class="headerlink" href="#les-scripts-js" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="les-scripts-js">
+<h4>8.2.6.3 les scripts JS<a class="headerlink" href="#les-scripts-js" title="Lien permanent vers cette rubrique"></a></h4>
 <p>2 solutions:</p>
-<div class="section" id="avec-ajax-et-php">
-<h5>8.2.4.3.1  avec Ajax et PHP<a class="headerlink" href="#avec-ajax-et-php" title="Lien permanent vers ce titre"></a></h5>
+<section id="avec-ajax-et-php">
+<h5>8.2.6.3.1  avec Ajax et PHP<a class="headerlink" href="#avec-ajax-et-php" title="Lien permanent vers cette rubrique"></a></h5>
 <p><em>amount=id pour input button</em> voir l’mage du § prec</p>
 <p><a class="reference internal" href="../_images/image643.webp"><img alt="image643" src="../_images/image643.webp" style="width: 634px;" /></a></p>
 <p>Ci-dessus, on récupère idx idm et la commande</p>
 <p><a class="reference internal" href="../_images/image644.webp"><img alt="image644" src="../_images/image644.webp" style="width: 700px;" /></a></p>
-<p>Mise à jour instantanée :</p>
+<p>Mise à jour instantanée : on utilise la fonction qui met à jour dans monitor, les dispositifs si ils sont activés depuis domoticz ou Home Assistant.(d’où son nom maj_mqtt)</p>
 <p><a class="reference internal" href="../_images/image645.webp"><img alt="image645" src="../_images/image645.webp" style="width: 524px;" /></a></p>
-</div>
-<div class="section" id="avec-mqtt">
-<h5>8.2.4.3.2 avec MQTT<a class="headerlink" href="#avec-mqtt" title="Lien permanent vers ce titre"></a></h5>
-<p>C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par le programme. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § <a class="reference internal" href="divers.html#installer-paho-mqtt"><span class="std std-ref">18.2 Installer Paho-mqtt</span></a></p>
+</section>
+<section id="avec-mqtt">
+<h5>8.2.6.3.2 avec MQTT<a class="headerlink" href="#avec-mqtt" title="Lien permanent vers cette rubrique"></a></h5>
+<p>C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par HA ou DZ. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § <a class="reference internal" href="divers.html#installer-paho-mqtt"><span class="std std-ref">18.2 Installer Paho-mqtt</span></a></p>
 <p><a class="reference external" href="https://www.eclipse.org/paho/index.php?page=clients/js/index.php">https://www.eclipse.org/paho/index.php?page=clients/js/index.php</a></p>
-<p>Cette solution est utilisée pour la mise à jour des données en temps réel: <a class="reference internal" href="configuration_minimum.html#solution-temps-reel-mqtt"><span class="std std-ref">1.1.3.2 Solution temps réel MQTT</span></a> et <a class="reference internal" href="configuration_minimum.html#b-rafraichissement-avec-mqtt"><span class="std std-ref">1.3.5.1.b rafraichissement avec MQTT</span></a></p>
+<p>Cette solution est aussi utilisée pour la mise à jour des données en temps réel: <span class="xref std std-ref">1.1.3.2 Solution temps réel MQTT</span> et <span class="xref std std-ref">1.3.5.1.b rafraichissement avec MQTT</span></p>
 <p><a class="reference internal" href="../_images/image646.webp"><img alt="image646" src="../_images/image646.webp" style="width: 648px;" /></a></p>
 <p><a class="reference internal" href="../_images/image647.webp"><img alt="image647" src="../_images/image647.webp" style="width: 650px;" /></a></p>
 <p>Ce fichier est chargé automatiquement dans footer.php si MQTT est à true dans /admin/config</p>
@@ -475,12 +597,12 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 </div>
 <p><strong>La commande</strong> :</p>
 <p><a class="reference internal" href="../_images/image652.webp"><img alt="image652" src="../_images/image652.webp" style="width: 523px;" /></a></p>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="les-groupes-et-scenes">
-<h2>8.3 les Groupes et Scenes<a class="headerlink" href="#les-groupes-et-scenes" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+</section>
+</section>
+<section id="les-groupes-et-scenes">
+<h2>8.5 les Groupes et Scenes<a class="headerlink" href="#les-groupes-et-scenes" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference internal" href="../_images/image493.webp"><img alt="image493" src="../_images/image493.webp" style="width: 450px;" /></a></p>
 <p>exemples avec des groupes et scènes simples</p>
 <p>Le dispositif de commande (bouton virtuel) est enregistré dans la base de données de la même façon  que tous les dispositifs;pour différencier ce fonctionnement l” idm du dispositif commencera par :</p>
@@ -489,8 +611,8 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 <li><p>S: pour scène</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image475.webp"><img alt="image475" src="../_images/image475.webp" style="width: 396px;" /></a></p>
-<div class="section" id="exemple-avec-domoticz">
-<h3>8.3.1 Exemple avec Domoticz<a class="headerlink" href="#exemple-avec-domoticz" title="Lien permanent vers ce titre"></a></h3>
+<section id="exemple-avec-domoticz">
+<h3>8.5.1 Exemple avec Domoticz<a class="headerlink" href="#exemple-avec-domoticz" title="Lien permanent vers cette rubrique"></a></h3>
 <p>le groupe « Allumage Jardin ALL »</p>
 <p>Pur chaque interrupteur qui peut commander plusieurs lampes, il est possible d’ajouter une extinction personnalisée.</p>
 <p><a class="reference internal" href="../_images/image474.webp"><img alt="image474" src="../_images/image474.webp" style="width: 524px;" /></a></p>
@@ -498,18 +620,18 @@ installation  et commande bash pour convertir le fichier en Unix</p>
 <p><a class="reference internal" href="../_images/image478.webp"><img alt="image478" src="../_images/image478.webp" style="width: 382px;" /></a></p>
 <p>Comme pour tous les dispositifs ON/OFF le Jquery est écrit automatiquement dans le HTML</p>
 <p><a class="reference internal" href="../_images/image492.webp"><img alt="image492" src="../_images/image492.webp" style="width: 557px;" /></a></p>
-</div>
-<div class="section" id="exemple-avec-home-assistant">
-<h3>8.3.1 Exemple avec Home Assistant<a class="headerlink" href="#exemple-avec-home-assistant" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="exemple-avec-home-assistant">
+<h3>8.5.2 Exemple avec Home Assistant<a class="headerlink" href="#exemple-avec-home-assistant" title="Lien permanent vers cette rubrique"></a></h3>
 <p>le groupe « Lumieres_jardin »</p>
 <p>Contrairement à Domoticz l’extinction des lampes commandées par un interrupteur, provoque également l’extinction des lampes des autres interrupteurs du groupe.</p>
 <p><a class="reference internal" href="../_images/image494.webp"><img alt="image494" src="../_images/image494.webp" style="width: 650px;" /></a></p>
 <p><a class="reference internal" href="../_images/image495.webp"><img alt="image495" src="../_images/image495.webp" style="width: 399px;" /></a></p>
 <p>Comme pour DZ, on enregistre la commande dans la base de données; les données sont pour la plupart les même puisque les lampes sont les mêmes</p>
 <p><a class="reference internal" href="../_images/image496.webp"><img alt="image496" src="../_images/image496.webp" style="width: 421px;" /></a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -522,7 +644,7 @@ installation  et commande bash pour convertir le fichier en Unix</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

@@ -86,61 +86,69 @@ Pour le lexique :
 
 1.1.2 intervalles de maj
 ------------------------
-L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) : il est de ½ heure (1800000 milli secondes), il peut être changé
- 
+L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) et les dispositifs, il peut être changé: 
+- il est de ½ heure (1800000 milli secondes) pour les variables (services) 
+- il est se 3Os pour les dispositifs avec un minimum de 5 secondes.
+
 .. code-block::
 
    // interval de maj des fonctions JS maj_services() & maj_devices()
    define('TEMPSMAJSERVICES', 1800000);//interval maj services en milli secondes
    define('TEMPSMAJSERVICESAL', 180000);//interval maj services ALARME ABSENCE(si installée) en milli secondes
-   define('TEMPO_DEVICES', 180000);// en milli secondes
-   define('TEMPO_DEVICES_DZ', 30000);// en milli secondes (>=5s, <30s) maj déclenchée par Dz voir doc
-   define('TEMPO_DEVICES_MQTT', false);// Si true toutes les autres tempos sont false
-
+   define('TEMPO_DEVICES', 180000);// en milli secondes, rafraichissement programmé(dispositifs non prioritaires)
+   define('TEMPO_DEVICES_D', 30000);// en milli secondes (>=5s, <30s) maj déclenchée par Dz ou Ha voir doc
+   
 .. IMPORTANT:: 
 
-   TEMPO_DEVICES_MQTT', true : TEMP REEL ,TEMPO_DEVICES_DZ est annulé
+   Si define('SSE', true) = TEMP REEL :  :red:'TEMPO_DEVICES_DZ est annulé'.
 
-   un serveur MQTT doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
+   un serveur SSE doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
 
 .. note::
-   *TEMPO_DEVICES* pour tous les dispositifs\ 
-   *TEMPO_DEVICES_DZ et TEMPO_DEVICES_MQTT** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
+   *TEMPO_DEVICES* pour tous les dispositifs
+
+   *TEMPO_DEVICES_D ou serveur SSE** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
 
 1.1.3 maj en temps réel
 -----------------------
 2 solutions :
 
-- semi temps réel , monitor interroge une variable mis à jour par Domoticz lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.
+- semi temps réel , monitor interroge une variable mis à jour par Dz ou Ha lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.C'est la solution historique de monitor mais la solution SSE-php, incluse dans monitor est à privilégier.cette solution sera obsolète dans les prochaines versions
 
-- temps réel, en recevant de Domoticz , par un topic MQTT, les données du dispositifs qui à changé de valeur 
+- temps réel, en recevant de Domoticz ou Home Assistant, par un message depuis un SSE(Server-sent Events) , les données du dispositifs qui ont changées de valeur 
 
 .. note::
 
-   **TEMPO_DEVICES_DZ** : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)
+   **TEMPO_DEVICES_D** : avec la valeur dans config.php, rafraichissement des dispositifs toutes les 30 secondes pouvant être ramenée à 5 secondes ( si par exemple un PIR, un contact de porte,  qui sont déclarés prioritaires dans DZ passent à ON)
 
-   - Avantage : simplicité de mise en oeuvre , création d'une variable dans DZ et ajout d'une ligne de script DzVent.
+   - Avantage : simplicité de mise en oeuvre , création d'une variable dans DZ ou HA et ajout d'une (ou plusieurs) ligne(s)  de script (DzVent ou yaml).
 
-   - Inconvénients : Retard dans la mise à jour de 15 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écrans ; le second écran sera mis à jour lors de la mise à jour cyclique.
- 	avec les groupes, les scènes ou automatisations le retard du rafraichissement peut être pénible.
+   - Inconvénients : Retard dans la mise à jour de 5 secondes minimum , si 2 écrans (2 navigateurs sont connectés) la mise à jour est effective sur un seul des écrans ; le second écran sera mis à jour lors de la mise à jour cyclique.
+ 	avec les groupes, les scènes ou automatisations ce retard du rafraichissement peut être désagréable.
 
    |image126|
 
-   **TEMPO_DEVICES_MQTT**
+   **Seveur SSE** pour l'installation d'un serveur node.js voir ce § :ref:'21.12 Serveur SSE Node JS'
 
-   - Avantages : Vrai temps réel, économise de la bande passante
+   - Avantages : Vrai temps réel, économise de la bande passante; un serveur SSE PHP est déjà installé dans monitor , la création d'un script pour envoyer les données depuis DZ ou HA est simple;
 
-   - Inconvénients(facilement surmontables) : Installation d'un serveur MQTT, de Paho , création d'un script pour envoyer les données depuis DZ ou HA ; le client MQTT dans Javascript est déjà installé, il suffit de mettre en service MQTT
+   - Inconvénients : Installation d'un serveur JS pour la version SSE NodeJS ;  
+
+   .. IMPORTANT::
+
+      En https,pour des connexions distantes, il suffit de demander des certificats Let'encrypt; le serveur SSE-PHP installé dans monitor n'a pas besoin de certificat contrairement à un serveur SSE Node.JS 
 
 1.1.3.1 Solution semi temps réel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:red:`Cette solution est obsolète et sera supprimée dans les futures version`.
+
 La fonction JS :
 
 .. code-block::
 
    <?php
    if (MQTT==false) echo '
-   tempo_devices='.TEMPO_DEVICES_DZ.';
+   tempo_devices='.TEMPO_DEVICES_D.';
    var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
    var_sp(idsp);
    function var_sp(idsp){
@@ -152,10 +160,10 @@ La fonction JS :
    setTimeout(var_sp, tempo_devices, idsp); 	
    }';?>
  
-La fonction PHP qui récupère la valeur de la variable :
+La fonction PHP qui récupère la valeur de la variable Domoticz:
 
 .. code-block::
-
+ 
    // valeur d'une variable
    function val_variable($variable){
    $result=array();	
@@ -166,154 +174,131 @@ La fonction PHP qui récupère la valeur de la variable :
    $value = $lect_var['Value'];	
    return 	$value;
    }
-  
-1.1.3.2 Solution temps réel MQTT
+
+pour Home Assistant l' API monitor peut être  utilisée.
+
+1.1.3.2 Solution temps réel SSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-le script JS dans footer.php:
+Le serveur SSE-NodeJS voir § :ref:`21.12 Serveur SSE Node JS`
+
+Le serveur SSE-PHP voir ce § :ref:`18.10 Serveur SSE installé dans Monitor`
+
+.. note::
+
+   cette solution évite pour l'accès distant la demande d'un certificat pour https
+
+Pour SSE-node, l'IP, le port, sont à déclarer dans /admin/config.php.
+
+Pour SSE-php , indiquer le rafraichissement en secondes.
 
 .. code-block::
 
-   if (MQTT==true) echo '<script src="js/mqttws31.min.js"></script>';?>	
-	<!-- fin des fichiers script -->
-	<!-- scripts-->	
+   define('SSE', false);//  node ou php si serveur SSE utilisé par monitor
+   //pour SSE php
+   define('SSE_SLEEP', 2);//raffraichissement en secondes   
+   // pour SSE node
+   define('SSE_USER', "michel");//user et mot passe 
+   define('SSE_PASS', "<mot passe>");
+   define('SSE_URL', 'socket.<DOMAINE>.ovh');
+   define('SSE_IP', '192.168.1.26');//adresse IP
+   define('SSE_PORT', 3000);// 
+
+.. note::
+
+   Port mqtt: 3000
+
+les scripts JS dans footer.php:
+
+.. admonition:: **Client SSE PHP, solution incluse dans monitor:**
+voir ce paragraphe concernant le serveur :ref:`18.10 Serveur SSE installé dans Monitor`
+
+   .. code-block::
+
+   	if (SSE=='php') {echo "
+      <script>
+         window.onload = function() {
+	// établir un flux et enregistrer les réponses sur la console
+      var source = new EventSource('include/serveur_sse.php');
+      source.addEventListener('message', function(e) {
+      document.getElementById('messages').innerHTML = e.data ;
+      donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;console.log(id_x,state);
+      maj_mqtt(id_x,state,0);
+      }, false);
+      source.addEventListener('open', function(e) {
+      document.getElementById('status').innerText='connecté';
+      }, false);
+      source.addEventListener('error', function(e) {
+      if (e.readyState == EventSource.CLOSED) {
+      document.getElementById('status').innerText='connexion fermée';
+      }
+      }, false);
+      };
+      </script>";}?>
+
+.. admonition:: **Client SSE NodeJS:**
+
+   .. code-block::
+
+	if (SSE=='node') {echo "
 	<script>
-	var connected_flag=0	
-	var mqtt;
-    var reconnectTimeout = 2000;
-	var host="<?php echo MQTT_IP;?>";
-	var port=<?php echo MQTT_PORT;?>;	
-	var stopic="<?php echo MQTT_TOPIC;?>";
+    	const eventSource = new EventSource('http://".SSE_IP.":".SSE_PORT."/events');
+    	eventSource.onopen = function() { document.getElementById('status').innerText='connecté';};
+    	eventSource.onmessage = function (currentEvent) {
+      	const listElement = document.getElementById('messages');
+      	const newElement = document.createElement('li');
+      	const obj = JSON.parse(currentEvent.data);
+	  newElement.innerText = obj[0].info;
 
-	function onConnectionLost(){
-	console.log("connection lost");
-	document.getElementById("status").innerHTML = "Connexion perdue";
-	document.getElementById("messages").innerHTML ="Connexion perdue";
-	connected_flag=0;
-	}
-	function onFailure(message) {
-		console.log("Failed");
-		document.getElementById("messages").innerHTML = "Connexion Failed- Retrying";
-        setTimeout(MQTTconnect, reconnectTimeout);
-        }
-		function onMessageArrived(r_message){
-		out_msg="Message reçu "+r_message.payloadString;
-		out_msg=out_msg+"Message reçu Topic "+r_message.destinationName;
-		console.log(out_msg);
-		var json = JSON.parse(r_message.payloadString);
-		id_x=json.idx;state=json.state;id_m= maj_mqtt(id_x,state,0);
-		document.getElementById("messages").innerHTML =out_msg;
-		}
-	function onConnected(recon,url){
-	console.log(" en onConnected " +reconn);
-	}
-	function disConnect() {
-	if (connected_flag==1) mqtt.disconnect();
-		document.getElementById("status").innerHTML = "déconnecté";
-		document.getElementById("messages").innerHTML ="déconnecté de "+host +" sur le port "+port;
-	}
-	function onConnect() {
-	  // Once a connection has been made, make a subscription and send a message.
-	document.getElementById("messages").innerHTML ="Connecté de "+host +" sur le port "+port;
-	connected_flag=1;
-	document.getElementById("status").innerHTML = "Connecté";
-	console.log("on Connect "+connected_flag);sub_topics(stopic);
-		  }
+      	listElement.appendChild(newElement);
+    	};
+  	</script>";}
 
-    	function MQTTconnect() {
-	document.getElementById("messages").innerHTML ="";
-	
-	console.log("connexion à "+ host +" "+ port);
-	var x=Math.floor(Math.random() * 10000); 
-	var cname="orderform-"+x;
-	mqtt = new Paho.MQTT.Client(host,port,cname);
-	
-	var options = {
-        timeout: 100,
-		onSuccess: onConnect,
-		onFailure: onFailure,
-       	};
-	mqtt.onConnectionLost = onConnectionLost;
-        mqtt.onMessageArrived = onMessageArrived;
-		//mqtt.onConnected = onConnected;
-	mqtt.connect(options);
-	return false;
- 	}
-	function sub_topics(stopic){
-		document.getElementById("messages").innerHTML ="";
-		if (connected_flag==0){
-		out_msg="<b>Not Connected so can't subscribe";
-		console.log(out_msg); 
-		document.getElementById("messages").innerHTML = out_msg;
-		return false;
-		}
-	//var stopic= document.forms["subs"]["Stopic"].value;
-	console.log("Subscribing to topic ="+stopic);
-	mqtt.subscribe(stopic);
-	return false;
-	}
-	function send_message(){
-		document.getElementById("messages").innerHTML ="";
-		if (connected_flag==0){
-		out_msg="<b>Not Connected so can't send";
-		console.log(out_msg);
-		document.getElementById("messages").innerHTML = out_msg;
-		return false;
-		}
-		var msg = document.forms["smessage"]["message"].value;
-		console.log(msg);
+.. code-block::	
 
-		var topic = document.forms["smessage"]["Ptopic"].value;
-		message = new Paho.MQTT.Message(msg);
-		if (topic=="")
-			message.destinationName = "test-topic"
-		else
-			message.destinationName = topic;
-		mqtt.send(message);
-		return false;
-	}
-
-	function maj_mqtt(id_x,state,ind,level=0){
-	switch (ind) {
+   function maj_mqtt(id_x,state,ind,level=0){
+   switch (ind) {
 	case 0: 
-	var id_m=maj_dev[id_x];
-	var command=state;
-	if (pp[id_m].Data==command)	 break;	
-	pp[id_m].Data=command;
-	console.log(command)
-	var sid1=pp[id_m].ID1;;
-	var sid2=pp[id_m].ID2;
-	var scoul_on=pp[id_m].coul_ON;	
-	var scoul_off=pp[id_m].coul_OFF;
-	var c_l_on=pp[id_m].coullamp_ON
-	var c_l_off=pp[id_m].coullamp_OFF
-	var scoul="";var scoull="";	
-	if (command=="On" || command=="on")  {scoul=scoul_on;scoull=c_l_on;}
-	else if (command.substring(0, 9)=="Set Level")  {scoull=scoull=c_l_on;}
-	else if  (command=="Off"  || command=="off" ) {scoul=scoul_off;scoull=c_l_off;}
-	else return;	
-	document.getElementById(sid1).style = scoul;
-	if (sid2) {document.getElementById(sid2).style = scoul;}
-	var c_lamp= pp[id_m].class_lamp	;console.log("c_lamp="+c_lamp);		
-	if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
+   for (attribute in maj_dev) {
+	if (maj_dev[attribute]==id_x) var id_m=attribute;
+   }
+   var command=state;
+   pp[id_m].Data=command;
+   console.log(command)
+   var sid1=pp[id_m].ID1;;
+   var sid2=pp[id_m].ID2;
+   var scoul_on=pp[id_m].coul_ON;	
+   var scoul_off=pp[id_m].coul_OFF;
+   var c_l_on=pp[id_m].coullamp_ON
+   var c_l_off=pp[id_m].coullamp_OFF
+   var scoul="";var scoull="";	
+   if (command=="On" || command=="on")  {scoul=scoul_on;scoull=c_l_on;}
+   else if (command.substring(0, 9)=="Set Level")  {scoull=scoull=c_l_on;}
+   else if  (command=="Off"  || command=="off" ) {scoul=scoul_off;scoull=c_l_off;}
+   else return;	
+   document.getElementById(sid1).style = scoul;
+   if (sid2) {document.getElementById(sid2).style = scoul;}
+   var c_lamp= pp[id_m].class_lamp	;console.log("c_lamp="+c_lamp);		
+   if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
 	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));
 	console.log("h="+h+parseInt((h*(level)/100)));}
-	break;
-	case 1:scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
-	break;
-	default:
-	break;	
-	}
-	if (c_lamp!="" && scoull!="") {
+   break;
+   case 1:scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
+   break;
+   default:
+   break;	
+   }
+   if (c_lamp!="" && scoull!="") {
 	var elements = document.getElementsByClassName(c_lamp);
 	for (var i = 0; i < elements.length; i++) {
-    	var element = elements[i];
-    	element.style=scoull;}
+    var element = elements[i];
+    element.style=scoull;}
 	}
-	return;
-	}
+   return;
+   }
+
 **explications**: 
 
-2 parties dans ce script, la 1ère partie concerne la publication et la souscription MQTT avec Paho, la 2eme partie, la mise à jour des dispositifs
+2 parties dans ce script, la 1ère partie concerne la réception des évènements avec SSE (php ou node.js), la 2eme partie, la mise à jour des dispositifs
 
 |image906|
 
@@ -365,13 +350,13 @@ Paramètres pour Domoticz ou HA :
    define('URLDOMOTIC1', 'http://192.168.1.5:8123/');//url ex:http://192.168.1.5:8123/
    define('DOMDOMOTIC1', 'https://***********');//domaine
    define('TOKEN_DOMOTIC1',"eyJhb*****************************************************************2k");   
-   //______________Pour Domoticz
+   //*************************modules complémentaires
    define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//
-   define('BASE64', URLDOMOTIC.'modules_lua/connect.lua');//login et password en Base64
-   define('CONF_MODECT', URLDOMOTIC.'modules_lua/string_modect.lua');
+   define('BASE64', 'admin/connect.py');//login et password en Base64
+   define('CONF_MODECT', 'admin/string_modect.json');
 
 .. warning::
-  les variables ci-dessus , VARTAB, BASE64, CONF_MODECT sont à déclarer ici que si elles sont utilisées dans un fichier
+  les variables ci-dessus , VARTAB, BASE64, CONF_MODECT ne sont à déclarer ici que si elles sont utilisées dans un fichier
 
 Le programme démarre avec 3 pages :
 
@@ -379,7 +364,7 @@ Le programme démarre avec 3 pages :
 
 -	Plan intérieur
 
--	Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red:'« admin »'.
+-	Page d’administration, pour afficher cette page, le mot de passe est obligatoire : par défaut :red:`« admin »`.
 
 .. note:: 
 
@@ -424,17 +409,25 @@ Principales fonctions contenues dans ce fichier :
 
    |image138|
 
+   |image1184|
+
 .. admonition:: **function devices_zone** 
 
    API HA pour récupérer les valeurs des dispositifs
 
    |image137|
 
-.. admonition:: **function devices_plan** 
+.. admonition:: **function devices_plan et function sql_plan()** 
 
    API Domoticz pour les devices : les dispositifs doivent être placés dans un plan; celui-ci peut se résumer à un rectangle ou un carré
 
+   |image1414|
+
    |image139|
+
+   |image1413|
+
+   |image1328|
 
    |image140|
 
@@ -450,12 +443,12 @@ Principales fonctions contenues dans ce fichier :
    
    si la tablette reste allumée en permanence,la date ne sera pas mise à jour en absence de rafraichissement
    
-   On crée un idx=0 qui n'existe pas , aussi avec cet idx la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php) 
+   On crée un maj_date=0 avec lequel la maj sera forcée (voir la fonction maj_devices(plan) dans footer.php) 
 
    .. code-block::
 
       $data[0] = ['jour' => date('d'),
-                  'idx' => '0'];
+                  'maj_date' => '0'];
 
    **Maj état des piles des dispositifs**
 
@@ -669,10 +662,11 @@ voir dans ce même chapitre le § :ref:`1.1.3 maj en temps réel`
 
 1.3.5.1.a rafrichissement de la page avec une variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif dans Domoticz, 
-une variable est mise à « 1 » ; 
+La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif, une variable est mise à « 1 » ; 
 
 monitor qui scrute en permanence cette valeur importe les données de tous les dispositifs si cette variable est à 1.
+
+**Exemple pour Domoticz
 
 |image155|
 
@@ -684,72 +678,65 @@ la variable:
 
 |image158|
 
-1.3.5.1.b rafraichissement avec MQTT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*Dans Domoticz*
+1.3.5.1.b rafraichissement avec SSE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On utilise une fonction qui appelle un script python
+.. admonition:: **Dans Domoticz**
 
-.. code-block::
+   - Soit on utilise une fonction qui appelle un script python si le serveur est sous Node.js
 
-   function send_topic(txt,txt1)
-   os.execute('/opt/domoticz/userdata/scripts/python/mqtt.py  monitor/dz idx '..txt..' state '..txt1..'   >>  /opt/domoticz/userdata/push3.log 2>&1');
-   end
+   .. code-block::
 
-Le script Python
+      function send_topic(txt,txt1)
+      local sse = 'python3 userdata/scripts/python/sse.py '..txt..' '..txt1..' >>  /opt/domoticz/userdata/sse.log 2>&1' ;
+      print(sse);
+      os.execute(sse)
+      end
 
-.. code-block::
+   - soit on utilise l' API monitor si le serveur est sous PHP , voir ce § :ref:`0.12 API de monitor`  
+   
+   .. seealso:: 
 
-   #!/usr/bin/env python3
-   # -*- coding: utf-8 -*-
+      Voir le § :ref:`21.12.2.1 Depuis Domoticz`
 
-   import paho.mqtt.client as mqtt
-   import json
-   import sys
-   from connect import ip_mqtt
-   # Define Variables
-   total_arg = len(sys.argv)
-   topic= str(sys.argv[1])
-   etat= str(sys.argv[2]) 
-   valeur= str(sys.argv[3]) 
-   MQTT_HOST = ip_mqtt
-   MQTT_PORT = 1883
-   MQTT_KEEPALIVE_INTERVAL = 45
-   MQTT_TOPIC = topic
-   MQTT_MSG=json.dumps({etat: valeur});
-   if total_arg >4 :
-       etat1=str(sys.argv[4])
-       valeur1=str(sys.argv[5])
-       MQTT_MSG=json.dumps({etat: valeur,etat1: valeur1});
-   # Define on_publish event function
-   def on_publish(client, userdata, mid):
-       print ("Message Published...")
-   def on_connect(client, userdata, flags, rc):
-       client.subscribe(MQTT_TOPIC)
-       client.publish(MQTT_TOPIC, MQTT_MSG)
-   def on_message(client, userdata, msg):
-       print(msg.topic)
-       print(msg.payload) # <- do you mean this payload = {...} ?
-       payload = json.loads(msg.payload) # you can use json.loads to convert string to json
-       #print(payload['state_l2']) # then you can check the value
-       client.disconnect() # Got message then disconnect
-   # Initiate MQTT Client
-   mqttc = mqtt.Client()
+.. admonition:: **Dans Home Assistant**
 
-   # Register publish callback function
-   mqttc.on_publish = on_publish
-   mqttc.on_connect = on_connect
-   mqttc.on_message = on_message
-   # Connect with MQTT Broker
-   mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
-   # Loop forever
-   mqttc.loop_forever()
+   - Soit on utilise SSE avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`. voir ce § :ref:`21.10.2 Python avec pyscript`
 
-|image907|
+   - Soit on crée une automation :
 
-*résumé*:
+	. appelant le service :darkblue:`shell_command` pour un serveur Node.js
 
-|image910|
+	. appelant le service :green:`rest_command` pour un serveur PHP
+
+   .. code-block::
+
+      shell_command: 
+          curl_sse:  "curl -X POST  -H 'Content-Type: application/json'  -d '{{ data }}' -s {{ url }}"
+      rest_command:
+        monitor_2:
+          url: "http://192.168.1.9/monitor/api/json.php?app=maj&id={{id}}&contenu={{state}}"
+   
+   .. seealso:: 
+
+      Voir le § :ref:`21.12.2.2 Depuis Home Assistant`
+
+Avec Monitor, vérification de réception des messages:
+
+|image1211|
+
+Domoticz et Home Assistant sont tous deux connectés au serveur mosquitto, ils reçoivent les topics SSE.
+
+1.3.5.1.c Le serveur SSE
+~~~~~~~~~~~~~~~~~~~~~~~~
+Comme indiqué précédemment , 2 possibilites : 
+
+- Sous node.js , il peut être installé sur le serveur principal ou dans une VM ou dans un conteneur, :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
+
+- Sous PHP , il peut être installé sur le serveur web de monitor, voir ce § :ref:`18.10 Installer un serveur SSE PHP`
+
+J'ai installé un serveur Node dans un conteneur LXC Proxmox.
+
 
 1.3.5.2 Quelques infos supplémentaires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -767,7 +754,7 @@ substring(0, 11)=="Set Level
 
 - La fonction **maj_devices(plan)** récupère les données des dispositifs 
 
-- La fonction **json_idx_idm(command)** crée une table d'équivalence idx-<idm
+- La fonction **json_idx_idm(command)** crée une table d'équivalence idm->idx ou ID
 
 .. code-block::
 
@@ -778,11 +765,16 @@ substring(0, 11)=="Set Level
     url: "ajax.php",
     data: "app=idxidm&command="+command,
     success: function(html){}
-    });	 };	
+    });	 };
+
+|image1185|
 
  Un exemple avec set ou get Attribute
 
 |image161|
+
+|image1536|
+
 
   Voir le paragraphe concernant les volets :ref:`8.2.4 Exemple volet roulant`
 
@@ -836,7 +828,13 @@ Le HTML :
       setTimeout('date_heure("'+id+'");','1000');
       return true;}
 
-|image166|
+|image1486|
+
+.. warning::
+
+   Pour la fonction custom_js appelé dans la fonction devices_plan voir le paragraphe consacré aux pages perso.
+
+   voir un exemple d'utilisation dans la page perso consacré au robot Worx :ref:`21.14.4 Le Javascript concerné`
 
 .. note::
    Pour que les icones sur la page d’accueil soient affichées, il faut enregistrer les variables dans la base de Données Maria DB,
@@ -904,8 +902,8 @@ Le fichier Json reçu par monitor après une demande de la fonction devices(plan
 
 |image180|
 
-1.5 liens avec Domoticz ou Home Assistant
-=========================================
+1.5 liens avec Domoticz, Home Assistant ou io.broker
+====================================================
 1.5.1 Liens avec Domoticz
 -------------------------
 
@@ -1054,6 +1052,7 @@ script lua
 
 1.5.2 Liens avec Home Assistant
 -------------------------------
+Les services gérés peuvent être les même que pour Domoticz ; au lieu de Lua les scripts sont écrit en Yaml. 
 
 .. note::
 
@@ -1206,6 +1205,76 @@ Enregistrer le fichier modifier, vérifier la configuration et **redémarrer Hom
 
 |image1097|
 
+1.5.4 Liens avec io.broker
+--------------------------
+Au lieu d'utiliser Lua(Dz) ou Yaml(Ha), on utilise plutôt Javascript 
+
+Avec io.broker , 2 solutions:
+
+- soit on utilise l'API comme pour Domoticz ou Home Assistant
+
+- soit on crée de belles pages avec Vis 2.0 et la mise à jour par web socket est automatique, c'est cette solution qui est à privilégier
+
+1.5.4.1  Utlisation de rest-api
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/ioBroker/ioBroker.rest-api
+
+les dispositifs crées automatiquement à partir de la BD
+
+|image1521|
+
+La fonction PHP:
+
+|image1522|
+
+Voir un exemple concret :  :ref:`21.14 Robot tondeuse Landroid Worx`
+
+1.5.4.2 Utlisation de Vis 2.0
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+l'adaptateur est installé: |image1523|
+
+.. admonition:: **Allumage et l'extinction de l'éclairage et affichage de la température**
+
+    |image1525| 
+
+    |image1524| 
+
+   Ajouter une image d'arrière plan:
+
+   |image1526|
+
+   |image1527|
+
+   Ajouter une lampe:
+
+   |image1528|
+
+   |image1529|
+
+   Ajouter la température
+
+   |image1530|
+
+   .. note::
+
+      Pour ajouter quand a eu lieu la dernière mesure
+
+      |image1531|
+
+   Pour ajouter une icone devant la température
+
+  |image1532|
+
+   Résultat en direct
+
+   |image1533|
+
+Affichage dans Monitor:
+
+|image1534|
+
+Voir aussi le § :ref:`21.13 Io.Broker`
+   
 1.6 Lien avec la base de données SQL
 ====================================
 1.6.1- exemple avec la date de ramassage des poubelles
@@ -1345,6 +1414,11 @@ Pour descendre le menu : modifier la class .nav dans css/mes_css.css
 
 |image221|
 
+On peut aussi augmenter la hauteur:
+
+|image1182|  |image1183|
+
+
 1.8 Complément pour les notifications sur l'écran d'accueil
 ===========================================================
 1.8.1 les notifications incluses dans le programme
@@ -1358,9 +1432,8 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 
 1.8.2 Mode d'emploi pour ajouter une notification
 -------------------------------------------------
-
-1.8.2.1  Ecriture d'un script Dzvent(Dz) ou yaml(HA)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.8.2.1 Ecriture d'un script Dzvent ou yaml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jour" (LastUpdate) des dispositifs
 
 .. warning::
@@ -1722,6 +1795,11 @@ Créer 2 automatisations :
 
 |image157|
 
+1.8.2.1.4 Io.Broker
+~~~~~~~~~~~~~~~~~~~
+
+en cours de rédaction
+
 1.8.2.2  La page d'accueil de monitor : include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1947,6 +2025,8 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 650px  
 .. |image141| image:: ../media/image141.webp
    :width: 205px  
+.. |image142| image:: ../media/image142.webp
+   :width: 700px  
 .. |image144| image:: ../media/image144.webp
    :width: 400px  
 .. |image145| image:: ../media/image145.webp
@@ -1990,8 +2070,6 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
 .. |image164| image:: ../media/image164.webp
    :width: 650px  
 .. |image165| image:: ../media/image165.webp
-   :width: 602px  
-.. |image166| image:: ../media/image166.webp
    :width: 602px  
 .. |image167| image:: ../media/image167.webp
    :width: 662px  
@@ -2177,3 +2255,65 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    :width: 530px 
 .. |image1181| image:: ../media/image1181.webp
    :width: 650px 
+.. |image1182| image:: ../media/image1182.webp
+   :width: 292px 
+.. |image1183| image:: ../media/image1183.webp
+   :width: 138px 
+.. |image1184| image:: ../media/image1184.webp
+   :width: 700px 
+.. |image1185| image:: ../media/image1185.webp
+   :width: 214px
+.. |image1186| image:: ../media/image1186.webp
+   :width: 600px
+.. |image1187| image:: ../media/image1187.webp
+   :width: 500px
+.. |image1191| image:: ../media/image1191.webp
+   :width: 600px
+.. |image1192| image:: ../media/image1192.webp
+   :width: 597px
+.. |image1194| image:: ../media/image1194.webp
+   :width: 150px
+.. |image1206| image:: ../img/image1206.webp
+   :width: 301px
+.. |image1211| image:: ../img/image1211.webp
+   :width: 482px
+.. |image1222| image:: ../img/image1222.webp
+   :width: 660px
+.. |image1328| image:: ../img/image1328.webp
+   :width: 700px
+.. |image1413| image:: ../img/image1413.webp
+   :width: 700px
+.. |image1414| image:: ../img/image1414.webp
+   :width: 700px
+.. |image1486| image:: ../img/image1486.webp
+   :width: 700px
+.. |image1521| image:: ../img/image1521.webp
+   :width: 700px
+.. |image1522| image:: ../img/image1522.webp
+   :width: 700px
+.. |image1523| image:: ../img/image1523.webp
+   :width: 300px
+.. |image1524| image:: ../img/image1524.webp
+   :width: 447px
+.. |image1525| image:: ../img/image1525.webp
+   :width: 700px
+.. |image1526| image:: ../img/image1526.webp
+   :width: 660px
+.. |image1527| image:: ../img/image1527.webp
+   :width: 700px
+.. |image1528| image:: ../img/image1528.webp
+   :width: 441px
+.. |image1529| image:: ../img/image1529.webp
+   :width: 700px
+.. |image1530| image:: ../img/image1530.webp
+   :width: 700px
+.. |image1531| image:: ../img/image1531.webp
+   :width: 550px
+.. |image1532| image:: ../img/image1532.webp
+   :width: 700px
+.. |image1533| image:: ../img/image1533.webp
+   :width: 550px
+.. |image1534| image:: ../img/image1534.webp
+   :width: 500px
+.. |image1536| image:: ../img/image1536.webp
+   :width: 700px

@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -104,6 +107,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#integrer-le-pont-hue-a-monitor">13.8.6 Intégrer le Pont Hue à Monitor</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-de-jupyter">13.9 Installation de Jupyter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-du-noyau-configuration">13.9.1 Installation du noyau &amp; configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quelques-verifications">13.9.2 Quelques vérifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#execution-de-jupyter-jupyter-notebook">13.9.3 Exécution de Jupyter: Jupyter notebook</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
@@ -141,10 +150,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="applications-externes-en-lien-avec-domoticz-ha-ou-monitor">
-<h1>13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor<a class="headerlink" href="#applications-externes-en-lien-avec-domoticz-ha-ou-monitor" title="Lien permanent vers ce titre"></a></h1>
-<div class="section" id="affichage-des-notifications-sur-un-televiseur-lg">
-<h2>13.1 Affichage des notifications sur un téléviseur LG<a class="headerlink" href="#affichage-des-notifications-sur-un-televiseur-lg" title="Lien permanent vers ce titre"></a></h2>
+  <section id="applications-externes-en-lien-avec-domoticz-ha-ou-monitor">
+<h1>13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor<a class="headerlink" href="#applications-externes-en-lien-avec-domoticz-ha-ou-monitor" title="Lien permanent vers cette rubrique"></a></h1>
+<section id="affichage-des-notifications-sur-un-televiseur-lg">
+<h2>13.1 Affichage des notifications sur un téléviseur LG<a class="headerlink" href="#affichage-des-notifications-sur-un-televiseur-lg" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Le script optionnel pour la notification sur un téléviseur LG (web os)</p>
 <div class="admonition-prerequis admonition">
 <p class="admonition-title"><strong>PREREQUIS</strong></p>
@@ -250,11 +259,11 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 <li><p><strong>Essai avec la console</strong> :</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image704.webp"><img alt="image704" src="../_images/image704.webp" style="width: 644px;" /></a></p>
-</div>
-<div class="section" id="portier-dahua-vto-2000-et-vto-2022">
-<h2>13.2 Portier Dahua VTO 2000 et VTO 2022<a class="headerlink" href="#portier-dahua-vto-2000-et-vto-2022" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="vto-2000a">
-<h3>13.2.1 VTO 2000A<a class="headerlink" href="#vto-2000a" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="portier-dahua-vto-2000-et-vto-2022">
+<h2>13.2 Portier Dahua VTO 2000 et VTO 2022<a class="headerlink" href="#portier-dahua-vto-2000-et-vto-2022" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="vto-2000a">
+<h3>13.2.1 VTO 2000A<a class="headerlink" href="#vto-2000a" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Voir les pages <a class="reference external" href="http://domo-site.fr/accueil/dossiers/21">http://domo-site.fr/accueil/dossiers/21</a></p>
 <p><a class="reference internal" href="../_images/image705.webp"><img alt="image705" src="../_images/image705.webp" style="width: 601px;" /></a></p>
 <p>Et : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/7">http://domo-site.fr/accueil/dossiers/7</a></p>
@@ -345,10 +354,10 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 <p><a class="reference internal" href="../_images/image718.webp"><img alt="image718" src="../_images/image718.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image719.webp"><img alt="image719" src="../_images/image719.webp" style="width: 650px;" /></a></p>
 </div>
-</div>
-</div>
-<div class="section" id="la-boite-aux-lettres">
-<h2>13.3 -La boite aux lettres<a class="headerlink" href="#la-boite-aux-lettres" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+<section id="la-boite-aux-lettres">
+<h2>13.3 -La boite aux lettres<a class="headerlink" href="#la-boite-aux-lettres" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>Voir domo-site pour la programmation de l’esp8266 , de dzvent et Python</em></p>
 <p><a class="reference internal" href="../_images/image720.webp"><img alt="image720" src="../_images/image720.webp" style="width: 416px;" /></a></p>
 <ul>
@@ -460,9 +469,9 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="surveillance-du-pi-par-domoticz">
-<h2>13.4 Surveillance du PI par Domoticz<a class="headerlink" href="#surveillance-du-pi-par-domoticz" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="surveillance-du-pi-par-domoticz">
+<h2>13.4 Surveillance du PI par Domoticz<a class="headerlink" href="#surveillance-du-pi-par-domoticz" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference internal" href="../_images/image733.webp"><img alt="image733" src="../_images/image733.webp" style="width: 533px;" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -513,9 +522,9 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="capteur-de-pression-chaudiere">
-<h2>13.5 Capteur de pression chaudière<a class="headerlink" href="#capteur-de-pression-chaudiere" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="capteur-de-pression-chaudiere">
+<h2>13.5 Capteur de pression chaudière<a class="headerlink" href="#capteur-de-pression-chaudiere" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>Réalisé avec un microcontrôleur Wemos D1 : pour la partie réalisation du capteur, voir le site web : domo-site.fr</em></p>
 <p><a class="reference internal" href="../_images/image741.webp"><img alt="image741" src="../_images/image741.webp" style="width: 142px;" /></a></p>
 <ul class="simple">
@@ -524,8 +533,8 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 <li><p>Monitor affiche en temps réel les données, l’historique des données, un graphique ,…</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image742.webp"><img alt="image742" src="../_images/image742.webp" style="width: 478px;" /></a></p>
-<div class="section" id="limage-svg">
-<h3>13.5.1 l’image SVG<a class="headerlink" href="#limage-svg" title="Lien permanent vers ce titre"></a></h3>
+<section id="limage-svg">
+<h3>13.5.1 l’image SVG<a class="headerlink" href="#limage-svg" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Elle est ajoutée à <strong>interieur.php</strong> (ci-dessous)  et <strong>accueil.php</strong> (ci-dessus)</p>
 <p><a class="reference internal" href="../_images/image743.webp"><img alt="image743" src="../_images/image743.webp" style="width: 500px;" /></a></p>
 <ul class="simple">
@@ -596,9 +605,9 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 <p><a class="reference internal" href="../_images/image749.webp"><img alt="image749" src="../_images/image749.webp" style="width: 371px;" /></a></p>
 <p>chaudiere_svg.php:</p>
 <p><a class="reference internal" href="../_images/image750.webp"><img alt="image750" src="../_images/image750.webp" style="width: 650px;" /></a></p>
-</div>
-<div class="section" id="dans-domoticz-le-capteur-le-plan-les-variables-et-les-scripts">
-<h3>13.5.2 Dans Domoticz, le capteur, le plan, les variables et les scripts<a class="headerlink" href="#dans-domoticz-le-capteur-le-plan-les-variables-et-les-scripts" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="dans-domoticz-le-capteur-le-plan-les-variables-et-les-scripts">
+<h3>13.5.2 Dans Domoticz, le capteur, le plan, les variables et les scripts<a class="headerlink" href="#dans-domoticz-le-capteur-le-plan-les-variables-et-les-scripts" title="Lien permanent vers cette rubrique"></a></h3>
 <ul class="simple">
 <li><p><strong>le capteur</strong></p></li>
 </ul>
@@ -685,11 +694,11 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
      <span class="n">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="dans-la-base-de-donnees-sql">
-<h3>13.5.3 Dans la Base de données SQL<a class="headerlink" href="#dans-la-base-de-donnees-sql" title="Lien permanent vers ce titre"></a></h3>
-<div class="section" id="creer-une-nouvelle-table">
-<h4>13.5.3.1 Créer une nouvelle table<a class="headerlink" href="#creer-une-nouvelle-table" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="dans-la-base-de-donnees-sql">
+<h3>13.5.3 Dans la Base de données SQL<a class="headerlink" href="#dans-la-base-de-donnees-sql" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="creer-une-nouvelle-table">
+<h4>13.5.3.1 Créer une nouvelle table<a class="headerlink" href="#creer-une-nouvelle-table" title="Lien permanent vers cette rubrique"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> CREATE TABLE `pression_chaudiere` (
 `num` int(5) NOT NULL,
 `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -698,44 +707,44 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
    ALTER TABLE `pression_chaudiere` CHANGE `num` `num` INT(4) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`num`);
 </pre></div>
 </div>
-</div>
-<div class="section" id="mettre-a-jour-la-table-des-dispositifs">
-<h4>13.5.3.2 Mettre à jour la table des dispositifs<a class="headerlink" href="#mettre-a-jour-la-table-des-dispositifs" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="mettre-a-jour-la-table-des-dispositifs">
+<h4>13.5.3.2 Mettre à jour la table des dispositifs<a class="headerlink" href="#mettre-a-jour-la-table-des-dispositifs" title="Lien permanent vers cette rubrique"></a></h4>
 <p>voir paragraphe <a class="reference internal" href="bien_debuter.html#les-dispositifs"><span class="std std-ref">0.3.2 Les Dispositifs</span></a></p>
 <p><a class="reference internal" href="../_images/image764.webp"><img alt="image764" src="../_images/image764.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image765.webp"><img alt="image765" src="../_images/image765.webp" style="width: 700px;" /></a></p>
 <ul class="simple">
 <li><p>Mettre à jour la variables DZ pour l’affichage d’une notification sur l’app donc la tablette ou le smartphone voir § <a class="reference internal" href="bien_debuter.html#table-dispositifs-pour-les-variables"><span class="std std-ref">0.3.1.2 Table dispositifs pour les variables</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="mettre-a-jour-la-table-text-image">
-<h4>13.5.3.3  Mettre à jour la table « text-image »<a class="headerlink" href="#mettre-a-jour-la-table-text-image" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="mettre-a-jour-la-table-text-image">
+<h4>13.5.3.3  Mettre à jour la table « text-image »<a class="headerlink" href="#mettre-a-jour-la-table-text-image" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference internal" href="../_images/image767.webp"><img alt="image767" src="../_images/image767.webp" style="width: 571px;" /></a></p>
 <p>Pour afficher comme ci-dessus une image plutôt qu’un texte , voir § <a class="reference internal" href="bien_debuter.html#table-text-image"><span class="std std-ref">0.3.1.1 Table text-image</span></a></p>
-</div>
-</div>
-<div class="section" id="styles-css">
-<h3>13.5.4 Styles CSS<a class="headerlink" href="#styles-css" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="styles-css">
+<h3>13.5.4 Styles CSS<a class="headerlink" href="#styles-css" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#bar_pression {position: relative;top: -770px;width: 100px;left: 500px;}</span>
 <span class="c1">#pression_chaud{width:60px}</span>
 <span class="o">.</span><span class="n">pression_chaud</span><span class="p">{</span><span class="n">position</span><span class="p">:</span> <span class="n">relative</span><span class="p">;</span><span class="n">top</span><span class="p">:</span> <span class="o">-</span><span class="mi">460</span><span class="n">px</span><span class="p">;</span><span class="n">left</span><span class="p">:</span> <span class="mi">220</span><span class="n">px</span><span class="p">;}</span>
 <span class="nd">@media</span> <span class="p">(</span><span class="nb">max</span><span class="o">-</span><span class="n">width</span><span class="p">:</span><span class="mi">534</span><span class="n">px</span><span class="p">)</span> <span class="p">{</span><span class="c1">#pression_chaud{width:50px}.pression_chaud{top: -305px;}}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="sms-reception-et-emission">
-<h2>13.6 SMS réception et émission<a class="headerlink" href="#sms-reception-et-emission" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="reception-sms">
-<h3>13.6.1 réception SMS<a class="headerlink" href="#reception-sms" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="sms-reception-et-emission">
+<h2>13.6 SMS réception et émission<a class="headerlink" href="#sms-reception-et-emission" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="reception-sms">
+<h3>13.6.1 réception SMS<a class="headerlink" href="#reception-sms" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Voir le § consacrées au modem GSM et la communication série entre Domoticz et un RPI <a class="reference internal" href="divers.html#liaison-serie-domoticz-pi"><span class="std std-ref">18.3 Liaison série Domoticz-PI</span></a></p>
 <ul class="simple">
 <li><p><strong>Variable Domoticz</strong></p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image768.webp"><img alt="image768" src="../_images/image768.webp" style="width: 650px;" /></a></p>
-</div>
-<div class="section" id="emission-sms">
-<h3>13.6.2 émission SMS<a class="headerlink" href="#emission-sms" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="emission-sms">
+<h3>13.6.2 émission SMS<a class="headerlink" href="#emission-sms" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Un fichier python : sms_dz.py surveille en permanence la variable x de aldz.py et déclenche l’envoi d’un sms si celle-ci est différente de « 0 » ; priority indique la priorité pour l’envoi des SMS :</p>
@@ -766,8 +775,8 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 </ul>
 <p>On import aussi aldz (b) et la variable lue est donc <span class="darkblue">b.x</span></p>
 <p><a class="reference internal" href="../_images/image774.webp"><img alt="image774" src="../_images/image774.webp" style="width: 483px;" /></a></p>
-<div class="section" id="enregistrement-des-n-de-telephone">
-<h4>13.6.2.1 Enregistrement des n° de téléphone<a class="headerlink" href="#enregistrement-des-n-de-telephone" title="Lien permanent vers ce titre"></a></h4>
+<section id="enregistrement-des-n-de-telephone">
+<h4>13.6.2.1 Enregistrement des n° de téléphone<a class="headerlink" href="#enregistrement-des-n-de-telephone" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>Il est possible d’envoyé plusieurs SMS à des numéros différents ; pour cela, il faut ajouter les numéros à connect.lua (la maj est automatique vers connec.py)</em></p>
 <p><a class="reference internal" href="../_images/image777.webp"><img alt="image777" src="../_images/image777.webp" style="width: 432px;" /></a></p>
 <p>Le nombre de numéros n’est pas limité : tel={‘xxxxxxxxxx’,’yyyyyyyyyy’,’zzzzzzzzzz’,…)</p>
@@ -786,11 +795,11 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="afficher-les-donnees-du-compteur-linky">
-<h2>13.7- afficher les données du compteur Linky<a class="headerlink" href="#afficher-les-donnees-du-compteur-linky" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+</section>
+<section id="afficher-les-donnees-du-compteur-linky">
+<h2>13.7- afficher les données du compteur Linky<a class="headerlink" href="#afficher-les-donnees-du-compteur-linky" title="Lien permanent vers cette rubrique"></a></h2>
 <p><em>A partir des données reçues par Domoticz par le plugin domoticz-linky</em> : <a class="reference external" href="https://github.com/guillaumezin/DomoticzLinky">https://github.com/guillaumezin/DomoticzLinky</a></p>
 <p><a class="reference internal" href="../_images/image778.webp"><img alt="image778" src="../_images/image778.webp" style="width: 525px;" /></a></p>
 <p>Complément d’informations : § <a class="reference internal" href="divers.html#donnees-compteur-linky"><span class="std std-ref">18.5 Données compteur Linky</span></a></p>
@@ -859,8 +868,8 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 <p><a class="reference internal" href="../_images/image256.webp"><img alt="image256" src="../_images/image256.webp" style="width: 433px;" /></a></p>
 </div>
 </div>
-<div class="section" id="enregistrement-dans-la-bd-sql">
-<h3>13.7.1 enregistrement dans la BD SQL<a class="headerlink" href="#enregistrement-dans-la-bd-sql" title="Lien permanent vers ce titre"></a></h3>
+<section id="enregistrement-dans-la-bd-sql">
+<h3>13.7.1 enregistrement dans la BD SQL<a class="headerlink" href="#enregistrement-dans-la-bd-sql" title="Lien permanent vers cette rubrique"></a></h3>
 <ul class="simple">
 <li><p><strong>Créer la table</strong></p></li>
 </ul>
@@ -889,10 +898,10 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 <p><a class="reference internal" href="../_images/image786.webp"><img alt="image786" src="../_images/image786.webp" style="width: 530px;" /></a></p>
 <p>Pour ajouter un historique de la consommation :</p>
 <p><a class="reference internal" href="../_images/image787.webp"><img alt="image787" src="../_images/image787.webp" style="width: 602px;" /></a></p>
-</div>
-</div>
-<div class="section" id="pont-ha-ha-bridge">
-<h2>13.8 Pont HA (ha-bridge)<a class="headerlink" href="#pont-ha-ha-bridge" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+<section id="pont-ha-ha-bridge">
+<h2>13.8 Pont HA (ha-bridge)<a class="headerlink" href="#pont-ha-ha-bridge" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference external" href="https://github.com/bwssytems/ha-bridge">https://github.com/bwssytems/ha-bridge</a></p>
 <p>ha-bridge est un logiciel qui simule sur votre ordinateur un pont Philips Hue</p>
 <div class="admonition-fonction-du-pont admonition">
@@ -902,8 +911,8 @@ Script <span class="darkblue">notification_lg.js</span> à ajouter à Home/user/
 <p><span class="darkblue">Le ha-bridge ne fait pas partie de meethue.philips.com donc la connexion cloud ne s’applique pas à ce système. Le pont gère les commandes de base telles que les commandes « On », « Off », « Brightness » et « Color » du protocole hue. Ce pont peut
 contrôler la plupart des appareils qui ont une API distincte.</span></p>
 </div>
-<div class="section" id="installation-dans-un-conteneur-lxc-proxmox">
-<h3>13.8.1 Installation dans un conteneur LXC Proxmox<a class="headerlink" href="#installation-dans-un-conteneur-lxc-proxmox" title="Lien permanent vers ce titre"></a></h3>
+<section id="installation-dans-un-conteneur-lxc-proxmox">
+<h3>13.8.1 Installation dans un conteneur LXC Proxmox<a class="headerlink" href="#installation-dans-un-conteneur-lxc-proxmox" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Vous pouvez l’installer comme moi dans un conteneur LXC (debian12 standart)  ou dans une VM, le programme java est léger.</p>
 <p><a class="reference internal" href="../_images/image1077.webp"><img alt="image1077" src="../_images/image1077.webp" style="width: 313px;" /></a></p>
 <p>Comme pour les autres VM et CT on installe sudo et l’on crée un utilisateur avec des droits.</p>
@@ -962,9 +971,9 @@ contrôler la plupart des appareils qui ont une API distincte.</span></p>
 <p>si le port est différent de 80 , ajouter dans ExecStart : <span class="darkblue">-Dserveur.port=&lt;port number&gt;</span></p>
 </div>
 </div>
-</div>
-<div class="section" id="le-serveur-de-ha-bridge">
-<h3>13.8.2 Le serveur de ha-bridge<a class="headerlink" href="#le-serveur-de-ha-bridge" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="le-serveur-de-ha-bridge">
+<h3>13.8.2 Le serveur de ha-bridge<a class="headerlink" href="#le-serveur-de-ha-bridge" title="Lien permanent vers cette rubrique"></a></h3>
 <p>On récupère l’ip :</p>
 <p><a class="reference internal" href="../_images/image1080.webp"><img alt="image1080" src="../_images/image1080.webp" style="width: 601px;" /></a></p>
 <p>On ouvre la page d’accueil du serveur dans un navigateur, ici <span class="darkblue">http://192.168.1.14/</span></p>
@@ -988,8 +997,8 @@ location /api {
 </pre></div>
 </div>
 </div>
-<div class="section" id="acces-distant">
-<h4>13.8.2.1 accès distant<a class="headerlink" href="#acces-distant" title="Lien permanent vers ce titre"></a></h4>
+<section id="acces-distant">
+<h4>13.8.2.1 accès distant<a class="headerlink" href="#acces-distant" title="Lien permanent vers cette rubrique"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>upstream pontha {
     server 192.168.1.14;   }
 server {
@@ -1017,10 +1026,10 @@ server {
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1138.webp"><img alt="image1138" src="../_images/image1138.webp" style="width: 647px;" /></a></p>
-</div>
-</div>
-<div class="section" id="enregistrement-d-alexa-domoticz-dans-le-pont">
-<h3>13.8.3 Enregistrement d’Alexa &amp; Domoticz dans le pont<a class="headerlink" href="#enregistrement-d-alexa-domoticz-dans-le-pont" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="enregistrement-d-alexa-domoticz-dans-le-pont">
+<h3>13.8.3 Enregistrement d’Alexa &amp; Domoticz dans le pont<a class="headerlink" href="#enregistrement-d-alexa-domoticz-dans-le-pont" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1082.webp"><img alt="image1082" src="../_images/image1082.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1083.webp"><img alt="image1083" src="../_images/image1083.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1085.webp"><img alt="image1085" src="../_images/image1085.webp" style="width: 622px;" /></a></p>
@@ -1028,8 +1037,8 @@ server {
 <p><a class="reference internal" href="../_images/image1086.webp"><img alt="image1086" src="../_images/image1086.webp" style="width: 571px;" /></a></p>
 <p>Il suffit d’actualiser la page et un nouvel onglet pour Domoticz est disponible avec la liste des dispositifs</p>
 <p><a class="reference internal" href="../_images/image1087.webp"><img alt="image1087" src="../_images/image1087.webp" style="width: 700px;" /></a></p>
-<div class="section" id="les-dispositifs-et-les-actions">
-<h4>13.8.3.1 Les dispositifs et les actions<a class="headerlink" href="#les-dispositifs-et-les-actions" title="Lien permanent vers ce titre"></a></h4>
+<section id="les-dispositifs-et-les-actions">
+<h4>13.8.3.1 Les dispositifs et les actions<a class="headerlink" href="#les-dispositifs-et-les-actions" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Exemple avec les interrupteurs virtuels de l’alarme d’absence et de l’alarme de nuit</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1040,19 +1049,19 @@ server {
 <p><a class="reference internal" href="../_images/image1090.webp"><img alt="image1090" src="../_images/image1090.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1091.webp"><img alt="image1091" src="../_images/image1091.webp" style="width: 700px;" /></a></p>
 <p>Il en sera de même pour tous les dispositifs</p>
-</div>
-</div>
-<div class="section" id="ajouter-ha-bridge-dans-le-materiel-domoticz">
-<h3>13.8.4 Ajouter Ha-bridge dans le matériel Domoticz<a class="headerlink" href="#ajouter-ha-bridge-dans-le-materiel-domoticz" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="ajouter-ha-bridge-dans-le-materiel-domoticz">
+<h3>13.8.4 Ajouter Ha-bridge dans le matériel Domoticz<a class="headerlink" href="#ajouter-ha-bridge-dans-le-materiel-domoticz" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Sur le serveur Ha-bridge, utiliser le « link button »</p>
 <p><a class="reference internal" href="../_images/image1098.webp"><img alt="image1098" src="../_images/image1098.webp" style="width: 450px;" /></a></p>
 <p>Dans Domoticz, cliquer sur « <strong>register on bridge</strong> » et ajouter le pont</p>
 <p><a class="reference internal" href="../_images/image1099.webp"><img alt="image1099" src="../_images/image1099.webp" style="width: 635px;" /></a></p>
 <p>Des nouveaux dispositifs sont crées:</p>
 <p><a class="reference internal" href="../_images/image1139.webp"><img alt="image1139" src="../_images/image1139.webp" style="width: 700px;" /></a></p>
-</div>
-<div class="section" id="detection-des-nouveaux-appareils-par-alexa">
-<h3>13.8.5 détection des nouveaux appareils par Alexa<a class="headerlink" href="#detection-des-nouveaux-appareils-par-alexa" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="detection-des-nouveaux-appareils-par-alexa">
+<h3>13.8.5 détection des nouveaux appareils par Alexa<a class="headerlink" href="#detection-des-nouveaux-appareils-par-alexa" title="Lien permanent vers cette rubrique"></a></h3>
 <p>j” ai utilisé un émulateur Android gratuit pour les essais</p>
 <p><a class="reference internal" href="../_images/image1105.webp"><img alt="image1105" src="../_images/image1105.webp" style="width: 196px;" /></a> <a class="reference external" href="https://www.bluestacks.com/fr/index.html">https://www.bluestacks.com/fr/index.html</a></p>
 <p>Dans HA bridge, renuméroter les dispositifs et associer les appareils en appuyant sur « lien »</p>
@@ -1068,9 +1077,9 @@ server {
 <p><a class="reference internal" href="../_images/image1107.webp"><img alt="image1107" src="../_images/image1107.webp" style="width: 550px;" /></a></p>
 <p>Il ne reste plus qu’à configurer les appareils</p>
 <p><a class="reference internal" href="../_images/image1108.webp"><img alt="image1108" src="../_images/image1108.webp" style="width: 550px;" /></a></p>
-</div>
-<div class="section" id="integrer-le-pont-hue-a-monitor">
-<h3>13.8.6 Intégrer le Pont Hue à Monitor<a class="headerlink" href="#integrer-le-pont-hue-a-monitor" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="integrer-le-pont-hue-a-monitor">
+<h3>13.8.6 Intégrer le Pont Hue à Monitor<a class="headerlink" href="#integrer-le-pont-hue-a-monitor" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Les fichiers concernés:</p>
 <ul class="simple">
 <li><p><strong>admin/config.php</strong></p></li>
@@ -1124,9 +1133,51 @@ $domaine=$_SESSION[&quot;domaine&quot;];
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1110.webp"><img alt="image1110" src="../_images/image1110.webp" style="width: 533px;" /></a></p>
+</section>
+</section>
+<section id="installation-de-jupyter">
+<h2>13.9 Installation de Jupyter<a class="headerlink" href="#installation-de-jupyter" title="Lien permanent vers cette rubrique"></a></h2>
+<p><a class="reference internal" href="../_images/image1199.webp"><img alt="image1199" src="../_images/image1199.webp" style="width: 200px;" /></a></p>
+<p>Dans le terninal web, mise à jour de pip3 :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
+</pre></div>
 </div>
+<p><a class="reference internal" href="../_images/image1200.webp"><img alt="image1200" src="../_images/image1200.webp" style="width: 700px;" /></a></p>
+<section id="installation-du-noyau-configuration">
+<h3>13.9.1 Installation du noyau &amp; configuration<a class="headerlink" href="#installation-du-noyau-configuration" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">hass_pyscript_kernel</span>
+<span class="n">jupyter</span> <span class="n">pyscript</span> <span class="n">install</span>
+</pre></div>
 </div>
+<p><a class="reference internal" href="../_images/image1201.webp"><img alt="image1201" src="../_images/image1201.webp" style="width: 319px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1202.webp"><img alt="image1202" src="../_images/image1202.webp" style="width: 650px;" /></a></p>
+<p>Avec nano, effectuer la configuration (le chemin du fichier est indiqué comme le montre l’image précédente):</p>
+<p><a class="reference internal" href="../_images/image1203.webp"><img alt="image1203" src="../_images/image1203.webp" style="width: 7000px;" /></a></p>
+</section>
+<section id="quelques-verifications">
+<h3>13.9.2 Quelques vérifications<a class="headerlink" href="#quelques-verifications" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Vérifier que Jupyter reconnaît le nouveau noyau</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">kernelspec</span> <span class="nb">list</span>
+</pre></div>
 </div>
+<p><a class="reference internal" href="../_images/image1204.webp"><img alt="image1204" src="../_images/image1204.webp" style="width: 510px;" /></a></p>
+<p>Vérifier le fichier de configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">pyscript</span> <span class="n">info</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1205.webp"><img alt="image1205" src="../_images/image1205.webp" style="width: 568px;" /></a></p>
+</section>
+<section id="execution-de-jupyter-jupyter-notebook">
+<h3>13.9.3 Exécution de Jupyter: Jupyter notebook<a class="headerlink" href="#execution-de-jupyter-jupyter-notebook" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Contrairement au tutoriel (<a class="reference external" href="https://github.com/craigbarratt/hass-pyscript-jupyter/blob/master/README.md">https://github.com/craigbarratt/hass-pyscript-jupyter/blob/master/README.md</a>), Jupyter notebook ne se lance pas, j’ai du l’installer de nouveau en suivant la methode officielle:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">jupyter</span>
+</pre></div>
+</div>
+<p>Lancer jupyter notebook:</p>
+<p><a class="reference internal" href="../_images/image1207.webp"><img alt="image1207" src="../_images/image1207.webp" style="width: 650px;" /></a></p>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -1139,7 +1190,7 @@ $domaine=$_SESSION[&quot;domaine&quot;];
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

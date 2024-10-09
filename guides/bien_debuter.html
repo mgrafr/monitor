@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>0. Infos pour bien débuter &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>0. Infos pour bien débuter &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">0. Infos pour bien débuter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#prerequis-installation-differents-choix">0.1     Prérequis, installation : différents choix</a><ul>
@@ -62,27 +65,31 @@
 <li class="toctree-l3"><a class="reference internal" href="#mise-a-jour-de-monitor">0.1.4 Mise à jour de monitor</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#la-page-daccueil-et-connexion-avec-domoticz-ou-ha">0.2     La page d’accueil et connexion avec Domoticz ou HA :</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#la-page-daccueil-et-connexion-avec-un-serveur-domotique">0.2 La page d’accueil et connexion avec un serveur domotique :</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#page-daccueil">0.2.1 page d’accueil :</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#premier-dispositif">0.2.2. Premier dispositif</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pour-domoticz">0.2.2.1 pour Domoticz</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pour-home-assistant">0.2.2.2 pour Home Assistant</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#affichage-sur-la-page-daccueil-de-monitor">0.2.2.3 Affichage sur la page d’accueil de Monitor :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connexion-au-serveur-domotique">0.2.2 Connexion au serveur domotique</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#premier-dispositif">0.2.3. Premier dispositif</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pour-domoticz">0.2.3.1 pour Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pour-home-assistant">0.2.3.2 pour Home Assistant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pour-iobroker">0.2.3.3 pour IoBroker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#affichage-sur-la-page-daccueil-de-monitor">0.2.3.3 Affichage sur la page d’accueil de Monitor :</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees-maria-db">0.3 _ Base de données Maria DB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#les-tables-dispositifs-variables-text-image-messages">0.3.1 Les Tables « dispositifs(variables) » , « text-image » &amp; « messages »</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#les-tables-dispositifs-variables-text-image-messages-sse">0.3.1 Les Tables « dispositifs(variables) », « text-image », « messages » &amp; « sse »</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#table-text-image">0.3.1.1 Table text-image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#table-dispositifs-pour-les-variables">0.3.1.2 Table dispositifs pour les variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#table-messages">0.3.1.3 Table messages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pourquoi-une-correspondance">0.3.1.4 Pourquoi une correspondance ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table-sse">0.3.1.4 Table sse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pourquoi-une-correspondance">0.3.1.5 Pourquoi une correspondance ?</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#les-dispositifs">0.3.2 Les Dispositifs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cameras">0.3.3 caméras</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#autres-tables-sql">0.3.4 Autres tables SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurer-mariadb-pour-les-connexions-distantes">0.3.5 Configurer MariaDB pour les connexions distantes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#le-serveur-http-de-nginx">0.4 Le serveur http de NGINX</a></li>
@@ -91,9 +98,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#les-images">0.7 Les images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#les-fichiers-php">0.8 Les fichiers PHP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#les-fichiers-javascript-python">0.9 Les fichiers Javascript &amp; Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#api-domoticz-et-ha">0.10 API Domoticz et HA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#les-fichiers-ajoutes-par-l-utilisateur">0.11 Les fichiers ajoutés par l’utilisateur</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#api-de-monitor">0.12 API de monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-domoticz-home-assistant-io-broker">0.10 API Domoticz , Home Assistant &amp; Io.Broker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-fichiers-ajoutes-par-l-utilisateur">0.11 Les fichiers ajoutés par l’utilisateur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#javascript-d-une-page-perso">0.11.1 javascript d’une page perso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#api-de-monitor">0.12 API de monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#les-fonctions-possibles">0.12.1 Les fonctions possibles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#les-fichiers-json-recu-par-monitor">0.13 Les fichiers JSON reçu par monitor</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -144,61 +158,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="infos-pour-bien-debuter">
-<h1>0. Infos pour bien débuter<a class="headerlink" href="#infos-pour-bien-debuter" title="Lien permanent vers ce titre"></a></h1>
+  <section id="infos-pour-bien-debuter">
+<h1>0. Infos pour bien débuter<a class="headerlink" href="#infos-pour-bien-debuter" title="Lien permanent vers cette rubrique"></a></h1>
 <p><em>Cette application offre un affichage convivial pour les serveurs domotique Domoticz et Home Assistant et bien plus encore.</em></p>
 <p><a class="reference internal" href="../_images/image1111.webp"><img alt="image1111" src="../_images/image1111.webp" style="width: 529px;" /></a></p>
-<div class="section" id="prerequis-installation-differents-choix">
-<h2>0.1     Prérequis, installation : différents choix<a class="headerlink" href="#prerequis-installation-differents-choix" title="Lien permanent vers ce titre"></a></h2>
+<section id="prerequis-installation-differents-choix">
+<h2>0.1     Prérequis, installation : différents choix<a class="headerlink" href="#prerequis-installation-differents-choix" title="Lien permanent vers cette rubrique"></a></h2>
 <ul class="simple">
 <li><p>Après l’installation de Proxmox :</p></li>
 </ul>
-<p>Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), monitor (version dev): <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh</a></p>
+<p>Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev): <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh</a></p>
 <ul class="simple">
-<li><p>installation automatique : LEMP + monitor (pour installation dans une VM ou une partition Linux) : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh</a></p></li>
-<li><p>installation uniquement de monitor (version en développement) (pour une installation avec LAMP, MySQL,) : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh</a></p></li>
-<li><p>dernière version stable : <a class="reference external" href="https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.6.tar.gz">https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.6.tar.gz</a></p></li>
+<li><p>installation automatique : LEMP + monitor+ Serveur SSE-PHP (pour installation dans une VM ou une partition Linux) : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh</a></p></li>
+<li><p>installation uniquement de monitor +serveur SSE-PHP (version en développement) (pour une installation avec LAMP, MySQL,) : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh">https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh</a></p></li>
+<li><p>dernière version stable : <a class="reference external" href="https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.1.0.tar.gz">https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.1.0.tar.gz</a></p></li>
 </ul>
-<div class="section" id="installation-automatique-dun-conteneur-lxc-lemp-monitor">
-<h3>0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor<a class="headerlink" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor" title="Lien permanent vers ce titre"></a></h3>
+<section id="installation-automatique-dun-conteneur-lxc-lemp-monitor">
+<h3>0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor<a class="headerlink" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor" title="Lien permanent vers cette rubrique"></a></h3>
 <ul class="simple">
 <li><p>L’installation de Proxmox voir (<a class="reference internal" href="mon_installation.html#proxmox"><span class="std std-ref">21.1 Proxmox</span></a>)</p></li>
 <li><p>Création d’un conteneur LXC</p></li>
 <li><p>Debian 12, et les dépendances sudo, curl,…</p></li>
-<li><p>Nginx, PHP 8.2, maria db, phpMyAdmin, monitor</p></li>
-<li><p>Quelques programme python utiles : pip, Paho-mqtt</p></li>
+<li><p>Nginx, PHP 8.3, maria db, phpMyAdmin, monitor</p></li>
+<li><p>Quelques programmes python utiles : pip, Paho-mqtt</p></li>
+<li><p>Quelques utilitaires : dos2unix et unzip</p></li>
+<li><p>Un serveur SSE en PHP (en option SSE NodeJS)</p></li>
 <li><p>Un utilisateur système est crée</p></li>
 <li><p>Un utilisateur MySQL PMA et monitor est aussi crée</p></li>
 </ul>
-<p>Télécharger depuis le Shell de PVE le fichier d’installation install.sh :</p>
+<p>Télécharger depuis le Shell de PVE le fichier d’installation <span class="darkblue">create_ct_lxc_monitor.sh</span> :</p>
+<p><a class="reference internal" href="../_images/image1268.webp"><img alt="image1268" src="../_images/image1268.webp" style="width: 700px;" /></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">create_ct_lxc_monitor</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image3.webp"><img alt="image3" src="../_images/image3.webp" style="width: 604px; height: 176px;" /></a></p>
 <p>Donner des autorisations au fichier « create_ct_lxc_monitor.sh »</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">create_ct_lxc_monitor</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
+<p><a class="reference internal" href="../_images/image1269.webp"><img alt="image1269" src="../_images/image1269.webp" style="width: 600px;" /></a></p>
 <div class="admonition-si-des-problemes-de-lecture-existent admonition">
 <p class="admonition-title">Si des problèmes de lecture existent</p>
-<blockquote>
-<div><p>convertir le fichier en UNIX</p>
-</div></blockquote>
-<p>voir le § <a class="reference internal" href="mur_de_commandes.html#probleme-de-lecture-de-fichier"><span class="std std-ref">8.2.1.1 Problème de lecture de fichier</span></a></p>
+<p>convertir le fichier en UNIX</p>
+<p>voir le § <a class="reference internal" href="mur_de_commandes.html#probleme-de-lecture-de-fichier"><span class="std std-ref">8.2.2 Problème de lecture de fichier</span></a></p>
 </div>
 <p><strong>Installation :</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">create_ct_lxc_monitor</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
+<p><a class="reference internal" href="../_images/image3.webp"><img alt="image3" src="../_images/image3.webp" style="width: 350px;" /></a></p>
 <p><a class="reference internal" href="../_images/image6.webp"><img alt="image6" src="../_images/image6.webp" style="width: 405px; height: 104px;" /></a></p>
 <p><a class="reference internal" href="../_images/image7.webp"><img alt="image7" src="../_images/image7.webp" style="width: 538px; height: 194px;" /></a></p>
 <p><a class="reference internal" href="../_images/image8.webp"><img alt="image8" src="../_images/image8.webp" style="width: 544px; height: 170px;" /></a></p>
 <p><a class="reference internal" href="../_images/image9.webp"><img alt="image9" src="../_images/image9.webp" style="width: 554px; height: 276px;" /></a></p>
 <p>Choisir le langage UTF-8 : fr_FR.UTF-8</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><a class="reference internal" href="../_images/image1270.webp"><img alt="image1270" src="../_images/image1270.webp" style="width: 500px;" /></a></p>
+<p>Le choix du langage se fait ou se confirme à l’écran suivant.</p>
+</div>
+</div></blockquote>
 <p><a class="reference internal" href="../_images/image10.webp"><img alt="image10" src="../_images/image10.webp" style="width: 636px;" /></a></p>
 <p><a class="reference internal" href="../_images/image11.webp"><img alt="image11" src="../_images/image11.webp" style="width: 626px;" /></a></p>
-<div class="section" id="a-installation-de-lemp-monitor">
-<h4>0.1.1.a Installation de LEMP &amp; Monitor<a class="headerlink" href="#a-installation-de-lemp-monitor" title="Lien permanent vers ce titre"></a></h4>
+<section id="a-installation-de-lemp-monitor">
+<h4>0.1.1.a Installation de LEMP &amp; Monitor<a class="headerlink" href="#a-installation-de-lemp-monitor" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference internal" href="../_images/image12.webp"><img alt="image12" src="../_images/image12.webp" style="width: 557px; height: 269px;" /></a></p>
 <p><a class="reference internal" href="../_images/image13.webp"><img alt="image13" src="../_images/image13.webp" style="width: 552px; height: 182px;" /></a></p>
 <p><a class="reference internal" href="../_images/image14.webp"><img alt="image14" src="../_images/image14.webp" style="width: 592px;" /></a></p>
@@ -224,29 +247,45 @@
 <p><a class="reference internal" href="../_images/image23.webp"><img alt="image23" src="../_images/image23.webp" style="width: 540px;" /></a></p>
 <p>Fin de l’installation:</p>
 <p><a class="reference internal" href="../_images/image24.webp"><img alt="image24" src="../_images/image24.webp" style="width: 485px;" /></a></p>
+<p>Quitter le shell de PVE et ouvrir la console du conteneur LXC monitor qui devrait ressempnler à ça:</p>
+<p><a class="reference internal" href="../_images/image1271.webp"><img alt="image1271" src="../_images/image1271.webp" style="width: 400px;" /></a></p>
+<p>Monitor , devrait ressembler à ceci:</p>
+<p><a class="reference internal" href="../_images/image1273.webp"><img alt="image1273" src="../_images/image1273.webp" style="width: 500px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1272.webp"><img alt="image1272" src="../_images/image1272.webp" style="width: 500px;" /></a></p>
+<ul class="simple">
+<li><p>connecter un serveur domotique (max 2); Enlever la découverte.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;DECOUVERTE&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1274.webp"><img alt="image1274" src="../_images/image1274.webp" style="width: 500px;" /></a></p>
+<p>Ce message sera présent tant qu’il n’y aura pas de correspondance entre le serveur et la BD</p>
+<ul class="simple">
+<li><p>ajouter les dispositifs et variables à la base de données, voir ce § <span class="xref std std-ref">0.2 La page d’accueil et connexion avec Domoticz ou HA</span></p></li>
+</ul>
 <div class="admonition-verifications-en-cas-de-problemes admonition">
 <p class="admonition-title">Vérifications en cas de problèmes :</p>
 <p>avec Filezilla :</p>
 <p><a class="reference internal" href="../_images/image25.webp"><img alt="image25" src="../_images/image25.webp" style="width: 257px;" /></a></p>
 <p>Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :</p>
-<p><span class="red">chmod -R 777 /www/html/*</span></p>
+<p><span class="red">chmod -R 775 /www/html/*</span></p>
 <p><strong>MySQL :</strong></p>
-<p><span class="red">mysql -u root</span></p>
+<p><span class="red">mysql -u root -p -h localhost monitor</span></p>
 <p><a class="reference internal" href="../_images/image27.webp"><img alt="image27" src="../_images/image27.webp" style="width: 557px;" /></a></p>
 <p><strong>phpMyAdmin</strong> :   Accès par monitor</p>
 <p><a class="reference internal" href="../_images/image28.webp"><img alt="image28" src="../_images/image28.webp" style="width: 391px;" /></a></p>
 <p>Ou en ajoutant l’adresse dans le navigateur :</p>
 <p><span class="red">&lt;IP Monitor&gt;/phpmyadmin/</span></p>
-</div>
 <p><a class="reference internal" href="../_images/image29.webp"><img alt="image29" src="../_images/image29.webp" style="width: 463px;" /></a></p>
 <p><a class="reference internal" href="../_images/image30.webp"><img alt="image30" src="../_images/image30.webp" style="width: 562px;" /></a></p>
+</div>
 <p><strong>Les tables installées lors de l’installation :</strong></p>
 <p><a class="reference internal" href="../_images/image31.webp"><img alt="image31" src="../_images/image31.webp" style="width: 206px;" /></a></p>
 <p>La suite, mode découverte , <a class="reference internal" href="#mode-decouverte"><span class="std std-ref">0.1.3.1 mode « découverte »</span></a></p>
-</div>
-</div>
-<div class="section" id="installation-automatique-de-lemp-et-monitor">
-<h3>0.1.2 -Installation automatique de LEMP et Monitor :<a class="headerlink" href="#installation-automatique-de-lemp-et-monitor" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="installation-automatique-de-lemp-et-monitor">
+<h3>0.1.2 -Installation automatique de LEMP et Monitor :<a class="headerlink" href="#installation-automatique-de-lemp-et-monitor" title="Lien permanent vers cette rubrique"></a></h3>
 <dl class="simple">
 <dt>Installer auparavant un système Debian 12 ou supérieur</dt><dd><p>Télécharger le script : lemp_monitor_install.sh,</p>
 </dd>
@@ -264,9 +303,9 @@
 </div>
 <p><a class="reference internal" href="../_images/image33.webp"><img alt="image33" src="../_images/image33.webp" style="width: 319px;" /></a></p>
 <p><strong>La suite :</strong>   <a class="reference internal" href="#a-installation-de-lemp-monitor"><span class="std std-ref">0.1.1.a Installation de LEMP &amp; Monitor</span></a></p>
-</div>
-<div class="section" id="installation-de-monitor-uniquement">
-<h3>0.1.3 Installation de monitor uniquement<a class="headerlink" href="#installation-de-monitor-uniquement" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="installation-de-monitor-uniquement">
+<h3>0.1.3 Installation de monitor uniquement<a class="headerlink" href="#installation-de-monitor-uniquement" title="Lien permanent vers cette rubrique"></a></h3>
 <blockquote>
 <div><p>Après l’installation d’un OS (Debian, Ubuntu…et LEMP ou LAMP, Maria DB ou MySQL …</p>
 </div></blockquote>
@@ -277,24 +316,24 @@
 <div class="line">o LEMP : voir ce paragraphe `</div>
 </div>
 <p><strong>Installation : plusieurs solutions</strong></p>
-<div class="section" id="telecharger-de-la-version-en-developpement">
-<h4>0.1.3.1 Télécharger de la version en développement<a class="headerlink" href="#telecharger-de-la-version-en-developpement" title="Lien permanent vers ce titre"></a></h4>
+<section id="telecharger-de-la-version-en-developpement">
+<h4>0.1.3.1 Télécharger de la version en développement<a class="headerlink" href="#telecharger-de-la-version-en-developpement" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>et extraire les fichiers</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image34.webp"><img alt="image34" src="../_images/image34.webp" style="width: 403px;" /></a></p>
-</div>
-<div class="section" id="telecharger-de-la-deriere-version-stable">
-<h4>0.1.3.2 Télécharger de la derière version stable<a class="headerlink" href="#telecharger-de-la-deriere-version-stable" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="telecharger-de-la-deriere-version-stable">
+<h4>0.1.3.2 Télécharger de la derière version stable<a class="headerlink" href="#telecharger-de-la-deriere-version-stable" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>et extraire les fichiers</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image358.webp"><img alt="image358" src="../_images/image358.webp" style="width: 500px;" /></a></p>
-</div>
-<div class="section" id="cloner-le-referentiel-de-monitor">
-<h4>0.1.3.3 cloner le référentiel de monitor<a class="headerlink" href="#cloner-le-referentiel-de-monitor" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="cloner-le-referentiel-de-monitor">
+<h4>0.1.3.3 cloner le référentiel de monitor<a class="headerlink" href="#cloner-le-referentiel-de-monitor" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>https://github.com/mgrafr/monitor.git</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">.</span><span class="n">git</span>  <span class="o">&lt;</span><span class="n">REPERTOIRE_DESTINATION</span><span class="o">&gt;</span>
 </pre></div>
@@ -321,9 +360,9 @@
 <p>Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente installation), le supprimer</p>
 </div>
 <p><a class="reference internal" href="../_images/image38.webp"><img alt="image38" src="../_images/image38.webp" style="width: 399px;" /></a></p>
-</div>
-<div class="section" id="mode-decouverte">
-<h4>0.1.3.1 mode « découverte »<a class="headerlink" href="#mode-decouverte" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="mode-decouverte">
+<h4>0.1.3.1 mode « découverte »<a class="headerlink" href="#mode-decouverte" title="Lien permanent vers cette rubrique"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>IMPORTANT</strong> : après l’installation le programme est en mode « découverte »,</p>
@@ -336,17 +375,23 @@
 <p><a class="reference internal" href="../_images/image41.webp"><img alt="image41" src="../_images/image41.webp" style="width: 520px;" /></a></p>
 <p><a class="reference internal" href="../_images/image42.webp"><img alt="image42" src="../_images/image42.webp" style="width: 520px;" /></a></p>
 </div>
-<p><strong>Pour utiliser Domoticz ou Home Assistant ou les 2 :</strong></p>
-<p>Indiquer l‘ IP et le port</p>
+<p><strong>Pour utiliser Domoticz, Home Assistant ou Io.broker les 3 :</strong></p>
+<ul>
+<li><p>Indiquer les serveurs utilisés</p>
+<p><a class="reference internal" href="../_images/image1224.webp"><img alt="image1224" src="../_images/image1224.webp" style="width: 600px;" /></a></p>
+</li>
+<li><p>Indiquer l‘ IP et le port</p>
 <p><a class="reference internal" href="../_images/image43.webp"><img alt="image43" src="../_images/image43.webp" style="width: 618px;" /></a></p>
+</li>
+</ul>
 <p><strong>Logiciels utiles :</strong></p>
 <ul class="simple">
 <li><p>Logiciel d’édition d’images svg : Adobe Illustrator ou Inkscape</p></li>
 <li><p>Pour les autres images webp, un convertisseur en ligne : <a class="reference external" href="https://convertio.co/fr/">https://convertio.co/fr/</a></p></li>
 </ul>
-</div>
-<div class="section" id="creation-dun-certificat-ssl-auto-signe-pour-nginx">
-<h4>0.1.3.2 -Création d’un certificat SSL auto-signé pour Nginx :<a class="headerlink" href="#creation-dun-certificat-ssl-auto-signe-pour-nginx" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="creation-dun-certificat-ssl-auto-signe-pour-nginx">
+<h4>0.1.3.2 -Création d’un certificat SSL auto-signé pour Nginx :<a class="headerlink" href="#creation-dun-certificat-ssl-auto-signe-pour-nginx" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Dans le cas où l’installation n’est pas automatique (en automatique il suffit d’accepter la création du certificat).</p>
 <p>Avant de commencer, vous devez avoir un utilisateur non root configuré avec des privilèges ; si vous avez installé Monitor en suivant ce tuto, c’est déjà fait</p>
 <div class="admonition-etape-1-creer-le-certificat-ssl admonition">
@@ -354,7 +399,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">x509</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="n">days</span> <span class="mi">365</span> <span class="o">-</span><span class="n">newkey</span> <span class="n">rsa</span><span class="p">:</span><span class="mi">2048</span> <span class="o">-</span><span class="n">keyout</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">selfsigned</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">selfsigned</span><span class="o">.</span><span class="n">crt</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image43.webp"><img alt="image44" src="../_images/image43.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image44.webp"><img alt="image44" src="../_images/image44.webp" style="width: 605px;" /></a></p>
 <p><em>Explications :</em></p>
 <ul class="simple">
 <li><p><strong>openssl</strong>: l’outil en ligne de commande pour créer et gérer des certificats, clés ,….</p></li>
@@ -470,32 +515,79 @@ location ~ \.php$ {
 </pre></div>
 </div>
 </div>
+</section>
+</section>
+<section id="mise-a-jour-de-monitor">
+<h3>0.1.4 Mise à jour de monitor<a class="headerlink" href="#mise-a-jour-de-monitor" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>La version 2.2.7 a été profondément restructurée aussi il n’est pas facile de l’updater; mode d’emploi pour upgrader une ancienne version sans perte de données:</p>
+<ul class="simple">
+<li><p>Créer un nouveau conteneur (NE PAS SUPPRIMER LE CONTENEUR ACTUEL)</p></li>
+<li><p>dans le fichier /admin/config.php existant dans l’ancien conteneur recopier les variables que vous utilisez dans le fichier du nouveau conteneur</p></li>
+<li><p>sauvegarger les tables de BD SQL pour les importer dans la nouvelle BD</p></li>
+<li><p>sauvegarder les pages Custom dans le nouveau monitor</p></li>
+<li><p>supprimer l’ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)</p></li>
+</ul>
 </div>
+<p>Pour les versions de monitor &gt; 2.2.7 et &lt; à 3.2.0 (refonte en cours pour intégrer io.broker):</p>
+<p>Obtenir la dernière version de update.bash , avec la console :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">install</span>
+<span class="n">wget</span> <span class="o">-</span><span class="n">N</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">update</span><span class="o">.</span><span class="n">bash</span>
+</pre></div>
 </div>
-<div class="section" id="mise-a-jour-de-monitor">
-<h3>0.1.4 Mise à jour de monitor<a class="headerlink" href="#mise-a-jour-de-monitor" title="Lien permanent vers ce titre"></a></h3>
-<p>Avec la console :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
-<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mgrafr</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">update</span><span class="o">.</span><span class="n">bash</span>
-<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">update</span><span class="o">.</span><span class="n">bash</span>
+<p>Rendre éxécutable le fichier  et le lancer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">update</span><span class="o">.</span><span class="n">bash</span>
 <span class="o">./</span><span class="n">update</span><span class="o">.</span><span class="n">bash</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image51.webp"><img alt="image51" src="../_images/image51.webp" style="width: 647px;" /></a></p>
-<p><a class="reference internal" href="../_images/image73.webp"><img alt="image73" src="../_images/image73.webp" style="width: 647px;" /></a></p>
+<p><a class="reference internal" href="../_images/image51.webp"><img alt="image51" src="../_images/image51.webp" style="width: 600px;" /></a></p>
+<p>En cas de problème avec le chemin de bash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">./</span><span class="n">update</span><span class="o">.</span><span class="n">bash</span>
+</pre></div>
 </div>
-</div>
-<div class="section" id="la-page-daccueil-et-connexion-avec-domoticz-ou-ha">
-<h2>0.2     La page d’accueil et connexion avec Domoticz ou HA :<a class="headerlink" href="#la-page-daccueil-et-connexion-avec-domoticz-ou-ha" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="page-daccueil">
-<h3>0.2.1 page d’accueil :<a class="headerlink" href="#page-daccueil" title="Lien permanent vers ce titre"></a></h3>
+</section>
+</section>
+<section id="la-page-daccueil-et-connexion-avec-un-serveur-domotique">
+<h2>0.2 La page d’accueil et connexion avec un serveur domotique :<a class="headerlink" href="#la-page-daccueil-et-connexion-avec-un-serveur-domotique" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="page-daccueil">
+<h3>0.2.1 page d’accueil :<a class="headerlink" href="#page-daccueil" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe <a class="reference internal" href="configuration_minimum.html#a-pour-limage-de-fond-suivant-la-resolution-decran-et-le-logo"><span class="std std-ref">1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo</span></a></p>
 <p><a class="reference internal" href="../_images/image52.webp"><img alt="image52" src="../_images/image52.webp" style="width: 446px;" /></a></p>
+</section>
+<section id="connexion-au-serveur-domotique">
+<h3>0.2.2 Connexion au serveur domotique<a class="headerlink" href="#connexion-au-serveur-domotique" title="Lien permanent vers cette rubrique"></a></h3>
+<p>3 serveurs possibles:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Domoticz</p></li>
+<li><p>Home Assistant</p></li>
+<li><p>Io Broker</p></li>
+</ul>
+</div></blockquote>
+<p>Home Assistant et Domoticz sont quelque peu limités dans leurs options de personnalisation, le ioBroker VIS et vis2 peuvent être considérés comme très complexes d’où la création de monitor.</p>
+<p>La combinaison Monitor + Iobroker offre un affichage très agréable.</p>
+<p><a class="reference internal" href="../_images/image1520.webp"><img alt="image1520" src="../_images/image1520.webp" style="width: 520px;" /></a></p>
+<p>Il suffit de cliquer sur les lampes pour les allumer ou les éteindre.</p>
+<p>J’ai commencé par utiliser Domoticz et comme je ne suis pas fan des fichiers YAML, je préfère utilisé io.broker avec lequel il est facile d’utiliser également Blocky ou de convertir facilement les scripts Lua de Domoticz en Javascript.</p>
+<p>Par rapport à ioBroker, Home Assistant utilise moins de ressources, ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d’utiliser les 3 systèmes simultanément.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le choix se fait dans /admin/config.php:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Domoticz</span> <span class="n">ou</span> <span class="n">HA</span> <span class="n">ou</span> <span class="n">iobroker</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;DOMOTIC&#39;</span><span class="p">,</span> <span class="s1">&#39;DZ&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">DZ</span> <span class="n">ou</span> <span class="n">HA</span> <span class="n">ou</span> <span class="n">IOB</span> <span class="n">ou</span> <span class="s2">&quot;&quot;</span> <span class="p">(</span><span class="n">non</span> <span class="n">utlisé</span><span class="p">)</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;DOMOTIC1&#39;</span><span class="p">,</span> <span class="s1">&#39;HA&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">DZ</span> <span class="n">ou</span> <span class="n">HA</span> <span class="n">ou</span> <span class="n">IOB</span> <span class="n">ou</span> <span class="s2">&quot;&quot;</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;DOMOTIC2&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">DZ</span> <span class="n">ou</span> <span class="n">HA</span> <span class="n">ou</span> <span class="n">IOB</span> <span class="n">ou</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
 </div>
-<div class="section" id="premier-dispositif">
-<h3>0.2.2. Premier dispositif<a class="headerlink" href="#premier-dispositif" title="Lien permanent vers ce titre"></a></h3>
-<div class="section" id="pour-domoticz">
-<h4>0.2.2.1 pour Domoticz<a class="headerlink" href="#pour-domoticz" title="Lien permanent vers ce titre"></a></h4>
+<p>le Javascript reçoit ces informations:</p>
+<p><a class="reference internal" href="../_images/image1537.webp"><img alt="image1537" src="../_images/image1537.webp" style="width: 425px;" /></a></p>
+</div>
+</section>
+<section id="premier-dispositif">
+<h3>0.2.3. Premier dispositif<a class="headerlink" href="#premier-dispositif" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="pour-domoticz">
+<h4>0.2.3.1 pour Domoticz<a class="headerlink" href="#pour-domoticz" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Température extérieure : le matériel</p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
@@ -524,10 +616,16 @@ J’ai donc provisoirement migré vers Météo Concept que j’utilise pour ma m
 <p>Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement avec l’appli :</p>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/image4.webp"><img alt="image4" src="../_images/image4.webp" style="width: 378px;" /></a></p>
-<p><a class="reference internal" href="../_images/image58.webp"><img alt="image58" src="../_images/image58.webp" style="width: 298px;" /></a>
-<a class="reference internal" href="../_images/image59.webp"><img alt="image59" src="../_images/image59.webp" style="width: 414px;" /></a></p>
+</div></blockquote>
+<p><em>Ajout d’un dispositif</em>:</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image58.webp"><img alt="image58" src="../_images/image58.webp" style="width: 298px;" /></a></p>
+<p><a class="reference internal" href="../_images/image59.webp"><img alt="image59" src="../_images/image59.webp" style="width: 414px;" /></a></p>
 <p><a class="reference internal" href="../_images/image60.webp"><img alt="image60" src="../_images/image60.webp" style="width: 459px;" /></a></p>
 </div></blockquote>
+<p><em>Modification d’un dispositif</em></p>
+<p><a class="reference internal" href="../_images/image1329.webp"><img alt="image1329" src="../_images/image1329.webp" style="width: 414px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1330.webp"><img alt="image1330" src="../_images/image1330.webp" style="width: 403px;" /></a></p>
 <p><em>Avec OpenWeather l’API fournit la température ressentie, pour l’ajouter enregistrer le dispositif et ajouter à accueil.php :</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;p class=&quot;text-centre&quot;&gt;T° ressentie :&lt;span id=&quot;temp_ressentie&quot; style=&quot;color:#ffc107;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 </pre></div>
@@ -579,10 +677,11 @@ function mc(variable,id){
 <p><em>footer.php et ajax.php  sont dans le référentiel :</em>  <span class="darkblue">https://github.com/mgrafr/monitor</span></p>
 </div>
 <p><a class="reference internal" href="../_images/image64.webp"><img alt="image64" src="../_images/image64.webp" style="width: 485px;" /></a></p>
-</div>
-<div class="section" id="pour-home-assistant">
-<h4>0.2.2.2 pour Home Assistant<a class="headerlink" href="#pour-home-assistant" title="Lien permanent vers ce titre"></a></h4>
-<p>La météo est installée lors de l’installation du programme :</p>
+</section>
+<section id="pour-home-assistant">
+<h4>0.2.3.2 pour Home Assistant<a class="headerlink" href="#pour-home-assistant" title="Lien permanent vers cette rubrique"></a></h4>
+<p>La météo est installée lors de l’installation du programme.</p>
+<p>Pour visualiser la température extérieure sur monitor :</p>
 <p><a class="reference internal" href="../_images/image65.webp"><img alt="image65" src="../_images/image65.webp" style="width: 232px;" /></a></p>
 <p>Enregistrement du dispositif :</p>
 <p><a class="reference internal" href="../_images/image66.webp"><img alt="image66" src="../_images/image66.webp" style="width: 257px;" /></a>
@@ -591,17 +690,34 @@ function mc(variable,id){
 <p><a class="reference internal" href="../_images/image68.webp"><img alt="image68" src="../_images/image68.webp" style="width: 393px;" /></a></p>
 <p>Les données json de ce dispositif :</p>
 <p><a class="reference internal" href="../_images/image69.webp"><img alt="image69" src="../_images/image69.webp" style="width: 452px;" /></a></p>
+</section>
+<section id="pour-iobroker">
+<h4>0.2.3.3 pour IoBroker<a class="headerlink" href="#pour-iobroker" title="Lien permanent vers cette rubrique"></a></h4>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>REST-API adapter , <a class="reference external" href="https://github.com/ioBroker/ioBroker.rest-api">https://github.com/ioBroker/ioBroker.rest-api</a>, doit être installé.</p>
 </div>
-<div class="section" id="affichage-sur-la-page-daccueil-de-monitor">
-<h4>0.2.2.3 Affichage sur la page d’accueil de Monitor :<a class="headerlink" href="#affichage-sur-la-page-daccueil-de-monitor" title="Lien permanent vers ce titre"></a></h4>
+<p><a class="reference internal" href="../_images/image1396.webp"><img alt="image1396" src="../_images/image1396.webp" style="width: 402px;" /></a></p>
+<p>Pour afficher la température extérieure sur monitor : Installer l’adaptateur pour la météo et renseigner les paramètres , ici l’opérateur norgégien:</p>
+<p><a class="reference internal" href="../_images/image1397.webp"><img alt="image1397" src="../_images/image1397.webp" style="width: 600px;" /></a></p>
+<p>Enregistrer le dispositif :</p>
+<p><a class="reference internal" href="../_images/image1398.webp"><img alt="image1398" src="../_images/image1398.webp" style="width: 427px;" /></a></p>
+<p>Extrait du fichier json avec les adaptateurs zigbee2mqtt.0 et yr.0.forecastHourly :</p>
+<p><a class="reference internal" href="../_images/image1399.webp"><img alt="image1399" src="../_images/image1399.webp" style="width: 470px;" /></a></p>
+<p>Pour consulter le json des adaptateurs voir cette page : <a class="reference internal" href="administration.html#administration"><span class="std std-ref">14.  ADMINISTRATION</span></a></p>
+<p>Le json de la température utilisé par monitor:</p>
+<p><a class="reference internal" href="../_images/image1400.webp"><img alt="image1400" src="../_images/image1400.webp" style="width: 463px;" /></a></p>
+</section>
+<section id="affichage-sur-la-page-daccueil-de-monitor">
+<h4>0.2.3.3 Affichage sur la page d’accueil de Monitor :<a class="headerlink" href="#affichage-sur-la-page-daccueil-de-monitor" title="Lien permanent vers cette rubrique"></a></h4>
 <p>Extrait du fichier /include/accueil.php</p>
 <p><a class="reference internal" href="../_images/image70.webp"><img alt="image70" src="../_images/image70.webp" style="width: 650px;" /></a></p>
-<p><em>L’ID html est ici « :darkblue:`temp_ext` »</em></p>
-</div>
-</div>
-</div>
-<div class="section" id="base-de-donnees-maria-db">
-<h2>0.3 _ Base de données Maria DB<a class="headerlink" href="#base-de-donnees-maria-db" title="Lien permanent vers ce titre"></a></h2>
+<p><em>L’ID html est ici</em> :  <span class="darkblue">temp_ext</span></p>
+</section>
+</section>
+</section>
+<section id="base-de-donnees-maria-db">
+<h2>0.3 _ Base de données Maria DB<a class="headerlink" href="#base-de-donnees-maria-db" title="Lien permanent vers cette rubrique"></a></h2>
 <p>La base de données a été créée lors de l’installation du serveur : nom=monitor (donnée lors de la création, il peut être différent)</p>
 <p>Connexion en local : <span class="darkblue">IP/phpMyAdmin</span></p>
 <p><a class="reference internal" href="../_images/image72.webp"><img alt="image72" src="../_images/image72.webp" style="width: 424px;" /></a></p>
@@ -618,44 +734,75 @@ function mc(variable,id){
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p>En cas d ‘absence de base de données ou de mauvais paramétrages ,sur la page d” accueil :</p>
-<p><strong> » pas de connexion à la BD « </strong></p>
+<p><strong>«  pas de connexion à la BD « </strong></p>
 <p>plus d’info sur test_db.php <a class="reference internal" href="administration.html#admin-php-info-admin-php-test-db-php-et-backup-bd"><span class="std std-ref">14.2 admin.php, info_admin.php, test_db.php et backup_bd</span></a></p>
 </div>
 <p><strong>Ajout à la base de données des données fournie par Domoticz</strong></p>
-<div class="section" id="les-tables-dispositifs-variables-text-image-messages">
-<h3>0.3.1 Les Tables « dispositifs(variables) » , « text-image » &amp; « messages »<a class="headerlink" href="#les-tables-dispositifs-variables-text-image-messages" title="Lien permanent vers ce titre"></a></h3>
+<section id="les-tables-dispositifs-variables-text-image-messages-sse">
+<h3>0.3.1 Les Tables « dispositifs(variables) », « text-image », « messages » &amp; « sse »<a class="headerlink" href="#les-tables-dispositifs-variables-text-image-messages-sse" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Ces tables sont installées lors de l’installation automatique.</p>
 <blockquote>
-<div><blockquote>
-<div><p>La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ;</p>
+<div><p>La correspondance entre les variables Domoticz , HA, IoBroker  ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ;</p>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>pour IoBroker , contrairement à Domoticz ou Home Assistant, il faut créer une base de données pour les variables et utliser l’adaptateur : io.broker.sql.</p>
+<p><a class="reference internal" href="../_images/image1393.webp"><img alt="image1393" src="../_images/image1393.webp" style="width: 300px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>voir ce lien pour la création d’une BD pour IoBroker:</p>
+<p><a class="reference external" href="https://www.iobroker.net/docu/index-85.htm?page_id=4184&amp;lang=en">https://www.iobroker.net/docu/index-85.htm?page_id=4184&amp;lang=en</a></p>
+<p><a class="reference internal" href="../_images/image1391.webp"><img alt="image1391" src="../_images/image1391.webp" style="width: 600px;" /></a></p>
+<p>Monitor possède déja une BD mySQL aussi pour uniquement les variables iobroker la BD SQLite suffit;</p>
+<p>pour installer SQLLite :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">sqlite3</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1392.webp"><img alt="image1392" src="../_images/image1392.webp" style="width: 498px;" /></a></p>
+<p>Pour créer la base de donnés « data.db3 », la table « variables » et la variable « essai » :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sqlite3</span> <span class="n">data</span><span class="o">.</span><span class="n">db3</span>
+<span class="n">create</span> <span class="n">table</span> <span class="n">variables</span><span class="p">(</span><span class="nb">id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">nom</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">content</span> <span class="n">TEXT</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">variables</span> <span class="n">values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;essai&quot;</span><span class="p">,</span><span class="s2">&quot;12345&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1394.webp"><img alt="image1394" src="../_images/image1394.webp" style="width: 590px;" /></a></p>
+<p>Test :<a class="reference internal" href="../_images/image1395.webp"><img alt="image1395" src="../_images/image1395.webp" style="width: 500px;" /></a></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Correction de l’erreur SQLite « tentative d’écriture d’une base de données en lecture seule »</strong></p>
+<p>le <span class="red">dossier</span> qui héberge le fichier de base de données doit être <span class="red">accessible en écriture</span>.</p>
+</div>
+</div>
 <ul>
 <li><p>tables :</p>
 <blockquote>
 <div><p>.  text-image</p>
 <p>. dispositifs</p>
-<ul class="simple">
-<li><p>messages</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
+<p>. messages</p>
+<p>. sse</p>
 </div></blockquote>
 <p><a class="reference internal" href="../_images/image75.webp"><img alt="image75" src="../_images/image75.webp" style="width: 216px;" /></a></p>
-</div></blockquote>
-<div class="section" id="table-text-image">
-<h4>0.3.1.1 Table text-image<a class="headerlink" href="#table-text-image" title="Lien permanent vers ce titre"></a></h4>
+</li>
+</ul>
+<section id="table-text-image">
+<h4>0.3.1.1 Table text-image<a class="headerlink" href="#table-text-image" title="Lien permanent vers cette rubrique"></a></h4>
 <div class="admonition-quelques-explications admonition">
 <p class="admonition-title"><strong>quelques explications</strong></p>
 <p>Pour un texte contenu dans une variable  correspond une image ou 0 ou « none »</p>
 <p><a class="reference internal" href="../_images/image76.webp"><img alt="image76" src="../_images/image76.webp" style="width: 598px;" /></a></p>
 <p>ex: le texte « poubelle jaune » dans la variable poubelle aura un alias : l’image d’une poubelle jaune</p>
 </div>
-</div>
-<div class="section" id="table-dispositifs-pour-les-variables">
-<h4>0.3.1.2 Table dispositifs pour les variables<a class="headerlink" href="#table-dispositifs-pour-les-variables" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="table-dispositifs-pour-les-variables">
+<h4>0.3.1.2 Table dispositifs pour les variables<a class="headerlink" href="#table-dispositifs-pour-les-variables" title="Lien permanent vers cette rubrique"></a></h4>
+<p>A l’installation de la table une variable « upload » est préinstallée; elle permet d’indiquer à Domoticz ou Home Assistant que des fichiers de configuration ont été mis à jour par monitor.</p>
+<p><a class="reference internal" href="../_images/image1361.webp"><img alt="image1361" src="../_images/image1361.webp" style="width: 700px;" /></a></p>
 <blockquote>
 <div><p><em>ne sont concernés pour les variables que les champs</em> :</p>
 </div></blockquote>
-<p><a class="reference internal" href="../_images/image77.webp"><img alt="image77" src="../_images/image77.webp" style="width: 343px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1390.webp"><img alt="image1390" src="../_images/image1390.webp" style="width: 343px;" /></a></p>
 <p><a class="reference internal" href="../_images/image78.webp"><img alt="image78" src="../_images/image78.webp" style="width: 605px;" /></a></p>
 <div class="admonition-num-ne-sert-qua-editer-plus-facilement-la-bd admonition">
 <p class="admonition-title"><strong>num</strong> : ne sert qu’à éditer plus facilement la BD</p>
@@ -664,16 +811,27 @@ function mc(variable,id){
 </div>
 <p>. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)</p>
 <p>. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ;</p>
-<p>. Nom_idx : nom de la variable du serveur domotique (dz); BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.</p>
-<blockquote>
-<div><div class="admonition warning">
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>des ID sont réservés , voir à la fin de ce praragraphe la liste des ID à ne pas utiliser pour des ajouts personnels.</p>
+</div>
+<dl>
+<dt>. nom_objet<span class="classifier">nom de la variable du serveur domotique (dz, ha ou iob);</span></dt><dd><blockquote>
+<div><p>mot réservé: BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.</p>
+</div></blockquote>
+<div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p><strong>IMPORTANT</strong> : le nom de la variable Domoticz ne doit pas comporter d’espace</p>
 <p>(le programme fonctionne mais l’API renvoie « NULL »)</p>
 </div>
+</dd>
+</dl>
+<p>. idm id de la variable dans monitor ; souvent utilisé avec l’id html « annul_&lt;texte&gt;, <span class="darkblue">rel=idm</span></p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1384.webp"><img alt="image1384" src="../_images/image1384.webp" style="width: 512px;" /></a></p>
 </div></blockquote>
 <dl class="simple">
-<dt>. Idx , id de la variable du serveur domotique(dz)</dt><dd><p>ex : idx de Domoticz
+<dt>. Idx , id de la variable du serveur Domoticz</dt><dd><p>ex : idx de Domoticz
 <a class="reference internal" href="../_images/image87.webp"><img alt="image87" src="../_images/image87.webp" style="width: 406px;" /></a></p>
 </dd>
 </dl>
@@ -682,7 +840,7 @@ function mc(variable,id){
 <blockquote>
 <div><div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p><strong>IMPORTANT</strong> : la taille de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)</p>
+<p><strong>IMPORTANT</strong> : le contenu de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)</p>
 </div>
 </div></blockquote>
 <p><a class="reference internal" href="../_images/image88.webp"><img alt="image88" src="../_images/image88.webp" style="width: 408px;" /></a></p>
@@ -702,7 +860,7 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 </pre></div>
 </div>
 <p><strong>Dans SQL</strong> :</p>
-<p><a class="reference internal" href="../_images/image81.webp"><img alt="image81" src="../_images/image81.webp" style="width: 349px;" /></a></p>
+<p><a class="reference internal" href="../_images/image81.webp"><img alt="image81" src="../_images/image81.webp" style="width: 600px;" /></a></p>
 <blockquote>
 <div><p><em>Ou par Monitor</em> :</p>
 </div></blockquote>
@@ -724,9 +882,31 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 </div></blockquote>
 <p><span class="darkblue">Le mot de passe peut être ajouté à connect.py</span></p>
 </div>
+<div class="admonition-mots-reserves-utilisables admonition">
+<p class="admonition-title"><strong>Mots réservés, utilisables</strong></p>
+<ul>
+<li><p><em>pour le nom de variable (nom_objet)</em>  :<strong>BASH</strong></p></li>
+<li><p><em>pour les ID javascript (affichage des textes et images</em> :</p>
+<p>ping_rasp : ping non réussi vers un raspberry ou un autre serveur effacement <a class="reference internal" href="../_images/image1372.webp"><img alt="image1372" src="../_images/image1372.webp" style="width: 50px;" /></a></p>
+<p>bl : boite lettres , confirmation de la notification <a class="reference internal" href="../_images/image1373.webp"><img alt="image1373" src="../_images/image1373.webp" style="width: 50px;" /></a></p>
+<p>pression_chaud , confirmation de la notification <a class="reference internal" href="../_images/image1374.webp"><img alt="image1374" src="../_images/image1374.webp" style="width: 50px;" /></a></p>
+<p>pilule , confirmation de la notification <a class="reference internal" href="../_images/image1375.webp"><img alt="image1375" src="../_images/image1375.webp" style="width: 50px;" /></a></p>
+<p>fosse , confirmation de la notification <a class="reference internal" href="../_images/image1376.webp"><img alt="image1376" src="../_images/image1376.webp" style="width: 50px;" /></a></p>
+<p>poubelle , affichage poubelles grises et jaunes <a class="reference internal" href="../_images/image1377.webp"><img alt="image1377" src="../_images/image1377.webp" style="width: 50px;" /></a></p>
+<p>pl, pluie , txt_pluie , affichage image et texte <a class="reference internal" href="../_images/image1378.webp"><img alt="image1378" src="../_images/image1378.webp" style="width: 50px;" /></a></p>
+<p>aff_anni , prenom , affichage image et texte <a class="reference internal" href="../_images/image1379.webp"><img alt="image1379" src="../_images/image1379.webp" style="width: 50px;" /></a></p>
+<p>alarme_nuit , affichage alarme nuit automatique <a class="reference internal" href="../_images/image1380.webp"><img alt="image1380" src="../_images/image1380.webp" style="width: 50px;" /></a></p>
+<p>batterie , affichage alarme batterie dispositifs faible <a class="reference internal" href="../_images/image1382.webp"><img alt="image1382" src="../_images/image1382.webp" style="width: 50px;" /></a></p>
+<p>lastseen , affichage message « vu pour la dernière fois » <a class="reference internal" href="../_images/image1381.webp"><img alt="image1381" src="../_images/image1381.webp" style="width: 50px;" /></a></p>
+<p>notify , not, , affichage des erreurs ou alertes</p>
+<p>temp_ext, temp_ressentie , <a class="reference internal" href="../_images/image1383.webp"><img alt="image1383" src="../_images/image1383.webp" style="width: 200px;" /></a></p>
+<p>annul_&lt;texte&gt;  : <a href="#id1"><span class="problematic" id="id2">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
+</li>
+</ul>
 </div>
-<div class="section" id="table-messages">
-<h4>0.3.1.3 Table messages<a class="headerlink" href="#table-messages" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="table-messages">
+<h4>0.3.1.3 Table messages<a class="headerlink" href="#table-messages" title="Lien permanent vers cette rubrique"></a></h4>
 <p><a class="reference internal" href="../_images/image1179.webp"><img alt="image1179" src="../_images/image1179.webp" style="width: 548px;" /></a></p>
 <p>Cette table permet avec HA de recevoir des textes supérieur à 255 caractères( Rest_command de HA)  ou à des app tierces d’envoyer à monitor des notifications( par l’API de monitor , voir ce § <a class="reference internal" href="#api-de-monitor"><span class="std std-ref">0.12 API de monitor</span></a></p>
 <div class="admonition-exemple-d-utilisation-avec-home-assistant admonition">
@@ -739,9 +919,14 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="pourquoi-une-correspondance">
-<h4>0.3.1.4 Pourquoi une correspondance ?<a class="headerlink" href="#pourquoi-une-correspondance" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="table-sse">
+<h4>0.3.1.4 Table sse<a class="headerlink" href="#table-sse" title="Lien permanent vers cette rubrique"></a></h4>
+<p>Table avec un enregistrement unique utilisé par l’API monitor</p>
+<p><a class="reference internal" href="../_images/image1303.webp"><img alt="image1303" src="../_images/image1303.webp" style="width: 222px;" /></a></p>
+</section>
+<section id="pourquoi-une-correspondance">
+<h4>0.3.1.5 Pourquoi une correspondance ?<a class="headerlink" href="#pourquoi-une-correspondance" title="Lien permanent vers cette rubrique"></a></h4>
 <p>cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor</p>
 <p><em>Installation des tables</em> : lors de l’installation automatique, elles sont installées, sinon télécharger le référentiel :</p>
 <p><a class="reference internal" href="../_images/image89.webp"><img alt="image89" src="../_images/image89.webp" style="width: 413px;" /></a></p>
@@ -762,38 +947,63 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image143.webp"><img alt="image143" src="../_images/image143.webp" style="width: 700px;" /></a></p>
-</div>
-</div>
-<div class="section" id="les-dispositifs">
-<h3>0.3.2 Les Dispositifs<a class="headerlink" href="#les-dispositifs" title="Lien permanent vers ce titre"></a></h3>
-<p>Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz ou HA et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)</p>
+</section>
+</section>
+<section id="les-dispositifs">
+<h3>0.3.2 Les Dispositifs<a class="headerlink" href="#les-dispositifs" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz, HA ou Io.Broker et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)</p>
 <p><strong>Table « dispositifs »</strong></p>
 <p><a class="reference internal" href="../_images/image91.webp"><img alt="image91" src="../_images/image91.webp" style="width: 484px;" /></a></p>
 <p><a class="reference internal" href="../_images/image92.webp"><img alt="image92" src="../_images/image92.webp" style="width: 700px;" /></a></p>
 <p>La table permet en plus de gérer et modifier si besoin l’affichage de tous les dispositifs sans intervenir sur la page HTML ; <span class="red">pour les switches, les scripts pour commander l’allumage ou l’extinction sont générés automatiquement à partir des données de cette table</span>.</p>
-<ul>
+<ul class="simple">
 <li><dl class="simple">
-<dt>num<span class="classifier">ne sert qu’à éditer plus facilement la BD</span></dt><dd><p>voir le paragraphe précédent <a class="reference internal" href="#table-dispositifs-pour-les-variables"><span class="std std-ref">0.3.1.2 Table dispositifs pour les variables</span></a></p>
+<dt>num<span class="classifier">ne sert qu’à éditer plus facilement la BD</span></dt><dd><p>voir le paragraphe précédent  <a class="reference internal" href="#table-dispositifs-pour-les-variables"><span class="std std-ref">0.3.1.2 Table dispositifs pour les variables</span></a></p>
 </dd>
 </dl>
 </li>
 <li><p>Nom appareil : nom usuel</p></li>
-<li><p>nom_dz : nom du dispositif Domoticz</p></li>
+<li><p>nom_objet : nom pour Domoticz et io.broker  ou objet_id (friendly_name) pour Home Assistant</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>il est plus facile de donner le même nom  d’un dispositif à Zigbee2mqtt, Zwave-JS, Domoticz et Home Assistant</p>
+</div>
+<ul class="simple">
 <li><p>idx : celui de Domoticz</p></li>
-<li><p>ID : identity_id de Home Assistant</p></li>
+<li><p>ID : entity_id de Home Assistant ou _id de Io.broker</p></li>
 <li><dl class="simple">
-<dt>idm<span class="classifier">idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »</span></dt><dd><p><span class="darkblue">Voir le paragraphe concernant les images svg</span></p>
+<dt>idm<span class="classifier">idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »</span></dt><dd><p><span class="darkblue">Voir le paragraphe concernant les images svg</span></p>
 </dd>
 </dl>
 </li>
+</ul>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour io.broker, l’objet regroupe toute les fonctions du dispositif, aussi comme un idm doit être unique , dans la base il faudra appliquer cette règle:</p>
+<p>idm_1, idm_2,….</p>
+<p><a class="reference internal" href="../_images/image1417.webp"><img alt="image1417" src="../_images/image1417.webp" style="width: 650px;" /></a></p>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu’un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>le chiffre 2 est à privilégier pour Domoticz, le chiffre 1 sera supprimé dans le futur</p>
+</div>
+<p><a class="reference internal" href="../_images/image1325.webp"><img alt="image1325" src="../_images/image1325.webp" style="width: 300px;" /></a></p>
+<ul>
 <li><p>Matériel : pour les types zwave ou Zigbee</p></li>
 <li><p>ls : lastseen, vu la dernière fois 1 si le dispositif est concerné plus d’infos : <span class="xref std std-ref">1.8.2.1 Ecriture d’un script Dzvent(Dz) ou yaml(HA)</span></p></li>
 <li><dl>
-<dt>maj_js<span class="classifier">types de mise à jour java script</span></dt><dd><ul class="simple">
+<dt>maj_js<span class="classifier">types de mise à jour java script</span></dt><dd><blockquote>
+<div><ul class="simple">
 <li><p>control // détecteur présence(on/off)</p></li>
 <li><p>etat  //porte, volet ,(closed/open)</p></li>
-<li><p>temp ou data // température, température + humidité,</p></li>
-<li><p>temp ou data // température, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est préférable d’utiliser « data »</p></li>
+<li><p>temp  // température, température + humidité, …..il est souvent préférable d’utiliser « data »</p></li>
+<li><p>data // température, ph, M3/h, orp,…. toutes données ; .il est préférable d’utiliser « data »</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image473.webp"><img alt="image473" src="../_images/image473.webp" style="width: 578px;" /></a></p>
 <p><a class="reference internal" href="../_images/image93.webp"><img alt="image93" src="../_images/image93.webp" style="width: 590px;" /></a></p>
@@ -801,14 +1011,36 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <ul class="simple">
 <li><p>onoff commandes</p></li>
 <li><p>onoff+stop commandes (volets par exemple)</p></li>
+<li><p>on // poussoir momentané (sonnette)</p></li>
+<li><p>onoff_rgb //onoff + réglage une lumière sur une certaine couleur</p></li>
+<li><p>on= // commandes particulières, voir cet exemple : <a class="reference internal" href="mon_installation.html#robot-tondeuse-landroid-worx"><span class="std std-ref">21.14 Robot tondeuse Landroid Worx</span></a></p></li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1405.webp"><img alt="image1405" src="../_images/image1405.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1426.webp"><img alt="image1426" src="../_images/image1426.webp" style="width: 700px;" /></a></p>
+<blockquote>
+<div><ul class="simple">
 <li><p>popup //ouverture d’une fenêtre (commandes particulières)</p></li>
 </ul>
+</div></blockquote>
 </dd>
 </dl>
 </li>
 <li><p>id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,</p></li>
 <li><p>car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)</p></li>
-<li><p>F() N° case de la fonction « pour_data() » , fichier fonctions.php</p></li>
+<li><p>F() N° case(1à99) de la fonction « pour_data() » , fichier <span class="darkblue">fonctions.php</span></p>
+<blockquote>
+<div><p>. <span class="red">-1</span> : indique qu’un lien existe avec une variable à mettre à jour en temps réel; concerne des textes de notification comme pour l’alarme « activer ou désactiver »</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1348.webp"><img alt="image1348" src="../_images/image1348.webp" style="width: 298px;" /></a></p>
+</div></blockquote>
+<p>. <span class="red">&gt;0</span> : N° de la fonction à exécuter</p>
+<p>. <span class="red">0 ou null</span> : pas de fonction</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1538.webp"><img alt="image1538" src="../_images/image1538.webp" style="width: 533px;" /></a></p>
+</div></blockquote>
+</div></blockquote>
+</li>
 <li><p>class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes</p></li>
 <li><p>coul_id1_id2_ON, coul_id1_id2_OFF, coul_lamp_ON, coul_lamp_ON : couleur des ID ou de la class des dispositifs suivant leur position, (class_lamp pour les lampes des différents interrupteurs)</p></li>
 <li><p>pass : par défaut « 0 » pas de mot de passe , pwalarm pour mot de passe de l’alarme et pwcommand pour les commandes (on/off ,…)</p></li>
@@ -819,24 +1051,34 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <p>exemple des scripts générés automatiquement</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* switchOnOff*  */
 
-$(&quot;#coul_al_absence&quot;).click(function(){switchOnOff_setpoint(&quot;65&quot;,&quot;41&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
-$(&quot;#coul_al_nuit&quot;).click(function(){switchOnOff_setpoint(&quot;66&quot;,&quot;42&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
-$(&quot;#sirene_al&quot;).click(function(){switchOnOff_setpoint(&quot;67&quot;,&quot;234&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
-$(&quot;#patha5645&quot;).click(function(){switchOnOff_setpoint(&quot;68&quot;,&quot;43&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
-$(&quot;#coul_modect&quot;).click(function(){switchOnOff_setpoint(&quot;69&quot;,&quot;44&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
-$(&quot;#raz_dz&quot;).click(function(){switchOnOff_setpoint(&quot;70&quot;,&quot;45&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
-$(&quot;#sw7&quot;).click(function(){switchOnOff_setpoint(&quot;9&quot;,&quot;77&quot;,&quot;On&quot;,&quot;0&quot;);});
-$(&quot;#sw8&quot;).click(function(){switchOnOff_setpoint(&quot;10&quot;,&quot;79&quot;,&quot;On&quot;,&quot;0&quot;);});
-$(&quot;#ping_pi&quot;).click(function(){switchOnOff_setpoint(&quot;14&quot;,&quot;80&quot;,&quot;On&quot;,&quot;0&quot;);});
-$(&quot;#coul_al_nuit-2&quot;).click(function(){switchOnOff_setpoint(&quot;15&quot;,&quot;81&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
-$(&quot;#sw2&quot;).click(function(){switchOnOff_setpoint(&quot;11&quot;,&quot;85&quot;,&quot;On&quot;,&quot;0&quot;);});
-$(&quot;#gsm&quot;).click(function(){switchOnOff_setpoint(&quot;8&quot;,&quot;86&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
-$(&quot;#sw3&quot;).click(function(){switchOnOff_setpoint(&quot;18&quot;,&quot;166&quot;,&quot;On&quot;,&quot;0&quot;);});
-$(&quot;#sw4&quot;).click(function(){switchOnOff_setpoint(&quot;16&quot;,&quot;167&quot;,&quot;On&quot;,&quot;0&quot;);});
-$(&quot;#sw5&quot;).click(function(){switchOnOff_setpoint(&quot;19&quot;,&quot;168&quot;,&quot;On&quot;,&quot;0&quot;);});
-$(&quot;#sw1&quot;).click(function(){switchOnOff_setpoint(&quot;17&quot;,&quot;169&quot;,&quot;On&quot;,&quot;0&quot;);});
-$(&quot;#volet_bureau,#volet_bureau1&quot;).on(&quot;click&quot;, function (){$(&quot;#popup_vr&quot;).fadeIn(300);document.getElementById(&quot;VR&quot;).setAttribute(&quot;title&quot;,&quot;31&quot;);document.getElementById(&quot;VR&quot;).setAttribute(&quot;rel&quot;,&quot;177&quot;);})
-$(&quot;#act-sir&quot;).click(function(){switchOnOff_setpoint(&quot;36&quot;,&quot;230&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#coul_sirene1&quot;).click(function(){switchOnOff_setpoint(&quot;2&quot;,&quot;13&quot;,&quot;231&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#coul_al_absence&quot;).click(function(){switchOnOff_setpoint(&quot;2&quot;,&quot;65&quot;,&quot;41&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#coul_al_nuit&quot;).click(function(){switchOnOff_setpoint(&quot;2&quot;,&quot;66&quot;,&quot;42&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#patha5645&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;68&quot;,&quot;43&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#coul_modect&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;69&quot;,&quot;44&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#raz_dz&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;70&quot;,&quot;45&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#sw8&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;10&quot;,&quot;79&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#ping_pi&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;14&quot;,&quot;80&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#coul_al_nuit-2&quot;).click(function(){switchOnOff_setpoint(&quot;2&quot;,&quot;15&quot;,&quot;81&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#sw2&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;11&quot;,&quot;85&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#gsm&quot;).click(function(){switchOnOff_setpoint(&quot;2&quot;,&quot;8&quot;,&quot;86&quot;,&quot;group on&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#sw4&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;16&quot;,&quot;167&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw1&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;17&quot;,&quot;169&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#volet_bureau,#volet_bureau1&quot;).on(&quot;click&quot;, function (){$(&quot;#popup_vr&quot;).fadeIn(300);document.getElementById(&quot;VR&quot;).setAttribute(&quot;title&quot;,&quot;31&quot;);document.getElementById(&quot;VR&quot;).setAttribute(&quot;rel&quot;,&quot;177&quot;);})
+  $(&quot;#act-sir&quot;).click(function(){switchOnOff_setpoint(&quot;2&quot;,&quot;36&quot;,&quot;230&quot;,&quot;On&quot;,&quot;pwdalarm&quot;);});
+  $(&quot;#sw9&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;73&quot;,&quot;307&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw10&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;74&quot;,&quot;164&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw11&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;9&quot;,&quot;407&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sc1&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;G1&quot;,&quot;417&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw12&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;24&quot;,&quot;418&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw22&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;76&quot;,&quot;448&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw21,#lamp_porche&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;22&quot;,&quot;431&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw20&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;77&quot;,&quot;306&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw23&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;78&quot;,&quot;450&quot;,&quot;On&quot;,&quot;pwdcommand&quot;);});
+  $(&quot;#SOS&quot;).click(function(){switchOnOff_setpoint(&quot;2&quot;,&quot;91&quot;,&quot;464&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw24&quot;).click(function(){switchOnOff_setpoint(&quot;1&quot;,&quot;79&quot;,&quot;465&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw3&quot;).click(function(){set_state(&quot;4&quot;,&quot;18&quot;,&quot;alias.0.zigbee2mqtt.0.0xb40ecfd30b7d0000&quot;,&quot;On&quot;,&quot;0&quot;);});
+  $(&quot;#sw5&quot;).click(function(){set_state(&quot;4&quot;,&quot;19&quot;,&quot;&quot;,&quot;On&quot;,&quot;0&quot;);});
 </pre></div>
 </div>
 <p>le script dans footer.php pour ajouter le javascript automatiquement:</p>
@@ -847,51 +1089,71 @@ if ($_SESSION[&quot;exeption_db&quot;]==&quot;&quot; &amp;&amp;  DECOUVERTE==fal
 </pre></div>
 </div>
 <p>le script dans fonctions.php pour créer automatiquement le javasript dans HTML:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> function sql_plan($t){// SERVEUR SQL connexion
- $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
- if (($t!=&#39;0&#39;)  &amp;&amp; (strlen($t) &lt; 4)) {
-   $sql=&quot;SELECT * FROM `&quot;.DISPOSITIFS.&quot;` WHERE idx = &#39;$t&#39; AND maj_js &lt;&gt; &#39;variable&#39;;&quot;;
-   $result = $conn-&gt;query($sql);
-   $row = $result-&gt;fetch_assoc();return $row;}
- else if ($t!=&#39;0&#39;  &amp;&amp; strlen($t) &gt; 3) {
-   $sql=&quot;SELECT * FROM `&quot;.DISPOSITIFS.&quot;` WHERE ID = &#39;$t&#39; AND maj_js &lt;&gt; &#39;variable&#39;;&quot;;
-           $result = $conn-&gt;query($sql);//if ($result === FALSE) {echo &quot;pas id&quot;;return &quot;&quot;;}
-           $row = $result-&gt;fetch_assoc();
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function sql_plan($t1,$s=&quot;&quot;){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
+  $n=0;$al_bat=0;$p=0;
+  //$row[&#39;nom_objet&#39;]=$s;return $row;
+  // SERVEUR SQL connexion
+  $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
+   if ($t1==&#39;3&#39;)  {
+  $sql=&quot;SELECT * FROM &quot;.DISPOSITIFS.&quot; WHERE nom_objet = &#39;&quot;.$s.&quot;&#39; AND maj_js &lt;&gt; &#39;variable&#39;;&quot;;
+  $result = $conn-&gt;query($sql);$number = $result-&gt;num_rows;
+  $row = $result-&gt;fetch_assoc();
    return $row;}
- else if ($t==&#39;0&#39;) {//$commande=&quot;On&quot;;
- if (IPDOMOTIC1 != &quot;&quot;){
-   $sql=&quot;SELECT * FROM dispositifs WHERE (`maj_js` LIKE &#39;%onoff%&#39; AND `ID` &lt;&gt; &#39;&#39;);&quot;;
-   $result = $conn-&gt;query($sql);
-   while($row = $result-&gt;fetch_array(MYSQLI_ASSOC)){sql_1($row,&#39;turnonoff&#39;,&#39;ha&#39;);
-   }        }
- if (IPDOMOTIC != &quot;&quot;){
-   $sql=&quot;SELECT * FROM dispositifs WHERE (`maj_js` LIKE &#39;%onoff%&#39; AND `idx` &lt;&gt; &#39;&#39;);&quot;;
-   $result = $conn-&gt;query($sql);//echo &quot;/*&quot;;
-   while($row = $result-&gt;fetch_array(MYSQLI_ASSOC)){sql_1($row,&#39;switchOnOff_setpoint&#39;,&#39;dz&#39;);
-   }       }
- return;}
- else echo &quot;pas d&#39;id_dz&quot;;
- }
- function sql_1($row,$f,$ser_dom){$commande=&quot;On&quot;;
- if($ser_dom==&quot;dz&quot;)$ser_dom=$row[&#39;idx&#39;];
- if($ser_dom==&quot;ha&quot;)$ser_dom=$row[&#39;ID&#39;];
- if($row[&#39;id1_html&#39;]!=&#39;&#39;){$s=&#39;$(&quot;#&#39;.$row[&quot;id1_html&quot;];}
-           if($row[&#39;id2_html&#39;]!=&#39;&#39;){$s=$s.&#39;,#&#39;.$row[&#39;id2_html&#39;];}
-           if ($row[&#39;maj_js&#39;]==&quot;onoff+stop&quot;) {$sl=&#39;&quot;).on(&quot;click&quot;, function ()
-{$(&quot;#popup_vr&quot;).fadeIn(300);document.getElementById(&quot;VR&quot;).setAttribute(&quot;title&quot;,&quot;&#39;.$row[&#39;idm&#39;].&#39;&quot;);document.getElementById(&quot;VR&quot;).setAttribute(&quot;rel&quot;,&quot;&#39;.$row[&#39;idx&#39;].&#39;&quot;);})&#39;;}
-   else {$sl=&#39;&quot;).click(function(){&#39;.$f.&#39;(&quot;&#39;.$row[&#39;idm&#39;].&#39;&quot;,&quot;&#39;.$ser_dom.&#39;&quot;,&quot;&#39;.$commande.&#39;&quot;,&quot;&#39;.$row[&#39;pass&#39;].&#39;&quot;);});&#39;;}
-           $s=$s.$sl;
-           echo $s.&quot;\r\n&quot; ;
- return; }?&gt;
+  else if ($t1==&#39;2&#39;) {
+  $sql=&quot;SELECT * FROM `&quot;.DISPOSITIFS.&quot;` WHERE ID = &#39;$s&#39; AND maj_js &lt;&gt; &#39;variable&#39;;&quot;;
+          $result = $conn-&gt;query($sql);//if ($result === FALSE) {echo &quot;pas id&quot;;return &quot;&quot;;}
+          $row = $result-&gt;fetch_assoc();
+  return $row;}
+  else if ($t1==&#39;1&#39;)  {
+  $sql=&quot;SELECT * FROM `&quot;.DISPOSITIFS.&quot;` WHERE idx = &#39;$s&#39; AND maj_js &lt;&gt; &#39;variable&#39;;&quot;;
+          $result = $conn-&gt;query($sql);//if ($result === FALSE) {echo &quot;pas id&quot;;return &quot;&quot;;}
+          $row = $result-&gt;fetch_assoc();
+  return $row;}
+  else if ($t1==&#39;0&#39;) {//$commande=&quot;On&quot;;
+  if ($l_ha != &quot;&quot;){
+  $sql=&quot;SELECT * FROM dispositifs WHERE (`maj_js` LIKE &#39;%on%&#39; AND `maj_js` &lt;&gt; &#39;control&#39; AND `ID` &lt;&gt; &#39;&#39; AND `Actif` &lt;&gt; 1 AND `Actif` &lt;&gt; 2 AND `Actif` &lt;&gt; 4);&quot;;
+  $result = $conn-&gt;query($sql);
+  while($row = $result-&gt;fetch_array(MYSQLI_ASSOC)){sql_1($row,&#39;turnonoff&#39;,&#39;ha&#39;);
+  }
+                                   }
+  if ($l_dz != &quot;&quot;){
+  $sql=&quot;SELECT * FROM dispositifs WHERE (`maj_js` LIKE &#39;%on%&#39; AND `maj_js` &lt;&gt; &#39;control&#39; AND `idx` &lt;&gt; &#39;&#39; AND `Actif` &lt;&gt; 3 AND `Actif` &lt;&gt; 4);&quot;;
+  $result = $conn-&gt;query($sql);
+  while($row = $result-&gt;fetch_array(MYSQLI_ASSOC)){sql_1($row,&#39;switchOnOff_setpoint&#39;,&#39;dz&#39;);
+          }
+  }
+  if ($l_iob != &quot;&quot;){
+  $sql=&quot;SELECT * FROM dispositifs WHERE (`maj_js` LIKE &#39;%on%&#39; AND `maj_js` &lt;&gt; &#39;control&#39; AND `nom_objet` &lt;&gt; &#39;&#39; AND `Actif` &lt;&gt; 1 AND `Actif` &lt;&gt; 2 AND `Actif` &lt;&gt; 3);&quot;;
+  $result = $conn-&gt;query($sql);
+  while($row = $result-&gt;fetch_array(MYSQLI_ASSOC)){sql_1($row,&#39;set_state&#39;,&#39;iob&#39;);
+          }
+  }
+  return;}
+  else echo &quot;pas de serveur&quot;;
+  }
+  function sql_1($row,$f,$ser_dom){
+  $commande=&quot;On&quot;;
+  if ($row[&#39;maj_js&#39;]==&quot;on&quot;){$commande=&quot;group on&quot;;}
+  if($ser_dom==&quot;dz&quot;)$ser_dom=$row[&#39;idx&#39;];
+  if($ser_dom==&quot;ha&quot;)$ser_dom=$row[&#39;ID&#39;];
+  if($ser_dom==&quot;iob&quot;)$ser_dom=$row[&#39;ID&#39;];
+  if($row[&#39;id1_html&#39;]!=&#39;&#39; &amp;&amp; $row[&#39;id1_html&#39;]!=&#39;#&#39; ){$s=&#39;$(&quot;#&#39;.$row[&quot;id1_html&quot;];
+          if($row[&#39;id2_html&#39;]!=&#39;&#39;){$s=$s.&#39;,#&#39;.$row[&#39;id2_html&#39;];}
+          if ($row[&#39;maj_js&#39;]==&quot;onoff+stop&quot;) {$sl=&#39;&quot;).on(&quot;click&quot;, function (){$(&quot;#popup_vr&quot;).fadeIn(300);document.getElementById(&quot;VR&quot;).setAttribute(&quot;title&quot;,&quot;&#39;.$row[&#39;idm&#39;].&#39;&quot;);document.getElementById(&quot;VR&quot;).setAttribute(&quot;rel&quot;,&quot;&#39;.$row[&#39;idx&#39;].&#39;&quot;);})&#39;;}
+  else {$sl=&#39;&quot;).click(function(){&#39;.$f.&#39;(&quot;&#39;.$row[&#39;Actif&#39;].&#39;&quot;,&quot;&#39;.$row[&#39;idm&#39;].&#39;&quot;,&quot;&#39;.$ser_dom.&#39;&quot;,&quot;&#39;.$commande.&#39;&quot;,&quot;&#39;.$row[&#39;pass&#39;].&#39;&quot;);});&#39;;}
+          $s=$s.$sl;
+          echo $s.&quot;\r\n&quot; ;}
+  return;
+  }
 </pre></div>
 </div>
 <p>Voir chapitre <a class="reference internal" href="configuration_minimum.html#configuration-minimum-la-page-daccueil"><span class="std std-ref">1. Configuration minimum : la page d’accueil</span></a></p>
 </div>
 <p><em>Il est possible d’ajouter des types</em></p>
 <p>Pour créer cette table l’importer depuis le référentiel « monitor »</p>
-</div>
-<div class="section" id="cameras">
-<h3>0.3.3 caméras<a class="headerlink" href="#cameras" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="cameras">
+<h3>0.3.3 caméras<a class="headerlink" href="#cameras" title="Lien permanent vers cette rubrique"></a></h3>
 <p>On crée une table dans la base de données : <span class="darkblue">cameras</span></p>
 <p><em>Si l’on veut un accès extérieur il est utile d’indiquer également le domaine;</em>
 <em>Si l’on utilise Zoneminder, il est nécessaire d’assurer la correspondance des Numéros de dispositifs</em></p>
@@ -907,9 +1169,9 @@ if ($_SESSION[&quot;exeption_db&quot;]==&quot;&quot; &amp;&amp;  DECOUVERTE==fal
 <li><p>localisation :</p></li>
 </ul>
 <p>téléchargement de la table « cameras.sql » : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/bd_sql/cameras.sql">https://raw.githubusercontent.com/mgrafr/monitor/main/bd_sql/cameras.sql</a></p>
-</div>
-<div class="section" id="autres-tables-sql">
-<h3>0.3.4 Autres tables SQL<a class="headerlink" href="#autres-tables-sql" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="autres-tables-sql">
+<h3>0.3.4 Autres tables SQL<a class="headerlink" href="#autres-tables-sql" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Enregistrements de températures, tension ,….</p>
 <p><a class="reference internal" href="../_images/image99.webp"><img alt="image99" src="../_images/image99.webp" style="width: 566px;" /></a></p>
 <p>Exemple pour une table temp_meteo :</p>
@@ -934,10 +1196,31 @@ COMMIT;
 <li><p>date : la date et l’heure</p></li>
 <li><p>valeur : la température</p></li>
 </ul>
+</section>
+<section id="configurer-mariadb-pour-les-connexions-distantes">
+<h3>0.3.5 Configurer MariaDB pour les connexions distantes<a class="headerlink" href="#configurer-mariadb-pour-les-connexions-distantes" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Les fichiers de configuration à modifier  :</p>
+<p><a class="reference internal" href="img/image1539.webp"><img alt="image1539" src="img/image1539.webp" style="width: 650px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mariadb</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mariadb</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">50</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">cnf</span>
+</pre></div>
 </div>
+<p><a class="reference internal" href="img/image1540.webp"><img alt="image1540" src="img/image1540.webp" style="width: 643px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul>
+<li><p>Pour MariaDB version 10.11 et supérieure , vous pouvez spécifier une liste d’adresses IP séparées par des virgules:</p>
+<p>bind-address = 10.0.0.1,10.0.1.1,10.0.2.1</p>
+</li>
+<li><p>Pour MariaDB version inférieure à 10.11 :</p>
+<p>bind-address = 0.0.0.0 , vous pouvez vous lier à toutes les adresses IP disponibles</p>
+</li>
+</ul>
 </div>
-<div class="section" id="le-serveur-http-de-nginx">
-<h2>0.4 Le serveur http de NGINX<a class="headerlink" href="#le-serveur-http-de-nginx" title="Lien permanent vers ce titre"></a></h2>
+</section>
+</section>
+<section id="le-serveur-http-de-nginx">
+<h2>0.4 Le serveur http de NGINX<a class="headerlink" href="#le-serveur-http-de-nginx" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference internal" href="../_images/image101.webp"><img alt="image101" src="../_images/image101.webp" style="width: 205px;" /></a></p>
 <p><strong>Configuration de monitor</strong> : <span class="darkblue">/admin/config.php</span></p>
 <p>Extrait du fichier, fichier complet : <a class="reference external" href="https://raw.githubusercontent.com/mgrafr/monitor/main/admin/config.php">https://raw.githubusercontent.com/mgrafr/monitor/main/admin/config.php</a></p>
@@ -1014,14 +1297,14 @@ exit();
 <li><p><strong>Index_loc.php</strong> : la page d’accueil réelle du site ; sauf pour ajouter des pages non incluses dans le programme, ne pas modifier ce fichier.</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image106.webp"><img alt="image106" src="../_images/image106.webp" style="width: 671px;" /></a></p>
-</div>
-<div class="section" id="le-framework-bootstrap">
-<h2>0.5 Le Framework Bootstrap<a class="headerlink" href="#le-framework-bootstrap" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="le-framework-bootstrap">
+<h2>0.5 Le Framework Bootstrap<a class="headerlink" href="#le-framework-bootstrap" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Pour des mises en page faciles, des fenêtres modales ,…..</p>
 <p><a class="reference internal" href="../_images/image107.webp"><img alt="image107" src="../_images/image107.webp" style="width: 270px;" /></a></p>
-</div>
-<div class="section" id="les-styles-css">
-<h2>0.6 Les styles CSS<a class="headerlink" href="#les-styles-css" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="les-styles-css">
+<h2>0.6 Les styles CSS<a class="headerlink" href="#les-styles-css" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference internal" href="../_images/image108.webp"><img alt="image108" src="../_images/image108.webp" style="width: 310px;" /></a></p>
 <p>Un extrait :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">body</span> <span class="p">{</span>
@@ -1043,9 +1326,9 @@ exit();
 </div>
 <p>Les Media queries pour les différents écrans</p>
 <p><a class="reference internal" href="../_images/image110.webp"><img alt="image110" src="../_images/image110.webp" style="width: 676px;" /></a></p>
-</div>
-<div class="section" id="les-images">
-<h2>0.7 Les images<a class="headerlink" href="#les-images" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="les-images">
+<h2>0.7 Les images<a class="headerlink" href="#les-images" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Toutes sont au format svg ou webp sauf les caméras</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1061,9 +1344,9 @@ Les fichiers SVG sont du pur XML</p>
 <p>Webp est un format d’image moderne qui offre une compression supérieure avec perte et sans perte pour les images du Web</p>
 <p>Les caméras sont au format jpg :</p>
 <p><a class="reference internal" href="../_images/image112.webp"><img alt="image112" src="../_images/image112.webp" style="width: 295px;" /></a></p>
-</div>
-<div class="section" id="les-fichiers-php">
-<h2>0.8 Les fichiers PHP<a class="headerlink" href="#les-fichiers-php" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="les-fichiers-php">
+<h2>0.8 Les fichiers PHP<a class="headerlink" href="#les-fichiers-php" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Ils sont regroupés dans le dossier « include », sauf
 -        fonctions.php, ajax.php, à la racine de monitor
 -       /admin/config. PHP
@@ -1073,41 +1356,108 @@ Les fichiers SVG sont du pur XML</p>
 </div></blockquote>
 <p>Affichage de graphique avec jpgraph</p>
 <p><a class="reference internal" href="../_images/image114.webp"><img alt="image114" src="../_images/image114.webp" style="width: 265px;" /></a></p>
-</div>
-<div class="section" id="les-fichiers-javascript-python">
-<h2>0.9 Les fichiers Javascript &amp; Python<a class="headerlink" href="#les-fichiers-javascript-python" title="Lien permanent vers ce titre"></a></h2>
+<p>fonctions.php est le fichier le plus important du serveur; il regroupe toutes les fonctions et organise l’appel des serveurs domotique (Domoticz,Home Assistant et io.broker) indépendamment de l’ordre choisi dans admin/config.php</p>
+<p><a class="reference internal" href="../_images/image1500.webp"><img alt="image1500" src="../_images/image1500.webp" style="width: 700px;" /></a></p>
+</section>
+<section id="les-fichiers-javascript-python">
+<h2>0.9 Les fichiers Javascript &amp; Python<a class="headerlink" href="#les-fichiers-javascript-python" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Utilisation de jQuery</p>
 <p><a class="reference internal" href="../_images/image115.webp"><img alt="image115" src="../_images/image115.webp" style="width: 203px;" /></a> <a class="reference internal" href="../_images/image116.webp"><img alt="image116" src="../_images/image116.webp" style="width: 293px;" /></a></p>
-</div>
-<div class="section" id="api-domoticz-et-ha">
-<h2>0.10 API Domoticz et HA<a class="headerlink" href="#api-domoticz-et-ha" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="api-domoticz-home-assistant-io-broker">
+<h2>0.10 API Domoticz , Home Assistant &amp; Io.Broker<a class="headerlink" href="#api-domoticz-home-assistant-io-broker" title="Lien permanent vers cette rubrique"></a></h2>
 <p>pour les dispositifs :</p>
 <p><strong>DZ</strong> : URL:PORT/json.htm?type=getdevices&amp;plan=NUMERO DU PLAN</p>
 <p><strong>HA</strong> : URL:8123/api/states</p>
-<p>pou les variables (input_text pour HA):</p>
+<p><strong>IOB</strong> :</p>
+<ul class="simple">
+<li><p>URL:8093/v1/objects?filter=zigbee2mqtt.0*&amp;type=device</p></li>
+<li><p>URL:8093/v1/states?filter=zigbee2mqtt.0.0x00124b002228d561.*</p></li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>le dispositif doit être du type device dans IOB; dans le cas contraire (state) , le modifier:</p>
+<p><a class="reference internal" href="../_images/image1412.webp"><img alt="image1412" src="../_images/image1412.webp" style="width: 650px;" /></a></p>
+</div>
+<p>pour les variables (input_text pour HA):</p>
 <p><strong>DZ</strong> : URL:PORT/json.htm?type=command&amp;param=getuservariables</p>
-<p><strong>HA</strong> : URL:8123/api/states/sensor.:darkblue:<cite>liste_var001</cite></p>
+<p><strong>HA</strong> : URL:8123/api/states/sensor.liste_var</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em>liste_var001 est l’unique_id du template concernant les input_text</em> , voir ce § <span class="xref std std-ref">1.8.2.1.2 Home Assistant</span></p>
+<p><em>un unique_id du sensor doit être indiqué</em> , voir ce paragraphe  <a class="reference internal" href="configuration_minimum.html#ecriture-d-un-script-dzvent-ou-yaml"><span class="std std-ref">1.8.2.1 Ecriture d’un script Dzvent ou yaml</span></a></p>
+<p><a class="reference internal" href="../_images/image1365.webp"><img alt="image1365" src="../_images/image1365.webp" style="width: 584px;" /></a></p>
 </div>
 <p>Dans les 2 cas, l’API concernée  envoie un fichier json de tous les dispositifs ou les variables.</p>
 <p>……..ha, un dispositif :</p>
 <p><a class="reference internal" href="../_images/image97.webp"><img alt="image97" src="../_images/image97.webp" style="width: 509px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>pour Home Assistant ,un jeton est obligatoire; pour faire des essai avec un navigateur, utiliser un client pour API comme par exemple ci dessous l” addon RESTer:</p>
+<p><a class="reference internal" href="../_images/image1364.webp"><img alt="image1364" src="../_images/image1364.webp" style="width: 700px;" /></a></p>
 </div>
-<div class="section" id="les-fichiers-ajoutes-par-l-utilisateur">
-<h2>0.11 Les fichiers ajoutés par l’utilisateur<a class="headerlink" href="#les-fichiers-ajoutes-par-l-utilisateur" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="les-fichiers-ajoutes-par-l-utilisateur">
+<h2>0.11 Les fichiers ajoutés par l’utilisateur<a class="headerlink" href="#les-fichiers-ajoutes-par-l-utilisateur" title="Lien permanent vers cette rubrique"></a></h2>
 <p>4 sous dossiers sont créés pour ajouter des pages personnelles avec les styles , les images et le Javascript</p>
 <p><a class="reference internal" href="../_images/image102.webp"><img alt="image102" src="../_images/image102.webp" style="width: 284px;" /></a></p>
+<section id="javascript-d-une-page-perso">
+<h3>0.11.1 javascript d’une page perso<a class="headerlink" href="#javascript-d-une-page-perso" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Exemple de fichier custom/JS.js</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">JavaScript</span> <span class="n">Document</span>
+
+<span class="n">function</span> <span class="n">custom_js</span><span class="p">(){</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">typeof</span> <span class="n">custom</span> <span class="o">!=</span> <span class="s1">&#39;undefined&#39;</span> <span class="o">&amp;</span> <span class="n">custom</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">worx</span><span class="o">=</span><span class="n">pp</span><span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">;</span><span class="n">maj_worx</span><span class="p">(</span><span class="n">pp</span><span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">.</span><span class="n">Name</span><span class="p">,</span><span class="n">pp</span><span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">.</span><span class="n">Data</span><span class="p">);}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="api-de-monitor">
-<h2>0.12 API de monitor<a class="headerlink" href="#api-de-monitor" title="Lien permanent vers ce titre"></a></h2>
+<p>la fonction custom_js est réservée; elle est appelée si besoin dans la fonction devices_plan() (mise à jour des dispositifs)</p>
+<p>voir également les § <a class="reference internal" href="mon_installation.html#le-javascript-concerne"><span class="std std-ref">21.14.4 Le Javascript concerné</span></a> et <a class="reference internal" href="configuration_minimum.html#quelques-infos-supplementaires"><span class="std std-ref">1.3.5.2 Quelques infos supplémentaires</span></a></p>
+</section>
+</section>
+<section id="api-de-monitor">
+<h2>0.12 API de monitor<a class="headerlink" href="#api-de-monitor" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Pour l’utiliser, dans admin/config.php: <span class="darkblue">mettre sur true</span></p>
-<p><a href="#id1"><span class="problematic" id="id2">|</span></a>image118</p>
+<p><a class="reference internal" href="../_images/image118.webp"><img alt="image118" src="../_images/image118.webp" style="width: 449px;" /></a></p>
 <p>Appel GET : <a class="reference external" href="http://192.168.1.9/monitor/api/json.php">http://192.168.1.9/monitor/api/json.php</a>?&lt;DATA&gt;</p>
 <p><a class="reference internal" href="../_images/image407.webp"><img alt="image407" src="../_images/image407.webp" style="width: 650px;" /></a></p>
-</div>
-</div>
+<section id="les-fonctions-possibles">
+<h3>0.12.1 Les fonctions possibles<a class="headerlink" href="#les-fonctions-possibles" title="Lien permanent vers cette rubrique"></a></h3>
+<ul>
+<li><p><strong>app== »messages »</strong> : function message($contenu,$nom,$maj)</p>
+<p><a class="reference internal" href="../_images/image1275.webp"><img alt="image1275" src="../_images/image1275.webp" style="width: 448px;" /></a></p>
+<p>maj=1</p>
+</li>
+<li><p><strong>app== »maj »</strong> : maj($id,$state)</p>
+<p>mise à jour temps réel SSE-PHP</p>
+<p>voir les § <span class="xref std std-ref">18.10.2 L’API de monitor</span> &amp; <span class="xref std std-ref">18.10.3 L’API de monitor depuis HA ou DZ</span></p>
+</li>
+<li><p><strong>app== » »api_rest_ha »</strong> : envoi_data($name)</p>
+<p>uniquement pour Home Assistant</p>
+</li>
+</ul>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/image1276.webp"><img alt="image1276" src="../_images/image1276.webp" style="width: 600px;" /></a></p>
+</div></blockquote>
+<p>l” API renvoi un objet de Monitor , voir la fonction /api/f_pour_api/envoi_data()</p>
+</section>
+</section>
+<section id="les-fichiers-json-recu-par-monitor">
+<h2>0.13 Les fichiers JSON reçu par monitor<a class="headerlink" href="#les-fichiers-json-recu-par-monitor" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Utilisé par les fonctions javascript dans /include/footer.php:</p>
+<p>function maj_services(index)</p>
+<p><a class="reference internal" href="../_images/image1216.webp"><img alt="image1216" src="../_images/image1216.webp" style="width: 407px;" /></a></p>
+<p>function maj_devices(plan)</p>
+<p><a class="reference internal" href="../_images/image1217.webp"><img alt="image1217" src="../_images/image1217.webp" style="width: 407px;" /></a></p>
+<p>function maj_mqtt(id_x,state,ind,level=0)</p>
+<p><a class="reference internal" href="../_images/image1218.webp"><img alt="image1218" src="../_images/image1218.webp" style="width: 407px;" /></a></p>
+<p>function pluie(idx)</p>
+<p><a class="reference internal" href="../_images/image1219.webp"><img alt="image1219" src="../_images/image1219.webp" style="width: 407px;" /></a></p>
+<p>function mc(variable,id)</p>
+<p><a class="reference internal" href="../_images/image1221.webp"><img alt="image1221" src="../_images/image1221.webp" style="width: 407px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1220.webp"><img alt="image1220" src="../_images/image1220.webp" style="width: 407px;" /></a></p>
+</section>
+</section>
 
 
            </div>
@@ -1120,7 +1470,7 @@ Les fichiers SVG sont du pur XML</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

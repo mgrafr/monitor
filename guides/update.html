@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>19. UPDATE &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>19. UPDATE &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -65,9 +68,14 @@
 <li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">19. UPDATE</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#version-de-php">19.1 Version de PHP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#update-monitor">19.2 UPDATE Monitor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#releases">19.2.1 Releases</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#version-en-developpement-2-2-7">Version  en developpement 2.2.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-de-ssh">19.2 Version de SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-monitor">19.3 UPDATE Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#releases">19.3.1 Releases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#version-en-developpement-3-2-1">Version  en developpement 3.2.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-3-2-0-aout-2024">Version 3.2.0 (Août 2024)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-3-1-0-mars-2024">Version  3.1.0 (mars 2024)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-3-0">Version  3.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-2-2-7">Version 2.2.7</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#version-2-2-6">Version  2.2.6</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#version-2-2-5">Version  2.2.5</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#version-2-2-4">Version 2.2.4</a></li>
@@ -78,7 +86,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#version-de-jpgraph">19.3 Version de JPGRAPH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-de-jpgraph">19.4 Version de JPGRAPH</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
@@ -110,38 +118,91 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="update">
-<h1>19. UPDATE<a class="headerlink" href="#update" title="Lien permanent vers ce titre"></a></h1>
-<div class="section" id="version-de-php">
-<h2>19.1 Version de PHP<a class="headerlink" href="#version-de-php" title="Lien permanent vers ce titre"></a></h2>
-<p><em>La version actuelle est 8.2</em></p>
-</div>
-<div class="section" id="update-monitor">
-<h2>19.2 UPDATE Monitor<a class="headerlink" href="#update-monitor" title="Lien permanent vers ce titre"></a></h2>
-<p><strong>La version stable actuelle est 2.2.6</strong></p>
-<div class="section" id="releases">
-<h3>19.2.1 Releases<a class="headerlink" href="#releases" title="Lien permanent vers ce titre"></a></h3>
-<div class="section" id="version-en-developpement-2-2-7">
-<h4>Version  en developpement 2.2.7<a class="headerlink" href="#version-en-developpement-2-2-7" title="Lien permanent vers ce titre"></a></h4>
+  <section id="update">
+<h1>19. UPDATE<a class="headerlink" href="#update" title="Lien permanent vers cette rubrique"></a></h1>
+<section id="version-de-php">
+<h2>19.1 Version de PHP<a class="headerlink" href="#version-de-php" title="Lien permanent vers cette rubrique"></a></h2>
+<p><em>La version actuelle est 8.3</em></p>
+</section>
+<section id="version-de-ssh">
+<h2>19.2 Version de SSH<a class="headerlink" href="#version-de-ssh" title="Lien permanent vers cette rubrique"></a></h2>
+<p>version : php8.3-ssh2 pour Debian 12</p>
+</section>
+<section id="update-monitor">
+<h2>19.3 UPDATE Monitor<a class="headerlink" href="#update-monitor" title="Lien permanent vers cette rubrique"></a></h2>
+<p><strong>La version stable actuelle est 3.2.0</strong></p>
+<section id="releases">
+<h3>19.3.1 Releases<a class="headerlink" href="#releases" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="version-en-developpement-3-2-1">
+<h4>Version  en developpement 3.2.1<a class="headerlink" href="#version-en-developpement-3-2-1" title="Lien permanent vers cette rubrique"></a></h4>
+</section>
+<section id="version-3-2-0-aout-2024">
+<h4>Version 3.2.0 (Août 2024)<a class="headerlink" href="#version-3-2-0-aout-2024" title="Lien permanent vers cette rubrique"></a></h4>
+<ul class="simple">
+<li><p>ajout Panic Bouton en page d’accueil</p></li>
+<li><p>prise en compte de io.broker (début du développement)</p></li>
+<li><p>Changement de couleur des lampes sur le mur de commandes</p></li>
+</ul>
+<p>cette version commence à intégrer io.broker ; pour cela l” idm de monitor doit indiquer :
+1 ou 2 pour Domoticz (à terme seulement 2 sera utilisé, le 1 est conservé uniquement pour Domoticz provisoirement compte tenu de l’historique)
+3 pour Home Assistant
+4 pour io.broker</p>
+<p>cette version ne peut être mise à jour automatiquemnt, aussi la configuration doit être indiquée dans le nouveau fichier en s’inspirant du précédent.
+Dans la base de données de monitor seul le champ Actif doit être si besoin mis à jour en tenant compte des infos ci-dessus.</p>
+</section>
+<section id="version-3-1-0-mars-2024">
+<h4>Version  3.1.0 (mars 2024)<a class="headerlink" href="#version-3-1-0-mars-2024" title="Lien permanent vers cette rubrique"></a></h4>
+<ul class="simple">
+<li><p>modification ou mise à jour des dispositifs sans utiliser PhpMyAdmin</p></li>
+<li><p>le fichier string_modect.lua (DZ) est remplacé par string_modect.json (compatible DZ et HA)</p></li>
+<li><p>version SSH : php8.3-ssh2 pour Debian 12</p></li>
+<li><p>avec la compatibilité pour Home Assistant, les fichier de configuration « connect.* sont stockés dans monitor et à chaque maj DZ et HA téléchargent , après notification, les nouveaux fichiers.</p></li>
+<li><p>utilisation d’un identifiant monitor “idm” pour les dispositifs et les variables pour une compatibilité avec Home Assistant</p></li>
+</ul>
+</section>
+<section id="version-3-0">
+<h4>Version  3.0<a class="headerlink" href="#version-3-0" title="Lien permanent vers cette rubrique"></a></h4>
+<ul class="simple">
+<li><p>maj_js (fonction des dispositifs) s’enrichit de « on » poussoir momentané (bouton sonnette)</p></li>
+<li><p>test GSM de l’alarme: bouton PUSH ON remplacé par bouton de sonnette</p></li>
+<li><p>correction bug sur mise a jour lampes plan intérieur</p></li>
+<li><p>mise à jour de jpgraph vers la version 4.4.2</p></li>
+<li><dl class="simple">
+<dt>pour une utilisation combinée de Domoticz et Home Assistant la table “idm” n’est plus facultative mais obligatoire,(ne concerne que Domoticz); une copie de la table “idx” vers “idm” résout rapidement le problème</dt><dd><p>dans la base de données idx de Domoticz et Id de Home Assistant peuvent être déclarés, il suffit d’indiquer celui des deux qui doit être actif pour monitor</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="version-2-2-7">
+<h4>Version 2.2.7<a class="headerlink" href="#version-2-2-7" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p>séparation de temp et data pour l’affichage des températures</p></li>
+<li><p>Mise à jour temps réel avec SSE Node.js depuis Domoticz ou Home Assistant</p></li>
+<li><p>Alternative MAJ temps réel avec SSE PHP, installé lors de l’install de monitor</p></li>
+<li><p>ajout des groupes et scènes sur la page “commandes ON/OFF »</p></li>
+<li><p>nom_objet remplace nom_dz ,(nom pour DZ et object_id pour HA)</p></li>
+<li><p>affichage clavier numérique dans alarme en plus d’administration</p></li>
+<li><p>PHP 8.3</p></li>
+<li><p>PhpMyAdmin : 5.2.1</p></li>
+<li><p>Python 3.11</p></li>
 </ul>
-</div>
-<div class="section" id="version-2-2-6">
-<h4>Version  2.2.6<a class="headerlink" href="#version-2-2-6" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="version-2-2-6">
+<h4>Version  2.2.6<a class="headerlink" href="#version-2-2-6" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p>ajout tableau messages, pour variables HA &gt; 255 caractères ou autres appli</p></li>
 <li><p>ajout API monitor</p></li>
 </ul>
-</div>
-<div class="section" id="version-2-2-5">
-<h4>Version  2.2.5<a class="headerlink" href="#version-2-2-5" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="version-2-2-5">
+<h4>Version  2.2.5<a class="headerlink" href="#version-2-2-5" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p>ajout script « lasteen pour home assistant</p></li>
 </ul>
-</div>
-<div class="section" id="version-2-2-4">
-<h4>Version 2.2.4<a class="headerlink" href="#version-2-2-4" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="version-2-2-4">
+<h4>Version 2.2.4<a class="headerlink" href="#version-2-2-4" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p>ajout d’une notification LastSeen (avec script pour domoticz)</p></li>
 <li><p>ajout bouton reset pour annuler la notification de piles faibles</p></li>
@@ -149,22 +210,22 @@
 <li><p>Nb enregistrements affichés pour historique poubelles : remplacé 24 par choix dans config.php</p></li>
 <li><p>installation d’un assistant vocal Ha-bridge et Alexa ; intégration du pont Ha-bridge dans monitor</p></li>
 </ul>
-</div>
-<div class="section" id="version-2-2-3">
-<h4>Version 2.2.3<a class="headerlink" href="#version-2-2-3" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="version-2-2-3">
+<h4>Version 2.2.3<a class="headerlink" href="#version-2-2-3" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p>Ajout docomentation Readthedocs</p></li>
 </ul>
-</div>
-<div class="section" id="version-2-2-0">
-<h4>Version 2.2.0<a class="headerlink" href="#version-2-2-0" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="version-2-2-0">
+<h4>Version 2.2.0<a class="headerlink" href="#version-2-2-0" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p>suite à la modification de l’API Domoticz (devices remplacé par getdevices),   ……………………..mise à jour de fonctions.php</p></li>
 <li><p>accès shell Domoticz-Docker avec SSH2</p></li>
 </ul>
-</div>
-<div class="section" id="version-2-1-0">
-<h4>Version 2.1.0<a class="headerlink" href="#version-2-1-0" title="Lien permanent vers ce titre"></a></h4>
+</section>
+<section id="version-2-1-0">
+<h4>Version 2.1.0<a class="headerlink" href="#version-2-1-0" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p>début de l’adaptabilité à Home Assistant, l’affichages des valeurs des dispositifs, l’utilisation des variables et la commande de switches virtuels sont opérationnelles.</p></li>
 <li><p>ajout certificat auto-signé pour Nginx</p></li>
@@ -174,19 +235,19 @@
 <li><p>3 scripts différents d’installation et version 2.1 (update vers Debian 12)</p></li>
 <li><p>explication concernant l’envoi par Domoticz de SMS</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="version-de-jpgraph">
-<h2>19.3 Version de JPGRAPH<a class="headerlink" href="#version-de-jpgraph" title="Lien permanent vers ce titre"></a></h2>
-<p><em>La version actuelle est 4.4.1</em></p>
+</section>
+</section>
+</section>
+<section id="version-de-jpgraph">
+<h2>19.4 Version de JPGRAPH<a class="headerlink" href="#version-de-jpgraph" title="Lien permanent vers cette rubrique"></a></h2>
+<p><em>La version actuelle est 4.4.2</em></p>
 <p>Recommendé:</p>
 <ul class="simple">
 <li><p>&gt;= PHP 5.2.0</p></li>
 <li><p>PHP Builtin GD library</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -199,7 +260,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

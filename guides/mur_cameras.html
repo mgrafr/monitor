@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7. MUR de CAMERAS &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>7. MUR de CAMERAS &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -99,13 +102,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="mur-de-cameras">
-<h1>7. MUR de CAMERAS<a class="headerlink" href="#mur-de-cameras" title="Lien permanent vers ce titre"></a></h1>
+  <section id="mur-de-cameras">
+<h1>7. MUR de CAMERAS<a class="headerlink" href="#mur-de-cameras" title="Lien permanent vers cette rubrique"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>Zoneminder doit être installé</p>
+<p>Les images peuvent provenir de Zoneminder ou de Monitor, depuis la table « cameras ». <span class="red">Avec les derniéres versions de Zoneminder l’utilisation du cpu atteint en permanence 100% aussi j’ai fai le choix d’abandonner progressivement zoneminder et la 1ere étape a été de d’afficher le mur de caméras depuis monitor</span></p>
+<p>Le choix se fait dans admin/config.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;SRC_MUR&#39;</span><span class="p">,</span><span class="s1">&#39;mo&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">zm</span><span class="o">=</span><span class="n">Zoneminder</span><span class="p">,</span> <span class="n">mo</span><span class="o">=</span><span class="n">monitor</span>
+</pre></div>
 </div>
-<p>Pour éviter des problèmes de capacité mémoire, vider le cache périodiquement avec CRON :</p>
+</div>
+<p>Pour éviter des problèmes de capacité mémoire, vider le cache de Zoneminder ou Monitor périodiquement avec CRON :</p>
 <p><strong>crontab -e</strong> <a class="reference internal" href="../_images/image555.webp"><img alt="image555" src="../_images/image555.webp" style="width: 332px;" /></a></p>
 <p><em>Avec nano ou vim</em> :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">12</span> <span class="o">*</span> <span class="o">*</span>  <span class="o">*</span> <span class="n">sync</span><span class="p">;</span> <span class="n">echo</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">vm</span><span class="o">/</span><span class="n">drop_caches</span>
@@ -120,12 +127,15 @@
 <p><a class="reference internal" href="../_images/image557.webp"><img alt="image557" src="../_images/image557.webp" style="width: 536px;" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>Il est important d’ajouter les caméras dans Zoneminder les unes après les autres sans en supprimer afin que ces cameras suivent un ordre chronologique (1,2,3,4,5, 6, …)</p>
+<p><strong>Images provenant de Zoneminder</strong></p>
+<p>Il est important d’ajouter les caméras dans Zoneminder les unes après les autres sans en supprimer afin que ces cameras suivent un ordre chronologique (1,2,3,4,5, 6, …); c’est l’id de Zoneminder qui doit être ajouté  dans la BD (id_zm)</p>
 <p>Voir la page : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/44">http://domo-site.fr/accueil/dossiers/44</a></p>
 <p><a class="reference internal" href="../_images/image558.webp"><img alt="image558" src="../_images/image558.webp" style="width: 601px;" /></a></p>
+<p><strong>Images gérées par monitor</strong></p>
+<p>Il suffit de numéroter les caméras (id_zm) dans l’ordre souhaité</p>
 </div>
-<div class="section" id="les-pages-index-loc-php-header-php-entete-html-php">
-<h2>7.1- les pages index_loc.php, header.php, entete_html.php<a class="headerlink" href="#les-pages-index-loc-php-header-php-entete-html-php" title="Lien permanent vers ce titre"></a></h2>
+<section id="les-pages-index-loc-php-header-php-entete-html-php">
+<h2>7.1- les pages index_loc.php, header.php, entete_html.php<a class="headerlink" href="#les-pages-index-loc-php-header-php-entete-html-php" title="Lien permanent vers cette rubrique"></a></h2>
 <ul class="simple">
 <li><p><strong>Index_loc.php</strong> , en général, ne pas modifier</p></li>
 </ul>
@@ -144,6 +154,7 @@ $_SESSION[&quot;zmuser&quot;]=ZMUSER;$_SESSION[&quot;zmpass&quot;]=ZMPASS;}
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_MUR&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">MUR</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;NOMMUR&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nom</span> <span class="n">du</span> <span class="n">mur</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;NBCAM&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nombre</span> <span class="n">caméras</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SRC_MUR&#39;</span><span class="p">,</span><span class="s1">&#39;mo&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">zm</span><span class="o">=</span><span class="n">Zoneminder</span><span class="p">,</span> <span class="n">mo</span><span class="o">=</span><span class="n">monitor</span>
 <span class="o">//</span> <span class="n">Zoneminder</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;ZMURL&#39;</span><span class="p">,</span><span class="s1">&#39;http://192.168.1.23/zm&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">IP</span><span class="o">/</span><span class="n">zm</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;ZMURLTLS&#39;</span><span class="p">,</span><span class="s1">&#39;https:zoneminder.DOMAINE.ovh&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">sous</span> <span class="n">domaine</span>
@@ -159,61 +170,67 @@ $_SESSION[&quot;zmuser&quot;]=ZMUSER;$_SESSION[&quot;zmpass&quot;]=ZMPASS;}
 <div><p><a class="reference internal" href="../_images/image561.webp"><img alt="image561" src="../_images/image561.webp" style="width: 570px;" /></a></p>
 </div></blockquote>
 <ul class="simple">
-<li><p><strong>entete_html.php</strong> , pour le switch ajouter cette ligne</p></li>
+<li><p><strong>entete_html.php et footer.php</strong> , pour le switch ajouter ces lignes</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;bootstrap/bootstrap-switch-button.css&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;stylesheet&quot;</span><span class="o">&gt;</span>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>modification depuis la version 3.1.3 (la précédente version du switch ne fonctionne plus)</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- entetete.php  --&gt;
+&lt;link href=&quot;bootstrap/css/bootstrap4-toggle.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+ &lt;!-- footer.php  --&gt;
+&lt;script src=&quot;bootstrap/js/bootstrap4-toggle.min.js&quot;&gt;&lt;/script&gt;
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><a class="reference external" href="https://github.com/gitbrent/bootstrap-switch-button/releases/latest">https://github.com/gitbrent/bootstrap-switch-button/releases/latest</a></p>
+<p><a class="reference external" href="https://gitbrent.github.io/bootstrap4-toggle/">https://gitbrent.github.io/bootstrap4-toggle/</a></p>
 </div>
-</div>
-<div class="section" id="la-page-de-monitor">
-<h2>7.2- la page de monitor<a class="headerlink" href="#la-page-de-monitor" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="la-page-de-monitor">
+<h2>7.2- la page de monitor<a class="headerlink" href="#la-page-de-monitor" title="Lien permanent vers cette rubrique"></a></h2>
 <ul class="simple">
 <li><p><strong>mur_cam.php</strong></p></li>
 </ul>
 <blockquote>
-<div><p><a class="reference internal" href="../_images/image563.webp"><img alt="image563" src="../_images/image563.webp" style="width: 608px;" /></a></p>
+<div><p><a class="reference internal" href="../_images/image1387.webp"><img alt="image1387" src="../_images/image1387.webp" style="width: 700px;" /></a></p>
 </div></blockquote>
 <ul class="simple">
 <li><p><strong>Le script du bouton On/Off</strong> , dans footer , ajouter cette ligne:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;bootstrap/bootstrap-switch-button.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;bootstrap/js/bootstrap4-toggle.min.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image565.webp"><img alt="image565" src="../_images/image565.webp" style="width: 581px;" /></a></p>
 <ul class="simple">
-<li><p><strong>mur_cameras.php</strong></p></li>
+<li><p><strong>mur_cameras.php</strong> , pour Zoneminder</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image566.webp"><img alt="image566" src="../_images/image566.webp" style="width: 700px;" /></a></p>
+<ul class="simple">
+<li><p><strong>mur_cameras1.php</strong> , pour Monitor</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1388.webp"><img alt="image1388" src="../_images/image1388.webp" style="width: 600px;" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p><strong>IMPORTANT</strong> : le fichier include/mur_cameras.php est indépendant du programme (‘est une image en retour) et de ce fait on ne peut utiliser les constantes définies dans admin/config.php</p>
+<p><strong>IMPORTANT POUR ZONEMINDER</strong> : le fichier include/mur_cameras.php est indépendant du programme (‘est une image en retour) et de ce fait on ne peut utiliser les constantes définies dans admin/config.php</p>
 <p>On va donc pour remédier à ce problème :</p>
 <ul class="simple">
 <li><p>passer l’url en paramètre ainsi que l’Idx</p></li>
 <li><p>utiliser les variables de session <span class="red">$_SESSION[« zmuser »] et $_SESSION[« zmpass »] pour le login et le mot de passe</span> car ces données sont sensibles</p></li>
 </ul>
-</div>
 <p><strong>Les fichiers sont tous UTF-8 sans BOM</strong> et l’url des caméras doit se trouver dans <span class="darkblue">mur_cam.php</span>. (<span class="red">ZMURL dans mur_cam.php</span> et non dans mur_cameras.php);</p>
+</div>
 <p>Extrait de mur_cam.php</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
-$scale=100;$i=1;$j=1;
 while ($i &lt;= NBCAM) {
-        $camImgId=&quot;cam&quot;.$i;
-        if ($j==1) {echo &quot;&lt;tr&gt;&quot;;}
-        echo &#39;&lt;td&gt;
-        &lt;img id=&quot;&#39;.$camImgId.&#39;&quot; src=&quot;include/mur_cameras.php?idx=&#39;.$i.&#39;&amp;url=&#39;.ZMURL.&#39;&amp;x=&quot; rel=&quot;&#39;.$i.&#39;&quot; class=&quot;dimcam&quot; alt=&quot;&quot;/&gt;&lt;/td&gt;&#39;;
-        if (($j==2) || ($i==NBCAM)){ echo &quot;&lt;/tr&gt;&quot;;$j=0;}
-  $i++;$j++;}
+     if (SRC_MUR==&quot;mo&quot;) {$src_img=&#39;include/mur_cameras1.php?id_zm=&#39;.$i.&#39;&amp;x=&#39;;}
+     if (SRC_MUR==&quot;zm&quot;) {$src_img=&#39;include/mur_cameras.php?idx=&#39;.$i.&#39;&amp;url=&#39;.ZMURL.&#39;&amp;x=&#39;;}
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image568.webp"><img alt="image568" src="../_images/image568.webp" style="width: 603px;" /></a></p>
-</div>
-<div class="section" id="les-scripts-js-pour-la-video-dans-footer-php">
-<h2>7.3- Les scripts JS pour la vidéo dans footer.php<a class="headerlink" href="#les-scripts-js-pour-la-video-dans-footer-php" title="Lien permanent vers ce titre"></a></h2>
+<p><a class="reference internal" href="../_images/image1389.webp"><img alt="image1389" src="../_images/image1389.webp" style="width: 700px;" /></a></p>
+</section>
+<section id="les-scripts-js-pour-la-video-dans-footer-php">
+<h2>7.3- Les scripts JS pour la vidéo dans footer.php<a class="headerlink" href="#les-scripts-js-pour-la-video-dans-footer-php" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Le Zoom Bootstrap :</p>
 <p><a class="reference internal" href="../_images/image569.webp"><img alt="image569" src="../_images/image569.webp" style="width: 602px;" /></a></p>
 <div class="admonition important">
@@ -252,17 +269,17 @@ La fonction updateImage() dans footer.php</p>
 vidéo, l’accès distant en https est assuré.</p>
 <p><a class="reference internal" href="../_images/image572.webp"><img alt="image572" src="../_images/image572.webp" style="width: 566px;" /></a></p>
 </div>
-</div>
-<div class="section" id="ajouter-une-camera">
-<h2>7.4- Ajouter une caméra<a class="headerlink" href="#ajouter-une-camera" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="ajouter-une-camera">
+<h2>7.4- Ajouter une caméra<a class="headerlink" href="#ajouter-une-camera" title="Lien permanent vers cette rubrique"></a></h2>
 <p>Il suffit d’indiquer dans admin/config.php le nb de caméras</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;NBCAM&#39;</span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nombre</span>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -275,7 +292,7 @@ vidéo, l’accès distant en https est assuré.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

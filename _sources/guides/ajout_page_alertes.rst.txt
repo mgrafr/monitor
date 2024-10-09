@@ -1,7 +1,5 @@
 16. Ajouter des pages ou des alertes
 ------------------------------------
-*non incluses dans le programme*
-
 16.1 Ajouter un plan (ex : 1er étage)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **créer la page** avec le plan, voir le § :ref:`2. Une 1ere PAGE : LE PLAN INTERIEUR`
@@ -118,6 +116,154 @@ La table "text_image" :
 
 |image913|
 
+16.4 Ajouter une page web io.broker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+une autre solution d'afficher une page si io.broker est installé.
+
+.. important::
+
+   l'adaptateur webui doit être installé
+
+   |image1496|
+
+   https://github.com/iobroker-community-adapters/ioBroker.webui
+
+16.4.1 Ajout de la page dans monitor
+====================================
+|image1497|
+
+Ajouter les infos de connexion dans admin/config.php, ici sur le 3eme serveur:
+
+.. code-block::
+
+   define('URLIOB', array(
+    0 => "https://iobroker.<DOMAINE>",
+    1 => "https://iobweb.<DOMAINE>"  ));
+   ___
+   define('URLIOB', 'https://iobroker.<DOMAINE>');
+   define('IPDOMOTIC2', '192.168.1.162');//ip 3emme serveur Domotique
+   define('USERDOMOTIC2', '<LOGIN>');//user du serveur,répertoire :home/user
+   define('PWDDOMOTIC2', '<PASS>');//mot passe serveur
+   define('URLDOMOTIC2', 'http://192.168.1.162:8081/');//url ex:http://192.168.1.104:8081/
+   define('TOKEN_DOMOTIC2',""); 
+   define('PORT_API_DOMO2','8093');//port de l'API éventuel
+   define('PORT_WEBUI_DOMO2','8082/vis-2/index.html#Page1');//port web UI ou vis 2 et dossier éventuel
+
+16.4.1.1  page include/iobroker.php
+"""""""""""""""""""""""""""""""""""
+
+|image1498|
+
+- styles css:
+
+.. code-block::
+
+   /* pour iframe , ajout de #iobrokerapp*/
+   #habridgeapp, #iobrokerapp{width: 700px;height: 800px;position: relative;top: 10px;}
+   /* pour la page,  ajout de #iobroker */
+   #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,
+   #murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{
+    width: 100%;
+    height: 1120px;padding: 80px 0;
+    min-height: 100%;
+    position: relative;
+    color: #000;
+    top: 350px;z-index:-20;overflow: auto;
+   }
+   #interieur, #exterieur,#alarmes,#commandes,#murcam ,#murinter,
+   #app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{
+    background-color: aquamarine;}
+   /* Large devices (small desktops <535) */
+   @media (max-width:534px) {#habridgeapp, #iobrokerapp{width: 480px;height: 600px;}}
+
+16.4.1.2  page index_loc.php,include/header.php
+"""""""""""""""""""""""""""""""""""""""""""""""
+- ajouter dans index_loc.php:
+
+.. code-block::
+
+   if (URLIOB!="") include ("include/iobroker.php");//iobroker
+
+- ajouter dans include/header.php:
+
+.. code-block::
+
+   <?php if (URLIOB!="") echo '<li class="zz"><a href="#iobroker">Io.broker</a></li>';?>
+
+si besoin, modifier la hauteur du menu:
+
+.. code-block::
+
+   .nav {height: 295px;}
+
+16.4.2 Hôtes virtuels dans NGINX
+================================
+voir aussi le § :ref:`21.13.1 Configuration de l'hôte virtuel NGINX`
+
+.. Important::
+
+   Pour les ports 8081 et 8082, il faut créer 2 sous-domaines, par exemple iobroker.DOMAINE et iobweb.DOMAINE 
+
+configuration pour le port 80 avant la demande de certificat Let'sencrypt
+
+.. note::
+
+   un domaine et un sous domaine doit être crée chez un hébergeur (OVHcloud est l'un des moins cher avec une extension .ovh) 
+
+.. code-block::
+
+    upstream iobroker { 
+    # ou iobweb
+    server 192.168.1.162:8081;
+    # ou server 192.168.1.162:8082 pour iobweb;
+   }
+   server {
+    server_name  iobroker.DOMAINE;
+   #server_name  iobweb.DOMAINE;
+   location / {
+    proxy_pass http://iobroker;
+   #proxy_pass http://iobweb;
+     proxy_set_header Host $host;
+        proxy_connect_timeout 30;
+        proxy_send_timeout 30;
+    }
+    listen 80; 
+    }
+ 
+16.4.2.1 Demande de certificat avec Cerbot
+""""""""""""""""""""""""""""""""""""""""""
+Pour installer Cerbot , :ref:`21.12.3 Accès distant SSL & HTTP2`
+
+Pour les 2 sous domaines (option: -d pour chaque)
+
+.. code-block::
+
+    sudo certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email <xxxxxxxxxx>@orange.fr -d iobroker.<DOMAINE> -d iobweb.<DOMAINE>
+
+confifuration de l'hôte  modifiée par Cerbot:
+
+|image1499|
+
+.. note::
+
+   Concernant Strict-Transport-Security, voir ce § :ref:`21.13.1 Configuration de l’hôte virtuel NGINX`
+
+16.4.3 Interfaces graphique 
+===========================
+16.4.3.1 adaptateur webui
+"""""""""""""""""""""""""
+|image1506|
+
+16.4.3.3 adaptateur vis 2
+"""""""""""""""""""""""""
+.. note::
+
+   en cas d'erreur : **main/vis-views.json Not exists** , supprimer et réinstaller l'adaptateur
+ 
+   |image1504|
+
+|image1505|
+
 .. |image901| image:: ../media/image901.webp
    :width: 534px
 .. |image902| image:: ../media/image902.webp
@@ -136,4 +282,17 @@ La table "text_image" :
    :width: 700px
 .. |image913| image:: ../media/image913.webp
    :width: 503px
-
+.. |image1496| image:: ../img/image1496.webp
+   :width: 250px
+.. |image1497| image:: ../img/image1497.webp
+   :width: 500px
+.. |image1498| image:: ../img/image1498.webp
+   :width: 700px
+.. |image1499| image:: ../img/image1499.webp
+   :width: 700px
+.. |image1504| image:: ../img/image1504.webp
+   :width: 650px
+.. |image1505| image:: ../img/image1505.webp
+   :width: 700px
+.. |image1506| image:: ../img/image1506.webp
+   :width: 700px

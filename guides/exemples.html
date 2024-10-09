@@ -1,20 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>15. EXEMPLES &mdash; Monitor</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/translations.js"></script>
+  <title>15. EXEMPLES &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
@@ -42,7 +45,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">SOMMAIRE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
@@ -63,10 +66,22 @@
 <li class="toctree-l2"><a class="reference internal" href="#ajout-dun-dispositif">15.1 ajout d’un dispositif</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ajout-dun-contact-de-porte-supplementaire">15.1.1 Ajout d’un contact de porte supplémentaire</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#modifier-limage">15.1.1.1 Modifier l’image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dans-la-base-de-donnees-sql">15.1.1.2 Dans la Base de données SQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dans-le-fichier-php-de-limage">15.1.1.3 Dans le fichier PHP de l’image</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#dans-la-base-de-donnees-sql">15.1.1.2 Dans la Base de données SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dans-le-fichier-php-de-limage">15.1.1.3 Dans le fichier PHP de l’image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajout-dun-panic-bouton-sos">15.1.2 Ajout d’un Panic bouton (SOS)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utilisation-du-bouton-dans-domoticz">15.1.2.1 Utilisation du bouton dans Domoticz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utilisation-du-bouton-dans-home-assistant">15.1.2.2 Utilisation du bouton dans Home Assistant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utilisation-du-bouton-dans-io-broker">15.1.2.3 Utilisation du bouton dans io.broker</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#script-sms-dz-modifie">15.1.2.3.1 script sms_dz modifié</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#script-js-dans-io-broker">15.1.2.3.2 script js dans io.broker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#script-systemd-pour-le-demarrage-automatique">15.1.2.3.3 script systemd pour le démarrage automatique</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#utilisation-du-bouton-dans-monitor">15.1.2.4 Utilisation du bouton dans Monitor</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ajout-d-une-commande-on-off">15.2 Ajout d’une commande ON-OFF</a></li>
@@ -106,18 +121,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="exemples">
-<h1>15. EXEMPLES<a class="headerlink" href="#exemples" title="Lien permanent vers ce titre"></a></h1>
-<div class="section" id="ajout-dun-dispositif">
-<h2>15.1 ajout d’un dispositif<a class="headerlink" href="#ajout-dun-dispositif" title="Lien permanent vers ce titre"></a></h2>
-<div class="section" id="ajout-dun-contact-de-porte-supplementaire">
-<h3>15.1.1 Ajout d’un contact de porte supplémentaire<a class="headerlink" href="#ajout-dun-contact-de-porte-supplementaire" title="Lien permanent vers ce titre"></a></h3>
+  <section id="exemples">
+<h1>15. EXEMPLES<a class="headerlink" href="#exemples" title="Lien permanent vers cette rubrique"></a></h1>
+<section id="ajout-dun-dispositif">
+<h2>15.1 ajout d’un dispositif<a class="headerlink" href="#ajout-dun-dispositif" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="ajout-dun-contact-de-porte-supplementaire">
+<h3>15.1.1 Ajout d’un contact de porte supplémentaire<a class="headerlink" href="#ajout-dun-contact-de-porte-supplementaire" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image878.webp"><img alt="image878" src="../_images/image878.webp" style="width: 350px;" /></a></p>
 <p>Dans Domoticz le dispositif est ajouté au plan :</p>
 <p><a class="reference internal" href="../_images/image879.webp"><img alt="image879" src="../_images/image879.webp" style="width: 348px;" /></a></p>
 <p><a class="reference internal" href="../_images/image880.webp"><img alt="image880" src="../_images/image880.webp" style="width: 528px;" /></a></p>
-<div class="section" id="modifier-limage">
-<h4>15.1.1.1 Modifier l’image<a class="headerlink" href="#modifier-limage" title="Lien permanent vers ce titre"></a></h4>
+<section id="modifier-limage">
+<h4>15.1.1.1 Modifier l’image<a class="headerlink" href="#modifier-limage" title="Lien permanent vers cette rubrique"></a></h4>
 <ul class="simple">
 <li><p><em>On effectue (avec Notepad par exemple) une sauvegarde de l’image</em></p></li>
 </ul>
@@ -142,15 +157,14 @@
 <li><p><em>Sauvegarder l’image dans le fichier PHP d’origine, en supprimant la ligne XML</em></p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image887.webp"><img alt="image887" src="../_images/image887.webp" style="width: 604px;" /></a></p>
-</div>
-</div>
-<div class="section" id="dans-la-base-de-donnees-sql">
-<h3>15.1.1.2 Dans la Base de données SQL<a class="headerlink" href="#dans-la-base-de-donnees-sql" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="dans-la-base-de-donnees-sql">
+<h4>15.1.1.2 Dans la Base de données SQL<a class="headerlink" href="#dans-la-base-de-donnees-sql" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>Insérer le dispositif dans la table « dispositifs »</em></p>
 <p><a class="reference internal" href="../_images/image888.webp"><img alt="image888" src="../_images/image888.webp" style="width: 617px;" /></a></p>
-</div>
-<div class="section" id="dans-le-fichier-php-de-limage">
-<h3>15.1.1.3 Dans le fichier PHP de l’image<a class="headerlink" href="#dans-le-fichier-php-de-limage" title="Lien permanent vers ce titre"></a></h3>
+</section>
+<section id="dans-le-fichier-php-de-limage">
+<h4>15.1.1.3 Dans le fichier PHP de l’image<a class="headerlink" href="#dans-le-fichier-php-de-limage" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>On ajoute un onclick pour l’affichage des propriétés</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -170,10 +184,232 @@
 <p><a class="reference internal" href="../_images/image892.webp"><img alt="image892" src="../_images/image892.webp" style="width: 656px;" /></a></p>
 <p>Avec F12 du navigateur ajuster la position</p>
 <p><a class="reference internal" href="../_images/image893.webp"><img alt="image893" src="../_images/image893.webp" style="width: 285px;" /></a> <a class="reference internal" href="../_images/image894.webp"><img alt="image894" src="../_images/image894.webp" style="width: 268px;" /></a></p>
+</section>
+</section>
+<section id="ajout-dun-panic-bouton-sos">
+<h3>15.1.2 Ajout d’un Panic bouton (SOS)<a class="headerlink" href="#ajout-dun-panic-bouton-sos" title="Lien permanent vers cette rubrique"></a></h3>
+<p>le bouton zigbee utilisé: <a class="reference external" href="https://www.zigbee2mqtt.io/devices/BT400B.html">https://www.zigbee2mqtt.io/devices/BT400B.html</a></p>
+<p>les données envoyées par le dispositif:</p>
+<p><a class="reference internal" href="../_images/image185.webp"><img alt="image185" src="../_images/image185.webp" style="width: 516px;" /></a></p>
+<p><a class="reference internal" href="../_images/image184.webp"><img alt="image184" src="../_images/image184.webp" style="width: 454px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<blockquote>
+<div><p>Ce panic button est un sensor; si le fonctionnement est simple dand domoticz (passage à Off lors d’un appui sur le bouton suivi d’un retour à On ) ,dans Home Assistant c’est plus compliqué (réception de l’appel mais renouvellement toutes les 4 heures de l’action (envoi d’un SMS ici)</p>
+</div></blockquote>
+<p><a class="reference internal" href="../_images/image1386.webp"><img alt="image1386" src="../_images/image1386.webp" style="width: 550px;" /></a></p>
 </div>
+<p>réception d’un SMS :</p>
+<p><a class="reference internal" href="../_images/image1385.webp"><img alt="image1385" src="../_images/image1385.webp" style="width: 300px;" /></a></p>
+<section id="utilisation-du-bouton-dans-domoticz">
+<h4>15.1.2.1 Utilisation du bouton dans Domoticz<a class="headerlink" href="#utilisation-du-bouton-dans-domoticz" title="Lien permanent vers cette rubrique"></a></h4>
+<p>pour Domoticz : soit on utilise une icone disponible, soit on ajoute au fichier <span class="darkblue">www/switch_icons.txt</span> une icone perso.( voir ci dessous le mode d’emploi)</p>
+<p><a class="reference internal" href="../_images/image73.webp"><img alt="image73" src="../_images/image73.webp" style="width: 400px;" /></a></p>
+<div class="admonition-icones-personnalisees-pour-domoticz admonition">
+<p class="admonition-title">Icônes personnalisées pour Domoticz</p>
+<p>Les images téléversées dans le dossier « images » de DZ doivent être au format <strong>png de 48x48 px</strong></p>
+<p><a class="reference internal" href="../_images/image104.webp"><img alt="image104" src="../_images/image104.webp" style="width: 400px;" /></a></p>
+<p>Ajouter les informations concernant l’icone dans le fichier <span class="darkblue">switch_icons.txt</span> comme indiqué ci-après:</p>
+<p><a class="reference internal" href="../_images/image105.webp"><img alt="image105" src="../_images/image105.webp" style="width: 400px;" /></a></p>
 </div>
-<div class="section" id="ajout-d-une-commande-on-off">
-<h2>15.2 Ajout d’une commande ON-OFF<a class="headerlink" href="#ajout-d-une-commande-on-off" title="Lien permanent vers ce titre"></a></h2>
+<p>Le script lua pour envoyer une alerte SMS et mail</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;SOS (Action)_emergency&#39;</span><span class="p">)</span> <span class="n">then</span>
+   <span class="n">txt</span><span class="o">=</span><span class="s1">&#39;alarmeùSOS&#39;</span><span class="p">;</span><span class="n">obj</span><span class="o">=</span><span class="s1">&#39;alarme SOS&#39;</span><span class="p">;</span><span class="n">alerte_gsm</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span><span class="n">domoticz</span><span class="o">.</span><span class="n">email</span><span class="p">(</span><span class="s1">&#39;Alarme&#39;</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">adresse_mail</span><span class="p">)</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>LE script <span class="darkblue">notifications_devices.lua</span> :</p>
+<p><a class="reference internal" href="../_images/image109.webp"><img alt="image109" src="../_images/image109.webp" style="width: 700px;" /></a></p>
+<p>Voir le § <a class="reference internal" href="app_externes.html#sms-reception-et-emission"><span class="std std-ref">13.6 SMS réception et émission</span></a> , concernant l’envoi d’un SMS</p>
+</section>
+<section id="utilisation-du-bouton-dans-home-assistant">
+<h4>15.1.2.2 Utilisation du bouton dans Home Assistant<a class="headerlink" href="#utilisation-du-bouton-dans-home-assistant" title="Lien permanent vers cette rubrique"></a></h4>
+<p>On récupère l’entity_id</p>
+<p><a class="reference internal" href="../_images/image189.webp"><img alt="image189" src="../_images/image189.webp" style="width: 400px;" /></a></p>
+<p>Création d’une automation pour envoyer le SMS (seul un changement d’état se produit , une chaine vide est envoyée, d’où le trigger sans indiquer l” état) :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">alarme_sos</span>
+  <span class="n">alias</span><span class="p">:</span> <span class="n">sos_gsm</span>
+  <span class="n">trigger</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
+    <span class="n">entity_id</span><span class="p">:</span> <span class="n">sensor</span><span class="o">.</span><span class="n">sos_action</span>
+  <span class="n">condition</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="n">action</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">shell_command</span><span class="o">.</span><span class="n">set_aldz</span>
+    <span class="n">data</span><span class="p">:</span>
+      <span class="n">msg</span><span class="p">:</span> <span class="s2">&quot;SOS&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>l’envoi du SMS est défini dans <span class="darkblue">configuration.yaml</span> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shell_command</span><span class="p">:</span>
+    <span class="n">set_aldz</span><span class="p">:</span>
+      <span class="s2">&quot;./pyscript/aldz.bash &#39;</span><span class="se">\&quot;</span><span class="s2">{{ msg }}</span><span class="se">\&quot;</span><span class="s2">&#39; &quot;</span>
+</pre></div>
+</div>
+<p>le fichier bash <span class="darkblue">aldz.sh</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#! /bin/bash
+printf &#39;#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx=&#39;$1&#39;\npriority=1&#39; &gt;  /config/pyscript/aldz.py
+</pre></div>
+</div>
+<p>le fichier python <span class="darkblue">aldz.py</span> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3 -*- coding: utf-8 -*-</span>
+<span class="n">x</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
+<span class="n">priority</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Voir le § <a class="reference internal" href="app_externes.html#emission-sms"><span class="std std-ref">13.6.2 émission SMS</span></a> pour des explications concernant le script sms_dz.py (utilisé aussi par Domoticz)</p>
+</div>
+</section>
+<section id="utilisation-du-bouton-dans-io-broker">
+<h4>15.1.2.3 Utilisation du bouton dans io.broker<a class="headerlink" href="#utilisation-du-bouton-dans-io-broker" title="Lien permanent vers cette rubrique"></a></h4>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>J’utilise les mêmes scripts python décrits précédemment aussi python3 et pip(si besoin) doivent être installés.</p>
+<p>Sous debian 12 , pour verifier la version installée à l’installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>pour installer pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>Des modules doivent aussi avoir été installés:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="o">,</span> <span class="nn">time</span> <span class="o">,</span><span class="nn">json</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">chardet</span><span class="o">,</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">periphery</span> <span class="kn">import</span> <span class="n">Serial</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+</pre></div>
+</div>
+<p>Sous dbian 12, il faut au préalable créer un environnement virtuel; ici je ke crée dans le répertoire /opt/python dans lequel j’ai déjà installeé les scripts</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">venv</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">env</span>
+<span class="n">source</span> <span class="n">env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1512.webp"><img alt="image1512" src="../_images/image1512.webp" style="width: 500px;" /></a></p>
+<p>Sous debian 12 periphery peut être installé avec apt ou avec pip; si il est installé avec apt il devra tout de même être installé dans l’environnement.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">periphery</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1511.webp"><img alt="image1511" src="../_images/image1511.webp" style="width: 600px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1513.webp"><img alt="image1513" src="../_images/image1513.webp" style="width: 550px;" /></a></p>
+</div>
+<section id="script-sms-dz-modifie">
+<h5>15.1.2.3.1 script sms_dz modifié<a class="headerlink" href="#script-sms-dz-modifie" title="Lien permanent vers cette rubrique"></a></h5>
+<p>Ce script  a été écrit pour Domoticz aussi les répertoires utilisés peuvent être différent sous io.broker</p>
+<p><a class="reference internal" href="../_images/image1514.webp"><img alt="image1514" src="../_images/image1514.webp" style="width: 400px;" /></a></p>
+</section>
+<section id="script-js-dans-io-broker">
+<h5>15.1.2.3.2 script js dans io.broker<a class="headerlink" href="#script-js-dans-io-broker" title="Lien permanent vers cette rubrique"></a></h5>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>le moteur de script JS doit être installé</p>
+<p><a class="reference internal" href="../_images/image1515.webp"><img alt="image1515" src="../_images/image1515.webp" style="width: 323px;" /></a></p>
+</div>
+<p>le script :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">sos</span> <span class="o">=</span><span class="s1">&#39;zigbee2mqtt.0.0xa4c138be9958ad84.emergency&#39;</span><span class="o">/*</span><span class="n">sos</span><span class="o">*/</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">sos_state</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="n">getState</span><span class="p">(</span><span class="n">sos</span><span class="p">)</span><span class="o">.</span><span class="n">val</span><span class="p">);</span>
+<span class="n">on</span><span class="p">({</span><span class="nb">id</span><span class="p">:</span> <span class="n">sos</span><span class="o">/*</span><span class="n">emergency</span><span class="o">*/</span><span class="p">},</span> <span class="n">function</span> <span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="p">{</span>   <span class="k">if</span><span class="p">(</span><span class="n">sos_state</span> <span class="o">==</span> <span class="s1">&#39;false&#39;</span><span class="p">)</span>
+  <span class="p">{</span>
+ <span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+ <span class="n">var</span> <span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;sos&quot;</span><span class="p">;</span>
+ <span class="n">fs</span><span class="o">.</span><span class="n">writeFile</span><span class="p">(</span><span class="s1">&#39;/opt/python/aldz.py&#39;</span><span class="p">,</span> <span class="s1">&#39;#!/usr/bin/env python3 -*- coding: utf-8 -*-</span><span class="se">\n</span><span class="s1">x=&quot;&#39;</span><span class="o">+</span><span class="n">txt</span><span class="o">+</span><span class="s1">&#39;&quot;</span><span class="se">\n</span><span class="s1">priority=1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="n">throw</span> <span class="n">err</span><span class="p">;</span>
+     <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;erreur&#39;</span><span class="p">);});</span>
+  <span class="p">}</span>
+  <span class="p">});</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1516.webp"><img alt="image1516" src="../_images/image1516.webp" style="width: 700px;" /></a></p>
+</section>
+<section id="script-systemd-pour-le-demarrage-automatique">
+<h5>15.1.2.3.3 script systemd pour le démarrage automatique<a class="headerlink" href="#script-systemd-pour-le-demarrage-automatique" title="Lien permanent vers cette rubrique"></a></h5>
+<p>C’est également le même script que pour Domoticz en adaptant le répertoire utilisé.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">commande</span> <span class="n">iob</span> <span class="n">par</span> <span class="n">sms</span>
+<span class="n">After</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">idle</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">sms_dz</span><span class="o">.</span><span class="n">py</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">sms_dz</span><span class="o">.</span><span class="n">log</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>Pour lancer un service au démarrage, utilisez la commande enable :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="n">sms_dz</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ne démarrer sms_dz que sur un seul system domotique</p>
+</div>
+</section>
+</section>
+<section id="utilisation-du-bouton-dans-monitor">
+<h4>15.1.2.4 Utilisation du bouton dans Monitor<a class="headerlink" href="#utilisation-du-bouton-dans-monitor" title="Lien permanent vers cette rubrique"></a></h4>
+<p><a class="reference internal" href="../_images/image119.webp"><img alt="image119" src="../_images/image119.webp" style="width: 479px;" /></a></p>
+<p>Dans admin/config.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_SOS&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">bouton</span> <span class="n">sos</span> <span class="n">page</span> <span class="n">accueil</span><span class="p">,</span> <span class="n">le</span> <span class="n">disositif</span> <span class="n">dit</span> <span class="n">être</span> <span class="n">enregistré</span> <span class="n">dans</span> <span class="n">SQL</span>
+</pre></div>
+</div>
+<p>Les valeurs du dispositif enregistrées dans la BD monitor:</p>
+<p><a class="reference internal" href="../_images/image132.webp"><img alt="image132" src="../_images/image132.webp" style="width: 427px;" /></a></p>
+<p>L’mage du bouton dans le plan intérieur :</p>
+<p><a class="reference internal" href="../_images/image133.webp"><img alt="image133" src="../_images/image133.webp" style="width: 422px;" /></a></p>
+<p>Extrait du SVG concernant le SOS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">g</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">g</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;sos_urg&quot;</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;popup_device(91)&quot;</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st20&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M678.1,152.5L678.1,152.5c11.8,0,21.3,9.4,21.3,21l0,0c0,11.6-9.6,21-21.3,21l0,0c-11.8,0-21.3-9.4-21.3-21</span>
+                     <span class="n">l0</span><span class="p">,</span><span class="mi">0</span><span class="n">C656</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">161.9</span><span class="p">,</span><span class="mf">666.3</span><span class="p">,</span><span class="mf">152.5</span><span class="p">,</span><span class="mf">678.1</span><span class="p">,</span><span class="mf">152.5</span><span class="n">z</span><span class="s2">&quot;/&gt;</span>
+     <span class="o">&lt;/</span><span class="n">g</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">g</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;SOS1&quot;</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">g</span><span class="o">&gt;</span>
+                     <span class="o">&lt;</span><span class="n">g</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;translate(0.000000,511.000000) scale(0.100000,-0.100000)&quot;</span><span class="o">&gt;</span>
+                             <span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st68&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M6718.4,3521.9c-70.1-7.8-121.5-75.7-110.1-145.6c8.2-49.9,46.7-90.9,95.7-101.9c3.9-0.9,7.6-2.1,8.4-2.7</span>
+                                     <span class="n">c0</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">7.5</span><span class="o">-</span><span class="mf">8.7</span><span class="p">,</span><span class="mf">15.1</span><span class="o">-</span><span class="mf">18.1</span><span class="n">c7</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="mf">9.4</span><span class="p">,</span><span class="mf">15.6</span><span class="o">-</span><span class="mf">18.8</span><span class="p">,</span><span class="mf">17.8</span><span class="o">-</span><span class="mf">20.9</span><span class="n">c4</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mf">4.4</span><span class="p">,</span><span class="mf">8.5</span><span class="o">-</span><span class="mf">6.2</span><span class="p">,</span><span class="mf">11.3</span><span class="o">-</span><span class="mf">4.9</span><span class="n">c0</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">10.8</span><span class="p">,</span><span class="mf">12.1</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mf">26.1</span><span class="n">l20</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span><span class="mf">25.4</span><span class="n">h15</span><span class="o">.</span><span class="mi">1</span>
+                                     <span class="n">c18</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">32.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">41.6</span><span class="p">,</span><span class="mf">2.8</span><span class="n">c37</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">69.7</span><span class="p">,</span><span class="mf">31.8</span><span class="p">,</span><span class="mf">86.5</span><span class="p">,</span><span class="mf">64.8</span><span class="n">c22</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mf">44.4</span><span class="p">,</span><span class="mf">15.7</span><span class="p">,</span><span class="mf">96.5</span><span class="o">-</span><span class="mf">17.6</span><span class="p">,</span><span class="mi">134</span><span class="n">c</span><span class="o">-</span><span class="mf">20.3</span><span class="p">,</span><span class="mi">23</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mf">37.9</span><span class="o">-</span><span class="mf">81.6</span><span class="p">,</span><span class="mf">41.1</span>
+                                     <span class="n">C6834</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">3522.9</span><span class="p">,</span><span class="mf">6726.3</span><span class="p">,</span><span class="mf">3522.9</span><span class="p">,</span><span class="mf">6718.4</span><span class="p">,</span><span class="mf">3521.9</span><span class="n">z</span> <span class="n">M6853</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">3509.7</span><span class="n">c30</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="mf">6.6</span><span class="p">,</span><span class="mf">55.5</span><span class="o">-</span><span class="mf">23.2</span><span class="p">,</span><span class="mf">72.1</span><span class="o">-</span><span class="mf">47.6</span><span class="n">c17</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="mf">25.9</span><span class="p">,</span><span class="mf">23.2</span><span class="o">-</span><span class="mf">57.6</span><span class="p">,</span><span class="mf">15.3</span><span class="o">-</span><span class="mf">88.1</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mf">9.1</span><span class="o">-</span><span class="mf">35.6</span><span class="o">-</span><span class="mi">38</span><span class="o">-</span><span class="mf">66.1</span><span class="o">-</span><span class="mf">73.5</span><span class="o">-</span><span class="mf">77.5</span><span class="n">c</span><span class="o">-</span><span class="mf">15.3</span><span class="o">-</span><span class="mf">4.9</span><span class="o">-</span><span class="mf">24.6</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mf">51.4</span><span class="o">-</span><span class="mi">6</span><span class="n">c</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">20.6</span><span class="o">-</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">21.5</span><span class="o">-</span><span class="mf">0.8</span><span class="n">c</span><span class="o">-</span><span class="mf">1.1</span><span class="o">-</span><span class="mf">0.6</span><span class="o">-</span><span class="mf">24.6</span><span class="o">-</span><span class="mi">29</span><span class="o">-</span><span class="mf">39.2</span><span class="o">-</span><span class="mf">47.4</span><span class="n">l</span><span class="o">-</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">2</span><span class="n">l</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">1.7</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">7.4</span><span class="p">,</span><span class="mf">8.5</span><span class="o">-</span><span class="mf">14.1</span><span class="p">,</span><span class="mf">16.9</span><span class="n">c</span><span class="o">-</span><span class="mf">13.4</span><span class="p">,</span><span class="mf">16.5</span><span class="o">-</span><span class="mf">18.5</span><span class="p">,</span><span class="mf">22.2</span><span class="o">-</span><span class="mf">21.3</span><span class="p">,</span><span class="mf">23.6</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">4.4</span><span class="p">,</span><span class="mf">1.4</span><span class="o">-</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">2.1</span><span class="n">c</span><span class="o">-</span><span class="mf">39.1</span><span class="p">,</span><span class="mf">7.8</span><span class="o">-</span><span class="mi">72</span><span class="p">,</span><span class="mi">37</span><span class="o">-</span><span class="mi">85</span><span class="p">,</span><span class="mf">75.3</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mf">4.7</span><span class="p">,</span><span class="mf">13.9</span><span class="o">-</span><span class="mf">5.6</span><span class="p">,</span><span class="mi">20</span><span class="o">-</span><span class="mf">5.6</span><span class="p">,</span><span class="mf">36.3</span><span class="n">c0</span><span class="p">,</span><span class="mf">12.5</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">15.6</span><span class="p">,</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">21.8</span><span class="n">c3</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mf">30.1</span><span class="p">,</span><span class="mf">18.5</span><span class="p">,</span><span class="mf">43.5</span><span class="n">c7</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">10.7</span><span class="p">,</span><span class="mf">21.3</span><span class="p">,</span><span class="mf">24.5</span><span class="p">,</span><span class="mf">32.2</span><span class="p">,</span><span class="mf">31.6</span>
+                                     <span class="n">c14</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mf">9.7</span><span class="p">,</span><span class="mf">31.1</span><span class="p">,</span><span class="mf">15.7</span><span class="p">,</span><span class="mf">48.2</span><span class="p">,</span><span class="mi">18</span><span class="n">c1</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">30.3</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">64.8</span><span class="p">,</span><span class="mf">0.2</span><span class="n">C6845</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">3511.3</span><span class="p">,</span><span class="mf">6846.2</span><span class="p">,</span><span class="mf">3511.2</span><span class="p">,</span><span class="mf">6853.3</span><span class="p">,</span><span class="mf">3509.7</span><span class="n">z</span><span class="s2">&quot;/&gt;</span>
+                             <span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st68&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M6677.1,3443.7c-7.5-2.7-13-7.8-16.7-15.3c-2-4.2-2.2-5.1-2.2-11.9c0-7,0.1-7.5,2.7-12.6</span>
+                                     <span class="n">c3</span><span class="o">-</span><span class="mf">6.1</span><span class="p">,</span><span class="mf">7.5</span><span class="o">-</span><span class="mf">10.5</span><span class="p">,</span><span class="mf">13.7</span><span class="o">-</span><span class="mf">13.5</span><span class="n">c4</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">4.1</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">21.4</span><span class="o">-</span><span class="mf">2.3</span><span class="n">l17</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mf">0.3</span><span class="n">l2</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="n">c3</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">4.6</span><span class="o">-</span><span class="mf">7.4</span><span class="p">,</span><span class="mf">4.6</span><span class="o">-</span><span class="mi">15</span><span class="n">c0</span><span class="o">-</span><span class="mf">3.6</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">7.9</span><span class="o">-</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">9.6</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mf">1.2</span><span class="o">-</span><span class="mf">3.9</span><span class="o">-</span><span class="mf">4.6</span><span class="o">-</span><span class="mf">7.6</span><span class="o">-</span><span class="mf">7.7</span><span class="o">-</span><span class="mf">8.5</span><span class="n">c</span><span class="o">-</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">11.3</span><span class="o">-</span><span class="mf">0.7</span><span class="o">-</span><span class="mf">22.7</span><span class="o">-</span><span class="mf">0.7</span><span class="n">c</span><span class="o">-</span><span class="mf">20.1</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">20.1</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">21.6</span><span class="o">-</span><span class="mf">1.6</span><span class="n">c</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mf">4.6</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="mi">7</span><span class="n">l1</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="mf">1.9</span><span class="n">l23</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.2</span>
+                                     <span class="n">c26</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">26.3</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">32.3</span><span class="p">,</span><span class="mf">6.8</span><span class="n">c4</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mf">5.3</span><span class="p">,</span><span class="mf">6.3</span><span class="p">,</span><span class="mf">9.6</span><span class="p">,</span><span class="mf">6.7</span><span class="p">,</span><span class="mf">20.3</span><span class="n">c0</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">7.6</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">9.4</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">13.6</span><span class="n">c</span><span class="o">-</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">7.2</span><span class="o">-</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">11.1</span><span class="o">-</span><span class="mf">10.5</span><span class="p">,</span><span class="mf">13.8</span><span class="n">l</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span><span class="mf">2.3</span><span class="n">h</span><span class="o">-</span><span class="mf">14.9</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mf">16.7</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">19.6</span><span class="p">,</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">24.3</span><span class="p">,</span><span class="mf">4.1</span><span class="n">c</span><span class="o">-</span><span class="mf">3.9</span><span class="p">,</span><span class="mi">3</span><span class="o">-</span><span class="mf">6.8</span><span class="p">,</span><span class="mf">8.9</span><span class="o">-</span><span class="mf">6.8</span><span class="p">,</span><span class="mf">13.9</span><span class="n">c0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">2.9</span><span class="p">,</span><span class="mf">10.9</span><span class="p">,</span><span class="mf">6.8</span><span class="p">,</span><span class="mf">13.9</span><span class="n">c4</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="mf">3.7</span><span class="p">,</span><span class="mf">7.4</span><span class="p">,</span><span class="mf">4.1</span><span class="p">,</span><span class="mf">26.7</span><span class="p">,</span><span class="mf">4.1</span><span class="n">c9</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">17.9</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">18.6</span><span class="p">,</span><span class="mf">0.4</span>
+                                     <span class="n">c3</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">3.4</span><span class="p">,</span><span class="mf">7.7</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">9.3</span><span class="n">c</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">9.4</span><span class="p">,</span><span class="mf">0.7</span><span class="o">-</span><span class="mf">20.9</span><span class="p">,</span><span class="mf">0.7</span><span class="n">C6683</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="mi">3445</span><span class="p">,</span><span class="mf">6680.3</span><span class="p">,</span><span class="mf">3444.8</span><span class="p">,</span><span class="mf">6677.1</span><span class="p">,</span><span class="mf">3443.7</span><span class="n">z</span><span class="s2">&quot;/&gt;</span>
+                             <span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st68&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M6772.9,3444.1c-8.3-2.8-14.6-8.1-18.2-15.6l-2.3-4.6v-30.5v-30.5l2.3-4.6c2.9-6.1,8-11.1,14.1-13.9</span>
+                                     <span class="n">c4</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">5.3</span><span class="o">-</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">12.1</span><span class="o">-</span><span class="mf">2.2</span><span class="n">c6</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">7.7</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">12.1</span><span class="p">,</span><span class="mf">2.2</span><span class="n">c6</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mf">2.8</span><span class="p">,</span><span class="mf">11.3</span><span class="p">,</span><span class="mf">7.8</span><span class="p">,</span><span class="mf">14.1</span><span class="p">,</span><span class="mf">13.9</span><span class="n">l2</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span><span class="mf">4.6</span><span class="n">v30</span><span class="o">.</span><span class="mi">5</span><span class="n">v30</span><span class="o">.</span><span class="mi">5</span><span class="n">l</span><span class="o">-</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">4.6</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mf">2.9</span><span class="p">,</span><span class="mf">6.1</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mf">11.1</span><span class="o">-</span><span class="mf">14.1</span><span class="p">,</span><span class="mf">13.9</span><span class="n">c</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mf">1.9</span><span class="o">-</span><span class="mf">5.6</span><span class="p">,</span><span class="mf">2.2</span><span class="o">-</span><span class="mf">11.1</span><span class="p">,</span><span class="mf">2.4</span><span class="n">C6778</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mi">3445</span><span class="p">,</span><span class="mf">6774.7</span><span class="p">,</span><span class="mf">3444.7</span><span class="p">,</span><span class="mf">6772.9</span><span class="p">,</span><span class="mf">3444.1</span><span class="n">z</span> <span class="n">M6789</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mi">3432</span>
+                                     <span class="n">c3</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">5.6</span><span class="o">-</span><span class="mf">4.1</span><span class="p">,</span><span class="mf">7.9</span><span class="o">-</span><span class="mf">8.5</span><span class="n">c1</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">1.3</span><span class="o">-</span><span class="mf">4.4</span><span class="p">,</span><span class="mf">1.3</span><span class="o">-</span><span class="mf">30.2</span><span class="n">c0</span><span class="o">-</span><span class="mf">25.7</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">27.9</span><span class="o">-</span><span class="mf">1.3</span><span class="o">-</span><span class="mf">30.2</span><span class="n">c</span><span class="o">-</span><span class="mf">2.4</span><span class="o">-</span><span class="mf">4.4</span><span class="o">-</span><span class="mf">4.4</span><span class="o">-</span><span class="mf">6.6</span><span class="o">-</span><span class="mf">8.2</span><span class="o">-</span><span class="mf">8.7</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mf">5.3</span><span class="o">-</span><span class="mf">2.8</span><span class="o">-</span><span class="mf">11.4</span><span class="o">-</span><span class="mf">2.8</span><span class="o">-</span><span class="mf">16.7</span><span class="p">,</span><span class="mi">0</span><span class="n">c</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">2.1</span><span class="o">-</span><span class="mf">5.8</span><span class="p">,</span><span class="mf">4.2</span><span class="o">-</span><span class="mf">8.2</span><span class="p">,</span><span class="mf">8.7</span><span class="n">c</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">2.2</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">4.6</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">27</span><span class="n">c</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">13.5</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">26.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">28.2</span>
+                                     <span class="n">c0</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">5.3</span><span class="p">,</span><span class="mf">4.1</span><span class="p">,</span><span class="mf">10.5</span><span class="p">,</span><span class="mf">8.7</span><span class="p">,</span><span class="mf">13.2</span><span class="n">c2</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">4.6</span><span class="p">,</span><span class="mf">2.4</span><span class="p">,</span><span class="mf">5.6</span><span class="p">,</span><span class="mf">2.5</span><span class="n">C6781</span><span class="p">,</span><span class="mf">3434.8</span><span class="p">,</span><span class="mf">6786.3</span><span class="p">,</span><span class="mf">3433.8</span><span class="p">,</span><span class="mf">6789.8</span><span class="p">,</span><span class="mi">3432</span><span class="n">z</span><span class="s2">&quot;/&gt;</span>
+                             <span class="o">&lt;</span><span class="n">path</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;st68&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M6850.9,3444c-13.3-4-22.4-18.4-20-31.7c1.7-9.4,8.2-18,16.7-21.9c3.9-1.8,4.6-1.9,19.6-2.2</span>
+                                     <span class="n">c12</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">15.9</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">17.6</span><span class="o">-</span><span class="mf">1.5</span><span class="n">c6</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">9.6</span><span class="o">-</span><span class="mf">11.6</span><span class="p">,</span><span class="mf">8.1</span><span class="o">-</span><span class="mf">21.8</span><span class="n">c</span><span class="o">-</span><span class="mf">0.4</span><span class="o">-</span><span class="mf">2.9</span><span class="o">-</span><span class="mf">1.4</span><span class="o">-</span><span class="mf">6.5</span><span class="o">-</span><span class="mf">2.3</span><span class="o">-</span><span class="mi">8</span><span class="n">c</span><span class="o">-</span><span class="mf">2.6</span><span class="o">-</span><span class="mf">4.6</span><span class="o">-</span><span class="mf">3.4</span><span class="o">-</span><span class="mf">4.8</span><span class="o">-</span><span class="mf">27.3</span><span class="o">-</span><span class="mf">4.8</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mf">12.5</span><span class="p">,</span><span class="mi">0</span><span class="o">-</span><span class="mf">21.7</span><span class="o">-</span><span class="mf">0.3</span><span class="o">-</span><span class="mf">22.5</span><span class="o">-</span><span class="mf">0.7</span><span class="n">c</span><span class="o">-</span><span class="mf">3.3</span><span class="o">-</span><span class="mf">1.7</span><span class="o">-</span><span class="mf">2.7</span><span class="o">-</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">9.4</span><span class="n">c0</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">11.9</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">24.5</span><span class="o">-</span><span class="mf">0.2</span><span class="n">l22</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mf">0.2</span><span class="n">l3</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span><span class="mf">1.8</span><span class="n">c4</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">7.4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mf">11.5</span>
+                                     <span class="n">c1</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="mf">4.9</span><span class="p">,</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">16.8</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">22.3</span><span class="n">c</span><span class="o">-</span><span class="mf">1.8</span><span class="p">,</span><span class="mi">8</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="mf">15.1</span><span class="o">-</span><span class="mf">13.8</span><span class="p">,</span><span class="mf">18.7</span><span class="n">c</span><span class="o">-</span><span class="mf">3.4</span><span class="p">,</span><span class="mf">1.8</span><span class="o">-</span><span class="mf">3.9</span><span class="p">,</span><span class="mf">1.9</span><span class="o">-</span><span class="mf">19.4</span><span class="p">,</span><span class="mf">2.2</span><span class="n">c</span><span class="o">-</span><span class="mf">17.6</span><span class="p">,</span><span class="mf">0.4</span><span class="o">-</span><span class="mi">19</span><span class="p">,</span><span class="mf">0.8</span><span class="o">-</span><span class="mf">23.6</span><span class="p">,</span><span class="mf">5.7</span>
+                                     <span class="n">c</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span><span class="mi">4</span><span class="o">-</span><span class="mf">4.9</span><span class="p">,</span><span class="mf">6.6</span><span class="o">-</span><span class="mf">4.9</span><span class="p">,</span><span class="mf">12.3</span><span class="n">c0</span><span class="p">,</span><span class="mf">3.7</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">5.9</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">7.6</span><span class="n">c1</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">3.4</span><span class="p">,</span><span class="mf">5.2</span><span class="p">,</span><span class="mf">6.8</span><span class="p">,</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">8.5</span><span class="n">c2</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.9</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">22.3</span><span class="p">,</span><span class="mf">1.7</span><span class="n">l19</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.2</span><span class="n">l1</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span><span class="mf">1.8</span>
+                                     <span class="n">c1</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">4.4</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">6.7</span><span class="n">l</span><span class="o">-</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">1.8</span><span class="n">l</span><span class="o">-</span><span class="mf">19.8</span><span class="o">-</span><span class="mf">0.1</span><span class="n">C6859</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span><span class="mi">3445</span><span class="p">,</span><span class="mi">6853</span><span class="p">,</span><span class="mf">3444.7</span><span class="p">,</span><span class="mf">6850.9</span><span class="p">,</span><span class="mi">3444</span><span class="n">z</span><span class="s2">&quot;/&gt;</span>
+                        <span class="o">&lt;/</span><span class="n">g</span><span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="n">g</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">g</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">g</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Le style:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">style</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&gt;</span>
+     <span class="o">.</span><span class="n">st20</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#02A3EA;}</span>
+     <span class="o">.</span><span class="n">st68</span><span class="p">{</span><span class="n">fill</span><span class="p">:</span><span class="c1">#EA2806;stroke:#EA2806;stroke-width:6.666667e-04;stroke-miterlimit:10;}</span>
+<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="ajout-d-une-commande-on-off">
+<h2>15.2 Ajout d’une commande ON-OFF<a class="headerlink" href="#ajout-d-une-commande-on-off" title="Lien permanent vers cette rubrique"></a></h2>
 <p>A partir d’une prise ce courant Zigbee pour alimenter le seche-serviette de la SDB.</p>
 <p><a class="reference internal" href="../_images/image498.webp"><img alt="image498" src="../_images/image498.webp" style="width: 400px;" /></a></p>
 <p>La prise Zigbee dans Domoticz:</p>
@@ -190,9 +426,9 @@
 </div>
 <p>Pour avoir un retour en temps réel d’un changement de position de la prise ( ajout temporisation, mise à jour lors de l’extinction,etc,…), on ajoute dans le script LUA concernant les devices:</p>
 <p><a class="reference internal" href="../_images/image608.webp"><img alt="image608" src="../_images/image608.webp" style="width: 700px;" /></a></p>
-</div>
-<div class="section" id="reinitialisation-des-dispositifs-dans-domoticz">
-<h2>15.3 Réinitialisation des dispositifs dans Domoticz<a class="headerlink" href="#reinitialisation-des-dispositifs-dans-domoticz" title="Lien permanent vers ce titre"></a></h2>
+</section>
+<section id="reinitialisation-des-dispositifs-dans-domoticz">
+<h2>15.3 Réinitialisation des dispositifs dans Domoticz<a class="headerlink" href="#reinitialisation-des-dispositifs-dans-domoticz" title="Lien permanent vers cette rubrique"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Exemple</strong></p>
@@ -212,8 +448,8 @@ Pour préparer le travail, faire une copie de la table « dispositifs en l’exp
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLDOMOTIC&#39;</span><span class="p">,</span> <span class="s1">&#39;http://192.168.1.76:8086/&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">url</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -226,7 +462,7 @@ Pour préparer le travail, faire une copie de la table « dispositifs en l’exp
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Gravier.</p>
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

@@ -8,11 +8,11 @@ Page avec toutes les options , voir aussi ce §  :ref:`14.1.1 Pour utiliser les 
 
 |image788|
 
-Si un serveur MQTT est installé et MQTT==true :
+Si un serveur SSE est installé et SSE==true :
 
 .. code-block
 
-   define('MQTT', true);//  true si serveur MQTT utilisé par monitor
+   define('SSE', true);//  true si serveur SSE utilisé par monitor
 
 |image789|
 
@@ -134,6 +134,10 @@ voir les paragraphes:
 
 |image795|
 
+Si io.broker est utilisé:
+
+|image1401|
+
 |image796|
 
 |image797|
@@ -195,8 +199,8 @@ voir les paragraphes:
    document.getElementById("affich_content_info").innerHTML = info_admin[rel];
    }
 
-14.3.1 Essai de souscription MQTT
-=================================
+14.3.1 Topic SSE
+================
 voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
 |image497|
@@ -211,31 +215,69 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
 |image807|
 
+|image1402|
+
 |image808|
 
-14.5 Téléchargement d’un fichier externe dans Domoticz
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-*Pour la mise à jour des fichiers "connect.lua, connect.py, connect.js, etc..." (variables pour les scripts Domoticz)* 
+14.5 Téléchargement d’un fichier externe dans Domoticz ou Home Assistant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Pour la mise à jour des fichiers "connect.lua, connect.py, connect.js, etc..." (variables persistentes pour les scripts Dz,Ha )* 
 
 .. note::
 
    Plusieurs solutions étaient possibles mais avec l’installations de scripts et de modules supplémentaires.
 
-   En http, on ne peut seulement télécharger un fichier depuis un site distant.
+   En http, on ne peut seulement télécharger un fichier depuis un site distant, on ne peut modifier un fichier.
    
    La solution retenue :
 
-   -	Avec l’API de Domoticz il est possible de mettre à jour des variables ; àprès la lecture distante et la  mise à jour d’un fichier de Domoticz, on enregistre le résultat dans un fichier temporaire et on met à 1 une variable (nommée ici "upload") dans Domoticz pour l’exécution d’un script qui va télécharger ce fichier temporaire ; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
+   -	Avec l’API de Domoticz ou celle de Home Assistant,  il est possible de mettre à jour des variables ; àprès la lecture et la  mise à jour d’un fichier de Monitor, on enregistre le résultat dans un fichier temporaire et on met à 1, 2, 3 ,abcd,  une variable (nommée ici "upload")  pour l’exécution d’un script qui va télécharger ce fichier deis DZ ou HA; la variable est mise à 0 jusqu’à une prochaine modification du fichier.
 
-   |image811|
+14.5.1 Domoticz
+=============== 
+La variable :
+
+|image811|
 
    .. code-block::
 
-      maj_variable("22","upload","1","2")
+      maj_variable("22","upload","connect","2")
    
-   Pour la mise à jour de la liste des caméras dont la détection est activée, c’est le même script qui est utilisé, la variable « upload » est alors passé à 2 :
-
    |image812|
+
+   le script python :
+
+   .. code-block::
+
+      	#!/usr/bin/env python3
+	# -*- coding: utf-8 -*-
+	import requests, sys
+	from connect import ip_monitor
+	x= str(sys.argv[1])
+	y = x.split(".")
+	z=y[1]
+	ip= ip_monitor
+	rep="/opt/domoticz/"
+	if z=="lua" :
+    	rep="/opt/domoticz/www/modules_lua/"
+	if z=="py" :
+    	rep="/opt/domoticz/scripts/python/"    
+	addr="http://"+ip+"/monitor/admin/connect/connect."+z
+	req = requests.get(addr)
+	with open(rep+x, "wb") as fp:
+    	fp.write(req.content)
+
+14.5.2 Home Assistant
+=====================
+La variable :
+
+|image1367|
+
+|image1366|
+
+14.5.3 Monitor
+==============
 
    - **Les fonctions JS wajax() et yajax()** ,  *dans mes_js.js*
 
@@ -260,11 +302,29 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
 |image820|
 
+|image1403|
+
 14.6.1 Fichier connect.xxx (mots de passe et login en base64 ,ips réseau
 ========================================================================
 *pour utiliser ces données dans des scripts (lua, python, js ou autres)*
 
-|image821|
+connect.lua, connect.py, connect.js sont enregistrés dans admin/connect/:
+
+|image1362|
+
+|image822|
+
+ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs dans leurs répertoires d'utilisation.
+
+.. IMPORTANT::
+
+   Depuis la version 3.03, Si l'installaton de monitor est éffectuée automatiquement avec :ref:`lamp_monitor_install.sh` l'adresse IP de monitor est indiqué dans les fichiers connect.lua et connect.py; 
+
+   |image1369|
+
+   Si l'installation est effectué manuellement ou si la version de monitor est antérieure à 3.03,  l'adresse ip de monitor devra être ajoutée dans ces 2 fichiers pour Domoticz et dans connect.py pour Home Assistant
+
+   |image1368|
 
 14.6.1.1 connect.lua
 """"""""""""""""""""
@@ -276,6 +336,12 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 14.6.1.2 connect.py
 """""""""""""""""""
 *Un double de connect.lua est enregistré au format python pour les script écrit dans ce langage*
+
+L'original est enregistré dans admin/connect/ , il est toujours possible d'établir des liens symboliques:
+
+.. code-block::
+
+   ln -s admin/connect/connect.py python/connect.py
 
 |image823|
 
@@ -290,6 +356,19 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
       define('IPRPI', '192.168.1.8');//IP du Raspberry
 
    |image825|
+
+   Pour récupérer le connect.py de Monitor , le chemin  doit être indiqué dans SSH_MONITOR_PATH
+
+   .. code-block::
+
+      //SSH_MONITOR_PATH :ex /var/www/html/monitor/admin/tmp/, ex autre  home/USER/
+      define('SSH_MONITOR_PATH', '/var/www/html/monitor/admin/tmp/');
+
+      ce chemin est utilisé dans fonctions.php admin()
+
+   |image1280|   
+
+   |image1363| 
 
 - **admin.php**
 
@@ -312,6 +391,11 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 *pour node-red*
 
 |image831|
+
+14.6.2 fonction devices_plan() partie consacrée à io.broker
+===========================================================
+
+|image1404|
 
 14.7 Explications concernant l’importation distantes d’un tableau LUA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -398,8 +482,8 @@ Le script lua utilisé pour ouvrir ces fichiers:
 
     |image845|
 
-14.7.1 string_modect.lua
-========================
+14.7.1 string_modect.json
+=========================
 
 **admin.php**
 
@@ -413,11 +497,9 @@ Le script lua utilisé pour ouvrir ces fichiers:
 
 |image850|
 
-Pour cette fonction le script LUA est similaire à string_tableaux.lua (celui pour les poubelles, la fosse septique, les anniversaires,...
-
-La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichier externe dans Domoticz`
-
 |image847|
+
+|image1355|
 
 .. seealso:: *MODECT* 
 
@@ -425,8 +507,8 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 
    |image853|
 
-14.8 Explications concernant la mise à jour automatique SQL des variables,  dispositifs & messages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14.8 Explications concernant les créations et les maj automatiques SQL des variables,  dispositifs & messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **admin.php**
 
 :darkblue:`rel=17 et rel=18`
@@ -445,8 +527,8 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 
 |image858|
 
-14.8.1 Affichage dans monitor
-=============================
+14.8.1 création d'un dispositif dans monitor
+============================================
 
 |image859|
 
@@ -463,6 +545,40 @@ La variable est mise à 2, voir le § : :ref:`14.5 Téléchargement d’un fichi
 **Confirmation de l'enregistrement des données**
 
 |image863|
+
+14.8.2 Mise à jour d'un dispositif dans monitor
+===============================================
+le choix s'effectue sur la même fenêtre que pour une création; les données de la base de données concernant le dispositif peuvent être mises à jour .
+
+|image1331|
+
+|image1332|
+
+14.8.3 création d'une variable dans monitor
+===========================================
+*et d'une correspondance texte->image (table text_image)*
+
+|image1334|
+
+14.8.4 maj d'une variable dans monitor
+======================================
+Récupérer le numéro d'enregistrement de la variable:
+
+|image1333|
+
+|image1335|
+
+14.8.5 maj de la table text_image
+=================================
+le texte contenu dans la variable est transformé en image
+
+|image1336|
+
+|image1337|
+
+.. note:: l'icone peut contenir tout type d'images 
+
+   |image1338|
 
 14.9 Explications concernant l’affichage des infos de la page admin.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -552,21 +668,9 @@ Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes
 
    |image873|
 
-.. important:: *SSH2 et SCP concerne aussi la commande de maj du fichier python connect.py si il est utilisé par plusieurs serveurs.*
-
-   La commande ci-dessous met à jour connect.py dans Domoticz, Monitor, et un autre serveur (le PI)
-
-   *REMARQUE* : pour que python trouve le fichier connect  et donc les variables,il faut ajouter le répertoire vide __INIT__.py
-
-   Ce fichier permet de ne pas avoir à modifier les scripts python lors d’un changement de serveur
-
-   Exemple ( fichier rec_sms_serie.py) 	
-
-   |image875|
-
-   connect.py
-
-    |image877|
+14.10.2.1 exemple: mise à jour fichier de configuration du RPI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+voir ce paragraphe :ref:`14.6.1.2 connect.py`
 
 14.11 A Propos
 ==============
@@ -711,12 +815,45 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 700px
 .. |image873| image:: ../media/image873.webp
    :width: 450px
-.. |image875| image:: ../media/image875.webp
-   :width: 576px
 .. |image876| image:: ../media/image876.webp
    :width: 537px
-.. |image877| image:: ../media/image877.webp
+.. |image1280| image:: ../img/image1280.webp
+   :width: 700px
+.. |image1331| image:: ../img/image1331.webp
+   :width: 404px
+.. |image1332| image:: ../img/image1332.webp
+   :width: 413px
+.. |image1333| image:: ../img/image1333.webp
+   :width: 493px
+.. |image1334| image:: ../img/image1334.webp
+   :width: 427px
+.. |image1335| image:: ../img/image1335.webp
+   :width: 399px
+.. |image1336| image:: ../img/image1336.webp
    :width: 425px
-
-
-
+.. |image1337| image:: ../img/image1337.webp
+   :width: 425px
+.. |image1338| image:: ../img/image1338.webp
+   :width: 337px
+.. |image1355| image:: ../img/image1355.webp
+   :width: 700px
+.. |image1362| image:: ../img/image1362.webp
+   :width: 534px
+.. |image1363| image:: ../img/image1363.webp
+   :width: 700px
+.. |image1366| image:: ../img/image1366.webp
+   :width: 299px
+.. |image1367| image:: ../img/image1367.webp
+   :width: 400px
+.. |image1368| image:: ../img/image1368.webp
+   :width: 394px
+.. |image1369| image:: ../img/image1369.webp
+   :width: 460px
+.. |image1401| image:: ../img/image1401.webp
+   :width: 436px
+.. |image1402| image:: ../img/image1402.webp
+   :width: 700px
+.. |image1403| image:: ../img/image1403.webp
+   :width: 600px
+.. |image1404| image:: ../img/image1404.webp
+   :width: 700px

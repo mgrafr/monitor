@@ -8,13 +8,13 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -	Après l’installation de Proxmox :
 
-Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), monitor (version dev): https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
+Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev): https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
 
-- 	    installation automatique : LEMP + monitor (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
+- 	    installation automatique : LEMP + monitor+ Serveur SSE-PHP (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
 
-- 	    installation uniquement de monitor (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+- 	    installation uniquement de monitor +serveur SSE-PHP (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 
--	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v2.2.6.tar.gz
+-	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.1.0.tar.gz
 
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
@@ -24,21 +24,25 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP), mo
 
 -	Debian 12, et les dépendances sudo, curl,...
 
--	Nginx, PHP 8.2, maria db, phpMyAdmin, monitor
+-	Nginx, PHP 8.3, maria db, phpMyAdmin, monitor
 
--	Quelques programme python utiles : pip, Paho-mqtt
+-	Quelques programmes python utiles : pip, Paho-mqtt
+
+-       Quelques utilitaires : dos2unix et unzip
+
+-       Un serveur SSE en PHP (en option SSE NodeJS)
 
 -	Un utilisateur système est crée
 
 -	Un utilisateur MySQL PMA et monitor est aussi crée 
 
-Télécharger depuis le Shell de PVE le fichier d’installation install.sh :
+Télécharger depuis le Shell de PVE le fichier d’installation :darkblue:`create_ct_lxc_monitor.sh` :
+
+|image1268|
 
 .. code-block::
 
    wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
-
-|image3|
 
 Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
@@ -46,18 +50,21 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
    chmod +x create_ct_lxc_monitor.sh
 
+|image1269|
+
 .. admonition:: Si des problèmes de lecture existent 
 
    convertir le fichier en UNIX
 
-  voir le § :ref:`8.2.1.1 Problème de lecture de fichier`
-
+   voir le § :ref:`8.2.2 Problème de lecture de fichier`
 
 **Installation :**
 
 .. code-block::
 
    ./create_ct_lxc_monitor.sh
+
+|image3|
  
 |image6|
  
@@ -69,7 +76,12 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
  
 Choisir le langage UTF-8 : fr_FR.UTF-8
 
-  
+ .. warning:: 
+
+   |image1270|
+
+   Le choix du langage se fait ou se confirme à l'écran suivant.
+
 |image10|
  
 |image11|
@@ -121,6 +133,28 @@ Fin de l'installation:
 
 |image24|
 
+Quitter le shell de PVE et ouvrir la console du conteneur LXC monitor qui devrait ressempnler à ça:
+
+|image1271|
+
+Monitor , devrait ressembler à ceci:
+
+|image1273|
+
+|image1272|
+
+- connecter un serveur domotique (max 2); Enlever la découverte.
+
+.. code-block:: 
+
+   define('DECOUVERTE', false);
+
+|image1274|
+
+Ce message sera présent tant qu'il n'y aura pas de correspondance entre le serveur et la BD
+
+- ajouter les dispositifs et variables à la base de données, voir ce § :ref:`0.2 La page d’accueil et connexion avec Domoticz ou HA`
+
 .. admonition:: Vérifications en cas de problèmes :
 
    avec Filezilla :
@@ -129,13 +163,12 @@ Fin de l'installation:
 
    Pour accéder en écriture aux fichiers dans /www/html/monitor, donner des droits :
 
-   :red:`chmod -R 777 /www/html/*`
+   :red:`chmod -R 775 /www/html/*`
  
    **MySQL :**
 
-   :red:`mysql -u root`
+   :red:`mysql -u root -p -h localhost monitor`
    
-
    |image27| 
  
    **phpMyAdmin** :   Accès par monitor
@@ -147,9 +180,9 @@ Fin de l'installation:
 
    :red:`<IP Monitor>/phpmyadmin/`
 
-|image29| 
+   |image29| 
 
-|image30| 
+   |image30| 
  
 **Les tables installées lors de l’installation :**
  
@@ -277,11 +310,15 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 
    |image42|
              
-**Pour utiliser Domoticz ou Home Assistant ou les 2 :**
+**Pour utiliser Domoticz, Home Assistant ou Io.broker les 3 :**
 
-Indiquer l‘ IP et le port
+- Indiquer les serveurs utilisés
 
-|image43|
+  |image1224| 
+
+- Indiquer l‘ IP et le port
+
+  |image43|
  
 **Logiciels utiles :**
 
@@ -443,30 +480,90 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
 0.1.4 Mise à jour de monitor
 ============================
-Avec la console :
+.. warning:: 
 
+   La version 2.2.7 a été profondément restructurée aussi il n'est pas facile de l'updater; mode d'emploi pour upgrader une ancienne version sans perte de données:
+
+   - Créer un nouveau conteneur (NE PAS SUPPRIMER LE CONTENEUR ACTUEL)
+
+   - dans le fichier /admin/config.php existant dans l'ancien conteneur recopier les variables que vous utilisez dans le fichier du nouveau conteneur
+
+   - sauvegarger les tables de BD SQL pour les importer dans la nouvelle BD
+
+   - sauvegarder les pages Custom dans le nouveau monitor
+
+   - supprimer l'ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)
+
+Pour les versions de monitor > 2.2.7 et < à 3.2.0 (refonte en cours pour intégrer io.broker):
+
+Obtenir la dernière version de update.bash , avec la console :
+ 
 .. code-block::
 
-   cd /tmp
-   wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.bash
+   cd /www/monitor/install
+   wget -N https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.bash
+
+Rendre éxécutable le fichier  et le lancer
+
+.. code-block::
+   
    chmod +x update.bash
    ./update.bash
 
 |image51|
 
-|image73|
+En cas de problème avec le chemin de bash:
 
-0.2	La page d’accueil et connexion avec Domoticz ou HA : 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block::
+
+   /usr/bin/bash ./update.bash
+
+0.2 La page d’accueil et connexion avec un serveur domotique : 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 0.2.1 page d’accueil :
 ======================
 Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce paragraphe :ref:`1.1.1.a Pour l’image de fond suivant la résolution d’écran et le logo`
 
 |image52|
+
+0.2.2 Connexion au serveur domotique
+====================================
+3 serveurs possibles:
+
+      - Domoticz
+      - Home Assistant
+      - Io Broker 
+
+Home Assistant et Domoticz sont quelque peu limités dans leurs options de personnalisation, le ioBroker VIS et vis2 peuvent être considérés comme très complexes d'où la création de monitor.
+
+La combinaison Monitor + Iobroker offre un affichage très agréable.
+
+|image1520|
+
+Il suffit de cliquer sur les lampes pour les allumer ou les éteindre.
+
+J'ai commencé par utiliser Domoticz et comme je ne suis pas fan des fichiers YAML, je préfère utilisé io.broker avec lequel il est facile d'utiliser également Blocky ou de convertir facilement les scripts Lua de Domoticz en Javascript.
+
+Par rapport à ioBroker, Home Assistant utilise moins de ressources, ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d'utiliser les 3 systèmes simultanément.
+
+.. note::
+
+   Le choix se fait dans /admin/config.php:
+
+   .. code-block::
+
+      // Domoticz ou HA ou iobroker
+      define('DOMOTIC', 'DZ');//DZ ou HA ou IOB ou "" (non utlisé)
+      define('DOMOTIC1', 'HA');//DZ ou HA ou IOB ou ""
+      define('DOMOTIC2', '');//DZ ou HA ou IOB ou ""
+
+   le Javascript reçoit ces informations:
+
+   |image1537| 
  
-0.2.2. Premier dispositif
+0.2.3. Premier dispositif
 =========================
-0.2.2.1 pour Domoticz
+0.2.3.1 pour Domoticz
 """"""""""""""""""""""
 Température extérieure : le matériel
 
@@ -504,11 +601,20 @@ l'Idm (Id monitor)  , il est le premier dispositif : 1
 Ajoutons ces données dans la base SQL , soit avec phpmyadmin ou plus simplement avec l’appli :
 
  |image4| 	 
- 
+
+*Ajout d'un dispositif*:
+
  |image58|
+
  |image59| 
  
  |image60| 
+
+*Modification d'un dispositif*
+
+|image1329| 
+
+|image1330| 
 
 *Avec OpenWeather l’API fournit la température ressentie, pour l’ajouter enregistrer le dispositif et ajouter à accueil.php :*
 
@@ -572,9 +678,11 @@ La classe "text-centre" :
 
 |image64| 
 
-0.2.2.2 pour Home Assistant
+0.2.3.2 pour Home Assistant
 """""""""""""""""""""""""""
-La météo est installée lors de l’installation du programme :
+La météo est installée lors de l’installation du programme.
+
+Pour visualiser la température extérieure sur monitor :
 
 |image65| 
 
@@ -591,13 +699,40 @@ Les données json de ce dispositif :
 
 |image69|
  
-0.2.2.3 Affichage sur la page d’accueil de Monitor :
+0.2.3.3 pour IoBroker
+"""""""""""""""""""""
+
+.. important:: 
+
+   REST-API adapter , https://github.com/ioBroker/ioBroker.rest-api, doit être installé.
+
+|image1396|
+
+Pour afficher la température extérieure sur monitor : Installer l'adaptateur pour la météo et renseigner les paramètres , ici l'opérateur norgégien:
+
+|image1397|
+
+Enregistrer le dispositif :
+
+|image1398|
+
+Extrait du fichier json avec les adaptateurs zigbee2mqtt.0 et yr.0.forecastHourly : 
+
+|image1399|
+
+Pour consulter le json des adaptateurs voir cette page : :ref:`14. ADMINISTRATION`
+
+Le json de la température utilisé par monitor:
+
+|image1400|
+
+0.2.3.3 Affichage sur la page d’accueil de Monitor :
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 Extrait du fichier /include/accueil.php
 
 |image70|
  
-*L’ID html est ici « :darkblue:`temp_ext` »*
+*L’ID html est ici* :  :darkblue:`temp_ext` 
 
                 
 
@@ -632,17 +767,62 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 **Ajout à la base de données des données fournie par Domoticz**
 
-0.3.1 Les Tables "dispositifs(variables)" , "text-image" & "messages"
-=====================================================================
-	La correspondance entre les variables Domoticz , HA ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « Domoticz » ; 
+0.3.1 Les Tables "dispositifs(variables)", "text-image", "messages" & "sse"
+===========================================================================
+Ces tables sont installées lors de l'installation automatique.
 
-	- tables :
+	La correspondance entre les variables Domoticz , HA, IoBroker  ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ;
+
+.. warning:: 
+
+   pour IoBroker , contrairement à Domoticz ou Home Assistant, il faut créer une base de données pour les variables et utliser l'adaptateur : io.broker.sql. 
+
+   |image1393|
+
+   .. note::
+
+      voir ce lien pour la création d'une BD pour IoBroker:
+
+      https://www.iobroker.net/docu/index-85.htm?page_id=4184&lang=en
+
+      |image1391|
+
+      Monitor possède déja une BD mySQL aussi pour uniquement les variables iobroker la BD SQLite suffit; 
+
+      pour installer SQLLite :
+
+      .. code-block::
+
+         sudo apt-get update
+         sudo apt-get install sqlite3
+
+      |image1392|
+
+      Pour créer la base de donnés "data.db3", la table "variables" et la variable "essai" :
+
+      .. code-block::
+
+         sqlite3 data.db3
+         create table variables(id INT, nom TEXT, content TEXT);
+         insert into variables values(0,"essai","12345");
+
+      |image1394|
+
+      Test :|image1395|
+
+   .. IMPORTANT:: **Correction de l'erreur SQLite "tentative d'écriture d'une base de données en lecture seule"**
+
+      le :red:`dossier` qui héberge le fichier de base de données doit être :red:`accessible en écriture`.
+
+- tables :
 
 		.  text-image
 
 		. dispositifs
 
-		- messages
+		. messages
+
+                . sse
 
   |image75|
 
@@ -659,9 +839,13 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 0.3.1.2 Table dispositifs pour les variables
 """""""""""""""""""""""""""""""""""""""""""" 
+A l'installation de la table une variable "upload" est préinstallée; elle permet d'indiquer à Domoticz ou Home Assistant que des fichiers de configuration ont été mis à jour par monitor.
+
+|image1361|
+
   *ne sont concernés pour les variables que les champs* :
 
-|image77|
+|image1390|
 
 |image78|
 
@@ -675,7 +859,12 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 . Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
 
-. Nom_idx : nom de la variable du serveur domotique (dz); BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
+.. IMPORTANT::
+
+   des ID sont réservés , voir à la fin de ce praragraphe la liste des ID à ne pas utiliser pour des ajouts personnels.
+
+. nom_objet : nom de la variable du serveur domotique (dz, ha ou iob); 
+	mot réservé: BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
 
    .. warning::
 
@@ -683,7 +872,11 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
       (le programme fonctionne mais l’API renvoie « NULL »)
    
-. Idx , id de la variable du serveur domotique(dz)
+. idm id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
+
+    |image1384| 
+
+. Idx , id de la variable du serveur Domoticz
    		ex : idx de Domoticz
                 |image87|
    
@@ -693,7 +886,7 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    .. warning::
 
-      **IMPORTANT** : la taille de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
+      **IMPORTANT** : le contenu de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
 		 
 |image88|
        
@@ -746,6 +939,40 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
    :darkblue:`Le mot de passe peut être ajouté à connect.py`
 
+.. admonition:: **Mots réservés, utilisables** 
+
+    - *pour le nom de variable (nom_objet)*  :**BASH**
+
+    - *pour les ID javascript (affichage des textes et images* : 
+
+      ping_rasp : ping non réussi vers un raspberry ou un autre serveur effacement |image1372|
+
+      bl : boite lettres , confirmation de la notification |image1373|
+
+      pression_chaud , confirmation de la notification |image1374|
+
+      pilule , confirmation de la notification |image1375|
+
+      fosse , confirmation de la notification |image1376|
+
+      poubelle , affichage poubelles grises et jaunes |image1377|
+
+      pl, pluie , txt_pluie , affichage image et texte |image1378|
+
+      aff_anni , prenom , affichage image et texte |image1379|
+
+      alarme_nuit , affichage alarme nuit automatique |image1380|
+
+      batterie , affichage alarme batterie dispositifs faible |image1382|
+
+      lastseen , affichage message "vu pour la dernière fois" |image1381|
+      
+      notify , not, , affichage des erreurs ou alertes
+     
+      temp_ext, temp_ressentie , |image1383|
+
+      annul_<texte>  : annul_ est réservé, ne pas utiliser avec les id si dessus
+
 0.3.1.3 Table messages 
 """"""""""""""""""""""
 |image1179|
@@ -764,7 +991,13 @@ Cette table permet avec HA de recevoir des textes supérieur à 255 caractères(
         monitor_1:
           url: "http://192.168.1.9/monitor/api/json.php?app=messages&name=message1&contenu={{svalue}}&maj=1=0"
 
-0.3.1.4 Pourquoi une correspondance ?
+0.3.1.4 Table sse
+"""""""""""""""""
+Table avec un enregistrement unique utilisé par l'API monitor
+
+|image1303|
+
+0.3.1.5 Pourquoi une correspondance ?
 """""""""""""""""""""""""""""""""""""
 cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
 
@@ -795,7 +1028,7 @@ cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les
 
 0.3.2 Les Dispositifs
 =====================
-Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz ou HA et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)
+Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz, HA ou Io.Broker et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)
 
 **Table « dispositifs »**
  
@@ -806,18 +1039,38 @@ Comme pour les variables, la table fournie une correspondance entre les disposit
 La table permet en plus de gérer et modifier si besoin l’affichage de tous les dispositifs sans intervenir sur la page HTML ; :red:`pour les switches, les scripts pour commander l’allumage ou l’extinction sont générés automatiquement à partir des données de cette table`.
 
 - num : ne sert qu’à éditer plus facilement la BD
-	voir le paragraphe précédent :ref:`0.3.1.2 Table dispositifs pour les variables`
+	voir le paragraphe précédent  :ref:`0.3.1.2 Table dispositifs pour les variables`
  
 - Nom appareil : nom usuel
 
-- nom_dz : nom du dispositif Domoticz
+- nom_objet : nom pour Domoticz et io.broker  ou objet_id (friendly_name) pour Home Assistant 
+
+.. note::
+
+   il est plus facile de donner le même nom  d'un dispositif à Zigbee2mqtt, Zwave-JS, Domoticz et Home Assistant
 
 - idx : celui de Domoticz
 
-- ID : identity_id de Home Assistant
+- ID : entity_id de Home Assistant ou _id de Io.broker
 
-- idm : idm de monitor peut-être la même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
+- idm : idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
+
+ .. note::
+
+    Pour io.broker, l'objet regroupe toute les fonctions du dispositif, aussi comme un idm doit être unique , dans la base il faudra appliquer cette règle:
+
+    idm_1, idm_2,....
+
+    |image1417|
+
+- Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4.
+
+.. important::
+
+   le chiffre 2 est à privilégier pour Domoticz, le chiffre 1 sera supprimé dans le futur
+
+|image1325|
 
 - Matériel : pour les types zwave ou Zigbee
 
@@ -826,8 +1079,8 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - maj_js : types de mise à jour java script
 	-	control // détecteur présence(on/off)
 	-	etat  //porte, volet ,(closed/open)
-	-	temp ou data // température, température + humidité, 
-	-       temp ou data // température, ph, M3/h, orp,…. toutes données ; temp est utilisé pour une raison historique, à l’époque où seules des mesures de températures étaient exploitées….il est préférable d’utiliser « data »
+	-	temp  // température, température + humidité, .....il est souvent préférable d’utiliser « data »
+	-       data // température, ph, M3/h, orp,…. toutes données ; .il est préférable d’utiliser « data »
 
 	|image473|
          
@@ -836,14 +1089,32 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	|image94| 
  
 	-	onoff commandes 
-	-	onoff+stop commandes (volets par exemple) 
+	-	onoff+stop commandes (volets par exemple)
+        -       on // poussoir momentané (sonnette)
+        -       onoff_rgb //onoff + réglage une lumière sur une certaine couleur
+	-	on= // commandes particulières, voir cet exemple : :ref:`21.14 Robot tondeuse Landroid Worx`
+
+       |image1405|
+
+       |image1426|
+        
 	-	popup //ouverture d’une fenêtre (commandes particulières)	
 
 - id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
 
 - car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
 
-- F() N° case de la fonction « pour_data() » , fichier fonctions.php
+- F() N° case(1à99) de la fonction « pour_data() » , fichier :darkblue:`fonctions.php` 
+	
+      . :red:`-1` : indique qu'un lien existe avec une variable à mettre à jour en temps réel; concerne des textes de notification comme pour l'alarme "activer ou désactiver"
+
+	|image1348|
+
+      . :red:`>0` : N° de la fonction à exécuter
+
+      . :red:`0 ou null` : pas de fonction
+
+        |image1538|
 
 - class_lamp : utilisé pour les lampes en plus de l’interrupteur associé ; c’est une class car il peut y avoir plusieurs lampes
 
@@ -861,24 +1132,34 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
       /* switchOnOff*  */
 	
-      $("#coul_al_absence").click(function(){switchOnOff_setpoint("65","41","On","pwdalarm");});
-      $("#coul_al_nuit").click(function(){switchOnOff_setpoint("66","42","On","pwdalarm");});
-      $("#sirene_al").click(function(){switchOnOff_setpoint("67","234","On","pwdalarm");});
-      $("#patha5645").click(function(){switchOnOff_setpoint("68","43","On","pwdalarm");});
-      $("#coul_modect").click(function(){switchOnOff_setpoint("69","44","On","pwdalarm");});
-      $("#raz_dz").click(function(){switchOnOff_setpoint("70","45","On","pwdalarm");});
-      $("#sw7").click(function(){switchOnOff_setpoint("9","77","On","0");});
-      $("#sw8").click(function(){switchOnOff_setpoint("10","79","On","0");});
-      $("#ping_pi").click(function(){switchOnOff_setpoint("14","80","On","0");});
-      $("#coul_al_nuit-2").click(function(){switchOnOff_setpoint("15","81","On","pwdalarm");});
-      $("#sw2").click(function(){switchOnOff_setpoint("11","85","On","0");});
-      $("#gsm").click(function(){switchOnOff_setpoint("8","86","On","pwdalarm");});
-      $("#sw3").click(function(){switchOnOff_setpoint("18","166","On","0");});
-      $("#sw4").click(function(){switchOnOff_setpoint("16","167","On","0");});
-      $("#sw5").click(function(){switchOnOff_setpoint("19","168","On","0");});
-      $("#sw1").click(function(){switchOnOff_setpoint("17","169","On","0");});
-      $("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
-      $("#act-sir").click(function(){switchOnOff_setpoint("36","230","On","pwdalarm");});
+        $("#coul_sirene1").click(function(){switchOnOff_setpoint("2","13","231","On","0");});
+	$("#coul_al_absence").click(function(){switchOnOff_setpoint("2","65","41","On","pwdalarm");});
+	$("#coul_al_nuit").click(function(){switchOnOff_setpoint("2","66","42","On","pwdalarm");});
+	$("#patha5645").click(function(){switchOnOff_setpoint("1","68","43","On","pwdalarm");});
+	$("#coul_modect").click(function(){switchOnOff_setpoint("1","69","44","On","pwdalarm");});
+	$("#raz_dz").click(function(){switchOnOff_setpoint("1","70","45","On","pwdalarm");});
+	$("#sw8").click(function(){switchOnOff_setpoint("1","10","79","On","0");});
+	$("#ping_pi").click(function(){switchOnOff_setpoint("1","14","80","On","0");});
+	$("#coul_al_nuit-2").click(function(){switchOnOff_setpoint("2","15","81","On","pwdalarm");});
+	$("#sw2").click(function(){switchOnOff_setpoint("1","11","85","On","0");});
+	$("#gsm").click(function(){switchOnOff_setpoint("2","8","86","group on","pwdalarm");});
+	$("#sw4").click(function(){switchOnOff_setpoint("1","16","167","On","0");});
+	$("#sw1").click(function(){switchOnOff_setpoint("1","17","169","On","0");});
+	$("#volet_bureau,#volet_bureau1").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","31");document.getElementById("VR").setAttribute("rel","177");})
+	$("#act-sir").click(function(){switchOnOff_setpoint("2","36","230","On","pwdalarm");});
+	$("#sw9").click(function(){switchOnOff_setpoint("1","73","307","On","0");});
+	$("#sw10").click(function(){switchOnOff_setpoint("1","74","164","On","0");});
+	$("#sw11").click(function(){switchOnOff_setpoint("1","9","407","On","0");});
+	$("#sc1").click(function(){switchOnOff_setpoint("1","G1","417","On","0");});
+	$("#sw12").click(function(){switchOnOff_setpoint("1","24","418","On","0");});
+	$("#sw22").click(function(){switchOnOff_setpoint("1","76","448","On","0");});
+	$("#sw21,#lamp_porche").click(function(){switchOnOff_setpoint("1","22","431","On","0");});
+	$("#sw20").click(function(){switchOnOff_setpoint("1","77","306","On","0");});
+	$("#sw23").click(function(){switchOnOff_setpoint("1","78","450","On","pwdcommand");});
+	$("#SOS").click(function(){switchOnOff_setpoint("2","91","464","On","0");});
+	$("#sw24").click(function(){switchOnOff_setpoint("1","79","465","On","0");});
+	$("#sw3").click(function(){set_state("4","18","alias.0.zigbee2mqtt.0.0xb40ecfd30b7d0000","On","0");});
+	$("#sw5").click(function(){set_state("4","19","","On","0");});
  
    le script dans footer.php pour ajouter le javascript automatiquement:
 
@@ -893,42 +1174,62 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
    .. code-block::
 
-      function sql_plan($t){// SERVEUR SQL connexion
-      $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
-      if (($t!='0')  && (strlen($t) < 4)) {
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$t' AND maj_js <> 'variable';";
-	$result = $conn->query($sql);
-	$row = $result->fetch_assoc();return $row;}
-      else if ($t!='0'  && strlen($t) > 3) {
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$t' AND maj_js <> 'variable';";
+      function sql_plan($t1,$s=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
+	$n=0;$al_bat=0;$p=0;
+	//$row['nom_objet']=$s;return $row;					 
+	// SERVEUR SQL connexion
+	$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
+	 if ($t1=='3')  {
+	$sql="SELECT * FROM ".DISPOSITIFS." WHERE nom_objet = '".$s."' AND maj_js <> 'variable';";
+	$result = $conn->query($sql);$number = $result->num_rows;
+	$row = $result->fetch_assoc();
+	 return $row;}
+	else if ($t1=='2') {
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$s' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 		$row = $result->fetch_assoc();
 	return $row;}
-      else if ($t=='0') {//$commande="On";
-      if (IPDOMOTIC1 != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%onoff%' AND `ID` <> '');";
+	else if ($t1=='1')  {
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$s' AND maj_js <> 'variable';";
+		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
+		$row = $result->fetch_assoc();
+	return $row;}
+	else if ($t1=='0') {//$commande="On";
+	if ($l_ha != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `ID` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 4);";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'turnonoff','ha');				  
-	}	 }
-      if (IPDOMOTIC != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%onoff%' AND `idx` <> '');";
-	$result = $conn->query($sql);//echo "/*";
+	}				  
+					 }
+	if ($l_dz != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `idx` <> '' AND `Actif` <> 3 AND `Actif` <> 4);";
+	$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switchOnOff_setpoint','dz');
-	}	}
-      return;}
-      else echo "pas d'id_dz";
-      }
-      function sql_1($row,$f,$ser_dom){$commande="On";
-      if($ser_dom=="dz")$ser_dom=$row['idx'];
-      if($ser_dom=="ha")$ser_dom=$row['ID'];	
-      if($row['id1_html']!=''){$s='$("#'.$row["id1_html"];}
+		}
+	}
+	if ($l_iob != ""){
+	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `nom_objet` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 3);";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'set_state','iob');
+		}
+	}
+	return;}
+	else echo "pas de serveur";
+	}
+	function sql_1($row,$f,$ser_dom){
+	$commande="On";
+	if ($row['maj_js']=="on"){$commande="group on";}	
+	if($ser_dom=="dz")$ser_dom=$row['idx'];
+	if($ser_dom=="ha")$ser_dom=$row['ID'];
+	if($ser_dom=="iob")$ser_dom=$row['ID'];		
+	if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("#'.$row["id1_html"];
 		if($row['id2_html']!=''){$s=$s.',#'.$row['id2_html'];}
-		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function () 
-     {$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
-       	else {$sl='").click(function(){'.$f.'("'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
+		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
+       	else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
 		$s=$s.$sl;
-		echo $s."\r\n" ;	
-      return; }?>
+		echo $s."\r\n" ;}
+	return;	
+	}
 
    Voir chapitre :ref:`1. Configuration minimum : la page d’accueil`
 
@@ -984,6 +1285,29 @@ Exemple pour une table temp_meteo :
 - num : n° auto incrémenté pour faciliter les modifications
 - date : la date et l’heure
 - valeur : la température
+
+0.3.5 Configurer MariaDB pour les connexions distantes
+======================================================
+Les fichiers de configuration à modifier  :
+
+|image1539| 
+
+.. code-block::
+
+   cd /etc/mysql/mariadb.conf.d/
+   sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+
+|image1540| 
+
+.. IMPORTANT::
+
+    - Pour MariaDB version 10.11 et supérieure , vous pouvez spécifier une liste d'adresses IP séparées par des virgules:
+
+      bind-address = 10.0.0.1,10.0.1.1,10.0.2.1
+
+    - Pour MariaDB version inférieure à 10.11 :
+
+      bind-address = 0.0.0.0 , vous pouvez vous lier à toutes les adresses IP disponibles
 
 0.4 Le serveur http de NGINX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1139,29 +1463,53 @@ Affichage de graphique avec jpgraph
  
 |image114|
 
+fonctions.php est le fichier le plus important du serveur; il regroupe toutes les fonctions et organise l'appel des serveurs domotique (Domoticz,Home Assistant et io.broker) indépendamment de l'ordre choisi dans admin/config.php
+
+|image1500|
+
 0.9 Les fichiers Javascript & Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Utilisation de jQuery
 
 |image115| |image116|
 
-0.10 API Domoticz et HA
-^^^^^^^^^^^^^^^^^^^^^^
+0.10 API Domoticz , Home Assistant & Io.Broker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour les dispositifs :
 
 **DZ** : URL:PORT/json.htm?type=getdevices&plan=NUMERO DU PLAN
 
 **HA** : URL:8123/api/states
 
-pou les variables (input_text pour HA):
+**IOB** : 
+
+.. note..
+
+   ioBroker Swagger UI est utilisé |image1411|
+ 
+   https://github.com/ioBroker/ioBroker.rest-api
+
+- URL:8093/v1/objects?filter=zigbee2mqtt.0*&type=device
+
+- URL:8093/v1/states?filter=zigbee2mqtt.0.0x00124b002228d561.*
+
+.. attention::
+
+   le dispositif doit être du type device dans IOB; dans le cas contraire (state) , le modifier:
+
+   |image1412|
+
+pour les variables (input_text pour HA):
 
 **DZ** : URL:PORT/json.htm?type=command&param=getuservariables
 
-**HA** : URL:8123/api/states/sensor.:darkblue:`liste_var001`
+**HA** : URL:8123/api/states/sensor.liste_var
 
 .. note::
 
-   *liste_var001 est l'unique_id du template concernant les input_text* , voir ce § :ref:`1.8.2.1.2 Home Assistant`
+   *un unique_id du sensor doit être indiqué* , voir ce paragraphe  :ref:`1.8.2.1  Ecriture d'un script Dzvent ou yaml`
+
+   |image1365| 
 
 Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs ou les variables.
 
@@ -1169,25 +1517,97 @@ Dans les 2 cas, l'API concernée  envoie un fichier json de tous les dispositifs
  
 |image97| 
 
+.. important::
+
+   pour Home Assistant ,un jeton est obligatoire; pour faire des essai avec un navigateur, utiliser un client pour API comme par exemple ci dessous l' addon RESTer:
+
+   |image1364|
+
 0.11 Les fichiers ajoutés par l'utilisateur
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 4 sous dossiers sont créés pour ajouter des pages personnelles avec les styles , les images et le Javascript
 
 |image102|
 
+0.11.1 javascript d'une page perso
+==================================
+Exemple de fichier custom/JS.js
+
+.. code-block::
+
+   // JavaScript Document
+
+   function custom_js(){
+   if (typeof custom != 'undefined' & custom==1) {
+	worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);}	
+   }
+
+la fonction custom_js est réservée; elle est appelée si besoin dans la fonction devices_plan() (mise à jour des dispositifs)
+
+voir également les § :ref:`21.14.4 Le Javascript concerné` et :ref:`1.3.5.2 Quelques infos supplémentaires`
+
 0.12 API de monitor
 ^^^^^^^^^^^^^^^^^^^
 Pour l'utiliser, dans admin/config.php: :darkblue:`mettre sur true`
 
-|image118
+|image118|
 
 Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
 |image407| 
 
+0.12.1 Les fonctions possibles
+==============================
+- **app=="messages"** : function message($contenu,$nom,$maj)
+
+  |image1275|
+
+  maj=1
+
+- **app=="maj"** : maj($id,$state)
+
+  mise à jour temps réel SSE-PHP
+
+  voir les § :ref:`18.10.2 L’API de monitor` & :ref:`18.10.3 L’API de monitor depuis HA ou DZ`
+
+- **app==""api_rest_ha"** : envoi_data($name)
+
+  uniquement pour Home Assistant
+
+ |image1276|
+
+l' API renvoi un objet de Monitor , voir la fonction /api/f_pour_api/envoi_data()
+
+0.13 Les fichiers JSON reçu par monitor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Utilisé par les fonctions javascript dans /include/footer.php:
+
+function maj_services(index)
+
+|image1216| 
+
+function maj_devices(plan)
+
+|image1217|
+
+function maj_mqtt(id_x,state,ind,level=0)
+
+|image1218|
+
+function pluie(idx)
+
+|image1219|
+
+function mc(variable,id)
+
+|image1221|
+
+|image1220|
+
+
+
 .. |image3| image:: ../media/image3.webp
-   :width: 604px
-   :height: 176px
+   :width: 350px
 .. |image4| image:: ../media/image4.webp
    :width: 378px
 .. |image6| image:: ../media/image6.webp
@@ -1269,7 +1689,7 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 520px 
 .. |image43| image:: ../media/image43.webp
    :width: 618px 
-.. |image44| image:: ../media/image43.webp
+.. |image44| image:: ../media/image44.webp
    :width: 605px 
 .. |image45| image:: ../media/image45.webp
    :width: 353px 
@@ -1282,7 +1702,7 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 .. |image50| image:: ../media/image50.webp
    :width: 605px
 .. |image51| image:: ../media/image51.webp
-   :width: 647px
+   :width: 600px
 .. |image52| image:: ../media/image52.webp
    :width: 446px
 .. |image53| image:: ../media/image53.webp
@@ -1317,14 +1737,10 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 650px
 .. |image72| image:: ../media/image72.webp
    :width: 424px
-.. |image73| image:: ../media/image73.webp
-   :width: 647px
 .. |image75| image:: ../media/image75.webp
    :width: 216px
 .. |image76| image:: ../media/image76.webp
    :width: 598px
-.. |image77| image:: ../media/image77.webp
-   :width: 343px     
 .. |image78| image:: ../media/image78.webp
    :width: 605px     
 .. |image79| image:: ../media/image79.webp
@@ -1332,7 +1748,7 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 .. |image80| image:: ../media/image80.webp
    :width: 650px
 .. |image81| image:: ../media/image81.webp
-   :width: 349px        
+   :width: 600px        
 .. |image82| image:: ../media/image82.webp
    :width: 296px     
 .. |image83| image:: ../media/image83.webp
@@ -1385,7 +1801,7 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 203px 
 .. |image116| image:: ../media/image116.webp
    :width: 293px 
-.. |image118| image:: ../media/image116.webp
+.. |image118| image:: ../media/image118.webp
    :width: 449px 
 .. |image143| image:: ../media/image143.webp
    :width: 700px 
@@ -1401,3 +1817,125 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
    :width: 548px 
 .. |image1180| image:: ../media/image1180.webp
    :width: 544px 
+.. |image1216| image:: ../img/image1216.webp
+   :width: 407px 
+.. |image1217| image:: ../img/image1217.webp
+   :width: 407px 
+.. |image1218| image:: ../img/image1218.webp
+   :width: 407px 
+.. |image1219| image:: ../img/image1219.webp
+   :width: 407px
+.. |image1220| image:: ../img/image1220.webp
+   :width: 407px 
+.. |image1221| image:: ../img/image1221.webp
+   :width: 407px 
+.. |image1224| image:: ../img/image1224.webp
+   :width: 600px 
+.. |image1268| image:: ../img/image1268.webp
+   :width: 700px 
+.. |image1269| image:: ../img/image1269.webp
+   :width: 600px 
+.. |image1270| image:: ../img/image1270.webp
+   :width: 500px 
+.. |image1271| image:: ../img/image1271.webp
+   :width: 400px 
+.. |image1272| image:: ../img/image1272.webp
+   :width: 500px 
+.. |image1273| image:: ../img/image1273.webp
+   :width: 500px 
+.. |image1274| image:: ../img/image1274.webp
+   :width: 500px 
+.. |image1275| image:: ../img/image1275.webp
+   :width: 448px 
+.. |image1276| image:: ../img/image1276.webp
+   :width: 600px 
+.. |image1303| image:: ../img/image1303.webp
+   :width: 222px 
+.. |image1325| image:: ../img/image1325.webp
+   :width: 300px 
+.. |image1326| image:: ../img/image1326.webp
+   :width: 300px 
+.. |image1327| image:: ../img/image1327.webp
+   :width: 300px 
+.. |image1329| image:: ../img/image1329.webp
+   :width: 414px 
+.. |image1330| image:: ../img/image1330.webp
+   :width: 403px 
+.. |image1348| image:: ../img/image1348.webp
+   :width: 298px 
+.. |image1361| image:: ../img/image1361.webp
+   :width: 700px 
+.. |image1364| image:: ../img/image1364.webp
+   :width: 700px 
+.. |image1365| image:: ../img/image1365.webp
+   :width: 584px 
+.. |image1372| image:: ../img/image1372.webp
+   :width: 50px 
+.. |image1373| image:: ../img/image1373.webp
+   :width: 50px 
+.. |image1374| image:: ../img/image1374.webp
+   :width: 50px 
+.. |image1375| image:: ../img/image1375.webp
+   :width: 50px 
+.. |image1376| image:: ../img/image1376.webp
+   :width: 50px 
+.. |image1377| image:: ../img/image1377.webp
+   :width: 50px 
+.. |image1378| image:: ../img/image1378.webp
+   :width: 50px 
+.. |image1379| image:: ../img/image1379.webp
+   :width: 50px 
+.. |image1380| image:: ../img/image1380.webp
+   :width: 50px 
+.. |image1381| image:: ../img/image1381.webp
+   :width: 50px
+.. |image1382| image:: ../img/image1382.webp
+   :width: 50px 
+.. |image1383| image:: ../img/image1383.webp
+   :width: 200px 
+.. |image1384| image:: ../img/image1384.webp
+   :width: 512px
+.. |image1390| image:: ../img/image1390.webp
+   :width: 343px  
+.. |image1391| image:: ../img/image1391.webp
+   :width: 600px     
+.. |image1392| image:: ../img/image1392.webp
+   :width: 498px     
+.. |image1393| image:: ../img/image1393.webp
+   :width: 300px    
+.. |image1394| image:: ../img/image1394.webp
+   :width: 590px     
+.. |image1395| image:: ../img/image1395.webp
+   :width: 500px
+.. |image1396| image:: ../img/image1396.webp
+   :width: 402px
+.. |image1397| image:: ../img/image1397.webp
+   :width: 600px
+.. |image1398| image:: ../img/image1398.webp
+   :width: 427px
+.. |image1399| image:: ../img/image1399.webp
+   :width: 470px
+.. |image1400| image:: ../img/image1400.webp
+   :width: 463px
+.. |image1405| image:: ../img/image1405.webp
+   :width: 700px
+.. |image1411| image:: ../img/image1411.webp
+   :width: 150px
+.. |image1412| image:: ../img/image1412.webp
+   :width: 650px
+.. |image1417| image:: ../img/image1417.webp
+   :width: 650px
+.. |image1426| image:: ../img/image1426.webp
+   :width: 700px
+.. |image1500| image:: ../img/image1500.webp
+   :width: 700px
+.. |image1520| image:: ../img/image1520.webp
+   :width: 520px
+.. |image1537| image:: ../img/image1537.webp
+   :width: 425px
+.. |image1538| image:: ../img/image1538.webp
+   :width: 533px
+.. |image1539| image:: ../img/image1539.webp
+   :width: 650px
+.. |image1540| image:: ../img/image1540.webp
+   :width: 643px
