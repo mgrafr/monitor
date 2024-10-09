@@ -1309,6 +1309,13 @@ Les fichiers de configuration à modifier  :
 
       bind-address = 0.0.0.0 , vous pouvez vous lier à toutes les adresses IP disponibles
 
+Redémarrer
+
+.. code-block::
+
+   sudo service mariadb restart
+
+
 0.4 Le serveur http de NGINX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image101| 
