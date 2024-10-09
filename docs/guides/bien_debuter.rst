@@ -1286,6 +1286,29 @@ Exemple pour une table temp_meteo :
 - date : la date et l’heure
 - valeur : la température
 
+0.3.5 Configurer MariaDB pour les connexions distantes
+======================================================
+Les fichiers de configuration à modifier  :
+
+|image1539| 
+
+.. code-block::
+
+   cd /etc/mysql/mariadb.conf.d/
+   sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+
+|image1540| 
+
+.. IMPORTANT::
+
+    - Pour MariaDB version 10.11 et supérieure , vous pouvez spécifier une liste d'adresses IP séparées par des virgules:
+
+      bind-address = 10.0.0.1,10.0.1.1,10.0.2.1
+
+    - Pour MariaDB version inférieure à 10.11 :
+
+      bind-address = 0.0.0.0 , vous pouvez vous lier à toutes les adresses IP disponibles
+
 0.4 Le serveur http de NGINX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image101| 
@@ -1912,3 +1935,7 @@ function mc(variable,id)
    :width: 425px
 .. |image1538| image:: ../img/image1538.webp
    :width: 533px
+.. |image1539| image:: ../img/image1539.webp
+   :width: 650px
+.. |image1540| image:: ../img/image1540.webp
+   :width: 643px
