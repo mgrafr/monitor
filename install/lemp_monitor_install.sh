@@ -167,8 +167,8 @@ sleep 3
 apt update && apt upgrade
 wget https://files.phpmyadmin.net/snapshots/phpMyAdmin-5.2%2bsnapshot-all-languages.tar.gz
 #mkdir /www/html -p
-tar -xzf phpMyAdmin-5.2.1-all-languages.tar.gz -C $chemin
-mv $chemin/phpMyAdmin-5.2.1-all-languages $chemin/phpMyAdmin
+tar -xzf phpMyAdmin-5.2%2bsnapshot-all-languages.tar.gz -C $chemin
+mv $chemin/phpMyAdmin-5.2%2bsnapshot-all-languages $chemin/phpMyAdmin
 cd $chemin/phpMyAdmin
 echo Copie de l exemple de fichier de configuration
 echo creation de la blowfish_secret key
@@ -178,14 +178,14 @@ echo Changement de propriété de phpMyAdmin sur maria_name.
 sudo chown -R $maria_name:$maria_name $chemin/phpmyadmin
 echo Suppression du répertoire d’installation de phpMyAdmin.
 rm -rf $chemin/phpmyadmin/setup
-mkdir -p $chemin/phpmyadmin/tmp
+mkdir -p $chemin/phpMyAdmin/tmp
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
 mv phpmyadmin.conf /etc/nginx/conf.d/
 echo "creer lien symbolique de phpmyadmin vers /www"
 mkdir /www
-ln -s $chemin/phpmyadmin  /www/phpmyadmin
+ln -s $chemin/phpMyAdmin  /www/phpmyadmin
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 echo "LEMP : redemarrage php"
 systemctl restart php8.3-fpm 
