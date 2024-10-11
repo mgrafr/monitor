@@ -24,7 +24,7 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP, ser
 
 -	Debian 12, et les dépendances sudo, curl,...
 
--	Nginx, PHP 8.3, maria db, phpMyAdmin, monitor
+-	Nginx, PHP 8.3, maria db 10.11, phpMyAdmin 5.2+snapshot, monitor
 
 -	Quelques programmes python utiles : pip, Paho-mqtt
 
