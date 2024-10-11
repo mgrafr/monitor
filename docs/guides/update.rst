@@ -1,18 +1,22 @@
 19. UPDATE
 ----------
 19.1 Version de PHP
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 *La version actuelle est 8.3*
 
 19.2 Version de SSH
 ^^^^^^^^^^^^^^^^^^^
 version : php8.3-ssh2 pour Debian 12
 
-19.3 UPDATE Monitor
+19.3 Version de MariaDB
+^^^^^^^^^^^^^^^^^^^^^^^
+Server version: 10.11.6
+
+19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
 **La version stable actuelle est 3.2.0**
 
-19.3.1 Releases
+19.4.1 Releases
 ===============
 Version  en developpement 3.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,8 +126,8 @@ Version 2.1.0
 - explication concernant l’envoi par Domoticz de SMS
 
 
-19.4 Version de JPGRAPH
-^^^^^^^^^^^^^^^
+19.5 Version de JPGRAPH
+^^^^^^^^^^^^^^^^^^^^^^^
 *La version actuelle est 4.4.2*
 
 Recommendé:
