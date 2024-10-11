@@ -165,7 +165,7 @@ sleep 3
 msg_ok "Installation de PHPMYADMIN"
 sleep 3
 apt update && apt upgrade
-wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.tar.gz
+wget https://files.phpmyadmin.net/snapshots/phpMyAdmin-5.2%2bsnapshot-all-languages.tar.gz
 #mkdir /www/html -p
 tar -xzf phpMyAdmin-5.2.1-all-languages.tar.gz -C $chemin
 mv $chemin/phpMyAdmin-5.2.1-all-languages $chemin/phpMyAdmin
