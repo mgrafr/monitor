@@ -200,7 +200,7 @@ msg_ok "installation de dos2unix:"
 apt install dos2unix
 msg_ok "installation de Unzip:"
 apt install unzip
-sg_ok "installation de Monitor:"
+msg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
