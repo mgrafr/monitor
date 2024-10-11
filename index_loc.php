@@ -1,4 +1,4 @@
-ttes<?php
+<?php
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 // pour les variables de session----------------------
