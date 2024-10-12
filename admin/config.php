@@ -114,7 +114,6 @@ define('IPDOMOTIC', '');//ip 1er serveur Domotique ex:192.168.1.76
 define('USERDOMOTIC', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
-define('DOMDOMOTIC', 'https://domoticz.DOMAINE.ovh');//domaine
 define('TOKEN_DOMOTIC', '');//TOKEN ou BEARER
 define('PORT_API_DOMO','');//port de l'API éventuel
 define('PORT_WEBUI_DOMO','');//port web UI et dossier éventuel
@@ -123,7 +122,6 @@ define('IPDOMOTIC1', '');//ip 2emme serveur Domotique ex:192.168.1.5
 define('USERDOMOTIC1', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC1', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC1', '');//url ex:http://192.168.1.5:8123/
-define('DOMDOMOTIC1', '');//ex:https://ha.DOMAINE.ovh
 define('TOKEN_DOMOTIC1', '');//TOKEN ou BEARER
 define('PORT_API_DOMO1','');//port de l'API éventuel
 define('PORT_WEBUI_DOMO1','');//port web UI ou vis 2 et dossier éventuel
@@ -132,17 +130,14 @@ define('IPDOMOTIC2', '');//ip 2emme serveur Domotique ex:192.168.1.5
 define('USERDOMOTIC2', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC2', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
-define('DOMDOMOTIC2', '');//ex:https://ha.DOMAINE.ovh
 define('TOKEN_DOMOTIC2', '');//TOKEN ou BEARER
 define('PORT_API_DOMO2','');//port de l'API éventuel
 define('PORT_WEBUI_DOMO2','');//port web UI et dossier éventuel ex: 8082/vis-2/index.html
-//
 //****modules et constantes  complémentaires pour Domoticz
 define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 define('VARTAB', 'admin/connect/string_tableaux.lua');//
 define('BASE64', 'admin/connect/connect.lua');//login et password en Base64
 define('CONF_MODECT', 'admin/string_modect.json');
-//-----------------------------------------------------------
 //*********** pour Iobroker
 define('OBJ_IOBROKER','zigbee2mqtt.0');// séparer les objets par une virgule
 //-----------------------------------------------------------
@@ -172,6 +167,7 @@ define('ON_GRAPH',false);// mise en service page graphique
 define('ON_MUR',false);// mise en service MUR
 define('NOMMUR','');// nom du mur
 define('NBCAM','0');// nombre caméras
+define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor
 // Zoneminder
 define('ZMURL','http://192.168.1.23/zm');//IP/zm
 define('ZMURLTLS','https:zoneminder.DOMAINE.ovh');// sous domaine
@@ -220,7 +216,7 @@ define('ON_RECETTES',false);
 //fichiers divers
 //Raspberry
 define('IPRPI', '192.168.1.8');//IP du Raspberry
-define('LOGIN_PASS_RPI', <login:pass>');
+define('LOGIN_PASS_RPI', '<login:pass>');
 define('MSMTPRC_LOC_PATH', '/var/www/html/monitor/scripts/');//copie config serveur mail
 //DZ_PATH :ex dz docker /opt/domoticz/config/, ex autre dz /opt/domoticz, home/USER/domoticz
 define('DZ_PATH', '/opt/domoticz/config/');
