@@ -10,11 +10,12 @@ html, body {
     height: 100%;
 }.table td{border:0}
 #menu {width:17em;}
-#about{width: 300px;
+#about, #about_iob{width: 300px;
     position: relative;
-    left: 100px;
-    top: -60px;
+    left: 0px;
 }
+#about{top: -20px;}
+#about_iob{top: 0px;}
 #maison1{margin-top:12%;}
 .header {height: 150px;
 	color: #ffffff;
@@ -180,7 +181,7 @@ a:link, a:visited {
     font-size: 1.5em;z-index:30;top: 10px;
 }
 .modal-dialog {width:650px;margin: 0 auto;margin-top:50px}
-#Calque_1 {margin-left: 7%;}
+#Calque_1 {margin-left: 7%;position: relative;top: -40px;}
 #interieur, #exterieur, #meteo, #alarmes,#commandes,#murcam ,
 #murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{
     width: 100%;
@@ -308,8 +309,8 @@ left: 410px;
 width: 50px;
 height: 50px;}
 #ping_rasp{position: relative;
-bottom: 700px;
-left: 320px;}
+bottom: 700px;display: none;
+left: 320px;width:40px}
 /*aff batterie */
 .aff_bat{position: absolute;
 top: 810px;
@@ -592,7 +593,7 @@ left: 170px;width: 40px;}
 #status{top: -450px;}#vanne_eau{position: relative;top: -570px;left: 380px;}	
 /*.fond_date {right: -60px;}*/
 #pression_chaud{width:50px}.pression_chaud{top: -305px;}
-.colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}#habridgeapp, #iobrokerapp{width: 480px;height: 600px;}
+.colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}#habridgeapp, #iobrokerapp{top:-10px;width: 480px;height: 600px;}
 	.banner {height:724px;}h1, .h1 {font-size: 2rem;}
 	.banner-caption {top: 25%;}#linky{top: -220px;left: 380px;}
 .image_met{width:50px;margin-left: 0;}
