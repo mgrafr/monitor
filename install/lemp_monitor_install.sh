@@ -244,7 +244,7 @@ ln -s $chemin/monitor  /www/monitor
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
 chown -R $maria_name:$maria_name $chemin/monitor
-chown -R www-data:www-data $chemin/monitor/admin/config.php
+# chown -R www-data:www-data $chemin/monitor/admin/config.php
 chmod -R 775 $chemin/monitor
 echo -e "
     _______                 _
