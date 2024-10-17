@@ -76,6 +76,7 @@ define('UTILISATEUR','USER_BD');
 define('DBASE','monitor');
 define('API','false'); // true ou false
 define('PHPMYADMIN',IPMONITOR.'/phpMyAdmin'); // adresse phpMyAdmin
+define('BACKUP_DB','DB_Backup');//rep sauvegarde de la BD
 //------Page  Alarmee & Administration------------
 // page Alarme
 define('ON_ALARM',false);// affichage pour utilisation de l'alarme
