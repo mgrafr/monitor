@@ -1,7 +1,7 @@
 <?php
 require_once (MONCONFIG);
-$dir_backup = BACKUP_DB;echo $dir_backup;
-if (IsDir_or_CreateIt($dir_backup)==true){
+
+if (IsDir_or_CreateIt(BACKUP_DB)==true){
 // SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 if ($conn->connect_error) {
