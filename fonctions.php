@@ -780,21 +780,16 @@ $resultat='<p>'.$info.'Le temps prévu pour cet après-midi  : '.$donnees[$info]
 break;
     case 1:		
 $url = 'https://api.meteo-concept.com/api/forecast/daily?insee='.INSEE;
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'Accept: application/json',
-'X-AUTH-TOKEN:'.TOKEN_MC
-));
-curl_setopt($ch, CURLOPT_HEADER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$data = curl_exec($ch);
-if ($data !== false)
-	$status = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
-curl_close($ch);
-
-if ($data !== false && $status === 200) {
-	$decoded = json_decode($data);
+	$ch = curl_init(); 
+		curl_setopt($ch, CURLOPT_URL, 'https://api.meteo-concept.com/api/forecast/daily?token=2fce16877b45b86ba110ef2cdbf8d0e437563395f7a8ab2961919a7065ea2cd0&insee=24454' ); curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 ); 
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET' ); 
+		$headers = array (); $headers[] = 'Accepter : */*' ; 
+		$headers[] = 'X-Auth-Token: 2fce16877b45b86ba110ef2cdbf8d0e437563395f7a8ab2961919a7065ea2cd0' ; 
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); 
+		$result = curl_exec($ch);
+ 	if (curl_errno($ch)) {
+     echo  'Erreur:' . curl_error($ch); } curl_close($ch);
+	$decoded = json_decode($result);
 	$city = $decoded->city;
 	$forecasts = $decoded->forecast;
 	$resultats=array();//return $forecasts;//pour essai affichage json --->voir ajax.php
@@ -824,7 +819,7 @@ for ($k=1; $k<=5; $k++)
 					}
 $resultat=$resultat."</tr>";	
 	}}
-	}	
+		
 $resultat=$resultat."</table>";
 break;
 }
@@ -1224,8 +1219,12 @@ $lastseen=$lastseen."\n";$lastseen=$lastseen.'nombre_enr='.$i;
 		file_put_contents(TMPCONFIG, $lastseen);
 $retour=maj_variable("22","upload","4","2");echo "Mise à jour Table Zigbee  : ".$retour['status'];		
 break;
-case "14" :include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
+case "14" :
+		include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
 break;
+case "27" :
+		include ('include/backup_bd.php');return;		
+break;		
 case "17" :include ('include/ajout_var_bd.php');//echo "ajout variable effectué";
 		return;	
 break;	
@@ -1250,7 +1249,7 @@ break;
 case "26" :$l_dz="";$l_ha="";$retour=devices_plan(99);
 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . json_encode($retour) . '</textarea>'; 
 break;
-case "27" :
+case "28" :
 return;	
 break;				
 default:
