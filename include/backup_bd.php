@@ -25,22 +25,11 @@ switch($choix){
 shell_exec(' mysqldump  --databases '.DBASE.' --user='.UTILISATEUR.' --password='.MOTDEPASSE.' > '.BACKUP_DB.'/'.DBASE.'.sql');echo 'SUCCES:';
 break;
 	case 27:
-$query=	' mysql --databases monit --user='.UTILISATEUR.' --password='.MOTDEPASSE.' < '.$_POST['textfield'].';';		
-echo $query;
-echo'<form name="form_backup" method="post" action="'.$_SERVER['PHP_SELF'].'"
-  <label>Chemin du Backup :<br><input type="text" name="textfield" id="textfield" style="width:400px;margin-left:10px;" value="/var/www/html/monitor/DB_Backup/monitor.sql" >
-  <input type="submit" name="button" id="button" value="Submit"></label>
-  </form>';		
-if (!empty($_POST['textfield'])) {
-shell_exec($query);  
-echo "Restauration réussie";		}
-    
-	
-break;	
+shell_exec(' mysql --databases '.DBASE.' --user='.UTILISATEUR.' --password='.MOTDEPASSE.' < '.BACKUP_DB.'/'.DBASE.'.sql');echo 'SUCCES:';
+break;
 	default:
 echo "break"	;
-}
-	
-}
+break;
+}}
 else echo "erreur";
 ?>
