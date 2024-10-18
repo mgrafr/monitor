@@ -302,6 +302,18 @@ echo &quot;connexion terminée , ..&quot;;
 </ul>
 <p><a class="reference internal" href="../_images/image801.webp"><img alt="image801" src="../_images/image801.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image802.webp"><img alt="image802" src="../_images/image802.webp" style="width: 324px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>en Bash, sauvegarde  :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysqldump</span> <span class="o">-</span><span class="n">u</span> <span class="n">ltuser</span> <span class="o">-</span><span class="n">p</span> <span class="n">monitor</span> <span class="o">&gt;</span> <span class="n">DB_Backup</span><span class="o">/</span><span class="n">monitor</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p>restauration  :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="n">monitor</span> <span class="o">&lt;</span> <span class="n">DB_Backup</span><span class="o">/</span><span class="n">monitor</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p><strong>RQ: pour la restaurer, la base doit déjà exister</strong></p>
+</div>
 </section>
 <section id="le-javascript">
 <h2>14.3 le javascript<a class="headerlink" href="#le-javascript" title="Lien permanent vers cette rubrique"></a></h2>

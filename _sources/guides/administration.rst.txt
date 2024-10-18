@@ -177,6 +177,22 @@ Si io.broker est utilisé:
 
 |image802|
 
+.. note::
+
+   en Bash, sauvegarde  :
+
+   .. code-block::
+
+      mysqldump -u ltuser -p monitor > DB_Backup/monitor.sql
+
+   restauration  :
+
+   .. code-block::
+
+      mysql -u root -p monitor < DB_Backup/monitor.sql
+
+   **RQ: pour la restaurer, la base doit déjà exister**
+
 14.3 le javascript
 ^^^^^^^^^^^^^^^^^^
 *Pour la fonction mdp() et le clavier(Minimal Virtual Keypad)*, voir le §  :ref:`5.5 Le Javascript, dans footer.php et mes_js.js`
