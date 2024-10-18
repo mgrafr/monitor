@@ -1223,8 +1223,17 @@ case "14" :
 		include ('include/backup_bd.php');echo "sauvegarde effectuée";return;	
 break;
 case "27" :
-		include ('include/backup_bd.php');return;		
-break;		
+		include ('include/backup_bd.php');echo "restauration effectuée";return;		
+break;
+case "27a":
+$query=	' mysql --databases monit --user='.UTILISATEUR.' --password='.MOTDEPASSE.' < '.$_GET['textfield'].';';		
+echo $query;
+echo '<form name="form_backup1" method="get" action="">
+    <input type="submit" name="button" id="button" value="Submit">
+  </form>';	
+//shell_exec($query);  
+echo "Restauration réussie";return;		
+break;			
 case "17" :include ('include/ajout_var_bd.php');//echo "ajout variable effectué";
 		return;	
 break;	
