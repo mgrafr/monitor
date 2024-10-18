@@ -183,15 +183,17 @@ Si io.broker est utilisé:
 
    .. code-block::
 
-      mysqldump -u ltuser -p monitor > DB_Backup/monitor.sql
+      mysqldump -u ltuser -p monitor > /var/www/html/monitor/DB_Backup/monitor.sql
 
    restauration  :
 
    .. code-block::
 
-      mysql -u root -p monitor < DB_Backup/monitor.sql
+      mysql -u root -p monitor < /var/www/html/monitor/DB_Backup/monitor.sql
 
    **RQ: pour la restaurer, la base doit déjà exister**
+
+   |image1541|
 
 14.3 le javascript
 ^^^^^^^^^^^^^^^^^^
@@ -873,3 +875,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 600px
 .. |image1404| image:: ../img/image1404.webp
    :width: 700px
+.. |image1541| image:: ../img/image1541.webp
+   :width: 636px

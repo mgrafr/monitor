@@ -305,14 +305,15 @@ echo &quot;connexion terminée , ..&quot;;
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>en Bash, sauvegarde  :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysqldump</span> <span class="o">-</span><span class="n">u</span> <span class="n">ltuser</span> <span class="o">-</span><span class="n">p</span> <span class="n">monitor</span> <span class="o">&gt;</span> <span class="n">DB_Backup</span><span class="o">/</span><span class="n">monitor</span><span class="o">.</span><span class="n">sql</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysqldump</span> <span class="o">-</span><span class="n">u</span> <span class="n">ltuser</span> <span class="o">-</span><span class="n">p</span> <span class="n">monitor</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">DB_Backup</span><span class="o">/</span><span class="n">monitor</span><span class="o">.</span><span class="n">sql</span>
 </pre></div>
 </div>
 <p>restauration  :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="n">monitor</span> <span class="o">&lt;</span> <span class="n">DB_Backup</span><span class="o">/</span><span class="n">monitor</span><span class="o">.</span><span class="n">sql</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="n">monitor</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">DB_Backup</span><span class="o">/</span><span class="n">monitor</span><span class="o">.</span><span class="n">sql</span>
 </pre></div>
 </div>
 <p><strong>RQ: pour la restaurer, la base doit déjà exister</strong></p>
+<p><a class="reference internal" href="img/image1541.webp"><img alt="image1541" src="img/image1541.webp" style="width: 636px;" /></a></p>
 </div>
 </section>
 <section id="le-javascript">
