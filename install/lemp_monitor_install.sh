@@ -165,27 +165,18 @@ sleep 3
 msg_ok "Installation de PHPMYADMIN"
 sleep 3
 apt update && apt upgrade
-wget https://files.phpmyadmin.net/snapshots/phpMyAdmin-5.2%2bsnapshot-all-languages.tar.gz
 #mkdir /www/html -p
-tar -xzf phpMyAdmin-5.2%2bsnapshot-all-languages.tar.gz -C $chemin
-mv $chemin/phpMyAdmin-5.2%2bsnapshot-all-languages $chemin/phpMyAdmin
-cd $chemin/phpMyAdmin
-echo Copie de l exemple de fichier de configuration
-echo creation de la blowfish_secret key
-randomBlowfishSecret=$(openssl rand -base64 32)
-sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$randomBlowfishSecret'|" config.sample.inc.php > config.inc.php
-echo Changement de propriété de phpMyAdmin sur maria_name.
-sudo chown -R $maria_name:$maria_name $chemin/phpmyadmin
-echo Suppression du répertoire d’installation de phpMyAdmin.
-rm -rf $chemin/phpmyadmin/setup
-mkdir -p $chemin/phpMyAdmin/tmp
-rm /etc/nginx/sites-available/*
-rm /etc/nginx/sites-enabled/*
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
-mv phpmyadmin.conf /etc/nginx/conf.d/
+whiptail --title "intallation de PhpMyAdmin" --\n
+Au cours du processus d'installation, \n
+ne pas sélectionnersélectionner de serveur Web .\n
+[]apache2\n
+[]lighttpd\n
+LAISSER les deux champs vides et cliquons sur OK." 15 60
+apt install php-mbstring
+apt install phpmyadmin
 echo "creer lien symbolique de phpmyadmin vers /www"
 mkdir /www
-ln -s $chemin/phpMyAdmin  /www/phpmyadmin
+ln -s /usr/share/phpmyadmin /www
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 echo "LEMP : redemarrage php"
 systemctl restart php8.3-fpm 
