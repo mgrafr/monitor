@@ -165,13 +165,13 @@ sleep 3
 msg_ok "Installation de PHPMYADMIN"
 sleep 3
 apt update && apt upgrade
-#mkdir /www/html -p
+mkdir /www/html -p
 whiptail --title "intallation de PhpMyAdmin" --\n
 Au cours du processus d'installation, \n
 ne pas sélectionnersélectionner de serveur Web .\n
 []apache2\n
 []lighttpd\n
-LAISSER les deux champs vides et cliquons sur OK." 15 60
+LAISSER les deux champs vides et cliquons sur OK." 15 60)
 apt install php-mbstring
 apt install phpmyadmin
 echo "creer lien symbolique de phpmyadmin vers /www"
