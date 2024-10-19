@@ -166,7 +166,7 @@ msg_ok "Installation de PHPMYADMIN"
 sleep 3
 apt update && apt upgrade
 mkdir /www/html -p
-whiptail --title "intallation de PhpMyAdmin" --\n
+whiptail --title "intallation de PhpMyAdmin" --msgbox "-\n
 Au cours du processus d'installation, \n
 ne pas sélectionnersélectionner de serveur Web .\n
 []apache2\n
