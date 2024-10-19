@@ -1,4 +1,9 @@
 #!/usr/bin/bash
+whiptail --title "intallation de PhpMyAdmin" --msgbox "Au cours du processus d'installation, \n
+ne pas sélectionnersélectionner de serveur Web .\n
+[]apache2\n
+[]lighttpd\n
+LAISSER les deux champs vides et cliquons sur OK." 15 60
 # Ce script installe LEMP sur Ubuntu Debian 12.
 function header_info {
 clear
@@ -171,7 +176,7 @@ Au cours du processus d'installation, \n
 ne pas sélectionnersélectionner de serveur Web .\n
 []apache2\n
 []lighttpd\n
-LAISSER les deux champs vides et cliquons sur OK." 15 60)
+LAISSER les deux champs vides et cliquons sur OK." 15 60
 apt install php-mbstring
 apt install phpmyadmin
 echo "creer lien symbolique de phpmyadmin vers /www"
