@@ -492,7 +492,86 @@ modifications en cours....
 
 0.1.4.1  Mise à jour complète
 """""""""""""""""""""""""""""
+.. admonition::**étape préliminaire**
+
+   Pour faire fonctionner 2 conteneurs ayant les mêmes certificats Letsencrypt il faut apporter des modifications sur le fichier de  configuration Nginx de monitor actuellement en service.
+
+   Ce conteneur ecoute les port 80 et 443; on va modifier la configuration afin qu'il n'écoute que le port 443; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérification donc le port 80 libéré.
+
+   la config de monitor actuelent en service devient:
+
+   |image1542|
+
+   .. important::
+
+      sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
+
+      |image1543|
+
+   - **Installer un nouveau conteneur LXC** , 
+     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
+
+   - **télécharger depuis le conteneur actuel** les fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc...)
+
+      Pour cela on utilise **sftp** dans le script restore.sh; les fichier et répertoires sont stockés dans home/<USER> du nouveau conteneur.
+
+      Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés. 
+
+   .. code-block::
+
+      #!/usr/bin/bash
+
+	cd /home/michel
+	mkdir monitor
+	mkdir monitor/admin
+	mkdir monitor/custom
+	mkdir monitor/DB_Backup
+	mkdir etc
+	mkdir etc/letsencrypt
+	mkdir etc/letsencryptssl
+	mkdir nginx/conf.d -p
+	mkdir nginx/ssl
+	xxx=$(hostname -I)
+	ip4=$(echo $xxx | cut -d ' ' -f 1)
+	sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php  A VOIR 
+	sed  define('URLMONITOR', 'monitor.la-truffiere.ovh:444');//
+
+	chmod -R 777 *
+	sftp michel@192.168.1.9
+	sftp> lpwd
+	# Local working directory: /home/michel
+	sftp> pwd
+	# Remote working directory: /home/michel
+	lcd admin
+	sftp> get -R /var/www/html/monitor/admin/* admin/
+	lcd ..
+	lcd etc
+	lcd nginx/conf.d
+	sftp> get /etc/nginx/conf.d/*
+	...
+	...
+	cp monitor/index_loc.php /var/www/monitor/
+	cp -R /home/michel/monitor/admin/* /var/www/monitor/admin/
+	chmod -R 777 /var/www/monitor/DB_Backup
+	cp /home/michel/monitor/DB_Backup/monitor.sql /var/www/monitor/DB_Backup/
+	mysql -u root -p monitor < /var/www/html/monitor/DB_Backup/monitor.sql
+	ufw allow 444
+	systemctl restart ufw
+	sudo apt install certbot python3-certbot-nginx
+	cp  /home/michel/etc/nginx/conf.d/* /etc/nginx/conf.d/
+	mkdir /etc/nginx/ssl
+	cp  /home/michel/etc/nginx/ssl/* /etc/nginx/ssl/
+	chmod -R 777 /etc/letsencrypt
+	cp -R etc/letsencrypt/* /etc/letsencrypt/
+
+	systemctl reload nginx
+
 en cours de rédaction
+
+0.1.4.2  Mise à jour partielle
+""""""""""""""""""""""""""""""
+Ne concerne que Monitor
+
 
 .. warning:: 
 
@@ -1962,3 +2041,5 @@ function mc(variable,id)
    :width: 650px
 .. |image1540| image:: ../img/image1540.webp
    :width: 643px
+.. |image1542| image:: ../img/image1542.webp
+   :width: 522px
