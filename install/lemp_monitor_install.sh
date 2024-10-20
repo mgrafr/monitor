@@ -192,6 +192,9 @@ mkdir /www
 ln -s $chemin/phpMyAdmin  /www/phpmyadmin
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 echo "LEMP : redemarrage php"
+cd /etc/nginx
+nginx -t
+sleep 3
 systemctl restart php8.3-fpm 
 systemctl restart nginx
 if [ "$ssh2" = "PHP avec SSH2" ]
