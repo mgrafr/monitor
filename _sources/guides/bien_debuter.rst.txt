@@ -480,7 +480,23 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
 0.1.4 Mise à jour de monitor
 ============================
+modifications en cours....
+
+.. admonition:: ** NOTE IMPORTANTE**
+
+   2 solutions pour les mises à jour :
+
+   - mise à jour complète du conteneur (passage à une nouvelle version de Debian, de Mariadb, etc...
+
+   - mise à jour simple ne necessitant que l'update de quelques fichiers de Monitor
+
+0.1.4.1  Mise à jour complète
+"""""""""""""""""""""""""""""
+en cours de rédaction
+
 .. warning:: 
+
+    OBSOLETE
 
    La version 2.2.7 a été profondément restructurée aussi il n'est pas facile de l'updater; mode d'emploi pour upgrader une ancienne version sans perte de données:
 
