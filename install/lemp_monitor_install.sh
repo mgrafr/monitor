@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+ault#!/usr/bin/bash
 
 # Ce script installe LEMP sur Ubuntu Debian 12.
 function header_info {
@@ -185,8 +185,8 @@ find $chemin/phpmyadmin/ -type d -exec chmod 755 {} \;
 find $chemin/phpmyadmin/ -type f -exec chmod 644 {} \;
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
-wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
-mv phpmyadmin.conf /etc/nginx/conf.d/
+# wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
+# mv phpmyadmin.conf /etc/nginx/conf.d/
 echo "creer lien symbolique de phpmyadmin vers /www"
 mkdir /www
 ln -s $chemin/phpMyAdmin  /www/phpmyadmin
@@ -220,7 +220,7 @@ mysql -root monitor < $chemin/monitor/bd_sql/sse.sql
 mysql -root monitor < $chemin/monitor/bd_sql/messages.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
-cp $chemin/monitor/share/nginx/monitor.conf /etc/nginx/conf.d/
+cp $chemin/monitor/share/nginx/default.conf /etc/nginx/conf.d/
 sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/monitor.conf
 sed -i "s/xxxipxxx/${ip4}/g" /etc/nginx/conf.d/monitor.conf
 echo "LEMP : Creating a php-info page"
