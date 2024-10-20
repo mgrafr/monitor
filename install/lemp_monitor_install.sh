@@ -166,21 +166,25 @@ sleep 3
 msg_ok "Installation de PHPMYADMIN"
 sleep 3
 apt update && apt upgrade
-wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.tar.gz
-tar -xzf phpMyAdmin-5.2.1-all-languages.tar.gz -C $chemin
-mv $chemin/phpMyAdmin-5.2.1-all-languages $chemin/phpMyAdmin
-cd $chemin/phpMyAdmin
-echo Copie de l exemple de fichier de configuration
+DATA="$(wget https://www.phpmyadmin.net/home_page/version.txt -q -O-)"
+URL="$(echo $DATA | cut -d ' ' -f 3)"
+VERSION="$(echo $DATA | cut -d ' ' -f 1)"
+wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
+tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
+mv phpMyAdmin-*/ $chemin/phpmyadmin
+cd $chemin/phpmyadmin
+mkdir tmp
+echo Copie de l exemple de fichier de configuration et ajout de randomBlowfishSecret
 echo creation de la blowfish_secret key
 randomBlowfishSecret=$(openssl rand -base64 32)
 sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$randomBlowfishSecret'|" config.sample.inc.php > config.inc.php
 echo Changement de propriété de phpMyAdmin sur maria_name.
-sudo chown -R $maria_name:$maria_name $chemin/phpmyadmin
-echo Suppression du répertoire d’installation de phpMyAdmin.
-rm -rf $chemin/phpmyadmin/setup
-mkdir -p $chemin/phpMyAdmin/tmp
-#rm /etc/nginx/sites-available/*
-#rm /etc/nginx/sites-enabled/*
+sudo chown -R www-data:www-data $chemin/phpmyadmin
+echo "définir l’autorisation chmod :"
+find $chemin/phpmyadmin/ -type d -exec chmod 755 {} \;
+find $chemin/phpmyadmin/ -type f -exec chmod 644 {} \;
+rm /etc/nginx/sites-available/*
+rm /etc/nginx/sites-enabled/*
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
 mv phpmyadmin.conf /etc/nginx/conf.d/
 echo "creer lien symbolique de phpmyadmin vers /www"
