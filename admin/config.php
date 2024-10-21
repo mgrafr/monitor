@@ -23,6 +23,7 @@ define('ECRAN_ADMIN', array( // disable ou disable
      "connect_py" => "disable", // Maj automatique des IP depuis connect.py
 	));
 define('ON_SOS',true);// bouton sos page accueil, le disositif dit être enregistré dans SQL
+define('BASE64', 'admin/connect/connect.py');//login et password en Base64 pour dz,ha,iobroker
 // répertoire des images
 $rep='images/';//ne pas changer
 // images logo et titres
@@ -137,7 +138,6 @@ define('PORT_WEBUI_DOMO2','');//port web UI et dossier éventuel ex: 8082/vis-2/
 //****modules et constantes  complémentaires pour Domoticz
 define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 define('VARTAB', 'admin/connect/string_tableaux.lua');//
-define('BASE64', 'admin/connect/connect.lua');//login et password en Base64
 define('CONF_MODECT', 'admin/string_modect.json');
 //*********** pour Iobroker
 define('OBJ_IOBROKER','zigbee2mqtt.0');// séparer les objets par une virgule
