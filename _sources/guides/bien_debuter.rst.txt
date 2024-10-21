@@ -591,7 +591,11 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       si les virtualhost sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l'indice 1 pour tous, update_symlinks rétabliera la bonne configuration.
 
-      |image1546| 
+      |image1546|
+
+Pour Domoticz, Ha, Iobroker , modifier l'IP de monitor dans le fichier connect.lua 'connect.py et connect.js seront mis à jour automatiquement).
+
+|image1547|
 
 en cours de rédaction
 
@@ -2078,3 +2082,5 @@ function mc(variable,id)
    :width: 650px
 .. |image1546| image:: ../img/image1546.webp
    :width: 393px
+.. |image1547| image:: ../img/image1547.webp
+   :width: 472px
