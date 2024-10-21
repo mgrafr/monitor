@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../admin/config.php');
 $id_zm = isset($_GET['id_zm']) ? $_GET['id_zm'] : '';
 if ($_SESSION["exeption_db"]=="pas de connexion à la BD") return ;
