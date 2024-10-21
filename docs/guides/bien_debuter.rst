@@ -515,7 +515,7 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
 - **télécharger depuis le conteneur actuel** les fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc...)
 
-  Pour cela , on utilise **sftp** dans le script restore.sh; les fichier et répertoires sont stockés dans home/<USER> du nouveau conteneur.
+  Pour cela , on utilise **sftp** dans le script restore.sh; les fichiers et répertoires sont stockés dans home/<USER> du nouveau conteneur.
 
   |image1544|
 
@@ -2075,7 +2075,7 @@ function mc(variable,id)
 .. |image1542| image:: ../img/image1542.webp
    :width: 522px
 .. |image1543| image:: ../img/image1543.webp
-   :width: 535px
+   :width: 400px
 .. |image1544| image:: ../img/image1544.webp
    :width: 488px
 .. |image1545| image:: ../img/image1545.webp
