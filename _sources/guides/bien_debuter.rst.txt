@@ -511,33 +511,39 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
       |image1543|
 
 - **Installer un nouveau conteneur LXC** , 
-    voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
+    voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
 - **télécharger depuis le conteneur actuel** les fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc...)
 
-    Pour cela on utilise **sftp** dans le script restore.sh; les fichier et répertoires sont stockés dans home/<USER> du nouveau conteneur.
+  Pour cela , on utilise **sftp** dans le script restore.sh; les fichier et répertoires sont stockés dans home/<USER> du nouveau conteneur.
 
-    Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés. 
+  |image1544|
+
+  |image1545|
+
+  Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés.
+
+  le script :darkblue:`install/restore.sh', à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,...);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires
 
    .. code-block::
 
       #!/usr/bin/bash
 
+	ip3="192.168.1.9" #ip de monitor actif
 	cd /home/michel
 	mkdir monitor
 	mkdir monitor/admin
 	mkdir monitor/custom
 	mkdir monitor/DB_Backup
 	mkdir etc
-	mkdir etc/letsencrypt
-	mkdir etc/letsencryptssl
+        mkdir etc/letsencrypt # si des cerificats sont installés
+	mkdir /etc/ssl # si des cerificats sont installés
 	mkdir nginx/conf.d -p
 	mkdir nginx/ssl
 	xxx=$(hostname -I)
 	ip4=$(echo $xxx | cut -d ' ' -f 1)
-	sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php  A VOIR 
-	sed  define('URLMONITOR', 'monitor.la-truffiere.ovh:444');//
-
+	sed -i "s/${ip3}/${ip4}/g" /var/www/monitor/admin/config.php 
+	sed  -i "s/monitor.la-truffiere.ovh/monitor.la-truffiere.ovh:444/g" /var/www/monitor/admin/config.php
 	chmod -R 777 *
 	sftp michel@192.168.1.9
 	sftp> lpwd
@@ -550,6 +556,8 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 	lcd etc
 	lcd nginx/conf.d
 	sftp> get /etc/nginx/conf.d/*
+        lcd ..
+	lcd ssl
 	...
 	...
 	cp monitor/index_loc.php /var/www/monitor/
@@ -564,9 +572,26 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 	mkdir /etc/nginx/ssl
 	cp  /home/michel/etc/nginx/ssl/* /etc/nginx/ssl/
 	chmod -R 777 /etc/letsencrypt
-	cp -R etc/letsencrypt/* /etc/letsencrypt/
-
+	cp -R etc/letsencrypt/* /etc/letsencrypt/# si des cerificats sont installés
 	systemctl reload nginx
+	# si des certificats Letsencrypt existent, faire ci-dessous pour chaque virtualhost 
+	rm /etc/letsencrypt/live/<DOMAINE>/*
+	ln -s /etc/letsencrypt/archive/<DOMAINE>/privkey1.pem /etc/letsencrypt/live/<DOMAINE>/privkey.pem
+	ln -s /etc/letsencrypt/archive/<DOMAINE>/fullchain1.pem /etc/letsencrypt/live/<DOMAINE>/fullchain.pem
+	ln -s /etc/letsencrypt/archive/<DOMAINE>/chain1.pem /etc/letsencrypt/live/<DOMAINE>/chain.pem
+	ln -s /etc/letsencrypt/archive/<DOMAINE>/cert1.pem /etc/letsencrypt/live/<DOMAINE>/cert.pem
+	...
+	...
+	certbot update_symlinks
+	certbot renew --dry-run
+
+   .. note::
+
+      ci-dessus dans le répertoire arhive les cles, certificats ,... utilisés sont les premiers (ex: privkey1); 
+
+      si les virtualhost sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l'indice 1 pour tous, update_symlinks rétabliera la bonne configuration.
+
+      |image1546| 
 
 en cours de rédaction
 
@@ -2045,3 +2070,11 @@ function mc(variable,id)
    :width: 643px
 .. |image1542| image:: ../img/image1542.webp
    :width: 522px
+.. |image1543| image:: ../img/image1543.webp
+   :width: 535px
+.. |image1544| image:: ../img/image1544.webp
+   :width: 488px
+.. |image1545| image:: ../img/image1545.webp
+   :width: 650px
+.. |image1546| image:: ../img/image1546.webp
+   :width: 393px

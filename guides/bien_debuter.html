@@ -544,38 +544,39 @@ location ~ \.php$ {
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker</p>
-<p><a href="#id3"><span class="problematic" id="id4">|image1543|</span></a></p>
+<p><a class="reference internal" href="../_images/image1543.webp"><img alt="image1543" src="../_images/image1543.webp" style="width: 535px;" /></a></p>
 </div>
 </div>
 <ul>
 <li><dl class="simple">
-<dt><strong>Installer un nouveau conteneur LXC</strong> ,</dt><dd><p>voir le § :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</p>
+<dt><strong>Installer un nouveau conteneur LXC</strong> ,</dt><dd><p>voir le § <a class="reference internal" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor"><span class="std std-ref">0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</span></a></p>
 </dd>
 </dl>
 </li>
 <li><p><strong>télécharger depuis le conteneur actuel</strong> les fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc…)</p>
-<blockquote>
-<div><blockquote>
-<div><p>Pour cela on utilise <strong>sftp</strong> dans le script restore.sh; les fichier et répertoires sont stockés dans home/&lt;USER&gt; du nouveau conteneur.</p>
+<p>Pour cela , on utilise <strong>sftp</strong> dans le script restore.sh; les fichier et répertoires sont stockés dans home/&lt;USER&gt; du nouveau conteneur.</p>
+<p><a class="reference internal" href="../_images/image1544.webp"><img alt="image1544" src="../_images/image1544.webp" style="width: 488px;" /></a></p>
+<p><a class="reference internal" href="img/image1545.webp"><img alt="image1545" src="img/image1545.webp" style="width: 650px;" /></a></p>
 <p>Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés.</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/bash
+<p>le script :darkblue:<a href="#id1"><span class="problematic" id="id2">`</span></a>install/restore.sh”, à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,…);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/bash
 
+  ip3=&quot;192.168.1.9&quot; #ip de monitor actif
   cd /home/michel
   mkdir monitor
   mkdir monitor/admin
   mkdir monitor/custom
   mkdir monitor/DB_Backup
   mkdir etc
-  mkdir etc/letsencrypt
-  mkdir etc/letsencryptssl
+  mkdir etc/letsencrypt # si des cerificats sont installés
+  mkdir /etc/ssl # si des cerificats sont installés
   mkdir nginx/conf.d -p
   mkdir nginx/ssl
   xxx=$(hostname -I)
   ip4=$(echo $xxx | cut -d &#39; &#39; -f 1)
-  sed -i &quot;s/ipmonitor/${ip4}/g&quot; $chemin/monitor/admin/config.php  A VOIR
-  sed  define(&#39;URLMONITOR&#39;, &#39;monitor.la-truffiere.ovh:444&#39;);//
-
+  sed -i &quot;s/${ip3}/${ip4}/g&quot; /var/www/monitor/admin/config.php
+  sed  -i &quot;s/monitor.la-truffiere.ovh/monitor.la-truffiere.ovh:444/g&quot; /var/www/monitor/admin/config.php
   chmod -R 777 *
   sftp michel@192.168.1.9
   sftp&gt; lpwd
@@ -588,6 +589,8 @@ location ~ \.php$ {
   lcd etc
   lcd nginx/conf.d
   sftp&gt; get /etc/nginx/conf.d/*
+  lcd ..
+  lcd ssl
   ...
   ...
   cp monitor/index_loc.php /var/www/monitor/
@@ -602,10 +605,25 @@ location ~ \.php$ {
   mkdir /etc/nginx/ssl
   cp  /home/michel/etc/nginx/ssl/* /etc/nginx/ssl/
   chmod -R 777 /etc/letsencrypt
-  cp -R etc/letsencrypt/* /etc/letsencrypt/
-
+  cp -R etc/letsencrypt/* /etc/letsencrypt/# si des cerificats sont installés
   systemctl reload nginx
+  # si des certificats Letsencrypt existent, faire ci-dessous pour chaque virtualhost
+  rm /etc/letsencrypt/live/&lt;DOMAINE&gt;/*
+  ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/privkey1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/privkey.pem
+  ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/fullchain1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/fullchain.pem
+  ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/chain1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/chain.pem
+  ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/cert1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/cert.pem
+  ...
+  ...
+  certbot update_symlinks
+  certbot renew --dry-run
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ci-dessus dans le répertoire arhive les cles, certificats ,… utilisés sont les premiers (ex: privkey1);</p>
+<p>si les virtualhost sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l’indice 1 pour tous, update_symlinks rétabliera la bonne configuration.</p>
+<p><a class="reference internal" href="img/image1546.webp"><img alt="image1546" src="img/image1546.webp" style="width: 393px;" /></a></p>
 </div>
 </div></blockquote>
 </li>
@@ -1000,7 +1018,7 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <p>lastseen , affichage message « vu pour la dernière fois » <a class="reference internal" href="../_images/image1381.webp"><img alt="image1381" src="../_images/image1381.webp" style="width: 50px;" /></a></p>
 <p>notify , not, , affichage des erreurs ou alertes</p>
 <p>temp_ext, temp_ressentie , <a class="reference internal" href="../_images/image1383.webp"><img alt="image1383" src="../_images/image1383.webp" style="width: 200px;" /></a></p>
-<p>annul_&lt;texte&gt;  : <a href="#id5"><span class="problematic" id="id6">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
+<p>annul_&lt;texte&gt;  : <a href="#id3"><span class="problematic" id="id4">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
 </li>
 </ul>
 </div>
