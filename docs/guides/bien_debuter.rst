@@ -492,6 +492,8 @@ modifications en cours....
 
 0.1.4.1  Mise à jour complète
 """""""""""""""""""""""""""""
+un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste opérationnel.
+
 .. admonition::**étape préliminaire**
 
    Pour faire fonctionner 2 conteneurs ayant les mêmes certificats Letsencrypt il faut apporter des modifications sur le fichier de  configuration Nginx de monitor actuellement en service.
