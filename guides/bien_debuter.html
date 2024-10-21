@@ -535,6 +535,81 @@ location ~ \.php$ {
 <section id="mise-a-jour-complete">
 <h4>0.1.4.1  Mise à jour complète<a class="headerlink" href="#mise-a-jour-complete" title="Lien permanent vers cette rubrique"></a></h4>
 <p>un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste opérationnel.</p>
+<div class="admonition-etape-preliminaire admonition">
+<p class="admonition-title"><strong>étape préliminaire</strong></p>
+<p>Pour faire fonctionner 2 conteneurs ayant les mêmes certificats Letsencrypt il faut apporter des modifications sur le fichier de  configuration Nginx de monitor actuellement en service.</p>
+<p>Ce conteneur ecoute les port 80 et 443; on va modifier la configuration afin qu’il n’écoute que le port 443; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérification donc le port 80 libéré.</p>
+<p>la config de monitor actuelent en service devient:</p>
+<p><a class="reference internal" href="../_images/image1542.webp"><img alt="image1542" src="../_images/image1542.webp" style="width: 522px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker</p>
+<p><a href="#id3"><span class="problematic" id="id4">|image1543|</span></a></p>
+</div>
+</div>
+<ul>
+<li><dl class="simple">
+<dt><strong>Installer un nouveau conteneur LXC</strong> ,</dt><dd><p>voir le § :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>télécharger depuis le conteneur actuel</strong> les fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc…)</p>
+<blockquote>
+<div><blockquote>
+<div><p>Pour cela on utilise <strong>sftp</strong> dans le script restore.sh; les fichier et répertoires sont stockés dans home/&lt;USER&gt; du nouveau conteneur.</p>
+<p>Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/bash
+
+  cd /home/michel
+  mkdir monitor
+  mkdir monitor/admin
+  mkdir monitor/custom
+  mkdir monitor/DB_Backup
+  mkdir etc
+  mkdir etc/letsencrypt
+  mkdir etc/letsencryptssl
+  mkdir nginx/conf.d -p
+  mkdir nginx/ssl
+  xxx=$(hostname -I)
+  ip4=$(echo $xxx | cut -d &#39; &#39; -f 1)
+  sed -i &quot;s/ipmonitor/${ip4}/g&quot; $chemin/monitor/admin/config.php  A VOIR
+  sed  define(&#39;URLMONITOR&#39;, &#39;monitor.la-truffiere.ovh:444&#39;);//
+
+  chmod -R 777 *
+  sftp michel@192.168.1.9
+  sftp&gt; lpwd
+  # Local working directory: /home/michel
+  sftp&gt; pwd
+  # Remote working directory: /home/michel
+  lcd admin
+  sftp&gt; get -R /var/www/html/monitor/admin/* admin/
+  lcd ..
+  lcd etc
+  lcd nginx/conf.d
+  sftp&gt; get /etc/nginx/conf.d/*
+  ...
+  ...
+  cp monitor/index_loc.php /var/www/monitor/
+  cp -R /home/michel/monitor/admin/* /var/www/monitor/admin/
+  chmod -R 777 /var/www/monitor/DB_Backup
+  cp /home/michel/monitor/DB_Backup/monitor.sql /var/www/monitor/DB_Backup/
+  mysql -u root -p monitor &lt; /var/www/html/monitor/DB_Backup/monitor.sql
+  ufw allow 444
+  systemctl restart ufw
+  sudo apt install certbot python3-certbot-nginx
+  cp  /home/michel/etc/nginx/conf.d/* /etc/nginx/conf.d/
+  mkdir /etc/nginx/ssl
+  cp  /home/michel/etc/nginx/ssl/* /etc/nginx/ssl/
+  chmod -R 777 /etc/letsencrypt
+  cp -R etc/letsencrypt/* /etc/letsencrypt/
+
+  systemctl reload nginx
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
 <p>en cours de rédaction</p>
 </section>
 <section id="mise-a-jour-partielle">
@@ -925,7 +1000,7 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <p>lastseen , affichage message « vu pour la dernière fois » <a class="reference internal" href="../_images/image1381.webp"><img alt="image1381" src="../_images/image1381.webp" style="width: 50px;" /></a></p>
 <p>notify , not, , affichage des erreurs ou alertes</p>
 <p>temp_ext, temp_ressentie , <a class="reference internal" href="../_images/image1383.webp"><img alt="image1383" src="../_images/image1383.webp" style="width: 200px;" /></a></p>
-<p>annul_&lt;texte&gt;  : <a href="#id1"><span class="problematic" id="id2">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
+<p>annul_&lt;texte&gt;  : <a href="#id5"><span class="problematic" id="id6">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
 </li>
 </ul>
 </div>

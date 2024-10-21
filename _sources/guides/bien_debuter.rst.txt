@@ -494,7 +494,7 @@ modifications en cours....
 """""""""""""""""""""""""""""
 un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste opérationnel.
 
-.. admonition::**étape préliminaire**
+.. admonition:: **étape préliminaire**
 
    Pour faire fonctionner 2 conteneurs ayant les mêmes certificats Letsencrypt il faut apporter des modifications sur le fichier de  configuration Nginx de monitor actuellement en service.
 
@@ -510,14 +510,14 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1543|
 
-   - **Installer un nouveau conteneur LXC** , 
-     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
+- **Installer un nouveau conteneur LXC** , 
+    voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 
-   - **télécharger depuis le conteneur actuel** les fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc...)
+- **télécharger depuis le conteneur actuel** les fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc...)
 
-      Pour cela on utilise **sftp** dans le script restore.sh; les fichier et répertoires sont stockés dans home/<USER> du nouveau conteneur.
+    Pour cela on utilise **sftp** dans le script restore.sh; les fichier et répertoires sont stockés dans home/<USER> du nouveau conteneur.
 
-      Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés. 
+    Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés. 
 
    .. code-block::
 
