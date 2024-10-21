@@ -255,7 +255,7 @@ $json_string=file_http_curl($L,$mode,$post,$Token_ha);$n=0;$ha=array();//echo $j
 $lect_device = json_decode($json_string);
 foreach ($lect_device as $xxx){
 	if(isset($xxx->{'Name'}))  $ha[$n]['Name']="";
-	if(isset($xxx->{'BatteryLevel'}))  $ha[$n]['Bat']="";
+	if(!isset($xxx->{'BatteryLevel'}))  $ha[$n]['Bat']="";
 	else $ha[$n]['Bat']=$xxx->{'BatteryLevel'};
 	if(isset($xxx->{'attributes'}))  $ha[$n]['attributes']=$xxx;
 	//if(isset($xxx->{'attributes'}->{'nodeName'}))  $ha[$n]['Name']=$xxx;
@@ -425,7 +425,7 @@ foreach ($iob_json as $xxx){$Data="";$value=[];
 	$iob_json_val=json_decode($json_string_val);						
 	foreach ($iob_json_val as $val=>$val1){	
 		$ens = explode('.',$val);$valeur=$ens[3];$rep='.'.$ens[2];
-			if ($ens[4] && $ens[4]!="") {$valeur=$ens[4];$rep='.'.$ens[3];}
+			if (isset($ens[4]) && $ens[4]!="") {$valeur=$ens[4];$rep='.'.$ens[3];}
 		if (isset($ens[2])==false) {$ID=$_id;}
 		else {$ID=$_id.$rep.".".$valeur;}
 		if ($rep!="rawMqtt"	) {	
@@ -453,13 +453,16 @@ $n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 $description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
-if ($lect_device["serveur"] == "DZ") {
+
+if ($lect_device["serveur"] == "DZ"){
+	if  (isset($lect_device["attributes"])) {
 $lect_device["attributes"]["SubType"] = $lect_device["SubType"];
 $lect_device["attributes"]["SwitchType"] = $lect_device["SwitchType"] ;			
 $lect_device["attributes"]["SwitchTypeVal"] = $lect_device["SwitchTypeVal"];
 $lect_device["attributes"]["Timers"] = $lect_device["Timers"];			
 $lect_device["attributes"]["Type"] = $lect_device["Type"];	 
-$lect_device["attributes"]["Color"] = $lect_device["Color"];	 }
+$lect_device["attributes"]["Color"] = $lect_device["Color"];	 }}
+else {$lect_device["attributes"]="non défini";}
 $periph=array();$periph['idm']=1000;
 	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";}
 	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";}
@@ -564,7 +567,8 @@ break;
 case "pas_ID" :
 	if ($lect_device["serveur"]=="HA")  $nb_ha++;
 	if ($lect_device["serveur"]=="IOB")  $nb_iob++;
-	if ($lect_device["serveur"]=="DZ")  $nb_dz++;			
+	if ($lect_device["serveur"]=="DZ")  $nb_dz++;
+	if(!isset($periph['idm'])) {$periph['idm']="non défini";}
 	$data[2000] = [
 	'nb_DZ' => $nb_dz,	
 	'nb_HA' => $nb_ha,
@@ -1618,8 +1622,8 @@ $L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
 	$iob_json_val=json_decode($json_string_val);
 		foreach ($iob_json_val as $val=>$val1){	
 		$ens = explode('.',$val);$valeur=$ens[3];
-			if ($ens[4] && $ens[4]!="") {$valeur=$ens[4];}
-		if ($rep!="rawMqtt"	) {					 
+			if (isset($ens[4]) && $ens[4]!="") {$valeur=$ens[4];}
+		if (isset($rep) && $rep!="rawMqtt"	) {					 
 		$values[$valeur]	= $val1->{'val'};
 		$ens=[];
 		}} 
