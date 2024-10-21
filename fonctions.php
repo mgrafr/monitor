@@ -1621,8 +1621,8 @@ $L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
 	$json_string_val = file_get_curl($L_val);
 	$iob_json_val=json_decode($json_string_val);
 		foreach ($iob_json_val as $val=>$val1){	
-		$ens = explode('.',$val);$valeur=$ens[3];
-			if (isset($ens[4]) && $ens[4]!="") {$valeur=$ens[4];}
+		$ens = explode('.',$val);$valeur=$ens[3];$rep='.'.$ens[2];
+			if (isset($ens[4]) && $ens[4]!="") {$valeur=$ens[4];$rep='.'.$ens[3];}
 		if (isset($rep) && $rep!="rawMqtt"	) {					 
 		$values[$valeur]	= $val1->{'val'};
 		$ens=[];
