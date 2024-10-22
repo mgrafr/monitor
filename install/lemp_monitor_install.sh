@@ -189,7 +189,7 @@ rm /etc/nginx/sites-enabled/*
 # mv phpmyadmin.conf /etc/nginx/conf.d/
 echo "creer lien symbolique de phpmyadmin vers /www"
 mkdir /www
-ln -s $chemin/phpMyAdmin  /www/phpmyadmin
+ln -s $chemin/phpmyadmin  /www/phpmyadmin
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 echo "LEMP : redemarrage php"
 cd /etc/nginx
