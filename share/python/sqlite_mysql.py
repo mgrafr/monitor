@@ -18,7 +18,7 @@ try:
     connection = mysql.connector.connect(
           host = "127.0.0.1", 
           user = "michel", 
-          password = "MOT_PASSE", 
+          password = "Idem4546", 
           database = "monitor")
 
     if connection.is_connected():
@@ -38,7 +38,7 @@ try:
                           
         
     connection.commit()
-    print(cursor.rowcount, "Record inserted successfully into Laptop table")
+    print(cursor.rowcount, "Record inserted "+table+" successfully into Laptop table")
         
         
         
