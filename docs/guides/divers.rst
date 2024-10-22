@@ -458,7 +458,29 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    {{trigger.entity_id.split('.')[1] }}"
 
+18.9.3 Commandes Python
+=======================
 
+- Pour installer un package Python non disponible avec pip et apt
+
+  Télécharger le code source , faire un build suivi d'un install:
+
+  exemple pour Python-mysql-connector
+
+.. code-block::
+
+   # télécharger la source ,ici sur le site de mysql :https://dev.mysql.com/downloads/connector/python/
+   wget https://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-9.1.0-src.tar.gz
+   gzip mysql-connector-python-9.1.0-src.tar.gz -d
+   tar -x -f mysql-connector-python-9.1.0-src.tar
+   cd mysql-connector-python-9.1.0-src
+   cd mysql-connector-python
+   python3 setup.py build
+   python3 setup.py install
+
+|image1550|
+
+|image1551|
 
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -701,3 +723,7 @@ Dans automations.yaml,
    :width: 516px
 .. |image1322| image:: ../img/image1322.webp
    :width: 652px
+.. |image1550| image:: ../img/image1350.webp
+   :width: 600px
+.. |image1551| image:: ../img/image1351.webp
+   :width: 573px
