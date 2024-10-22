@@ -1,7 +1,7 @@
 <?php
 $info_admin=array();
 $info_admin = [
-	11 => '<p>Pour afficher la liste des modules Python , <br><img src="images/info13.webp" style="width:400px;height="auto";margin: 0 10px;" alt=""/></p>',
+	11 => '<p>Pour afficher la liste des modules Python , <br><img src="images/info14.webp" style="width:400px;height="auto";margin: 0 10px;" alt=""/></p>',
 	10 => '<p>Pour afficher la liste des variales dans SQL , <br><img src="images/info12.webp" style="width:400px;height="auto";margin: 0 10px;" alt=""/></p>',
 	9 => '<p>Pour mettre à jour automatiquement la base de données SQL , table messages:<br>pour DZ,HA ou autres app, 1 message=1 ID<br><img src="images/info11.webp" style="width:281px;height="auto";margin: 0 10px;" alt=""/></p>',
 	8 => '<p>- Version monitor:  '.$_SESSION["version"].'<br>- Version PHP:      8.2<br>- Version Jpgraph:  4.4.1<br>
