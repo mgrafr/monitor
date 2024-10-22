@@ -248,6 +248,7 @@ sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo "creer lien symbolique de phpmyadmin vers /www"
 ln -s $chemin/monitor  /www/monitor
+ln -s $chemin/monitor/admin/connect/connect.py $chemin/monitor/custom/python/connect.py
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
 chown -R $maria_name:$maria_name $chemin/monitor
