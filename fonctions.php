@@ -453,7 +453,7 @@ $n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 $description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
-
+$description = isset($lect_device["attributes"]) ? $lect_device["attributes"] : 'sans';
 if ($lect_device["serveur"] == "DZ"){
 	if  (isset($lect_device["attributes"])) {
 $lect_device["attributes"]["SubType"] = $lect_device["SubType"];
@@ -1162,9 +1162,10 @@ if ($choix==16){
 	file_put_contents(TMPCONFIG."connect.lua", $content);
 	$t_maj= "";
 	$upload=sql_variable('upload',6);
-	if ($upload['idx']!='') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
-	if ($upload['ID']!='') {$retour=devices_id($upload["ID"],"value","connect",0);$t_maj=$t_maj.$upload["ID"]."----->ha";}
-	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>La variable ha et dz se nomme *****connect*****</p>";}		
+	if ($upload['Actif']=='1' || $upload['Actif']='2') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
+	if ($upload['ID']=='3') {$retour=devices_id($upload["ID"],"value","connect",0);$t_maj=$t_maj.$upload["ID"]."----->ha";}
+	if ($upload['ID']=='4') {$t_maj="----->iob";}
+	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>Les variables se nomment *****connect*****</p>";}		
 else {$retour['status'];}		
 break;
 case "6" :
@@ -1262,7 +1263,11 @@ break;
 case "26" :$l_dz="";$l_ha="";$retour=devices_plan(99);
 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . json_encode($retour) . '</textarea>'; 
 break;
-case "28" :
+case "28" :$command = escapeshellcmd('pip list --format=json  > custom/python/liste_modules_py.json');
+$output = shell_exec($command);
+echo $output;return;
+break;
+case "29" :
 return;	
 break;				
 default:
