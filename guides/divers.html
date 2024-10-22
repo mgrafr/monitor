@@ -83,6 +83,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#des-commandes-linux-yaml-utiles">18.9 des commandes linux &amp; yaml utiles</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#commandes-linux">18.9.1 Commandes Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#commandes-yaml">18.9.2 Commandes yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commandes-python">18.9.3 Commandes Python</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#serveur-sse-installe-dans-monitor">18.10 Serveur SSE installé dans Monitor</a><ul>
@@ -572,6 +573,27 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="n">trigger</span><span class="o">.</span><span class="n">entity_id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="p">}}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
+</section>
+<section id="commandes-python">
+<h3>18.9.3 Commandes Python<a class="headerlink" href="#commandes-python" title="Lien permanent vers cette rubrique"></a></h3>
+<ul>
+<li><p>Pour installer un package Python non disponible avec pip et apt</p>
+<p>Télécharger le code source , faire un build suivi d’un install:</p>
+<p>exemple pour Python-mysql-connector</p>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># télécharger la source ,ici sur le site de mysql :https://dev.mysql.com/downloads/connector/python/</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cdn</span><span class="o">.</span><span class="n">mysql</span><span class="o">.</span><span class="n">com</span><span class="o">//</span><span class="n">Downloads</span><span class="o">/</span><span class="n">Connector</span><span class="o">-</span><span class="n">Python</span><span class="o">/</span><span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">src</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">gzip</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">src</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">d</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">x</span> <span class="o">-</span><span class="n">f</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">src</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">cd</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">src</span>
+<span class="n">cd</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span>
+<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1350.webp"><img alt="image1550" src="../_images/image1350.webp" style="width: 600px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1351.webp"><img alt="image1551" src="../_images/image1351.webp" style="width: 573px;" /></a></p>
 </section>
 </section>
 <section id="serveur-sse-installe-dans-monitor">
