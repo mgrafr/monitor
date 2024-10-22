@@ -17,6 +17,7 @@ define('ECRAN_ADMIN', array( // disable ou disable
      "modect" => "disable", //Configuation modect dz alarmes 
      "idx_dz_list" => "disable", //Créer fichier idx/nom Domoticz , LISTE
      "var_list" => "disable", //LISTE variables (HA et DZ)
+     "mod_py_list" => "enable", //LISTE modules python dans monitor			    
      "idx_dz-zigbee" => "disable", //Créer fichier idx/nom Domoticz , TABLEAU zigbee
      "reboot_pi" => "disable", //Reboot Raspberry
      "msmtprc" => "disable", //msmtprc (config envoi mail)
