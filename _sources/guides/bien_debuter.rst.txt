@@ -510,6 +510,12 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1543|
 
+      établir la liste des modules python installés (lors de script perso: lgtv, mysql-connector,...)
+
+      |image1548|
+
+      Le fichier json peut être télécharger
+
 - **Installer un nouveau conteneur LXC** , 
     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
@@ -592,6 +598,14 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
       si les virtualhost sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l'indice 1 pour tous, update_symlinks rétabliera la bonne configuration.
 
       |image1546|
+
+.. importat::
+
+   Avant de basculer définitivement sur le nouveau conteneur, dans le conteneur actif:
+
+   MODIFIER l'IP de connect.py 
+
+   |image1549|
 
 Pour Domoticz, Ha, Iobroker , modifier l'IP de monitor dans le fichier connect.lua 'connect.py et connect.js seront mis à jour automatiquement).
 
@@ -2084,3 +2098,7 @@ function mc(variable,id)
    :width: 393px
 .. |image1547| image:: ../img/image1547.webp
    :width: 472px
+.. |image1548| image:: ../img/image1548.webp
+   :width: 488px
+.. |image1549| image:: ../img/image1549.webp
+   :width: 400px
