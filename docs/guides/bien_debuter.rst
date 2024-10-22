@@ -599,7 +599,7 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1546|
 
-.. importat::
+.. important::
 
    Avant de basculer définitivement sur le nouveau conteneur, dans le conteneur actif:
 
@@ -610,6 +610,8 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 Pour Domoticz, Ha, Iobroker , modifier l'IP de monitor dans le fichier connect.lua 'connect.py et connect.js seront mis à jour automatiquement).
 
 |image1547|
+
+|image1552|
 
 en cours de rédaction
 
@@ -2102,3 +2104,5 @@ function mc(variable,id)
    :width: 488px
 .. |image1549| image:: ../img/image1549.webp
    :width: 400px
+.. |image1552| image:: ../img/image1552.webp
+   :width: 379px
