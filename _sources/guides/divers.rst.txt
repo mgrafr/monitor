@@ -723,7 +723,7 @@ Dans automations.yaml,
    :width: 516px
 .. |image1322| image:: ../img/image1322.webp
    :width: 652px
-.. |image1550| image:: ../img/image1350.webp
+.. |image1550| image:: ../img/image1550.webp
    :width: 600px
-.. |image1551| image:: ../img/image1351.webp
+.. |image1551| image:: ../img/image1551.webp
    :width: 573px
