@@ -1117,6 +1117,7 @@ if ($choix==21 ) {$ip=IPRPI;$mode="scp_r";$remote_file_name="/etc/msmtprc";$file
 if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
 if ($choix==23 ) {$file=SSH_MONITOR_PATH."connect.py"; echo "copy de connect.py";$rel="24";}	
 if ($choix==24 ) {$file=SSH_MONITOR_PATH."connect.py"; }
+if ($choix==28 ) {$file=MOD_PYTHON_FILE;}	
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) ) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12){echo "//*******création fichier noms/idx******* <br>";}
@@ -1263,9 +1264,11 @@ break;
 case "26" :$l_dz="";$l_ha="";$retour=devices_plan(99);
 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . json_encode($retour) . '</textarea>'; 
 break;
-case "28" :$command = escapeshellcmd('pip list --format=json  > custom/python/liste_modules_py.json');
-$output = shell_exec($command);
-echo $output;return;
+case "28" :$command = escapeshellcmd('pip list --format=json ');
+$output=exec($command);
+echo "enregistré dans :".$file."<br><br>".$output;
+file_put_contents($file, $output);
+return;
 break;
 case "29" :
 return;	
