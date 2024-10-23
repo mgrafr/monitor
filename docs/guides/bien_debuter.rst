@@ -514,7 +514,11 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1548|
 
-      Le fichier json peut être télécharger
+      |image1553|
+
+      étalir la liste de port utilisés par le pare-feu
+
+      |image1552|	
 
 - **Installer un nouveau conteneur LXC** , 
     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
@@ -607,11 +611,11 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    |image1549|
 
-Pour Domoticz, Ha, Iobroker , modifier l'IP de monitor dans le fichier connect.lua 'connect.py et connect.js seront mis à jour automatiquement).
+   Pour Domoticz, Ha, Iobroker , modifier l'IP de monitor dans le fichier connect.py , modifie automatiquemet connect.lua et connect.js .
 
-|image1547|
 
-|image1552|
+
+
 
 en cours de rédaction
 
@@ -2104,5 +2108,5 @@ function mc(variable,id)
    :width: 488px
 .. |image1549| image:: ../img/image1549.webp
    :width: 400px
-.. |image1552| image:: ../img/image1552.webp
-   :width: 379px
+.. |image1553| image:: ../img/image1553.webp
+   :width: 508px
