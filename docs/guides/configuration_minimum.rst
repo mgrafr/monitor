@@ -48,6 +48,20 @@ Permet d’afficher
    define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
    -->define('FAVICON', '/favicon.ico');//fichier favicon  , icone du domaine dans barre url
    define('DISPOSITIFS', 'dispositifs');
+   define('ECRAN_ADMIN', array( // enable ou disable
+     "connect_lua" => "enable", // Mots passe cryptés(Base64) et IP réseau
+     "string_tableaux" => "enable",//Configuation variables dz maj_services
+     "modect" => "enable", //Configuation modect dz alarmes 
+	 "idx_dz_list" => "enable", //Créer fichier idx/nom Domoticz , LISTE
+	 "var_list" => "enable", //LISTE variables (HA et DZ)
+	 "mod_py_list" => "enable", //LISTE modules python dans monitor
+	 "idx_dz-zigbee" => "enable", //Créer fichier idx/nom Domoticz , TABLEAU zigbee
+	 "reboot_pi" => "enable", //Reboot Raspberry
+	 "msmtprc" => "enable", //msmtprc (config envoi mail)
+     "connect_py" => "enable" // Maj automatique des IP depuis connect.py
+	));
+   define('ON_SOS',true);// bouton sos page accueil, le disositif dit être enregistré dans SQL
+   define('BASE64', 'admin/connect/connect.py');//login et password en Base64 pour dz,ha,iobroker
 
 .. note::
   :red:`define('DISPOSITIFS', 'dispositifs');`
@@ -332,13 +346,22 @@ Paramètres de la base de données :
    define('UTILISATEUR','michel');
    define('DBASE','monitor');
 
-Paramètres pour Domoticz ou HA :
+Paramètres pour Domoticz , HA ou IoBroker:
  
 .. code-block::
 
-   //seveurs domotiques Domoticz ou HA
-   define('IPDOMOTIC', '192.168.1.76');//ip
-   //pour ssh2
+   // Domoticz ou HA ou iobroker
+   define('DOMOTIC', 'DZ');//domaine//DZ ou HA ou IOB ou "" (non utlisé)
+   define('DOMOTIC1', 'HA');//DZ ou HA ou IOB ou ""
+   define('DOMOTIC2', 'IOB');//DZ ou HA ou IOB ou ""
+   // URL HTTPS
+   define('URLDZ', 'https://domoticz.la-truffiere.ovh');
+   define('URLHA', 'https://ha.la-truffiere.ovh');
+   define('URLIOB', array(
+    0 => "https://iobroker.la-truffiere.ovh",  // serveur config
+    1 => "https://iobweb.la-truffiere.ovh"  )); // serveur web
+   //
+   define('IPDOMOTIC', '192.168.1.142');//ip
    define('USERDOMOTIC', 'michel');//user du serveur,répertoire :home/user
    define('PWDDOMOTIC', '');//mot passe serveur
    define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
@@ -349,14 +372,42 @@ Paramètres pour Domoticz ou HA :
    define('PWDDOMOTIC1', '');//mot passe serveur
    define('URLDOMOTIC1', 'http://192.168.1.5:8123/');//url ex:http://192.168.1.5:8123/
    define('DOMDOMOTIC1', 'https://***********');//domaine
-   define('TOKEN_DOMOTIC1',"eyJhb*****************************************************************2k");   
-   //*************************modules complémentaires
-   define('VARTAB', URLDOMOTIC.'modules_lua/string_tableaux.lua');//
-   define('BASE64', 'admin/connect.py');//login et password en Base64
+   define('TOKEN_DOMOTIC1',"eyJhb*****************************************************************2k");
+   define('IPDOMOTIC2', '192.168.1.162');//ip 3emme serveur Domotique
+   define('USERDOMOTIC2', 'michel');//user du serveur,répertoire :home/user
+   define('PWDDOMOTIC2', 'Idem4546');//mot passe serveur
+   define('URLDOMOTIC2', 'http://192.168.1.162:8081/');//url ex:http://192.168.1.104:8081/
+   define('TOKEN_DOMOTIC2',""); 
+   define('PORT_API_DOMO2','8093');//port de l'API éventuel
+   define('PORT_WEBUI_DOMO2','8082/vis-2/index.html');//port web UI et vis 2 et dossier éventuel
+   //*************modules et constantes  complémentaires Domoticz
+   define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
+   define('VARTAB', 'admin/connect/string_tableaux.lua');//
    define('CONF_MODECT', 'admin/string_modect.json');
+   //*********** pour Iobroker
+   define('OBJ_IOBROKER','zigbee2mqtt.0,yr.0.forecastHourly,worx.1');// séparer les objets par une virgule,yr.0.forecastHourly.0h
+   //-----------------------------------------------------------
+   // Sauvegardes domoticz
+   define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
 
 .. warning::
-  les variables ci-dessus , VARTAB, BASE64, CONF_MODECT ne sont à déclarer ici que si elles sont utilisées dans un fichier
+  les variables ci-dessus , VARTAB, CONF_MODECT ne sont à déclarer ici que si elles sont utilisées dans un fichier
+
+Paramètres divers
+
+.. code-block::
+
+   //Constantes diverses
+   //Raspberry
+   define('IPRPI', '192.168.1.8');//IP du Raspberry
+   define('LOGIN_PASS_RPI', '<USER>:<PASS>');
+   define('MSMTPRC_LOC_PATH', '/var/www/html/monitor/scripts/');//copie config serveur mail
+   define('MOD_PYTHON_FILE', '/var/www/monitor/admin/connect/mod.json');//liste des modules Python
+   $file = '/var/www/monitor/admin/connect/connect.py';// ajout domaine dans connect.py
+   $current = file_get_contents($file);
+   if (str_contains($current, 'domaine')===false ){
+   $current = $current."domaine='".URLMONITOR."'\n"; // pour les maj
+   file_put_contents($file, $current);}
 
 Le programme démarre avec 3 pages :
 
