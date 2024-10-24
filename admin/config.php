@@ -221,5 +221,10 @@ define('IPRPI', '192.168.1.8');//IP du Raspberry
 define('LOGIN_PASS_RPI', '<login:pass>');
 define('MSMTPRC_LOC_PATH', '/var/www/html/monitor/scripts/');//copie config serveur mail
 define('MOD_PYTHON_FILE', '/var/www/monitor/admin/connect/mod.json');//liste des modules Python
+$file = '/var/www/monitor/admin/connect/connect.py';
+$current = file_get_contents($file);
+if (str_contains($current, 'domaine')===false ){
+$current = $current."domaine='".URLMONITOR."'\n";
+file_put_contents($file, $current);}
 ?>
 
