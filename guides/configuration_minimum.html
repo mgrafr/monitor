@@ -239,6 +239,20 @@
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;DZCONFIG&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/dz/temp.lua&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">fichier</span> <span class="n">temp</span>
 <span class="o">--&gt;</span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;FAVICON&#39;</span><span class="p">,</span> <span class="s1">&#39;/favicon.ico&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">fichier</span> <span class="n">favicon</span>  <span class="p">,</span> <span class="n">icone</span> <span class="n">du</span> <span class="n">domaine</span> <span class="n">dans</span> <span class="n">barre</span> <span class="n">url</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;DISPOSITIFS&#39;</span><span class="p">,</span> <span class="s1">&#39;dispositifs&#39;</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ECRAN_ADMIN&#39;</span><span class="p">,</span> <span class="n">array</span><span class="p">(</span> <span class="o">//</span> <span class="n">enable</span> <span class="n">ou</span> <span class="n">disable</span>
+  <span class="s2">&quot;connect_lua&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Mots</span> <span class="n">passe</span> <span class="n">cryptés</span><span class="p">(</span><span class="n">Base64</span><span class="p">)</span> <span class="n">et</span> <span class="n">IP</span> <span class="n">réseau</span>
+  <span class="s2">&quot;string_tableaux&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span><span class="o">//</span><span class="n">Configuation</span> <span class="n">variables</span> <span class="n">dz</span> <span class="n">maj_services</span>
+  <span class="s2">&quot;modect&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">Configuation</span> <span class="n">modect</span> <span class="n">dz</span> <span class="n">alarmes</span>
+      <span class="s2">&quot;idx_dz_list&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">Créer</span> <span class="n">fichier</span> <span class="n">idx</span><span class="o">/</span><span class="n">nom</span> <span class="n">Domoticz</span> <span class="p">,</span> <span class="n">LISTE</span>
+      <span class="s2">&quot;var_list&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">LISTE</span> <span class="n">variables</span> <span class="p">(</span><span class="n">HA</span> <span class="n">et</span> <span class="n">DZ</span><span class="p">)</span>
+      <span class="s2">&quot;mod_py_list&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">LISTE</span> <span class="n">modules</span> <span class="n">python</span> <span class="n">dans</span> <span class="n">monitor</span>
+      <span class="s2">&quot;idx_dz-zigbee&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">Créer</span> <span class="n">fichier</span> <span class="n">idx</span><span class="o">/</span><span class="n">nom</span> <span class="n">Domoticz</span> <span class="p">,</span> <span class="n">TABLEAU</span> <span class="n">zigbee</span>
+      <span class="s2">&quot;reboot_pi&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">Reboot</span> <span class="n">Raspberry</span>
+      <span class="s2">&quot;msmtprc&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">msmtprc</span> <span class="p">(</span><span class="n">config</span> <span class="n">envoi</span> <span class="n">mail</span><span class="p">)</span>
+  <span class="s2">&quot;connect_py&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;enable&quot;</span> <span class="o">//</span> <span class="n">Maj</span> <span class="n">automatique</span> <span class="n">des</span> <span class="n">IP</span> <span class="n">depuis</span> <span class="n">connect</span><span class="o">.</span><span class="n">py</span>
+     <span class="p">));</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_SOS&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">bouton</span> <span class="n">sos</span> <span class="n">page</span> <span class="n">accueil</span><span class="p">,</span> <span class="n">le</span> <span class="n">disositif</span> <span class="n">dit</span> <span class="n">être</span> <span class="n">enregistré</span> <span class="n">dans</span> <span class="n">SQL</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;BASE64&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/connect/connect.py&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">login</span> <span class="n">et</span> <span class="n">password</span> <span class="n">en</span> <span class="n">Base64</span> <span class="n">pour</span> <span class="n">dz</span><span class="p">,</span><span class="n">ha</span><span class="p">,</span><span class="n">iobroker</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -503,30 +517,65 @@ define(&#39;NUMPLAN&#39;,&#39;2&#39;);//DZ uniquement: n° du plan regroupant to
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;DBASE&#39;</span><span class="p">,</span><span class="s1">&#39;monitor&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Paramètres pour Domoticz ou HA :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">seveurs</span> <span class="n">domotiques</span> <span class="n">Domoticz</span> <span class="n">ou</span> <span class="n">HA</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPDOMOTIC&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.1.76&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">ip</span>
-<span class="o">//</span><span class="n">pour</span> <span class="n">ssh2</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;USERDOMOTIC&#39;</span><span class="p">,</span> <span class="s1">&#39;michel&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">user</span> <span class="n">du</span> <span class="n">serveur</span><span class="p">,</span><span class="n">répertoire</span> <span class="p">:</span><span class="n">home</span><span class="o">/</span><span class="n">user</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;PWDDOMOTIC&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">mot</span> <span class="n">passe</span> <span class="n">serveur</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLDOMOTIC&#39;</span><span class="p">,</span> <span class="s1">&#39;http://192.168.1.76:8086/&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">url</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;DOMDOMOTIC&#39;</span><span class="p">,</span> <span class="s1">&#39;https://*************&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">domaine</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TOKENDOMOTIC&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">TOKEN</span> <span class="n">ou</span> <span class="n">BEARER</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPDOMOTIC1&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">ip</span> <span class="mi">2</span><span class="n">emme</span> <span class="n">serveur</span> <span class="n">Domotique</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;USERDOMOTIC1&#39;</span><span class="p">,</span> <span class="s1">&#39;michel&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">user</span> <span class="n">du</span> <span class="n">serveur</span><span class="p">,</span><span class="n">répertoire</span> <span class="p">:</span><span class="n">home</span><span class="o">/</span><span class="n">user</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;PWDDOMOTIC1&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">mot</span> <span class="n">passe</span> <span class="n">serveur</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;URLDOMOTIC1&#39;</span><span class="p">,</span> <span class="s1">&#39;http://192.168.1.5:8123/&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">url</span> <span class="n">ex</span><span class="p">:</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.5</span><span class="p">:</span><span class="mi">8123</span><span class="o">/</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;DOMDOMOTIC1&#39;</span><span class="p">,</span> <span class="s1">&#39;https://***********&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">domaine</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;TOKEN_DOMOTIC1&#39;</span><span class="p">,</span><span class="s2">&quot;eyJhb*****************************************************************2k&quot;</span><span class="p">);</span>
-<span class="o">//*************************</span><span class="n">modules</span> <span class="n">complémentaires</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;VARTAB&#39;</span><span class="p">,</span> <span class="n">URLDOMOTIC</span><span class="o">.</span><span class="s1">&#39;modules_lua/string_tableaux.lua&#39;</span><span class="p">);</span><span class="o">//</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;BASE64&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/connect.py&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">login</span> <span class="n">et</span> <span class="n">password</span> <span class="n">en</span> <span class="n">Base64</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;CONF_MODECT&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/string_modect.json&#39;</span><span class="p">);</span>
+<p>Paramètres pour Domoticz , HA ou IoBroker:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Domoticz ou HA ou iobroker
+define(&#39;DOMOTIC&#39;, &#39;DZ&#39;);//domaine//DZ ou HA ou IOB ou &quot;&quot; (non utlisé)
+define(&#39;DOMOTIC1&#39;, &#39;HA&#39;);//DZ ou HA ou IOB ou &quot;&quot;
+define(&#39;DOMOTIC2&#39;, &#39;IOB&#39;);//DZ ou HA ou IOB ou &quot;&quot;
+// URL HTTPS
+define(&#39;URLDZ&#39;, &#39;https://domoticz.la-truffiere.ovh&#39;);
+define(&#39;URLHA&#39;, &#39;https://ha.la-truffiere.ovh&#39;);
+define(&#39;URLIOB&#39;, array(
+ 0 =&gt; &quot;https://iobroker.la-truffiere.ovh&quot;,  // serveur config
+ 1 =&gt; &quot;https://iobweb.la-truffiere.ovh&quot;  )); // serveur web
+//
+define(&#39;IPDOMOTIC&#39;, &#39;192.168.1.142&#39;);//ip
+define(&#39;USERDOMOTIC&#39;, &#39;michel&#39;);//user du serveur,répertoire :home/user
+define(&#39;PWDDOMOTIC&#39;, &#39;&#39;);//mot passe serveur
+define(&#39;URLDOMOTIC&#39;, &#39;http://192.168.1.76:8086/&#39;);//url
+define(&#39;DOMDOMOTIC&#39;, &#39;https://*************&#39;);//domaine
+define(&#39;TOKENDOMOTIC&#39;, &#39;&#39;);//TOKEN ou BEARER
+define(&#39;IPDOMOTIC1&#39;, &#39;&#39;);//ip 2emme serveur Domotique
+define(&#39;USERDOMOTIC1&#39;, &#39;michel&#39;);//user du serveur,répertoire :home/user
+define(&#39;PWDDOMOTIC1&#39;, &#39;&#39;);//mot passe serveur
+define(&#39;URLDOMOTIC1&#39;, &#39;http://192.168.1.5:8123/&#39;);//url ex:http://192.168.1.5:8123/
+define(&#39;DOMDOMOTIC1&#39;, &#39;https://***********&#39;);//domaine
+define(&#39;TOKEN_DOMOTIC1&#39;,&quot;eyJhb*****************************************************************2k&quot;);
+define(&#39;IPDOMOTIC2&#39;, &#39;192.168.1.162&#39;);//ip 3emme serveur Domotique
+define(&#39;USERDOMOTIC2&#39;, &#39;michel&#39;);//user du serveur,répertoire :home/user
+define(&#39;PWDDOMOTIC2&#39;, &#39;Idem4546&#39;);//mot passe serveur
+define(&#39;URLDOMOTIC2&#39;, &#39;http://192.168.1.162:8081/&#39;);//url ex:http://192.168.1.104:8081/
+define(&#39;TOKEN_DOMOTIC2&#39;,&quot;&quot;);
+define(&#39;PORT_API_DOMO2&#39;,&#39;8093&#39;);//port de l&#39;API éventuel
+define(&#39;PORT_WEBUI_DOMO2&#39;,&#39;8082/vis-2/index.html&#39;);//port web UI et vis 2 et dossier éventuel
+//*************modules et constantes  complémentaires Domoticz
+define(&#39;NUMPLAN&#39;,&#39;2&#39;);//DZ uniquement: n° du plan regroupant tous les capteurs
+define(&#39;VARTAB&#39;, &#39;admin/connect/string_tableaux.lua&#39;);//
+define(&#39;CONF_MODECT&#39;, &#39;admin/string_modect.json&#39;);
+//*********** pour Iobroker
+define(&#39;OBJ_IOBROKER&#39;,&#39;zigbee2mqtt.0,yr.0.forecastHourly,worx.1&#39;);// séparer les objets par une virgule,yr.0.forecastHourly.0h
+//-----------------------------------------------------------
+// Sauvegardes domoticz
+define(&#39;FICVARDZ&#39;,&#39;var_dz&#39;);//fichier json sauvegarde des variables
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>les variables ci-dessus , VARTAB, BASE64, CONF_MODECT ne sont à déclarer ici que si elles sont utilisées dans un fichier</p>
+<p>les variables ci-dessus , VARTAB, CONF_MODECT ne sont à déclarer ici que si elles sont utilisées dans un fichier</p>
+</div>
+<p>Paramètres divers</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//Constantes diverses
+//Raspberry
+define(&#39;IPRPI&#39;, &#39;192.168.1.8&#39;);//IP du Raspberry
+define(&#39;LOGIN_PASS_RPI&#39;, &#39;&lt;USER&gt;:&lt;PASS&gt;&#39;);
+define(&#39;MSMTPRC_LOC_PATH&#39;, &#39;/var/www/html/monitor/scripts/&#39;);//copie config serveur mail
+define(&#39;MOD_PYTHON_FILE&#39;, &#39;/var/www/monitor/admin/connect/mod.json&#39;);//liste des modules Python
+$file = &#39;/var/www/monitor/admin/connect/connect.py&#39;;// ajout domaine dans connect.py
+$current = file_get_contents($file);
+if (str_contains($current, &#39;domaine&#39;)===false ){
+$current = $current.&quot;domaine=&#39;&quot;.URLMONITOR.&quot;&#39;\n&quot;; // pour les maj
+file_put_contents($file, $current);}
+</pre></div>
 </div>
 <p>Le programme démarre avec 3 pages :</p>
 <ul class="simple">
