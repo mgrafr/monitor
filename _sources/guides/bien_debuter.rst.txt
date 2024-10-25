@@ -930,7 +930,7 @@ Extrait du fichier /include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 La base de données a été créée lors de l’installation du serveur : nom=monitor (donnée lors de la création, il peut être différent)
 
-Connexion en local : :darkblue:`IP/phpMyAdmin`
+Connexion en local : :darkblue:`IP/phpmyadmin`
                         
 |image72|
 
