@@ -545,10 +545,11 @@ location ~ \.php$ {
 <p class="admonition-title">Important</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script restore.sh</p>
+<p>Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script <span class="darkblue">sauvegarde_maj.sh</span></p>
 </div>
-<p>extrait de ce script concernant la sauvegarde</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/bash
+#sur le serveur monitor actuel
+pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
 ufw status &gt; /var/www/monitor/admin/connect/ufw.txt
 xxx=$(hostname -I)
 echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
@@ -577,65 +578,66 @@ echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
 <p>Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés.</p>
 <p>le script :darkblue:<a href="#id1"><span class="problematic" id="id2">`</span></a>install/restore.sh”, à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,…);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires</p>
 <blockquote>
+<div><blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/bash
-
-  ip3=&quot;192.168.1.9&quot; #ip de monitor actif
-  cd /home/michel
-  mkdir monitor
-  mkdir monitor/admin
-  mkdir monitor/custom
-  mkdir monitor/DB_Backup
-  mkdir etc
-  mkdir etc/letsencrypt # si des cerificats sont installés
-  mkdir /etc/ssl # si des cerificats sont installés
-  mkdir nginx/conf.d -p
-  mkdir nginx/ssl
-  xxx=$(hostname -I)
-  ip4=$(echo $xxx | cut -d &#39; &#39; -f 1)
-  sed -i &quot;s/${ip3}/${ip4}/g&quot; /var/www/monitor/admin/config.php
-  sed  -i &quot;s/monitor.la-truffiere.ovh/monitor.la-truffiere.ovh:444/g&quot; /var/www/monitor/admin/config.php
-  chmod -R 777 *
-  sftp michel@192.168.1.9
-  sftp&gt; lpwd
-  # Local working directory: /home/michel
-  sftp&gt; pwd
-  # Remote working directory: /home/michel
-  lcd admin
-  sftp&gt; get -R /var/www/html/monitor/admin/* admin/
-  lcd ..
-  lcd etc
-  lcd nginx/conf.d
-  sftp&gt; get /etc/nginx/conf.d/*
-  lcd ..
-  lcd ssl
-  ...
-  ...
-  cp monitor/index_loc.php /var/www/monitor/
-  cp -R /home/michel/monitor/admin/* /var/www/monitor/admin/
-  chmod -R 777 /var/www/monitor/DB_Backup
-  cp /home/michel/monitor/DB_Backup/monitor.sql /var/www/monitor/DB_Backup/
-  mysql -u root -p monitor &lt; /var/www/html/monitor/DB_Backup/monitor.sql
-  ufw allow 444
-  systemctl restart ufw
-  sudo apt install certbot python3-certbot-nginx
-  cp  /home/michel/etc/nginx/conf.d/* /etc/nginx/conf.d/
-  mkdir /etc/nginx/ssl
-  cp  /home/michel/etc/nginx/ssl/* /etc/nginx/ssl/
-  chmod -R 777 /etc/letsencrypt
-  cp -R etc/letsencrypt/* /etc/letsencrypt/# si des cerificats sont installés
-  systemctl reload nginx
-  # si des certificats Letsencrypt existent, faire ci-dessous pour chaque virtualhost
-  rm /etc/letsencrypt/live/&lt;DOMAINE&gt;/*
-  ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/privkey1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/privkey.pem
-  ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/fullchain1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/fullchain.pem
-  ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/chain1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/chain.pem
-  ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/cert1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/cert.pem
-  ...
-  ...
-  certbot update_symlinks
-  certbot renew --dry-run
+#sur le nouveau serveur monitor
+read ip3 &lt; /var/www/monitor/admin/connect/ip.txt
+echo &quot;adresse IP:&quot; $ip3
+domaine=`grep $choix&#39;domaine=&#39; /var/www/monitor/admin/connect/connect.py | cut -f 2 -d &#39;=&#39;`
+echo &quot;domaine : &quot; $domaine
+mkdir monitor
+mkdir monitor/admin
+mkdir monitor/custom
+mkdir monitor/DB_Backup
+mkdir etc
+mkdir etc/letsencrypt
+mkdir etc/ssl
+mkdir nginx/conf.d -p
+mkdir nginx/ssl
+xxx=$(hostname -I)
+ip4=$(echo $xxx | cut -d &#39; &#39; -f 1)
+sed -i &quot;s/${ip3}/${ip4}/g&quot; /var/www/monitor/admin/config.php
+sed  -i &quot;s/{$domaine}/{$domaine}:444/g&quot; /var/www/monitor/admin/config.php
+vv=$(pip list --format=json)
+echo $vv
+chmod -R 777 *
+sftp michel@192.168.1.9&lt;&lt;EOF
+lcd admin
+get -R /var/www/html/monitor/admin/* admin/
+lcd ..
+lcd etc
+lcd nginx/conf.d
+get /etc/nginx/conf.d/*
+exit
+EOF
+cp monitor/index_loc.php /var/www/monitor/
+cp -R /home/michel/monitor/admin/* /var/www/monitor/admin/
+chmod -R 777 /var/www/monitor/DB_Backup
+cp /home/michel/monitor/DB_Backup/monitor.sql /var/www/monitor/DB_Backup/
+mysql -u root -p monitor &lt; /var/www/html/monitor/DB_Backup/monitor.sql
+ufw allow 444
+systemctl restart ufw
+sudo apt install certbot python3-certbot-nginx
+cp  /home/michel/etc/nginx/conf.d/* /etc/nginx/conf.d/
+mkdir /etc/nginx/ssl
+cp  /home/michel/etc/nginx/ssl/* /etc/nginx/ssl/
+chmod -R 777 /etc/letsencrypt
+cp -R etc/letsencrypt/* /etc/letsencrypt/
+systemctl reload nginx
+//
+# si des certificats Letsencrypt existent, faire ci-dessous pour chaque virtualhost
+rm /etc/letsencrypt/live/&lt;DOMAINE&gt;/*
+ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/privkey1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/privkey.pem
+ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/fullchain1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/fullchain.pem
+ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/chain1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/chain.pem
+ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/cert1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/cert.pem
+...
+...
+certbot update_symlinks
+certbot renew --dry-run
 </pre></div>
 </div>
+</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>ci-dessus dans le répertoire arhive les cles, certificats ,… utilisés sont les premiers (ex: privkey1);</p>

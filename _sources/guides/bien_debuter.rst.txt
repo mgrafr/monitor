@@ -508,12 +508,12 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       .. note::
 
-         Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script restore.sh
-
-      extrait de ce script concernant la sauvegarde 
+         Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script :darkblue:`sauvegarde_maj.sh`
 
       .. code-block::
 
+	 #!/usr/bin/bash
+	 #sur le serveur monitor actuel
 	 pip list --format=json > /var/www/monitor/admin/connect/mod.json
 	 ufw status > /var/www/monitor/admin/connect/ufw.txt
 	 xxx=$(hostname -I)
@@ -550,41 +550,39 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
   le script :darkblue:`install/restore.sh', à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,...);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires
 
-   .. code-block::
+     .. code-block::
 
-      #!/usr/bin/bash
-
-	ip3="192.168.1.9" #ip de monitor actif
-	cd /home/michel
+        #!/usr/bin/bash
+	#sur le nouveau serveur monitor 
+	read ip3 < /var/www/monitor/admin/connect/ip.txt
+	echo "adresse IP:" $ip3
+	domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -f 2 -d '='`
+	echo "domaine : " $domaine
 	mkdir monitor
 	mkdir monitor/admin
 	mkdir monitor/custom
 	mkdir monitor/DB_Backup
 	mkdir etc
-        mkdir etc/letsencrypt # si des cerificats sont installés
-	mkdir /etc/ssl # si des cerificats sont installés
+	mkdir etc/letsencrypt
+	mkdir etc/ssl
 	mkdir nginx/conf.d -p
 	mkdir nginx/ssl
 	xxx=$(hostname -I)
 	ip4=$(echo $xxx | cut -d ' ' -f 1)
 	sed -i "s/${ip3}/${ip4}/g" /var/www/monitor/admin/config.php 
-	sed  -i "s/monitor.la-truffiere.ovh/monitor.la-truffiere.ovh:444/g" /var/www/monitor/admin/config.php
+	sed  -i "s/{$domaine}/{$domaine}:444/g" /var/www/monitor/admin/config.php
+	vv=$(pip list --format=json)
+	echo $vv
 	chmod -R 777 *
-	sftp michel@192.168.1.9
-	sftp> lpwd
-	# Local working directory: /home/michel
-	sftp> pwd
-	# Remote working directory: /home/michel
+	sftp michel@192.168.1.9<<EOF
 	lcd admin
-	sftp> get -R /var/www/html/monitor/admin/* admin/
+	get -R /var/www/html/monitor/admin/* admin/
 	lcd ..
 	lcd etc
 	lcd nginx/conf.d
-	sftp> get /etc/nginx/conf.d/*
-        lcd ..
-	lcd ssl
-	...
-	...
+	get /etc/nginx/conf.d/*
+	exit
+	EOF
 	cp monitor/index_loc.php /var/www/monitor/
 	cp -R /home/michel/monitor/admin/* /var/www/monitor/admin/
 	chmod -R 777 /var/www/monitor/DB_Backup
@@ -597,8 +595,9 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 	mkdir /etc/nginx/ssl
 	cp  /home/michel/etc/nginx/ssl/* /etc/nginx/ssl/
 	chmod -R 777 /etc/letsencrypt
-	cp -R etc/letsencrypt/* /etc/letsencrypt/# si des cerificats sont installés
+	cp -R etc/letsencrypt/* /etc/letsencrypt/
 	systemctl reload nginx
+	//
 	# si des certificats Letsencrypt existent, faire ci-dessous pour chaque virtualhost 
 	rm /etc/letsencrypt/live/<DOMAINE>/*
 	ln -s /etc/letsencrypt/archive/<DOMAINE>/privkey1.pem /etc/letsencrypt/live/<DOMAINE>/privkey.pem
