@@ -543,6 +543,13 @@ location ~ \.php$ {
 <p><a class="reference internal" href="../_images/image1542.webp"><img alt="image1542" src="../_images/image1542.webp" style="width: 522px;" /></a></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
+<p>Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
+ufw status &gt; /var/www/monitor/admin/connect/ufw.txt
+xxx=$(hostname -I)
+echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
+</pre></div>
+</div>
 <p>sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker</p>
 <p><a class="reference internal" href="../_images/image1543.webp"><img alt="image1543" src="../_images/image1543.webp" style="width: 400px;" /></a></p>
 <p>établir la liste des modules python installés (lors de script perso: lgtv, mysql-connector,…)</p>
@@ -550,6 +557,7 @@ location ~ \.php$ {
 <p><a class="reference internal" href="../_images/image1553.webp"><img alt="image1553" src="../_images/image1553.webp" style="width: 508px;" /></a></p>
 <p>étalir la liste de port utilisés par le pare-feu</p>
 <p><a href="#id3"><span class="problematic" id="id4">|image1552|</span></a></p>
+<p><a class="reference internal" href="../_images/image1547.webp"><img alt="image1547" src="../_images/image1547.webp" style="width: 650px;" /></a></p>
 </div>
 </div>
 <ul>
