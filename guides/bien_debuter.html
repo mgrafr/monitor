@@ -543,7 +543,11 @@ location ~ \.php$ {
 <p><a class="reference internal" href="../_images/image1542.webp"><img alt="image1542" src="../_images/image1542.webp" style="width: 522px;" /></a></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script restore.sh</p>
+</div>
+<p>extrait de ce script concernant la sauvegarde</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
 ufw status &gt; /var/www/monitor/admin/connect/ufw.txt
 xxx=$(hostname -I)
@@ -556,7 +560,7 @@ echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
 <p><a class="reference internal" href="../_images/image1548.webp"><img alt="image1548" src="../_images/image1548.webp" style="width: 488px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1553.webp"><img alt="image1553" src="../_images/image1553.webp" style="width: 508px;" /></a></p>
 <p>étalir la liste de port utilisés par le pare-feu</p>
-<p><a href="#id3"><span class="problematic" id="id4">|image1552|</span></a></p>
+<p><a class="reference internal" href="../_images/image1552.webp"><img alt="image1552" src="../_images/image1552.webp" style="width: 379px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1547.webp"><img alt="image1547" src="../_images/image1547.webp" style="width: 650px;" /></a></p>
 </div>
 </div>
@@ -1038,7 +1042,7 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <p>lastseen , affichage message « vu pour la dernière fois » <a class="reference internal" href="../_images/image1381.webp"><img alt="image1381" src="../_images/image1381.webp" style="width: 50px;" /></a></p>
 <p>notify , not, , affichage des erreurs ou alertes</p>
 <p>temp_ext, temp_ressentie , <a class="reference internal" href="../_images/image1383.webp"><img alt="image1383" src="../_images/image1383.webp" style="width: 200px;" /></a></p>
-<p>annul_&lt;texte&gt;  : <a href="#id5"><span class="problematic" id="id6">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
+<p>annul_&lt;texte&gt;  : <a href="#id3"><span class="problematic" id="id4">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
 </li>
 </ul>
 </div>
