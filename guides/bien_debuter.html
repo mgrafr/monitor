@@ -576,7 +576,7 @@ echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
 <p><a class="reference internal" href="../_images/image1544.webp"><img alt="image1544" src="../_images/image1544.webp" style="width: 488px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1545.webp"><img alt="image1545" src="../_images/image1545.webp" style="width: 650px;" /></a></p>
 <p>Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés.</p>
-<p>le script :darkblue:<a href="#id1"><span class="problematic" id="id2">`</span></a>install/restore.sh”, à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,…);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires</p>
+<p>le script <span class="darkblue">install/restore.sh</span>, à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,…);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires</p>
 <blockquote>
 <div><blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/bash
@@ -601,15 +601,45 @@ sed  -i &quot;s/{$domaine}/{$domaine}:444/g&quot; /var/www/monitor/admin/config.
 vv=$(pip list --format=json)
 echo $vv
 chmod -R 777 *
+cd monitor
+lets=$(whiptail --title &quot;Certificat Letsencrypt&quot; --radiolist \
+&quot;Comment voulez vous mettre à jour monitor ?\n avec les certificat SSL enregistrés\n sans les certificats SSL &quot; 15 60 4 \
+&quot;Avec les certificats déjà enregistrés&quot; &quot;par defaut &quot; ON \
+&quot;Sans certificats&quot; &quot;voir la doc&quot; OFF 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+if [ $exitstatus = 0 ]; then
+echo &quot;Vous avez choisi  : $lets&quot;
+else
+echo &quot;Vous avez annulé  &quot;
+fi
 sftp michel@192.168.1.9&lt;&lt;EOF
+get index_loc.php
 lcd admin
-get -R /var/www/html/monitor/admin/* admin/
+get -R /var/www/monitor/admin/*
 lcd ..
-lcd etc
-lcd nginx/conf.d
+lcd custom
+get -R /var/www/monitor/custom/*
+lcd ..
+lcd DB_Backup
+get /var/www/monitor/DB_Backup/*
+lcd ..
+lcd ..
+lcd etc/nginx/conf.d
 get /etc/nginx/conf.d/*
 exit
 EOF
+if [ &quot;lets&quot; = &quot;Avec les certificats déjà enregistrés&quot; ]
+then
+sftp michel@192.168.1.9&lt;&lt;EOF
+lcd /etc/nginx/ssl
+get /etc/nginx/ssl/*
+lcd /etc/letsencrypt
+get -R /etc/letsencrypt/*
+lcd ..
+lcd ssl
+get /etc/ssl/*
+exit
+EOF
+fi
 cp monitor/index_loc.php /var/www/monitor/
 cp -R /home/michel/monitor/admin/* /var/www/monitor/admin/
 chmod -R 777 /var/www/monitor/DB_Backup
@@ -1044,7 +1074,7 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <p>lastseen , affichage message « vu pour la dernière fois » <a class="reference internal" href="../_images/image1381.webp"><img alt="image1381" src="../_images/image1381.webp" style="width: 50px;" /></a></p>
 <p>notify , not, , affichage des erreurs ou alertes</p>
 <p>temp_ext, temp_ressentie , <a class="reference internal" href="../_images/image1383.webp"><img alt="image1383" src="../_images/image1383.webp" style="width: 200px;" /></a></p>
-<p>annul_&lt;texte&gt;  : <a href="#id3"><span class="problematic" id="id4">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
+<p>annul_&lt;texte&gt;  : <a href="#id1"><span class="problematic" id="id2">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
 </li>
 </ul>
 </div>

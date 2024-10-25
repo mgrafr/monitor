@@ -548,7 +548,7 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
   Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés.
 
-  le script :darkblue:`install/restore.sh', à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,...);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires
+  le script :darkblue:`install/restore.sh`, à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,...);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires
 
      .. code-block::
 
@@ -574,15 +574,45 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 	vv=$(pip list --format=json)
 	echo $vv
 	chmod -R 777 *
+	cd monitor
+	lets=$(whiptail --title "Certificat Letsencrypt" --radiolist \
+	"Comment voulez vous mettre à jour monitor ?\n avec les certificat SSL enregistrés\n sans les certificats SSL " 15 60 4 \
+	"Avec les certificats déjà enregistrés" "par defaut " ON \
+	"Sans certificats" "voir la doc" OFF 3>&1 1>&2 2>&3)
+	if [ $exitstatus = 0 ]; then
+   	echo "Vous avez choisi  : $lets"
+	else
+	echo "Vous avez annulé  "
+	fi
 	sftp michel@192.168.1.9<<EOF
+	get index_loc.php
 	lcd admin
-	get -R /var/www/html/monitor/admin/* admin/
+	get -R /var/www/monitor/admin/* 
 	lcd ..
-	lcd etc
-	lcd nginx/conf.d
+	lcd custom
+	get -R /var/www/monitor/custom/*
+	lcd ..
+	lcd DB_Backup
+	get /var/www/monitor/DB_Backup/*
+	lcd ..
+	lcd ..
+	lcd etc/nginx/conf.d
 	get /etc/nginx/conf.d/*
 	exit
 	EOF
+	if [ "lets" = "Avec les certificats déjà enregistrés" ]
+	then
+	sftp michel@192.168.1.9<<EOF
+	lcd /etc/nginx/ssl
+	get /etc/nginx/ssl/*
+	lcd /etc/letsencrypt
+	get -R /etc/letsencrypt/*
+	lcd ..
+	lcd ssl
+	get /etc/ssl/*
+	exit
+	EOF
+	fi
 	cp monitor/index_loc.php /var/www/monitor/
 	cp -R /home/michel/monitor/admin/* /var/www/monitor/admin/
 	chmod -R 777 /var/www/monitor/DB_Backup
