@@ -506,7 +506,11 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    .. important::
 
-      Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script:
+      .. note::
+
+         Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script restore.sh
+
+      extrait de ce script concernant la sauvegarde 
 
       .. code-block::
 
@@ -2119,5 +2123,7 @@ function mc(variable,id)
    :width: 488px
 .. |image1549| image:: ../img/image1549.webp
    :width: 400px
+.. |image1552| image:: ../img/image1552.webp
+   :width: 379px
 .. |image1553| image:: ../img/image1553.webp
    :width: 508px
