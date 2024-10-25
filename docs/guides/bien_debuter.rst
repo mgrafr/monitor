@@ -506,6 +506,15 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    .. important::
 
+      Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script:
+
+      .. code-block::
+
+	 pip list --format=json > /var/www/monitor/admin/connect/mod.json
+	 ufw status > /var/www/monitor/admin/connect/ufw.txt
+	 xxx=$(hostname -I)
+	 echo $xxx | cut -d ' ' -f 1 > /var/www/monitor/admin/connect/ip.txt
+
       sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
 
       |image1543|
@@ -518,7 +527,9 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       étalir la liste de port utilisés par le pare-feu
 
-      |image1552|	
+      |image1552|
+
+      |image1547|
 
 - **Installer un nouveau conteneur LXC** , 
     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
@@ -2103,7 +2114,7 @@ function mc(variable,id)
 .. |image1546| image:: ../img/image1546.webp
    :width: 393px
 .. |image1547| image:: ../img/image1547.webp
-   :width: 472px
+   :width: 650px
 .. |image1548| image:: ../img/image1548.webp
    :width: 488px
 .. |image1549| image:: ../img/image1549.webp
