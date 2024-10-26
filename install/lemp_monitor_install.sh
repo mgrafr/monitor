@@ -205,8 +205,9 @@ echo "installation terminée de php8.3-ssh2"
 fi
 msg_ok "installation de dos2unix:"
 apt install dos2unix
-msg_ok "installation de Unzip:"
+msg_ok "installation de Unzip et tree:"
 apt install unzip
+apt install tree
 msg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
