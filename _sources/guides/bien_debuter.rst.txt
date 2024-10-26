@@ -930,6 +930,22 @@ Extrait du fichier /include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 La base de données a été créée lors de l’installation du serveur : nom=monitor (donnée lors de la création, il peut être différent)
 
+.. note::
+
+   Pour modifier la configuration , necessaire si la base de données est utilisée par une autre application 'iobroker par exemple)
+
+   le socket local n'utilise aucun port , le port par défaut est le 3306 et ilfaut le déclarer dans : :darkblue:`nano /etc/mysql/mariadb.cnf`
+
+   |image1555|
+
+   Si votre serveur possède plusieurs interfaces réseau, vous pouvez mettre 0.0.0.0 à la place de l'adresse IP dans `nano /etc/mysql/mysql.conf.d/mysqld.cnf`
+
+   |image1556|
+
+   Pour vérifier la connexion distante après avoir donné des droits à n utilisateur  :
+
+   |image1556|
+
 Connexion en local : :darkblue:`IP/phpmyadmin`
                         
 |image72|
@@ -2156,3 +2172,9 @@ function mc(variable,id)
    :width: 379px
 .. |image1553| image:: ../img/image1553.webp
    :width: 508px
+.. |image1554| image:: ../img/image1554.webp
+   :width: 700px
+.. |image1555| image:: ../img/image1555.webp
+   :width: 533px
+.. |image1556| image:: ../img/image1556.webp
+   :width: 556px
