@@ -2194,7 +2194,7 @@ function mc(variable,id)
 .. |image1549| image:: ../img/image1549.webp
    :width: 400px
 .. |image1552| image:: ../img/image1552.webp
-   :width: 379px
+   :width: 300px
 .. |image1553| image:: ../img/image1553.webp
    :width: 508px
 .. |image1554| image:: ../img/image1554.webp
@@ -2204,4 +2204,6 @@ function mc(variable,id)
 .. |image1556| image:: ../img/image1556.webp
    :width: 556px
 .. |image1557| image:: ../img/image1557.webp
+   :width: 500px
+.. |image1558| image:: ../img/image1558.webp
    :width: 500px
