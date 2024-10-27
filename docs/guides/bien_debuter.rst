@@ -498,19 +498,25 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    Pour faire fonctionner 2 conteneurs ayant les mêmes certificats Letsencrypt il faut apporter des modifications sur le fichier de  configuration Nginx de monitor actuellement en service.
 
-   Ce conteneur ecoute les port 80 et 443; on va modifier la configuration afin qu'il n'écoute que le port 443; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérification donc le port 80 libéré.
+   Ce conteneur ecoute les ports 80 et 443; on va modifier la configuration afin qu'il écoute les ports 443 et 81; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérifications donc le port 80 libéré.**Cette opération est automatique si le script sauvegarde_maj.sh est utilisé**. 
 
-   la config de monitor actuelent en service devient:
+   la seule manipulation manuelle, sur MONITOR en service, c'est sur la box internet : **EFFECTUER LA REDIRECTION DU PORT 81**
+
+   |image1557|
+ 
+.. admonition:: **Sauvegarde de monitor**
+
+  .. note::
+
+         :red:`Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script` :darkblue:`sauvegarde_maj.sh`
+
+   La config Nginx de monitor devient 
 
    |image1542|
 
-   .. important::
+   la config de monitor actuellement en service devient:
 
-      .. note::
-
-         Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script :darkblue:`sauvegarde_maj.sh`
-
-      .. code-block::
+   .. code-block::
 
 	 #!/usr/bin/bash
 	 #sur le serveur monitor actuel
@@ -2153,7 +2159,7 @@ function mc(variable,id)
 .. |image1540| image:: ../img/image1540.webp
    :width: 643px
 .. |image1542| image:: ../img/image1542.webp
-   :width: 522px
+   :width: 379px
 .. |image1543| image:: ../img/image1543.webp
    :width: 400px
 .. |image1544| image:: ../img/image1544.webp
@@ -2178,3 +2184,5 @@ function mc(variable,id)
    :width: 533px
 .. |image1556| image:: ../img/image1556.webp
    :width: 556px
+.. |image1557| image:: ../img/image1557.webp
+   :width: 500px
