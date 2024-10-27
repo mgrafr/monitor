@@ -538,31 +538,44 @@ location ~ \.php$ {
 <div class="admonition-etape-preliminaire admonition">
 <p class="admonition-title"><strong>étape préliminaire</strong></p>
 <p>Pour faire fonctionner 2 conteneurs ayant les mêmes certificats Letsencrypt il faut apporter des modifications sur le fichier de  configuration Nginx de monitor actuellement en service.</p>
-<p>Ce conteneur ecoute les port 80 et 443; on va modifier la configuration afin qu’il n’écoute que le port 443; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérification donc le port 80 libéré.</p>
-<p>la config de monitor actuelent en service devient:</p>
-<p><a class="reference internal" href="../_images/image1542.webp"><img alt="image1542" src="../_images/image1542.webp" style="width: 522px;" /></a></p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
+<p>Ce conteneur ecoute les ports 80 et 443; on va modifier la configuration afin qu’il écoute les ports 443 et 81; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérifications donc le port 80 libéré.**Cette opération est automatique si le script sauvegarde_maj.sh est utilisé**.</p>
+<p>la seule manipulation manuelle, sur MONITOR en service, c’est sur la box internet : <strong>EFFECTUER LA REDIRECTION DU PORT 81</strong></p>
+<p><a class="reference internal" href="../_images/image1557.webp"><img alt="image1557" src="../_images/image1557.webp" style="width: 500px;" /></a></p>
+</div>
+<div class="admonition-sauvegarde-de-monitor admonition">
+<p class="admonition-title"><strong>Sauvegarde de monitor</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script <span class="darkblue">sauvegarde_maj.sh</span></p>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/bash
-#sur le serveur monitor actuel
-pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
-ufw status &gt; /var/www/monitor/admin/connect/ufw.txt
-xxx=$(hostname -I)
-echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
+<blockquote>
+<div><p><span class="red">Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script</span> <span class="darkblue">sauvegarde_maj.sh</span></p>
+</div></blockquote>
+<p>La config Nginx de monitor devient</p>
+<p><a class="reference internal" href="../_images/image1542.webp"><img alt="image1542" src="../_images/image1542.webp" style="width: 379px;" /></a></p>
+<p>la config de monitor actuellement en service devient:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   #!/usr/bin/bash
+   #sur le serveur monitor actuel
+   pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
+   ufw status &gt; /var/www/monitor/admin/connect/ufw.txt
+   xxx=$(hostname -I)
+   echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
+
+sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
+
+|image1543|
+
+établir la liste des modules python installés (lors de script perso: lgtv, mysql-connector,...)
+
+|image1548|
+
+|image1553|
+
+étalir la liste de port utilisés par le pare-feu
+
+|image1552|
+
+|image1547|
 </pre></div>
 </div>
-<p>sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker</p>
-<p><a class="reference internal" href="../_images/image1543.webp"><img alt="image1543" src="../_images/image1543.webp" style="width: 400px;" /></a></p>
-<p>établir la liste des modules python installés (lors de script perso: lgtv, mysql-connector,…)</p>
-<p><a class="reference internal" href="../_images/image1548.webp"><img alt="image1548" src="../_images/image1548.webp" style="width: 488px;" /></a></p>
-<p><a class="reference internal" href="../_images/image1553.webp"><img alt="image1553" src="../_images/image1553.webp" style="width: 508px;" /></a></p>
-<p>étalir la liste de port utilisés par le pare-feu</p>
-<p><a class="reference internal" href="../_images/image1552.webp"><img alt="image1552" src="../_images/image1552.webp" style="width: 379px;" /></a></p>
-<p><a class="reference internal" href="../_images/image1547.webp"><img alt="image1547" src="../_images/image1547.webp" style="width: 650px;" /></a></p>
 </div>
 </div>
 <ul>
