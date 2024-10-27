@@ -571,6 +571,15 @@ sed  -i &quot;s/80/81/g&quot; /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 <p><a class="reference internal" href="../_images/image1552.webp"><img alt="image1552" src="../_images/image1552.webp" style="width: 379px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1547.webp"><img alt="image1547" src="../_images/image1547.webp" style="width: 650px;" /></a></p>
 </div>
+<div class="admonition-installer-un-nouveau-conteneur-lxc-voir-le-ref-0-1-1-installation-automatique-dun-conteneur-lxc-lemp-monitor admonition">
+<p class="admonition-title"><strong>Installer un nouveau conteneur LXC</strong> ,
+ voir le § <a class="reference internal" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor"><span class="std std-ref">0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</span></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Sur la Box internet faire avec na nouvelle IP une redirection de port : 444</p>
+<p><a href="#id1"><span class="problematic" id="id2">|image1558|</span></a></p>
+</div>
+</div>
 <div class="admonition-restauration-des-donnees-depuis-monitor-en-service admonition">
 <p class="admonition-title"><strong>Restauration des données depuis Monitor en service</strong></p>
 <blockquote>
@@ -683,20 +692,22 @@ done &lt; /home/$mdir_maj/a.txt
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>ci-dessus dans le répertoire archive les cles, certificats ,… utilisés sont les premiers (ex: privkey1);</p>
-<p>si les virtualhost sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l’indice 1 pour tous, update_symlinks rétabliera la bonne configuration.</p>
+<p>ci-dessus dans le répertoire archive les cles, certificats ,… utilisés (les + récents) sont ceux avec le nombre le plus élevé (ex: privkey17);</p>
+<p>si les virtualhosts sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l’indice 1 pour tous, le script <span class="darkblue">update_symlinks</span> rétabliera la bonne configuration.</p>
+<p>Le scripe restore.sh choisit les bons cerificats automatiquement</p>
 <p><a class="reference internal" href="../_images/image1546.webp"><img alt="image1546" src="../_images/image1546.webp" style="width: 393px;" /></a></p>
 </div>
 </div></blockquote>
 </div>
+<div class="admonition-apres-la-restauration admonition">
+<p class="admonition-title">** Après la restauration**</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Avant de basculer définitivement sur le nouveau conteneur, dans le conteneur actif:</p>
-<p>MODIFIER l’IP de connect.py</p>
+<p>Avant de basculer définitivement sur le nouveau conteneur, faire une maj virtuelle, pour indiquer aux différent serveurs domotiques la nouvelle IP de monitor;</p>
+<p>Le fichier connect.py a dèjà été modifié , cette maj sert à modifier les fichiers distants connect.lua, connect.js et connect.py.</p>
 <p><a class="reference internal" href="../_images/image1549.webp"><img alt="image1549" src="../_images/image1549.webp" style="width: 400px;" /></a></p>
-<p>Pour Domoticz, Ha, Iobroker , modifier l’IP de monitor dans le fichier connect.py , modifie automatiquemet connect.lua et connect.js .</p>
 </div>
-<p>en cours de rédaction</p>
+</div>
 </section>
 <section id="mise-a-jour-partielle">
 <h4>0.1.4.2  Mise à jour partielle<a class="headerlink" href="#mise-a-jour-partielle" title="Lien permanent vers cette rubrique"></a></h4>
@@ -1096,7 +1107,7 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 <p>lastseen , affichage message « vu pour la dernière fois » <a class="reference internal" href="../_images/image1381.webp"><img alt="image1381" src="../_images/image1381.webp" style="width: 50px;" /></a></p>
 <p>notify , not, , affichage des erreurs ou alertes</p>
 <p>temp_ext, temp_ressentie , <a class="reference internal" href="../_images/image1383.webp"><img alt="image1383" src="../_images/image1383.webp" style="width: 200px;" /></a></p>
-<p>annul_&lt;texte&gt;  : <a href="#id1"><span class="problematic" id="id2">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
+<p>annul_&lt;texte&gt;  : <a href="#id3"><span class="problematic" id="id4">annul_</span></a> est réservé, ne pas utiliser avec les id si dessus</p>
 </li>
 </ul>
 </div>

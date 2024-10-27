@@ -548,6 +548,12 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 .. admonition:: **Installer un nouveau conteneur LXC** , 
     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
+   .. IMPORTANT::
+
+      Sur la Box internet faire avec na nouvelle IP une redirection de port : 444
+
+      |image1558|
+
 .. admonition:: **Restauration des données depuis Monitor en service**
 
    téléchargement depuis le conteneur actuel des fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc...)
@@ -664,27 +670,23 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    .. note::
 
-      ci-dessus dans le répertoire archive les cles, certificats ,... utilisés sont les premiers (ex: privkey1); 
+      ci-dessus dans le répertoire archive les cles, certificats ,... utilisés (les + récents) sont ceux avec le nombre le plus élevé (ex: privkey17); 
 
-      si les virtualhost sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l'indice 1 pour tous, update_symlinks rétabliera la bonne configuration.
+      si les virtualhosts sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l'indice 1 pour tous, le script :darkblue:`update_symlinks` rétabliera la bonne configuration.
+
+      Le scripe restore.sh choisit les bons cerificats automatiquement 
 
       |image1546|
 
-.. important::
+.. admonition:: ** Après la restauration**
 
-   Avant de basculer définitivement sur le nouveau conteneur, dans le conteneur actif:
+   .. important::
 
-   MODIFIER l'IP de connect.py 
+      Avant de basculer définitivement sur le nouveau conteneur, faire une maj virtuelle, pour indiquer aux différent serveurs domotiques la nouvelle IP de monitor;
 
-   |image1549|
+      Le fichier connect.py a dèjà été modifié , cette maj sert à modifier les fichiers distants connect.lua, connect.js et connect.py.
 
-   Pour Domoticz, Ha, Iobroker , modifier l'IP de monitor dans le fichier connect.py , modifie automatiquemet connect.lua et connect.js .
-
-
-
-
-
-en cours de rédaction
+      |image1549|
 
 0.1.4.2  Mise à jour partielle
 """"""""""""""""""""""""""""""
