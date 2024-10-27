@@ -543,13 +543,14 @@ location ~ \.php$ {
 <p>la seule manipulation manuelle, sur MONITOR en service, c’est sur la box internet : <strong>EFFECTUER LA REDIRECTION DU PORT 81</strong></p>
 <p><a class="reference internal" href="../_images/image1557.webp"><img alt="image1557" src="../_images/image1557.webp" style="width: 500px;" /></a></p>
 </div>
+<div class="admonition-sauvegarde-de-monitor admonition">
+<p class="admonition-title"><strong>Sauvegarde de monitor</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><span class="red">Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script</span> <span class="darkblue">sauvegarde_maj.sh</span></p>
 </div>
 <p>Le script  <em>sauvegarde_maj.sh</em></p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span> #!/usr/bin/bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> #!/usr/bin/bash
 #sur le serveur monitor actuel
 pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
 ufw status &gt; /var/www/monitor/admin/connect/ufw.txt
@@ -569,7 +570,7 @@ sed  -i &quot;s/80/81/g&quot; /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 <p>étalir la liste de port utilisés par le pare-feu</p>
 <p><a class="reference internal" href="../_images/image1552.webp"><img alt="image1552" src="../_images/image1552.webp" style="width: 379px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1547.webp"><img alt="image1547" src="../_images/image1547.webp" style="width: 650px;" /></a></p>
-</div></blockquote>
+</div>
 <div class="admonition-restauration-des-donnees-depuis-monitor-en-service admonition">
 <p class="admonition-title"><strong>Restauration des données depuis Monitor en service</strong></p>
 <blockquote>

@@ -508,11 +508,11 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
  
 .. admonition:: **Sauvegarde de monitor**
 
-.. note::
+   .. note::
 
          :red:`Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script` :darkblue:`sauvegarde_maj.sh`
 
-Le script  *sauvegarde_maj.sh* 
+   Le script  *sauvegarde_maj.sh* 
 
    .. code-block::
 
