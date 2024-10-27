@@ -688,6 +688,14 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1549|
 
+   .. IMPORTANT::
+
+      les iframes en accès distant ne fonctionneront seulement quand la redirection du por 443 aura été effectuée sur l'IP du nouveau monitor.
+
+      |image1559|
+
+      **si tout fonctionne correctement arrêter l'ancien monitor et dans quelques jour le supprimer.**
+
 0.1.4.2  Mise à jour partielle
 """"""""""""""""""""""""""""""
 Ne concerne que Monitor
@@ -2207,3 +2215,5 @@ function mc(variable,id)
    :width: 500px
 .. |image1558| image:: ../img/image1558.webp
    :width: 500px
+.. |image1559| image:: ../img/image1559.webp
+   :width: 450px
