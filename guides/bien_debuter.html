@@ -538,158 +538,156 @@ location ~ \.php$ {
 <div class="admonition-etape-preliminaire admonition">
 <p class="admonition-title"><strong>étape préliminaire</strong></p>
 <p>Pour faire fonctionner 2 conteneurs ayant les mêmes certificats Letsencrypt il faut apporter des modifications sur le fichier de  configuration Nginx de monitor actuellement en service.</p>
-<p>Ce conteneur ecoute les ports 80 et 443; on va modifier la configuration afin qu’il écoute les ports 443 et 81; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérifications donc le port 80 libéré.**Cette opération est automatique si le script sauvegarde_maj.sh est utilisé**.</p>
+<p>Ce conteneur ecoute les ports 80 et 443; on va modifier la configuration afin qu’il écoute les ports 443 et 81; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérifications donc le port 80 libéré.</p>
+<p><strong>Cette opération est automatique si le script</strong> <em>sauvegarde_maj.sh</em> <strong>est utilisé</strong>.</p>
 <p>la seule manipulation manuelle, sur MONITOR en service, c’est sur la box internet : <strong>EFFECTUER LA REDIRECTION DU PORT 81</strong></p>
 <p><a class="reference internal" href="../_images/image1557.webp"><img alt="image1557" src="../_images/image1557.webp" style="width: 500px;" /></a></p>
 </div>
-<div class="admonition-sauvegarde-de-monitor admonition">
-<p class="admonition-title"><strong>Sauvegarde de monitor</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p><span class="red">Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script</span> <span class="darkblue">sauvegarde_maj.sh</span></p>
+</div>
+<p>Le script  <em>sauvegarde_maj.sh</em></p>
 <blockquote>
-<div><p><span class="red">Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script</span> <span class="darkblue">sauvegarde_maj.sh</span></p>
-</div></blockquote>
-<p>La config Nginx de monitor devient</p>
-<p><a class="reference internal" href="../_images/image1542.webp"><img alt="image1542" src="../_images/image1542.webp" style="width: 379px;" /></a></p>
-<p>la config de monitor actuellement en service devient:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   #!/usr/bin/bash
-   #sur le serveur monitor actuel
-   pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
-   ufw status &gt; /var/www/monitor/admin/connect/ufw.txt
-   xxx=$(hostname -I)
-   echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
-
-sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
-
-|image1543|
-
-établir la liste des modules python installés (lors de script perso: lgtv, mysql-connector,...)
-
-|image1548|
-
-|image1553|
-
-étalir la liste de port utilisés par le pare-feu
-
-|image1552|
-
-|image1547|
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span> #!/usr/bin/bash
+#sur le serveur monitor actuel
+pip list --format=json &gt; /var/www/monitor/admin/connect/mod.json
+ufw status &gt; /var/www/monitor/admin/connect/ufw.txt
+xxx=$(hostname -I)
+echo $xxx | cut -d &#39; &#39; -f 1 &gt; /var/www/monitor/admin/connect/ip.txt
+echo &quot;pour letsencrypt remplacement port 80 par 81&quot;
+sed  -i &quot;s/80/81/g&quot; /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 </pre></div>
 </div>
-</div>
-</div>
-<ul>
-<li><dl class="simple">
-<dt><strong>Installer un nouveau conteneur LXC</strong> ,</dt><dd><p>voir le § <a class="reference internal" href="#installation-automatique-dun-conteneur-lxc-lemp-monitor"><span class="std std-ref">0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor</span></a></p>
-</dd>
-</dl>
-</li>
-<li><p><strong>télécharger depuis le conteneur actuel</strong> les fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc…)</p>
-<p>Pour cela , on utilise <strong>sftp</strong> dans le script restore.sh; les fichiers et répertoires sont stockés dans home/&lt;USER&gt; du nouveau conteneur.</p>
+<p>La config Nginx de monitor devient</p>
+<p><a class="reference internal" href="../_images/image1542.webp"><img alt="image1542" src="../_images/image1542.webp" style="width: 379px;" /></a></p>
+<p>sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker</p>
+<p><a class="reference internal" href="../_images/image1543.webp"><img alt="image1543" src="../_images/image1543.webp" style="width: 400px;" /></a></p>
+<p>établir la liste des modules python installés (lors de script perso: lgtv, mysql-connector,…)</p>
+<p><a class="reference internal" href="../_images/image1548.webp"><img alt="image1548" src="../_images/image1548.webp" style="width: 488px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1553.webp"><img alt="image1553" src="../_images/image1553.webp" style="width: 508px;" /></a></p>
+<p>étalir la liste de port utilisés par le pare-feu</p>
+<p><a class="reference internal" href="../_images/image1552.webp"><img alt="image1552" src="../_images/image1552.webp" style="width: 379px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1547.webp"><img alt="image1547" src="../_images/image1547.webp" style="width: 650px;" /></a></p>
+</div></blockquote>
+<div class="admonition-restauration-des-donnees-depuis-monitor-en-service admonition">
+<p class="admonition-title"><strong>Restauration des données depuis Monitor en service</strong></p>
+<blockquote>
+<div><p>téléchargement depuis le conteneur actuel des fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc…)</p>
+<p>Pour cela , on utilise <strong>sftp</strong> dans le script <span class="darkblue">restore.sh</span>; les fichiers et répertoires sont stockés dans home/&lt;REPERTOIRE CHOISI LORS DU SCRIPT&gt; du nouveau conteneur.</p>
+</div></blockquote>
 <p><a class="reference internal" href="../_images/image1544.webp"><img alt="image1544" src="../_images/image1544.webp" style="width: 488px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1545.webp"><img alt="image1545" src="../_images/image1545.webp" style="width: 650px;" /></a></p>
 <p>Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de donnés.</p>
-<p>le script <span class="darkblue">install/restore.sh</span>, à adapter suivant la configuration de monitor (accès distant ou non avec des certificats,…);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires</p>
+<p>le script <span class="darkblue">install/restore.sh</span>,  suivant la configuration de monitor (accès distant ou non avec des certificats,…);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires</p>
 <blockquote>
-<div><blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/bash
-#sur le nouveau serveur monitor
-read ip3 &lt; /var/www/monitor/admin/connect/ip.txt
-echo &quot;adresse IP:&quot; $ip3
-domaine=`grep $choix&#39;domaine=&#39; /var/www/monitor/admin/connect/connect.py | cut -f 2 -d &#39;=&#39;`
-echo &quot;domaine : &quot; $domaine
-mkdir monitor
-mkdir monitor/admin
-mkdir monitor/custom
-mkdir monitor/DB_Backup
-mkdir etc
-mkdir etc/letsencrypt
-mkdir etc/ssl
-mkdir nginx/conf.d -p
-mkdir nginx/ssl
-xxx=$(hostname -I)
-ip4=$(echo $xxx | cut -d &#39; &#39; -f 1)
-sed -i &quot;s/${ip3}/${ip4}/g&quot; /var/www/monitor/admin/config.php
-sed  -i &quot;s/{$domaine}/{$domaine}:444/g&quot; /var/www/monitor/admin/config.php
-vv=$(pip list --format=json)
-echo $vv
-chmod -R 777 *
-cd monitor
-lets=$(whiptail --title &quot;Certificat Letsencrypt&quot; --radiolist \
-&quot;Comment voulez vous mettre à jour monitor ?\n avec les certificat SSL enregistrés\n sans les certificats SSL &quot; 15 60 4 \
-&quot;Avec les certificats déjà enregistrés&quot; &quot;par defaut &quot; ON \
-&quot;Sans certificats&quot; &quot;voir la doc&quot; OFF 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
-if [ $exitstatus = 0 ]; then
-echo &quot;Vous avez choisi  : $lets&quot;
-else
-echo &quot;Vous avez annulé  &quot;
-fi
-sftp michel@192.168.1.9&lt;&lt;EOF
-get index_loc.php
-lcd admin
-get -R /var/www/monitor/admin/*
-lcd ..
-lcd custom
-get -R /var/www/monitor/custom/*
-lcd ..
-lcd DB_Backup
-get /var/www/monitor/DB_Backup/*
-lcd ..
-lcd ..
-lcd etc/nginx/conf.d
-get /etc/nginx/conf.d/*
-exit
-EOF
-if [ &quot;lets&quot; = &quot;Avec les certificats déjà enregistrés&quot; ]
-then
-sftp michel@192.168.1.9&lt;&lt;EOF
-lcd /etc/nginx/ssl
-get /etc/nginx/ssl/*
-lcd /etc/letsencrypt
-get -R /etc/letsencrypt/*
-lcd ..
-lcd ssl
-get /etc/ssl/*
-exit
-EOF
-fi
-cp monitor/index_loc.php /var/www/monitor/
-cp -R /home/michel/monitor/admin/* /var/www/monitor/admin/
-chmod -R 777 /var/www/monitor/DB_Backup
-cp /home/michel/monitor/DB_Backup/monitor.sql /var/www/monitor/DB_Backup/
-mysql -u root -p monitor &lt; /var/www/html/monitor/DB_Backup/monitor.sql
-ufw allow 444
-systemctl restart ufw
-sudo apt install certbot python3-certbot-nginx
-cp  /home/michel/etc/nginx/conf.d/* /etc/nginx/conf.d/
-mkdir /etc/nginx/ssl
-cp  /home/michel/etc/nginx/ssl/* /etc/nginx/ssl/
-chmod -R 777 /etc/letsencrypt
-cp -R etc/letsencrypt/* /etc/letsencrypt/
-systemctl reload nginx
-//
-# si des certificats Letsencrypt existent, faire ci-dessous pour chaque virtualhost
-rm /etc/letsencrypt/live/&lt;DOMAINE&gt;/*
-ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/privkey1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/privkey.pem
-ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/fullchain1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/fullchain.pem
-ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/chain1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/chain.pem
-ln -s /etc/letsencrypt/archive/&lt;DOMAINE&gt;/cert1.pem /etc/letsencrypt/live/&lt;DOMAINE&gt;/cert.pem
-...
-...
-certbot update_symlinks
-certbot renew --dry-run
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span> #!/usr/bin/bash
+ #sur le nouveau serveur monitor
+ mkdir_maj=$(whiptail --title &quot;Création d&#39;un réperoire de travail &quot; --inputbox &quot;veuillez entrer le du répertoire \n\n Entrer répertoire&quot; 10 60 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+ exitstatus=$?
+ if [ $exitstatus = 0 ]; then
+ info &quot;répertoire enregistré : &quot;$mdir_maj
+ else
+ mdir_maj=/home/maj_monitor
+ echo &quot;Par défaut, utlisateur enregistré : &quot;$mdir_maj
+ fi
+ mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup}
+ mkdir -p /home/$mdir_maj/etc/{letsencrypt,ssl,nginx{conf.d,ssl},cron.d,}
+ read ip3 &lt; /var/www/monitor/admin/connect/ip.txt
+ echo &quot;adresse IP:&quot; $ip3
+ domaine=`grep $choix&#39;domaine=&#39; /var/www/monitor/admin/connect/connect.py | cut -f 2 -d &#39;=&#39;`
+ echo &quot;domaine : &quot; $domaine
+ xxx=$(hostname -I)
+ ip4=$(echo $xxx | cut -d &#39; &#39; -f 1)
+ sed -i &quot;s/${ip3}/${ip4}/g&quot; /var/www/monitor/admin/config.php
+ sed  -i &quot;s/{$domaine}/{$domaine}:444/g&quot; /var/www/monitor/admin/config.php
+ sed  -i &quot;s/${ip3}/${ip4}/g&quot; /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
+ #modifier monitor.conf
+ sed  -i &quot;s/443/444/g&quot; /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
+ sed  -i &quot;s/#/ }/g&quot; /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
+ sed -i &quot;s/${ip3}/${ip4}/g&quot; /var/www/monitor/admin/connect/connect.py
+ vv=$(pip list --format=json)
+ echo $vv
+ cd /home/$mdir_maj/monitor
+ chmod -R 777 *
+ cd monitor
+ lets=$(whiptail --title &quot;Certificat Letsencrypt&quot; --radiolist \
+ &quot;Comment voulez vous mettre à jour monitor ?\n avec les certificat SSL enregistrés\n sans les certificats SSL &quot; 15 60 4 \
+ &quot;Avec les certificats déjà enregistrés&quot; &quot;par defaut &quot; ON \
+ &quot;Sans certificats&quot; &quot;voir la doc&quot; OFF 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+ if [ $exitstatus = 0 ]; then
+ echo &quot;Vous avez choisi  : $lets&quot;
+ else
+ echo &quot;Vous avez annulé  &quot;
+ fi
+ sftp michel@192.168.1.9&lt;&lt;EOF
+ get index_loc.php
+ lcd admin
+ get -R /var/www/monitor/admin/*
+ lcd ..
+ lcd custom
+ get -R /var/www/monitor/custom/*
+ lcd ..
+ lcd DB_Backup
+ get /var/www/monitor/DB_Backup/*
+ lcd ..
+ lcd ..
+ lcd etc/nginx/conf.d
+ get /etc/nginx/conf.d/*
+ exit
+ EOF
+ if [ &quot;lets&quot; = &quot;Avec les certificats déjà enregistrés&quot; ]
+ then
+ sftp michel@192.168.1.9&lt;&lt;EOF
+ lcd /etc/nginx/ssl
+ get /etc/nginx/ssl/*
+ lcd /etc/letsencrypt
+ get -R /etc/letsencrypt/*
+ lcd ..
+ lcd ssl
+ get /etc/ssl/*
+ cd ..
+ cd cron.d/
+ get /etc/cron.d/*
+ exit
+ EOF
+ fi
+ cd /home/$mdir_maj/etc/letsencrypt
+ rm -R live
+ mkdir live
+ chmod - R 777 live
+ for f in * ; do  echo $f;  done &gt; /home/michel/a.txt;
+ while read l; do nb=$(ls /home/$mdir_maj/etc/letsencrypt/archive/$l | wc -l) ; a=$((($nb)/4));
+ echo $a; mkdir /home/$mdir_maj/etc/letsencrypt/live/$l;chmod -R 777 /home/$mdir_maj/etc/letsencrypt/live/*; ln -s /home/$mdir_maj/etc/letsencrypt/archive/$l/*$a.pem /home/$mdir_maj/etc/letsencrypt/live/$l/ ;
+done &lt; /home/$mdir_maj/a.txt
+ cp monitor/index_loc.php /var/www/monitor/
+ cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
+ chmod -R 777 /var/www/monitor/DB_Backup
+ cp /home/$mdir_maj/monitor/DB_Backup/monitor.sql /var/www/monitor/DB_Backup/
+ mysql -u root -p monitor &lt; /var/www/html/monitor/DB_Backup/monitor.sql
+ ufw allow 444
+ systemctl restart ufw
+ sudo apt install certbot python3-certbot-nginx
+ cp  /home/$mdir_maj/etc/nginx/conf.d/* /etc/nginx/conf.d/
+ mkdir /etc/nginx/ssl
+ cp  /home/$mdir_maj/etc/nginx/ssl/* /etc/nginx/ssl/
+ chmod -R 777 /etc/letsencrypt
+ cp -R etc/letsencrypt/* /etc/letsencrypt/
+ cp etc/cron.d/* /etc/cron.d
+ chmod -R 777 /etc/cron.d
+ systemctl reload nginx
+ certbot update_symlinks
+ certbot renew --dry-run
 </pre></div>
 </div>
-</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>ci-dessus dans le répertoire arhive les cles, certificats ,… utilisés sont les premiers (ex: privkey1);</p>
+<p>ci-dessus dans le répertoire archive les cles, certificats ,… utilisés sont les premiers (ex: privkey1);</p>
 <p>si les virtualhost sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l’indice 1 pour tous, update_symlinks rétabliera la bonne configuration.</p>
 <p><a class="reference internal" href="../_images/image1546.webp"><img alt="image1546" src="../_images/image1546.webp" style="width: 393px;" /></a></p>
 </div>
 </div></blockquote>
-</li>
-</ul>
+</div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Avant de basculer définitivement sur le nouveau conteneur, dans le conteneur actif:</p>
