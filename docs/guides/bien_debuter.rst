@@ -935,6 +935,18 @@ Pour afficher la température extérieure sur monitor : Installer l'adaptateur p
 
 |image1397|
 
+.. note::
+
+   Pour limiter la recherche de l'ID dans les données fournies par l'adaptateur et aussi si on le souhaite utiliser, dans une app perso, une une partie importante de ces données, il faut indiquer dans admin/config.php le chemin de recherche:
+
+   |image1561|
+
+   exemples pour zigbee et la météo yr
+
+   |image1559|
+
+   |image1560|
+
 Enregistrer le dispositif :
 
 |image1398|
