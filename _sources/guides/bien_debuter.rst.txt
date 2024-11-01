@@ -943,11 +943,11 @@ Pour afficher la température extérieure sur monitor : Installer l'adaptateur p
 
    exemples pour zigbee et la météo yr
 
-   |image1559|
+   |image1562|
 
    |image1560|
 
-Enregistrer le dispositif :
+Enregistrer le dispositif dans la base de données
 
 |image1398|
 
@@ -2229,3 +2229,9 @@ function mc(variable,id)
    :width: 500px
 .. |image1559| image:: ../img/image1559.webp
    :width: 450px
+.. |image1560| image:: ../img/image1560.webp
+   :width: 599px
+.. |image1561| image:: ../img/image1561.webp
+   :width: 555px
+.. |image1562| image:: ../img/image1562.webp
+   :width: 582px
