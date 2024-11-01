@@ -392,57 +392,50 @@ if ($l_ha!=""){$serveur_ha_on = true;
 		$n++;$p++;}
 			    };
 $serveur_iob_on = false;
-	$n=0;$obj_iob=array();							 
+	$obj_iob=[]	;					 
 if ($l_iob!=""){$q=$p;$serveur_iob_on = true;
-				$iob=array();
-	if (str_contains(OBJ_IOBROKER, ",")) {$obj_iob=explode(',',OBJ_IOBROKER);}			
-	else {$obj_iob[0]=OBJ_IOBROKER;}
-$i=0;
-while ($obj_iob[$i]!="") {	$serveur_iob_on	= true;	
-$L=$IP_iob.":".$port_api_iob."/v1/objects?filter=".$obj_iob[$i]."*&type=device";	
-$json_string = file_get_curl($L);
+				$iob=array();$values=array();
+	if (str_contains(OBJ_IOBROKER, ",")) {$obj_iob=explode(',',OBJ_IOBROKER);$nbi=count($obj_iob);}			
+	else {$obj_iob[0]=OBJ_IOBROKER;} 
+$ii=0;$n=0;
+while (isset($obj_iob[$ii])) {$serveur_iob_on=true;$values=[];$jj=0;
+$_id1=$obj_iob[$ii];	$id1=explode('.',$_id1);$nb_iob=count($id1);
+if ($nb_iob>2){
+	if ($nb_iob==3){$_id2=$id1[0].".".$id1[1];}
+	if ($nb_iob==4){$_id2=$id1[0].".".$id1[1].".".$id1[2];}
+	if ($nb_iob==5){$_id2=$id1[0].".".$id1[1].".".$id1[2].".".$id1[3];}	 }									 
+$L=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id1.".*";	
+$json_string = file_get_curl($L);//return $json_string;
 $iob_json = json_decode($json_string);
-foreach ($iob_json as $xxx){$Data="";$value=[];
-	$enr = explode('.',$xxx->{'_id'});$_id=$enr[0].".".$enr[1].".".$enr[2];
-				if ($_id=="yr.0.forecastHourly") $_id="yr.0.forecastHourly.0h"; //météo yr
-	$iob_name = $xxx->{'common'}->{'name'};
-	if($xxx->{'common'}->{'desc'}) $iob_desc = $xxx->{'common'}->{'desc'};
-	else $iob_desc = "";
-	
-	/*$L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
-	$json_string_val = file_get_curl($L_val);
-	$iob_json_val=json_decode($json_string_val);
-		foreach ($iob_json_val as $val=>$val1){	
-		$ens = explode('.',$val);$valeur=$ens[3];
-			if ($ens[4] && $ens[4]!="") {$valeur=$ens[4];}
-		if ($rep!="rawMqtt"	) {					 
-		$value[$valeur]	= $val1->{'val'};
-		$ens=[];
-		}} */
-	$value=get_state_list($_id);
-	$L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
-	$json_string_val = file_get_curl($L_val);
-	$iob_json_val=json_decode($json_string_val);						
-	foreach ($iob_json_val as $val=>$val1){	
-		$ens = explode('.',$val);$valeur=$ens[3];$rep='.'.$ens[2];
-			if (isset($ens[4]) && $ens[4]!="") {$valeur=$ens[4];$rep='.'.$ens[3];}
-		if (isset($ens[2])==false) {$ID=$_id;}
-		else {$ID=$_id.$rep.".".$valeur;}
-		if ($rep!="rawMqtt"	) {	
-		$Data = $val1->{'val'};	
-		$ens=[];	
+foreach ($iob_json as $cle => $valeur){
+		$name=str_replace($_id1.".", "", $cle);				   
 		$iob[$n]=[
-		'ID' => $ID,
-		'Name' => $iob_name,
-		'description' => $iob_desc,
-		'Data' => $Data,
-		'value' => $value,	
+		'num' => $n,
+		'ID' => $cle,
+		'Name' => $name,	
+		'Data' => $valeur -> {'val'},
 		'serveur' => "IOB"
 		];		
-		}$n++;}	
-	}		
-	$i++; }	
-		$n=0;if ($plan==99){ return $iob;}// pour test iob 
+		
+		if ($nb_iob>2){$values[$name] = $valeur -> {'val'};
+					   }	
+		$n++;$jj++;}					 
+if ($nb_iob>2){
+			$L2=$IP_iob.":".$port_api_iob."/v1/object/".$_id2;
+			$json1_string = file_get_curl($L2);
+			$iob_json1 = json_decode($json1_string,true);//return $iob_json1;			
+			$iob[$n]=[
+			'num' => $n,	
+			'ID' =>	$iob_json1['_id'],
+			'Name' =>$iob_json1['common']['name'],
+			'Type' =>$iob_json1['type'],
+			'Date' =>$iob_json1['ts'],
+			'values' => $values,	
+			'serveur' => 'IOB'
+			];//return $iob;
+	$n++;}
+	$ii++; }	
+		$n=0;if ($plan==99){ $_SESSION['iob'] = json_encode($iob);return $iob;}// pour test iob 
 	
 while (isset($iob[$n])==true){
 	$parsed_json[$q]=$iob[$n];
@@ -466,7 +459,7 @@ else {$lect_device["attributes"]="non défini";}
 $periph=array();$periph['idm']=1000;
 	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";}
 	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";}
-	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="2";$s1=$lect_device["ID"];}
+	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="2";$s1=$lect_device["Name"];}
 
 $periph=sql_plan($t1,$s,$s1);
 	if ($periph==null) {$choix_serveur="pas_ID";}
@@ -487,8 +480,8 @@ if ($t=="") {$t=888;$choix_serveur="0";}}
 	switch ($choix_serveur) {
 		case "iob" :	
 		
-if(array_key_exists('value', $lect_device)) {
-	$array=$lect_device['value'];
+if(array_key_exists('values', $lect_device)) {
+	$array=$lect_device['values'];
     if(array_key_exists('temperature', $array)) {$lect_device["Temp"]=$array["temperature"];$lect_device["Data"]=$array["temperature"];}//pour IOB
 	if(array_key_exists('air_temperature', $array)) {$lect_device["Temp"]=$array["air_temperature"];}//pour IOB
 	if(array_key_exists('humidity', $array)) {$lect_device["Humidity"]=$array["humidity"];}//pour IOB	
@@ -548,13 +541,14 @@ if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}
 	'coullamp_OFF' => $periph['coul_lamp_OFF']	,
 	'type_pass' => $periph['pass'],
 	'actif' => $periph['Actif'],
+	'values' => $lect_device['values'],			 
 	'alarm_bat' => $bat
 	];
-if (str_contains($periph['idm'], "_")==false  && $lect_device["serveur"]=="IOB") {
+/*if (str_contains($periph['idm'], "_")==false  && $lect_device["serveur"]=="IOB") {
 	$data[$t] = [
-		'Name' => $lect_device["Name"],
-		'Data' => $lect_device["Data"],
-		'value' => $value];}			
+		//'Name' => $lect_device["Name"],
+		//'Data' => $lect_device["Data"],
+		'value' => $value];}*/			
 break;
 case "1":
 case "0" :$data[$t] = [
@@ -1112,13 +1106,14 @@ if (($choix==10) || ($choix==11)) {$file = CONF_MODECT;$rel="11";}
 if (($choix==15) || ($choix==16)) {$file = BASE64;$rel="16";}	
 if (($choix==5) || ($choix==6)) {$file = MONCONFIG;$rel="6";}
 if (($choix==7) || ($choix==8)) {$file = MONCONFIG;$rel="8";}
+if ($choix==26) {$rel="29";}	
 if ($choix==21 ) {$ip=IPRPI;$mode="scp_r";$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de  msmtprc";$rel="22";}
 if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
 if ($choix==23 ) {$file=SSH_MONITOR_PATH."connect.py"; echo "copy de connect.py";$rel="24";}	
 if ($choix==24 ) {$file=SSH_MONITOR_PATH."connect.py"; }
 if ($choix==28 ) {$file=MOD_PYTHON_FILE;}	
-if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) ) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
+if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) && ($choix!=29)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12){echo "//*******création fichier noms/idx******* <br>";}
 if ($choix==13){echo "//*******création table LUA zigbee******* <br>";}
@@ -1262,7 +1257,7 @@ case "25" :include ('include/ajout_msg_bd.php');//echo "ajout dispositifs effect
 		return;	
 break;		
 case "26" :$l_dz="";$l_ha="";$retour=devices_plan(99);
-echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . json_encode($retour) . '</textarea>'; 
+echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px; width:460px" name="iob" >'.json_encode($retour).'</textarea><input type="button" value="enregistrer" id="enr" onclick="zajax('.$rel.')">'; 
 break;
 case "28" :$command = escapeshellcmd('pip list --format=json ');
 $output=exec($command);
@@ -1270,9 +1265,12 @@ echo "enregistré dans :".$file."<br><br>".$output;
 file_put_contents($file, $output);
 return;
 break;
-case "29" :
+case "29" :$file = "admin/iob.json";file_put_contents($file, $_SESSION['iob']);echo "enregistré dans :".$file.'<br><p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';
 return;	
-break;				
+break;	
+case "40" :
+break;					
+		
 default:
 } }
 else {	
