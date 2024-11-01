@@ -241,7 +241,7 @@ $.ajax({
     if (typeof custom != 'undefined') {
 		if (custom==1 & pp[0]['serveur_iob'] === true){custom_js(custom);}	
 	     }
-								//worx=pp[200].value;maj_worx(pp[200].Name,pp[200].Data);
+								//worx=pp[200].values;maj_worx(pp[200].Name,pp[200].Data);
 		
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
 		if (val.maj_date=='0'){
