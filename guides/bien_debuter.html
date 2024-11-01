@@ -1059,7 +1059,7 @@ function mc(variable,id){
 </dd>
 </dl>
 <p>. Nom appareil : non obligatoire</p>
-<p>.  ID , identity_id  (ha) ; ex : Home Assistant, nom essai, ID input_text.essai</p>
+<p>.  ID , identity_id  (ha &amp; iob) ; ex : Home Assistant, nom essai, ID input_text.essai</p>
 <blockquote>
 <div><div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
@@ -1186,11 +1186,11 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 </dl>
 </li>
 <li><p>Nom appareil : nom usuel</p></li>
-<li><p>nom_objet : nom pour Domoticz et io.broker  ou objet_id (friendly_name) pour Home Assistant</p></li>
+<li><p>nom_objet : nom pour Domoticz  optionnel pour io.broker &amp; Home Assistant  (objet_id (friendly_name)</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>il est plus facile de donner le même nom  d’un dispositif à Zigbee2mqtt, Zwave-JS, Domoticz et Home Assistant</p>
+<p>il est plus facile de donner le même nom  d’un dispositif à Zigbee2mqtt, Zwave-JS, Domoticz , Home Assistant ou iobroker</p>
 </div>
 <ul class="simple">
 <li><p>idx : celui de Domoticz</p></li>
@@ -1200,21 +1200,13 @@ f = io.open(&quot;userdata/scripts/python/connect.py&quot;, &quot;w&quot;)
 </dd>
 </dl>
 </li>
-</ul>
-<blockquote>
-<div><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Pour io.broker, l’objet regroupe toute les fonctions du dispositif, aussi comme un idm doit être unique , dans la base il faudra appliquer cette règle:</p>
-<p>idm_1, idm_2,….</p>
-<p><a class="reference internal" href="../_images/image1417.webp"><img alt="image1417" src="../_images/image1417.webp" style="width: 650px;" /></a></p>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li><p>Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu’un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4.</p></li>
+<li><p>Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4, io.broker+=5; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu’un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4 ou 5.</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>le chiffre 2 est à privilégier pour Domoticz, le chiffre 1 sera supprimé dans le futur</p>
+<p>iobroker+ concerne un dispositif io.Broker avec beaucoup d’ID, c’est le cas d’un robot tondeuse ou l’ID de l’appareil regroupe un nombre important d’IDs secondaires.</p>
+<p><a class="reference internal" href="../_images/image1417.webp"><img alt="image1417" src="../_images/image1417.webp" style="width: 490px;" /></a></p>
 </div>
 <p><a class="reference internal" href="../_images/image1325.webp"><img alt="image1325" src="../_images/image1325.webp" style="width: 300px;" /></a></p>
 <ul>
