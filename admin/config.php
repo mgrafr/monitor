@@ -142,7 +142,6 @@ define('VARTAB', 'admin/connect/string_tableaux.lua');//
 define('CONF_MODECT', 'admin/string_modect.json');
 //*********** pour Iobroker
 define('OBJ_IOBROKER','zigbee2mqtt.0');// séparer les objets par une virgule
-define('OBJ+_IOBROKER',true);// objet iobroker concernant beaucoup d'ID ex : robot tondeuse, météo web,...
 //-----------------------------------------------------------
 // Sauvegardes domoticz
 define('FICVARDZ','var_dz');//fichier json sauvegarde des variables
