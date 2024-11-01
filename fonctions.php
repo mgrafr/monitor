@@ -1112,7 +1112,7 @@ if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
 if ($choix==23 ) {$file=SSH_MONITOR_PATH."connect.py"; echo "copy de connect.py";$rel="24";}	
 if ($choix==24 ) {$file=SSH_MONITOR_PATH."connect.py"; }
 if ($choix==28 ) {$file=MOD_PYTHON_FILE;}	
-if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=16) && ($choix!=22) && ($choix!=24) && ($choix!=29)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
+if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=15) && ($choix!=16) && ($choix!=22) && ($choix!=24) && ($choix!=29)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
 src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12){echo "//*******création fichier noms/idx******* <br>";}
 if ($choix==13){echo "//*******création table LUA zigbee******* <br>";}
@@ -1140,19 +1140,20 @@ echo $file.'<br><em style="color:red">le fichier doit être autorisé en écritu
 	$button_enr="enregistrer";
 	if ($choix==23){$button_enr	= 'envoyer vers PI ';}
 	 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
-	<input type="button" value="'.$button_enr.'" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
+	<input type="button" value="'.$button_enr.'" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax(`enr`)"> ';
 	 echo '</form></div>';
 return "sauvegarde OK";	 
 break;
 case "4" :
+$content=$idrep;
+echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>fichiers sauvegardés';		
+file_put_contents($file,$content);
+// mise à jour par domoticz
+$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
+break;
 case "16" :
 $content=$idrep;
-echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/>fichiers sauvegardés';		
-file_put_contents($file, $content);
-// mise à jour par domoticz
-if ($choix==4){$retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];}
-if ($choix==16){
-	file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);
+file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);
 	$content=str_replace("/*JS*/","--  lua",$content);$content=str_replace("[","{",$content);$content=str_replace("]","}",$content);
 	file_put_contents(TMPCONFIG."connect.lua", $content);
 	$t_maj= "";
@@ -1160,8 +1161,7 @@ if ($choix==16){
 	if ($upload['Actif']=='1' || $upload['Actif']='2') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
 	if ($upload['ID']=='3') {$retour=devices_id($upload["ID"],"value","connect",0);$t_maj=$t_maj.$upload["ID"]."----->ha";}
 	if ($upload['ID']=='4') {$t_maj="----->iob";}
-	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>Les variables se nomment *****connect*****</p>";}		
-else {$retour['status'];}		
+	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>Les variables se nomment *****connect*****</p>";echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
 break;
 case "6" :
 case "22":

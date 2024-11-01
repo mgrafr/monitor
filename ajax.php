@@ -48,7 +48,7 @@ else if ($app=="log_dz") {log_dz($variable);}
 else if ($app=="admin") {admin($variable,$command);}	//$command=fenetre(administration footer	
 //  autres fonctions php-----------------------------------Z
 else if ($appp=="mdp") {$retour=mdp($variablep,$commandp);echo json_encode($retour);}
-else if ($appp=="adminp") {$retour=admin($variablep,$commandp);} // $command = content	(mes_js.js) & ("#adm1") fonctions.php
+else if ($appp=="adminp") {admin($variablep,$commandp);} // $command = content	(mes_js.js) & ("#adm1") fonctions.php
 //
 else echo "erreur ajax...".$app.$appp;
 //
