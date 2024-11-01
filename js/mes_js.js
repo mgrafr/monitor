@@ -11,7 +11,12 @@ $(id1).hide();}
 function remplace(id2,content2){
 $(id2).text(content2);
 }
-
+function zajax(rel){alert(rel);
+$("#enr").hide();   
+$("#adm1").empty();
+$.get('ajax.php', {app:'admin', variable:rel, command:""}).done(function(response){console.log(response);
+       $("#reponse1").html(response);
+});}
 
 /*Minimal Virtual Keypad
 ---------------------------*/
