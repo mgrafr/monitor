@@ -951,7 +951,11 @@ Enregistrer le dispositif dans la base de données
 
 |image1398|
 
-Extrait du fichier json avec les adaptateurs zigbee2mqtt.0 et yr.0.forecastHourly : 
+Extrait du fichier json avec les adaptateurs zigbee2mqtt.0 et yr.0.forecastHourly.0h : 
+
+|image1563|
+
+Extrait du fichier json avec l'adaptateurs worx.123456.....5678 :
 
 |image1399|
 
@@ -2172,7 +2176,7 @@ function mc(variable,id)
 .. |image1398| image:: ../img/image1398.webp
    :width: 427px
 .. |image1399| image:: ../img/image1399.webp
-   :width: 470px
+   :width: 354px
 .. |image1400| image:: ../img/image1400.webp
    :width: 463px
 .. |image1405| image:: ../img/image1405.webp
@@ -2235,3 +2239,5 @@ function mc(variable,id)
    :width: 555px
 .. |image1562| image:: ../img/image1562.webp
    :width: 582px
+.. |image1563| image:: ../img/image1563.webp
+   :width: 483px
