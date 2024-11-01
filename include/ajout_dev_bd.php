@@ -1,7 +1,7 @@
 
 <div id="adbf" style="line-height: normal;font-size: 14px;"><form><p style="width:350px;background-color: aquamarine; margin-left: 10px;"><strong>Si mise à jour, idm: :</strong><input type="text" style="width:40px;margin-left:10px;" id="majidm" value=""  ><input type="hidden" id="command1"  value="7"><input type="hidden" id="appli"  value="dev_bd"><button id="bouton_maj" type="button" onclick="adby(4)" style="width:50px;margin-left:10px;height:30px">Envoi</button></p></form></div>
 <div id="adb" style="line-height: normal;font-size: 14px;"><form>
-	<p><span style="margin-left: 10px;"><strong>Nom de l' Appareil :</strong> </span><input type="text" style="width:200px;margin-left:10px;" id="nom" value=""  ><br><span style="margin-left: 10px;"><em>ou fiendly_name</em></span><br><span style="margin-left: 10px;color:red">*</span>champ requis&nbsp;&nbsp;<span style="color:green">*</span>choisir 1 seul des 2 champs (si Actif)</p>	
+	<p><span style="margin-left: 10px;"><strong>Nom de l' Appareil :</strong> </span><input type="text" style="width:200px;margin-left:10px;" id="nom" value=""  ><br><span style="margin-left: 10px;"><em>ou fiendly_name</em></span><br><span style="margin-left: 10px;color:red">*</span>champ requis&nbsp;&nbsp;<span style="color:green">*</span>choisir au moins 1 champ (si Actif coché)</p>	
 <p style="margin-left: 10px;font-size:14px"> <em>type de mise à jour JS</em><span style="color:red">&nbsp;&nbsp;* </span><br>
 <input type="hidden"id="app" value="dev_bd">
 <input type="radio" name="maj_js" value="control">control
@@ -15,12 +15,12 @@
 <p style="margin-left: 10px;font-size:14px"> <strong>Domoticz</strong><br>
 <input type="hidden" id="command"  value="2">
 <span style="margin-left: 10px;">Idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value=""  ><span style="color:green">&nbsp;&nbsp;* </span></p>
- <p style="margin-left: 10px;font-size:14px"> <strong>Home Assistant</strong><br>
-<span style="margin-left: 10px;">entity_id : <input type="text" style="width:200px;margin-left:10px;" id="ha_id" value=""  ><span style="color:green">&nbsp;&nbsp;* </span></p>	<p style="margin-left: 10px;font-size:14px"> <strong>Domoticz , HA & io.Broker </strong>(nom ou object_id)<br> <span style="margin-left: 10px;">Nom_objet  :<input type="text" style="width:200px;margin-left: 3px;" id="nom_objet" value=""></p>
+ <p style="margin-left: 10px;font-size:14px"> <strong>Home Assistant & IoBroker</strong><br>
+<span style="margin-left: 10px;">ID ou entity_id : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value=""  ><span style="color:green">&nbsp;&nbsp;* </span></p>	<p style="margin-left: 10px;font-size:14px"> <strong>Domoticz , HA & io.Broker </strong>(nom ou object_id)<br> <span style="margin-left: 10px;">Nom_objet  :<input type="text" style="width:200px;margin-left: 3px;" id="nom_objet" value=""></p>
 	<p style="margin-left: 10px;font-size:14px"> <strong>Monitor</strong><br>
   <span style="margin-left: 10px;">Idm  : <input type="text" style="width:50px;" id="idm" value="" ><span style="color:red">&nbsp;&nbsp;* </span><em style="font-size:13px">(1à999 Groupe:G1.. , Scene:S1..)</em></span><br>
   <span style="color:red">&nbsp;&nbsp;&nbsp;Actif </span>:&nbsp;&nbsp;<input type="radio" name="actif"  value="0"><span style="color:black">Inactif</span> : 
-   <input type="radio" name="actif" value="2" ><span style="color:blue">Dz </span>&nbsp;&nbsp;<input type="radio" name="actif"  value="3"><span style="color:green">Ha</span>&nbsp;&nbsp;<input type="radio" name="actif"  value="4"><span style="color:purple">Iob</span><br>
+   <input type="radio" name="actif" value="2" ><span style="color:blue">Dz </span>&nbsp;&nbsp;<input type="radio" name="actif"  value="3"><span style="color:green">Ha</span>&nbsp;&nbsp;<input type="radio" name="actif"  value="4"><span style="color:purple">Iob</span>&nbsp;&nbsp;<input type="radio" name="actif"  value="5"><span style="color:darkgoldenrod">Iob+</span><br>
   <span style="margin-left: 10px;">Id1 html : <input type="text" style="width:120px;" id="id1_html" value="#"><span style="color:red">&nbsp;&nbsp;* </span></span><br>
    <span style="margin-left: 10px;">Id2 html :<input type="text" style="width:120px;margin-left: 10px;" id="id2_html" value="" ><br>
     <span style="margin-left: 10px;">Couleur Id1-Id2 : ON = <input type="text" style="width:200px;height:20px;margin-left: 10px;" id="coula" value="" ><br>
