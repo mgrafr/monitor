@@ -1137,7 +1137,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
    
 . Nom appareil : non obligatoire
 
-.  ID , identity_id  (ha) ; ex : Home Assistant, nom essai, ID input_text.essai
+.  ID , identity_id  (ha & iob) ; ex : Home Assistant, nom essai, ID input_text.essai
 
    .. warning::
 
@@ -1298,11 +1298,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
  
 - Nom appareil : nom usuel
 
-- nom_objet : nom pour Domoticz et io.broker  ou objet_id (friendly_name) pour Home Assistant 
+- nom_objet : nom pour Domoticz  optionnel pour io.broker & Home Assistant  (objet_id (friendly_name) 
 
 .. note::
 
-   il est plus facile de donner le même nom  d'un dispositif à Zigbee2mqtt, Zwave-JS, Domoticz et Home Assistant
+   il est plus facile de donner le même nom  d'un dispositif à Zigbee2mqtt, Zwave-JS, Domoticz , Home Assistant ou iobroker
 
 - idx : celui de Domoticz
 
@@ -1311,19 +1311,15 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - idm : idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
 
- .. note::
-
-    Pour io.broker, l'objet regroupe toute les fonctions du dispositif, aussi comme un idm doit être unique , dans la base il faudra appliquer cette règle:
-
-    idm_1, idm_2,....
-
-    |image1417|
-
-- Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4.
+- Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4, io.broker+=5; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4 ou 5.
 
 .. important::
 
    le chiffre 2 est à privilégier pour Domoticz, le chiffre 1 sera supprimé dans le futur
+
+   iobroker+ concerne un dispositif io.Broker avec beaucoup d'ID, c'est le cas d'un robot tondeuse ou l'ID de l'appareil regroupe un nombre important d'IDs secondaires.
+
+   |image1417|
 
 |image1325|
 
@@ -2186,7 +2182,7 @@ function mc(variable,id)
 .. |image1412| image:: ../img/image1412.webp
    :width: 650px
 .. |image1417| image:: ../img/image1417.webp
-   :width: 650px
+   :width: 490px
 .. |image1426| image:: ../img/image1426.webp
    :width: 700px
 .. |image1500| image:: ../img/image1500.webp
