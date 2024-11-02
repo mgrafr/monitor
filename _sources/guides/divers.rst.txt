@@ -641,7 +641,16 @@ Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’
 
 |image1566|
 
-18.11.2 Transfert de la clé publique SSH vers un serveur distant
+18.11.2 Vérifier que openssh-client est installé sur l'IP distante
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. code-block::
+
+   apt-cache show openssh-client
+
+|image1568|
+
+18.11.3 Transfert de la clé publique SSH vers un serveur distant
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. code-block::
@@ -766,3 +775,5 @@ Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’
    :width: 527px
 .. |image1567| image:: ../img/image1567.webp
    :width: 700px
+.. |image1568| image:: ../img/image1568.webp
+   :width: 638px
