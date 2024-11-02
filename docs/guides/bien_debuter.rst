@@ -987,13 +987,17 @@ La base de données a été créée lors de l’installation du serveur : nom=mo
 
    |image1555|
 
-   Si votre serveur possède plusieurs interfaces réseau, vous pouvez mettre 0.0.0.0 à la place de l'adresse IP dans `nano /etc/mysql/mysql.conf.d/mysqld.cnf`
+   Si votre serveur possède plusieurs interfaces réseau, vous pouvez mettre 0.0.0.0 à la place de l'adresse IP dans `nano /etc/mysql/mysql.conf.d/mysqld.cnf` mais cela concerne toutes les adresse IP
 
    |image1556|
+
+   ou si mariadb est d'une version récente , voir le § :ref:`0.3.5 Configurer MariaDB pour les connexions distantes`.
+
+   |image1564|
 
    Pour vérifier la connexion distante après avoir donné des droits à n utilisateur  :
 
-   |image1556|
+   |image1554|
 
 Connexion en local : :darkblue:`IP/phpmyadmin`
                         
@@ -2237,3 +2241,5 @@ function mc(variable,id)
    :width: 582px
 .. |image1563| image:: ../img/image1563.webp
    :width: 483px
+.. |image1564| image:: ../img/image1564.webp
+   :width: 550px
