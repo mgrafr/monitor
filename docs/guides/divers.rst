@@ -620,7 +620,7 @@ Dans automations.yaml,
 18.11 Comment générer des clés SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 18.11.1 Générer une clé SSH
-"""""""""""""""""""""""""""
+===========================
 2 algorithmes sont utilisés pour générer des clés d’authentification :
 
 - RSA – Une clé RSA SSH est considérée comme hautement sécurisée de  2048 ou 4096 bits. Compatible avec les anciens systèmes d’exploitation. 
@@ -642,7 +642,7 @@ Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’
 |image1566|
 
 18.11.2 Vérifier que openssh-client est installé sur l'IP distante
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+==================================================================
 
 .. code-block::
 
@@ -651,7 +651,7 @@ Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’
 |image1568|
 
 18.11.3 Transfert de la clé publique SSH vers un serveur distant
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+================================================================
 
 .. code-block::
 
