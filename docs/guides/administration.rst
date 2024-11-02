@@ -611,7 +611,7 @@ on ajoute pour les lignes concernées :
 
    <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=6 style="width:25px;display:inline;"></a><br>
 
-..important:: **:red:`rel` correspond au n° de l’élément dans la table du fichier:info_admin.php**
+..important:: :red:`rel correspond au n° de l’élément dans la table du fichier:info_admin.php`
 
 |image865|
 
