@@ -617,7 +617,40 @@ Dans automations.yaml,
       value: "{{ trigger.to_state.state }}"
       id: "{{ trigger.entity_id }} "
 
-18.11 Glossaire
+18.11 Comment générer les clés SSH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18.11.1 Générer la clé SSH
+""""""""""""""""""""""""""
+2 algorithmes sont utilisés pour générer des clés d’authentification :
+
+- RSA – Une clé RSA SSH est considérée comme hautement sécurisée de  2048 ou 4096 bits. Compatible avec les anciens systèmes d’exploitation. 
+
+- Ed25519 –  plus moderne avec une taille de clé standard plus petite de 256 bits. Aussi sûr et efficace qu’une clé RSA en raison de ses propriétés cryptographiques.
+
+Avec la console :
+
+.. code-block::
+
+   ssh-keygen -t ed25519
+
+|image1565|
+
+Le fichier de clé publique doit avoir une extension PUB. 
+
+Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’extension 
+
+|image1566|
+
+18.11.2 Transfert de la clé publique SSH vers un serveur distant
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. code-block::
+
+   ssh-copy-id <USER>@<IP_DISTANTE>
+
+|image1567|
+
+18.12 Glossaire
 ^^^^^^^^^^^^^^^
 
 .. admonition:: **Points de données ou data points**
@@ -727,3 +760,9 @@ Dans automations.yaml,
    :width: 600px
 .. |image1551| image:: ../img/image1551.webp
    :width: 573px
+.. |image1565| image:: ../img/image1565.webp
+   :width: 570px
+.. |image1566| image:: ../img/image1566.webp
+   :width: 527px
+.. |image1567| image:: ../img/image1567.webp
+   :width: 700px

@@ -96,7 +96,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#glossaire">18.11 Glossaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comment-generer-les-cles-ssh">18.11 Comment générer les clés SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#glossaire">18.12 Glossaire</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
@@ -704,8 +705,28 @@ return &#39;OK&#39;;
 </section>
 </section>
 </section>
+<section id="comment-generer-les-cles-ssh">
+<h2>18.11 Comment générer les clés SSH<a class="headerlink" href="#comment-generer-les-cles-ssh" title="Lien permanent vers cette rubrique"></a></h2>
+<p>2 algorithmes sont utilisés pour générer des clés d’authentification :</p>
+<ul class="simple">
+<li><p>RSA – Une clé RSA SSH est considérée comme hautement sécurisée de  2048 ou 4096 bits. Compatible avec les anciens systèmes d’exploitation.</p></li>
+<li><p>Ed25519 –  plus moderne avec une taille de clé standard plus petite de 256 bits. Aussi sûr et efficace qu’une clé RSA en raison de ses propriétés cryptographiques.</p></li>
+</ul>
+<p>Avec la console :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">ed25519</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1565.webp"><img alt="image1565" src="../_images/image1565.webp" style="width: 570px;" /></a></p>
+<p>Le fichier de clé publique doit avoir une extension PUB.</p>
+<p>Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’extension</p>
+<p><a class="reference internal" href="../_images/image1566.webp"><img alt="image1566" src="../_images/image1566.webp" style="width: 527px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">USER</span><span class="o">&gt;@&lt;</span><span class="n">IP_DISTANTE</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1567.webp"><img alt="image1567" src="../_images/image1567.webp" style="width: 700px;" /></a></p>
+</section>
 <section id="glossaire">
-<h2>18.11 Glossaire<a class="headerlink" href="#glossaire" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>18.12 Glossaire<a class="headerlink" href="#glossaire" title="Lien permanent vers cette rubrique"></a></h2>
 <div class="admonition-points-de-donnees-ou-data-points admonition">
 <p class="admonition-title"><strong>Points de données ou data points</strong></p>
 <p>Ce sont des chaînes uniques de données envoyée par un dispositif, un compteur ou un capteur installé dans une maison.</p>
