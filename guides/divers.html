@@ -96,7 +96,12 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#comment-generer-des-cles-ssh">18.11 Comment générer des clés SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comment-generer-des-cles-ssh">18.11 Comment générer des clés SSH</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generer-une-cle-ssh">18.11.1 Générer une clé SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verifier-que-openssh-client-est-installe-sur-l-ip-distante">18.11.2 Vérifier que openssh-client est installé sur l’IP distante</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transfert-de-la-cle-publique-ssh-vers-un-serveur-distant">18.11.3 Transfert de la clé publique SSH vers un serveur distant</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#glossaire">18.12 Glossaire</a></li>
 </ul>
 </li>
@@ -707,6 +712,8 @@ return &#39;OK&#39;;
 </section>
 <section id="comment-generer-des-cles-ssh">
 <h2>18.11 Comment générer des clés SSH<a class="headerlink" href="#comment-generer-des-cles-ssh" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="generer-une-cle-ssh">
+<h3>18.11.1 Générer une clé SSH<a class="headerlink" href="#generer-une-cle-ssh" title="Lien permanent vers cette rubrique"></a></h3>
 <p>2 algorithmes sont utilisés pour générer des clés d’authentification :</p>
 <ul class="simple">
 <li><p>RSA – Une clé RSA SSH est considérée comme hautement sécurisée de  2048 ou 4096 bits. Compatible avec les anciens systèmes d’exploitation.</p></li>
@@ -720,14 +727,21 @@ return &#39;OK&#39;;
 <p>Le fichier de clé publique doit avoir une extension PUB.</p>
 <p>Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’extension</p>
 <p><a class="reference internal" href="../_images/image1566.webp"><img alt="image1566" src="../_images/image1566.webp" style="width: 527px;" /></a></p>
+</section>
+<section id="verifier-que-openssh-client-est-installe-sur-l-ip-distante">
+<h3>18.11.2 Vérifier que openssh-client est installé sur l’IP distante<a class="headerlink" href="#verifier-que-openssh-client-est-installe-sur-l-ip-distante" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">cache</span> <span class="n">show</span> <span class="n">openssh</span><span class="o">-</span><span class="n">client</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1568.webp"><img alt="image1568" src="../_images/image1568.webp" style="width: 638px;" /></a></p>
+</section>
+<section id="transfert-de-la-cle-publique-ssh-vers-un-serveur-distant">
+<h3>18.11.3 Transfert de la clé publique SSH vers un serveur distant<a class="headerlink" href="#transfert-de-la-cle-publique-ssh-vers-un-serveur-distant" title="Lien permanent vers cette rubrique"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">USER</span><span class="o">&gt;@&lt;</span><span class="n">IP_DISTANTE</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1567.webp"><img alt="image1567" src="../_images/image1567.webp" style="width: 700px;" /></a></p>
+</section>
 </section>
 <section id="glossaire">
 <h2>18.12 Glossaire<a class="headerlink" href="#glossaire" title="Lien permanent vers cette rubrique"></a></h2>
