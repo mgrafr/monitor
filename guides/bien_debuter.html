@@ -937,10 +937,12 @@ function mc(variable,id){
 <p>Pour modifier la configuration , necessaire si la base de données est utilisée par une autre application “iobroker par exemple)</p>
 <p>le socket local n’utilise aucun port , le port par défaut est le 3306 et ilfaut le déclarer dans : <span class="darkblue">nano /etc/mysql/mariadb.cnf</span></p>
 <p><a class="reference internal" href="../_images/image1555.webp"><img alt="image1555" src="../_images/image1555.webp" style="width: 533px;" /></a></p>
-<p>Si votre serveur possède plusieurs interfaces réseau, vous pouvez mettre 0.0.0.0 à la place de l’adresse IP dans <cite>nano /etc/mysql/mysql.conf.d/mysqld.cnf</cite></p>
+<p>Si votre serveur possède plusieurs interfaces réseau, vous pouvez mettre 0.0.0.0 à la place de l’adresse IP dans <cite>nano /etc/mysql/mysql.conf.d/mysqld.cnf</cite> mais cela concerne toutes les adresse IP</p>
 <p><a class="reference internal" href="../_images/image1556.webp"><img alt="image1556" src="../_images/image1556.webp" style="width: 556px;" /></a></p>
+<p>ou si mariadb est d’une version récente , voir le § <a class="reference internal" href="#configurer-mariadb-pour-les-connexions-distantes"><span class="std std-ref">0.3.5 Configurer MariaDB pour les connexions distantes</span></a>.</p>
+<p><a class="reference internal" href="img/image1564.webp"><img alt="image1564" src="img/image1564.webp" style="width: 550px;" /></a></p>
 <p>Pour vérifier la connexion distante après avoir donné des droits à n utilisateur  :</p>
-<p><a class="reference internal" href="../_images/image1556.webp"><img alt="image1556" src="../_images/image1556.webp" style="width: 556px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1554.webp"><img alt="image1554" src="../_images/image1554.webp" style="width: 700px;" /></a></p>
 </div>
 <p>Connexion en local : <span class="darkblue">IP/phpmyadmin</span></p>
 <p><a class="reference internal" href="../_images/image72.webp"><img alt="image72" src="../_images/image72.webp" style="width: 424px;" /></a></p>
