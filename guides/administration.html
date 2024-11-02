@@ -450,23 +450,23 @@ document.getElementById(&quot;affich_content_info&quot;).innerHTML = info_admin[
 </section>
 <section id="connect-py">
 <h4>14.6.1.2 connect.py<a class="headerlink" href="#connect-py" title="Lien permanent vers cette rubrique"></a></h4>
-<p><em>Un double de connect.lua est enregistré au format python pour les script écrit dans ce langage</em></p>
-<p>L’original est enregistré dans admin/connect/ , il est toujours possible d’établir des liens symboliques:</p>
+<p><em>connect.py, connect.lua, connect.js sont enregistrés dans monitor</em>, la modification de connect.py entraine la modification automatique des 2 autres formats</p>
+<p>Ces originaux sont enregistrés dans admin/connect/ , il est toujours possible d’établir des liens symboliques dans monitor:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">admin</span><span class="o">/</span><span class="n">connect</span><span class="o">/</span><span class="n">connect</span><span class="o">.</span><span class="n">py</span> <span class="n">python</span><span class="o">/</span><span class="n">connect</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image823.webp"><img alt="image823" src="../_images/image823.webp" style="width: 595px;" /></a></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Ce double peut aussi servir à un autre serveur (un PI par exemple) ce qui facilite les mises à jour.</p>
+<p>Ces originaux peuvent aussi servir à d’autres serveurs (un PI par exemple) ce qui facilite les mises à jour.</p>
 <p>Une commande dans administration permet une mise à jour automatique du RPI; pour cela le fichier admin/config.php doit posséder l’IP du serveur :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;IPRPI&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.1.8&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">IP</span> <span class="n">du</span> <span class="n">Raspberry</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image825.webp"><img alt="image825" src="../_images/image825.webp" style="width: 427px;" /></a></p>
-<p>Pour récupérer le connect.py de Monitor , le chemin  doit être indiqué dans SSH_MONITOR_PATH</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SSH_MONITOR_PATH</span> <span class="p">:</span><span class="n">ex</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">admin</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="p">,</span> <span class="n">ex</span> <span class="n">autre</span>  <span class="n">home</span><span class="o">/</span><span class="n">USER</span><span class="o">/</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSH_MONITOR_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;/var/www/html/monitor/admin/tmp/&#39;</span><span class="p">);</span>
+<p>Pour récupérer le connect.py de Monitor, <strong>pour l’utiliser avec SSH</strong>, le chemin  doit être indiqué dans SSH_MONITOR_PATH de admin/config.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SSH_MONITOR_PATH</span> <span class="p">:</span><span class="n">ex</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">monitor</span><span class="o">/</span><span class="n">admin</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="p">,</span> <span class="n">ex</span> <span class="n">autre</span>  <span class="n">home</span><span class="o">/</span><span class="n">USER</span><span class="o">/</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SSH_MONITOR_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;/var/www/monitor/admin/tmp/&#39;</span><span class="p">);</span>
 
 <span class="n">ce</span> <span class="n">chemin</span> <span class="n">est</span> <span class="n">utilisé</span> <span class="n">dans</span> <span class="n">fonctions</span><span class="o">.</span><span class="n">php</span> <span class="n">admin</span><span class="p">()</span>
 </pre></div>

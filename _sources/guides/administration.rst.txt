@@ -353,9 +353,9 @@ ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs d
 
 14.6.1.2 connect.py
 """""""""""""""""""
-*Un double de connect.lua est enregistré au format python pour les script écrit dans ce langage*
+*connect.py, connect.lua, connect.js sont enregistrés dans monitor*, la modification de connect.py entraine la modification automatique des 2 autres formats
 
-L'original est enregistré dans admin/connect/ , il est toujours possible d'établir des liens symboliques:
+Ces originaux sont enregistrés dans admin/connect/ , il est toujours possible d'établir des liens symboliques dans monitor:
 
 .. code-block::
 
@@ -365,7 +365,7 @@ L'original est enregistré dans admin/connect/ , il est toujours possible d'éta
 
 .. important::
 
-   Ce double peut aussi servir à un autre serveur (un PI par exemple) ce qui facilite les mises à jour.
+   Ces originaux peuvent aussi servir à d'autres serveurs (un PI par exemple) ce qui facilite les mises à jour.
 
    Une commande dans administration permet une mise à jour automatique du RPI; pour cela le fichier admin/config.php doit posséder l’IP du serveur :
 
@@ -375,12 +375,12 @@ L'original est enregistré dans admin/connect/ , il est toujours possible d'éta
 
    |image825|
 
-   Pour récupérer le connect.py de Monitor , le chemin  doit être indiqué dans SSH_MONITOR_PATH
+   Pour récupérer le connect.py de Monitor, **pour l'utiliser avec SSH**, le chemin  doit être indiqué dans SSH_MONITOR_PATH de admin/config.php
 
    .. code-block::
 
-      //SSH_MONITOR_PATH :ex /var/www/html/monitor/admin/tmp/, ex autre  home/USER/
-      define('SSH_MONITOR_PATH', '/var/www/html/monitor/admin/tmp/');
+      //SSH_MONITOR_PATH :ex /var/www/monitor/admin/tmp/, ex autre  home/USER/
+      define('SSH_MONITOR_PATH', '/var/www/monitor/admin/tmp/');
 
       ce chemin est utilisé dans fonctions.php admin()
 
