@@ -617,10 +617,10 @@ Dans automations.yaml,
       value: "{{ trigger.to_state.state }}"
       id: "{{ trigger.entity_id }} "
 
-18.11 Comment générer les clés SSH
+18.11 Comment générer des clés SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-18.11.1 Générer la clé SSH
-""""""""""""""""""""""""""
+18.11.1 Générer une clé SSH
+"""""""""""""""""""""""""""
 2 algorithmes sont utilisés pour générer des clés d’authentification :
 
 - RSA – Une clé RSA SSH est considérée comme hautement sécurisée de  2048 ou 4096 bits. Compatible avec les anciens systèmes d’exploitation. 
