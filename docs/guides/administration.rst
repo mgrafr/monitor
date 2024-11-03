@@ -623,17 +623,19 @@ on ajoute pour les lignes concernées :
 
    *un protocole utilisé pour se connecter en toute sécurité à des systèmes distants*.
 
+   **Les connexions étant privés , l'autorisation se fait par mot de passe**
+
    .. note::
 
       Mon RAID1 étant alimenté en 230 Volts, le PI étant alimenté sur batterie, lors d’une coupure secteur, lors de la remise sous tension, le raid1 n’est pas reconnu ; Absent de la maison il faut donc faire un reboot du PI ou un « mount -a «  en bash d’où la commande ci-dessous.
 
       Autre application: mise à jour de la configuration pour l’envoi de notifications par mails lors d’un changement de mot de passe par exemple.
 
-   Pour cela on utilise le paquet php8.2-ssh2
+   Pour cela on utilise le paquet php8.x-ssh2
 
    .. code-block:: 
 
-      sudo apt install php8.2-ssh2
+      sudo apt install php8.3-ssh2 (indiquer la version de php, ici 8.3)
 
 14.10.1 reboot PC
 =================
