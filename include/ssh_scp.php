@@ -1,5 +1,5 @@
 <?php
-if ($type==1) {$commande='bash "/var/www/html/./reboot.sh"  >> /home/michel/sms.log 2>&1';$mode="ssh";}
+if ($type==1) {$commande='bash "/var/www/html/./reboot.sh"  >> /home/'.USERMONITOR.'/sms.log 2>&1';$mode="ssh";}
 if ($type==2) {$commande='bash "/home/'.USERMONITOR.'/./'.$command.'.sh"  >> /home/'.USERMONITOR.'/ctl.log 2>&1';$mode="ssh";}
 
 //$remote_file_name="/etc/msmtprc";$file_name="msmtprc";
