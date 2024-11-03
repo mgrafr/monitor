@@ -679,13 +679,14 @@ echo $file.&#39;&lt;div id=&quot;result&quot;&gt;&lt;form &gt;&#39;;
 <div class="admonition-ssh-ou-secure-shell admonition">
 <p class="admonition-title"><strong>SSH, ou Secure Shell</strong></p>
 <p><em>un protocole utilisé pour se connecter en toute sécurité à des systèmes distants</em>.</p>
+<p><strong>Les connexions étant privés , l’autorisation se fait par mot de passe</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mon RAID1 étant alimenté en 230 Volts, le PI étant alimenté sur batterie, lors d’une coupure secteur, lors de la remise sous tension, le raid1 n’est pas reconnu ; Absent de la maison il faut donc faire un reboot du PI ou un « mount -a «  en bash d’où la commande ci-dessous.</p>
 <p>Autre application: mise à jour de la configuration pour l’envoi de notifications par mails lors d’un changement de mot de passe par exemple.</p>
 </div>
-<p>Pour cela on utilise le paquet php8.2-ssh2</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">php8</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">ssh2</span>
+<p>Pour cela on utilise le paquet php8.x-ssh2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">php8</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">ssh2</span> <span class="p">(</span><span class="n">indiquer</span> <span class="n">la</span> <span class="n">version</span> <span class="n">de</span> <span class="n">php</span><span class="p">,</span> <span class="n">ici</span> <span class="mf">8.3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
