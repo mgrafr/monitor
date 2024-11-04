@@ -353,7 +353,7 @@ ces fichiers adaptés pour chaque langage sont téléchargés par les serveurs d
 
 14.6.1.2 connect.py
 """""""""""""""""""
-*connect.py, connect.lua, connect.js sont enregistrés dans monitor*, la modification de connect.py entraine la modification automatique des 2 autres formats
+*connect.py, connect.lua, connect.js, connect.yaml sont enregistrés dans monitor*, la modification de connect.py entraine la modification automatique des 3 autres formats
 
 Ces originaux sont enregistrés dans admin/connect/ , il est toujours possible d'établir des liens symboliques dans monitor:
 
@@ -409,6 +409,10 @@ Ces originaux sont enregistrés dans admin/connect/ , il est toujours possible d
 *pour node-red*
 
 |image831|
+
+14.6.1.4 connect.yaml
+"""""""""""""""""""""
+*pour Home Assistant*
 
 14.6.2 fonction devices_plan() partie consacrée à io.broker
 ===========================================================
