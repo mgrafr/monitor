@@ -1109,7 +1109,7 @@ if ($choix==26) {$rel="29";}
 if ($choix==21 ) {$ip=IPRPI;$mode="scp_r";$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				  include ('include/ssh_scp.php');$file=$local_path.$file_name; echo "copy de  msmtprc";$rel="22";}
 if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
-if ($choix==23 ) {$file=SSH_MONITOR_PATH."connect.py"; echo "copy de connect.py";$rel="24";}	
+if ($choix==23 ) {$file=TMPCONFIG."connect.py"; echo "copy de connect.py";$rel="24";}	
 if ($choix==24 ) {$file=SSH_MONITOR_PATH."connect.py"; }
 if ($choix==28 ) {$file=MOD_PYTHON_FILE;}	
 if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=15) && ($choix!=16) && ($choix!=22) && ($choix!=24) && ($choix!=29)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
@@ -1164,13 +1164,16 @@ file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr
 	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>Les variables se nomment *****connect*****</p>";echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
 break;
 case "6" :
+$content=$idrep;
+		file_put_contents($file, $content);echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>fichiers sauvegardés';
+return;
+ break;		
 case "22":
 case "24":		
  $content=$idrep;
- file_put_contents($file, $content);
-if ($choix==22){$mode="scp_s";$ip=IPRPI;$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
+ if ($choix==22){$mode="scp_s";$ip=IPRPI;$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
 				include ('include/ssh_scp.php');echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/>maj config msmtprc</p>';}	
-if ($choix==24){$ip=IPRPI;$remote_file_name="/home/michel/connect.py";$file_name="connect.py";$local_path=SSH_MONITOR_PATH;	
+if ($choix==24){$ip=IPRPI;$remote_file_name="/home/michel/connect.py";$file_name="connect.py";$local_path=$file;	
 		$mode="scp_s";include ('include/ssh_scp.php'); echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "copy de  connect.py";}		
  return;
  break;
@@ -1252,7 +1255,7 @@ break;
 case "20" :$ip=IPRPI;$type=1;include ('include/ssh_scp.php');  echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "reboot Raspberry";
 return;	
 break;
-case "25" :include ('include/ajout_msg_bd.php');//echo "ajout dispositifs effectué";
+case "25" :include ('include/ajout_msg_bd.php');
 		return;	
 break;		
 case "26" :$l_dz="";$l_ha="";$retour=devices_plan(99);
@@ -1464,7 +1467,7 @@ default:
 //----------------------------------------
 function mysql_app($data){
 	// SERVEUR SQL connexion
-$choix=$data["command"];
+$choix=$data["command"];echo $choix;
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 if ($conn -> connect_errno) {
   echo "Failed to connect to MySQL: " . $conn -> connect_error;
@@ -1491,10 +1494,9 @@ maj_query($conn,$sql);
 break;
 case "3":
 $nom=$data['nom'];$id1_html=$data['id_txt'];$id_txt=$data['id_txt'];
-//
 $sql="INSERT INTO messages (nom,  id1_html, contenu, maj ) VALUES ('$nom', '$id1_html', '', '0');";
-$retour=maj_query($conn,$sql);
-		
+$retour=maj_query($conn,$sql,"3");
+echo $retour;		
 break;
 case "4":
 $sql="UPDATE `sse` SET `id`='".$data['id']."',`state`='".$data['state']."',`date`='".$data['date']."' WHERE num=0;";
@@ -1597,7 +1599,7 @@ if ($ind=="4" || $ind==6) {return;}
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
-if ($ind=="8" ) {return;}	
+if ($ind=="8" || $ind=="3") {return;}	
 $sql="UPDATE dispositifs set idx=trim(idx);";$res = $conn->query($sql);
 $sql="UPDATE dispositifs set idm=trim(idm);";$res = $conn->query($sql);
 $sql="UPDATE dispositifs set ID=trim(ID);";$res = $conn->query($sql);	
@@ -1621,16 +1623,5 @@ function reboot(){
 $output = shell_exec('ssh '.LOGIN_PASS_RPI.'@'.IPRPI.' -t bash "sudo reboot"  >> /home/michel/sms.log 2>&1');	
 	
 }
-function get_state_list($_id){global $L_iob, $l_iob,$IP_iob,$port_api_iob;$values=array();
-$L_val=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id.".*";
-	$json_string_val = file_get_curl($L_val);
-	$iob_json_val=json_decode($json_string_val);
-		foreach ($iob_json_val as $val=>$val1){	
-		$ens = explode('.',$val);$valeur=$ens[3];$rep='.'.$ens[2];
-			if (isset($ens[4]) && $ens[4]!="") {$valeur=$ens[4];$rep='.'.$ens[3];}
-		if (isset($rep) && $rep!="rawMqtt"	) {					 
-		$values[$valeur]	= $val1->{'val'};
-		$ens=[];
-		}} 
-return $values;}
+
 ?>

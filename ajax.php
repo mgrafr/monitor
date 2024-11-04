@@ -37,7 +37,7 @@ else if ($app=="infos_met") {$retour=app_met($variable);echo json_encode($retour
 else if ($app=="infos_nagios") {api_nagios($variable);}
 else if ($app=="ecran_spa") {echo file_get_curl($variable);}
 else if ($app=="data_var") {$retour= val_variable($variable);echo json_encode($retour);}
-else if ($app=="dev_bd" || $app=="var_bd" || $app=="msg_bd"){mysql_app($_GET);}
+else if ($app=="dev_bd" || $app=="var_bd" || $app=="msg_bd"){echo mysql_app($_GET);}
 else if ($app=="ha" || $appp=="ha" ) {$retour=devices_zone($device);echo json_encode($retour);}
 else if ($app=="haid") {$retour=devices_id($device,$command);echo json_encode($retour);}
 else if ($app=="iobid") {$retour=get_state_list($device);echo json_encode($retour);}
