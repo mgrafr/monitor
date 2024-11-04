@@ -2,7 +2,7 @@
 require_once('../fonctions.php');
 
 function envoi_data($name){
-$name[0] = ['data' => '999'];	
+$name[0] = ['data' => '998'];	
 return $name;	
 	
 }
@@ -30,10 +30,11 @@ $donnees=array();
 $donnees=[
    'command'=> '4',
    'id' => $id,
-   'state' => $state
+   'state' => $state,
+	'date' => date("H:i:s", time())
     ];
 mysql_app($donnees);	
-return ;
+//return 'OK';
 }
 
 
