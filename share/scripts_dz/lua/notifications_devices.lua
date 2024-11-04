@@ -1,4 +1,4 @@
-  -- script notifications_devices version  2.1.5
+  -- script notifications_devices version  2.1.4
  -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 require 'connect'
@@ -8,7 +8,7 @@ local base64 = require'base64'
 
 function send_sse(txt,txt1)
     print(txt,txt1)
-local api_mon="curl --insecure  'http://192.168.1.9/monitor/api/json.php?app=maj&id="..txt.."&state="..txt1.."' > sse.log 2>&1" 
+local api_mon="curl --insecure  'http://'..ip_monitor..'/monitor/api/json.php?app=maj&id="..txt.."&state="..txt1.."' > sse.log 2>&1" 
 print(api_mon)
 os.execute(api_mon)
 end
