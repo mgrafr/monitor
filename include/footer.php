@@ -239,9 +239,9 @@ $.ajax({
     success: function(response){pp=response;var al_bat="";
    console.log('custom='+custom);
     if (typeof custom != 'undefined') {
-		if (custom==1 & pp[0]['serveur_iob'] === true){custom_js(custom);}	
-	     }
-								//worx=pp[200].values;maj_worx(pp[200].Name,pp[200].Data);
+		//if (custom==1 & pp[0]['serveur_iob'] === true){custom_js(custom);}	
+	     //}
+								worx=pp[200].values;maj_worx(pp[200].Name,pp[200].Data);}
 		
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
 		if (val.maj_date=='0'){
@@ -761,7 +761,7 @@ switch (choix) {
 	case 1: $("#advf").css("display", "none");$("#adv_f").css("display", "none");
 	var fenetre="avb";
 	var formData = {
-	app :  $("#app").val(),		
+	app :  $("#app1").val(),		
  	idx : $("#idx").val(), 
 	idm : $("#idm").val(), 	
   	nom_objet : $("#nom_objet").val(),
@@ -804,11 +804,12 @@ switch (choix) {
 case 3: 
 	var fenetre="amb";
 	var formData = {
-	app :  $("#app").val(),		
+	app :  $("#app3").val(),		
  	id_txt : $("#id_txt").val(),
   	nom : $("#nom").val(),	
 	command : $("#command").val(),
 	};
+break;		
 case 4: $("#bouton_maj").css("display", "none");
 	var fenetre="adb";
 	var formData = {
