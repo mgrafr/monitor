@@ -682,8 +682,10 @@ return &#39;OK&#39;;
 <h3>18.10.3  L’API de monitor depuis HA ou DZ<a class="headerlink" href="#l-api-de-monitor-depuis-ha-ou-dz" title="Lien permanent vers cette rubrique"></a></h3>
 <section id="depuis-domoticz">
 <h4>18.10.3.1  depuis Domoticz<a class="headerlink" href="#depuis-domoticz" title="Lien permanent vers cette rubrique"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">send_sse</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span><span class="n">txt1</span><span class="p">)</span>
-<span class="n">local</span> <span class="n">api_mon</span><span class="o">=</span><span class="s2">&quot;curl --insecure  &#39;http://192.168.1.9/monitor/api/json.php?app=maj&amp;id=&quot;</span><span class="o">..</span><span class="n">txt</span><span class="o">..</span><span class="s2">&quot;&amp;state=&quot;</span><span class="o">..</span><span class="n">txt1</span><span class="o">..</span><span class="s2">&quot;&#39; &gt; sse.log 2&gt;&amp;1&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">path</span><span class="o">..</span><span class="s2">&quot;;www/modules_lua/?.lua&quot;</span>
+<span class="n">require</span> <span class="s1">&#39;connect&#39;</span> <span class="o">--</span> <span class="n">fichier</span> <span class="n">contenant</span> <span class="n">l</span><span class="s1">&#39;IP de monitor</span>
+<span class="n">function</span> <span class="n">send_sse</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span><span class="n">txt1</span><span class="p">)</span>
+<span class="n">local</span> <span class="n">api_mon</span><span class="o">=</span><span class="s2">&quot;curl --insecure  &#39;http://&#39;..ip_monitor..&#39;/monitor/api/json.php?app=maj&amp;id=&quot;</span><span class="o">..</span><span class="n">txt</span><span class="o">..</span><span class="s2">&quot;&amp;state=&quot;</span><span class="o">..</span><span class="n">txt1</span><span class="o">..</span><span class="s2">&quot;&#39; &gt; sse.log 2&gt;&amp;1&quot;</span>
 <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">api_mon</span><span class="p">)</span>
 <span class="n">end</span>
 </pre></div>

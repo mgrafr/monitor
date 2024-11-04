@@ -588,8 +588,10 @@ la fonction mysql_app() dans /fonctions.php
 """"""""""""""""""""""""""
 .. code-block::
 
+   package.path = package.path..";www/modules_lua/?.lua"
+   require 'connect' -- fichier contenant l'IP de monitor
    function send_sse(txt,txt1)
-   local api_mon="curl --insecure  'http://192.168.1.9/monitor/api/json.php?app=maj&id="..txt.."&state="..txt1.."' > sse.log 2>&1"  
+   local api_mon="curl --insecure  'http://'..ip_monitor..'/monitor/api/json.php?app=maj&id="..txt.."&state="..txt1.."' > sse.log 2>&1"  
    os.execute(api_mon)
    end
 
