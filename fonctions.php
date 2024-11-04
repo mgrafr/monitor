@@ -1153,9 +1153,9 @@ $retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retou
 break;
 case "16" :
 $content=$idrep;
-file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);
-	$content=str_replace("/*JS*/","--  lua",$content);$content=str_replace("[","{",$content);$content=str_replace("]","}",$content);
-	file_put_contents(TMPCONFIG."connect.lua", $content);
+file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);$content1=$content;
+	$content=str_replace("/*JS*/","--  lua",$content1);$content=str_replace("[","{",$content);$content=str_replace("]","}",$content);
+	file_put_contents(TMPCONFIG."connect.lua", $content);$content=str_replace("/*JS*/","",$content1);$content=str_replace("=",":",$content);file_put_contents(TMPCONFIG."connect.yaml", $content);
 	$t_maj= "";
 	$upload=sql_variable('upload',6);
 	if ($upload['Actif']=='1' || $upload['Actif']='2') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
@@ -1467,7 +1467,7 @@ default:
 //----------------------------------------
 function mysql_app($data){
 	// SERVEUR SQL connexion
-$choix=$data["command"];echo $choix;
+$choix=$data["command"];
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 if ($conn -> connect_errno) {
   echo "Failed to connect to MySQL: " . $conn -> connect_error;
@@ -1499,8 +1499,10 @@ $retour=maj_query($conn,$sql,"3");
 echo $retour;		
 break;
 case "4":
-$sql="UPDATE `sse` SET `id`='".$data['id']."',`state`='".$data['state']."',`date`='".$data['date']."' WHERE num=0;";
-$retour=maj_query($conn,$sql,"4");		
+//UPDATE `sse` SET `id`='418',`state`='Off',`date`='13:14:49' WHERE num=0		
+$sql="UPDATE sse SET id='".$data['id']."',state='".$data['state']."',date='".$data['date']."' WHERE num=0;";
+echo $sql;		
+$retour=maj_query($conn,$sql,"4");	
 break;
 case "5":
 $sql="SELECT * FROM sse WHERE num=0; ";
