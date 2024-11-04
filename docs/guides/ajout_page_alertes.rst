@@ -240,9 +240,52 @@ Pour les 2 sous domaines (option: -d pour chaque)
 
     sudo certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email <xxxxxxxxxx>@orange.fr -d iobroker.<DOMAINE> -d iobweb.<DOMAINE>
 
-confifuration de l'hôte  modifiée par Cerbot:
+confifuration de l'hôte :darkblue:`iobroker`modifiée par Cerbot:
 
 |image1499|
+
+confifuration de l'hôte :darkblue:`iobweb` rmodifiée par Cerbot:
+
+.. code-block::
+
+   upstream iobweb {
+    server 192.168.1.162:8082;
+   }
+   server {
+    server_name  iobweb.la-truffiere.ovh;
+   location / {
+    proxy_pass http://iobweb;
+     proxy_set_header Host $host;
+     proxy_connect_timeout 30;
+     proxy_send_timeout 30;
+   #WebSocket support
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_http_version 1.1;
+    }
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/iobweb.la-truffiere.ovh/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/iobweb.la-truffiere.ovh/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    add_header Strict-Transport-Security "max-age=0" always; # managed by Certbot
+    ssl_trusted_certificate /etc/letsencrypt/live/iobweb.la-truffiere.ovh/chain.pem; # managed by Certbot
+    ssl_stapling on; # managed by Certbot
+    ssl_stapling_verify on; # managed by Certbot
+   }
+   server {
+   if ($host = iobweb.la-truffiere.ovh) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+    server_name  iobweb.la-truffiere.ovh;
+    location / {
+    proxy_pass http://iobweb;
+    proxy_set_header Host $host;
+    proxy_connect_timeout 30;
+    proxy_send_timeout 30;
+    }
+    listen 80;
+   }
 
 .. note::
 
