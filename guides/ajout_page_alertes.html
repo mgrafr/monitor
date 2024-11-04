@@ -333,8 +333,49 @@ location / {
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">certbot</span> <span class="o">--</span><span class="n">nginx</span> <span class="o">--</span><span class="n">agree</span><span class="o">-</span><span class="n">tos</span> <span class="o">--</span><span class="n">redirect</span> <span class="o">--</span><span class="n">hsts</span> <span class="o">--</span><span class="n">staple</span><span class="o">-</span><span class="n">ocsp</span> <span class="o">--</span><span class="n">email</span> <span class="o">&lt;</span><span class="n">xxxxxxxxxx</span><span class="o">&gt;</span><span class="nd">@orange</span><span class="o">.</span><span class="n">fr</span> <span class="o">-</span><span class="n">d</span> <span class="n">iobroker</span><span class="o">.&lt;</span><span class="n">DOMAINE</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="n">iobweb</span><span class="o">.&lt;</span><span class="n">DOMAINE</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>confifuration de l’hôte  modifiée par Cerbot:</p>
+<p>confifuration de l’hôte :darkblue:<a href="#id1"><span class="problematic" id="id2">`</span></a>iobroker`modifiée par Cerbot:</p>
 <p><a class="reference internal" href="../_images/image1499.webp"><img alt="image1499" src="../_images/image1499.webp" style="width: 700px;" /></a></p>
+<p>confifuration de l’hôte <span class="darkblue">iobweb</span> rmodifiée par Cerbot:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>upstream iobweb {
+ server 192.168.1.162:8082;
+}
+server {
+ server_name  iobweb.la-truffiere.ovh;
+location / {
+ proxy_pass http://iobweb;
+  proxy_set_header Host $host;
+  proxy_connect_timeout 30;
+  proxy_send_timeout 30;
+#WebSocket support
+ proxy_set_header Upgrade $http_upgrade;
+ proxy_set_header Connection &quot;upgrade&quot;;
+ proxy_http_version 1.1;
+ }
+ listen 443 ssl; # managed by Certbot
+ ssl_certificate /etc/letsencrypt/live/iobweb.la-truffiere.ovh/fullchain.pem; # managed by Certbot
+ ssl_certificate_key /etc/letsencrypt/live/iobweb.la-truffiere.ovh/privkey.pem; # managed by Certbot
+ include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+ ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+ add_header Strict-Transport-Security &quot;max-age=0&quot; always; # managed by Certbot
+ ssl_trusted_certificate /etc/letsencrypt/live/iobweb.la-truffiere.ovh/chain.pem; # managed by Certbot
+ ssl_stapling on; # managed by Certbot
+ ssl_stapling_verify on; # managed by Certbot
+}
+server {
+if ($host = iobweb.la-truffiere.ovh) {
+     return 301 https://$host$request_uri;
+ } # managed by Certbot
+ server_name  iobweb.la-truffiere.ovh;
+ location / {
+ proxy_pass http://iobweb;
+ proxy_set_header Host $host;
+ proxy_connect_timeout 30;
+ proxy_send_timeout 30;
+ }
+ listen 80;
+}
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Concernant Strict-Transport-Security, voir ce § <span class="xref std std-ref">21.13.1 Configuration de l’hôte virtuel NGINX</span></p>
