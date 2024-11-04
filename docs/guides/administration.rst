@@ -326,7 +326,7 @@ La variable :
 ========================================================================
 *pour utiliser ces données dans des scripts (lua, python, js ou autres)*
 
-connect.lua, connect.py, connect.js sont enregistrés dans admin/connect/:
+connect.lua, connect.py, connect.js et connect.yaml sont enregistrés dans admin/connect/:
 
 |image1362|
 
