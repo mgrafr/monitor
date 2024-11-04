@@ -68,7 +68,7 @@ fi
 info "serveur enregistré:" $server_name
 #server_name = "monitor"
 ssh2=$(whiptail --title "PHP-SSH2" --radiolist \
-"Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant\n attention version beta " 15 60 4 \
+"Comment voulez vous installer PHP ?\n ssh2 pour la communication avec un serveur distant\n PHP3-SSH2 " 15 60 4 \
 "PHP sans SSH2" "par defaut " ON \
 "PHP avec SSH2" "voir la doc" OFF 3>&1 1>&2 2>&3)
 if [ $exitstatus = 0 ]; then
@@ -189,7 +189,7 @@ rm /etc/nginx/sites-enabled/*
 # mv phpmyadmin.conf /etc/nginx/conf.d/
 echo "creer lien symbolique de phpmyadmin vers /www"
 mkdir /www
-ln -s $chemin/phpmyadmin  /www/phpmyadmin
+ln -s $chemin/phpMyAdmin  /www/phpmyadmin
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 echo "LEMP : redemarrage php"
 cd /etc/nginx
@@ -225,7 +225,16 @@ sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/monitor.c
 sed -i "s/xxxipxxx/${ip4}/g" /etc/nginx/conf.d/monitor.conf
 echo "LEMP : Creating a php-info page"
 echo '<?php phpinfo(); ?>' > /www/info.php
-echo "LEMP est installé" 
+echo "LEMP est installé"
+msg_ok "installation de mysql-connector-python" 
+wget https://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-9.1.0-src.tar.gz
+gzip mysql-connector-python-9.1.0-src.tar.gz -d
+tar -x -f mysql-connector-python-9.1.0-src.tar
+cd mysql-connector-python-9.1.0-src
+cd mysql-connector-python
+python3 setup.py build
+python3 setup.py install
+msg_ok "mysql-connector-python installé" 
 echo "Voulez vous créer un certificat auto-signé"
 echo "pour utiliser monitor en local en https ? O ou N"
 choix_ssl=$(whiptail --title "certificat auto-signé" --radiolist \
@@ -248,7 +257,6 @@ sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo "creer lien symbolique de phpmyadmin vers /www"
 ln -s $chemin/monitor  /www/monitor
-ln -s $chemin/monitor/admin/connect/connect.py $chemin/monitor/custom/python/connect.py
 echo "Redemarrage NGINX une derniere fois..."
 systemctl restart nginx
 chown -R $maria_name:$maria_name $chemin/monitor
@@ -273,5 +281,4 @@ sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
 sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.lua
 sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.py
-chown -R www-data:www-data /www/monitor/admin/connect/*
 exit
