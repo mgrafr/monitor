@@ -294,6 +294,27 @@ La variable :
 
 |image1366|
 
+Faire un essai avec un navigateur:
+
+.. code-block::
+
+   http://<IP DE MONITOR>/monitor/ajax.php?app=turn&device=input_text.var_upload&command=value&type=1
+
+Explications:
+
+- dans ajax.php:
+
+|image1570| 
+
+- dans fonctions.php:
+
+|image1571|
+
+- réponse de Home Assistant:
+
+|image1572|
+
+|image1573|
 14.5.3 Monitor
 ==============
 
@@ -883,3 +904,11 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 700px
 .. |image1541| image:: ../img/image1541.webp
    :width: 636px
+.. |image1570| image:: ../img/image1570.webp
+   :width: 700px
+.. |image1571| image:: ../img/image1571.webp
+   :width: 700px
+.. |image1572| image:: ../img/image1572.webp
+   :width: 621px
+.. |image1573| image:: ../img/image1573.webp
+   :width: 400px
