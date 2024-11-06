@@ -980,7 +980,16 @@ Portainer est également installé:
 
 |image1317|
 
-21.10.1.1 Installation de HACS, Pyscript, etc
+21.10.1.1 Mise à jour de Home Assistant
+"""""""""""""""""""""""""""""""""""""""
+
+.. code-block::
+
+   update
+
+|image1569|
+
+21.10.1.2 Installation de HACS, Pyscript, etc
 """""""""""""""""""""""""""""""""""""""""""""
 
 Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_config/_data` :
@@ -2136,3 +2145,5 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 700px
 .. |image1535| image:: ../img/image1535.webp
    :width: 600px
+.. |image1569| image:: ../img/image1569.webp
+   :width: 700px
