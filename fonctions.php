@@ -1158,9 +1158,9 @@ file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr
 	file_put_contents(TMPCONFIG."connect.lua", $content);$content=str_replace("/*JS*/","",$content1);$content=str_replace("=",":",$content);file_put_contents(TMPCONFIG."connect.yaml", $content);
 	$t_maj= "";
 	$upload=sql_variable('upload',6);
-	if ($upload['Actif']=='1' || $upload['Actif']='2') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
-	if ($upload['ID']=='3') {$retour=devices_id($upload["ID"],"value","connect",0);$t_maj=$t_maj.$upload["ID"]."----->ha";}
-	if ($upload['ID']=='4') {$t_maj="----->iob";}
+	if ($upload['idx']!='') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
+	if ($upload['ID']!='') {$retour=devices_id($upload["ID"],"value","connect",0);$t_maj=$t_maj.$upload["ID"]."----->ha";}
+	//if ($upload['ID']!='') {$t_maj="----->iob";}
 	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>Les variables se nomment *****connect*****</p>";echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
 break;
 case "6" :
