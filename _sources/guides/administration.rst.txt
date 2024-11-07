@@ -336,7 +336,7 @@ Dans configuration.yaml on crée le service:
    input_text: !include connect.yaml
    shell_command:
      upload_fichier:
-         "python3 /config/python/upload_fichier.py {{ connect.py }}  {{ ip_monitor }}" 
+         "python3 /config/python/upload_fichier.py {{ fichier }}  {{ ip_monitor }}" 
 
 Dans automations.yaml on crée l'automation:
 
