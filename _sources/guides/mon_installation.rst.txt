@@ -1152,7 +1152,7 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
 
 |image1350|
 
-Comme on peut le voir sur l'image ci-dessus le dossier :darkblue:`_data` correspond au dossier :darkblue:`config` de Docker; comme pour Domoticz, il faut tnir compt d ces chemin dans les scripts suivant où il sont lancés.
+Comme on peut le voir sur l'image ci-dessus le dossier :darkblue:`_data` correspond au dossier :darkblue:`config` de Docker; comme pour Domoticz, il faut tenir compte de ces chemins dans les scripts suivant où ils sont lancés.
 
 un exemple : dans le cadre rouge, un script lancé hors du conteneur, dans un cadre bleu un script lancé dans Home assistant (donc dans le conteneur)
 
