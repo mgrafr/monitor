@@ -75,7 +75,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#fonctions-php">14.4 fonctions PHP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#telechargement-dun-fichier-externe-dans-domoticz-ou-home-assistant">14.5 Téléchargement d’un fichier externe dans Domoticz ou Home Assistant</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#domoticz">14.5.1 Domoticz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#home-assistant">14.5.2 Home Assistant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#home-assistant">14.5.2 Home Assistant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#la-variable-input-text">14.5.2.1 la variable, input_text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#telechargement-du-fichier-connect-py-connect-yaml">14.5.2.2 Téléchargement du fichier <span class="darkblue">connect.py, connect.yaml</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#monitor">14.5.3 Monitor</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#copies-decran-et-explications">14.6 Copies d’écran et explications</a><ul>
@@ -399,10 +404,12 @@ document.getElementById(&quot;affich_content_info&quot;).innerHTML = info_admin[
 </section>
 <section id="home-assistant">
 <h3>14.5.2 Home Assistant<a class="headerlink" href="#home-assistant" title="Lien permanent vers cette rubrique"></a></h3>
-<p>La variable :</p>
+<section id="la-variable-input-text">
+<h4>14.5.2.1 la variable, input_text<a class="headerlink" href="#la-variable-input-text" title="Lien permanent vers cette rubrique"></a></h4>
+<p>La variable , ici var_upload</p>
 <p><a class="reference internal" href="../_images/image1367.webp"><img alt="image1367" src="../_images/image1367.webp" style="width: 400px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1366.webp"><img alt="image1366" src="../_images/image1366.webp" style="width: 299px;" /></a></p>
-<p>Faire un essai avec un navigateur:</p>
+<p>Faire un essai avec un navigateur en envoyant le chiffre 1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://&lt;IP DE MONITOR&gt;/monitor/ajax.php?app=turn&amp;device=input_text.var_upload&amp;command=value&amp;type=1
 </pre></div>
 </div>
@@ -419,9 +426,49 @@ document.getElementById(&quot;affich_content_info&quot;).innerHTML = info_admin[
 <li><p>réponse de Home Assistant:</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1572.webp"><img alt="image1572" src="../_images/image1572.webp" style="width: 621px;" /></a></p>
-<p><a class="reference internal" href="../_images/image1573.webp"><img alt="image1573" src="../_images/image1573.webp" style="width: 400px;" /></a>
-14.5.3 Monitor
-==============</p>
+<p><a class="reference internal" href="../_images/image1573.webp"><img alt="image1573" src="../_images/image1573.webp" style="width: 400px;" /></a></p>
+</section>
+<section id="telechargement-du-fichier-connect-py-connect-yaml">
+<h4>14.5.2.2 Téléchargement du fichier <span class="darkblue">connect.py, connect.yaml</span><a class="headerlink" href="#telechargement-du-fichier-connect-py-connect-yaml" title="Lien permanent vers cette rubrique"></a></h4>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Python_script de HA ne peut être utilisé car l’import de modules n’est pas possible</p>
+<p>La fonction Python est simple aussipour éviter d’utiliser pyscript, on va utiliser le chemin du fichier sous docker.</p>
+<p>Pour ne pas utiliser les répertoires <span class="darkblue">python_script &amp; pyscript</span>, on crée le répertoire python</p>
+</div>
+<p>Dans configuration.yaml on crée le service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Inclusion du fichier connect.yaml
+input_text: !include connect.yaml
+shell_command:
+  upload_fichier:
+      &quot;python3 /config/python/upload_fichier.py {{ connect.py }}  {{ ip_monitor }}&quot;
+</pre></div>
+</div>
+<p>Dans automations.yaml on crée l’automation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">id</span><span class="p">:</span> <span class="n">maj_connect</span>
+  <span class="n">alias</span><span class="p">:</span> <span class="n">import_fichiers_connect</span>
+  <span class="n">trigger</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">state</span>
+    <span class="n">to</span><span class="p">:</span> <span class="s1">&#39;connect&#39;</span>
+    <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">var_upload</span>
+  <span class="n">condition</span><span class="p">:</span>
+    <span class="n">condition</span><span class="p">:</span> <span class="n">template</span>
+    <span class="n">value_template</span><span class="p">:</span> <span class="s2">&quot;{{ states(&#39;input_text.var_upload&#39;) == &#39;connect &#39; }}&quot;</span>
+  <span class="n">actions</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">shell_command</span><span class="o">.</span><span class="n">upload_fichier</span>
+    <span class="n">data</span><span class="p">:</span>
+      <span class="n">fichier</span><span class="p">:</span> <span class="n">connect</span><span class="o">.</span><span class="n">py</span>
+  <span class="o">-</span> <span class="n">service</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">set_value</span>
+    <span class="n">data</span><span class="p">:</span>
+      <span class="n">value</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span>
+    <span class="n">target</span><span class="p">:</span>
+      <span class="n">entity_id</span><span class="p">:</span> <span class="n">input_text</span><span class="o">.</span><span class="n">var_upload</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="monitor">
+<h3>14.5.3 Monitor<a class="headerlink" href="#monitor" title="Lien permanent vers cette rubrique"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Les fonctions JS wajax() et yajax()</strong> ,  <em>dans mes_js.js</em></p></li>

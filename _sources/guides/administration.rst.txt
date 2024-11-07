@@ -288,13 +288,15 @@ La variable :
 
 14.5.2 Home Assistant
 =====================
-La variable :
+14.5.2.1 la variable, input_text
+""""""""""""""""""""""""""""""""
+La variable , ici var_upload
 
 |image1367|
 
 |image1366|
 
-Faire un essai avec un navigateur:
+Faire un essai avec un navigateur en envoyant le chiffre 1:
 
 .. code-block::
 
@@ -315,6 +317,50 @@ Explications:
 |image1572|
 
 |image1573|
+
+14.5.2.2 Téléchargement du fichier :darkblue:`connect.py, connect.yaml`
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+.. important::
+
+   Python_script de HA ne peut être utilisé car l'import de modules n'est pas possible
+
+   La fonction Python est simple aussipour éviter d'utiliser pyscript, on va utiliser le chemin du fichier sous docker.
+
+   Pour ne pas utiliser les répertoires :darkblue:`python_script & pyscript`, on crée le répertoire python
+
+Dans configuration.yaml on crée le service:
+
+.. code-block::
+
+   # Inclusion du fichier connect.yaml
+   input_text: !include connect.yaml
+   shell_command:
+     upload_fichier:
+         "python3 /config/python/upload_fichier.py {{ connect.py }}  {{ ip_monitor }}" 
+
+Dans automations.yaml on crée l'automation:
+
+.. code-block::
+   
+   - id: maj_connect
+     alias: import_fichiers_connect
+     trigger:
+     - platform: state
+       to: 'connect'
+       entity_id: input_text.var_upload
+     condition:
+       condition: template
+       value_template: "{{ states('input_text.var_upload') == 'connect ' }}"
+     actions:
+     - service: shell_command.upload_fichier
+       data:
+         fichier: connect.py
+     - service: input_text.set_value
+       data:
+         value: '0'
+       target:
+         entity_id: input_text.var_upload
+
 14.5.3 Monitor
 ==============
 
