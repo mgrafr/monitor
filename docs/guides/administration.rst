@@ -296,11 +296,15 @@ La variable , ici var_upload
 
 |image1366|
 
-Faire un essai avec un navigateur en envoyant le chiffre 1:
+Faire un essai avec un navigateur en envoyant "connect":
 
 .. code-block::
 
-   http://<IP DE MONITOR>/monitor/ajax.php?app=turn&device=input_text.var_upload&command=value&type=1
+   http://<IP DE MONITOR>/monitor/ajax.php?app=turn&device=input_text.var_upload&command=value&type=connect
+
+.. note::
+
+   l'api étant utilisée pour d'autres fonctions, ne pas tenir compte du nom des variables (ici type=valeur de var_upload)
 
 Explications:
 
@@ -324,9 +328,11 @@ Explications:
 
    Python_script de HA ne peut être utilisé car l'import de modules n'est pas possible
 
-   La fonction Python est simple aussipour éviter d'utiliser pyscript, on va utiliser le chemin du fichier sous docker.
+   La fonction Python est simple aussi pour éviter d'utiliser pyscript, on va utiliser le chemin du fichier sous docker.
 
-   Pour ne pas utiliser les répertoires :darkblue:`python_script & pyscript`, on crée le répertoire python
+   |image1574|
+
+   Pour ne pas utiliser les répertoires :darkblue:`python_script & pyscript`, réservés pour les scripts python particuliers, on crée le répertoire python
 
 Dans configuration.yaml on crée le service:
 
@@ -958,3 +964,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 621px
 .. |image1573| image:: ../img/image1573.webp
    :width: 400px
+.. |image1574| image:: ../img/image1574.webp
+   :width: 700px
