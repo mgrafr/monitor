@@ -1155,7 +1155,7 @@ case "16" :
 $content=$idrep;
 file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);$content1=$content;
 	$content=str_replace("/*JS*/","--  lua",$content1);$content=str_replace("[","{",$content);$content=str_replace("]","}",$content);
-	file_put_contents(TMPCONFIG."connect.lua", $content);$content=str_replace("/*JS*/","",$content1);$content=str_replace("="," :",$content);
+	file_put_contents(TMPCONFIG."connect.lua", $content);$content=str_replace("/*JS*/","",$content1);$content=str_replace("=",": ",$content);
 	file_put_contents(TMPCONFIG."connect.yaml", $content);	$t_maj= "";
 	$upload=sql_variable('upload',6);
 	if ($upload['idx']!='') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
