@@ -442,11 +442,9 @@ document.getElementById(&quot;affich_content_info&quot;).innerHTML = info_admin[
 <p>Pour ne pas utiliser les répertoires <span class="darkblue">python_script &amp; pyscript</span>, réservés pour les scripts python particuliers, on crée le répertoire python</p>
 </div>
 <p>Dans configuration.yaml on crée le service:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Inclusion du fichier connect.yaml
-input_text: !include connect.yaml
-shell_command:
-  upload_fichier:
-      &quot;python3 /config/python/upload_fichier.py {{ fichier }}  {{ ip_monitor }}&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shell_command</span><span class="p">:</span>
+  <span class="n">upload_fichier</span><span class="p">:</span>
+    <span class="s2">&quot;python3 /config/python/upload_fichier.py &#39;connect&#39;  &gt; /config/connect.log  2&gt;&amp;1&quot;</span>
 </pre></div>
 </div>
 <p>Dans automations.yaml on crée l’automation:</p>
