@@ -371,24 +371,27 @@ Dans automations.yaml on crée l'automation:
 
 .. code-block::
    
-   - id: maj_connect
-     alias: import_fichiers_connect
-     triggers:
-     - to: connect
-       entity_id: input_text.var_upload
-       trigger: state
-     conditions:
-     - condition: template
-       value_template: '{{ states(''input_text.var_upload'') == ''connect '' }}'
-     actions:
-     - action: shell_command.upload_fichier
-     - data:
-         value: '0'
-       target:
-         entity_id: input_text.var_upload
-       action: input_text.set_value
+   id: maj_connect
+  alias: import_fichiers_connect
+  triggers:
+    - trigger: state
+      entity_id:
+        - input_text.var_upload
+      to: connect
+      from: '0'
+  conditions: []
+  actions:
+    - action: shell_command.upload_fichier
+      data: {}
+    - data:
+        value: '0'
+      target:
+        entity_id: input_text.var_upload
+      action: input_text.set_value
 
 |image1575|
+
+|image1576|
 
 14.5.3 Monitor
 ==============
@@ -991,3 +994,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 700px
 .. |image1575| image:: ../img/image1575.webp
    :width: 434px
+.. |image1576| image:: ../img/image1576.webp
+   :width: 500px
