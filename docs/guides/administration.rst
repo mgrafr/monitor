@@ -338,11 +338,9 @@ Dans configuration.yaml on crée le service:
 
 .. code-block::
 
-   # Inclusion du fichier connect.yaml
-   input_text: !include connect.yaml
    shell_command:
      upload_fichier:
-         "python3 /config/python/upload_fichier.py {{ fichier }}  {{ ip_monitor }}" 
+       "python3 /config/python/upload_fichier.py 'connect'  > /config/connect.log  2>&1" 
 
 Dans automations.yaml on crée l'automation:
 
