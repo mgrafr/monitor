@@ -340,7 +340,32 @@ Dans configuration.yaml on crée le service:
 
    shell_command:
      upload_fichier:
-       "python3 /config/python/upload_fichier.py 'connect'  > /config/connect.log  2>&1" 
+       "python3 /config/python/upload_fichier.py connect > /config/connect.log  2>&1" 
+
+   .. admonition:: *le fichier upload_fichier.py:
+
+      code-block::
+
+         #!/usr/bin/env python3
+	 # -*- coding: utf-8 -*-
+	 import requests, sys
+	 from connect import ip_monitor
+	 x= str(sys.argv[1])
+	 #ip= str(sys.argv[2])
+	 ip=ip_monitor
+	 def import_fichier(ip,z,rep):
+    	     addr="http://"+ip+"/monitor/admin/connect/"+z
+    	     print(addr)
+    	     req = requests.get(addr)
+    	     with open(rep+z, "wb") as fp:
+                fp.write(req.content)      
+	 rep="/config/python/"
+	 z= x+".py"
+	 import_fichier(ip,z,rep)
+	 rep="/config/"
+	 z= x+".yaml"
+	 import_fichier(ip,z,rep)
+	 rep="/config"
 
 Dans automations.yaml on crée l'automation:
 
@@ -348,22 +373,22 @@ Dans automations.yaml on crée l'automation:
    
    - id: maj_connect
      alias: import_fichiers_connect
-     trigger:
-     - platform: state
-       to: 'connect'
+     triggers:
+     - to: connect
        entity_id: input_text.var_upload
-     condition:
-       condition: template
-       value_template: "{{ states('input_text.var_upload') == 'connect ' }}"
+       trigger: state
+     conditions:
+     - condition: template
+       value_template: '{{ states(''input_text.var_upload'') == ''connect '' }}'
      actions:
-     - service: shell_command.upload_fichier
-       data:
-         fichier: connect.py
-     - service: input_text.set_value
-       data:
+     - action: shell_command.upload_fichier
+     - data:
          value: '0'
        target:
          entity_id: input_text.var_upload
+       action: input_text.set_value
+
+|image1575|
 
 14.5.3 Monitor
 ==============
@@ -964,3 +989,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 400px
 .. |image1574| image:: ../img/image1574.webp
    :width: 700px
+.. |image1575| image:: ../img/image1575.webp
+   :width: 434px
