@@ -342,45 +342,45 @@ Dans configuration.yaml on crée le service:
      upload_fichier:
        "python3 /config/python/upload_fichier.py connect > /config/connect.log  2>&1" 
 
-   .. admonition:: *le fichier upload_fichier.py:
+Le fichier : :darkblue:`upload_fichier.py` :
 
-      code-block::
+.. code-block::
 
-         #!/usr/bin/env python3
-	 # -*- coding: utf-8 -*-
-	 import requests, sys
-	 from connect import ip_monitor
-	 x= str(sys.argv[1])
-	 #ip= str(sys.argv[2])
-	 ip=ip_monitor
-	 def import_fichier(ip,z,rep):
-    	     addr="http://"+ip+"/monitor/admin/connect/"+z
-    	     print(addr)
-    	     req = requests.get(addr)
-    	     with open(rep+z, "wb") as fp:
-                fp.write(req.content)      
-	 rep="/config/python/"
-	 z= x+".py"
-	 import_fichier(ip,z,rep)
-	 rep="/config/"
-	 z= x+".yaml"
-	 import_fichier(ip,z,rep)
-	 rep="/config"
+   #!/usr/bin/env python3
+   # -*- coding: utf-8 -*-
+   import requests, sys
+   from connect import ip_monitor
+   x= str(sys.argv[1])
+   #ip= str(sys.argv[2])
+   ip=ip_monitor
+   def import_fichier(ip,z,rep):
+       addr="http://"+ip+"/monitor/admin/connect/"+z
+       print(addr)
+       req = requests.get(addr)
+       with open(rep+z, "wb") as fp:
+           fp.write(req.content)      
+   rep="/config/python/"
+   z= x+".py"
+   import_fichier(ip,z,rep)
+   rep="/config/"
+   z= x+".yaml"
+   import_fichier(ip,z,rep)
+   rep="/config"
 
 Dans automations.yaml on crée l'automation:
 
 .. code-block::
    
    id: maj_connect
-  alias: import_fichiers_connect
-  triggers:
+   alias: import_fichiers_connect
+   triggers:
     - trigger: state
       entity_id:
         - input_text.var_upload
       to: connect
       from: '0'
-  conditions: []
-  actions:
+   conditions: []
+   actions:
     - action: shell_command.upload_fichier
       data: {}
     - data:
