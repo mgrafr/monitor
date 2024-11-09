@@ -1201,6 +1201,12 @@ le fichier ha.conf dans /etc/nginx/conf.d:
     }
    }
 
+21.10.6 exemples de scripts 
+============================
+21.10.6.1 Bouton SOS zigbee2mqtt
+""""""""""""""""""""""""""""""""
+à venir
+
 21.11 Pont Hue Ha-bridge pour Alexa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 voir le § :ref:`13.8 Pont HA (ha-bridge)`
