@@ -983,7 +983,13 @@ La base de données a été créée lors de l’installation du serveur : nom=mo
 
    Pour modifier la configuration , necessaire si la base de données est utilisée par une autre application 'iobroker par exemple)
 
-   le socket local n'utilise aucun port , le port par défaut est le 3306 et ilfaut le déclarer dans : :darkblue:`nano /etc/mysql/mariadb.cnf`
+   le socket local n'utilise aucun port , le port par défaut est le 3306 et il faut le déclarer dans : :darkblue:`nano /etc/mysql/mariadb.cnf`
+
+   *Il faut aussi autoriser ce port dans le pare-feu si la base est utilisée par un serveur distant (ex iobroker)* : 
+
+.. code-block::
+
+   ufw allow 3306
 
    |image1555|
 
