@@ -323,7 +323,7 @@ $L=$L_ha.$api;
 $ha=file_http_curl($L,$mode,$post,$Token_ha);
 $data = json_decode($ha, true);
 $data['status']="OK";										
-$data['xxx']=$L;											
+$data['address_api']=$L;											
 return json_encode($data);}
 
 function set_object($device,$type,$value,$pass=0){global $Token_iob,$port_api_iob,$IP_iob;
@@ -497,14 +497,12 @@ if(array_key_exists('values', $lect_device)) {
 	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}
 	//if(array_key_exists('pause', $array)) {$lect_device["Data"] = $array["pause"];}// pour WORX
 }
-			
-	
 		case "dz" :
 		case "ha" :			
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('description', $lect_device)) {$description=$lect_device["description"];}// pour IOB			
 if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
-if (!$lect_device["BatteryLevel"]) $lect_device["BatteryLevel"]=255;			
+if (!$lect_device["BatteryLevel"]){ $lect_device["BatteryLevel"]=255;}			
 	if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
     if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
 if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);$lect_device["Fx"]=$periph['F()'];}
@@ -512,9 +510,11 @@ if ($periph['F()']==0) {$lect_device["Fx"]=$periph['F()'];}
 if ($periph['F()']==-1) {$lect_device["Fx"]="lien_variable";}			
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
-
+if (!$lect_device['values']){$lect_device['values']="";}
+if (!$lect_device['attributes']){$lect_device['attributes']="";}
+if (!$lect_device['Type']){$lect_device['Type']="inconnu";}			
 	$data[$t] = ['serveur' => $lect_device["serveur"],			 
-	'idx' => $lect_device["idx"],
+	'idx' => $periph["idx"],
 	'deviceType' => $lect_device["Type"],	
 	'emplacement' => $description,					 
 	'temp' => $lect_device["Temp"],
