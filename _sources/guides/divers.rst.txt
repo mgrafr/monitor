@@ -443,6 +443,14 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
 |image1322|
 
+- Pour éviter de redémarrer après modification de fstab, ...
+
+.. code-block::
+
+   systemctl daemon-reload
+
+|image1301|
+
 18.9.2 Commandes yaml
 =====================
 
@@ -753,6 +761,8 @@ Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’
    :width: 700px
 .. |image1281| image:: ../img/image1281.webp
    :width: 600px
+.. |image1301| image:: ../img/image1301.webp
+   :width: 310px
 .. |image1302| image:: ../img/image1302.webp
    :width: 541px
 .. |image1304| image:: ../img/image1304.webp
