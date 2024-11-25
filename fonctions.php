@@ -777,15 +777,7 @@ $resultat='<p>'.$info.'Le temps prévu pour cet après-midi  : '.$donnees[$info]
 break;
     case 1:		
 $url = 'https://api.meteo-concept.com/api/forecast/daily?insee='.INSEE;
-	$ch = curl_init(); 
-		curl_setopt($ch, CURLOPT_URL, 'https://api.meteo-concept.com/api/forecast/daily?token=2fce16877b45b86ba110ef2cdbf8d0e437563395f7a8ab2961919a7065ea2cd0&insee=24454' ); curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 ); 
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET' ); 
-		$headers = array (); $headers[] = 'Accepter : */*' ; 
-		$headers[] = 'X-Auth-Token: 2fce16877b45b86ba110ef2cdbf8d0e437563395f7a8ab2961919a7065ea2cd0' ; 
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); 
-		$result = curl_exec($ch);
- 	if (curl_errno($ch)) {
-     echo  'Erreur:' . curl_error($ch); } curl_close($ch);
+$result=file_http_curl($url,1,'',TOKEN_MC);	
 	$decoded = json_decode($result);
 	$city = $decoded->city;
 	$forecasts = $decoded->forecast;
