@@ -5,7 +5,7 @@
 import time,requests,serial
 from periphery import Serial
 ip_domoticz="http://192.168.1.76:8086/"
-se_domoticz="http://michel:Idem4546@localhost:8086/"
+se_domoticz="http://<LOGIN>:<PASS>@localhost:8086/"
 def convert_to_string(buf):
     try:
         tt =  buf.decode('utf-8').strip()
