@@ -870,9 +870,7 @@ Le système est sauvegardé par le logiciel Raspibackup : http://domo-site.fr/ac
 
 Le PI4 assure aussi :
 
--	La sauvegarde RAID1, mais celle-ci n’est pas sauvegardée et un reboot du PI est nécessaire en cas de coupure de courant ; une fonction existe, pour cela, dans monitor….. http://domo-site.fr/accueil/dossiers/60
-
--	Le monitoring (Nagios) : http://domo-site.fr/accueil/dossiers/71
+-  Le monitoring (Nagios) : http://domo-site.fr/accueil/dossiers/71
 
 .. admonition::**Configuration de l'hôte virtuel sur Nginx**
 
@@ -1803,6 +1801,8 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 
 21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le Raid1 utilisé est matériel, voir cette page http://domo-site.fr/accueil/dossiers/60, pour plus d'infos.
 
 .. note::
 

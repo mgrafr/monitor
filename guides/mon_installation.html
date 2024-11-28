@@ -943,7 +943,6 @@ Le système est sauvegardé par le logiciel Raspibackup : <a class="reference ex
 <p><a class="reference internal" href="../_images/image1048.webp"><img alt="image1048" src="../_images/image1048.webp" style="width: 600px;" /></a></p>
 <p>Le PI4 assure aussi :</p>
 <ul class="simple">
-<li><p>La sauvegarde RAID1, mais celle-ci n’est pas sauvegardée et un reboot du PI est nécessaire en cas de coupure de courant ; une fonction existe, pour cela, dans monitor….. <a class="reference external" href="http://domo-site.fr/accueil/dossiers/60">http://domo-site.fr/accueil/dossiers/60</a></p></li>
 <li><p>Le monitoring (Nagios) : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/71">http://domo-site.fr/accueil/dossiers/71</a></p></li>
 </ul>
 <ul class="simple">
@@ -1699,6 +1698,7 @@ listen 80;
 </section>
 <section id="sauvegarde-raid1-avec-conteneur-lxc-non-privilegie">
 <h2>21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié<a class="headerlink" href="#sauvegarde-raid1-avec-conteneur-lxc-non-privilegie" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Le Raid1 utilisé est matériel, voir cette page <a class="reference external" href="http://domo-site.fr/accueil/dossiers/60">http://domo-site.fr/accueil/dossiers/60</a>, pour plus d’infos.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Avant la création de ce conteneur non privilégié, mes sauvegardes Raid1 étaient assurées par un Raspberry car beaucoup d’articles sur internet affirmaient quil étaiet impossible de faire des sauvegardes de VM ou CT Proxmox à partir de Samba installé sur un conteneur LXC.</p>
