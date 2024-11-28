@@ -1801,8 +1801,15 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 
 |image1437|
 
-21.15 Sauvegarde RAID1 avec Conteneur LXC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+voir aussi http://domo-site.fr/accueil/dossiers/81# , Plex, pour plus d' infos concernant les CT non privilégié
+
+Pour cette sauvegarde, le principe sera le même que celui décrit,  pour toutes les sauvegardes, sauf pour les sauvegardes PVE.
+
+Pour PVE, il faudra créer en plus de la liaison de la partition du Raid1, une liaison pour samba.
+
 21.15.1 Création du conteneur
 =============================
 
@@ -1857,21 +1864,38 @@ création du répertoire choisi ci dessus et ajout des droits:
 
 .. code-block::
 
-   mkdir -p /srv/samba/sharedocs
-   chown nobody:nogroup /srv/samba/sharedocs
-   chmod 0775 /srv/samba/sharedocs
+   adduser <vous si ce n'zest pas encore fait>  
+   ..
+   mkdir -p /srv/samba/Backup
+   chown <user>:sambashare /srv/samba/Backup
+   chmod 0775 /srv/samba/Backup
  
 |image1582|
 
-Création d'un utilisateur
+Création d'un utilisateur pour smb
 
 .. code-block::
 
-   adduser <vous si ce n'zest pas encore fait>
    adduser <vous ou tout utilisateur> sambashare
-   smbpasswd -a vous ou tout utilisateur>
+   smbpasswd -a <vous ou tout utilisateur>
 
 |image1583|
+
+21.15.4 Liaisons dans PVE
+=========================
+création des réperoires, 
+
+- pour le disque du Raid1
+
+- pour le partage Samba
+
+.. code-blok::
+
+   mkdir /mnt/Backup # pour le CT raid1 Samba
+   mkdir /mnt/Partage2 # pour la connexion de PVE à samba
+
+|image1584|
+
 
 
 .. |image1026| image:: ../media/image1026.webp
@@ -2237,6 +2261,8 @@ Création d'un utilisateur
 .. |image1581| image:: ../img/image1581.webp
    :width: 605px
 .. |image1582| image:: ../img/image1582.webp
-   :width: 524px
+   :width: 597px
 .. |image1583| image:: ../img/image1583.webp
    :width: 605px
+.. |image1584| image:: ../img/image1584.webp
+   :width: 270px

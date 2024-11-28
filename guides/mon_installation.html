@@ -157,10 +157,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#les-styles-css">21.14.5 Les styles css</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#sauvegarde-raid1-avec-conteneur-lxc">21.15 Sauvegarde RAID1 avec Conteneur LXC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sauvegarde-raid1-avec-conteneur-lxc-non-privilegie">21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#creation-du-conteneur">21.15.1 Création du conteneur</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installation-de-samba">21.15.2 Installation de Samba</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-de-samba">21.15.3 Configuration de SAMBA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#liaisons-dans-pve">21.15.4 Liaisons dans PVE</a></li>
 </ul>
 </li>
 </ul>
@@ -1695,8 +1696,11 @@ listen 80;
 <p><a class="reference internal" href="../_images/image1437.webp"><img alt="image1437" src="../_images/image1437.webp" style="width: 533px;" /></a></p>
 </section>
 </section>
-<section id="sauvegarde-raid1-avec-conteneur-lxc">
-<h2>21.15 Sauvegarde RAID1 avec Conteneur LXC<a class="headerlink" href="#sauvegarde-raid1-avec-conteneur-lxc" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="sauvegarde-raid1-avec-conteneur-lxc-non-privilegie">
+<h2>21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié<a class="headerlink" href="#sauvegarde-raid1-avec-conteneur-lxc-non-privilegie" title="Lien permanent vers cette rubrique"></a></h2>
+<p>voir aussi <a class="reference external" href="http://domo-site.fr/accueil/dossiers">http://domo-site.fr/accueil/dossiers</a>/81# , Plex, pour plus d” infos concernant les CT non privilégié</p>
+<p>Pour cette sauvegarde, le principe sera le même que celui décrit,  pour toutes les sauvegardes, sauf pour les sauvegardes PVE.</p>
+<p>Pour PVE, il faudra créer en plus de la liaison de la partition du Raid1, une liaison pour samba.</p>
 <section id="creation-du-conteneur">
 <h3>21.15.1 Création du conteneur<a class="headerlink" href="#creation-du-conteneur" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference external" href="https://community-scripts.github.io/ProxmoxVE/scripts?id=debian">https://community-scripts.github.io/ProxmoxVE/scripts?id=debian</a></p>
@@ -1733,19 +1737,29 @@ listen 80;
 </div>
 <p><a class="reference internal" href="../_images/image1581.webp"><img alt="image1581" src="../_images/image1581.webp" style="width: 605px;" /></a></p>
 <p>création du répertoire choisi ci dessus et ajout des droits:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">sharedocs</span>
-<span class="n">chown</span> <span class="n">nobody</span><span class="p">:</span><span class="n">nogroup</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">sharedocs</span>
-<span class="n">chmod</span> <span class="mi">0775</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">sharedocs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adduser</span> <span class="o">&lt;</span><span class="n">vous</span> <span class="n">si</span> <span class="n">ce</span> <span class="n">n</span><span class="s1">&#39;zest pas encore fait&gt;</span>
+<span class="o">..</span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">Backup</span>
+<span class="n">chown</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span><span class="p">:</span><span class="n">sambashare</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">Backup</span>
+<span class="n">chmod</span> <span class="mi">0775</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">Backup</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../_images/image1582.webp"><img alt="image1582" src="../_images/image1582.webp" style="width: 524px;" /></a></p>
-<p>Création d’un utilisateur</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adduser</span> <span class="o">&lt;</span><span class="n">vous</span> <span class="n">si</span> <span class="n">ce</span> <span class="n">n</span><span class="s1">&#39;zest pas encore fait&gt;</span>
-<span class="n">adduser</span> <span class="o">&lt;</span><span class="n">vous</span> <span class="n">ou</span> <span class="n">tout</span> <span class="n">utilisateur</span><span class="o">&gt;</span> <span class="n">sambashare</span>
-<span class="n">smbpasswd</span> <span class="o">-</span><span class="n">a</span> <span class="n">vous</span> <span class="n">ou</span> <span class="n">tout</span> <span class="n">utilisateur</span><span class="o">&gt;</span>
+<p><a class="reference internal" href="../_images/image1582.webp"><img alt="image1582" src="../_images/image1582.webp" style="width: 597px;" /></a></p>
+<p>Création d’un utilisateur pour smb</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adduser</span> <span class="o">&lt;</span><span class="n">vous</span> <span class="n">ou</span> <span class="n">tout</span> <span class="n">utilisateur</span><span class="o">&gt;</span> <span class="n">sambashare</span>
+<span class="n">smbpasswd</span> <span class="o">-</span><span class="n">a</span> <span class="o">&lt;</span><span class="n">vous</span> <span class="n">ou</span> <span class="n">tout</span> <span class="n">utilisateur</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1583.webp"><img alt="image1583" src="../_images/image1583.webp" style="width: 605px;" /></a></p>
+</section>
+<section id="liaisons-dans-pve">
+<h3>21.15.4 Liaisons dans PVE<a class="headerlink" href="#liaisons-dans-pve" title="Lien permanent vers cette rubrique"></a></h3>
+<p>création des réperoires,</p>
+<ul class="simple">
+<li><p>pour le disque du Raid1</p></li>
+<li><p>pour le partage Samba</p></li>
+</ul>
+<p><a class="reference internal" href="img/image1584.webp"><img alt="image1584" src="img/image1584.webp" style="width: 270px;" /></a></p>
 </section>
 </section>
 </section>
