@@ -1801,6 +1801,60 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 
 |image1437|
 
+21.15 Sauvegarde RAID1 avec Conteneur LXC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21.15.1 Création du conteneur
+=============================
+
+https://community-scripts.github.io/ProxmoxVE/scripts?id=debian
+
+|image1578|
+
+Le conteneur:
+
+|image1577|
+
+21.15.2 Installation de Samba
+=============================
+
+.. code-block::
+
+  apt install samba samba-common-bin
+
+|image1579|
+
+.. code-block::
+
+   systemctl status smbd
+
+|image1580|
+
+21.15.3 Configuration de SAMBA
+==============================
+
+Le fichier de configuration de SAMBA : :green:`/etc/samba/smb.conf`
+
+sauvegarder le fichier de configuration d'origine et ouvrir nano pour modifier la cobfiguration.
+
+.. code-block::
+
+   cp /etc/samba/smb.conf /etc/samba/smb.conf.backup
+   nano /etc/samba/smb.conf
+
+Ajouter ces lignes
+
+.. code-block::
+
+   [Backup]
+   path = /srv/samba/Backup
+   writable = yes
+   guest ok = no
+   valid users = @sambashare
+
+|image1581|
+
+  
+
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
 .. |image1027| image:: ../media/image1027.webp
@@ -2153,3 +2207,13 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
    :width: 600px
 .. |image1569| image:: ../img/image1569.webp
    :width: 700px
+.. |image1577| image:: ../img/image1577.webp
+   :width: 600px
+.. |image1578| image:: ../img/image1578.webp
+   :width: 650px
+.. |image1579| image:: ../img/image1579.webp
+   :width: 511px
+.. |image1580| image:: ../img/image1580.webp
+   :width: 605px
+.. |image1581| image:: ../img/image1581.webp
+   :width: 605px
