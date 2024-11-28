@@ -1699,6 +1699,11 @@ listen 80;
 </section>
 <section id="sauvegarde-raid1-avec-conteneur-lxc-non-privilegie">
 <h2>21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié<a class="headerlink" href="#sauvegarde-raid1-avec-conteneur-lxc-non-privilegie" title="Lien permanent vers cette rubrique"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Avant la création de ce conteneur non privilégié, mes sauvegardes Raid1 étaient assurées par un Raspberry car beaucoup d’articles sur internet affirmaient quil étaiet impossible de faire des sauvegardes de VM ou CT Proxmox à partir de Samba installé sur un conteneur LXC.</p>
+<p>En réalité, je ne sais si ma methode est très rationnelle car elle consiste à monter sur 2 répertoires différents le même contenu mais ça fonctionne.</p>
+</div>
 <p>voir aussi <a class="reference external" href="http://domo-site.fr/accueil/dossiers">http://domo-site.fr/accueil/dossiers</a>/81# , Plex, pour plus d” infos concernant les CT non privilégié</p>
 <p>Pour cette sauvegarde, le principe sera le même que celui décrit,  pour toutes les sauvegardes, sauf pour les sauvegardes PVE.</p>
 <p>Pour PVE, il faudra créer en plus de la liaison de la partition du Raid1, une liaison pour samba.</p>
@@ -1777,13 +1782,17 @@ listen 80;
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mp0</span><span class="p">:</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">Backup</span><span class="p">,</span><span class="n">mp</span><span class="o">=/</span><span class="n">srv</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">Backup</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="img/image1588.webp"><img alt="image1586" src="img/image1588.webp" style="width: 646px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1586.webp"><img alt="image1586" src="../_images/image1586.webp" style="width: 646px;" /></a></p>
 </section>
 <section id="creation-de-la-sauvegarde-samba-dans-pve">
 <h3>21.15.5 Création de la sauvegarde samba dans PVE<a class="headerlink" href="#creation-de-la-sauvegarde-samba-dans-pve" title="Lien permanent vers cette rubrique"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pvesm</span> <span class="n">add</span> <span class="n">cifs</span> <span class="n">save_raid</span> <span class="o">--</span><span class="n">server</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.35</span> <span class="o">--</span><span class="n">path</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">partage2</span> <span class="o">--</span><span class="n">share</span> <span class="n">Backup</span> <span class="o">--</span><span class="n">username</span> <span class="n">michel</span> <span class="o">--</span><span class="n">password</span> <span class="n">Idem4546</span> <span class="o">--</span><span class="n">smbversion</span> <span class="mf">2.1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pvesm</span> <span class="n">add</span> <span class="n">cifs</span> <span class="o">&lt;</span><span class="n">NOM</span> <span class="n">DANS</span> <span class="n">PVE</span><span class="o">&gt;</span> <span class="o">--&lt;</span><span class="n">IP_SERVEUR</span><span class="o">-</span><span class="n">SAMBA</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">path</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">partage2</span> <span class="o">--</span><span class="n">share</span> <span class="n">Backup</span> <span class="o">--</span><span class="n">username</span> <span class="o">&lt;</span><span class="n">USER</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">password</span> <span class="o">&lt;</span><span class="n">MOT_PASSE</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">smbversion</span> <span class="mf">2.1</span>
 </pre></div>
 </div>
+<p><a class="reference internal" href="img/image1589.webp"><img alt="image1589" src="img/image1589.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="img/image1588.webp"><img alt="image1588" src="img/image1588.webp" style="width: 700px;" /></a></p>
+<p>Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certaines sauvegardes Windows, j’ai du donner des droits 777 à la sauvegarde nommée ici Backup du CT LXC:</p>
+<p><a class="reference internal" href="img/image1590.webp"><img alt="image1590" src="img/image1590.webp" style="width: 638px;" /></a></p>
 </section>
 </section>
 </section>
