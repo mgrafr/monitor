@@ -1853,7 +1853,26 @@ Ajouter ces lignes
 
 |image1581|
 
-  
+création du répertoire choisi ci dessus et ajout des droits:
+
+.. code-block::
+
+   mkdir -p /srv/samba/sharedocs
+   chown nobody:nogroup /srv/samba/sharedocs
+   chmod 0775 /srv/samba/sharedocs
+ 
+|image1582|
+
+Création d'un utilisateur
+
+.. code-block::
+
+   adduser <vous si ce n'zest pas encore fait>
+   adduser <vous ou tout utilisateur> sambashare
+   smbpasswd -a vous ou tout utilisateur>
+
+|image1583|
+
 
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
@@ -2216,4 +2235,8 @@ Ajouter ces lignes
 .. |image1580| image:: ../img/image1580.webp
    :width: 605px
 .. |image1581| image:: ../img/image1581.webp
+   :width: 605px
+.. |image1582| image:: ../img/image1582.webp
+   :width: 524px
+.. |image1583| image:: ../img/image1583.webp
    :width: 605px
