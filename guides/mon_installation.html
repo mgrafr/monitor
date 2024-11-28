@@ -162,6 +162,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#installation-de-samba">21.15.2 Installation de Samba</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-de-samba">21.15.3 Configuration de SAMBA</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#liaisons-dans-pve">21.15.4 Liaisons dans PVE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creation-de-la-sauvegarde-samba-dans-pve">21.15.5 Création de la sauvegarde samba dans PVE</a></li>
 </ul>
 </li>
 </ul>
@@ -1754,12 +1755,35 @@ listen 80;
 </section>
 <section id="liaisons-dans-pve">
 <h3>21.15.4 Liaisons dans PVE<a class="headerlink" href="#liaisons-dans-pve" title="Lien permanent vers cette rubrique"></a></h3>
-<p>création des réperoires,</p>
+<p>création des réperoires et ajout des propriétaires</p>
 <ul class="simple">
 <li><p>pour le disque du Raid1</p></li>
 <li><p>pour le partage Samba</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1584.webp"><img alt="image1584" src="../_images/image1584.webp" style="width: 270px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="mi">100000</span><span class="p">:</span><span class="mi">110000</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">partage2</span>
+<span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="mi">100000</span><span class="p">:</span><span class="mi">110000</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">Backup</span>
+</pre></div>
+</div>
+<p>Modification du fichier /etc/fstab:</p>
+<p>Avec la commande blkid , récupérer l’UUID du Raid1</p>
+<p><a class="reference internal" href="../_images/image1587.webp"><img alt="image1587" src="../_images/image1587.webp" style="width: 700px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UUID</span><span class="o">=</span><span class="mi">0</span><span class="n">a232b06</span><span class="o">-</span><span class="n">cfd9</span><span class="o">-</span><span class="mi">3997</span><span class="o">-</span><span class="mi">32</span><span class="n">b2</span><span class="o">-</span><span class="n">f0ec05ffef78</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">Backup</span> <span class="n">ext4</span> <span class="n">rw</span><span class="p">,</span><span class="n">relatime</span>   <span class="mi">0</span>    <span class="mi">2</span>
+<span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.35</span><span class="o">/</span><span class="n">Backup</span><span class="o">/</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">partage2</span> <span class="n">cifs</span> <span class="n">_netdev</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="n">systemd</span><span class="o">.</span><span class="n">automount</span><span class="p">,</span><span class="n">noatime</span><span class="p">,</span><span class="n">uid</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span><span class="n">gid</span><span class="o">=</span><span class="mi">110000</span><span class="p">,</span><span class="n">dir_mode</span><span class="o">=</span><span class="mi">0777</span><span class="p">,</span><span class="n">file_mode</span><span class="o">=</span><span class="mi">0777</span><span class="p">,</span><span class="n">user</span><span class="o">=</span><span class="n">michel</span><span class="p">,</span><span class="k">pass</span><span class="o">=</span><span class="n">Idem4546</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1585.webp"><img alt="image1585" src="../_images/image1585.webp" style="width: 700px;" /></a></p>
+<p>Modification e la configuration du conteneur Raid1 : indication de la liaison avec PVE</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mp0</span><span class="p">:</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">Backup</span><span class="p">,</span><span class="n">mp</span><span class="o">=/</span><span class="n">srv</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">Backup</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="img/image1588.webp"><img alt="image1586" src="img/image1588.webp" style="width: 646px;" /></a></p>
+</section>
+<section id="creation-de-la-sauvegarde-samba-dans-pve">
+<h3>21.15.5 Création de la sauvegarde samba dans PVE<a class="headerlink" href="#creation-de-la-sauvegarde-samba-dans-pve" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pvesm</span> <span class="n">add</span> <span class="n">cifs</span> <span class="n">save_raid</span> <span class="o">--</span><span class="n">server</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.35</span> <span class="o">--</span><span class="n">path</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">partage2</span> <span class="o">--</span><span class="n">share</span> <span class="n">Backup</span> <span class="o">--</span><span class="n">username</span> <span class="n">michel</span> <span class="o">--</span><span class="n">password</span> <span class="n">Idem4546</span> <span class="o">--</span><span class="n">smbversion</span> <span class="mf">2.1</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
