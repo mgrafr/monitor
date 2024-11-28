@@ -1883,7 +1883,7 @@ Création d'un utilisateur pour smb
 
 21.15.4 Liaisons dans PVE
 =========================
-création des réperoires, 
+création des réperoires et ajout des propriétaires 
 
 - pour le disque du Raid1
 
@@ -1895,6 +1895,42 @@ création des réperoires,
    mkdir /mnt/Partage2 # pour la connexion de PVE à samba
 
 |image1584|
+
+.. code-block::
+
+   chown -R 100000:110000 /mnt/partage2
+   chown -R 100000:110000 /mnt/Backup
+
+Modification du fichier /etc/fstab:
+
+Avec la commande blkid , récupérer l'UUID du Raid1
+
+|image1587|
+
+.. code-block::
+
+   UUID=0a232b06-cfd9-3997-32b2-f0ec05ffef78 /mnt/Backup ext4 rw,relatime   0    2
+   //192.168.1.35/Backup/ /mnt/partage2 cifs _netdev,x-systemd.automount,noatime,uid=100000,gid=110000,dir_mode=0777,file_mode=0777,user=michel,pass=Idem4546 0 0
+
+|image1585|
+
+Modification e la configuration du conteneur Raid1 : indication de la liaison avec PVE
+
+.. code-block::
+
+   mp0: /mnt/Backup,mp=/srv/samba/Backup
+
+|image1586|
+
+
+
+21.15.5 Création de la sauvegarde samba dans PVE
+================================================
+
+.. code-block::
+ 
+   pvesm add cifs save_raid --server 192.168.1.35 --path /mnt/partage2 --share Backup --username michel --password Idem4546 --smbversion 2.1
+
 
 
 
@@ -2266,3 +2302,9 @@ création des réperoires,
    :width: 605px
 .. |image1584| image:: ../img/image1584.webp
    :width: 270px
+.. |image1585| image:: ../img/image1585.webp
+   :width: 700px
+.. |image1586| image:: ../img/image1588.webp
+   :width: 646px
+.. |image1587| image:: ../img/image1587.webp
+   :width: 700px
