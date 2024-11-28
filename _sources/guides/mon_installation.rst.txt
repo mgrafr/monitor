@@ -1937,11 +1937,17 @@ Modification e la configuration du conteneur Raid1 : indication de la liaison av
 
 |image1589|
 
+.. note::
+
+   Comme , on peut le voir sur l'image si dessus, Samba peut être monté dans n'impotrte quel répertoire.
+
 |image1588|
 
 Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certaines sauvegardes Windows, j'ai du donner des droits 777 à la sauvegarde nommée ici Backup du CT LXC:
 
 |image1590|
+
+|image1591|
 
 
 .. |image1026| image:: ../media/image1026.webp
@@ -2324,3 +2330,5 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
    :width: 700px
 .. |image1590| image:: ../img/image1590.webp
    :width: 638px
+.. |image1591| image:: ../img/image1591.webp
+   :width: 700px
