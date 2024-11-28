@@ -1804,6 +1804,12 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note::
+
+   Avant la création de ce conteneur non privilégié, mes sauvegardes Raid1 étaient assurées par un Raspberry car beaucoup d'articles sur internet affirmaient quil étaiet impossible de faire des sauvegardes de VM ou CT Proxmox à partir de Samba installé sur un conteneur LXC.
+
+   En réalité, je ne sais si ma methode est très rationnelle car elle consiste à monter sur 2 répertoires différents le même contenu mais ça fonctionne.
+
 voir aussi http://domo-site.fr/accueil/dossiers/81# , Plex, pour plus d' infos concernant les CT non privilégié
 
 Pour cette sauvegarde, le principe sera le même que celui décrit,  pour toutes les sauvegardes, sauf pour les sauvegardes PVE.
@@ -1922,16 +1928,20 @@ Modification e la configuration du conteneur Raid1 : indication de la liaison av
 
 |image1586|
 
-
-
 21.15.5 Création de la sauvegarde samba dans PVE
 ================================================
 
 .. code-block::
  
-   pvesm add cifs save_raid --server 192.168.1.35 --path /mnt/partage2 --share Backup --username michel --password Idem4546 --smbversion 2.1
+   pvesm add cifs <NOM DANS PVE> --<IP_SERVEUR-SAMBA> --path /mnt/partage2 --share Backup --username <USER> --password <MOT_PASSE> --smbversion 2.1
 
+|image1589|
 
+|image1588|
+
+Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certaines sauvegardes Windows, j'ai du donner des droits 777 à la sauvegarde nommée ici Backup du CT LXC:
+
+|image1590|
 
 
 .. |image1026| image:: ../media/image1026.webp
@@ -2304,7 +2314,13 @@ Modification e la configuration du conteneur Raid1 : indication de la liaison av
    :width: 270px
 .. |image1585| image:: ../img/image1585.webp
    :width: 700px
-.. |image1586| image:: ../img/image1588.webp
+.. |image1586| image:: ../img/image1586.webp
    :width: 646px
 .. |image1587| image:: ../img/image1587.webp
    :width: 700px
+.. |image1588| image:: ../img/image1588.webp
+   :width: 700px
+.. |image1589| image:: ../img/image1589.webp
+   :width: 700px
+.. |image1590| image:: ../img/image1590.webp
+   :width: 638px
