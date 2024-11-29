@@ -859,6 +859,20 @@ pour le créer (fichier:pass user:michel):
 
 21.9 Raspberry PI4
 ^^^^^^^^^^^^^^^^^^
+.. note::
+
+   en 2024 le PI4 est remplacé par un PI5 équipé d'un  Serial HAT RS232, le PI-232 
+
+   |image1592|
+
+   Le Serial HAT RS232 est facile à installer et à utiliser. Il suffit de connecter le HAT aux broches GPIO du Raspberry Pi d'utiliser l'UART0.
+
+   mes fichiers config.txt et cdmline.txt:
+
+   |image1593|
+
+   |image1594|
+
 Alimenté en 12 Volts , comme le mini PC Proxmox, le PI4 couplé à un modem GSM assure l’envoi et la réception des sms même en cas de coupure d’alimentation électrique ENEDIS ; 
 
 .. IMPORTANT:: **L’alarme ainsi que toute les commandes Domoticz restent opérationnelles.**
@@ -2331,4 +2345,10 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 .. |image1590| image:: ../img/image1590.webp
    :width: 638px
 .. |image1591| image:: ../img/image1591.webp
+   :width: 700px
+.. |image1592| image:: ../img/image1592.webp
+   :width: 400px
+.. |image1593| image:: ../img/image1593.webp
+   :width: 244px
+.. |image1594| image:: ../img/image1594.webp
    :width: 700px
