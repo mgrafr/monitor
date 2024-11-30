@@ -1820,7 +1820,7 @@ Le Raid1 utilisé est matériel, voir cette page http://domo-site.fr/accueil/dos
 
 .. note::
 
-   Avant la création de ce conteneur non privilégié, mes sauvegardes Raid1 étaient assurées par un Raspberry car beaucoup d'articles sur internet affirmaient quil étaiet impossible de faire des sauvegardes de VM ou CT Proxmox à partir de Samba installé sur un conteneur LXC.
+   Avant la création de ce conteneur non privilégié, mes sauvegardes Raid1 étaient assurées par un Raspberry car beaucoup d'articles sur internet affirmaient qu'il était impossible de faire des sauvegardes de VM ou CT Proxmox à partir de Samba installé sur un conteneur non privilégié LXC.
 
    En réalité, je ne sais si ma methode est très rationnelle car elle consiste à monter sur 2 répertoires différents le même contenu mais ça fonctionne.
 
