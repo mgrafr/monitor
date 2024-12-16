@@ -1,0 +1,10 @@
+[Unit]
+Description=commande rec sms
+After=multi-user.target
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/michel/rec_sms_serie.py > /home/michel/rec_sms.log 2>&1
+Restart=always
+RestartSec=0
+[Install]
+WantedBy=multi-user.target
