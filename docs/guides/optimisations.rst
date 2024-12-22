@@ -1,10 +1,10 @@
-22. OPTIMISATION en cours
+23. OPTIMISATION en cours
 -------------------------
-22.1 Reset à distance du modem GSM
+23.1 Reset à distance du modem GSM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 *1 Bug  en 2 ans !!!* 
 
-22.1.1 Simple programme de commande de relais USB LCUS_1
+23.1.1 Simple programme de commande de relais USB LCUS_1
 ========================================================
 
 **le script bash**
@@ -28,7 +28,7 @@
 
 |image1064|
 
-22.2 Assistant personnel open source Leon
+23.2 Assistant personnel open source Leon
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1112|  https://github.com/leon-ai/leon
 
@@ -45,7 +45,7 @@ Installation dans un conteneur LXC Proxmox
   
    |image1128|
 
-22.2.1 Prérequis
+23.2.1 Prérequis
 ================
 Si l'on est encore sous ROOT:
 
@@ -77,9 +77,9 @@ Si l'on est encore sous ROOT:
 
    |image1130|
 
-22.2.2 Installation et configuration de Leon
+23.2.2 Installation et configuration de Leon
 ============================================
-22.2.2.1 INSTALLATION
+23.2.2.1 INSTALLATION
 """""""""""""""""""""
 
 **- Installation de Leon CLI**
@@ -122,7 +122,7 @@ Si l'on est encore sous ROOT:
 
 |image1120|
 
-22.2.2.2 CONFIGURATION
+23.2.2.2 CONFIGURATION
 """"""""""""""""""""""
 .. important:: **PORTS des serveurs HTTP et TCP**
 
@@ -146,7 +146,7 @@ Dans le répertoire d'installation ~/.leon , remplacer IP, Ports, Langue,...
 
 |image1122|
 
-22.2.2.3 LANCER Leon
+23.2.2.3 LANCER Leon
 """"""""""""""""""""
 Quitter le shell en root : exit
 
@@ -164,7 +164,7 @@ Dans un navigateur, au clavier:
 
 |image1126|
 
-22.2.2.4 UPDATE Leon en mode développement
+23.2.2.4 UPDATE Leon en mode développement
 """"""""""""""""""""""""""""""""""""""""""
 
 .. code-block::
@@ -173,9 +173,9 @@ Dans un navigateur, au clavier:
 
 |image1137|
 
-22.2.3 Installation de STT et TTS
+23.2.3 Installation de STT et TTS
 =================================
-22.2.3.1 Installation de STT
+23.2.3.1 Installation de STT
 """"""""""""""""""""""""""""
 Léon utilise Coqui |image1117| SST
 
@@ -196,7 +196,7 @@ Dans le fichier de configuration .env:
    # Speech-to-text provider
    LEON_STT_PROVIDER=coqui-stt
 
-22.2.3.2 Installation de TTS
+23.2.3.2 Installation de TTS
 """"""""""""""""""""""""""""
 Léon utilise CMU Flite qui est un petit et rapide moteur de synthèse vocale
 
@@ -232,7 +232,7 @@ Comme por STT , il faut modifier la configuration .env :
 
 
 
-22.2.4 Fonctionnement HORS LIGNE
+23.2.4 Fonctionnement HORS LIGNE
 ================================
 Avec STT et TTS et le nœud hotword (moteur de détection de mots clés), tout tourne sur votre machine, rien ne sort pour requêter un service tiers
 
