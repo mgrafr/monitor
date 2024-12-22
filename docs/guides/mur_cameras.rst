@@ -1,5 +1,17 @@
 7. MUR de CAMERAS
 -----------------
+Plusieurs possibilités :
+
+- Installation de Frigate avec un accélérateur Coral pcie ou usb et l'app go2rtc
+
+- installation de Zoneminder et lecture des caméras à partir de celui-ci
+
+- lecture des caméras directementà partir de Monitor
+
+.. note::
+
+    Aujourd'hui, j'ai installé Frigate à la place du mur de caméras.... voir ce chapitre pour une description complète de mon l'installation de ce logiciel.
+
 .. warning::
 
    Les images peuvent provenir de Zoneminder ou de Monitor, depuis la table "cameras". :red:`Avec les derniéres versions de Zoneminder l'utilisation du cpu atteint en permanence 100% aussi j'ai fai le choix d'abandonner progressivement zoneminder et la 1ere étape a été de d'afficher le mur de caméras depuis monitor`
