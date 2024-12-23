@@ -274,6 +274,14 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
 22.5 installation de go2rtc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+- **création du répertoire /op/go2rtc**
+
+.. code-block::
+
+   mkdir /opt/go2rtc
+   cd /opt/go2rtc
+
+- **création de dockel-compose.mml
 
 
 
