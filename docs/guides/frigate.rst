@@ -39,7 +39,13 @@ Le couvercle est clipsé, pour l'ouvrir il suffit de déclipser en soulevant ave
 
 22.2 Installation docker
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Pré-requis: Debian 12 (version légère avec uniquement SSH) est installé
+.. admonition::Pré-requis 
+
+   Debian 12 (version légère avec uniquement SSH) est installé
+
+   Le pare-feu UFW est installé :
+
+   |image1610|
 
 - **Ajouter la clé GPG officielle de Docker:**
 
@@ -214,9 +220,61 @@ https://github.com/blakeblackshear/frigate
 
 22.4.1 Installez le pilote PCIe et les packages d’exécution Edge TPU
 ====================================================================
+Tout d’abord, ajouter le dépôt de paquets Debian au système:
 
+.. code-block::
+
+   echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+   sudo curl https://packages.cloud.google.com/apt/doc/apt-key.gpg -o /etc/apt/trusted.gpg.d/coral.asc
+   sudo apt-get update
   
+- **Installez ensuite le pilote PCIe et les packages d’exécution Edge TPU**
 
+.. code-block::
+
+   sudo apt-get install gasket-dkms libedgetpu1-std   
+
+.. note::
+
+   le compte utilisateur doit disposer des autorisations root
+
+- **Une fois *redémarré*, vérifier que le module d’accélération est détecté:**
+
+.. code-block::
+
+   lspci -nn | grep 089a
+
+|image1607|
+
+- **Vérifiez également que le pilote PCIe est chargé :**
+
+.. code-block::
+
+   ls /dev/apex_0
+
+|image1608|
+
+22.5 nouvelles configurations de docker-compose et config
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22.5.1 docker-compose.yml
+=========================
+
+|image1609|
+
+22.5.1 config/config.yml
+========================
+.. code-block::
+
+   # N'activez cette option que si vous utilisez les GPU Intel
+   ffmpeg:
+     hwaccel_args: preset-vaapi
+   detectors:
+     coral:
+       type: edgetpu
+       device: pci
+
+22.5 installation de go2rtc
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 
@@ -245,3 +303,11 @@ https://github.com/blakeblackshear/frigate
    :width: 351px
 .. |image1606| image:: ../img/image1606.webp
    :width: 460px
+.. |image1607| image:: ../img/image1607.webp
+   :width: 605px
+.. |image1608| image:: ../img/image1608.webp
+   :width: 419px
+.. |image1609| image:: ../img/image1609.webp
+   :width: 640px
+.. |image1610| image:: ../img/image1610.webp
+   :width: 433px
