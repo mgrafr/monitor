@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22. FRIGATE &mdash; Monitor</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=536c50fe" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=d44bf9f9" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e59be10d"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/translations.js?v=d99ca74e"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="23. OPTIMISATION en cours" href="optimisations.html" />
+    <link rel="prev" title="21. – Mon installation" href="mon_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            monitor-domotique
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">SOMMAIRE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bien_debuter.html">0. Infos pour bien débuter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_minimum.html">1. Configuration minimum : la page d’accueil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_interieur.html">2. Une 1ere PAGE : LE PLAN INTERIEUR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meteo.html">3. Météo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_exterieur.html">4. La page du plan extérieur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alarme.html">5. L’ALARME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphiques.html">6. GRAHIQUES &amp; BASE DE DONNEES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_cameras.html">7. MUR de CAMERAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mur_de_commandes.html">8. MUR de COMMANDES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zigbee.html">9. Dispositifs Zigbee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zwave.html">10. Dispositifs Zwave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring.html">11. MONITORING Nagios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_diverses.html">12. - FICHIERS LOG Domoticz, Nagios, SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app_externes.html">13. APPLICATIONS externes en lien avec Domoticz, HA ou monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">14.  ADMINISTRATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples.html">15. EXEMPLES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajout_page_alertes.html">16. Ajouter des pages ou des alertes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diy.html">17. DIY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="divers.html">18. Divers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolution_problemes.html">20. Résolution de problèmes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mon_installation.html">21. – Mon installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">22. FRIGATE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#materiel">22.1 Matériel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-du-module-pcie-coral">22.1.1 Installation du module Pcie Coral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-docker">22.2 Installation docker</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="optimisations.html">23. OPTIMISATION en cours</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">monitor-domotique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">22. FRIGATE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/frigate.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frigate">
+<h1>22. FRIGATE<a class="headerlink" href="#frigate" title="Lien permanent vers cette rubrique"></a></h1>
+<section id="materiel">
+<h2>22.1 Matériel<a class="headerlink" href="#materiel" title="Lien permanent vers cette rubrique"></a></h2>
+<p>-<strong>1 mini PC</strong>  ou plutôt micro compte tenu de sa taille <em>raccordé au routeur par un cable ethernet</em></p>
+<p><a class="reference internal" href="media/image1595.webp"><img alt="image1595" src="media/image1595.webp" style="width: 400px;" /></a></p>
+<p><a class="reference internal" href="media/image1597.webp"><img alt="image1597" src="media/image1597.webp" style="width: 300px;" /></a></p>
+<p>Processeur d’image (GPU):Carte graphique Intel ® Supercore (jusqu’à 750MHz)</p>
+<p>Mémoire en cours d’exécution (RAM):LPDDR5 4800 MT/s, montage à bord,</p>
+<p>Disque dur de stockage:Compatible M.2 2242 SATA, SATA/PCIE</p>
+<p>Construit dans l’expansion de stockage:M.2 2242 peut évoluer à 2 To;</p>
+<p>Sortie graphique:Double sortie HDMI + DP V1.4, prenant en charge une résolution maximale de 4096x2160</p>
+<p>Réseau sans fil:Realtek 8852BE 802.11a/b/g/n/ac/ax</p>
+<p>Interface de puissance:Interface TYPE-C, 12V/3A, 36W (charge uniquement) Prise en charge de l’alimentation PD</p>
+<p>USB-A:USB3.2 (Gen1 * 1) * 3</p>
+<p>Sortie vidéo:HDMI * 2 4096x2160 &#64; 60Hz , DP V1.4 * 1 4096x2160 &#64; 60Hz</p>
+<p>Interface audio:Å3.5mm, CTIA</p>
+<p>Port Ethernet:GLA Lan (RJ45) * 2 1000m/100m/10m</p>
+<p>Indicateur de lumière:Indicateur de puissance bleu clair</p>
+<p>Taille du corps:87*87*39.5MM</p>
+<p>Poids corporel:397 grammes</p>
+<p>Système d’exploitation:Windows 11 Pro Édition Professionnelle</p>
+<section id="installation-du-module-pcie-coral">
+<h3>22.1.1 Installation du module Pcie Coral<a class="headerlink" href="#installation-du-module-pcie-coral" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="media/image1596.webp"><img alt="image1596" src="media/image1596.webp" style="width: 200px;" /></a></p>
+<p>Comme il n’y a qu’un seul emplacement Pcie occupé par une carte wifi-BT et comme le PC est raccordé par un cable ethernet:</p>
+<ul class="simple">
+<li><p>on remplace le module wifi (qui se trouve sous la carte M2) par le module Coral</p></li>
+</ul>
+<p><a class="reference internal" href="media/image1598.webp"><img alt="image1598" src="media/image1598.webp" style="width: 300px;" /></a></p>
+<p>Le couvercle est clipsé, pour l’ouvrir il suffit de déclipser en soulevant avec un tournevis</p>
+</section>
+<section id="installation-docker">
+<h3>22.2 Installation docker<a class="headerlink" href="#installation-docker" title="Lien permanent vers cette rubrique"></a></h3>
+<ul class="simple">
+<li><p><strong>Ajouter la clé GPG officielle de Docker:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span> <span class="n">curl</span>
+<span class="n">sudo</span> <span class="n">install</span> <span class="o">-</span><span class="n">m</span> <span class="mi">0755</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">keyrings</span>
+<span class="n">sudo</span> <span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">gpg</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="n">a</span><span class="o">+</span><span class="n">r</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">asc</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Ajoutez le dépôt aux sources Apt :</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> echo \
+&quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+$(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;) stable&quot; | \
+sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+sudo apt-get update
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Installez les packages Docker:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">-</span><span class="n">cli</span> <span class="n">containerd</span><span class="o">.</span><span class="n">io</span> <span class="n">docker</span><span class="o">-</span><span class="n">buildx</span><span class="o">-</span><span class="n">plugin</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">-</span><span class="n">plugin</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>1.  Vérifiez que l’installation a réussi en exécutant l’image :hello-world</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="media/image1599.webp"><img alt="image1599" src="media/image1599.webp" style="width: 605px;" /></a></p>
+<ul class="simple">
+<li><p><strong>créer le groupe docker et ajouter-vous comme utilisateur :</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo groupadd docker
+sudo usermod -aG docker $USER
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Configurer Docker pour qu’il démarre au démarrage avec systemd:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">docker</span><span class="o">.</span><span class="n">service</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">containerd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="media/image1600.webp"><img alt="image1600" src="media/image1600.webp" style="width: 605px;" /></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="mon_installation.html" class="btn btn-neutral float-left" title="21. – Mon installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="optimisations.html" class="btn btn-neutral float-right" title="23. OPTIMISATION en cours" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2024, Gravier.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
