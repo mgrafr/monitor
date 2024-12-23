@@ -125,23 +125,24 @@
 <section id="materiel">
 <h2>22.1 Matériel<a class="headerlink" href="#materiel" title="Lien permanent vers cette rubrique"></a></h2>
 <p>-<strong>1 mini PC</strong>  ou plutôt micro compte tenu de sa taille <em>raccordé au routeur par un cable ethernet</em></p>
-<p><a class="reference internal" href="../_images/image1595.webp"><img alt="image1595" src="../_images/image1595.webp" style="width: 400px;" /></a></p>
-<p><a class="reference internal" href="../_images/image1597.webp"><img alt="image1597" src="../_images/image1597.webp" style="width: 300px;" /></a></p>
-<p>-Processeur d’image (GPU):Carte graphique Intel ® Supercore (jusqu’à 750MHz)
--Mémoire en cours d’exécution (RAM):LPDDR5 4800 MT/s, montage à bord,
--Disque dur de stockage:Compatible M.2 2242 SATA, SATA/PCIE
--Construit dans l’expansion de stockage:M.2 2242 peut évoluer à 2 To;
--Sortie graphique:Double sortie HDMI + DP V1.4, prenant en charge une résolution maximale de 4096x2160
--Réseau sans fil:Realtek 8852BE 802.11a/b/g/n/ac/ax
--Interface de puissance:Interface TYPE-C, 12V/3A, 36W (charge uniquement) Prise en charge de l’alimentation PD
--USB-A:USB3.2 (Gen1 * 1) * 3
--Sortie vidéo:HDMI * 2 4096x2160 &#64; 60Hz , DP V1.4 * 1 4096x2160 &#64; 60Hz
--Interface audio:Å3.5mm, CTIA
--Port Ethernet:GLA Lan (RJ45) * 2 1000m/100m/10m
--Indicateur de lumière:Indicateur de puissance bleu clair
--Taille du corps:87*87*39.5MM
--Poids corporel:397 grammes
--Système d’exploitation:Windows 11 Pro Édition Professionnelle</p>
+<p><a class="reference internal" href="../_images/image1595.webp"><img alt="image1595" src="../_images/image1595.webp" style="width: 400px;" /></a> <a class="reference internal" href="../_images/image1597.webp"><img alt="image1597" src="../_images/image1597.webp" style="width: 300px;" /></a></p>
+<ul class="simple">
+<li><p>Processeur d’image (GPU):Carte graphique Intel ® Supercore (jusqu’à 750MHz)</p></li>
+<li><p>Mémoire en cours d’exécution (RAM):LPDDR5 4800 MT/s, montage à bord,</p></li>
+<li><p>Disque dur de stockage:Compatible M.2 2242 SATA, SATA/PCIE</p></li>
+<li><p>Construit dans l’expansion de stockage:M.2 2242 peut évoluer à 2 To;</p></li>
+<li><p>Sortie graphique:Double sortie HDMI + DP V1.4, prenant en charge une résolution maximale de 4096x2160</p></li>
+<li><p>Réseau sans fil:Realtek 8852BE 802.11a/b/g/n/ac/ax</p></li>
+<li><p>Interface de puissance:Interface TYPE-C, 12V/3A, 36W (charge uniquement) Prise en charge de l’alimentation PD</p></li>
+<li><p>USB-A:USB3.2 (Gen1 * 1) * 3</p></li>
+<li><p>Sortie vidéo:HDMI * 2 4096x2160 &#64; 60Hz , DP V1.4 * 1 4096x2160 &#64; 60Hz</p></li>
+<li><p>Interface audio:Å3.5mm, CTIA</p></li>
+<li><p>Port Ethernet:GLA Lan (RJ45) * 2 1000m/100m/10m</p></li>
+<li><p>Indicateur de lumière:Indicateur de puissance bleu clair</p></li>
+<li><p>Taille du corps:87*87*39.5MM</p></li>
+<li><p>Poids corporel:397 grammes</p></li>
+<li><p>Système d’exploitation:Windows 11 Pro Édition Professionnelle</p></li>
+</ul>
 <section id="installation-du-module-pcie-coral">
 <h3>22.1.1 Installation du module Pcie Coral<a class="headerlink" href="#installation-du-module-pcie-coral" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1596.webp"><img alt="image1596" src="../_images/image1596.webp" style="width: 200px;" /></a></p>
@@ -341,21 +342,21 @@ camera_groups:
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lspci</span> <span class="o">-</span><span class="n">nn</span> <span class="o">|</span> <span class="n">grep</span> <span class="mi">089</span><span class="n">a</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="img/image1607.webp"><img alt="image1607" src="img/image1607.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1607.webp"><img alt="image1607" src="../_images/image1607.webp" style="width: 605px;" /></a></p>
 <ul class="simple">
 <li><p><strong>Vérifiez également que le pilote PCIe est chargé :</strong></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">apex_0</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="img/image1608.webp"><img alt="image1608" src="img/image1608.webp" style="width: 419px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1608.webp"><img alt="image1608" src="../_images/image1608.webp" style="width: 419px;" /></a></p>
 </section>
 </section>
 <section id="nouvelles-configurations-de-docker-compose-et-config">
 <h2>22.5 nouvelles configurations de docker-compose et config<a class="headerlink" href="#nouvelles-configurations-de-docker-compose-et-config" title="Lien permanent vers cette rubrique"></a></h2>
 <section id="docker-compose-yml">
 <h3>22.5.1 docker-compose.yml<a class="headerlink" href="#docker-compose-yml" title="Lien permanent vers cette rubrique"></a></h3>
-<p><a class="reference internal" href="img/image1609.webp"><img alt="image1609" src="img/image1609.webp" style="width: 640px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1609.webp"><img alt="image1609" src="../_images/image1609.webp" style="width: 640px;" /></a></p>
 </section>
 <section id="config-config-yml">
 <h3>22.5.1 config/config.yml<a class="headerlink" href="#config-config-yml" title="Lien permanent vers cette rubrique"></a></h3>
