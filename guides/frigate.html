@@ -85,6 +85,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#installez-le-pilote-pcie-et-les-packages-dexecution-edge-tpu">22.4.1 Installez le pilote PCIe et les packages d’exécution Edge TPU</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#nouvelles-configurations-de-docker-compose-et-config">22.5 nouvelles configurations de docker-compose et config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker-compose-yml">22.5.1 docker-compose.yml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-config-yml">22.5.1 config/config.yml</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-de-go2rtc">22.5 installation de go2rtc</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="optimisations.html">23. OPTIMISATION en cours</a></li>
@@ -149,7 +155,6 @@
 </section>
 <section id="installation-docker">
 <h2>22.2 Installation docker<a class="headerlink" href="#installation-docker" title="Lien permanent vers cette rubrique"></a></h2>
-<p>Pré-requis: Debian 12 (version légère avec uniquement SSH) est installé</p>
 <ul class="simple">
 <li><p><strong>Ajouter la clé GPG officielle de Docker:</strong></p></li>
 </ul>
@@ -314,7 +319,59 @@ camera_groups:
 </div>
 <section id="installez-le-pilote-pcie-et-les-packages-dexecution-edge-tpu">
 <h3>22.4.1 Installez le pilote PCIe et les packages d’exécution Edge TPU<a class="headerlink" href="#installez-le-pilote-pcie-et-les-packages-dexecution-edge-tpu" title="Lien permanent vers cette rubrique"></a></h3>
+<p>Tout d’abord, ajouter le dépôt de paquets Debian au système:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb https://packages.cloud.google.com/apt coral-edgetpu-stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">coral</span><span class="o">-</span><span class="n">edgetpu</span><span class="o">.</span><span class="n">list</span>
+<span class="n">sudo</span> <span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">packages</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">apt</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">gpg</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">trusted</span><span class="o">.</span><span class="n">gpg</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">coral</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Installez ensuite le pilote PCIe et les packages d’exécution Edge TPU</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gasket</span><span class="o">-</span><span class="n">dkms</span> <span class="n">libedgetpu1</span><span class="o">-</span><span class="n">std</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>le compte utilisateur doit disposer des autorisations root</p>
+</div>
+<ul class="simple">
+<li><p><strong>Une fois *redémarré*, vérifier que le module d’accélération est détecté:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lspci</span> <span class="o">-</span><span class="n">nn</span> <span class="o">|</span> <span class="n">grep</span> <span class="mi">089</span><span class="n">a</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1607.webp"><img alt="image1607" src="../_images/image1607.webp" style="width: 605px;" /></a></p>
+<ul class="simple">
+<li><p><strong>Vérifiez également que le pilote PCIe est chargé :</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">apex_0</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1608.webp"><img alt="image1608" src="../_images/image1608.webp" style="width: 419px;" /></a></p>
 </section>
+</section>
+<section id="nouvelles-configurations-de-docker-compose-et-config">
+<h2>22.5 nouvelles configurations de docker-compose et config<a class="headerlink" href="#nouvelles-configurations-de-docker-compose-et-config" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="docker-compose-yml">
+<h3>22.5.1 docker-compose.yml<a class="headerlink" href="#docker-compose-yml" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="../_images/image1609.webp"><img alt="image1609" src="../_images/image1609.webp" style="width: 640px;" /></a></p>
+</section>
+<section id="config-config-yml">
+<h3>22.5.1 config/config.yml<a class="headerlink" href="#config-config-yml" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># N&#39;activez cette option que si vous utilisez les GPU Intel</span>
+<span class="n">ffmpeg</span><span class="p">:</span>
+  <span class="n">hwaccel_args</span><span class="p">:</span> <span class="n">preset</span><span class="o">-</span><span class="n">vaapi</span>
+<span class="n">detectors</span><span class="p">:</span>
+  <span class="n">coral</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">edgetpu</span>
+    <span class="n">device</span><span class="p">:</span> <span class="n">pci</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="installation-de-go2rtc">
+<h2>22.5 installation de go2rtc<a class="headerlink" href="#installation-de-go2rtc" title="Lien permanent vers cette rubrique"></a></h2>
 </section>
 </section>
 
