@@ -8,7 +8,7 @@ accueil
 
 Bienvenue dans **monitor** avec ce tutoriel !! 
 
-*maj tutoriel 3.2 du 30/11/2024*
+*maj tutoriel 3.2.1 du 23/12/2024*
 
 
 .. toctree::
@@ -36,6 +36,7 @@ Bienvenue dans **monitor** avec ce tutoriel !!
    guides/update
    guides/resolution_problemes
    guides/mon_installation
+   guides/frigate
    guides/optimisations
 
 
