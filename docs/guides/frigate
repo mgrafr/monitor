@@ -1,6 +1,6 @@
 22. FRIGATE
 -----------
-23.1 Matériel
+22.1 Matériel
 ^^^^^^^^^^^^^
 -**1 mini PC**  ou plutôt micro compte tenu de sa taille *raccordé au routeur par un cable ethernet*
 
@@ -38,7 +38,7 @@ Poids corporel:397 grammes
 
 Système d'exploitation:Windows 11 Pro Édition Professionnelle
 
-23.1.1 Installation du module Pcie Coral
+22.1.1 Installation du module Pcie Coral
 ========================================
 
 |image1596| 
@@ -51,7 +51,7 @@ Comme il n'y a qu'un seul emplacement Pcie occupé par une carte wifi-BT et comm
 
 Le couvercle est clipsé, pour l'ouvrir il suffit de déclipser en soulevant avec un tournevis
 
-23.2 Installation docker
+22.2 Installation docker
 ========================
 
 
