@@ -235,27 +235,27 @@ https://github.com/blakeblackshear/frigate
 
 
 
-.. |image1595| image:: ../media/image1595.webp
+.. |image1595| image:: ../img/image1595.webp
    :width: 400px
-.. |image1596| image:: ../media/image1596.webp
+.. |image1596| image:: ../img/image1596.webp
    :width: 200px
-.. |image1597| image:: ../media/image1597.webp
+.. |image1597| image:: ../img/image1597.webp
    :width: 300px
-.. |image1598| image:: ../media/image1598.webp
+.. |image1598| image:: ../img/image1598.webp
    :width: 300px
-.. |image1599| image:: ../media/image1599.webp
+.. |image1599| image:: ../img/image1599.webp
    :width: 605px
-.. |image1600| image:: ../media/image1600.webp
+.. |image1600| image:: ../img/image1600.webp
    :width: 605px
-.. |image1601| image:: ../media/image1601.webp
+.. |image1601| image:: ../img/image1601.webp
    :width: 399px
-.. |image1602| image:: ../media/image1602.webp
+.. |image1602| image:: ../img/image1602.webp
    :width: 535px
-.. |image1603| image:: ../media/image1603.webp
+.. |image1603| image:: ../img/image1603.webp
    :width: 505px
-.. |image1604| image:: ../media/image1604.webp
+.. |image1604| image:: ../img/image1604.webp
    :width: 559px
-.. |image1605| image:: ../media/image1605.webp
+.. |image1605| image:: ../img/image1605.webp
    :width: 351px
-.. |image1606| image:: ../media/image1606.webp
+.. |image1606| image:: ../img/image1606.webp
    :width: 460px

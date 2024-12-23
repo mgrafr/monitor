@@ -119,8 +119,8 @@
 <section id="materiel">
 <h2>22.1 Matériel<a class="headerlink" href="#materiel" title="Lien permanent vers cette rubrique"></a></h2>
 <p>-<strong>1 mini PC</strong>  ou plutôt micro compte tenu de sa taille <em>raccordé au routeur par un cable ethernet</em></p>
-<p><a class="reference internal" href="media/image1595.webp"><img alt="image1595" src="media/image1595.webp" style="width: 400px;" /></a></p>
-<p><a class="reference internal" href="media/image1597.webp"><img alt="image1597" src="media/image1597.webp" style="width: 300px;" /></a></p>
+<p><a class="reference internal" href="img/image1595.webp"><img alt="image1595" src="img/image1595.webp" style="width: 400px;" /></a></p>
+<p><a class="reference internal" href="img/image1597.webp"><img alt="image1597" src="img/image1597.webp" style="width: 300px;" /></a></p>
 <p>Processeur d’image (GPU):Carte graphique Intel ® Supercore (jusqu’à 750MHz)</p>
 <p>Mémoire en cours d’exécution (RAM):LPDDR5 4800 MT/s, montage à bord,</p>
 <p>Disque dur de stockage:Compatible M.2 2242 SATA, SATA/PCIE</p>
@@ -138,12 +138,12 @@
 <p>Système d’exploitation:Windows 11 Pro Édition Professionnelle</p>
 <section id="installation-du-module-pcie-coral">
 <h3>22.1.1 Installation du module Pcie Coral<a class="headerlink" href="#installation-du-module-pcie-coral" title="Lien permanent vers cette rubrique"></a></h3>
-<p><a class="reference internal" href="media/image1596.webp"><img alt="image1596" src="media/image1596.webp" style="width: 200px;" /></a></p>
+<p><a class="reference internal" href="img/image1596.webp"><img alt="image1596" src="img/image1596.webp" style="width: 200px;" /></a></p>
 <p>Comme il n’y a qu’un seul emplacement Pcie occupé par une carte wifi-BT et comme le PC est raccordé par un cable ethernet:</p>
 <ul class="simple">
 <li><p>on remplace le module wifi (qui se trouve sous la carte M2) par le module Coral</p></li>
 </ul>
-<p><a class="reference internal" href="media/image1598.webp"><img alt="image1598" src="media/image1598.webp" style="width: 300px;" /></a></p>
+<p><a class="reference internal" href="img/image1598.webp"><img alt="image1598" src="img/image1598.webp" style="width: 300px;" /></a></p>
 <p>Le couvercle est clipsé, pour l’ouvrir il suffit de déclipser en soulevant avec un tournevis</p>
 </section>
 </section>
@@ -182,7 +182,7 @@ sudo apt-get update
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="media/image1599.webp"><img alt="image1599" src="media/image1599.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1599.webp"><img alt="image1599" src="../_images/image1599.webp" style="width: 605px;" /></a></p>
 <ul class="simple">
 <li><p><strong>créer le groupe docker et ajouter-vous comme utilisateur :</strong></p></li>
 </ul>
@@ -197,7 +197,7 @@ sudo usermod -aG docker $USER
 <span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">containerd</span><span class="o">.</span><span class="n">service</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="media/image1600.webp"><img alt="image1600" src="media/image1600.webp" style="width: 605px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1600.webp"><img alt="image1600" src="../_images/image1600.webp" style="width: 605px;" /></a></p>
 <ul class="simple">
 <li><p><strong>installer Docker-compose:</strong></p></li>
 </ul>
@@ -217,10 +217,10 @@ sudo usermod -aG docker $USER
 <span class="n">mkdir</span> <span class="n">media</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="media/image1601.webp"><img alt="image1601" src="media/image1601.webp" style="width: 399px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1601.webp"><img alt="image1601" src="../_images/image1601.webp" style="width: 399px;" /></a></p>
 <section id="creer-le-fichier-de-configuration-docker-compose-yml">
 <h3>22.3.1 Créer le fichier de configuration docker-compose.yml<a class="headerlink" href="#creer-le-fichier-de-configuration-docker-compose-yml" title="Lien permanent vers cette rubrique"></a></h3>
-<p><a class="reference internal" href="media/image1602.webp"><img alt="image1602" src="media/image1602.webp" style="width: 535px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1602.webp"><img alt="image1602" src="../_images/image1602.webp" style="width: 535px;" /></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
@@ -259,7 +259,7 @@ sudo usermod -aG docker $USER
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="n">config</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="media/image1603.webp"><img alt="image1603" src="media/image1603.webp" style="width: 505px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1603.webp"><img alt="image1603" src="../_images/image1603.webp" style="width: 505px;" /></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mqtt:
   enabled: false
 cameras:
@@ -292,7 +292,7 @@ camera_groups:
 <ul class="simple">
 <li><p><strong>Affichage dans le navigateur</strong></p></li>
 </ul>
-<p><a class="reference internal" href="media/image1604.webp"><img alt="image1604" src="media/image1604.webp" style="width: 559px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1604.webp"><img alt="image1604" src="../_images/image1604.webp" style="width: 559px;" /></a></p>
 </section>
 </section>
 <section id="installer-le-pilote-du-module-coral">
@@ -300,7 +300,7 @@ camera_groups:
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">uname</span> <span class="o">-</span><span class="n">r</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="media/image1605.webp"><img alt="image1605" src="media/image1605.webp" style="width: 351px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1605.webp"><img alt="image1605" src="../_images/image1605.webp" style="width: 351px;" /></a></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <ul class="simple">
@@ -309,7 +309,7 @@ camera_groups:
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">lsmod</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">apex</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="media/image1606.webp"><img alt="image1606" src="media/image1606.webp" style="width: 460px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1606.webp"><img alt="image1606" src="../_images/image1606.webp" style="width: 460px;" /></a></p>
 <p>S’il n’affiche rien, tout va bien , continuez à installer le pilote PCIe. Si il affiche un nom de module Apex, suivre la solution pour désactiver Apex et Gasket: <a class="reference external" href="https://coral.ai/docs/m2/get-started/#workaround-to-disable-apex-and-gasket">https://coral.ai/docs/m2/get-started/#workaround-to-disable-apex-and-gasket</a></p>
 </div>
 <section id="installez-le-pilote-pcie-et-les-packages-dexecution-edge-tpu">
