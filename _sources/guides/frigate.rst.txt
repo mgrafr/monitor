@@ -52,7 +52,9 @@ Comme il n'y a qu'un seul emplacement Pcie occupé par une carte wifi-BT et comm
 Le couvercle est clipsé, pour l'ouvrir il suffit de déclipser en soulevant avec un tournevis
 
 22.2 Installation docker
-========================
+^^^^^^^^^^^^^^^^^^^^^^^^
+Pré-requis: Debian 12 (version légère avec uniquement SSH) est installé
+
 - **Ajouter la clé GPG officielle de Docker:**
 
 .. code-block::
@@ -103,6 +105,134 @@ Le couvercle est clipsé, pour l'ouvrir il suffit de déclipser en soulevant ave
 
 |image1600|
 
+- **installer Docker-compose:**
+
+.. code-block::
+
+   sudo apt install docker.io docker-compose -y
+
+22.3 Installation de Frigate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/blakeblackshear/frigate
+
+- **créer 2 sous-répertoires pour la configuration et la vidéo dans un répertoire "frigate" :**
+
+.. code-block::
+
+   cd /opt
+   mkdir frigate && cd frigate
+   mkdir config
+   mkdir media
+
+|image1601|
+
+22.3.1 Créer le fichier de configuration docker-compose.yml
+===========================================================
+|image1602|
+
+.. code-block::
+
+   sudo nano docker-compose.yml
+
+.. code-block::
+
+   version: "3.9"
+   services:
+     frigate:
+       privileged: true # this may not be necessary for all setups
+       restart: unless-stopped
+       image: ghcr.io/blakeblackshear/frigate:stable
+   #    devices:
+   #     - /dev/bus/usb:/dev/bus/usb # Passe l’USB Coral, doit être
+                                  # modifié pour d’autres versions
+   #     - /dev/apex_0:/dev/apex_0 # Passe un PCIe Coral, suivez les
+             # instructions du pilote ici
+             # https://coral.ai/docs/m2/get-started/#2a-on-linux
+       ports:
+         - "5000:5000"
+         - "1935:1935"
+         - "554:8554" # Flux RTSP
+       volumes:
+         - /opt/frigate/config:/config
+         - /opt/frigate/media:/media
+         - type: tmpfs # En option:1 Go de memoire,réduit l
+                       # usure de la carte SSD/SD
+           target: /tmp/cache
+        tmpfs:
+          size: 100000000
+       environment:
+         - FRIGATE_RTSP_PASSWORD=<PASS>
+         - FRIGATE_RTSP_USER=<USER>
+
+22.3.2 Configurer une caméra, config.yml
+========================================
+.. code-block::
+
+   sudo nano config/config.yml
+
+|image1603|
+
+.. code-block::
+
+   mqtt:
+     enabled: false
+   cameras:
+     jardin_cote_rue:
+       ffmpeg:
+         inputs:
+           - path: rtsp://michel:IdemIdem4546@192.168.1.107:554/cam/realmonitor?channel=1&subtype=0
+             roles:
+               - record
+           - path: rtsp://michel:IdemIdem4546@192.168.1.107:554/cam/realmonitor?channel=1&subtype=0
+             roles:
+               - detect
+       detect:
+         enabled: true
+   version: 0.14
+   camera_groups:
+     cam:
+       order: 1
+       icon: LuAirplay
+       cameras:
+         - Jardin_cote_rue
+
+22.3.3 Démarrer Frigate
+=======================
+.. code-block::
+
+   sudo docker-compose up -d
+
+- **Affichage dans le navigateur**
+
+|image1604|
+
+22.4 Installer le pilote du module Coral
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block::
+
+   sudo uname -r
+
+|image1605|
+
+.. important::
+
+   - Si la version de votre noyau est 4.19 ou supérieure, vérifier si un pilote Apex pré-construit est installé 
+
+   .. code-block::
+
+      sudo lsmod | grep apex
+
+   |image1606|
+
+   S’il n’affiche rien, tout va bien , continuez à installer le pilote PCIe. Si il affiche un nom de module Apex, suivre la solution pour désactiver Apex et Gasket: https://coral.ai/docs/m2/get-started/#workaround-to-disable-apex-and-gasket
+
+22.4.1 Installez le pilote PCIe et les packages d’exécution Edge TPU
+====================================================================
+
+  
+
+
+
 
 
 .. |image1595| image:: ../media/image1595.webp
@@ -117,3 +247,15 @@ Le couvercle est clipsé, pour l'ouvrir il suffit de déclipser en soulevant ave
    :width: 605px
 .. |image1600| image:: ../media/image1600.webp
    :width: 605px
+.. |image1601| image:: ../media/image1601.webp
+   :width: 399px
+.. |image1602| image:: ../media/image1602.webp
+   :width: 535px
+.. |image1603| image:: ../media/image1603.webp
+   :width: 505px
+.. |image1604| image:: ../media/image1604.webp
+   :width: 559px
+.. |image1605| image:: ../media/image1605.webp
+   :width: 351px
+.. |image1606| image:: ../media/image1606.webp
+   :width: 460px

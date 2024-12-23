@@ -72,7 +72,17 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">22. FRIGATE</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#materiel">22.1 Matériel</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation-du-module-pcie-coral">22.1.1 Installation du module Pcie Coral</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-docker">22.2 Installation docker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-docker">22.2 Installation docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-de-frigate">22.3 Installation de Frigate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creer-le-fichier-de-configuration-docker-compose-yml">22.3.1 Créer le fichier de configuration docker-compose.yml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurer-une-camera-config-yml">22.3.2 Configurer une caméra, config.yml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demarrer-frigate">22.3.3 Démarrer Frigate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installer-le-pilote-du-module-coral">22.4 Installer le pilote du module Coral</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installez-le-pilote-pcie-et-les-packages-dexecution-edge-tpu">22.4.1 Installez le pilote PCIe et les packages d’exécution Edge TPU</a></li>
 </ul>
 </li>
 </ul>
@@ -136,8 +146,10 @@
 <p><a class="reference internal" href="media/image1598.webp"><img alt="image1598" src="media/image1598.webp" style="width: 300px;" /></a></p>
 <p>Le couvercle est clipsé, pour l’ouvrir il suffit de déclipser en soulevant avec un tournevis</p>
 </section>
+</section>
 <section id="installation-docker">
-<h3>22.2 Installation docker<a class="headerlink" href="#installation-docker" title="Lien permanent vers cette rubrique"></a></h3>
+<h2>22.2 Installation docker<a class="headerlink" href="#installation-docker" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Pré-requis: Debian 12 (version légère avec uniquement SSH) est installé</p>
 <ul class="simple">
 <li><p><strong>Ajouter la clé GPG officielle de Docker:</strong></p></li>
 </ul>
@@ -186,6 +198,122 @@ sudo usermod -aG docker $USER
 </pre></div>
 </div>
 <p><a class="reference internal" href="media/image1600.webp"><img alt="image1600" src="media/image1600.webp" style="width: 605px;" /></a></p>
+<ul class="simple">
+<li><p><strong>installer Docker-compose:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">docker</span><span class="o">.</span><span class="n">io</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</section>
+<section id="installation-de-frigate">
+<h2>22.3 Installation de Frigate<a class="headerlink" href="#installation-de-frigate" title="Lien permanent vers cette rubrique"></a></h2>
+<p><a class="reference external" href="https://github.com/blakeblackshear/frigate">https://github.com/blakeblackshear/frigate</a></p>
+<ul class="simple">
+<li><p><strong>créer 2 sous-répertoires pour la configuration et la vidéo dans un répertoire « frigate » :</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">opt</span>
+<span class="n">mkdir</span> <span class="n">frigate</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">frigate</span>
+<span class="n">mkdir</span> <span class="n">config</span>
+<span class="n">mkdir</span> <span class="n">media</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="media/image1601.webp"><img alt="image1601" src="media/image1601.webp" style="width: 399px;" /></a></p>
+<section id="creer-le-fichier-de-configuration-docker-compose-yml">
+<h3>22.3.1 Créer le fichier de configuration docker-compose.yml<a class="headerlink" href="#creer-le-fichier-de-configuration-docker-compose-yml" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="media/image1602.webp"><img alt="image1602" src="media/image1602.webp" style="width: 535px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s2">&quot;3.9&quot;</span>
+<span class="n">services</span><span class="p">:</span>
+  <span class="n">frigate</span><span class="p">:</span>
+    <span class="n">privileged</span><span class="p">:</span> <span class="n">true</span> <span class="c1"># this may not be necessary for all setups</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">ghcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">blakeblackshear</span><span class="o">/</span><span class="n">frigate</span><span class="p">:</span><span class="n">stable</span>
+<span class="c1">#    devices:</span>
+<span class="c1">#     - /dev/bus/usb:/dev/bus/usb # Passe l’USB Coral, doit être</span>
+                               <span class="c1"># modifié pour d’autres versions</span>
+<span class="c1">#     - /dev/apex_0:/dev/apex_0 # Passe un PCIe Coral, suivez les</span>
+          <span class="c1"># instructions du pilote ici</span>
+          <span class="c1"># https://coral.ai/docs/m2/get-started/#2a-on-linux</span>
+    <span class="n">ports</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;5000:5000&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;1935:1935&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;554:8554&quot;</span> <span class="c1"># Flux RTSP</span>
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">frigate</span><span class="o">/</span><span class="n">config</span><span class="p">:</span><span class="o">/</span><span class="n">config</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">frigate</span><span class="o">/</span><span class="n">media</span><span class="p">:</span><span class="o">/</span><span class="n">media</span>
+      <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">tmpfs</span> <span class="c1"># En option:1 Go de memoire,réduit l</span>
+                    <span class="c1"># usure de la carte SSD/SD</span>
+        <span class="n">target</span><span class="p">:</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">cache</span>
+     <span class="n">tmpfs</span><span class="p">:</span>
+       <span class="n">size</span><span class="p">:</span> <span class="mi">100000000</span>
+    <span class="n">environment</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">FRIGATE_RTSP_PASSWORD</span><span class="o">=&lt;</span><span class="n">PASS</span><span class="o">&gt;</span>
+      <span class="o">-</span> <span class="n">FRIGATE_RTSP_USER</span><span class="o">=&lt;</span><span class="n">USER</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="configurer-une-camera-config-yml">
+<h3>22.3.2 Configurer une caméra, config.yml<a class="headerlink" href="#configurer-une-camera-config-yml" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="n">config</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="media/image1603.webp"><img alt="image1603" src="media/image1603.webp" style="width: 505px;" /></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mqtt:
+  enabled: false
+cameras:
+  jardin_cote_rue:
+    ffmpeg:
+      inputs:
+        - path: rtsp://michel:IdemIdem4546@192.168.1.107:554/cam/realmonitor?channel=1&amp;subtype=0
+          roles:
+            - record
+        - path: rtsp://michel:IdemIdem4546@192.168.1.107:554/cam/realmonitor?channel=1&amp;subtype=0
+          roles:
+            - detect
+    detect:
+      enabled: true
+version: 0.14
+camera_groups:
+  cam:
+    order: 1
+    icon: LuAirplay
+    cameras:
+      - Jardin_cote_rue
+</pre></div>
+</div>
+</section>
+<section id="demarrer-frigate">
+<h3>22.3.3 Démarrer Frigate<a class="headerlink" href="#demarrer-frigate" title="Lien permanent vers cette rubrique"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Affichage dans le navigateur</strong></p></li>
+</ul>
+<p><a class="reference internal" href="media/image1604.webp"><img alt="image1604" src="media/image1604.webp" style="width: 559px;" /></a></p>
+</section>
+</section>
+<section id="installer-le-pilote-du-module-coral">
+<h2>22.4 Installer le pilote du module Coral<a class="headerlink" href="#installer-le-pilote-du-module-coral" title="Lien permanent vers cette rubrique"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">uname</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="media/image1605.webp"><img alt="image1605" src="media/image1605.webp" style="width: 351px;" /></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>Si la version de votre noyau est 4.19 ou supérieure, vérifier si un pilote Apex pré-construit est installé</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">lsmod</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">apex</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="media/image1606.webp"><img alt="image1606" src="media/image1606.webp" style="width: 460px;" /></a></p>
+<p>S’il n’affiche rien, tout va bien , continuez à installer le pilote PCIe. Si il affiche un nom de module Apex, suivre la solution pour désactiver Apex et Gasket: <a class="reference external" href="https://coral.ai/docs/m2/get-started/#workaround-to-disable-apex-and-gasket">https://coral.ai/docs/m2/get-started/#workaround-to-disable-apex-and-gasket</a></p>
+</div>
+<section id="installez-le-pilote-pcie-et-les-packages-dexecution-edge-tpu">
+<h3>22.4.1 Installez le pilote PCIe et les packages d’exécution Edge TPU<a class="headerlink" href="#installez-le-pilote-pcie-et-les-packages-dexecution-edge-tpu" title="Lien permanent vers cette rubrique"></a></h3>
 </section>
 </section>
 </section>
