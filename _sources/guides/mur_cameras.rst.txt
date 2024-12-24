@@ -20,7 +20,7 @@ Plusieurs possibilités :
 
    .. code-block::
 
-      define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor
+      define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor, fr=Frigate
 
 Pour éviter des problèmes de capacité mémoire, vider le cache de Zoneminder ou Monitor périodiquement avec CRON : 
 
@@ -38,7 +38,13 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
 .. note:: **plus d’ infos** : https://www.tomzone.fr/vider-la-memoire-cache-dun-serveur-linux/
 
+*Affichage mo ou zm:*
+
 |image557|
+
+*Affichage fr:*
+
+|image1618|
 
 .. warning:: 
 
@@ -225,3 +231,5 @@ Il suffit d’indiquer dans admin/config.php le nb de caméras
    :width: 600px
 .. |image1389| image:: ../img/image1389.webp
    :width: 700px
+.. |image1618| image:: ../img/image1389.webp
+   :width: 537px
