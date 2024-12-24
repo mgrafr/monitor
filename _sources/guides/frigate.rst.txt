@@ -354,15 +354,15 @@ https://github.com/AlexxIT/go2rtc
    :width: 640px
 .. |image1610| image:: ../img/image1610.webp
    :width: 433px
-.. |image1611 image:: ../img/image1611.webp
+.. |image1611| image:: ../img/image1611.webp
    :width: 600px
-.. |image1612 image:: ../img/image1612.webp
+.. |image1612| image:: ../img/image1612.webp
    :width: 605px
-.. |image1613 image:: ../img/image1613.webp
+.. |image1613| image:: ../img/image1613.webp
    :width: 492px
-.. |image1614 image:: ../img/image1614.webp
+.. |image1614| image:: ../img/image1614.webp
    :width: 605px
-.. |image1615 image:: ../img/image1615.webp
+.. |image1615| image:: ../img/image1615.webp
    :width: 632px
-.. |image1616 image:: ../img/image1616.webp
+.. |image1616| image:: ../img/image1616.webp
    :width: 700px
