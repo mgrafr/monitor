@@ -14,12 +14,17 @@ Server version: 10.11.6
 
 19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 3.2.0**
+**La version stable actuelle est 3.2.1**
 
 19.4.1 Releases
 ===============
-Version  en developpement 3.2.1
+Version  en developpement 3.2.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version 3.2.1 (Décembre 2024)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+- ajout de Frigate dans le Mur de Caméras
+- Corrections mineures
 
 Version 3.2.0 (Août 2024)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
