@@ -385,7 +385,7 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 }
 /*SSE*/
 #sse{position:relative;top:-485px;}
-#messages{position: relative;top: -550px;left:30px}
+#messages{position: relative;top: -570px;left:30px}
 #status{position: relative;top: -530px;left:50px;}
 /*recettes*/
 
@@ -484,8 +484,8 @@ border-color: #e0e3e6;border-radius: 0.55rem}
     left: 50%;
 }
 
-/*zigbee2mqtt zwavejs2mqtt & ngiosmobile   (----------------*/
-#zbmqtt,#zwmqtt {margin-top: 0px;width: 100%;height: 800px;}
+/*zigbee2mqtt zwavejs2mqtt frigate & ngiosmobile   -*/
+#zbmqtt,#zwmqtt,#frigate {margin-top: 0px;width: 100%;height: 800px;}
 #nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
 #nagiosapp{width: 750px;height: 700px;position: relative;
 top: -70px;}
