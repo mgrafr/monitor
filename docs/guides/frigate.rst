@@ -309,6 +309,17 @@ https://github.com/AlexxIT/go2rtc
 
 |image1612|
 
+|image1613|
+
+|image1614|
+
+- **config.yml:**
+
+|image1615|
+
+22.6 le fichier config/config.yml avec go2rtc
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1616|
 
 
 .. |image1595| image:: ../img/image1595.webp
@@ -347,3 +358,11 @@ https://github.com/AlexxIT/go2rtc
    :width: 600px
 .. |image1612 image:: ../img/image1612.webp
    :width: 605px
+.. |image1613 image:: ../img/image1613.webp
+   :width: 492px
+.. |image1614 image:: ../img/image1614.webp
+   :width: 605px
+.. |image1615 image:: ../img/image1615.webp
+   :width: 632px
+.. |image1616 image:: ../img/image1616.webp
+   :width: 700px
