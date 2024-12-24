@@ -125,7 +125,7 @@
 <section id="materiel">
 <h2>22.1 Matériel<a class="headerlink" href="#materiel" title="Lien permanent vers cette rubrique"></a></h2>
 <p>-<strong>1 mini PC</strong>  ou plutôt micro compte tenu de sa taille <em>raccordé au routeur par un cable ethernet</em></p>
-<p><a class="reference internal" href="../_images/image1595.webp"><img alt="image1595" src="../_images/image1595.webp" style="width: 400px;" /></a> <a class="reference internal" href="../_images/image1597.webp"><img alt="image1597" src="../_images/image1597.webp" style="width: 300px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1595.webp"><img alt="image1595" src="../_images/image1595.webp" style="width: 400px;" /></a> <a class="reference internal" href="../_images/image1597.webp"><img alt="image1597" src="../_images/image1597.webp" style="width: 250px;" /></a></p>
 <ul class="simple">
 <li><p>Processeur d’image (GPU):Carte graphique Intel ® Supercore (jusqu’à 750MHz)</p></li>
 <li><p>Mémoire en cours d’exécution (RAM):LPDDR5 4800 MT/s, montage à bord,</p></li>
@@ -360,6 +360,9 @@ camera_groups:
 </section>
 <section id="config-config-yml">
 <h3>22.5.1 config/config.yml<a class="headerlink" href="#config-config-yml" title="Lien permanent vers cette rubrique"></a></h3>
+<ul class="simple">
+<li><p>Ajouter ces lignes:</p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># N&#39;activez cette option que si vous utilisez les GPU Intel</span>
 <span class="n">ffmpeg</span><span class="p">:</span>
   <span class="n">hwaccel_args</span><span class="p">:</span> <span class="n">preset</span><span class="o">-</span><span class="n">vaapi</span>
@@ -373,6 +376,7 @@ camera_groups:
 </section>
 <section id="installation-de-go2rtc">
 <h2>22.5 installation de go2rtc<a class="headerlink" href="#installation-de-go2rtc" title="Lien permanent vers cette rubrique"></a></h2>
+<p><a class="reference external" href="https://github.com/AlexxIT/go2rtc">https://github.com/AlexxIT/go2rtc</a></p>
 <ul class="simple">
 <li><p><strong>création du répertoire /op/go2rtc</strong></p></li>
 </ul>
@@ -381,8 +385,28 @@ camera_groups:
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>création de dockel-compose.mml</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>création de docker-compose.yml</p></li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">services</span><span class="p">:</span>
+<span class="n">go2rtc</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">alexxit</span><span class="o">/</span><span class="n">go2rtc</span><span class="p">:</span><span class="n">master</span><span class="o">-</span><span class="n">hardware</span>
+  <span class="n">network_mode</span><span class="p">:</span> <span class="n">host</span>       <span class="c1"># important for WebRTC, HomeKit, UDP cameras</span>
+  <span class="n">privileged</span><span class="p">:</span> <span class="n">true</span>         <span class="c1"># only for FFmpeg hardware transcoding</span>
+  <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>  <span class="c1"># autorestart on fail or config change from WebUI</span>
+  <span class="n">environment</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">TZ</span><span class="o">=</span><span class="n">Europe</span><span class="o">/</span><span class="n">Paris</span>  <span class="c1"># timezone in logs</span>
+  <span class="n">volumes</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s2">&quot;~/go2rtc:/config&quot;</span>   <span class="c1"># folder for go2rtc.yaml file (edit from WebUI)</span>
+</pre></div>
+</div>
+<p><a href="#id3"><span class="problematic" id="id4">|image1611|</span></a></p>
+<ul class="simple">
+<li><p><strong>Démarrer le conteneur</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p><a href="#id5"><span class="problematic" id="id6">|image1612|</span></a></p>
 </section>
 </section>
 

@@ -261,6 +261,8 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
 
 22.5.1 config/config.yml
 ========================
+- Ajouter ces lignes:
+
 .. code-block::
 
    # N'activez cette option que si vous utilisez les GPU Intel
@@ -273,6 +275,7 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
 
 22.5 installation de go2rtc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/AlexxIT/go2rtc
 
 - **création du répertoire /op/go2rtc**
 
@@ -281,7 +284,30 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
    mkdir /opt/go2rtc
    cd /opt/go2rtc
 
-- **création de dockel-compose.mml
+- **création de docker-compose.yml
+
+.. code-block::
+
+  services:
+  go2rtc:
+    image: alexxit/go2rtc:master-hardware
+    network_mode: host       # important for WebRTC, HomeKit, UDP cameras
+    privileged: true         # only for FFmpeg hardware transcoding
+    restart: unless-stopped  # autorestart on fail or config change from WebUI
+    environment:
+      - TZ=Europe/Paris  # timezone in logs
+    volumes:
+      - "~/go2rtc:/config"   # folder for go2rtc.yaml file (edit from WebUI)
+ 
+|image1611|
+
+- **Démarrer le conteneur**
+
+.. code-block::
+
+   sudo docker-compose up -d
+
+|image1612|
 
 
 
@@ -290,7 +316,7 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
 .. |image1596| image:: ../img/image1596.webp
    :width: 200px
 .. |image1597| image:: ../img/image1597.webp
-   :width: 300px
+   :width: 250px
 .. |image1598| image:: ../img/image1598.webp
    :width: 300px
 .. |image1599| image:: ../img/image1599.webp
@@ -317,3 +343,7 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
    :width: 640px
 .. |image1610| image:: ../img/image1610.webp
    :width: 433px
+.. |image1611 image:: ../img/image1611.webp
+   :width: 600px
+.. |image1612 image:: ../img/image1612.webp
+   :width: 605px
