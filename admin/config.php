@@ -168,8 +168,10 @@ define('ON_GRAPH',false);// mise en service page graphique
 // utilisation du mur :true sinon false , Nom du mur , nb caméras
 define('ON_MUR',false);// mise en service MUR
 define('NOMMUR','');// nom du mur
-define('NBCAM','0');// nombre caméras
-define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor
+define('NBCAM','0');// nombre caméras ,pour frigate = non concerné
+define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor,fr=Frigate
+define('IP_FRIGATE','<IP>:5000');// pour Frigate
+define('URL_FRIGATE','<DOMAINE>');// ""
 // Zoneminder
 define('ZMURL','http://192.168.1.23/zm');//IP/zm
 define('ZMURLTLS','https:zoneminder.DOMAINE.ovh');// sous domaine
