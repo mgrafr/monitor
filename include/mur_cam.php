@@ -27,7 +27,7 @@ if (SRC_MUR != "fr") {echo '<div id="message1" class="space">cliquer sur une ima
   echo '</tbody></table>';}
 if (SRC_MUR=="fr") {$domaine=$_SESSION["domaine"];
   if ($domaine==URLMONITOR) $lien_frigate=URL_FRIGATE;
-  if ($domaine==IPMONITOR) $lien_frigate="http://".IP_FRIGATE;
+  if ($domaine==IPMONITOR) $lien_frigate=IP_FRIGATE;
   echo '<iframe id="frigate" src="'.$lien_frigate.'" frameborder="0" ></iframe>';}
 ?>		
 </div>
