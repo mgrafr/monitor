@@ -321,6 +321,47 @@ https://github.com/AlexxIT/go2rtc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1616|
 
+22.7 Accès distant
+^^^^^^^^^^^^^^^^^^
+- **Autoriser le port 5000**
+
+|image1617|
+
+- **le fichier de configuration Nginx**
+
+.. code-block::
+
+   #auth_basic "Mot de Passe Obligatoire";
+   #auth_basic_user_file /etc/nginx/.htpasswd;
+       server_name <DOMAINE>;
+
+       location / {
+        proxy_pass http://192.168.1.2:5000/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    #WebSocket support
+       proxy_set_header Upgrade $http_upgrade;
+       proxy_set_header Connection "upgrade";
+       proxy_http_version 1.1;
+       }
+       listen 443 ssl; # managed by Certbot
+       ssl_certificate /etc/letsencrypt/live/<DOMAINE>/fullchain.pem; #>
+       ssl_certificate_key /etc/letsencrypt/live/<DOMAINE>/privkey.pem;>
+       include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+       ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+   }
+   server {
+    if ($host = <DOMAINE>) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+    listen      80 ;
+    server_name <DOMAINE>;
+    return 404; # managed by Certbot
+
+*voir cette exemple pour la configuration en http pour demander un certificat Let'sEncrypt*  :ref:`9.4 accès distant HTTPS`
+
+
 
 .. |image1595| image:: ../img/image1595.webp
    :width: 400px
@@ -366,3 +407,5 @@ https://github.com/AlexxIT/go2rtc
    :width: 632px
 .. |image1616| image:: ../img/image1616.webp
    :width: 700px
+.. |image1617| image:: ../img/image1617.webp
+   :width: 465px

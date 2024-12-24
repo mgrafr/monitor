@@ -92,6 +92,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#installation-de-go2rtc">22.5 installation de go2rtc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#le-fichier-config-config-yml-avec-go2rtc">22.6 le fichier config/config.yml avec go2rtc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acces-distant">22.7 Accès distant</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="optimisations.html">23. OPTIMISATION en cours</a></li>
@@ -418,6 +419,46 @@ camera_groups:
 <section id="le-fichier-config-config-yml-avec-go2rtc">
 <h2>22.6 le fichier config/config.yml avec go2rtc<a class="headerlink" href="#le-fichier-config-config-yml-avec-go2rtc" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference internal" href="../_images/image1616.webp"><img alt="image1616" src="../_images/image1616.webp" style="width: 700px;" /></a></p>
+</section>
+<section id="acces-distant">
+<h2>22.7 Accès distant<a class="headerlink" href="#acces-distant" title="Lien permanent vers cette rubrique"></a></h2>
+<ul class="simple">
+<li><p><strong>Autoriser le port 5000</strong></p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1617.webp"><img alt="image1617" src="../_images/image1617.webp" style="width: 465px;" /></a></p>
+<ul class="simple">
+<li><p><strong>le fichier de configuration Nginx</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#auth_basic &quot;Mot de Passe Obligatoire&quot;;
+#auth_basic_user_file /etc/nginx/.htpasswd;
+    server_name &lt;DOMAINE&gt;;
+
+    location / {
+     proxy_pass http://192.168.1.2:5000/;
+     proxy_set_header Host $host;
+     proxy_set_header X-Real-IP $remote_addr;
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ #WebSocket support
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection &quot;upgrade&quot;;
+    proxy_http_version 1.1;
+    }
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/&lt;DOMAINE&gt;/fullchain.pem; #&gt;
+    ssl_certificate_key /etc/letsencrypt/live/&lt;DOMAINE&gt;/privkey.pem;&gt;
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+server {
+ if ($host = &lt;DOMAINE&gt;) {
+     return 301 https://$host$request_uri;
+ } # managed by Certbot
+ listen      80 ;
+ server_name &lt;DOMAINE&gt;;
+ return 404; # managed by Certbot
+</pre></div>
+</div>
+<p><em>voir cette exemple pour la configuration en http pour demander un certificat Let’sEncrypt</em>  <a class="reference internal" href="zigbee.html#acces-distant-https"><span class="std std-ref">9.4 accès distant HTTPS</span></a></p>
 </section>
 </section>
 
