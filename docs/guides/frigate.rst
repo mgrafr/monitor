@@ -275,6 +275,8 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
 
 22.5 installation de go2rtc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ports RTSP et ONVIF pour caméras de marque : https://www.camapp365.com/technical/rtsp-and-onvif-ports
+
 https://github.com/AlexxIT/go2rtc
 
 - **création du répertoire /op/go2rtc**
