@@ -80,13 +80,14 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
    // utilisation du mur :true sinon false , Nom du mur , nb caméras
    define('ON_MUR',true);// mise en service MUR
-   define('NOMMUR','');// nom du mur
-   define('NBCAM','0');// nombre caméras
-   define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor
+   define('NBCAM','0');// nombre caméras ,pour frigate = non concerné
+   define('SRC_MUR','mo');// zm=Zoneminder, mo=monitor,fr=Frigate
+   define('IP_FRIGATE','http://192.168.1.2:5000');// pour Frigate
+   define('URL_FRIGATE','https://<SOUS-DOMAINE>');// 
    // Zoneminder
    define('ZMURL','http://192.168.1.23/zm');//IP/zm
    define('ZMURLTLS','https:zoneminder.DOMAINE.ovh');// sous domaine
-   define('ZMUSER','michel');// pour mur_cameras.php
+   define('ZMUSER','<LOGIN>');// pour mur_cameras.php
    define('ZMPASS','MOT_PASSE');// pour mur_cameras.php
    define('TIMEAPI','3400');//suivant la valeur indiquée dans zoneminder
 
@@ -157,6 +158,8 @@ Extrait de mur_cam.php
 
 7.3- Les scripts JS pour la vidéo dans footer.php 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**NE CONCERNE PAS FRIGATE**
+
 Le Zoom Bootstrap :
 
 |image569|
@@ -197,6 +200,8 @@ Le Zoom Bootstrap :
 
 7.4- Ajouter une caméra
 ^^^^^^^^^^^^^^^^^^^^^^^
+**NE CONCERNE PAS FRIGATE**
+
 Il suffit d’indiquer dans admin/config.php le nb de caméras
 
  .. code-block:: 

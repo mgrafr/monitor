@@ -166,13 +166,14 @@ $_SESSION[&quot;zmuser&quot;]=ZMUSER;$_SESSION[&quot;zmpass&quot;]=ZMPASS;}
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">utilisation</span> <span class="n">du</span> <span class="n">mur</span> <span class="p">:</span><span class="n">true</span> <span class="n">sinon</span> <span class="n">false</span> <span class="p">,</span> <span class="n">Nom</span> <span class="n">du</span> <span class="n">mur</span> <span class="p">,</span> <span class="n">nb</span> <span class="n">caméras</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;ON_MUR&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span><span class="o">//</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">service</span> <span class="n">MUR</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;NOMMUR&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nom</span> <span class="n">du</span> <span class="n">mur</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;NBCAM&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nombre</span> <span class="n">caméras</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SRC_MUR&#39;</span><span class="p">,</span><span class="s1">&#39;mo&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">zm</span><span class="o">=</span><span class="n">Zoneminder</span><span class="p">,</span> <span class="n">mo</span><span class="o">=</span><span class="n">monitor</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;NBCAM&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nombre</span> <span class="n">caméras</span> <span class="p">,</span><span class="n">pour</span> <span class="n">frigate</span> <span class="o">=</span> <span class="n">non</span> <span class="n">concerné</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;SRC_MUR&#39;</span><span class="p">,</span><span class="s1">&#39;mo&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">zm</span><span class="o">=</span><span class="n">Zoneminder</span><span class="p">,</span> <span class="n">mo</span><span class="o">=</span><span class="n">monitor</span><span class="p">,</span><span class="n">fr</span><span class="o">=</span><span class="n">Frigate</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;IP_FRIGATE&#39;</span><span class="p">,</span><span class="s1">&#39;http://192.168.1.2:5000&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">pour</span> <span class="n">Frigate</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;URL_FRIGATE&#39;</span><span class="p">,</span><span class="s1">&#39;https://&lt;SOUS-DOMAINE&gt;&#39;</span><span class="p">);</span><span class="o">//</span>
 <span class="o">//</span> <span class="n">Zoneminder</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;ZMURL&#39;</span><span class="p">,</span><span class="s1">&#39;http://192.168.1.23/zm&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">IP</span><span class="o">/</span><span class="n">zm</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;ZMURLTLS&#39;</span><span class="p">,</span><span class="s1">&#39;https:zoneminder.DOMAINE.ovh&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">sous</span> <span class="n">domaine</span>
-<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ZMUSER&#39;</span><span class="p">,</span><span class="s1">&#39;michel&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">pour</span> <span class="n">mur_cameras</span><span class="o">.</span><span class="n">php</span>
+<span class="n">define</span><span class="p">(</span><span class="s1">&#39;ZMUSER&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;LOGIN&gt;&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">pour</span> <span class="n">mur_cameras</span><span class="o">.</span><span class="n">php</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;ZMPASS&#39;</span><span class="p">,</span><span class="s1">&#39;MOT_PASSE&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">pour</span> <span class="n">mur_cameras</span><span class="o">.</span><span class="n">php</span>
 <span class="n">define</span><span class="p">(</span><span class="s1">&#39;TIMEAPI&#39;</span><span class="p">,</span><span class="s1">&#39;3400&#39;</span><span class="p">);</span><span class="o">//</span><span class="n">suivant</span> <span class="n">la</span> <span class="n">valeur</span> <span class="n">indiquée</span> <span class="n">dans</span> <span class="n">zoneminder</span>
 </pre></div>
@@ -245,6 +246,7 @@ while ($i &lt;= NBCAM) {
 </section>
 <section id="les-scripts-js-pour-la-video-dans-footer-php">
 <h2>7.3- Les scripts JS pour la vidéo dans footer.php<a class="headerlink" href="#les-scripts-js-pour-la-video-dans-footer-php" title="Lien permanent vers cette rubrique"></a></h2>
+<p><strong>NE CONCERNE PAS FRIGATE</strong></p>
 <p>Le Zoom Bootstrap :</p>
 <p><a class="reference internal" href="../_images/image569.webp"><img alt="image569" src="../_images/image569.webp" style="width: 602px;" /></a></p>
 <div class="admonition important">
@@ -286,6 +288,7 @@ vidéo, l’accès distant en https est assuré.</p>
 </section>
 <section id="ajouter-une-camera">
 <h2>7.4- Ajouter une caméra<a class="headerlink" href="#ajouter-une-camera" title="Lien permanent vers cette rubrique"></a></h2>
+<p><strong>NE CONCERNE PAS FRIGATE</strong></p>
 <p>Il suffit d’indiquer dans admin/config.php le nb de caméras</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span><span class="s1">&#39;NBCAM&#39;</span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="p">);</span><span class="o">//</span> <span class="n">nombre</span>
