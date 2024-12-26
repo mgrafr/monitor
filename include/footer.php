@@ -475,7 +475,7 @@ $("#btn_sc").trigger("click");
 	
 /*zoom*/
 <?php 
-if (ON_MUR==false) echo "/*";?>
+if (ON_MUR==false || SRC_MUR=="fr") echo "/*";?>
 $(".dimcam").on("click", function() {rel = $(this).attr('rel');
    $('#imagepreview').attr('src',this.src); // here asign the image to the modal when the user click the enlarge link
    $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
