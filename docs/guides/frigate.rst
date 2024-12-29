@@ -382,7 +382,7 @@ https://github.com/AlexxIT/go2rtc
        host: 192.168.1.20
        port: 8899
        user: admin
-       password: '' # si pad de password
+       password: '' # si pas de password
      detect:
        enabled: true
 
@@ -392,7 +392,7 @@ https://github.com/AlexxIT/go2rtc
 
 .. note::
 
-   port ONVIF les plus utilisés: 80, 8000, 8080, 8899, 2000, 5000
+   ports ONVIF les plus utilisés: 80, 8000, 8080, 8899, 2000, 5000
 
 |image1621|
 
