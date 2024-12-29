@@ -93,6 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#installation-de-go2rtc">22.5 installation de go2rtc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#le-fichier-config-config-yml-avec-go2rtc">22.6 le fichier config/config.yml avec go2rtc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acces-distant">22.7 Accès distant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-onvif-cameras-ptz">22.8 Configuration onvif (caméras PTZ)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="optimisations.html">23. OPTIMISATION en cours</a></li>
@@ -460,6 +461,37 @@ server {
 </pre></div>
 </div>
 <p><em>voir cette exemple pour la configuration en http pour demander un certificat Let’sEncrypt</em>  <a class="reference internal" href="zigbee.html#acces-distant-https"><span class="std std-ref">9.4 accès distant HTTPS</span></a></p>
+</section>
+<section id="configuration-onvif-cameras-ptz">
+<h2>22.8 Configuration onvif (caméras PTZ)<a class="headerlink" href="#configuration-onvif-cameras-ptz" title="Lien permanent vers cette rubrique"></a></h2>
+<p><a class="reference internal" href="img/image1619.webp"><img alt="image1619" src="img/image1619.webp" style="width: 498px;" /></a></p>
+<ul class="simple">
+<li><p><strong>fichier /config/config.yml</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ptz_nord</span><span class="p">:</span>
+  <span class="n">ffmpeg</span><span class="p">:</span>
+    <span class="n">inputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">path</span><span class="p">:</span> <span class="n">rtsp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8554</span><span class="o">/</span><span class="n">ptz_nord</span>
+        <span class="n">input_args</span><span class="p">:</span> <span class="n">preset</span><span class="o">-</span><span class="n">rtsp</span><span class="o">-</span><span class="n">restream</span>
+        <span class="n">roles</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">detect</span>
+  <span class="n">onvif</span><span class="p">:</span>
+    <span class="n">host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.20</span>
+    <span class="n">port</span><span class="p">:</span> <span class="mi">8899</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">admin</span>
+    <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;&#39;</span> <span class="c1"># si pad de password</span>
+  <span class="n">detect</span><span class="p">:</span>
+    <span class="n">enabled</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>** fichier docker-compose.yml**</p></li>
+</ul>
+<p><a class="reference internal" href="img/image1620.webp"><img alt="image1620" src="img/image1620.webp" style="width: 454px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>port ONVIF les plus utilisés: 80, 8000, 8080, 8899, 2000, 5000</p>
+</div>
 </section>
 </section>
 
