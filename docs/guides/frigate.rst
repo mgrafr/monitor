@@ -363,6 +363,37 @@ https://github.com/AlexxIT/go2rtc
 
 *voir cette exemple pour la configuration en http pour demander un certificat Let'sEncrypt*  :ref:`9.4 accès distant HTTPS`
 
+22.8 Configuration onvif (caméras PTZ)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1619|
+
+- **fichier /config/config.yml**
+
+.. code-block::
+
+   ptz_nord:
+     ffmpeg:
+       inputs:
+         - path: rtsp://127.0.0.1:8554/ptz_nord
+           input_args: preset-rtsp-restream
+           roles:
+             - detect
+     onvif:
+       host: 192.168.1.20
+       port: 8899
+       user: admin
+       password: '' # si pad de password
+     detect:
+       enabled: true
+
+- ** fichier docker-compose.yml**
+
+|image1620|
+
+.. note::
+
+   port ONVIF les plus utilisés: 80, 8000, 8080, 8899, 2000, 5000
+
 
 
 .. |image1595| image:: ../img/image1595.webp
@@ -411,3 +442,7 @@ https://github.com/AlexxIT/go2rtc
    :width: 700px
 .. |image1617| image:: ../img/image1617.webp
    :width: 465px
+.. |image1619| image:: ../img/image1619.webp
+   :width: 498px
+.. |image1620| image:: ../img/image1620.webp
+   :width: 454px
