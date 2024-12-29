@@ -396,6 +396,16 @@ https://github.com/AlexxIT/go2rtc
 
 |image1621|
 
+22.9 Notifications (sans HomeAssistant)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/0x2142/frigate-notify/tree/main
+
+
+
+
+
+
+
 .. |image1595| image:: ../img/image1595.webp
    :width: 400px
 .. |image1596| image:: ../img/image1596.webp
