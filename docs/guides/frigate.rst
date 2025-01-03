@@ -400,8 +400,97 @@ https://github.com/AlexxIT/go2rtc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://github.com/0x2142/frigate-notify/tree/main
 
+mon fichier config.yml
 
+.. code-block::
 
+   frigate:
+     server: http://192.168.1.2:5000
+     ignoressl: true
+     public_url: https://frigate.xxxxxxxxxxxxxx.ovh
+     headers:
+       - Authorization:  Basic bWxxxxxxxxxxxxNTQ2
+     startup_check:
+       attempts: 5
+       interval: 30
+     mqtt:
+       enabled: true # Une seule méthode de surveillance peut être configurée
+       server: 192.168.1.42
+       port: 1883
+       clientid: frigate-notify
+       username: michel
+       password: xxxxxxxxx
+       topic_prefix: frigate
+     webapi:
+       enabled: false # Une seule méthode de surveillance peut être configurée
+       interval: 60
+     cameras:
+       exclude:
+         - PTZ_nord
+   alerts:
+     general:
+       title: Alerte Frigate
+       timeformat:
+   # Spécifier ce qu’il faut faire avec les événements qui n’ont pas d’image d’instantané
+       nosnap:        # Par défaut : allow
+       snap_bbox:
+   # Inclut l’horodatage sur l’instantané lorsqu’il est récupéré à partir de Frigate
+      snap_timestamp:
+      snap_crop:
+   # Définissez cette option pour ne notifier qu’une seule fois par événementtrue
+      notify_once: true
+     quiet:
+       start:
+       end:
+     zones:
+       unzoned: allow
+       allow:
+         - jardin_cote_rue_z1
+       block:
+         - test_zone_02
+     discord:
+       enabled: false
+       webhook:
+       template:
+     gotify:
+       enabled: false
+       server:
+       token:
+       ignoressl:
+       template:
+     pushover:
+       enabled: true
+       token: aszzzzzzzzzzzzzzzzzzzzzzka
+       userkey: uoxxxxxxxxxxxxxxxxxxxji
+       devices: honvvvvvvvvvvvvvv
+       priority: 0
+       retry:
+       expire:
+       ttl:
+       template:
+     smtp:
+       enabled: false
+       server: smtp.orange.fr
+       port: 465
+       tls: true
+       user: michel.xxxxxxxr@orange.fr
+       password: zzzzzzzzzzzzzzzzzzzzzzzz
+       recipient: michel.zzzzzzzzzzzz@mailo.com
+       template:
+     webhook:
+       enabled: true
+       server: http://192.168.1.5/monitor/api/json.php?app=envoi_sms&contenu=essai
+       ignoressl:
+       method:
+       params:
+       headers:
+       template:
+
+   monitor:
+     enabled: false
+     url:
+     interval:
+     ignoressl:
 
 
 
