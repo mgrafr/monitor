@@ -496,6 +496,13 @@ https://github.com/0x2142/frigate-notify/tree/main
 
 |image1622|
 
+- **fichier journal**
+
+.. code-block::
+
+   docker logs --tail 50 --follow --timestamps frigate-notify_frigate-notify_1
+
+|image1623|   
 
 .. |image1595| image:: ../img/image1595.webp
    :width: 400px
@@ -551,3 +558,5 @@ https://github.com/0x2142/frigate-notify/tree/main
    :width: 550px
 .. |image1622| image:: ../img/image1622.webp
    :width: 425px
+.. |image1623| image:: ../img/image1623.webp
+   :width: 644px
