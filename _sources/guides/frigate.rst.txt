@@ -400,7 +400,7 @@ https://github.com/AlexxIT/go2rtc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://github.com/0x2142/frigate-notify/tree/main
 
-mon fichier config.yml
+- **mon fichier config.yml**
 
 .. code-block::
 
@@ -492,7 +492,9 @@ mon fichier config.yml
      interval:
      ignoressl:
 
+- **monfichier docker-compose.yaml**
 
+|image1622|
 
 
 .. |image1595| image:: ../img/image1595.webp
@@ -547,3 +549,5 @@ mon fichier config.yml
    :width: 454px
 .. |image1621| image:: ../img/image1621.webp
    :width: 550px
+.. |image1622| image:: ../img/image1622.webp
+   :width: 425px
