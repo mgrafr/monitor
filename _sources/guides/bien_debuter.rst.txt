@@ -1510,6 +1510,7 @@ On crée une table dans la base de données : :darkblue:`cameras`
 - num : n° auto incrémenté pour faciliter les modifications
 - Idx : N° idx :darkblue:`celui qui correspond au onclick du plan`, 
 - Id_zm : optionnel, utilisé avec Zoneminder, :darkblue:`option à définir dans admin/config.php`
+- id_fr : optionnel utilisé avec Frigate, :darkblue:`option à définir dans admin/config.php`
 - Ip : IP locale
 - url : url locale de la caméra
 - marque : dahua ou generic, :darkblue:`option à définir dans admin/config.php` 
