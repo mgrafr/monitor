@@ -86,6 +86,7 @@ define('ON_ALARM',false);// affichage pour utilisation de l'alarme
 define('PWDALARM','1234');//mot passe alarme
 define('NOM_PASS_AL','pwdalarm');// nom du mot de passe dans la BD
 define('TIME_PASS_AL','3600');// temps de validité du mot de passe
+define('MODECT','false');// Mode détection caméras zoneminder, frigate ou false
 // ------------------------------------------------------------------------------------------
 //------Page  commandes Mur Inter------------------------------------
 define('ON_ONOFF',false);// affichage pour utilisation des commandes
