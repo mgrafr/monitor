@@ -20,6 +20,8 @@ Server version: 10.11.6
 ===============
 Version  en developpement 3.2.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- ajout dans config.php choix pour modect : Zoneminder ou frigate ou false
+- ajout dans la table cameras.sql nom de la caméra pour Frigate
 
 Version 3.2.1 (Décembre 2024)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
