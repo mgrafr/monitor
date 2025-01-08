@@ -652,6 +652,10 @@ Le choix des caméras se fait dans la BD :
 
 |image442|
 
+Le choix de l'appli de détection se fait dans admin/config.php
+
+|image1629|
+
 5.2 Construction de l’image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 On ajoute les composants avec Inkscape, les ID pour les changements de couleur, *pas besoin de onclick, il n’y a que des dispositifs virtuels*.
@@ -1349,4 +1353,6 @@ voir le § :ref:`0.3.2 Les Dispositifs`
 .. |image1371| image:: ../img/image1371.webp
    :width: 642px
 .. |image1628| image:: ../img/image1628.webp
+   :width: 700px
+.. |image1629| image:: ../img/image1629.webp
    :width: 700px
