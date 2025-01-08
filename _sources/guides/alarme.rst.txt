@@ -8,6 +8,10 @@ Pour l’activation ou l’arrêt par GSM voire ce paragraphe qui traite du scri
 
 Le script LUA dans Evènements de Domoticz : https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/alarme_v3_0_5.lua
 
+.. IMPORTANT::
+
+   La détection par les caméras peut être utilisée avec FRIGATE et ZONEMINDER et MONITOR
+
 5.1 Les interrupteurs réels, virtuels, les variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Pour Home Assistant**:
