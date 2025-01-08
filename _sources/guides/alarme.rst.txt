@@ -613,7 +613,29 @@ Script Bash concernant le mode détection des caméras: :darkblue:`modect.sh`
 
 |image1356|
 
-5.1.3.4 copies d'écran concernant Modect
+5.1.3.4 le script Python pour Frigate
+"""""""""""""""""""""""""""""""""""""
+.. code-block::
+
+   #!/usr/bin/env python3.9
+   #-*- coding: utf-8 -*-
+   import sys
+   from connect import ip_mqtt  # adresse broker dans connect.py
+   import paho.mqtt.client as mqtt #import the client1
+   broker_address=ip_mqtt
+   topic = str(sys.argv[1])
+   payload = str(sys.argv[2])
+   #broker_address="iot.eclipse.org" #use external broker
+   client = mqtt.Client("P1") #create new instance
+   client.username_pw_set(username='<login>',password='<pass>')
+   client.connect(broker_address) #connect to broker
+   client.publish(topic,payload) #publish
+
+.. NOTE::
+
+   ce script peut être utilisé directement depuis monitor ou à parir d'une console
+
+5.1.3.5 copies d'écran concernant Modect
 """"""""""""""""""""""""""""""""""""""""
 
 Le fichier :darkblue:`string_modect.json` est écrit automatiquement à partir de la BD SQL , il est visible dans « administration »
