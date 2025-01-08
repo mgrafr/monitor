@@ -667,6 +667,31 @@ echo $file.&#39;&lt;div id=&quot;result&quot;&gt;&lt;form &gt;&#39;;
 <p class="admonition-title">Note</p>
 <p>C’est pour la raison ci-dessous que l’adresse ip de monitor se trouve dans les fichiers « connect.lua , connect.py et connect.js »</p>
 <p><a class="reference internal" href="../_images/image843.webp"><img alt="image843" src="../_images/image843.webp" style="width: 528px;" /></a></p>
+<p>Dernière version de upload.py:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">connect</span> <span class="kn">import</span> <span class="n">ip_monitor</span>
+<span class="n">x</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="n">z</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">z1</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ip</span><span class="o">=</span> <span class="n">ip_monitor</span>
+<span class="n">rep</span><span class="o">=</span><span class="s2">&quot;/opt/domoticz/&quot;</span>
+<span class="k">if</span> <span class="n">z</span><span class="o">==</span><span class="s2">&quot;lua&quot;</span> <span class="p">:</span>
+    <span class="n">rep</span><span class="o">=</span><span class="s2">&quot;/opt/domoticz/www/modules_lua/&quot;</span>
+    <span class="n">addr</span><span class="o">=</span><span class="s2">&quot;http://&quot;</span><span class="o">+</span><span class="n">ip</span><span class="o">+</span><span class="s2">&quot;/monitor/admin/connect/&quot;</span><span class="o">+</span><span class="n">z1</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">z</span>
+<span class="k">if</span> <span class="n">z</span><span class="o">==</span><span class="s2">&quot;json&quot;</span> <span class="p">:</span>
+    <span class="n">rep</span><span class="o">=</span><span class="s2">&quot;/opt/domoticz/www/modules_lua/&quot;</span>
+    <span class="n">addr</span><span class="o">=</span><span class="s2">&quot;http://&quot;</span><span class="o">+</span><span class="n">ip</span><span class="o">+</span><span class="s2">&quot;/monitor/admin/&quot;</span><span class="o">+</span><span class="n">z1</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">z</span>
+<span class="k">if</span> <span class="n">z</span><span class="o">==</span><span class="s2">&quot;py&quot;</span> <span class="p">:</span>
+    <span class="n">rep</span><span class="o">=</span><span class="s2">&quot;/opt/domoticz/scripts/python/&quot;</span>
+    <span class="n">addr</span><span class="o">=</span><span class="s2">&quot;http://&quot;</span><span class="o">+</span><span class="n">ip</span><span class="o">+</span><span class="s2">&quot;/monitor/admin/connect/&quot;</span><span class="o">+</span><span class="n">z1</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">z</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">rep</span><span class="o">+</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
