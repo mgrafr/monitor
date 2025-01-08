@@ -223,12 +223,12 @@ Partie du script concernant :darkblue:`les options : interrupteurs on/off` ,
 	    devices('Modect').switchOn();
 	    end 
         -- activation manuelle Modect
-	    if (item.name == 'Modect' and  item.state=='On' ) then
-	    domoticz.variables('modect').set("modect");modect_cam('Modect')
+	if (item.name == 'Modect' and  item.state=='On' ) then 
+	    domoticz.variables('modect').set("modect");detect_frigate(1)   --modect_cam('Modect')  , pour zneminder
 	    -- activation manuelle Monitor 	
 	    elseif (item.name == 'Modect' and  item.state=='Off' ) then
-	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
-        end  
+	    domoticz.variables('modect').set("monitor");detect_frigate(2)  --modect_cam('Monitor')   , pour zneminder
+        end 
        
         -- raz variables de notification intrusion et porte ouverte
         if (item.name == 'raz_dz' and item.state=='On') then domoticz.devices('raz_dz').switchOff();
@@ -511,7 +511,7 @@ Dans les autres cas Modect peut être activé manuellement.
 
 .. warning::
 
-   **Il faut avoir installé Zoneminder**
+   **Il faut avoir installé Zoneminder ou Frigate**
 
 5.1.3.1 Jeton ZM
 """"""""""""""""
@@ -533,7 +533,7 @@ Dans fonctions.php :
       -- Alarme absence et nuit maison
 	--
 	-- alarme--alarme.lua
-	-- version 3.0.4
+	-- version 3.0.6
 	--
  	json = (loadfile "scripts/lua/JSON.lua")()
       function decode_json(fich_json)
@@ -544,7 +544,7 @@ Dans fonctions.php :
         --print('succes='..jsonValeur.version)
         return jsonValeur
       end
-      function modect_cam(mode)
+      function modect_cam(mode) -- pour ZONEMINDER
        json_val=decode_json('curl -XPOST -d "user=michel&pass=Idem4546"  http://192.168.1.23/zm/api/host/login.json')
        print(json_val.access_token)
        cle=json_val.access_token
@@ -557,6 +557,23 @@ Dans fonctions.php :
        print ("camera "..tostring(k).."activée :"..tostring(mode));
        end
       end
+
+      function detect_frigate(t)   -- POUR FRIGATE
+      json_val=decode_json('http://'..ip_monitor..'/monitor/admin/string_modect.json')
+      for k,v in pairs(json_val) do 
+      for key,value in pairs(v) do    
+       print('t='..t)
+       print(value)
+         if (t==1) then 
+         command = 'python3 scripts/python/fr_mqtt.py  frigate/'..value..'/detect/set ON >  /opt/domoticz/frigate.log 2>&1' 
+         elseif (t==2) then 
+         command = 'python3 scripts/python/fr_mqtt.py  frigate/'..value..'/detect/set OFF >  /opt/domoticz/frigate.log 2>&1' 
+         end
+       print(command) 
+       os.execute(command)
+       end
+      end
+      end
        
        -- activation de la detection par les cameras
 	    if (item.name == 'Modect' and item.state=='Off' and  domoticz.variables('ma-alarme').value=="1") then 
@@ -564,13 +581,15 @@ Dans fonctions.php :
 	    end 
         -- activation manuelle Modect
 	    if (item.name == 'Modect' and  item.state=='On' and  domoticz.variables('ma-alarme').value=="0") then
-	    domoticz.variables('modect').set("modect");modect_cam('Modect')
+	    domoticz.variables('modect').set("modect");modect_cam('Modect')  -- ou detect_frigate(1)
 	    -- activation manuelle Monitor 	
 	    elseif (item.name == 'Modect' and  item.state=='Off' and  domoticz.variables('ma-alarme').value=="0") then
-	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')
+	    domoticz.variables('modect').set("monitor");modect_cam('Monitor')  --  ou  detect_frigate(2)
           end 
 
 |image439|
+
+|image1628|
 
 5.1.3.3 le script bash pour Home Assistant
 """"""""""""""""""""""""""""""""""""""""""
@@ -1307,3 +1326,5 @@ voir le § :ref:`0.3.2 Les Dispositifs`
    :width: 495px 
 .. |image1371| image:: ../img/image1371.webp
    :width: 642px
+.. |image1628| image:: ../img/image1628.webp
+   :width: 700px
