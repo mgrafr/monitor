@@ -327,11 +327,11 @@ L’utilisation du modem 4G Ebyte n’autorise pas, pour les textes, les accents
         <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span>
         <span class="n">end</span>
     <span class="o">--</span> <span class="n">activation</span> <span class="n">manuelle</span> <span class="n">Modect</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span> <span class="p">)</span> <span class="n">then</span>
-        <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;modect&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span> <span class="p">)</span> <span class="n">then</span>
+        <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;modect&quot;</span><span class="p">);</span><span class="n">detect_frigate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="o">--</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span>  <span class="p">,</span> <span class="n">pour</span> <span class="n">zneminder</span>
         <span class="o">--</span> <span class="n">activation</span> <span class="n">manuelle</span> <span class="n">Monitor</span>
         <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="p">)</span> <span class="n">then</span>
-        <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Monitor&#39;</span><span class="p">)</span>
+        <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">);</span><span class="n">detect_frigate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="o">--</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Monitor&#39;</span><span class="p">)</span>   <span class="p">,</span> <span class="n">pour</span> <span class="n">zneminder</span>
     <span class="n">end</span>
 
     <span class="o">--</span> <span class="n">raz</span> <span class="n">variables</span> <span class="n">de</span> <span class="n">notification</span> <span class="n">intrusion</span> <span class="n">et</span> <span class="n">porte</span> <span class="n">ouverte</span>
@@ -580,7 +580,7 @@ https://api.pushover.net/1/messages.json
 <p><a class="reference internal" href="../_images/image436.webp"><img alt="image436" src="../_images/image436.webp" style="width: 452px;" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p><strong>Il faut avoir installé Zoneminder</strong></p>
+<p><strong>Il faut avoir installé Zoneminder ou Frigate</strong></p>
 </div>
 <section id="jeton-zm">
 <h4>5.1.3.1 Jeton ZM<a class="headerlink" href="#jeton-zm" title="Lien permanent vers cette rubrique"></a></h4>
@@ -596,7 +596,7 @@ https://api.pushover.net/1/messages.json
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">Alarme</span> <span class="n">absence</span> <span class="n">et</span> <span class="n">nuit</span> <span class="n">maison</span>
   <span class="o">--</span>
   <span class="o">--</span> <span class="n">alarme</span><span class="o">--</span><span class="n">alarme</span><span class="o">.</span><span class="n">lua</span>
-  <span class="o">--</span> <span class="n">version</span> <span class="mf">3.0</span><span class="o">.</span><span class="mi">4</span>
+  <span class="o">--</span> <span class="n">version</span> <span class="mf">3.0</span><span class="o">.</span><span class="mi">6</span>
   <span class="o">--</span>
   <span class="n">json</span> <span class="o">=</span> <span class="p">(</span><span class="n">loadfile</span> <span class="s2">&quot;scripts/lua/JSON.lua&quot;</span><span class="p">)()</span>
 <span class="n">function</span> <span class="n">decode_json</span><span class="p">(</span><span class="n">fich_json</span><span class="p">)</span>
@@ -607,7 +607,7 @@ https://api.pushover.net/1/messages.json
   <span class="o">--</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;succes=&#39;</span><span class="o">..</span><span class="n">jsonValeur</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">jsonValeur</span>
 <span class="n">end</span>
-<span class="n">function</span> <span class="n">modect_cam</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+<span class="n">function</span> <span class="n">modect_cam</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span> <span class="o">--</span> <span class="n">pour</span> <span class="n">ZONEMINDER</span>
  <span class="n">json_val</span><span class="o">=</span><span class="n">decode_json</span><span class="p">(</span><span class="s1">&#39;curl -XPOST -d &quot;user=michel&amp;pass=Idem4546&quot;  http://192.168.1.23/zm/api/host/login.json&#39;</span><span class="p">)</span>
  <span class="nb">print</span><span class="p">(</span><span class="n">json_val</span><span class="o">.</span><span class="n">access_token</span><span class="p">)</span>
  <span class="n">cle</span><span class="o">=</span><span class="n">json_val</span><span class="o">.</span><span class="n">access_token</span>
@@ -621,21 +621,39 @@ https://api.pushover.net/1/messages.json
  <span class="n">end</span>
 <span class="n">end</span>
 
+<span class="n">function</span> <span class="n">detect_frigate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>   <span class="o">--</span> <span class="n">POUR</span> <span class="n">FRIGATE</span>
+<span class="n">json_val</span><span class="o">=</span><span class="n">decode_json</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="o">..</span><span class="n">ip_monitor</span><span class="o">..</span><span class="s1">&#39;/monitor/admin/string_modect.json&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">json_val</span><span class="p">)</span> <span class="n">do</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="n">do</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;t=&#39;</span><span class="o">..</span><span class="n">t</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">t</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="n">then</span>
+   <span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;python3 scripts/python/fr_mqtt.py  frigate/&#39;</span><span class="o">..</span><span class="n">value</span><span class="o">..</span><span class="s1">&#39;/detect/set ON &gt;  /opt/domoticz/frigate.log 2&gt;&amp;1&#39;</span>
+   <span class="n">elseif</span> <span class="p">(</span><span class="n">t</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="n">then</span>
+   <span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;python3 scripts/python/fr_mqtt.py  frigate/&#39;</span><span class="o">..</span><span class="n">value</span><span class="o">..</span><span class="s1">&#39;/detect/set OFF &gt;  /opt/domoticz/frigate.log 2&gt;&amp;1&#39;</span>
+   <span class="n">end</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+ <span class="n">os</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+ <span class="n">end</span>
+<span class="n">end</span>
+<span class="n">end</span>
+
  <span class="o">--</span> <span class="n">activation</span> <span class="n">de</span> <span class="n">la</span> <span class="n">detection</span> <span class="n">par</span> <span class="n">les</span> <span class="n">cameras</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="ow">and</span>  <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">==</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="n">then</span>
       <span class="n">devices</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">switchOn</span><span class="p">();</span>
       <span class="n">end</span>
   <span class="o">--</span> <span class="n">activation</span> <span class="n">manuelle</span> <span class="n">Modect</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;On&#39;</span> <span class="ow">and</span>  <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">==</span><span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="n">then</span>
-      <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;modect&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span>
+      <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;modect&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Modect&#39;</span><span class="p">)</span>  <span class="o">--</span> <span class="n">ou</span> <span class="n">detect_frigate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
       <span class="o">--</span> <span class="n">activation</span> <span class="n">manuelle</span> <span class="n">Monitor</span>
       <span class="n">elseif</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Modect&#39;</span> <span class="ow">and</span>  <span class="n">item</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">&#39;Off&#39;</span> <span class="ow">and</span>  <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;ma-alarme&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">==</span><span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="n">then</span>
-      <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Monitor&#39;</span><span class="p">)</span>
+      <span class="n">domoticz</span><span class="o">.</span><span class="n">variables</span><span class="p">(</span><span class="s1">&#39;modect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">);</span><span class="n">modect_cam</span><span class="p">(</span><span class="s1">&#39;Monitor&#39;</span><span class="p">)</span>  <span class="o">--</span>  <span class="n">ou</span>  <span class="n">detect_frigate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">end</span>
 </pre></div>
 </div>
 </div></blockquote>
 <p><a class="reference internal" href="../_images/image439.webp"><img alt="image439" src="../_images/image439.webp" style="width: 661px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1628.webp"><img alt="image1628" src="../_images/image1628.webp" style="width: 700px;" /></a></p>
 </section>
 <section id="le-script-bash-pour-home-assistant">
 <h4>5.1.3.3 le script bash pour Home Assistant<a class="headerlink" href="#le-script-bash-pour-home-assistant" title="Lien permanent vers cette rubrique"></a></h4>
