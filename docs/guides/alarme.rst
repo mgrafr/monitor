@@ -615,6 +615,8 @@ Script Bash concernant le mode détection des caméras: :darkblue:`modect.sh`
 
 5.1.3.4 le script Python pour Frigate
 """""""""""""""""""""""""""""""""""""
+utilisable avec Domoticz, HomeAssistant ou Monitor
+
 .. code-block::
 
    #!/usr/bin/env python3.9
