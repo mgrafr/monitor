@@ -569,5 +569,5 @@ la documentation n'est pas très claire, il faut ajpouter la clé api dans la co
    :width: 425px
 .. |image1623| image:: ../img/image1623.webp
    :width: 644px
-.. |image1630| image:: ../img/image1623.webp
+.. |image1630| image:: ../img/image1630.webp
    :width: 563px
