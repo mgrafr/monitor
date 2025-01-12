@@ -568,6 +568,9 @@ Le client reçoit:
 
 18.10.2  L'API de monitor
 =========================
+18.10.2.1 Mise à jour des dispositifs
+"""""""""""""""""""""""""""""""""""""
+
 *http://192.168.1.9/monitor/api/json.php?app=maj&id=xxx&state=XX*
 
 la fonction :darkblue:`maj()` dans /api/f_pour_api.php
@@ -589,6 +592,24 @@ la fonction :darkblue:`maj()` dans /api/f_pour_api.php
 la fonction mysql_app() dans /fonctions.php
 
 |image1267|
+
+18.10.2.2 Envoi de notifications par SMS
+""""""""""""""""""""""""""""""""""""""""
+*http://192.168.1.9/monitor/api/json.php?app=envoi_sms&contenu=xxxxxxxxxxxxxxx*
+
+la fonction :darkblue:`sms()` dans /api/f_pour_api.php
+
+.. code-block::
+
+   function sms($contenu){
+     $file="/www/monitor/python/aldz.py";
+     $content="#!/usr/bin/env python3 -*- coding: utf-8 -*-
+   x='".$contenu."'
+   priority=0";
+   file_put_contents($file,$content);
+   return "envoi_sms:";  
+
+|image1640|
 
 18.10.3  L'API de monitor depuis HA ou DZ
 =========================================
@@ -789,3 +810,5 @@ Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’
    :width: 700px
 .. |image1568| image:: ../img/image1568.webp
    :width: 638px
+.. |image1640| image:: ../img/image1640.webp
+   :width: 544px
