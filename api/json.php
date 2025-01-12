@@ -18,6 +18,7 @@ $statep = isset($_POST['state']) ? $_POST['state'] : '';
 if ($app=="api_rest_ha") {$retour= envoi_data($essai);echo json_encode($retour); }
 if ($app=="messages") {$retour= message($contenu,$name,$command);echo json_encode($retour); }
 if ($app=="maj") {$retour= maj($id,$state);echo json_encode($retour); }
+if ($app=="envoi_sms") {$retour= sms($contenu);echo json_encode($retour); }
 return "erreur API";
 ?>
 

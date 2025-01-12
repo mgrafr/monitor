@@ -36,6 +36,12 @@ $donnees=[
 mysql_app($donnees);	
 //return 'OK';
 }
-
-
+function sms($contenu){
+  $file="/www/monitor/python/aldz.py";
+  $content="#!/usr/bin/env python3 -*- coding: utf-8 -*-
+x='".$contenu."'
+priority=0";
+file_put_contents($file,$content);
+return "envoi_sms:".$contenu."    ".$content;  
+}
 ?>
