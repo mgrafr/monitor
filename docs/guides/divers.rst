@@ -611,6 +611,12 @@ la fonction :darkblue:`sms()` dans /api/f_pour_api.php
 
 |image1640|
 
+le richier sms_mo.py : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.py`
+
+le fichier sms_mo.service , pour un démarrage automatique: 
+
+  :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.service`
+
 18.10.3  L'API de monitor depuis HA ou DZ
 =========================================
 18.10.3.1  depuis Domoticz
