@@ -593,30 +593,6 @@ la fonction mysql_app() dans /fonctions.php
 
 |image1267|
 
-18.10.2.2 Envoi de notifications par SMS
-""""""""""""""""""""""""""""""""""""""""
-*http://192.168.1.9/monitor/api/json.php?app=envoi_sms&contenu=xxxxxxxxxxxxxxx*
-
-la fonction :darkblue:`sms()` dans /api/f_pour_api.php
-
-.. code-block::
-
-   function sms($contenu){
-     $file="/www/monitor/python/aldz.py";
-     $content="#!/usr/bin/env python3 -*- coding: utf-8 -*-
-   x='".$contenu."'
-   priority=0";
-   file_put_contents($file,$content);
-   return "envoi_sms:";  
-
-|image1640|
-
-le richier sms_mo.py : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.py`
-
-le fichier sms_mo.service , pour un démarrage automatique: 
-
-  :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.service`
-
 18.10.3  L'API de monitor depuis HA ou DZ
 =========================================
 18.10.3.1  depuis Domoticz
@@ -696,7 +672,34 @@ Les clés privées RSA se terminent RSA . Le fichier pour Ed25519 n’a pas d’
 
 |image1567|
 
-18.12 Glossaire
+18.12 Complément sur l'API Monitor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18.12.1  Envoi de notifications par SMS
+=======================================
+*http://192.168.1.9/monitor/api/json.php?app=envoi_sms&contenu=xxxxxxxxxxxxxxx*
+
+la fonction :darkblue:`sms()` dans /api/f_pour_api.php
+
+.. code-block::
+
+   function sms($contenu){
+     $file="/www/monitor/python/aldz.py";
+     $content="#!/usr/bin/env python3 -*- coding: utf-8 -*-
+   x='".$contenu."'
+   priority=0";
+   file_put_contents($file,$content);
+   return "envoi_sms:";  
+
+|image1640|
+
+le richier sms_mo.py : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.py`
+
+le fichier sms_mo.service , pour un démarrage automatique: 
+
+  :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.service`
+
+
+18.13 Glossaire
 ^^^^^^^^^^^^^^^
 
 .. admonition:: **Points de données ou data points**

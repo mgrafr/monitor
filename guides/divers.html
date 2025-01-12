@@ -90,7 +90,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#le-serveur-sse-php">18.10.1  Le serveur SSE PHP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#l-api-de-monitor">18.10.2  L’API de monitor</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#mise-a-jour-des-dispositifs">18.10.2.1 Mise à jour des dispositifs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#envoi-de-notifications-par-sms">18.10.2.2 Envoi de notifications par SMS</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#l-api-de-monitor-depuis-ha-ou-dz">18.10.3  L’API de monitor depuis HA ou DZ</a><ul>
@@ -106,7 +105,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#transfert-de-la-cle-publique-ssh-vers-un-serveur-distant">18.11.3 Transfert de la clé publique SSH vers un serveur distant</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#glossaire">18.12 Glossaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complement-sur-l-api-monitor">18.12 Complément sur l’API Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#envoi-de-notifications-par-sms">18.12.1  Envoi de notifications par SMS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#glossaire">18.13 Glossaire</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="update.html">19. UPDATE</a></li>
@@ -692,26 +695,6 @@ return &#39;OK&#39;;
 <p>la fonction mysql_app() dans /fonctions.php</p>
 <p><a class="reference internal" href="../_images/image1267.webp"><img alt="image1267" src="../_images/image1267.webp" style="width: 650px;" /></a></p>
 </section>
-<section id="envoi-de-notifications-par-sms">
-<h4>18.10.2.2 Envoi de notifications par SMS<a class="headerlink" href="#envoi-de-notifications-par-sms" title="Lien permanent vers cette rubrique"></a></h4>
-<p><em>http://192.168.1.9/monitor/api/json.php?app=envoi_sms&amp;contenu=xxxxxxxxxxxxxxx</em></p>
-<p>la fonction <span class="darkblue">sms()</span> dans /api/f_pour_api.php</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function sms($contenu){
-  $file=&quot;/www/monitor/python/aldz.py&quot;;
-  $content=&quot;#!/usr/bin/env python3 -*- coding: utf-8 -*-
-x=&#39;&quot;.$contenu.&quot;&#39;
-priority=0&quot;;
-file_put_contents($file,$content);
-return &quot;envoi_sms:&quot;;
-</pre></div>
-</div>
-<p><a class="reference internal" href="../_images/image1640.webp"><img alt="image1640" src="../_images/image1640.webp" style="width: 544px;" /></a></p>
-<p>le richier sms_mo.py : <span class="darkblue">https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.py</span></p>
-<p>le fichier sms_mo.service , pour un démarrage automatique:</p>
-<blockquote>
-<div><p><span class="darkblue">https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.service</span></p>
-</div></blockquote>
-</section>
 </section>
 <section id="l-api-de-monitor-depuis-ha-ou-dz">
 <h3>18.10.3  L’API de monitor depuis HA ou DZ<a class="headerlink" href="#l-api-de-monitor-depuis-ha-ou-dz" title="Lien permanent vers cette rubrique"></a></h3>
@@ -780,8 +763,31 @@ return &quot;envoi_sms:&quot;;
 <p><a class="reference internal" href="../_images/image1567.webp"><img alt="image1567" src="../_images/image1567.webp" style="width: 700px;" /></a></p>
 </section>
 </section>
+<section id="complement-sur-l-api-monitor">
+<h2>18.12 Complément sur l’API Monitor<a class="headerlink" href="#complement-sur-l-api-monitor" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="envoi-de-notifications-par-sms">
+<h3>18.12.1  Envoi de notifications par SMS<a class="headerlink" href="#envoi-de-notifications-par-sms" title="Lien permanent vers cette rubrique"></a></h3>
+<p><em>http://192.168.1.9/monitor/api/json.php?app=envoi_sms&amp;contenu=xxxxxxxxxxxxxxx</em></p>
+<p>la fonction <span class="darkblue">sms()</span> dans /api/f_pour_api.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function sms($contenu){
+  $file=&quot;/www/monitor/python/aldz.py&quot;;
+  $content=&quot;#!/usr/bin/env python3 -*- coding: utf-8 -*-
+x=&#39;&quot;.$contenu.&quot;&#39;
+priority=0&quot;;
+file_put_contents($file,$content);
+return &quot;envoi_sms:&quot;;
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1640.webp"><img alt="image1640" src="../_images/image1640.webp" style="width: 544px;" /></a></p>
+<p>le richier sms_mo.py : <span class="darkblue">https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.py</span></p>
+<p>le fichier sms_mo.service , pour un démarrage automatique:</p>
+<blockquote>
+<div><p><span class="darkblue">https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.service</span></p>
+</div></blockquote>
+</section>
+</section>
 <section id="glossaire">
-<h2>18.12 Glossaire<a class="headerlink" href="#glossaire" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>18.13 Glossaire<a class="headerlink" href="#glossaire" title="Lien permanent vers cette rubrique"></a></h2>
 <div class="admonition-points-de-donnees-ou-data-points admonition">
 <p class="admonition-title"><strong>Points de données ou data points</strong></p>
 <p>Ce sont des chaînes uniques de données envoyée par un dispositif, un compteur ou un capteur installé dans une maison.</p>
