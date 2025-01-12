@@ -273,11 +273,19 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
        type: edgetpu
        device: pci
 
-22.5 installation de go2rtc
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ports RTSP et ONVIF pour caméras de marque : https://www.camapp365.com/technical/rtsp-and-onvif-ports
+22.5 prise en main de go2rtc
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. IMPORTANT::
 
-https://github.com/AlexxIT/go2rtc
+   Pour utiliser go2rtc dans Frigate, il n'est pas nécessaire de l'installer mais pour comprendre le fonctionnement, c'est préférable.
+
+   Par contre pour l'utiliser dans Frigate il est important de stopper le conterneur go2rtc pour éviter des problèmes d'ouverture de ports.
+
+.. seealso::
+
+   ports RTSP et ONVIF pour caméras de marque : https://www.camapp365.com/technical/rtsp-and-onvif-ports
+
+   https://github.com/AlexxIT/go2rtc
 
 - **création du répertoire /op/go2rtc**
 
