@@ -88,7 +88,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#serveur-sse-installe-dans-monitor">18.10 Serveur SSE installé dans Monitor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#le-serveur-sse-php">18.10.1  Le serveur SSE PHP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#l-api-de-monitor">18.10.2  L’API de monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#l-api-de-monitor">18.10.2  L’API de monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mise-a-jour-des-dispositifs">18.10.2.1 Mise à jour des dispositifs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#envoi-de-notifications-par-sms">18.10.2.2 Envoi de notifications par SMS</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#l-api-de-monitor-depuis-ha-ou-dz">18.10.3  L’API de monitor depuis HA ou DZ</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#depuis-domoticz">18.10.3.1  depuis Domoticz</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#depuis-home-assistant">18.10.3.2  depuis Home Assistant</a></li>
@@ -668,6 +672,8 @@ else
 </section>
 <section id="l-api-de-monitor">
 <h3>18.10.2  L’API de monitor<a class="headerlink" href="#l-api-de-monitor" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="mise-a-jour-des-dispositifs">
+<h4>18.10.2.1 Mise à jour des dispositifs<a class="headerlink" href="#mise-a-jour-des-dispositifs" title="Lien permanent vers cette rubrique"></a></h4>
 <p><em>http://192.168.1.9/monitor/api/json.php?app=maj&amp;id=xxx&amp;state=XX</em></p>
 <p>la fonction <span class="darkblue">maj()</span> dans /api/f_pour_api.php</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function maj($id,$state){
@@ -685,6 +691,22 @@ return &#39;OK&#39;;
 </div>
 <p>la fonction mysql_app() dans /fonctions.php</p>
 <p><a class="reference internal" href="../_images/image1267.webp"><img alt="image1267" src="../_images/image1267.webp" style="width: 650px;" /></a></p>
+</section>
+<section id="envoi-de-notifications-par-sms">
+<h4>18.10.2.2 Envoi de notifications par SMS<a class="headerlink" href="#envoi-de-notifications-par-sms" title="Lien permanent vers cette rubrique"></a></h4>
+<p><em>http://192.168.1.9/monitor/api/json.php?app=envoi_sms&amp;contenu=xxxxxxxxxxxxxxx</em></p>
+<p>la fonction <span class="darkblue">sms()</span> dans /api/f_pour_api.php</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function sms($contenu){
+  $file=&quot;/www/monitor/python/aldz.py&quot;;
+  $content=&quot;#!/usr/bin/env python3 -*- coding: utf-8 -*-
+x=&#39;&quot;.$contenu.&quot;&#39;
+priority=0&quot;;
+file_put_contents($file,$content);
+return &quot;envoi_sms:&quot;;
+</pre></div>
+</div>
+<p><a class="reference internal" href="img/image1640.webp"><img alt="image1640" src="img/image1640.webp" style="width: 544px;" /></a></p>
+</section>
 </section>
 <section id="l-api-de-monitor-depuis-ha-ou-dz">
 <h3>18.10.3  L’API de monitor depuis HA ou DZ<a class="headerlink" href="#l-api-de-monitor-depuis-ha-ou-dz" title="Lien permanent vers cette rubrique"></a></h3>
