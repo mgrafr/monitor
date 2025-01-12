@@ -1839,13 +1839,17 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
   voir les § :ref:`18.10.2 L’API de monitor` & :ref:`18.10.3 L’API de monitor depuis HA ou DZ`
 
-- **app==""api_rest_ha"** : envoi_data($name)
+- **app=="api_rest_ha"** : envoi_data($name)
 
   uniquement pour Home Assistant
 
  |image1276|
 
 l' API renvoi un objet de Monitor , voir la fonction /api/f_pour_api/envoi_data()
+
+- **app=="envoi_sms"** : sms($contenu)
+
+voir le $ :ref:`18.12.1 Envoi de notifications par SMS`
 
 0.13 Les fichiers JSON reçu par monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
