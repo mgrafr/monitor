@@ -1849,6 +1849,8 @@ l' API renvoi un objet de Monitor , voir la fonction /api/f_pour_api/envoi_data(
 
 - **app=="envoi_sms"** : sms($contenu)
 
+ex: http://<IP_MONITOR>/monitor/api/json.php?app=envoi_sms&contenu=pour_essai
+
 voir le $ :ref:`18.12.1 Envoi de notifications par SMS`
 
 0.13 Les fichiers JSON reçu par monitor
