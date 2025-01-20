@@ -1965,7 +1965,7 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
 21.16 VPN Wireguard
 ^^^^^^^^^^^^^^^^^^^
-
+|image1631|
 
 
 
@@ -2357,3 +2357,5 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
    :width: 244px
 .. |image1594| image:: ../img/image1594.webp
    :width: 700px
+.. |image1631| image:: ../img/image1631.webp
+   :width: 524px
