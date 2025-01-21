@@ -2014,6 +2014,10 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 |image1638|
 
+- configuration des pairs
+
+|image1641|
+
 - création d’un pair,une première entrée du tunnel 
 
 |image1639|
@@ -2424,3 +2428,5 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    :width: 700px
 .. |image1639| image:: ../img/image1639.webp
    :width: 313px
+.. |image1641| image:: ../img/image1641.webp
+   :width: 700px
