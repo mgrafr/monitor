@@ -1980,6 +1980,8 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
    echo "wireguard" >> /etc/modules-load.d/modules.conf
 
+|image1634|
+
 16.1 Installation de Wireguard dans un conteneur LXC
 ====================================================
 |image1632|
@@ -1989,6 +1991,8 @@ https://community-scripts.github.io/ProxmoxVE/
 WGDashboard est également installé pour faciliter la création de l'interface et des pairs.
 
 https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-wgdashboard.html
+
+|image1633|
 
 - mettre à jour le CT
 
@@ -2393,3 +2397,7 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    :width: 524px
 .. |image1632| image:: ../img/image1632.webp
    :width: 700px
+.. |image1633| image:: ../img/image1633.webp
+   :width: 518px
+.. |image1634| image:: ../img/image1634.webp
+   :width: 599px
