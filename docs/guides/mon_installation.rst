@@ -2000,6 +2000,8 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
   net.ipv4.ip_forward=1
 
+|image1635|
+
 21.16.2 Configuration avec WGDashboard
 ======================================
 
@@ -2401,3 +2403,5 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    :width: 518px
 .. |image1634| image:: ../img/image1634.webp
    :width: 599px
+.. |image1635| image:: ../img/image1635.webp
+   :width: 627px
