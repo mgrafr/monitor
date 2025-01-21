@@ -2010,7 +2010,11 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 ======================================
 |image1637|
 
+- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local
+
 |image1638|
+
+- création d’un pair,une première entrée du tunnel 
 
 |image1639|
 
