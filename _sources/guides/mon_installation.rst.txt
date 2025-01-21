@@ -2002,6 +2002,10 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 |image1635|
 
+- pour appliquez la modification:
+
+|image1636|
+
 21.16.2 Configuration avec WGDashboard
 ======================================
 
@@ -2405,3 +2409,5 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    :width: 599px
 .. |image1635| image:: ../img/image1635.webp
    :width: 627px
+.. |image1636| image:: ../img/image1636.webp
+   :width: 298px
