@@ -2024,6 +2024,10 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 |image1642|
 
+- récupération du QR code pour le pair d'un smartphone ou du fichier de configuration pour le pair d'un pc
+
+|image1643|
+
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
 .. |image1027| image:: ../media/image1027.webp
@@ -2434,3 +2438,5 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    :width: 700px
 .. |image1642| image:: ../img/image1642.webp
    :width: 650px
+.. |image1643| image:: ../img/image1643.webp
+   :width: 700px
