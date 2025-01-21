@@ -1967,6 +1967,19 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 ^^^^^^^^^^^^^^^^^^^
 |image1631|
 
+21.16.1 Installation dans un conteneur LXC
+==========================================
+|image1632|
+
+https://community-scripts.github.io/ProxmoxVE/
+
+WGDashboard est également installé pour faciliter la création de l'interface et des pairs.
+
+https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-wgdashboard.html
+
+21.16.2 Configuration avec WGDashboard
+======================================
+
 
 
 .. |image1026| image:: ../media/image1026.webp
@@ -2359,3 +2372,5 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
    :width: 700px
 .. |image1631| image:: ../img/image1631.webp
    :width: 524px
+.. |image1632| image:: ../img/image1632.webp
+   :width: 700px
