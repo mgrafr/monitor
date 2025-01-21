@@ -2022,6 +2022,8 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 |image1639|
 
+|image1642|
+
 .. |image1026| image:: ../media/image1026.webp
    :width: 700px
 .. |image1027| image:: ../media/image1027.webp
@@ -2430,3 +2432,5 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    :width: 313px
 .. |image1641| image:: ../img/image1641.webp
    :width: 700px
+.. |image1642| image:: ../img/image1642.webp
+   :width: 650px
