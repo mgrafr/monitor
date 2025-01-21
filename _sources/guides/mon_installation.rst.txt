@@ -2028,6 +2028,9 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 |image1643|
 
+|image1645|
+
+
 21.16.3 Mises à jour Wireguard & WGDashboard
 ============================================
 |image1644|
@@ -2447,3 +2450,5 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    :width: 700px
 .. |image1644| image:: ../img/image1644.webp
    :width: 480px
+.. |image16445 image:: ../img/image1645.webp
+   :width: 700px
