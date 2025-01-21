@@ -1837,6 +1837,12 @@ listen 80;
 <p><a class="reference external" href="https://community-scripts.github.io/ProxmoxVE/">https://community-scripts.github.io/ProxmoxVE/</a></p>
 <p>WGDashboard est également installé pour faciliter la création de l’interface et des pairs.</p>
 <p><a class="reference external" href="https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-wgdashboard.html">https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-wgdashboard.html</a></p>
+<ul>
+<li><p>mettre à jour le CT</p></li>
+<li><p>dans /etc/sysctl.conf, vérifier que le transfert de port (port-forwarding) est activé:</p>
+<p>net.ipv4.ip_forward=1</p>
+</li>
+</ul>
 </section>
 <section id="configuration-avec-wgdashboard">
 <h3>21.16.2 Configuration avec WGDashboard<a class="headerlink" href="#configuration-avec-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
