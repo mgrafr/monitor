@@ -165,8 +165,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#creation-de-la-sauvegarde-samba-dans-pve">21.15.5 Création de la sauvegarde samba dans PVE</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#vpn-wireguard">21.16 VPN Wireguard</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installation-dans-un-conteneur-lxc">21.16.1 Installation dans un conteneur LXC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpn-wireguard-dans-un-ct-lxc">21.16 VPN Wireguard dans un CT LXC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-de-wireguard-dans-un-conteneur-lxc">16.1 Installation de Wireguard dans un conteneur LXC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-avec-wgdashboard">21.16.2 Configuration avec WGDashboard</a></li>
 </ul>
 </li>
@@ -1815,11 +1815,24 @@ listen 80;
 <p><a class="reference internal" href="../_images/image1591.webp"><img alt="image1591" src="../_images/image1591.webp" style="width: 700px;" /></a></p>
 </section>
 </section>
-<section id="vpn-wireguard">
-<h2>21.16 VPN Wireguard<a class="headerlink" href="#vpn-wireguard" title="Lien permanent vers cette rubrique"></a></h2>
+<section id="vpn-wireguard-dans-un-ct-lxc">
+<h2>21.16 VPN Wireguard dans un CT LXC<a class="headerlink" href="#vpn-wireguard-dans-un-ct-lxc" title="Lien permanent vers cette rubrique"></a></h2>
 <p><a class="reference internal" href="../_images/image1631.webp"><img alt="image1631" src="../_images/image1631.webp" style="width: 524px;" /></a></p>
-<section id="installation-dans-un-conteneur-lxc">
-<h3>21.16.1 Installation dans un conteneur LXC<a class="headerlink" href="#installation-dans-un-conteneur-lxc" title="Lien permanent vers cette rubrique"></a></h3>
+<ul class="simple">
+<li><p>mise à jour de pve et activation du module wireguard</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">modprobe</span> <span class="n">wireguard</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ajouter le module pour qu’il se charge au démarrage du serveur</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;wireguard&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">load</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<section id="installation-de-wireguard-dans-un-conteneur-lxc">
+<h3>16.1 Installation de Wireguard dans un conteneur LXC<a class="headerlink" href="#installation-de-wireguard-dans-un-conteneur-lxc" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1632.webp"><img alt="image1632" src="../_images/image1632.webp" style="width: 700px;" /></a></p>
 <p><a class="reference external" href="https://community-scripts.github.io/ProxmoxVE/">https://community-scripts.github.io/ProxmoxVE/</a></p>
 <p>WGDashboard est également installé pour faciliter la création de l’interface et des pairs.</p>

@@ -1963,12 +1963,25 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
 |image1591|
 
-21.16 VPN Wireguard
-^^^^^^^^^^^^^^^^^^^
+21.16 VPN Wireguard dans un CT LXC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1631|
 
-21.16.1 Installation dans un conteneur LXC
-==========================================
+- mise à jour de pve et activation du module wireguard
+
+.. code-block::
+
+   apt update && apt upgrade -y 
+   modprobe wireguard
+
+- ajouter le module pour qu'il se charge au démarrage du serveur
+
+.. code-block::
+
+   echo "wireguard" >> /etc/modules-load.d/modules.conf
+
+16.1 Installation de Wireguard dans un conteneur LXC
+====================================================
 |image1632|
 
 https://community-scripts.github.io/ProxmoxVE/
@@ -1976,6 +1989,8 @@ https://community-scripts.github.io/ProxmoxVE/
 WGDashboard est également installé pour faciliter la création de l'interface et des pairs.
 
 https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-wgdashboard.html
+
+
 
 21.16.2 Configuration avec WGDashboard
 ======================================
