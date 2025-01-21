@@ -1990,7 +1990,11 @@ WGDashboard est également installé pour faciliter la création de l'interface 
 
 https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-wgdashboard.html
 
+- mettre à jour le CT
 
+- dans /etc/sysctl.conf, vérifier que le transfert de port (port-forwarding) est activé:
+
+  net.ipv4.ip_forward=1
 
 21.16.2 Configuration avec WGDashboard
 ======================================
