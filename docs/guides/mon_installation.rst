@@ -2036,6 +2036,10 @@ Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LX
 
 |image1645|
 
+|image1646|
+
+|image1647|
+
 
 21.16.4 Mises à jour Wireguard & WGDashboard
 ============================================
@@ -2458,3 +2462,7 @@ Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LX
    :width: 480px
 .. |image1645 image:: ../img/image1645.webp
    :width: 700px
+.. |image1646 image:: ../img/image1646webp
+   :width: 400px
+.. |image1647 image:: ../img/image1647webp
+   :width: 400px
