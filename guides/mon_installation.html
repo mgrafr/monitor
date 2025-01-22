@@ -1887,7 +1887,17 @@ listen 80;
 <section id="configuration-d-ufw">
 <h3>21.16.5 Configuration d” UFW<a class="headerlink" href="#configuration-d-ufw" title="Lien permanent vers cette rubrique"></a></h3>
 <ul class="simple">
-<li><p>éditeR le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :</p></li>
+<li><p>autoriser les ports:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ufw</span> <span class="n">allow</span> <span class="n">proto</span> <span class="n">tcp</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">22</span>
+<span class="n">ufw</span> <span class="n">allow</span> <span class="n">proto</span> <span class="n">tcp</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">80</span>
+<span class="n">ufw</span> <span class="n">allow</span> <span class="mi">51822</span><span class="o">/</span><span class="n">udp</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1650.webp"><img alt="image1650" src="../_images/image1650.webp" style="width: 700px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1651.webp"><img alt="image1651" src="../_images/image1651.webp" style="width: 583px;" /></a></p>
+<ul class="simple">
+<li><p>éditer le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1648.webp"><img alt="image1648" src="../_images/image1648.webp" style="width: 700px;" /></a></p>
 <ul class="simple">
