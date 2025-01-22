@@ -167,8 +167,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#vpn-wireguard-dans-un-ct-lxc">21.16 VPN Wireguard dans un CT LXC</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation-de-wireguard-dans-un-conteneur-lxc">16.1 Installation de Wireguard dans un conteneur LXC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration-avec-wgdashboard">21.16.2 Configuration avec WGDashboard</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mises-a-jour-wireguard-wgdashboard">21.16.3 Mises à jour Wireguard &amp; WGDashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-de-ufw">21.16.2 Installation de UFW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-avec-wgdashboard">21.16.3 Configuration avec WGDashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mises-a-jour-wireguard-wgdashboard">21.16.4 Mises à jour Wireguard &amp; WGDashboard</a></li>
 </ul>
 </li>
 </ul>
@@ -1852,11 +1853,16 @@ listen 80;
 </ul>
 <p><a class="reference internal" href="../_images/image1636.webp"><img alt="image1636" src="../_images/image1636.webp" style="width: 298px;" /></a></p>
 </section>
+<section id="installation-de-ufw">
+<h3>21.16.2 Installation de UFW<a class="headerlink" href="#installation-de-ufw" title="Lien permanent vers cette rubrique"></a></h3>
+<p>C’est dans le pare-feu que seront exécutées les règles IPTABLES</p>
+<p>Pour l’installation, voir ce § <a class="reference internal" href="#installation-dans-un-conteneur-lxc-proxmox"><span class="std std-ref">21.12.1 Installation: dans un conteneur LXC Proxmox</span></a></p>
+</section>
 <section id="configuration-avec-wgdashboard">
-<h3>21.16.2 Configuration avec WGDashboard<a class="headerlink" href="#configuration-avec-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
+<h3>21.16.3 Configuration avec WGDashboard<a class="headerlink" href="#configuration-avec-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1637.webp"><img alt="image1637" src="../_images/image1637.webp" style="width: 600px;" /></a></p>
 <ul class="simple">
-<li><p>le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local</p></li>
+<li><p>le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port et supprimer les iptables, elle seront configurées dans le pare-feu ufw.</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1638.webp"><img alt="image1638" src="../_images/image1638.webp" style="width: 700px;" /></a></p>
 <ul class="simple">
@@ -1875,7 +1881,7 @@ listen 80;
 <p><a href="#id1"><span class="problematic" id="id2">|image1645|</span></a></p>
 </section>
 <section id="mises-a-jour-wireguard-wgdashboard">
-<h3>21.16.3 Mises à jour Wireguard &amp; WGDashboard<a class="headerlink" href="#mises-a-jour-wireguard-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
+<h3>21.16.4 Mises à jour Wireguard &amp; WGDashboard<a class="headerlink" href="#mises-a-jour-wireguard-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1644.webp"><img alt="image1644" src="../_images/image1644.webp" style="width: 480px;" /></a></p>
 </section>
 </section>

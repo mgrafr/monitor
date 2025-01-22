@@ -2006,11 +2006,17 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 |image1636|
 
-21.16.2 Configuration avec WGDashboard
+21.16.2 Installation de UFW
+===========================
+C'est dans le pare-feu que seront exécutées les règles IPTABLES
+
+Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
+
+21.16.3 Configuration avec WGDashboard
 ======================================
 |image1637|
 
-- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local
+- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port et supprimer les iptables, elle seront configurées dans le pare-feu ufw.
 
 |image1638|
 
@@ -2031,7 +2037,7 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 |image1645|
 
 
-21.16.3 Mises à jour Wireguard & WGDashboard
+21.16.4 Mises à jour Wireguard & WGDashboard
 ============================================
 |image1644|
 
