@@ -2456,5 +2456,5 @@ Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LX
    :width: 700px
 .. |image1644| image:: ../img/image1644.webp
    :width: 480px
-.. |image16445 image:: ../img/image1645.webp
+.. |image1645 image:: ../img/image1645.webp
    :width: 700px
