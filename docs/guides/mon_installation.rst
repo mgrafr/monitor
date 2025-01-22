@@ -2016,7 +2016,7 @@ Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LX
 ======================================
 |image1637|
 
-- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port et supprimer les iptables, elle seront configurées dans le pare-feu ufw.
+- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port et supprimer les iptables; comme nous utilisons UFW, nous pouvons omettre ces lignes de notre configuration WireGuard et modifier à la place la configuration d'UFW
 
 |image1638|
 
@@ -2035,6 +2035,8 @@ Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LX
 |image1643|
 
 |image1645|
+
+Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1646|
 
@@ -2460,9 +2462,12 @@ Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LX
    :width: 700px
 .. |image1644| image:: ../img/image1644.webp
    :width: 480px
-.. |image1645 image:: ../img/image1645.webp
+.. |image1645| image:: ../img/image1645.webp
    :width: 700px
-.. |image1646 image:: ../img/image1646webp
+.. |image1646| image:: ../img/image1646.webp
    :width: 400px
-.. |image1647 image:: ../img/image1647webp
+.. |image1647| image:: ../img/image1647.webp
    :width: 400px
+.. |image1648| image:: ../img/image1648.webp
+   :width: 700px
+
