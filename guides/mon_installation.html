@@ -1862,7 +1862,7 @@ listen 80;
 <h3>21.16.3 Configuration avec WGDashboard<a class="headerlink" href="#configuration-avec-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
 <p><a class="reference internal" href="../_images/image1637.webp"><img alt="image1637" src="../_images/image1637.webp" style="width: 600px;" /></a></p>
 <ul class="simple">
-<li><p>le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port et supprimer les iptables, elle seront configurées dans le pare-feu ufw.</p></li>
+<li><p>le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port et supprimer les iptables; comme nous utilisons UFW, nous pouvons omettre ces lignes de notre configuration WireGuard et modifier à la place la configuration d’UFW</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1638.webp"><img alt="image1638" src="../_images/image1638.webp" style="width: 700px;" /></a></p>
 <ul class="simple">
@@ -1878,9 +1878,10 @@ listen 80;
 <li><p>récupération du QR code pour le pair d’un smartphone ou du fichier de configuration pour le pair d’un pc</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1643.webp"><img alt="image1643" src="../_images/image1643.webp" style="width: 700px;" /></a></p>
-<p><a href="#id1"><span class="problematic" id="id2">|image1645|</span></a></p>
-<p><a href="#id3"><span class="problematic" id="id4">|image1646|</span></a></p>
-<p><a href="#id5"><span class="problematic" id="id6">|image1647|</span></a></p>
+<p><a class="reference internal" href="../_images/image1645.webp"><img alt="image1645" src="../_images/image1645.webp" style="width: 700px;" /></a></p>
+<p>Sur le smatphone après avoir installé Wireguard, compléter la configuration:</p>
+<p><a class="reference internal" href="../_images/image1646.webp"><img alt="image1646" src="../_images/image1646.webp" style="width: 400px;" /></a></p>
+<p><a class="reference internal" href="../_images/image1647.webp"><img alt="image1647" src="../_images/image1647.webp" style="width: 400px;" /></a></p>
 </section>
 <section id="mises-a-jour-wireguard-wgdashboard">
 <h3>21.16.4 Mises à jour Wireguard &amp; WGDashboard<a class="headerlink" href="#mises-a-jour-wireguard-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
