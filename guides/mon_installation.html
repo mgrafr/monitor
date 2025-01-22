@@ -1879,7 +1879,6 @@ listen 80;
 <li><p>récupération du QR code pour le pair d’un smartphone ou du fichier de configuration pour le pair d’un pc</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1643.webp"><img alt="image1643" src="../_images/image1643.webp" style="width: 700px;" /></a></p>
-<p><a class="reference internal" href="../_images/image1645.webp"><img alt="image1645" src="../_images/image1645.webp" style="width: 700px;" /></a></p>
 <p>Sur le smatphone après avoir installé Wireguard, compléter la configuration:</p>
 <p><a class="reference internal" href="../_images/image1646.webp"><img alt="image1646" src="../_images/image1646.webp" style="width: 400px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1647.webp"><img alt="image1647" src="../_images/image1647.webp" style="width: 400px;" /></a></p>
@@ -1892,16 +1891,17 @@ listen 80;
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ufw</span> <span class="n">allow</span> <span class="n">proto</span> <span class="n">tcp</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">22</span>
 <span class="n">ufw</span> <span class="n">allow</span> <span class="n">proto</span> <span class="n">tcp</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">80</span>
 <span class="n">ufw</span> <span class="n">allow</span> <span class="mi">51822</span><span class="o">/</span><span class="n">udp</span>
+<span class="n">ufw</span> <span class="n">enable</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1650.webp"><img alt="image1650" src="../_images/image1650.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1651.webp"><img alt="image1651" src="../_images/image1651.webp" style="width: 583px;" /></a></p>
 <ul class="simple">
-<li><p>éditer le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :</p></li>
+<li><p>TRANSFERT ET MASQUAGE DE PAQUETS : éditer le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :</p></li>
 </ul>
 <p><a class="reference internal" href="../_images/image1648.webp"><img alt="image1648" src="../_images/image1648.webp" style="width: 700px;" /></a></p>
 <ul class="simple">
-<li><p>Modifiez le fichier /etc/ufw/before.rules (ou si vous utilisez des adresses IPv6, le fichier etc/ufw/before6.rules) pour ajouter, à la le bloc suivant!</p></li>
+<li><p>Modifiez le fichier /etc/ufw/before.rules (ou si vous utilisez des adresses IPv6, le fichier etc/ufw/before6.rules) pour ajouter, à la le bloc suivant:</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">nat</span>
 <span class="p">:</span><span class="n">POSTROUTING</span> <span class="n">ACCEPT</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
@@ -1910,9 +1910,15 @@ listen 80;
 </pre></div>
 </div>
 <p><a class="reference internal" href="../_images/image1649.webp"><img alt="image1649" src="../_images/image1649.webp" style="width: 497px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour connaitre le no de l’interface (ici eth0) : <strong>ip -brief address show</strong></p>
+<p><a class="reference internal" href="img/image1652.webp"><img alt="image1652" src="img/image1652.webp" style="width: 650px;" /></a></p>
+</div>
 </section>
 <section id="mises-a-jour-wireguard-wgdashboard">
 <h3>21.16.4 Mises à jour Wireguard &amp; WGDashboard<a class="headerlink" href="#mises-a-jour-wireguard-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
+<p><a class="reference internal" href="../_images/image1645.webp"><img alt="image1645" src="../_images/image1645.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1644.webp"><img alt="image1644" src="../_images/image1644.webp" style="width: 480px;" /></a></p>
 </section>
 </section>

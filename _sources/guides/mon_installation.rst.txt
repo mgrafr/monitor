@@ -2034,8 +2034,6 @@ Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LX
 
 |image1643|
 
-|image1645|
-
 Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1646|
@@ -2051,16 +2049,17 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
    ufw allow proto tcp from 192.168.1.0/24 to any port 22
    ufw allow proto tcp from 192.168.1.0/24 to any port 80
    ufw allow 51822/udp
+   ufw enable
 
 |image1650|
 
 |image1651|
 
-- éditer le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :
+- TRANSFERT ET MASQUAGE DE PAQUETS : éditer le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :
 
 |image1648|
 
-- Modifiez le fichier /etc/ufw/before.rules (ou si vous utilisez des adresses IPv6, le fichier etc/ufw/before6.rules) pour ajouter, à la le bloc suivant!
+- Modifiez le fichier /etc/ufw/before.rules (ou si vous utilisez des adresses IPv6, le fichier etc/ufw/before6.rules) pour ajouter, à la le bloc suivant:
 
 .. code-block::
 
@@ -2071,8 +2070,16 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1649|
 
+.. note::
+
+   Pour connaitre le no de l'interface (ici eth0) : **ip -brief address show**
+
+   |image1652|
+
 21.16.4 Mises à jour Wireguard & WGDashboard
 ============================================
+|image1645|
+
 |image1644|
 
 
@@ -2504,3 +2511,5 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
    :width: 700px
 .. |image1651| image:: ../img/image1651.webp
    :width: 583px
+.. |image1652| image:: ../img/image1652.webp
+   :width: 650px
