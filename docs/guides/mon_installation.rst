@@ -2042,6 +2042,21 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1647|
 
+21.16.5 Configuration d' UFW
+============================
+- éditeR le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :
+
+|image1648|
+
+- Modifiez le fichier /etc/ufw/before.rules (ou si vous utilisez des adresses IPv6, le fichier etc/ufw/before6.rules) pour ajouter, à la le bloc suivant!
+
+.. code-block::
+
+   *nat
+   :POSTROUTING ACCEPT [0:0]
+   -A POSTROUTING -o eth0 -j MASQUERADE
+   COMMIT
+
 
 21.16.4 Mises à jour Wireguard & WGDashboard
 ============================================
