@@ -2044,7 +2044,19 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 21.16.5 Configuration d' UFW
 ============================
-- éditeR le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :
+- autoriser les ports:
+
+.. code-block::
+
+   ufw allow proto tcp from 192.168.1.0/24 to any port 22
+   ufw allow proto tcp from 192.168.1.0/24 to any port 80
+   ufw allow 51822/udp
+
+|image1650|
+
+|image1651|
+
+- éditer le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :
 
 |image1648|
 
@@ -2488,3 +2500,7 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
    :width: 700px
 .. |image1649| image:: ../img/image1649.webp
    :width: 497px
+.. |image1650| image:: ../img/image1650.webp
+   :width: 700px
+.. |image1651| image:: ../img/image1651.webp
+   :width: 583px
