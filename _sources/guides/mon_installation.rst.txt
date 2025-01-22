@@ -2057,6 +2057,7 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
    -A POSTROUTING -o eth0 -j MASQUERADE
    COMMIT
 
+|image1649|
 
 21.16.4 Mises à jour Wireguard & WGDashboard
 ============================================
@@ -2485,4 +2486,5 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
    :width: 400px
 .. |image1648| image:: ../img/image1648.webp
    :width: 700px
-
+.. |image1649| image:: ../img/image1649.webp
+   :width: 497px
