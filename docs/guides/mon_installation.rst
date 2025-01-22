@@ -2076,6 +2076,10 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
    |image1652|
 
+.. code-block::
+
+   sudo systemctl restart ufw.
+
 21.16.4 Mises à jour Wireguard & WGDashboard
 ============================================
 |image1645|
