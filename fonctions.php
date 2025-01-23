@@ -910,6 +910,7 @@ shell_exec("wget '".$url."' -O /www/monitor/images/".$idx.".jpg");}
 	
 $datacam = array (
 'idx' => $row['idx'],
+'adress' => $url,
 'url' => $lien_cam,
 'id_zm' => $row['id_zm'],
 'marque' => $row['marque'],
@@ -1413,18 +1414,23 @@ $sql="SELECT * FROM `cameras` WHERE `modect` = 1 ";
 $result = $conn->query($sql);$i=0;
 $number = $result->num_rows;
 if ($number>0) {
-	$content="cam_modect = ";
+	$content="Mode de détection: ".MODECT."\ncam_modect = ";
 while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		//$content = $cont.$row['id_zm'];
-if ($choix==2){$content_json[$i] = [
+if ($choix==2 && MODECT=="zoneminder"){$content_json[$i] = [
 	"id_zm" =>  $row['id_zm'],
 	"url" => $row['url']
 				];
 	}
-if ($choix==3){	$content = $content.$row["id_zm"];}
+if ($choix==2 && MODECT=="frigate"){$content_json[$i] = [
+	"id_fr" =>  $row['id_fr'],
+					];
+	}	
+if ($choix==3 && MODECT=="zoneminder"){	$content = $content.$row["id_zm"];}
+if ($choix==3 && MODECT=="frigate"){	$content = $content.$row["id_fr"];}	
 $i++;if ($number>$i) {$content=$content." , ";}
 }
-if ( $choix==3) {$cle=token_zm();$content=$content."\nToken OK : ".substr($cle,0,15)."....";}
+if ( $choix==3 && MODECT=="zoneminder") {$cle=token_zm();$content=$content."\nToken OK : ".substr($cle,0,15)."....";}
 if ($choix==2) {$content= json_encode($content_json);}		
 }
 	
