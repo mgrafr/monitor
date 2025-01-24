@@ -2040,20 +2040,24 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1647|
 
-21.16.5 Configuration d' UFW
+21.16.4 Configuration d' UFW
 ============================
 - autoriser les ports:
 
 .. code-block::
 
    ufw allow from 192.168.1.0/24
-   ufw allow from 10.0.0.0/2
+   ufw allow from 10.0.0.0/30
    ufw route allow in on wg0 proto tcp to 192.168.1.140 port 8006
    ufw allow 22
    ufw allow 51820/udp
    ufw enable
 
-|image1650|
+.. note::
+
+   la route ajoutée au pare-feu permet d'afficher le serveur (ip=192.168.1.140:8006) ,qui est celui de proxmox
+
+   |image1650|
 
 |image1651|
 
@@ -2082,7 +2086,15 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
    sudo systemctl restart ufw.
 
-21.16.4 Mises à jour Wireguard & WGDashboard
+21.16.5 Test
+============
+Pour faire le test j'ai ajouté un pair : ma tablette Samsung; ce qui explique la différence de CIDR 29 au lieu DE 30;
+
+|image1653|
+
+l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet n'est plus disponible sur la tablette , outlook ne peut plus être lancé ,etc..., seul le tunnel est disponible
+
+21.16.6 Mises à jour Wireguard & WGDashboard
 ============================================
 |image1645|
 
@@ -2516,6 +2528,6 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 .. |image1650| image:: ../img/image1650.webp
    :width: 700px
 .. |image1651| image:: ../img/image1651.webp
-   :width: 583px
+   :width: 500px
 .. |image1652| image:: ../img/image1652.webp
    :width: 650px
