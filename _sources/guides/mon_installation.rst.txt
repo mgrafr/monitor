@@ -2046,9 +2046,11 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 .. code-block::
 
-   ufw allow proto tcp from 192.168.1.0/24 to any port 22
-   ufw allow proto tcp from 192.168.1.0/24 to any port 80
-   ufw allow 51822/udp
+   ufw allow from 192.168.1.0/24
+   ufw allow from 10.0.0.0/2
+   ufw route allow in on wg0 proto tcp to 192.168.1.140 port 8006
+   ufw allow 22
+   ufw allow 51820/udp
    ufw enable
 
 |image1650|

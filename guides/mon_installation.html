@@ -1888,9 +1888,11 @@ listen 80;
 <ul class="simple">
 <li><p>autoriser les ports:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ufw</span> <span class="n">allow</span> <span class="n">proto</span> <span class="n">tcp</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">22</span>
-<span class="n">ufw</span> <span class="n">allow</span> <span class="n">proto</span> <span class="n">tcp</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">80</span>
-<span class="n">ufw</span> <span class="n">allow</span> <span class="mi">51822</span><span class="o">/</span><span class="n">udp</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ufw</span> <span class="n">allow</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span>
+<span class="n">ufw</span> <span class="n">allow</span> <span class="kn">from</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">ufw</span> <span class="n">route</span> <span class="n">allow</span> <span class="ow">in</span> <span class="n">on</span> <span class="n">wg0</span> <span class="n">proto</span> <span class="n">tcp</span> <span class="n">to</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.140</span> <span class="n">port</span> <span class="mi">8006</span>
+<span class="n">ufw</span> <span class="n">allow</span> <span class="mi">22</span>
+<span class="n">ufw</span> <span class="n">allow</span> <span class="mi">51820</span><span class="o">/</span><span class="n">udp</span>
 <span class="n">ufw</span> <span class="n">enable</span>
 </pre></div>
 </div>
