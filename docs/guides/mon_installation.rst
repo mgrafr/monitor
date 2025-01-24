@@ -1,7 +1,7 @@
 21. – Mon installation
 ---------------------- 
 
-|image1026|
+|image1655|
 
 21.1 Proxmox
 ^^^^^^^^^^^^
@@ -2116,8 +2116,7 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 |image1644|
 
 
-.. |image1026| image:: ../media/image1026.webp
-   :width: 700px
+
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
 .. |image1028| image:: ../media/image1028.webp
@@ -2549,4 +2548,6 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 .. |image1653| image:: ../img/image1653.webp
    :width: 700px
 .. |image1654| image:: ../img/image1654.webp
+   :width: 700px
+.. |image1655| image:: ../img/image1655.webp
    :width: 700px
