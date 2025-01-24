@@ -2104,7 +2104,13 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 
 |image1654|
 
-  comme pour l'accès local monitor est accéssible : http://IP/monitor
+  comme pour l'accès local monitor est accéssible : http://IP/monitor   
+
+.. note::
+
+   statut de UFW après ajout de tous les serveurs concernés
+
+   |image1656|
 
 - Test Ping
 
@@ -2551,3 +2557,5 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
    :width: 700px
 .. |image1655| image:: ../img/image1655.webp
    :width: 700px
+.. |image1656| image:: ../img/image1656.webp
+   :width: 550px
