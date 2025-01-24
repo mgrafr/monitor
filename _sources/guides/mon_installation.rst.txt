@@ -7,7 +7,7 @@
 ^^^^^^^^^^^^
 C’est la base du système, il doit être installé en premier, ensuite :
 
--	Un conteneur, une VM ou une partition classique 
+-	Un conteneur ou une VM  pour Lemp & Monitor
 
 -	Ensuite LEMP 
 
