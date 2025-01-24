@@ -2086,17 +2086,32 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
    sudo systemctl restart ufw.
 
-21.16.5 Test
-============
+21.16.5 Tests
+=============
+- affichage de l'interface graphique de Proxmox
+
 Pour faire le test j'ai ajouté un pair : ma tablette Samsung; ce qui explique la différence de CIDR 29 au lieu DE 30;
 
 |image1653|
 
 l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet n'est plus disponible sur la tablette , outlook ne peut plus être lancé ,etc..., seul le tunnel est disponible
 
+- Affichage de montor : ajouter dans le pare-feu:
+
+.. code-block::
+
+   ufw route allow in on wg0 proto tcp to 192.168.1.5 port 80
+
+|image1654|
+
+  comme pour l'accès local monitor est accéssible : http://IP/monitor
+
+- Test Ping
+
+|image1645|
+
 21.16.6 Mises à jour Wireguard & WGDashboard
 ============================================
-|image1645|
 
 |image1644|
 
@@ -2532,4 +2547,6 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 .. |image1652| image:: ../img/image1652.webp
    :width: 650px
 .. |image1653| image:: ../img/image1653.webp
+   :width: 700px
+.. |image1654| image:: ../img/image1654.webp
    :width: 700px

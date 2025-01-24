@@ -170,7 +170,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#installation-de-ufw">21.16.2 Installation de UFW</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-avec-wgdashboard">21.16.3 Configuration avec WGDashboard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-d-ufw">21.16.4 Configuration d” UFW</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#test">21.16.5 Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tests">21.16.5 Tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mises-a-jour-wireguard-wgdashboard">21.16.6 Mises à jour Wireguard &amp; WGDashboard</a></li>
 </ul>
 </li>
@@ -1926,15 +1926,31 @@ listen 80;
 </pre></div>
 </div>
 </section>
-<section id="test">
-<h3>21.16.5 Test<a class="headerlink" href="#test" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="tests">
+<h3>21.16.5 Tests<a class="headerlink" href="#tests" title="Lien permanent vers cette rubrique"></a></h3>
+<ul class="simple">
+<li><p>affichage de l’interface graphique de Proxmox</p></li>
+</ul>
 <p>Pour faire le test j’ai ajouté un pair : ma tablette Samsung; ce qui explique la différence de CIDR 29 au lieu DE 30;</p>
 <p><a class="reference internal" href="../_images/image1653.webp"><img alt="image1653" src="../_images/image1653.webp" style="width: 700px;" /></a></p>
 <p>l” affichage de Proxmox apparait en tapant: <a class="reference external" href="https://192.168.1.140:8006">https://192.168.1.140:8006</a>, Internet n’est plus disponible sur la tablette , outlook ne peut plus être lancé ,etc…, seul le tunnel est disponible</p>
+<ul class="simple">
+<li><p>Affichage de montor : ajouter dans le pare-feu:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ufw</span> <span class="n">route</span> <span class="n">allow</span> <span class="ow">in</span> <span class="n">on</span> <span class="n">wg0</span> <span class="n">proto</span> <span class="n">tcp</span> <span class="n">to</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.5</span> <span class="n">port</span> <span class="mi">80</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../_images/image1654.webp"><img alt="image1654" src="../_images/image1654.webp" style="width: 700px;" /></a></p>
+<blockquote>
+<div><p>comme pour l’accès local monitor est accéssible : <a class="reference external" href="http://IP/monitor">http://IP/monitor</a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Test Ping</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/image1645.webp"><img alt="image1645" src="../_images/image1645.webp" style="width: 700px;" /></a></p>
 </section>
 <section id="mises-a-jour-wireguard-wgdashboard">
 <h3>21.16.6 Mises à jour Wireguard &amp; WGDashboard<a class="headerlink" href="#mises-a-jour-wireguard-wgdashboard" title="Lien permanent vers cette rubrique"></a></h3>
-<p><a class="reference internal" href="../_images/image1645.webp"><img alt="image1645" src="../_images/image1645.webp" style="width: 700px;" /></a></p>
 <p><a class="reference internal" href="../_images/image1644.webp"><img alt="image1644" src="../_images/image1644.webp" style="width: 480px;" /></a></p>
 </section>
 </section>
