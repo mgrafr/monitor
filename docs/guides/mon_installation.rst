@@ -2554,8 +2554,8 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 .. |image1653| image:: ../img/image1653.webp
    :width: 700px
 .. |image1654| image:: ../img/image1654.webp
-   :width: 700px
+   :width: 548px
 .. |image1655| image:: ../img/image1655.webp
    :width: 700px
 .. |image1656| image:: ../img/image1656.webp
-   :width: 550px
+   :width: 400px
