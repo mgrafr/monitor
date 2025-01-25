@@ -2012,6 +2012,12 @@ C'est dans le pare-feu que seront exécutées les règles IPTABLES
 
 Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
 
+.. IMPORTANT::
+
+   Redirection dans la box Internet, du port utilisé par Wireguard : 51820
+
+   |image1657|
+
 21.16.3 Configuration avec WGDashboard
 ======================================
 |image1637|
@@ -2558,4 +2564,6 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 .. |image1655| image:: ../img/image1655.webp
    :width: 700px
 .. |image1656| image:: ../img/image1656.webp
+   :width: 400px
+.. |image1657| image:: ../img/image1657.webp
    :width: 400px
