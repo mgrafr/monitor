@@ -1992,12 +1992,14 @@ Suivant le serveur domotique la fonction pour l'effacement de la notification es
 
 |image1168|
 
-1.9 Accès distant HTTPS
-=======================
-voir cette page web : http://domo-site.fr/accueil/dossiers/3
+1.9 Accès distant HTTPS ou VPN
+==============================
+Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
-1.9.1 monitor.conf
-------------------
+1.9.1 Accès HTTPS
+-----------------
+1.9.1.1 Configuration NGINX, monitor.conf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block::
 
@@ -2041,6 +2043,11 @@ voir cette page web : http://domo-site.fr/accueil/dossiers/3
    *le certificat peut être fourni gratuitement par Let'sEncrypt*
 
    Comment installer Let's Encrypt sur Nginx : https://upcloud.com/resources/tutorials/install-lets-encrypt-nginx
+
+1.9.2 Accès VPN
+----------------
+voir le § :red:`21.16 VPN Wireguard dans un CT LXC`
+
 
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
