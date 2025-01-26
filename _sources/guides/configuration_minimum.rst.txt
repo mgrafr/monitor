@@ -2046,7 +2046,7 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
 1.9.2 Accès VPN
 ----------------
-voir le § :red:`21.16 VPN Wireguard dans un CT LXC`
+voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 
 
 .. |image117| image:: ../media/image117.webp
