@@ -151,8 +151,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#reception-du-mail-de-notification">1.8.6 Réception du mail de notification</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#acces-distant-https">1.9 Accès distant HTTPS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#monitor-conf">1.9.1 monitor.conf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acces-distant-https-ou-vpn">1.9 Accès distant HTTPS ou VPN</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#acces-https">1.9.1 Accès HTTPS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-nginx-monitor-conf">1.9.1.1 Configuration NGINX, monitor.conf</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#acces-vpn">1.9.2 Accès VPN</a></li>
 </ul>
 </li>
 </ul>
@@ -1920,11 +1924,13 @@ pour ne pas cacher le menu hamburger</p>
 <p><a class="reference internal" href="../_images/image1168.webp"><img alt="image1168" src="../_images/image1168.webp" style="width: 450px;" /></a></p>
 </section>
 </section>
-<section id="acces-distant-https">
-<h2>1.9 Accès distant HTTPS<a class="headerlink" href="#acces-distant-https" title="Lien permanent vers cette rubrique"></a></h2>
-<p>voir cette page web : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/3">http://domo-site.fr/accueil/dossiers/3</a></p>
-<section id="monitor-conf">
-<h3>1.9.1 monitor.conf<a class="headerlink" href="#monitor-conf" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="acces-distant-https-ou-vpn">
+<h2>1.9 Accès distant HTTPS ou VPN<a class="headerlink" href="#acces-distant-https-ou-vpn" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Pour HTTPS, voir cette page web : <a class="reference external" href="http://domo-site.fr/accueil/dossiers/3">http://domo-site.fr/accueil/dossiers/3</a></p>
+<section id="acces-https">
+<h3>1.9.1 Accès HTTPS<a class="headerlink" href="#acces-https" title="Lien permanent vers cette rubrique"></a></h3>
+<section id="configuration-nginx-monitor-conf">
+<h4>1.9.1.1 Configuration NGINX, monitor.conf<a class="headerlink" href="#configuration-nginx-monitor-conf" title="Lien permanent vers cette rubrique"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>upstream monitor {
      server 192.168.1.9;
 }
@@ -1966,6 +1972,11 @@ server {
 <p><em>le certificat peut être fourni gratuitement par Let’sEncrypt</em></p>
 <p>Comment installer Let’s Encrypt sur Nginx : <a class="reference external" href="https://upcloud.com/resources/tutorials/install-lets-encrypt-nginx">https://upcloud.com/resources/tutorials/install-lets-encrypt-nginx</a></p>
 </div>
+</section>
+</section>
+<section id="acces-vpn">
+<h3>1.9.2 Accès VPN<a class="headerlink" href="#acces-vpn" title="Lien permanent vers cette rubrique"></a></h3>
+<p>voir le § <span class="red">21.16 VPN Wireguard dans un CT LXC</span></p>
 </section>
 </section>
 </section>
