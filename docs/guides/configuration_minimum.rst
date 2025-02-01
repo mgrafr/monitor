@@ -2061,6 +2061,8 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
   `sms_free` int(1) DEFAULT NULL,
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
+|image1658|
+
 - Les scripts :
 
 1.9.2 Accès VPN
@@ -2394,3 +2396,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 500px
 .. |image1536| image:: ../img/image1536.webp
    :width: 700px
+.. |image1658| image:: ../img/image1658.webp
+   :width: 346px
