@@ -2044,6 +2044,25 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
    Comment installer Let's Encrypt sur Nginx : https://upcloud.com/resources/tutorials/install-lets-encrypt-nginx
 
+1.9.1.2 Authentification à deux facteurs (2FA)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- La table dans la base de données de Monitor
+
+.. code-block::
+
+   SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+   START TRANSACTION;
+   SET time_zone = "+00:00";
+   -- Structure de la table `2fa_token`
+   CREATE TABLE `2fa_token` (
+  `num` int(3) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
+  `token` varchar(20) NOT NULL,
+  `sms_free` int(1) DEFAULT NULL,
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+- Les scripts :
+
 1.9.2 Accès VPN
 ----------------
 voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
