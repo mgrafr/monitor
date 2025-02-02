@@ -2048,6 +2048,10 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1659|
 
+1.9.1.2.a les dossiers et fichiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|image1666|
+
 - La table dans la base de données de Monitor
 
 .. code-block::
