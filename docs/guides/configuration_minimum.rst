@@ -2067,6 +2067,27 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
 - Les scripts :
 
+**l'envoi d'un sms par l'API free mobile :**
+
+.. code-block::
+
+   //API for get requests
+   current_otp ="<?php echo  $current_otp;?>";
+sms ="<?php echo  $sms_free;?>";
+   if (sms!=0) {
+   let fetchRes = fetch("https://smsapi.free-mobile.fr/sendmsg?user=<USER>&pass=<PASS>&msg=code :"+current_otp , { 
+     mode : 'no-cors'
+    }) 
+     . then ( response =>  console . log (response)) 
+     . catch ( error =>  console . error (error));
+   }
+
+** index_otp.php
+
+|image1660|
+
+|image1661|
+
 1.9.2 Accès VPN
 ----------------
 voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
@@ -2402,3 +2423,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 346px
 .. |image1659| image:: ../img/image1659.webp
    :width: 489px
+.. |image1660| image:: ../img/image1660.webp
+   :width: 700px
+.. |image1661| image:: ../img/image1661.webp
+   :width: 700px
