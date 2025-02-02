@@ -2084,19 +2084,24 @@ Elle est installée lors de l'installation de monitor
 
    //API for get requests
    current_otp ="<?php echo  $current_otp;?>";
-sms ="<?php echo  $sms_free;?>";
-   if (sms!=0) {
-   let fetchRes = fetch("https://smsapi.free-mobile.fr/sendmsg?user=<USER>&pass=<PASS>&msg=code :"+current_otp , { 
+   u_sms ="<?php echo  $free_user;?>";
+   p_sms ="<?php echo  $free_pass;?>";
+   if (u_sms!='' && p_sms!='') {
+   let fetchRes = fetch("https://smsapi.free-mobile.fr/sendmsg?user=5"+u_sms+"&pass="+p_sms+"&msg=code :"+current_otp , { 
      mode : 'no-cors'
     }) 
      . then ( response =>  console . log (response)) 
      . catch ( error =>  console . error (error));
    }
 
+.. note::
+
+   les identifiants Free mobile doivent être ajoutés manuellement dans la table SQL.
+
 1.9.1.2.d Les scripts PHP
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-** index_otp.php**
+**index_otp.php**
 
 |image1660|
 
@@ -2104,15 +2109,14 @@ sms ="<?php echo  $sms_free;?>";
 
 |image1662|
 
-** verif_otp.php**
+**verif_otp.php**
 
 |image1663|
 
-** modification de index_loc.php**
+**modification de index_loc.php**
 
 |image1664|
 
-|image1658|
 
 1.9.2 Accès VPN
 ----------------
@@ -2460,6 +2464,6 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1664| image:: ../img/image1664.webp
    :width: 700px
 .. |image1665| image:: ../img/image1665.webp
-   :width: 473px
+   :width: 400px
 .. |image1666| image:: ../img/image1666.webp
-   :width: 473px
+   :width: 400px
