@@ -2046,6 +2046,8 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
 1.9.1.2 Authentification à deux facteurs (2FA)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1659|
+
 - La table dans la base de données de Monitor
 
 .. code-block::
@@ -2398,3 +2400,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 700px
 .. |image1658| image:: ../img/image1658.webp
    :width: 346px
+.. |image1659| image:: ../img/image1659.webp
+   :width: 489px
