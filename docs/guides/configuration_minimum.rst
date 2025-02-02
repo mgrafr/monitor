@@ -2082,11 +2082,21 @@ sms ="<?php echo  $sms_free;?>";
      . catch ( error =>  console . error (error));
    }
 
-** index_otp.php
+** index_otp.php**
 
 |image1660|
 
 |image1661|
+
+|image1662|
+
+** verif_otp.php**
+
+|image1663|
+
+** modification de index_loc.php**
+
+|image1664|
 
 1.9.2 Accès VPN
 ----------------
@@ -2426,4 +2436,10 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1660| image:: ../img/image1660.webp
    :width: 700px
 .. |image1661| image:: ../img/image1661.webp
+   :width: 700px
+.. |image1662| image:: ../img/image1662.webp
+   :width: 700px
+.. |image1663| image:: ../img/image1663.webp
+   :width: 700px
+.. |image1664| image:: ../img/image1664.webp
    :width: 700px
