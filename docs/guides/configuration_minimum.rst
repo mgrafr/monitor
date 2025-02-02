@@ -2052,26 +2052,33 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |image1666|
 
-- La table dans la base de données de Monitor
+1.9.1.2.b la table SQL 2fa_token
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Elle est installée lors de l'installation de monitor
 
 .. code-block::
 
-   SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-   START TRANSACTION;
-   SET time_zone = "+00:00";
-   -- Structure de la table `2fa_token`
    CREATE TABLE `2fa_token` (
   `num` int(3) NOT NULL,
   `user_id` varchar(20) NOT NULL,
   `token` varchar(20) NOT NULL,
-  `sms_free` int(1) DEFAULT NULL,
+  `free_user` varchar(15) NOT NULL,
+  `free_pass` varchar(20) NOT NULL
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
-|image1658|
+   INSERT INTO `2fa_token` (`num`, `user_id`, `token`, `free_user`, `free_pass`) VALUES
+   (1, 'michel', '', '', '');
 
-- Les scripts :
+   ALTER TABLE `2fa_token`
+     ADD PRIMARY KEY (`num`);
+   ALTER TABLE `2fa_token`
+     MODIFY `num` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+   COMMIT;
 
-**l'envoi d'un sms par l'API free mobile :**
+|image1665|
+
+1.9.1.2.c scripts JS pour l'API Free Mobile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
 
@@ -2085,6 +2092,9 @@ sms ="<?php echo  $sms_free;?>";
      . then ( response =>  console . log (response)) 
      . catch ( error =>  console . error (error));
    }
+
+1.9.1.2.d Les scripts PHP
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ** index_otp.php**
 
@@ -2101,6 +2111,8 @@ sms ="<?php echo  $sms_free;?>";
 ** modification de index_loc.php**
 
 |image1664|
+
+|image1658|
 
 1.9.2 Accès VPN
 ----------------
@@ -2447,3 +2459,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 700px
 .. |image1664| image:: ../img/image1664.webp
    :width: 700px
+.. |image1665| image:: ../img/image1665.webp
+   :width: 473px
+.. |image1666| image:: ../img/image1666.webp
+   :width: 473px
