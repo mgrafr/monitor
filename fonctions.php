@@ -1576,17 +1576,23 @@ $sql="UPDATE text_image SET
 texte = '".$data['texte']."',
 image = '".$data['image']."',
 icone= '".$data['icone'] ."'  WHERE num = '".$data['num']."' ; ";	
-//echo $sql;return;
 		$retour=maj_query($conn,$sql,"8");		
 break;			
 case "13": 
-		$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID1_html ='".$data['ID1_html']."' ;";
+case "14": 	
+	if ($choix==13)	{$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID1_html ='".$data['ID1_html']."' ;";}
+	if ($choix==14)	{$sql="SELECT * FROM 2fa_token WHERE user_id = '".USERMONITOR."';";}
 $result = $conn->query($sql);
-if ($result === FALSE) {$data=[];}
+if ($result === FALSE) {$row=[];
+	if ($choix==14) $row['token']=0;}
 else $row = $result->fetch_assoc();
-//$data= $row;*/
-		return $row;	
-break;			
+return $row;	
+break;	
+case "15":
+	$sql="UPDATE 2fa_token SET token = '".$data['token']."' WHERE user_id = '".USERMONITOR."';";
+	$retour=maj_query($conn,$sql,"6");
+	//echo $retour;
+break;	
 }		
 $conn->close();		
 return;}

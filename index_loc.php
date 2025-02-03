@@ -2,14 +2,19 @@
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 // pour les variables de session----------------------
-$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]="";
+$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]=""; 
+
+if (substr($_SESSION["domaine"] ,0,7) !="192.168")  {
+    if (!isset($_SESSION["current_otp"]) || $_SESSION["current_otp"] != $_SESSION["otp"]) {
+        header('Location: index_otp.php');
+   exit();} 
+    }
 $_SESSION["id_session"] = session_id();
 include ("admin/config.php");
 // Check connection DB
 mysqli_report(MYSQLI_REPORT_OFF);
 $conn = @new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
-if (!$conn) {echo "pas de BD : ".DBASE	;$_SESSION["exeption_db"]="pas de connexion à la BD"; }
-				   
+if (!$conn) {echo "pas de BD : ".DBASE	; $_SESSION["exeption_db"]="pas de connexion à la BD"; }
 //
 // pour vérifier la connexion au net------------------
 
@@ -50,10 +55,10 @@ if (ON_DVR==true) include ("include/dvr.php");
 if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 if (ON_SPA==true) include ("include/spa.php");//spa
 if (ON_HABRIDGE==true) include ("include/habridge.php");//pont hue Alexa
-if (ON_RECETTES==true) include ("include/recettes.php");//recettes
+if (ON_RECETTES==true) include ("include/recettes.php");//monitoring
 if (URLIOB!="") include ("include/iobroker.php");//iobroker
-include ("include/modes_emploi.php");
-# include ("custom/php/worx.php");
+include ("custom/php/modes_emploi.php");
+include ("custom/php/worx.php");
 include ("include/footer.php");// fin de la page avec les scrpits JS
 
 ?>
