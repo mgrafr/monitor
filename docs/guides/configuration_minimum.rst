@@ -2486,3 +2486,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 400px
 .. |image1666| image:: ../img/image1666.webp
    :width: 400px
+.. |image1667| image:: ../img/image1667.webp
+   :width: 650px
+.. |image1668| image:: ../img/image1668.webp
+   :width: 450px
