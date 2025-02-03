@@ -14,15 +14,19 @@ Server version: 10.11.6
 
 19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 3.2.1**
+**La version stable actuelle est 3.2.2**
 
 19.4.1 Releases
 ===============
-Version  en developpement 3.2.2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Version en developpement 3.2.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version 3.2.2 (Févier 2025)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - ajout dans config.php choix pour modect : Zoneminder ou frigate ou false
 - ajout dans la table cameras.sql nom de la caméra pour Frigate
 - ajout dans l'api de monitor , l'envoi de sms (utilisé par frigate-notify)
+- ajout de l'Authentification 2 étapes OTP 2fa
 
 Version 3.2.1 (Décembre 2024)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
