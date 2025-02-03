@@ -46,7 +46,7 @@ $user = [
         'email' => 'monitor.la-Truffiere.ovh'
     ];
 } 
-echo $current_otp;// pour debug  
+//echo $current_otp;// pour debug  
  // Store user data in the session
  $_SESSION['user'] = $user;
  $_SESSION['current_otp'] = $current_otp;  
