@@ -2044,15 +2044,34 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
 
    Comment installer Let's Encrypt sur Nginx : https://upcloud.com/resources/tutorials/install-lets-encrypt-nginx
 
-1.9.1.2 Authentification à deux facteurs (2FA)
+1.9.1.2 Authentification basique
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Créer un fichier de mots de passe
+
+.. code-block::
+
+   sudo htpasswd -c /etc/nginx/.htpasswd <USER>
+
+Ajouter dans les fichiers de configuration concernant les Hôtes virtuels
+
+.. code-block::
+
+   auth_basic "Mot de Passe Obligatoire";
+   auth_basic_user_file /etc/nginx/.htpasswd;
+
+|image1667|
+
+|image1668|
+
+1.9.1.3 Authentification à deux facteurs (2FA)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1659|
 
-1.9.1.2.a les dossiers et fichiers
+1.9.1.3.a les dossiers et fichiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |image1666|
 
-1.9.1.2.b la table SQL 2fa_token
+1.9.1.3.b la table SQL 2fa_token
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Elle est installée lors de l'installation de monitor
 
@@ -2077,7 +2096,7 @@ Elle est installée lors de l'installation de monitor
 
 |image1665|
 
-1.9.1.2.c scripts JS pour l'API Free Mobile
+1.9.1.3.c Script JS pour l'API Free Mobile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -2098,7 +2117,7 @@ Elle est installée lors de l'installation de monitor
 
    les identifiants Free mobile doivent être ajoutés manuellement dans la table SQL.
 
-1.9.1.2.d Les scripts PHP
+1.9.1.3.d Les scripts PHP
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **index_otp.php**
