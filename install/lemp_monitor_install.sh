@@ -214,7 +214,7 @@ ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
 rm $chemin/monitor/install/maj*
 echo "importer les tables text_image dispositifs 2fa_token messages et sse"
-sed -i "s/(1, 'user /(1, '${maria_name}/g" $chemin/monitor/bd_sql/2fa_token.sql
+sed -i "s/(1, 'user/(1, '${maria_name)/g" /var/www/monitor/bd_sql/2fa_token.sql
 mysql -root monitor < $chemin/monitor/bd_sql/text_image.sql
 mysql -root monitor < $chemin/monitor/bd_sql/dispositifs.sql
 mysql -root monitor < $chemin/monitor/bd_sql/sse.sql
