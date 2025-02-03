@@ -213,11 +213,13 @@ xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
 rm $chemin/monitor/install/maj*
-echo "importer les tables text_image dispositifs et sse"
+echo "importer les tables text_image dispositifs 2fa_token messages et sse"
+sed -i "s/(1, 'user /(1, '${maria_name}/g" $chemin/monitor/bd_sql/2fa_token.sql
 mysql -root monitor < $chemin/monitor/bd_sql/text_image.sql
 mysql -root monitor < $chemin/monitor/bd_sql/dispositifs.sql
 mysql -root monitor < $chemin/monitor/bd_sql/sse.sql
 mysql -root monitor < $chemin/monitor/bd_sql/messages.sql
+mysql -root monitor < $chemin/monitor/bd_sql/2fa_token.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
 cp $chemin/monitor/share/nginx/default.conf /etc/nginx/conf.d/
