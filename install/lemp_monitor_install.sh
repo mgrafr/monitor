@@ -1,4 +1,4 @@
-ault#!/usr/bin/bash
+#!/usr/bin/bash
 
 # Ce script installe LEMP sur Ubuntu Debian 12.
 function header_info {
