@@ -2081,12 +2081,10 @@ Elle est installée lors de l'installation de monitor
   `num` int(3) NOT NULL,
   `user_id` varchar(20) NOT NULL,
   `token` varchar(20) NOT NULL,
-  `free_user` varchar(15) NOT NULL,
-  `free_pass` varchar(20) NOT NULL
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
-   INSERT INTO `2fa_token` (`num`, `user_id`, `token`, `free_user`, `free_pass`) VALUES
-   (1, 'michel', '', '', '');
+   INSERT INTO `2fa_token` (`num`, `user_id`, `token`) VALUES
+   (1, 'michel', '');
 
    ALTER TABLE `2fa_token`
      ADD PRIMARY KEY (`num`);
@@ -2096,26 +2094,14 @@ Elle est installée lors de l'installation de monitor
 
 |image1665|
 
-1.9.1.3.c Script JS pour l'API Free Mobile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.9.1.3.c Script pour l'evoi d'un SMS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lignes à ajouter à index_otp.php
 
 .. code-block::
 
-   //API for get requests
-   current_otp ="<?php echo  $current_otp;?>";
-   u_sms ="<?php echo  $free_user;?>";
-   p_sms ="<?php echo  $free_pass;?>";
-   if (u_sms!='' && p_sms!='') {
-   let fetchRes = fetch("https://smsapi.free-mobile.fr/sendmsg?user=5"+u_sms+"&pass="+p_sms+"&msg=code :"+current_otp , { 
-     mode : 'no-cors'
-    }) 
-     . then ( response =>  console . log (response)) 
-     . catch ( error =>  console . error (error));
-   }
-
-.. note::
-
-   les identifiants Free mobile doivent être ajoutés manuellement dans la table SQL.
+   $content="#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='Code:".$current_otp."' \npriority=0";
+    file_put_contents('/var/www/monitor/python/aldz.py',$content);
 
 1.9.1.3.d Les scripts PHP
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2483,7 +2469,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1664| image:: ../img/image1664.webp
    :width: 700px
 .. |image1665| image:: ../img/image1665.webp
-   :width: 400px
+   :width: 233px
 .. |image1666| image:: ../img/image1666.webp
    :width: 400px
 .. |image1667| image:: ../img/image1667.webp
