@@ -7,8 +7,7 @@ $data= [
     'command' => '14'];
 $row=mysql_app($data);
 $token=$row['token'];
-$free_user=$row['free_user'];
-$free_pass=$row['free_pass'];
+$sms=$row['sms'];
 // Start Session
 if(!session_id())
 {
@@ -50,6 +49,10 @@ $user = [
  // Store user data in the session
  $_SESSION['user'] = $user;
  $_SESSION['current_otp'] = $current_otp;  
+ if ($sms==1){
+ $content="#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='Code:".$current_otp."' \npriority=0";
+ file_put_contents('/var/www/monitor/python/aldz.py',$content);
+ }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,17 +77,8 @@ $user = [
 
     <script>
 //API for get requests
-current_otp ="<?php echo  $current_otp;?>";
-u_sms ="<?php echo  $free_user;?>";
-p_sms ="<?php echo  $free_pass;?>";
 maj_bd="<?php echo  $maj_bd;?>";
-if (u_sms!='' && p_sms!='') {
-let fetchRes = fetch("https://smsapi.free-mobile.fr/sendmsg?user=5"+u_sms+"&pass="+p_sms+"&msg=code :"+current_otp , { 
-  mode : 'no-cors'
- }) 
-  . then ( response =>  console . log (response)) 
-  . catch ( error =>  console . error (error));
-}
+
         $(function() 
         {
             // Verify OTP
