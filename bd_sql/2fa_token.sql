@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : dim. 02 fév. 2025 à 21:37
+-- Généré le : mer. 05 fév. 2025 à 09:02
 -- Version du serveur : 10.11.6-MariaDB-0+deb12u1
 -- Version de PHP : 8.3.16
 
@@ -31,16 +31,15 @@ CREATE TABLE `2fa_token` (
   `num` int(3) NOT NULL,
   `user_id` varchar(20) NOT NULL,
   `token` varchar(20) NOT NULL,
-  `free_user` varchar(15) NOT NULL,
-  `free_pass` varchar(20) NOT NULL
+  `sms` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
 -- Déchargement des données de la table `2fa_token`
 --
 
-INSERT INTO `2fa_token` (`num`, `user_id`, `token`, `free_user`, `free_pass`) VALUES
-(1, 'user', '', '', '');
+INSERT INTO `2fa_token` (`num`, `user_id`, `token`, `sms`) VALUES
+(1, 'user', '', 0);
 
 --
 -- Index pour les tables déchargées
