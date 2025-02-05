@@ -2081,6 +2081,7 @@ Elle est installée lors de l'installation de monitor
   `num` int(3) NOT NULL,
   `user_id` varchar(20) NOT NULL,
   `token` varchar(20) NOT NULL,
+  `sms` int(1) NOT NULL DEFAULT 0
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
    INSERT INTO `2fa_token` (`num`, `user_id`, `token`) VALUES
@@ -2463,7 +2464,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1661| image:: ../img/image1661.webp
    :width: 700px
 .. |image1662| image:: ../img/image1662.webp
-   :width: 700px
+   :width: 650px
 .. |image1663| image:: ../img/image1663.webp
    :width: 700px
 .. |image1664| image:: ../img/image1664.webp
