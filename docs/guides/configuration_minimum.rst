@@ -2096,8 +2096,8 @@ Elle est installée lors de l'installation de monitor
 |image1665|
 
 1.9.1.3.c Script pour l'evoi d'un SMS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-..admonition:: utilisationd'un modem GSM
+ 
+.. admonition:: utilisationd'un modem GSM
 
    voir le § :ref:`13.6 SMS réception et émission`
 
@@ -2108,7 +2108,7 @@ Elle est installée lors de l'installation de monitor
       $content="#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='Code:".$current_otp."' \npriority=0";
       file_put_contents('/var/www/monitor/python/aldz.py',$content);
 
-..admonition:: notification Free Mobile
+.. admonition:: notification Free Mobile
 
    lignes à ajouter à index_otp.php
 
