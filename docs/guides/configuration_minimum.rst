@@ -2097,12 +2097,24 @@ Elle est installée lors de l'installation de monitor
 
 1.9.1.3.c Script pour l'evoi d'un SMS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-lignes à ajouter à index_otp.php
+..admonition:: utilisationd'un modem GSM
 
-.. code-block::
+   voir le § :ref:`13.6 SMS réception et émission`
 
-   $content="#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='Code:".$current_otp."' \npriority=0";
-    file_put_contents('/var/www/monitor/python/aldz.py',$content);
+   lignes à ajouter à index_otp.php
+  
+   .. code-block::
+  
+      $content="#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='Code:".$current_otp."' \npriority=0";
+      file_put_contents('/var/www/monitor/python/aldz.py',$content);
+
+..admonition:: notification Free Mobile
+
+   lignes à ajouter à index_otp.php
+
+   .. code-block::
+
+      en cours
 
 1.9.1.3.d Les scripts PHP
 ~~~~~~~~~~~~~~~~~~~~~~~~~
