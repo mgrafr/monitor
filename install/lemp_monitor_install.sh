@@ -149,6 +149,9 @@ ufw allow http
 ufw allow https
 ufw enable
 echo -e "${CHECKMARK} \e[1;92m Le pare-feu a été installé.\e[0m"
+apt -y install sshpass
+echo -e "${CHECKMARK} \e[1;92m SSHPASS a été installé.\e[0m"
+sleep 2
 msg_ok "Installation de  php8.3"
 sleep 3
 #echo "Installer les dependances "
