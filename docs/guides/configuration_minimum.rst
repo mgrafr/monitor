@@ -2105,8 +2105,10 @@ Elle est installée lors de l'installation de monitor
   
    .. code-block::
   
+      if ($sms==1){
       $content="#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='Code:".$current_otp."' \npriority=0";
       file_put_contents('/var/www/monitor/python/aldz.py',$content);
+      }
 
 .. admonition:: notification Free Mobile
 
@@ -2114,7 +2116,10 @@ Elle est installée lors de l'installation de monitor
 
    .. code-block::
 
-      en cours
+      if ($sms==2){
+        $cmd='bash wget "https://smsapi.free-mobile.fr/sendmsg?user=USER&pass=PASS&msg=".$current_otp';
+        shell_exec( $cmd );
+       }
 
 1.9.1.3.d Les scripts PHP
 ~~~~~~~~~~~~~~~~~~~~~~~~~
