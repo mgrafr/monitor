@@ -97,7 +97,7 @@ fi
 domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -f 2 -d '='`
 echo "domaine : " $domaine
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php 
-sed -i "s/.\///g"  /home/$mdir_maj/c.txt
+sed -i "s/.\///g"  /home/$mdir_maj/monitor/c.txt
 sed  -i "s/{$domaine}/{$domaine}:444/g" /home/$mdir_maj/monitor/admin/config.php
 sed  -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 #modifier monitor.conf
