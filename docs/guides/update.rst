@@ -20,6 +20,8 @@ Server version: 10.11.6
 ===============
 Version en developpement 3.2.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- correction de bugs dans sauvegarde_maj.sh & restore.sh
+- finalisation de OTO 2fa avec l'envoi de sms par GSM et par l'api Free Mobile
 
 Version 3.2.2 (Févier 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
