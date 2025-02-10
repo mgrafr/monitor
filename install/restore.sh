@@ -14,20 +14,16 @@ else
 mdir_maj=/maj_monitor
 echo "Par défaut, répertoire : "$mdir_maj
 fi
-mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup}
+mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup,python}
 mkdir -p /home/$mdir_maj/etc/{letsencrypt,ssl,nginx,cron.d}
+mkdir -p /home/$mdir_maj/etc/systemd/system
 mkdir -p /home/$mdir_maj/root/.ssh
 mkdir -p /home/$mdir_maj/etc/nginx/{conf.d,ssl}
 #read ip3 < /var/www/monitor/admin/connect/ip.txt
 echo "adresse IP old:" $ip3
-#domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -f 2 -d '='`
-#echo "domaine : " $domaine
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 echo "adresse IP new " $ip
-
-#chmod -R 777 *
-
 lets=$(whiptail --title "Certificat Letsencrypt" --radiolist \
 "Comment voulez vous mettre à jour monitor ?\n avec les certificat SSL enregistrés\n sans les certificats SSL " 15 60 4 \
 "Avec les certificats déjà enregistrés" "par defaut " ON \
@@ -51,6 +47,7 @@ sleep 1
 cd /home/$mdir_maj/monitor
 sshpass -p $pass_sftp sftp $user_sftp@$ip3<<EOF
 get /var/www/monitor/index_loc.php
+get /var/www/monitor/c.txt
 lcd admin
 get -R /var/www/monitor/admin/* 
 lcd ..
@@ -60,14 +57,21 @@ lcd ..
 lcd DB_Backup
 get /var/www/monitor/DB_Backup/*
 lcd ..
+lcd python
+get /var/www/monitor/python/*
+lcd ..
 lcd ..
 lcd etc/nginx
 get /etc/nginx/.htpasswd 
 lcd conf.d
 get /etc/nginx/conf.d/*
+lcd ..
+lcd ..
+lcd cron.d
+get /etc/cron.d/*
 exit
 EOF
-if [ "$lets = Avec les certificats déjà enregistrés" ];
+if [ $(lets) = "Avec les certificats déjà enregistrés" ];
 then
 cd /home/$mdir_maj/etc/nginx/ssl
 sshpass -p $pass_sftp sftp $user_sftp@$ip3<<EOF
@@ -79,13 +83,10 @@ get -R /etc/letsencrypt/*
 lcd ..
 lcd ssl
 get /etc/ssl/*
-lcd ..
-lcd cron.d
-get /etc/cron.d/*
 exit
 EOF
 fi
-if [ "$lett = Copier les clés déjà enregistrés" ];
+if [ $(lett) = "Copier les clés déjà enregistrés" ];
 then
 cd /home/$mdir_maj/root/.ssh
 sshpass -p $pass_sftp  sftp $user_sftp@$ip3<<EOF
@@ -93,14 +94,15 @@ get /root/.ssl/*
 exit
 EOF
 fi
-#
-sed -i "s/${ip3}/${ip4}/g" /var/www/monitor/admin/config.php 
-sed  -i "s/{$domaine}/{$domaine}:444/g" /var/www/monitor/admin/config.php
+domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -f 2 -d '='`
+echo "domaine : " $domaine
+sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php 
+sed -i "s/.\///g"  /home/$mdir_maj/c.txt
+sed  -i "s/{$domaine}/{$domaine}:444/g" /home/$mdir_maj/monitor/admin/config.php
 sed  -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 #modifier monitor.conf
 sed  -i "s/443/444/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
-#sed  -i "s/#/ }/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
-sed -i "s/${ip3}/${ip4}/g" /var/www/monitor/admin/connect/connect.py
+sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 vv=$(pip list --format=json)
 echo $vv
 rm -R /home/$mdir_maj/etc/letsencrypt/live
@@ -122,8 +124,9 @@ if [ $a = 0 ]; then
 echo "erreur  vérifier lles autorisations pour etc/letsencrypt/archive=644"
 exit
 fi
-sleep 20
+sleep 2
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/index_loc.php
+cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/C.txt
 cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
 chmod -R 777 /var/www/monitor/DB_Backup
 cp /home/$mdir_maj/monitor/DB_Backup/dump.sql /var/www/monitor/DB_Backup/
@@ -143,6 +146,14 @@ chmod -R 777 /root/.ssl
 cp /home/$mdir_maj/root/.ssh/* /root/.ssh
 certbot update_symlinks
 certbot renew --dry-run
-
-
-
+while read L; do
+systemctl enable $l
+systemctl start $L
+done  < /var/www/monitor/C.txt
+mod_py=$(whiptail --title "Installation de module(s) pythonr" --inputbox "Les Modules  doivent être séparés par un espace" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ -z "$mod_py" ]
+then
+sudo apt update
+sudo apt install $mod_py
+fi
