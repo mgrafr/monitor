@@ -502,9 +502,15 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    **Cette opération est automatique si le script** *sauvegarde_maj.sh* **est utilisé**. 
 
-   la seule manipulation manuelle, sur MONITOR en service, c'est sur la box internet : **EFFECTUER LA REDIRECTION DU PORT 81**
+   les seules manipulations manuelles, sur MONITOR en service, ce sont:
+
+	- sur la box internet : **EFFECTUER LA REDIRECTION DU PORT 81**
+
+	- sur le shell Proxmox pour récupérer les paramètres E/S du conteneur
 
    |image1557|
+
+   |image1669|
  
 .. admonition:: **Sauvegarde de monitor**
 
@@ -2311,3 +2317,5 @@ function mc(variable,id)
    :width: 483px
 .. |image1564| image:: ../img/image1564.webp
    :width: 550px
+.. |image1669| image:: ../img/image1669.webp
+   :width: 600px
