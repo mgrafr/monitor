@@ -492,31 +492,13 @@ modifications en cours....
 
 0.1.4.1  Mise à jour complète
 """""""""""""""""""""""""""""
-un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste opérationnel.
-
-.. admonition:: **étape préliminaire**
-
-   Pour faire fonctionner 2 conteneurs ayant les mêmes certificats Letsencrypt il faut apporter des modifications sur le fichier de  configuration Nginx de monitor actuellement en service.
-
-   Ce conteneur ecoute les ports 80 et 443; on va modifier la configuration afin qu'il écoute les ports 443 et 81; le nouveau conteneur écoutera le port 444 en HTTPS mais pour Letsencrypt il faut lui donner un accès pour les vérifications donc le port 80 libéré.
-
-   **Cette opération est automatique si le script** *sauvegarde_maj.sh* **est utilisé**. 
-
-   les seules manipulations manuelles, sur MONITOR en service, ce sont:
-
-	- sur la box internet : **EFFECTUER LA REDIRECTION DU PORT 81**
-
-	- sur le shell Proxmox pour récupérer les paramètres E/S du conteneur
-
-   |image1557|
-
-   |image1669|
+un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste pour l'instant opérationnel.
  
 .. admonition:: **Sauvegarde de monitor**
 
    .. note::
 
-         :red:`Toutes les opérations ci-dessous peuvent être effectées automatiquement avec le script` :darkblue:`sauvegarde_maj.sh`
+         :red:`Toutes les opérations de sauvegarde peuvent être effectées automatiquement avec le script` :darkblue:`sauvegarde_maj.sh`
 
    Le script  *sauvegarde_maj.sh* 
 
@@ -542,38 +524,31 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
         find /etc/systemd/system -type f -prune > /www/monitor/systemd/c.txt
         find /etc/systemd/system -maxdepth 1 -type f -exec cp {} /www/monitor/systemd/ \;
 
-   La config Nginx de monitor devient 
+   .. admonition:: manuellemet lise des sauvegardes  qui devront être restaurées     
 
-   |image1542|
+      sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
 
-   sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
+      |image1543|
 
-   |image1543|
+      établir la liste des modules python installés (lors de script perso: lgtv, mysql-connector,...)
 
-   établir la liste des modules python installés (lors de script perso: lgtv, mysql-connector,...)
+      |image1548|
 
-   |image1548|
+      |image1553|
 
-   |image1553|
+      étalir la liste de port utilisés par le pare-feu
 
-   étalir la liste de port utilisés par le pare-feu
+      |image1552|
 
-   |image1552|
+      |image1547|
 
-   |image1547|
+.. admonition:: **Installer un nouveau conteneur LXC** 
 
-.. admonition:: **Installer un nouveau conteneur LXC** , 
     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
-   .. IMPORTANT::
+.. admonition:: **Restauration automatiques des sauvegardesdes**
 
-      Sur la Box internet faire avec na nouvelle IP une redirection de port : 444
-
-      |image1558|
-
-.. admonition:: **Restauration des données depuis Monitor en service**
-
-   téléchargement depuis le conteneur actuel des fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc...)
+  téléchargement depuis le conteneur actuel des fichiers qui concernent les données à conserver( base dedonnées,configuration,certificat,etc...)
 
    Pour cela , on utilise **sftp** dans le script :darkblue:`restore.sh`; les fichiers et répertoires sont stockés dans home/<REPERTOIRE CHOISI LORS DU SCRIPT> du nouveau conteneur.
 
@@ -581,9 +556,9 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
   |image1545|
 
-  Les fichiers téléchargés vont écraser dans le nouveau monitor les fichiers de données.
+  Les fichiers téléchargés  sont stockés dans un répertoire installé dans /home et vont écraser dans le nouveau monitor les fichiers de données.
 
-  Un extrait du script :darkblue:`install/restore.sh`,  suivant la configuration de monitor (accès distant ou non avec des certificats,...);seul le réperoire letsencrypt est optionnel, les autres répertoires sont obligatoires
+  Un extrait du script :darkblue:`install/restore.sh`,  
 
    https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/restore.sh
 
@@ -670,11 +645,13 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    .. note::
 
+      Pour une restauration manuelle queques conseils :
+
       ci-dessous dans le répertoire archive les clés, certificats ,... utilisés (les + récents sont ceux avec le nombre le plus élevé , ex: privkey17); 
 
       si les virtualhosts sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l'indice 1 pour tous, le script :darkblue:`update_symlinks` rétabliera la bonne configuration.
 
-      red:`Le script restore.sh choisit les bons cerificats automatiquement`
+      :red:`Le script restore.sh choisit les bons cerificats automatiquement`
 
       |image1546|
 
