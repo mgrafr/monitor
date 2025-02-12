@@ -540,7 +540,13 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1552|
 
+      établir la liste des modules python 
+
       |image1547|
+
+      sauvegarder le répertoire /etc/letsencrypt
+
+      |image1542|
 
 .. admonition:: **Installer un nouveau conteneur LXC** 
 
@@ -2192,7 +2198,7 @@ function mc(variable,id)
 .. |image1540| image:: ../img/image1540.webp
    :width: 643px
 .. |image1542| image:: ../img/image1542.webp
-   :width: 379px
+   :width: 320px
 .. |image1543| image:: ../img/image1543.webp
    :width: 400px
 .. |image1544| image:: ../img/image1544.webp
@@ -2217,10 +2223,6 @@ function mc(variable,id)
    :width: 533px
 .. |image1556| image:: ../img/image1556.webp
    :width: 556px
-.. |image1557| image:: ../img/image1557.webp
-   :width: 500px
-.. |image1558| image:: ../img/image1558.webp
-   :width: 500px
 .. |image1559| image:: ../img/image1559.webp
    :width: 450px
 .. |image1560| image:: ../img/image1560.webp
