@@ -16,4 +16,5 @@ ufw status > /var/www/monitor/admin/connect/ufw.txt
 xxx=$(hostname -I)
 echo $xxx | cut -d ' ' -f 1 > /var/www/monitor/admin/connect/ip.txt
 mkdir /www/monitor/systemd
+find /etc/systemd/system -type f -prune > /www/monitor/systemd/c.txt
 find /etc/systemd/system -maxdepth 1 -type f -exec cp {} /www/monitor/systemd/ \;
