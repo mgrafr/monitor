@@ -111,7 +111,6 @@ domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -
 echo "domaine : " $domaine
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php 
 sed -i "s/.\///g"  /home/$mdir_maj/monitor/systemd/c.txt
-sed  -i "s/{$domaine}/{$domaine}:444/g" /home/$mdir_maj/monitor/admin/config.php
 sed  -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 vv=$(pip list --format=json)
