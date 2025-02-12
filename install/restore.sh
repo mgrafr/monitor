@@ -20,10 +20,10 @@ mkdir -p /home/$mdir_maj/etc/systemd/system
 mkdir -p /home/$mdir_maj/root/.ssh
 mkdir -p /home/$mdir_maj/etc/nginx/{conf.d,ssl}
 #read ip3 < /var/www/monitor/admin/connect/ip.txt
-echo "adresse IP old:" $ip3
+echo "adresse IP old: $ip3"
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
-echo "adresse IP new " $ip
+echo "adresse IP new : $ip"
 lets=$(whiptail --title "Certificat Letsencrypt" --radiolist \
 "Comment voulez vous mettre à jour monitor ?\n avec les certificat SSL enregistrés\n sans les certificats SSL " 15 60 4 \
 "Avec les certificats déjà enregistrés" "par defaut " ON \
@@ -36,7 +36,7 @@ fi
 sleep 1
 lett=$(whiptail --title "clé SSH" --radiolist \
 "Possédez-vous une ou plusieurs clés SSH ? ?\n voulez vous les copier ?" 15 60 4 \
-"Copier les clés déjà enregistrés" "par defaut " ON \
+"Copier les clés déjà enregistrées" "par defaut " ON \
 "Ne pas copier les clés " "voir la doc" OFF  3>&1 1>&2 2>&3)
 if [ $exitstatus = 0 ]; then
    echo "Vous avez choisi  : $lett"
@@ -44,6 +44,16 @@ else
 echo "Vous avez annulé  "
 fi
 sleep 1
+cle_ssh=$(whiptail --title "Ajout $ip3 sur  .ssh/known_hosts " ---radiolist \
+"si $ip3 ne se trouve pas dans le fichier ~/.ssh/known_hosts" 15 60 4 \
+"OUI" "par defaut " ON \
+"NON"  "          " OFF  3>&1 1>&2 2>&3)
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi  : $cle_ssh"
+   ssh-keyscan -H -t rsa $ip3 >> ~/.ssh/known_hosts  
+else
+echo "Vous avez annulé  "
+fi
 cd /home/$mdir_maj/monitor
 sshpass -p $pass_sftp sftp $user_sftp@$ip3<<EOF
 get /var/www/monitor/index_loc.php
@@ -60,6 +70,9 @@ lcd ..
 lcd python
 get /var/www/monitor/python/*
 lcd ..
+lcd systemd
+get /var/www/monitor/systemd/*
+lcd ..
 lcd ..
 lcd etc/nginx
 get /etc/nginx/.htpasswd 
@@ -71,8 +84,8 @@ lcd cron.d
 get /etc/cron.d/*
 exit
 EOF
-if [ $(lets) = "Avec les certificats déjà enregistrés" ];
-then
+if [[ "$lets" == "Avec les certificats déjà enregistrés" ]];then
+echo $lets
 cd /home/$mdir_maj/etc/nginx/ssl
 sshpass -p $pass_sftp sftp $user_sftp@$ip3<<EOF
 get /etc/nginx/ssl/*
@@ -86,8 +99,8 @@ get /etc/ssl/*
 exit
 EOF
 fi
-if [ $(lett) = "Copier les clés déjà enregistrés" ];
-then
+if [["$lett" == "Copier les clés déjà enregistrées" ]];then
+echo $lett
 cd /home/$mdir_maj/root/.ssh
 sshpass -p $pass_sftp  sftp $user_sftp@$ip3<<EOF
 get /root/.ssl/*
@@ -97,11 +110,9 @@ fi
 domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -f 2 -d '='`
 echo "domaine : " $domaine
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php 
-sed -i "s/.\///g"  /home/$mdir_maj/monitor/c.txt
+sed -i "s/.\///g"  /home/$mdir_maj/monitor/systemd/c.txt
 sed  -i "s/{$domaine}/{$domaine}:444/g" /home/$mdir_maj/monitor/admin/config.php
 sed  -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
-#modifier monitor.conf
-sed  -i "s/443/444/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 vv=$(pip list --format=json)
 echo $vv
@@ -127,6 +138,7 @@ fi
 sleep 2
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/index_loc.php
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/C.txt
+cp -R /home/$mdir_maj/monitor/systemd/* /etc/systemd/system/
 cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
 chmod -R 777 /var/www/monitor/DB_Backup
 cp /home/$mdir_maj/monitor/DB_Backup/dump.sql /var/www/monitor/DB_Backup/
@@ -146,14 +158,18 @@ chmod -R 777 /root/.ssl
 cp /home/$mdir_maj/root/.ssh/* /root/.ssh
 certbot update_symlinks
 certbot renew --dry-run
+echo "fin de cerbot"
+sleep 1
 while read L; do
-systemctl enable $l
+systemctl enable $L
 systemctl start $L
-done  < /var/www/monitor/C.txt
+done  < /etc/systemd/system/c.txt
+sleep 5
 mod_py=$(whiptail --title "Installation de module(s) pythonr" --inputbox "Les Modules  doivent être séparés par un espace" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
-if [ -z "$mod_py" ]
+if [ -n "$mod_py" ]
 then
 sudo apt update
 sudo apt install $mod_py
 fi
+
