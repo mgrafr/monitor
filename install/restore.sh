@@ -139,6 +139,7 @@ sleep 2
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/index_loc.php
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/C.txt
 cp -R /home/$mdir_maj/monitor/systemd/* /etc/systemd/system/
+cp -R /home/$mdir_maj/monitor/python/* /var/www/monitor/python/
 cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
 chmod -R 777 /var/www/monitor/DB_Backup
 cp /home/$mdir_maj/monitor/DB_Backup/dump.sql /var/www/monitor/DB_Backup/
