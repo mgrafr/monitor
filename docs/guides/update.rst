@@ -22,6 +22,7 @@ Version en developpement 3.2.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction de bugs dans sauvegarde_maj.sh & restore.sh
 - finalisation de OTO 2fa avec l'envoi de sms par GSM et par l'api Free Mobile
+- ajout du dossier "python" , pour installer les scrips python perso, (pour faciliter les maj).
 
 Version 3.2.2 (Févier 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
