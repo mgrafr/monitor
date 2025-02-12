@@ -16,8 +16,4 @@ ufw status > /var/www/monitor/admin/connect/ufw.txt
 xxx=$(hostname -I)
 echo $xxx | cut -d ' ' -f 1 > /var/www/monitor/admin/connect/ip.txt
 mkdir /www/monitor/systemd
-for fichier in /etc/systemd/system/*; do
-  if [ -f "$fichier" ]; then
-    cp "$fichier" /www/monitor/systemd/
-  fi
-done
+find /etc/systemd/system -maxdepth 1 -type f -exec cp {} /www/monitor/systemd/ \;
