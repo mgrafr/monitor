@@ -538,10 +538,9 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 	ufw status > /var/www/monitor/admin/connect/ufw.txt
 	xxx=$(hostname -I)
 	echo $xxx | cut -d ' ' -f 1 > /var/www/monitor/admin/connect/ip.txt
-	echo "pour letsencrypt remplacement port 80 par 81"
-	sed  -i "s/80/81/g" /etc/nginx/conf.d/monitor.conf
-        cd /etc/systemd/system
-        find . -type f -prune > /www/monitor/c.txt
+	mkdir /www/monitor/systemd
+        find /etc/systemd/system -type f -prune > /www/monitor/systemd/c.txt
+        find /etc/systemd/system -maxdepth 1 -type f -exec cp {} /www/monitor/systemd/ \;
 
    La config Nginx de monitor devient 
 
@@ -636,6 +635,16 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
       echo "Vous avez annulé  "
       fi
       sleep 1
+      cle_ssh=$(whiptail --title "Ajout $ip3 sur  .ssh/known_hosts " ---radiolist \
+      "si $ip3 ne se trouve pas dans le fichier ~/.ssh/known_hosts" 15 60 4 \
+      "OUI" "par defaut " ON \
+      "NON"  "          " OFF  3>&1 1>&2 2>&3)
+      if [ $exitstatus = 0 ]; then
+         echo "Vous avez choisi  : $cle_ssh"
+         ssh-keyscan -H -t rsa $ip3 >> ~/.ssh/known_hosts  
+      else
+      echo "Vous avez annulé  "
+      fi
       cd /home/$mdir_maj/monitor
       sshpass -p $pass_sftp sftp $user_sftp@$ip3<<EOF
       get /var/www/monitor/index_loc.php
@@ -651,13 +660,21 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
       lcd ..
       lcd python
 
+      |image1671|
+
+      |image1672|
+
+      |image1673|
+
+      |image1674|
+
    .. note::
 
-      ci-dessus dans le répertoire archive les cles, certificats ,... utilisés (les + récents) sont ceux avec le nombre le plus élevé (ex: privkey17); 
+      ci-dessous dans le répertoire archive les clés, certificats ,... utilisés (les + récents sont ceux avec le nombre le plus élevé , ex: privkey17); 
 
       si les virtualhosts sont peu nombreux , utiliser les fichiers les plus récents (ex: privkey7);si les répertoires sont très nombreux , choisir l'indice 1 pour tous, le script :darkblue:`update_symlinks` rétabliera la bonne configuration.
 
-      red:`Le scripe restore.sh choisit les bons cerificats automatiquement`
+      red:`Le script restore.sh choisit les bons cerificats automatiquement`
 
       |image1546|
 
@@ -2241,3 +2258,11 @@ function mc(variable,id)
    :width: 550px
 .. |image1669| image:: ../img/image1669.webp
    :width: 600px
+.. |image1671| image:: ../img/image1671.webp
+   :width: 700px
+.. |image1672| image:: ../img/image1672.webp
+   :width: 700px
+.. |image1673| image:: ../img/image1673.webp
+   :width: 700px
+.. |image1674| image:: ../img/image1674.webp
+   :width: 700px
