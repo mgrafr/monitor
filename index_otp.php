@@ -8,6 +8,8 @@ $data= [
 $row=mysql_app($data);
 $token=$row['token'];
 $sms=$row['sms'];
+$user_free=$row['user_free'];
+$pass_free=$row['pass_free'];
 // Start Session
 if(!session_id())
 {
@@ -53,6 +55,10 @@ $user = [
  $content="#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='Code:".$current_otp."' \npriority=0";
  file_put_contents('/var/www/monitor/python/aldz.py',$content);
  }
+ if ($sms==2){
+    $cmd='wget "https://smsapi.free-mobile.fr/sendmsg?user='.$user_free.'&pass='.$pass_free.'&msg="'.$current_otp;
+    shell_exec( $cmd );
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
