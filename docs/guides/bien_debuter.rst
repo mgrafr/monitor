@@ -548,6 +548,10 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1542|
 
+      sauvegarder les mot de passe /nginx/.htpasswd
+
+      |image1557|
+
 .. admonition:: **Installer un nouveau conteneur LXC** 
 
     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
@@ -2223,6 +2227,8 @@ function mc(variable,id)
    :width: 533px
 .. |image1556| image:: ../img/image1556.webp
    :width: 556px
+.. |image1557| image:: ../img/image1557.webp
+   :width: 423px
 .. |image1559| image:: ../img/image1559.webp
    :width: 450px
 .. |image1560| image:: ../img/image1560.webp
