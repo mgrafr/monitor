@@ -2081,11 +2081,13 @@ Elle est installée lors de l'installation de monitor
   `num` int(3) NOT NULL,
   `user_id` varchar(20) NOT NULL,
   `token` varchar(20) NOT NULL,
-  `sms` int(1) NOT NULL DEFAULT 0
+  `sms` int(1) NOT NULL DEFAULT 0,
+  `user_free` varchar(10) NOT NULL,
+  `pass_free` varchar(20) NOT NULL
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
-   INSERT INTO `2fa_token` (`num`, `user_id`, `token`) VALUES
-   (1, 'michel', '');
+   INSERT INTO `2fa_token` (`num`, `user_id`, `token`, `sms`, `user_free`, `pass_free`) VALUES
+   (1, '', '', 0, '', '');
 
    ALTER TABLE `2fa_token`
      ADD PRIMARY KEY (`num`);
@@ -2095,9 +2097,11 @@ Elle est installée lors de l'installation de monitor
 
 |image1665|
 
+sms: 0=pas de sms, 1=sms par GSM, 2=sms par API Free Mobile
+
 1.9.1.3.c Script pour l'evoi d'un SMS
  
-.. admonition:: utilisationd'un modem GSM
+.. admonition:: utilisation d'un modem GSM
 
    voir le § :ref:`13.6 SMS réception et émission`
 
@@ -2110,14 +2114,14 @@ Elle est installée lors de l'installation de monitor
       file_put_contents('/var/www/monitor/python/aldz.py',$content);
       }
 
-.. admonition:: notification Free Mobile
+.. admonition:: notification par l'API Free Mobile
 
    lignes à ajouter à index_otp.php
 
    .. code-block::
 
       if ($sms==2){
-        $cmd='bash wget "https://smsapi.free-mobile.fr/sendmsg?user=USER&pass=PASS&msg=".$current_otp';
+        $cmd='wget "https://smsapi.free-mobile.fr/sendmsg?user='.$user_free.'&pass='.$pass_free.'&msg="'.$current_otp;
         shell_exec( $cmd );
        }
 
@@ -2487,7 +2491,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1664| image:: ../img/image1664.webp
    :width: 700px
 .. |image1665| image:: ../img/image1665.webp
-   :width: 233px
+   :width: 590px
 .. |image1666| image:: ../img/image1666.webp
    :width: 400px
 .. |image1667| image:: ../img/image1667.webp
