@@ -524,7 +524,7 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
         find /etc/systemd/system -type f -prune > /www/monitor/systemd/c.txt
         find /etc/systemd/system -maxdepth 1 -type f -exec cp {} /www/monitor/systemd/ \;
 
-   .. admonition:: manuellemet lise des sauvegardes  qui devront être restaurées     
+   .. admonition:: manuellemet liste des sauvegardes  qui devront être restaurées     
 
       sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
 
@@ -540,10 +540,6 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1552|
 
-      établir la liste des modules python 
-
-      |image1547|
-
       sauvegarder le répertoire /etc/letsencrypt
 
       |image1542|
@@ -551,6 +547,14 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
       sauvegarder les mot de passe /nginx/.htpasswd
 
       |image1557|
+
+      sauvegarder les scripts Python
+
+      |image1547|
+
+      sauvegarder les scripts systemd pour le démarrage automatique
+
+      |image1658|
 
 .. admonition:: **Installer un nouveau conteneur LXC** 
 
@@ -2212,7 +2216,7 @@ function mc(variable,id)
 .. |image1546| image:: ../img/image1546.webp
    :width: 393px
 .. |image1547| image:: ../img/image1547.webp
-   :width: 650px
+   :width: 288px
 .. |image1548| image:: ../img/image1548.webp
    :width: 488px
 .. |image1549| image:: ../img/image1549.webp
@@ -2241,6 +2245,8 @@ function mc(variable,id)
    :width: 483px
 .. |image1564| image:: ../img/image1564.webp
    :width: 550px
+.. |image1658| image:: ../img/image1658.webp
+   :width: 437px
 .. |image1669| image:: ../img/image1669.webp
    :width: 600px
 .. |image1671| image:: ../img/image1671.webp
