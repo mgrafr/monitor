@@ -147,6 +147,7 @@ ufw allow 444
 systemctl restart ufw
 sudo apt install certbot python3-certbot-nginx -y
 cp  /home/$mdir_maj/etc/nginx/conf.d/* /etc/nginx/conf.d/
+cp  /home/$mdir_maj/etc/nginx/.htpasswd /etc/nginx/
 mkdir /etc/nginx/ssl
 cp  /home/$mdir_maj/etc/nginx/ssl/* /etc/nginx/ssl/
 chmod -R 777 /etc/letsencrypt
@@ -165,7 +166,7 @@ systemctl enable $L
 systemctl start $L
 done  < /etc/systemd/system/c.txt
 sleep 5
-mod_py=$(whiptail --title "Installation de module(s) pythonr" --inputbox "Les Modules  doivent être séparés par un espace" 10 60 3>&1 1>&2 2>&3)
+mod_py=$(whiptail --title "Installation de module(s) python" --inputbox "Les Modules  doivent être séparés par un espace" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ -n "$mod_py" ]
 then
