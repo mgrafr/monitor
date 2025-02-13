@@ -544,7 +544,7 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1542|
 
-      sauvegarder les mot de passe /nginx/.htpasswd
+      sauvegarder les mots de passe /nginx/.htpasswd
 
       |image1557|
 
@@ -559,6 +559,10 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 .. admonition:: **Installer un nouveau conteneur LXC** 
 
     voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
+
+   copier la configurationdes E/S de l'ancien monitor vers le nouveau
+
+    |image1669|
 
 .. admonition:: **Restauration automatiques des sauvegardesdes**
 
