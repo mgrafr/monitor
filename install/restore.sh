@@ -15,6 +15,7 @@ mdir_maj=/maj_monitor
 echo "Par défaut, répertoire : "$mdir_maj
 fi
 mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup,python}
+mkdir -p /home/$mdir_maj/monitor/python{php,css,js,python,images}
 mkdir -p /home/$mdir_maj/etc/{letsencrypt,ssl,nginx,cron.d}
 mkdir -p /home/$mdir_maj/etc/systemd/system
 mkdir -p /home/$mdir_maj/root/.ssh
