@@ -6,7 +6,7 @@ import importlib
 import aldz as b
 import connect as num
 
-ser = Serial("/dev/ttyUSB3",115200)
+ser = Serial("/dev/ttyUSB1",115200)
 
 #ser = Serial("/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0", 115200)
 if num.tel:
@@ -29,8 +29,8 @@ def com_dz(url):
         print('URL absente')
         envoi_sms('url_absente')
 def raz_dz():
-    src=r'/www/monitor/python/aldz.bak.py'
-    des=r'/www/monitor/python/aldz.py'
+    src=r'/www/monitor/custom/python/aldz.bak.py'
+    des=r'/www/monitor/custom/python/aldz.py'
     shutil.copy(src, des)
 
 print('start')
