@@ -53,7 +53,7 @@ $user = [
  $_SESSION['current_otp'] = $current_otp;  
  if ($sms==1){
  $content="#!/usr/bin/env python3 -*- coding: utf-8 -*- \nx='Code:".$current_otp."' \npriority=0";
- file_put_contents('/var/www/monitor/python/aldz.py',$content);
+ file_put_contents('/var/www/monitor/custom/python/aldz.py',$content);
  }
  if ($sms==2){
     $cmd='wget "https://smsapi.free-mobile.fr/sendmsg?user='.$user_free.'&pass='.$pass_free.'&msg="'.$current_otp;
