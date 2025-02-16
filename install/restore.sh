@@ -14,8 +14,8 @@ else
 mdir_maj=/maj_monitor
 echo "Par défaut, répertoire : "$mdir_maj
 fi
-mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup,python}
-mkdir -p /home/$mdir_maj/monitor/python{php,css,js,python,images}
+mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup}
+mkdir -p /home/$mdir_maj/monitor/custom/{php,python,js,css,images}
 mkdir -p /home/$mdir_maj/etc/{letsencrypt,ssl,nginx,cron.d}
 mkdir -p /home/$mdir_maj/etc/systemd/system
 mkdir -p /home/$mdir_maj/root/.ssh
@@ -68,9 +68,6 @@ lcd ..
 lcd DB_Backup
 get /var/www/monitor/DB_Backup/*
 lcd ..
-lcd python
-get /var/www/monitor/python/*
-lcd ..
 lcd systemd
 get /var/www/monitor/systemd/*
 lcd ..
@@ -114,6 +111,9 @@ sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php
 sed -i "s/.\///g"  /home/$mdir_maj/monitor/systemd/c.txt
 sed  -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
+sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.lua
+sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.js
+sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.yaml
 vv=$(pip list --format=json)
 echo $vv
 rm -R /home/$mdir_maj/etc/letsencrypt/live
