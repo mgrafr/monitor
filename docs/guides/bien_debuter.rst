@@ -500,7 +500,7 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
          :red:`Toutes les opérations de sauvegarde peuvent être effectées automatiquement avec le script` :darkblue:`sauvegarde_maj.sh`
 
-   Le script  *sauvegarde_maj.sh* 
+   Le script  * 
 
    .. code-block::
 
@@ -524,7 +524,7 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
         find /etc/systemd/system -type f -prune > /www/monitor/systemd/c.txt
         find /etc/systemd/system -maxdepth 1 -type f -exec cp {} /www/monitor/systemd/ \;
 
-   .. admonition:: manuellemet liste des sauvegardes  qui devront être restaurées     
+   .. admonition::  :red:`si la maj est manuelle`, liste des sauvegardes  qui devront être restaurées     
 
       sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
 
