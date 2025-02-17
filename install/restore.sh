@@ -25,6 +25,7 @@ echo "adresse IP old: $ip3"
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 echo "adresse IP new : $ip"
+echo $ip4 > /home/$mdir_maj/monitor/ip.txt
 lets=$(whiptail --title "Certificat Letsencrypt" --radiolist \
 "Comment voulez vous mettre à jour monitor ?\n avec les certificat SSL enregistrés\n sans les certificats SSL " 15 60 4 \
 "Avec les certificats déjà enregistrés" "par defaut " ON \
@@ -114,6 +115,15 @@ sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.lua
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.js
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.yaml
+ipiob=$(whiptail --title "IP de ioBroker" --inputbox "si elle existe sinon laisser vide" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ -n "$ipiob" ]
+then
+cd /home/$mdir_maj/monitor
+sshpass -p $pass_sftp sftp $user_sftp@$ipiob<<EOF
+put connect.py /opt/iobroker/ip.txt
+exit
+EOF
 vv=$(pip list --format=json)
 echo $vv
 rm -R /home/$mdir_maj/etc/letsencrypt/live
@@ -139,8 +149,9 @@ sleep 2
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/index_loc.php
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/C.txt
 cp -R /home/$mdir_maj/monitor/systemd/* /etc/systemd/system/
-cp -R /home/$mdir_maj/monitor/python/* /var/www/monitor/python/
+cp -R /home/$mdir_maj/monitor/custom/python/* /var/www/monitor/custom/python/
 cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
+cp /var/www/monitor/admin/connect/connect.py /var/www/monitor/custom/python/
 chmod -R 777 /var/www/monitor/DB_Backup
 cp /home/$mdir_maj/monitor/DB_Backup/dump.sql /var/www/monitor/DB_Backup/
 mysql -u root -p monitor < /var/www/monitor/DB_Backup/dump.sql
