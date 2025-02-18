@@ -281,7 +281,7 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
 
    Par contre pour l'utiliser dans Frigate il est important de stopper le conterneur go2rtc pour éviter des problèmes d'ouverture de ports.
 
-   En mappant dans docker-compose.yml de Frigate le port 1984, on peux accéder à go2rtc.avec un certificat letsencrypt, l'accès distant est aussi possible.
+   En mappant dans :darkblue:`docker-compose.yml` de Frigate le port **1984**, on peux accéder à go2rtc. Avec un certificat letsencrypt, l'accès distant est aussi possible.
 
    |image1675|
 
