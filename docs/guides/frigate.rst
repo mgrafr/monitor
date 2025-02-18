@@ -523,7 +523,14 @@ la documentation n'est pas très claire, il faut ajpouter la clé api dans la co
 
 |image1630| 
 
+22.11 Mise à jour de Frigate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Pour faire cette mise à jour, 2 lignes de commandes à taper :
 
+.. code-block::
+
+   docker compose pull
+   docker compose up -d
 
 
 .. |image1595| image:: ../img/image1595.webp
