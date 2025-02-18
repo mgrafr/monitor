@@ -530,7 +530,10 @@ Pour faire cette mise à jour, 2 lignes de commandes à taper :
 .. code-block::
 
    docker compose pull
-   docker compose up -d
+   sudo docker compose up -d
+
+|image1676| 
+
 
 
 .. |image1595| image:: ../img/image1595.webp
@@ -593,3 +596,5 @@ Pour faire cette mise à jour, 2 lignes de commandes à taper :
    :width: 563px
 .. |image1675| image:: ../img/image1675.webp
    :width: 621px
+.. |image1676| image:: ../img/image1676.webp
+   :width: 586px
