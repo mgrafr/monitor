@@ -206,6 +206,8 @@ msg_ok "installation de php-ssh2"
 apt install php8.3-ssh2
 echo "installation terminée de php8.3-ssh2"
 fi
+msg_ok "installation de PHP-gd:"
+apt install php8.3-gd
 msg_ok "installation de dos2unix:"
 apt install dos2unix
 msg_ok "installation de Unzip:"
