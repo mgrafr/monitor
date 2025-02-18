@@ -281,6 +281,11 @@ Tout d’abord, ajouter le dépôt de paquets Debian au système:
 
    Par contre pour l'utiliser dans Frigate il est important de stopper le conterneur go2rtc pour éviter des problèmes d'ouverture de ports.
 
+   En mappant dans docker-compose.yml de Frigate le port 1984, on peux accéder à go2rtc.avec un certificat letsencrypt, l'accès distant est aussi possible.
+
+   |image1675|
+
+
 .. seealso::
 
    ports RTSP et ONVIF pour caméras de marque : https://www.camapp365.com/technical/rtsp-and-onvif-ports
@@ -579,3 +584,5 @@ la documentation n'est pas très claire, il faut ajpouter la clé api dans la co
    :width: 644px
 .. |image1630| image:: ../img/image1630.webp
    :width: 563px
+.. |image1675| image:: ../img/image1675.webp
+   :width: 621px
