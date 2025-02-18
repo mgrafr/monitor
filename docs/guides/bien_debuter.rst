@@ -8,13 +8,13 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -	Après l’installation de Proxmox :
 
-Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev): https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
+- Installation automatique : **conteneur LXC**, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev): https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
 
-- 	    installation automatique : LEMP + monitor+ Serveur SSE-PHP (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
+- installation automatique : **LEMP + monitor** + Serveur SSE-PHP (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
 
-- 	    installation uniquement de monitor +serveur SSE-PHP (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+- installation **uniquement de monitor** +serveur SSE-PHP (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 
--	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.1.0.tar.gz
+-	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.2.2.tar.gz
 
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
@@ -24,7 +24,9 @@ Installation automatique : conteneur LXC, LEMP (Linux, Nginx, Maria DB, PHP, ser
 
 -	Debian 12, et les dépendances sudo, curl,...
 
--	Nginx, PHP 8.3, maria db 10.11, phpMyAdmin 5.2+snapshot, monitor
+-	Nginx, PHP 8.3, PHP8.3-gd, PHP8.3-ssh2
+
+	maria db 10.11, phpMyAdmin 5.2+snapshot, monitor
 
 -	Quelques programmes python utiles : pip, Paho-mqtt
 
