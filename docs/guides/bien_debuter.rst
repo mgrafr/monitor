@@ -14,7 +14,7 @@
 
 - installation **uniquement de monitor** +serveur SSE-PHP (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
 
--	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.2.2.tar.gz
+-	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.2.3.tar.gz
 
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
