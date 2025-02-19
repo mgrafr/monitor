@@ -14,12 +14,15 @@ Server version: 10.11.6
 
 19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 3.2.2**
+**La version stable actuelle est 3.2.3**
 
 19.4.1 Releases
 ===============
-Version en developpement 3.2.3
+Version en developpement 3.2.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version 3.2.3 (Févier 2025)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction de bugs dans sauvegarde_maj.sh & restore.sh
 - finalisation de OTO 2fa avec l'envoi de sms par GSM et par l'api Free Mobile
 - ajout du dossier "custom/python" , pour installer les scrips python perso, (pour faciliter les maj).
