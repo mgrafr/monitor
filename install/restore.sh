@@ -69,9 +69,6 @@ lcd ..
 lcd DB_Backup
 get /var/www/monitor/DB_Backup/*
 lcd ..
-lcd systemd
-get /var/www/monitor/systemd/*
-lcd ..
 lcd ..
 lcd etc/nginx
 get /etc/nginx/.htpasswd 
@@ -81,6 +78,9 @@ lcd ..
 lcd ..
 lcd cron.d
 get /etc/cron.d/*
+lcd ..
+lcd systemd/system
+get /var/www/monitor/systemd/*
 exit
 EOF
 if [[ "$lets" == "Avec les certificats déjà enregistrés" ]];then
@@ -119,11 +119,13 @@ ipiob=$(whiptail --title "IP de ioBroker" --inputbox "si elle existe sinon laiss
 exitstatus=$?
 if [ -n "$ipiob" ]
 then
-cd /home/$mdir_maj/monitor
+# iobrker pour script py
+cd /home/$mdir_maj/monitor/admin/connect
 sshpass -p $pass_sftp sftp $user_sftp@$ipiob<<EOF
-put connect.py /opt/iobroker/ip.txt
+put connect.py /opt/python/connect.py
 exit
 EOF
+fi
 vv=$(pip list --format=json)
 echo $vv
 rm -R /home/$mdir_maj/etc/letsencrypt/live
@@ -148,7 +150,7 @@ fi
 sleep 2
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/index_loc.php
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/C.txt
-cp -R /home/$mdir_maj/monitor/systemd/* /etc/systemd/system/
+cp -R /home/$mdir_maj/etc/systemd/system/* /etc/systemd/system/
 cp -R /home/$mdir_maj/monitor/custom/python/* /var/www/monitor/custom/python/
 cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
 cp /var/www/monitor/admin/connect/connect.py /var/www/monitor/custom/python/
