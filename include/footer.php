@@ -890,11 +890,11 @@ case 5:
      break;	
 	case 10: 
 	var formData = {
-	app : $("#app").val(),
+	app : $("#mapp").val(),
 	type : Number($("#type").val()),	
 	//variable : Number($("#level").val())*100,	
 	command : $("#rgb").val(),
-	device : $("#idx").val(),
+	device : $("#midx").val(),
 	name : "0"		
 	};fenetre='color_lampes';
      break;		 

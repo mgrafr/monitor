@@ -10,9 +10,9 @@ $data_rgb = [
 'ID1_html' => $rgb2
 ];
 $rvb=mysql_app($data_rgb);$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['Actif'];$ID=$rvb['ID'];$objet=$rvb['nom_objet'];
-	if ($majjs == "onoff_rgb" && $serveur=="2") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="app" value="OnOff"><input type="hidden" id="idx" value="'.$idx.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
-	if ($majjs == "onoff_rgb" && $serveur=="4") $input='<input type="hidden" id="type" value="2"><input type="hidden" id="app" value="put"><input type="hidden" id="idx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
-	if ($majjs == "onoff_rgb" && $serveur=="3") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="app" value="turn"><input type="hidden" id="idx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{format:\'rgb\'}" id="rgb">';
+	if ($majjs == "onoff_rgb" && $serveur=="2") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="mapp" value="OnOff"><input type="hidden" id="midx" value="'.$idx.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
+	if ($majjs == "onoff_rgb" && $serveur=="4") $input='<input type="hidden" id="type" value="2"><input type="hidden" id="mapp" value="put"><input type="hidden" id="midx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
+	if ($majjs == "onoff_rgb" && $serveur=="3") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="mapp" value="turn"><input type="hidden" id="midx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{format:\'rgb\'}" id="rgb">';
 	echo $input.'<button type="button" onclick="adby(10);" style="width:38px;height:28px">OK</button>';
 							
 }
