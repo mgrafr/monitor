@@ -534,6 +534,21 @@ Pour faire cette mise à jour, 2 lignes de commandes à taper :
 
 |image1676| 
 
+22.12 Caméras chinoises Vatilon
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Caméras H42, H43, PA4, PB4, .....
+
+Des problèmes existent avec :darkblue:`go2rst`, pour les résoudre l'update du firmware est souvent la solution; pour cela, télécharger IPCBatchTools sur Github :
+
+https://github.com/mtrakal/ipc-vatilon
+
+|image1677| 
+
+.. admonition:: **ICBatchTools** , mode d'emploi
+
+   |image1678| 
+
+   les firmware sont à téléchage ici : https://www.vatilon.com/ipcrjxz
 
 
 .. |image1595| image:: ../img/image1595.webp
@@ -598,3 +613,7 @@ Pour faire cette mise à jour, 2 lignes de commandes à taper :
    :width: 621px
 .. |image1676| image:: ../img/image1676.webp
    :width: 586px
+.. |image1677| image:: ../img/image1677.webp
+   :width: 383px
+.. |image1678| image:: ../img/image1678.webp
+   :width: 700px
