@@ -576,13 +576,11 @@ left: 170px;width: 40px;}
 	.fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}#th_ext_cuis {top: -700px;}
 #bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}
 #th_ext_cuis {top: -650px;}.sparkling-modal-frame {top:50%;}#vanne_eau{position: relative;top: -613px;left: 380px;}
+.sos {top: -600px;}
 }
 /* Large devices (small desktops <601) */
 @media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}.choix_scenes{left:10px;width: 80%;}
 }
-
-
-
 
 /* Large devices (small desktops <535) */
 @media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:580px;}#nagiosmobile{width:480px;}
