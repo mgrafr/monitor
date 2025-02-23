@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../admin/config.php');
+require_once('../'.MONCONFIG);
 $id_zm = isset($_GET['id_zm']) ? $_GET['id_zm'] : '';
 if ($_SESSION["exeption_db"]=="pas de connexion à la BD") return ;
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
