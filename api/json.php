@@ -1,6 +1,6 @@
 <?php
 require_once("f_pour_api.php");
-require_once('../admin/config.php');
+// require_once('../admin/config.php');
 //GET----------------------
 $app = isset($_GET['app']) ? $_GET['app'] : '';
 $name = isset($_GET['name']) ? $_GET['name'] : '';
