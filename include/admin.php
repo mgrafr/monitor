@@ -1,6 +1,6 @@
 <?php
 //session_start();
-require_once('admin/config.php');
+require_once(MONCONFIG);
 ?>
 <!-- -->
 <!-- section administration -->
