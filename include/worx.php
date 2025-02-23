@@ -3,7 +3,7 @@
 $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="/";
 if ($domaine==IPMONITOR) $lien_img="/monitor/";
-require_once('admin/config.php');
+require_once(MONCONFIG);
 ?>
 <!-- -->
 <!-- section worx -->
