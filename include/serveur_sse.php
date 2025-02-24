@@ -3,7 +3,7 @@ header("Content-Type: text/event-stream");
 header("Cache-Control: no-cache");
 header('Connection: keep-alive');
 header("Access-Control-Allow-Origin: *"); 
-require_once('../fonctions.php');// require_once('../admin/config.php');
+require_once('../fonctions.php');
 ignore_user_abort(true); // Empêche PHP de vérifier la déconnexion de l'utilisateur
 connection_aborted(); // Vérifie si l'utilisateur s'est déconnecté ou non
 // en cas de reconnexion du client, il enverra Last_Event_ID dans les en-têtes
