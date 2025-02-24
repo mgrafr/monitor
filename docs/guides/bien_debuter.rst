@@ -1674,12 +1674,19 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 
 0.4.1 Un fichier de configuration par écran de contrôle
 =======================================================
-A partir du fichier de configuration principal, faire une copie dans le répertoire admin en le nommant:
+A partir du fichier de configuration principal, faire une ou plusieurs copie(s) dans le répertoire admin en le(s) nommant:
 
 	index_<NOM DU FICHIER>.php ex: index_essai.php
 
 Dans le PC, la tablette,... appeler monitor en précisant le nom de la config
 
+	<IP de Monitor>/monitor?<NOM DU FICHIER>
+
+	|image1679| 
+
+La configuration choisie est placé dans une variable de  session:
+
+|image1680| 
 
 0.5 Le Framework Bootstrap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2283,3 +2290,7 @@ function mc(variable,id)
    :width: 700px
 .. |image1674| image:: ../img/image1674.webp
    :width: 700px
+.. |image1679| image:: ../img/image1679.webp
+   :width: 367px
+.. |image1680| image:: ../img/image1680.webp
+   :width: 600px
