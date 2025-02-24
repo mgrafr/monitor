@@ -153,6 +153,17 @@ Mise à jour vers une nouvelle version:
 
 |image1074|
 
+21.1.6 Datacenter Manager
+==========================
+un seul affichage pour gérer lusieurs serveurs Proxox
+
+|image1681|
+
+**Installation** : https://community-scripts.github.io/ProxmoxVE/scripts?id=proxmox-datacenter-manager
+
+**Un tuto** : https://belginux.com/installer-proxmox-datacenter-manager/#%F0%9F%94%91-premi%C3%A8re-connexion
+
+
 21.2 Domoticz
 ^^^^^^^^^^^^^
 *Installation depuis la version 2024 dans un conteneur LCX*
@@ -2567,3 +2578,5 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
    :width: 400px
 .. |image1657| image:: ../img/image1657.webp
    :width: 400px
+.. |image1681| image:: ../img/image1681.webp
+   :width: 700px
