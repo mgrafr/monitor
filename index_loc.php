@@ -1,16 +1,17 @@
 <?php
-
 if(session_status() === PHP_SESSION_NONE) session_start();
 // pour les variables de session----------------------
 $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]=""; 
-
 if (substr($_SESSION["domaine"] ,0,7) !="192.168")  {
     if (!isset($_SESSION["current_otp"]) || $_SESSION["current_otp"] != $_SESSION["otp"]) {
         header('Location: index_otp.php');
    exit();} 
     }
 $_SESSION["id_session"] = session_id();
-include ("admin/config.php");
+if ($_SESSION["conf"]=="") {$config="admin/config.php";}
+else {$config="admin/config_".$_SESSION["conf"].".php";}
+$_SESSION["config"]=$config;
+require ($config);require("fonctions.php");
 // Check connection DB
 mysqli_report(MYSQLI_REPORT_OFF);
 $conn = @new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
