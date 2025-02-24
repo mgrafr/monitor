@@ -21,6 +21,7 @@ Server version: 10.11.6
 Version en developpement 3.2.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction bug sur mur_inter.php
+- Ajout de la possibilité d'un fichier de configuration par écran de contrôle
 
 Version 3.2.3 (Févier 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
