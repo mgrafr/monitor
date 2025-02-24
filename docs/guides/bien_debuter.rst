@@ -1575,10 +1575,12 @@ Redémarrer
    sudo service mariadb restart
 
 
-0.4 Le serveur http de NGINX
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+0.4 Serveur Nginx & Fichiers de configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image101| 
 
+0.4.1 Un seul fichier de configuration
+======================================
 **Configuration de monitor** : :darkblue:`/admin/config.php`
  
 Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/monitor/main/admin/config.php
@@ -1645,13 +1647,22 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 
 - **fonctions.php** : toutes les fonctions PHP appelées au démarrage et lors des appels Ajax
 
-- **Index.php** :  le ficher appelé lors du chargement du site ; pour les écrans > 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; sur cette page il faut indiquer l’adresse du répertoire du site sur le serveur
+- **Index.php** :  le ficher appelé lors du chargement du site ; pour les écrans > 768x1024 ce fichier gère un affichage de 768x1024 appelant la page dans une iframe ; Pour appeler cette page :
+
+   - en local :<IP>/monitor
+
+   - en distant : <DOMAINE>
 
 .. code-block::
 
    <?php
+   session_start();
    echo '<!DOCTYPE html><html><body style="background-color: cornsilk;">';
    $rep="/"; $domaine=$_SERVER['HTTP_HOST'];$port=$_SERVER['SERVER_PORT'];
+   $seg = $_SERVER['REQUEST_URI'];
+   $reg=str_replace('/monitor/','',$seg);
+   $reg=str_replace('?','',$reg);
+   $_SESSION["conf"]=$reg;
    if (substr($domaine, 0, 7)=="192.168") $rep="/monitor/";
    header('Location: '.$rep.'index_loc.php');
    exit();
@@ -1660,6 +1671,15 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 - **Index_loc.php** : la page d’accueil réelle du site ; sauf pour ajouter des pages non incluses dans le programme, ne pas modifier ce fichier.
 
 |image106|
+
+0.4.1 Un fichier de configuration par écran de contrôle
+=======================================================
+A partir du fichier de configuration principal, faire une copie dans le répertoire admin en le nommant:
+
+	index_<NOM DU FICHIER>.php ex: index_essai.php
+
+Dans le PC, la tablette,... appeler monitor en précisant le nom de la config
+
 
 0.5 Le Framework Bootstrap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
