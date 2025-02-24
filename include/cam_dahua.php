@@ -1,6 +1,6 @@
 <?php
 session_start();
-//require ("../admin/config.php");
+
 require ("../fonctions.php");
 
 # décommenter pour obtenir une sortie d'erreur

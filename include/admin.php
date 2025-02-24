@@ -1,6 +1,6 @@
 <?php
 //session_start();
-require_once(MONCONFIG);
+require_once('admin/config.php');
 ?>
 <!-- -->
 <!-- section administration -->
@@ -9,6 +9,7 @@ require_once(MONCONFIG);
   <div class="container">
     <div class="col-md-12">
       <h1 id="about_admin" class="title text-center">Administration</h1>
+		<p> <?php echo MONCONFIG;?></p>
       <p id="info_admin" >Avant d'entrer un mot de passe, faire un RAZ </p>
       <div id="d_btn_a" >
         <button type="button" id="btn_a" class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm"> Entrer votre mot de passe </button>
