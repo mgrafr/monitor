@@ -42,7 +42,7 @@ include ("include/clavier_code.php");
 if (ON_ALARM==true) include ("include/alarmes.php"); // alarmes absence et nuit
 if (ON_GRAPH==true) include ("include/graphiques.php");// édition de graphiques
 // autre pages disponibles à décommenter pour les inclure
-if (ON_EXT==true) include ("include/exterieur.php");
+if (ON_EXT==true) include ("custom/php/exterieur.php");
 
 if (ON_ONOFF==true) include ("include/mur_inter.php");
 if (ON_APP==true) include ("include/app_diverses.php");
