@@ -1521,7 +1521,9 @@ téléchargement de la table "cameras.sql" : https://raw.githubusercontent.com/m
 
 0.3.4.1 Table 2fa_token pour l'Authentification 2 étapes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-voir le Paragraphe 1.9.1.3.b la table SQL 2fa_token
+voir le Paragraphe :ref:`1.9.1.3.b la table SQL 2fa_token`
+
+|image1682| 
 
 0.3.4.2 Tables perso
 """"""""""""""""""""
@@ -2301,3 +2303,5 @@ function mc(variable,id)
    :width: 367px
 .. |image1680| image:: ../img/image1680.webp
    :width: 600px
+.. |image1682| image:: ../img/image1682.webp
+   :width: 350px
