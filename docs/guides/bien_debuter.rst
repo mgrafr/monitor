@@ -131,7 +131,7 @@ Il suffit de répondre (O)ui pour créer ce certificat, sinon taper (N)on
 
 |image23|
 
-Fin de l'installation:
+Fin de l'installation, noter l’IP de monitor:
 
 |image24|
 
@@ -139,7 +139,7 @@ Quitter le shell de PVE et ouvrir la console du conteneur LXC monitor qui devrai
 
 |image1271|
 
-Monitor , devrait ressembler à ceci:
+http://<IP MONITOR>/monitor,  la page affichée devrait ressembler à ceci:
 
 |image1273|
 
