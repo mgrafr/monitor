@@ -505,7 +505,7 @@ img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9
 #sw10{margin-left:50px;}
 /*-alarme--------------*/
 #zm{position:relative;top:10px;left:20px}
-.zminder{margin-left: 80px;}
+.zminder{margin-left: 10px;}
 #alarme_nuit{position:absolute;top:815px;
 left: 170px;width: 40px;}
 /*#gsm{animation: change 3s step-end both;}*/
@@ -570,7 +570,6 @@ left: 170px;width: 40px;}
 @media (max-width:360px) {
 	#pwdalarm{left:15px;top:100px}
 }
-
 /* devices (small desktops <768) */
 @media (max-width:767px) {.modal_mur-dialog {width:500px;}.fosse_septique{left:400px;}
 	.fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}#th_ext_cuis {top: -700px;}
