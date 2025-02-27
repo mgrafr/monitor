@@ -10,14 +10,13 @@ Plusieurs possibilités :
 
 .. note::
 
-    Aujourd'hui, j'ai installé le mur avec Frigate sur ma tablette Samsung tabs9+ et le mur de caméras avec monitor sur une vielle tablette accrochéedans la cuisine.cela en utilisant une configuration différente pour chaque tablette.....voir ce paragraphe :
-:ref:`0.4.1 Un fichier de configuration par écran de contrôle`
+    Aujourd'hui, j'ai installé le mur avec Frigate sur ma tablette Samsung tabs9+ et le mur de caméras avec monitor sur une vielle tablette s4 accrochée dans la cuisine. Cela en utilisant une configuration différente pour chaque tablette.....voir ce paragraphe : :ref:`0.4.1 Un fichier de configuration par écran de contrôle`
 
 .. warning::
 
    Les images peuvent provenir de Zoneminder ou de Monitor, depuis la table "cameras". :red:`Avec les derniéres versions de Zoneminder l'utilisation du cpu atteint en permanence 100% aussi j'ai fai le choix d'abandonner progressivement zoneminder et la 1ere étape a été de d'afficher le mur de caméras depuis monitor`
 
-   Le choix se fait dans admin/config.php
+   Le choix se fait dans admin/config.php ou admin/config_<Nom config>.php (si plusieurs config)
 
    .. code-block::
 
