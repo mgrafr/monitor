@@ -10,7 +10,8 @@ Plusieurs possibilités :
 
 .. note::
 
-    Aujourd'hui, j'ai installé Frigate à la place du mur de caméras.... voir ce chapitre pour une description complète de mon l'installation de ce logiciel.
+    Aujourd'hui, j'ai installé le mur avec Frigate sur ma tablette Samsung tabs9+ et le mur de caméras avec monitor sur une vielle tablette accrochéedans la cuisine.cela en utilisant une configuration différente pour chaque tablette.....voir ce paragraphe :
+:ref:`0.4.1 Un fichier de configuration par écran de contrôle`
 
 .. warning::
 
