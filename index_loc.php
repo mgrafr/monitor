@@ -22,7 +22,8 @@ if (!$conn) {echo "pas de BD : ".DBASE	; $_SESSION["exeption_db"]="pas de connex
 if (!$sock = @fsockopen('www.google.fr', 80)) {$_SESSION["TC"]="0";}
 else {$_SESSION["TC"]="200";}
 // -variables----------------------------------------
-$_SESSION["version"]="3.2.4";//
+$res = fopen('.version', 'rb');
+$_SESSION[".version"]=fgets($res, 10);
 $_SESSION["d_root"]=$_SERVER["DOCUMENT_ROOT"];
 $_SESSION["d_admin"]=$_SERVER["DOCUMENT_ROOT"]."/admin/";
 $_SESSION["d_include"]=$_SERVER["DOCUMENT_ROOT"]."/include/";
