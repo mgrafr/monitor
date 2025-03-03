@@ -2244,6 +2244,15 @@ Obtenir le nom de l'interface ZeroTier, elle commence par zt:
 
    ip link show
 
+|image1693|
+
+Définir la variable d'environnement :
+
+.. code-block
+
+   export ZT_IF=<INTERFACE>
+
+|image1694|
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2707,3 +2716,5 @@ Obtenir le nom de l'interface ZeroTier, elle commence par zt:
    :width: 545px
 .. |image1693| image:: ../img/image1693.webp
    :width: 605px
+.. |image1693| image:: ../img/image1693.webp
+   :width: 530px
