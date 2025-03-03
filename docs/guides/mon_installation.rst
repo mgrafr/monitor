@@ -2246,13 +2246,18 @@ Obtenir le nom de l'interface ZeroTier, elle commence par zt:
 
 |image1693|
 
-Définir la variable d'environnement :
+Définir les variables d'environnement :
 
 .. code-block
 
-   export ZT_IF=<INTERFACE>
+   export ZT_IF=<INTERFACE_ZT>
+   export WAN_IF=<INTERFACE_WAN>
 
 |image1694|
+
+Activer le NAT et le masquage IP :
+
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
