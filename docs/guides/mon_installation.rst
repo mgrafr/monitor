@@ -2177,7 +2177,7 @@ J'ai crée 3 clients
 
    |image1687|
 
-- u**n poste Windows** sur mon PC portable
+- **un poste Windows** sur mon PC portable
 
    |image1686|
 
