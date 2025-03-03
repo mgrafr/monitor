@@ -2175,11 +2175,11 @@ J'ai crée 3 clients
 
 - **un poste Android** sur ma tablette Samsung depuis l'App store
 
-   |image1686|
+   |image1687|
 
 - u**n poste Windows** sur mon PC portable
 
-   |image1687|
+   |image1686|
 
    |image1688|
 
@@ -2192,6 +2192,12 @@ J'ai crée 3 clients
    zerotier-cli join <ID réseau>
 
    |image1689|
+
+Maintenant que le logiciel ZeroTier est exécuté sur le serveur et les clients, il faut les connecter au réseau dans la console Web ZeroTier.
+
+Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre le réseau. Le contrôleur attribuera une adresse IP au serveur et aux clients 
+
+|image1690|
 
 
 .. |image1027| image:: ../media/image1027.webp
@@ -2583,7 +2589,7 @@ J'ai crée 3 clients
 .. |image1631| image:: ../img/image1631.webp
    :width: 524px
 .. |image1632| image:: ../img/image1632.webp
-   :width: 700px
+   :width: 605px
 .. |image1633| image:: ../img/image1633.webp
    :width: 518px
 .. |image1634| image:: ../img/image1634.webp
@@ -2648,3 +2654,5 @@ J'ai crée 3 clients
    :width: 306px
 .. |image1689| image:: ../img/image1689.webp
    :width: 590px
+.. |image1690| image:: ../img/image1690.webp
+   :width: 700px
