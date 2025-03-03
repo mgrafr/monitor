@@ -2257,6 +2257,10 @@ Définir les variables d'environnement :
 
 Activer le NAT et le masquage IP :
 
+.. code-block::
+
+   iptables -t nat -A POSTROUTING -o $WAN_IF -j MASQUERADE
+
 
 
 .. |image1027| image:: ../media/image1027.webp
@@ -2721,5 +2725,5 @@ Activer le NAT et le masquage IP :
    :width: 545px
 .. |image1693| image:: ../img/image1693.webp
    :width: 605px
-.. |image1693| image:: ../img/image1693.webp
+.. |image1694| image:: ../img/image1694.webp
    :width: 530px
