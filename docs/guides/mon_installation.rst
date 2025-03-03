@@ -2199,6 +2199,30 @@ Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre l
 
 |image1690|
 
+21.16.2.3 Vérifier la communication entre les hôtes
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+.. code-block::
+
+   ping -c 5 <IP d'un Hôte>
+
+|image1691|
+
+21.16.3 Utiliser ZeroTier comme solution VPN
+""""""""""""""""""""""""""""""""""""""""""""
+La traduction d'adresses réseau , plus communément appelée « NAT », est une méthode par laquelle un routeur accepte des paquets sur l'adresse IP de l'expéditeur, puis échange cette adresse contre celle du routeur. 
+
+la NAT est généralement effectuée par un routeur, un serveur est également capable de l'exécuter c'est ce que nous allons faire.
+
+Il faut indiquer au noyau Linux que nous voulons transférer des paquets entre les interfaces. Pour cela il faut basculerez sur 1 **net.ipv4.ip_forward** en décommentant la ligne concernée:
+
+Pour vérifier la position de net.ipv4.ip_forward:
+
+.. code-block::
+
+   sysctl net.ipv4.ip_forward
+
+|image1692|
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2656,3 +2680,7 @@ Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre l
    :width: 590px
 .. |image1690| image:: ../img/image1690.webp
    :width: 700px
+.. |image1691| image:: ../img/image1691.webp
+   :width: 605px
+.. |image1692| image:: ../img/image1692.webp
+   :width: 545px
