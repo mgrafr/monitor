@@ -1974,8 +1974,10 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
 |image1591|
 
-21.16 VPN Wireguard dans un CT LXC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21.16 VPN
+^^^^^^^^^
+21.16.1 Wireguard dans un conteneur LXC
+≈====≈==≈==============================
 |image1631|
 
 - mise à jour de pve et activation du module wireguard
@@ -1993,8 +1995,8 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
 |image1634|
 
-16.1 Installation de Wireguard dans un conteneur LXC
-====================================================
+21.16.1.1 Installation de Wireguard dans un conteneur LXC
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 |image1632|
 
 https://community-scripts.github.io/ProxmoxVE/
@@ -2017,8 +2019,8 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 |image1636|
 
-21.16.2 Installation de UFW
-===========================
+21.16.1.2 Installation de UFW
+"""""""""""""""""""""""""""""
 C'est dans le pare-feu que seront exécutées les règles IPTABLES
 
 Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
@@ -2029,8 +2031,8 @@ Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LX
 
    |image1657|
 
-21.16.3 Configuration avec WGDashboard
-======================================
+21.16.1.3 Configuration avec WGDashboard
+""""""""""""""""""""""""""""""""""""""""
 |image1637|
 
 - le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port et supprimer les iptables; comme nous utilisons UFW, nous pouvons omettre ces lignes de notre configuration WireGuard et modifier à la place la configuration d'UFW
@@ -2057,8 +2059,8 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1647|
 
-21.16.4 Configuration d' UFW
-============================
+21.16.1.4 Configuration d' UFW
+""""""""""""""""""""""""""""""
 - autoriser les ports:
 
 .. code-block::
@@ -2103,8 +2105,8 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
    sudo systemctl restart ufw.
 
-21.16.5 Tests
-=============
+21.16.1.5 Tests
+"""""""""""""""
 - affichage de l'interface graphique de Proxmox
 
 Pour faire le test j'ai ajouté un pair : ma tablette Samsung; ce qui explique la différence de CIDR 29 au lieu DE 30;
@@ -2133,9 +2135,8 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 
 |image1645|
 
-21.16.6 Mises à jour Wireguard & WGDashboard
-============================================
-
+21.16.1.6 Mises à jour Wireguard & WGDashboard
+""""""""""""""""""""""""""""""""""""""""""""""
 |image1644|
 
 
