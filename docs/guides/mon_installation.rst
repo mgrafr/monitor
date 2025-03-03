@@ -2212,6 +2212,8 @@ Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre l
 
 21.16.3 Utiliser ZeroTier comme solution VPN
 """"""""""""""""""""""""""""""""""""""""""""
+https://docs.zerotier.com/exitnode
+
 La traduction d'adresses réseau , plus communément appelée « NAT », est une méthode par laquelle un routeur accepte des paquets sur l'adresse IP de l'expéditeur, puis échange cette adresse contre celle du routeur. 
 
 la NAT est généralement effectuée par un routeur, un serveur est également capable de l'exécuter c'est ce que nous allons faire.
@@ -2236,6 +2238,11 @@ Pour modifier :darkblue:`net.ipv4.ip_forward` :
 
    le paragraphe :ref:`21.16.1.1.a Port-forwarding`
 
+Obtenir le nom de l'interface ZeroTier, elle commence par zt:
+
+.. code-block::
+
+   ip link show
 
 
 .. |image1027| image:: ../media/image1027.webp
