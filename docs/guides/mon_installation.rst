@@ -1976,9 +1976,8 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
 21.16 VPN
 ^^^^^^^^^
-
 21.16.1 Wireguard dans un conteneur LXC
-≈====≈==≈==============================
+=======================================
 |image1631|
 
 - mise à jour de pve et activation du module wireguard
@@ -2141,7 +2140,8 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 |image1644|
 
 21.16.2 Zerotier dans un conteneur LXC
-≈====≈==≈=============================
+======================================
+|image1683|
 21.16.2.1 Installation de Zerotier dans un conteneur LXC
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 en cours
@@ -2586,3 +2586,5 @@ en cours
    :width: 400px
 .. |image1681| image:: ../img/image1681.webp
    :width: 700px
+.. |image1683| image:: ../img/image1681.webp
+   :width: 660px
