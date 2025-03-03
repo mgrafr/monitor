@@ -2009,13 +2009,16 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 - mettre à jour le CT
 
-- dans /etc/sysctl.conf, vérifier que le transfert de port (port-forwarding) est activé:
+
+21.16.1.1.a Port-forwarding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dans /etc/sysctl.conf, vérifier que le transfert de port (port-forwarding) est activé:
 
   net.ipv4.ip_forward=1
 
 |image1635|
 
-- pour appliquez la modification:
+pour appliquez la modification:
 
 |image1636|
 
@@ -2222,6 +2225,17 @@ Pour vérifier la position de net.ipv4.ip_forward:
    sysctl net.ipv4.ip_forward
 
 |image1692|
+
+Pour modifier :darkblue:`net.ipv4.ip_forward` : 
+
+.. code-block::
+
+   nano /etc/sysctl.conf
+
+.. seealso::
+
+   le paragraphe :ref:`21.16.1.1.a Port-forwarding`
+
 
 
 .. |image1027| image:: ../media/image1027.webp
@@ -2684,3 +2698,5 @@ Pour vérifier la position de net.ipv4.ip_forward:
    :width: 605px
 .. |image1692| image:: ../img/image1692.webp
    :width: 545px
+.. |image1693| image:: ../img/image1693.webp
+   :width: 605px
