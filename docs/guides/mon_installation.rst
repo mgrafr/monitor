@@ -2140,7 +2140,11 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 """"""""""""""""""""""""""""""""""""""""""""""
 |image1644|
 
-
+21.16.2 Zerotier dans un conteneur LXC
+≈====≈==≈=============================
+21.16.2.1 Installation de Zerotier dans un conteneur LXC
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+en cours
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
