@@ -2278,6 +2278,13 @@ Activer le NAT et le masquage IP :
 
 |image1695|
 
+Autoriser la redirection du trafic :
+
+.. code-block::
+
+   iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
+|image1698|
 
 
 .. |image1027| image:: ../media/image1027.webp
@@ -2750,3 +2757,5 @@ Activer le NAT et le masquage IP :
    :width: 601px
 .. |image1697| image:: ../img/image1697.webp
    :width: 605px
+.. |image1698| image:: ../img/image1698.webp
+   :width: 700px
