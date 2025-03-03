@@ -2167,7 +2167,31 @@ voir le site: https://community-scripts.github.io/ProxmoxVE/
 
 21.16.2.2 Création du réseau
 """"""""""""""""""""""""""""
-Allez sur my.zerotier.com et créez un compte
+Allez sur my.zerotier.com et créez un compte.
+
+La documentation est bien faite : https://docs.zerotier.com/start
+
+J'ai crée 3 clients 
+
+- **un poste Android** sur ma tablette Samsung depuis l'App store
+
+   |image1686|
+
+- u**n poste Windows** sur mon PC portable
+
+   |image1687|
+
+   |image1688|
+
+- **un poste linux** sur le conteneur LXC Zerotier
+
+   exécuter:
+
+.. code-block::
+
+   zerotier-cli join <ID réseau>
+
+   |image1689|
 
 
 .. |image1027| image:: ../media/image1027.webp
@@ -2616,3 +2640,11 @@ Allez sur my.zerotier.com et créez un compte
    :width: 530px
 .. |image1685| image:: ../img/image1685.webp
    :width: 650px
+.. |image1686| image:: ../img/image1686.webp
+   :width: 400px
+.. |image1687| image:: ../img/image1687.webp
+   :width: 480px
+.. |image1688| image:: ../img/image1688.webp
+   :width: 306px
+.. |image1689| image:: ../img/image1689.webp
+   :width: 590px
