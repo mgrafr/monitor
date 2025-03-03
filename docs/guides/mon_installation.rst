@@ -2144,7 +2144,27 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 |image1683|
 21.16.2.1 Installation de Zerotier dans un conteneur LXC
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-en cours
+Dans le shell Proxmox, exécuter :
+
+.. code-block::
+
+   bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/zerotier-one.sh)"
+
+voir le site: https://community-scripts.github.io/ProxmoxVE/
+
+.. IMPORTANT::
+
+   Ajouter à la config du conteneur :
+
+   |image1684|
+
+   .. code-block::
+
+      lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file 
+
+   |image1685|
+
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2586,5 +2606,9 @@ en cours
    :width: 400px
 .. |image1681| image:: ../img/image1681.webp
    :width: 700px
-.. |image1683| image:: ../img/image1681.webp
-   :width: 660px
+.. |image1683| image:: ../img/image1683.webp
+   :width: 600px
+.. |image1684| image:: ../img/image1684.webp
+   :width: 530px
+.. |image1685| image:: ../img/image1685.webp
+   :width: 650px
