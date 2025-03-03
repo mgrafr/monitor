@@ -2210,7 +2210,22 @@ Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre l
 
 |image1691|
 
-21.16.3 Utiliser ZeroTier comme solution VPN
+21.16.6 Installer iptables
+""""""""""""""""""""""""""
+Avec Debian 12 iptables n'est pas installé:
+
+.. code-block::
+
+   apt update 
+   apt install iptables-persistent
+
+|image1696|
+
+Vérification de l’installation d’IPtables
+
+|image1697|
+
+21.16.4 Utiliser ZeroTier comme solution VPN
 """"""""""""""""""""""""""""""""""""""""""""
 https://docs.zerotier.com/exitnode
 
@@ -2260,6 +2275,8 @@ Activer le NAT et le masquage IP :
 .. code-block::
 
    iptables -t nat -A POSTROUTING -o $WAN_IF -j MASQUERADE
+
+|image1695|
 
 
 
@@ -2727,3 +2744,9 @@ Activer le NAT et le masquage IP :
    :width: 605px
 .. |image1694| image:: ../img/image1694.webp
    :width: 530px
+.. |image1695| image:: ../img/image1695.webp
+   :width: 641px
+.. |image1696| image:: ../img/image1696.webp
+   :width: 601px
+.. |image1697| image:: ../img/image1697.webp
+   :width: 605px
