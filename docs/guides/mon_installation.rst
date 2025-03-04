@@ -2302,6 +2302,16 @@ Enregistrez vos nouvelles règles :
 
 |image1700| 
 
+**Redémarrer** pour vérifier que les règles de routage ont persisté.
+
+.. code-block::
+
+   iptables-save
+
+|image1701
+
+| 
+
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
 .. |image1028| image:: ../media/image1028.webp
@@ -2777,4 +2787,6 @@ Enregistrez vos nouvelles règles :
 .. |image1699| image:: ../img/image1699.webp
    :width: 589px
 .. |image1700| image:: ../img/image1700.webp
-   :width: 589px
+   :width: 700px
+.. |image1701| image:: ../img/image1700.webp
+   :width: 700px
