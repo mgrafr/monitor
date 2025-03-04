@@ -2315,6 +2315,17 @@ Enregistrez vos nouvelles règles :
 
 21.16.4.2 Configurer le réseau
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Indiquer, dans la console web,  le nœud de sortie qui peut acheminer le trafic vers Internet.
+
+|image1702|
+
+Dans l'application de la barre d'état système, sous chaque réseau, il existe une option « Autoriser la valeur par défaut ». Cochez cette case pour utiliser votre nœud de sortie.
+
+- **sur Windows** :
+
+|image1703|
+
+- **sur tablette Androïd** :
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2792,5 +2803,7 @@ Enregistrez vos nouvelles règles :
    :width: 500px
 .. |image1700| image:: ../img/image1700.webp
    :width: 700px
-.. |image1701| image:: ../img/image1700.webp
-   :width: 550px
+.. |image1701| image:: ../img/image1701.webp
+   :width: 700px
+.. |image1702| image:: ../img/image1702.webp
+   :width: 700px
