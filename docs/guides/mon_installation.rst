@@ -2294,6 +2294,13 @@ Autoriser le transfert du trafic de l'interface ZeroTier vers l'interface WAN
 
 |image1699| 
 
+Enregistrez vos nouvelles règles :
+
+.. code-block::
+
+   netfilter-persistent save
+
+|image1700| 
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2768,4 +2775,6 @@ Autoriser le transfert du trafic de l'interface ZeroTier vers l'interface WAN
 .. |image1698| image:: ../img/image1698.webp
    :width: 700px
 .. |image1699| image:: ../img/image1699.webp
-   :width: 700px
+   :width: 589px
+.. |image1700| image:: ../img/image1700.webp
+   :width: 589px
