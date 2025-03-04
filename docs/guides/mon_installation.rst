@@ -2235,6 +2235,9 @@ la NAT est généralement effectuée par un routeur, un serveur est également c
 
 Il faut indiquer au noyau Linux que nous voulons transférer des paquets entre les interfaces. Pour cela il faut basculerez sur 1 **net.ipv4.ip_forward** en décommentant la ligne concernée:
 
+21.16.4.1 Activer la transmission IPv4 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Pour vérifier la position de net.ipv4.ip_forward:
 
 .. code-block::
@@ -2308,9 +2311,10 @@ Enregistrez vos nouvelles règles :
 
    iptables-save
 
-|image1701
+|image1701|
 
-| 
+21.16.4.2 Configurer le réseau
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2785,8 +2789,8 @@ Enregistrez vos nouvelles règles :
 .. |image1698| image:: ../img/image1698.webp
    :width: 700px
 .. |image1699| image:: ../img/image1699.webp
-   :width: 589px
+   :width: 500px
 .. |image1700| image:: ../img/image1700.webp
    :width: 700px
 .. |image1701| image:: ../img/image1700.webp
-   :width: 700px
+   :width: 550px
