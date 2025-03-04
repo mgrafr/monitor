@@ -2286,6 +2286,14 @@ Autoriser la redirection du trafic :
 
 |image1698|
 
+Autoriser le transfert du trafic de l'interface ZeroTier vers l'interface WAN
+
+.. code-block::
+
+   iptables -A FORWARD -i $ZT_IF -o $WAN_IF -j ACCEPT
+
+|image1699| 
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2758,4 +2766,6 @@ Autoriser la redirection du trafic :
 .. |image1697| image:: ../img/image1697.webp
    :width: 605px
 .. |image1698| image:: ../img/image1698.webp
+   :width: 700px
+.. |image1699| image:: ../img/image1699.webp
    :width: 700px
