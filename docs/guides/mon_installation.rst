@@ -2327,6 +2327,8 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 
 - **sur tablette Androïd** :
 
+- **sur linux** :
+
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
 .. |image1028| image:: ../media/image1028.webp
@@ -2804,6 +2806,8 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 .. |image1700| image:: ../img/image1700.webp
    :width: 700px
 .. |image1701| image:: ../img/image1701.webp
-   :width: 700px
+   :width: 500px
 .. |image1702| image:: ../img/image1702.webp
+   :width: 700px
+.. |image1703| image:: ../img/image1703.webp
    :width: 700px
