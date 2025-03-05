@@ -2148,7 +2148,7 @@ Il existe le contrôleur ZT propre à my.zerotier.com qui peut être utilisé fa
 
 Il est possible cependant d'héberger son propre contrôleur en installant :
 
-- soit https://github.com/key-networks/ztncui 
+- soit https://github.com/key-networks/ztncui , *installé par défaut avec le script du prochain paragraphe*
 
 - soit https://github.com/dec0dOS/zero-ui 
 
@@ -2340,23 +2340,6 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 21.16.2.6 Utiliser un contrôleur auto-hébergé ztncui
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 **ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui/
-
-|image1704|
-
-**Installation**
-
-.. code-block::
-
-   curl-O https://s3-us-west-1.amazonaws.com/key-networks/deb/ztncui/1/x86_64/ztncui_0.8.14_amd64.deb
-   apt install ./ztncui_0.8.14_amd64.deb
-   sh -c "echo ZT_TOKEN=`sudo cat /var/lib/zerotier-one/authtoken.secret` > /opt/key-networks/ztncui/.env"
-   sh -c "echo HTTPS_PORT=3443 >> /opt/key-networks/ztncui/.env"
-   sh -c "echo NODE_ENV=production >> /opt/key-networks/ztncui/.env"
-   chmod 400 /opt/key-networks/ztncui/.env
-   chown ztncui:ztncui /opt/key-networks/ztncui/.env
-   systemctl restart ztncui
-
-|image1705|
 
 se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
