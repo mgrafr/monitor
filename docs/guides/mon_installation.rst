@@ -2353,10 +2353,14 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
    sh -c "echo HTTPS_PORT=3443 >> /opt/key-networks/ztncui/.env"
    sh -c "echo NODE_ENV=production >> /opt/key-networks/ztncui/.env"
    chmod 400 /opt/key-networks/ztncui/.env
-   chown ztncui.ztncui /opt/key-networks/ztncui/.env
+   chown ztncui:ztncui /opt/key-networks/ztncui/.env
    systemctl restart ztncui
 
 |image1705|
+
+se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
+
+|image1706|
 
 
 .. |image1027| image:: ../media/image1027.webp
@@ -2845,3 +2849,5 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
    :width: 700px
 .. |image1705| image:: ../img/image1705.webp
    :width: 700px
+.. |image1706| image:: ../img/image1706.webp
+   :width: 600px
