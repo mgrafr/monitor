@@ -2144,11 +2144,19 @@ l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet
 
 21.16.2 Zerotier dans un conteneur LXC
 ======================================
+Il existe le contrôleur ZT propre à my.zerotier.com qui peut être utilisé facilement et gratuitement. Il est utile de commencer par l'utiliser et d'installer simplement ZT sur d'autres appareils.
+
+Il est possible cependant d'héberger son propre contrôleur en installant :
+
+- soit https://github.com/key-networks/ztncui 
+
+- soit https://github.com/dec0dOS/zero-ui 
+
 |image1683|
 
 21.16.2.1 Installation de Zerotier dans un conteneur LXC
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-Dans le shell Proxmox, exécuter :
+**pour installer le contrôleur ZT**, dans le shell Proxmox, exécuter :
 
 .. code-block::
 
@@ -2210,8 +2218,8 @@ Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre l
 
 |image1691|
 
-21.16.6 Installer iptables
-""""""""""""""""""""""""""
+21.16.2.4 Installer iptables
+""""""""""""""""""""""""""""
 Avec Debian 12 iptables n'est pas installé:
 
 .. code-block::
@@ -2225,8 +2233,8 @@ Vérification de l’installation d’IPtables
 
 |image1697|
 
-21.16.4 Utiliser ZeroTier comme solution VPN
-""""""""""""""""""""""""""""""""""""""""""""
+21.16.2.5 Utiliser ZeroTier comme solution VPN
+""""""""""""""""""""""""""""""""""""""""""""""
 https://docs.zerotier.com/exitnode
 
 La traduction d'adresses réseau , plus communément appelée « NAT », est une méthode par laquelle un routeur accepte des paquets sur l'adresse IP de l'expéditeur, puis échange cette adresse contre celle du routeur. 
@@ -2235,8 +2243,8 @@ la NAT est généralement effectuée par un routeur, un serveur est également c
 
 Il faut indiquer au noyau Linux que nous voulons transférer des paquets entre les interfaces. Pour cela il faut basculerez sur 1 **net.ipv4.ip_forward** en décommentant la ligne concernée:
 
-21.16.4.1 Activer la transmission IPv4 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.2.5.1 Activer la transmission IPv4 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Pour vérifier la position de net.ipv4.ip_forward:
 
@@ -2313,8 +2321,8 @@ Enregistrez vos nouvelles règles :
 
 |image1701|
 
-21.16.4.2 Configurer le réseau
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.2.5.2 Configurer le réseau
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Indiquer, dans la console web,  le nœud de sortie qui peut acheminer le trafic vers Internet.
 
 |image1702|
@@ -2328,6 +2336,28 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 - **sur tablette Androïd** :
 
 - **sur linux** :
+
+21.16.2.6 Utiliser un contrôleur auto-hébergé ztncui
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+**ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui/
+
+|image1704|
+
+**Installation**
+
+.. code-block::
+
+   curl-O https://s3-us-west-1.amazonaws.com/key-networks/deb/ztncui/1/x86_64/ztncui_0.8.14_amd64.deb
+   apt install ./ztncui_0.8.14_amd64.deb
+   sh -c "echo ZT_TOKEN=`sudo cat /var/lib/zerotier-one/authtoken.secret` > /opt/key-networks/ztncui/.env"
+   sh -c "echo HTTPS_PORT=3443 >> /opt/key-networks/ztncui/.env"
+   sh -c "echo NODE_ENV=production >> /opt/key-networks/ztncui/.env"
+   chmod 400 /opt/key-networks/ztncui/.env
+   chown ztncui.ztncui /opt/key-networks/ztncui/.env
+   systemctl restart ztncui
+
+|image1705|
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2810,4 +2840,8 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 .. |image1702| image:: ../img/image1702.webp
    :width: 700px
 .. |image1703| image:: ../img/image1703.webp
+   :width: 700px
+.. |image1704| image:: ../img/image1704.webp
+   :width: 700px
+.. |image1705| image:: ../img/image1705.webp
    :width: 700px
