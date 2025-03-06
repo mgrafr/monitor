@@ -2357,6 +2357,9 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1708|
 
+- Vérifier que le membre a bien ajouter le réseau
+
+|image1709| , ici le même PC
 
 
 
@@ -2850,3 +2853,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 418px
 .. |image1708| image:: ../img/image1708.webp
    :width: 650px
+.. |image1709| image:: ../img/image1709.webp
+   :width: 350px
