@@ -2154,6 +2154,10 @@ Il est possible cependant d'héberger son propre contrôleur en installant :
 
 |image1683|
 
+**installer le pare-feu** : voir ces § :ref:`21.16.1.4 Configuration d” UFW` & :ref:`21.2 Domoticz`
+
+|image1711|
+
 21.16.2.1 Installation de Zerotier dans un conteneur LXC
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 **pour installer le contrôleur ZT**, dans le shell Proxmox, exécuter :
@@ -2360,6 +2364,10 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 - Vérifier que le membre a bien ajouter le réseau
 
 |image1709| , ici le même PC
+
+- Générer l'adresse réseau
+
+|image1710|
 
 
 
@@ -2852,6 +2860,10 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 .. |image1707| image:: ../img/image1707.webp
    :width: 320px
 .. |image1708| image:: ../img/image1708.webp
-   :width: 550px
+   :width: 500px
 .. |image1709| image:: ../img/image1709.webp
    :width: 350px
+.. |image1710| image:: ../img/image1710.webp
+   :width: 300px
+.. |image1711| image:: ../img/image1711.webp
+   :width: 452px
