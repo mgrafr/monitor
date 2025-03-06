@@ -2062,7 +2062,7 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1647|
 
-21.16.1.4 Configuration d' UFW
+21.16.1.4 Configuration de UFW
 """"""""""""""""""""""""""""""
 - autoriser les ports:
 
@@ -2154,7 +2154,7 @@ Il est possible cependant d'héberger son propre contrôleur en installant :
 
 |image1683|
 
-**installer le pare-feu** : voir ces § :ref:`21.16.1.4 Configuration d” UFW` & :ref:`21.2 Domoticz`
+**installer le pare-feu** : voir ces § :ref:`21.16.1.4 Configuration de UFW` & :ref:`21.2 Domoticz`
 
 |image1711|
 
