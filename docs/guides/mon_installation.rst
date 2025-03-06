@@ -2345,6 +2345,33 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1706|
 
+21.16.2.6.1 Le contrôleur de réseau
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Obtenir l’identifiant du noeud
+
+.. code-block::
+
+   zerotier-cli info
+
+- Enregistrer l’ID du nœud et le TOKEN dans des variables d’environnement : 
+
+.. code-block::
+
+   NODEID=<ID du noeud>
+   TOKEN=$(sudo cat /var/lib/zerotier-one/authtoken.secret)t)
+
+- Créer le réseau :
+
+.. code-block::
+
+   curl -X POST "http://localhost:9993/controller/network/${NODEID}______" -H "X-ZT1-AUTH: ${TOKEN}" -d {}
+
+|image1707|
+
+   
+
+.. code-
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2834,3 +2861,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 700px
 .. |image1706| image:: ../img/image1706.webp
    :width: 600px
+.. |image1707| image:: ../img/image1707.webp
+   :width: 650px
