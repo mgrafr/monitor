@@ -2347,7 +2347,7 @@ Pour faciliter la création on utilise **ztncui**
 
 **ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui
 
-*L'application doit connaître le jeton d'authentification de niveau zéro.*
+*L'application doit connaître le jeton d'authentification de zérotier.*
 
 - **Créer un fichier .env**
 
