@@ -2341,15 +2341,19 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 
 - **sur linux** :
 
-21.16.2.6 Utiliser un contrôleur auto-hébergé ztncui
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-**ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui/
+21.16.2.6 Utiliser un contrôleur auto-hébergé
+"""""""""""""""""""""""""""""""""""""""""""""
+Pour faciliter la création on utilise **ztncui**
+
+**ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui
+
+*L'application doit connaître le jeton d'authentification de niveau zéro.*
 
 - **Créer un fichier .env**
 
-À la racine du répertoire ztncui, récupérer le token de zerotier et créer la variable :
+   À la racine du répertoire ztncui, récupérer le token de zerotier et créer la variable :
 
-.. code- block::
+.. code-block::
 
    TOKEN=$(sudo cat /var/lib/zerotier-one/authtoken.secret)
 
