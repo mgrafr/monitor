@@ -2345,6 +2345,14 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 **ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui/
 
+- **Créer un fichier .env**
+
+À la racine du répertoire ztncui, récupérer le token de zerotier et créer la variable :
+
+.. code- block::
+
+   TOKEN=$(sudo cat /var/lib/zerotier-one/authtoken.secret)
+
 se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1706|
