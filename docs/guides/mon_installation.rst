@@ -2351,11 +2351,16 @@ Pour faciliter la création on utilise **ztncui**
 
 - **Créer un fichier .env**
 
-   À la racine du répertoire ztncui, récupérer le token de zerotier et créer la variable :
+   À la racine du répertoire ztncui, récupérer le token de zerotier et créer les variables :
 
 .. code-block::
 
    TOKEN=$(sudo cat /var/lib/zerotier-one/authtoken.secret)
+   NODE_ENV=production
+
+.. note::
+
+   Sans le mode production, le moteur de modèle recompile toujours le fichier pug lors du rendu (ce qui prend environ 200 ms !)
 
 se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
