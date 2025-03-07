@@ -2357,10 +2357,14 @@ Pour faciliter la création on utilise **ztncui**
 
    TOKEN=$(sudo cat /var/lib/zerotier-one/authtoken.secret)
    NODE_ENV=production
+   chmod 400 .env
+   chown ztncui.ztncui .env
 
 .. note::
 
-   Sans le mode production, le moteur de modèle recompile toujours le fichier pug lors du rendu (ce qui prend environ 200 ms !)
+   Sans le mode production, le moteur de modèle recompile toujours le fichier pug lors du rendu (ce qui prend environ 200 ms !) 
+
+   chmod et chown pour rendre ce fichier visible seulement par l’utilisateur de **ztncui**
 
 se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
