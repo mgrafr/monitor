@@ -2359,12 +2359,15 @@ Pour faciliter la création on utilise **ztncui**
    NODE_ENV=production
    chmod 400 .env
    chown ztncui.ztncui .env
+   HTTP_PORT=3456  # voir la note ci-dessous
 
 .. note::
 
    Sans le mode production, le moteur de modèle recompile toujours le fichier pug lors du rendu (ce qui prend environ 200 ms !) 
 
    chmod et chown pour rendre ce fichier visible seulement par l’utilisateur de **ztncui**
+
+   Si le port 3000 est déjà utilisé, vous pouvez spécifier un port différent
 
 se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
