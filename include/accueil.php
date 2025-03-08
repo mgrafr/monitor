@@ -23,7 +23,7 @@ if ($domaine==URLMONITOR) $lien_img="/";
 if ($domaine==IPMONITOR) $lien_img="/monitor/";
 ?>
 <div class="confirm pression_chaud"><a href="#" id="annul_pression" rel="1002" title="Annulation de l'\alerte pression"><img id="pression_chaud" src=""/></a></div>
-<div class="confirm pilule"><a href="#" id="annul_pilule" rel="1001" title="Annulation de l'\alerte pilule michel"><img id="pilule" style="display:none" src=""/></a></div>
+<div class="confirm pilule"><a href="#" id="annul_pilule" rel="1001" title="Annulation de l'\alerte pilule chat"><img id="pilule" style="display:none" src=""/></a></div>
 <div class="confirm"><a href="#" id="annul_fosse" rel="1011" title="Annulation de l'\alerte fosse septique"><img id="fosse" style="display:none" class="fosse_septique" src=""/></a></div>
 <div class="poubelles"><img id="poubelle" style="display:none" src=""/></div>
 <div class="aff_pluie" >
