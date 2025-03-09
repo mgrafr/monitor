@@ -2343,6 +2343,12 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 
 21.16.2.6 Utiliser un contrôleur auto-hébergé
 """""""""""""""""""""""""""""""""""""""""""""
+- pour l'installation: :ref:`21.16.2.1 Installation de Zerotier dans un conteneur LXC`
+
+- vérifier la position de net.ipv4.ip_forward::ref:`21.16.2.5.1 Activer la transmission IPv4`
+
+   |image1712|
+
 Pour faciliter la création on utilise **ztncui**
 
 **ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui
@@ -2891,3 +2897,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 300px
 .. |image1711| image:: ../img/image1711.webp
    :width: 452px
+.. |image1712| image:: ../img/image1712.webp
+   :width: 444px
