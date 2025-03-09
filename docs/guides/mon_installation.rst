@@ -2176,7 +2176,11 @@ voir le site: https://community-scripts.github.io/ProxmoxVE/
 
    .. code-block::
 
-      lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file 
+      lxc.apparmor.profile: unconfined
+      lxc.cgroup.devices.allow: a
+      lxc.cap.drop:
+      lxc.cgroup2.devices.allow: c 10:200 rwm
+      lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 
    |image1685|
 
@@ -2345,29 +2349,31 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 """""""""""""""""""""""""""""""""""""""""""""
 - pour l'installation: :ref:`21.16.2.1 Installation de Zerotier dans un conteneur LXC`
 
-- vérifier la position de net.ipv4.ip_forward::ref:`21.16.2.5.1 Activer la transmission IPv4`
-
-   |image1712|
-
 Pour faciliter la création on utilise **ztncui**
 
 **ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui
 
 *L'application doit connaître le jeton d'authentification de zérotier.*
 
-- **Créer un fichier .env**
+- **Créer un fichier .env** si il n'existe pas
 
    À la racine du répertoire ztncui, récupérer le token de zerotier et créer les variables :
 
 .. code-block::
 
-   TOKEN=$(sudo cat /var/lib/zerotier-one/authtoken.secret)
+   TOKEN=$(sudo cat /var/lib/zerotier-one/authtoken.secret) # pour exraire le Token
    NODE_ENV=production
+   HTTPS_PORT=3443
+   HTTP_PORT=3456  # voir la note ci-dessous
+   # après création exécuter ces lignes
    chmod 400 .env
    chown ztncui.ztncui .env
-   HTTP_PORT=3456  # voir la note ci-dessous
-
+  
 .. note::
+
+   le fichier original qui devrait être présent:
+
+   |image1713|
 
    Sans le mode production, le moteur de modèle recompile toujours le fichier pug lors du rendu (ce qui prend environ 200 ms !) 
 
@@ -2399,7 +2405,9 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1710|
 
+- vérifier la position de net.ipv4.ip_forward::ref:`21.16.2.5.1 Activer la transmission IPv4`
 
+   |image1712|
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -2899,3 +2907,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 452px
 .. |image1712| image:: ../img/image1712.webp
    :width: 444px
+.. |image1713| image:: ../img/image1713.webp
+   :width: 429px
