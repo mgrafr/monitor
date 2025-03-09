@@ -291,10 +291,11 @@ top: -460px;
 left: 220px;}
 /*medoc*/
 /*#pilule{width:60px}*/
-.pilule{position: relative;
-    top: -300px;
-    width: 50px;
-    left: 220px;}
+.pilule{position: absolute;
+    width: 70px;
+right: 140px;height: auto;
+bottom: 50px;
+left: 240px;}
 /*lastseem*/
 .lastseen, .lastseen1{width: 150px;
     height: 50px;
