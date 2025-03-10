@@ -2176,12 +2176,9 @@ voir le site: https://community-scripts.github.io/ProxmoxVE/
 
    .. code-block::
 
-      lxc.apparmor.profile: unconfined
-      lxc.cgroup.devices.allow: a
-      lxc.cap.drop:
-      lxc.cgroup2.devices.allow: c 10:200 rwm
-      lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
-
+      lxc.cgroup.devices.allow = c 10:200 rwm
+      lxc.hook.autodev = sh -c "modprobe tun; cd ${LXC_ROOTFS_MOUNT}/dev; mkdir net; mknod net/tun c 10 200; chmod 0666 net/tun"
+     
    |image1685|
 
 21.16.2.2 Création du réseau
