@@ -2410,6 +2410,16 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1715|
 
+- **une autre façon de trouver l'IP du controleur**
+
+|image1719|
+
+- **une autre façon de génerer les adresses réseau et la route:
+
+.. code-block::
+
+   curl -X POST "http://localhost:9993/controller/network/${NWID}" -H "X-ZT1-AUTH: ${TOKEN}"     -d '{"ipAssignmentPools": [{"ipRangeStart": "192.168.100.1", "ipRangeEnd": "192.168.100.254"}], "routes": [{"target": "192.168.1.0/24", "via": "192.168.100.102"}], "v4AssignMode": "zt", "private": true }'
+
 - **ping sur le smarthone**
 
 |image1716|
@@ -2940,3 +2950,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 650px
 .. |image1718| image:: ../img/image1718.webp
    :width: 700px
+.. |image1719| image:: ../img/image1719.webp
+   :width: 500px
