@@ -2418,6 +2418,10 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1717|
 
+- **l'interface zt crée**
+
+|image1718|
+
 - vérifier la position de net.ipv4.ip_forward::ref:`21.16.2.5.1 Activer la transmission IPv4`;pour l'activer immédiatement, vous pouvez taper:
 
 .. code-block::
@@ -2934,3 +2938,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 600px
 .. |image1717| image:: ../img/image1717.webp
    :width: 650px
+.. |image1718| image:: ../img/image1718.webp
+   :width: 700px
