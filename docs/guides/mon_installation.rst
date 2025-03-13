@@ -2404,15 +2404,19 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1714|
 
+- **Générer les adresses réseau**
+
+|image1710|
+
 |image1715|
 
 - **ping sur le smarthone**
 
 |image1716|
 
-- Générer l'adresse réseau
+-- **Ajouter la route vers le réseau local**
 
-|image1710|
+|image1717|
 
 - vérifier la position de net.ipv4.ip_forward::ref:`21.16.2.5.1 Activer la transmission IPv4`;pour l'activer immédiatement, vous pouvez taper:
 
@@ -2928,3 +2932,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 700px
 .. |image1716| image:: ../img/image1716.webp
    :width: 600px
+.. |image1717| image:: ../img/image1717.webp
+   :width: 650px
