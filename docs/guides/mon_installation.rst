@@ -2406,6 +2406,10 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1715|
 
+- **ping sur le smarthone**
+
+|image1716|
+
 - Générer l'adresse réseau
 
 |image1710|
@@ -2922,3 +2926,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 500px
 .. |image1715| image:: ../img/image1715.webp
    :width: 700px
+.. |image1716| image:: ../img/image1716.webp
+   :width: 600px
