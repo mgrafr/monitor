@@ -2444,6 +2444,11 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1720|
 
+- **Installer iptables** : voir ce § :ref:`21.16.2.4 Installer iptables`
+
+|image1721|
+
+- **Modifiez le fichier /etc/iptables/rules.v4 et collez ce qui suit**
 
 .. code-block::
 
@@ -2975,4 +2980,6 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 .. |image1719| image:: ../img/image1719.webp
    :width: 500px
 .. |image1720| image:: ../img/image1720.webp
+   :width: 700px
+.. |image1721| image:: ../img/image1721.webp
    :width: 700px
