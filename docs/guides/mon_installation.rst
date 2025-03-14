@@ -2985,3 +2985,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 700px
 .. |image1721| image:: ../img/image1721.webp
    :width: 700px
+.. |image1722| image:: ../img/image1722.webp
+   :width: 700px
