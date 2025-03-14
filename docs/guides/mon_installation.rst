@@ -2440,6 +2440,23 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1712|
 
+.. cod-block::
+
+   *nat
+   :PREROUTING ACCEPT [0:0]
+   :INPUT ACCEPT [0:0]
+   :OUTPUT ACCEPT [0:0]
+   :POSTROUTING ACCEPT [0:0]
+   -A POSTROUTING -o eth0 -s 192.168.100.0/24 -j SNAT --to-source 192.168.1.1
+   COMMIT
+   *filter
+   :INPUT ACCEPT [0:0]
+   :FORWARD DROP [0:0]
+   -A FORWARD -i zt+ -s 192.168.100.0/4 -d 0.0.0.0/0 -j ACCEPT
+   -A FORWARD -i eth0 -s 0.0.0.0/0 -d 192.168.100.0/0 -j ACCEPT
+   :OUTPUT ACCEPT [0:0]
+   COMMIT
+
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
 .. |image1028| image:: ../media/image1028.webp
