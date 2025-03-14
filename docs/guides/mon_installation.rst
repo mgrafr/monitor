@@ -2462,7 +2462,7 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    *filter
    :INPUT ACCEPT [0:0]
    :FORWARD DROP [0:0]
-   -A FORWARD -i zt+ -s 192.168.100.0/4 -d 0.0.0.0/0 -j ACCEPT
+   -A FORWARD -i zt+ -s 192.168.100.0/24 -d 0.0.0.0/0 -j ACCEPT
    -A FORWARD -i eth0 -s 0.0.0.0/0 -d 192.168.100.0/0 -j ACCEPT
    :OUTPUT ACCEPT [0:0]
    COMMIT
