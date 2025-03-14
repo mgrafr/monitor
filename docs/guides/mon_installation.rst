@@ -2440,6 +2440,11 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 |image1712|
 
+- **Ajoutez une route vers le réseau local que vous souhaitez atteindre via Zerotier**, exemple 192.168.1.0/24 et définissez le champ "Via" sur l'adresse IP Zerotier du conteneur LXC
+
+|image1720|
+
+
 .. code-block::
 
    *nat
@@ -2969,3 +2974,5 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
    :width: 700px
 .. |image1719| image:: ../img/image1719.webp
    :width: 500px
+.. |image1720| image:: ../img/image1720.webp
+   :width: 700px
