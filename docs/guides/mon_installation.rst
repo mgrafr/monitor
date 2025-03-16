@@ -2407,17 +2407,19 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1710|
 
+.. code-block::
 
-**en cours de rédaction,  ignorer cette qui suit**
+   docker exec zerotier zerotier-cli join <network_id>
 
-
-
-
+|image1715|
 
 
 
 
   
+
+**en cours de rédaction,  ignorer cette qui suit**
+
 
 - **Ajouter un 2eme membre , par exemple sur un smarphone**
 
@@ -2428,7 +2430,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 
 
-|image1715|
+
 
 - **une autre façon de trouver l'IP du controleur**
 
