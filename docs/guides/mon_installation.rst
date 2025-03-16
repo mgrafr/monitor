@@ -2405,8 +2405,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1709|
 
-
-
+|image1710|
 
 
 **en cours de rédaction,  ignorer cette qui suit**
@@ -2427,7 +2426,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 - **Générer les adresses réseau**
 
-|image1710|
+
 
 |image1715|
 
@@ -2983,7 +2982,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 .. |image1709| image:: ../img/image1709.webp
    :width: 650px
 .. |image1710| image:: ../img/image1710.webp
-   :width: 300px
+   :width: 550px
 .. |image1711| image:: ../img/image1711.webp
    :width: 452px
 .. |image1712| image:: ../img/image1712.webp
