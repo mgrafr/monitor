@@ -2358,6 +2358,14 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1714|
 
+|image1706|
+
+**Ajouter cette ligne à la configuration du Conteneur**
+
+.. code-block::
+
+   lxc.mount.entry: /dev/net dev/net none bind,create=dir
+
 
 **en cours de rédaction,  ignorer cette qui suit**
 
@@ -2371,7 +2379,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
-|image1706|
+
 
 - **Créer le réseau** :
 
@@ -2944,7 +2952,7 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 .. |image1704| image:: ../img/image1704.webp
    :width: 454px
 .. |image1706| image:: ../img/image1706.webp
-   :width: 600px
+   :width: 450px
 .. |image1707| image:: ../img/image1707.webp
    :width: 320px
 .. |image1708| image:: ../img/image1708.webp
