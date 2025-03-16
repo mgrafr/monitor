@@ -2403,7 +2403,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 **Dans un navigateur ouvrir l’application web**
 
-
+|image1709|
 
 
 
@@ -2413,31 +2413,12 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 
 
-   Sans le mode production, le moteur de modèle recompile toujours le fichier pug lors du rendu (ce qui prend environ 200 ms !) 
-
-   chmod et chown pour rendre ce fichier visible seulement par l’utilisateur de **ztncui**
-
-   Si le port 3000 est déjà utilisé, vous pouvez spécifier un port différent
-
-se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 
 
-- **Créer le réseau** :
 
 
-
-- **Ajouter un premier membre , ici un pc Windows**
-
-
-
-- Autoriser le membre dans zncui
-
-
-
-- Vérifier que le membre a bien ajouter le réseau
-
-|image1709| , ici le même PC
+  
 
 - **Ajouter un 2eme membre , par exemple sur un smarphone**
 
@@ -3000,7 +2981,7 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 .. |image1708| image:: ../img/image1708.webp
    :width: 600px
 .. |image1709| image:: ../img/image1709.webp
-   :width: 350px
+   :width: 650px
 .. |image1710| image:: ../img/image1710.webp
    :width: 300px
 .. |image1711| image:: ../img/image1711.webp
