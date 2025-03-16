@@ -2369,7 +2369,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 |image1707|
 
 21.16.2.6.1 Installer ZTNET
-Créer un dossier /opt/ztnet et télécharger le fichier docker-compose.yml
+**Créer un dossier /opt/ztnet et télécharger le fichier docker-compose.yml**
 
 .. code-block::
 
@@ -2379,6 +2379,13 @@ Créer un dossier /opt/ztnet et télécharger le fichier docker-compose.yml
 
 |image1704|
 
+**modifier l'IP du Conteneur dans docker-compose.yml**
+
+.. code-block::
+
+   sed -i "s|http://localhost:3000|http://$(hostname -I | cut -d' ' -f1):3000|" docker-compose.yml
+
+|image1708|
 
 
 
@@ -2407,7 +2414,7 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 - Autoriser le membre dans zncui
 
-|image1708|
+
 
 - Vérifier que le membre a bien ajouter le réseau
 
@@ -2972,7 +2979,7 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 .. |image1707| image:: ../img/image1707.webp
    :width: 320px
 .. |image1708| image:: ../img/image1708.webp
-   :width: 500px
+   :width: 600px
 .. |image1709| image:: ../img/image1709.webp
    :width: 350px
 .. |image1710| image:: ../img/image1710.webp
