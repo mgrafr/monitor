@@ -2417,10 +2417,17 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1719|
 
+**Ajouter des membres**
+
+- un pc windows
+
+|image1716|
+
+- **un smartphone Androïd**
+
+|image1717|
 
 
-
-  
 
 **en cours de rédaction,  ignorer cette qui suit**
 
@@ -2432,7 +2439,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 - **ping sur le smarthone**
 
-|image1716|
+
 
 -- **Ajouter la route vers le réseau local**
 
@@ -2984,9 +2991,9 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 .. |image1715| image:: ../img/image1715.webp
    :width: 700px
 .. |image1716| image:: ../img/image1716.webp
-   :width: 600px
+   :width: 400px
 .. |image1717| image:: ../img/image1717.webp
-   :width: 650px
+   :width: 300px
 .. |image1718| image:: ../img/image1718.webp
    :width: 700px
 .. |image1719| image:: ../img/image1719.webp
