@@ -2387,6 +2387,21 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1708|
 
+**Ajouter ou commenter ces lignes dans docker-compose.yml**
+
+.. code-block::
+
+    network_mode: "host"
+    #networks:
+    #  - app-network
+    #ports:
+    #  - "9993:9993/udp"
+    ZT_ADDR: http://192.168.1.68:9993
+
+|image1712|
+
+|image1720|
+
 **Activer la redirection IPv4**
 
 .. code-block::
@@ -2457,11 +2472,11 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
    sysctl -w net.ipv4.ip_forward=1
 
-|image1712|
+
 
 - **Ajoutez une route vers le réseau local que vous souhaitez atteindre via Zerotier**, exemple 192.168.1.0/24 et définissez le champ "Via" sur l'adresse IP Zerotier du conteneur LXC
 
-|image1720|
+
 
 - **Installer iptables** : voir ce § :ref:`21.16.2.4 Installer iptables`
 
@@ -2985,7 +3000,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 .. |image1711| image:: ../img/image1711.webp
    :width: 452px
 .. |image1712| image:: ../img/image1712.webp
-   :width: 444px
+   :width: 488px
 .. |image1713| image:: ../img/image1713.webp
    :width: 450px
 .. |image1714| image:: ../img/image1714.webp
@@ -3001,7 +3016,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 .. |image1719| image:: ../img/image1719.webp
    :width: 700px
 .. |image1720| image:: ../img/image1720.webp
-   :width: 700px
+   :width: 477px
 .. |image1721| image:: ../img/image1721.webp
    :width: 700px
 .. |image1722| image:: ../img/image1722.webp
