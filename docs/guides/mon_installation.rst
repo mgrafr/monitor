@@ -2152,6 +2152,8 @@ Il est possible cependant d'héberger son propre contrôleur en installant :
 
 - soit https://github.com/dec0dOS/zero-ui 
 
+- soit https://ztnet.network/installation/docker-compose
+
 |image1683|
 
 **installer le pare-feu** : voir ces § :ref:`21.16.1.4 Configuration de UFW` & :ref:`21.2 Domoticz`
@@ -2343,34 +2345,19 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 - **sur linux** :
 
 21.16.2.6 Utiliser un contrôleur auto-hébergé
-"""""""""""""""""""""""""""""""""""""""""""""
-- pour l'installation: :ref:`21.16.2.1 Installation de Zerotier dans un conteneur LXC`
+""""""""""""""""""""""""""""""""""""""""""""
+j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné fonctionné  correctement; j’ai utilisé ZTNET,solution décrite ci-après.
 
-Pour faciliter la création on utilise **ztncui**
-
-**ztncui** est une interface utilisateur Web pour un contrôleur de réseau ZeroTier autonome; https://key-networks.com/ztncui
-
-*L'application doit connaître le jeton d'authentification de zérotier.*
-
-- **Créer un fichier .env** si il n'existe pas
-
-   À la racine du répertoire ztncui, récupérer le token de zerotier et créer les variables :
+**Création du conteneur privilégié LXC avec Docker; on utilise le script de tteck :
 
 .. code-block::
+ 
+   bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/docker.sh)"
 
-   TOKEN=$(sudo cat /var/lib/zerotier-one/authtoken.secret) # pour exraire le Token
-   NODE_ENV=production
-   HTTPS_PORT=3443
-   HTTP_PORT=3456  # voir la note ci-dessous
-   # après création exécuter ces lignes
-   chmod 400 .env
-   chown ztncui.ztncui .env
-  
-.. note::
+ 
+**en cours de rédaction,  ignorer cette qui suit**
 
-   le fichier original qui devrait être présent:
-
-   |image1713|
+|image1713|
 
    Sans le mode production, le moteur de modèle recompile toujours le fichier pug lors du rendu (ce qui prend environ 200 ms !) 
 
