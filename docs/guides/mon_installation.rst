@@ -2427,6 +2427,8 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1717|
 
+|image1718|
+
 
 
 **en cours de rédaction,  ignorer cette qui suit**
@@ -2443,11 +2445,11 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 -- **Ajouter la route vers le réseau local**
 
-|image1717|
+
 
 - **l'interface zt crée**
 
-|image1718|
+
 
 - vérifier la position de net.ipv4.ip_forward::ref:`21.16.2.5.1 Activer la transmission IPv4`;pour l'activer immédiatement, vous pouvez taper:
 
