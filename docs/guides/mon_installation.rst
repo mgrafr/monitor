@@ -2366,6 +2366,22 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
    lxc.mount.entry: /dev/net dev/net none bind,create=dir
 
+|image1707|
+
+21.16.2.6.1 Installer ZTNET
+Créer un dossier /opt/ztnet et télécharger le fichier docker-compose.yml
+
+.. code-block::
+
+   mkdir /opt/ztnet
+   cd /opt/ztnet
+   wget -O docker-compose.yml https://raw.githubusercontent.com/sinamics/ztnet/main/docker-compose.yml
+
+|image1704|
+
+
+
+
 
 **en cours de rédaction,  ignorer cette qui suit**
 
@@ -2383,11 +2399,11 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 - **Créer le réseau** :
 
-|image1707|
+
 
 - **Ajouter un premier membre , ici un pc Windows**
 
-|image1704|
+
 
 - Autoriser le membre dans zncui
 
@@ -2950,7 +2966,7 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 .. |image1703| image:: ../img/image1703.webp
    :width: 700px
 .. |image1704| image:: ../img/image1704.webp
-   :width: 454px
+   :width: 650px
 .. |image1706| image:: ../img/image1706.webp
    :width: 450px
 .. |image1707| image:: ../img/image1707.webp
