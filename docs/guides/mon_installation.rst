@@ -2444,6 +2444,9 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1718|
 
+ **ping sur le PC Windows*
+
+|image1721|
 
 
 **en cours de rédaction,  ignorer cette qui suit**
@@ -2454,8 +2457,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 
 
-- **ping sur le smarthone**
-
+-
 
 
 -- **Ajouter la route vers le réseau local**
@@ -3018,6 +3020,6 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 .. |image1720| image:: ../img/image1720.webp
    :width: 477px
 .. |image1721| image:: ../img/image1721.webp
-   :width: 700px
+   :width: 600px
 .. |image1722| image:: ../img/image1722.webp
    :width: 700px
