@@ -2387,6 +2387,17 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1708|
 
+**Activer la redirection IPv4**
+
+.. code-block::
+
+   sysctl -w net.ipv4.ip_forward=1
+
+*voir aussi : :ref:`21.16.1.1.a Port-forwarding`*
+
+
+
+
 
 
 
