@@ -2407,11 +2407,15 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1710|
 
+**Créer un réseau et ajouter le controleur aux membres**
+
 .. code-block::
 
    docker exec zerotier zerotier-cli join <network_id>
 
 |image1715|
+
+|image1719|
 
 
 
@@ -2421,26 +2425,10 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 **en cours de rédaction,  ignorer cette qui suit**
 
 
-- **Ajouter un 2eme membre , par exemple sur un smarphone**
-
-- **Ajouter le contôleur (le conteneur LXC crée) comme membre**
-
-
-- **Générer les adresses réseau**
 
 
 
 
-
-- **une autre façon de trouver l'IP du controleur**
-
-|image1719|
-
-- **une autre façon de génerer les adresses réseau et la route:
-
-.. code-block::
-
-   curl -X POST "http://localhost:9993/controller/network/${NWID}" -H "X-ZT1-AUTH: ${TOKEN}"     -d '{"ipAssignmentPools": [{"ipRangeStart": "192.168.100.1", "ipRangeEnd": "192.168.100.254"}], "routes": [{"target": "192.168.1.0/24", "via": "192.168.100.102"}], "v4AssignMode": "zt", "private": true }'
 
 - **ping sur le smarthone**
 
@@ -3002,7 +2990,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 .. |image1718| image:: ../img/image1718.webp
    :width: 700px
 .. |image1719| image:: ../img/image1719.webp
-   :width: 500px
+   :width: 700px
 .. |image1720| image:: ../img/image1720.webp
    :width: 700px
 .. |image1721| image:: ../img/image1721.webp
