@@ -2346,18 +2346,22 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 
 21.16.2.6 Utiliser un contrôleur auto-hébergé
 """"""""""""""""""""""""""""""""""""""""""""
-j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné fonctionné  correctement; j’ai utilisé ZTNET,solution décrite ci-après.
+j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné correctement; j’ai utilisé ZTNET,solution décrite ci-après.
 
-**Création du conteneur privilégié LXC avec Docker; on utilise le script de tteck :
+**Création du conteneur privilégié LXC avec Docker; on utilise le script de tteck** :
 
 .. code-block::
  
    bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/docker.sh)"
 
- 
+ |image1713|
+
+|image1714|
+
+
 **en cours de rédaction,  ignorer cette qui suit**
 
-|image1713|
+
 
    Sans le mode production, le moteur de modèle recompile toujours le fichier pug lors du rendu (ce qui prend environ 200 ms !) 
 
@@ -2389,7 +2393,6 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 
 - **Ajouter le contôleur (le conteneur LXC crée) comme membre**
 
-|image1714|
 
 - **Générer les adresses réseau**
 
@@ -2955,7 +2958,7 @@ se Connecter au port 3443 via HTTPS dans votre navigateur Web,ip du conteeur LXC
 .. |image1712| image:: ../img/image1712.webp
    :width: 444px
 .. |image1713| image:: ../img/image1713.webp
-   :width: 429px
+   :width: 450px
 .. |image1714| image:: ../img/image1714.webp
    :width: 500px
 .. |image1715| image:: ../img/image1715.webp
