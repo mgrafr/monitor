@@ -2369,6 +2369,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 |image1707|
 
 21.16.2.6.1 Installer ZTNET
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **Créer un dossier /opt/ztnet et télécharger le fichier docker-compose.yml**
 
 .. code-block::
@@ -2452,9 +2453,53 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1721|
 
-ZTNet Serveur DNS
-
+21.16.2.6.2 Serveur DNS pour ZTNET
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
+
+**Générer un jeton pour l'API REST**
+
+|image1724|
+
+**Ajouter le conteneur à docker-compose.yml**
+
+.. code-block::
+
+   # ajouter à services:
+    dns:
+      image: duoquote/ztnet-coredns:latest
+      container_name: ztnet-dns
+      restart: unless-stopped
+      devices:
+        - /dev/net/tun # Required
+      cap_add:
+        - NET_ADMIN # Required
+      environment:
+        # ORG_ID: <YOUR_ORG_ID> # Optional
+        NETWORK_ID: 8xxxxxxxxxxxxxx5
+        ZTNET_API_HOST: https://<DOMAINE> # ou http://192.168.x.x
+        ZTNET_API_TOKEN: <JETON>
+        DNS_DOMAIN: zt.vpn
+      depends_on:
+     - ztnet
+      volumes:
+       - dns:/var/lib/zerotier-one
+      networks:
+        - dns-network
+	  
+   # ajouter à volumes:
+     dns:
+
+   # ajouter à networks
+     dns-network:
+       driver: bridge
+       ipam:
+         driver: default
+         config:
+           subnet: 172.13.255.0/29	
+
+|image1722|
+
 
 **en cours de rédaction,  ignorer cette qui suit**
 
@@ -2474,22 +2519,12 @@ https://github.com/Duoquote/ztnet-coredns
 - **l'interface zt crée**
 
 
-
-- vérifier la position de net.ipv4.ip_forward::ref:`21.16.2.5.1 Activer la transmission IPv4`;pour l'activer immédiatement, vous pouvez taper:
-
-.. code-block::
-
-   sysctl -w net.ipv4.ip_forward=1
-
-
-
 - **Ajoutez une route vers le réseau local que vous souhaitez atteindre via Zerotier**, exemple 192.168.1.0/24 et définissez le champ "Via" sur l'adresse IP Zerotier du conteneur LXC
 
 
 
 - **Installer iptables** : voir ce § :ref:`21.16.2.4 Installer iptables`
 
-|image1721|
 
 - **Modifiez le fichier /etc/iptables/rules.v4 et collez ce qui suit**
 
@@ -2510,7 +2545,7 @@ https://github.com/Duoquote/ztnet-coredns
    :OUTPUT ACCEPT [0:0]
    COMMIT
 
-|image1722|
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -3029,4 +3064,4 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1721| image:: ../img/image1721.webp
    :width: 600px
 .. |image1722| image:: ../img/image1722.webp
-   :width: 700px
+   :width: 480px
