@@ -2508,8 +2508,15 @@ https://github.com/Duoquote/ztnet-coredns
 
 |image1725|
 
-docker exec ztnet-dns bash -c 'apt-get -y update && apt -y install nano'
+.. note::
 
+   Pour installer nano dans un conteneur Docker:
+
+   .. code-block::
+
+      docker exec <NOM DU CONTENEUR> bash -c 'apt-get -y update && apt -y install nano'
+
+   |image1725|
 
 
 
@@ -3076,8 +3083,10 @@ docker exec ztnet-dns bash -c 'apt-get -y update && apt -y install nano'
 .. |image1721| image:: ../img/image1721.webp
    :width: 600px
 .. |image1722| image:: ../img/image1722.webp
-   :width: 480px
+   :width: 400px
 .. |image1724| image:: ../img/image1724.webp
    :width: 700px
 .. |image1725| image:: ../img/image1725.webp
+   :width: 700px
+.. |image1726| image:: ../img/image1726.webp
    :width: 700px
