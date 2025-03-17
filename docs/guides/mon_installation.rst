@@ -2387,7 +2387,11 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1708|
 
-**Ajouter ou commenter ces lignes dans docker-compose.yml**
+**Modifiez la configuration du conteneur Zerotier pour utiliser directement le réseau de l’hôte.**
+
+le conteneur va créer des interfaces zt# sur le système hôte, imitant le comportement d’une installation native ZeroTier One. Cette modification intègre le conteneur Zerotier au réseau de l’hôte
+
+Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 .. code-block::
 
