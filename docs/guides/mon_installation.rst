@@ -2500,6 +2500,18 @@ https://github.com/Duoquote/ztnet-coredns
 
 |image1722|
 
+**Connecter le serveur DNS au réseau ZEROTIER**
+
+.. code-block::
+
+   docker exec ztnet-dns zerotier-cli join <NETWORK-ID>
+
+|image1725|
+
+
+
+
+
 
 **en cours de rédaction,  ignorer cette qui suit**
 
@@ -3065,3 +3077,5 @@ https://github.com/Duoquote/ztnet-coredns
    :width: 600px
 .. |image1722| image:: ../img/image1722.webp
    :width: 480px
+.. |image1725| image:: ../img/image1725.webp
+   :width: 700px
