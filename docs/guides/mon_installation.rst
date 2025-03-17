@@ -2508,7 +2508,7 @@ https://github.com/Duoquote/ztnet-coredns
 
 |image1725|
 
-
+docker exec ztnet-dns bash -c 'apt-get -y update && apt -y install nano'
 
 
 
@@ -3046,7 +3046,7 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1706| image:: ../img/image1706.webp
    :width: 450px
 .. |image1707| image:: ../img/image1707.webp
-   :width: 320px
+   :width: 418px
 .. |image1708| image:: ../img/image1708.webp
    :width: 600px
 .. |image1709| image:: ../img/image1709.webp
@@ -3056,7 +3056,7 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1711| image:: ../img/image1711.webp
    :width: 452px
 .. |image1712| image:: ../img/image1712.webp
-   :width: 488px
+   :width: 420px
 .. |image1713| image:: ../img/image1713.webp
    :width: 450px
 .. |image1714| image:: ../img/image1714.webp
@@ -3072,10 +3072,12 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1719| image:: ../img/image1719.webp
    :width: 700px
 .. |image1720| image:: ../img/image1720.webp
-   :width: 477px
+   :width: 420px
 .. |image1721| image:: ../img/image1721.webp
    :width: 600px
 .. |image1722| image:: ../img/image1722.webp
    :width: 480px
+.. |image1724| image:: ../img/image1724.webp
+   :width: 700px
 .. |image1725| image:: ../img/image1725.webp
    :width: 700px
