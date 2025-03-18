@@ -2209,7 +2209,16 @@ J'ai crée 3 clients
 
    zerotier-cli join <ID réseau>
 
-   |image1689|
+|image1689|
+
+.. note::
+
+   Pour installer Zerotier-one sur un poste linux existant (CT ou VM):
+
+   .. code-block::
+
+      curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/main/doc/contact%40zerotier.com.gpg' | gpg --import && \
+      if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | bash; fi
 
 Maintenant que le logiciel ZeroTier est exécuté sur le serveur et les clients, il faut les connecter au réseau dans la console Web ZeroTier.
 
