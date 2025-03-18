@@ -2446,7 +2446,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1719|
 
-**Ajouter des membres**
+**Ajouter des membres** :voir cd § :ref:`21.16.2.2 Création du réseau` pour la création des clients sur linux,Androïd, Windows
 
 - un pc windows
 
