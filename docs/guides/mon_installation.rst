@@ -2446,7 +2446,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1719|
 
-**Ajouter des membres** :voir cd § :ref:`21.16.2.2 Création du réseau` pour la création des clients sur linux,Androïd, Windows
+**Ajouter des membres** :voir ce § :ref:`21.16.2.2 Création du réseau` pour la création des clients sur linux,Androïd, Windows
 
 - un pc windows
 
@@ -2458,9 +2458,13 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1718|
 
- **ping sur le PC Windows*
+ **ping sur le PC Windows depuis le controleur**
 
 |image1721|
+
+**ping sur le Controleur depuis depuis un CT Proxmox**
+
+|image1727|
 
 21.16.2.6.2 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3103,3 +3107,5 @@ https://github.com/Duoquote/ztnet-coredns
    :width: 700px
 .. |image1726| image:: ../img/image1726.webp
    :width: 700px
+.. |image1727| image:: ../img/image1727.webp
+   :width: 600px
