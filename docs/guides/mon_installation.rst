@@ -2457,6 +2457,10 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
 
+.. important::
+
+   ZeroNSD de Zerotier est actuellement incompatible avec ZTNet, car l'intégration entre ces deux services n'a pas encore été implémentée. Cette fonctionnalité sera intégrée à la version 2.0 de Zerotier, bien que la date de sortie exacte soit actuellement incertaine.
+
 **Générer un jeton pour l'API REST**
 
 |image1724|
