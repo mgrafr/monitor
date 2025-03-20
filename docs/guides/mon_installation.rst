@@ -2178,7 +2178,7 @@ voir le site: https://community-scripts.github.io/ProxmoxVE/
 
    .. code-block::
 
-      lxc.cgroup.devices.allow = c 10:200 rwm
+      lxc.cgroup2.devices.allow = c 10:200 rwm
       lxc.mount.entry: /dev/net dev/net none bind,create=dir
      
    |image1685|
