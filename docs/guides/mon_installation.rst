@@ -2500,6 +2500,12 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    |image1731|
 
+.. admonition:: essai : affichage de monitor & io.broker
+
+   |image1732|
+
+   |image1733|
+
 21.16.2.6.3 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
@@ -2574,12 +2580,6 @@ https://github.com/Duoquote/ztnet-coredns
 **en cours de rédaction,  ignorer cette qui suit**
 
 
-
-
-
-
-
--
 
 
 -- **Ajouter la route vers le réseau local**
@@ -3151,3 +3151,7 @@ https://github.com/Duoquote/ztnet-coredns
    :width: 500px
 .. |image1731| image:: ../img/image1731.webp
    :width: 680px
+.. |image1732| image:: ../img/image1732.webp
+   :width: 550px
+.. |image1733| image:: ../img/image1733.webp
+   :width: 600px
