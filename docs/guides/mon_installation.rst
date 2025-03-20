@@ -2176,6 +2176,8 @@ voir le site: https://community-scripts.github.io/ProxmoxVE/
 
    |image1684|
 
+   Pour un conteneur privilégié la 2eme ligne (/dev/net) suffit
+
    .. code-block::
 
       lxc.cgroup2.devices.allow = c 10:200 rwm
@@ -3026,7 +3028,7 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1683| image:: ../img/image1683.webp
    :width: 600px
 .. |image1684| image:: ../img/image1684.webp
-   :width: 530px
+   :width: 450px
 .. |image1685| image:: ../img/image1685.webp
    :width: 650px
 .. |image1686| image:: ../img/image1686.webp
