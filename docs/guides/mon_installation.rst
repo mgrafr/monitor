@@ -2361,6 +2361,8 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 **Création du conteneur privilégié LXC avec Docker; on utilise le script de tteck** :
 
+Pour la création d'un conteneur non privilégié, voir le § :ref:`21.16.2.1 Installation de Zerotier dans un conteneur LXC`
+
 .. code-block::
  
    bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/docker.sh)"
@@ -2424,7 +2426,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    sysctl -w net.ipv4.ip_forward=1
 
-*voir aussi : :ref:`21.16.1.1.a Port-forwarding`*
+*voir aussi le §* :ref:`21.16.1.1.a Port-forwarding`
 
 **Lancer ZTNET**
 
@@ -2468,7 +2470,26 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1727|
 
-21.16.2.6.2 Serveur DNS pour ZTNET
+21.16.2.6.2 Ajout des CT Proxmox clients
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Ajout de monitor 
+
+   Installer zerotier-one, voir le § :ref:`21.16.2.2 Création du réseau`
+
+   |image1730|
+
+   modifier la config du conteneur: nano /etc/pve/lxc/xxx.conf
+
+   |image1728|
+
+   Vérifier la présence de l'interface ztxxxxxxx
+
+   |image1729|
+
+
+
+
+21.16.2.6.3 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
 
@@ -3110,4 +3131,10 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1726| image:: ../img/image1726.webp
    :width: 700px
 .. |image1727| image:: ../img/image1727.webp
+   :width: 600px
+.. |image1728| image:: ../img/image1728.webp
+   :width: 650px
+.. |image1729| image:: ../img/image1729.webp
+   :width: 650px
+.. |image1730| image:: ../img/image1730.webp
    :width: 600px
