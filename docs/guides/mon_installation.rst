@@ -2492,8 +2492,13 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    |image1729|
 
+.. admonition:: Ajout d'autres clients
 
+   Procéder comme pour monitor
 
+   Affichage dans ztnet:
+
+   |image1731|
 
 21.16.2.6.3 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3065,7 +3070,7 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1688| image:: ../img/image1688.webp
    :width: 306px
 .. |image1689| image:: ../img/image1689.webp
-   :width: 590px
+   :width: 540px
 .. |image1690| image:: ../img/image1690.webp
    :width: 700px
 .. |image1691| image:: ../img/image1691.webp
@@ -3144,3 +3149,5 @@ https://github.com/Duoquote/ztnet-coredns
    :width: 650px
 .. |image1730| image:: ../img/image1730.webp
    :width: 500px
+.. |image1731| image:: ../img/image1731.webp
+   :width: 680px
