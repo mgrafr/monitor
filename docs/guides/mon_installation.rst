@@ -2580,6 +2580,12 @@ voir aussi ce § :ref:`21.16.2.4 Installer iptables`
 
 |image1738|
 
+21.16.2.6.5 Modification dans monitor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- indiquer l'IP du réseau ZTNET
+
+|image1742|
+
 21.16.2.6.4 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
@@ -2591,6 +2597,17 @@ https://github.com/Duoquote/ztnet-coredns
 **Générer un jeton pour l'API REST**
 
 |image1724|
+
+**Installer curl & jq et exporter le jeton
+
+.. code-block::
+
+   apt install curl jq
+   export ZTNET_API_TOKEN='your-api-token'
+
+|image1743|
+
+
 
 **Ajouter le conteneur à docker-compose.yml**
 
@@ -2649,11 +2666,7 @@ https://github.com/Duoquote/ztnet-coredns
 
    |image1725|
 
-21.16.2.6.5 Modification dans monitor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- indiquer l'IP du réseau ZTNET
 
-|image1742|
 
 **en cours de rédaction,  ignorer cette qui suit**
 
@@ -3242,3 +3255,5 @@ https://github.com/Duoquote/ztnet-coredns
    :width: 600px
 .. |image1742| image:: ../img/image1742.webp
    :width: 600px
+.. |image1743| image:: ../img/image1743.webp
+   :width: 700px
