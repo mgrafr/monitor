@@ -1,4 +1,4 @@
-21. – Mon installation
+821. – Mon installation
 ---------------------- 
 
 |image1655|
@@ -2518,9 +2518,20 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
 |image1739|
 
-|image1734|
+- Créer les règles
 
-||image1735|
+.. code-block::
+
+   PHY_IFACE=eth0
+   ZT_IFACE=ztxxxxxxx
+   #
+   iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE
+   iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT
+   iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED
+
+|image1735|
+
+|image1734|
 
 21.16.2.6.4 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
