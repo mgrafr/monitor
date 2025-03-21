@@ -2518,6 +2518,10 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
 |image1739|
 
+|image1734|
+
+||image1735|
+
 21.16.2.6.4 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
@@ -3169,3 +3173,8 @@ https://github.com/Duoquote/ztnet-coredns
    :width: 600px
 .. |image1739| image:: ../img/image1739.webp
    :width: 600px
+.. |image1734| image:: ../img/image1734.webp
+   :width: 700px
+.. |image1735| image:: ../img/image1735.webp
+   :width: 700px
+
