@@ -2531,6 +2531,8 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
 |image1735|
 
+voir aussi ce § :ref:`21.16.2.4 Installer iptables`
+
 - Installer iptables-persistent et sauver les règles 
 
 .. code-block::
@@ -2574,7 +2576,7 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
 .. code-block::
 
-   docker exec zerotier zerotier-cli set <NetworkID> allowDefault=1
+   zerotier-cli set <NetworkID> allowDefault=1
 
 |image1738|
 
@@ -2647,21 +2649,16 @@ https://github.com/Duoquote/ztnet-coredns
 
    |image1725|
 
+21.16.2.6.5 Modification dans monitor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- indiquer l'IP du réseau ZTNET
 
+|image1742|
 
 **en cours de rédaction,  ignorer cette qui suit**
 
 
 
-
--- **Ajouter la route vers le réseau local**
-
-
-
-- **l'interface zt crée**
-
-
-- **Ajoutez une route vers le réseau local que vous souhaitez atteindre via Zerotier**, exemple 192.168.1.0/24 et définissez le champ "Via" sur l'adresse IP Zerotier du conteneur LXC
 
 
 
@@ -3242,4 +3239,6 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1740| image:: ../img/image1740.webp
    :width: 650px
 .. |image1741| image:: ../img/image1741.webp
+   :width: 600px
+.. |image1742| image:: ../img/image1742.webp
    :width: 600px
