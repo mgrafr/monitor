@@ -2540,7 +2540,29 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
 |image1734|
 
+- redémarrer le serveur pour vérifier que les règles iptables ont été correctement enregistrées. 
+
+.. code-block::
+
+   iptables-save
+
+- définissez une route globale dans la console ZeroTier; Dans le champ « réseau/bits 0.0.0.0/0 , saisissez l'adresse IP de votre serveur ZeroTier. Dans le champ « LAN » , saisissez l'adresse IP de votre serveur ZTNET
+
+- Configuration des clients Linux
+
+   Ouvrez /etc/sysctl.conf les machines clientes et ajouter:
+
+.. code-block::
+
+   net.ipv4.conf.all.rp_filter=2
+
+.. code-block::
+
+   sudo sysctl -p
+
 |image1736|
+
+- indiquez au logiciel client ZeroTier que votre réseau est autorisé à acheminer le trafic de routage par défaut.
 
 |image1737|
 
