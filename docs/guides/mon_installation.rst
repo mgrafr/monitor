@@ -2550,7 +2550,7 @@ voir aussi ce § :ref:`21.16.2.4 Installer iptables`
 
 |image1741|
 
-- définissez une route globale dans la console ZeroTier; Dans le champ « réseau/bits 0.0.0.0/0 , saisissez l'adresse IP de votre serveur ZeroTier. Dans le champ « LAN » , saisissez l'adresse IP de votre serveur ZTNET
+- Dans les paramètres du réseau géré par Ztnet, ajoutez via votre nœud ZeroTier Server l’adresse IP.0.0.0.0/0
 
 |image1740|
 
@@ -2655,7 +2655,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 
       docker exec <NOM DU CONTENEUR> bash -c 'apt-get -y update && apt -y install nano'
 
-   |image1727|
+   |image1726|
 
 
 
@@ -3215,7 +3215,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1742| image:: ../img/image1742.webp
    :width: 600px
 .. |image1743| image:: ../img/image1743.webp
-   :width: 700px
+   :width: 570px
 .. |image1744| image:: ../img/image1744.webp
    :width: 550px
 .. |image1745| image:: ../img/image1745.webp
