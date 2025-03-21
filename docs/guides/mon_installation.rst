@@ -2506,7 +2506,10 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    |image1733|
 
-21.16.2.6.3 Serveur DNS pour ZTNET
+21.16.2.6.3 Activation du VPN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+21.16.2.6.4 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
 
