@@ -2508,6 +2508,15 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 21.16.2.6.3 Activation du VPN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
+
+- rechercher le nom de l’interface réseau zt
+
+.. code-block::
+
+   ip link show
+
+|image1739|
 
 21.16.2.6.4 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3157,4 +3166,6 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1732| image:: ../img/image1732.webp
    :width: 550px
 .. |image1733| image:: ../img/image1733.webp
+   :width: 600px
+.. |image1739| image:: ../img/image1733.webp
    :width: 600px
