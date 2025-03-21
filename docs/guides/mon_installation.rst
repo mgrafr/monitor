@@ -2598,7 +2598,7 @@ https://github.com/Duoquote/ztnet-coredns
 
 |image1724|
 
-**Installer curl & jq et exporter le jeton
+**Installer curl & jq et exporter le jeton**
 
 .. code-block::
 
@@ -2618,7 +2618,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 
 |image1744|
 
-**exécuter le scipt**
+**exécuter le script** qui copie le résultat dans /etc/hosts
 
 .. code-block::
 
@@ -2627,52 +2627,25 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 |image1745|
 
 
-**Ajouter le conteneur à docker-compose.yml**
 
-.. code-block::
 
-   # ajouter à services:
-    dns:
-      image: duoquote/ztnet-coredns:latest
-      container_name: ztnet-dns
-      restart: unless-stopped
-      devices:
-        - /dev/net/tun # Required
-      cap_add:
-        - NET_ADMIN # Required
-      environment:
-        # ORG_ID: <YOUR_ORG_ID> # Optional
-        NETWORK_ID: 8xxxxxxxxxxxxxx5
-        ZTNET_API_HOST: https://<DOMAINE> # ou http://192.168.x.x
-        ZTNET_API_TOKEN: <JETON>
-        DNS_DOMAIN: zt.vpn
-      depends_on:
-     - ztnet
-      volumes:
-       - dns:/var/lib/zerotier-one
-      networks:
-        - dns-network
-	  
-   # ajouter à volumes:
-     dns:
 
-   # ajouter à networks
-     dns-network:
-       driver: bridge
-       ipam:
-         driver: default
-         config:
-           subnet: 172.13.255.0/29	
 
-|image1722|
 
-**Connecter le serveur DNS au réseau ZEROTIER**
 
-.. code-block::
 
-   docker exec ztnet-dns zerotier-cli join <NETWORK-ID>
 
-|image1725|
+
+
+
+
+
+
+
+
+
+
+
 
 .. note::
 
@@ -2682,38 +2655,10 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 
       docker exec <NOM DU CONTENEUR> bash -c 'apt-get -y update && apt -y install nano'
 
-   |image1725|
+   |image1727|
 
 
 
-**en cours de rédaction,  ignorer cette qui suit**
-
-
-
-
-
-
-- **Installer iptables** : voir ce § :ref:`21.16.2.4 Installer iptables`
-
-
-- **Modifiez le fichier /etc/iptables/rules.v4 et collez ce qui suit**
-
-.. code-block::
-
-   *nat
-   :PREROUTING ACCEPT [0:0]
-   :INPUT ACCEPT [0:0]
-   :OUTPUT ACCEPT [0:0]
-   :POSTROUTING ACCEPT [0:0]
-   -A POSTROUTING -o eth0 -s 192.168.100.0/24 -j SNAT --to-source 192.168.1.147
-   COMMIT
-   *filter
-   :INPUT ACCEPT [0:0]
-   :FORWARD DROP [0:0]
-   -A FORWARD -i zt+ -s 192.168.100.0/24 -d 0.0.0.0/0 -j ACCEPT
-   -A FORWARD -i eth0 -s 0.0.0.0/0 -d 192.168.100.0/0 -j ACCEPT
-   :OUTPUT ACCEPT [0:0]
-   COMMIT
 
 
 
@@ -3233,11 +3178,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 420px
 .. |image1721| image:: ../img/image1721.webp
    :width: 600px
-.. |image1722| image:: ../img/image1722.webp
-   :width: 400px
 .. |image1724| image:: ../img/image1724.webp
-   :width: 700px
-.. |image1725| image:: ../img/image1725.webp
    :width: 700px
 .. |image1726| image:: ../img/image1726.webp
    :width: 700px
@@ -3276,6 +3217,6 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1743| image:: ../img/image1743.webp
    :width: 700px
 .. |image1744| image:: ../img/image1744.webp
-   :width: 700px
+   :width: 550px
 .. |image1745| image:: ../img/image1745.webp
    :width: 700px
