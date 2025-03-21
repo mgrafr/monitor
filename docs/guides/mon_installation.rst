@@ -2607,6 +2607,24 @@ https://github.com/Duoquote/ztnet-coredns
 
 |image1743|
 
+**enregistrer ce script : zt2hosts.sh depuis le site de ZTNET** et le rendre exécutable:
+
+https://ztnet.network/usage/create_dns_host#obtain-the-script
+
+.. code-block::
+
+   nano /opt/ztnet/zt2hosts.sh
+   chmod +x zt2hosts.sh
+
+|image1744|
+
+**exécuter le scipt**
+
+.. code-block::
+
+   zt2hosts.sh <ZONE>:<NETWORK_ID> | sudo tee -i /etc/hosts
+
+|image1745|
 
 
 **Ajouter le conteneur à docker-compose.yml**
@@ -3256,4 +3274,8 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1742| image:: ../img/image1742.webp
    :width: 600px
 .. |image1743| image:: ../img/image1743.webp
+   :width: 700px
+.. |image1744| image:: ../img/image1744.webp
+   :width: 700px
+.. |image1745| image:: ../img/image1745.webp
    :width: 700px
