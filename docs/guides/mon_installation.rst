@@ -2572,6 +2572,10 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
 - indiquez au logiciel client ZeroTier que votre réseau est autorisé à acheminer le trafic de routage par défaut.
 
+.. code-block::
+
+   docker exec zerotier zerotier-cli set <NetworkID> allowDefault=1
+
 |image1738|
 
 21.16.2.6.4 Serveur DNS pour ZTNET
@@ -3230,7 +3234,7 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1736| image:: ../img/image1736.webp
    :width: 450px
 .. |image1737| image:: ../img/image1737.webp
-   :width: 400px
+   :width: 320px
 .. |image1738| image:: ../img/image1738.webp
    :width: 700px
 .. |image1739| image:: ../img/image1739.webp
