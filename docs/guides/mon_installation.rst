@@ -2527,9 +2527,16 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
    #
    iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE
    iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT
-   iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED
+   iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT
 
 |image1735|
+
+- Installer iptables-persistent et sauver les règles 
+
+.. code-block::
+
+   apt install iptables-persistent
+   sh -c 'iptables-save > /etc/iptables/rules.v4'
 
 |image1734|
 
