@@ -2560,15 +2560,17 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
    net.ipv4.conf.all.rp_filter=2
 
+|image1736|
+
+- vérifier l'activation de net.ipv4.conf.all.rp_filter=2
+
 .. code-block::
 
    sudo sysctl -p
 
-|image1736|
+|image1737|
 
 - indiquez au logiciel client ZeroTier que votre réseau est autorisé à acheminer le trafic de routage par défaut.
-
-|image1737|
 
 |image1738|
 
@@ -3236,4 +3238,4 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1740| image:: ../img/image1740.webp
    :width: 650px
 .. |image1741| image:: ../img/image1741.webp
-   :width: 700px
+   :width: 600px
