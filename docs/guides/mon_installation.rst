@@ -2546,7 +2546,11 @@ net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
    iptables-save
 
+|image1741|
+
 - définissez une route globale dans la console ZeroTier; Dans le champ « réseau/bits 0.0.0.0/0 , saisissez l'adresse IP de votre serveur ZeroTier. Dans le champ « LAN » , saisissez l'adresse IP de votre serveur ZTNET
+
+|image1740|
 
 - Configuration des clients Linux
 
@@ -3217,8 +3221,6 @@ https://github.com/Duoquote/ztnet-coredns
    :width: 550px
 .. |image1733| image:: ../img/image1733.webp
    :width: 600px
-.. |image1739| image:: ../img/image1739.webp
-   :width: 600px
 .. |image1734| image:: ../img/image1734.webp
    :width: 700px
 .. |image1735| image:: ../img/image1735.webp
@@ -3228,4 +3230,10 @@ https://github.com/Duoquote/ztnet-coredns
 .. |image1737| image:: ../img/image1737.webp
    :width: 400px
 .. |image1738| image:: ../img/image1738.webp
+   :width: 700px
+.. |image1739| image:: ../img/image1739.webp
+   :width: 600px
+.. |image1740| image:: ../img/image1740.webp
+   :width: 650px
+.. |image1741| image:: ../img/image1741.webp
    :width: 700px
