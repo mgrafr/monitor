@@ -3167,5 +3167,5 @@ https://github.com/Duoquote/ztnet-coredns
    :width: 550px
 .. |image1733| image:: ../img/image1733.webp
    :width: 600px
-.. |image1739| image:: ../img/image1733.webp
+.. |image1739| image:: ../img/image1739.webp
    :width: 600px
