@@ -2506,6 +2506,29 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    |image1733|
 
+
+21.16.2.6.3 modifications dans NGINX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|image1746|
+
+|image1747|
+
+.. code-block::
+
+   server {
+        server_name SERVER;
+         listen 80;
+         access_log  /var/log/nginx/ztnet_access.log;
+         error_log  /var/log/nginx/ztnet_error.log;
+         location / {
+                        proxy_pass http://localhost:3000;
+         }
+    }
+
+|image1748|
+
+
 21.16.2.6.3 Activation du VPN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
@@ -3220,3 +3243,9 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 550px
 .. |image1745| image:: ../img/image1745.webp
    :width: 700px
+.. |image1746| image:: ../img/image1746.webp
+   :width: 700px
+.. |image1747| image:: ../img/image1747.webp
+   :width: 550px
+.. |image1748| image:: ../img/image1748.webp
+   :width: 520px
