@@ -2140,7 +2140,7 @@ sms: 0=pas de sms, 1=sms par GSM, 2=sms par API Free Mobile
 
 |image1663|
 
-**modification de index_loc.php**
+**modification de index_loc.php** : l'utilisation de l'Authentification à deux facteurs n'est utilisé que pour HTTPS. 
 
 |image1664|
 
