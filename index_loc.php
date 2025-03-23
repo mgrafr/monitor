@@ -1,16 +1,18 @@
 <?php
 if(session_status() === PHP_SESSION_NONE) session_start();
 // pour les variables de session----------------------
-$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]=""; 
-if (substr($_SESSION["domaine"] ,0,7) !="192.168")  {
-    if (!isset($_SESSION["current_otp"]) || $_SESSION["current_otp"] != $_SESSION["otp"]) {
-        header('Location: index_otp.php');
-   exit();} 
-    }
 $_SESSION["id_session"] = session_id();
 if ($_SESSION["conf"]=="") {$config="admin/config.php";}
 else {$config="admin/config_".$_SESSION["conf"].".php";}
 $_SESSION["config"]=$config;
+$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]=""; 
+$http_host=substr($_SESSION["domaine"] ,0,7);
+if ($http_host !="192.168" && $http_host !="172.25." && $http_host !="10.121.") {
+    if (!isset($_SESSION["current_otp"]) || $_SESSION["current_otp"] != $_SESSION["otp"]) {
+        header('Location: OTP/index_otp.php');
+   exit();} 
+    }
+
 require ($config);require("fonctions.php");
 // Check connection DB
 mysqli_report(MYSQLI_REPORT_OFF);
@@ -23,7 +25,7 @@ if (!$sock = @fsockopen('www.google.fr', 80)) {$_SESSION["TC"]="0";}
 else {$_SESSION["TC"]="200";}
 // -variables----------------------------------------
 $res = fopen('.version', 'rb');
-$_SESSION[".version"]=fgets($res, 10);
+$_SESSION["version"]=fgets($res, 10);
 $_SESSION["d_root"]=$_SERVER["DOCUMENT_ROOT"];
 $_SESSION["d_admin"]=$_SERVER["DOCUMENT_ROOT"]."/admin/";
 $_SESSION["d_include"]=$_SERVER["DOCUMENT_ROOT"]."/include/";
