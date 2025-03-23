@@ -229,6 +229,5 @@ $current = file_get_contents($file);
 if (str_contains($current, 'domaine')===false ){
 $current = $current."domaine='".URLMONITOR."'\n";
 file_put_contents($file, $current);}
-define('IP_ZEROTIER', '10.xxx.xx.0/24');//IP réseau Zerotier	
 ?>
 
