@@ -48,6 +48,8 @@ position:relative;
 left:450px;
 bottom:400px;
 width:100px}
+
+.gd_portail{width:60px;height:60px;position:absolute;top:820px;left:330px}
 /* ERREURS*/
 #erreur{position: absolute;
     top: 150px;
@@ -294,7 +296,7 @@ left: 220px;}
 .pilule{position: absolute;
     width: 70px;
 right: 140px;height: auto;
-bottom: 50px;
+top: 800px;
 left: 240px;}
 /*lastseem*/
 .lastseen, .lastseen1{width: 150px;
