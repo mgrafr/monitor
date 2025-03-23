@@ -2615,13 +2615,7 @@ voir aussi ce § :ref:`21.16.2.4 Installer iptables`
 
 |image1738|
 
-21.16.2.6.5 Modification dans monitor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- indiquer l'IP du réseau ZTNET
-
-|image1742|
-
-21.16.2.6.6 Serveur DNS pour ZTNET
+21.16.2.6.5 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
 
