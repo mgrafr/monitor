@@ -2509,14 +2509,13 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 21.16.2.6.3 modifications dans NGINX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: **serveur du controleur ztnet**
 
-|image1746|
+   Créer dans /etc/nginx/conf.d un fichier de configuration pour l’accès distant 
 
-|image1747|
+   .. code-block::
 
-.. code-block::
-
-   server {
+      server {
         server_name SERVER;
          listen 80;
          access_log  /var/log/nginx/ztnet_access.log;
@@ -2524,12 +2523,25 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
          location / {
                         proxy_pass http://localhost:3000;
          }
-    }
+       }
 
-|image1748|
+   Après l’obtention du certificat Letsencrypt , le fichier ressemble à  cela:
 
+   |image1748|
 
-21.16.2.6.3 Activation du VPN
+.. admonition:: **autres serveurs**
+
+   Pour les serveurs sur les ports autres que 80 et 443, il n’y a rien à faire mais pour monitor qui écoute les ports 80 et 443 il faut :
+
+   - rediriger un port sur la box , j’ai utilisé  le port 81
+
+   - modifier la configuration de monitor.conf en ajoutant:
+
+   |image1746|
+
+   |image1747|
+
+21.16.2.6.4 Activation du VPN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
 
@@ -2609,7 +2621,7 @@ voir aussi ce § :ref:`21.16.2.4 Installer iptables`
 
 |image1742|
 
-21.16.2.6.4 Serveur DNS pour ZTNET
+21.16.2.6.6 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Duoquote/ztnet-coredns
 
