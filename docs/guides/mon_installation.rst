@@ -1974,8 +1974,8 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
 |image1591|
 
-21.16 VPN
-^^^^^^^^^
+21.16 VPN & SITE à SITE
+^^^^^^^^^^^^^^^^^^^^^^^
 21.16.1 Wireguard dans un conteneur LXC
 =======================================
 |image1631|
@@ -2535,11 +2535,11 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    - rediriger un port sur la box , j’ai utilisé  le port 81
 
+   |image1747|
+
    - modifier la configuration de monitor.conf en ajoutant:
 
    |image1746|
-
-   |image1747|
 
 21.16.2.6.4 Activation du VPN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
