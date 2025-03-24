@@ -49,7 +49,8 @@ left:450px;
 bottom:400px;
 width:100px}
 
-.gd_portail{width:60px;height:60px;position:absolute;top:820px;left:330px}
+#gd_portail{width:60px;height:45px;position:absolute;top:740px;
+	left:330px}
 /* ERREURS*/
 #erreur{position: absolute;
     top: 150px;
