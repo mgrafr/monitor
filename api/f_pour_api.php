@@ -39,7 +39,7 @@ $donnees=[
 	'date' => date("H:i:s", time())
     ];
 mysql_app1($donnees);
-//return 'OK';
+return 'OK';
 }
 function sms($contenu){
   $file="/www/monitor/python/aldz.py";
@@ -60,5 +60,6 @@ if ($conn -> connect_errno) {
   $sql="UPDATE sse SET id='".$data['id']."',state='".$data['state']."',date='".$data['date']."' WHERE num=0;";
   echo $sql;	
   $result = $conn->query($sql);	
+  return $result;
 }	
 ?>
