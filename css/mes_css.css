@@ -391,7 +391,7 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 }
 /*SSE*/
 #sse{position:relative;top:-485px;}
-#messages{position: relative;top: -570px;left:30px}
+#messages{position: relative;top: -520px;left:30px}
 #status{position: relative;top: -530px;left:50px;}
 /*recettes*/
 
@@ -591,8 +591,8 @@ left: 170px;width: 40px;}
 	.fosse_septique{left:300px;}#fosse{bottom:420px;}.aff_anni{bottom: 80px;}
 /*.aff_pluie{left: 390px;}*/
 .fond_date {right: 0px;top:0;}.aff_pluie {left: 300px;}.choix_scenes{left: 5px;width: 100%;}
-.menu-link {left: 240px;top: 10px;}.bl{top: 640px;}
-	#sse{top:-400px}#messages{top: -440px;}
+.menu-link {left: 240px;top: 10px;}.bl{top: 640px;}.sos {top: -450px;}
+	#sse{top:-400px}#messages{top: -440px;}#gd_portail {top: 500px;left: 300px;}
 #status{top: -450px;}#vanne_eau{position: relative;top: -570px;left: 380px;}	
 /*.fond_date {right: -60px;}*/
 #pression_chaud{width:50px}.pression_chaud{top: -305px;}
