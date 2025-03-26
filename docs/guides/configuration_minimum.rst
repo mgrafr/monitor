@@ -752,7 +752,7 @@ la variable:
 
 .. admonition:: **Dans Home Assistant**
 
-   - Soit on utilise SSE avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`. voir ce § :ref:`21.10.2 Python avec pyscript`
+   - Soit on utilise SSE avec un script python comme avec Domoticz mais python_script ne peut pas être utilisé car un seul import python est autorisé.Dans ce cas il faut utilisé pyscrypt et HACS; :darkblue:`dans les cas simples la 2eme solution ci-dessous est à privilégier mais pour se familiariser avec Pyscript c'est un cas interressant`. voir ce § :ref:`21.10.3 Python avec pyscript`
 
    - Soit on crée une automation :
 
@@ -827,7 +827,7 @@ substring(0, 11)=="Set Level
 |image1536|
 
 
-  Voir le paragraphe concernant les volets :ref:`8.2.4 Exemple volet roulant`
+  Voir le paragraphe concernant les volets :ref:`8.2.6 Exemple volet roulant`
 
 - La fonction **switchOnOff_setpoint()** exécute des commandes
 
