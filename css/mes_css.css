@@ -49,7 +49,7 @@ left:450px;
 bottom:400px;
 width:100px}
 
-#gd_portail{width:60px;height:45px;position:absolute;top:740px;
+#gd_portail{width:60px;height:45px;position:absolute;top:820px;
 	left:330px}
 /* ERREURS*/
 #erreur{position: absolute;
@@ -200,7 +200,7 @@ a:link, a:visited {
 #meteo {
 	background-color: #4f9ff4;}
 #retour{top:200px;}
-.sos {position:relative;top: -540px;left: 50px;width:40px;}
+.sos {position:absolute;top: 740px;left: 50px;width:40px;}
 .navbar-right{margin-right: 0;}
 
 .banner-caption h1 {
