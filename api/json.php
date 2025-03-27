@@ -1,7 +1,8 @@
 <?php
 require_once("f_pour_api.php");
-//require_once('../admin/config.php');
+include ("conf.php");
 //GET----------------------
+//if (API=='true') {echo "API non autorisée";return;}
 $app = isset($_GET['app']) ? $_GET['app'] : '';
 $name = isset($_GET['name']) ? $_GET['name'] : '';
 $serveur = isset($_GET['serveur']) ? $_GET['serveur'] : '';
@@ -17,7 +18,7 @@ $statep = isset($_POST['state']) ? $_POST['state'] : '';
 //
 if ($app=="api_rest_ha") {$retour= envoi_data($essai);echo json_encode($retour); }
 if ($app=="messages") {$retour= message($contenu,$name,$command);echo json_encode($retour); }
-if ($app=="maj") {$retour= maj($id,$state);echo json_encode($retour); }
+if ($app=="maj") {maj($id,$state);}
 if ($app=="envoi_sms") {$retour= sms($contenu);echo json_encode($retour); }
 return "erreur API";
 ?>

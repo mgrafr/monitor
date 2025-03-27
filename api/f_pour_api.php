@@ -1,8 +1,5 @@
 <?php
-define('SERVEUR','localhost');
-define('MOTDEPASSE','Idem4546');
-define('UTILISATEUR','michel');
-define('DBASE','monitor');
+
 //require_once('/admin/config.php)';
 //echo "azerty";return;
 //require_once('/fonctions.php');
@@ -36,7 +33,7 @@ $donnees=[
    'command'=> '4',
    'id' => $id,
    'state' => $state,
-	'date' => date("H:i:s", time())
+	'date' => date("H:i:s", time()+3600)
     ];
 mysql_app1($donnees);
 return 'OK';
@@ -60,6 +57,6 @@ if ($conn -> connect_errno) {
   $sql="UPDATE sse SET id='".$data['id']."',state='".$data['state']."',date='".$data['date']."' WHERE num=0;";
   echo $sql;	
   $result = $conn->query($sql);	
-  return $result;
+  return ;
 }	
 ?>
