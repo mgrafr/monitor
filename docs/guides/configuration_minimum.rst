@@ -805,6 +805,10 @@ substring(0, 11)=="Set Level
 
 - La fonction **maj_devices(plan)** récupère les données des dispositifs 
 
+- La fonction **maj_mqtt((id_x,state,ind,level=0)** modifie en temps réel l'état des dispositifs (voir sse)
+
+|image1749|
+
 - La fonction **json_idx_idm(command)** crée une table d'équivalence idm->idx ou ID
 
 .. code-block::
@@ -2498,3 +2502,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 650px
 .. |image1668| image:: ../img/image1668.webp
    :width: 450px
+.. |image1749| image:: ../img/image1749.webp
+   :width: 700px
