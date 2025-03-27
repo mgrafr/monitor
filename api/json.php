@@ -2,7 +2,7 @@
 require_once("f_pour_api.php");
 include ("conf.php");
 //GET----------------------
-//if (API=='true') {echo "API non autorisée";return;}
+if (API=='false') {echo "API non autorisée";return;}
 $app = isset($_GET['app']) ? $_GET['app'] : '';
 $name = isset($_GET['name']) ? $_GET['name'] : '';
 $serveur = isset($_GET['serveur']) ? $_GET['serveur'] : '';
