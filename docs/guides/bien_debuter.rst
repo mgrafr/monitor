@@ -1858,7 +1858,7 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
 |image407| 
 
-*le fichier conf.php est un lien symbolique de configuration.php*
+*le fichier conf.php est un lien symbolique de config.php*
 
 |image1751|
 
