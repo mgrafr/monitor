@@ -289,4 +289,5 @@ sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
 sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.lua
 sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.py
+ln /var/www/monitor/admin/config.php /var/www/monitor/api/conf.php
 exit
