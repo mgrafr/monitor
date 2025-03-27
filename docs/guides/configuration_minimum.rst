@@ -809,6 +809,8 @@ substring(0, 11)=="Set Level
 
 |image1749|
 
+|image1750|
+
 - La fonction **json_idx_idm(command)** crée une table d'équivalence idm->idx ou ID
 
 .. code-block::
@@ -2503,4 +2505,6 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1668| image:: ../img/image1668.webp
    :width: 450px
 .. |image1749| image:: ../img/image1749.webp
+   :width: 700px
+.. |image1750| image:: ../img/image1750.webp
    :width: 700px
