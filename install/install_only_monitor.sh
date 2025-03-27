@@ -78,5 +78,6 @@ msg_txt "ip du serveur = $ip4"
 sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
 sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.lua
 sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.py
+ln /var/www/monitor/admin/config.php /var/www/monitor/api/conf.php
 exit
 msg_txt "Completed Successfully!\n"
