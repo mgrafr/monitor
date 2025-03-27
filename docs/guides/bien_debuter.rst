@@ -1858,6 +1858,10 @@ Appel GET : http://192.168.1.9/monitor/api/json.php?<DATA>
 
 |image407| 
 
+*le fichier conf.php est un lien symbolique de configuration.php*
+
+|image1751|
+
 0.12.1 Les fonctions possibles
 ==============================
 - **app=="messages"** : function message($contenu,$nom,$maj)
@@ -2305,3 +2309,5 @@ function mc(variable,id)
    :width: 600px
 .. |image1682| image:: ../img/image1682.webp
    :width: 350px
+.. |image1751| image:: ../img/image1751.webp
+   :width: 260px
