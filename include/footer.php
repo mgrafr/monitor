@@ -33,7 +33,7 @@ for (attribute in maj_dev) {
 	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];console.log('idm='+id_m);}
 }
 if (id_m==null) {out_msg= 'id_m='+id_m;return;}
-		var command=state;
+		var command=state.toString().toLowerCase();
 pp[id_m].Data=command;console.log(pp[id_m].Data+command);
 console.log('command='+state);
 var fx=pp[id_m].fx; console.log(fx);if (fx=="lien_variable"){maj_services(0);}
@@ -44,9 +44,9 @@ var scoul_off=pp[id_m].coul_OFF;
 var c_l_on=pp[id_m].coullamp_ON
 var c_l_off=pp[id_m].coullamp_OFF
 var scoul="";var scoull="";	
-if (command=="On" || command=="on")  {scoul=scoul_on;scoull=c_l_on;}
-else if (command.substring(0, 9)=="Set Level")  {scoull=scoull=c_l_on;}
-else if  (command=="Off"  || command=="off" ) {scoul=scoul_off;scoull=c_l_off;}
+if (command=="on" || command=="open")  {scoul=scoul_on;scoull=c_l_on;}
+else if (command.substring(0, 9)=="set level")  {scoull=scoull=c_l_on;}
+else if  (command=="off"  || command=="closed" ) {scoul=scoul_off;scoull=c_l_off;}
 else if  (command=="group on" ) {scoul=scoul_on;scoull=c_l_on;}		
 else return;	
 console.log('sid1='+sid1+'..'+scoul);
@@ -898,8 +898,7 @@ case 5:
 	name : "0"		
 	};fenetre='color_lampes';
      break;		 
-  default:
-break;	
+	  default:
 	}
     $.ajax({
       type: "GET",
@@ -941,6 +940,7 @@ if ($domaine==IPMONITOR) $lien="http://".SSE_IP.":".SSE_PORT."/events";
 
 if (SSE=='php') {echo "
 <script>
+
     window.onload = function() {
 	// établir un flux et enregistrer les réponses sur la console
 var source = new EventSource('include/serveur_sse.php');
@@ -949,6 +949,7 @@ source.addEventListener('message', function(e) {
 document.getElementById('messages').innerHTML = e.data ;
 donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;console.log(id_x,state);
 maj_mqtt(id_x,state,0);
+$.get('ajax.php', { app:'maj', id:'', state: 'OK', command:'6'});
 }, false);
 
 source.addEventListener('open', function(e) {
