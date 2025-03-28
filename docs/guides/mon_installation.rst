@@ -349,7 +349,15 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
 21.4 Zigbee & Matter
 ^^^^^^^^^^^^^^^^^^^^
-MatterBridge est en cour de développement
+.. note::
+
+   MatterBridge est en cour de développement
+
+**Controleur USB utilisé** : Sonoff Zigbee 3.0
+
+|image1757|
+
+en cours essai du controleur LAN : SLZB-06M
 
 21.4.1 Installation de zigbee2mqtt
 ==================================
@@ -3255,3 +3263,5 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 550px
 .. |image1748| image:: ../img/image1748.webp
    :width: 520px
+.. |image1757| image:: ../img/image1757.webp
+   :width: 300px
