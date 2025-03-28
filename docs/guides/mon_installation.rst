@@ -359,6 +359,8 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
 en cours essai du controleur LAN : SLZB-06M
 
+|image1758|
+
 21.4.1 Installation de zigbee2mqtt
 ==================================
 
@@ -3264,4 +3266,6 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1748| image:: ../img/image1748.webp
    :width: 520px
 .. |image1757| image:: ../img/image1757.webp
+   :width: 300px
+.. |image1758| image:: ../img/image1758.webp
    :width: 300px
