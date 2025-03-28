@@ -44,9 +44,9 @@ left:550px;
 top: -600px;
 width:100px}
 .fosse_septique{
-position:relative;
+position:absolute;
 left:450px;
-bottom:400px;
+TOP:790px;
 width:100px}
 
 #gd_portail{width:60px;height:45px;position:absolute;top:820px;
