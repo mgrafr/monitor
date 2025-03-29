@@ -357,7 +357,7 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
 |image1757|
 
-en cours essai du controleur LAN : SLZB-06M
+en cours essai du controleur LAN : SLZB-06M , voir le § :ref:`21.4.5 Le routeur ou contrôleur SLZB-06M`
 
 |image1758|
 
@@ -472,14 +472,14 @@ Sous Shell de pve (https://tteck.github.io/Proxmox/?id=ioBroker#matterbridge-lxc
 
 |image1488|
 
-21.4.5 ajout du plugin zigbee2mqtt
-==================================
+21.4.4.1 ajout du plugin zigbee2mqtt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://github.com/Luligu/matterbridge-zigbee2mqtt
 
 |image1489|
 
-21.4.5.1  Paramètres
-""""""""""""""""""""
+21.4.4.2  Paramètres
+~~~~~~~~~~~~~~~~~~~~
 |image1490| 
 
 .. note:: 
@@ -488,9 +488,13 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 
    |image1491| 
 
-21.4.5.2  Les dispositifs
-"""""""""""""""""""""""""
+21.4.4.3  Les dispositifs
+~~~~~~~~~~~~~~~~~~~~~~~~~
 |image1493| 
+
+21.4.5 Le routeur ou contrôleur SLZB-06M
+========================================
+en cours de rédaction
 
 21.5 Asterisk (sip)
 ^^^^^^^^^^^^^^^^^^^
