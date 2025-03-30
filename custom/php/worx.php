@@ -21,7 +21,7 @@
 	<div class="col col-sm-auto text-center landroid"><img id="img_worx" src="<?php echo $lien_img;?>/custom/images/worx.webp" height="auto" alt=""/></div>		
     <div class="inclinaison text-center" ><font>Inclinaison:<font id="inclinaison" class="info">0</font>°</font></div>
 		<br><br></div></div></div>	
-	 <div style="position: relative;top: 30px;" class="col-md-6 col-lg-3"><span><b><font style="vertical-align: inherit;">Temps de travail lames&nbsp;:&nbsp;<font id="lames">0</font></font></b></span><br><b><font>Distance: <span id="distance">0</span>m</font></b><br>
+	 <div id="worx1"><span><b><font style="vertical-align: inherit;">Temps de travail lames&nbsp;:&nbsp;<font id="lames">0</font></font></b></span><br><b><font>Distance: <span id="distance">0</span>m</font></b><br>
      <b><font>Temps de travail:&nbsp;<font id="temps_travail" >0</font></font></b></div>
 	 <br>
 		
