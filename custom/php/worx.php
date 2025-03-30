@@ -22,7 +22,7 @@
     <div class="inclinaison text-center" ><font>Inclinaison:<font id="inclinaison" class="info">0</font>°</font></div>
 		<br><br></div></div></div>	
 	 <div style="position: relative;top: 30px;" class="col-md-6 col-lg-3"><span><b><font style="vertical-align: inherit;">Temps de travail lames&nbsp;:&nbsp;<font id="lames">0</font></font></b></span><br><b><font>Distance: <span id="distance">0</span>m</font></b><br>
-     <b><font >Temps de travail:&nbsp;<font id="temps_travail" >0</font></font></b></div>
+     <b><font>Temps de travail:&nbsp;<font id="temps_travail" >0</font></font></b></div>
 	 <br>
 		
 	<div class="main-buttons" style="position: relative;top: 30px;left:10px">
@@ -98,7 +98,7 @@
 	var date = new Date(worx['last_update']).toLocaleDateString("fr-FR")
     var time = new Date(worx['last_update']).toLocaleTimeString("fr-FR")
 	document.getElementById("last_update").innerHTML=date+"  "+time;
-	document.getElementById("temps_travail").innerHTML=mn_jj(worx['mower_work_time']);
+	document.getElementById("temps_travail").innerHTML=mn_jj(worx['totalTime']);
 	document.getElementById("distance").innerHTML=worx['totalDistance'];
 	document.getElementById("lames").innerHTML=mn_jj(worx['totalBladeTime']);
 	var status=worx['status'];var statut= states[status];
