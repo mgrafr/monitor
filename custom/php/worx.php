@@ -14,7 +14,12 @@
         <span class="info"><font ><font id="wifi" >0 </font></font><font >dB</font></span><br><br>	
 	 <div style="position: relative;text-align: center;"><b><font id="statut" style="font-size: 25px;margin-top: 50px"></font></b></div>
     	
-	<div class="mt-3 text-center"><span class="info"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prochaines heures de travail :&nbsp;</font></font></b> </span></div><br><br>
+	<div class="mt-3 text-center"><span class="info"><b><font style="vertical-align: inherit;">
+		<font style="vertical-align: inherit;">Prochaines heures de travail :&nbsp;<br>
+lundi : <font id="h_monday">0 </font>&nbsp;&nbsp;mardi : <font id="h_tuesday">0 </font>&nbsp;&nbsp;mercredi : <font id="h_wednesday">0 </font>&nbsp;&nbsp;
+jeudi : <font id="h_thursday">0 </font><br>vendredi : <font id="h_friday">0 </font>&nbsp;&nbsp;samedi : <font id="h_saturday">0 </font>
+dimanche : <font id="h_sunday">0 </font>			
+		</font></font></b> </span></div><br><br>
 	<div style="background-color: #91a58457;width: 450px;height: 200px;">
 			<div style="position: relative;text-align: center;"><b><font style="vertical-align: inherit;"><font id="name_worx" >0</font></font></b></div>
 	<div><span style="margin-left:60px"></span>Pente:<span id="gradient" class="info">0</span>°<span style="margin-left:200px" >Direction:</span><span id="direction" class="info">0</span>°</div>	
@@ -103,8 +108,14 @@
 	document.getElementById("lames").innerHTML=mn_jj(worx['totalBladeTime']);
 	var status=worx['status'];var statut= states[status];
 	document.getElementById("statut").innerHTML=statut;
-	
-    }
+	document.getElementById("h_monday").innerHTML=worx['monday.startTime'];
+	document.getElementById("h_tuesday").innerHTML=worx['tuesday.startTime'];
+	document.getElementById("h_wednesday").innerHTML=worx['wednesday.startTime'];
+	document.getElementById("h_thursday").innerHTML=worx['thursday.startTime'];
+	document.getElementById("h_friday").innerHTML=worx['friday.startTime'];
+	document.getElementById("h_saturday").innerHTML=worx['saturday.startTime'];	
+	document.getElementById("h_sunday").innerHTML=worx['sunday.startTime'];		
+	}
 	function docReady(fn) {
     // see if DOM is already available
     if (document.readyState === "complete" || document.readyState === "interactive") {
