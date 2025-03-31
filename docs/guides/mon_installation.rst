@@ -3278,5 +3278,5 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 300px
 .. |image1758| image:: ../img/image1758.webp
    :width: 300px
- .. |image1759| image:: ../img/image1759.webp
+.. |image1759| image:: ../img/image1759.webp
    :width: 600px
