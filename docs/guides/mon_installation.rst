@@ -1773,6 +1773,8 @@ la page dans monitor:
 
    depuis la version 3.2.4 , avec iobroker 2 répertoires peuvent être exploré, ici moderne etcalendar; indiquer ces répertoires dans admin/config.php. 
 
+|image1759|
+
 |image1421|
 
 |image1422|
@@ -3276,3 +3278,5 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 300px
 .. |image1758| image:: ../img/image1758.webp
    :width: 300px
+ .. |image1759| image:: ../img/image1759.webp
+   :width: 600px
