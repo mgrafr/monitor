@@ -1769,6 +1769,9 @@ la page dans monitor:
 
 21.14.1 la page worx.php dans custom/php 
 ========================================
+.. note::
+
+   depuis la version 3.2.4 , avec iobroker 2 répertoires peuvent être exploré, ici moderne etcalendar; indiquer ces répertoires dans admin/config.php. 
 
 |image1421|
 
@@ -2960,7 +2963,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1319| image:: ../img/image1319.webp
    :width: 489px
 .. |image1323| image:: ../img/image1323.webp
-   :width: 494px
+   :width: 443px
 .. |image1324| image:: ../img/image1324.webp
    :width: 650px
 .. |image1326| image:: ../img/image1326.webp
