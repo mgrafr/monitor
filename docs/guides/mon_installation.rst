@@ -1771,9 +1771,9 @@ la page dans monitor:
 ========================================
 .. note::
 
-   depuis la version 3.2.4 , avec iobroker 2 répertoires peuvent être exploré, ici moderne etcalendar; indiquer ces répertoires dans admin/config.php. 
+   depuis la version 3.2.4 , avec iobroker 2 répertoires peuvent être explorés, ici mower et calendar; indiquer ces répertoires dans admin/config.php. 
 
-|image1759|
+   |image1759|
 
 |image1421|
 
