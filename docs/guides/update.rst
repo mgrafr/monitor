@@ -23,6 +23,7 @@ Version en developpement 3.2.4
 - correction bug sur mur_inter.php
 - Ajout de la possibilité d'un fichier de configuration par écran de contrôle
 - Ajout d'un lien symbolique de la configuration vers le répertoire de l'API
+- modification  de fonctions.php popur intégrer 2 répertoires de io.broker (ex pour worx les repertoires  mover et calendar)
 
 Version 3.2.3 (Févier 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
