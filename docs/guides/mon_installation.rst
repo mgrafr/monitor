@@ -2378,6 +2378,8 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 
 - **sur tablette Androïd** :
 
+|image1760|
+
 - **sur linux** :
 
 21.16.2.6 Utiliser un contrôleur auto-hébergé
@@ -3280,3 +3282,5 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 300px
 .. |image1759| image:: ../img/image1759.webp
    :width: 600px
+.. |image1760| image:: ../img/image1760.webp
+   :width: 400px
