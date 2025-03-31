@@ -398,18 +398,19 @@ if ($l_iob!=""){$q=$p;$serveur_iob_on = true;
 				$iob=array();$values=array();
 	if (str_contains(OBJ_IOBROKER, ",")) {$obj_iob=explode(',',OBJ_IOBROKER);$nbi=count($obj_iob);}			
 	else {$obj_iob[0]=OBJ_IOBROKER;} 
-$ii=0;$n=0;
-while (isset($obj_iob[$ii])) {$serveur_iob_on=true;$values=[];$jj=0;
-$_id1=$obj_iob[$ii];	$id1=explode('.',$_id1);$nb_iob=count($id1);
+$ii=0;$n=0;$id4[$ii]="";
+while (isset($obj_iob[$ii])) {$serveur_iob_on=true;$jj=0;
+$_id1=$obj_iob[$ii];	$id1=explode('.',$_id1);$nb_iob=count($id1);$id4[$ii+1]=$id1[0];
+if ($id4[$ii+1] != $id4[$ii]) {$values=[];}
 if ($nb_iob>2){
-	if ($nb_iob==3){$_id2=$id1[0].".".$id1[1];}
-	if ($nb_iob==4){$_id2=$id1[0].".".$id1[1].".".$id1[2];}
-	if ($nb_iob==5){$_id2=$id1[0].".".$id1[1].".".$id1[2].".".$id1[3];}	 }									 
+	if ($nb_iob==3){$_id2=$id1[0].".".$id1[1];$vq=$id1[1];}
+	if ($nb_iob==4){$_id2=$id1[0].".".$id1[1].".".$id1[2];$vq=$id1[2];}
+	if ($nb_iob==5){$_id2=$id1[0].".".$id1[1].".".$id1[2].".".$id1[3];$vq=$id1[3];}	 }									 
 $L=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id1.".*";	
 $json_string = file_get_curl($L);//return $json_string;
 $iob_json = json_decode($json_string);
 foreach ($iob_json as $cle => $valeur){
-		$name=str_replace($_id1.".", "", $cle);				   
+		$name=str_replace($_id1.".", "", $cle);	//$name=str_replace(".","_",$name);		   
 		$iob[$n]=[
 		'num' => $n,
 		'ID' => $cle,
