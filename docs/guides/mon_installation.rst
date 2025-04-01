@@ -2181,7 +2181,7 @@ Il est possible cependant d'héberger son propre contrôleur en installant :
 
 21.16.2.1 Installation de Zerotier dans un conteneur LXC
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-**pour installer le contrôleur ZT**, dans le shell Proxmox, exécuter :
+**pour installer le serveur ZT**, dans le shell Proxmox, exécuter :
 
 .. code-block::
 
@@ -2226,7 +2226,7 @@ J'ai crée 3 clients
 
    |image1688|
 
-.. admonition:: **un poste linux** 
+.. admonition:: **un seveur linux** 
 
    sur le conteneur LXC Zerotier
 
@@ -2261,9 +2261,11 @@ Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre l
 
 |image1691|
 
-21.16.2.4 Installer iptables
-""""""""""""""""""""""""""""
-Avec Debian 12 iptables n'est pas installé:
+21.16.2.4 Installer iptables sur le serveur 
+"""""""""""""""""""""""""""""""""""""""""""
+necessaire pour l'utlisation comme VPN
+
+Avec Debian 12 , sur le CT proxmox, iptables n'est pas installé:
 
 .. code-block::
 
