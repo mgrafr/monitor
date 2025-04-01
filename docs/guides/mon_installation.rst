@@ -2492,14 +2492,6 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1720|
 
-**Activer la redirection IPv4**
-
-.. code-block::
-
-   sysctl -w net.ipv4.ip_forward=1
-
-*voir aussi le §* :ref:`21.16.1.1.a Port-forwarding`
-
 **Lancer ZTNET**
 
 .. code-block::
@@ -2544,6 +2536,14 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 21.16.2.6.2 Ajout des CT Proxmox clients
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. IMPORTANT::
+
+   Sauter les 2 paragraphes suivant si l'activation du VPN est réalisée: :ref:`21.16.2.6.4 Activation du VPN`
+
+   Dans ce cas seuls les clients portables ou distants doivent être ajoutés au controleur.
+
+   Il est toutefois possible d'affecter une IP Zerotier à toutes les VM et tous les CT et utiliser le VPN; dans ce cas les différents serveurs seront accessibles, soit par l'IP Zerotier, soit par l'IP locale
+
 .. admonition:: Ajout de monitor 
 
    Installer zerotier-one, voir le § :ref:`21.16.2.2 Création du réseau`
@@ -2573,7 +2573,6 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
    |image1732|
 
    |image1733|
-
 
 21.16.2.6.3 modifications dans NGINX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2611,7 +2610,13 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 21.16.2.6.4 Activation du VPN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-net.ipv4.ip_forward est déjà egal à 1,  il faut créer des regles :
+**Activer la redirection IPv4**
+
+.. code-block::
+
+   sysctl -w net.ipv4.ip_forward=1
+
+*voir aussi le §* :ref:`21.16.1.1.a Port-forwarding`
 
 - rechercher le nom de l’interface réseau zt
 
@@ -2696,27 +2701,6 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    zt2hosts.sh <ZONE>:<NETWORK_ID> | sudo tee -i /etc/hosts
 
 |image1745|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .. note::
 
