@@ -2382,7 +2382,45 @@ Dans l'application de la barre d'état système, sous chaque réseau, il existe 
 
 |image1760|
 
-- **sur linux** :
+- **Configuration des clients Linux** :
+
+Ouvrez /etc/sysctl.conf les machines clientes et ajouter:
+
+.. code-block::
+
+   net.ipv4.conf.all.rp_filter=2
+
+|image1736|
+
+- vérifier l'activation de net.ipv4.conf.all.rp_filter=2
+
+.. code-block::
+
+   sudo sysctl -p
+
+|image1737|
+
+- indiquez au logiciel client ZeroTier que votre réseau est autorisé à acheminer le trafic de routage par défaut.
+
+.. code-block::
+
+   zerotier-cli set <NetworkID> allowDefault=1
+
+|image1738|
+
+.. note::
+
+   Chaque fois que le service ZeroTier **client** est redémarré, la valeur de allowDefault est réinitialisée à 0. Il faut de nouveau activer la fonction VPN.
+
+Pour mettre en service, mettre hors service, arrêter ou démarrer Zerotier clienr ou serveur:
+
+.. code-block::
+
+   systemctl disable zerotier-one
+   systemctl enable zerotier-one
+   systemctl start zerotier-one
+   systemctl stop zerotier-one
+
 
 21.16.2.6 Utiliser un contrôleur auto-hébergé
 """"""""""""""""""""""""""""""""""""""""""""
@@ -2505,6 +2543,8 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    Installer zerotier-one, voir le § :ref:`21.16.2.2 Création du réseau`
 
+   Configuration, voir ce § :ref:`21.16.2.5.2 Configurer le réseau`  : **Configuration des clients Linux**
+
    |image1730|
 
    modifier la config du conteneur: nano /etc/pve/lxc/xxx.conf
@@ -2611,32 +2651,6 @@ voir aussi ce § :ref:`21.16.2.4 Installer iptables`
 - Dans les paramètres du réseau géré par Ztnet, ajoutez via votre nœud ZeroTier Server l’adresse IP.0.0.0.0/0
 
 |image1740|
-
-- Configuration des clients Linux
-
-   Ouvrez /etc/sysctl.conf les machines clientes et ajouter:
-
-.. code-block::
-
-   net.ipv4.conf.all.rp_filter=2
-
-|image1736|
-
-- vérifier l'activation de net.ipv4.conf.all.rp_filter=2
-
-.. code-block::
-
-   sudo sysctl -p
-
-|image1737|
-
-- indiquez au logiciel client ZeroTier que votre réseau est autorisé à acheminer le trafic de routage par défaut.
-
-.. code-block::
-
-   zerotier-cli set <NetworkID> allowDefault=1
-
-|image1738|
 
 21.16.2.6.5 Serveur DNS pour ZTNET
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
