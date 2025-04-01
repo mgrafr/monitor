@@ -2421,6 +2421,11 @@ Pour mettre en service, mettre hors service, arrêter ou démarrer Zerotier clie
    systemctl start zerotier-one
    systemctl stop zerotier-one
 
+21.16.2.5.3 Essai de communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+connecté sur mon smartphone à monitor
+
+|image1761|
 
 21.16.2.6 Utiliser un contrôleur auto-hébergé
 """"""""""""""""""""""""""""""""""""""""""""
@@ -3300,3 +3305,5 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 600px
 .. |image1760| image:: ../img/image1760.webp
    :width: 400px
+.. |image1761| image:: ../img/image1761.webp
+   :width: 650px
