@@ -2026,8 +2026,20 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
 
 |image1633|
 
-- mettre à jour le CT
+.. admonition:: **Dans PVE** 
 
+   Avec nano, ouvrir /etc/pve/lxc/xxx.conf et ajouter ces lignes:
+
+   .. code-block::
+
+      lxc.cgroup2.devices.allow: c 10:200 rwm
+      lxc.mount.entry: /dev/net dev/net none bind,create=dir
+
+   Changer le propriétaire de tun :
+
+   .. code-block::
+
+      chown 100000:100000 /dev/net/tun
 
 21.16.1.1.a Port-forwarding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
