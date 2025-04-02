@@ -2273,113 +2273,9 @@ Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre l
 
 |image1691|
 
-21.16.2.4 Installer iptables sur le serveur 
-"""""""""""""""""""""""""""""""""""""""""""
-necessaire pour l'utlisation comme VPN
 
-Avec Debian 12 , sur le CT proxmox, iptables n'est pas installé:
-
-.. code-block::
-
-   apt update 
-   apt install iptables-persistent
-
-|image1696|
-
-Vérification de l’installation d’IPtables
-
-|image1697|
-
-21.16.2.5 Utiliser ZeroTier comme solution VPN
-""""""""""""""""""""""""""""""""""""""""""""""
-https://docs.zerotier.com/exitnode
-
-La traduction d'adresses réseau , plus communément appelée « NAT », est une méthode par laquelle un routeur accepte des paquets sur l'adresse IP de l'expéditeur, puis échange cette adresse contre celle du routeur. 
-
-la NAT est généralement effectuée par un routeur, un serveur est également capable de l'exécuter c'est ce que nous allons faire.
-
-Il faut indiquer au noyau Linux que nous voulons transférer des paquets entre les interfaces. Pour cela il faut basculerez sur 1 **net.ipv4.ip_forward** en décommentant la ligne concernée:
-
-21.16.2.5.1 Activer la transmission IPv4 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Pour vérifier la position de net.ipv4.ip_forward:
-
-.. code-block::
-
-   sysctl net.ipv4.ip_forward
-
-|image1692|
-
-Pour modifier :darkblue:`net.ipv4.ip_forward` : 
-
-.. code-block::
-
-   nano /etc/sysctl.conf
-
-.. seealso::
-
-   le paragraphe :ref:`21.16.1.1.a Port-forwarding`
-
-Obtenir le nom de l'interface ZeroTier, elle commence par zt:
-
-.. code-block::
-
-   ip link show
-
-|image1693|
-
-Définir les variables d'environnement :
-
-.. code-block
-
-   export ZT_IF=<INTERFACE_ZT>
-   export WAN_IF=<INTERFACE_WAN>
-
-|image1694|
-
-Activer le NAT et le masquage IP :
-
-.. code-block::
-
-   iptables -t nat -A POSTROUTING -o $WAN_IF -j MASQUERADE
-
-|image1695|
-
-Autoriser la redirection du trafic :
-
-.. code-block::
-
-   iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-
-|image1698|
-
-Autoriser le transfert du trafic de l'interface ZeroTier vers l'interface WAN
-
-.. code-block::
-
-   iptables -A FORWARD -i $ZT_IF -o $WAN_IF -j ACCEPT
-
-|image1699| 
-
-Enregistrez vos nouvelles règles :
-
-.. code-block::
-
-   netfilter-persistent save
-
-|image1700| 
-
-**Redémarrer** pour vérifier que les règles de routage ont persisté.
-
-.. code-block::
-
-   iptables-save
-
-|image1701|
-
-21.16.2.5.2 Configurer le réseau
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.2.4 Configurer le réseau
+==============================
 Indiquer, dans la console web,  le nœud de sortie qui peut acheminer le trafic vers Internet.
 
 |image1702|
@@ -2433,7 +2329,7 @@ Pour mettre en service, mettre hors service, arrêter ou démarrer Zerotier clie
    systemctl start zerotier-one
    systemctl stop zerotier-one
 
-21.16.2.5.3 Essai de communication
+21.16.2.5 Essai de communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 connecté sur mon smartphone à monitor
 
