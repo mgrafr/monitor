@@ -2059,9 +2059,11 @@ pour appliquez la modification:
 
 21.16.1.2 Installation de UFW
 """""""""""""""""""""""""""""
-C'est dans le pare-feu que seront exécutées les règles IPTABLES
+.. note::
 
-Pour l'installation, voir ce § :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
+   Les règles IPTABLES peuvent être installées dans IPTABLES ou dans le Pare-feu
+
+Pour l'installation de UFW, voir ce § :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
 
 .. IMPORTANT::
 
