@@ -2108,16 +2108,18 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 .. code-block::
 
+   
+   ufw route allow in on wg0 proto tcp to 192.168.1.140 port 8006 # ex pour limiter les IP
+   ufw allow 51820/udp
    ufw allow from 192.168.1.0/24
    ufw allow from 10.0.0.0/30
-   ufw route allow in on wg0 proto tcp to 192.168.1.140 port 8006
-   ufw allow 22
-   ufw allow 51820/udp
-   ufw enable
+   ufw allow 8006
+   ufw allow http
+   ufw allow https
 
 .. note::
 
-   la route ajoutée au pare-feu permet d'afficher le serveur (ip=192.168.1.140:8006) ,qui est celui de proxmox
+   la route, ajoutée en exemple, au pare-feu permet d'afficher le serveur (ip=192.168.1.140:8006) ,qui est celui de proxmox
 
    |image1650|
 
