@@ -2128,31 +2128,28 @@ Valider les modifications:
 
 21.16.1.5 Tests
 """""""""""""""
-- affichage de monitor
-
-Pour faire le test j'ai ajouté un pair : ma tablette Samsung; ce qui explique la différence de CIDR 29 au lieu DE 30;
-
-La tablette est connectée en wifi au point d'accès de mon smartphone pour simuler une connection distante.
-
-|image1653|
-
-l' affichage de monitor apparait en tapant , comme en local: http://IP_DE_MONITOR/monitor, Internet est plus disponible sur la tablette , outlook ne peut plus être lancé ,etc..., seul le tunnel est disponible
-
-- Affichage de montor : ajouter dans le pare-feu:
-
-.. code-block::
-
-   ufw route allow in on wg0 proto tcp to 192.168.1.5 port 80
-
-|image1654|
-
-  comme pour l'accès local monitor est accéssible : http://IP/monitor   
+- **affichage de monitor**
 
 .. note::
 
-   statut de UFW après ajout de tous les serveurs concernés
+   Pour faire le test j'ai ajouté un pair : ma tablette Samsung; ce qui explique la différence de CIDR 29 au lieu DE 30;
 
-   |image1656|
+
+   |image1653|
+
+   La tablette est connectée en wifi au point d'accès de mon smartphone pour simuler une connection distante.
+
+   Wiregard pour Android est disponible sur le store:
+
+   |image1649|
+
+comme pour l'accès local monitor est accéssible : http://IP/monitor  
+
+|image1654|
+
+Wireguard pour Windows : https://download.wireguard.com/windows-client/wireguard-installer.exe
+
+|image1656|
 
 - Test Ping
 
@@ -3045,11 +3042,11 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1653| image:: ../img/image1653.webp
    :width: 700px
 .. |image1654| image:: ../img/image1654.webp
-   :width: 548px
+   :width: 600px
 .. |image1655| image:: ../img/image1655.webp
    :width: 700px
 .. |image1656| image:: ../img/image1656.webp
-   :width: 400px
+   :width: 650px
 .. |image1657| image:: ../img/image1657.webp
    :width: 400px
 .. |image1681| image:: ../img/image1681.webp
