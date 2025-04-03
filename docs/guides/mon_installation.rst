@@ -2057,11 +2057,8 @@ pour appliquez la modification:
 
 |image1636|
 
-21.16.1.2 Installation de UFW
-"""""""""""""""""""""""""""""
-.. note::
-
-   Les règles IPTABLES peuvent être installées dans IPTABLES ou dans le Pare-feu
+21.16.1.2 Installation de UFW et redirection de port
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Pour l'installation de UFW, voir ce § :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
 
@@ -2099,17 +2096,13 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1647|
 
-21.16.1.4 Configuration de UFW et IPTABLES
-""""""""""""""""""""""""""""""""""""""""""
-21.16.1.4.1 Autorisations dans UFW
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+21.16.1.4 Configuration de UFW
+""""""""""""""""""""""""""""""
 - autoriser les ports:
 
 .. code-block::
-
    
-   ufw route allow in on wg0 proto tcp to 192.168.1.140 port 8006 # ex pour limiter les IP
+   ufw route allow in on wg0 proto tcp to 192.168.1.140 port 8006 # **ex pour limiter les IP**
    ufw allow 51820/udp
    ufw allow from 192.168.1.0/24
    ufw allow from 10.0.0.0/30
@@ -2125,43 +2118,25 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1651|
 
-21.16.1.4.2 Etablir les routes, dans UFW ou IPTABLES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Valider les modifications:
 
-- TRANSFERT ET MASQUAGE DE PAQUETS : éditer le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :
+.. code-block::
+
+   ufw reload
 
 |image1648|
 
-- Modifiez le fichier /etc/ufw/before.rules (ou si vous utilisez des adresses IPv6, le fichier etc/ufw/before6.rules) pour ajouter, à la le bloc suivant:
-
-.. code-block::
-
-   *nat
-   :POSTROUTING ACCEPT [0:0]
-   -A POSTROUTING -o eth0 -j MASQUERADE
-   COMMIT
-
-|image1649|
-
-.. note::
-
-   Pour connaitre le no de l'interface (ici eth0) : **ip -brief address show**
-
-   |image1652|
-
-.. code-block::
-
-   sudo systemctl restart ufw.
-
 21.16.1.5 Tests
 """""""""""""""
-- affichage de l'interface graphique de Proxmox
+- affichage de monitor
 
 Pour faire le test j'ai ajouté un pair : ma tablette Samsung; ce qui explique la différence de CIDR 29 au lieu DE 30;
 
+La tablette est connectée en wifi au point d'accès de mon smartphone pour simuler une connection distante.
+
 |image1653|
 
-l' affichage de Proxmox apparait en tapant: https://192.168.1.140:8006, Internet n'est plus disponible sur la tablette , outlook ne peut plus être lancé ,etc..., seul le tunnel est disponible
+l' affichage de monitor apparait en tapant , comme en local: http://IP_DE_MONITOR/monitor, Internet est plus disponible sur la tablette , outlook ne peut plus être lancé ,etc..., seul le tunnel est disponible
 
 - Affichage de montor : ajouter dans le pare-feu:
 
