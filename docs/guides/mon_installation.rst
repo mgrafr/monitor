@@ -2075,7 +2075,7 @@ Pour l'installation de UFW, voir ce § :ref:`21.12.1 Installation: dans un conte
 """"""""""""""""""""""""""""""""""""""""
 |image1637|
 
-- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port et supprimer les iptables; comme nous utilisons UFW, nous pouvons omettre ces lignes de notre configuration WireGuard et modifier à la place la configuration d'UFW
+- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port ; Dans le cas où les IPTABLES sont ajoutées dans UFW,  les supprimer de la configuration WireGuard;  Pour modifier la configuration d'UFW :  :ref:`21.16.1.4.2 Etablir les routes, dans UFW ou IPTABLES`
 
 |image1638|
 
