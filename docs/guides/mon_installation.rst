@@ -2042,10 +2042,12 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    .. code-block::
 
       chown 100000:100000 /dev/net/tun
+   
+   |image1762|
 
 21.16.1.1.a Port-forwarding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-dans /etc/sysctl.conf, vérifier que le transfert de port (port-forwarding) est activé:
+dans /etc/sysctl.conf, vérifier que le transfert de port (port-forwarding) est activé (normalement activé avec le script de tteck):
 
   net.ipv4.ip_forward=1
 
@@ -3201,3 +3203,5 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 400px
 .. |image1761| image:: ../img/image1761.webp
    :width: 650px
+.. |image1762| image:: ../img/image1762.webp
+   :width: 437px
