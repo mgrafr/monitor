@@ -2155,6 +2155,10 @@ Wireguard pour Windows : https://download.wireguard.com/windows-client/wireguard
 
 |image1645|
 
+Mon WGDashbord
+
+|image1652|
+
 21.16.1.6 Mises à jour Wireguard & WGDashboard
 """"""""""""""""""""""""""""""""""""""""""""""
 |image1644|
@@ -3038,7 +3042,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1651| image:: ../img/image1651.webp
    :width: 500px
 .. |image1652| image:: ../img/image1652.webp
-   :width: 650px
+   :width: 700px
 .. |image1653| image:: ../img/image1653.webp
    :width: 700px
 .. |image1654| image:: ../img/image1654.webp
