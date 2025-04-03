@@ -2016,6 +2016,8 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
 21.16.1.1 Installation de Wireguard dans un conteneur LXC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Pour cela on peut utiliser le script de tteck sur Github
+
 |image1632|
 
 https://community-scripts.github.io/ProxmoxVE/
