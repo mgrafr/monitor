@@ -2099,8 +2099,11 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 
 |image1647|
 
-21.16.1.4 Configuration de UFW
-""""""""""""""""""""""""""""""
+21.16.1.4 Configuration de UFW et IPTABLES
+""""""""""""""""""""""""""""""""""""""""""
+21.16.1.4.1 Autorisations dans UFW
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 - autoriser les ports:
 
 .. code-block::
@@ -2119,6 +2122,9 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
    |image1650|
 
 |image1651|
+
+21.16.1.4.2 Etablir les routes, dans UFW ou IPTABLES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - TRANSFERT ET MASQUAGE DE PAQUETS : éditer le fichier /etc/ufw/sysctl.conf sur le POINT B (en tant que root) et MODIFIER les lignes suivantes :
 
