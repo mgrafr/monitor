@@ -2163,8 +2163,8 @@ Mon WGDashbord
 """"""""""""""""""""""""""""""""""""""""""""""
 |image1644|
 
-21.16.2 Zerotier dans un conteneur LXC
-======================================
+21.16.2 Zerotier et ZTNET dans un conteneur LXC
+===============================================
 .. Important::
 
    Si vous souhaitez uniquement accéder à distance à un seul site à partir de différents serveurs, une installation de Wireguard sur votre réseau domestique, dans un CT proxmox est la solution la plus simple à mettre en oeuvre.
@@ -2175,169 +2175,19 @@ Il existe le contrôleur ZT propre à my.zerotier.com qui peut être utilisé fa
 
 Il est possible cependant d'héberger son propre contrôleur, **pour éviter la connection à un tiers**,  en installant :
 
-- soit https://github.com/key-networks/ztncui , *installé par défaut avec le script du prochain paragraphe*
+- soit https://github.com/key-networks/ztncui , *installé par défaut avec le script de tteck concernant Zerotier*
 
 - soit https://github.com/dec0dOS/zero-ui 
 
-- soit https://ztnet.network/installation/docker-compose
+- soit https://ztnet.network/installation/docker-compose, **objet de tutoriel**
 
 |image1683|
 
-**installer le pare-feu** : voir ces § :ref:`21.16.1.4 Configuration de UFW` & :ref:`21.2 Domoticz`
-
-|image1711|
-
-21.16.2.1 Installation de Zerotier dans un conteneur LXC
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-**pour installer le serveur ZT**, dans le shell Proxmox, exécuter :
-
-.. code-block::
-
-   bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/zerotier-one.sh)"
-
-voir le site: https://community-scripts.github.io/ProxmoxVE/
-
-.. IMPORTANT::
-
-   Ajouter à la config du conteneur :
-
-   |image1684|
-
-   Pour un conteneur privilégié la 2eme ligne (/dev/net) suffit
-
-   .. code-block::
-
-      lxc.cgroup2.devices.allow = c 10:200 rwm
-      lxc.mount.entry: /dev/net dev/net none bind,create=dir
-     
-   |image1685|
-
-21.16.2.2 Création du réseau
-""""""""""""""""""""""""""""
-Allez sur my.zerotier.com et créez un compte.
-
-La documentation est bien faite : https://docs.zerotier.com/start
-
-J'ai crée 3 clients 
-
-.. admonition:: **un poste Android** 
-
-   sur ma tablette Samsung depuis l'App store
-
-   |image1687|
-
-.. admonition:: **un poste Windows** 
-
-   sur mon PC portable
-
-   |image1686|
-
-   |image1688|
-
-.. admonition:: **un seveur linux** 
-
-   sur le conteneur LXC Zerotier
-
-   exécuter:
-
-   .. code-block::
-
-      zerotier-cli join <ID réseau>
-
-   |image1689|
-
-   .. note::
-
-      Pour installer Zerotier-one sur un poste linux existant (CT ou VM):
-
-      .. code-block::
-
-         curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/main/doc/contact%40zerotier.com.gpg' | gpg --import && \
-         if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | bash; fi
-
-Maintenant que le logiciel ZeroTier est exécuté sur le serveur et les clients, il faut les connecter au réseau dans la console Web ZeroTier.
-
-Cochez les cases comme sur l'image ci-dessous, pour les autoriser à rejoindre le réseau. Le contrôleur attribuera une adresse IP au serveur et aux clients 
-
-|image1690|
-
-21.16.2.3 Vérifier la communication entre les hôtes
+21.16.2.1 Utiliser le contrôleur auto-hébergé ZTNET
 """""""""""""""""""""""""""""""""""""""""""""""""""
-.. code-block::
-
-   ping -c 5 <IP d'un Hôte>
-
-|image1691|
-
-
-21.16.2.4 Configurer le réseau
-==============================
-Indiquer, dans la console web,  le nœud de sortie qui peut acheminer le trafic vers Internet.
-
-|image1702|
-
-Dans l'application de la barre d'état système, sous chaque réseau, il existe une option « Autoriser la valeur par défaut ». Cochez cette case pour utiliser votre nœud de sortie.
-
-- **sur Windows** :
-
-|image1703|
-
-- **sur tablette Androïd** :
-
-|image1760|
-
-- **Configuration des clients Linux** :
-
-Ouvrez /etc/sysctl.conf les machines clientes et ajouter:
-
-.. code-block::
-
-   net.ipv4.conf.all.rp_filter=2
-
-|image1736|
-
-- vérifier l'activation de net.ipv4.conf.all.rp_filter=2
-
-.. code-block::
-
-   sudo sysctl -p
-
-|image1737|
-
-- indiquez au logiciel client ZeroTier que votre réseau est autorisé à acheminer le trafic de routage par défaut.
-
-.. code-block::
-
-   zerotier-cli set <NetworkID> allowDefault=1
-
-|image1738|
-
-.. note::
-
-   Chaque fois que le service ZeroTier **client** est redémarré, la valeur de allowDefault est réinitialisée à 0. Il faut de nouveau activer la fonction VPN.
-
-Pour mettre en service, mettre hors service, arrêter ou démarrer Zerotier clienr ou serveur:
-
-.. code-block::
-
-   systemctl disable zerotier-one
-   systemctl enable zerotier-one
-   systemctl start zerotier-one
-   systemctl stop zerotier-one
-
-21.16.2.5 Essai de communication
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-connecté sur mon smartphone à monitor
-
-|image1761|
-
-21.16.2.6 Utiliser un contrôleur auto-hébergé
-""""""""""""""""""""""""""""""""""""""""""""
-j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné correctement; j’ai utilisé ZTNET,solution décrite ci-après.
+j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné correctement; j’ai utilisé ZTNET dans Docker, solution décrite ci-après.
 
 **Création du conteneur privilégié LXC avec Docker; on utilise le script de tteck** :
-
-Pour la création d'un conteneur non privilégié, voir le § :ref:`21.16.2.1 Installation de Zerotier dans un conteneur LXC`
 
 .. code-block::
  
@@ -2357,8 +2207,8 @@ Pour la création d'un conteneur non privilégié, voir le § :ref:`21.16.2.1 In
 
 |image1707|
 
-21.16.2.6.1 Installer ZTNET
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.2.2 Installer ZTNET
+"""""""""""""""""""""""""
 **Créer un dossier /opt/ztnet et télécharger le fichier docker-compose.yml**
 
 .. code-block::
@@ -2438,8 +2288,8 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1727|
 
-21.16.2.6.2 Ajout des CT Proxmox clients
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.2.3 Ajout des CT Proxmox clients
+""""""""""""""""""""""""""""""""""""""
 .. IMPORTANT::
 
    Sauter les 2 paragraphes suivant si l'activation du VPN est réalisée: :ref:`21.16.2.6.4 Activation du VPN`
@@ -2478,8 +2328,8 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    |image1733|
 
-21.16.2.6.3 modifications dans NGINX
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.2.4 modifications dans NGINX
+""""""""""""""""""""""""""""""""""
 .. admonition:: **serveur du controleur ztnet**
 
    Créer dans /etc/nginx/conf.d un fichier de configuration pour l’accès distant 
@@ -2512,8 +2362,8 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
    |image1746|
 
-21.16.2.6.4 Activation du VPN
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.2.5 Activation du VPN
+"""""""""""""""""""""""""""
 **Activer la redirection IPv4**
 
 .. code-block::
@@ -2566,8 +2416,8 @@ voir aussi ce § :ref:`21.16.2.4 Installer iptables`
 
 |image1740|
 
-21.16.2.6.5 Serveur DNS pour ZTNET
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.2.6 Serveur DNS pour ZTNET
+""""""""""""""""""""""""""""""""
 https://github.com/Duoquote/ztnet-coredns
 
 .. important::
