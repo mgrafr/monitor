@@ -2165,9 +2165,15 @@ Mon WGDashbord
 
 21.16.2 Zerotier dans un conteneur LXC
 ======================================
+.. Important::
+
+   Si vous souhaitez uniquement accéder à distance à un seul site à partir de différents serveurs, une installation de Wireguard sur votre réseau domestique, dans un CT proxmox est la solution la plus simple à mettre en oeuvre.
+
+   Si vous disposez de plusieurs sites et de plusieurs serveurs, Zerotier est une solution qui répond à ce besoin mais avec quelques difficultés de mise en oeuvre (avec Proxmox) 
+
 Il existe le contrôleur ZT propre à my.zerotier.com qui peut être utilisé facilement et gratuitement. Il est utile de commencer par l'utiliser et d'installer simplement ZT sur d'autres appareils.
 
-Il est possible cependant d'héberger son propre contrôleur en installant :
+Il est possible cependant d'héberger son propre contrôleur, **pour éviter la connection à un tiers**,  en installant :
 
 - soit https://github.com/key-networks/ztncui , *installé par défaut avec le script du prochain paragraphe*
 
