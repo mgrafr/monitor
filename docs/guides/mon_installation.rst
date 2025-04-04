@@ -2184,7 +2184,7 @@ Il est possible cependant d'héberger son propre contrôleur, **pour éviter la 
 - soit https://ztnet.network/installation/docker-compose
 
 21.16.2.1 Utiliser un contrôleur auto-hébergé
-""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""
 
 j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné correctement; j’ai utilisé ZTNET dans Docker, solution décrite ci-après.
 
@@ -2269,7 +2269,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1719|
 
-**Ajouter des membres** :voir ce § :ref:`21.16.2.2 Création du réseau` pour la création des clients sur linux,Androïd, Windows
+**Ajouter des membres** :
 
 - un pc windows
 
@@ -2301,9 +2301,9 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 .. admonition:: Ajout de monitor 
 
-   Installer zerotier-one, voir le § :ref:`21.16.2.2 Création du réseau`
+   Installer zerotier-one, 
 
-   Configuration, voir ce § :ref:`21.16.2.5.2 Configurer le réseau`  : **Configuration des clients Linux**
+   Configuration, 
 
    |image1730|
 
@@ -2394,7 +2394,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1735|
 
-voir aussi ce § :ref:`21.16.2.4 Installer iptables`
+Installer iptables`
 
 - Installer iptables-persistent et sauver les règles 
 
