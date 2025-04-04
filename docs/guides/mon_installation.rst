@@ -2188,25 +2188,6 @@ Il est possible cependant d'héberger son propre contrôleur, **pour éviter la 
 
 j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné correctement; j’ai utilisé ZTNET dans Docker, solution décrite ci-après.
 
-**Création du conteneur privilégié LXC avec Docker; on utilise le script de tteck** :
-
-.. code-block::
- 
-   bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/docker.sh)"
-
-|image1713|
-
-|image1714|
-
-|image1706|
-
-**Ajouter cette ligne à la configuration du Conteneur**
-
-.. code-block::
-
-   lxc.mount.entry: /dev/net dev/net none bind,create=dir
-
-|image1707|
 
 
 
