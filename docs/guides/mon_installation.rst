@@ -2183,12 +2183,291 @@ Il est possible cependant d'héberger son propre contrôleur, **pour éviter la 
 
 - soit https://ztnet.network/installation/docker-compose
 
-
+ZTNET est l'app la plus récente
 
 21.16.2.1 Utiliser un contrôleur auto-hébergé
 """""""""""""""""""""""""""""""""""""""""""""
 
 j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné correctement; j’ai utilisé ZTNET dans Docker, solution décrite ci-après.
+
+**Création du conteneur privilégié LXC avec Docker; on utilise le script de tteck** :
+
+.. code-block::
+ 
+   bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/docker.sh)"
+
+|image1713|
+
+|image1714|
+
+|image1706|
+
+**Ajouter cette ligne à la configuration du Conteneur**
+
+.. code-block::
+
+   lxc.mount.entry: /dev/net dev/net none bind,create=dir
+
+|image1707|
+
+21.16.2.2 Installer ZTNET
+"""""""""""""""""""""""""
+**Créer un dossier /opt/ztnet et télécharger le fichier docker-compose.yml**
+
+.. code-block::
+
+   mkdir /opt/ztnet
+   cd /opt/ztnet
+   wget -O docker-compose.yml https://raw.githubusercontent.com/sinamics/ztnet/main/docker-compose.yml
+
+|image1704|
+
+**modifier l'IP du Conteneur dans docker-compose.yml**
+
+.. code-block::
+
+   sed -i "s|http://localhost:3000|http://$(hostname -I | cut -d' ' -f1):3000|" docker-compose.yml
+
+|image1708|
+
+**Modifiez la configuration du conteneur Zerotier pour utiliser directement le réseau de l’hôte.**
+
+le conteneur va créer des interfaces zt# sur le système hôte, imitant le comportement d’une installation native ZeroTier One. Cette modification intègre le conteneur Zerotier au réseau de l’hôte
+
+Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
+
+.. code-block::
+
+    network_mode: "host"
+    #networks:
+    #  - app-network
+    #ports:
+    #  - "9993:9993/udp"
+    ZT_ADDR: http://192.168.1.68:9993
+
+|image1712|
+
+|image1720|
+
+**Lancer ZTNET**
+
+.. code-block::
+   
+   docker compose up -d
+
+**Dans un navigateur ouvrir l’application web**
+
+|image1709|
+
+|image1710|
+
+**Créer un réseau et ajouter le controleur aux membres**
+
+.. code-block::
+
+   docker exec zerotier zerotier-cli join <network_id>
+
+|image1715|
+
+|image1719|
+
+**Ajouter des membres** :
+
+- un pc windows
+
+|image1716|
+
+- **un smartphone Androïd**
+
+|image1717|
+
+|image1718|
+
+ **ping sur le PC Windows depuis le controleur**
+
+|image1721|
+
+**ping sur le Controleur depuis depuis un CT Proxmox**
+
+|image1727|
+
+21.16.2.3 Ajout des CT Proxmox clients
+""""""""""""""""""""""""""""""""""""""
+.. IMPORTANT::
+
+  
+
+   Dans ce cas seuls les clients portables ou distants doivent être ajoutés au controleur.
+
+   Il est toutefois possible d'affecter une IP Zerotier à toutes les VM et tous les CT et utiliser le VPN; dans ce cas les différents serveurs seront accessibles, soit par l'IP Zerotier, soit par l'IP locale
+
+.. admonition:: Ajout de monitor 
+
+   Installer zerotier-one, 
+
+   Configuration, 
+
+   |image1730|
+
+   modifier la config du conteneur: nano /etc/pve/lxc/xxx.conf
+
+   |image1728|
+
+   Vérifier la présence de l'interface ztxxxxxxx
+
+   |image1729|
+
+.. admonition:: Ajout d'autres clients
+
+   Procéder comme pour monitor
+
+   Affichage dans ztnet:
+
+   |image1731|
+
+.. admonition:: essai : affichage de monitor & io.broker
+
+   |image1732|
+
+   |image1733|
+
+21.16.2.4 modifications dans NGINX
+""""""""""""""""""""""""""""""""""
+.. admonition:: **serveur du controleur ztnet**
+
+   Créer dans /etc/nginx/conf.d un fichier de configuration pour l’accès distant 
+
+   .. code-block::
+
+      server {
+        server_name SERVER;
+         listen 80;
+         access_log  /var/log/nginx/ztnet_access.log;
+         error_log  /var/log/nginx/ztnet_error.log;
+         location / {
+                        proxy_pass http://localhost:3000;
+         }
+       }
+
+   Après l’obtention du certificat Letsencrypt , le fichier ressemble à  cela:
+
+   |image1748|
+
+.. admonition:: **autres serveurs**
+
+   Pour les serveurs sur les ports autres que 80 et 443, il n’y a rien à faire mais pour monitor qui écoute les ports 80 et 443 il faut :
+
+   - rediriger un port sur la box , j’ai utilisé  le port 81
+
+   |image1747|
+
+   - modifier la configuration de monitor.conf en ajoutant:
+
+   |image1746|
+
+21.16.2.5 Activation du VPN
+"""""""""""""""""""""""""""
+**Activer la redirection IPv4**
+
+.. code-block::
+
+   sysctl -w net.ipv4.ip_forward=1
+
+*voir aussi le §* :ref:`21.16.1.1.a Port-forwarding`
+
+- rechercher le nom de l’interface réseau zt
+
+.. code-block::
+
+   ip link show
+
+|image1739|
+
+- Créer les règles
+
+.. code-block::
+
+   PHY_IFACE=eth0
+   ZT_IFACE=ztxxxxxxx
+   #
+   iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE
+   iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT
+   iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+|image1735|
+
+Installer iptables`
+
+- Installer iptables-persistent et sauver les règles 
+
+.. code-block::
+
+   apt install iptables-persistent
+   sh -c 'iptables-save > /etc/iptables/rules.v4'
+
+|image1734|
+
+- redémarrer le serveur pour vérifier que les règles iptables ont été correctement enregistrées. 
+
+.. code-block::
+
+   iptables-save
+
+|image1741|
+
+- Dans les paramètres du réseau géré par Ztnet, ajoutez via votre nœud ZeroTier Server l’adresse IP.0.0.0.0/0
+
+|image1740|
+
+21.16.2.6 Serveur DNS pour ZTNET
+""""""""""""""""""""""""""""""""
+https://github.com/Duoquote/ztnet-coredns
+
+.. important::
+
+   ZeroNSD de Zerotier est actuellement incompatible avec ZTNet, car l'intégration entre ces deux services n'a pas encore été implémentée. Cette fonctionnalité sera intégrée à la version 2.0 de Zerotier, bien que la date de sortie exacte soit actuellement incertaine.
+
+**Générer un jeton pour l'API REST**
+
+|image1724|
+
+**Installer curl & jq et exporter le jeton**
+
+.. code-block::
+
+   apt install curl jq
+   export ZTNET_API_TOKEN='your-api-token'
+
+|image1743|
+
+**enregistrer ce script : zt2hosts.sh depuis le site de ZTNET** et le rendre exécutable:
+
+https://ztnet.network/usage/create_dns_host#obtain-the-script
+
+.. code-block::
+
+   nano /opt/ztnet/zt2hosts.sh
+   chmod +x zt2hosts.sh
+
+|image1744|
+
+**exécuter le script** qui copie le résultat dans /etc/hosts
+
+.. code-block::
+
+   zt2hosts.sh <ZONE>:<NETWORK_ID> | sudo tee -i /etc/hosts
+
+|image1745|
+
+.. note::
+
+   Pour installer nano dans un conteneur Docker:
+
+   .. code-block::
+
+      docker exec <NOM DU CONTENEUR> bash -c 'apt-get -y update && apt -y install nano'
+
+   |image1726|
 
 
 
