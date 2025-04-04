@@ -3032,7 +3032,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1643| image:: ../img/image1643.webp
    :width: 700px
 .. |image1644| image:: ../img/image1644.webp
-   :width: 480px
+   :width: 300px
 .. |image1645| image:: ../img/image1645.webp
    :width: 700px
 .. |image1646| image:: ../img/image1646.webp
