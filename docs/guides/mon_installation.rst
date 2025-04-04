@@ -2293,7 +2293,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 """"""""""""""""""""""""""""""""""""""
 .. IMPORTANT::
 
-   Sauter les 2 paragraphes suivant si l'activation du VPN est réalisée: :ref:`21.16.2.6.4 Activation du VPN`
+  
 
    Dans ce cas seuls les clients portables ou distants doivent être ajoutés au controleur.
 
