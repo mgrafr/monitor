@@ -2183,7 +2183,7 @@ Il est possible cependant d'héberger son propre contrôleur, **pour éviter la 
 
 - soit https://ztnet.network/installation/docker-compose, objet de ce tutoriel
 
- 21.16.2.1 Utiliser le contrôleur auto-hébergé ZTNET
+21.16.2.1 Utiliser le contrôleur auto-hébergé ZTNET
 """""""""""""""""""""""""""""""""""""""""""""""""""
 j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné correctement; j’ai utilisé ZTNET dans Docker, solution décrite ci-après.
 
