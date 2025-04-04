@@ -2014,8 +2014,8 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 
 |image1634|
 
-21.16.1.1 Installation de Wireguard dans un conteneur LXC
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+21.16.1.1 Installation de Wireguard
+"""""""""""""""""""""""""""""""""""
 Pour cela on peut utiliser le script de tteck sur Github
 
 |image1632|
@@ -2045,8 +2045,8 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    
    |image1762|
 
-21.16.1.1.a Port-forwarding
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.16.1.2 Port-forwarding
+"""""""""""""""""""""""""
 dans /etc/sysctl.conf, vérifier que le transfert de port (port-forwarding) est activé (normalement activé avec le script de tteck):
 
   net.ipv4.ip_forward=1
@@ -2057,7 +2057,7 @@ pour appliquez la modification:
 
 |image1636|
 
-21.16.1.2 Installation de UFW et redirection de port
+21.16.1.3 Installation de UFW et redirection de port
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
 Pour l'installation de UFW, voir ce § :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
@@ -2068,7 +2068,7 @@ Pour l'installation de UFW, voir ce § :ref:`21.12.1 Installation: dans un conte
 
    |image1657|
 
-21.16.1.3 Configuration avec WGDashboard
+21.16.1.4 Configuration avec WGDashboard
 """"""""""""""""""""""""""""""""""""""""
 |image1637|
 
@@ -2100,7 +2100,7 @@ Wiregard pour Android est disponible sur le store:
 
 |image1649|
 
-21.16.1.4 Configuration de UFW
+21.16.1.5 Configuration de UFW
 """"""""""""""""""""""""""""""
 - autoriser les ports:
 
@@ -2130,7 +2130,7 @@ Valider les modifications:
 
 |image1648|
 
-21.16.1.5 Tests
+21.16.1.6 Tests
 """""""""""""""
 - **affichage de monitor**
 
@@ -2159,7 +2159,7 @@ Mon WGDashbord
 
 |image1652|
 
-21.16.1.6 Mises à jour Wireguard & WGDashboard
+21.16.1.7 Mises à jour Wireguard & WGDashboard
 """"""""""""""""""""""""""""""""""""""""""""""
 |image1644|
 
