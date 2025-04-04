@@ -1,10 +1,10 @@
 21. – Mon installation
----------------------- 
+********************** 
 
 |image1655|
 
 21.1 Proxmox
-^^^^^^^^^^^^
+============
 C’est la base du système, il doit être installé en premier, ensuite :
 
 -	Un conteneur ou une VM  pour Lemp & Monitor
@@ -31,12 +31,12 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-i
    |image1027|
  
 21.1.1 installation de VM ou CT par l’interface graphique : IP :8006
-====================================================================
+--------------------------------------------------------------------
  
 |image1028|
 
 21.1.2 installation automatique de VM ou CT : https://github.com/tteck/Proxmox
-==============================================================================
+------------------------------------------------------------------------------
 choisir le fichier d’installation : ex Conteneur LXC Debian 11
 	 
 |image1029|
@@ -63,11 +63,11 @@ Ici : https://github.com/tteck/Proxmox/raw/main/ct/debian.sh
 
 
 21.1.3 installation automatique d’un conteneur LXC,LEMP & Monitor
-=================================================================
+-----------------------------------------------------------------
 Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
 21.1.4 Aperçu des VM et CT installés
-====================================
+------------------------------------
  
 |image1034|
 
@@ -76,7 +76,7 @@ Voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ moni
    *sous Proxmox également, en conteneur, voir le site http://domo-site.fr/accueil/dossiers/53*
 
 21.1.5 Update Version Debian 
-============================
+----------------------------
 **Exemple , updater Bullseye vers Bookworm**
 
 .. seealso:: *https://www.debian.org/releases/stable/amd64/release-notes/ch-upgrading.fr.html#system-status*
@@ -154,7 +154,7 @@ Mise à jour vers une nouvelle version:
 |image1074|
 
 21.1.6 Datacenter Manager
-==========================
+-------------------------
 un seul affichage pour gérer lusieurs serveurs Proxox
 
 |image1681|
@@ -165,7 +165,7 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
 
 21.2 Domoticz
-^^^^^^^^^^^^^
+=============
 *Installation depuis la version 2024 dans un conteneur LCX*
 
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
@@ -330,7 +330,7 @@ un seul affichage pour gérer lusieurs serveurs Proxox
    |image1324|      
 
 21.3 Zwave
-^^^^^^^^^^
+==========
 **Installation de zwave-js-ui**
 
 . dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
@@ -348,7 +348,7 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 |image1041|
 
 21.4 Zigbee & Matter
-^^^^^^^^^^^^^^^^^^^^
+====================
 .. note::
 
    MatterBridge est en cour de développement
@@ -362,7 +362,7 @@ en cours essai du controleur LAN : SLZB-06M , voir le § :ref:`21.4.5 Le routeur
 |image1758|
 
 21.4.1 Installation de zigbee2mqtt
-==================================
+----------------------------------
 
 -	sous Docker : http://domo-site.fr/accueil/dossiers/88
 
@@ -379,7 +379,7 @@ en cours essai du controleur LAN : SLZB-06M , voir le § :ref:`21.4.5 Le routeur
 .. note:: *Les commentaires du paragraphe précédent s'appliquent également*
 
 21.4.2 Mise à jour de zigbee2mqtt
-=================================
+---------------------------------
 Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Update Version Debian`
 
 .. admonition:: **Pour mettre à jour Zigbee2MQTT vers la dernière version**
@@ -443,7 +443,7 @@ Si l'OS du conteneur LXC peut aussi être mis à jour voir ce § :ref:`21.1.5 Up
       npm start
 
 21.4.3 Télécommande Zigbee 3.0, zigbee2mqtt
-===========================================
+-------------------------------------------
 |image1406|
 
 https://www.zigbee2mqtt.io/devices/FUT089Z.html
@@ -461,7 +461,7 @@ Pour utiliser la télécommande directement avec zigbee2mqtt:
 **la télécommande fonctionnera même avec Zigbee2MQTT en panne.**
 
 21.4.4 installation de MatterBridge
-===================================
+-----------------------------------
 Dans un conteneur Proxmox LXC:
 
 Sous Shell de pve (https://tteck.github.io/Proxmox/?id=ioBroker#matterbridge-lxc) :
@@ -473,13 +473,13 @@ Sous Shell de pve (https://tteck.github.io/Proxmox/?id=ioBroker#matterbridge-lxc
 |image1488|
 
 21.4.4.1 ajout du plugin zigbee2mqtt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://github.com/Luligu/matterbridge-zigbee2mqtt
 
 |image1489|
 
 21.4.4.2  Paramètres
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 |image1490| 
 
 .. note:: 
@@ -489,21 +489,21 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
    |image1491| 
 
 21.4.4.3  Les dispositifs
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1493| 
 
 21.4.5 Le routeur ou contrôleur SLZB-06M
-========================================
+----------------------------------------
 en cours de rédaction
 
 21.5 Asterisk (sip)
-^^^^^^^^^^^^^^^^^^^
+===================
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
 
 .. note:: *Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.*
 
 21.6 MQTT (mosquito)
-^^^^^^^^^^^^^^^^^^^^
+====================
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/47
 
 *Installation dans un CT Proxmox* , mon installation actuelle
@@ -515,7 +515,7 @@ en cours de rédaction
 .. note:: *Si la mise à jour de monitor par MQTT-websockets n'est pas activée, comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.*
 
 21.6.1 Certificats 
-==================
+------------------
 
 .. admonition:: **Obtention de certificats pour websockets**
 
@@ -844,12 +844,12 @@ pour le créer (fichier:pass user:michel):
 *Mosquitto est alors configuré pour utiliser wws.*
 
 21.6.2 Javascripts et websockets 
-================================
+--------------------------------
 .. seealso:: *https://fr.javascript.info/websocket*
 
 
 21.7 Zoneminder
-^^^^^^^^^^^^^^^
+===============
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/24
 
 .. warning:: **Ce serveur est nécessaire pour**
@@ -865,7 +865,7 @@ pour le créer (fichier:pass user:michel):
 |image1045|
 
 21.8 Plex
-^^^^^^^^^
+=========
 *Installation*
 
 . dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/95
@@ -883,7 +883,7 @@ pour le créer (fichier:pass user:michel):
 |image1047|
 
 21.9 Raspberry PI4
-^^^^^^^^^^^^^^^^^^
+==================
 .. note::
 
    en 2024 le PI4 est remplacé par un PI5 équipé d'un  Serial HAT RS232, le PI-232 
@@ -932,9 +932,9 @@ Le PI4 assure aussi :
  
 
 21.9.1 Résolution des problèmes :
-=================================
+---------------------------------
 21.9.1.1  cannot-open-access-to-console-the-root-account-is-locked
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://www.msn.com/fr-fr/feed
 
 Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'accès à la console, le compte root est verrouillé sur l'écran de démarrage : 
@@ -981,14 +981,14 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
  
 
 21.9.1.2 pour monter les partitions sans redémarrer
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
       |image1056|
 
 21.10 Home Assistant
-^^^^^^^^^^^^^^^^^^^^
+====================
 21.10.1 installation automatique sous Docker dans un CT LXC
-===========================================================
+-----------------------------------------------------------
 *c'est mon installation actuelle*
 
 .. code-block::
@@ -1018,7 +1018,7 @@ Portainer est également installé:
 |image1317|
 
 21.10.1.1 Mise à jour de Home Assistant
-"""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block::
 
@@ -1027,7 +1027,7 @@ Portainer est également installé:
 |image1569|
 
 21.10.1.2 Installation de HACS, Pyscript, etc
-"""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_config/_data` :
 
@@ -1061,7 +1061,7 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
    |image1319|
 
 21.10.2 Script pour une installation automatique dans une VM
-============================================================
+------------------------------------------------------------
 *Installation* : http://domo-site.fr/accueil/dossiers/61
 
 .. code-block::
@@ -1083,7 +1083,7 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
 |image1063|
 
 21.10.3 Python avec pyscript 
-============================
+----------------------------
 
 .. admonition:: **Avec HACS**
 
@@ -1185,7 +1185,7 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
                state: "{{ trigger.to_state.state }}" 
 
 21.10.4 Chemins des fichiers sous Docker 
-========================================
+----------------------------------------
 
 |image1350|
 
@@ -1196,7 +1196,7 @@ un exemple : dans le cadre rouge, un script lancé hors du conteneur, dans un ca
 |image1351|
 
 21.10.5 NGINX, Virtual Host 
-===========================
+---------------------------
 Pré-requis:
 
 - un certificat lets'encrypt
@@ -1239,13 +1239,13 @@ le fichier ha.conf dans /etc/nginx/conf.d:
    }
 
 21.10.6 exemples de scripts 
-============================
+---------------------------
 21.10.6.1 Bouton SOS zigbee2mqtt
-""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 à venir
 
 21.11 Pont Hue Ha-bridge pour Alexa
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===================================
 voir le § :ref:`13.8 Pont HA (ha-bridge)`
 
 L'assistant vocal est composé:
@@ -1257,9 +1257,9 @@ L'assistant vocal est composé:
 - Un serveur Ha-bridge installé dans un conteneur LXC Proxmox
 
 21.12 Serveur SSE Node JS
-^^^^^^^^^^^^^^^^^^^^^^^^^
+=========================
 21.12.1 Installation: dans un conteneur LXC Proxmox
-===================================================
+---------------------------------------------------
 .. note::
 
    installation de Sudo, Curl, NodeJS, Nginx ,Ufw 
@@ -1455,9 +1455,9 @@ Mise à jour du conteneur et installation de Curl et Sudo; création d'un utilis
 
 
 21.12.2 Envoi des mises à jour depuis Domoticz ou Home Assistant
-================================================================
+----------------------------------------------------------------
 21.12.2.1 Depuis Domoticz
-"""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Au lieu d'utiliser Curl comme dans les essais avec la console, on utilise Python et le module Requests;Domoticz est sous Docker et c'est la solution la plus facile à utiliser.
 
 Le script python basique (on peut comme pour les autres scripts python utiliser des variables pour l'IP et le Port:
@@ -1490,7 +1490,7 @@ Le script DzVent:
 |image1257|
 
 21.12.2.2 Depuis Home Assistant
-"""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. WARNING:: 
 
    La création ou la modification de scripts "shell_command" :red:`IMPOSE UN REDEMARRAGE de Home Assistant`.
@@ -1524,11 +1524,11 @@ Le script DzVent:
 |image1258|
 
 21.12.2.3 EventStream recu par monitor
-""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1259|
 
 21.12.3 Accès distant SSL & HTTP2
-=================================
+---------------------------------
 - S'il n'est pas installé sur le serveur web, Installation de Cerbot pour obtenir un certificat Let'sencrypt
 
 - Configuration de l'hôte virtuel SSE 
@@ -1566,7 +1566,7 @@ Le script DzVent:
    |image1263|
 
 21.13 Io.Broker
-^^^^^^^^^^^^^^^
+===============
 
 installé dans un conteneur LXC avec :darkblue:`https://tteck.github.io/Proxmox/?id=ioBroker#automation`
 
@@ -1591,7 +1591,7 @@ créer des fichiers de configuration s’ils ne sont pas encore créés.
 |image1501|
 
 21.13.1 Configuration des hôtes virtuels NGINX 
-==============================================
+----------------------------------------------
 voir aussi le § :ref:`16.4.2 Hôtes virtuels dans NGINX`
 
 .. admonition:: **VirtualHost port 8081**
@@ -1702,7 +1702,7 @@ voir aussi le § :ref:`16.4.2 Hôtes virtuels dans NGINX`
    |image1507|
 
 21.13.2 Ajouter un adaptateur en mode CLI 
-=========================================
+-----------------------------------------
 https://doc.iobroker.net/#en/documentation/tutorial/adapter.md?theadapterlistintheadmin
 
 https://www.iobroker.net/docu/index-98.htm?page_id=3971&lang=de#iobroker-stop
@@ -1712,7 +1712,7 @@ https://www.iobroker.net/docu/index-98.htm?page_id=3971&lang=de#iobroker-stop
 |image1495|
 
 21.13.2.1 Ajouter un 2eme adaptateur admin 
-""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 En cas de problème de démarrage ou pôur faire des essais, il est possible, provisoirement( pour limiter lesressources), d'ajouter un admin.1.
 
 :red:`Choisir un port non utilisé`
@@ -1720,9 +1720,9 @@ En cas de problème de démarrage ou pôur faire des essais, il est possible, pr
 |image1503|
 
 21.13.3 Résoudre des érreurs
-============================
+----------------------------
 21.13.3.1 please modify system.adaptater
-""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1508|
 
 |image1509|
@@ -1732,7 +1732,7 @@ Faire de même pour eventlist:
 |image1510|
 
 21.13.3.2 erreur ttl avec l'adaptateur email
-""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Problèmeavec de nombreux hébergeurs (Yahoo.fr, Gmail, Orange, ..) ; 
 
 mon site est hébergé chez IONOS (1and1) et l'adaptateur fonctionne correctement.
@@ -1740,7 +1740,7 @@ mon site est hébergé chez IONOS (1and1) et l'adaptateur fonctionne correctemen
 |image1535|
 
 21.13.4 Passer le port série à un 2eme CT non privilégié
-========================================================
+--------------------------------------------------------
 Sur mon installation Domoticz écoute sur le port serie , shell de pve:
 
 |image1517|
@@ -1754,7 +1754,7 @@ Il suffit de copier les lignes concernées par cette liaison serie dans la confi
 |image1519|
 
 21.14 Robot tondeuse Landroid Worx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==================================
 les infos sont récupérées depuis io.broker; il faut installer l'adaptateur:
 
 |image1418|
@@ -1768,7 +1768,7 @@ la page dans monitor:
 |image1420|
 
 21.14.1 la page worx.php dans custom/php 
-========================================
+----------------------------------------
 .. note::
 
    depuis la version 3.2.4 , avec iobroker 2 répertoires peuvent être explorés, ici mower et calendar; indiquer ces répertoires dans admin/config.php. 
@@ -1786,7 +1786,7 @@ Pour la mise à jour lors d'une commande (Strart,Home,Pause ou Stop), après cha
 |image1436|
 
 21.14.2 des dispositifs enregistrés dans SQL 
-============================================
+--------------------------------------------
 
 |image1427|
 
@@ -1799,7 +1799,7 @@ Enregistrement avec la commande dans "administration"
    dans ce cas de figure, comme la commande concerne plusieurs états, c'est le nom d'une class qui est indiqué dans id1_html
 
 21.14.3 Les fonctions PHP concernées 
-====================================
+------------------------------------
 
 partie de la fonction devices_plan() consacrée à io.broker
 
@@ -1816,7 +1816,7 @@ la fonction sql_1($row,$f1,$ser_dom)
    |image1431|
 
 21.14.4 Le Javascript concerné
-==============================
+------------------------------
 
 Pour la mise à jour de la page worx.php, il faut ajouter dans custom/JS.js:
 
@@ -1839,12 +1839,12 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 |image1435|
 
 21.14.5 Les styles css
-======================
+----------------------
 
 |image1437|
 
 21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+========================================================
 
 Le Raid1 utilisé est matériel, voir cette page http://domo-site.fr/accueil/dossiers/60, pour plus d'infos.
 
@@ -1861,7 +1861,7 @@ Pour cette sauvegarde, le principe sera le même que celui décrit,  pour toutes
 Pour PVE, il faudra créer en plus de la liaison de la partition du Raid1, une liaison pour samba.
 
 21.15.1 Création du conteneur
-=============================
+-----------------------------
 
 https://community-scripts.github.io/ProxmoxVE/scripts?id=debian
 
@@ -1872,7 +1872,7 @@ Le conteneur:
 |image1577|
 
 21.15.2 Installation de Samba
-=============================
+-----------------------------
 
 .. code-block::
 
@@ -1887,7 +1887,7 @@ Le conteneur:
 |image1580|
 
 21.15.3 Configuration de SAMBA
-==============================
+------------------------------
 
 Le fichier de configuration de SAMBA : :green:`/etc/samba/smb.conf`
 
@@ -1932,7 +1932,7 @@ Création d'un utilisateur pour smb
 |image1583|
 
 21.15.4 Liaisons dans PVE
-=========================
+-------------------------
 création des réperoires et ajout des propriétaires 
 
 - pour le disque du Raid1
@@ -1973,7 +1973,7 @@ Modification e la configuration du conteneur Raid1 : indication de la liaison av
 |image1586|
 
 21.15.5 Création de la sauvegarde samba dans PVE
-================================================
+------------------------------------------------
 
 .. code-block::
  
@@ -1994,9 +1994,9 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 |image1591|
 
 21.16 VPN & SITE à SITE
-^^^^^^^^^^^^^^^^^^^^^^^
+=======================
 21.16.1 Wireguard dans un conteneur LXC
-=======================================
+---------------------------------------
 |image1631|
 
 - mise à jour de pve et activation du module wireguard
@@ -2015,7 +2015,7 @@ Pour afficher les sauvegardes précédentes enregistrées sur le Raid1 et certai
 |image1634|
 
 21.16.1.1 Installation de Wireguard
-"""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Pour cela on peut utiliser le script de tteck sur Github
 
 |image1632|
@@ -2046,7 +2046,7 @@ https://donaldzou.github.io/WGDashboard-Documentation/what-is-wireguard-what-is-
    |image1762|
 
 21.16.1.2 Port-forwarding
-"""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 dans /etc/sysctl.conf, vérifier que le transfert de port (port-forwarding) est activé (normalement activé avec le script de tteck):
 
   net.ipv4.ip_forward=1
@@ -2058,7 +2058,7 @@ pour appliquez la modification:
 |image1636|
 
 21.16.1.3 Installation de UFW et redirection de port
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Pour l'installation de UFW, voir ce § :ref:`21.12.1 Installation: dans un conteneur LXC Proxmox`
 
@@ -2069,7 +2069,7 @@ Pour l'installation de UFW, voir ce § :ref:`21.12.1 Installation: dans un conte
    |image1657|
 
 21.16.1.4 Configuration avec WGDashboard
-""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1637|
 
 - le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port si différent du port par défaut;
@@ -2101,7 +2101,7 @@ Wiregard pour Android est disponible sur le store:
 |image1649|
 
 21.16.1.5 Configuration de UFW
-""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - autoriser les ports:
 
 .. code-block::
@@ -2131,7 +2131,7 @@ Valider les modifications:
 |image1648|
 
 21.16.1.6 Tests
-"""""""""""""""
+^^^^^^^^^^^^^^^
 - **affichage de monitor**
 
 .. note::
@@ -2160,11 +2160,11 @@ Mon WGDashbord
 |image1652|
 
 21.16.1.7 Mises à jour Wireguard & WGDashboard
-""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1644|
 
 21.16.2 Zerotier et ZTNET dans un conteneur LXC
-===============================================
+-----------------------------------------------
 |image1683|
 
 .. Important::
@@ -2186,7 +2186,7 @@ Il est possible cependant d'héberger son propre contrôleur, **pour éviter la 
 ZTNET est l'app la plus récente
 
 21.16.2.1 Utiliser un contrôleur auto-hébergé
-"""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n’ont pas fonctionné correctement; j’ai utilisé ZTNET dans Docker, solution décrite ci-après.
 
@@ -2211,7 +2211,7 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 |image1707|
 
 21.16.2.2 Installer ZTNET
-"""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 **Créer un dossier /opt/ztnet et télécharger le fichier docker-compose.yml**
 
 .. code-block::
@@ -2292,7 +2292,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 |image1727|
 
 21.16.2.3 Ajout des CT Proxmox clients
-""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. IMPORTANT::
 
   
@@ -2332,7 +2332,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
    |image1733|
 
 21.16.2.4 modifications dans NGINX
-""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. admonition:: **serveur du controleur ztnet**
 
    Créer dans /etc/nginx/conf.d un fichier de configuration pour l’accès distant 
@@ -2366,7 +2366,7 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
    |image1746|
 
 21.16.2.5 Activation du VPN
-"""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Activer la redirection IPv4**
 
 .. code-block::
@@ -2420,7 +2420,7 @@ Installer iptables`
 |image1740|
 
 21.16.2.6 Serveur DNS pour ZTNET
-""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://github.com/Duoquote/ztnet-coredns
 
 .. important::
