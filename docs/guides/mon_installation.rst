@@ -2072,7 +2072,7 @@ Pour l'installation de UFW, voir ce § :ref:`21.12.1 Installation: dans un conte
 """"""""""""""""""""""""""""""""""""""""
 |image1637|
 
-- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port ; Dans le cas où les IPTABLES sont ajoutées dans UFW,  les supprimer de la configuration WireGuard;  Pour modifier la configuration d'UFW :  :ref:`21.16.1.4.2 Etablir les routes, dans UFW ou IPTABLES`
+- le fichier “wg0.conf” est créé par l’app,c’est le bout du tunnel qui permettra de communiquer avec le réseau local; indiquer le port si différent du port par défaut;
 
 |image1638|
 
@@ -2095,6 +2095,10 @@ Sur le smatphone après avoir installé Wireguard, compléter la configuration:
 |image1646|
 
 |image1647|
+
+Wiregard pour Android est disponible sur le store:
+
+|image1649|
 
 21.16.1.4 Configuration de UFW
 """"""""""""""""""""""""""""""
@@ -2138,10 +2142,6 @@ Valider les modifications:
    |image1653|
 
    La tablette est connectée en wifi au point d'accès de mon smartphone pour simuler une connection distante.
-
-   Wiregard pour Android est disponible sur le store:
-
-   |image1649|
 
 comme pour l'accès local monitor est accéssible : http://IP/monitor  
 
@@ -3034,7 +3034,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1647| image:: ../img/image1647.webp
    :width: 400px
 .. |image1648| image:: ../img/image1648.webp
-   :width: 700px
+   :width: 300px
 .. |image1649| image:: ../img/image1649.webp
    :width: 497px
 .. |image1650| image:: ../img/image1650.webp
