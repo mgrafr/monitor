@@ -2179,7 +2179,7 @@ Il est possible cependant d'héberger son propre contrôleur, **pour éviter la 
 
 - soit https://github.com/dec0dOS/zero-ui 
 
-- soit https://ztnet.network/installation/docker-compose, **objet de tutoriel**
+- soit https://ztnet.network/installation/docker-compose, objet de ce tutoriel
 
 |image1683|
 
