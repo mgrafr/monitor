@@ -2914,46 +2914,6 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 700px
 .. |image1683| image:: ../img/image1683.webp
    :width: 600px
-.. |image1684| image:: ../img/image1684.webp
-   :width: 450px
-.. |image1685| image:: ../img/image1685.webp
-   :width: 650px
-.. |image1686| image:: ../img/image1686.webp
-   :width: 400px
-.. |image1687| image:: ../img/image1687.webp
-   :width: 480px
-.. |image1688| image:: ../img/image1688.webp
-   :width: 306px
-.. |image1689| image:: ../img/image1689.webp
-   :width: 540px
-.. |image1690| image:: ../img/image1690.webp
-   :width: 700px
-.. |image1691| image:: ../img/image1691.webp
-   :width: 605px
-.. |image1692| image:: ../img/image1692.webp
-   :width: 545px
-.. |image1693| image:: ../img/image1693.webp
-   :width: 605px
-.. |image1694| image:: ../img/image1694.webp
-   :width: 530px
-.. |image1695| image:: ../img/image1695.webp
-   :width: 641px
-.. |image1696| image:: ../img/image1696.webp
-   :width: 601px
-.. |image1697| image:: ../img/image1697.webp
-   :width: 605px
-.. |image1698| image:: ../img/image1698.webp
-   :width: 700px
-.. |image1699| image:: ../img/image1699.webp
-   :width: 500px
-.. |image1700| image:: ../img/image1700.webp
-   :width: 700px
-.. |image1701| image:: ../img/image1701.webp
-   :width: 500px
-.. |image1702| image:: ../img/image1702.webp
-   :width: 700px
-.. |image1703| image:: ../img/image1703.webp
-   :width: 700px
 .. |image1704| image:: ../img/image1704.webp
    :width: 650px
 .. |image1706| image:: ../img/image1706.webp
@@ -2966,8 +2926,6 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 650px
 .. |image1710| image:: ../img/image1710.webp
    :width: 550px
-.. |image1711| image:: ../img/image1711.webp
-   :width: 452px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1713| image:: ../img/image1713.webp
@@ -3010,12 +2968,6 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 700px
 .. |image1735| image:: ../img/image1735.webp
    :width: 700px
-.. |image1736| image:: ../img/image1736.webp
-   :width: 450px
-.. |image1737| image:: ../img/image1737.webp
-   :width: 320px
-.. |image1738| image:: ../img/image1738.webp
-   :width: 700px
 .. |image1739| image:: ../img/image1739.webp
    :width: 600px
 .. |image1740| image:: ../img/image1740.webp
@@ -3042,9 +2994,5 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 300px
 .. |image1759| image:: ../img/image1759.webp
    :width: 600px
-.. |image1760| image:: ../img/image1760.webp
-   :width: 400px
-.. |image1761| image:: ../img/image1761.webp
-   :width: 650px
 .. |image1762| image:: ../img/image1762.webp
    :width: 437px
