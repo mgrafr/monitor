@@ -2291,6 +2291,14 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 |image1727|
 
+21.16.2.3 Acheminer le trafic via un client ZeroTier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Activer la redirection IPv4**
+
+*voir le §* :ref:`21.16.1.2 Port-forwarding`
+
+
+
 21.16.2.3 Ajout des CT Proxmox clients
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. IMPORTANT::
@@ -2367,13 +2375,6 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 21.16.2.5 Activation du VPN
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**Activer la redirection IPv4**
-
-.. code-block::
-
-   sysctl -w net.ipv4.ip_forward=1
-
-*voir aussi le §* :ref:`21.16.1.1.a Port-forwarding`
 
 - rechercher le nom de l’interface réseau zt
 
