@@ -2230,7 +2230,26 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1708|
 
-**Modifiez la configuration du conteneur Zerotier pour utiliser directement le réseau de l’hôte.**
+**Vérifier le journal pour corriger des erreurs eventuelles:
+
+.. code-block::
+
+   xx
+
+
+Pour éviter cette erreur:
+
+|image1784|
+
+Ajouter le mappage du port 5432 pour postgres
+
+|image1786|
+
+Le log sans erreur:
+
+|image1785|
+
+*Modifiez la configuration du conteneur Zerotier pour utiliser directement le réseau de l’hôte.**
 
 le conteneur va créer des interfaces zt# sur le système hôte, imitant le comportement d’une installation native ZeroTier One. Cette modification intègre le conteneur Zerotier au réseau de l’hôte
 
@@ -2915,6 +2934,10 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 700px
 .. |image1683| image:: ../img/image1683.webp
    :width: 600px
+.. |image1684| image:: ../img/image1684.webp
+   :width: 700px
+.. |image1685| image:: ../img/image1685.webp
+   :width: 700px
 .. |image1704| image:: ../img/image1704.webp
    :width: 650px
 .. |image1706| image:: ../img/image1706.webp
