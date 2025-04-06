@@ -2316,9 +2316,24 @@ Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
 
 *voir le §* :ref:`21.16.1.2 Port-forwarding`
 
+21.16.2.4 Configurer iptables pour NAT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**exécuter sur un client Debian**  
+
+Pour connaitre le nom de l'nterface ZT:
+
+.. code-block::
+
+   ip link show
+
+|image1688|
+
+HY_IFACE=eth0
+ZT_IFACE=ztxxxxxxx
 
 
-21.16.2.3 Ajout des CT Proxmox clients
+
+21.16.2.5 Ajout des CT Proxmox clients
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. IMPORTANT::
 
