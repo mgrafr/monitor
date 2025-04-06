@@ -2955,6 +2955,8 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 700px
 .. |image1686| image:: ../img/image1686.webp
    :width: 400px
+.. |image1688| image:: ../img/image1688.webp
+   :width: 400px
 .. |image1704| image:: ../img/image1704.webp
    :width: 650px
 .. |image1706| image:: ../img/image1706.webp
