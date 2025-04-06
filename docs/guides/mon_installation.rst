@@ -2239,15 +2239,15 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 Pour éviter cette erreur:
 
-|image1784|
+|image1684|
 
 Ajouter le mappage du port 5432 pour postgres
 
-|image1786|
+|image1686|
 
 Le log sans erreur:
 
-|image1785|
+|image1685|
 
 *Modifiez la configuration du conteneur Zerotier pour utiliser directement le réseau de l’hôte.**
 
