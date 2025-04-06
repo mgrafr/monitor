@@ -2230,11 +2230,11 @@ j’ai essayé ztncui et zéro ui mais ces 2 solutions dans un conteneur LXC n�
 
 |image1708|
 
-**Vérifier le journal pour corriger des erreurs eventuelles:
+**Vérifier le journal pour corriger des erreurs eventuelles**:
 
 .. code-block::
 
-   xx
+   docker compose logs -f ztnet
 
 
 Pour éviter cette erreur:
@@ -2938,6 +2938,8 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 700px
 .. |image1685| image:: ../img/image1685.webp
    :width: 700px
+.. |image1686| image:: ../img/image1686.webp
+   :width: 400px
 .. |image1704| image:: ../img/image1704.webp
    :width: 650px
 .. |image1706| image:: ../img/image1706.webp
