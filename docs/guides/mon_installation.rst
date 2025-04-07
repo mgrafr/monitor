@@ -2249,23 +2249,6 @@ Le log sans erreur:
 
 |image1685|
 
-*Modifiez la configuration du conteneur Zerotier pour utiliser directement le réseau de l’hôte.**
-
-le conteneur va créer des interfaces zt# sur le système hôte, imitant le comportement d’une installation native ZeroTier One. Cette modification intègre le conteneur Zerotier au réseau de l’hôte
-
-Pour cela ajouter ou commenter ces lignes dans docker-compose.yml
-
-.. code-block::
-
-    network_mode: "host"
-    #networks:
-    #  - app-network
-    #ports:
-    #  - "9993:9993/udp"
-    ZT_ADDR: http://192.168.1.68:9993
-
-|image1712|
-
 |image1720|
 
 **Lancer ZTNET**
