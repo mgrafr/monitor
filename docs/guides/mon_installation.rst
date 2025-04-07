@@ -2321,16 +2321,34 @@ Pour connaitre le nom de l'nterface ZT:
 
 |image1688|
 
+Editer le fichier /etc/iptables/rules.v4 et coller ces lignes:
+
 .. code-block::
 
-   HY_IFACE=eth0
-   ZT_IFACE=ztxxxxxxx
-   iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE
-   iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT
-   iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT
-   sh -c 'iptables-save > /etc/iptables/rules.v4'
+  *nat
+  :PREROUTING ACCEPT [0:0]
+  :INPUT ACCEPT [0:0]
+  :OUTPUT ACCEPT [0:0]
+  :POSTROUTING ACCEPT [0:0]
+  -A POSTROUTING -o eth0 -s 192.168.1.0/24 -j SNAT --to-source 192.168.1.47
+  COMMIT
+  *filter
+  :INPUT ACCEPT [0:0]
+  :FORWARD DROP [0:0]
+  -A FORWARD -i ztngqtywiy -s 10.121.16.0/4 -d 0.0.0.0/0 -j ACCEPT
+  -A FORWARD -i eth0 -s 0.0.0.0/0 -d 10.121.16.0/0 -j ACCEPT
+  :OUTPUT ACCEPT [0:0]
+  COMMIT
 
 |image1689|
+
+Exécuter :
+
+.. code-block::
+
+   iptables-restore < /etc/iptables/rules.v4
+
+|image1690|
 
 21.16.2.5 Mettre à jour la configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2473,22 +2491,7 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 
    |image1726|
 
-.. code-block::
 
-   *nat
-   :PREROUTING ACCEPT [0:0]
-   :INPUT ACCEPT [0:0]
-   :OUTPUT ACCEPT [0:0]
-   :POSTROUTING ACCEPT [0:0]
-   -A POSTROUTING -o eth0 -s 192.168.193.0/24 -j SNAT --to-source 192.168.1.1
-   COMMIT
-   *filter
-   :INPUT ACCEPT [0:0]
-   :FORWARD DROP [0:0]
-   -A FORWARD -i zt+ -s 192.168.193.0/4 -d 0.0.0.0/0 -j ACCEPT
-   -A FORWARD -i eth0 -s 0.0.0.0/0 -d 192.168.193.0/0 -j ACCEPT
-   :OUTPUT ACCEPT [0:0]
-   COMMIT
 
 
 
@@ -2945,7 +2948,9 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 .. |image1688| image:: ../img/image1688.webp
    :width: 400px
 .. |image1689| image:: ../img/image1689.webp
-   :width: 650px
+   :width: 600px
+.. |image1690| image:: ../img/image1690.webp
+   :width: 320px
 .. |image1704| image:: ../img/image1704.webp
    :width: 650px
 .. |image1706| image:: ../img/image1706.webp
