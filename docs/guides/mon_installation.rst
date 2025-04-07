@@ -2295,13 +2295,15 @@ Le log sans erreur:
 
 21.16.2.3 Acheminer le trafic via un client ZeroTier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Ce client peut être un CT Proxmox*
+
 **Activer la redirection IPv4**
 
 *voir le §* :ref:`21.16.1.2 Port-forwarding`
 
 21.16.2.4 Configurer iptables pour NAT
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**exécuter sur un client Debian**  
+**exécuter sur le client Debian précédent**  
 
 Les règles iptables configurées, pour qu’elles soient persistantes lors des redémarragesil faut installer  :
 
