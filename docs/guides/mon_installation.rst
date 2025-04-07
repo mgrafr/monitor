@@ -2303,6 +2303,14 @@ Le log sans erreur:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **exécuter sur un client Debian**  
 
+Les règles iptables configurées, pour qu’elles soient persistantes lors des redémarragesil faut installer  :
+
+.. code-block::
+
+   apt install iptables-persistent
+
+|image1687|
+
 Pour connaitre le nom de l'nterface ZT:
 
 .. code-block::
@@ -2318,13 +2326,9 @@ Pour connaitre le nom de l'nterface ZT:
    iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE
    iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT
    iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT
-
-Les règles iptables configurées, pour qu’elles sont persistantes lors des redémarragesil faut installer et exécuter :
-
-.. code-block::
-
-   apt install iptables-persistent
    sh -c 'iptables-save > /etc/iptables/rules.v4'
+
+|image1689|
 
 
 21.16.2.5 Ajout des CT Proxmox clients
@@ -2949,8 +2953,12 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
    :width: 700px
 .. |image1686| image:: ../img/image1686.webp
    :width: 400px
+.. |image1687| image:: ../img/image1687.webp
+   :width: 450px
 .. |image1688| image:: ../img/image1688.webp
    :width: 400px
+.. |image1689| image:: ../img/image1689.webp
+   :width: 650px
 .. |image1704| image:: ../img/image1704.webp
    :width: 650px
 .. |image1706| image:: ../img/image1706.webp
