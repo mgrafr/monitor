@@ -2473,6 +2473,22 @@ https://ztnet.network/usage/create_dns_host#obtain-the-script
 
    |image1726|
 
+.. code-block::
+
+   *nat
+   :PREROUTING ACCEPT [0:0]
+   :INPUT ACCEPT [0:0]
+   :OUTPUT ACCEPT [0:0]
+   :POSTROUTING ACCEPT [0:0]
+   -A POSTROUTING -o eth0 -s 192.168.193.0/24 -j SNAT --to-source 192.168.1.1
+   COMMIT
+   *filter
+   :INPUT ACCEPT [0:0]
+   :FORWARD DROP [0:0]
+   -A FORWARD -i zt+ -s 192.168.193.0/4 -d 0.0.0.0/0 -j ACCEPT
+   -A FORWARD -i eth0 -s 0.0.0.0/0 -d 192.168.193.0/0 -j ACCEPT
+   :OUTPUT ACCEPT [0:0]
+   COMMIT
 
 
 
