@@ -2332,8 +2332,10 @@ Pour connaitre le nom de l'nterface ZT:
 
 |image1689|
 
+21.16.2.5 Mettre à jour la configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-21.16.2.5 Ajout des CT Proxmox clients
+21.16.2.6 Ajout des CT Proxmox clients
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. IMPORTANT::
 
@@ -2373,7 +2375,7 @@ Pour connaitre le nom de l'nterface ZT:
 
    |image1733|
 
-21.16.2.4 modifications dans NGINX
+21.16.2.7 modifications dans NGINX
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. admonition:: **serveur du controleur ztnet**
 
@@ -2407,40 +2409,7 @@ Pour connaitre le nom de l'nterface ZT:
 
    |image1746|
 
-21.16.2.5 Activation du VPN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- rechercher le nom de l’interface réseau zt
-
-.. code-block::
-
-   ip link show
-
-|image1739|
-
-- Créer les règles
-
-.. code-block::
-
-   PHY_IFACE=eth0
-   ZT_IFACE=ztxxxxxxx
-   #
-   iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE
-   iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT
-   iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT
-
-|image1735|
-
-Installer iptables`
-
-- Installer iptables-persistent et sauver les règles 
-
-.. code-block::
-
-   apt install iptables-persistent
-   sh -c 'iptables-save > /etc/iptables/rules.v4'
-
-|image1734|
 
 - redémarrer le serveur pour vérifier que les règles iptables ont été correctement enregistrées. 
 
@@ -2454,7 +2423,7 @@ Installer iptables`
 
 |image1740|
 
-21.16.2.6 Serveur DNS pour ZTNET
+21.16.2.8 Serveur DNS pour ZTNET
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://github.com/Duoquote/ztnet-coredns
 
