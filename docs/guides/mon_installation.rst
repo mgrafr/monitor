@@ -2311,9 +2311,20 @@ Pour connaitre le nom de l'nterface ZT:
 
 |image1688|
 
-HY_IFACE=eth0
-ZT_IFACE=ztxxxxxxx
+.. code-block::
 
+   HY_IFACE=eth0
+   ZT_IFACE=ztxxxxxxx
+   iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE
+   iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT
+   iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+Les règles iptables configurées, pour qu’elles sont persistantes lors des redémarragesil faut installer et exécuter :
+
+.. code-block::
+
+   apt install iptables-persistent
+   sh -c 'iptables-save > /etc/iptables/rules.v4'
 
 
 21.16.2.5 Ajout des CT Proxmox clients
