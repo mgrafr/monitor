@@ -2323,6 +2323,8 @@ Pour connaitre le nom de l'nterface ZT:
 
 Editer le fichier /etc/iptables/rules.v4 et coller ces lignes:
 
+Avec une IP statique publique, il est possible d' utiliser SNAT au lieu de MASQUERADE.
+
 .. code-block::
 
   *nat
@@ -2330,7 +2332,7 @@ Editer le fichier /etc/iptables/rules.v4 et coller ces lignes:
   :INPUT ACCEPT [0:0]
   :OUTPUT ACCEPT [0:0]
   :POSTROUTING ACCEPT [0:0]
-  -A POSTROUTING -o eth0 -s 192.168.1.0/24 -j SNAT --to-source 192.168.1.47
+  -A POSTROUTING -o eth0 -s 192.168.1.0/24 -j SNAT --to-source <public-ip>
   COMMIT
   *filter
   :INPUT ACCEPT [0:0]
