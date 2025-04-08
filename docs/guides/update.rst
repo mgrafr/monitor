@@ -23,12 +23,12 @@ Version en developpement 3.2.4
 - correction bug sur mur_inter.php
 - Ajout de la possibilité d'un fichier de configuration par écran de contrôle
 - Ajout d'un lien symbolique de la configuration vers le répertoire de l'API
-- modification  de fonctions.php popur intégrer 2 répertoires de io.broker (ex pour worx les repertoires  mover et calendar)
+- modification  de fonctions.php pour intégrer 2 répertoires de io.broker (ex pour worx les repertoires  mover et calendar)
 
 Version 3.2.3 (Févier 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction de bugs dans sauvegarde_maj.sh & restore.sh
-- finalisation de OTO 2fa avec l'envoi de sms par GSM et par l'api Free Mobile
+- finalisation de OTP 2fa avec l'envoi de sms par GSM et par l'api Free Mobile
 - ajout du dossier "custom/python" , pour installer les scrips python perso, (pour faciliter les maj).
 
 Version 3.2.2 (Févier 2025)
