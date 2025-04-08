@@ -2610,94 +2610,16 @@ Mon WGDashbord
    :width: 700px
 .. |image1683| image:: ../img/image1683.webp
    :width: 600px
-.. |image1684| image:: ../img/image1684.webp
-   :width: 700px
-.. |image1685| image:: ../img/image1685.webp
-   :width: 700px
-.. |image1686| image:: ../img/image1686.webp
-   :width: 400px
-.. |image1687| image:: ../img/image1687.webp
-   :width: 450px
-.. |image1688| image:: ../img/image1688.webp
-   :width: 400px
-.. |image1689| image:: ../img/image1689.webp
-   :width: 600px
-.. |image1690| image:: ../img/image1690.webp
-   :width: 320px
-.. |image1704| image:: ../img/image1704.webp
-   :width: 650px
-.. |image1706| image:: ../img/image1706.webp
-   :width: 450px
-.. |image1707| image:: ../img/image1707.webp
-   :width: 418px
-.. |image1708| image:: ../img/image1708.webp
-   :width: 600px
-.. |image1709| image:: ../img/image1709.webp
-   :width: 650px
-.. |image1710| image:: ../img/image1710.webp
-   :width: 550px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
-.. |image1713| image:: ../img/image1713.webp
-   :width: 450px
-.. |image1714| image:: ../img/image1714.webp
-   :width: 500px
-.. |image1715| image:: ../img/image1715.webp
-   :width: 700px
-.. |image1716| image:: ../img/image1716.webp
-   :width: 400px
-.. |image1717| image:: ../img/image1717.webp
-   :width: 300px
-.. |image1718| image:: ../img/image1718.webp
-   :width: 700px
-.. |image1719| image:: ../img/image1719.webp
-   :width: 700px
-.. |image1720| image:: ../img/image1720.webp
-   :width: 420px
-.. |image1721| image:: ../img/image1721.webp
-   :width: 600px
-.. |image1724| image:: ../img/image1724.webp
-   :width: 700px
-.. |image1726| image:: ../img/image1726.webp
-   :width: 700px
-.. |image1727| image:: ../img/image1727.webp
-   :width: 600px
-.. |image1728| image:: ../img/image1728.webp
-   :width: 650px
-.. |image1729| image:: ../img/image1729.webp
-   :width: 650px
-.. |image1730| image:: ../img/image1730.webp
-   :width: 500px
-.. |image1731| image:: ../img/image1731.webp
-   :width: 680px
-.. |image1732| image:: ../img/image1732.webp
-   :width: 550px
-.. |image1733| image:: ../img/image1733.webp
-   :width: 600px
 .. |image1734| image:: ../img/image1734.webp
    :width: 700px
 .. |image1735| image:: ../img/image1735.webp
    :width: 700px
 .. |image1739| image:: ../img/image1739.webp
    :width: 600px
-.. |image1740| image:: ../img/image1740.webp
-   :width: 650px
-.. |image1741| image:: ../img/image1741.webp
-   :width: 600px
 .. |image1742| image:: ../img/image1742.webp
    :width: 600px
-.. |image1743| image:: ../img/image1743.webp
-   :width: 570px
-.. |image1744| image:: ../img/image1744.webp
-   :width: 550px
-.. |image1745| image:: ../img/image1745.webp
-   :width: 700px
-.. |image1746| image:: ../img/image1746.webp
-   :width: 700px
-.. |image1747| image:: ../img/image1747.webp
-   :width: 550px
-.. |image1748| image:: ../img/image1748.webp
-   :width: 520px
 .. |image1757| image:: ../img/image1757.webp
    :width: 300px
 .. |image1758| image:: ../img/image1758.webp
