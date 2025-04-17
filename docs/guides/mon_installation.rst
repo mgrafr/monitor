@@ -502,7 +502,7 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
 .. admonition:: mise à jour du conteneur 
 
-   - modififier la config du conteneur en supprimant les lignes concernant le port USB
+   - modififier dans PVE la config du conteneur en supprimant les lignes concernant le port USB
 
    |image1685| 
 
@@ -520,7 +520,7 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
    |image1687|
 
-   - installer une version plus récente de node.js
+   - installer une version plus récente de node.js dans le CT
 
    .. code-block::
 
@@ -530,6 +530,51 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
     |image1688|  
 
+    |image1689|
+
+.. admonition:: mise à jour de zigbee2mqtt en version 2
+
+   Pour minimiser les risques de changements perturbateurs lors de la mise à jour de la version 1.x.x vers la version 2.0.0, les éléments suivants doivent se trouver dans le fichier configuration.yaml :
+
+   .. code-block::
+
+      cd /opt/zigbee2mqtt/data
+      nano configuration.yaml
+
+   .. code-block::
+
+      advanced:
+        homeassistant_legacy_entity_attributes: false
+        homeassistant_legacy_triggers: false
+        legacy_api: false
+        legacy_availability_payload: false
+      device_options:
+        legacy: false
+
+   |image1690|
+
+   - mettre à jour Zigbee2MQTT en Version 2:
+
+   .. code-block::
+
+      .\update.sh
+
+   - pour éliminer cette erreur:
+
+   |image1691|
+
+    exécuter ces lignes et relancer l'update
+
+   .. code-block::
+
+      git checkout data/configuration.example.yaml
+      mv data/configuration.yaml data/configuration.yaml.bak
+      ./update.sh
+
+   |image1692|
+
+
+   
 21.5 Asterisk (sip)
 ===================
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
@@ -2653,6 +2698,14 @@ Mon WGDashbord
 .. |image1687| image:: ../img/image1687.webp
    :width: 450px
 .. |image1688| image:: ../img/image1688.webp
+   :width: 650px
+.. |image1689| image:: ../img/image1689.webp
+   :width: 280px
+.. |image1690| image:: ../img/image1690.webp
+   :width: 520px
+.. |image1691| image:: ../img/image1691.webp
+   :width: 650px
+.. |image1692| image:: ../img/image1692.webp
    :width: 650px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
