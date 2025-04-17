@@ -496,19 +496,39 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 ----------------------------------------
 21.4.5.1 remplacer un controleur à base du CC2652P 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-le SLZB-06M est équipé d'une puce Silicon Labs EFR32, est donc compatible matter mais l'inconvénient est qu'il faut réactiver tous les dispositifs; pour faciliter le transfert, il suffit pour cela de concerver provisoirement l'ancien contrôleur et de créer un nouveau réseau avec le nouveau contrôleur; pour simplifier le transfert j'ai crée un nouveau conteneur LXC à partir de la sauvegarde deu conteneur zigbee2mqtt existant.
+le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité de prendre en charge à la fois le Zigbee et Thread), donc compatible matter mais l'inconvénient est qu'il faut réactiver tous les dispositifs; pour faciliter le transfert, il suffit pour cela de concerver provisoirement l'ancien contrôleur et de créer un nouveau réseau avec le nouveau contrôleur; pour simplifier le transfert j'ai crée un nouveau conteneur LXC à partir de la sauvegarde deu conteneur zigbee2mqtt existant.
 
 |image1684| 
 
 .. admonition:: mise à jour du conteneur 
 
-   modififier la config du conteneur en supprimant les lignes concernant le port USB
+   - modififier la config du conteneur en supprimant les lignes concernant le port USB
 
    |image1685| 
 
-   remplacer l'ip ou dhcp par une ip différente
+   - remplacer l'ip ou dhcp par une ip différente
 
    |image1686|
+
+   - Démarrer le conteneur
+
+   - Arrêter zigbee2mqtt
+
+   .. code-block::
+
+      systemctl stop zigbee2mqtt
+
+   |image1687|
+
+   - installer une version plus récente de node.js
+
+   .. code-block::
+
+      curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
+      sudo -E bash nodesource_setup.sh
+      apt-get install -y nodejs
+
+    |image1688|  
 
 21.5 Asterisk (sip)
 ===================
@@ -2630,6 +2650,10 @@ Mon WGDashbord
    :width: 700px
 .. |image1686| image:: ../img/image1686.webp
    :width: 700px
+.. |image1687| image:: ../img/image1687.webp
+   :width: 450px
+.. |image1688| image:: ../img/image1688.webp
+   :width: 650px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1734| image:: ../img/image1734.webp
