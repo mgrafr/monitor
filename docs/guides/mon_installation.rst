@@ -494,7 +494,21 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 
 21.4.5 Le routeur ou contrôleur SLZB-06M
 ----------------------------------------
-en cours de rédaction
+21.4.5.1 remplacer un controleur à base du CC2652P 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+le SLZB-06M est équipé d'une puce Silicon Labs EFR32, est donc compatible matter mais l'inconvénient est qu'il faut réactiver tous les dispositifs; pour faciliter le transfert, il suffit pour cela de concerver provisoirement l'ancien contrôleur et de créer un nouveau réseau avec le nouveau contrôleur; pour simplifier le transfert j'ai crée un nouveau conteneur LXC à partir de la sauvegarde deu conteneur zigbee2mqtt existant.
+
+|image1684| 
+
+.. admonition:: mise à jour du conteneur 
+
+   modififier la config du conteneur en supprimant les lignes concernant le port USB
+
+   |image1685| 
+
+   remplacer l'ip ou dhcp par une ip différente
+
+   |image1686|
 
 21.5 Asterisk (sip)
 ===================
@@ -2610,6 +2624,12 @@ Mon WGDashbord
    :width: 700px
 .. |image1683| image:: ../img/image1683.webp
    :width: 600px
+.. |image1684| image:: ../img/image1684.webp
+   :width: 600px
+.. |image1685| image:: ../img/image1685.webp
+   :width: 700px
+.. |image1686| image:: ../img/image1686.webp
+   :width: 700px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1734| image:: ../img/image1734.webp
