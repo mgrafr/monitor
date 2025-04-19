@@ -553,6 +553,16 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
    |image1690|
 
+   - Suppression du dossier "data" et de la sauvegarde 
+
+   .. code-block::
+
+      cp -R data /home/michel
+      cp -R data-backup /home/michel      
+      rm -R data-backup 
+
+   |image1693|
+
    - mettre à jour Zigbee2MQTT en Version 2:
 
    .. code-block::
