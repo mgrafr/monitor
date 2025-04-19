@@ -631,7 +631,18 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
    |image1700|
 
-   - on réactive tous les appareil
+   - on démarre et on réactive tous les appareils
+
+   .. code-block::
+
+      systemctl start zigbee2mqtt
+
+   .. important::
+
+      NE PAS OUBLIER D' AJOUTER LES APPAREILS REACTIVES AUX GROUPES
+
+      |image1701|
+
    
 21.5 Asterisk (sip)
 ===================
@@ -2781,6 +2792,8 @@ Mon WGDashbord
    :width: 400px
 .. |image1700| image:: ../img/image1700.webp
    :width: 400px
+.. |image1701| image:: ../img/image1701.we1
+   :width: 550px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1734| image:: ../img/image1734.webp
