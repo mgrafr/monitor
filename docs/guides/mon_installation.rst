@@ -594,6 +594,28 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
       npm ci
 
    |image1695|
+
+   - installer pnpm
+
+   .. code-block::
+
+      npm install -g pnpm
+      ./update.sh  ou ./update.sh force(si problème)
+
+    |image1697|
+
+.. admonition:: Réactivation des dispositifs
+
+   - Pour réactiver les appareils **sans erreur**, il faut arrêter le CT Actuellement opérationnel
+
+   |image1696|
+   
+   .. code-block::
+
+      cd /opt/zigbee2mqtt
+      mv data/configuration.yaml.bak data/configuration.yaml
+
+   |image1698|
    
 21.5 Asterisk (sip)
 ===================
@@ -2733,6 +2755,12 @@ Mon WGDashbord
    :width: 700px
 .. |image1695| image:: ../img/image1695.webp
    :width: 433px
+.. |image1696| image:: ../img/image1696.webp
+   :width: 330px
+.. |image1697| image:: ../img/image1697.webp
+   :width: 520px
+.. |image1698| image:: ../img/image1698.webp
+   :width: 700px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1734| image:: ../img/image1734.webp
