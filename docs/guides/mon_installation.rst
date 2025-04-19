@@ -608,7 +608,11 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
    - Pour réactiver les appareils **sans erreur**, il faut arrêter le CT Actuellement opérationnel
 
+     la clé USB , pour l'instant, est laisser en place afin de revenir rapidement à la version précédente si besoin
+
    |image1696|
+
+   - on récupère la configuration sauvegardée
    
    .. code-block::
 
@@ -616,6 +620,18 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
       mv data/configuration.yaml.bak data/configuration.yaml
 
    |image1698|
+
+   - quelques modifications sur la config:
+
+     modifier le pan_id etb ajouter GENERATE à network_key & ext_pan_id
+
+   |image1699|
+
+    modifier le port serie et l'adaptateur; j'ai aussi changé le Port fronted
+
+   |image1700|
+
+   - on réactive tous les appareil
    
 21.5 Asterisk (sip)
 ===================
@@ -2761,6 +2777,10 @@ Mon WGDashbord
    :width: 520px
 .. |image1698| image:: ../img/image1698.webp
    :width: 700px
+.. |image1699| image:: ../img/image1699.webp
+   :width: 400px
+.. |image1700| image:: ../img/image1700.webp
+   :width: 400px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1734| image:: ../img/image1734.webp
