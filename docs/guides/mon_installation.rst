@@ -353,11 +353,11 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
    MatterBridge est en cour de développement
 
-**Controleur USB utilisé** : Sonoff Zigbee 3.0
+**Controleur USB utilisé jsqu'en 2025** : Sonoff Zigbee 3.0
 
 |image1757|
 
-en cours essai du controleur LAN : SLZB-06M , voir le § :ref:`21.4.5 Le routeur ou contrôleur SLZB-06M`
+**controleur LAN  utilisé actuellement**: SLZB-06M , voir le § :ref:`21.4.5 Le routeur ou contrôleur SLZB-06M`
 
 |image1758|
 
@@ -494,6 +494,8 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 
 21.4.5 Le routeur ou contrôleur SLZB-06M
 ----------------------------------------
+Ce contrôleur LAN est intéressant car en cas de problème sur le conteneur LXC, il suffit de restaurer le CT sur un autre serveur Proxmox (Pas de modification de configuration due à l'USB)
+
 21.4.5.1 remplacer un controleur à base du CC2652P 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité de prendre en charge à la fois le Zigbee et Thread), donc compatible matter mais l'inconvénient est qu'il faut réactiver tous les dispositifs; pour faciliter le transfert, il suffit pour cela de concerver provisoirement l'ancien contrôleur et de créer un nouveau réseau avec le nouveau contrôleur; pour simplifier le transfert j'ai crée un nouveau conteneur LXC à partir de la sauvegarde deu conteneur zigbee2mqtt existant.
@@ -553,7 +555,7 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
    |image1690|
 
-   - Suppression du dossier "data" et de la sauvegarde 
+   - Sauvegarde des dossier "data" et "data-backup"  et superssion de "data-backup"
 
    .. code-block::
 
@@ -583,7 +585,15 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
    |image1692|
 
+   - Pour corriger cette erreur lors de la mise à jour des dépendances:
 
+   |image1694|
+
+   .. code-block::
+
+      npm ci
+
+   |image1695|
    
 21.5 Asterisk (sip)
 ===================
@@ -2717,6 +2727,12 @@ Mon WGDashbord
    :width: 650px
 .. |image1692| image:: ../img/image1692.webp
    :width: 650px
+.. |image1693| image:: ../img/image1693.webp
+   :width: 600px
+.. |image1694| image:: ../img/image1694.webp
+   :width: 700px
+.. |image1695| image:: ../img/image1695.webp
+   :width: 433px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1734| image:: ../img/image1734.webp
