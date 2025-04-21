@@ -984,11 +984,11 @@ La base de données a été créée lors de l’installation du serveur : nom=mo
 
    *Il faut aussi autoriser ce port dans le pare-feu si la base est utilisée par un serveur distant (ex iobroker)* : 
 
-.. code-block::
+   .. code-block::
 
-   ufw allow 3306
+      ufw allow 3306
 
-   |image1555|
+  |image1555|
 
    Si votre serveur possède plusieurs interfaces réseau, vous pouvez mettre 0.0.0.0 à la place de l'adresse IP dans `nano /etc/mysql/mysql.conf.d/mysqld.cnf` mais cela concerne toutes les adresse IP
 
@@ -1349,14 +1349,21 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 	-	onoff commandes 
 	-	onoff+stop commandes (volets par exemple)
         -       on // poussoir momentané (sonnette)
-        -       onoff_rgb //onoff + réglage une lumière sur une certaine couleur
+        -       on_level //onoff + réglage une lumière sur une certaine couleur
+	
+	|image1702|
+	
 	-	on= // commandes particulières, voir cet exemple : :ref:`21.14 Robot tondeuse Landroid Worx`
 
        |image1405|
 
        |image1426|
         
-	-	popup //ouverture d’une fenêtre (commandes particulières)	
+	-	popup //ouverture d’une fenêtre (commandes particulières)
+
+	extrait de mur_inter.php avec la fonction test_rgb()
+
+	|image1703|
 
 - id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
 
@@ -2309,5 +2316,9 @@ function mc(variable,id)
    :width: 600px
 .. |image1682| image:: ../img/image1682.webp
    :width: 350px
+.. |image1702| image:: ../img/image1702.webp
+   :width: 700px
+.. |image1703| image:: ../img/image1703.webp
+   :width: 700px
 .. |image1751| image:: ../img/image1751.webp
    :width: 260px
