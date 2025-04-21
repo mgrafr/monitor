@@ -1,18 +1,18 @@
 
-<div id="adbf" style="line-height: normal;font-size: 14px;"><form><p style="width:350px;background-color: aquamarine; margin-left: 10px;"><strong>Si mise à jour, idm: :</strong>
-<input type="text" style="width:40px;margin-left:10px;" id="majidm" value=""  ><input type="hidden" id="command1"  value="7"><input type="hidden" id="appli"  value="dev_bd"><button id="bouton_maj" type="button" onclick="adby(4)" style="width:50px;margin-left:10px;height:30px">Envoi</button>
-</p></form></div>
-<div id="adb" style="line-height: normal;font-size: 14px;"><form1>
+<div id="adbf" style="line-height: normal;font-size: 14px;"><form><p style="width:350px;background-color: aquamarine; margin-left: 10px;"><strong>Si mise à jour, idm: :</strong><input type="text" style="width:40px;margin-left:10px;" id="majidm" value=""  ><input type="hidden" id="command1"  value="7"><input type="hidden" id="appli"  value="dev_bd"><button id="bouton_maj" type="button" onclick="adby(4)" style="width:50px;margin-left:10px;height:30px">Envoi</button></p></form></div>
+<div id="adb" style="line-height: normal;font-size: 14px;"><form>
 	<p><span style="margin-left: 10px;"><strong>Nom de l' Appareil :</strong> </span><input type="text" style="width:200px;margin-left:10px;" id="nom" value=""  ><br><span style="margin-left: 10px;"><em>ou fiendly_name</em></span><br><span style="margin-left: 10px;color:red">*</span>champ requis&nbsp;&nbsp;<span style="color:green">*</span>choisir au moins 1 champ (si Actif coché)</p>	
 <p style="margin-left: 10px;font-size:14px"> <em>type de mise à jour JS</em><span style="color:red">&nbsp;&nbsp;* </span><br>
-<input type="hidden" id="app" value="dev_bd">
+<input type="hidden"id="app" value="dev_bd">
 <input type="radio" name="maj_js" value="control">control
 <input type="radio" name="maj_js" value="control">etat
 <input type="radio" name="maj_js"  value="onoff">onoff
 <input type="radio" name="maj_js"  value="data">data
 <input type="radio" name="maj_js"  value="temp">temp	
 <input type="radio" name="maj_js"  value="onoff+stop">onoff+stop
+<input type="radio" name="maj_js"  value="on_level">on_level
 <input type="radio" name="maj_js"  value="on">on
+<input type="radio" name="maj_js"  value="on=">on=
 <input type="radio" name="maj_js"  value="popup">popup<br>INFO:<em style="color:green">onoff:interrupteur</em>,<em style="color:darkblue">onoff+stop:volet</em>,<em style="color:purple">on:sonnette</em></p>
 <p style="margin-left: 10px;font-size:14px"> <strong>Domoticz</strong><br>
 <input type="hidden" id="command"  value="2">
