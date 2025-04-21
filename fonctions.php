@@ -1184,7 +1184,7 @@ return ;
 break;
 case "9" : echo "<img src='images/serveur-sql.svg' style='width:25px;height:auto;' alt='dz'>";return; 
 break;
-case "10" : $content=sql_app(2,"cameras","modect",1,$icone='');file_put_contents(CONF_MODECT.'.bak.'.$time, $content);echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>'.CONF_MODECT.'<br>
+case "10" : $content=sql_app(2,"cameras","modect",1,$icone='');file_put_contents(CONF_MODECT.'.bak.'.$time, $content);echo CONF_MODECT.'<BR><textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>'.CONF_MODECT.'<br>
 	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
 	 echo '</form></div>';return "sauvegarde ".CONF_MODECT."OK";	
 case "11" :$content=$idrep;$height="100";echo $idrep.'<br><p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';
