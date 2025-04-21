@@ -4,7 +4,7 @@ $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="/";
 if ($domaine==IPMONITOR) $lien_img="/monitor/";
 require_once("fonctions.php");
-function test_rgb($rgb2){
+/*function test_rgb($rgb2){
 $data_rgb = [
 'command' => "13",
 'ID1_html' => $rgb2
@@ -15,7 +15,7 @@ $rvb=mysql_app($data_rgb);$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['
 	if ($majjs == "on_level" && $serveur=="3") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="mapp" value="turn"><input type="hidden" id="midx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{format:\'rgb\'}" id="rgb">';
 	echo $input.'<button type="button" onclick="adby(10);" style="width:38px;height:28px">OK</button>';
 							
-}
+}*/
 
 //test_rgb('sw3');/json.htm?type=command&param=setcolbrightnessvalue&idx=130&color={"m":3,"t":0,"r":0,"g":0,"b":50,"cw":0,"ww":0}&brightness=100
 ?>
@@ -35,16 +35,16 @@ $rvb=mysql_app($data_rgb);$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['
   </button></div>	
 			
 		<ul>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/><?php echo test_rgb('sw5');?>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/>
 			<img id="sw12" src="<?php echo $lien_img;?>images/seche-serviettes.svg" width="40" height="auto" alt=""/>
 			<img id="sw23" src="<?php echo $lien_img;?>images/vanne.svg" width="60" height="auto" alt=""/>
 			<img id="sw24" src="<?php echo $lien_img;?>images/th_cave.webp" width="60" height="auto" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>images/lampe_entree.svg" width="60" height="40" alt=""/></a><?php echo test_rgb('sw4');?></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>images/lampe_salon.svg" width="60" height="40" alt=""/></a><?php echo test_rgb('sw3');?> </li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/><?php echo test_rgb('sw2');?>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>images/lampe_entree.svg" width="60" height="40" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>images/lampe_salon.svg" width="60" height="40" alt=""/></a>	</li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/>
 			<img id="sw11" src="<?php echo $lien_img;?>images/cordon_prise_bureau.svg" width="60" height="auto" alt=""/>
 			<img id="sw10" src="<?php echo $lien_img;?>images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw1" src="<?php echo $lien_img;?>images/lampe_poele.svg" width="60" height="60" alt=""/></a><?php echo test_rgb('sw1');?></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw1" src="<?php echo $lien_img;?>images/lampe_poele.svg" width="60" height="60" alt=""/></a></li>
 			<li style="margin-left:0;margin-top:10px"><?php include ("volet-roulant_svg.php");?></li>
 			<li style="margin-left:0;margin-top:10px"><img id="sw6" src="<?php echo $lien_img;?>images/porte_garage.svg" width="60" height="auto" alt=""/></li>
 			
