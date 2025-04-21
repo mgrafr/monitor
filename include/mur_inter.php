@@ -10,9 +10,9 @@ $data_rgb = [
 'ID1_html' => $rgb2
 ];
 $rvb=mysql_app($data_rgb);$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['Actif'];$ID=$rvb['ID'];$objet=$rvb['nom_objet'];
-	if ($majjs == "onoff_rgb" && $serveur=="2") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="mapp" value="OnOff"><input type="hidden" id="midx" value="'.$idx.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
-	if ($majjs == "onoff_rgb" && $serveur=="4") $input='<input type="hidden" id="type" value="2"><input type="hidden" id="mapp" value="put"><input type="hidden" id="midx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
-	if ($majjs == "onoff_rgb" && $serveur=="3") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="mapp" value="turn"><input type="hidden" id="midx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{format:\'rgb\'}" id="rgb">';
+	if ($majjs == "on_level" && $serveur=="2") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="mapp" value="OnOff"><input type="hidden" id="midx" value="'.$idx.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
+	if ($majjs == "on_level" && $serveur=="4") $input='<input type="hidden" id="type" value="2"><input type="hidden" id="mapp" value="put"><input type="hidden" id="midx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{}" id="rgb">';
+	if ($majjs == "on_level" && $serveur=="3") $input='<input type="hidden" id="type" value="4"><input type="hidden" id="mapp" value="turn"><input type="hidden" id="midx" value="'.$ID.'"><input style="width:9px;" data-jscolor="{format:\'rgb\'}" id="rgb">';
 	echo $input.'<button type="button" onclick="adby(10);" style="width:38px;height:28px">OK</button>';
 							
 }
@@ -35,16 +35,16 @@ $rvb=mysql_app($data_rgb);$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['
   </button></div>	
 			
 		<ul>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/><?php echo test_rgb('sw5');?>
 			<img id="sw12" src="<?php echo $lien_img;?>images/seche-serviettes.svg" width="40" height="auto" alt=""/>
 			<img id="sw23" src="<?php echo $lien_img;?>images/vanne.svg" width="60" height="auto" alt=""/>
 			<img id="sw24" src="<?php echo $lien_img;?>images/th_cave.webp" width="60" height="auto" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>images/lampe_entree.svg" width="60" height="40" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw4" src="<?php echo $lien_img;?>images/lampe_entree.svg" width="60" height="40" alt=""/></a><?php echo test_rgb('sw4');?></li>
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw3" src="<?php echo $lien_img;?>images/lampe_salon.svg" width="60" height="40" alt=""/></a><?php echo test_rgb('sw3');?> </li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw2" src="<?php echo $lien_img;?>images/lampe_bureau.svg" width="60" height="60" alt=""/><?php echo test_rgb('sw2');?>
 			<img id="sw11" src="<?php echo $lien_img;?>images/cordon_prise_bureau.svg" width="60" height="auto" alt=""/>
 			<img id="sw10" src="<?php echo $lien_img;?>images/cordon_prise.svg" width="60" height="auto" alt=""/></a></li>
-			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw1" src="<?php echo $lien_img;?>images/lampe_poele.svg" width="60" height="60" alt=""/></a></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw1" src="<?php echo $lien_img;?>images/lampe_poele.svg" width="60" height="60" alt=""/></a><?php echo test_rgb('sw1');?></li>
 			<li style="margin-left:0;margin-top:10px"><?php include ("volet-roulant_svg.php");?></li>
 			<li style="margin-left:0;margin-top:10px"><img id="sw6" src="<?php echo $lien_img;?>images/porte_garage.svg" width="60" height="auto" alt=""/></li>
 			

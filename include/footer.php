@@ -33,7 +33,8 @@ for (attribute in maj_dev) {
 	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];console.log('idm='+id_m);}
 }
 if (id_m==null) {out_msg= 'id_m='+id_m;return;}
-		var command=state.toString().toLowerCase();
+		//var command=state.toString().toLowerCase();
+		var command=state.toString();
 pp[id_m].Data=command;console.log(pp[id_m].Data+command);
 console.log('command='+state);
 var fx=pp[id_m].fx; console.log(fx);if (fx=="lien_variable"){maj_services(0);}
@@ -44,9 +45,9 @@ var scoul_off=pp[id_m].coul_OFF;
 var c_l_on=pp[id_m].coullamp_ON
 var c_l_off=pp[id_m].coullamp_OFF
 var scoul="";var scoull="";	
-if (command=="on" || command=="open")  {scoul=scoul_on;scoull=c_l_on;}
+if (command=="on" || command=="On" || command=="open")  {scoul=scoul_on;scoull=c_l_on;}
 else if (command.substring(0, 9)=="set level")  {scoull=scoull=c_l_on;}
-else if  (command=="off"  || command=="closed" ) {scoul=scoul_off;scoull=c_l_off;}
+else if  (command=="off" || command=="Off" || command=="closed" ) {scoul=scoul_off;scoull=c_l_off;}
 else if  (command=="group on" ) {scoul=scoul_on;scoull=c_l_on;}		
 else return;	
 console.log('sid1='+sid1+'..'+scoul);
@@ -262,15 +263,17 @@ $.ajax({
 				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}
 				if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
 											   else {pos_m="off"; }}
+				if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
+											   else {pos_m="off"; }}							   
 				if ((val.maj_js=="onoff+stop") && ((pos_m.substring(0, 11)=="set level: ") || (pos_m=="open"))) {vol=1;pos_m="on";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="onoff_rgb"|| val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="onoff_rgb" || val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; }
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="onoff_rgb" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
+			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="onoff_rgb" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
@@ -315,7 +318,10 @@ rr=new Array();
 	case "2": var app="OnOff";
 	  var type;var level;
 	  if ((command=="On")||(command=="Off")){type=2;}
-	  else if (command.substring(0, 9)=="Set Level") {type=3;var pourcent = command.split(" ");level=pourcent[2];}
+	  else if (command=="Set Level") {type=3;level=100;//var pourcent = command.split(" ");level=pourcent[2];
+				//if (level=="") level=100;
+
+	  }
 	  else {type=1;}
 	break;				
 	case "3": var app="turn";var type=0;var level=0;
@@ -333,8 +339,8 @@ rr=new Array();
 	
   function switchOnOff(app,idm,idx,command,type,level,pass){
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
-	  if (command=="On" || command=="on" || type=="on=" || command=="group on" || command.substring(0, 9)=="Set Level") {
-	 if ((pp[idm]) && type!="on="){	 
+	  if (command=="On" || command=="on" || type=="on=" || command=="group on" || command=="Set Level") {
+	 if ((pp[idm]) && type!="on="){	
 	  if (pp[idm].Data == "off" ) {command="on";}
 		if (pp[idm].Data == "on" ) {command="off";} 
 		if (pp[idm].Data == "On" ) {command="Off";} 
@@ -343,6 +349,9 @@ rr=new Array();
 		if (pp[idm].Data == "Off" && pp[idm].maj_js != "on" ) {command="Off";} 
 	  if (pp[idm].Data == "on" && pp[idm].maj_js != "on"  ) {command="off";} 
 		if (pp[idm].Data == "Off" && pp[idm].maj_js != "on" ) {command="On";} 
+		if (pp[idm].Data != "Off" && pp[idm].maj_js == "on_level"  ) {level=0; command="Off";}
+		if (pp[idm].Data == "Off" && pp[idm].maj_js == "on_level" ) {level=100;command="On";} 
+		console.log("type"+type+"level"+level);
        	}
 		 
 	    $.ajax({
