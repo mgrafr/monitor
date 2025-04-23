@@ -606,7 +606,20 @@ if ($auth<3){$json2="json.htm?type=command&param=";
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
 	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
 	// $type=4 Réglez une lumière RVB dimmable
-	if ($type==4){$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$idx.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
+	if ($type==4){
+	$data_rgb = [
+		'command' => "13",
+		'ID1_html' => $idx
+				];
+		$rvb=mysql_app($data_rgb);
+		$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['Actif'];$ID=$rvb['ID'];$objet=$rvb['nom_objet'];
+		
+		
+		if ($majjs == "on_level" && $serveur=="2") $id=$idx;
+		if ($majjs == "on_level" && $serveur=="4") $id=$ID;
+		if ($majjs == "on_level" && $serveur=="3") $id=$ID;
+								
+	$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$id.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
 	$json= $L_dz.$json2.$json1;
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
