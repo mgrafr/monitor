@@ -904,8 +904,8 @@ case 5:
 	app : $("#mapp").val(),
 	type : Number($("#type").val()),	
 	//variable : Number($("#level").val())*100,	
-	command : $("#rgb").val(),
-	device : $("#midx").val(),
+	command : $("#val1").val(),
+	device : $("#idhtml").val(),
 	name : "0"		
 	};fenetre='color_lampes';
      break;		 
@@ -916,8 +916,9 @@ case 5:
       url: "ajax.php",
       data: formData,
       dataType: "html",
-	success:function (data) {$('#'+fenetre).empty();
-		document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
+	success:function (data) {
+		if (choix !=10) {$('#'+fenetre).empty();
+		document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";}
       },
 		error: function() { 
                           alert('La requête n\'a pas abouti'); 
@@ -927,7 +928,8 @@ case 5:
 </script><script>
 $('li.ww').click(function(){var ww1 = $(".www").attr('href');
 $(ww1).attr('display','block');
-});	</script>
+});
+	</script>
 <?php
 if (SSE=='node') {$domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien="https://".SSE_URL;
