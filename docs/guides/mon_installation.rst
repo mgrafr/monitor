@@ -361,6 +361,10 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
 |image1758|
 
+**réseau maillé**
+
+|image1763|
+
 21.4.1 Installation de zigbee2mqtt
 ----------------------------------
 
@@ -2812,3 +2816,5 @@ Mon WGDashbord
    :width: 600px
 .. |image1762| image:: ../img/image1762.webp
    :width: 437px
+.. |image1763| image:: ../img/image1763.webp
+   :width: 700px
