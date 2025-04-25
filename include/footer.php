@@ -901,8 +901,8 @@ case 5:
      break;	
 	case 10: 
 	var formData = {
-	app : $("#mapp").val(),
-	type : Number($("#type").val()),	
+	app : "OnOff",
+	type : "4",	
 	//variable : Number($("#level").val())*100,	
 	command : $("#val1").val(),
 	device : $("#idhtml").val(),
@@ -917,8 +917,9 @@ case 5:
       data: formData,
       dataType: "html",
 	success:function (data) {
-		if (choix !=10) {$('#'+fenetre).empty();
-		document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";}
+		$('#'+fenetre).empty();
+		if (choix !=10) {document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";}
+		else if (choix ==10) {document.getElementById(fenetre).innerHTML = formData['command'];document.getElementById(fenetre).style.display = "block";}
       },
 		error: function() { 
                           alert('La requête n\'a pas abouti'); 
