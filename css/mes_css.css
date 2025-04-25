@@ -552,10 +552,12 @@ left: 170px;width: 40px;}
 .popup_rgb {
     position: relative;
     top: -640px;
-    left: 100px;
+   /* left: 100px;*/
+   margin-left: 350px;
+    width: 70px;
     background: rgb(12 12 1 / 58%);
-    width: 300px;
-    height: 20px;
+   /* width: 300px;
+    height: 20px;*/
     display: none;
 	color:white;
   }
@@ -579,7 +581,7 @@ left: 170px;width: 40px;}
 	.fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}#th_ext_cuis {top: -700px;}
 #bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}
 #th_ext_cuis {top: -650px;}.sparkling-modal-frame {top:50%;}#vanne_eau{position: relative;top: -613px;left: 380px;}
-.sos {top: -600px;}
+.sos {top: -600px;}#gd_portail {top: 740px;left: 300px;}.fosse_septique{left:420px;}#fosse{top:700px;}
 }
 /* Large devices (small desktops <601) */
 @media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}.choix_scenes{left:10px;width: 80%;}
@@ -588,7 +590,7 @@ left: 170px;width: 40px;}
 /* Large devices (small desktops <535) */
 @media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:580px;}#nagiosmobile{width:480px;}
 .poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}.aff_not1{top: 450px;}
-	.fosse_septique{left:300px;}#fosse{bottom:420px;}.aff_anni{bottom: 80px;}
+	.fosse_septique{left:380px;}#fosse{top:550px;}.aff_anni{bottom: 80px;}
 /*.aff_pluie{left: 390px;}*/
 .fond_date {right: 0px;top:0;}.aff_pluie {left: 300px;}.choix_scenes{left: 5px;width: 100%;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}.sos {top: -450px;}
