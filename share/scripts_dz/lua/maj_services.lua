@@ -1,7 +1,7 @@
 --
 --[[
 -- time
-name : maj_services.lua
+name : maj_services.lua  version 2.0
 
 ce script à pour but de déterminer si nous sommes en semaine pair ou impair
 et fonction de cela, le jeudi en fin d'après midi,
@@ -96,34 +96,34 @@ if (time == "00:05"  or time == "17:00") then
     commandArray['Variable:fosse septique'] = "0";
 end 
 -- POUBELLES
-if (time == "01:00") then
+if (time == "17:00") then jpg1=0;jpj1=0;
     -- exclusion ou ajout dates poubelles ,
     for k,v in pairs(e_poubelles) do 
       if (jour_mois==k) then 
-        if (v == "g") then jpg = ""; return jpg;
-		elseif (v == "j") then jpj = "";return jpj;
+        if (v == "g") then jpg = ""; 
+		elseif (v == "j") then jpj = "";
 		end
       end    
     end
 	for k,v in pairs(a_poubelles) do 
       if (jour_mois==k) then print(k..' '..jour_mois..' '..v)
-		if (v == "g") then jpg = day;return jpg;
-		elseif (v == "j") then jpj = day;print(jpj);return jpj;
+		if (v == "g") then jpg = day;jpg1=1;
+		elseif (v == "j") then jpj = day; jpj1=1;
 		end
 	  end    
     end  
 if  ( day ==  jpg )  then commandArray['Variable:poubelles'] = "ordures_ménagères"
 		-- poubelle  la variable passe à "poubelle_grise" .
 	commandArray['Variable:not_tv_poubelle'] = "1"
-	commandArray['Variable:not_poubelles'] = "1"
+	--commandArray['Variable:not_poubelles'] = "1"
 	 print (time,day, "mettre les poubelles ordures ménagères");
 	 -- envoi notification via free
 		--os.execute(sms_free) résilié
-	commandArray['SendEmail']='poubelles#ménagères#xxxxxxxx.michel@gmail.com'		
+	commandArray['SendEmail']='poubelles#ménagères#gravier.michel@gmail.com'		
 		end
 --
 if ( day == jpj ) then 
-    print ("-----"..time,day,jpj);
+    print ("-----"..time..day..jpj);
 	-- récupérer numéro de la semaine actuelle
 	useDate = os.time()	-- os.time{year=2015,month=9,day=30} -- il est possible de préciser la date
 	weekNum = getWeekNumberOfYear(useDate)
@@ -131,16 +131,16 @@ if ( day == jpj ) then
 	pair_impair_semaine = weekNum%2 -- resultat =0 ou 1
 	-- L' %opérateur (modulo) produit le reste de la division du premier argument par le second 
 	print(os.date("%A %d/%m/%Y",useDate)..": week number:"..tostring(weekNum))
-	if (pair_impair_semaine==semaine_poub_jaune) then print(pair_impair_semaine); commandArray['Variable:poubelles'] = "poubelle_recyclables"
+	if ( jpj1==1 or pair_impair_semaine==semaine_poub_jaune) then print(pair_impair_semaine); commandArray['Variable:poubelles'] = "poubelle_recyclables"
 			-- poubelle jaune la variable passe à  "poubelle_jaune"
 	commandArray['Variable:not_tv_poubelle'] = "1"
     print (time,day, "mettre les poubelles recyclabes");
 		-- envoi notification via free
 		--os.execute(sms_free) résilié
-	commandArray['SendEmail']='poubelles#recyclabes#xxxxxxxxx.michel@gmail.com'	
+	commandArray['SendEmail']='poubelles#recyclabes#gravier.michel@gmail.com'	
 		
 		end
-else print(day,jpj,time)
+else print(day..jpj..time)
 end
 
 end
