@@ -901,12 +901,12 @@ case 5:
      break;	
 	case 10: 
 	var formData = {
-	app : "OnOff",
-	type : "4",	
+	app : "dimm",
+	//type : "4",	
 	//variable : Number($("#level").val())*100,	
 	command : $("#val1").val(),
 	device : $("#idhtml").val(),
-	name : "0"		
+	name : "100"		
 	};fenetre='color_lampes';
      break;		 
 	  default:
@@ -919,8 +919,7 @@ case 5:
 	success:function (data) {
 		$('#'+fenetre).empty();
 		if (choix !=10) {document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";}
-		else if (choix ==10) {document.getElementById(fenetre).innerHTML = formData['command'];document.getElementById(fenetre).style.display = "block";}
-      },
+		   },
 		error: function() { 
                           alert('La requête n\'a pas abouti'); 
                         } 

@@ -18,7 +18,7 @@ require_once("fonctions.php");
 		<div><button type="button" id="btn_sc" class="btn btn-primary" data-toggle="modal" data-target="#choix_scenes">
     Commandes SCENES
 </button></div>
-<input type="hidden" id="idhtml" value="">couleur en cours:<input style="width: 70px;"" id="val1" value="FFFFFF" onchange="adby(10)" >
+<input type="hidden" id="idhtml" value=""><input  id="val1" value="FFFFFF" onchange="adby(10)" >
     <ul>
 		<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/>
 			<button onclick="document.querySelector('#idhtml').setAttribute('value','sw5');" data-jscolor="{valueElement:'#val1'}"></button>
