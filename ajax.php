@@ -24,6 +24,7 @@ else if ($app=="devices_plan") {if (DECOUVERTE==true) {include('include/json_dem
 								else {$retour=devices_plan($variable);echo json_encode($retour); }}
 else if ($app=="turn") {$retour=devices_id($device,$command,$type,$name);echo $retour; }
 else if ($app=="OnOff") {$retour=switchOnOff_setpoint($device,$command,$type,$variable,$name);echo json_encode($retour); }
+else if ($app=="dimm") {$retour=dimmable($device,$command,$name);echo json_encode($retour); }
 else if ($app=="put") {$retour=set_object($device,$type,$command,$name);echo json_encode($retour); }
 else if ($app=="meteo_concept") {if (DECOUVERTE==true) {include('include/json_demo/meteo_concept_json.php');return;}
 								else {echo $retour=meteo_concept($variable); }}
@@ -46,6 +47,7 @@ else if ($app=="shell") {$ip=$variable;$user_serv=$name;$pwd_serv=$table;include
 else if ($app=="idxidm") {$retour=sql_variable(0,$command);echo json_encode($retour);}
 else if ($app=="sql") {$retour=sql_app($idx,$variable,$type,$command,$name);echo $retour;}//$choix,$table,$valeur,$date,$icone
 else if ($app=="log_dz") {log_dz($variable);}
+else if ($app=="maj") {mysql_app($_GET);}
 else if ($app=="admin") {admin($variable,$command);}	//$command=fenetre(administration footer	
 //  autres fonctions php-----------------------------------Z
 else if ($appp=="mdp") {$retour=mdp($variablep,$commandp);echo json_encode($retour);}
