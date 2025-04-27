@@ -44,8 +44,8 @@ else echo "pas de serveur";
 }
 function sql_1($row,$f1,$ser_dom){
 $commande="On";$query="#";
-if ($row['maj_js']=="on"){$commande="group on";}
-if ($row['maj_js']=="on_level"){$commande="Set Level";}
+if ($row['maj_js']=="on"  && $ser_dom=="dz"){$commande="group on";}
+if ($row['maj_js']=="on_level" && $ser_dom=="dz"){$commande="Set Level";}
 if ($row['maj_js']=="on="){$query=".";$f='var command=$(this).attr("rel");'.$f1;$commande="command";}
 else $f=$f1;
 
