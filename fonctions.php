@@ -289,6 +289,8 @@ foreach ($lect_device as $xxx){
 return $ha;}
 //
 function devices_id($deviceid,$type,$value="",$pass=0){$post="";global $L_ha,$Token_ha; 
+//$type=$command
+$type= strtolower($type);
 	$mat=explode('.',$deviceid);$mat=$mat[0];
 switch ($type) {
 case "etat" :		
@@ -309,9 +311,10 @@ case "off" :
 	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
 break;
-case 4 ://"entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
-	$mode=2;$value=str_replace('rgb','',$value);$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
+case "4" ://"entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
+	$mode=2;$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
 	$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": '.$value.'}';
+	echo $api;echo $api;return;
 break;		
 case "value" :
 	$mode=2;	
@@ -333,33 +336,7 @@ $mode=1;//$device=$device.".".$type;
 if ($value=="On") {$value='true';}
 if ($value=="Off") {$value='false';}
 											  
-//$iob=send_api_put_request($L, $parameters, $post);	
-/*$curl = curl_init();
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => $L.$parameters,
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "PUT",
-  CURLOPT_POSTFIELDS => $post,
-  CURLOPT_HTTPHEADER => array(
-    //"X-CSRFToken: $csrfToken",
-    //"Referer: https://pilotageadistance.imateleassistance.com",
-    "Content-Type: application/json",
-    "Cookie: sessionid=$sessionId;"
-  ),
-));  
-												
-$response = curl_exec($curl);
-
-  return array(
-    'code' => curl_getinfo($curl, CURLINFO_HTTP_CODE),
-    'data' => $response,
-  );*/
 $L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
 $iob=file_get_curl($L);
 $iob = json_decode($iob, true);
@@ -395,7 +372,7 @@ if ($l_ha!=""){$serveur_ha_on = true;
 $serveur_iob_on = false;
 	$obj_iob=[]	;					 
 if ($l_iob!=""){$q=$p;$serveur_iob_on = true;
-				$iob=array();$values=array();
+				$iob=array();$values=array();$valu=array();
 	if (str_contains(OBJ_IOBROKER, ",")) {$obj_iob=explode(',',OBJ_IOBROKER);$nbi=count($obj_iob);}			
 	else {$obj_iob[0]=OBJ_IOBROKER;} 
 $ii=0;$n=0;$id4[$ii]="";
@@ -408,19 +385,22 @@ if ($nb_iob>2){
 	if ($nb_iob==5){$_id2=$id1[0].".".$id1[1].".".$id1[2].".".$id1[3];$vq=$id1[3];}	 }									 
 $L=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id1.".*";	
 $json_string = file_get_curl($L);//return $json_string;
-$iob_json = json_decode($json_string);
+$iob_json = json_decode($json_string);$devi="";
 foreach ($iob_json as $cle => $valeur){
 		$name=str_replace($_id1.".", "", $cle);	//$name=str_replace(".","_",$name);		   
+		$device=explode('.',$cle);$devic=$device[0].".".$device[1].".".$device[2];
+	    if ($devi==$devic) {$valu[$devic][$device[3]] = $valeur -> {'val'};}
 		$iob[$n]=[
 		'num' => $n,
 		'ID' => $cle,
-		'Name' => $name,	
+		'Device' => $devic,
 		'Data' => $valeur -> {'val'},
 		'serveur' => "IOB"
 		];		
 		if ($nb_iob>2){$values[$name] = $valeur -> {'val'};
-	   }	
-		$n++;$jj++;}					 
+	   }
+	    
+		$n++;$jj++;$devi=$devic;}					 
 if ($nb_iob>2){
 			$L2=$IP_iob.":".$port_api_iob."/v1/object/".$_id2;
 			$json1_string = file_get_curl($L2);
@@ -435,7 +415,8 @@ if ($nb_iob>2){
 			'serveur' => 'IOB'
 			];//return $iob;
 	$n++;}
-	$ii++; }	
+	$ii++; }
+	//$plan=99;	
 		$n=0;if ($plan==99){ $_SESSION['iob'] = json_encode($iob);return $iob;}// pour test iob 
 	
 while (isset($iob[$n])==true){
@@ -446,17 +427,18 @@ $n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;
 
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
-$description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
+//$description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
+$device = isset($lect_device["Device"]) ? $lect_device["Device"] : '';
 $description = isset($lect_device["attributes"]) ? $lect_device["attributes"] : 'sans';
 if ($lect_device["serveur"] == "DZ"){
-	if  (isset($lect_device["attributes"])) {
+//	if  (isset($lect_device["attributes"])) {
 $lect_device["attributes"]["SubType"] = $lect_device["SubType"];
 $lect_device["attributes"]["SwitchType"] = $lect_device["SwitchType"] ;			
 $lect_device["attributes"]["SwitchTypeVal"] = $lect_device["SwitchTypeVal"];
 $lect_device["attributes"]["Timers"] = $lect_device["Timers"];			
 $lect_device["attributes"]["Type"] = $lect_device["Type"];	 
-$lect_device["attributes"]["Color"] = $lect_device["Color"];	 }}
-else {$lect_device["attributes"]="non défini";}
+$lect_device["attributes"]["Color"] = $lect_device["Color"];	 }
+//else {$lect_device["attributes"]="non défini";}
 $periph=array();$periph['idm']=1000;
 	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";}
 	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";}
@@ -480,8 +462,9 @@ if ($t=="") {$t=888;$choix_serveur="0";}}
 //---------------------------------------------------------------
 	switch ($choix_serveur) {
 		case "iob" :	
-		
-if(array_key_exists('values', $lect_device)) {
+$lect_device["Name"] = $periph['nom_objet'];
+
+if (array_key_exists('values', $lect_device)) {
 	$array=$lect_device['values'];
     if(array_key_exists('temperature', $array)) {$lect_device["Temp"]=$array["temperature"];$lect_device["Data"]=$array["temperature"];}//pour IOB
 	if(array_key_exists('air_temperature', $array)) {$lect_device["Temp"]=$array["air_temperature"];}//pour IOB
@@ -499,6 +482,7 @@ if(array_key_exists('values', $lect_device)) {
 	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}
 	//if(array_key_exists('pause', $array)) {$lect_device["Data"] = $array["pause"];}// pour WORX
 }
+else $lect_device['values'] = $valu[$device];	
 		case "dz" :
 		case "ha" :			
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
@@ -513,7 +497,7 @@ if ($periph['F()']==-1) {$lect_device["Fx"]="lien_variable";}
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
 if (!$lect_device['values']){$lect_device['values']="";}
-if (!$lect_device['attributes']){$lect_device['attributes']="";}
+//if (!$lect_device['attributes']){$lect_device['attributes']="";}
 if (!$lect_device['Type']){$lect_device['Type']="inconnu";}			
 	$data[$t] = ['serveur' => $lect_device["serveur"],			 
 	'idx' => $periph["idx"],
@@ -525,6 +509,7 @@ if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
 	'ID' => $lect_device["ID"],
 	'serveur' => $lect_device["serveur"],			 
 	'Data' => $lect_device["Data"],
+	'device' => $device,
 	'attributs' => $lect_device["attributes"],			 
 	'Name' => $lect_device["Name"],
    	'Update' => $lect_device["LastUpdate"],
@@ -599,8 +584,8 @@ $data_rgb = [
 	$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['Actif'];$ID=$rvb['ID'];$objet=$rvb['nom_objet'];
 		
 	if ($majjs == "on_level" && $serveur=="2") $id=$idx;$type=4;$result=switchOnOff_setpoint($id,$valeur,$type,$level,$pass="0");
-	if ($majjs == "on_level" && $serveur=="4") $id=$ID;
-	if ($majjs == "on_level" && $serveur=="3") $id=$ID;
+	if ($majjs == "on_level" && $serveur=="4") $id=$ID;set_object($device,$type,$valeur,$pass=0);
+	if ($majjs == "on_level" && $serveur=="3") $id=$ID;$type="4";$rvb=hex2rgb($valeur);$result=devices_id($deviceid,$type,$rvb,$pass=0);
 return $result;
 		}
 
@@ -1647,5 +1632,18 @@ function reboot(){
 $output = shell_exec('ssh '.LOGIN_PASS_RPI.'@'.IPRPI.' -t bash "sudo reboot"  >> /home/michel/sms.log 2>&1');	
 	
 }
-
+function hex2rgb($hex) {
+	$hex = str_replace("#", "", $hex);
+	if(strlen($hex) == 3) {
+		$r = hexdec(substr($hex,0,1).substr($hex,0,1));
+		$g = hexdec(substr($hex,1,1).substr($hex,1,1));
+		$b = hexdec(substr($hex,2,1).substr($hex,2,1));
+	} else {
+		$r = hexdec(substr($hex,0,2));
+		$g = hexdec(substr($hex,2,2));
+		$b = hexdec(substr($hex,4,2));
+	}
+	$rgb = array($r, $g, $b);
+	return $rgb;
+}
 ?>
