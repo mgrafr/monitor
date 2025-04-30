@@ -312,9 +312,8 @@ case "off" :
 	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
 break;
 case "4" ://"entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
-	$mode=2;$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
-	$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": '.$value.'}';
-	echo $api;echo $api;return;
+	$mode=2;$rgb=$value;//$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
+	$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": '.json_encode($value).'}';
 break;		
 case "value" :
 	$mode=2;	
@@ -323,11 +322,10 @@ break;
 default:
 }								
 $L=$L_ha.$api;
-
 $ha=file_http_curl($L,$mode,$post,$Token_ha);
 $data = json_decode($ha, true);
 $data['status']="OK";										
-$data['address_api']=$L;											
+$data['address_api']=$post;										
 return json_encode($data);}
 
 function set_object($device,$type,$value,$pass=0){global $Token_iob,$port_api_iob,$IP_iob;
@@ -585,7 +583,7 @@ $data_rgb = [
 		
 	if ($majjs == "on_level" && $serveur=="2") $id=$idx;$type=4;$result=switchOnOff_setpoint($id,$valeur,$type,$level,$pass="0");
 	if ($majjs == "on_level" && $serveur=="4") $id=$ID;set_object($device,$type,$valeur,$pass=0);
-	if ($majjs == "on_level" && $serveur=="3") $id=$ID;$type="4";$rvb=hex2rgb($valeur);$result=devices_id($deviceid,$type,$rvb,$pass=0);
+	if ($majjs == "on_level" && $serveur=="3") $id=$ID;$type="4";$rgb=hex2rgb($valeur);$result=devices_id($id,$type,$rgb,$pass=0);
 return $result;
 		}
 
