@@ -555,7 +555,7 @@ Ce fichier est chargé automatiquement dans footer.php si MQTT est à true dans 
 
 .. code-block:: 
 
-   if (MQTT==true) echo '<script src="js/mqttws31.js"></script>';?>	
+   if (MQTT==true) echo '<script src="js/mqttws.min.31.js"></script>';?>	
 
 La même commande de volet par MQTT
 
