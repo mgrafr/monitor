@@ -25,6 +25,7 @@ Version en developpement 3.2.4
 - Ajout d'un lien symbolique de la configuration vers le répertoire de l'API
 - modification  de fonctions.php pour intégrer 2 répertoires de io.broker (ex pour worx les repertoires  mover et calendar)
 - Suppression de la maj_js "onoff_rgb" (modif des couleurs) et création pour toutes les lampes dimmables de "on_level"
+- Ajout d'un cookie pour mémoriser la config en cours sur un écran (PC, Tablette, Smartphone)
 
 Version 3.2.3 (Févier 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
