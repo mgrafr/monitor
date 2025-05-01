@@ -1688,6 +1688,8 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 
 |image106|
 
+|image1764|
+
 0.4.1 Un fichier de configuration par écran de contrôle
 =======================================================
 A partir du fichier de configuration principal, faire une ou plusieurs copie(s) dans le répertoire admin en le(s) nommant:
@@ -2322,3 +2324,5 @@ function mc(variable,id)
    :width: 700px
 .. |image1751| image:: ../img/image1751.webp
    :width: 260px
+.. |image1764| image:: ../img/image1764.webp
+   :width: 700px
