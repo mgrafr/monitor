@@ -316,6 +316,15 @@ voir ce paragraphe concernant le serveur :ref:`18.10 Serveur SSE installé dans 
 
 |image906|
 
+1.1.3.3 Solution temps réel MQTT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Définir MQTT sur true dans admin/config.php et renseigner les données concernant le serveur MQTT
+
+|image1765|
+
+en cours
+
+
 1.1.4 Autres données
 --------------------
 Choisir Idx de Domoticz ou idm de monitor ? 
@@ -2508,3 +2517,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 700px
 .. |image1750| image:: ../img/image1750.webp
    :width: 700px
+.. |image1765| image:: ../img/image1765.webp
+   :width: 600px
