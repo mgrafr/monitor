@@ -1702,7 +1702,7 @@ Dans le PC, la tablette,... appeler monitor en précisant le nom de la config
 
 	|image1679| 
 
-La configuration choisie est placé dans une variable de  session:
+La configuration choisie est placé dans une variable de session et dans un cookie:
 
 |image1680| 
 
@@ -2103,7 +2103,7 @@ function mc(variable,id)
 .. |image103| image:: ../media/image103.webp
    :width: 334px 
 .. |image106| image:: ../media/image106.webp
-   :width: 671px 
+   :width: 550px 
 .. |image107| image:: ../media/image107.webp
    :width: 270px 
 .. |image108| image:: ../media/image108.webp
