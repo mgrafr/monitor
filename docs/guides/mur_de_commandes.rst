@@ -537,7 +537,7 @@ Mise à jour instantanée : on utilise la fonction qui met à jour dans monitor,
 
 8.2.6.3.2 avec MQTT
 ~~~~~~~~~~~~~~~~~~~
-C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par HA ou DZ. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
+C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par HA, DZ ou IOB ; c'est aussi la solution pour la maj en temps rél depuis IoBroker. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
 
 https://www.eclipse.org/paho/index.php?page=clients/js/index.php
 
