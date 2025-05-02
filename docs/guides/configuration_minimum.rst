@@ -326,6 +326,14 @@ Définir MQTT sur true dans admin/config.php et renseigner les données concerna
 
    ioBroker.MQTT-CLIENT doit être installé 
 
+   |image1766|
+
+   |image1767|
+
+   - **Envoyer et recevoir des données**
+
+      |image1768|
+
    en cours
 
 
@@ -2523,3 +2531,9 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 700px
 .. |image1765| image:: ../img/image1765.webp
    :width: 600px
+.. |image1766| image:: ../img/image1766.webp
+   :width: 250px
+.. |image1767| image:: ../img/image1767.webp
+   :width: 700px
+.. |image1768| image:: ../img/image1768.webp
+   :width: 700px
