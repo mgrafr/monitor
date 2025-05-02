@@ -1,7 +1,3 @@
-<?php
-//require_once("fonctions.php");
-?>
-
 <!-- footer start -->
 		<!-- ces fonctions sont utilisées pour la page d' accueil , la page interieur ,la page météo 
 		================ -->
@@ -21,7 +17,9 @@
 <script src="js/mes_js.js"></script>
 <script src="js/jscolor.min.js"></script>
 <script src="custom/js/JS.js"></script>
-
+<?php
+if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';}
+?>
 
 <script>
 function maj_mqtt(id_x,state,ind,level=0){console.log('id='+id_x+' state==='+state);
@@ -330,7 +328,7 @@ rr=new Array();
 		if (command=="On") command ="on";
 		if (command=="Off") command ="off";	
 	break;
-	case "4": var app="put";var type="state";var level=0;console.log("relllll="+command);
+	case "4": var app="put";var type="state";var level=0;//console.log("relllll="+command);
 			if (command!="On"){ type="on=";}
 	break;
 	default:
