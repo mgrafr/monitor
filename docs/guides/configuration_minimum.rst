@@ -322,7 +322,11 @@ Définir MQTT sur true dans admin/config.php et renseigner les données concerna
 
 |image1765|
 
-en cours
+.. admonition:: **Exemple avec ioBroker**
+
+   ioBroker.MQTT-CLIENT doit être installé 
+
+   en cours
 
 
 1.1.4 Autres données
