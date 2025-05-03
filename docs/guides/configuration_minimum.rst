@@ -316,11 +316,19 @@ voir ce paragraphe concernant le serveur :ref:`18.10 Serveur SSE installé dans 
 
 |image906|
 
-1.1.3.3 Solution temps réel MQTT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.1.3.3 Solution temps réel MQTT Websocket
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Définir MQTT sur true dans admin/config.php et renseigner les données concernant le serveur MQTT
 
 |image1765|
+
+**Dans admin/footer.php**
+
+|image1770|
+
+Extrait du fichier :darkblue:`admin/mqtt_js.php`
+
+|image1771|
 
 .. admonition:: **Exemple avec ioBroker**
 
@@ -2542,4 +2550,8 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1768| image:: ../img/image1768.webp
    :width: 700px
 .. |image1769| image:: ../img/image1769.webp
+   :width: 700px
+.. |image1770| image:: ../img/image1770.webp
+   :width: 500px
+.. |image1771| image:: ../img/image1771.webp
    :width: 700px
