@@ -350,7 +350,13 @@ Extrait du fichier :darkblue:`admin/mqtt_js.php`
 
       |image1773|
 
- 
+ .. note::
+
+    Pour supprimer les messages conservés depuis mosquitto:
+
+   .. code-block::
+
+      mosquitto_pub -h nom d’hôte -t 'sujet' -u nom d’utilisateur -P mot de passe -n -r -d
 
 |image1772|
 
@@ -2563,4 +2569,4 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1772| image:: ../img/image1772.webp
    :width: 700px
 .. |image1773| image:: ../img/image1773.webp
-   :width: 560px
+   :width: 450px
