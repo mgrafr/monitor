@@ -18,7 +18,7 @@
 <script src="js/jscolor.min.js"></script>
 <script src="custom/js/JS.js"></script>
 <?php
-if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';}
+if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';include ('include/mqtt_js.php');}
 ?>
 
 <script>
