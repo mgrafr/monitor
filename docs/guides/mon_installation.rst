@@ -999,6 +999,10 @@ pour le créer (fichier:pass user:michel):
 --------------------------------
 .. seealso:: *https://fr.javascript.info/websocket*
 
+21.6.3 Effacement des messages conservés 
+----------------------------------------
+Voir ce § :ref:`1.1.3.3 Solution temps réel MQTT Websocket`
+
 
 21.7 Zoneminder
 ===============
