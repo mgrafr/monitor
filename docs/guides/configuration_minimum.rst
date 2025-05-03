@@ -348,6 +348,7 @@ Extrait du fichier :darkblue:`admin/mqtt_js.php`
 
    en cours
 
+|image1772|
 
 1.1.4 Autres données
 --------------------
@@ -2554,4 +2555,6 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1770| image:: ../img/image1770.webp
    :width: 500px
 .. |image1771| image:: ../img/image1771.webp
+   :width: 700px
+.. |image1772| image:: ../img/image1772.webp
    :width: 700px
