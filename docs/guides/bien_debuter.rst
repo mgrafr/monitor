@@ -1,6 +1,8 @@
 0. Infos pour bien débuter
 --------------------------
-*Cette application offre un affichage convivial pour les serveurs domotique Domoticz et Home Assistant et bien plus encore.*
+*Cette application offre un affichage convivial pour les serveurs domotique Domoticz, Home Assistant & ioBroker et bien plus encore.*
+
+|image1775|
 
 |image1111|
 
@@ -2326,3 +2328,5 @@ function mc(variable,id)
    :width: 260px
 .. |image1764| image:: ../img/image1764.webp
    :width: 700px
+.. |image1775| image:: ../img/image1775.webp
+   :width: 250px
