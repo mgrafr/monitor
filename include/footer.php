@@ -22,8 +22,11 @@ if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';include ('in
 ?>
 
 <script>
-function maj_mqtt(id_x,state,ind,level=0){console.log('id='+id_x+' state==='+state);
-if (!state) {console.log("erreur-state");return;}										  
+function maj_mqtt(id_x,state,ind,level=0){
+if (!state) {console.log("erreur-state");return;}
+if (state=="true"){state="on";} //pour ioBroker	
+if (state=="false"){state="off";}	//pour ioBroker	
+console.log('id='+id_x+' state='+state);	
 switch (ind) {
 	case 0: 
 var id_m=null;

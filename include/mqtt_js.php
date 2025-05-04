@@ -1,7 +1,5 @@
 <?php
-
-require ($_SESSION["config"]);
-?>
+require ($_SESSION["config"]);?>
 <script>
 let pahoConfig = {
          hostname: '<?php echo MQTT_IP ; ?>',  //The hostname is the url, under which your FROST-Server resides.
@@ -9,7 +7,6 @@ let pahoConfig = {
                                  // not (!) the MQTT-Port. This is a Paho characteristic.
          clientId: "monitor"    //Should be unique for every of your client connections.
  }
-
  client = new Paho.MQTT.Client(pahoConfig.hostname, Number(pahoConfig.port),pahoConfig.clientId);
  client.onConnectionLost = onConnectionLost;
  client.onMessageArrived = onMessageArrived;
@@ -20,7 +17,7 @@ let pahoConfig = {
 	password : '<?php echo MQTT_PASS ; ?>'
 });
 // Appelé lorsque la connexion est établie
-// Connectez le client, en fournissant un rappel onConnect
+// Connecter le client, en fournissant un rappel onConnect
 function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
   console.log("Connected with Server");
@@ -37,14 +34,11 @@ function onConnect() {
  }
  // called when a message arrives
  function onMessageArrived(message) {
-  console.log("onMessageArrived:"+(message.topic,message.payloadString));
-  let j = JSON.parse(message.payloadString);
-  handleMessage(j);
-  }
- 
-function handleMessage(message) {
-     if (message != null && message != undefined) {
-            console.log(message)
-     }
- }
-</script>	
+  console.log("onMessageArrived:"+message.payloadString);
+  let topic=message.destinationName;
+  console.log("Topic:"+topic); 
+  aid = topic.split("/");
+  let id= aid[1];let state=message.payloadString;
+  maj_mqtt(id,state,0)
+    }
+ </script>	
