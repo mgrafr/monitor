@@ -326,9 +326,11 @@ Définir MQTT sur true dans admin/config.php et renseigner les données concerna
 
 |image1770|
 
-Extrait du fichier :darkblue:`admin/mqtt_js.php`
+Extrait du fichieru :darkblue:`admin/mqtt_js.php` & de la fonction & :darkblue:`maj_mqtt()` 
 
 |image1771|
+
+|image1774|
 
 .. admonition:: **Exemple avec ioBroker**
 
@@ -2570,3 +2572,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 700px
 .. |image1773| image:: ../img/image1773.webp
    :width: 450px
+.. |image1774| image:: ../img/image1774.webp
+   :width: 550px
