@@ -358,7 +358,7 @@ Extrait du fichier :darkblue:`admin/mqtt_js.php`
 
       mosquitto_pub -h nom d’hôte -t 'sujet' -u nom d’utilisateur -P mot de passe -n -r -d
   
-    |image1772|
+   |image1772|
 
 1.1.4 Autres données
 --------------------
