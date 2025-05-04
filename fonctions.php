@@ -384,9 +384,9 @@ if ($nb_iob>2){
 $L=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id1.".*";	
 $json_string = file_get_curl($L);//return $json_string;
 $iob_json = json_decode($json_string);$devi="";
-foreach ($iob_json as $cle => $valeur){
-		if ($valeur -> {'val'}===true) {$d="on";}
-		if ($valeur -> {'val'}===false) {$d="off";}	
+foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
+		if ($d=="true") {$d="on";}
+		if ($d=="false") {$d="off";}	
 		$name=str_replace($_id1.".", "", $cle);	//$name=str_replace(".","_",$name);		   
 		$device=explode('.',$cle);$devic=$device[0].".".$device[1].".".$device[2];
 	    if ($devi==$devic) {$valu[$devic][$device[3]] = $valeur -> {'val'};}
