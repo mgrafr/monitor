@@ -583,7 +583,7 @@ left: 170px;width: 40px;}
 	.fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}#th_ext_cuis {top: -700px;}
 #bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}
 #th_ext_cuis {top: -650px;}.sparkling-modal-frame {top:50%;}#vanne_eau{position: relative;top: -613px;left: 380px;}
-.sos {top: -600px;}#gd_portail {top: 740px;left: 300px;}.fosse_septique{left:420px;}#fosse{top:700px;}
+.sos {top: -600px;}#gd_portail {top: 740px;left: 300px;}.fosse_septique{left:420px;}#fosse{top:700px;}#porte_gar{top:740px;left:360px}
 }
 /* Large devices (small desktops <601) */
 @media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}.choix_scenes{left:10px;width: 80%;}
@@ -596,7 +596,7 @@ left: 170px;width: 40px;}
 /*.aff_pluie{left: 390px;}*/
 .fond_date {right: 0px;top:0;}.aff_pluie {left: 300px;}.choix_scenes{left: 5px;width: 100%;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}.sos {top: -450px;}
-	#sse{top:-400px}#messages{top: -440px;}#gd_portail {top: 500px;left: 300px;}
+	#sse{top:-400px}#messages{top: -440px;}#gd_portail {top: 580px;left: 300px;}#porte_gar{top:580px;left:360px}
 #status{top: -450px;}#vanne_eau{position: relative;top: -570px;left: 380px;}	
 /*.fond_date {right: -60px;}*/
 #pression_chaud{width:50px}.pression_chaud{top: -305px;}
