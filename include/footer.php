@@ -903,8 +903,6 @@ case 5:
 	case 10: 
 	var formData = {
 	app : "dimm",
-	//type : "4",	
-	//variable : Number($("#level").val())*100,	
 	command : $("#val1").val(),
 	device : $("#idhtml").val(),
 	name : "100"		
