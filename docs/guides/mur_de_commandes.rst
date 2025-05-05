@@ -54,7 +54,8 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
    .. code-block::
 
-      function devices_id($deviceid,$type,$value="",$pass=0){$post="";global $L_ha; 
+      function devices_id($deviceid,$type,$value="",$pass=0){$post="";global $L_ha,$Token_ha; 
+	$type= strtolower($type);
 	$mat=explode('.',$deviceid);$mat=$mat[0];
 	switch ($type) {
 	case "etat" :		
@@ -75,9 +76,9 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	if ($mat=="switch") {$api="api/services/switch/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}
 	if ($mat=="light") {$api="api/services/light/turn_off";$post='{"entity_id": "'.$deviceid.'"}';}	
 	break;
-	case 4 :// dimmer, "entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
-	$mode=2;$value=str_replace('rgb','',$value);$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
-	$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": '.$value.'}';
+	case "4" ://"entity_id":"light.salon", "brightness": 255, "rgb_color": [20,30,20]
+	$mode=2;$rgb=$value;//$value=str_replace('(','[',$value);$value=str_replace(')',']',$value);	
+	$api="api/services/light/turn_on";$post='{"entity_id": "'.$deviceid.'", "brightness": 255, "rgb_color": '.json_encode($value).'}';
 	break;		
 	case "value" :
 	$mode=2;	
@@ -86,11 +87,10 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	default:
 	}								
 	$L=$L_ha.$api;
-
-	$ha=file_http_curl($L,$mode,$post);
+	$ha=file_http_curl($L,$mode,$post,$Token_ha);
 	$data = json_decode($ha, true);
-	$data['resultat']="OK";										
-										
+	$data['status']="OK";										
+	$data['address_api']=$post;										
 	return json_encode($data);}
 
    **pour l'API de Domoticz**
@@ -112,27 +112,43 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
 	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
 	// $type=4 Réglez une lumière RVB dimmable
-	if ($type==4){$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$idx.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
+	if ($type==4){
+	$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$idx.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
 	$json= $L_dz.$json2.$json1;
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
 	else {$result['status']="acces interdit";}
 	return $result ;
+	  }
 
    **pour l'API de Io.broker** , avec :darkblue:`ioBroker Swagger UI`, voir le § :ref:`0.2.3.3 pour IoBroker`
 
       .. code-block::
 
-         function set_object($device,$type,$value,$pass=0){
-	  global $Token_iob,$port_api_iob,$IP_iob;
-	  //http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false													
-	  $id="";$mode=1;$device=$device.".".$type;
-
+         function set_object($device,$type,$value,$pass=0){global $Token_iob,$port_api_iob,$IP_iob;
+	 //http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false		
+	 //http://192.168.1.162:8093/v1/command/setState?id=zigbee2mqtt.0.0xb40ecfd06e810000.color&state=%231BFF42											
+	 //$mode=1;//$device=$device.".".$type;
+	 switch ($type) {
+	 case "state" :	
+ 	 if ($value=="On") {$value='true';}
+	 if ($value=="Off") {$value='false';}
 	 $L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
+	 break;
+	 case "command" :
+	 $L=$IP_iob.':'.$port_api_iob.'/v1/command/setState?id='.$device.'&state='.$value;	
+	 //file_http_curl($L,$mode,$post,$token)
+	 break;
+	 default:
+	 }		
 	 $iob=file_get_curl($L);
-	 return $iob;												
-	}
+	 $iob = json_decode($iob, true);
+	 $data['status']="OK";			
+	 $data['id']=$iob['id'];		
+	 $data['valeur']=$iob['val'];	 
+	 return $data;										
+	 }
 
 .. admonition:: les fonctions Javascript
 
@@ -146,7 +162,7 @@ le color picker jscolor.js est utilisé: https://jscolor.com/
 
 |image1409|
 
-la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie dans le format approprié (Hex pour DZ et IOB et rgb pour HA)
+Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie  (pour DZ ,IOB, HA)
 
 .. code-block::
 
@@ -180,6 +196,7 @@ la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie d
 
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
+Sans les changements de couleurs pour les lampes
 
 |image582|
 
