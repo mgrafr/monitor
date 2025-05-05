@@ -344,7 +344,7 @@ $L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
 break;
 	case "command" :
 $L=$IP_iob.':'.$port_api_iob.'/v1/command/setState?id='.$device.'&state='.$value;	
-//file_http_curl($L,$mode,$post,$token)
+//echo $L;return;
 break;
 default:
 }		
@@ -352,7 +352,8 @@ $iob=file_get_curl($L);
 $iob = json_decode($iob, true);
 $data['status']="OK";			
 $data['id']=$iob['id'];		
-$data['valeur']=$iob['val'];	 
+$data['valeur']=$iob['val'];	
+$data['result']=$iob['result'];
 return $data;										
 }
 
@@ -599,7 +600,7 @@ $data_rgb = [
 // iobroker
 //http://192.168.1.162:8093/v1/command/setState?id=zigbee2mqtt.0.0xb40ecfd06e810000.color&state=%231BFF42
 	if ($majjs == "on_level" && $serveur=="4") {$type="command";$id=str_replace("state", "color", $ID);
-		$valeur=str_replace("#", "%23", $value);set_object($id,$type,$valeur,$pass=0);}
+		$valeur=str_replace("#", "%23", $valeur);set_object($id,$type,$valeur,$pass=0);}
 // home assistant
 	if ($majjs == "on_level" && $serveur=="3") {$id=$ID;$type="4";$rgb=hex2rgb($valeur);$result=devices_id($id,$type,$rgb,$pass=0);}
 return $result;
