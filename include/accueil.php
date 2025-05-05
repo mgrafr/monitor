@@ -26,6 +26,7 @@ if ($domaine==IPMONITOR) $lien_img="/monitor/";
 <div class="confirm pilule"><a href="#" id="annul_pilule" rel="1001" title="Annulation de l'\alerte pilule chat"><img id="pilule" style="display:none" src=""/></a></div>
 <div class="confirm"><a href="#" id="annul_fosse" rel="1011" title="Annulation de l'\alerte fosse septique"><img id="fosse" style="display:none" class="fosse_septique" src=""/></a></div>
 <div id="gd_portail" style="display:block"/></div>
+<div id="porte_gar" style="display:block"/></div>
 <div class="poubelles"><img id="poubelle" style="display:none" src=""/></div>
 <div class="aff_pluie" >
 	<div id="pluie" style="display:none"><img id="pl" src="" alt="pluie" /></div><div id="txt_pluie"></div>  </div>
