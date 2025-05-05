@@ -51,6 +51,8 @@ width:100px}
 
 #gd_portail{width:60px;height:45px;position:absolute;top:820px;
 	left:330px}
+#porte_gar{width:45px;height:45px;position:absolute;top:820px;
+        left:390px}   
 /* ERREURS*/
 #erreur{position: absolute;
     top: 150px;
@@ -620,7 +622,7 @@ left: 170px;width: 40px;}
 	.txt_ext{left:100px;}.modal {left: -100px;}
 	.modal_param {left: 200px;	}
 	.modal-dialog {width:740px;}
-}
+}_
 
 
 @media (max-width:415px) {.fond_date {top:50px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 500px;}.choix_scenes{left: 10px;width: 88%;}
