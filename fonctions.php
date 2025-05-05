@@ -69,8 +69,12 @@ function file_get_curl($L){
 $curl = curl_init($L);
 curl_setopt($curl, CURLOPT_TIMEOUT, 30);
 curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
-curl_setopt($curl, CURLOPT_HEADER, 0);
+//curl_setopt($curl, CURLOPT_HEADER, 0);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+	 'accept: application/json',
+  'authorization: Basic bWljaGVsOklkZW00NTQ2'
+));
 $retour=curl_exec($curl);
 curl_close($curl);
 return $retour;
@@ -329,13 +333,21 @@ $data['address_api']=$post;
 return json_encode($data);}
 
 function set_object($device,$type,$value,$pass=0){global $Token_iob,$port_api_iob,$IP_iob;
-//http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false													
-$mode=1;//$device=$device.".".$type;
+//http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false		
+//http://192.168.1.162:8093/v1/command/setState?id=zigbee2mqtt.0.0xb40ecfd06e810000.color&state=%231BFF42											
+//$mode=1;//$device=$device.".".$type;
+switch ($type) {
+	case "state" :	
 if ($value=="On") {$value='true';}
 if ($value=="Off") {$value='false';}
-											  
-
 $L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
+break;
+	case "command" :
+$L=$IP_iob.':'.$port_api_iob.'/v1/command/setState?id='.$device.'&state='.$value;	
+//file_http_curl($L,$mode,$post,$token)
+break;
+default:
+}		
 $iob=file_get_curl($L);
 $iob = json_decode($iob, true);
 $data['status']="OK";			
@@ -582,10 +594,14 @@ $data_rgb = [
 			];
 	$rvb=mysql_app($data_rgb);
 	$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['Actif'];$ID=$rvb['ID'];$objet=$rvb['nom_objet'];
-		
-	if ($majjs == "on_level" && $serveur=="2") $id=$idx;$type=4;$result=switchOnOff_setpoint($id,$valeur,$type,$level,$pass="0");
-	if ($majjs == "on_level" && $serveur=="4") $id=$ID;set_object($device,$type,$valeur,$pass=0);
-	if ($majjs == "on_level" && $serveur=="3") $id=$ID;$type="4";$rgb=hex2rgb($valeur);$result=devices_id($id,$type,$rgb,$pass=0);
+// domoticz		
+	if ($majjs == "on_level" && $serveur=="2") {$id=$idx;$type=4;$result=switchOnOff_setpoint($id,$valeur,$type,$level,$pass="0");}
+// iobroker
+//http://192.168.1.162:8093/v1/command/setState?id=zigbee2mqtt.0.0xb40ecfd06e810000.color&state=%231BFF42
+	if ($majjs == "on_level" && $serveur=="4") {$type="command";$id=str_replace("state", "color", $ID);
+		$valeur=str_replace("#", "%23", $value);set_object($id,$type,$valeur,$pass=0);}
+// home assistant
+	if ($majjs == "on_level" && $serveur=="3") {$id=$ID;$type="4";$rgb=hex2rgb($valeur);$result=devices_id($id,$type,$rgb,$pass=0);}
 return $result;
 		}
 
