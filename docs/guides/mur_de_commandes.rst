@@ -194,6 +194,10 @@ Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, I
 
 |image1410|
 
+Dans fonctions.php :
+
+|image1776|
+
 8.2 mur_inter.php
 ^^^^^^^^^^^^^^^^^^
 Sans les changements de couleurs pour les lampes
@@ -816,3 +820,5 @@ Comme pour DZ, on enregistre la commande dans la base de données; les données 
    :width: 700px
 .. |image1416| image:: ../img/image1416.webp
    :width: 700px
+.. |image1776| image:: ../img/image1776.webp
+   :width: 650px
