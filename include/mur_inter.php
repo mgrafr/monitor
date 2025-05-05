@@ -18,7 +18,8 @@ require_once("fonctions.php");
 		<div><button type="button" id="btn_sc" class="btn btn-primary" data-toggle="modal" data-target="#choix_scenes">
     Commandes SCENES
 </button></div>
-<input type="hidden" id="idhtml" value=""><input  id="val1" value="FFFFFF" onchange="adby(10)" >
+<input type="hidden" id="idhtml" value="">Couleur en cours<input style="width:60px" id="val1" 
+																 value="FFFFFF" onchange="adby(10)" >
     <ul>
 		<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw5" src="<?php echo $lien_img;?>images/lampe_sejour.svg" width="60" height="auto" alt=""/>
 			<button onclick="document.querySelector('#idhtml').setAttribute('value','sw5');" data-jscolor="{valueElement:'#val1'}"></button>
@@ -36,9 +37,9 @@ require_once("fonctions.php");
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw1" src="<?php echo $lien_img;?>images/lampe_poele.svg" width="60" height="60" alt=""/>
 			</a><button onclick="document.querySelector('#idhtml').setAttribute('value','sw1');" data-jscolor="{valueElement:'#val1'}"></button></li>
 			<li style="margin-left:0;margin-top:10px"><?php include ("volet-roulant_svg.php");?></li>
-			<li style="margin-left:0;margin-top:10px"><img id="sw6" src="<?php echo $lien_img;?>images/porte_garage.svg" width="60" height="auto" alt=""/></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw6" src="<?php echo $lien_img;?>images/porte_garage.svg" width="60" height="auto" alt=""/></a></li>
 			
-			<li style="margin-left:0;margin-top:10px"><img id="sw7" src="<?php echo $lien_img;?>images/portail.svg" width="60" height="60" alt=""/></li>
+			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw7" src="<?php echo $lien_img;?>images/portail.svg" width="60" height="60" alt=""/></a></li>
 			
 			<li style="margin-left:0;margin-top:10px"><a href="#murinter"><img id="sw8" src="<?php echo $lien_img;?>images/arrosage.svg" width="60" height="auto" alt=""/></a></li>
 			
