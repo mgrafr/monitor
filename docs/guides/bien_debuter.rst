@@ -1367,7 +1367,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 	|image1703|
 
-- id1_html , Id2_html : id d’affichage pour un idx ou idm, souvent 1 seul ID, le 2eme lorsque l’image comporte de nombreuses zones,
+- id1_html , Id2_html : id d’affichage html pour un idm, souvent 1 seul ID, le 2eme lorsque l’image comporte 2 zones avec le même style;si plus de 2 zones ou des styles différents, utiliser une classe(class_lamp), voir l'exemple ci-dessous
+
+	|image1777|
+
+	|image1778|
 
 - car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
 
@@ -2330,3 +2334,7 @@ function mc(variable,id)
    :width: 700px
 .. |image1775| image:: ../img/image1775.webp
    :width: 250px
+.. |image1777| image:: ../img/image1777.webp
+   :width: 700px
+.. |image1778| image:: ../img/image1778.webp
+   :width: 500px
