@@ -46,9 +46,9 @@ var scoul_off=pp[id_m].coul_OFF;
 var c_l_on=pp[id_m].coullamp_ON
 var c_l_off=pp[id_m].coullamp_OFF
 var scoul="";var scoull="";	
-if (command=="on" || command=="On" || command=="open")  {scoul=scoul_on;scoull=c_l_on;}
+if (command=="on" || command=="On" || command=="open" || command=="Open")  {scoul=scoul_on;scoull=c_l_on;}
 else if (command.substring(0, 9)=="set level")  {scoull=scoull=c_l_on;}
-else if  (command=="off" || command=="Off" || command=="closed" ) {scoul=scoul_off;scoull=c_l_off;}
+else if  (command=="off" || command=="Off" || command=="closed" || command=="Closed") {scoul=scoul_off;scoull=c_l_off;}
 else if  (command=="group on" ) {scoul=scoul_on;scoull=c_l_on;}		
 else return;	
 console.log('sid1='+sid1+'..'+scoul);
@@ -64,7 +64,7 @@ break;
 default:
 break;	
 }
-if (c_lamp!="" && scoull!="") {
+if (c_lamp!="" && scoull!="") {console.log("c="+c_lamp+""+scoull);
 	var elements = document.getElementsByClassName(c_lamp);
 	for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
@@ -261,7 +261,9 @@ $.ajax({
 			document.getElementById('erreur').innerHTML ="";
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {if (val.Data) {pos_m=(val.Data).toString().toLowerCase();}
 				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
+				if (val.maj_js=="data" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.Data;}
 				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}
+				if (val.maj_js=="temp" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.temp;}																  
 				//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
 											  // else {pos_m="off"; }}
 				if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
