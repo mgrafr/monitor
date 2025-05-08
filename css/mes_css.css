@@ -298,7 +298,7 @@ top: -460px;
 left: 220px;}
 /*medoc*/
 /*#pilule{width:60px}*/
-.pilule{position: absolute;
+#pilule{position: absolute;
     width: 70px;
 right: 140px;height: auto;
 top: 800px;
@@ -586,7 +586,7 @@ left: 170px;width: 40px;}
 #bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}
 #th_ext_cuis {top: -650px;}.sparkling-modal-frame {top:50%;}#vanne_eau{position: relative;top: -613px;left: 380px;}
 .sos {top: -600px;}#gd_portail {top: 740px;left: 300px;}.fosse_septique{left:420px;}#fosse{top:700px;}#porte_gar{top:740px;left:360px}
-.porte_veranda_sud{top:743px;}
+.porte_veranda_sud{top:743px;}#pilule{top:730px;left:225px;}
 }
 /* Large devices (small desktops <601) */
 @media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}.choix_scenes{left:10px;width: 80%;}
@@ -595,7 +595,7 @@ left: 170px;width: 40px;}
 /* Large devices (small desktops <535) */
 @media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:580px;}#nagiosmobile{width:480px;}
 .poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}.aff_not1{top: 450px;}
-	.fosse_septique{left:380px;}#fosse{top:550px;}.aff_anni{bottom: 80px;}
+	.fosse_septique{left:380px;}#fosse{top:550px;}.aff_anni{bottom: 80px;}#pilule {top: 570px;}
 /*.aff_pluie{left: 390px;}*/
 .fond_date {right: 0px;top:0;}.aff_pluie {left: 300px;}.choix_scenes{left: 5px;width: 100%;}
 .menu-link {left: 240px;top: 10px;}.bl{top: 640px;}.sos {top: -450px;}
@@ -634,7 +634,8 @@ left: 170px;width: 40px;}
 #ping_rasp {bottom: 800px;}#voltage {top: 20px;right: -60px;width: 150px;}#bar_pression {top: -350px;left: 200px;width: 65px;}
 #linky {top: -180px;left: 210px;width:40px;}#th_ext_cuis {top: -415px;}.title_g{top:-50px;}.row_g{margin-top: -50px}
 .modal-title {line-height: 0.6;}.modal_param ,#graphic , #murcam, form2{line-height: 1;}.imrec{width:100px;heigt:75px;}
-.sparkling-modal-close{right:70px;}
+.sparkling-modal-close{right:70px;}#pilule{top:570px;}.porte_veranda_sud {top: 530px;left: 360px;}
+@media (max-width:360px) {#porte_gar{top:500px;left:310px}.porte_veranda_sud { top: 500px;left: 260px;}
 }
 /*DECOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
