@@ -46,9 +46,9 @@ var scoul_off=pp[id_m].coul_OFF;
 var c_l_on=pp[id_m].coullamp_ON
 var c_l_off=pp[id_m].coullamp_OFF
 var scoul="";var scoull="";	
-if (command=="on" || command=="On" || command=="open" || command=="Open")  {scoul=scoul_on;scoull=c_l_on;}
+if (command=="on" || command=="On" || command=="open")  {scoul=scoul_on;scoull=c_l_on;}
 else if (command.substring(0, 9)=="set level")  {scoull=scoull=c_l_on;}
-else if  (command=="off" || command=="Off" || command=="closed" || command=="Closed") {scoul=scoul_off;scoull=c_l_off;}
+else if  (command=="off" || command=="Off" || command=="closed" ) {scoul=scoul_off;scoull=c_l_off;}
 else if  (command=="group on" ) {scoul=scoul_on;scoull=c_l_on;}		
 else return;	
 console.log('sid1='+sid1+'..'+scoul);
@@ -64,7 +64,7 @@ break;
 default:
 break;	
 }
-if (c_lamp!="" && scoull!="") {console.log("c="+c_lamp+""+scoull);
+if (c_lamp!="" && scoull!="") {
 	var elements = document.getElementsByClassName(c_lamp);
 	for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
@@ -687,7 +687,10 @@ var nom;
 	"humidité :" +pp[nom].hum+"<br>"+
 	"update :" +pp[nom].update+"<br>"+
 	"serveur :" +pp[nom].serveur+"<br>"+	
-	"Data :" +pp[nom].Data;
+	"Data :" +pp[nom].Data+"<br>"+	
+	"ID1_html :" +pp[nom].ID1+"<br>"+	
+	"ID2_html :" +pp[nom].ID2+"<br>"+	
+	"class_html :" +pp[nom].class_lamp;
 		
  $("#contenu").empty();$("#contenu").append(donnees);
 	$('#infos').modal('show');}
