@@ -1,4 +1,4 @@
--- script notifications_devices version  2.1.5
+-- script notifications_devices version  2.1.6
  -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
 package.path = package.path..";www/modules_lua/?.lua"
 require 'connect'
@@ -43,14 +43,16 @@ return {
 			'lampe_jardin',
 			'Chauffe-serviettes',
 			'lampe_bureau',
+			'lampe_poele',
 			'lampe_entree',
 			'grand_portail',
-			'gd_portail'
+			'gd_portail',
+			'porte_veranda_sud'
 	      	}
 	     },
  
  execute = function(domoticz, device)
-        domoticz.log('device '..device.name..' was changed', domoticz.LOG_INFO)
+        domoticz.log('device '..device.id..' was changed', domoticz.LOG_INFO)
             --domoticz.variables('variable_sp').set("1")
             if (device.name ~= "SOS (Action)_emergency") then send_sse(device.id,device.state)
             end    
