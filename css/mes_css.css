@@ -49,7 +49,7 @@ left:450px;
 TOP:790px;
 width:100px}
 .porte_veranda_sud{width:40px;height:auto;position:absolute;top:823px;
-	left:440px}
+	left:410px}
 #gd_portail{width:60px;height:45px;position:absolute;top:820px;
 	left:330px}
 #porte_gar{width:45px;height:45px;position:absolute;top:820px;
@@ -298,11 +298,8 @@ top: -460px;
 left: 220px;}
 /*medoc*/
 /*#pilule{width:60px}*/
-#pilule{position: absolute;
-    width: 70px;
-right: 140px;height: auto;
-top: 800px;
-left: 240px;}
+#pilule{position: absolute;width: 70px;left:225px;height: auto;
+top: 800px;}
 /*lastseem*/
 .lastseen, .lastseen1{width: 150px;
     height: 50px;
@@ -416,7 +413,7 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 /*popup iframe*/
 
 
-.sparkling-modal-container { }
+/*.sparkling-modal-container{}*/
 
 .sparkling-modal-overlay {
     background: rgba(0, 0, 0, 0.3);
@@ -623,19 +620,19 @@ left: 170px;width: 40px;}
 	.fond_date {right: -270px;}body {max-width: 768px;margin: 0 auto;background-color: #79afbf;}
 .menu-link {left: 50%;top: 50px;}#bar_pression{top: -750px;left: 450px;}
 	.txt_ext{left:100px;}.modal {left: -100px;}
-	.modal_param {left: 200px;	}
+	.modal_param {left: 200px;}
 	.modal-dialog {width:740px;}
-}_
-
-
-@media (max-width:415px) {.fond_date {top:50px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 500px;}.choix_scenes{left: 10px;width: 88%;}
+}
+@media (max-width:415px){.fond_date{top:50px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 500px;}.choix_scenes{left: 10px;width: 88%;}
 #fosse {bottom: 495px;left:280px;}.fosse_septique {width: 70px;}.poubelles {left: 210px;top: -460px;width:60px;}.aff_anni {bottom: 55px;left:45px;}
 .aff_pluie {left: 30px;}#ping_rasp {left: 275px;}.pression_chaud {top: -460px;left: 120px;}.banner-caption {top: 15%;}
 #ping_rasp {bottom: 800px;}#voltage {top: 20px;right: -60px;width: 150px;}#bar_pression {top: -350px;left: 200px;width: 65px;}
 #linky {top: -180px;left: 210px;width:40px;}#th_ext_cuis {top: -415px;}.title_g{top:-50px;}.row_g{margin-top: -50px}
-.modal-title {line-height: 0.6;}.modal_param ,#graphic , #murcam, form2{line-height: 1;}.imrec{width:100px;heigt:75px;}
-.sparkling-modal-close{right:70px;}#pilule{top:570px;}.porte_veranda_sud {top: 530px;left: 360px;}
-@media (max-width:360px) {#porte_gar{top:500px;left:310px}.porte_veranda_sud { top: 500px;left: 260px;}
+.modal-title {line-height: 0.6;}.modal_param ,#graphic , #murcam, form2{line-height: 1;}.imrec{width:100px;height:75px;}
+.sparkling-modal-close{right:70px;}
+#pilule{top:570px;}.porte_veranda_sud {top: 530px;left: 360px;}
+}
+@media (max-width:360px) {#porte_gar{top:530px;left:310px}.porte_veranda_sud { top: 500px;left: 260px;}
 }
 /*DECOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
