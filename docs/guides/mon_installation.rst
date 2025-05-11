@@ -2809,7 +2809,7 @@ Mon WGDashbord
    :width: 400px
 .. |image1700| image:: ../img/image1700.webp
    :width: 400px
-.. |image1701| image:: ../img/image1701.we1
+.. |image1701| image:: ../img/image1701.webp
    :width: 550px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
