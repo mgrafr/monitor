@@ -1999,6 +1999,15 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 
 |image1437|
 
+21.14.6 Le fichier config
+-------------------------
+
+.. code-block::
+
+  define('OBJ_IOBROKER','worx.1.20223019840300901658.mower,worx.1.20223019840300901658.calendar'); 
+
+il faut définir les clés "mower" et "calendar"
+
 21.15 Sauvegarde RAID1 avec Conteneur LXC non privilégié
 ========================================================
 
