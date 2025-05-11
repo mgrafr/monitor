@@ -2004,7 +2004,7 @@ et switchOnOff(app,idm,idx,command,type,level,pass)
 
 .. code-block::
 
-  define('OBJ_IOBROKER','worx.1.20223019840300901658.mower,worx.1.20223019840300901658.calendar'); 
+  define('OBJ_IOBROKER','worx.1.20xxxxxxxxxxxxxx58.mower,worx.1.2xxxxxxxxxxxxxxx58.calendar'); 
 
 il faut définir les clés "mower" et "calendar"
 
