@@ -1107,6 +1107,10 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
 |image1361|
 
+.. note::
+
+   pour plus de lisibilité, il est préférable de numéroter les variables  à partir de 1000 ce qui évite  les doublons idm.
+
   *ne sont concernés pour les variables que les champs* :
 
 |image1390|
