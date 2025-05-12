@@ -1035,11 +1035,11 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 ===========================================================================
 Ces tables sont installées lors de l'installation automatique.
 
-	La correspondance entre les variables Domoticz , HA, IoBroker  ou des applications tieces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ;
+	La correspondance entre les variables Domoticz , HA, IoBroker ou monitor  ou des applications tierces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ;
 
 .. warning:: 
 
-   pour IoBroker , contrairement à Domoticz ou Home Assistant, il faut créer une base de données pour les variables et utliser l'adaptateur : io.broker.sql. 
+   pour IoBroker , contrairement à Domoticz ou Home Assistant, il faut créer une base de données (ou uttiliser la base "monitor") pour les variables et utliser l'adaptateur : io.broker.sql. 
 
    |image1393|
 
@@ -1051,7 +1051,7 @@ Ces tables sont installées lors de l'installation automatique.
 
       |image1391|
 
-      Monitor possède déja une BD mySQL aussi pour uniquement les variables iobroker la BD SQLite suffit; 
+      Monitor possède déja une BD mySQL aussi pour uniquement les variables iobroker la BD SQLite suffit (si la BD msql monitor n'est pas utilisée); 
 
       pour installer SQLLite :
 
@@ -1118,14 +1118,8 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
    :darkblue:`Pour modifier plus facilement la table, ajouter au début un champ (num utilisé ici) afin de pouvoir éditer les enregistrements`.
 
    |image79|
- 
-. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
 
-. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
-
-.. IMPORTANT::
-
-   des ID sont réservés , voir à la fin de ce praragraphe la liste des ID à ne pas utiliser pour des ajouts personnels.
+. Nom appareil : non obligatoire
 
 . nom_objet : nom de la variable du serveur domotique (dz, ha ou iob); 
 	mot réservé: BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
@@ -1135,36 +1129,46 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
       **IMPORTANT** : le nom de la variable Domoticz ne doit pas comporter d’espace
 
       (le programme fonctionne mais l’API renvoie « NULL »)
-   
-. idm id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
-
-    |image1384| 
-
+    
 . Idx , id de la variable du serveur Domoticz
    		ex : idx de Domoticz
                 |image87|
    
-. Nom appareil : non obligatoire
 
-.  ID , identity_id  (ha & iob) ; ex : Home Assistant, nom essai, ID input_text.essai
+
+. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
+
+. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
+
+.. IMPORTANT::
+
+   des ID sont réservés , voir à la fin de ce praragraphe la liste des ID à ne pas utiliser pour des ajouts personnels.
+
+
+. idm id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
+
+    |image1384| 
+
+
+.  ID , identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp(200).values.xxxxxx
 
    .. warning::
 
       **IMPORTANT** : le contenu de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
 		 
-|image88|
+   |image88|
        
-.. admonition:: **un exemple bash concret : redémarrer un script après modifications**
+   .. admonition:: **un exemple bash concret : redémarrer un script après modifications**
 
-   Ici :red:`systemctl restart sms_dz` (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
+      Ici :red:`systemctl restart sms_dz` (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
 
-   **Dans Domoticz** : créer une variable avec les données ci-dessous et l'exploiter dans un script LUA
+     **Dans Domoticz** : créer une variable avec les données ci-dessous et l'exploiter dans un script LUA
 
-   |image80|
+     |image80|
 
-   scrpt LUA:
+     scrpt LUA:
 
-   .. code-block::
+     .. code-block::
 
       -- le fichier connect.py est modifié ` 
       f = io.open("userdata/scripts/python/connect.py", "w")
@@ -1174,23 +1178,23 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
       -- on modifie la variable
                     domoticz.variables('BASH').set("restart_sms_dz")	
  
-   **Dans SQL** :
+     **Dans SQL** :
 
-   |image81|
+     |image81|
  
-     *Ou par Monitor* :
+      *Ou par Monitor* :
 
-   |image82|
+     |image82|
 
-   |image83|
+     |image83|
                           
-   **Dans monitor, PHP-SSH2**
+     **Dans monitor, PHP-SSH2**
 
-   raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
+     raw.githubusercontent.com/mgrafr/monitor/main/include/ssh_scp.php
 
-   Extrait du fichier :
+     Extrait du fichier :
  
-   |image85|
+    |image85|
 
 	Monitor surveille les modifications de variables, si une variable avec une ID_img =#shell apparait, si la valeur est !=0 le nom du script indiqué dans Value est exécuté :
 	
@@ -1203,21 +1207,21 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
    :darkblue:`Le mot de passe peut être ajouté à connect.py`
 
-.. admonition:: **Mots réservés, utilisables** 
+   .. admonition:: **Mots réservés, utilisables** 
 
-    - *pour le nom de variable (nom_objet)*  :**BASH**
+     - *pour le nom de variable (nom_objet)*  :**BASH**
 
-    - *pour les ID javascript (affichage des textes et images* : 
+     - *pour les ID javascript (affichage des textes et images* : 
 
-      ping_rasp : ping non réussi vers un raspberry ou un autre serveur effacement |image1372|
+       ping_rasp : ping non réussi vers un raspberry ou un autre serveur effacement |image1372|
 
-      bl : boite lettres , confirmation de la notification |image1373|
+       bl : boite lettres , confirmation de la notification |image1373|
 
-      pression_chaud , confirmation de la notification |image1374|
+       pression_chaud , confirmation de la notification |image1374|
+ 
+       pilule , confirmation de la notification |image1375|
 
-      pilule , confirmation de la notification |image1375|
-
-      fosse , confirmation de la notification |image1376|
+       fosse , confirmation de la notification |image1376|
 
       poubelle , affichage poubelles grises et jaunes |image1377|
 
