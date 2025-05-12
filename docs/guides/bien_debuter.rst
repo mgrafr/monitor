@@ -1134,7 +1134,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
    		ex : idx de Domoticz
      |image87|
    
-.  ID , identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp(200).values.xxxxxx
+. ID , identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp(200).values.xxxxxx
 
    .. warning::
 
@@ -1142,13 +1142,13 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 		 
    |image88|
        
-. idm id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
+. idm , id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
 
     |image1384| 
 
-. Actif :
+. Actif , 2=domoticz, 3=home assistant, 4=iobroker, 5=monitor
 
-. maj_js :
+. maj_js : variable= variables dz ou ha,   var_sql= variables monitor
 
 . Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
 
