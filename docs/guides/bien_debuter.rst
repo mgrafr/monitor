@@ -1132,9 +1132,23 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
     
 . Idx , id de la variable du serveur Domoticz
    		ex : idx de Domoticz
-                |image87|
+     |image87|
    
+.  ID , identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp(200).values.xxxxxx
 
+   .. warning::
+
+      **IMPORTANT** : le contenu de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
+		 
+   |image88|
+       
+. idm id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
+
+    |image1384| 
+
+. Actif :
+
+. maj_js :
 
 . Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
 
@@ -1144,20 +1158,6 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
    des ID sont réservés , voir à la fin de ce praragraphe la liste des ID à ne pas utiliser pour des ajouts personnels.
 
-
-. idm id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
-
-    |image1384| 
-
-
-.  ID , identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp(200).values.xxxxxx
-
-   .. warning::
-
-      **IMPORTANT** : le contenu de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
-		 
-   |image88|
-       
    .. admonition:: **un exemple bash concret : redémarrer un script après modifications**
 
       Ici :red:`systemctl restart sms_dz` (script chargé de l’envoi des sms et qui doit être redémarré si le fichier « connect.py » a été modifié (ajout, remplacement de N° de tel)
