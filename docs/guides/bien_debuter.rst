@@ -1119,9 +1119,9 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
    |image79|
 
-. Nom appareil : non obligatoire
+. **Nom appareil** : non obligatoire
 
-. nom_objet : nom de la variable du serveur domotique (dz, ha ou iob); 
+. **nom_objet** : nom de la variable du serveur domotique (dz, ha ou iob); 
 	mot réservé: BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
 
    .. warning::
@@ -1130,11 +1130,11 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
       (le programme fonctionne mais l’API renvoie « NULL »)
     
-. Idx , id de la variable du serveur Domoticz
+. **Idx** , id de la variable du serveur Domoticz
    		ex : idx de Domoticz
      |image87|
    
-. ID , identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp(200).values.xxxxxx
+. **ID**, identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp(200).values.xxxxxx
 
    .. warning::
 
@@ -1142,17 +1142,17 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 		 
    |image88|
        
-. idm , id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
+. **idm** , id de la variable dans monitor ; souvent utilisé avec l'id html "annul_<texte>, :darkblue:`rel=idm`
 
     |image1384| 
 
-. Actif , 2=domoticz, 3=home assistant, 4=iobroker, 5=monitor
+. **Actif** , 2=domoticz, 3=home assistant, 4=iobroker, 5=monitor
 
-. maj_js : variable= variables dz ou ha,   var_sql= variables monitor
+. **maj_js** : variable= variables dz ou ha,   var_sql= variables monitor
 
-. Id1_html : ID de l’image dans la page ou #shell (voir ci-dessous)
+. **Id1_html** : ID de l’image dans la page ou #shell (voir ci-dessous)
 
-. Id2_html : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
+. **Id2_html** : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
 
 .. IMPORTANT::
 
@@ -1324,7 +1324,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - idm : idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
 
-- Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4, io.broker+=5; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4 ou 5.
+- Actif :  0 = inactif , Domoticz=1 ou 2, Home Assistant=3 io.broker=4, monitor=5; 1 dispositif peut avoir un idx de Domoticz et un ID de Home Assistant mais il ne peut y avoir qu'un seul des 2 ACTIF , dans ce cas Actif = 1 ou 2 ou 3 ou 4 ou 5.
 
 .. important::
 
