@@ -9,7 +9,7 @@ if (DOMOTIC1!=""){$L0[8]=DOMOTIC1;$L0[9]=URLDOMOTIC1;$L0[10]=IPDOMOTIC1;$L0[11]=
 if (DOMOTIC2!=""){$L0[16]=DOMOTIC2;$L0[17]=URLDOMOTIC2;$L0[18]=IPDOMOTIC2;$L0[19]=USERDOMOTIC2;$L0[20]=PWDDOMOTIC2;$L0[21]=TOKEN_DOMOTIC2;$L0[22]=PORT_API_DOMO2;$L0[23]=PORT_WEBUI_DOMO2;}
 $cle=array_search('DZ',$L0);if ($cle!==false) {$l_dz=$L0[$cle];$L_dz=$L0[$cle+1];$IP_dz=$L0[$cle+2];$USER_dz=$L0[$cle+3];$PWD_dz=$L0[$cle+4];$Token_dz=$L0[$cle+5];$port_api_dz=$L0[$cle+6];$port_webui_dz=$L0[$cle+7];}
 $cle=array_search('HA',$L0);if ($cle!==false) {$l_ha=$L0[$cle];$L_ha=$L0[$cle+1];$IP_ha=$L0[$cle+2];$USER_ha=$L0[$cle+3];$PWD_ha=$L0[$cle+4];$Token_ha=$L0[$cle+5];$port_api_ha=$L0[$cle+6];$port_webui_ha=$L0[$cle+7];}
-$cle=array_search('IOB',$L0);if ($cle!==false) {$l_iob=$L0[$cle];$L_iob=$L0[$cle+1];$IP_iob=$L0[$cle+2];$USER_iob=$L0[$cle+3];$PWD_iob=$L0[$cle+4];$Token_iob=$L0[$cle+5];$port_api_iob=$L0[$cle+6];$port_webui_iob=$L0[$cle+7];}		
+$cle=array_search('IOB',$L0);if ($cle!==false) {$l_iob=$L0[$cle];$L_iob=$L0[$cle+1];$IP_iob=$L0[$cle+2];$USER_iob=$L0[$cle+3];$PWD_iob=$L0[$cle+4];$Token_iob=$L0[$cle+5];$port_api_iob=$L0[$cle+6];$port_webui_iob=$L0[$cle+7];}
 include ("include/fonctions_1.php");//fonction sql_plan
 //
 function send_api_put_request($url, $parameters, $data) {
@@ -100,7 +100,7 @@ return $msg;
 /*utilisée pour lire les variables de domoticz
 cette fonction permet egalement suivant le contenu de la variable de
 determiner une image qui peut être afficher (poubelles,fosse septique,...*/
-function status_variables($xx){global $l_dz,$L_dz,$L_ha,$l_ha,$token_ha;
+function status_variables($xx){global $l_dz,$L_dz,$token_dz,$L_ha,$l_ha,$token_ha,$L_iob,$l_iob,$token_iob;
 $p=0;$n=0;$L0=array();
 if($l_dz != ""){
 $L=$L_dz."json.htm?type=command&param=getuservariables";
@@ -128,6 +128,16 @@ $json_string1=explode(',',$json_string1);
 	$result[$p]=$ha;
 	$n++;$p++;}
   }
+if ($l_iob!=""){
+$rows=sql_variable(5,7);$na=0;
+while ($rows[$na]!=""){
+$iob[$na]=[
+	'idm' => $rows[$na]["idm"],
+	'Type'=> 'SQL',
+	'Value' => $rows[$na]["ID"],
+	];
+$result[$p]=$iob[$na];
+	$na++;$p++;} }
 if (API=="true"){
 $lect_msg=sql_variable($p,4);//return $lect_msg;
 while ($lect_msg[$p]!=""	){
@@ -141,6 +151,7 @@ while (isset($result[$n]))
 $lect_var = $result[$n];  
 $idx = isset($lect_var["idx"]) ? $lect_var["idx"] : '';
 $ID = isset($lect_var["ID"]) ? $lect_var["ID"] : '';
+$idm = isset($lect_var["idm"]) ? $lect_var["idm"] : '';
 //$name = isset($lect_var["Name"]) ? $lect_var["Name"] : '';			
 $value = $lect_var['Value'];$content="";
 	if (str_contains($value, '#')) {$tab = explode("#", $value);
@@ -150,6 +161,7 @@ $id_m_txt = $result[$n]['ID_txt'];$id_m_img="";}
  else {	
 $type = $lect_var['Type'];
 if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,3);}
+else if ($type=="SQL") {$a='idm';$vardz = sql_variable($$a,8);}	 
 else {$a='idx';$vardz = sql_variable($$a,0);}
 if ($vardz!=null){$name=$vardz['nom_objet'];$actif=$vardz['Actif'];$idm=$vardz['idm'];$num=$vardz['num'];$id_m_txt=$vardz['id2_html'];$id_m_img=$vardz['id1_html'];} 
 else {$name="";$actif=$vardz;$num="num".$n;}
@@ -208,6 +220,9 @@ function sql_variable($t,$ind){
 	if ($ind==4){$sql="SELECT * FROM `messages` ;" ;}
 	if ($ind==5){$sql="SELECT * FROM `dispositifs` WHERE idm!='';" ;}
 	if ($ind==6){$sql="SELECT * FROM `dispositifs` WHERE (nom_objet='".$t."' AND maj_js='variable');" ;}
+	if ($ind==7){$sql="SELECT * FROM `dispositifs` WHERE (Actif='".$t."' AND maj_js='var_sql');" ;}
+	if ($ind==8){$sql="SELECT * FROM `dispositifs` WHERE (idm='".$t."' AND maj_js='var_sql');" ;}
+	if ($ind>8){return "erreur";}
 	$result = $conn->query($sql);
 	$row_cnt = $result->num_rows;
 	if ($row_cnt==0) {return  null;}
@@ -222,7 +237,7 @@ function sql_variable($t,$ind){
 			$retour[$n]['id_txt'] = $ligne['id2_html'];
 			$n++;
 		}return $retour;}
-	if 	($ind==4) {//$n=1;
+	elseif 	($ind==4) {//$n=1;
 		while ($ligne = $result->fetch_assoc()) {
 			$retour[$t]['Name'] = $ligne['nom'];
 			$retour[$t]['ID_txt'] = $ligne['id1_html'];
@@ -231,7 +246,7 @@ function sql_variable($t,$ind){
 			$retour[$t]['Value'] = "msg";
 			$t++;
 		}return $retour;}
-	if 	($ind==5){ $i=0;
+	elseif 	($ind==5){ $i=0;
 		while ($ligne = $result->fetch_assoc()) {$retour[$i]=new stdClass;
 			
 				if ($ligne['idx']!="" && $ligne['ID']=="") {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
@@ -241,14 +256,21 @@ function sql_variable($t,$ind){
 				else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}																 
 			$i++;}
 	return $retour;}
-	if 	($ind==6) {//$n=1;
+	elseif 	($ind==6) {//$n=1;
 		$ligne = $result->fetch_assoc();
 			$retour['Name'] = $ligne['nom_objet'];
 			$retour['ID'] = $ligne['ID'];
 			$retour['idx'] = $ligne['idx'];
 			$retour['Actif'] = $ligne['Actif'];
 			return $retour;}
-	
+	elseif ($ind==7) {$n=0;
+		while ($ligne = $result->fetch_assoc()) {
+			$retour[$n]['num'] = $ligne['num'];
+			$retour[$n]['idm'] = $ligne['idm'];
+			$retour[$n]['Actif'] = $ligne['idx'];
+			$retour[$n]['ID'] = $ligne['ID'];
+			$n++;
+		}return $retour;}
 	else {$row = $result->fetch_assoc();
 		return $row;}
 	}
@@ -477,20 +499,22 @@ if ($t=="") {$t=888;$choix_serveur="0";}}
 	switch ($choix_serveur) {
 		case "iob" :	
 $lect_device["Name"] = $periph['nom_objet'];
+$lect_device["Data"]="";			
 if ($lect_device["value_iob"]=="1") {$lect_device['values'] = $valu[$device];}
 //if ($lect_device["value_iob"]="2") $lect_device['values'] = $values;
+			
 if (array_key_exists("values",$lect_device)){
 	$array=$lect_device["values"];
-    if (isset($array["batteryState"])) {$lect_device["BatteryLevel"]=$array["batteryState"];}
-	if (isset($array["batteryTemperature"])) {$lect_device["Temp"]=$array["batteryTemperature"];}	
 	if (isset($array["state"])) {$lect_device["Data"]=$array["state"];}	
+    if (isset($array["batteryState"]) && $lect_device["Data"]!=false ) {$lect_device["BatteryLevel"]=$array["batteryState"];}
+	if (isset($array["batteryTemperature"])) {$lect_device["Temp"]=$array["batteryTemperature"];}	
 	if (isset($array["color"]))  {$lect_device["attributes"]["Color"] = $array["color"];}
 	if (isset($array['brightness'])) {$lect_device["attributes"]["brightness"] = $array["brightness"];}
 	if (isset($array['colortemp'])) {$lect_device["attributes"]["colortemp"] = $array["colortemp"];}
 	/*if(array_key_exists('emergency', $array)) {$lect_device["Data"]=$array["emergency"];}//pour IOB		
 	if(array_key_exists('state', $array)) {$lect_device["Data"]=$array["state"];*/
-	if ($lect_device["Data"]==true) {$lect_device["Data"]="On";}
-	if ($lect_device["Data"]==false) {$lect_device["Data"]="Off";}
+	//if ($lect_device["Data"]==true) {$lect_device["Data"]="On";}
+	//if ($lect_device["Data"]==false) {$lect_device["Data"]="Off";}
 										 
 	/*
 	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}*/
@@ -1493,9 +1517,13 @@ if ($conn -> connect_errno) {
   exit();}	
 switch ($choix) {
 	case "1":
-$nom=$data['nom'];$nom_objet=$data['nom_objet'];$idm=$data['idm'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
-//
-$sql="INSERT INTO dispositifs (nom_objet, idm ,idx, ID, maj_js, id1_html, id2_html) VALUES ('$nom_objet',  '$idm', '$idx', '$ID', 'variable', '$id_img', '$id_txt');";
+//$nom=$data['nom'];
+$nom_objet=$data['nom_objet'];$idm=$data['idm'];$actif=$data['actif'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
+if ($actif=="2" || $actif=="3") {$maj_js="variable";}
+if ($actif=="5") {$maj_js="var_sql";}
+if ($actif=="4") {$maj_js="var_sqlite";}
+else $maj_js="erreur";
+$sql="INSERT INTO dispositifs (nom_objet, idm , Actif, idx, ID, maj_js, id1_html, id2_html) VALUES ('$nom_objet',  '$idm', '$actif', '$idx', '$ID', '$maj_js', '$id_img', '$id_txt');";
 $result = $conn->query($sql);
 echo '<em>valeurs enregistrées</em><br>idm : '.$data["idm"].'<br>idx : '.$data["idx"].'<br>nom_objet : '.$data["nom_objet"].'<br>id-image : '.$data["id_img"].'<br>id-texte : '.$data["id_txt"].'<br><br>';	
 if ($data["texte_bd"] != " "  &&  $data["image_bd"] != " "){$sql="INSERT INTO `text_image` (`num`, `texte`, `image`, `icone`) VALUES (NULL, '".$data['texte_bd']."', '".$data['image_bd']."', '".$data['icone_bd']."');";
