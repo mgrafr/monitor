@@ -9,7 +9,6 @@ apt install unzip
 wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_$version.sh
 dos2unix maj_$version.sh
 chmod +x maj_$version.sh
-./maj_$version.sh
 rm  maj_$version.sh
 cp -u ajax.php ajax.php
 cp -u fonctions.php fonctions.php
@@ -19,7 +18,7 @@ cp -u css/* css/
 cp -u js/* js/
 cp -u api/* api/
 cp -u images/* images/
-cp -u 
+cp -u -R install/* install/
 cp -u -R share/* share/
 
 
