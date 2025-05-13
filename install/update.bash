@@ -17,5 +17,7 @@ cp -u index_loc.php index_loc.php
 cp -u -R include/* include/
 cp -u css/* css/
 cp -u js/* js/
+cp -u api/* api/
+cp -u images/* images/
 
 
