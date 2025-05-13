@@ -19,5 +19,7 @@ cp -u css/* css/
 cp -u js/* js/
 cp -u api/* api/
 cp -u images/* images/
+cp -u 
+cp -u -R share/* share/
 
 
