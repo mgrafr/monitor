@@ -7,7 +7,7 @@ if [ "$version" < "3.2.3" ]
 then
 version= "3.2.3"
 echo $version
-stop
+exit 1
 apt update
 apt install dos2unix
 apt install unzip
