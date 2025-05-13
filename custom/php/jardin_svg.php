@@ -41,7 +41,7 @@
 	.est37{opacity:0.1;fill:#AA6100;enable-background:new;}
 	.p_gar,.g_port,.f_vers{fill:#EAE4E4;stroke:#000000;stroke-miterlimit:10;}
 	.est39{fill:#010101;}
-	
+	.est40{fill:#DD9494;}
 </style>
 <rect x="95" y="6" class="est0" width="1312" height="1046"/>
 <rect x="345" y="379" class="est1" width="39" height="285"/>
@@ -102,7 +102,8 @@
 </g>
 <text transform="matrix(0.8754 0 0 1 240.7349 224.8848)" class="est6 est7">VERANDA NORD</text>
 <text transform="matrix(1.2384 0 0 1 1219.2139 645.1445)" class="est6 est8">GARAGE</text>
-<text id="veranda_nord" transform="matrix(1 0 0 1 230 273.3291)" class="est6 est9">temp</text>
+<text id="veranda_nord"  onclick="popup_device(47)" transform="matrix(1 0 0 1 230 273.3291)" class="est6 est9">temp</text>
+<title>temp_veranda_nord</title><circle id="cercle_47" class="st48" cx="230" cy="270" r="15"/>
 <text id="temp_garage" transform="matrix(1 0 0 1 1195.5037 535.3321)" class="est6 est9">temp</text>
 <text id="temp_ext_dev_cuis" transform="matrix(1 0 0 1 449.5037 300)" class="est6 est9">temp</text>
 <g>
@@ -336,7 +337,8 @@
 	<path d="M1315,1021v19h-19v-19H1315 M1316,1020h-21v21h21V1020L1316,1020z"/>
 </g>
 <text transform="matrix(0.8573 0 0 1 977.7432 513.5439)" class="est6 est7">VERANDA</text>
-<text id="temp_cuis_ete" transform="matrix(0.9738 0 0 1 950 602)" class="est6 est9">temp</text>
+<text id="temp_cuis_ete"  onclick="popup_device(4)" transform="matrix(0.9738 0 0 1 950 602)" class="est6 est9">temp</text>
+<circle id="cercle_4" class="st48" cx="950" cy="600" r="15"/>
 <g>
 	<rect x="862.5" y="485.5" class="est5" width="60" height="6"/>
 	<path d="M922,486v5h-59v-5H922 M923,485h-61v7h61V485L923,485z"/>
@@ -345,7 +347,7 @@
 <text transform="matrix(0.7596 0 0 1 638.2031 423.5127)" class="est6 est29">PLAN INTERIEUR</text>
 <text transform="matrix(1 0 0 1 436.9365 389.7847)" class="est6 est9">sensor</text>
 <text transform="matrix(1 0 0 1 530.6074 610.0381)" class="est6 est9">sensor</text>
-<ellipse style="fill-opacity: 1; fill: red;" class="cercle" id="cercle_4" cx="960" cy="520" rx="20" ry="20"></ellipse>
+<!--<ellipse style="fill-opacity: 1; fill: red;" class="cercle" id="cercle_4" cx="960" cy="520" rx="20" ry="20"></ellipse>-->
 <g><title>eclairage spa</title>
 	<path class="est30" d="M1177.5,364.6v-2.9c-18-10.8-8.5-41.1,12.8-36.3c17.2,3.9,18.1,28.3,4.5,36.3v2.9c0,0.7,0.3,2.4-2.2,2.4
 		h-12.8C1177.2,367,1177.5,365.9,1177.5,364.6z"/>
@@ -693,64 +695,55 @@
 			/>
 	</g>
 </g>
-<g><title>veranda S</title>
+<g><title>porte veranda S</title>
 	<rect id="f_veranda1" onclick="popup_device(46)" x="876.3" y="503.6" class="fvers" width="29" height="37.3"/>
-	<g>
-		<g>
-			<g>
-				<path class="est39" d="M907.3,499.7h-33c-1.1,0-2,0.9-2,1.9v42.1c0,1.1,0.9,1.9,2,1.9c1.1,0,2-0.9,2-1.9v-40.2H897l-10.9,4.2
+	<path class="est39" d="M907.3,499.7h-33c-1.1,0-2,0.9-2,1.9v42.1c0,1.1,0.9,1.9,2,1.9c1.1,0,2-0.9,2-1.9v-40.2H897l-10.9,4.2
 					c-0.7,0.3-1.2,1-1.2,1.8v26.3c0,0.8,0.4,1.5,1.2,1.8l20.5,7.9c0.2,0.1,0.5,0.1,0.7,0.1c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0
 					c0,0,0,0,0,0c0.3,0,0.6-0.1,0.9-0.3c0.4-0.2,0.7-0.6,0.8-1c0,0,0,0,0,0c0,0,0,0,0,0c0.1-0.2,0.1-0.4,0.1-0.5v-42.1l0,0
 					C909.3,500.6,908.4,499.7,907.3,499.7z M888.8,510.8l16.6-6.3v36.4l-16.6-6.3V510.8z"/>
 				<path class="est39" d="M893,520.6c-1.1,0-2,0.9-2,1.9v0.2c0,1.1,0.9,1.9,2,1.9c1.1,0,2-0.8,2-1.9v-0.2
 					C895,521.4,894.1,520.6,893,520.6z"/>
-			</g>
-		</g>
-	</g>
 </g>
 <g><title>veranda N</title>
 	<rect id="f_verandaN" onclick="popup_device(0)" x="332" y="319.1" class="est38" width="29" height="37.3"/>
-	<g>
-		<g>
-			<g>
-				<path class="est39" d="M363,315.2h-33c-1.1,0-2,0.9-2,1.9v42.1c0,1.1,0.9,1.9,2,1.9s2-0.9,2-1.9v-40.2h20.7l-10.9,4.2
+<path class="est39" d="M363,315.2h-33c-1.1,0-2,0.9-2,1.9v42.1c0,1.1,0.9,1.9,2,1.9s2-0.9,2-1.9v-40.2h20.7l-10.9,4.2
 					c-0.7,0.3-1.2,1-1.2,1.8v26.3c0,0.8,0.4,1.5,1.2,1.8l20.5,7.9c0.2,0.1,0.5,0.1,0.7,0.1c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0
 					c0,0,0,0,0,0c0.3,0,0.6-0.1,0.9-0.3c0.4-0.2,0.7-0.6,0.8-1c0,0,0,0,0,0c0,0,0,0,0,0c0.1-0.2,0.1-0.4,0.1-0.5v-42.1l0,0
 					C365,316.1,364.1,315.2,363,315.2z M344.5,326.3L361,320v36.4l-16.6-6.3V326.3z"/>
 				<path class="est39" d="M348.7,336.1c-1.1,0-2,0.9-2,1.9v0.2c0,1.1,0.9,1.9,2,1.9c1.1,0,2-0.8,2-1.9V338
 					C350.7,336.9,349.8,336.1,348.7,336.1z"/>
-			</g>
-		</g>
-	</g>
 </g>
 <g><title>porte garage</title>
 	<rect onclick="popup_device(82)" x="1273.2" y="723.3" class="p_gar" width="29" height="37.3"/>
-	<g>
-		<g>
-			<g>
 				<path class="est39" d="M1304.2,719.4h-33c-1.1,0-2,0.9-2,1.9v42.1c0,1.1,0.9,1.9,2,1.9c1.1,0,2-0.9,2-1.9v-40.2h20.7l-10.9,4.2
 					c-0.7,0.3-1.2,1-1.2,1.8v26.3c0,0.8,0.4,1.5,1.2,1.8l20.5,7.9c0.2,0.1,0.5,0.1,0.7,0.1c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0
 					c0,0,0,0,0,0c0.3,0,0.6-0.1,0.9-0.3c0.4-0.2,0.7-0.6,0.8-1c0,0,0,0,0,0c0,0,0,0,0,0c0.1-0.2,0.1-0.4,0.1-0.5v-42.1l0,0
 					C1306.2,720.3,1305.3,719.4,1304.2,719.4z M1285.7,730.5l16.6-6.3v36.4l-16.6-6.3V730.5z"/>
 				<path class="est39" d="M1290,740.3c-1.1,0-2,0.9-2,1.9v0.2c0,1.1,0.9,1.9,2,1.9s2-0.8,2-1.9v-0.2
 					C1292,741.2,1291.1,740.3,1290,740.3z"/>
-			</g>
-		</g>
-	</g>
 </g>
 <g><title>grand portail</title>
 	<rect onclick="popup_device(83)" x="1206.2" y="986.3" class="g_port" width="29" height="37.3"/>
-	<g>
-		<g>
-			<g>
 				<path class="est39" d="M1237.2,982.4h-33c-1.1,0-2,0.9-2,1.9v42.1c0,1.1,0.9,1.9,2,1.9c1.1,0,2-0.9,2-1.9v-40.2h20.7l-10.9,4.2
 					c-0.7,0.3-1.2,1-1.2,1.8v26.3c0,0.8,0.4,1.5,1.2,1.8l20.5,7.9c0.2,0.1,0.5,0.1,0.7,0.1c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0
 					c0,0,0,0,0,0c0.3,0,0.6-0.1,0.9-0.3c0.4-0.2,0.7-0.6,0.8-1c0,0,0,0,0,0c0,0,0,0,0,0c0.1-0.2,0.1-0.4,0.1-0.5v-42.1l0,0
 					C1239.2,983.3,1238.3,982.4,1237.2,982.4z M1218.7,993.5l16.6-6.3v36.4l-16.6-6.3V993.5z"/>
 				<path class="est39" d="M1223,1003.3c-1.1,0-2,0.9-2,1.9v0.2c0,1.1,0.9,1.9,2,1.9s2-0.8,2-1.9v-0.2
 					C1225,1004.2,1224.1,1003.3,1223,1003.3z"/>
-			</g>
-		</g>
-	</g>
-</g>	
+</g>
+<g><title>robot tondeuse</title>
+	<ellipse onclick="popup_device(200)" id="worx_3" class="est40" cx="359.9" cy="176.9" rx="3.5" ry="4.7"/>
+	<ellipse onclick="popup_device(200)" id="worx_2" class="est40" cx="340.7" cy="166.6" rx="23.4" ry="17.9"/>
+	<rect onclick="popup_device(200)" id="worx_1" x="296.5" y="144.4" class="est40" width="39.6" height="38.7"/>
+	<path d="M309.6,139c-3.3,0-6.1,0.4-8.5,1.4s-4.5,3.2-4.5,6v11c-3.4,3.2-5.6,7.8-5.6,12.8c0,9.7,8,17.7,17.9,17.7
+		c3.4,0,6.6-1,9.2-2.7h27.3c1.5,1.6,3.7,2.7,6.1,2.7c2.4,0,4.6-1.1,6.1-2.7h1.9c4.6,0,8.6-3.7,8.6-8.3v-5.6
+		c0-7.1-4.9-13.1-11.4-17.8c-6.6-4.7-15-8.3-23.5-10.8C324.6,140.3,316.2,138.9,309.6,139z M309.7,144.4c5.8-0.1,13.8,1.2,21.8,3.5
+		c8,2.4,16,5.8,21.8,10c4.8,3.4,7.9,7.1,8.8,10.9h-35.6c-0.7-9.1-8.2-16.4-17.6-16.4c-2.4,0-4.7,0.5-6.8,1.3v-7.4
+		c0-0.4-0.1-0.4,1.2-1C304.5,144.9,306.8,144.5,309.7,144.4z M308.9,157.9c6.9,0,12.4,5.5,12.4,12.3c0,6.8-5.5,12.3-12.4,12.3
+		c-6.9,0-12.4-5.5-12.4-12.3C296.5,163.4,302,157.9,308.9,157.9z M308.9,167.5c-1.5,0-2.7,1.2-2.7,2.7s1.2,2.7,2.7,2.7
+		c1.5,0,2.7-1.2,2.7-2.7S310.4,167.5,308.9,167.5z M326,174.3h36.6v2.6c0,1.5-1.3,2.8-3.1,2.8h-35.8
+		C324.7,178.1,325.5,176.2,326,174.3z"/>
+</g>
+<text transform="matrix(1 0 0 1 328.709 166.4556)" class="st6 st9">worx</text>
+<text transform="matrix(1 0 0 1 285.3926 102.8101)" class="st6 st9">volts</text>	
 </svg>
