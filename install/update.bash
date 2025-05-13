@@ -3,6 +3,11 @@
 cd /www/monitor
 version=$(head -n 1 /var/www/html/monitor/.version)
 echo $version
+if [ "$version" < "3.2.3" ]
+then
+version= "3.2.3"
+echo $version
+stop
 apt update
 apt install dos2unix
 apt install unzip
