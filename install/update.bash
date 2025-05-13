@@ -11,5 +11,11 @@ dos2unix maj_$version.sh
 chmod +x maj_$version.sh
 ./maj_$version.sh
 rm  maj_$version.sh
+cp -u ajax.php ajax.php
+cp -u fonctions.php fonctions.php
+cp -u index_loc.php index_loc.php
+cp -u -R include/* include/
+cp -u css/* css/
+cp -u js/* js/
 
 
