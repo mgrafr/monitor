@@ -783,6 +783,7 @@ switch (choix) {
 	idm : $("#idm").val(), 	
   	nom_objet : $("#nom_objet").val(),
 	ID : $("#ha_id").val(),	
+	actif : $("input[name=actif]:checked").val(),
 	id_img : $("#id_img").val(),
 	id_txt : $("#id_txt").val(),
 	texte_bd : $("#texte_bd").val(),
@@ -866,7 +867,7 @@ case 5:
 	$("#adv_f").css("display", "none");	
 	var fenetre="avb";
 	var formData = {
-	app :  $("#app").val(),		
+	app :  "var_bd",		
  	num: $("#num").val(),	
   	command : $("#command2").val(),
 	};
