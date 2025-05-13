@@ -5379,7 +5379,7 @@
 		c0.2,0.1,0.3,0.1,0.5,0.2C221.9,321.6,221.8,321.5,221.6,321.5 M220.9,321.4C220.9,321.4,221,321.4,220.9,321.4
 		C221,321.3,220.9,321.3,220.9,321.4 M232.9,321.3C232.9,321.3,233,321.3,232.9,321.3C233,321.3,232.9,321.3,232.9,321.3z"/>
 </g>
-<g id="therm_cellier" onclick="popup_device(6)">
+<g id="sirene" onclick="popup_device(13)">
 	<path class="st33" d="M289.5,264l-0.2-0.2L289.5,264z"/>
 	<path class="st34" d="M289.3,263.8c0.9-0.3,0.4-1.4,0.1-1.9c-1.2-2.1-2.5-4-3.4-6.4c-3.1-8.2-2.8-17.9,1.2-25.7
 		c0.7-1.4,1.8-2.6,2.5-4.1c0.2-0.6,0.2-1.6-0.5-1.6s-1.3,1-1.7,1.6c-1.1,1.6-2.1,3.5-2.8,5.3c-3,7.8-3.4,16.7-0.5,24.6
@@ -5909,12 +5909,16 @@
 <text id="temp_ar_cuisine" transform="matrix(1 0 0 1 84 226)" class="st46 st47">temp</text>
 <text id="temp_salon" transform="matrix(1 0 0 1 362 421)" class="st46 st47">temp</text>
 <text id="temp_cave" transform="matrix(1 0 0 1 85.4984 287)" class="st46 st47">temp</text>
-<circle id="cercle_6" class="st48" cx="307" cy="247.7" r="15"/>
-<circle id="cercle_33" class="st48" cx="228" cy="312.3" r="15"/>
-<circle id="cercle_5" class="st48" cx="146" cy="296.8" r="15"/>
-<circle id="cercle_38" class="st48" cx="389.9" cy="628.1" r="15"/>
-<circle id="cercle_7" class="st48" cx="397.7" cy="102.8" r="15"/>
-<circle id="cercle_35" class="st48" cx="129.9" cy="98.9" r="15"/>
+<title>temp_cellier</title><circle id="cercle_6" class="st48" cx="307" cy="247.7" r="15"/>
+<title>detecteur_fumee</title><circle id="cercle_33" class="st48" cx="228" cy="312.3" r="15"/>
+<title>temp_cave</title><circle id="cercle_5" class="st48" cx="146" cy="296.8" r="15"/>
+<title>porte_entree</title><circle id="cercle_38" class="st48" cx="389.9" cy="628.1" r="15"/>
+<title>porte_fenetre</title><circle id="cercle_7" class="st48" cx="397.7" cy="102.8" r="15"/>
+<title>porte ar cuisine_etat</title><circle id="cercle_35" class="st48" cx="129.9" cy="98.9" r="15"/>
+<title>temp_sdb</title><circle id="cercle_28" class="st48" cx="670" cy="280" r="15"/>
+<title>temp_chambre</title><circle id="cercle_12" class="st48" cx="500" cy="170" r="15"/>
+<title>temp_bureau</title><circle id="cercle_30" class="st48" cx="80" cy="450" r="15"/>
+<title>sirene</title><circle id="cercle_13" class="st48" cx="300" cy="250" r="15"/>
 <text id="temp_cellier" transform="matrix(1 0 0 1 117.8 323.6)" class="st46 st47">temp</text>
 <rect x="55" y="332" class="st49" width="266" height="1"/>
 <rect x="321" y="138" class="st50" width="2.2" height="143"/>
@@ -5940,7 +5944,7 @@
 	<path class="st54" d="M424,539.3c0,2.6,0.8,5.1,2.2,7.1c0.4,0.5,1,0.6,1.5,0.2c0.5-0.4,0.5-1.1,0.2-1.7l0,0
 		c-2.2-3.2-2.3-7.6-0.2-10.9c0.3-0.5,0.3-1.3-0.2-1.6s-1.1-0.3-1.5,0.2l0,0C424.7,534.5,424,536.9,424,539.3z"/>
 </g>
-<circle id="cercle_25" class="st48" cx="461.9" cy="538.2" r="15"/>
+<title>pir_entree_pr</title><circle id="cercle_25" class="st48" cx="461.9" cy="538.2" r="15"/>
 <g id="pir_cuisine" onclick="popup_device(20)">
 	<path id="coul_pir_cuisine" class="st53" d="M59.2,145.1v53.4c0,0.6,0.5,1.2,1,1.2h10.6c0.6,0,1-0.5,1-1.2v-2.3l5.7-1.4
 		c1.7-0.4,3.1-1.9,3.5-3.8h3.5c8.4,0,13-6.8,13-19.2s-4.6-19.2-13-19.2H81c-0.4-1.9-1.8-3.4-3.5-3.8l-5.7-1.4v-2.3
@@ -5960,7 +5964,7 @@
 	<path class="st54" d="M109.6,171.8c0-2.6-0.8-5.1-2.2-7.1c-0.4-0.5-1-0.6-1.5-0.2c-0.5,0.4-0.5,1.1-0.2,1.7l0,0
 		c2.2,3.2,2.3,7.6,0.2,10.9c-0.3,0.5-0.3,1.3,0.2,1.6c0.5,0.4,1.1,0.3,1.5-0.2l0,0C108.9,176.6,109.6,174.2,109.6,171.8z"/>
 </g>
-<circle id="cercle_20" class="st48" cx="72.8" cy="171.3" r="15"/>
+<title>pir ar cuisine_motion</title><circle id="cercle_20" class="st48" cx="72.8" cy="171.3" r="15"/>
 <g id="prise_bureau_imp">
 	<path d="M157.8,483.1c-3.5,0.3-7.1,1.7-10,3.7c-1,0.7-2.7,2.3-3.5,3.3c-3.7,4.4-5.2,10-4,15.5c1.1,5.2,4.5,9.7,9.4,12.4
 		c1.6,0.9,3.9,1.8,4.6,1.8c1.1,0,2.1-1.1,1.9-2.1c-0.2-0.8-0.6-1.2-1.9-1.6c-2.3-0.8-4.1-1.9-5.7-3.5c-2.4-2.2-3.8-4.7-4.5-7.6
@@ -6352,7 +6356,7 @@
 	h1.8V583.9z M157.6,585l-0.1-6.2c0-0.9-0.2-1.2-0.4-1.2h-2.3h-0.4h-0.4h-32.8h-0.4h-0.4h-2.3c-0.2,0-0.4,0.2-0.4,0.6v6.3v0.6
 	c0,0,0.1-0.1,0.3-0.1l2.4,2.6v39.5c0,0.3,0.2,0.6,0.4,0.6h2.1c0.2,0,0.4-0.2,0.4-0.6v-3.9h28.6v3.9c0,0.3,0.2,0.6,0.4,0.6h2.1
 	c0.2,0,0.4-0.2,0.4-0.6v-39.4l2.4-2.6L157.6,585L157.6,585z"/>
-<g id="th_cuisine" onclick="popup_device(13)">
+<g id="th_cuisine" onclick="popup_device(29)"><circle id="cercle_29" class="st48" cx="300" cy="150" r="15"/>
 	<path class="st51" d="M307.9,149v3.4h7.7V149H307.9z M305,162.8v-13.2c0-2.8-1.9-5-4.3-5c-2.4,0-4.3,2.3-4.3,5v13.2
 		c-2.4,1.7-3.8,4.8-3.8,8.1c0,5.3,3.7,9.5,8.2,9.5s8.2-4.3,8.2-9.5C308.8,167.6,307.3,164.5,305,162.8z M300.7,177
 		c-2.9,0-5.3-2.8-5.3-6.2c0-2.4,1.2-4.5,3-5.6c0.5-0.3,0.8-0.9,0.8-1.5v-14.2c0-0.9,0.7-1.7,1.4-1.7c0.8,0,1.4,0.8,1.4,1.7v14.2
@@ -6413,7 +6417,7 @@
 <rect onclick="popup_device(24)" x="634" y="246" class="cserv" width="15.7" height="21"/>
 <text  transform="matrix(1 0 0 1 631.2098 213.8001)" class="st67 st46">sèche-serviettes</text>
 <g>
-	<g class="sos_urg" onclick="popup_device(91)">
+	<g class="sos_urg" onclick="popup_device(91)"><circle id="cercle_91" class="st48" cx="670" cy="150" r="15"/>
 		<path class="st20" d="M678.1,152.5L678.1,152.5c11.8,0,21.3,9.4,21.3,21l0,0c0,11.6-9.6,21-21.3,21l0,0c-11.8,0-21.3-9.4-21.3-21
 			l0,0C656.8,161.9,666.3,152.5,678.1,152.5z"/>
 	</g>
