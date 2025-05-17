@@ -632,7 +632,7 @@ left: 170px;width: 40px;}
 .sparkling-modal-close{right:70px;}
 #pilule{top:570px;}.porte_veranda_sud {top: 530px;left: 360px;}
 }
-@media (max-width:384px) {#porte_gar{top:530px;left:330px}.porte_veranda_sud { top: 500px;left: 280px;}#gd_portail {top: 580px;left: 280px;}
+@media (max-width:384px) {#porte_gar{top:540px;left:320px}.porte_veranda_sud { top: 500px;left: 320px;}#gd_portail {top: 540px;left: 260px;}
 }
 @media (max-width:360px) {#porte_gar{top:530px;left:310px}.porte_veranda_sud { top: 500px;left: 260px;}
 }
