@@ -411,6 +411,7 @@ if ($l_iob!=""){$q=$p;$serveur_iob_on = true;
 $ii=0;$n=0;$id4[$ii]="";
 while (isset($obj_iob[$ii])) { $jj=0;
 $_id1=$obj_iob[$ii];	$id1=explode('.',$_id1);$nb_iob=count($id1);$id4[$ii+1]=$id1[0];
+//if ($id1[0]=="yr") {$nb_iob=$nb_iob+1;}
 if ($id4[$ii+1] != $id4[$ii]) {$values=[];}
 $_id2=$id1[0];if ($nb_iob>2){
 	if ($nb_iob==3){$_id2=$id1[0].".".$id1[1];}
@@ -420,15 +421,18 @@ $L=$IP_iob.":".$port_api_iob."/v1/states?filter=".$_id1.".*";
 $json_string = file_get_curl($L);//return $json_string;
 $iob_json = json_decode($json_string);$devi="";
 foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
-		if ($d=="true") {$d="on";}
-		if ($d=="false") {$d="off";}	
+		//if ($d=="true") {$d="on";}
+		//if ($d=="false") {$d="off";}	
 		$name=str_replace($_id1.".", "", $cle);		   
-		$device=explode('.',$name);$devic=$device[0];$sname=$device[1];
-	    if ($devi==$devic) {$valu[$devic][$sname] = $valeur -> {'val'};}
+		$device=explode('.',$name);$nb_device=count($device);
+		if ($nb_device>1) {$devic=$device[0];$sname=$device[1]; }
+		else {$devic=$_id1;$sname=$device[0]; }
+		$valu[$devic][$sname] = $valeur -> {'val'};		
 		$iob[$n]=[
 		'num' => $n,
 		'ID' => $cle,
 		'Device' => $devic,
+		'N' => $sname,	
 		'Data' => $d,
 		'value_iob' => "1",
 		'serveur' => "IOB"
@@ -500,12 +504,16 @@ if ($t=="") {$t=888;$choix_serveur="0";}}
 		case "iob" :	
 $lect_device["Name"] = $periph['nom_objet'];
 $lect_device["Data"]="";			
-if ($lect_device["value_iob"]=="1") {$lect_device['values'] = $valu[$device];}
+if ($lect_device["value_iob"]=="1" ) {$lect_device['values'] = $valu[$device];}
+
 //if ($lect_device["value_iob"]="2") $lect_device['values'] = $values;
 			
 if (array_key_exists("values",$lect_device)){
 	$array=$lect_device["values"];
 	if (isset($array["state"])) {$lect_device["Data"]=$array["state"];}	
+	if (isset($array["sendCommand"])) {$lect_device["attributes"]["sendCommand"]=$array["sendCommand"];}	
+	if (isset($array["pause"])) {$lect_device["attributes"]["pause"]=$array["pause"];}	
+	if (isset($array["air_temperature"])) {$lect_device["Data"]=$array["air_temperature"];}	
     if (isset($array["batteryState"]) && $lect_device["Data"]!=false ) {$lect_device["BatteryLevel"]=$array["batteryState"];}
 	if (isset($array["batteryTemperature"])) {$lect_device["Temp"]=$array["batteryTemperature"];}	
 	if (isset($array["color"]))  {$lect_device["attributes"]["Color"] = $array["color"];}
@@ -518,7 +526,7 @@ if (array_key_exists("values",$lect_device)){
 										 
 	/*
 	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}*/
-	//if(array_key_exists('pause', $array)) {$lect_device["Data"] = $array["pause"];}// pour WORX
+	if (str_contains($periph['idm'], "_")) {$lect_device['values'] = "";}
 }
 else $lect_device["values"]="";
 		case "dz" :
@@ -547,6 +555,7 @@ if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
 	'ID' => $lect_device["ID"],
 	'serveur' => $lect_device["serveur"],			 
 	'Data' => $lect_device["Data"],
+	'N' => $lect_device["N"],			 
 	'device' => $device,
 	'attributs' => $lect_device["attributes"],			 
 	'Name' => $lect_device["Name"],
@@ -1566,7 +1575,7 @@ case "7":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;		
-echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4,iobroker+=5</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>materiel : <input type="text" style="width:100px;margin-left:10px;" id="type_mat" value="'.$data["materiel"].'"><em style="font-size:12px;margin-left:4px;">zwave, zigbee, autres</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
+echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4,monitor=5</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>materiel : <input type="text" style="width:100px;margin-left:10px;" id="type_mat" value="'.$data["materiel"].'"><em style="font-size:12px;margin-left:4px;">zwave, zigbee, autres</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
 //return $row; 
 break;
 case "8": 
