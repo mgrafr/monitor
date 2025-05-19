@@ -789,6 +789,7 @@ $img_donnees = [
 	100 => "met_12.svg",
 	101 => "met_12_0.svg",
 	103 => "met_11_1.svg",
+	104 => "met_11_1.svg",
 	105 => "met_11.svg",
 	140 => "met_10_2.svg",
 	210 => "met_6.svg",
@@ -957,7 +958,7 @@ $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 		$fichier="images/".$idx.".jpg";$w=file_get_curl($url);
 		file_put_contents($fichier,$w);
 		$octet=filesize($fichier);
-if (($octet==0) && ($idx==10011)) {
+if ($octet<3) {
 shell_exec("wget '".$url."' -O /www/monitor/images/".$idx.".jpg");}
 		$lien_cam=$fichier;
 	
