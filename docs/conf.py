@@ -14,7 +14,7 @@ import sphinx_rtd_theme
 project = 'monitor-domotique'
 copyright = '2025, Gravier'
 author = 'Michel Gravier'
-release = '3.2.3'
+release = '3.2.4'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
