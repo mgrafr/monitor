@@ -48,6 +48,15 @@ whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script insta
 - si vous voulez installer PHP-SSH2\n\
 - le mot de passe ROOT pour Maria DB\n\
 - si vous voulez créer un certificat auto-signé" 15 60
+vermon=$(whiptail --title "version de monitor" --radiolist \
+"Quelle version voulez vous installer ?\n la version en développement\n ou la version LATEST " 15 60 4 \
+"Version 3.2.4" "par defaut " ON \
+"Version en dev" "voir la doc" OFF 3>&1 1>&2 2>&3)
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi  : $vermon"
+else
+echo "Vous avez annulé  "
+fi
 maria_name=$(whiptail --title "Création d'un utilisateur " --inputbox "veuillez entrer un utlisateur et son MOT de PASSE \n\n Entrer le nom de l'utilisateur" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
@@ -216,10 +225,14 @@ msg_ok "installation de Monitor:"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
+if [ "$vermon" = "Version 3.2.4" ]
+then
+wget -P $chemin/monitor/ -O monitor.zip https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v3.2.4.zip
+else
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
-# https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v3.2.4.zip
-rm $chemin/monitor/install/maj*
-echo "importer les tables text_image dispositifs 2fa_token messages et sse"
+fi
+# rm $chemin/monitor/install/maj*
+echo "importer les tables text_image dispositifs 2fa_token messages et sse" 
 sed -i "s/(1, 'user'/(1, '${maria_name}'/g" /var/www/monitor/bd_sql/2fa_token.sql
 mysql -root monitor < $chemin/monitor/bd_sql/text_image.sql
 mysql -root monitor < $chemin/monitor/bd_sql/dispositifs.sql
