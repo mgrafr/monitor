@@ -506,13 +506,13 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    |image1706|
 
-- Modifier le port daans la configuration actuelle de Nginx de monitor :/etc/nginx/conf.d/monitor.conf
+- Modifier le port dans la configuration actuelle Nginx de monitor :/etc/nginx/conf.d/monitor.conf
 
    |image1707|
 
 .. note::
 
-   Si vous utilisez Nagios ou un autre monitoring, changer  provisoirement le nom du nouveau CT monitor dans Proxmox afin d'éviter un conflit de nom.
+   Si vous utilisez Nagios ou un autre monitoring, changer provisoirement le nom du nouveau CT monitor dans Proxmox afin d'éviter un conflit de nom.
 
    |image1708| 
 
