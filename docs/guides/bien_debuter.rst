@@ -497,7 +497,11 @@ modifications en cours....
 0.1.4.1  Mise à jour complète
 """""""""""""""""""""""""""""
 un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste pour l'instant opérationnel.
- 
+
+avec le shell de PVE:
+
+|image1705|
+
 .. admonition:: **Sauvegarde de monitor**
 
    .. note::
@@ -2340,6 +2344,8 @@ function mc(variable,id)
    :width: 700px
 .. |image1704| image:: ../img/image1704.webp
    :width: 460px
+.. |image1705| image:: ../img/image1705.webp
+   :width: 532px
 .. |image1751| image:: ../img/image1751.webp
    :width: 260px
 .. |image1764| image:: ../img/image1764.webp
