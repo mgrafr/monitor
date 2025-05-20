@@ -506,6 +506,10 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    |image1706|
 
+- Modifier le port daans la configuration actuelle de Nginx de monitor :/etc/nginx/conf.d/monitor.conf
+
+   |image1707|
+
 .. admonition:: **Sauvegarde de monitor**
 
    .. note::
@@ -2350,6 +2354,8 @@ function mc(variable,id)
    :width: 460px
 .. |image1705| image:: ../img/image1705.webp
    :width: 532px
+.. |image1707| image:: ../img/image1707.webp
+   :width: 380px
 .. |image1706| image:: ../img/image1706.webp
    :width: 600px
 .. |image1751| image:: ../img/image1751.webp
