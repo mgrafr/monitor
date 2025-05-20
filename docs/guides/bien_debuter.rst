@@ -540,6 +540,8 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
       |image1553|
 
+      |image1704|
+
       étalir la liste de port utilisés par le pare-feu
 
       |image1552|
@@ -2336,6 +2338,8 @@ function mc(variable,id)
    :width: 700px
 .. |image1703| image:: ../img/image1703.webp
    :width: 700px
+.. |image1704| image:: ../img/image1704.webp
+   :width: 460px
 .. |image1751| image:: ../img/image1751.webp
    :width: 260px
 .. |image1764| image:: ../img/image1764.webp
