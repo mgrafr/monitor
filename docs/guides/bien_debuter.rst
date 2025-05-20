@@ -516,9 +516,13 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    |image1708| 
 
-- Répertorier les modules Python à ajouter si besoin.
+- Répertorier les modules Python à ajouter si besoin;
 
    |image1704|
+
+   pour les ajouter avec le script ci-après :
+
+   |image1709|
 
 .. admonition:: **Sauvegarde de monitor**
 
@@ -2368,6 +2372,8 @@ function mc(variable,id)
    :width: 380px
 .. |image1708| image:: ../img/image1708.webp
    :width: 700px
+.. |image1709| image:: ../img/image1709.webp
+   :width: 650px
 .. |image1751| image:: ../img/image1751.webp
    :width: 260px
 .. |image1764| image:: ../img/image1764.webp
