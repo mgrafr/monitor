@@ -516,6 +516,10 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    |image1708| 
 
+- Répertorier les modules Python à ajouter si besoin.
+
+   |image1704|
+
 .. admonition:: **Sauvegarde de monitor**
 
    .. note::
@@ -557,8 +561,6 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
       |image1548|
 
       |image1553|
-
-      |image1704|
 
       étalir la liste de port utilisés par le pare-feu
 
