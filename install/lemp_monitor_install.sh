@@ -227,7 +227,10 @@ xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 if [ "$vermon" = "Version 3.2.4" ]
 then
-wget -p $chemin/monitor/ -O monitor.zip https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v3.2.4.zip
+mkdir -p $chemin/monitor
+wget -O $chemin/monitor/monitor.zip https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v3.2.4.zip
+unzip $chemin/monitor/monitor.zip
+rm $chemin/monitor/monitor.zip
 else
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
 fi
