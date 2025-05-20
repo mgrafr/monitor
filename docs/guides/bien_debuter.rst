@@ -496,11 +496,19 @@ modifications en cours....
 
 0.1.4.1  Mise à jour complète
 """""""""""""""""""""""""""""
-un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste pour l'instant opérationnel.
+.. admonition:: **Installer un nouveau conteneur LXC** 
 
-- avec le shell de PVE:
+   - avec le shell de PVE:
 
-   |image1705|
+      |image1705|
+
+   voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
+
+   copier la configurationdes E/S de l'ancien monitor vers le nouveau
+
+    |image1669|
+
+   un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste pour l'instant opérationnel.
 
 - Modifier la redirection de ports; monitor à mettre à jour est redirigé vers le port 444 et le nouveau monitor est dirigé vers le port 443
 
@@ -585,14 +593,6 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
       sauvegarder les scripts systemd pour le démarrage automatique
 
       |image1658|
-
-.. admonition:: **Installer un nouveau conteneur LXC** 
-
-    voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
-
-   copier la configurationdes E/S de l'ancien monitor vers le nouveau
-
-    |image1669|
 
 .. admonition:: **Restauration automatiques des sauvegardesdes**
 
