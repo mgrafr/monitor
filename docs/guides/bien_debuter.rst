@@ -510,6 +510,12 @@ un nouveau conteneur est installé, le conteneur actuel hébergeant monitor rest
 
    |image1707|
 
+.. note::
+
+   Si vous utilisez Nagios ou un autre monitoring, changer  provisoirement le nom du nouveau CT monitor dans Proxmox afin d'éviter un conflit de nom.
+
+   |image1708| 
+
 .. admonition:: **Sauvegarde de monitor**
 
    .. note::
@@ -2354,10 +2360,12 @@ function mc(variable,id)
    :width: 460px
 .. |image1705| image:: ../img/image1705.webp
    :width: 532px
+.. |image1706| image:: ../img/image1706.webp
+   :width: 600px 
 .. |image1707| image:: ../img/image1707.webp
    :width: 380px
-.. |image1706| image:: ../img/image1706.webp
-   :width: 600px
+.. |image1708| image:: ../img/image1708.webp
+   :width: 700px
 .. |image1751| image:: ../img/image1751.webp
    :width: 260px
 .. |image1764| image:: ../img/image1764.webp
