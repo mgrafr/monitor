@@ -110,11 +110,18 @@ domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -
 echo "domaine : " $domaine
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php 
 sed -i "s/.\///g"  /home/$mdir_maj/monitor/systemd/c.txt
-sed  -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
+sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
+sed -i "s/444}/443/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.lua
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.js
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.yaml
+nbconf=$(whiptail --title "Autre fichier de Config" --inputbox "si il existe sinon laisser vide" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ -n "$nbconf" ]
+then
+sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/$nbconf 
+fi
 ipiob=$(whiptail --title "IP de ioBroker" --inputbox "si elle existe sinon laisser vide" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ -n "$ipiob" ]
