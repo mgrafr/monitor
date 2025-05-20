@@ -217,6 +217,7 @@ sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
 git clone https://github.com/mgrafr/monitor.git $chemin/monitor
+# https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v3.2.4.zip
 rm $chemin/monitor/install/maj*
 echo "importer les tables text_image dispositifs 2fa_token messages et sse"
 sed -i "s/(1, 'user'/(1, '${maria_name}'/g" /var/www/monitor/bd_sql/2fa_token.sql
