@@ -14,12 +14,15 @@ Server version: 10.11.6
 
 19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 3.2.3**
+**La version stable actuelle est 3.2.4**
 
 19.4.1 Releases
 ===============
-Version en developpement 3.2.4
+Version en developpement 3.2.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version 3.2.4 (Mai 2025)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction bug sur mur_inter.php
 - Ajout de la possibilité d'un fichier de configuration par écran de contrôle
 - Ajout d'un lien symbolique de la configuration vers le répertoire de l'API
