@@ -159,11 +159,15 @@ cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/index_loc.php
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/C.txt
 cp -R /home/$mdir_maj/etc/systemd/system/* /etc/systemd/system/
 cp -R /home/$mdir_maj/monitor/custom/python/* /var/www/monitor/custom/python/
+cp -R /home/$mdir_maj/monitor/custom/php/* /var/www/monitor/custom/php/
+cp -R /home/$mdir_maj/monitor/custom/images/* /var/www/monitor/custom/images/
+cp -R /home/$mdir_maj/monitor/custom/js/* /var/www/monitor/custom/js/
+cp -R /home/$mdir_maj/monitor/custom/css/* /var/www/monitor/custom/css/
 cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
 cp /var/www/monitor/admin/connect/connect.py /var/www/monitor/custom/python/
 chmod -R 777 /var/www/monitor/DB_Backup
 cp /home/$mdir_maj/monitor/DB_Backup/dump.sql /var/www/monitor/DB_Backup/
-mysql -u root -p monitor < /var/www/monitor/DB_Backup/dump.sql
+mysql -u root -p monitor < /var/www/monitor/DB_Backup/dump.sql.gz
 ufw allow 444
 systemctl restart ufw
 sudo apt install certbot python3-certbot-nginx -y
