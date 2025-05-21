@@ -49,7 +49,7 @@ whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script insta
 - le mot de passe ROOT pour Maria DB\n\
 - si vous voulez créer un certificat auto-signé" 15 60
 # version à maj ----------------
-dosmon="monitor-v3.2.4"
+dosmon=monitor-v3.2.4
 vermon=$(whiptail --title "version de monitor" --radiolist \
 "Quelle version voulez vous installer ?\n la version en développement\n ou la version LATEST " 15 60 4 \
 "Version 3.2.4" "par defaut " ON \
@@ -231,7 +231,7 @@ ip4=$(echo $xxx | cut -d ' ' -f 1)
 if [ "$vermon" = "Version 3.2.4" ]
 then
 wget -O $chemin/monitor.zip https://github.com/mgrafr/monitor/archive/refs/tags/$dosmon.zip
-unzip $chemin/monitor.zip
+unzip $chemin/monitor.zip -d $chemin
 mv $chemin/monitor-$dosmon/ $chemin/monitor/
 rm $chemin/monitor.zip
 else
