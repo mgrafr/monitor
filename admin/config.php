@@ -114,6 +114,7 @@ define('URLIOB', array(
     0 => "https://iobroker..DOMAINE",
     1 => "https://iobweb.DOMAINE",
     2 => "false"));// false ou true : page iobroker dans monitor
+// les 3 serveurs
 define('IPDOMOTIC', '');//ip 1er serveur Domotique ex:192.168.1.76
 define('USERDOMOTIC', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC', '<mot passe>');//mot passe serveur
@@ -137,11 +138,11 @@ define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
 define('TOKEN_DOMOTIC2', '');//TOKEN ou BEARER
 define('PORT_API_DOMO2','');//port de l'API éventuel
 define('PORT_WEBUI_DOMO2','');//port web UI et dossier éventuel ex: 8082/vis-2/index.html
-//****modules et constantes  complémentaires pour Domoticz
+// ****modules et constantes  complémentaires pour Domoticz
 define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
 define('VARTAB', 'admin/connect/string_tableaux.lua');//
 define('CONF_MODECT', 'admin/string_modect.json');
-//*********** pour Iobroker
+// *********** pour Iobroker
 define('OBJ_IOBROKER','zigbee2mqtt.0');// séparer les objets par une virgule
 //-----------------------------------------------------------
 // Sauvegardes domoticz
