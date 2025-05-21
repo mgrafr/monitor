@@ -21,7 +21,7 @@
 									<?php if (ON_SPA==true) echo '<li class="zz"><a href="#spa">SPA</a></li>';?>
 									<?php if (ON_RECETTES==true) echo '<li class="zz"><a href="#recettes">Recettes Cuisine</a></li>';?>
 									<?php if (ON_HABRIDGE==true) echo '<li class="zz"><a href="#habridge">Pont HUE</a></li>';?>
-									<?php if (URLIOB!="") echo '<li class="zz"><a href="#iobroker">Io.broker</a></li>';?>
+									<?php if (URLIOB[2]==true) echo '<li class="zz"><a href="#iobroker">Io.broker</a></li>';?>
 									<li class="zz"><a href="#modes_emploi">Modes d'emploi</a></li>
 									<li class="zz"><a href="#admin">Administration</a></li>
 			 						<li class="zz"><a href="#worx">Robot Worx</a></li> 
