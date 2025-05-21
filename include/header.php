@@ -22,9 +22,9 @@
 									<?php if (ON_RECETTES==true) echo '<li class="zz"><a href="#recettes">Recettes Cuisine</a></li>';?>
 									<?php if (ON_HABRIDGE==true) echo '<li class="zz"><a href="#habridge">Pont HUE</a></li>';?>
 									<?php if (URLIOB[2]==true) echo '<li class="zz"><a href="#iobroker">Io.broker</a></li>';?>
-									<li class="zz"><a href="#modes_emploi">Modes d'emploi</a></li>
+									<!--<li class="zz"><a href="#modes_emploi">Modes d'emploi</a></li> -->
 									<li class="zz"><a href="#admin">Administration</a></li>
-			 						<li class="zz"><a href="#worx">Robot Worx</a></li> 
+			 						<!--<li class="zz"><a href="#worx">Robot Worx</a></li> -->
 									<?php
 									/*zz la class pour le script js menu_link*/
 									/* pour ajouter une page la mettre au dessus de ces commentaires*/
