@@ -112,7 +112,7 @@ define('URLDZ', 'https://domoticz.DOMAINE');
 define('URLHA', 'https://ha.DOMAINE');
 define('URLIOB', array(
     0 => "https://iobroker..DOMAINE",
-    1 => "https://iobweb..DOMAINE",
+    1 => "https://iobweb.DOMAINE",
     2 => "false"));// false ou true : page iobroker dans monitor
 define('IPDOMOTIC', '');//ip 1er serveur Domotique ex:192.168.1.76
 define('USERDOMOTIC', '<user>');//user du serveur,répertoire :home/user
