@@ -2,6 +2,10 @@
 -------------------------------------
 12.1 Ajout d'une page Vis2 de IoBroker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La page existe, il suffit dans admin/config.php de la déclarer TRUE
+
+|image1711| 
+
 |image1710| 
 
 12.2 Ajout d'une page avec diverses App
@@ -174,6 +178,8 @@ Pour la restitution de l’historique :
    :width: 439px
 .. |image1710| image:: ../img/image1710.webp
    :width: 700px
+.. |image1711| image:: ../img/image1711.webp
+   :width: 600px
 
 
 
