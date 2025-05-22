@@ -56,7 +56,7 @@ CREATE TABLE `dispositifs` (
 --
 
 INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `Actif`, `materiel`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES
-(231, ' var pour connect', 'upload', '22', 'input_text.var_upload', '1016', '2', '', '0', 'variable', '#', ' ', NULL, '', '', '', '', '', '', '0', '');
+(1, ' var pour connect', 'upload', '22', 'input_text.var_upload', '1016', '2', '', '0', 'variable', '#', ' ', NULL, '', '', '', '', '', '', '0', '');
 
 --
 -- Index pour les tables déchargées
