@@ -1,5 +1,11 @@
 12. - Autres Pages  Nagios, SQL, Vis2
 -------------------------------------
+12.1 Ajout d'une page Vis2 de IoBroker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1710| 
+
+12.2 Ajout d'une page avec diverses App
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Les scripts pour afficher des données sur d’autres pages peuvent être sur ce modèle, avec l’utilisation de modalink pour afficher ces données : https://github.com/dmhendricks/jquery-modallink
 
 |image679| 
@@ -55,9 +61,9 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
 
 |image686|
 
-12.1 AJOUT SQL
-^^^^^^^^^^^^^^
-12.1.1 Edition de l’historique du ramassage des poubelles
+12.3 Ajout de donnée MySQL
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+12.3.1 Edition de l’historique du ramassage des poubelles
 =========================================================
 
 |image687|
@@ -97,7 +103,7 @@ Ligne de code concernée:
 	urllog="ajax.php?app=sql&idx=1&variable="+table_sql+"&type=&command=";titre="historique poubelles";}
    else {urllog="erreur";}
 
-12.1.2 Ajout d’une icône à l’historique des poubelles
+12.3.2 Ajout d’une icône à l’historique des poubelles
 =====================================================
 
 - **Dans la BD** : une colonne est réservée pour l’icône
@@ -166,7 +172,8 @@ Pour la restitution de l’historique :
    :width: 649px
 .. |image698| image:: ../media/image698.webp
    :width: 439px
-
+.. |image1710| image:: ../media/image1710.webp
+   :width: 700px
 
 
 
