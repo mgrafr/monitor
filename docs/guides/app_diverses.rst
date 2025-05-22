@@ -1,6 +1,5 @@
-12. - FICHIERS LOG Domoticz, Nagios, SQL
-----------------------------------------
-
+12. - Autres Pages  Nagios, SQL, Vis2
+-------------------------------------
 Les scripts pour afficher des données sur d’autres pages peuvent être sur ce modèle, avec l’utilisation de modalink pour afficher ces données : https://github.com/dmhendricks/jquery-modallink
 
 |image679| 
