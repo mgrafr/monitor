@@ -172,7 +172,7 @@ Pour la restitution de l’historique :
    :width: 649px
 .. |image698| image:: ../media/image698.webp
    :width: 439px
-.. |image1710| image:: ../media/image1710.webp
+.. |image1710| image:: ../img/image1710.webp
    :width: 700px
 
 
