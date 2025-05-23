@@ -573,13 +573,13 @@ modifications en cours....
 	echo "pour letsencrypt remplacement port 443 par 444"
 	sed  -i "s/443/444/g" /etc/nginx/conf.d/monitor.conf
 	systemctl restart nginx
-	fi
-	cd /etc/systemd/system
-	find . -type f -prune > /www/monitor/c.txt
 	echo "------------------------------------------------------------------"
 	echo "NE PAS OUBLIER DE MODIFIER LA REDIRECTION DE PORTS DANS LE ROUTEUR"
 	echo "------------------------------------------------------------------"
-
+	fi
+	cd /etc/systemd/system
+	find . -type f -prune > /www/monitor/c.txt
+	
    .. admonition::  :red:`si la maj est manuelle`, liste des sauvegardes  qui devront être restaurées     
 
       sauvegarde de la (ou les) bases de données, monitor et le cas échéant iobroker
