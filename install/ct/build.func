@@ -226,3 +226,42 @@ description() {
     systemctl start ping-instances.service
   fi
 }
+enr_ip(){
+while true; do
+    NET=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set a Static IPv4 CIDR Address (/24)" 8 58 dhcp --title "IP ADDRESS" 3>&1 1>&2 2>&3)
+    exit_status=$?
+    if [ $exit_status -eq 0 ]; then
+      if [ "$NET" = "dhcp" ]; then
+        echo -e "${DGN}Using IP Address: ${BGN}$NET${CL}"
+        break
+      else
+        if [[ "$NET" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/([0-9]|[1-2][0-9]|3[0-2])$ ]]; then
+          echo -e "${DGN}Using IP Address: ${BGN}$NET${CL}"
+          break
+        else
+          whiptail --backtitle "Proxmox VE Helper Scripts" --msgbox "$NET is an invalid IPv4 CIDR address. Please enter a valid IPv4 CIDR address or 'dhcp'" 8 58
+        fi
+      fi
+    else
+      exit-script
+    fi
+  done
+
+  if [ "$NET" != "dhcp" ]; then
+    while true; do
+      GATE1=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Enter gateway IP address" 8 58 --title "Gateway IP" 3>&1 1>&2 2>&3)
+      if [ -z "$GATE1" ]; then
+        whiptail --backtitle "Proxmox VE Helper Scripts" --msgbox "Gateway IP address cannot be empty" 8 58
+      elif [[ ! "$GATE1" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+        whiptail --backtitle "Proxmox VE Helper Scripts" --msgbox "Invalid IP address format" 8 58
+      else
+        GATE=",gw=$GATE1"
+        echo -e "${DGN}Using Gateway IP Address: ${BGN}$GATE1${CL}"
+        break
+      fi
+    done
+  else
+    GATE=""
+    echo -e "${DGN}Using Gateway IP Address: ${BGN}Default${CL}"
+  fi
+}
