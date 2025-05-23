@@ -15,6 +15,11 @@ pip list --format=json > /var/www/monitor/admin/connect/mod.json
 ufw status > /var/www/monitor/admin/connect/ufw.txt
 xxx=$(hostname -I)
 echo $xxx | cut -d ' ' -f 1 > /var/www/monitor/admin/connect/ip.txt
-mkdir /www/monitor/systemd
-find /etc/systemd/system -type f -prune > /www/monitor/systemd/c.txt
-find /etc/systemd/system -maxdepth 1 -type f -exec cp {} /www/monitor/systemd/ \;
+echo "pour letsencrypt remplacement port 443 par 444"
+sed  -i "s/443/444/g" /etc/nginx/conf.d/monitor.conf
+systemctl restart nginx
+cd /etc/systemd/system
+find . -type f -prune > /www/monitor/c.txt
+echo "------------------------------------------------------------------"
+echo "NE PAS OUBLIER DE MODIFIER LA REDIRECTION DE PORTS DANS LE ROUTEUR"
+echo "------------------------------------------------------------------"
