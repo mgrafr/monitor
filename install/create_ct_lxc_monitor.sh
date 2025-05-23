@@ -55,20 +55,19 @@ if ! (whiptail --title "${APP} LXC" --yesno "CE script va creer un nouveau conte
       echo -e "⚠  User exited script \n"
       exit
  fi
-
 while true; do
-    NET=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set a Static IPv4 CIDR Address (/24)" 8 58 dhcp --title "IP ADDRESS" 3>&1 1>&2 2>&3)
+    NET=$(whiptail --backtitle "Proxmox CT Monitor" --inputbox "Définir une adresse IPv4 CIDR (/24)" 8 58 dhcp --title "IP ADDRESS" 3>&1 1>&2 2>&3)
     exit_status=$?
     if [ $exit_status -eq 0 ]; then
       if [ "$NET" = "dhcp" ]; then
-        echo -e "${DGN}Using IP Address: ${BGN}$NET${CL}"
+        echo -e "${DGN}Adresse IP utilisée: ${BGN}$NET${CL}"
         break
       else
         if [[ "$NET" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/([0-9]|[1-2][0-9]|3[0-2])$ ]]; then
-          echo -e "${DGN}Using IP Address: ${BGN}$NET${CL}"
+          echo -e "${DGN}Adresse IP utilisée: ${BGN}$NET${CL}"
           break
         else
-          whiptail --backtitle "Proxmox VE Helper Scripts" --msgbox "$NET is an invalid IPv4 CIDR address. Please enter a valid IPv4 CIDR address or 'dhcp'" 8 58
+          whiptail --backtitle "Proxmox CT Monitor" --msgbox "$NET est une IPv4 CIDR invalide. SVP entrer une valide IPv4 CIDR address ou 'dhcp'" 8 58
         fi
       fi
     else
@@ -78,20 +77,20 @@ while true; do
 
   if [ "$NET" != "dhcp" ]; then
     while true; do
-      GATE1=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Enter gateway IP address" 8 58 --title "Gateway IP" 3>&1 1>&2 2>&3)
+      GATE1=$(whiptail --backtitle "Proxmox CT Monitor" --inputbox "Entrer l'IP de la passerelle" 8 58 --title "Gateway IP" 3>&1 1>&2 2>&3)
       if [ -z "$GATE1" ]; then
-        whiptail --backtitle "Proxmox VE Helper Scripts" --msgbox "Gateway IP address cannot be empty" 8 58
+        whiptail --backtitle "Proxmox CT Monitor" --msgbox "L'adresse IP de la passerellene peut être vide" 8 58
       elif [[ ! "$GATE1" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
-        whiptail --backtitle "Proxmox VE Helper Scripts" --msgbox "Invalid IP address format" 8 58
+        whiptail --backtitle "Proxmox CT Monitor" --msgbox "Invalide format adresse IP" 8 58
       else
         GATE=",gw=$GATE1"
-        echo -e "${DGN}Using Gateway IP Address: ${BGN}$GATE1${CL}"
+        echo -e "${DGN}Passerelle IP Addresse: ${BGN}$GATE1${CL}"
         break
       fi
     done
   else
     GATE=""
-    echo -e "${DGN}Using Gateway IP Address: ${BGN}Default${CL}"
+    echo -e "${DGN}Passerelle  IP Addresse: ${BGN}Default${CL}"
   fi
 
 
@@ -229,7 +228,7 @@ var_cpu=2048
 nb_cores=2
 privilegie=1
 pct create $CTID $TEMPLATE_STRING -arch $ARCH -features nesting=$privilegie -password $PW \
-  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=dhcp -onboot 1 -cores $nb_cores -memory $var_cpu\
+  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0$GATE,ip=$NET -onboot 1 -cores $nb_cores -memory $var_cpu\
   -ostype $OSTYPE -rootfs $ROOTFS,size=$DISK_SIZE -storage $STORAGE >/dev/null
 
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
