@@ -76,6 +76,18 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
 |image8|
 
+Choisir "dhcp" ou indiquer l'IP choisie
+
+|image1713|
+
+.. note::
+
+Si IP CIDR : Par exemple, 192.0.2.0/24 est une adresse CIDR IPv4 où les 24 premiers bits, soit 192.0.2, correspondent à l'adresse réseau.  
+
+|image1713|
+
+|image1715|
+
 |image9|
  
 Choisir le langage UTF-8 : fr_FR.UTF-8
@@ -2392,6 +2404,12 @@ function mc(variable,id)
    :width: 700px
 .. |image1709| image:: ../img/image1709.webp
    :width: 650px
+.. |image1713| image:: ../img/image1713.webp
+   :width: 540px
+.. |image1714| image:: ../img/image1714.webp
+   :width: 540px
+.. |image1715| image:: ../img/image1715.webp
+   :width: 540px
 .. |image1751| image:: ../img/image1751.webp
    :width: 260px
 .. |image1764| image:: ../img/image1764.webp
