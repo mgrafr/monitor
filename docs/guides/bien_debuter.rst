@@ -82,7 +82,7 @@ Choisir "dhcp" ou indiquer l'IP choisie
 
 .. note::
 
-Si IP CIDR : Par exemple, 192.0.2.0/24 est une adresse CIDR IPv4 où les 24 premiers bits, soit 192.0.2, correspondent à l'adresse réseau.  
+   Si IP CIDR : Par exemple, 192.0.2.0/24 est une adresse CIDR IPv4 où les 24 premiers bits, soit 192.0.2, correspondent à l'adresse réseau.  
 
 |image1713|
 
