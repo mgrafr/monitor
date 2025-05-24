@@ -67,7 +67,7 @@ while true; do
           echo -e "${DGN}Adresse IP utilisée: ${BGN}$NET${CL}"
           break
         else
-          whiptail --backtitle "Proxmox CT Monitor" --msgbox "$NET est une IPv4 CIDR invalide. SVP entrer une valide IPv4 CIDR address ou 'dhcp'" 8 58
+          whiptail --backtitle "Proxmox CT Monitor" --msgbox "$NET est une IP CIDR invalide. SVP entrer une Adresse IP CIDR VALIDE ou 'dhcp'" 8 58
         fi
       fi
     else
@@ -79,7 +79,7 @@ while true; do
     while true; do
       GATE1=$(whiptail --backtitle "Proxmox CT Monitor" --inputbox "Entrer l'IP de la passerelle" 8 58 --title "Gateway IP" 3>&1 1>&2 2>&3)
       if [ -z "$GATE1" ]; then
-        whiptail --backtitle "Proxmox CT Monitor" --msgbox "L'adresse IP de la passerellene peut être vide" 8 58
+        whiptail --backtitle "Proxmox CT Monitor" --msgbox "L'adresse IP de la passerelle ne peut être vide" 8 58
       elif [[ ! "$GATE1" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
         whiptail --backtitle "Proxmox CT Monitor" --msgbox "Invalide format adresse IP" 8 58
       else
