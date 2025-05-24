@@ -71,7 +71,7 @@ fi
 adduser $maria_name
 usermod -aG sudo $maria_name
 info "Utilisateur "$maria_name "enregistré et ajouté au groupe SUDO"
-server=$(whiptail --title "nom du serveur domotique" --inputbox "indiquer le domaine ou simplement 'monitor'"  10 60 3>&1 1>&2 2>&3)
+server=$(whiptail --title "Domaine du serveur domotique" --inputbox "indiquer le domaine ou simplement 'monitor'"  10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
  server_name=$server
@@ -248,8 +248,8 @@ mysql -root monitor < $chemin/monitor/bd_sql/2fa_token.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
 cp $chemin/monitor/share/nginx/default.conf /etc/nginx/conf.d/
-sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/monitor.conf
-sed -i "s/xxxipxxx/${ip4}/g" /etc/nginx/conf.d/monitor.conf
+sed -i "s/server_name /server_name ${server_name}/g" /etc/nginx/conf.d/default.conf
+# sed -i "s/xxxipxxx/${ip4}/g" /etc/nginx/conf.d/monitor.conf
 echo "LEMP : Creating a php-info page"
 echo '<?php phpinfo(); ?>' > /www/info.php
 echo "LEMP est installé"
