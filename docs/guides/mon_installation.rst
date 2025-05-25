@@ -17,8 +17,10 @@ C’est la base du système, il doit être installé en premier, ensuite :
 
 Pour l'installation: http://domo-site.fr/accueil/dossiers/1
 
-Pour terminer le processus de post-installation de Proxmox VE 7(évite de modifier manuellement les fichiers sources.list  d’apt,) vous pouvez exécuter la commande suivante dans pve Shell.
-bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh)"
+Pour terminer le processus de post-installation de Proxmox VE 8 (évite de modifier manuellement les fichiers sources.list  d’apt,) vous pouvez exécuter la commande suivante dans pve Shell.
+bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh)"; Il est recommandé de répondre « oui » (y) à toutes les options présentées au cours du processus.
+
+|image1716|
 
 .. seealso:: **sur Github**
 
@@ -2813,6 +2815,8 @@ Mon WGDashbord
    :width: 550px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
+.. |image1716| image:: ../img/image1716.webp
+   :width: 700px
 .. |image1734| image:: ../img/image1734.webp
    :width: 700px
 .. |image1735| image:: ../img/image1735.webp
