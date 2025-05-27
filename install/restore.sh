@@ -16,7 +16,7 @@ echo "Par défaut, répertoire : "$mdir_maj
 fi
 mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup}
 mkdir -p /home/$mdir_maj/monitor/custom/{php,python,js,css,images}
-mkdir -p /home/$mdir_maj/etc/{letsencrypt,ssl,nginx,cron.d}
+mkdir -p /home/$mdir_maj/etc/{letsencrypt,ssl,ssh,nginx,cron.d}
 mkdir -p /home/$mdir_maj/etc/systemd/system
 mkdir -p /home/$mdir_maj/root/.ssh
 mkdir -p /home/$mdir_maj/etc/nginx/{conf.d,ssl}
@@ -80,7 +80,7 @@ lcd cron.d
 get /etc/cron.d/*
 lcd ..
 lcd systemd/system
-get /var/www/monitor/systemd/*
+get -R /var/www/monitor/systemd/*
 exit
 EOF
 if [[ "$lets" == "Avec les certificats déjà enregistrés" ]];then
@@ -94,15 +94,20 @@ lcd letsencrypt
 get -R /etc/letsencrypt/*
 lcd ..
 lcd ssl
-get /etc/ssl/*
+get -R /etc/ssl/*
+lcd ..
+lcd ssh
+get -R /etc/ssh/*
 exit
 EOF
 fi
 if [["$lett" == "Copier les clés déjà enregistrées" ]];then
 echo $lett
 cd /home/$mdir_maj/root/.ssh
-sshpass -p $pass_sftp  sftp $user_sftp@$ip3<<EOF
-get /root/.ssl/*
+pass_root=$(whiptail --title "Mot de passe root" --inputbox "MOT DE PASSE POUR root" 10 60 3>&1 1>&2 2>&3)
+exitstatus=$?
+sshpass -p $pass_root  sftp root@$ip3<<EOF
+get -R /root/.ssl/*
 exit
 EOF
 fi
@@ -135,20 +140,24 @@ EOF
 fi
 vv=$(pip list --format=json)
 echo $vv
-rm -R /home/$mdir_maj/etc/letsencrypt/live
-cd /home/$mdir_maj/etc/letsencrypt
+cp  -R /home/$mdir_maj/etc/ssl/* /etc/ssl/
+cp  -R /home/$mdir_maj/etc/ssh/* /etc/ssh/
+cp -R /home/$mdir_maj/etc/letsencrypt/* /etc/letsencrypt/
+chmod -R 777 /etc/letsencrypt
+rm -R /etc/letsencrypt/live
+cd /etc/letsencrypt
 mkdir live
 chmod -R 777 live
 cd archive
 for f in * ; do  echo $f;  done > /home/$mdir_maj/a.txt;
 while read l; do nb=$(ls /home/$mdir_maj/etc/letsencrypt/archive/$l | wc -l) ;
  a=$((($nb)/4)); echo $a; 
- mkdir /home/$mdir_maj/etc/letsencrypt/live/$l;
-chmod -R 777 /home/$mdir_maj/etc/letsencrypt/live/*;
-ln -s /home/$mdir_maj/etc/letsencrypt/archive/$l/privkey$a.pem /home/$mdir_maj/etc/letsencrypt/live/$l/privkey.pem; 
-ln -s /home/$mdir_maj/etc/letsencrypt/archive/$l/fullchain$a.pem /home/$mdir_maj/etc/letsencrypt/live/$l/fullchain.pem; 
-ln -s /home/$mdir_maj/etc/letsencrypt/archive/$l/cert$a.pem /home/$mdir_maj/etc/letsencrypt/live/$l/cert.pem; 
-ln -s /home/$mdir_maj/etc/letsencrypt/archive/$l/chain$a.pem /home/$mdir_maj/etc/letsencrypt/live/$l/chain.pem; 
+ mkdir /etc/letsencrypt/live/$l;
+chmod -R 777 /etc/letsencrypt/live/*;
+ln -s /etc/letsencrypt/archive/$l/privkey$a.pem /etc/letsencrypt/live/$l/privkey.pem; 
+ln -s /etc/letsencrypt/archive/$l/fullchain$a.pem /etc/letsencrypt/live/$l/fullchain.pem; 
+ln -s /etc/letsencrypt/archive/$l/cert$a.pem /etc/letsencrypt/live/$l/cert.pem; 
+ln -s /etc/letsencrypt/archive/$l/chain$a.pem /etc/letsencrypt/live/$l/chain.pem; 
 done  < /home/$mdir_maj/a.txt
 if [ $a = 0 ]; then
 echo "erreur  vérifier lles autorisations pour etc/letsencrypt/archive=644"
@@ -175,8 +184,6 @@ cp  /home/$mdir_maj/etc/nginx/conf.d/* /etc/nginx/conf.d/
 cp  /home/$mdir_maj/etc/nginx/.htpasswd /etc/nginx/
 mkdir /etc/nginx/ssl
 cp  /home/$mdir_maj/etc/nginx/ssl/* /etc/nginx/ssl/
-chmod -R 777 /etc/letsencrypt
-cp -R /home/$mdir_maj/etc/letsencrypt/* /etc/letsencrypt/
 chmod -R 777 /etc/cron.d
 cp /home/$mdir_maj/etc/cron.d/* /etc/cron.d
 systemctl restart nginx
@@ -198,4 +205,3 @@ then
 sudo apt update
 sudo apt install $mod_py
 fi
-
