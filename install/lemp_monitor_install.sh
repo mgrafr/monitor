@@ -186,25 +186,25 @@ URL="$(echo $DATA | cut -d ' ' -f 3)"
 VERSION="$(echo $DATA | cut -d ' ' -f 1)"
 wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.gz
 tar xvf phpMyAdmin-${VERSION}-all-languages.tar.gz
-mv phpMyAdmin-*/ $chemin/phpMyAdmin
-cd $chemin/phpMyAdmin
+mv phpMyAdmin-*/ $chemin/phpmyadmin
+cd $chemin/phpmyadmin
 mkdir tmp
 echo Copie de l exemple de fichier de configuration et ajout de randomBlowfishSecret
 echo creation de la blowfish_secret key
 randomBlowfishSecret=$(openssl rand -base64 32)
 sed -e "s|cfg\['blowfish_secret'\] = ''|cfg['blowfish_secret'] = '$randomBlowfishSecret'|" config.sample.inc.php > config.inc.php
 echo Changement de propriété de phpMyAdmin sur maria_name.
-sudo chown -R www-data:www-data $chemin/phpMyAdmin
+sudo chown -R www-data:www-data $chemin/phpmyadmin
 echo "définir l’autorisation chmod :"
-find $chemin/phpMyAdmin/ -type d -exec chmod 755 {} \;
-find $chemin/phpMyAdmin/ -type f -exec chmod 644 {} \;
+find $chemin/phpmyadmin/ -type d -exec chmod 755 {} \;
+find $chemin/phpmyadmin/ -type f -exec chmod 644 {} \;
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
 # wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
 # mv phpmyadmin.conf /etc/nginx/conf.d/
 echo "creer lien symbolique de phpMyAdmin vers /www"
 mkdir /www
-ln -s $chemin/phpMyAdmin/  /www/phpmyadmin/
+ln -s $chemin/phpmyadmin/  /www/phpmyadmin/
 echo -e "${CHECKMARK} \e[1;92m phpMyAdmin installé.\e[0m"
 echo "LEMP : redemarrage php"
 cd /etc/nginx
