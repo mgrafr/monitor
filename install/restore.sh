@@ -176,7 +176,8 @@ cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
 cp /var/www/monitor/admin/connect/connect.py /var/www/monitor/custom/python/
 chmod -R 777 /var/www/monitor/DB_Backup
 cp /home/$mdir_maj/monitor/DB_Backup/dump.sql.gz /var/www/monitor/DB_Backup/
-mysql -u root -p monitor < /var/www/monitor/DB_Backup/dump.sql.gz
+gunzip -c /var/www/monitor/DB_Backup/dump.sql.gz > dump.sql
+mysql -u root -p < dump.sql
 # ufw allow 444
 # systemctl restart ufw
 sudo apt install certbot python3-certbot-nginx -y
