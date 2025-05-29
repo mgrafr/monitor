@@ -142,6 +142,7 @@ vv=$(pip list --format=json)
 echo $vv
 cp  -R /home/$mdir_maj/etc/ssl/* /etc/ssl/
 cp  -R /home/$mdir_maj/etc/ssh/* /etc/ssh/
+mkdir /etc/letsencrypt
 cp -R /home/$mdir_maj/etc/letsencrypt/* /etc/letsencrypt/
 chmod -R 777 /etc/letsencrypt
 rm -R /etc/letsencrypt/live
