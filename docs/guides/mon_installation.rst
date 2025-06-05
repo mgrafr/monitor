@@ -249,12 +249,14 @@ https://jon.sprig.gs/blog/post/2885
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://blog.victor-hery.com/2019/02/ceph-utiliser-disque-restant.html
 
-Ceph a besoin d'une partition de type :green:`Ceph OSD` d'une centaine de Mo pour ses méta données, qui doit porter le nom **ceph data** ;on va donc créer une 4eme partition nommée ceph data de type **4fbd7e29-9d25-41b8-afd0-062c0ceff05d**
+|image1726|
+
+Ceph a besoin d'une partition de type :green:`Ceph OSD` d'une centaine de Mo pour ses méta données, qui doit porter le nom **ceph data** ;on va donc créer une 4eme partition nommée ceph data de type **4fbd7e29-9d25-41b8-afd0-062c0ceff05d**; On utilise **sgdisk** car c'est l'outil de configuration qu'utilise aussi ceph quand il prépare un disque complet.
 
 .. code-block::
 
-   sgdisk --new=5:0:+100M --change-name="5:ceph data"   --partition-guid=5:$(uuidgen -r)   --typecode=5:4fbd7e29-9d25-41b8-afd0-062c0ceff05d -- /dev/sda
-partprobe # partprobe nous permet ici de relire à chaud les partitions d'un disque en cours d'utilisation
+   sgdisk --new=4:0:+100M --change-name="4:ceph data"   --partition-guid=4:$(uuidgen -r)   --typecode=4:4fbd7e29-9d25-41b8-afd0-062c0ceff05d -- /dev/sda
+   partprobe # partprobe permet ici de relire les partitions d'un disque en cours d'utilisation
 
 21.1.8 Commandes shell
 ----------------------
@@ -2939,10 +2941,12 @@ Mon WGDashbord
 .. |image1722| image:: ../img/image1722.webp
    :width: 700px
 .. |image1723| image:: ../img/image1723.webp
-   :width: 700px
+   :width: 600px
 .. |image1724| image:: ../img/image1724.webp
    :width: 450px
 .. |image1725| image:: ../img/image1725.webp
+   :width: 650px
+.. |image1726| image:: ../img/image1726.webp
    :width: 600px
 .. |image1734| image:: ../img/image1734.webp
    :width: 600px
