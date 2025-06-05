@@ -175,7 +175,7 @@ Il faut pour cela au minimum 2 noeuds + 1 raspberry ou 3 noeuds; j'utilise 2 min
 
 21.1.7.1 Créer la grappe de serveur(Cluster)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-|image1718|
+|image1719|
 
 |image1720|
 
