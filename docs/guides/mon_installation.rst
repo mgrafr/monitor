@@ -167,7 +167,21 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
 21.1.7 HA: haute disponibilité
 ------------------------------
+avec un stockage distribuée et redondant Ceph
+
 Il faut pour cela au minimum 2 noeuds + 1 raspberry ou 3 noeuds; j'utilise 2 minis PC, avec des processeurs I5 et I7 et un NUC chinois.
+
+.. admonition:: **Modification matériel pour Ceph**
+
+   sur les mini PC , les disques durs sont des SSD SATA, j'ai ajouté dans l'emplacement msata un ssd de 256 Go (un nouveau SSD et le SSD msata récupéré dans le nuc chinois);
+
+   Dans le NUC chinois , un seul SSD un msata ,un nouveau de 512 GO remplace celui de 256 Go  placé dans un des mini PC
+
+   |image1725|
+
+   .. note::
+
+      Ceph se sert d'une partition toute simple et non d'un disque entier, il est donc possible sur le NUC chinois de créer avant l'installation de Proxmox 1 partitions de 256 Go, ce qu'il reste d'espace étant  utilisé par Ceph
 
 .. Important::
 
@@ -2915,6 +2929,8 @@ Mon WGDashbord
    :width: 700px
 .. |image1724| image:: ../img/image1724.webp
    :width: 450px
+.. |image1725| image:: ../img/image1725.webp
+   :width: 600px
 .. |image1734| image:: ../img/image1734.webp
    :width: 600px
 .. |image1735| image:: ../img/image1735.webp
