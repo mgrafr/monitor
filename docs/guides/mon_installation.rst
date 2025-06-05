@@ -193,7 +193,41 @@ Statut de la grappe:
 
 21.1.7.3 3eme Noeud sur un Raspberry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-en cours
+**un RPI3 suffit**
+
+https://jon.sprig.gs/blog/post/2885
+
+**Activer l'accès SSH root** *sur le PI*
+
+.. code-block::
+
+   echo "PermitRootLogin yes" | tee /etc/ssh/sshd_config.d/root_login.conf >/dev/null && systemctl restart ssh.service
+
+**Installer le paquet "corosync-qnetd"** *sur le PI*
+
+.. code-block::
+
+   sudo apt update && sudo apt install -y corosync-qnetd
+
+**Installer le package "corosync-qdevice"** *sur les 2 Noeuds Proxmox*
+
+.. code-block::
+
+   apt update && apt install -y corosync-qdevice
+
+**Exécuter sur le 1er noeud Proxmox** :
+
+.. code-blocl::
+
+   pvecm qdevice setup <IP du Raspberry Pi>
+
+**Pour confirmer que le quorum de 3 noeuds est atteint** ,  *exécutéer:**
+
+.. code-block::
+
+   pvecm status
+
+|image1724|
 
 21.1.8 Commandes shell
 ----------------------
@@ -2879,6 +2913,8 @@ Mon WGDashbord
    :width: 700px
 .. |image1723| image:: ../img/image1723.webp
    :width: 700px
+.. |image1724| image:: ../img/image1724.webp
+   :width: 450px
 .. |image1734| image:: ../img/image1734.webp
    :width: 600px
 .. |image1735| image:: ../img/image1735.webp
