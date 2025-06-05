@@ -183,6 +183,8 @@ Il faut pour cela au minimum 2 noeuds + 1 raspberry ou 3 noeuds; j'utilise 2 min
 
       Ceph se sert d'une partition toute simple et non d'un disque entier, il est donc possible sur le NUC chinois de créer avant l'installation de Proxmox 1 partitions de 256 Go, ce qu'il reste d'espace étant  utilisé par Ceph
 
+      Mieux vaut que la taille restante du disque soit proche de celle des autres disques du cluster; sur cette installation les ssd ont une capacité de 240 Go et la partition restante est aussi de 240 Go
+
 .. Important::
 
    Un seul des noeuds peut lors de l'installation contenir des CT ou des VM
@@ -242,6 +244,17 @@ https://jon.sprig.gs/blog/post/2885
    pvecm status
 
 |image1724|
+
+21.1.7.4 Patitionnement du cluster équipé d'un seul SSD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://blog.victor-hery.com/2019/02/ceph-utiliser-disque-restant.html
+
+Ceph a besoin d'une partition de type :green:`Ceph OSD` d'une centaine de Mo pour ses méta données, qui doit porter le nom **ceph data** ;on va donc créer une 4eme partition nommée ceph data de type **4fbd7e29-9d25-41b8-afd0-062c0ceff05d**
+
+.. code-block::
+
+   sgdisk --new=5:0:+100M --change-name="5:ceph data"   --partition-guid=5:$(uuidgen -r)   --typecode=5:4fbd7e29-9d25-41b8-afd0-062c0ceff05d -- /dev/sda
+partprobe # partprobe nous permet ici de relire à chaud les partitions d'un disque en cours d'utilisation
 
 21.1.8 Commandes shell
 ----------------------
