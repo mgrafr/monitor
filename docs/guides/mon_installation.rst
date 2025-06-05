@@ -183,8 +183,17 @@ Copier les informations de jonction:
 
 |image1721|
 
-21.1.7.2 Sur le 2eme Noeud
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+21.1.7.2 Sur le 2eme Noeud et le 3eme Noeud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1722|
+
+Statut de la grappe:
+
+|image1723|
+
+21.1.7.3 3eme Noeud sur un Raspberry
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+en cours
 
 21.1.8 Commandes shell
 ----------------------
@@ -2866,8 +2875,12 @@ Mon WGDashbord
    :width: 378px
 .. |image1721| image:: ../img/image1721.webp
    :width: 700px
-.. |image1734| image:: ../img/image1734.webp
+.. |image1722| image:: ../img/image1722.webp
    :width: 700px
+.. |image1723| image:: ../img/image1723.webp
+   :width: 700px
+.. |image1734| image:: ../img/image1734.webp
+   :width: 600px
 .. |image1735| image:: ../img/image1735.webp
    :width: 700px
 .. |image1739| image:: ../img/image1739.webp
