@@ -165,6 +165,27 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
 **Un tuto** : https://belginux.com/installer-proxmox-datacenter-manager/#%F0%9F%94%91-premi%C3%A8re-connexion
 
+21.1.7 HA: haute disponibilité
+------------------------------
+
+21.1.8 Commandes shell
+----------------------
+21.1.8.1 supprimer Disk--old
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Si l'on veut supprimer une partition ou la nettoyer et qu'elle n'est pas vide:
+
+Pour éviter cette erreur:
+
+|image1717|
+
+utiliser :
+
+.. code-block::
+
+   dmsetup remove <NAME OLD-DISK>
+
+|image1718|
+
 
 21.2 Domoticz
 =============
@@ -2816,6 +2837,10 @@ Mon WGDashbord
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1716| image:: ../img/image1716.webp
+   :width: 700px
+.. |image1717| image:: ../img/image1717.webp
+   :width: 300px
+.. |image1718| image:: ../img/image1718.webp
    :width: 700px
 .. |image1734| image:: ../img/image1734.webp
    :width: 700px
