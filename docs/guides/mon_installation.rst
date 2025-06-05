@@ -167,6 +167,17 @@ un seul affichage pour gérer lusieurs serveurs Proxox
 
 21.1.7 HA: haute disponibilité
 ------------------------------
+Il faut pour cela au minimum 2 noeuds + 1 raspberry ou 3 noeuds; j'utilise 2 minis PC, avec des processeurs I5 et I7 et un NUC chinois.
+
+.. Important::
+
+   Un seul des noeuds peut lors de l'installation contenir des CT ou des VM
+
+**Créer la grappe de serveur(Cluster)**
+
+|image1718|
+
+|image1720|
 
 21.1.8 Commandes shell
 ----------------------
@@ -2842,6 +2853,10 @@ Mon WGDashbord
    :width: 300px
 .. |image1718| image:: ../img/image1718.webp
    :width: 700px
+.. |image1719| image:: ../img/image1719.webp
+   :width: 700px
+.. |image1720| image:: ../img/image1720.webp
+   :width: 378px
 .. |image1734| image:: ../img/image1734.webp
    :width: 700px
 .. |image1735| image:: ../img/image1735.webp
