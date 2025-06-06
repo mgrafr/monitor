@@ -282,9 +282,21 @@ On utilise aussi uuidgen et partpobe , il faut donc installer les  paquets :
 
  |image1730|
 
-**Activation**
+21.1.7.5 Créer Ceph OSD  sur les 3 clusters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Installer Ceph sur les 3 serveurs
 
-Une fois le partitionnement terminé, indiquer à ceph d'utiliser ce disque :
+.. admonition:: **Installer Ceph**
+
+   |image1731|
+
+   |image1732|
+
+   |image1733|
+
+Créer les disques OSD sur les 3 Clusters
+
+|image1733|
 
 21.1.8 Commandes shell
 ----------------------
