@@ -237,7 +237,7 @@ https://jon.sprig.gs/blog/post/2885
 
    pvecm qdevice setup <IP du Raspberry Pi>
 
-**Pour confirmer que le quorum de 3 noeuds est atteint** ,  *exécutéer:**
+**Pour confirmer que le quorum de 3 noeuds est atteint** ,  *exécuter:**
 
 .. code-block::
 
@@ -252,6 +252,16 @@ https://blog.victor-hery.com/2019/02/ceph-utiliser-disque-restant.html
 |image1726|
 
 Ceph a besoin d'une partition de type :green:`Ceph OSD` d'une centaine de Mo pour ses méta données, qui doit porter le nom **ceph data** ;on va donc créer une 4eme partition nommée ceph data de type **4fbd7e29-9d25-41b8-afd0-062c0ceff05d**; On utilise **sgdisk** car c'est l'outil de configuration qu'utilise aussi ceph quand il prépare un disque complet.
+
+On utilise aussi uuidgen, il faut donc installer ce paquet : 
+
+.. code-block::
+
+   apt install uuid-runtime
+
+|image1727|
+
+Création de la partition ceph data
 
 .. code-block::
 
