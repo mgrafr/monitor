@@ -278,6 +278,10 @@ On utilise aussi uuidgen et partpobe , il faut donc installer les  paquets :
       sgdisk --largest-new=5 --change-name="5:ceph block"   --typecode=5:CAFECAFE-9B03-4F30-B4C6-B4B80CEFF106 -- /dev/sda
       partprobe
 
+    |image1729|
+
+ |image1730|
+
 **Activation**
 
 Une fois le partitionnement terminé, indiquer à ceph d'utiliser ce disque :
@@ -2976,6 +2980,10 @@ Mon WGDashbord
    :width: 490px
 .. |image1728| image:: ../img/image1728.webp
    :width: 650px
+.. |image1729| image:: ../img/image1729.webp
+   :width: 650px
+.. |image1730| image:: ../img/image1730.webp
+   :width: 600px
 .. |image1734| image:: ../img/image1734.webp
    :width: 600px
 .. |image1735| image:: ../img/image1735.webp
