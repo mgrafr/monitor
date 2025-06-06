@@ -38,9 +38,14 @@
 		
 		<div class="row mt-3">
         <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/tatin_endives.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="11" alt="Tatin d'endives"/></div>
-			<div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="12" alt="libre"/></div>
+			<div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/quiche_lorraine.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="12" alt="quiche lorraine"/></div>
           </div>
-	
+	<div class="row mt-3">
+        <div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/lasagnes_p_douce.webp" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="13" alt="lasagnes patate douce"/></div>
+			<div class="col bg-recette"><img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" style="padding:5px;width:90%;" title="14" alt="libre"/></div>
+          </div>
+		
+		
 	</div>	 
 				 
       
