@@ -284,7 +284,7 @@ On utilise aussi uuidgen et partpobe , il faut donc installer les  paquets :
 
 21.1.7.5 Créer Ceph OSD  sur les 3 clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Installer Ceph sur les 3 serveurs
+Installer Ceph 
 
 .. admonition:: **Installer Ceph**
 
@@ -297,6 +297,12 @@ Installer Ceph sur les 3 serveurs
 Créer les disques OSD sur les 3 Clusters
 
 |image1734|
+
+21.1.7.6 Créer Ceph Monitor sur les 3 clusters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1735|
+
+|image1736|
 
 21.1.8 Commandes shell
 ----------------------
@@ -3004,11 +3010,11 @@ Mon WGDashbord
    :width: 670px
 .. |image1734| image:: ../img/image1734.webp
    :width: 650px
-
 .. |image1735| image:: ../img/image1735.webp
+   :width: 500px
+.. |image1736| image:: ../img/image1736.webp
    :width: 700px
-.. |image1739| image:: ../img/image1739.webp
-   :width: 600px
+
 .. |image1742| image:: ../img/image1742.webp
    :width: 600px
 .. |image1757| image:: ../img/image1757.webp
