@@ -251,7 +251,7 @@ https://blog.victor-hery.com/2019/02/ceph-utiliser-disque-restant.html
 
 |image1726|
 
-Ceph a besoin d'une partition de type :green:`Ceph OSD` d'une centaine de Mo pour ses méta données, qui doit porter le nom **ceph data** ;on va donc créer une 4eme partition nommée ceph data de type **4fbd7e29-9d25-41b8-afd0-062c0ceff05d**; On utilise **sgdisk** car c'est l'outil de configuration qu'utilise aussi ceph quand il prépare un disque complet.
+Ceph a besoin d'une partition de type :green:`Ceph OSD` d'une centaine de Mo pour ses méta données, qui doit porter le nom **ceph data** ;on va donc créer une 4eme partition nommée ceph data de type **4fbd7e29-9d25-41b8-afd0-062c0ceff05d**;  on crée une 5ème partition, de type CAFECAFE-9B03-4F30-B4C6-B4B80CEFF106, utilisant tout le reste du disque nommée **celph block**; On utilise **sgdisk** car c'est l'outil de configuration qu'utilise aussi ceph quand il prépare un disque complet.
 
 On utilise aussi uuidgen et partpobe , il faut donc installer les  paquets : 
 
@@ -262,12 +262,25 @@ On utilise aussi uuidgen et partpobe , il faut donc installer les  paquets :
 
 |image1727|
 
-Création de la partition ceph data
+.. admonition:: **Création de la partition ceph data**
 
-.. code-block::
+   .. code-block::
 
-   sgdisk --new=4:0:+100M --change-name="4:ceph data"   --partition-guid=4:$(uuidgen -r)   --typecode=4:4fbd7e29-9d25-41b8-afd0-062c0ceff05d -- /dev/sda
-   partprobe # partprobe permet ici de relire les partitions d'un disque en cours d'utilisation
+      sgdisk --new=4:0:+100M --change-name="4:ceph data"   --partition-guid=4:$(uuidgen -r)   --typecode=4:4fbd7e29-9d25-41b8-afd0-062c0ceff05d -- /dev/sda
+      partprobe # partprobe permet ici de relire les partitions d'un disque en cours d'utilisation
+
+   |image1728|
+
+.. admonition:: **Création de la partition ceph block**
+
+   .. code-block::
+
+      sgdisk --largest-new=5 --change-name="5:ceph block"   --typecode=5:CAFECAFE-9B03-4F30-B4C6-B4B80CEFF106 -- /dev/sda
+      partprobe
+
+**Activation**
+
+Une fois le partitionnement terminé, indiquer à ceph d'utiliser ce disque :
 
 21.1.8 Commandes shell
 ----------------------
@@ -2961,6 +2974,8 @@ Mon WGDashbord
    :width: 600px
 .. |image1727| image:: ../img/image1727.webp
    :width: 490px
+.. |image1728| image:: ../img/image1728.webp
+   :width: 650px
 .. |image1734| image:: ../img/image1734.webp
    :width: 600px
 .. |image1735| image:: ../img/image1735.webp
