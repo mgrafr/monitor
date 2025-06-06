@@ -253,11 +253,12 @@ https://blog.victor-hery.com/2019/02/ceph-utiliser-disque-restant.html
 
 Ceph a besoin d'une partition de type :green:`Ceph OSD` d'une centaine de Mo pour ses méta données, qui doit porter le nom **ceph data** ;on va donc créer une 4eme partition nommée ceph data de type **4fbd7e29-9d25-41b8-afd0-062c0ceff05d**; On utilise **sgdisk** car c'est l'outil de configuration qu'utilise aussi ceph quand il prépare un disque complet.
 
-On utilise aussi uuidgen, il faut donc installer ce paquet : 
+On utilise aussi uuidgen et partpobe , il faut donc installer les  paquets : 
 
 .. code-block::
 
    apt install uuid-runtime
+   apt install parted
 
 |image1727|
 
@@ -2958,6 +2959,8 @@ Mon WGDashbord
    :width: 650px
 .. |image1726| image:: ../img/image1726.webp
    :width: 600px
+.. |image1727| image:: ../img/image1727.webp
+   :width: 490px
 .. |image1734| image:: ../img/image1734.webp
    :width: 600px
 .. |image1735| image:: ../img/image1735.webp
