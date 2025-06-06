@@ -2996,8 +2996,15 @@ Mon WGDashbord
    :width: 650px
 .. |image1730| image:: ../img/image1730.webp
    :width: 600px
+.. |image1731| image:: ../img/image1731.webp
+   :width: 700px
+.. |image1732| image:: ../img/image1732.webp
+   :width: 700px
+.. |image1733| image:: ../img/image1733.webp
+   :width: 670px
 .. |image1734| image:: ../img/image1734.webp
-   :width: 600px
+   :width: 650px
+
 .. |image1735| image:: ../img/image1735.webp
    :width: 700px
 .. |image1739| image:: ../img/image1739.webp
