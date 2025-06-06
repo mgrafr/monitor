@@ -296,7 +296,7 @@ Installer Ceph sur les 3 serveurs
 
 Créer les disques OSD sur les 3 Clusters
 
-|image1733|
+|image1734|
 
 21.1.8 Commandes shell
 ----------------------
