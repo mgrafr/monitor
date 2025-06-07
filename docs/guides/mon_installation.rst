@@ -265,7 +265,7 @@ On utilise aussi partpobe , il faut donc installer le  paquet :
 
    .. code-block::
 
-      sgdisk --largest-new=5 --change-name="5:ceph block"   --typecode=5:CAFECAFE-9B03-4F30-B4C6-B4B80CEFF106 -- /dev/sda
+      sgdisk --largest-new=4 --change-name="4:ceph block"   --typecode=4:CAFECAFE-9B03-4F30-B4C6-B4B80CEFF106 -- /dev/sda
       partprobe
 
     |image1729|
