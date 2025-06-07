@@ -272,17 +272,8 @@ On utilise aussi partpobe , il faut donc installer le  paquet :
 
  |image1730|
 
-21.1.7.5 Créer Ceph Monitor sur les 3 clusters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-|image1735|
-
-|image1736|
-
-
-21.1.7.6 Créer Ceph OSD  sur les 3 clusters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Installer Ceph 
-
+21.1.7.5 Ceph
+^^^^^^^^^^^^^
 .. admonition:: **Installer Ceph**
 
    |image1731|
@@ -291,11 +282,19 @@ Installer Ceph
 
    |image1733|
 
+21.1.7.6 Créer Ceph Monitor & Manager 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1735|
+
+|image1736|
+
+21.1.7.7 Créer Ceph OSD  sur les 3 clusters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Créer les disques OSD sur les 3 Clusters
 
 |image1734|
 
-21.1.7.7 Remplacer un ssd utilisé pour Ceph
+21.1.7.8 Remplacer un ssd utilisé pour Ceph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block::
 
