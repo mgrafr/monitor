@@ -295,6 +295,21 @@ Créer les disques OSD sur les 3 Clusters
 
 |image1734|
 
+21.1.7.7 Remplacer un ssd utilisé pour Ceph
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block::
+
+   systemctl stop ceph-osd@<id#>
+   ceph osd destroy osd.#
+   ceph osd crush remove osd.#
+   wait active+clean state
+   ceph osd rm osd.#
+   # replace physical HDD/SDD
+   ceph-disk zap /dev/...
+   pveceph createosd /dev/...
+   systemctl start ceph-osd@#
+
+
 21.1.8 Commandes shell
 ----------------------
 21.1.8.1 supprimer Disk--old
