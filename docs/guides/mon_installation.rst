@@ -247,29 +247,19 @@ https://jon.sprig.gs/blog/post/2885
 
 21.1.7.4 Patitionnement du cluster équipé d'un seul SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-https://blog.victor-hery.com/2019/02/ceph-utiliser-disque-restant.html
-
 |image1726|
 
-Ceph a besoin d'une partition de type :green:`Ceph OSD` d'une centaine de Mo pour ses méta données, qui doit porter le nom **ceph data** ;on va donc créer une 4eme partition nommée ceph data de type **4fbd7e29-9d25-41b8-afd0-062c0ceff05d**;  on crée une 5ème partition, de type CAFECAFE-9B03-4F30-B4C6-B4B80CEFF106, utilisant tout le reste du disque nommée **celph block**; On utilise **sgdisk** car c'est l'outil de configuration qu'utilise aussi ceph quand il prépare un disque complet.
+On crée une ème partition, de type CAFECAFE-9B03-4F30-B4C6-B4B80CEFF106, utilisant tout le reste du disque nommée **celph block**; On utilise **sgdisk** car c'est l'outil de configuration qu'utilise aussi ceph quand il prépare un disque complet.
 
-On utilise aussi uuidgen et partpobe , il faut donc installer les  paquets : 
+|image1728|
+
+On utilise aussi partpobe , il faut donc installer le  paquet : 
 
 .. code-block::
 
-   apt install uuid-runtime
    apt install parted
 
 |image1727|
-
-.. admonition:: **Création de la partition ceph data**
-
-   .. code-block::
-
-      sgdisk --new=4:0:+100M --change-name="4:ceph data"   --partition-guid=4:$(uuidgen -r)   --typecode=4:4fbd7e29-9d25-41b8-afd0-062c0ceff05d -- /dev/sda
-      partprobe # partprobe permet ici de relire les partitions d'un disque en cours d'utilisation
-
-   |image1728|
 
 .. admonition:: **Création de la partition ceph block**
 
@@ -2997,7 +2987,7 @@ Mon WGDashbord
 .. |image1727| image:: ../img/image1727.webp
    :width: 490px
 .. |image1728| image:: ../img/image1728.webp
-   :width: 650px
+   :width: 500px
 .. |image1729| image:: ../img/image1729.webp
    :width: 650px
 .. |image1730| image:: ../img/image1730.webp
