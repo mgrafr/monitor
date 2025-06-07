@@ -272,7 +272,14 @@ On utilise aussi partpobe , il faut donc installer le  paquet :
 
  |image1730|
 
-21.1.7.5 Créer Ceph OSD  sur les 3 clusters
+21.1.7.5 Créer Ceph Monitor sur les 3 clusters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1735|
+
+|image1736|
+
+
+21.1.7.6 Créer Ceph OSD  sur les 3 clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Installer Ceph 
 
@@ -287,12 +294,6 @@ Installer Ceph
 Créer les disques OSD sur les 3 Clusters
 
 |image1734|
-
-21.1.7.6 Créer Ceph Monitor sur les 3 clusters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-|image1735|
-
-|image1736|
 
 21.1.8 Commandes shell
 ----------------------
