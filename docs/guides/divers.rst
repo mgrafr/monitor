@@ -490,6 +490,17 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
 |image1551|
 
+18.9.4 Commandes Debian
+=======================
+.. admonition:: **Installer Bluetooth**
+
+   .. code-block::
+
+     apt update
+     apt -y install bluetooth
+
+   |image1737|
+
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliserons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
@@ -821,3 +832,5 @@ le fichier sms_mo.service , pour un démarrage automatique:
    :width: 638px
 .. |image1640| image:: ../img/image1640.webp
    :width: 544px
+.. |image1737| image:: ../img/image1737.webp
+   :width: 600px
