@@ -1,4 +1,4 @@
-21. – Mon installation
+21. Mon installation
 ********************** 
 
 |image1655|
@@ -268,9 +268,9 @@ On utilise aussi partpobe , il faut donc installer le  paquet :
       sgdisk --largest-new=4 --change-name="4:ceph block"   --typecode=4:CAFECAFE-9B03-4F30-B4C6-B4B80CEFF106 -- /dev/sda
       partprobe
 
-    |image1729|
+   |image1729|    
 
- |image1730|
+   |image1730|
 
 21.1.7.5 Ceph
 ^^^^^^^^^^^^^
