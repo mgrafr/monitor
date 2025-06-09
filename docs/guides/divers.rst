@@ -492,12 +492,14 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
 18.9.4 Commandes Debian
 =======================
-.. admonition:: **Installer Bluetooth**
+.. admonition:: **wireless-tools : configuration wifi**
+
+   file:///C:/Users/miche/Downloads/wireless-tools-configuration-wifi%20(2).pdf
 
    .. code-block::
 
-     apt update
-     apt -y install bluetooth
+     apt remove network-manager wicd
+     apt update && apt-get install wpasupplicant wireless-tools
 
    |image1737|
 
