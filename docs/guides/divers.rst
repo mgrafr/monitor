@@ -527,8 +527,8 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    .. code-block::
 
-      auto red:`wlan0`
-      iface :red:`wlan0`inet static # modifier l'interface trouvée acec iwconfig
+      auto wlan0 # interface de iwconfig
+      iface wlan0 inet static # modifier l'interface trouvée acec iwconfig
        address 192.168.x.x # IP à modifier
        netmask 255.255.255.0
        wireless-channel 1 # channel identique pour les 2 noeuds
@@ -541,7 +541,9 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    .. code-block::
 
-      ifup wlan0
+      ifup <interface>  
+
+   |image1744|
 
    *Pour le 2eme noeud seul l'IP est à modifier*
 
@@ -558,6 +560,8 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
    |image1740|
 
    |image1741|
+
+   |image1745|
 
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -904,3 +908,7 @@ le fichier sms_mo.service , pour un démarrage automatique:
    :width: 500px
 .. |image1743| image:: ../img/image1743.webp
    :width: 420px
+.. |image1744| image:: ../img/image1744.webp
+   :width: 350px
+.. |image1745| image:: ../img/image1745.webp
+   :width: 350px
