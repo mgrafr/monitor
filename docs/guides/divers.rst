@@ -563,6 +563,10 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    |image1745|
 
+   **Scannez à la recherche des cellules ad-hoc à portée**
+
+   |image1746|
+
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliserons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
@@ -912,3 +916,5 @@ le fichier sms_mo.service , pour un démarrage automatique:
    :width: 350px
 .. |image1745| image:: ../img/image1745.webp
    :width: 350px
+.. |image1746| image:: ../img/image1746.webp
+   :width: 600px
