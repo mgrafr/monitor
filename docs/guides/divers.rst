@@ -561,11 +561,25 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    |image1741|
 
+   Activer l'interface wifi 
+
    |image1745|
+
+   Autre façon d'activer l'interface :
+
+   .. code-block::
+
+      sudo ifconfig wlan0 up
 
    **Scannez à la recherche des cellules ad-hoc à portée**
 
    |image1746|
+
+   |image1747|
+
+   **Pour tester, effectuez un "ping" du noeud A à partir du noeud B** :
+
+    |image1748|
 
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -918,3 +932,7 @@ le fichier sms_mo.service , pour un démarrage automatique:
    :width: 350px
 .. |image1746| image:: ../img/image1746.webp
    :width: 600px
+.. |image1747| image:: ../img/image1747.webp
+   :width: 600px
+. |image1748| image:: ../img/image1748.webp
+   :width: 500px
