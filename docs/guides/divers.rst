@@ -521,9 +521,29 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    .. code-block::
 
-      nano /etc/network/interfaces  
+      nano /etc/network/interfaces 
+
+   Ajouter ces lignes:
+
+   .. code-block::
+
+      auto red:`wlan0`
+      iface :red:`wlan0`inet static # modifier l'interface trouvée acec iwconfig
+       address 192.168.x.x # IP à modifier
+       netmask 255.255.255.0
+       wireless-channel 1 # channel identique pour les 2 noeuds
+       wireless-essid MYNETWORK # nom du Réseau
+       wireless-mode ad-hoc
 
    |image1743|
+
+   Sur chacun des noeuds, activer l'interface 
+
+   .. code-block::
+
+      ifup wlan0
+
+   *Pour le 2eme noeud seul l'IP est à modifier*
 
    **sur Rasbian rpi5 : executer**, 
 
@@ -879,7 +899,7 @@ le fichier sms_mo.service , pour un démarrage automatique:
 .. |image1740| image:: ../img/image1740.webp
    :width: 400px
 .. |image1741| image:: ../img/image1741.webp
-   :width: 650px
+   :width: 550px
 .. |image1742| image:: ../img/image1742.webp
    :width: 500px
 .. |image1743| image:: ../img/image1743.webp
