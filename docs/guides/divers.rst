@@ -494,7 +494,7 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 =======================
 .. admonition:: **wireless-tools : configuration wifi**
 
-   file:///C:/Users/miche/Downloads/wireless-tools-configuration-wifi%20(2).pdf
+   https://wiki.debian.org/WiFi/HowToUse
 
    .. code-block::
 
@@ -502,6 +502,13 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
      apt update && apt-get install wpasupplicant wireless-tools
 
    |image1737|
+
+.. admonition:: **Wifi , mode Ad-Hoc**
+
+   https://wiki.debian.org/WiFi/AdHoc 
+
+   sur Raspberry 5 :
+
 
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
