@@ -507,7 +507,25 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    https://wiki.debian.org/WiFi/AdHoc 
 
-   sur Raspberry 5 : executer, 
+   **Sur Debian 12 et Proxmox**
+
+   Rechercher le nom de l'interface wifi
+
+   .. code-block::
+
+      iwconfig
+
+   |image1742|
+
+   Modifier l'interface de chacun des noeuds sans-fil; si le 2eme noeud est un Raspberry , voir ci- après le mode d'emploi à utiliser.
+
+   .. code-block::
+
+      nano /etc/network/interfaces  
+
+   |image1743|
+
+   **sur Rasbian rpi5 : executer**, 
 
    .. code-block::
 
@@ -862,3 +880,7 @@ le fichier sms_mo.service , pour un démarrage automatique:
    :width: 400px
 .. |image1741| image:: ../img/image1741.webp
    :width: 650px
+.. |image1742| image:: ../img/image1742.webp
+   :width: 500px
+.. |image1743| image:: ../img/image1743.webp
+   :width: 420px
