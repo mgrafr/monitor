@@ -507,8 +507,19 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    https://wiki.debian.org/WiFi/AdHoc 
 
-   sur Raspberry 5 :
+   sur Raspberry 5 : executer, 
 
+   .. code-block::
+
+      nmtui
+
+   |image1738|
+
+   |image1739|
+
+   |image1740|
+
+   |image1741|
 
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -843,3 +854,11 @@ le fichier sms_mo.service , pour un démarrage automatique:
    :width: 544px
 .. |image1737| image:: ../img/image1737.webp
    :width: 600px
+.. |image1738| image:: ../img/image1738.webp
+   :width: 600px
+.. |image1739| image:: ../img/image1739.webp
+   :width: 350px
+.. |image1740| image:: ../img/image1740.webp
+   :width: 400px
+.. |image1741| image:: ../img/image1741.webp
+   :width: 650px
