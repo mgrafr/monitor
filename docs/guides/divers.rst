@@ -934,5 +934,5 @@ le fichier sms_mo.service , pour un démarrage automatique:
    :width: 600px
 .. |image1747| image:: ../img/image1747.webp
    :width: 600px
-. |image1748| image:: ../img/image1748.webp
+.. |image1748| image:: ../img/image1748.webp
    :width: 500px
