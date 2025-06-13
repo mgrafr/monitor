@@ -294,6 +294,8 @@ Créer les disques OSD sur les 3 Clusters
 
 |image1734|
 
+|image1760|
+
 21.1.7.8 Remplacer un ssd utilisé pour Ceph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block::
@@ -3028,6 +3030,8 @@ Mon WGDashbord
    :width: 300px
 .. |image1759| image:: ../img/image1759.webp
    :width: 600px
+.. |image1760| image:: ../img/image1760.webp
+   :width: 700px
 .. |image1762| image:: ../img/image1762.webp
    :width: 437px
 .. |image1763| image:: ../img/image1763.webp
