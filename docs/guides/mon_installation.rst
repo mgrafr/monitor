@@ -288,6 +288,8 @@ On utilise aussi partpobe , il faut donc installer le  paquet :
 
 |image1736|
 
+|image1753|
+
 21.1.7.7 Créer Ceph OSD  sur les 3 clusters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Créer les disques OSD sur les 3 Clusters
@@ -3021,9 +3023,10 @@ Mon WGDashbord
    :width: 500px
 .. |image1736| image:: ../img/image1736.webp
    :width: 700px
-
-.. |image1742| image:: ../img/image1742.webp
+. |image1742| image:: ../img/image1742.webp
    :width: 600px
+.. |image1753| image:: ../img/image1753.webp
+   :width: 500px
 .. |image1757| image:: ../img/image1757.webp
    :width: 300px
 .. |image1758| image:: ../img/image1758.webp
