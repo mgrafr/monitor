@@ -351,6 +351,28 @@ utiliser :
 
 |image1718|
 
+21.1.8.2 HEALTH_WARN ,daemons have recently crashed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1781|
+
+Pour afficher une liste de messages :
+
+.. code-block::
+
+   ceph crash ls
+
+Si vous souhaitez lire le message :
+
+.. code-block::
+
+   ceph crash info <id>
+
+puis pour supprimer le ou les messages:
+
+.. code-block::
+
+   ceph crash archive <id>
+   ceph crash archive-all
 
 21.2 Domoticz
 =============
@@ -3067,5 +3089,7 @@ Mon WGDashbord
    :width: 700px
 .. |image1779| image:: ../img/image1779.webp
    :width: 600px
-.. |image1780| image:: ../img/image1779.webp
+.. |image1780| image:: ../img/image1780.webp
    :width: 600px
+.. |image1781| image:: ../img/image1781.webp
+   :width: 135px
