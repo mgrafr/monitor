@@ -3067,3 +3067,5 @@ Mon WGDashbord
    :width: 700px
 .. |image1779| image:: ../img/image1779.webp
    :width: 600px
+.. |image1780| image:: ../img/image1779.webp
+   :width: 600px
