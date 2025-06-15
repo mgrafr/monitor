@@ -298,7 +298,17 @@ Créer les disques OSD sur les 3 Clusters
 
 |image1760|
 
-21.1.7.8 Remplacer un ssd utilisé pour Ceph
+21.1.7.8 Créer Ceph Pools
+^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1754|
+
+21.1.7.9 Créer CephFS
+^^^^^^^^^^^^^^^^^^^^^
+Une fois que vous disposez d'un cluster Ceph fonctionnel incluant Ceph mgr, Ceph mon, Ceph OSD, et le Poolde stockage, installation de CephFS:
+
+|image1755|
+
+21.1.7.10 Remplacer un ssd utilisé pour Ceph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block::
 
@@ -313,7 +323,7 @@ Créer les disques OSD sur les 3 Clusters
    systemctl start ceph-osd@#
 
 
-21.1.8 Commandes shell
+21.1.7.11 Commandes shell
 ----------------------
 21.1.8.1 supprimer Disk--old
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3027,6 +3037,11 @@ Mon WGDashbord
    :width: 600px
 .. |image1753| image:: ../img/image1753.webp
    :width: 500px
+.. |image1754| image:: ../img/image1754.webp
+   :width: 600px
+.. |image1755| image:: ../img/image1755.webp
+   :width: 500px
+
 .. |image1757| image:: ../img/image1757.webp
    :width: 300px
 .. |image1758| image:: ../img/image1758.webp
