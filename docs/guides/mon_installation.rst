@@ -298,6 +298,10 @@ Créer les disques OSD sur les 3 Clusters
 
 |image1760|
 
+Si une erreur apparait alors que tout semble normal, voir le § :ref:`21.1.8 Commandes shell`
+
+|image1780|
+
 21.1.7.8 Créer Ceph Pools
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1754|
@@ -329,7 +333,7 @@ La case cochée pour la crétion du stockage:
    systemctl start ceph-osd@#
 
 
-21.1.7.11 Commandes shell
+21.1.8 Commandes shell
 ----------------------
 21.1.8.1 supprimer Disk--old
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
