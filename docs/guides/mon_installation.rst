@@ -304,9 +304,15 @@ Créer les disques OSD sur les 3 Clusters
 
 21.1.7.9 Créer CephFS
 ^^^^^^^^^^^^^^^^^^^^^
-Une fois que vous disposez d'un cluster Ceph fonctionnel incluant Ceph mgr, Ceph mon, Ceph OSD, et le Poolde stockage, installation de CephFS:
+Une fois que vous disposez d'un cluster Ceph fonctionnel incluant Ceph mgr, Ceph mon, Ceph OSD, et le Pool de stockage, installation de CephFS:
 
 |image1755|
+
+|image1756|
+
+La case cochée pour la crétion du stockage:
+
+|image1779|
 
 21.1.7.10 Remplacer un ssd utilisé pour Ceph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3040,8 +3046,9 @@ Mon WGDashbord
 .. |image1754| image:: ../img/image1754.webp
    :width: 600px
 .. |image1755| image:: ../img/image1755.webp
-   :width: 500px
-
+   :width: 600px
+.. |image1756| image:: ../img/image1756.webp
+   :width: 400px
 .. |image1757| image:: ../img/image1757.webp
    :width: 300px
 .. |image1758| image:: ../img/image1758.webp
@@ -3054,3 +3061,5 @@ Mon WGDashbord
    :width: 437px
 .. |image1763| image:: ../img/image1763.webp
    :width: 700px
+.. |image1779| image:: ../img/image1779.webp
+   :width: 600px
