@@ -326,7 +326,7 @@ La case cochée pour la crétion du stockage:
 
 .. note::
 
-   Plus c'est élevé pluc c’est prioritaire, donc si vous définissez un nœud sur la priorité 1 et un autre sur 2, celui avec 2 sera préféré, s'il est en ligne.
+   Plus c'est élevé plus c’est prioritaire, aussi si vous définissez un nœud sur la priorité 1 et un autre sur 2, celui avec 2 sera préféré, s'il est en ligne.
 
 |image1782|
 
