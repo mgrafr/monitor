@@ -336,6 +336,8 @@ La case cochée pour la crétion du stockage:
 
 |image1785|
 
+|image1786|
+
 21.1.8 Commandes shell
 ----------------------
 21.1.8.1 supprimer Disk--old
@@ -3119,3 +3121,5 @@ Mon WGDashbord
    :width: 480px
 .. |image1785| image:: ../img/image1785.webp
    :width: 700px
+.. |image1786| image:: ../img/image1786.webp
+   :width: 500px
