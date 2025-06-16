@@ -322,11 +322,19 @@ La case cochée pour la crétion du stockage:
 ^^^^^^^^^^^^^^^^^^^^
 **Répartition de charges des CT et VM dans un cluster HA**
 
-- **créer un groupe**
+- **créer un groupe** , sélectionner les noeuds et leur priorité
 
 |image1782|
 
 |image1783|
+
+- **créer un second groupe**
+
+|image1784|
+
+- **Associer les VM ou CT aux noveaux groupes**
+
+|image1785|
 
 21.1.8 Commandes shell
 ----------------------
@@ -3107,3 +3115,7 @@ Mon WGDashbord
    :width: 700px
 .. |image1783| image:: ../img/image1783.webp
    :width: 480px
+.. |image1784| image:: ../img/image1784.webp
+   :width: 480px
+.. |image1785| image:: ../img/image1785.webp
+   :width: 700px
