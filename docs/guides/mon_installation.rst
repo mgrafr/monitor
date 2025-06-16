@@ -318,20 +318,9 @@ La case cochée pour la crétion du stockage:
 
 |image1779|
 
-21.1.7.10 Remplacer un ssd utilisé pour Ceph
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block::
-
-   systemctl stop ceph-osd@<id#>
-   ceph osd destroy osd.#
-   ceph osd crush remove osd.#
-   wait active+clean state
-   ceph osd rm osd.#
-   # replace physical HDD/SDD
-   ceph-disk zap /dev/...
-   pveceph createosd /dev/...
-   systemctl start ceph-osd@#
-
+21.1.7.10 Cluster HA
+^^^^^^^^^^^^^^^^^^^^
+**Répartition de charges des CT et VM dans un cluster HA**
 
 21.1.8 Commandes shell
 ----------------------
@@ -373,6 +362,21 @@ puis pour supprimer le ou les messages:
 
    ceph crash archive <id>
    ceph crash archive-all
+
+21.1.8.3 Remplacer un ssd utilisé pour Ceph
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block::
+
+   systemctl stop ceph-osd@<id#>
+   ceph osd destroy osd.#
+   ceph osd crush remove osd.#
+   wait active+clean state
+   ceph osd rm osd.#
+   # replace physical HDD/SDD
+   ceph-disk zap /dev/...
+   pveceph createosd /dev/...
+   systemctl start ceph-osd@#
+
 
 21.2 Domoticz
 =============
