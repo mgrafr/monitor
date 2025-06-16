@@ -348,6 +348,16 @@ La case cochée pour la crétion du stockage:
 
 |image1786|
 
+  *Groupe* : le groupe dans lequel la ressource (VM ou CT) doit s'exécuter
+
+  *Started* : la ressource restera dans l'état démarré
+
+  *Stopped* : L'HA garantit que la ressource reste dans l'état arrêté.
+
+  *Ignored* : HA ignore cette ressource et n'effectue aucune action dessus.
+
+  *Disabled* : L'HA garantit que la ressource reste dans l'état arrêté et ne tente pas de migrer vers d'autres nœuds
+
 21.1.8 Commandes shell
 ----------------------
 21.1.8.1 supprimer Disk--old
