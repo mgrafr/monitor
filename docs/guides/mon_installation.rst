@@ -298,7 +298,7 @@ Créer les disques OSD sur les 3 Clusters
 
 |image1760|
 
-Si une erreur apparait alors que tout semble normal, voir le § :ref:`21.1.8 Commandes shell`
+Si une erreur apparait alors que tout semble normal, voir le § :ref:`21.1.8.2 HEALTH_WARN ,daemons have recently crashed`
 
 |image1780|
 
@@ -335,6 +335,12 @@ La case cochée pour la crétion du stockage:
 - **créer un second groupe**
 
 |image1784|
+
+.. note::
+
+   en cas d'erreur: |image1787|
+
+  voir ce § :ref:`21.1.8.3 unable to read lrm status`
 
 - **Associer les VM ou CT aux noveaux groupes**
 
@@ -383,7 +389,16 @@ puis pour supprimer le ou les messages:
    ceph crash archive <id>
    ceph crash archive-all
 
-21.1.8.3 Remplacer un ssd utilisé pour Ceph
+21.1.8.3 unable to read lrm status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block::
+
+   systemctl reset-failed pve-ha-lrm.service
+   systemctl start pve-ha-lrm.service
+
+|image1788|
+
+21.1.8.4 Remplacer un ssd utilisé pour Ceph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block::
 
@@ -3127,3 +3142,7 @@ Mon WGDashbord
    :width: 700px
 .. |image1786| image:: ../img/image1786.webp
    :width: 500px
+.. |image1787| image:: ../img/image1787.webp
+   :width: 400px
+.. |image1788| image:: ../img/image1788.webp
+   :width: 4800px
