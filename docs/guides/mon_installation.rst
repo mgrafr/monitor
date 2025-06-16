@@ -322,6 +322,12 @@ La case cochée pour la crétion du stockage:
 ^^^^^^^^^^^^^^^^^^^^
 **Répartition de charges des CT et VM dans un cluster HA**
 
+- **créer un groupe**
+
+|image1782|
+
+|image1783|
+
 21.1.8 Commandes shell
 ----------------------
 21.1.8.1 supprimer Disk--old
@@ -3097,3 +3103,7 @@ Mon WGDashbord
    :width: 600px
 .. |image1781| image:: ../img/image1781.webp
    :width: 135px
+.. |image1782| image:: ../img/image1782.webp
+   :width: 700px
+.. |image1783| image:: ../img/image1783.webp
+   :width: 480px
