@@ -244,7 +244,7 @@ le script :
    var sos ='zigbee2mqtt.0.0xa4c138be9958ad84.emergency'/*sos*/;
    var sos_state = String(getState(sos).val);
    on({id: sos/*emergency*/}, function (obj)
-   {   if(sos_state == 'false')
+   {   if(sos_state == 'true')
      {
     const fs = require('fs');
     var txt = "sos";
