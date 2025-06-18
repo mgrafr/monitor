@@ -96,6 +96,17 @@ réception d'un SMS :
 
 |image1385|
 
+.. IMPORTANT::
+
+   Les CT de Domoticz, Home Assistant, IoBroker doivent pouvoir utliser la liaison série pour la communication GSM , 
+
+   Config des CT: ajouter ces lignes en remplaçant x suivant le port utilisé:
+
+   .. code-block::
+
+      lxc.cgroup2.devices.allow: c 188:* rwm
+      lxc.mount.entry: /dev/ttyUSBx dev/ttyUSBx none bind,optional,create=file
+
 15.1.2.1 Utilisation du bouton dans Domoticz 
 """"""""""""""""""""""""""""""""""""""""""""
 
