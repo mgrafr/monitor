@@ -358,6 +358,10 @@ La case cochée pour la crétion du stockage:
 
   *Disabled* : L'HA garantit que la ressource reste dans l'état arrêté et ne tente pas de migrer vers d'autres nœuds
 
+**copie d'écran de HA**
+
+|image1794|
+
 21.1.8 Commandes shell
 ----------------------
 21.1.8.1 supprimer Disk--old
@@ -3155,4 +3159,6 @@ Mon WGDashbord
 .. |image1787| image:: ../img/image1787.webp
    :width: 400px
 .. |image1788| image:: ../img/image1788.webp
-   :width: 4800px
+   :width: 480px
+.. |image1794| image:: ../img/image1794.webp
+   :width: 700px
