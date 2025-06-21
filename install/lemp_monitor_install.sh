@@ -162,7 +162,7 @@ ufw allow https
 ufw enable
 echo -e "${CHECKMARK} \e[1;92m Le pare-feu a été installé.\e[0m"
 fail2ban=$(whiptail --title "installer fail2ban ?" --radiolist \
-"voulez vous installer Fail2ban ?\n F' est un service qui analyse les logs pour bannir les adresses IP \n ayant un comportement malveillants. " 15 60 4 \
+"voulez vous installer Fail2ban ?\n C'est un service qui analyse les logs pour bannir les adresses IP \n ayant un comportement malveillants. " 15 60 4 \
 "oui" "par defaut " ON \
 "non" "voir la doc" OFF 3>&1 1>&2 2>&3)
 if [ $exitstatus = 0 ]; then
