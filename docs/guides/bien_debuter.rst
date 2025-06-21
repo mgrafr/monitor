@@ -76,8 +76,6 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
  
 |image7|
 
-|image8|
-
 Choisir "dhcp" ou indiquer l'IP choisie
 
 |image1713|
@@ -86,9 +84,11 @@ Choisir "dhcp" ou indiquer l'IP choisie
 
    Si IP CIDR : Par exemple, 192.0.2.0/24 est une adresse CIDR IPv4 où les 24 premiers bits, soit 192.0.2, correspondent à l'adresse réseau.  
 
-|image1713|
+   |image1713|
 
 |image1715|
+
+|image8|
 
 |image9|
  
@@ -109,6 +109,10 @@ Choisir le langage UTF-8 : fr_FR.UTF-8
 
 |image12|
 
+Choisir la version de monitor à installer :
+
+|image1795|
+
 |image13|
  
 |image14|
@@ -121,10 +125,13 @@ Choisir le langage UTF-8 : fr_FR.UTF-8
  
 Sécuriser Maria DB, mot passe root
  
-  
 |image18|
 
 |image19|
+
+En option, installer Fail2ban
+
+|image1796|
 
 |image20|
  
@@ -2422,3 +2429,8 @@ function mc(variable,id)
    :width: 700px
 .. |image1778| image:: ../img/image1778.webp
    :width: 500px
+.. |image1795| image:: ../img/image1795.webp
+   :width: 550px
+.. |image1796| image:: ../img/image1796.webp
+   :width: 550px
+
