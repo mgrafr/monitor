@@ -133,6 +133,16 @@ En option, installer Fail2ban
 
 |image1796|
 
+.. note::
+
+   Pour éviter des erreurs 2 fichiers , fail2ban.local et jail.d/jail.local,  ont été ajoutés.
+
+   |image1798|
+
+   pour finaliser la configuration de fail2ban, au minimum modifier ces lignes:
+
+   |image1797|
+
 |image20|
  
 |image21|
@@ -2433,4 +2443,8 @@ function mc(variable,id)
    :width: 550px
 .. |image1796| image:: ../img/image1796.webp
    :width: 550px
+.. |image1797| image:: ../img/image1797.webp
+   :width: 320px
+.. |image1798| image:: ../img/image1797.webp
+   :width: 420px
 
