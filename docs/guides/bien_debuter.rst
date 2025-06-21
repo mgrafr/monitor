@@ -24,11 +24,13 @@
 
 -	Création d’un conteneur LXC
 
--	Debian 12, et les dépendances sudo, curl,...
+-	Debian 12, et les dépendances sudo, curl
 
 -	Nginx, PHP 8.3, PHP8.3-gd, PHP8.3-ssh2
 
 	maria db 10.11, phpMyAdmin 5.2+snapshot, monitor
+
+	Pare-feu UFW, en option Fail2ban
 
 -	Quelques programmes python utiles : pip, Paho-mqtt
 
