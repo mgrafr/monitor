@@ -161,6 +161,27 @@ ufw allow http
 ufw allow https
 ufw enable
 echo -e "${CHECKMARK} \e[1;92m Le pare-feu a été installé.\e[0m"
+fail2ban=$(whiptail --title "installer fail2ban ?" --radiolist \
+"voulez vous installer Fail2ban ?\n F' est un service qui analyse les logs pour bannir les adresses IP \n ayant un comportement malveillants. " 15 60 4 \
+"oui" "par defaut " ON \
+"non" "voir la doc" OFF 3>&1 1>&2 2>&3)
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi  : $fail2ban"
+else
+echo "Vous avez annulé  "
+fi
+if [ "$fail2ban" = "oui" ]
+then
+msg_ok "installation de Fail2ban"
+apt install fail2ban
+systemctl enable fail2ban
+cd /etc/fail2ban
+wget ttps://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/fail2ban/fail2ban.local
+cd  jail.d
+wget https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/fail2ban/jail.d/jail.local
+systemctl start fail2ban
+echo "installation terminée de Fail2ban"
+fi
 apt -y install sshpass
 echo -e "${CHECKMARK} \e[1;92m SSHPASS a été installé.\e[0m"
 sleep 2
