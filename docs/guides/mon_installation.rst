@@ -910,6 +910,30 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
       |image1701|
 
+21.4.6 Device Z2M non reconnu
+-----------------------------
+Placer votre image personnalisée dans « zigbee2mqtt-frontend/dist » et mettre à jour votre convertisseur avec « icon: image_path » devrait faire l'affaire
+
+Le chemin de l'image est relatif à la racine de votre serveur frontal
+
+.. code-block::
+
+    fingerprint: tuya.fingerprint('TS0601', ['_TZE200_dnz6yvl2']),
+    model: 'MOES-smoke',
+    icon: '/icons/MOES-smoke.jpg',
+    vendor: 'TuYa',
+    description: 'Smoke Detector',
+
+Avec une installation par défaut dans /opt
+
+mkdir /opt/zigbee2mqtt/node_modules/zigbee2mqtt-frontend/dist/icons 
+cp MOES-smoke.jpg /opt/zigbee2mqtt/node_modules/zigbee2mqtt-frontend/dist/icons 
+
+|image1800|
+
+|image1801|
+
+|image1802|
    
 21.5 Asterisk (sip)
 ===================
@@ -3161,4 +3185,10 @@ Mon WGDashbord
 .. |image1788| image:: ../img/image1788.webp
    :width: 480px
 .. |image1794| image:: ../img/image1794.webp
+   :width: 700px
+.. |image1800| image:: ../img/image1800.webp
+   :width: 400px
+.. |image1801| image:: ../img/image1801.webp
+   :width: 400px
+.. |image1802| image:: ../img/image1802.webp
    :width: 700px
