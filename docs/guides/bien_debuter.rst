@@ -129,7 +129,7 @@ Sécuriser Maria DB, mot passe root
 
 |image19|
 
-En option, installer Fail2ban
+En option, installer Fail2ban : https://scalastic.io/ufw-fail2ban-nginx/
 
 |image1796|
 
