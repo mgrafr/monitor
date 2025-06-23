@@ -912,29 +912,46 @@ le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité 
 
 21.4.6 Device Z2M non reconnu
 -----------------------------
-Placer votre image personnalisée dans « zigbee2mqtt-frontend/dist » et mettre à jour votre convertisseur avec « icon: image_path » devrait faire l'affaire
-
-Le chemin de l'image est relatif à la racine de votre serveur frontal
-
-.. code-block::
-
-    fingerprint: tuya.fingerprint('TS0601', ['_TZE200_dnz6yvl2']),
-    model: 'MOES-smoke',
-    icon: '/icons/MOES-smoke.jpg',
-    vendor: 'TuYa',
-    description: 'Smoke Detector',
-
-Avec une installation par défaut dans /opt
-
-mkdir /opt/zigbee2mqtt/node_modules/zigbee2mqtt-frontend/dist/icons 
-cp MOES-smoke.jpg /opt/zigbee2mqtt/node_modules/zigbee2mqtt-frontend/dist/icons 
+Récupérer la référence du fabricant:
 
 |image1800|
 
-|image1801|
+Dans cet exemple, il s'agit d'un capteur de température et humidité de sol
+
+- Dans le répertoire **/opt/zigbee2mqtt/node_modules/.pnpm/zigbee-herdsman-converters@23.20.1/node_modules/zigbee-herdsman-converters/dist/devices**  et le fichier **tuya.js**, rechercher un appareil similaire; pour cet exemple il s'agit du model "**tuya_soil**"
+
+- faire un copier coller de ce device et le modifier :
 
 |image1802|
+
+Pour ajouter une image personnalisée (512x512 pixels) ,la placer dans « zigbee2mqtt-frontend/dist/icons » et mettre à jour le nouveau convertisseur; un dossier icons est crée: 
+
+.. code-block::
+
+   mkdir /opt/zigbee2mqtt/node_modules/zigbee2mqtt-frontend/dist/icons 
+   cp <chemin image> /opt/zigbee2mqtt/node_modules/zigbee2mqtt-frontend/dist/icons 
+
+.. code-block::
+
+    fingerprint: tuya.fingerprint('TS0601', ['_TZE200_xxxxxxxxx']),
+    model: 'DONNER UN NOM',
+    icon: '/icons/IMAGE',
+    vendor: 'TuYa',
    
+|image1801|
+
+Pour cet exemple j'ai du diviser par 10 la valeur de la température:
+
+.. code-block::
+
+   [5, "temperature", tuya.valueConverter.divideBy10],
+
+|image1803|
+
+|image1804|
+
+|image1805|
+
 21.5 Asterisk (sip)
 ===================
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
@@ -3192,3 +3209,9 @@ Mon WGDashbord
    :width: 400px
 .. |image1802| image:: ../img/image1802.webp
    :width: 700px
+.. |image1803| image:: ../img/image1803.webp
+   :width: 500px
+.. |image1804| image:: ../img/image1804.webp
+   :width: 400px
+.. |image1805| image:: ../img/image1805.webp
+   :width: 450px
