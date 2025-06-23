@@ -443,12 +443,14 @@ foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
 
 			$L2=$IP_iob.":".$port_api_iob."/v1/object/".$_id2;
 			$json1_string = file_get_curl($L2);
-			$iob_json1 = json_decode($json1_string,true);//return $iob_json1;			
+			$iob_json1 = json_decode($json1_string,true);//return $iob_json1;	
+			$nom=$iob_json1['common']['name'];		
 			$iob[$n]=[
 			'num' => $n,
+			'Data' => $d,
 			'value_iob' => "2",	
 			'ID' =>	$iob_json1['_id'],
-			'Name' =>$iob_json1['common']['name'],
+			'Name' =>$nom,
 			'Type' =>$iob_json1['type'],
 			'Date' =>$iob_json1['ts'],
 			'values' => $values,	
@@ -469,6 +471,7 @@ while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 //$description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
 $device = isset($lect_device["Device"]) ? $lect_device["Device"] : '';
+$N = isset($lect_device["N"]) ? $lect_device["N"] : '';
 $description = isset($lect_device["attributes"]) ? $lect_device["attributes"] : 'sans';
 if ($lect_device["serveur"] == "DZ"){
 //	if  (isset($lect_device["attributes"])) {
@@ -503,14 +506,14 @@ if ($t=="") {$t=888;$choix_serveur="0";}}
 	switch ($choix_serveur) {
 		case "iob" :	
 $lect_device["Name"] = $periph['nom_objet'];
-$lect_device["Data"]="";			
+//$lect_device["Data"]="";			
 if ($lect_device["value_iob"]=="1" ) {$lect_device['values'] = $valu[$device];}
 
 //if ($lect_device["value_iob"]="2") $lect_device['values'] = $values;
 			
 if (array_key_exists("values",$lect_device)){
 	$array=$lect_device["values"];
-	if (isset($array["state"])) {$lect_device["Data"]=$array["state"];}	
+	if (isset($array["state"]) ) {$lect_device["Data"]=$array["state"];}	
 	if (isset($array["sendCommand"])) {$lect_device["attributes"]["sendCommand"]=$array["sendCommand"];}	
 	if (isset($array["pause"])) {$lect_device["attributes"]["pause"]=$array["pause"];}	
 	if (isset($array["air_temperature"])) {$lect_device["Data"]=$array["air_temperature"];}	
