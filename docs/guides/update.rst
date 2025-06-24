@@ -20,6 +20,7 @@ Server version: 10.11.6
 ===============
 Version en developpement 3.2.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- correction bug sur devices_plan pour ioBroker
 
 Version 3.2.4 (Mai 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
