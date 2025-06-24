@@ -427,7 +427,9 @@ foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
 		$device=explode('.',$name);$nb_device=count($device);
 		if ($nb_device>1) {$devic=$device[0];$sname=$device[1]; }
 		else {$devic=$_id1;$sname=$device[0]; }
-		$valu[$devic][$sname] = $valeur -> {'val'};		
+		$valu[$devic][$sname] = $valeur -> {'val'};
+		if ($sname=="temperature"){$d= $d." °C";}
+		if ($sname=="soil_moisture" || "humidity"){$d= $d." %";}							   
 		$iob[$n]=[
 		'num' => $n,
 		'ID' => $cle,
@@ -437,8 +439,8 @@ foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
 		'value_iob' => "1",
 		'serveur' => "IOB"
 		];		
-		$values[$name] = $valeur -> {'val'};	   
-	    
+		$values[$name] = $valeur -> {'val'};	
+			    
 		$n++;$jj++;$devi=$devic;}					 
 
 			$L2=$IP_iob.":".$port_api_iob."/v1/object/".$_id2;
