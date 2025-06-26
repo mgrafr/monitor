@@ -500,6 +500,18 @@ puis pour supprimer le ou les messages:
 
    |image1813|
 
+   définir une variable d’environnement pour utiliser un environnement python local.
+
+   .. code-block::
+
+      sudo nano /home/michel/domoticz.env
+      # insérer:
+      PYTHONPATH="/home/michel/Domoticz_Python_Environment/:$PYTHONPATH"
+
+   |image1814|
+
+   
+
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
    *Le conteneur LXC* :
@@ -3293,6 +3305,8 @@ Mon WGDashbord
 .. |image1811| image:: ../img/image1811.webp
    :width: 600px
 .. |image1812| image:: ../img/image1812.webp
-   :width: 50
+   :width: 500px
 .. |image1813| image:: ../img/image1813.webp
    :width: 500px
+.. |image1814| image:: ../img/image1814.webp
+   :width: 650px
