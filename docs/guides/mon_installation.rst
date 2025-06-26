@@ -439,7 +439,9 @@ puis pour supprimer le ou les messages:
 
    Le conteneur est crée , sudo, le pare-feu sont installés; on ajoute l'utlisateur ;pour les clés USB connectés au conteneur, il suffit de faire une copy du conteneur domoticz existant.
 
-   |image1806|
+    |image1807| 
+
+    |image1806|
 
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
@@ -3223,3 +3225,5 @@ Mon WGDashbord
    :width: 450px
 .. |image1806| image:: ../img/image1806.webp
    :width: 700px
+.. |image1807| image:: ../img/image1807.webp
+   :width: 450px
