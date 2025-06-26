@@ -492,6 +492,14 @@ puis pour supprimer le ou les messages:
 
    |image1812|
 
+   mettre en service systemd
+
+   .. code-block::
+
+      sudo systemctl enable domoticz.service
+
+   |image1813|
+
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
    *Le conteneur LXC* :
@@ -3285,4 +3293,6 @@ Mon WGDashbord
 .. |image1811| image:: ../img/image1811.webp
    :width: 600px
 .. |image1812| image:: ../img/image1812.webp
+   :width: 50
+.. |image1813| image:: ../img/image1813.webp
    :width: 500px
