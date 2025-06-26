@@ -447,7 +447,17 @@ puis pour supprimer le ou les messages:
 
    |image1808|
 
+   Récupérer le lien de téléchargement de la version beta, télécharger et décompresser le fichier,=et le supprimer
 
+   image1809|
+
+   .. code-block::
+
+      sudo wget <LIEN DE TELECHARGEMENT VERSION BETA>
+      sudo tar -xzf <nom_archive.tar.gz>
+      sudo rm <nom_archive.tar.gz>
+
+   image1810|
 
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
@@ -3235,3 +3245,7 @@ Mon WGDashbord
    :width: 450px
 .. |image1808| image:: ../img/image1808.webp
    :width: 400px
+.. |image1809| image:: ../img/image1809.webp
+   :width: 650px
+.. |image1810| image:: ../img/image1810.webp
+   :width: 700px
