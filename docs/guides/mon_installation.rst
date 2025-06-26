@@ -449,7 +449,7 @@ puis pour supprimer le ou les messages:
 
    Récupérer le lien de téléchargement de la version beta, télécharger et décompresser le fichier,=et le supprimer
 
-   image1809|
+   |image1809|
 
    .. code-block::
 
@@ -457,7 +457,40 @@ puis pour supprimer le ou les messages:
       sudo tar -xzf <nom_archive.tar.gz>
       sudo rm <nom_archive.tar.gz>
 
-   image1810|
+   |image1810|
+
+   Installer cette librairie:
+
+   .. code-block::
+
+      sudo apt install libusb-0.1-4
+
+   |image1811|
+
+   Installer systemd pour le démarrage automatique
+
+   .. code-block::
+
+      sudo nano /etc/systemd/system/domoticz.service
+
+   .. code-block::
+
+      [Unit]
+       Description=domoticz_service
+      [Service]
+       User=michel
+       Group=sudo
+       EnvironmentFile=/home/michel/domoticz.env
+       ExecStart=/opt/domoticz/domoticz -www 8080 -sslwww 443
+       WorkingDirectory=/opt/domoticz
+      
+       Restart=on-failure
+       RestartSec=1m
+       #StandardOutput=null
+      [Install]
+       WantedBy=multi-user.target
+
+   |image1812|
 
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
@@ -3249,3 +3282,7 @@ Mon WGDashbord
    :width: 650px
 .. |image1810| image:: ../img/image1810.webp
    :width: 700px
+.. |image1811| image:: ../img/image1811.webp
+   :width: 600px
+.. |image1812| image:: ../img/image1812.webp
+   :width: 500px
