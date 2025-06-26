@@ -429,13 +429,19 @@ puis pour supprimer le ou les messages:
 
 21.2 Domoticz
 =============
-*Installation depuis la version 2024 dans un conteneur LCX*
+*Installation depuis la version 2025 beta dans un conteneur LCX*
 
-.. admonition:: **Installation dans un conteneur LXC Debian 11** 
+.. admonition:: **Installation de la version beta dans un conteneur LXC Debian 12** 
 
    .. warning::
 
-      **installation non possible sur Debian 12 qui utilise Openssl 3.0 car Domoticz utilise encore openssl 1.1.1 et la Libssl 1.1.**
+      **installation de la version stable 2025 non possible sur Debian 12 qui utilise Openssl 3.0 car Domoticz utilise encore openssl 1.1.1 et la Libssl 1.1.** ; par contre depuis mai 2025 la version beta est installable sur debian 12
+
+   Le conteneur est crée , sudo, le pare-feu sont installés; on ajoute l'utlisateur ;pour les clés USB connectés au conteneur, il suffit de faire une copy du conteneur domoticz existant.
+
+   |image1806|
+
+.. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
    *Le conteneur LXC* :
 
@@ -3215,3 +3221,5 @@ Mon WGDashbord
    :width: 400px
 .. |image1805| image:: ../img/image1805.webp
    :width: 450px
+.. |image1806| image:: ../img/image1806.webp
+   :width: 700px
