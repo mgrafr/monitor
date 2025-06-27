@@ -514,7 +514,15 @@ puis pour supprimer le ou les messages:
 
    |image1814|
 
-   
+   Lancer Domoticz:
+
+   .. code-block::
+
+      sudo systemdctl start domoticz
+
+   http://<IP:PORT> 
+
+   |image1815|
 
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
@@ -3314,3 +3322,5 @@ Mon WGDashbord
    :width: 500px
 .. |image1814| image:: ../img/image1814.webp
    :width: 550px
+.. |image1815| image:: ../img/image1815.webp
+   :width: 300px
