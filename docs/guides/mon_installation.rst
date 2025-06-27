@@ -469,6 +469,10 @@ puis pour supprimer le ou les messages:
 
    Installer systemd pour le démarrage automatique
 
+   .. note::
+
+      *le domoticz.service du wiki de domopticz ne fonctionne pas*
+
    .. code-block::
 
       sudo nano /etc/systemd/system/domoticz.service
@@ -476,17 +480,17 @@ puis pour supprimer le ou les messages:
    .. code-block::
 
       [Unit]
-       Description=domoticz_service
+       Description=domoticz
+       After=network.target
       [Service]
-       User=michel
-       Group=sudo
+       Environment=NODE_ENV=production
+       ExecStart=/opt/domoticz/domoticz -www 8087 -sslwww 443
        EnvironmentFile=/home/michel/domoticz.env
-       ExecStart=/opt/domoticz/domoticz -www 8080 -sslwww 443
-       WorkingDirectory=/opt/domoticz
-      
-       Restart=on-failure
-       RestartSec=1m
-       #StandardOutput=null
+       #
+       StandardError=inherit
+       Restart=10s
+       RestartSec=always
+       user=michel
       [Install]
        WantedBy=multi-user.target
 
@@ -3309,4 +3313,4 @@ Mon WGDashbord
 .. |image1813| image:: ../img/image1813.webp
    :width: 500px
 .. |image1814| image:: ../img/image1814.webp
-   :width: 650px
+   :width: 550px
