@@ -500,6 +500,7 @@ puis pour supprimer le ou les messages:
 
    .. code-block::
 
+      sudo systemctl daemon-reload
       sudo systemctl enable domoticz.service
 
    |image1813|
