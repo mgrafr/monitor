@@ -3327,5 +3327,5 @@ Mon WGDashbord
    :width: 550px
 .. |image1815| image:: ../img/image1815.webp
    :width: 300px
-.. |image1816| image:: ../img/image1815.webp
+.. |image1816| image:: ../img/image1816.webp
    :width: 400px
