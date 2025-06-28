@@ -525,6 +525,8 @@ puis pour supprimer le ou les messages:
 
    |image1815|
 
+   |image1816|
+
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
    *Le conteneur LXC* :
@@ -3325,3 +3327,5 @@ Mon WGDashbord
    :width: 550px
 .. |image1815| image:: ../img/image1815.webp
    :width: 300px
+.. |image1816| image:: ../img/image1815.webp
+   :width: 400px
