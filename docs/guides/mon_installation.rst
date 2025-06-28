@@ -636,6 +636,10 @@ puis pour supprimer le ou les messages:
 
    |image1294|
 
+   .. code-block::
+
+      udevadm control --reload-rules && udevadm trigger
+
    On récupère le libellé de la clé
 
    |image1295|
