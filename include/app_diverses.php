@@ -3,7 +3,9 @@
 $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="";
 if ($domaine==IPMONITOR) $lien_img="/monitor";
-
+if(DOMOTIC=='DZ') {$lien_dz= IPDOMOTIC; }
+elseif(DOMOTIC1=='DZ') {$lien_dz= IPDOMOTIC1; }
+elseif(DOMOTIC2=='DZ') {$lien_dz= IPDOMOTIC2; }
 ?>
 <!-- section App diverses start -->
 <!-- ================ -->
@@ -12,6 +14,7 @@ if ($domaine==IPMONITOR) $lien_img="/monitor";
 		<div class="col-md-12">
 	  <h1 class="title_ext text-center">App<span>  diverses</span></h1><br>
 	  <img src="<?php echo $lien_img;?>/images/dz.webp" style="width:50px;height:auto;margin:10px 0 10px 120px" alt="dz">
+	  IP: <?php echo $lien_dz;?>
 		<form2>
 		<p class="txt_app"><input type="button" rel="1" style="margin-left: 60px;" class="btn_appd" value="afficher fichier log normal"></p>	
 		<p class="txt_app"><input type="button" rel="2" style="margin-left: 60px;" class="btn_appd" value="afficher fichier log statut"></p>
