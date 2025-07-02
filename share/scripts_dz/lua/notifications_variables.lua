@@ -1,21 +1,12 @@
--- script notifications_variables version 2.1.4
+-- script notifications_variables version 2.1.3
 -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
-package.path = package.path..";www/modules_lua/?.lua"
+package.path = package.path..";/opt/domoticz/www/modules_lua/?.lua"
 -- pour upload (upload_fichier.py),mot passe et login base64, 
 require 'connect'
 adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local base64 = require'base64'
---local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
-function envoi_email(txt,fich_log)
--- local sms_free="curl --insecure  'https://smsapi.free-mobile.fr/sendmsg?user="..user_free.."&pass="..passe_free.."&msg="..txt.."' >> "..rep_log..fich_log.." 2>&1"  
--- os.execute(sms_free)
-end
-function alerte_gsm(txt)
-f = io.open("scripts/python/aldz.py", "w")
-env="#!/usr/bin/env python3"
-f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\npriority=1")
-f:close()
-end
+
+
 -- repertoire du script python
 rep='scripts/python/'
 -- repertoire log
@@ -29,7 +20,7 @@ return {
 		    'upload',
 		    'zm_cam',
 		    'pression-chaudiere',
-		    'pilule_tension',
+		    'pilule_chat',
 		    'BASH',
 		    'variable_sp',
 		    'activation-sir-txt'
@@ -79,11 +70,11 @@ return {
                 print("upload string_tableaux")
                 command = rep..'upload_fichier.py string_tableaux.lua   > '..rep_log..'string_tableaux.log 2>&1'
                 os.execute(command);print('maj effectuée_1');
-                --elseif (domoticz.variables('upload').value == "2") then -----devenu string_modect.json dand admin/monitor
+                --elseif (domoticz.variables('upload').value == "2") then -----devenu string_modect.json dans admin/monitor
                 --print("upload string_modect")
-                --command = rep..'upload_fichier.py string_modect.lua   > '..rep_log..'string_modect.log 2>&1'
+                --command = rep..'upload_fichier.py string_modect.json   > '..rep_log..'string_modect.log 2>&1'
                 --os.execute(command);print('maj effectuée_2');
-                elseif (domoticz.variables('upload').value == "3") then 
+                elseif (domoticz.variables('upload').value == "connect") then 
                 print("upload connect")
                 command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1';os.execute(command);
                 command = rep..'upload_fichier.py connect.py  > '..rep_log..'connect.log 2>&1';os.execute(command);
@@ -95,9 +86,9 @@ return {
             end
                
             
-            if (domoticz.variables('pilule_tension').changed) then 
-                 if (domoticz.variables('pilule_tension').value ~= "0") then 
-	             txt=tostring(domoticz.variables('pilule_tension').value) 
+            if (domoticz.variables('pilule_chat').changed) then 
+                 if (domoticz.variables('pilule_chat').value ~= "0") then 
+	             txt=tostring(domoticz.variables('pilule_chat').value) 
 	             print('médicaments')
                  alerte_gsm('alerteù'..txt)
                  end

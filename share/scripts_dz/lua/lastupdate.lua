@@ -1,7 +1,7 @@
 -- Script dzVents destiné à détecter les périphériques morts ou offline.
 
 -- chargement fichier contenant les variable de configuration
-package.path = package.path..";www/modules_lua/?.lua"
+package.path = package.path..";/opt/domoticz/www/modules_lua/?.lua"
 require 'string_tableaux' -- variable concernée : max_lastseen  max update et max_bat
 require 'connect'
 require 'table_zb_zw'

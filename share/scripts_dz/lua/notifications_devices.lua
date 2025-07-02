@@ -1,33 +1,10 @@
-  -- script notifications_devices version  2.1.4
+-- script notifications_devices version  2.1.6
  -- le caractère ù est utilisé pour afficher un espace lors d'une notification SMS  ;le modem n'utilise pas UTF8
-package.path = package.path..";www/modules_lua/?.lua"
+package.path = package.path..";/opt/domoticz/www/modules_lua/?.lua"
 require 'connect'
 adresse_mail=mail_gmail -- mail_gmail dans connect.lua
 local base64 = require'base64'
 --local user_free = base64.decode(login_free);local passe_free = base64.decode(pass_free);
-
-function send_sse(txt,txt1)
-    print(txt,txt1)
-local api_mon="curl --insecure  'http://'..ip_monitor..'/monitor/api/json.php?app=maj&id="..txt.."&state="..txt1.."' > sse.log 2>&1" 
-print(api_mon)
-os.execute(api_mon)
-end
-function send_topic(txt,txt1)
-local sse = 'python3 scripts/python/sse.py '..txt..' '..txt1..' >  /opt/domoticz/sse.log 2>&1' ;
-print(sse);
-os.execute(sse)
-end
-function send_sms(txt)
-os.execute('/bin/bash scripts/bash/./pushover.sh '..txt..' >>  /opt/domoticz/push3.log 2>&1');
-end
-function alerte_gsm(txt) -- ATTENTION PAS ESPACES pout txt
-f = io.open("scripts/python/aldz.py", "w")
-env="#!/usr/bin/env python3"
-f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\npriority=1")
---f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\ntel='"..tel1.."'")
-f:close()
-print(txt)
-end
 -- repertoire du script python
 rep='scripts/python/'
 -- repertoire log
@@ -43,12 +20,16 @@ return {
 			'lampe_jardin',
 			'Chauffe-serviettes',
 			'lampe_bureau',
-			'lampe_entree'
+			'lampe_poele',
+			'lampe_entree',
+			'grand_portail',
+			'gd_portail',
+			'porte_veranda_sud'
 	      	}
 	     },
  
  execute = function(domoticz, device)
-        domoticz.log('device '..device.name..' was changed', domoticz.LOG_INFO)
+        domoticz.log('device '..device.id..' was changed', domoticz.LOG_INFO)
             --domoticz.variables('variable_sp').set("1")
             if (device.name ~= "SOS (Action)_emergency") then send_sse(device.id,device.state)
             end    
