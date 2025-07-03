@@ -529,6 +529,8 @@ puis pour supprimer le ou les messages:
 
    |image1816|
 
+   Ne pas oublier de modifier l'IP et le Port de Domoticz( si différents), dans les fichiers **connect.xxx** de monitor ainsi que dans le fichier **string_tableaux.lua**
+
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
    *Le conteneur LXC* :
@@ -3334,4 +3336,4 @@ Mon WGDashbord
 .. |image1815| image:: ../img/image1815.webp
    :width: 300px
 .. |image1816| image:: ../img/image1816.webp
-   :width: 400px
+   :width: 600px
