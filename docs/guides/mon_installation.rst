@@ -525,6 +525,8 @@ puis pour supprimer le ou les messages:
 
    |image1815|
 
+   Installer les scripts python, node,... , exemple :
+
    |image1816|
 
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
