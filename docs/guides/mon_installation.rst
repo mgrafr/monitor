@@ -529,6 +529,14 @@ puis pour supprimer le ou les messages:
 
    |image1816|
 
+   Si Domoticz n'est pas sur le bon fuseau horaire:
+
+   .. code-block::
+
+   sudo timedatectl set-timezone <FUSEAU HORAIRE> 
+
+   |image1817|
+
    Ne pas oublier de modifier l'IP et le Port de Domoticz( si différents), dans les fichiers **connect.xxx** de monitor ainsi que dans le fichier **string_tableaux.lua**
 
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
@@ -3336,4 +3344,6 @@ Mon WGDashbord
 .. |image1815| image:: ../img/image1815.webp
    :width: 300px
 .. |image1816| image:: ../img/image1816.webp
+   :width: 600px
+.. |image1817| image:: ../img/image1817.webp
    :width: 600px
