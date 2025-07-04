@@ -529,7 +529,7 @@ puis pour supprimer le ou les messages:
 
    |image1816|
 
-    Si Domoticz n'est pas sur le bon fuseau horaire
+   Si Domoticz n'est pas sur le bon fuseau horaire
 
    .. code-block::
 
