@@ -80,7 +80,7 @@ lcd cron.d
 get /etc/cron.d/*
 lcd ..
 lcd systemd/system
-get -R /var/www/monitor/systemd/*
+get /etc/systemd/system/*
 exit
 EOF
 if [[ "$lets" == "Avec les certificats déjà enregistrés" ]];then
