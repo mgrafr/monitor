@@ -541,13 +541,15 @@ modifications en cours....
 
    un nouveau conteneur est installé, le conteneur actuel hébergeant monitor reste pour l'instant opérationnel.
 
-- Modifier la redirection de ports; monitor à mettre à jour est redirigé vers le port 444 et le nouveau monitor est dirigé vers le port 443
+.. admonition:: **Modification des ports pour l'accès HPPPS** 
 
-   |image1706|
+   - Modifier la redirection de ports; monitor à mettre à jour est redirigé vers le port 444 et le nouveau monitor est dirigé vers le port 443
 
-- Modifier le port dans la configuration actuelle Nginx de monitor :/etc/nginx/conf.d/monitor.conf
+      |image1706|
 
-   |image1707|
+   - Modifier le port dans la configuration actuelle Nginx de monitor :/etc/nginx/conf.d/monitor.conf
+
+      |image1707|
 
 .. note::
 
