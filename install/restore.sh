@@ -121,6 +121,8 @@ sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.lua
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.js
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.yaml
+cp /home/$mdir_maj/monitor/admin/connect/connect.py /home/$mdir_maj/monitor/custom/python/connect.py
+cp /home/$mdir_maj/monitor/admin/connect/connect.js /home/$mdir_maj/monitor/custom/js/connect.js
 nbconf=$(whiptail --title "Autre fichier de Config" --inputbox "si il existe sinon laisser vide" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ -n "$nbconf" ]
