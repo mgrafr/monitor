@@ -35,11 +35,11 @@ local a5={'fenetre_salon','Open',':fenetre-ouverte','fenetre_ouverte_salon'};
 local a6={'fenetre_ch_amis','Open',':fenetre-ouverte','fenetre_ouverte_ch_amis'};
 local a7={'fenetre_ch_1','Open',':fenetre-ouverte','fenetre_ouverte_chambre1'};
 local a8={'porte_veranda_sud','Open',':porte-ouverte','porte_ouverte_veranda-s'};
-local a9={'pir_entree_motion','Open','intrusion','intrusion_entree'};
+local a9={'pir_entree_pr','Open','intrusion','intrusion_entree'};
 local a10={'pir ar cuisine_motion','Open','intrusion','intrusion_cuisine'};
 local A1={a1,a2,a3,a4,a5,a6,a7,a8,a9,a10};local A2={a1,a2,a3,a4,a5,a6,a7,a8};
 --liste des dispositifs réels de détection
-local reels = {'pir ar cuisine_motion','pir_entree_motion','porte_entree','porte ar cuisine','porte_fenetre','fenetre_bureau','fenetre_salon','fenetre_ch_amis','fenetre_ch_1','porte_veranda_sud'}
+local reels = {'pir ar cuisine_motion','pir_entree_pr','porte_entree','porte ar cuisine','porte_fenetre','fenetre_bureau','fenetre_salon','fenetre_ch_amis','fenetre_ch_1','porte_veranda_sud'}
 --liste des dispositifs virtuels
 local virtuels = {'alarme_nuit','alarme_absence','Modect','raz_dz','al_nuit_auto','activation-sirene','Test_GSM','test_sirene'}
 --
@@ -97,9 +97,11 @@ return {
 --      -- alarme nuit
         if (domoticz.devices('alarme_nuit').state == "On") then 
             for k, v in ipairs(A2) do 
+             if (item.state~=  nil) then 
                if (item.name == (A2[k][1]) and item.state == A2[k][2] ) then 
         	   domoticz.variables(A2[k][3]).set(A2[k][4]);lampe=1;sirene=1;
-        	   end
+    	       end
+    	     end
             end
 --            --allumer lampes
             if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"

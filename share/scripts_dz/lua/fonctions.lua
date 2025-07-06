@@ -51,8 +51,14 @@ function decode_json(fich_json)
        --print('succes='..jsonValeur.version)
        return jsonValeur
 end
-function envoi_fab(don)
-        command = "/bin/bash scripts/bash/./fabric.sh"..don.." > /home/michel/fab.log 2>&1";
+function envoi_fab(libelle,valeur,valeur1)
+ if (valeur1==nil )  then
+    don=" "..libelle.."#"..valeur.."#"..datetime
+ elseif (valeur1~=nil )  then
+    don=" "..libelle.."#"..valeur.."#"..datetime..'#pmax#'..valeur1  
+ end
+ print("maj valeur:"..don);
+ command = "/bin/bash /opt/domoticz/scripts/bash/./fabric.sh "..don.." > /home/michel/fab1.log 2>&1";
         os.execute(command);
 end
 -- -----------------------------------------------------------------------------------------------------

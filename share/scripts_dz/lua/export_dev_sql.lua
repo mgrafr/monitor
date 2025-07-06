@@ -25,7 +25,8 @@ return {
 			'temp_cellier',
 			'THB',
 			'temp_entree1',
-			'pir ar cuisine_temp',
+			--'pir ar cuisine_temp',
+			'temp_cuisine',
 			--'pression_chaudière',
 			'PH_Spa',
 			'Redox_Spa',
@@ -38,14 +39,14 @@ return {
         domoticz.log('item '..item.name..' was changed', domoticz.LOG_INFO)
             
         if (item.name=='temp_cuis_ete') then 
-        -- choix nb decimales apres la virgule 
-        -- local temp=round(deviceValue, 1)
+         if item.temperature ~= nil then  
            valeur=tostring(round(item.temperature, 0))
             if (domoticz.variables('temp_cuis_ete').value ~= valeur) then
             domoticz.variables('temp_cuis_ete').set(valeur) 
     	    libelle="temp_cuis_ete#valeur"
     	    envoi_fab(libelle,valeur) 
-            end       
+          end  
+         end 
         elseif (item.name=='temp_cave') then 
            --local valeur=round(item.temperature, 1)
           valeur=tostring(round(item.temperature, 0))
@@ -56,7 +57,7 @@ return {
             end  
        elseif (item.name=='temp_cellier') then 
           if item.temperature ~= nil then  
-          vaeur=tostring(round(item.temperature, 0))
+          valeur=tostring(round(item.temperature, 0))
             if tostring(valeur)~=domoticz.variables('temp_cellier').value then
                 domoticz.variables('temp_cellier').set(tostring(valeur))    
     	        libelle="temp_cellier#valeur"
@@ -79,14 +80,15 @@ return {
            envoi_fab(libelle,valeur)  
           end
          end 
-       elseif (item.name=='pir ar cuisine_temp') then 
+      elseif (item.name=='temp_cuisine') then 
+       if item.temperature ~= nil then   
         valeur=tostring(round(item.temperature, 0))
-        if tostring(valeur)~=domoticz.variables('temp_ar_cuisine').value then
-            domoticz.variables('temp_ar_cuisine').set(tostring(valeur))    
+        if tostring(valeur)~=domoticz.variables('temp_cuisine').value then
+            domoticz.variables('temp_cuisine').set(tostring(valeur))    
 	        libelle="temp_cuisine#valeur"
             envoi_fab(libelle,valeur) 
-        end
-        
+         end
+       end 
    
         elseif (item.name=='PH_Spa') then
         local valeur=tostring(round(item.state, 1))

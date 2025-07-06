@@ -1,4 +1,5 @@
 --export_timer_sql
+--json = (loadfile "/opt/domoticz/scripts/lua/JSON.lua")()
 
 year 	= tonumber(os.date("%Y"));
 month 	= os.date("%m");
@@ -18,14 +19,14 @@ end
 --
 local scriptVar = 'linky_sql'
 return {
-    on = { 
-        timer =  {'at 09:10'}, 
+    on = {
+        timer =  {'at 09:02'}, 
         httpResponses = { scriptVar }},
         logging = { level = domoticz.LOG_ERROR, marker  = scriptVar },
     
     execute = function(dz, item) 
         if (item.isTimer) then
-            local url = 'http://127.0.0.1:8085/json.htm?type=command&param=getdevices&rid=427';
+            local url = dz.settings['Domoticz url']..'/json.htm?type=command&param=getdevices&rid=770';
             print(url);
             dz.openURL({ 
                 url = url, 
@@ -41,8 +42,8 @@ return {
             local mUsage = m[5] ;    print("compteur_kw:"..mUsage) ;
             
             libelle="energie#conso"
-            don=" "..libelle.."#"..tostring(round(tonumber(mCounter)/1000,1)) .."#"..datetime.."#pmax#"..tostring(round(tonumber(mUsage)/1000,1)); print("energie"..don);
-            envoi_fab(don)
+            valeur=tostring(round(tonumber(mCounter)/1000,1)) ;pmax=tostring(round(tonumber(mUsage)/1000,1)); print("energie"..valeur..pmax);
+            envoi_fab(libelle,valeur,pmax)
             end
         end
 end

@@ -12,7 +12,7 @@ local time = string.sub(os.date("%X"), 1, 5)
 return { 
     on = {
         timer = {
-             'at 08:45',
+             'at 07:45',
              'at 23:16'
         }
     },
