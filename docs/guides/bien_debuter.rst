@@ -774,33 +774,32 @@ modifications en cours....
 
 0.1.4.2  Mise à jour partielle
 """"""""""""""""""""""""""""""
-Ne concerne que Monitor
-
+Ne concerne que Monitor et les versions > 3.2.2
 
 .. warning:: 
 
-    OBSOLETE
+   Seules les versions supérieures à 3.2.2 peuvent être mises à jour partiellement; pour les versions inférieures ou égales à 3.2.2:
 
-   La version 2.2.7 a été profondément restructurée aussi il n'est pas facile de l'updater; mode d'emploi pour upgrader une ancienne version sans perte de données:
-
-   - Créer un nouveau conteneur (NE PAS SUPPRIMER LE CONTENEUR ACTUEL)
+   - Créer un nouveau conteneur (NE PAS SUPPRIMER LE CONTENEUR ACTUEL) : voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
    - dans le fichier /admin/config.php existant dans l'ancien conteneur recopier les variables que vous utilisez dans le fichier du nouveau conteneur
 
-   - sauvegarger les tables de BD SQL pour les importer dans la nouvelle BD
+   - sauvegarder les tables de BD SQL pour les importer dans la nouvelle BD (tenir compte des quelques modifications de structure possibles)
 
    - sauvegarder les pages Custom dans le nouveau monitor
 
-   - supprimer l'ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)
+   - importer dans le nouveau conteneur le répertoire /etc/nginx/conf.d/*
 
-Pour les versions de monitor > 2.2.7 et < à 3.2.0 (refonte en cours pour intégrer io.broker):
+    - importer les fichiers de systemd : /etc/systemd/system/*
+
+   - supprimer l'ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)
 
 Obtenir la dernière version de update.bash , avec la console :
  
 .. code-block::
 
    cd /www/monitor/install
-   wget -N https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.bash
+   wget -N https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.sh
 
 Rendre éxécutable le fichier  et le lancer
 
