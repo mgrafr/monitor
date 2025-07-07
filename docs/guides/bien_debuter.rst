@@ -805,16 +805,18 @@ Rendre éxécutable le fichier  et le lancer
 
 .. code-block::
    
-   chmod +x update.bash
-   ./update.bash
+   chmod +x update.sh
+   ./update.sh
 
 |image51|
+
+|image1818|
 
 En cas de problème avec le chemin de bash:
 
 .. code-block::
 
-   /usr/bin/bash ./update.bash
+   /usr/bin/bash ./update.sh
 
 0.2 La page d’accueil et connexion avec un serveur domotique : 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2448,4 +2450,5 @@ function mc(variable,id)
    :width: 320px
 .. |image1798| image:: ../img/image1798.webp
    :width: 420px
-
+.. |image1818| image:: ../img/image1818.webp
+   :width: 700px
