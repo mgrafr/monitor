@@ -10,9 +10,13 @@ ip= ip_monitor
 rep="/opt/domoticz/"
 if z=="lua" :
     rep="/opt/domoticz/www/modules_lua/"
+    addr="http://"+ip+"/monitor/admin/connect/"+z1+"."+z
+if z=="json" :
+    rep="/opt/domoticz/www/modules_lua/" 
+    addr="http://"+ip+"/monitor/admin/"+z1+"."+z
 if z=="py" :
-    rep="/opt/domoticz/scripts/python/"    
-addr="http://"+ip+"/monitor/admin/connect/"+z1+"."+z
+    rep="/opt/domoticz/scripts/python/"
+    addr="http://"+ip+"/monitor/admin/connect/"+z1+"."+z
 req = requests.get(addr)
 with open(rep+x, "wb") as fp:
     fp.write(req.content)
