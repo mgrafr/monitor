@@ -794,7 +794,7 @@ Ne concerne que Monitor et les versions > 3.2.2
 
    - supprimer l'ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)
 
-Obtenir la dernière version de update.bash , avec la console :
+Obtenir la dernière version de update.sh , avec la console :
  
 .. code-block::
 
