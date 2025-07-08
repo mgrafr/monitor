@@ -734,13 +734,13 @@ modifications en cours....
       lcd ..
       lcd python
 
-      |image1671|
+   |image1671|
 
-      |image1672|
+   |image1672|
 
-      |image1673|
+   |image1673|
 
-      |image1674|
+   |image1674|
 
    .. note::
 
