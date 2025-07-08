@@ -790,7 +790,7 @@ Ne concerne que Monitor et les versions > 3.2.2
 
    - importer dans le nouveau conteneur le répertoire /etc/nginx/conf.d/*
 
-    - importer les fichiers de systemd : /etc/systemd/system/*
+   - importer les fichiers de systemd : /etc/systemd/system/*
 
    - supprimer l'ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)
 
