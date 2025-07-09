@@ -1198,9 +1198,8 @@ echo $file.'<br><em style="color:red">le fichier doit être autorisé en écritu
 return "sauvegarde OK";	 
 break;
 case "4" :
-$content=$idrep;
-echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>fichiers sauvegardés';		
-file_put_contents($file,$content);
+$content=$idrep;$x=file_put_contents(VARTAB,$content);
+echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>'.$x.'fichiers sauvegardés';		
 // mise à jour par domoticz
 $retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
 break;
