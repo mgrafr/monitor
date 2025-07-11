@@ -14,7 +14,7 @@ else
 mdir_maj=/maj_monitor
 echo "Par défaut, répertoire : "$mdir_maj
 fi
-mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup}
+mkdir -p /home/$mdir_maj/monitor/{admin,custom,DB_Backup,include}
 mkdir -p /home/$mdir_maj/monitor/custom/{php,python,js,css,images}
 mkdir -p /home/$mdir_maj/etc/{letsencrypt,ssl,ssh,nginx,cron.d}
 mkdir -p /home/$mdir_maj/etc/systemd/system
@@ -68,6 +68,9 @@ get -R /var/www/monitor/custom/*
 lcd ..
 lcd DB_Backup
 get /var/www/monitor/DB_Backup/*
+lcd ..
+lcd include
+get /var/www/monitor/include/header.php
 lcd ..
 lcd ..
 lcd etc/nginx
@@ -167,8 +170,9 @@ echo "erreur  vérifier lles autorisations pour etc/letsencrypt/archive=644"
 exit
 fi
 sleep 2
+cp /home/$mdir_maj/monitor/include/header.php /var/www/monitor/include/header.php
 cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/index_loc.php
-cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/C.txt
+cp /home/$mdir_maj/monitor/c.txt /var/www/monitor/c.txt
 cp -R /home/$mdir_maj/etc/systemd/system/* /etc/systemd/system/
 cp -R /home/$mdir_maj/monitor/custom/python/* /var/www/monitor/custom/python/
 cp -R /home/$mdir_maj/monitor/custom/php/* /var/www/monitor/custom/php/
