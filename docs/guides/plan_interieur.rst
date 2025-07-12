@@ -171,6 +171,12 @@ La construction est sensiblement la même, la différence pour notre sujet, rés
 
    |image251|
 
+2.1.1.c Vérification du code SVG
+""""""""""""""""""""""""""""""""
+https://www.svgviewer.dev/
+
+|image1819|
+
 2.1.2 – 2eme solution pour le plan, conversion en ligne
 =======================================================
 
@@ -1304,4 +1310,6 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9para
    :width: 700px 
 .. |image1178| image:: ../media/image1178.webp
    :width: 548px 
+.. |image1819| image:: ../img/image1819.webp
+   :width: 700px 
 
