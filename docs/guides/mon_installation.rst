@@ -539,6 +539,12 @@ puis pour supprimer le ou les messages:
 
    Ne pas oublier de modifier l'IP et le Port de Domoticz( si différents), dans les fichiers **connect.xxx** de monitor ainsi que dans le fichier **string_tableaux.lua**
 
+   .. warning::
+
+      Ne pas oublier de modifier l'IP et le port dans des app tierces en lien avec Domoticz comme par exempble pour le portier vidéo VTO Dahua qui utilise asterisk
+
+      |image1820|
+
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
    *Le conteneur LXC* :
@@ -3346,4 +3352,6 @@ Mon WGDashbord
 .. |image1816| image:: ../img/image1816.webp
    :width: 600px
 .. |image1817| image:: ../img/image1817.webp
+   :width: 600px
+.. |image1820| image:: ../img/image1820.webp
    :width: 600px
