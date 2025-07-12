@@ -227,14 +227,14 @@ a:link, a:visited {
 .zz{margin-left: 10px;}
 /*interieur*/
 #vanne_eau{position: relative;top: -796px;left: 540px;width:48px;}
-#linky{position: relative;top: -250px;
+#linky{position: relative;top: -200px;
     left: 600px;
     width: 60px;}
 #th_ext_cuis{position: relative;
     top: -850px;
     left: 170px;
 	width: 50px;}
-#temp_ext_cuisine{font-size: 8px;
+#temp_ext_cuisine{font-size: 25px;
     color: black;}
 #voltage{position: absolute;
 top: -30px;
