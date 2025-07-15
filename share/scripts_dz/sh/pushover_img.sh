@@ -1,11 +1,11 @@
 #!/bin/bash
 jour=$(date +%H:%M:%S)
 
-wget --user michel --password Idem4546  http://$1/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
+wget --user <Login> --password <Pwd>  http://$1/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
 
 TITLE="image portier"
-APP_TOKEN="asa28r7g15o8o28mgvufyc7ny4rxka"
-USER_TOKEN="uoj2ks6quy86rpn51bmuv6ageau6ji"
+APP_TOKEN="asxxxxxxxxxxxxxxxxxxxxxxxa"
+USER_TOKEN="uyyyyyyyyyyyyyyyyyyyyyyyi"
 MESSAGE="on sonne au portail" 
 curl -s -F "token=$APP_TOKEN" \
    -F "user=$USER_TOKEN" \
