@@ -2748,8 +2748,9 @@ Mon WGDashbord
 
 21.16 Modem GSM
 ===============
-21.16.1 Ebyrte
---------------
+21.16.1 Ebyrte 4G/LTE E840-DTU
+------------------------------
+voir : http://domo-site.fr/accueil/dossiers/73
 
 21.16.2 PUSR USR-G771
 ---------------------
