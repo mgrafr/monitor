@@ -2746,10 +2746,16 @@ Mon WGDashbord
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1644|
 
+21.16 Modem GSM
+===============
+21.16.1 Ebyrte
+--------------
 
+21.16.2 PUSR USR-G771
+---------------------
+|image1823|
 
-
-
+|image1824|
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -3355,3 +3361,7 @@ Mon WGDashbord
    :width: 600px
 .. |image1820| image:: ../img/image1820.webp
    :width: 600px
+.. |image1823| image:: ../img/image1823.webp
+   :width: 500px
+.. |image1824| image:: ../img/image1824.webp
+   :width: 700px
