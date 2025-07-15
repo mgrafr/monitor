@@ -2754,6 +2754,12 @@ voir : http://domo-site.fr/accueil/dossiers/73
 
 21.16.2 PUSR USR-G771
 ---------------------
+https://www.pusr.com/ndirectory/[Setup-Software]USR-CAT1-Setup-Software-V1.1.4_1687230153.rar
+
+https://www.pusr.com/uploads/20241018/c355c5f354ad1a86ced2533673251366.exe
+
+https://www.pusr.com/ndirectory/[User-Manual]USR-G771-E-User-Manual_1687230153.pdf
+
 |image1823|
 
 |image1824|
