@@ -2766,6 +2766,10 @@ Remplace le modem Ebyte en 2025
 
 |image1824|
 
+Le script python send_sms.py remplace le script envoi_sms.py
+
+|image1822|
+
 
 
 .. |image1027| image:: ../media/image1027.webp
