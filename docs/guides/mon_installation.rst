@@ -2762,7 +2762,11 @@ https://www.pusr.com/ndirectory/[User-Manual]USR-G771-E-User-Manual_1687230153.p
 
 |image1823|
 
+Remplace le modem Ebyte en 2025
+
 |image1824|
+
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
