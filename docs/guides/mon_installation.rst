@@ -2770,7 +2770,9 @@ Le script python send_sms.py remplace le script envoi_sms.py
 
 |image1822|
 
+Le script rec_sms_serie.py est modifié
 
+|image1821|
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -3376,6 +3378,10 @@ Le script python send_sms.py remplace le script envoi_sms.py
    :width: 600px
 .. |image1820| image:: ../img/image1820.webp
    :width: 600px
+.. |image1821| image:: ../img/image1821.webp
+   :width: 600px
+.. |image1822| image:: ../img/image1822.webp
+   :width: 550px
 .. |image1823| image:: ../img/image1823.webp
    :width: 500px
 .. |image1824| image:: ../img/image1824.webp
