@@ -151,13 +151,9 @@ Et : http://domo-site.fr/accueil/dossiers/7
 
 :red:`La variable passe à 1 à la demande d'asterisk quand la sonnette est activée sur le portier`
 
- . **pushover_img.sh**
+ . **pushover_image.sh**
 
-   2 versions, sous **linux/debian** et sous **docker/debian**
-
-   |image709|
-
-   |image710|
+  |image710|
 
 .. important:: **En utilisant connect.lua**
 
@@ -1166,10 +1162,8 @@ Lancer jupyter notebook:
    :width: 642px
 .. |image707| image:: ../media/image707.webp
    :width: 659px
-.. |image709| image:: ../media/image709.webp
-   :width: 588px
 .. |image710| image:: ../media/image710.webp
-   :width: 700px
+   :width: 500px
 .. |image711| image:: ../media/image711.webp
    :width: 474px
 .. |image712| image:: ../media/image712.webp
