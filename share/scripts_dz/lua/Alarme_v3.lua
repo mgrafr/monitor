@@ -1,15 +1,10 @@
 -- Alarme absence et nuit maison
 --
 -- alarme--alarme.lua
--- version 3.0.7
+-- version 3.0.8
 --
  json = (loadfile "/opt/domoticz/scripts/lua/JSON.lua")()
 
-
-
-
---function send_sse(txt,txt1)
--- existe dans notifications_devices
 -- trouver un élément dans une table
 local function find_string_in(tbl, str) 
     for _, element in ipairs(tbl) do
@@ -130,19 +125,19 @@ return {
     elseif (find_string_in(virtuels, item.name)==true) then print("elseif:"..item.name)
         -- alarme nuit_activation
         if (item.name == 'alarme_nuit' and  item.state=='On' ) then 
-        txt='alarmeùnuitùactivee';obj='alarme_nuit_activee';
+        txt='alarme_nuitùactivee';obj='alarme_nuit_activee';
         alerte_gsm(txt);domoticz.variables('alarme').set("alarme_nuit"); 	
 	    elseif (item.name == 'alarme_nuit' and  item.state=='Off' ) then
-        txt='alarmeùnuitùdesactivee';obj='alarme_nuit_desactivee';alerte_gsm(txt);
+        txt='alarme_nuit_desactivee';obj='alarme_nuit_desactivee';alerte_gsm(txt);
             if (domoticz.variables('alarme').value~='alarme_auto') then domoticz.variables('alarme').set("0");
             end
         end	
         -- alarme absence _activation
         if (item.name == 'alarme_absence' and  item.state=='On' ) then domoticz.variables('alarme').set("alarme_absence"); 
-        txt='alarmeùabsenceùactivee';obj='alarme absence activee';alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
+        txt='alarme_absence_activee';obj='alarme absence activee';alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
 	    elseif (item.name == 'alarme_absence' and  item.state=='Off') then domoticz.variables('alarme').set("0");devices('Modect').switchOff();
 	        
-        txt='alarmeùabsenceùdesactivee';obj='alarme absence desactivee';
+        txt='alarme_absence_desactivee';obj='alarme absence desactivee';
         alerte_gsm(txt);alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
         end	
 	    
@@ -163,7 +158,7 @@ return {
         end
         -- alarme auto
         if (item.name == 'al_nuit_auto' and  item.state=='On') then txt='alarme_nuit_auto_activee';alerte_gsm(txt); domoticz.variables('alarme').set("alarme_auto");
-        elseif (item.name == 'al_nuit_auto' and  item.state=='Off') then txt='alarmeùnuitùautoùdesactivee';alerte_gsm(txt);domoticz.variables('alarme').set("0");
+        elseif (item.name == 'al_nuit_auto' and  item.state=='Off') then txt='alarme_nuit_auto_desactivee';alerte_gsm(txt);domoticz.variables('alarme').set("0");
         end
          -- activation sirène
         if (item.name == 'activation-sirene' and  item.state=='On') then print("activ_siren");domoticz.variables('activation-sir-txt').set("desactiver");
@@ -171,7 +166,7 @@ return {
         end 
         --
         if (item.name == 'Test_GSM') then print("test_gsm")
-            txt='TestùGSMùOK';alerte_gsm(txt);send_sms(txt);
+            txt='Test_GSM_OK';alerte_gsm(txt);send_sms(txt);
             obj='Test GSM OK';domoticz.email('Alarme',obj,adresse_mail) 
             --domoticz.devices('Test_GSM').switchOff()
         -- test sirene
@@ -179,7 +174,8 @@ return {
         end    
     print("alarme nuit :"..time)
     --print("sse="..item.name);
-    send_sse(item.id,item.state);  
+       if (item.id~= nil) then send_sse(item.id,item.state);  
+       end
     end
  --******************************timer********************************************    
         if (time=='23:00') then

@@ -1,5 +1,8 @@
--- Check the wiki for dzVents
-function alerte_gsm(txt) -- ATTENTION PAS ESPACES pout txt
+-- chargement fichier contenant les variable de configuration
+package.path = package.path..";/opt/domoticz/www/modules_lua/?.lua"
+require 'string_tableaux' 
+require 'connect'
+function alerte_gsm(txt) -- ATTENTION PAS ESPACES pour txt
 f = io.open("/opt/domoticz/scripts/python/aldz.py", "w")
 env="#!/usr/bin/env python3"
 f:write(env.." -*- coding: utf-8 -*-\nx='"..txt.."'\npriority=1")
@@ -31,7 +34,7 @@ function detect_frigate(t)
     end
 end 
 function modect_cam(mode)
-       json_val=decode_json('curl -XPOST -d "user=michel&pass=Idem4546"  http://192.168.1.23/zm/api/host/login.json')
+       json_val=decode_json('curl -XPOST -d "user=xxxxx&pass=xxxxxxxx"  http://192.168.1.23/zm/api/host/login.json')
        print(json_val.access_token)
        cle=json_val.access_token
        json_val=decode_json('http://'..ip_monitor..'/monitor/admin/string_modect.json')

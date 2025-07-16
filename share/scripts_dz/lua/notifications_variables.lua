@@ -8,7 +8,7 @@ local base64 = require'base64'
 
 
 -- repertoire du script python
-rep='scripts/python/'
+rep='/opt/domoticz/scripts/python/'
 -- repertoire log
 rep_log='/home/michel/'
 --
@@ -33,14 +33,14 @@ return {
 	             txt=tostring(domoticz.variables('pression-chaudiere').value) 
 	             domoticz.variables('pression-chaudiere').set('pression_basse')
 	 	         print("envoi SMS pression-chaudiere")
-                 alerte_gsm('alarmeù'..txt);domoticz.email('Alarme pression chaudiere',txt,adresse_mail) 
+                 alerte_gsm('alarme_'..txt);domoticz.email('Alarme pression chaudiere',txt,adresse_mail) 
                end
 	        
 	           if ((domoticz.variables('zm_cam').changed) and (domoticz.variables('zm_cam').value ~= "0")) then  
 	             txt=tostring(domoticz.variables('zm_cam').value) 
 	             domoticz.variables('zm_cam').set('0')
 	 	         print("envoi SMS alarme zm")
-                 alerte_gsm('alarme_zoneminderù'..txt)
+                 alerte_gsm('alarme_zoneminder_'..txt)
                end
           
 	 	    if (domoticz.variables('alarme_bat').changed) then 
@@ -79,10 +79,10 @@ return {
                 command = rep..'upload_fichier.py connect.lua  > '..rep_log..'connect.log 2>&1';os.execute(command);
                 command = rep..'upload_fichier.py connect.py  > '..rep_log..'connect.log 2>&1';os.execute(command);
                 print('maj effectuée_3');
-                domoticz.variables('upload').set('0')   
+                
                 domoticz.variables('BASH').set("restart_sms_dz")
                 end
-                
+                domoticz.variables('upload').set('0')   
             end
                
             
@@ -90,7 +90,7 @@ return {
                  if (domoticz.variables('pilule_chat').value ~= "0") then 
 	             txt=tostring(domoticz.variables('pilule_chat').value) 
 	             print('médicaments')
-                 alerte_gsm('alerteù'..txt)
+                 alerte_gsm('alerte_'..txt)
                  end
             end
             if (domoticz.variables('BASH').changed) then 
