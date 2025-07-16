@@ -10,4 +10,7 @@ not="$*"
 # envoi SMS Free
 #$CURL -k -X POST "https://smsapi.free-mobile.fr/sendmsg?user=$USER&pass=$PASS&$
 ### envoi par modem GSM
-python3 /home/michel/envoi_sms.py $not >> /home/michel/erreur 2>&1
+#modem Ebyte
+#python3 /home/michel/envoi_sms.py $not >> /home/michel/erreur 2>&1
+#modem PUSR
+python3 /home/michel/send_sms.py $not >> /home/michel/erreur 2>&1
