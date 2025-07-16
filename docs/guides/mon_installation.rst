@@ -545,6 +545,10 @@ puis pour supprimer le ou les messages:
 
       |image1820|
 
+      Mappage des ports USB
+
+      |image1825|
+
 .. admonition:: **Installation dans un conteneur LXC Debian 11** 
 
    *Le conteneur LXC* :
@@ -3386,3 +3390,5 @@ Le script rec_sms_serie.py est modifié
    :width: 500px
 .. |image1824| image:: ../img/image1824.webp
    :width: 700px
+.. |image1825| image:: ../img/image1825.webp
+   :width: 550px
