@@ -1,15 +1,16 @@
 #!/bin/bash
 jour=$(date +%H:%M:%S)
 
-wget --user USER --password MOT-PASSE  http://$1/camsnapshot.jpg?idx=1 -O /opt/domoticz/userdata/camsnapshot.jpg
+wget --user michel --password xxxxxxxxxxxxxxxxx  http://$1/camsnapshot.jpg?idx=1 -O /opt/domoticz/camsnapshot.jpg
 
 TITLE="image portier"
-APP_TOKEN="asxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxa"
-USER_TOKEN="uoxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxji"
+APP_TOKEN="asxxxxxxxxxxxxxxxxxxxxxxxxxxa"
+USER_TOKEN="uoxxxxxxxxxxxxxxxxxxxxxxx6ji"
 MESSAGE="on sonne au portail" 
-curl -s -F "token=$APP_TOKEN" \
-   -F "user=$USER_TOKEN" \
-   -F "title=$TITLE" \
-   -F "message=$MESSAGE" \
-   -F "attachment=@userdata/camsnapshot.jpg" \
+curl -s \
+  --form-string  "token=$APP_TOKEN" \
+  --form-string  "user=$USER_TOKEN" \
+  --form-string  "title=$TITLE" \
+  --form-string  "message=$MESSAGE" \
+  -F "attachment=@/opt/domoticz/camsnapshot.jpg" \
    https://api.pushover.net/1/messages.json
