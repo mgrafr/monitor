@@ -1565,9 +1565,14 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 21.10 Home Assistant
 ====================
-21.10.1 installation automatique sous Docker dans un CT LXC
------------------------------------------------------------
-*c'est mon installation actuelle*
+installation dans un Conteneur LXC, *c'est mon installation actuelle*
+
+|image1826|
+
+21.10.1 Création du conteneur
+-----------------------------
+
+**en cours de modifications**
 
 .. code-block::
 
