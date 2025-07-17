@@ -1571,18 +1571,35 @@ installation dans un Conteneur LXC, *c'est mon installation actuelle*
 
 21.10.1 Création du conteneur
 -----------------------------
-
-**en cours de modifications**
-
 .. code-block::
 
-   bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/homeassistant.sh)"
+   wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/docker.sh
+   chmod +x docker.sh
+   ./docker.sh
+
+|image1833|
+
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/docker.sh)"
+
+|image1827|
+
+|image1828|
+
+|image1829|
+
+|image1830|
+
+|image1831|
+
+|image1832|
+
+|image1312|
 
 |image1313|
 
 |image1314|
 
-|image1312|
+
 
 |image1315|
 
@@ -3397,3 +3414,19 @@ Le script rec_sms_serie.py est modifié
    :width: 700px
 .. |image1825| image:: ../img/image1825.webp
    :width: 550px
+.. |image1826| image:: ../img/image1826.webp
+   :width: 600px
+.. |image1827| image:: ../img/image1827.webp
+   :width: 600px
+.. |image1828| image:: ../img/image1828.webp
+   :width: 550px
+.. |image1829| image:: ../img/image1829.webp
+   :width: 550px
+.. |image1830| image:: ../img/image1830.webp
+   :width: 550px
+.. |image1831| image:: ../img/image1831.webp
+   :width: 550px
+.. |image1832| image:: ../img/image1832.webp
+   :width: 550px
+.. |image1833| image:: ../img/image1833.webp
+   :width: 600px
