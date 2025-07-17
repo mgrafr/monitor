@@ -1579,8 +1579,6 @@ installation dans un Conteneur LXC, *c'est mon installation actuelle*
 
 |image1833|
 
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/docker.sh)"
-
 |image1827|
 
 |image1828|
@@ -1599,21 +1597,18 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/Proxmo
 
 |image1314|
 
-
+j'ai choisi de ne pas installer Portainer
 
 |image1315|
 
-|image1316|
 
-Portainer est également installé:
+**en cours de modif**
+
+|image1316|
 
 |image1308|
 
 |image1309|
-
-.. code-block::
-
-   docker restart portainer
 
 |image1317|
 
