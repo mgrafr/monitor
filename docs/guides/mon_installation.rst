@@ -1601,16 +1601,49 @@ j'ai choisi de ne pas installer Portainer
 
 |image1315|
 
-
-**en cours de modif**
-
 |image1316|
 
-|image1308|
-
-|image1309|
-
 |image1317|
+
+21.10.1 Installer Home Assistant
+--------------------------------
+**Avec Docker compose**
+
+Création de compose.yaml:
+
+.. code block::
+
+   cd /opt
+   mkdir ha
+   cd ha
+   nano compose.yaml
+
+le fichier compose.yaml:
+
+.. code-block::
+
+   services:
+     homeassistant:
+       container_name: homeassistant
+       image: "ghcr.io/home-assistant/home-assistant:stable"
+       volumes:
+         - /opt/ha/config:/config
+         - /etc/localtime:/etc/localtime:ro
+         - /run/dbus:/run/dbus:ro
+       restart: unless-stopped
+       privileged: true
+       network_mode: host
+
+ |image1309| 
+
+Lancer Home assistant:
+
+.. code-block::
+
+   docker compose -d
+
+ |image1308|
+
 
 21.10.1.1 Mise à jour de Home Assistant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3026,9 +3059,9 @@ Le script rec_sms_serie.py est modifié
 .. |image1300| image:: ../img/image1300.webp
    :width: 400px
 .. |image1308| image:: ../img/image1308.webp
-   :width: 605px
+   :width: 520px
 .. |image1309| image:: ../img/image1309.webp
-   :width: 605px
+   :width: 600px
 .. |image1310| image:: ../img/image1310.webp
    :width: 700px
 .. |image1311| image:: ../img/image1311.webp
@@ -3040,7 +3073,7 @@ Le script rec_sms_serie.py est modifié
 .. |image1314| image:: ../img/image1314.webp
    :width: 550px
 .. |image1315| image:: ../img/image1315.webp
-   :width: 339px
+   :width: 580px
 .. |image1316| image:: ../img/image1316.webp
    :width: 600px
 .. |image1317| image:: ../img/image1317.webp
