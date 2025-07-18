@@ -1645,17 +1645,18 @@ Le cas échéant, restauration de la sauvegarde
 
 |image1316|
 
-21.10.1.1 Mise à jour de Home Assistant
+21.10.2.1 Mise à jour de Home Assistant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block::
 
-   update
+   cd /opt/ha
+   docker compose pull
 
 |image1569|
 
-21.10.1.2 Installation de HACS, Pyscript, etc
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21.10.3 Installation de HACS, Pyscript, etc
+-------------------------------------------
 
 Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_config/_data` :
 
@@ -1688,31 +1689,8 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
 
    |image1319|
 
-21.10.2 Script pour une installation automatique dans une VM
-------------------------------------------------------------
-*Installation* : http://domo-site.fr/accueil/dossiers/61
-
-.. code-block::
-
-   bash -c "$(wget -qLO - https://raw.githubusercontent.com/tteck/Proxmox/main/vm/haos-vm.sh)"
- 
-|image1057|
-
-|image1058|
-
-|image1059|
-
-|image1060|
-
-|image1061|
-
-|image1062|
-
-|image1063|
-
-21.10.3 Python avec pyscript 
+21.10.4 Python avec pyscript 
 ----------------------------
-
 .. admonition:: **Avec HACS**
 
    Sous HACS -> Intégrations, sélectionnez |image1194|, recherchez et installez pyscript
@@ -1812,7 +1790,7 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
                idx: "{{ trigger.entity_id }}"
                state: "{{ trigger.to_state.state }}" 
 
-21.10.4 Chemins des fichiers sous Docker 
+21.10.5 Chemins des fichiers sous Docker 
 ----------------------------------------
 
 |image1350|
@@ -1823,7 +1801,7 @@ un exemple : dans le cadre rouge, un script lancé hors du conteneur, dans un ca
 
 |image1351|
 
-21.10.5 NGINX, Virtual Host 
+21.10.6 NGINX, Virtual Host 
 ---------------------------
 Pré-requis:
 
@@ -1866,9 +1844,9 @@ le fichier ha.conf dans /etc/nginx/conf.d:
     }
    }
 
-21.10.6 exemples de scripts 
+21.10.7 exemples de scripts 
 ---------------------------
-21.10.6.1 Bouton SOS zigbee2mqtt
+21.10.7.1 Bouton SOS zigbee2mqtt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 à venir
 
