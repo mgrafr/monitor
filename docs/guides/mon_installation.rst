@@ -1601,11 +1601,7 @@ j'ai choisi de ne pas installer Portainer
 
 |image1315|
 
-|image1316|
-
-|image1317|
-
-21.10.1 Installer Home Assistant
+21.10.2 Installer Home Assistant
 --------------------------------
 **Avec Docker compose**
 
@@ -1634,16 +1630,20 @@ le fichier compose.yaml:
        privileged: true
        network_mode: host
 
- |image1309| 
+|image1309| 
 
 Lancer Home assistant:
 
 .. code-block::
 
    docker compose -d
+   http://IP_CONTENEUR:8123
 
- |image1308|
+|image1308|
 
+Le cas échéant, restauration de la sauvegarde
+
+|image1316|
 
 21.10.1.1 Mise à jour de Home Assistant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
