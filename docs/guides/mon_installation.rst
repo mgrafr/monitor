@@ -1607,7 +1607,7 @@ j'ai choisi de ne pas installer Portainer
 
 Création de compose.yaml:
 
-.. code block::
+.. code-block::
 
    cd /opt
    mkdir ha
@@ -1792,7 +1792,6 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
 
 21.10.5 Chemins des fichiers sous Docker 
 ----------------------------------------
-
 |image1350|
 
 Comme on peut le voir sur l'image ci-dessus le dossier :darkblue:`_data` correspond au dossier :darkblue:`config` de Docker; comme pour Domoticz, il faut tenir compte de ces chemins dans les scripts suivant où ils sont lancés.
@@ -3039,7 +3038,7 @@ Le script rec_sms_serie.py est modifié
 .. |image1308| image:: ../img/image1308.webp
    :width: 520px
 .. |image1309| image:: ../img/image1309.webp
-   :width: 600px
+   :width: 500px
 .. |image1310| image:: ../img/image1310.webp
    :width: 700px
 .. |image1311| image:: ../img/image1311.webp
@@ -3051,9 +3050,9 @@ Le script rec_sms_serie.py est modifié
 .. |image1314| image:: ../img/image1314.webp
    :width: 550px
 .. |image1315| image:: ../img/image1315.webp
-   :width: 580px
+   :width: 500px
 .. |image1316| image:: ../img/image1316.webp
-   :width: 600px
+   :width: 450px
 .. |image1317| image:: ../img/image1317.webp
    :width: 605px
 .. |image1318| image:: ../img/image1318.webp
