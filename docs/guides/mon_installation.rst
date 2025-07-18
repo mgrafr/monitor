@@ -1647,7 +1647,6 @@ Le cas échéant, restauration de la sauvegarde
 
 21.10.2.1 Mise à jour de Home Assistant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. code-block::
 
    cd /opt/ha
@@ -1657,8 +1656,7 @@ Le cas échéant, restauration de la sauvegarde
 
 21.10.3 Installation de HACS, Pyscript, etc
 -------------------------------------------
-
-Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_config/_data` :
+Téléchagement dans le répertoire :darkblue:`/opt/ha/congfig` :
 
 .. code-block::
 
@@ -1666,7 +1664,7 @@ Téléchagement dans le répertoire :darkblue:`/var/lib/docker/volumes/hass_conf
 
 |image1310|
 
-**Redémarrer Home Assistant** et ajouter l'intégration 
+**Redémarrer Home Assistant** et ajouter ou mettre à jour l'intégration 
 
 |image1311|
 
