@@ -612,7 +612,7 @@ https://github.com/mtrakal/ipc-vatilon
 .. |image1675| image:: ../img/image1675.webp
    :width: 621px
 .. |image1676| image:: ../img/image1676.webp
-   :width: 586px
+   :width: 500px
 .. |image1677| image:: ../img/image1677.webp
    :width: 383px
 .. |image1678| image:: ../img/image1678.webp
