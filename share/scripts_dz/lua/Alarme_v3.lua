@@ -1,7 +1,7 @@
 -- Alarme absence et nuit maison
 --
 -- alarme--alarme.lua
--- version 3.0.8
+-- version 3.0.9
 --
  json = (loadfile "/opt/domoticz/scripts/lua/JSON.lua")()
 
@@ -24,12 +24,12 @@ require 'connect'
 -- {capteur,etat,modif variable,contenu variable,notification,alarme}   alarme 0=absence et nuit 1=absence seulement 
 local a1={'porte_entree','Open','porte-ouverte','porte_ouverte_entree'};
 local a2={'porte ar cuisine','Open','porte-ouverte','porte_ouverte_cuisine'};
-local a3={'porte_fenetre','Open',':porte-ouverte','fenetre_ouverte_sejour'};
-local a4={'fenetre_bureau','Open',':fenetre-ouverte','fenetre_ouverte_bureau'};
-local a5={'fenetre_salon','Open',':fenetre-ouverte','fenetre_ouverte_salon'};
-local a6={'fenetre_ch_amis','Open',':fenetre-ouverte','fenetre_ouverte_ch_amis'};
-local a7={'fenetre_ch_1','Open',':fenetre-ouverte','fenetre_ouverte_chambre1'};
-local a8={'porte_veranda_sud','Open',':porte-ouverte','porte_ouverte_veranda-s'};
+local a3={'porte_fenetre','Open','porte-ouverte','fenetre_ouverte_sejour'};
+local a4={'fenetre_bureau','Open','fenetre-ouverte','fenetre_ouverte_bureau'};
+local a5={'fenetre_salon','Open','fenetre-ouverte','fenetre_ouverte_salon'};
+local a6={'fenetre_ch_amis','Open','fenetre-ouverte','fenetre_ouverte_ch_amis'};
+local a7={'fenetre_ch_1','Open','fenetre-ouverte','fenetre_ouverte_chambre1'};
+local a8={'porte_veranda_sud','Open','porte-ouverte','porte_ouverte_veranda-s'};
 local a9={'pir_entree_pr','Open','intrusion','intrusion_entree'};
 local a10={'pir ar cuisine_motion','Open','intrusion','intrusion_cuisine'};
 local A1={a1,a2,a3,a4,a5,a6,a7,a8,a9,a10};local A2={a1,a2,a3,a4,a5,a6,a7,a8};
@@ -102,7 +102,7 @@ return {
             if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
             end    
         --mise en service sirene
-            if (sirene==1) then devices('sirene').switchOn();sirene="2"
+            if (sirene==1) then domoticz.devices('sirene').switchOn();sirene="2"
             end 
             if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('sirene').switchOn();sirene="3"
             end    
@@ -111,12 +111,12 @@ return {
         if (domoticz.variables('porte-ouverte').changed) then  
 	             txt=tostring(domoticz.variables('porte-ouverte').value) 
 	             print("porte-ouverte")
-                 alerte_gsm('alarmeù'..txt)
+                 alerte_gsm('alarme_'..txt)
         end
         if (domoticz.variables('intrusion').changed) then  
 	             txt=tostring(domoticz.variables('intrusion').value) 
 	             print('intrusion')
-                 alerte_gsm('alarmeù'..txt)
+                 alerte_gsm('alarme_'..txt)
         end
         
       --*******************devices virtuels************************************        
@@ -125,7 +125,7 @@ return {
     elseif (find_string_in(virtuels, item.name)==true) then print("elseif:"..item.name)
         -- alarme nuit_activation
         if (item.name == 'alarme_nuit' and  item.state=='On' ) then 
-        txt='alarme_nuitùactivee';obj='alarme_nuit_activee';
+        txt='alarme_nuit_activée';obj='alarme_nuit_activée';
         alerte_gsm(txt);domoticz.variables('alarme').set("alarme_nuit"); 	
 	    elseif (item.name == 'alarme_nuit' and  item.state=='Off' ) then
         txt='alarme_nuit_desactivee';obj='alarme_nuit_desactivee';alerte_gsm(txt);
@@ -135,7 +135,7 @@ return {
         -- alarme absence _activation
         if (item.name == 'alarme_absence' and  item.state=='On' ) then domoticz.variables('alarme').set("alarme_absence"); 
         txt='alarme_absence_activee';obj='alarme absence activee';alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
-	    elseif (item.name == 'alarme_absence' and  item.state=='Off') then domoticz.variables('alarme').set("0");devices('Modect').switchOff();
+	    elseif (item.name == 'alarme_absence' and  item.state=='Off') then domoticz.variables('alarme').set("0");domoticz.devices('Modect').switchOff();
 	        
         txt='alarme_absence_desactivee';obj='alarme absence desactivee';
         alerte_gsm(txt);alerte_gsm(txt) ; domoticz.email('Alarme',obj,adresse_mail)	
@@ -174,13 +174,13 @@ return {
         end    
     print("alarme nuit :"..time)
     --print("sse="..item.name);
-       if (item.id~= nil) then send_sse(item.id,item.state);  
+       if (item.id~= nil and item.state~= nil) then send_sse(item.id,item.state);  
        end
     end
  --******************************timer********************************************    
         if (time=='23:00') then
             if (domoticz.devices('al_nuit_auto').state == "On" and domoticz.devices('alarme_nuit').state=="Off")  then  domoticz.devices('alarme_nuit').switchOn()
-                print('al_nuit=ON');send_sse(domoticz.devices('alarme_nuit'),domoticz.devices('alarme_nuit').state)
+                print('al_nuit=ON');send_sse(domoticz.devices('alarme_nuit').id,domoticz.devices('alarme_nuit').state)
             end
         elseif (time=='06:00') then    
             if (domoticz.devices('al_nuit_auto').state == "On" and domoticz.devices('alarme_nuit').state=="On")  then domoticz.variables('alarme').set('alarme_auto');
@@ -191,6 +191,7 @@ return {
         end
 end
 }
+	
 	
 	
 	
