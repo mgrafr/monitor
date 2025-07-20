@@ -51,6 +51,8 @@ return {
 	                 --envoi_email(txt,fich_log)
                      domoticz.email('Alarme_bat',txt,adresse_mail) 
 	                 domoticz.variables('not_alarme_bat').set('1')
+	            elseif (domoticz.variables('alarme_bat').value == "batterie_forte") then
+	                 domoticz.variables('not_alarme_bat').set('0')
                     end
                  end 
             end
