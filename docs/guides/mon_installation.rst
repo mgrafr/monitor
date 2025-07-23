@@ -2795,6 +2795,10 @@ Remplace le modem Ebyte en 2025
 
 |image1824|
 
+.. warning::
+
+   **Il est important de désactiver, avec un smartphone, le code PIN de la carte SIM.**
+
 Le script python send_sms.py remplace le script envoi_sms.py
 
 |image1822|
