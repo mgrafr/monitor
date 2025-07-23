@@ -1,7 +1,7 @@
 -- Alarme absence et nuit maison
 --
 -- alarme--alarme.lua
--- version 3.0.9
+-- version 3.0.10
 --
  json = (loadfile "/opt/domoticz/scripts/lua/JSON.lua")()
 
@@ -83,7 +83,7 @@ return {
             for k, v in ipairs(A1) do 
                 if (item.name == A1[k][1] and item.name ~= nil) then
                     if (item.state == A1[k][2] ) then 
-        	        domoticz.variables(A1[k][3]).set(A1[k][4]);
+        	        domoticz.variables(A1[k][3]).set(A1[k][4]);lampe=1;sirene=0;
     	            else print("erreur:"..A1[k][1])
     	            end
         	    end
@@ -102,15 +102,20 @@ return {
             if (lampes==1) then devices('lampe_salon').switchOn();lampes="2"
             end    
         --mise en service sirene
-            if (sirene==1) then domoticz.devices('sirene').switchOn();sirene="2"
+            if (sirene==1) then domoticz.device('sirene').switchOn();sirene="2"
             end 
-            if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  devices('sirene').switchOn();sirene="3"
+            if (sirene==2 and domoticz.device('activation-sirene').state == 'On') then  device('sirene').switchOn();sirene="3"
             end    
         end  
         -- fin alarme nuit   
         if (domoticz.variables('porte-ouverte').changed) then  
 	             txt=tostring(domoticz.variables('porte-ouverte').value) 
 	             print("porte-ouverte")
+                 alerte_gsm('alarme_'..txt)
+        end
+         if (domoticz.variables('fenetre-ouverte').changed) then  
+	             txt=tostring(domoticz.variables('fenetre-ouverte').value) 
+	             print("fenetre-ouverte")
                  alerte_gsm('alarme_'..txt)
         end
         if (domoticz.variables('intrusion').changed) then  
@@ -125,7 +130,7 @@ return {
     elseif (find_string_in(virtuels, item.name)==true) then print("elseif:"..item.name)
         -- alarme nuit_activation
         if (item.name == 'alarme_nuit' and  item.state=='On' ) then 
-        txt='alarme_nuit_activée';obj='alarme_nuit_activée';
+        txt='alarme_nuit_activee';obj='alarme_nuit_activee';
         alerte_gsm(txt);domoticz.variables('alarme').set("alarme_nuit"); 	
 	    elseif (item.name == 'alarme_nuit' and  item.state=='Off' ) then
         txt='alarme_nuit_desactivee';obj='alarme_nuit_desactivee';alerte_gsm(txt);
@@ -191,7 +196,6 @@ return {
         end
 end
 }
-	
 	
 	
 	
