@@ -18,7 +18,10 @@ Server version: 10.11.6
 
 19.4.1 Releases
 ===============
-Version en developpement 3.2.5
+Version en developpement 3.2.6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version 3.2.5 (juillet 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction bug sur devices_plan pour ioBroker
 - correction bug sur admin pour Domoticz
