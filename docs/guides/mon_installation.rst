@@ -2791,8 +2791,7 @@ https://www.pusr.com/ndirectory/[User-Manual]USR-G771-E-User-Manual_1687230153.p
 
 |image1823|
 
-Remplace le modem Ebyte en 2025
-
+Remplace le modem Ebyte en 2025; plus facile à utiliser, ne reconnait pas les caractères accentués?.
 |image1824|
 
 .. warning::
