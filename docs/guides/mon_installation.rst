@@ -3,6 +3,10 @@
 
 |image1655|
 
+21.0 Box Internet & routeur
+===========================
+en cours de rédaction
+
 21.1 Proxmox
 ============
 C’est la base du système, il doit être installé en premier, ensuite :
