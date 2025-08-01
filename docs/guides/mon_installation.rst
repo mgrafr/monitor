@@ -2810,6 +2810,28 @@ Le script rec_sms_serie.py est modifié
 
 |image1821|
 
+21.17 VM Windows 11
+===================
+- Télécharger Windows 11: https://www.microsoft.com/fr-fr/software-download/windows11
+
+- Télécharger les pilotes : https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/
+
+   |image1841|
+
+21.17.1 Importer les isos dans pve
+----------------------------------
+|image1836|
+
+21.17.2 Créer la machine virtuelle
+----------------------------------
+|image1837|
+
+|image1838|
+
+|image1839|
+
+|image1840|
+
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
 .. |image1028| image:: ../media/image1028.webp
@@ -3440,3 +3462,13 @@ Le script rec_sms_serie.py est modifié
    :width: 550px
 .. |image1833| image:: ../img/image1833.webp
    :width: 600px
+.. |image1836| image:: ../img/image1836.webp
+   :width: 550px
+.. |image1837| image:: ../img/image1837.webp
+   :width: 600px
+.. |image1838| image:: ../img/image1838.webp
+   :width: 650px
+.. |image1839| image:: ../img/image1839.webp
+   :width: 550px
+.. |image1840| image:: ../img/image1840.webp
+   :width: 550px
