@@ -2832,6 +2832,17 @@ Le script rec_sms_serie.py est modifié
 
 |image1840|
 
+|image1842|
+
+21.17.3 Installation de W11
+---------------------------
+|image1843|
+
+|image1844|
+
+|image1845|
+
+
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
 .. |image1028| image:: ../media/image1028.webp
@@ -3472,3 +3483,13 @@ Le script rec_sms_serie.py est modifié
    :width: 550px
 .. |image1840| image:: ../img/image1840.webp
    :width: 550px
+.. |image1841| image:: ../img/image1841.webp
+   :width: 550px
+.. |image1842| image:: ../img/image1842.webp
+   :width: 550px
+.. |image1843| image:: ../img/image1843.webp
+   :width: 700px
+.. |image1844| image:: ../img/image1844.webp
+   :width: 700px
+.. |image1845| image:: ../img/image1845webp
+   :width: 600px
