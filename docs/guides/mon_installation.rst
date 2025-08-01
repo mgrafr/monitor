@@ -3491,5 +3491,5 @@ Le script rec_sms_serie.py est modifié
    :width: 700px
 .. |image1844| image:: ../img/image1844.webp
    :width: 700px
-.. |image1845| image:: ../img/image1845webp
+.. |image1845| image:: ../img/image1845.webp
    :width: 600px
