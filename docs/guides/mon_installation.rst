@@ -3516,3 +3516,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :ref:`pve.spice.vv` dans l
    :width: 600px
 .. |image1848| image:: ../img/image1848.webp
    :width: 300px
+.. |image1849| image:: ../img/image1849.webp
+   :width: 500px
