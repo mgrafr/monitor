@@ -2854,7 +2854,7 @@ Imstaller virt-viewer sur le(les)  poste(s) client
 
 |image1848|
 
-Dans PVE, choisir **SPICE** et cliquer sue le fichier :ref:`pve.spice.vv` dans le dossier :ref:`Téléchargements`
+Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` dans le dossier :darkblue:`Téléchargements`
 
 |image1849|
 
