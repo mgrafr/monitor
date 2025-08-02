@@ -2842,6 +2842,13 @@ Le script rec_sms_serie.py est modifié
 
 |image1845|
 
+21.17.4 Console grapique SPICE
+------------------------------
+|image1846|
+
+Télécharger virt-viewer, le client SPICE, sur le(les)  poste(s) client: https://virt-manager.org/download.html
+
+|image1847|
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -3492,4 +3499,8 @@ Le script rec_sms_serie.py est modifié
 .. |image1844| image:: ../img/image1844.webp
    :width: 700px
 .. |image1845| image:: ../img/image1845.webp
+   :width: 600px
+.. |image1846| image:: ../img/image1846.webp
+   :width: 700px
+.. |image1847| image:: ../img/image1847.webp
    :width: 600px
