@@ -2846,9 +2846,19 @@ Le script rec_sms_serie.py est modifié
 ------------------------------
 |image1846|
 
-Télécharger virt-viewer, le client SPICE, sur le(les)  poste(s) client: https://virt-manager.org/download.html
+Télécharger virt-viewer, le client SPICE: https://virt-manager.org/download.html
 
 |image1847|
+
+Imstaller virt-viewer sur le(les)  poste(s) client
+
+|image1848|
+
+Dans PVE, choisir **SPICE** et cliquer sue le fichier :ref:`pve.spice.vv` dans le dossier :ref:`Téléchargements`
+
+|image1849|
+
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -3504,3 +3514,5 @@ Télécharger virt-viewer, le client SPICE, sur le(les)  poste(s) client: https:
    :width: 700px
 .. |image1847| image:: ../img/image1847.webp
    :width: 600px
+.. |image1848| image:: ../img/image1848.webp
+   :width: 300px
