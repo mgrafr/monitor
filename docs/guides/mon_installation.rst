@@ -9,29 +9,29 @@
 -----------------------------------
 |image1850|
 
-.. csv-table:: **Specifications**!
-:header: " ","Description"
-:widths: 15, 80
+.. csv-table:: Specifications
+       :header: " ","Description"
+       :widths: 15, 80
 
-"Interfaces", "
-- 1 x WAN Ethernet port
-- 1 x LAN Ethernet port
-- 1 x USB 3.0 port
-- 1 x Type-C Power Input
-- 1 x Reset button
-- 1 x Toggle button
-"CPU",	"MT7981B Dual-core Processor @1.3GHz"
-"Memory/Storage", DDR4 512MB / NAND Flash 256MB"
-"Protocol", "IEEE 802.11a/b/g/n/ac/ax"
-"Wi-Fi Speed", "574Mbps (2.4GHz), 2402Mbps (5GHz)"
-"Antennes", "2 x retractable external Wi-Fi antennes"
-"Ethernet Speed", "WAN Port: 10/100/1000/2500Mbps"
-"LAN Port" , "10/100/1000 Mbps"
-"Power Input"	, "ype-C, 5V/3A"
-"Power Consumption", "<8W"
-"Operating Temperature" ,"	"0 ~ 40°C (32 ~ 104°F)"
-"Storage Temperature", "-20 ~ 70°C (-4 ~ 158°F)"
-"Dimension / Weight", "120 x 83 x 34mm / 196g"
+       "Interfaces", "
+       - 1 x WAN Ethernet port
+       - 1 x LAN Ethernet port
+       - 1 x USB 3.0 port
+       - 1 x Type-C Power Input
+       - 1 x Reset button
+       - 1 x Toggle button
+       "CPU",	"MT7981B Dual-core Processor @1.3GHz"
+       "Memory/Storage", DDR4 512MB / NAND Flash 256MB"
+       "Protocol", "IEEE 802.11a/b/g/n/ac/ax"
+       "Wi-Fi Speed", "574Mbps (2.4GHz), 2402Mbps (5GHz)"
+       "Antennes", "2 x retractable external Wi-Fi antennes"
+       "Ethernet Speed", "WAN Port: 10/100/1000/2500Mbps"
+       "LAN Port" , "10/100/1000 Mbps"
+       "Power Input"	, "ype-C, 5V/3A"
+       "Power Consumption", "<8W"
+       "Operating Temperature" ,"	"0 ~ 40°C (32 ~ 104°F)"
+       "Storage Temperature", "-20 ~ 70°C (-4 ~ 158°F)"
+       "Dimension / Weight", "120 x 83 x 34mm / 196g"
 
 |image1851|
 
