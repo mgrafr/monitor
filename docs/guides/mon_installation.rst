@@ -9,9 +9,9 @@
 -----------------------------------
 |image1850|
 
-====  ===========
+====  ======================================
       Description
-====  ===========
+====  ======================================
 
 Interfaces
        - 1 x WAN Ethernet port
@@ -32,6 +32,7 @@ Power Consumption <8W
 Operating Temperature0 ~ 40°C (32 ~ 104°F)
 Storage Temperature -20 ~ 70°C (-4 ~ 158°F)
 Dimension / Weight 120 x 83 x 34mm / 196g
+====  =========================================
 
 |image1851|
 
