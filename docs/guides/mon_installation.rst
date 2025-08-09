@@ -45,6 +45,11 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    Doc GL : https://docs.gl-inet.com/router/en/3/tutorials/ssh/
 
+Avec Putty:
+
+Configuration de la Box:
+
+|image1853|
 
 en cours de rédaction
 
@@ -3566,3 +3571,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1852| image:: ../img/image1852.webp
    :width: 500px
+.. |image1853| image:: ../img/image1853.webp
+   :width: 650px
