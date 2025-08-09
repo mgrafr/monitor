@@ -29,8 +29,22 @@
 +  Storage Temperature : -20 ~ 70°C (-4 ~ 158°F)
 +  Dimension / Weight :120 x 83 x 34mm / 196g
 
+**Firmware Version**: **Native OpenWrt**	24.10
 
 |image1851|
+
+21.0.2 BOX Free One
+-------------------
+|image1852|
+
+Box en fin de fin qui devra être remplacée avant fin 2025
+
+21.0.3 Installation du routeur
+------------------------------
+.. admonition::  **accès ssh** 
+
+   Doc GL : https://docs.gl-inet.com/router/en/3/tutorials/ssh/
+
 
 en cours de rédaction
 
@@ -3550,3 +3564,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 500px
 .. |image1851| image:: ../img/image1851.webp
    :width: 700px
+.. |image1852| image:: ../img/image1852.webp
+   :width: 500px
