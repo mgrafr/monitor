@@ -47,6 +47,12 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 Avec Putty:
 
+.. code-block::
+
+   ifconfig INTERFACE| grep "Scope:Link" 
+
+|image1854|
+
 Configuration de la Box:
 
 |image1853|
@@ -3572,4 +3578,6 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1852| image:: ../img/image1852.webp
    :width: 500px
 .. |image1853| image:: ../img/image1853.webp
+   :width: 650px
+.. |image1854| image:: ../img/image1854.webp
    :width: 650px
