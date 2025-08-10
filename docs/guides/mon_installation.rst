@@ -73,6 +73,11 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    |image1853|
 
+   Notez ces 2 informations qui seront utilisées par la suite :
+
+  -  Le préfixe de la délégation que vous venez de mettre en place (2a01:e34:xxxx:xxxx::/64).
+   - L’adresse IPv6 du lien local (fe80::8c97:xxxx:xxxx:xxxx). 
+
 .. admonition:: **Configuration du routeur**:
 
    Si on veut utiliser le Port Forwarding du routeur, il faut mettre la FreeBox en DMZ vers l'adresse du routeur (exemple : 192.168.0.1).
