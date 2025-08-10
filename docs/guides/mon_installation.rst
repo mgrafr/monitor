@@ -73,11 +73,21 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    |image1853|
 
-21.0.3.1 Connexion au smartphone en USB
+21.0.3.2 Connexion au smartphone en USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Brancher un smartphone en USB sur le routeur qui se réveille et se met en charge 
+Après avoir validé l’autorisation si nécessaire, retourner sur l’interface d’administration du MT-3000 et activer, si ce n'est déjà fait, le mode partage de connexion par câble USB qui est opérationnel immédiatement.
+
 |image1856|
 
 |image1855|
+
+21.0.3.3 VPN Vireguard
+^^^^^^^^^^^^^^^^^^^^^^
+
+21.0 4 Batterie externe pour le Beryl AX
+----------------------------------------
+Le GL-MT3000 fonctionne correctement avec une batterie externe Anker. 
 
 en cours de rédaction
 
