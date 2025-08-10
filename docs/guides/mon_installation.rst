@@ -75,21 +75,22 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 .. admonition:: **Configuration du routeur**:
 
+   Si on veut utiliser le Port Forwarding du routeur, il faut mettre la FreeBox en DMZ vers l'adresse du routeur (exemple : 192.168.0.1).
    + Paramètres Internet du routeur
-     - Type de connexion : Static IP (si serveur DHCP désactivé sur Freebox)
-     - Adresse IP : 192.168.0.1
-     - Masque : 255.255.255.0
-     - Passerelle : 192.168.0.254
-     - DNS 1 : (voir la liste des DNS de FREE)
-     - DNS 2 : (voir la liste des DNS de FREE)
+       - Type de connexion : Static IP (si serveur DHCP désactivé sur Freebox)
+       - Adresse IP : 192.168.0.1
+       - Masque : 255.255.255.0
+       - Passerelle : 192.168.0.254
+       - DNS 1 : (voir la liste des DNS de FREE)
+       - DNS 2 : (voir la liste des DNS de FREE)
    + Paramètres Réseau du routeur
-     - Adresse IP : 192.168.1.1
-     - Masque : 255.255.255.0
+       - Adresse IP : 192.168.1.1
+       - Masque : 255.255.255.0
    + Paramètres Réseau des PC
-     - Adresse IP : 192.168.1.xxx (si serveur DHCP désactivé sur routeur)
-     - Masque : 255.255.255.0
-     - Passerelle : 192.168.1.1
-     - DNS : 192.168.1.1
+       - Adresse IP : 192.168.1.xxx (si serveur DHCP désactivé sur routeur)
+       - Masque : 255.255.255.0
+       - Passerelle : 192.168.1.1
+       - DNS : 192.168.1.1
 
 21.0.3.2 Connexion au smartphone en USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
