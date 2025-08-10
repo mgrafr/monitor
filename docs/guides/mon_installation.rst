@@ -67,7 +67,9 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    |image1857|
 
-   délégation de préfixe IPv6 :  coller dans le "Next hop" du premier nœud de délégation de préfixe l'adresse récupérée précédemment dans le routeur
+   **délégation de préfixe IPv6** :  
+
+   coller dans le "Next hop" du premier nœud de délégation de préfixe l'adresse récupérée précédemment dans le routeur
 
    |image1853|
 
