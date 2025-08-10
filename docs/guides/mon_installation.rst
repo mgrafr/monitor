@@ -50,6 +50,8 @@ Box en fin de fin qui devra être remplacée avant fin 2025
    Doc GL : https://docs.gl-inet.com/router/en/3/tutorials/ssh/
 
 .. admonition::  **Récupération de l’IPv6 du lien local d’OpenWRT**
+   
+   *l'adresse d'une passerelle commence par fe80::/64*
 
    Avec Putty:
 
