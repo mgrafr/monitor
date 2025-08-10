@@ -41,6 +41,9 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 21.0.3 Installation du routeur
 ------------------------------
+21.0.3.1 Connexion  à la Box internet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. admonition::  **accès ssh** 
 
    Doc GL : https://docs.gl-inet.com/router/en/3/tutorials/ssh/
@@ -56,6 +59,10 @@ Avec Putty:
 Configuration de la Box:
 
 |image1853|
+
+21.0.3.1 Connexion au smartphone en USB
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1855|
 
 en cours de rédaction
 
@@ -3581,3 +3588,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 650px
 .. |image1854| image:: ../img/image1854.webp
    :width: 650px
+.. |image1855| image:: ../img/image1854.webp
+   :width: 700px
