@@ -43,22 +43,31 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 ------------------------------
 21.0.3.1 Connexion  à la Box internet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mode** : « Routeur » (configuration de base) avec une DMZ
 
-.. admonition::  **accès ssh** 
+.. admonition::  **accès ssh du routeur** 
 
    Doc GL : https://docs.gl-inet.com/router/en/3/tutorials/ssh/
 
-Avec Putty:
+.. admonition::  **Récupération de l’IPv6 du lien local d’OpenWRT**
 
-.. code-block::
+   Avec Putty:
 
-   ifconfig INTERFACE| grep "Scope:Link" 
+   .. code-block::
 
-|image1854|
+      ifconfig INTERFACE| grep "Scope:Link" 
 
-Configuration de la Box:
+   |image1854|
 
-|image1853|
+.. admonition:: **Configuration de la Box**:
+
+   choisir un sous-réseau différent du sous-réseau OpenWRT
+
+   |image1857|
+
+   délégation de préfixe IPv6 :  coller dans le "Next hop" du premier nœud de délégation de préfixe l'adresse récupérée précédemment dans le routeur
+
+   |image1853|
 
 21.0.3.1 Connexion au smartphone en USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3587,10 +3596,12 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1852| image:: ../img/image1852.webp
    :width: 500px
 .. |image1853| image:: ../img/image1853.webp
-   :width: 650px
+   :width: 550px
 .. |image1854| image:: ../img/image1854.webp
    :width: 650px
 .. |image1855| image:: ../img/image1855.webp
    :width: 700px
 .. |image1856| image:: ../img/image1856.webp
    :width: 700px
+.. |image1857| image:: ../img/image1857.webp
+   :width: 500px
