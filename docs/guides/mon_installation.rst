@@ -62,6 +62,8 @@ Configuration de la Box:
 
 21.0.3.1 Connexion au smartphone en USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|image1856|
+
 |image1855|
 
 en cours de rédaction
@@ -3588,5 +3590,7 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 650px
 .. |image1854| image:: ../img/image1854.webp
    :width: 650px
-.. |image1855| image:: ../img/image1854.webp
+.. |image1855| image:: ../img/image1855.webp
+   :width: 700px
+.. |image1856| image:: ../img/image1856.webp
    :width: 700px
