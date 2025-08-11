@@ -97,6 +97,16 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    |image1860|
 
+   |image1862|
+
+   L’option « Préfixe IPv6 délégué personnalisé » n’est plus présent dans LuCi, il va falloir passer par la ligne de commande :
+
+   .. code-block::
+
+      uci delete network.wan6.ip6prefix
+      uci add_list network.wan6.ip6prefix='2a01:e34:xxxx:xxxx::/64'
+      uci commit
+
    + Paramètres Internet du routeur
        - Type de connexion : Static IP (si serveur DHCP désactivé sur Freebox)
        - Adresse IP : 192.168.0.1
@@ -3667,3 +3677,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1861| image:: ../img/image1861.webp
    :width: 600px
+.. |image1862| image:: ../img/image1862.webp
+   :width: 700px
