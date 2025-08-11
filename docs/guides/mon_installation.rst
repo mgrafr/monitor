@@ -61,6 +61,10 @@ Box en fin de fin qui devra être remplacée avant fin 2025
    
    *l'adresse d'une passerelle commence par fe80::/64*
 
+   Avec Luci, on récupère le nom de l'interface
+
+   |image1865| 
+ 
    Avec Putty:
 
    .. code-block::
@@ -3691,3 +3695,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 450px
 .. |image1864| image:: ../img/image1864.webp
    :width: 600px
+.. |image1865| image:: ../img/image1865.webp
+   :width: 700px
