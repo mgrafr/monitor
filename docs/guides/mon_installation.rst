@@ -86,16 +86,16 @@ Box en fin de fin qui devra être remplacée avant fin 2025
    Désaciver le DNS IPv6 ou ajouter l'adresse de votre serveur DNS préféré
 
    |image1859|
+
+   Si on veut utiliser le Port Forwarding du routeur, il faut mettre la FreeBox en DMZ vers l'adresse du routeur (exemple : 192.168.0.1).
+
+   |image1861|
    
  .. admonition:: **Configuration du routeur**:
 
    Interfaces WAN IP4 & IP6
 
    |image1860|
-
-   Si on veut utiliser le Port Forwarding du routeur, il faut mettre la FreeBox en DMZ vers l'adresse du routeur (exemple : 192.168.0.1).
-
-   |image1861|
 
    + Paramètres Internet du routeur
        - Type de connexion : Static IP (si serveur DHCP désactivé sur Freebox)
