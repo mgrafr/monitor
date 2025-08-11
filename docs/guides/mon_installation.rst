@@ -51,6 +51,8 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    ou : http://<IP_ROUTEUR>/cgi-bin/luci/#
 
+    |image1864| 
+
 21.0.3.1 Connexion  à la Box internet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **mode** : « Routeur » (configuration de base) avec une DMZ
@@ -3686,4 +3688,6 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1862| image:: ../img/image1862.webp
    :width: 700px
 .. |image1863| image:: ../img/image1863.webp
+   :width: 450px
+.. |image1864| image:: ../img/image1864.webp
    :width: 600px
