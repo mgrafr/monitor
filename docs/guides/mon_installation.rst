@@ -41,13 +41,19 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 21.0.3 Installation du routeur
 ------------------------------
-21.0.3.1 Connexion  à la Box internet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**mode** : « Routeur » (configuration de base) avec une DMZ
-
 .. admonition::  **accès ssh du routeur** 
 
    Doc GL : https://docs.gl-inet.com/router/en/3/tutorials/ssh/
+
+.. admonition::  **accès à Luci** 
+
+    |image1863| 
+
+   ou : http://<IP_ROUTEUR>/cgi-bin/luci/#
+
+21.0.3.1 Connexion  à la Box internet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**mode** : « Routeur » (configuration de base) avec une DMZ
 
 .. admonition::  **Récupération de l’IPv6 du lien local d’OpenWRT**
    
@@ -3679,3 +3685,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 600px
 .. |image1862| image:: ../img/image1862.webp
    :width: 700px
+.. |image1863| image:: ../img/image1863.webp
+   :width: 600px
