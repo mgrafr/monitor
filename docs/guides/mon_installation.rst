@@ -69,14 +69,21 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    **délégation de préfixe IPv6** :  
 
-   coller dans le "Next hop" du premier nœud de délégation de préfixe l'adresse récupérée précédemment dans le routeur
+   - coller dans le "Next hop" du premier nœud de délégation de préfixe l'adresse récupérée précédemment dans le routeur
+   - vérifier que le Firewall est désactivé
 
    |image1853|
 
+   Désactiver le DHCP6
+
+   |image1858|
+
    Notez ces 2 informations qui seront utilisées par la suite :
 
-  -  Le préfixe de la délégation que vous venez de mettre en place (2a01:e34:xxxx:xxxx::/64).
-   - L’adresse IPv6 du lien local (fe80::8c97:xxxx:xxxx:xxxx). 
+  - Le préfixe de la délégation que vous venez de mettre en place.
+  - L’adresse IPv6 du lien local. 
+
+   
 
 .. admonition:: **Configuration du routeur**:
 
@@ -3643,3 +3650,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1857| image:: ../img/image1857.webp
    :width: 500px
+.. |image1858| image:: ../img/image1858.webp
+   :width: 400px
