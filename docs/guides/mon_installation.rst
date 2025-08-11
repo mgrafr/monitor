@@ -74,20 +74,29 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    |image1853|
 
-   Désactiver le DHCP6
-
-   |image1858|
-
    Notez ces 2 informations qui seront utilisées par la suite :
 
   - Le préfixe de la délégation que vous venez de mettre en place.
   - L’adresse IPv6 du lien local. 
 
-   
+   Désactiver le DHCPv6
 
-.. admonition:: **Configuration du routeur**:
+   |image1858|
+
+   Désaciver le DNS IPv6 ou ajouter l'adresse de votre serveur DNS préféré
+
+   |image1859|
+   
+ .. admonition:: **Configuration du routeur**:
+
+   Interfaces WAN IP4 & IP6
+
+   |image1860|
 
    Si on veut utiliser le Port Forwarding du routeur, il faut mettre la FreeBox en DMZ vers l'adresse du routeur (exemple : 192.168.0.1).
+
+   |image1861|
+
    + Paramètres Internet du routeur
        - Type de connexion : Static IP (si serveur DHCP désactivé sur Freebox)
        - Adresse IP : 192.168.0.1
@@ -3652,3 +3661,9 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 500px
 .. |image1858| image:: ../img/image1858.webp
    :width: 400px
+.. |image1859| image:: ../img/image1859.webp
+   :width: 400px
+.. |image1860| image:: ../img/image1860.webp
+   :width: 700px
+.. |image1861| image:: ../img/image1861.webp
+   :width: 600px
