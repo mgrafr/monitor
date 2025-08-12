@@ -107,7 +107,13 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
    Interfaces WAN IP4 & IP6
 
+   |image1866|
+  
+   DHCP
+
    |image1860|
+
+   DHCPv6
 
    |image1862|
 
@@ -3696,4 +3702,6 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1864| image:: ../img/image1864.webp
    :width: 600px
 .. |image1865| image:: ../img/image1865.webp
+   :width: 700px
+.. |image1866| image:: ../img/image1866.webp
    :width: 700px
