@@ -75,7 +75,7 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 .. admonition:: **Configuration de la Box**:
 
-   Il est important d'utiliser deux classes de réseau différentes (exemple : 192.168.0 et 192.168.1);Si l'on veut utiliser le Port Forwarding du routeur, il faut mettre la FreeBox en DMZ vers l'adresse du routeur (exemple : 192.168.0.1).
+   Il est important d'utiliser deux classes de réseau différentes (exemple : 192.168.0 et 192.168.1);
 
    |image1857|
 
