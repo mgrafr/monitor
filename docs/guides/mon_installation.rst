@@ -105,15 +105,19 @@ Box en fin de fin qui devra être remplacée avant fin 2025
    
  .. admonition:: **Configuration du routeur**:
 
-   Interfaces WAN IP4 & IP6
+   Interfaces WAN & WAN6
 
    |image1866|
   
-   DHCP
+   WAN
 
    |image1860|
 
-   DHCPv6
+   + WAN6 :
+      - Protocole : Client DHCPv6
+      - Demander une adresse IPv6 : try
+      - Demander le préfixe IPv6 de la longueur (Request IPv6-prefix) : Automatique
+      - Préfixe IPv6 délégué personnalisé : Cette option n’est n’est plus disponible via LuCi,
 
    |image1862|
 
