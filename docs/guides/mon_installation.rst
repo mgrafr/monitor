@@ -117,8 +117,7 @@ Box en fin de fin qui devra être remplacée avant fin 2025
       - Protocole : Client DHCPv6
       - Demander une adresse IPv6 : try
       - Demander le préfixe IPv6 de la longueur (Request IPv6-prefix) : Automatique
-      - Préfixe IPv6 délégué personnalisé : Cette option n’est n’est plus disponible via LuCi,
-
+      
    |image1862|
 
    L’option « Préfixe IPv6 délégué personnalisé » n’est plus présent dans LuCi, il va falloir passer par la ligne de commande :
