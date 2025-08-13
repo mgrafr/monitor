@@ -631,6 +631,7 @@ Si aucune erreur bloquante n'est détectée.
 
    apt dist-upgrade
 
+|image1867|
 
 21.2 Domoticz
 =============
@@ -3753,3 +3754,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1866| image:: ../img/image1866.webp
    :width: 700px
+.. |image1867| image:: ../img/image1867.webp
+   :width: 650px
