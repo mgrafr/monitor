@@ -586,6 +586,51 @@ puis pour supprimer le ou les messages:
    pveceph createosd /dev/...
    systemctl start ceph-osd@#
 
+21.1.9 Update Proxmox
+---------------------
+https://rdr-it.com/comment-migrer-proxmox-ve-8-vers-9/
+
+Exécuter :
+
+.. code-block::
+
+   pve8to9 --full
+
+Si aucune erreur bloquante n'est détectée.
+
+.. code-block::
+
+   sed -i 's/bookworm/trixie/g' /etc/apt/sources.list
+   sed -i 's/bookworm/trixie/g' /etc/apt/sources.list.d/pve-enterprise.list
+
+.. code-block::
+
+   cat > /etc/apt/sources.list.d/proxmox.sources << EOF
+   Types: deb
+   URIs: http://download.proxmox.com/debian/pve
+   Suites: trixie
+   Components: pve-no-subscription
+   Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
+   EOF
+
+.. code-block::
+
+   cat > /etc/apt/sources.list.d/ceph.sources << EOF
+   Types: deb
+   URIs: http://download.proxmox.com/debian/ceph-squid
+   Suites: trixie
+   Components: no-subscription
+   Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
+   EOF 
+
+.. code-block::
+
+   apt update
+
+.. code-block::
+
+   apt dist-upgrade
+
 
 21.2 Domoticz
 =============
