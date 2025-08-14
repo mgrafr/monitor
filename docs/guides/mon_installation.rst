@@ -586,6 +586,16 @@ puis pour supprimer le ou les messages:
    pveceph createosd /dev/...
    systemctl start ceph-osd@#
 
+21.1.8.5 /etc/kernel/proxmox-boot-uuids does not exist.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+merci à Dunadan-F sur Reddit
+
+Si vous utilisez un système de fichiers ext4 avec EFI, donc vous utilisez GRUB, essayez ce qui suit et faites-moi savoir si cela fonctionne pour vous.
+
+Pour vérifier quelle partition est /boot avec le format vfat : :~# lsblk -o +FSTYPE Pour initialiser la synchronisation ESP, démontez d'abord la partition de démarrage : :~# umount /boot/efi Ensuite, liez la partition vfat avec proxmox-boot-tool : :~# proxmox-boot-tool init /dev/XXXXXXXX où XXXXXXXX est le nom de la partition vfat de lsblk +FSYSTEM Ensuite : :~# mount -a Ensuite, pour mettre à jour les modules : :~# update-initramfs -u -k all
+
+Redémarrer
+
 21.1.9 Update Proxmox
 ---------------------
 https://rdr-it.com/comment-migrer-proxmox-ve-8-vers-9/
