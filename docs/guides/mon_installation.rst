@@ -590,11 +590,21 @@ puis pour supprimer le ou les messages:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 merci à Dunadan-F sur Reddit
 
-Si vous utilisez un système de fichiers ext4 avec EFI, donc vous utilisez GRUB, essayez ce qui suit et faites-moi savoir si cela fonctionne pour vous.
+Si vous utilisez un système de fichiers ext4 avec EFI, donc vous utilisez GRUB, essayez ce qui suit:
 
-Pour vérifier quelle partition est /boot avec le format vfat : :~# lsblk -o +FSTYPE Pour initialiser la synchronisation ESP, démontez d'abord la partition de démarrage : :~# umount /boot/efi Ensuite, liez la partition vfat avec proxmox-boot-tool : :~# proxmox-boot-tool init /dev/XXXXXXXX où XXXXXXXX est le nom de la partition vfat de lsblk +FSYSTEM Ensuite : :~# mount -a Ensuite, pour mettre à jour les modules : :~# update-initramfs -u -k all
+- Pour vérifier quelle partition est /boot avec le format vfat : :~# lsblk -o +FSTYPE
+- Pour initialiser la synchronisation ESP, démontez d'abord la partition de démarrage : :~# umount /boot/efi 
+- Ensuite, liez la partition vfat avec proxmox-boot-tool : :~# proxmox-boot-tool init /dev/XXXXXXXX où XXXXXXXX est le nom de la partition vfat de lsblk +FSYSTEM 
+- Ensuite : :~# mount -a Ensuite, pour mettre à jour les modules : :~# update-initramfs -u -k all
+- Redémarrer
 
-Redémarrer
+|image1869|
+
+|image1870|
+
+|image1871|
+
+
 
 21.1.9 Update Proxmox
 ---------------------
@@ -642,6 +652,11 @@ Si aucune erreur bloquante n'est détectée.
    apt dist-upgrade
 
 |image1867|
+
+Vérifier que les dépots Proxmox sont tous no-subsription, sinon les désactiver
+
+|image1868|
+
 
 21.2 Domoticz
 =============
@@ -3766,3 +3781,11 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1867| image:: ../img/image1867.webp
    :width: 650px
+.. |image1868| image:: ../img/image1868.webp
+   :width: 700px
+.. |image1869| image:: ../img/image1869.webp
+   :width: 700px
+.. |image1870| image:: ../img/image1870.webp
+   :width: 700px
+.. |image1871| image:: ../img/image1871.webp
+   :width: 700px
