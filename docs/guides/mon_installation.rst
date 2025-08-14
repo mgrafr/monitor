@@ -598,9 +598,9 @@ Si vous utilisez un système de fichiers ext4 avec EFI, donc vous utilisez GRUB,
 - Ensuite : :~# mount -a Ensuite, pour mettre à jour les modules : :~# update-initramfs -u -k all
 - Redémarrer
 
-|image1869|
-
 |image1870|
+
+|image1869|
 
 |image1871|
 
