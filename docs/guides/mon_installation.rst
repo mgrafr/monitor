@@ -604,8 +604,8 @@ Si vous utilisez un système de fichiers ext4 avec EFI, donc vous utilisez GRUB,
 
 |image1871|
 
-21.1.8.6 pveproxy no start
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+21.1.8.6 failed to start pve proxy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block::
 
    apt install proxmox-ve
