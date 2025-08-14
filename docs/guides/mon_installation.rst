@@ -604,7 +604,12 @@ Si vous utilisez un système de fichiers ext4 avec EFI, donc vous utilisez GRUB,
 
 |image1871|
 
+21.1.8.6 pveproxy no start
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block::
 
+   apt install proxmox-ve
+   apt install --fix-broken
 
 21.1.9 Update Proxmox
 ---------------------
