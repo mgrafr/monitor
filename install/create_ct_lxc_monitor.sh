@@ -29,7 +29,7 @@ echo_config() {
  echo -e "${DGN}IP statique ou DHCP: ${BGN}DHCP${CL}"
 } 
 pve_check() {
-  if [ $(pveversion | grep -c "pve-manager/8\.[0-9]") -eq 0 ]; then
+  if [ $(pveversion | grep -c "pve-manager/9\.[0-9]") -eq 0 ]; then
     echo -e "${CROSS} This version of Proxmox Virtual Environment is not supported"
     echo -e "Requires PVE Version 9.0 or higher"
     echo -e "Exiting..."
