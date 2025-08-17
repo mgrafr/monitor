@@ -193,9 +193,22 @@ echo -e "${CHECKMARK} \e[1;92m MAJ de la liste des Modèles LXC... \e[0m"
 pveam update >/dev/null
 echo -e "${CHECKMARK} \e[1;92m Téléchargement du Modèle Debian 12... \e[0m"
 OSTYPE=debian
-OSVERSION=${OSTYPE}-12
+
+OSVERSION=${OSTYPE}-13
 mapfile -t TEMPLATES < <(pveam available -section system | sed -n "s/.*\($OSVERSION.*\)/\1/p" | sort -t - -k 2 -V)
+if [ "${#TEMPLATES[@]}" -eq 0 ];then
+cd /var/lib/vz/template/cache/
+# Remplacez l'URL de celui que vous recherchez
+wget https://images.linuxcontainers.org/images/debian/trixie/amd64/default/20250814_05:24/rootfs.tar.xz 
+# Renommez-le en quelque chose qui a du sens pour vous :
+mv rootfs.tar.xz debian-13-trixie-lxc-2025-06-28.tar.xz
+echo "téléchargement de rootfs.tar.xz effectué"
+TEMPLATE=debian-13-trixie-lxc-2025-06-28.tar.xz
+echo $TEMPLATE
+else
 TEMPLATE="${TEMPLATES[-1]}"
+fi
+
 pveam download local $TEMPLATE >/dev/null ||
   die "A problem occured while downloading the LXC template."
 
