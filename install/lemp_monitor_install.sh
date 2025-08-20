@@ -52,7 +52,7 @@ whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script insta
 dosmon=monitor-v3.2.4
 vermon=$(whiptail --title "version de monitor" --radiolist \
 "Quelle version voulez vous installer ?\n la version en développement\n ou la version LATEST " 15 60 4 \
-"Version 3.2.4" "par defaut " ON \
+"Version 3.2.5" "par defaut " ON \
 "Version en dev" "voir la doc" OFF 3>&1 1>&2 2>&3)
 # ------------------------------
 if [ $exitstatus = 0 ]; then
@@ -142,7 +142,7 @@ msg_ok "Installation de NGINX"
 echo "----------------------------------------------------"
 chemin="/var/www"
 sleep 3
-apt-get install nginx apache2-utils mlocate  -y
+apt-get install nginx apache2-utils plocate  -y
 echo "demarrage de Nginx NGINX"
 systemctl start nginx
 echo "Au cas ou apache2 serait actif sur le systeme:"
