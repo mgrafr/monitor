@@ -191,24 +191,24 @@ info "ID du conteneur : $CTID."
 
 echo -e "${CHECKMARK} \e[1;92m MAJ de la liste des Modèles LXC... \e[0m"
 pveam update >/dev/null
-echo -e "${CHECKMARK} \e[1;92m Téléchargement du Modèle Debian 12... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Téléchargement du Modèle Debian... \e[0m"
 OSTYPE=debian
-
 OSVERSION=${OSTYPE}-13
 mapfile -t TEMPLATES < <(pveam available -section system | sed -n "s/.*\($OSVERSION.*\)/\1/p" | sort -t - -k 2 -V)
 if [ "${#TEMPLATES[@]}" -eq 0 ];then
-cd /var/lib/vz/template/cache/
+echo "pas de template proxmox"
 # Remplacez l'URL de celui que vous recherchez
-wget https://images.linuxcontainers.org/images/debian/trixie/amd64/default/20250814_05:24/rootfs.tar.xz 
+#wget -P /var/lib/vz/template/cache  https://cdn.gyptazy.com/proxmox/debian-13-standard_13.x-beta_lxc_proxmox_amd64.tar.gz 
 # Renommez-le en quelque chose qui a du sens pour vous :
-mv rootfs.tar.xz debian-13-trixie-lxc-2025-06-28.tar.xz
-echo "téléchargement de rootfs.tar.xz effectué"
-TEMPLATE=debian-13-trixie-lxc-2025-06-28.tar.xz
+#mv /var/lib/vz/template/cache/rootfs.tar.xz /var/lib/vz/template/cache/debian-13-trixie-lxc-2025-06-28.tar.xz
+#echo "téléchargement de rootfs.tar.xz effectué"
+TEMPLATE=debian-13-standard_13.x-beta_lxc_proxmox_amd64.tar.gz
+TEMPLATE_STRING="/var/lib/vz/template/cache/${TEMPLATE}"
 echo $TEMPLATE
+ROOTFS=${STORAGE}:16
 else
 TEMPLATE="${TEMPLATES[-1]}"
-fi
-
+TEMPLATE_STRING="local:vztmpl/${TEMPLATE}"
 pveam download local $TEMPLATE >/dev/null ||
   die "A problem occured while downloading the LXC template."
 
@@ -222,7 +222,10 @@ case $STORAGE_TYPE in
     DISK_PREFIX="subvol"
     DISK_FORMAT="subvol"
     ;;
+  lvmthin)
+    ;;
 esac
+
 DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
 
@@ -234,15 +237,18 @@ if [ "$STORAGE_TYPE" == "zfspool" ]; then
 else
   mkfs.ext4 $(pvesm path $ROOTFS) &>/dev/null
 fi
+fi
 ARCH=$(dpkg --print-architecture)
+DISK_SIZE=16G
 HOSTNAME=monitor
-TEMPLATE_STRING="local:vztmpl/${TEMPLATE}"
 var_cpu=2048
 nb_cores=2
 privilegie=1
+echo $TEMPLATE_STRING
+ROOTFS=$ROOTFS,size=$DISK_SIZE
 pct create $CTID $TEMPLATE_STRING -arch $ARCH -features nesting=$privilegie -password $PW \
-  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0$GATE,ip=$NET -onboot 1 -cores $nb_cores -memory $var_cpu\
-  -ostype $OSTYPE -rootfs $ROOTFS,size=$DISK_SIZE -storage $STORAGE >/dev/null
+  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=$NET -onboot 1 -cores 2 -memory 2048\
+  -ostype debian -rootfs $ROOTFS  -storage $STORAGE >/dev/null
 
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
 ln -fs $(readlink /etc/localtime) ${MOUNT}/etc/localtime
