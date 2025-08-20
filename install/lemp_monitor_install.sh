@@ -185,19 +185,21 @@ fi
 apt -y install sshpass
 echo -e "${CHECKMARK} \e[1;92m SSHPASS a été installé.\e[0m"
 sleep 2
-msg_ok "Installation de  php8.3"
+msg_ok "Installation de  php8.4"
 sleep 3
-#echo "Installer les dependances "
-apt install ca-certificates apt-transport-https software-properties-common lsb-release -y
-echo "Ajouter le depot pour PHP 8.3 :"
-curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
+# Add the packages.sury.org/php repository.
+apt-get install -y lsb-release ca-certificates apt-transport-https curl
+curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb
+dpkg -i /tmp/debsuryorg-archive-keyring.deb
+sh -c 'echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 apt-get update
 echo -e "${CHECKMARK} \e[1;92m Dépendances installées.\e[0m"
-echo "Installation de PHP 8.3"
-apt install php8.3 php8.3-fpm php8.3-cli php8.3-mysql php8.3-curl
+echo "Installation de PHP 8.4"
+# Install PHP.
+apt-get install -y php8.4 php8.4-fpm php8.4-cli php8.4-mysql php8.4-curl
 echo "Activer le demarrage"
-systemctl enable php8.3-fpm --now
-echo -e "${CHECKMARK} \e[1;92m PHP8.3 installé.\e[0m"
+systemctl enable php8.4-fpm --now
+echo -e "${CHECKMARK} \e[1;92m PHP8.4 installé.\e[0m"
 sleep 3
 msg_ok "Installation de PHPMYADMIN"
 sleep 3
