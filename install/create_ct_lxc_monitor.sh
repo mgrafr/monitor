@@ -194,18 +194,22 @@ pveam update >/dev/null
 echo -e "${CHECKMARK} \e[1;92m Téléchargement du Modèle Debian... \e[0m"
 OSTYPE=debian
 OSVERSION=${OSTYPE}-13
+ARCH=$(dpkg --print-architecture)
+SIZE_DISK=16 # nb giga
+HOSTNAME=monitor
+var_cpu=2048
+nb_cores=2
+privilegie=1
 mapfile -t TEMPLATES < <(pveam available -section system | sed -n "s/.*\($OSVERSION.*\)/\1/p" | sort -t - -k 2 -V)
 if [ "${#TEMPLATES[@]}" -eq 0 ];then
 echo "pas de template proxmox"
-# Remplacez l'URL de celui que vous recherchez
-#wget -P /var/lib/vz/template/cache  https://cdn.gyptazy.com/proxmox/debian-13-standard_13.x-beta_lxc_proxmox_amd64.tar.gz 
-# Renommez-le en quelque chose qui a du sens pour vous :
-#mv /var/lib/vz/template/cache/rootfs.tar.xz /var/lib/vz/template/cache/debian-13-trixie-lxc-2025-06-28.tar.xz
-#echo "téléchargement de rootfs.tar.xz effectué"
-TEMPLATE=debian-13-standard_13.x-beta_lxc_proxmox_amd64.tar.gz
+echo "téléchargement depuis https://cdn.gyptazy.com"
+wget -P /var/lib/vz/template/cache  https://cdn.gyptazy.com/proxmox/debian-13-standard_13.x-beta_lxc_proxmox_amd64.tar.gz 
+mv /var/lib/vz/template/cache/debian-13-standard_13.x-beta_lxc_proxmox_amd64.tar.gz /var/lib/vz/template/cache/debian-13-standard_13.x-beta_amd64.tar.gz
+TEMPLATE=debian-13-standard_13.x-beta_amd64.tar.gz
 TEMPLATE_STRING="/var/lib/vz/template/cache/${TEMPLATE}"
 echo $TEMPLATE
-ROOTFS=${STORAGE}:16
+ROOTFS=${STORAGE}:$DISK_SIZE
 else
 TEMPLATE="${TEMPLATES[-1]}"
 TEMPLATE_STRING="local:vztmpl/${TEMPLATE}"
@@ -225,35 +229,25 @@ case $STORAGE_TYPE in
   lvmthin)
     ;;
 esac
-
 DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
-
 echo -e "${CHECKMARK} \e[1;92m Création du Conteneur LXC ... \e[0m"
-DISK_SIZE=16G
+DISK_SIZE=${$SIZE_DISK}G
 pvesm alloc $STORAGE $CTID $DISK $DISK_SIZE --format ${DISK_FORMAT:-raw} >/dev/null
 if [ "$STORAGE_TYPE" == "zfspool" ]; then
   warn "Some containers may not work properly due to ZFS not supporting 'fallocate'."
 else
   mkfs.ext4 $(pvesm path $ROOTFS) &>/dev/null
 fi
-fi
-ARCH=$(dpkg --print-architecture)
-DISK_SIZE=16G
-HOSTNAME=monitor
-var_cpu=2048
-nb_cores=2
-privilegie=1
-echo $TEMPLATE_STRING
 ROOTFS=$ROOTFS,size=$DISK_SIZE
+fi
+echo $TEMPLATE_STRING
 pct create $CTID $TEMPLATE_STRING -arch $ARCH -features nesting=$privilegie -password $PW \
   -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=$NET -onboot 1 -cores 2 -memory 2048\
   -ostype debian -rootfs $ROOTFS  -storage $STORAGE >/dev/null
-
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
 ln -fs $(readlink /etc/localtime) ${MOUNT}/etc/localtime
 pct unmount $CTID && unset MOUNT
-
 echo -e "${CHECKMARK} \e[1;92m Démarrage du conteneur LXC ... \e[0m"
 pct start $CTID
 echo -e "${CHECKMARK} \e[1;92m Installation de LEMP... \e[0m"
