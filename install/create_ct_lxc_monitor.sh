@@ -209,7 +209,7 @@ mv /var/lib/vz/template/cache/debian-13-standard_13.x-beta_lxc_proxmox_amd64.tar
 TEMPLATE=debian-13-standard_13.x-beta_amd64.tar.gz
 TEMPLATE_STRING="/var/lib/vz/template/cache/${TEMPLATE}"
 echo $TEMPLATE
-ROOTFS=${STORAGE}:$DISK_SIZE
+ROOTFS=${STORAGE}:$SIZE_DISK
 else
 TEMPLATE="${TEMPLATES[-1]}"
 TEMPLATE_STRING="local:vztmpl/${TEMPLATE}"
