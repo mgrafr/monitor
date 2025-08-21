@@ -235,16 +235,16 @@ echo "LEMP : redemarrage php"
 cd /etc/nginx
 nginx -t
 sleep 3
-systemctl restart php8.3-fpm 
+systemctl restart php8.4-fpm 
 systemctl restart nginx
 if [ "$ssh2" = "PHP avec SSH2" ]
 then
 msg_ok "installation de php-ssh2"
-apt install php8.3-ssh2
+apt install php8.4-ssh2
 echo "installation terminée de php8.3-ssh2"
 fi
 msg_ok "installation de PHP-gd:"
-apt install php8.3-gd
+apt install php8.4-gd
 msg_ok "installation de dos2unix:"
 apt install dos2unix
 msg_ok "installation de Unzip:"
