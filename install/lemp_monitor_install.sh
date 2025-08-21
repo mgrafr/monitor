@@ -100,7 +100,8 @@ $STD apt-get install sudo curl git python3-pip -y
 msg_ok "Installation de maria db"
 echo -e "${CHECKMARK} \e[1;92m Debut installation de Maria DB.\e[0m"
 sleep 3
-apt-get install mariadb-server -y
+sudo apt install mariadb-server
+sudo apt install mariadb-client-compat
 echo "démarrage et activation du service"
 systemctl start mariadb
 systemctl enable mariadb
@@ -126,7 +127,7 @@ fi
 info "securisation de mariaDB"
 #mysql --user="root" --password="$root_pwd" --database="monitor" --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
 mysql --user="root" --database="monitor" -e  "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$root_pwd');"
-mysql --user="root" --database="monitor" -e "UPDATE user SET plugin='mysql_native_password' WHERE User='root';"
+mysql --user="root" --database="monitor" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
 mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.user WHERE User='';"
 echo "-- supprimer les fonctionnalités root distantes"
 mysql --user="root" --password="$root_pwd"  -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
