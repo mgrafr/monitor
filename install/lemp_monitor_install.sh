@@ -265,11 +265,11 @@ fi
 # rm $chemin/monitor/install/maj*
 echo "importer les tables text_image dispositifs 2fa_token messages et sse" 
 sed -i "s/(1, 'user'/(1, '${maria_name}'/g" /var/www/monitor/bd_sql/2fa_token.sql
-mysql -root monitor < $chemin/monitor/bd_sql/text_image.sql
-mysql -root monitor < $chemin/monitor/bd_sql/dispositifs.sql
-mysql -root monitor < $chemin/monitor/bd_sql/sse.sql
-mysql -root monitor < $chemin/monitor/bd_sql/messages.sql
-mysql -root monitor < $chemin/monitor/bd_sql/2fa_token.sql
+mysql -uroot -proot_pwd monitor < $chemin/monitor/bd_sql/text_image.sql
+mysql -uroot -proot_pwd monitor < $chemin/monitor/bd_sql/dispositifs.sql
+mysql -root -proot_pwd monitor < $chemin/monitor/bd_sql/sse.sql
+mysql -root -proot_pwd monitor < $chemin/monitor/bd_sql/messages.sql
+mysql -root -proot_pwd monitor < $chemin/monitor/bd_sql/2fa_token.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
 cp $chemin/monitor/share/nginx/default.conf /etc/nginx/conf.d/
