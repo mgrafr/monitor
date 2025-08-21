@@ -1,30 +1,33 @@
 19. UPDATE
 ----------
+Version Dev sous debian 13
 19.1 Version de PHP
 ^^^^^^^^^^^^^^^^^^^
-*La version actuelle est 8.3*
+*La version actuelle est 8.4*
 
 19.2 Version de SSH
 ^^^^^^^^^^^^^^^^^^^
-version : php8.3-ssh2 pour Debian 12
+version : php8.4-ssh2 pour Debian 13
 
 19.3 Version de MariaDB
 ^^^^^^^^^^^^^^^^^^^^^^^
-Server version: 10.11.6
+Server version: 11.8.2
 
 19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle est 3.2.4**
+**La version stable actuelle sous debian 12 est 3.2.5**
 
 19.4.1 Releases
 ===============
-Version en developpement 3.2.6
+Version en developpement 4.0.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- passage sous debian 13 Trixie
 
 Version 3.2.5 (juillet 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction bug sur devices_plan pour ioBroker
 - correction bug sur admin pour Domoticz
+- dernière version sous debian 12
 
 Version 3.2.4 (Mai 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
