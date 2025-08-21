@@ -22,7 +22,7 @@ echo_config() {
  echo -e "${DGN}Type Container(1=privilégié): ${BGN}$privilegie${CL}"
  echo -e "${DGN}Mot de Passe ROOT: ${BGN}$PW${CL}"
  echo -e "${DGN}Using Hostname: ${BGN}$HOSTNAME${CL}"
- echo -e "${DGN}Capacité du disque: ${BGN}$DISK_SIZE${CL}${DGN}GB${CL}"
+ echo -e "${DGN}Capacité du disque: ${BGN}$SIZE_DISK${CL}${DGN}GB${CL}"
  echo -e "${DGN}Coeurs alloués ${BGN}$nb_cores${CL}"
  echo -e "${DGN}Mémoire allouée ${BGN}$var_cpu${CL}"
  echo -e "${DGN}Bridge: ${BGN}vmbr0${CL}"
