@@ -241,7 +241,7 @@ if [ "$ssh2" = "PHP avec SSH2" ]
 then
 msg_ok "installation de php-ssh2"
 apt install php8.4-ssh2
-echo "installation terminée de php8.3-ssh2"
+echo "installation terminée de php8.4-ssh2"
 fi
 msg_ok "installation de PHP-gd:"
 apt install php8.4-gd
