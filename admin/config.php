@@ -5,7 +5,7 @@
 //general monitor
 define('URLMONITOR', 'monitor.DOMAINE.ovh');//domaine si port autre 443 
 define('IPMONITOR', 'ipmonitor');//ip 
-define('PASSMONITOR', '********');//mot passe serveur et SSH2
+define('PASSMONITOR', 'MON_PASS');//mot passe serveur et SSH2
 define('USERMONITOR', 'nom_utilisateur');//user serveur et SSH2
 define('MONCONFIG', 'admin/config.php');//fichier config 
 define('DZCONFIG', 'admin/dz/temp.lua');//fichier temp 
@@ -231,4 +231,5 @@ if (str_contains($current, 'domaine')===false ){
 $current = $current."domaine='".URLMONITOR."'\n";
 file_put_contents($file, $current);}
 ?>
+
 
