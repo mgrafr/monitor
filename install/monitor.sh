@@ -911,20 +911,19 @@ msg_ok "Creation du Container LXC"
 # Vérifiez et corrigez subuid/subgid
 grep -q "root:100000:65536" /etc/subuid || echo "root:100000:65536" >>/etc/subuid
 grep -q "root:100000:65536" /etc/subgid || echo "root:100000:65536" >>/etc/subgid
-msg_ok "azerty:${ROOTFS}"
+msg_ok "ROOTFS:${ROOTFS}"
 pct create $CTID $TEMPLATE_OK -arch $ARCH -features nesting=$CT_TYPE $PW \
   $HOSTNAME $NET_STRING -onboot 1 -cores $CORE_COUNT -memory $RAM_SIZE\
   -ostype $PCT_OSTYPE -rootfs $ROOTFS  -storage $CONTAINER_STORAGE >/dev/null
 msg_ok "Le Container LXC ${BL}$CTID${CL} ${GN}a été créé avec succès."
 }
-#--------------------------------------------------
 color
 choix=$(whiptail --title "installer CT monitor ou uniquement monitor ?" --radiolist \
-"voulez vous installer uniquement Monitor?\n. " 15 60 4 \
-"oui" "          " OFF \
-"non" "par defaut" ON 3>&1 1>&2 2>&3)
+"Que voulez-vous installer ?\n. " 15 60 4 \
+"Conteneur-Lemp-monitor" "par defaut " ON \
+"Lemp-monitor" "                     " OFF 3>&1 1>&2 2>&3)
 echo "Vous avez choisi  : $choix"
-if [ "$choix" = "non" ];then
+if [ "$choix" = "Conteneur-Lemp-monitor" ];then
 header_info
 formatting
 variables
@@ -934,11 +933,12 @@ build_container
 echo -e "${CHECKMARK} \e[1;92m Démarrage du conteneur LXC ... \e[0m"
 pct start $CTID
 fi
-if [ "$choix" = "oui" ];then
+if [ "$choix" = "Lemp-monitor" ];then
 CTID=$(whiptail --title "CTID " --inputbox "veuillez entrer l'ID du conteneur \n. " 10 60 3>&1 1>&2 2>&3)
 msg_ok "${BL}CTID: "$CTID
 fi
 echo -e "${CHECKMARK} \e[1;92m Installation de LEMP... \e[0m"
+wget -qL https://raw.githubusercontent.com/mgrafr/monitor/main/install/build_monitor.sh
 pct push $CTID build_monitor.sh /build_monitor.sh -perms 755
 pct exec $CTID /build_monitor.sh
 msg_ok "Terminé avec succès!\n"
