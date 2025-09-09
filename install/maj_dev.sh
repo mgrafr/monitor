@@ -5,6 +5,7 @@ sed -i "s/.DOMAINE\" ));/DOMAINE\",/g" admin/config.php
 sed -i "s/iobweb.DOMAINE",\iobweb.DOMAINE", 2 => \"false\"));/g" admin/config.php
 #----------------------------------------
 mkdir tmp
+cd tmp
 git clone https://github.com/mgrafr/monitor.git
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
@@ -18,3 +19,4 @@ cp -u -R install/* /www/monitor/install/
 cp -u -R bd_sql/* /www/monitor/bd_sql/
 cp -u -R share/* /www/monitor/share/
 cp -u .version /www/monitor/.version
+rm -R tmp
