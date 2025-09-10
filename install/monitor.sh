@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-
+whiptail --title "intallation de la locale " --msgbox "dpkg-reconfigure :\n
+- Configuration de la locale pour PVE \n\
+- Configuration de la locale pour monitor\n\
+     ...quand le conteneur sera crée" 15 60
+dpkg-reconfigure locales
+locale-gen fr_FR.UTF-8
 function header_info {
 clear
 cat <<"EOF"
@@ -592,11 +597,10 @@ install_script() {
 
     TMP_CHOICE=$(whiptail --backtitle "Proxmox VE " \
       --title "PARAMÈTRES" \
-      --menu "Choisir une option:" 20 60 4 \
+      --menu "Choisir une option:" 10 60 4 \
       "1" "Paramètres par défaut" \
       "2" "Paramètres avancés" \
-      "3" "Sortie" \
-      --default-item "1" 3>&1 1>&2 2>&3) || true
+      "3" "Sortie" 3>&1 1>&2 2>&3) 
 
     if [ -z "$TMP_CHOICE" ]; then
       echo -e "\n${RD}Menu QUITTER. Sortie du script.${CL}\n"
@@ -900,8 +904,8 @@ TEMPLATE=${TEMP_GYP/lxc_proxmox_/}
 mv /var/lib/vz/template/cache/${TEMP_GYP} /var/lib/vz/template/cache/${TEMPLATE}
 TEMPLATE_OK="/var/lib/vz/template/cache/${TEMPLATE}"
 ROOTFS=${CONTAINER_STORAGE}:$DISK_SIZE
-echo -e "${BL}MOt de passe:${GN}{$PW1}"
-echo -e "${BL}Template:${GN}$TEMPLATE_OK" 
+echo -e "${BL}MOt de passe:${GN}{$PW1}${CL}"
+echo -e "${BL}Template:${GN}${TEMPLATE_OK}${CL}" 
     fi
     sleep $((attempt * 5))
   done
@@ -930,16 +934,17 @@ variables
 base_settings
 install_script
 build_container
-echo -e "${CHECKMARK} \e[1;92m Démarrage du conteneur LXC ... \e[0m"
+msg_ok "Démarrage du conteneur LXC ..."
 pct start $CTID
 fi
 if [ "$choix" = "Lemp-monitor" ];then
 CTID=$(whiptail --title "CTID " --inputbox "veuillez entrer l'ID du conteneur \n. " 10 60 3>&1 1>&2 2>&3)
 msg_ok "${BL}CTID: "$CTID
 fi
-echo -e "${CHECKMARK} \e[1;92m Installation de LEMP... \e[0m"
+msg_ok "Installation de LEMP..."
 wget -qL https://raw.githubusercontent.com/mgrafr/monitor/main/install/build_monitor.sh
 pct push $CTID build_monitor.sh /build_monitor.sh -perms 755
 pct exec $CTID /build_monitor.sh
 msg_ok "Terminé avec succès!\n"
+rm build_monitor.sh
 echo -e "${GN} la configuration de ${APP} a été initialisée avec succès!${CL}"
