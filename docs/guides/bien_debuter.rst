@@ -18,7 +18,9 @@
 
 - installation **uniquement de monitor** (pour une installation avec LAMP, MySQL,) : 
 
--	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.5.tar.gz
+    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.5.tar.gz
+
+	version de développement : https://github.com/mgrafr/monitor.git
 
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
@@ -26,9 +28,9 @@
 
 -	Création d’un conteneur LXC
 
--	Debian 12, et les dépendances sudo, curl
+-	Debian 13, et les dépendances sudo, curl
 
--	Nginx, PHP 8.3, PHP8.3-gd, PHP8.3-ssh2
+-	Nginx, PHP 8.4, PHP8.4-gd, PHP8.4-ssh2
 
 	maria db 10.11, phpMyAdmin 5.2+snapshot, monitor
 
