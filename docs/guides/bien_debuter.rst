@@ -232,8 +232,8 @@ Ce message sera présent tant qu'il n'y aura pas de correspondance entre le serv
 
 La suite, mode découverte , :ref:`0.1.3.1 mode « découverte »`
 
-0.1.2 -Installation automatique de LEMP et Monitor dans  CT existant: 
-=====================================================================
+0.1.2 Installation automatique de LEMP et Monitor dans  CT existant 
+===================================================================
 La procédure est la même que pour :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
 Lors de l'exécution de :darkblue:`monitor.sh` choisir:Choisur  
@@ -242,8 +242,9 @@ Lors de l'exécution de :darkblue:`monitor.sh` choisir:Choisur
 
 |image1875|
 
-0.1.3 -Installation automatique de LEMP et Monitor dans une partition Linux: 
-============================================================================-
+0.1.3 Installation automatique de LEMP et Monitor dans une partition Linux
+==========================================================================
+
 -  Installer auparavant un système Debian 12 ou supérieur
 -  Télécharger le script : :darkblue:`build_monitor.sh` ,
 
