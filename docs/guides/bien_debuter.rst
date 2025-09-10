@@ -77,6 +77,10 @@ Donner des autorisations au fichier « monitor.sh »
 |image3|
  
 |image6|
+
+|image61272|
+
+|image61273|
  
 |image7|
 
@@ -2456,3 +2460,7 @@ function mc(variable,id)
    :width: 420px
 .. |image1818| image:: ../img/image1818.webp
    :width: 700px
+.. |image1872| image:: ../img/image1872.webp
+   :width: 650px
+.. |image1873| image:: ../img/image1873.webp
+   :width: 650px
