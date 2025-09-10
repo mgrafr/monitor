@@ -78,6 +78,18 @@ Donner des autorisations au fichier « monitor.sh »
  
 |image6|
 
+Choisir le langage UTF-8 : fr_FR.UTF-8
+
+ .. warning:: 
+
+   |image1270|
+
+   Le choix du langage se fait ou se confirme à l'écran suivant.
+
+|image10|
+ 
+|image11|
+
 |image1872|
 
 |image1873|
@@ -100,18 +112,6 @@ Choisir "dhcp" ou indiquer l'IP choisie
 
 |image9|
  
-Choisir le langage UTF-8 : fr_FR.UTF-8
-
- .. warning:: 
-
-   |image1270|
-
-   Le choix du langage se fait ou se confirme à l'écran suivant.
-
-|image10|
- 
-|image11|
-
 0.1.1.a Installation de LEMP & Monitor
 """"""""""""""""""""""""""""""""""""""
 
