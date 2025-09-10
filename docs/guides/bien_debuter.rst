@@ -10,13 +10,15 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -	Après l’installation de Proxmox :
 
-- Installation automatique : **conteneur LXC**, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev): https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
+- Installation automatique : https://raw.githubusercontent.com/mgrafr/monitor/main/install/monitor.sh
 
-- installation automatique : **LEMP + monitor** + Serveur SSE-PHP (pour installation dans une VM ou une partition Linux) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh
+   **conteneur LXC**, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev) 
 
-- installation **uniquement de monitor** +serveur SSE-PHP (version en développement) (pour une installation avec LAMP, MySQL,) : https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
+   **LEMP + monitor** + Serveur SSE-PHP (pour installation dans une VM ou une partition Linux)  
 
--	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.2.3.tar.gz
+- installation **uniquement de monitor** (pour une installation avec LAMP, MySQL,) : 
+
+-	    dernière version stable : https://github.com/mgrafr/monitor/archive/refs/tags/monitor-V3.5.tar.gz
 
 0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor
 ================================================================
