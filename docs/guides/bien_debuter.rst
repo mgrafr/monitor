@@ -86,11 +86,9 @@ Choisir le langage UTF-8 : fr_FR.UTF-8
 
    Le choix du langage se fait ou se confirme à l'écran suivant.
 
-|image10|
- 
-|image11|
-
 |image1872|
+
+|image11|
 
 |image1873|
  
@@ -2043,8 +2041,6 @@ function mc(variable,id)
 .. |image9| image:: ../media/image9.webp
    :width: 554px
    :height: 276px
-.. |image10| image:: ../media/image10.webp
-   :width: 636px
 .. |image11| image:: ../media/image11.webp
    :width: 626px
 .. |image12| image:: ../media/image12.webp
