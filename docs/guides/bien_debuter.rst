@@ -14,6 +14,8 @@
 
    **conteneur LXC**, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev) 
 
+   **LEMP + monitor** + Serveur SSE-PHP (pour installation dans une CT Proxmox existant)  
+
    **LEMP + monitor** + Serveur SSE-PHP (pour installation dans une VM ou une partition Linux)  
 
 - installation **uniquement de monitor** (pour une installation avec LAMP, MySQL,) : 
@@ -112,7 +114,6 @@ Choisir "dhcp" ou indiquer l'IP choisie
  
 0.1.1.a Installation de LEMP & Monitor
 """"""""""""""""""""""""""""""""""""""
-
 |image12|
 
 Choisir la version de monitor à installer :
@@ -231,26 +232,29 @@ Ce message sera présent tant qu'il n'y aura pas de correspondance entre le serv
 
 La suite, mode découverte , :ref:`0.1.3.1 mode « découverte »`
 
-0.1.2 -Installation automatique de LEMP et Monitor : 
-====================================================
+0.1.2 -Installation automatique de LEMP et Monitor dans  CT existant: 
+=====================================================================
+
+0.1.3 -Installation automatique de LEMP et Monitor dans une partition Linux: 
+============================================================================
 Installer auparavant un système Debian 12 ou supérieur
-	Télécharger le script : lemp_monitor_install.sh,
+	Télécharger le script : build_monitor.sh,
 
 .. code-block::
 
-   https://raw.githubusercontent.com/mgrafr/monitor/main/install/lemp_monitor_install.sh 
+   https://raw.githubusercontent.com/mgrafr/monitor/main/install/lbuild_monitor.sh 
  
-Donner des autorisations au fichier lemp_install.sh 
+Donner des autorisations au fichier build_monitor.sh 
 
 .. code-block::
 
-   chmod +x  lemp_monitor_install.sh
+   chmod +x  build_monitor.sh
 
 Lancer le script :
 
 .. code-block::
 
-   ./lemp_monitor_install.sh
+   ./build_monitor.sh
 
 |image33|
   
