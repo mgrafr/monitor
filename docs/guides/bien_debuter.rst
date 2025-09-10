@@ -242,7 +242,7 @@ Installer auparavant un système Debian 12 ou supérieur
 
 .. code-block::
 
-   https://raw.githubusercontent.com/mgrafr/monitor/main/install/lbuild_monitor.sh 
+   https://raw.githubusercontent.com/mgrafr/monitor/main/install/build_monitor.sh 
  
 Donner des autorisations au fichier build_monitor.sh 
 
