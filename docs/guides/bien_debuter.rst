@@ -32,7 +32,7 @@
 
 -	Nginx, PHP 8.4, PHP8.4-gd, PHP8.4-ssh2
 
-	maria db 10.11, phpMyAdmin 5.2+snapshot, monitor
+	maria db 11.8.2, phpMyAdmin 5.2+snapshot, monitor
 
 	Pare-feu UFW, en option Fail2ban
 
@@ -46,7 +46,7 @@
 
 -	Un utilisateur MySQL PMA et monitor est aussi crée 
 
-Télécharger depuis le Shell de PVE le fichier d’installation :darkblue:`create_ct_lxc_monitor.sh` :
+Télécharger depuis le Shell de PVE le fichier d’installation :darkblue:`monitor.sh` :
 
 |image1268|
 
