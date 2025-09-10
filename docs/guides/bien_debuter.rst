@@ -78,9 +78,9 @@ Donner des autorisations au fichier « monitor.sh »
  
 |image6|
 
-|image61872|
+|image1872|
 
-|image61873|
+|image1873|
  
 |image7|
 
