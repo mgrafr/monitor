@@ -52,13 +52,13 @@ Télécharger depuis le Shell de PVE le fichier d’installation :darkblue:`moni
 
 .. code-block::
 
-   wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/create_ct_lxc_monitor.sh
+   wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/monitor.sh
 
-Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
+Donner des autorisations au fichier « monitor.sh »
 
 .. code-block::
 
-   chmod +x create_ct_lxc_monitor.sh
+   chmod +x monitor.sh
 
 |image1269|
 
@@ -72,7 +72,7 @@ Donner des autorisations au fichier « create_ct_lxc_monitor.sh »
 
 .. code-block::
 
-   ./create_ct_lxc_monitor.sh
+   ./monitor.sh
 
 |image3|
  
