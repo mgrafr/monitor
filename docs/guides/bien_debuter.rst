@@ -10,7 +10,7 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -	Après l’installation de Proxmox :
 
-- Installation automatique : https://raw.githubusercontent.com/mgrafr/monitor/main/install/monitor.sh
+- Installation automatique : https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/monitor.sh
 
    **conteneur LXC**, LEMP (Linux, Nginx, Maria DB, PHP, serveur SSE-PHP), monitor (version dev) 
 
@@ -54,7 +54,7 @@ Télécharger depuis le Shell de PVE le fichier d’installation :darkblue:`moni
 
 .. code-block::
 
-   wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/monitor.sh
+   https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/build_monitor.sh
 
 Donner des autorisations au fichier « monitor.sh »
 
@@ -234,15 +234,22 @@ La suite, mode découverte , :ref:`0.1.3.1 mode « découverte »`
 
 0.1.2 -Installation automatique de LEMP et Monitor dans  CT existant: 
 =====================================================================
+La procédure est la même que pour :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
+
+Lors de l'exécution de :darkblue:`monitor.sh` choisir:Choisur  
+
+|image1874|
+
+|image1875|
 
 0.1.3 -Installation automatique de LEMP et Monitor dans une partition Linux: 
-============================================================================
-Installer auparavant un système Debian 12 ou supérieur
-	Télécharger le script : build_monitor.sh,
+============================================================================-
+-  Installer auparavant un système Debian 12 ou supérieur
+-  Télécharger le script : :darkblue:`build_monitor.sh` ,
 
 .. code-block::
 
-   https://raw.githubusercontent.com/mgrafr/monitor/main/install/build_monitor.sh 
+   https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/build_monitor.sh 
  
 Donner des autorisations au fichier build_monitor.sh 
 
@@ -260,7 +267,7 @@ Lancer le script :
   
 **La suite :**   :ref:`0.1.1.a Installation de LEMP & Monitor`
 
-0.1.3 Installation de monitor uniquement
+0.1.4 Installation de monitor uniquement
 ==========================================
 	Après l’installation d’un OS (Debian, Ubuntu…et LEMP ou LAMP, Maria DB ou MySQL ...
 
@@ -272,17 +279,28 @@ Quelques liens utiles :
 
 **Installation : plusieurs solutions**
 
-0.1.3.1	Télécharger de la version en développement
+0.1.4.1	Télécharger de la version en développement
 """"""""""""""""""""""""""""""""""""""""""""""""""
-*et extraire les fichiers*
+*et soit  extraire les fichiers, soit cloner le référentiel avec Git*
 
 .. code-block::
 
    https://github.com/mgrafr/monitor
+   https://github.com/mgrafr/monitor.git
 
 |image34| 
 
-0.1.3.2	Télécharger de la derière version stable
+.. admonition:: cloner le référentiel de monitor
+
+   .. code-block::
+
+      git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION>
+
+   Git doit avoir été installé 
+
+   sur Debian ou Ubuntu, :red:`apt install git`
+
+0.1.4.2	Télécharger de la derière version stable
 """"""""""""""""""""""""""""""""""""""""""""""""
 *et extraire les fichiers*
 
@@ -292,49 +310,8 @@ Quelques liens utiles :
 
 |image358| 
 
-0.1.3.3 cloner le référentiel de monitor
-""""""""""""""""""""""""""""""""""""""""
-*https://github.com/mgrafr/monitor.git*
-
-.. code-block::
-
-   git clone https://github.com/mgrafr/monitor.git  <REPERTOIRE_DESTINATION>
-
-.. admonition:: Git doit avoir été installé 
-
-   sur Debian ou Ubuntu, :red:`apt install git`
-
-
-0.1.3.4 Télécharger en bash le script d'installation*
-
-.. code-block::
-
-   wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/install_only_monitor.sh
-
-Et apprès avoir rendu exécutable le fichier, le lancer :
- 
-|image35| 
-
-.. code-block::
-
-  ./install_only_monitor.sh
-
-*Installation de monitor*
-
-|image37|
-
-.. note::
-
-   Choisir le serveur web pour une installation de monitor dans le bon répertoire ;
-
-   Choisir « autre » si Apache ou Nginx ne sont pas utilisé, monitor sera installé dans « /tmp » il suffira alors de créer un lien symbolique vers le serveur web.
-
-   Si un répertoire « monitor » existe déjà sur le chemin choisi (précédente installation), le supprimer
-
-|image38| 
- 
-0.1.3.1 mode « découverte »
-"""""""""""""""""""""""""""
+0.1.5 mode « découverte »
+=========================
 .. note::
     
    **IMPORTANT** : après l’installation le programme est en mode « découverte », 
@@ -370,8 +347,8 @@ Et apprès avoir rendu exécutable le fichier, le lancer :
 -	Logiciel d’édition d’images svg : Adobe Illustrator ou Inkscape 
 -	Pour les autres images webp, un convertisseur en ligne : https://convertio.co/fr/
 
-0.1.3.2 -Création d’un certificat SSL auto-signé pour Nginx :
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+0.1.6 -Création d’un certificat SSL auto-signé pour Nginx :
+===========================================================
 Dans le cas où l’installation n’est pas automatique (en automatique il suffit d’accepter la création du certificat).
 
 Avant de commencer, vous devez avoir un utilisateur non root configuré avec des privilèges ; si vous avez installé Monitor en suivant ce tuto, c’est déjà fait
@@ -523,7 +500,7 @@ Avant de commencer, vous devez avoir un utilisateur non root configuré avec des
 
       sudo systemctl restart nginx
 
-0.1.4 Mise à jour de monitor
+0.1.7 Mise à jour de monitor
 ============================
 modifications en cours....
 
@@ -535,7 +512,7 @@ modifications en cours....
 
    - mise à jour simple ne necessitant que l'update de quelques fichiers de Monitor
 
-0.1.4.1  Mise à jour complète
+0.1.7.1  Mise à jour complète
 """""""""""""""""""""""""""""
 .. admonition:: **Installer un nouveau conteneur LXC** 
 
@@ -782,7 +759,7 @@ modifications en cours....
 
       **si tout fonctionne correctement arrêter l'ancien monitor et dans quelques jour le supprimer.**
 
-0.1.4.2  Mise à jour partielle
+0.1.7.2  Mise à jour partielle
 """"""""""""""""""""""""""""""
 Ne concerne que Monitor et les versions > 3.2.2
 
@@ -2094,12 +2071,6 @@ function mc(variable,id)
    :width: 319px  
 .. |image34| image:: ../media/image34.webp
    :width: 403px  
-.. |image35| image:: ../media/image35.webp
-   :width: 585px  
-.. |image37| image:: ../media/image37.webp
-   :width: 548px  
-.. |image38| image:: ../media/image38.webp
-   :width: 399px  
 .. |image39| image:: ../media/image39.webp
    :width: 470px 
 .. |image40| image:: ../media/image40.webp
@@ -2464,3 +2435,9 @@ function mc(variable,id)
    :width: 650px
 .. |image1873| image:: ../img/image1873.webp
    :width: 650px
+.. |image1874| image:: ../img/image1874.webp
+   :width: 650px
+.. |image1875| image:: ../img/image1875.webp
+   :width: 650px
+
+
