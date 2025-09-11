@@ -521,7 +521,7 @@ modifications en cours....
 
    - avec le shell de PVE:
 
-      |image1705|
+      |image3|
 
    voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
@@ -2398,8 +2398,6 @@ function mc(variable,id)
    :width: 700px
 .. |image1704| image:: ../img/image1704.webp
    :width: 460px
-.. |image1705| image:: ../img/image1705.webp
-   :width: 532px
 .. |image1706| image:: ../img/image1706.webp
    :width: 600px 
 .. |image1707| image:: ../img/image1707.webp
