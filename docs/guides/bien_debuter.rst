@@ -563,6 +563,10 @@ modifications en cours....
 
          :red:`Toutes les opérations de sauvegarde peuvent être effectées automatiquement avec le script` :darkblue:`sauvegarde_maj.sh`
 
+      .. code-block::
+  
+         wget https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/sauvegarde_maj.sh
+
    Le script  * 
 
    .. code-block::
