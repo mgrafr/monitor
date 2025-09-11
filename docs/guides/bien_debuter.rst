@@ -541,6 +541,8 @@ modifications en cours....
 
       |image1707|
 
+   - Redémarrer Nginx : systemctl restart nginx
+
 .. note::
 
    Si vous utilisez Nagios ou un autre monitoring, changer provisoirement le nom du nouveau CT monitor dans Proxmox afin d'éviter un conflit de nom.
