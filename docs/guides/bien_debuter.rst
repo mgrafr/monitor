@@ -96,6 +96,8 @@ Choisir le langage UTF-8 : fr_FR.UTF-8
  
 |image7|
 
+|image1876|
+
 Choisir "dhcp" ou indiquer l'IP choisie
 
 |image1713|
@@ -276,7 +278,7 @@ Quelques liens utiles :
 
 |	o phpMyAdmin, voir http://domo-site.fr/accueil/dossiers/3
 |	o LAMP :   https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-php
-|	o LEMP : voir ce paragraphe `
+|	o LEMP :   https://fr.linux-console.net/?p=30730
 
 **Installation : plusieurs solutions**
 
@@ -2439,6 +2441,8 @@ function mc(variable,id)
 .. |image1874| image:: ../img/image1874.webp
    :width: 650px
 .. |image1875| image:: ../img/image1875.webp
+   :width: 650px
+.. |image1876| image:: ../img/image1876.webp
    :width: 650px
 
 
