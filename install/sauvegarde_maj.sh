@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 #sur le serveur monitor actuel
+PHP_VERSION=$(php -r "echo PHP_VERSION;")
+echo ${PHP_VERSION:0:3} > /var/www/monitor/version_php.txt
 chmod -R 777 /var/www/monitor/DB_Backup
 chmod -R 777 /etc/letsencrypt/archive/*
 nom_bd=$(whiptail --title "Bases de donnees a sauvegarder" --inputbox "Veuiller entrer les noms separes par un espace" 10 60 3>&1 1>&2 2>&3)

@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+#variables
+PHP_VERSION=$(php -r "echo PHP_VERSION;")
+PHP_FPM=${PHP_VERSION:0:3} 
 #sur le nouveau serveur monitor 
 ip3=$(whiptail --title "IP de monitor à mettre à jour" --inputbox "ip de l'ancien CT TOUJOURS exécuté" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
@@ -60,6 +63,7 @@ cd /home/$mdir_maj/monitor
 sshpass -p $pass_sftp sftp $user_sftp@$ip3<<EOF
 get /var/www/monitor/index_loc.php
 get /var/www/monitor/c.txt
+get /var/www/monitor/version_php.txt
 lcd admin
 get -R /var/www/monitor/admin/* 
 lcd ..
@@ -116,9 +120,12 @@ EOF
 fi
 domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -f 2 -d '='`
 echo "domaine : " $domaine
+VER_PHP=$(while read line; do echo $line; done < /home/$mdir_maj/monitor/version_php.txt)
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php 
 sed -i "s/.\///g"  /home/$mdir_maj/monitor/systemd/c.txt
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
+sed -i "s/php${VER_PHP}/php${PHP_FPM}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
+sed -i "s/php${VER_PHP}/php${PHP_FPM}/g" /home/$mdir_maj/etc/nginx/conf.d/default.conf
 sed -i "s/444/443/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.lua
