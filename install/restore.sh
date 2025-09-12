@@ -87,7 +87,7 @@ lcd cron.d
 get /etc/cron.d/*
 lcd ..
 lcd systemd/system
-get /etc/systemd/system/*
+get /etc/systemd/system/*.service
 exit
 EOF
 if [[ "$lets" == "Avec les certificats déjà enregistrés" ]];then
