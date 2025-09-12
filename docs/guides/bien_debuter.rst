@@ -927,7 +927,7 @@ modifications en cours....
 
    .. IMPORTANT::
 
-      les iframes en accès distant ne fonctionneront seulement quand la redirection du por 443 aura été effectuée sur l'IP du nouveau monitor.
+      les iframes en accès distant ne fonctionneront seulement quand la redirection du port 443 aura été effectuée sur l'IP du nouveau monitor.
 
       |image1559|
 
