@@ -541,6 +541,10 @@ modifications en cours....
 
       |image1707|
 
+   - Ajouter une règle:
+
+      |image1877|
+
    - Redémarrer Nginx : systemctl restart nginx
 
 .. note::
@@ -2448,5 +2452,6 @@ function mc(variable,id)
    :width: 650px
 .. |image1876| image:: ../img/image1876.webp
    :width: 580px
-
+.. |image1877| image:: ../img/image1877.webp
+   :width: 550px
 
