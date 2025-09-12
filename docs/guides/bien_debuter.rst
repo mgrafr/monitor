@@ -537,6 +537,10 @@ modifications en cours....
 
       |image1706|
 
+   - Modifier la redirection du port 80 (vers le nouveau monitor)
+
+      |image1878|
+
    - Modifier le port dans la configuration actuelle Nginx de monitor :/etc/nginx/conf.d/monitor.conf
 
       |image1707|
@@ -2415,7 +2419,7 @@ function mc(variable,id)
 .. |image1708| image:: ../img/image1708.webp
    :width: 700px
 .. |image1709| image:: ../img/image1709.webp
-   :width: 650px
+   :width: 550px
 .. |image1713| image:: ../img/image1713.webp
    :width: 540px
 .. |image1714| image:: ../img/image1714.webp
@@ -2447,11 +2451,12 @@ function mc(variable,id)
 .. |image1873| image:: ../img/image1873.webp
    :width: 650px
 .. |image1874| image:: ../img/image1874.webp
-   :width: 650px
+   :width: 550px
 .. |image1875| image:: ../img/image1875.webp
-   :width: 650px
+   :width: 550px
 .. |image1876| image:: ../img/image1876.webp
    :width: 580px
 .. |image1877| image:: ../img/image1877.webp
-   :width: 550px
-
+   :width: 450px
+.. |image1878| image:: ../img/image1878.webp
+   :width: 500px
