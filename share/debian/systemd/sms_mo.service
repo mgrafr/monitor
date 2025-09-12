@@ -1,10 +1,10 @@
-[Unit]
-Description=commande monitor pour envoi sms
+Unit]
+Description=commande  par sms pour monitor
 After=multi-user.target
 
 [Service]
 Type=idle
-ExecStart=/usr/bin/python3 /www/monitor/custom/python/sms_mo.py > /home/michel/sms_mo.log 2>&1
+ExecStart=/usr/bin/python3 /var/www/monitor/custom/python/sms_mo.py > /home/michel/sms_mo.log 2>&1
 
 [Install]
 WantedBy=multi-user.target
