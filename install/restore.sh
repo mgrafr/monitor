@@ -124,8 +124,10 @@ VER_PHP=$(while read line; do echo $line; done < /home/$mdir_maj/monitor/version
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php 
 sed -i "s/.\///g"  /home/$mdir_maj/monitor/systemd/c.txt
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
+# si changement version PHP
 sed -i "s/php${VER_PHP}/php${PHP_FPM}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 sed -i "s/php${VER_PHP}/php${PHP_FPM}/g" /home/$mdir_maj/etc/nginx/conf.d/default.conf
+# ---------------------------
 sed -i "s/444/443/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.lua
@@ -197,14 +199,15 @@ mysql -u root -p < dump.sql
 sudo apt install certbot python3-certbot-nginx -y
 cp  /home/$mdir_maj/etc/nginx/conf.d/* /etc/nginx/conf.d/
 cp  /home/$mdir_maj/etc/nginx/.htpasswd /etc/nginx/
-mkdir /etc/nginx/ssl
+mkdir -p /etc/nginx/ssl
 cp  /home/$mdir_maj/etc/nginx/ssl/* /etc/nginx/ssl/
 chmod -R 777 /etc/cron.d
 cp /home/$mdir_maj/etc/cron.d/* /etc/cron.d
 systemctl restart nginx
+mkdir -p /root/.ssl
 chmod -R 777 /root/.ssl
 cp /home/$mdir_maj/root/.ssh/* /root/.ssh
-certbot update_symlinks
+#certbot update_symlinks
 certbot renew --dry-run
 echo "fin de cerbot"
 sleep 1
