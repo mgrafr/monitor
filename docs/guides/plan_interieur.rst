@@ -941,6 +941,12 @@ Sur cette page, des fenêtres(modal) peuvent être ajoutées si besoin, Bootstra
 
 - **Le fichier include/interieur .php**
 
+.. important::
+
+   à partir de la version 4.0.0 l'image du plan peut être enregistrée dans le dossier custom/php; cette solution doit être privilégiée pour éviter des erreurs lors de la mise à jour de version.
+
+   |image1879|
+
 https://raw.githubusercontent.com/mgrafr/monitor/main/include/interieur.php
 
 |image357|
@@ -1311,5 +1317,7 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/scripts_dz/lua/s%C3%A9para
 .. |image1178| image:: ../media/image1178.webp
    :width: 548px 
 .. |image1819| image:: ../img/image1819.webp
+   :width: 700px 
+.. |image1879| image:: ../img/image1879.webp
    :width: 700px 
 
