@@ -5,8 +5,11 @@
 		<div class="col-md-12">
 	  <h1 id="about" class="title text-center">Dispositifs<span> installés<br>à l'intérieur</span></h1>
 		<div class="space"></div>
-         <?php include ("include/new_maison_svg.php");?>
-		 <div id="voltage"><?php include ("include/voltmetre_svg.php");?></div>
+         <?php 
+		 $filePath = 'custom/php/new_maison_svg.php';
+		if (file_exists($filePath)) {include ("custom/php/new_maison_svg.php");} 
+		else {include ("include/new_maison_svg.php");}?>
+     	 <div id="voltage"><?php include ("include/voltmetre_svg.php");?></div>
 		<div id="bar_pression"><?php include ("include/chaudiere_svg.php");?></div>
 		<div id="vanne_eau" ><?php include ("include/vanne_eau_svg.php");?></div>	
 		<div id="th_ext_cuis"><?php include ("include/thermometre_svg.php");?></div>	
