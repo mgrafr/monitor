@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-cd /www/monitor
-mkdir -p tmp
-cd tmp
+
+mkdir -p /www/monitor/tmp
+cd /www/monitor/tmp
 wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.0.0.tar.gz
 tar -xzf monitor-v4.0.0.tar.gz
 cp -u ajax.php /www/monitor/ajax.php
