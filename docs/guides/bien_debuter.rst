@@ -943,17 +943,7 @@ Ne concerne que Monitor et les versions > 3.2.2
 
    - Créer un nouveau conteneur (NE PAS SUPPRIMER LE CONTENEUR ACTUEL) : voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
-   - dans le fichier /admin/config.php existant dans l'ancien conteneur recopier les variables que vous utilisez dans le fichier du nouveau conteneur
-
-   - sauvegarder les tables de BD SQL pour les importer dans la nouvelle BD (tenir compte des quelques modifications de structure possibles)
-
-   - sauvegarder les pages Custom dans le nouveau monitor
-
-   - importer dans le nouveau conteneur le répertoire /etc/nginx/conf.d/*
-
-   - importer les fichiers de systemd : /etc/systemd/system/*
-
-   - supprimer l'ancien conteneur. (par précaution , concerver une sauvegarde PROXMOX de ce conteneur)
+   **En utilisant les scripts décrits dans ce paragraphe, la mise à jour s'effectue automatiquement**
 
 Obtenir la dernière version de update.sh , avec la console :
  
