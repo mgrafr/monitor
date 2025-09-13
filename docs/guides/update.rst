@@ -16,13 +16,17 @@ Server version: 11.8.2
 
 19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle sous debian 12 est 3.2.5**
+**La version stable actuelle sous debian 13 est 4.0.0**
 
 19.4.1 Releases
 ===============
-Version en developpement 4.0.0
+Version en developpement 4.0.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version 4.0.0 (septembre 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - passage sous debian 13 Trixie
+- Les plans sont désormais en priorité dans le rep custom/php
 
 Version 3.2.5 (juillet 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
