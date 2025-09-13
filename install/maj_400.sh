@@ -1,12 +1,9 @@
 #!/usr/bin/bash
-
 cd /www/monitor
 mkdir tmp
 cd tmp
 wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.0.0.tar.gz
 tar -xzf monitor-v4.0.0.tar.gz
-sed -i "s/.DOMAINE\" ));/DOMAINE\",/g" admin/config.php
-sed -i "s/iobweb.DOMAINE",\iobweb.DOMAINE", 2 => \"false\"));/g" admin/config.php
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
 cp -u index_loc.php /www/monitor/index_loc.php
