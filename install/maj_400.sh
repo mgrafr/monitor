@@ -2,7 +2,7 @@
 cd /www/monitor
 mkdir tmp
 cd tmp
-wget https://codeload.github.com/mgrafr/monitor/tar.gz/refs/tags/monitor-v4.0.0
+wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.0.0.tar.gz
 tar -xzf monitor-v4.0.0.tar.gz
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
