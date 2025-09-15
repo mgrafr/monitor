@@ -8,6 +8,7 @@ $reg=str_replace('/','',$reg);
 $reg=str_replace('?','',$reg);
 $_SESSION["conf"]=$reg;
 if (substr($domaine, 0, 7)=="192.168") $rep="/monitor/";
+$_SESSION["rep"]=$rep;
 header('Location: '.$rep.'index_loc.php');
 exit();
 

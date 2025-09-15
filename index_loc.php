@@ -2,9 +2,13 @@
 if(session_status() === PHP_SESSION_NONE) session_start();
 // pour les variables de session----------------------
 $_SESSION["id_session"] = session_id();
+if (isset($_COOKIE["userpref"]) && $_COOKIE["userpref"]==""){$_SESSION["conf"]="";
+    header('Location: '.$_SESSION["rep"].'index_loc.php');}
 if ($_SESSION["conf"]=="") {$config="admin/config.php";}
 else {$config="admin/config_".$_SESSION["conf"].".php";}
 $_SESSION["config"]=$config;
+if (!isset($_SESSION["rep"]).$config) {echo "le fichier de config n'exiqte pas";}
+setcookie('userpref', $config, time()+3600*24*365, '/monitor', '');
 $_SESSION["domaine"]=$_SERVER['HTTP_HOST'];$_SESSION["exeption_db"]=""; 
 $http_host=substr($_SESSION["domaine"] ,0,7);
 if ($http_host !="192.168" && $http_host !="172.25." && $http_host !="10.121.") {
@@ -64,6 +68,7 @@ if (URLIOB!="") include ("include/iobroker.php");//iobroker
 include ("custom/php/modes_emploi.php");
 include ("custom/php/worx.php");
 include ("include/footer.php");// fin de la page avec les scrpits JS
+
 
 ?>
 </body></html>
