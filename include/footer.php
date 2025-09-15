@@ -22,6 +22,16 @@ if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';include ('in
 ?>
 
 <script>
+// cookies
+function lire_cookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+function popupCookie(page) {
+  window.open(page);
+}	
 function maj_mqtt(id_x,state,ind,level=0){
 if (!state) {console.log("erreur-state");return;}
 if (state=="true"){state="on";} //pour ioBroker	
@@ -86,6 +96,14 @@ $(".banner-image").backstretch({ width: 768, url: "<?php echo IMAGEACCUEIL?>" },
 $('.close_clavier').click(function(){
   $("#btn_a").trigger("click");
 });	
+
+cookie_config=lire_cookie("userpref");
+if (cookie_config!="admin/config.php"){var resp = window.prompt("conserver cette configuration:(O ou N)\n"+cookie_config+"\nAprès une répone N, ACTUALISER le Navigateur");
+	if (resp=="N"){
+		//document.cookie = "userpref=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";console.log("..."+resp+"...");
+		document.cookie = "userpref=";
+	}
+	}
 /*----------------------------------------------------*/	
 var base_url=window.location.href;
 var arret_mur;var arret_zoom;
