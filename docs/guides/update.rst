@@ -22,6 +22,7 @@ Server version: 11.8.2
 ===============
 Version en developpement 4.0.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Ajout popup pour revenir à la config par défaut pour l'écran concerné 
 
 Version 4.0.0 (septembre 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
