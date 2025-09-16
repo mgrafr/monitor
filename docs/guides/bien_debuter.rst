@@ -1937,17 +1937,21 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 =======================================================
 A partir du fichier de configuration principal, faire une ou plusieurs copie(s) dans le répertoire admin en le(s) nommant:
 
-	index_<NOM DU FICHIER>.php ex: index_essai.php
+index_<config_:red:`<EXT>`.php ex: config_:red:`1`.php, config_:red:`essai`.php
 
-Dans le PC, la tablette,... appeler monitor en précisant le nom de la config
+Dans le PC, la tablette,... appeler monitor en précisant :red:`<EXT>` de la config
 
-	<IP de Monitor>/monitor?<NOM DU FICHIER>
+<IP de Monitor>/monitor?:red:`<EXT>` , exemple 192.168.1.113/monitor?1, 192.168.1.113/monitor?essai
 
 	|image1679| 
 
 La configuration choisie est placé dans une variable de session et dans un cookie:
 
 |image1680| 
+
+POur supprimer le cookie et revenir à la configuration par défault:
+
+|image1880| 
 
 0.5 Le Framework Bootstrap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2607,3 +2611,5 @@ function mc(variable,id)
    :width: 450px
 .. |image1878| image:: ../img/image1878.webp
    :width: 500px
+.. |image1880| image:: ../img/image1878.webp
+   :width: 400px
