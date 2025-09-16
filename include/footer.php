@@ -98,10 +98,10 @@ $('.close_clavier').click(function(){
 });	
 
 cookie_config=lire_cookie("userpref");
-if (cookie_config!="admin/config.php"){var resp = window.prompt("conserver cette configuration:(O ou N)\n"+cookie_config+"\nAprès une répone N, ACTUALISER le Navigateur");
+if (cookie_config!="admin/config.php"){var resp = window.prompt("conserver cette configuration:(O ou N)\n"+cookie_config);
 	if (resp=="N"){
 		//document.cookie = "userpref=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";console.log("..."+resp+"...");
-		document.cookie = "userpref=";
+		document.cookie = "userpref=";window.location.reload();
 	}
 	}
 /*----------------------------------------------------*/	
