@@ -1933,7 +1933,7 @@ Extrait du fichier, fichier complet : https://raw.githubusercontent.com/mgrafr/m
 
 |image1764|
 
-0.4.1 Un fichier de configuration par écran de contrôle
+0.4.2 Un fichier de configuration par écran de contrôle
 =======================================================
 A partir du fichier de configuration principal, faire une ou plusieurs copie(s) dans le répertoire admin en le(s) nommant:
 
@@ -1952,6 +1952,12 @@ La configuration choisie est placé dans une variable de session et dans un cook
 POur supprimer le cookie et revenir à la configuration par défault:
 
 |image1880| 
+
+Le Javascript dans footer.php
+
+|image1881| 
+
+|image1882| 
 
 0.5 Le Framework Bootstrap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2611,5 +2617,9 @@ function mc(variable,id)
    :width: 450px
 .. |image1878| image:: ../img/image1878.webp
    :width: 500px
-.. |image1880| image:: ../img/image1878.webp
+.. |image1880| image:: ../img/image1880.webp
    :width: 400px
+.. |image1881| image:: ../img/image1881.webp
+   :width: 700px
+.. |image1882| image:: ../img/image1882.webp
+   :width: 700px
