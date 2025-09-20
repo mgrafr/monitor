@@ -3011,13 +3011,13 @@ Mon WGDashbord
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |image1644|
 
-21.16 Modem GSM
+21.17 Modem GSM
 ===============
-21.16.1 Ebyrte 4G/LTE E840-DTU
+21.17.1 Ebyrte 4G/LTE E840-DTU
 ------------------------------
 voir : http://domo-site.fr/accueil/dossiers/73
 
-21.16.2 PUSR USR-G771
+21.17.2 PUSR USR-G771
 ---------------------
 https://www.pusr.com/ndirectory/[Setup-Software]USR-CAT1-Setup-Software-V1.1.4_1687230153.rar
 
@@ -3042,7 +3042,7 @@ Le script rec_sms_serie.py est modifié
 
 |image1821|
 
-21.17 VM Windows 11
+21.18 VM Windows 11
 ===================
 - Télécharger Windows 11: https://www.microsoft.com/fr-fr/software-download/windows11
 
@@ -3050,11 +3050,11 @@ Le script rec_sms_serie.py est modifié
 
    |image1841|
 
-21.17.1 Importer les isos dans pve
+21.18.1 Importer les isos dans pve
 ----------------------------------
 |image1836|
 
-21.17.2 Créer la machine virtuelle
+21.18.2 Créer la machine virtuelle
 ----------------------------------
 |image1837|
 
@@ -3066,7 +3066,7 @@ Le script rec_sms_serie.py est modifié
 
 |image1842|
 
-21.17.3 Installation de W11
+21.18.3 Installation de W11
 ---------------------------
 |image1843|
 
@@ -3074,7 +3074,7 @@ Le script rec_sms_serie.py est modifié
 
 |image1845|
 
-21.17.4 Console grapique SPICE
+21.18.4 Console grapique SPICE
 ------------------------------
 |image1846|
 
