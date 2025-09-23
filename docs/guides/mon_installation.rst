@@ -127,7 +127,12 @@ Box en fin de fin qui devra être remplacée avant fin 2025
    .. code-block::
 
       opkg update
+      opkg install luci-theme-material luci-i18n-base-fr luci-i18n-firewall-fr luci-i18n-opkg-fr luci-i18n-attendedsysupgrade-fr \
+      ipset curl diffutils speedtest-netperf \
+      kmod-ipt-nat6 
       uci set network.wan.disabled=0
+
+  |image1884| 
 
    .. note::
 
@@ -3811,3 +3816,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1883| image:: ../img/image1883.webp
    :width: 650px
+.. |image1884| image:: ../img/image1884.webp
+   :width: 700px
