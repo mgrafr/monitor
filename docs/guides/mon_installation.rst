@@ -106,7 +106,7 @@ Box en fin de fin qui devra être remplacée avant fin 2025
    
 .. admonition:: **Configuration du routeur**:
 
-   Interfaces WAN & WAN6
+   Interfaces **WAN & WAN6**
 
    |image1866|
   
@@ -164,6 +164,23 @@ Box en fin de fin qui devra être remplacée avant fin 2025
        - Masque : 255.255.255.0
        - Passerelle : 192.168.1.1
        - DNS : 192.168.1.1
+
+   Interfaces **LAN**
+
+   |image1885|
+
+   |image1886|
+
+   LAN/DHCP:
+
+   |image1887|
+
+   |image1888|
+
+   Appliquer les changement
+
+   |image1889|
+   
 
 21.0.3.2 Connexion au smartphone en USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3819,3 +3836,13 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 650px
 .. |image1884| image:: ../img/image1884.webp
    :width: 700px
+.. |image1885| image:: ../img/image1885.webp
+   :width: 650px
+.. |image1886| image:: ../img/image1886.webp
+   :width: 700px
+.. |image1887| image:: ../img/image1887.webp
+   :width: 700px
+.. |image1888| image:: ../img/image1888.webp
+   :width: 700px
+.. |image1889| image:: ../img/image1889.webp
+   :width: 400px
