@@ -698,8 +698,13 @@ Si aucune erreur bloquante n'est détectée.
 
 Vérifier que les dépots Proxmox sont tous no-subsription, sinon les désactiver
 
-|image1868|
+|image1868|   
 
+21.1.8.7 Supprimer node d'un cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block::
+
+   pvecm delnode pve
 
 21.2 Domoticz
 =============
