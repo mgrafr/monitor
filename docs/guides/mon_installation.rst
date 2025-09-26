@@ -59,6 +59,8 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 |image1890|
 
+|image1857|
+
 .. admonition::  **Récupération de l’IPv6 du lien local d’OpenWRT**
    
    *l'adresse d'une passerelle commence par fe80::/64*
@@ -76,10 +78,6 @@ Box en fin de fin qui devra être remplacée avant fin 2025
    |image1854|
 
 .. admonition:: **Configuration de la Box**:
-
-   Il est important d'utiliser deux classes de réseau différentes (exemple : 192.168.0 et 192.168.1);
-
-   |image1857|
 
    **délégation de préfixe IPv6** :  
 
@@ -3810,7 +3808,7 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1856| image:: ../img/image1856.webp
    :width: 700px
 .. |image1857| image:: ../img/image1857.webp
-   :width: 500px
+   :width: 600px
 .. |image1858| image:: ../img/image1858.webp
    :width: 400px
 .. |image1859| image:: ../img/image1859.webp
