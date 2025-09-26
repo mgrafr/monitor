@@ -55,7 +55,9 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 21.0.3.1 Connexion  à la Box internet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**mode** : « Routeur » (configuration de base) avec une DMZ
+**mode** : « Routeur » (configuration de base) 
+
+|image1890|
 
 .. admonition::  **Récupération de l’IPv6 du lien local d’OpenWRT**
    
@@ -3851,3 +3853,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1889| image:: ../img/image1889.webp
    :width: 400px
+.. |image1890| image:: ../img/image1889.webp
+   :width: 700px
