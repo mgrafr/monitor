@@ -3851,5 +3851,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1889| image:: ../img/image1889.webp
    :width: 400px
-.. |image1890| image:: ../img/image1889.webp
+.. |image1890| image:: ../img/image1890.webp
    :width: 700px
