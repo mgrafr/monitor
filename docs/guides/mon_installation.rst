@@ -1160,6 +1160,8 @@ https://github.com/Luligu/matterbridge-zigbee2mqtt
 ----------------------------------------
 Ce contrôleur LAN est intéressant car en cas de problème sur le conteneur LXC, il suffit de restaurer le CT sur un autre serveur Proxmox (Pas de modification de configuration due à l'USB)
 
+|image1891| 
+
 21.4.5.1 remplacer un controleur à base du CC2652P 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité de prendre en charge à la fois le Zigbee et Thread), donc compatible matter mais l'inconvénient est qu'il faut réactiver tous les dispositifs; pour faciliter le transfert, il suffit pour cela de concerver provisoirement l'ancien contrôleur et de créer un nouveau réseau avec le nouveau contrôleur; pour simplifier le transfert j'ai crée un nouveau conteneur LXC à partir de la sauvegarde deu conteneur zigbee2mqtt existant.
@@ -3852,4 +3854,6 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1889| image:: ../img/image1889.webp
    :width: 400px
 .. |image1890| image:: ../img/image1890.webp
+   :width: 700px
+.. |image1891| image:: ../img/image1891.webp
    :width: 700px
