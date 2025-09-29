@@ -79,6 +79,20 @@ $retour=curl_exec($curl);
 curl_close($curl);
 return $retour;
 }
+function file_get_curl_token($L,$token){	
+$curl = curl_init($L);
+curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
+curl_setopt($curl, CURLOPT_HEADER, false);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+	 'accept: application/json',
+  'Authorization: Bearer '.$token
+));
+$retour=curl_exec($curl);
+curl_close($curl);
+return $retour;
+}
 // valeur d'une variable DZ
 function val_variable($variable){$value2=0;global $L_dz;
 $result=array();$lect_stat_msg=array();$m=0;
@@ -818,9 +832,9 @@ $forecast = json_decode($prevam);$info=array();
 return json_encode($info);
 		break;		
 	case 2:// relevé temps réel station la pus proche (40Km)
-$url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&token='.TOKEN_MC.'&insee='.INSEE;
+$url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&insee='.INSEE;
 //$url2 = 'https://api.meteo-concept.com/api/forecast/nextHours?token='.TOKEN_MC.'&insee='.INSEE;		
-$prevam = file_get_curl($url);//echo $prevam;return;
+$prevam = file_get_curl_token($url,TOKEN_MC);//echo $prevam;return;
 $forecastam = json_decode($prevam);$info=array();
 		//$info['time']=$forecastam[0]->observation->time;
 		$info['temp']=$forecastam[0]->observation->temperature->value;
@@ -828,20 +842,22 @@ $forecastam = json_decode($prevam);$info=array();
 return json_encode($info);
 		break;		
     case 0:
-$url1 = 'https://api.meteo-concept.com/api/forecast/daily/0/period/2?token='.TOKEN_MC.'&insee='.INSEE;
-$prevam = file_get_curl($url1);
+$url = 'https://api.meteo-concept.com/api/forecast/daily/0/period/2?insee='.INSEE;
+$prevam = file_get_curl_token($url,TOKEN_MC);
 $forecastam = json_decode($prevam)->forecast;$info=$forecastam->weather;
 if (isset($img_donnees[$info])){$imgtemps=$img_donnees[$info];}
 else {$imgtemps="met_interdit_vert.svg";}
 $resultat='<p>'.$info.'Le temps prévu pour cet après-midi  : '.$donnees[$info].'<img class="meteo_concept_am" src="images/'.$imgtemps.'" alt=""></p>';
 break;
     case 1:		
-$url = 'https://api.meteo-concept.com/api/forecast/daily?insee='.INSEE;
-$result=file_http_curl($url,1,'',TOKEN_MC);	
-	$decoded = json_decode($result);
+$url = 'https://api.meteo-concept.com/api/forecast/daily?token='.TOKEN_MC.'&insee='.INSEE;
+//$result=file_http_curl($url,1,'',TOKEN_MC);	
+$result=file_get_curl_token($url,TOKEN_MC);
+//$result = file_get_contents($url);
+$decoded = json_decode($result);
 	$city = $decoded->city;
 	$forecasts = $decoded->forecast;
-	$resultats=array();//return $forecasts;//pour essai affichage json --->voir ajax.php
+	$resultats=array();$forecasts;//pour essai affichage json --->voir ajax.php
 	$i=0;
 	while ($i < 14)
 {
@@ -850,7 +866,6 @@ $temps=$forecasts[$i]->weather;$forecasts[$i]->temps=$donnees[$temps];
 if (isset($img_donnees[$temps])){$forecasts[$i]->imgtemps=$img_donnees[$temps];}
 else {$forecasts[$i]->imgtemps="met_interdit_vert.svg";}
  $i++;}
-
 $resultat= '<table class="table"><tr>';
 $info=array();
 
@@ -1198,7 +1213,7 @@ echo $file.'<br><em style="color:red">le fichier doit être autorisé en écritu
 return "sauvegarde OK";	 
 break;
 case "4" :
-$content=$idrep;$x=file_put_contents($file,$content);
+$content=$idrep;$x=file_put_contents(VARTAB,$content);
 echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>'.$x.'fichiers sauvegardés';		
 // mise à jour par domoticz
 $retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
