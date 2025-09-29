@@ -193,6 +193,7 @@ Après avoir validé l’autorisation si nécessaire, retourner sur l’interfac
 
 21.0.3.3 VPN Vireguard
 ^^^^^^^^^^^^^^^^^^^^^^
+|image1892|
 
 21.0 4 Batterie externe pour le Beryl AX
 ----------------------------------------
@@ -3856,4 +3857,6 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1890| image:: ../img/image1890.webp
    :width: 600px
 .. |image1891| image:: ../img/image1891.webp
+   :width: 700px
+.. |image1892| image:: ../img/image1892.webp
    :width: 700px
