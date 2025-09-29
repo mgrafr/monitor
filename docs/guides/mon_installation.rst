@@ -61,6 +61,14 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 |image1857|
 
+21.0.3.2 Connexion  en IPv4
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+En cours
+
+21.0.3.3 Connexion  en IPv6
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lien pour comprendre l'IPv6: https://caleca.developpez.com/tutoriels/ip-v6/
+
 .. admonition::  **Récupération de l’IPv6 du lien local d’OpenWRT**
    
    *l'adresse d'une passerelle commence par fe80::/64*
@@ -182,7 +190,7 @@ Box en fin de fin qui devra être remplacée avant fin 2025
    |image1889|
    
 
-21.0.3.2 Connexion au smartphone en USB
+21.0.3.4 Connexion au smartphone en USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Brancher un smartphone en USB sur le routeur qui se réveille et se met en charge 
 Après avoir validé l’autorisation si nécessaire, retourner sur l’interface d’administration du MT-3000 et activer, si ce n'est déjà fait, le mode partage de connexion par câble USB qui est opérationnel immédiatement.
@@ -191,11 +199,21 @@ Après avoir validé l’autorisation si nécessaire, retourner sur l’interfac
 
 |image1855|
 
-21.0.3.3 VPN Vireguard
-^^^^^^^^^^^^^^^^^^^^^^
+21.0.4 VPN Vireguard
+^^^^^^^^^^^^^^^^^^^^
+21.0.4.1 Client Vireguard
+^^^^^^^^^^^^^^^^^^^^^^^^^
+En cours
+
+21.0.4.1 Serveur Vireguard
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Le serveur et les option
+
 |image1892|
 
-21.0 4 Batterie externe pour le Beryl AX
+|image1893|
+
+21.0 5 Batterie externe pour le Beryl AX
 ----------------------------------------
 Le GL-MT3000 fonctionne correctement avec une batterie externe Anker. 
 
@@ -3805,9 +3823,9 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1853| image:: ../img/image1853.webp
    :width: 550px
 .. |image1854| image:: ../img/image1854.webp
-   :width: 650px
+   :width: 550px
 .. |image1855| image:: ../img/image1855.webp
-   :width: 700px
+   :width: 500px
 .. |image1856| image:: ../img/image1856.webp
    :width: 700px
 .. |image1857| image:: ../img/image1857.webp
@@ -3817,15 +3835,15 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1859| image:: ../img/image1859.webp
    :width: 400px
 .. |image1860| image:: ../img/image1860.webp
-   :width: 700px
-.. |image1861| image:: ../img/image1861.webp
    :width: 600px
+.. |image1861| image:: ../img/image1861.webp
+   :width: 500px
 .. |image1862| image:: ../img/image1862.webp
    :width: 700px
 .. |image1863| image:: ../img/image1863.webp
    :width: 450px
 .. |image1864| image:: ../img/image1864.webp
-   :width: 600px
+   :width: 500px
 .. |image1865| image:: ../img/image1865.webp
    :width: 700px
 .. |image1866| image:: ../img/image1866.webp
@@ -3859,4 +3877,6 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1891| image:: ../img/image1891.webp
    :width: 700px
 .. |image1892| image:: ../img/image1892.webp
+   :width: 700px
+.. |image1893| image:: ../img/image1893.webp
    :width: 700px
