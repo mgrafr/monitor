@@ -31,6 +31,10 @@ function lire_cookie(name) {
 }
 function popupCookie(page) {
   window.open(page);
+}
+function isInArray(array, search)
+{
+    return array.indexOf(search) >= 0;
 }	
 function maj_mqtt(id_x,state,ind,level=0){
 if (!state) {console.log("erreur-state");return;}
@@ -45,9 +49,10 @@ for (attribute in maj_dev) {
 }
 if (id_m==null) {out_msg= 'id_m='+id_m;return;}
 		//var command=state.toString().toLowerCase();
-		var command=state.toString();
-pp[id_m].Data=command;console.log(pp[id_m].Data+command);
-console.log('command='+state);
+var command=state.toString();console.log("command="+command+"pp_idm="+pp[id_m].Data);
+//const PP=pp[id_m];if (PP.find(obj => obj.hasOwnProperty("Data"))) {alert("idx ou ID  n'existe pas");}
+pp[id_m].Data=command;
+console.log('command='+pp[id_m].Data);
 var fx=pp[id_m].fx; console.log(fx);if (fx=="lien_variable"){maj_services(0);}
 var sid1=pp[id_m].ID1;;
 var sid2=pp[id_m].ID2;
@@ -100,7 +105,7 @@ $('.close_clavier').click(function(){
 cookie_config=lire_cookie("userpref");
 if (cookie_config!="admin/config.php"){var resp = window.prompt("conserver cette configuration:(O ou N)\n"+cookie_config);
 	if (resp=="N"){
-		//document.cookie = "userpref=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";console.log("..."+resp+"...");
+		document.cookie = "userpref=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";console.log("..."+resp+"...");
 		document.cookie = "userpref=";window.location.reload();
 	}
 	}
