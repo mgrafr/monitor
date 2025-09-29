@@ -6,7 +6,7 @@ if (isset($_COOKIE["userpref"]) && $_COOKIE["userpref"]==""){$_SESSION["conf"]="
     header('Location: '.$_SESSION["rep"].'index_loc.php');}
 if ($_SESSION["conf"]=="") {$config="admin/config.php";}
 else {$config="admin/config_".$_SESSION["conf"].".php";}
-$_SESSION["config"]=$config;echo "...".$_SESSION["rep"].$config."...";
+$_SESSION["config"]=$config;
 //if (!file_exists($_SESSION["rep"]).$config) {echo $_SESSION["rep"]).$config."....le fichier de config n'exiqte pas";
     //$_SESSION["conf"]="";
     //header('Location: '.$_SESSION["rep"])
