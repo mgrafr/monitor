@@ -55,7 +55,7 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 21.0.3.1 Connexion  à la Box internet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**mode** : « Routeur » (configuration de base) 
+**mode** : « Bridge » (RQ:configuration de base=Routeur) 
 
 |image1890|
 
