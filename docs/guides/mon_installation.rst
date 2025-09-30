@@ -259,12 +259,18 @@ Version openwrt : 24.10
    /bin/echo 'xxx' > /sys/class/hwmon/hwmon2/pwm1
 
 
-21.0 6 Batterie externe pour le Beryl AX
+21.0 6 Serveur de fichiers (ex: samba)
+
+|image1901|
+
+|image1902|
+
+|image1903|
+|
+--------------------------------------
+21.0 7 Batterie externe pour le Beryl AX
 ----------------------------------------
 Le GL-MT3000 fonctionne correctement avec une batterie externe Anker. 
-
-en cours de rédaction
-
 
 21.1 Proxmox
 ============
@@ -3940,4 +3946,10 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 600px
 .. |image1900| image:: ../img/image1900.webp
    :width: 600px
+.. |image1901| image:: ../img/image1901.webp
+   :width: 700px
+.. |image1902| image:: ../img/image1902.webp
+   :width: 700px
+.. |image1903| image:: ../img/image1903.webp
+   :width: 700px
 
