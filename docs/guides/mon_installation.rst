@@ -254,6 +254,11 @@ Version openwrt : 24.10
 
 |image1894|
 
+.. code-block::
+
+   /bin/echo 'xxx' > /sys/class/hwmon/hwmon2/pwm1
+
+
 21.0 6 Batterie externe pour le Beryl AX
 ----------------------------------------
 Le GL-MT3000 fonctionne correctement avec une batterie externe Anker. 
