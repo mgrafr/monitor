@@ -207,15 +207,27 @@ En cours
 
 21.0.4.1 Serveur Vireguard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-Le serveur et les option
+Le serveur et les options:
 
 |image1892|
 
 |image1893|
 
+|image1897|
+
+Configuration d'un client:
+
+|image1898|
+
+|image1899|
+
+|image1900|
+
 21.0.5 Ventilateur
 ------------------
 Version openwrt : 24.10
+
+|image1896|
 
 **Installer le package**
 
@@ -3908,8 +3920,19 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1892| image:: ../img/image1892.webp
    :width: 700px
 .. |image1893| image:: ../img/image1893.webp
-   :width: 700px
+   :width: 600px
 .. |image1894| image:: ../img/image1894.webp
    :width: 600px
 .. |image1895| image:: ../img/image1895.webp
    :width: 600px
+.. |image1896| image:: ../img/image1896.webp
+   :width: 600px
+.. |image1897| image:: ../img/image1897.webp
+   :width: 600px
+.. |image1898| image:: ../img/image1898.webp
+   :width: 500px
+.. |image1899| image:: ../img/image1899.webp
+   :width: 600px
+.. |image1900| image:: ../img/image1900.webp
+   :width: 600px
+
