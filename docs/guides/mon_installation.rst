@@ -260,14 +260,14 @@ Version openwrt : 24.10
 
 
 21.0 6 Serveur de fichiers (ex: samba)
-
+--------------------------------------
 |image1901|
 
 |image1902|
 
 |image1903|
-|
---------------------------------------
+
+
 21.0 7 Batterie externe pour le Beryl AX
 ----------------------------------------
 Le GL-MT3000 fonctionne correctement avec une batterie externe Anker. 
