@@ -215,6 +215,8 @@ Le serveur et les option
 
 21.0.5 Ventilateur
 ------------------
+Version openwrt : 24.10
+
 **Installer le package**
 
 .. code-block::
