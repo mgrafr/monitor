@@ -200,7 +200,7 @@ Après avoir validé l’autorisation si nécessaire, retourner sur l’interfac
 |image1855|
 
 21.0.4 VPN Vireguard
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 21.0.4.1 Client Vireguard
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 En cours
@@ -213,7 +213,34 @@ Le serveur et les option
 
 |image1893|
 
-21.0 5 Batterie externe pour le Beryl AX
+21.0.5 Ventilateur
+------------------
+**Installer le package**
+
+.. code-block::
+
+   opkg update
+   opkg install kmod-hwmon-pwmfan
+
+|image1895|
+
+**Désactiver le ventilateur**
+
+.. code-block::
+
+   /bin/echo '0' > /sys/class/hwmon/hwmon2/pwm1_enable
+
+**Activer le ventilateur**
+
+.. code-block::
+
+   /bin/echo '1' > /sys/class/hwmon/hwmon2/pwm1_enable
+
+** Controle de la vitesse**
+
+|image1894|
+
+21.0 6 Batterie externe pour le Beryl AX
 ----------------------------------------
 Le GL-MT3000 fonctionne correctement avec une batterie externe Anker. 
 
@@ -3880,3 +3907,7 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1893| image:: ../img/image1893.webp
    :width: 700px
+.. |image1894| image:: ../img/image1894.webp
+   :width: 600px
+.. |image1895| image:: ../img/image1895.webp
+   :width: 600px
