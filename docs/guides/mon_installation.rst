@@ -203,7 +203,7 @@ Après avoir validé l’autorisation si nécessaire, retourner sur l’interfac
 --------------------
 21.0.4.1 Client Vireguard
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-En cours
+|image1904|
 
 21.0.4.1 Serveur Vireguard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3951,5 +3951,7 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1902| image:: ../img/image1902.webp
    :width: 700px
 .. |image1903| image:: ../img/image1903.webp
+   :width: 700px
+.. |image1904| image:: ../img/image1904.webp
    :width: 700px
 
