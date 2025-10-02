@@ -1853,7 +1853,7 @@ Le système est sauvegardé par le logiciel Raspibackup : http://domo-site.fr/ac
 
 |image1048|
 
-Le PI4 assure aussi :
+Le PI5 assure aussi :
 
 -  Le monitoring (Nagios) : http://domo-site.fr/accueil/dossiers/71
 
