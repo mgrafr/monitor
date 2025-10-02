@@ -1812,7 +1812,7 @@ Voir ce § :ref:`1.1.3.3 Solution temps réel MQTT Websocket`
  
 |image1047|
 
-21.9 Raspberry PI4
+21.9 Raspberry PI5
 ==================
 .. note::
 
@@ -1822,17 +1822,33 @@ Voir ce § :ref:`1.1.3.3 Solution temps réel MQTT Websocket`
 
    Le Serial HAT RS232 est facile à installer et à utiliser. Il suffit de connecter le HAT aux broches GPIO du Raspberry Pi d'utiliser l'UART0.
 
-   mes fichiers config.txt et cdmline.txt:
+   En 2025 ajout d'une carte PCI pour SSD NVMe
+
+   |image1905|
+
+   migration d’une carte SD vers un SSD NVMe :
+
+   .. code-block::
+
+      lsblk
+
+   .. code-block::
+
+      sudo dd if=/dev/mmcblk0 of=/dev/nvme0n1 bs=4M conv=fsync status=progress
+
+   |image1906|  
+
+   mes fichiers /boot/firmware/config.txt et /boot/firmware/cmdline.txt:
 
    |image1593|
 
    |image1594|
 
-Alimenté en 12 Volts , comme le mini PC Proxmox, le PI4 couplé à un modem GSM assure l’envoi et la réception des sms même en cas de coupure d’alimentation électrique ENEDIS ; 
+Alimenté en 12 Volts , comme le mini PC Proxmox, le PI5 couplé à un modem GSM assure l’envoi et la réception des sms même en cas de coupure d’alimentation électrique ENEDIS ; 
 
 .. IMPORTANT:: **L’alarme ainsi que toute les commandes Domoticz restent opérationnelles.**
 
-Le serveur Domoticz et ce PI4 sont reliés par une liaison série ; à partir d’un smartphone l’envoi de sms permet de commander directement des switches par l’intermédiaire de l’API de Domoticz( http://localhost:PORT
+Le serveur Domoticz et ce PI5 sont reliés par une liaison série ; à partir d’un smartphone l’envoi de sms permet de commander directement des switches par l’intermédiaire de l’API de Domoticz( http://localhost:PORT
 Le système est sauvegardé par le logiciel Raspibackup : http://domo-site.fr/accueil/dossiers/81
 
 |image1048|
@@ -1841,25 +1857,19 @@ Le PI4 assure aussi :
 
 -  Le monitoring (Nagios) : http://domo-site.fr/accueil/dossiers/71
 
-.. admonition::**Configuration de l'hôte virtuel sur Nginx**
+   .. admonition:: **Configuration de l'hôte virtuel sur Nginx**
 
-   |image1049|
+      |image1049|
 
-   
-.. admonition::**Installation du système et du raid1**
-
-   http://domo-site.fr/accueil/dossiers/60
-
-   - **Scripts installés en plus de raspibackup et Nagios**
+-  L'exécution de scripts installés en plus de raspibackup et Nagios
 
    |image1050|
  
-    et **msmtp** , pour envoyer des emails facilement ; pour la configuration voir ce § :ref:`14.10.2 commandes scp pour l’envoi ou la réception de fichiers distants`
- 
-- **Affichage dans monitor de Nagios**
+- **msmtp** , pour envoyer des emails facilement ; pour la configuration voir ce § :ref:`14.10.2 commandes scp pour l’envoi ou la réception de fichiers distants`
+   
+**Affichage dans monitor de Nagios**
 
  |image1052|
- 
 
 21.9.1 Résolution des problèmes :
 ---------------------------------
@@ -3954,4 +3964,7 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1904| image:: ../img/image1904.webp
    :width: 700px
-
+.. |image1905| image:: ../img/image1905.webp
+   :width: 350px
+.. |image1906| image:: ../img/image1906.webp
+   :width: 700px
