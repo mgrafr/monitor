@@ -720,6 +720,12 @@ Si vous utilisez un système de fichiers ext4 avec EFI, donc vous utilisez GRUB,
    apt install proxmox-ve
    apt install --fix-broken
 
+21.1.8.7 Supprimer node d'un cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block::
+
+   pvecm delnode pve
+
 21.1.9 Update Proxmox
 ---------------------
 https://rdr-it.com/comment-migrer-proxmox-ve-8-vers-9/
@@ -771,11 +777,26 @@ Vérifier que les dépots Proxmox sont tous no-subsription, sinon les désactive
 
 |image1868|   
 
-21.1.8.7 Supprimer node d'un cluster
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block::
+21.1.10 Liaison directe PROXMOX-PI5
+-----------------------------------
+21.1.10.1 Liaison série
+^^^^^^^^^^^^^^^^^^^^^^^
 
-   pvecm delnode pve
+21.1.10.2 HTTP
+^^^^^^^^^^^^^^
+|image1908|
+
+|image1910|
+
+|image1911|
+
+|image1912|
+
+|image1913|
+
+|image1914|
+
+|image1915|
 
 21.2 Domoticz
 =============
@@ -3968,3 +3989,17 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 350px
 .. |image1906| image:: ../img/image1906.webp
    :width: 700px
+.. |image1908| image:: ../img/image1908.webp
+   :width: 700px
+.. |image1910| image:: ../img/image1910.webp
+   :width: 600px
+.. |image1911| image:: ../img/image1911.webp
+   :width: 700px
+.. |image1912| image:: ../img/image1912.webp
+   :width: 700px
+.. |image1913| image:: ../img/image1913.webp
+   :width: 600px
+.. |image1914| image:: ../img/image1914.webp
+   :width: 500px
+.. |image1915| image:: ../img/image1915.webp
+   :width: 300px
