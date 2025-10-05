@@ -834,6 +834,22 @@ Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un ada
 
   |image1915|
 
+- Créer une route:
+
+  .. code-block::
+
+     sudo ip route add <IP LOCALE> via <IP DESTINATION> dev <INET>
+  
+  |image1916|
+  
+
+
+  
+
+
+21.1.10.2.b Ajouter l'interface dans PVE de Proxmox
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 21.2 Domoticz
 =============
 *Installation depuis la version 2025 beta dans un conteneur LCX*
@@ -4026,7 +4042,7 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1906| image:: ../img/image1906.webp
    :width: 700px
 .. |image1907| image:: ../img/image1907.webp
-   :width: 2500px
+   :width: 250px
 .. |image1908| image:: ../img/image1908.webp
    :width: 700px
 .. |image1910| image:: ../img/image1910.webp
