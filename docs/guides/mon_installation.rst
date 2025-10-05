@@ -860,13 +860,18 @@ Création de l'interface bridge pour l'utiliser dans un conteneur LXC
 
 - Activation du routage IP: voir ci-dessus, *net.ipv4.ip_forward=1*
 
-- Créer une route vers le PI
+- Créer une route vers le PI et ajoutez une règle NAT dans iptables pour acheminer le trafic provenant des machines virtuelles
 
   .. code-block::
 
      ip route add <IP du PI> via <IP PVE PROXMOX> dev vmbr1
+     iptables -t nat -A POSTROUTING -s <RESEAU PC6PC/CIDR>-o eth0 -j MASQUERADE
 
   |image1921|
+
+21.1.10.2.c Ajouter l'interface dans un conteneur
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ |image1924|
 
 21.1.10.2.c Ping
 ~~~~~~~~~~~~~~~~
@@ -878,6 +883,7 @@ Faire de même depuis le PI
 ~~~~~~~~~~~~~~~~~~~~~
 |image1923|
 
+|image1917|
 
 21.2 Domoticz
 =============
@@ -4099,4 +4105,6 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1922| image:: ../img/image1922.webp
    :width: 650px
 .. |image1923| image:: ../img/image1923.webp
+   :width: 700px
+.. |image1924| image:: ../img/image1924.webp
    :width: 700px
