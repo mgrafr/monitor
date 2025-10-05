@@ -883,11 +883,11 @@ Faire de même depuis le PI
 ~~~~~~~~~~~~~~~~~~~~~
 |image1923|
 
-POUR UTILISER LE MOT DE PASSE, installation de SSHPASS
+POUR UTILISER LE MOT DE PASSE, installation de :darkblue:`SSHPASS`
 
 |image1917|
 
-Envoi d'un SMS depuis la console d'un conteneur; le script utilisé : send_sms.py utilisé avec la liaison série ,voir le § :ref:`21.17.2 PUSR USR-G771
+Envoi d'un SMS depuis la console d'un conteneur; le script utilisé : send_sms.py utilisé avec la liaison série ,voir le § :ref:`21.17.2 PUSR USR-G771`
 
 .. code-block::
 
@@ -4088,17 +4088,17 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1906| image:: ../img/image1906.webp
    :width: 700px
 .. |image1907| image:: ../img/image1907.webp
-   :width: 250px
+   :width: 200px
 .. |image1908| image:: ../img/image1908.webp
-   :width: 700px
-.. |image1910| image:: ../img/image1910.webp
    :width: 600px
+.. |image1910| image:: ../img/image1910.webp
+   :width: 500px
 .. |image1911| image:: ../img/image1911.webp
    :width: 700px
 .. |image1912| image:: ../img/image1912.webp
    :width: 700px
 .. |image1913| image:: ../img/image1913.webp
-   :width: 600px
+   :width: 550px
 .. |image1914| image:: ../img/image1914.webp
    :width: 500px
 .. |image1915| image:: ../img/image1915.webp
@@ -4106,17 +4106,17 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1916| image:: ../img/image1916.webp
    :width: 700px
 .. |image1917| image:: ../img/image1917.webp
-   :width: 500px
+   :width: 450px
 .. |image1918| image:: ../img/image1918.webp
-   :width: 650px
+   :width: 500px
 .. |image1919| image:: ../img/image1919.webp
-   :width: 600px
-.. |image1920| image:: ../img/image1920.webp
    :width: 550px
+.. |image1920| image:: ../img/image1920.webp
+   :width: 500px
 .. |image1921| image:: ../img/image1921.webp
    :width: 700px
 .. |image1922| image:: ../img/image1922.webp
-   :width: 650px
+   :width: 500px
 .. |image1923| image:: ../img/image1923.webp
    :width: 700px
 .. |image1924| image:: ../img/image1924.webp
