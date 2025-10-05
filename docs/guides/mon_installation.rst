@@ -887,7 +887,7 @@ POUR UTILISER LE MOT DE PASSE, installation de :darkblue:`SSHPASS`
 
 |image1917|
 
-Envoi d'un SMS depuis la console d'un conteneur; le script utilisé : send_sms.py utilisé avec la liaison série ,voir le § :ref:`21.17.2 PUSR USR-G771`
+Envoi d'un SMS depuis la console d'un conteneur; le script : send_sms.py utilisé avec la liaison série ,voir le § :ref:`21.17.2 PUSR USR-G771`
 
 .. code-block::
 
@@ -4122,4 +4122,4 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 .. |image1924| image:: ../img/image1924.webp
    :width: 700px
 .. |image1925| image:: ../img/image1925.webp
-   :width: 650px
+   :width: 550px
