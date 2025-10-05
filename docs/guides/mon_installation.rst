@@ -883,7 +883,18 @@ Faire de même depuis le PI
 ~~~~~~~~~~~~~~~~~~~~~
 |image1923|
 
+POUR UTILISER LE MOT DE PASSE, installation de SSHPASS
+
 |image1917|
+
+Envoi d'un SMS depuis la console d'un conteneur; le script utilisé : send_sms.py utilisé avec la liaison série ,voir le § :ref:`21.17.2 PUSR USR-G771
+
+.. code-block::
+
+   sshpass -p<MOT PASSE> ssh <USER>@<IP> 'python3 /home/michel/send_sms.py essai'
+
+|image1925|
+
 
 21.2 Domoticz
 =============
@@ -4094,6 +4105,8 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 300px
 .. |image1916| image:: ../img/image1916.webp
    :width: 700px
+.. |image1917| image:: ../img/image1917.webp
+   :width: 500px
 .. |image1918| image:: ../img/image1918.webp
    :width: 650px
 .. |image1919| image:: ../img/image1919.webp
@@ -4108,3 +4121,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1924| image:: ../img/image1924.webp
    :width: 700px
+.. |image1925| image:: ../img/image1925.webp
+   :width: 650px
