@@ -844,11 +844,40 @@ Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un ada
   
 21.1.10.2.b Ajouter l'interface dans PVE de Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|image1918|
+Création de l'interface bridge pour l'utiliser dans un conteneur LXC
 
-|image1919|
+- Dans l'interface graphique
 
-|image1920|
+  |image1918|
+
+  |image1919|
+
+- Avec le shell:
+
+  Ajouter l'iface dans bridge-ports
+
+  |image1920|
+
+- Activation du routage IP: voir ci-dessus, *net.ipv4.ip_forward=1*
+
+- Créer une route vers le PI
+
+  .. code-block::
+
+     ip route add <IP du PI> via <IP PVE PROXMOX> dev vmbr1
+
+  |image1921|
+
+21.1.10.2.c Ping
+~~~~~~~~~~~~~~~~
+|image1922|
+
+Faire de même depuis le PI
+
+21.1.10.2.d Essai SSH
+~~~~~~~~~~~~~~~~~~~~~
+|image1923|
+
 
 21.2 Domoticz
 =============
@@ -4065,3 +4094,9 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 600px
 .. |image1920| image:: ../img/image1920.webp
    :width: 550px
+.. |image1921| image:: ../img/image1921.webp
+   :width: 700px
+.. |image1922| image:: ../img/image1922.webp
+   :width: 650px
+.. |image1923| image:: ../img/image1923.webp
+   :width: 700px
