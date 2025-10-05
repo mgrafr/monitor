@@ -784,19 +784,55 @@ Vérifier que les dépots Proxmox sont tous no-subsription, sinon les désactive
 
 21.1.10.2 HTTP
 ^^^^^^^^^^^^^^
+Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un adaptateur usb-ethernet sur le Raspberry
+
+21.1.10.2.ajouter l'interface sur le PI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|image1907|
+
+**Vérifier que l'adaptateur est reconnu:**
+
 |image1908|
 
-|image1910|
+**avec nmcli**
 
-|image1911|
+- Récupérer l'adresse MAC de l'interface pour changer son nom (pour plus de facilités)
 
-|image1912|
+  .. code-block::
 
-|image1913|
+      sudo nano /etc/systemd/network/10-persistent-net_lan.link
 
-|image1914|
+  |image1910|
 
-|image1915|
+- Pour vérifier l'application du changement: 
+
+  |image1911|
+
+- Ajouter l'interface en indiquant son IP(CIDR)
+
+  .. code-block::
+
+     sudo nmcli con add type ethernet con-name <NAME> ifname <NOM INTERFACE> ip4 <IP>
+
+  |image1912|
+
+- Vérifier le bon enregistrement de l'interface avec **nmcli**
+
+  |image1913|
+
+- Activation du routage IP
+
+  .. code-block::
+
+      sudo nano /etc/sysctl.conf
+
+  Décocher la ligne : *net.ipv4.ip_forward=1*
+
+  |image1914|
+
+  Après avoir modifié ce fichier, appliquer la modification avec : *sysctl -p*
+
+  |image1915|
 
 21.2 Domoticz
 =============
@@ -3989,6 +4025,8 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 350px
 .. |image1906| image:: ../img/image1906.webp
    :width: 700px
+.. |image1907| image:: ../img/image1907.webp
+   :width: 2500px
 .. |image1908| image:: ../img/image1908.webp
    :width: 700px
 .. |image1910| image:: ../img/image1910.webp
