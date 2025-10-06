@@ -63,6 +63,8 @@ https://www.linuxtricks.fr/wiki/debian-installer-un-serveur-lamp-apache-mysql-ph
 
 18.3 Liaison série Domoticz-PI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Voir aussi le § :ref:`21.1.10 Liaison directe PROXMOX-PI5` qui concerne une liaison PC-PC directe en ethernet
+
 *Scripts dans Domoticz*
 
 Ils sont exécutés en dehors du conteneur si Domoticz est sous Docker.
