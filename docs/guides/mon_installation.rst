@@ -3335,16 +3335,42 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 
 |image1849|
 
-21.19 Liaison directe Serveur Proxmox-Raspberry
-===============================================
+21.19 Liaisons directes Serveur Proxmox-Raspberry
+=================================================
 21.19.1 Liaison serie RS232
 ---------------------------
 voir aussi :ref:`http://domo-site.fr/accueil/dossiers/93`
 
 |image1926|
 
+Pour une application pratique voir le §  :ref:`18.3 Liaison série Domoticz-PI`
+
 21.19.2 Liaison HTTP PC-PC
 --------------------------
+
+21.19.3 SSH, Python-fabric
+--------------------------------
+21.19.3.1 SSH, sftp
+^^^^^^^^^^^^^^^^^^^
+
+21.19.3.2 Fabric & fabric-ssh
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- **Fabric**
+
+   voir le §  :ref:`6.2 Dans Domoticz`
+
+- **Fabric ssh python**
+
+  pour installer fabric ssh:
+
+  Configurer fabric sudo aptitude install python-dev pip install fabric pip install paramiko
+
+  https://python.doctor/page-python-ssh-connect-host-distant-sftp-os-fabric-client
+
+  Lancer une commande sur un servant distant Vous pouvez run une commande sur un servant distant comme ceci:
+
+  run(“python /scripts/script.py”)
+
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
