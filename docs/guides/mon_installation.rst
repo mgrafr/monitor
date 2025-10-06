@@ -3339,6 +3339,7 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 ===============================================
 21.19.1 Liaison serie RS232
 ---------------------------
+|image1926|
 
 21.19.2 Liaison HTTP PC-PC
 --------------------------
@@ -4129,3 +4130,5 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
    :width: 700px
 .. |image1925| image:: ../img/image1925.webp
    :width: 550px
+.. |image1926| image:: ../img/image1926.webp
+   :width: 700px
