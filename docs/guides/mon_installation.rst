@@ -3361,15 +3361,23 @@ Pour une application pratique voir le §  :ref:`18.3 Liaison série Domoticz-PI`
 
 - **Fabric ssh python**
 
-  pour installer fabric ssh:
+   .. admonition:: **pour installer fabric ssh**
 
-  Configurer fabric sudo aptitude install python-dev pip install fabric pip install paramiko
+      Installer : 
 
-  https://python.doctor/page-python-ssh-connect-host-distant-sftp-os-fabric-client
+      .. code-block::
 
-  Lancer une commande sur un servant distant Vous pouvez run une commande sur un servant distant comme ceci:
+         apt install python-dev 
+         pip install fabric 
+         pip install paramiko
 
-  run(“python /scripts/script.py”)
+     https://python.doctor/page-python-ssh-connect-host-distant-sftp-os-fabric-client
+
+     Pour lancer une commande sur un serveur distant :
+
+     .. code-block::
+
+        run(“python /scripts/script.py”)
 
 
 .. |image1027| image:: ../media/image1027.webp
