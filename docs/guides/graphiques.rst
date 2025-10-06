@@ -63,20 +63,6 @@ Pour l'installer (pip est déjà installé):
 
    sudo pip3 install fabric
 
-pour installer fabric ssh:
-
-- Configurer fabric
-  sudo aptitude install python-dev
-  pip install fabric
-  pip install paramiko
-
-  https://python.doctor/page-python-ssh-connect-host-distant-sftp-os-fabric-client
-
-- Lancer une commande sur un servant distant
-  Vous pouvez run une commande sur un servant distant comme ceci:
-
-  run('python /scripts/script.py')
-
 Une fois un premier enregistrement crée, pour une température, dans la base, il suffit pour un nouvel enregistrement d’une autre t° d’ajouter dans le script LUA « évènement /:darkblue:`NOM_DU SCRIPT` » cette T°
 
 **Depuis la version 2023-2 de Domoticz le script a été réécrit en dzvent**
