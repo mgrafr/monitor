@@ -3335,7 +3335,13 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 
 |image1849|
 
+21.19 Liaison directe Serveur Proxmox-Raspberry
+===============================================
+21.19.1 Liaison serie RS232
+---------------------------
 
+21.19.2 Liaison HTTP PC-PC
+--------------------------
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
