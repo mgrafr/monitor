@@ -3339,6 +3339,8 @@ Dans PVE, choisir **SPICE** et cliquer sue le fichier :darkblue:`pve.spice.vv` d
 ===============================================
 21.19.1 Liaison serie RS232
 ---------------------------
+voir aussi :ref:`http://domo-site.fr/accueil/dossiers/93`
+
 |image1926|
 
 21.19.2 Liaison HTTP PC-PC
