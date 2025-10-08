@@ -4286,3 +4286,11 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 700px
 .. |image1929| image:: ../img/image1929.webp
    :width: 550px
+.. |image1930| image:: ../img/image1930.webp
+   :width: 700px
+.. |image1931| image:: ../img/image1931.webp
+   :width: 700px
+.. |image1932| image:: ../img/image1932.webp
+   :width: 700px
+.. |image1933| image:: ../img/image1933.webp
+   :width: 700px
