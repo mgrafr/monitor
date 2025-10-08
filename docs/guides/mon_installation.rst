@@ -31,6 +31,10 @@
 
 **Firmware Version**: **Native OpenWrt**	24.10
 
+|image1933|
+
+https://dl.gl-inet.com/router/mt3000/open
+
 |image1851|
 
 21.0.2 BOX Free One
