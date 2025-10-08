@@ -793,6 +793,9 @@ Vérifier que les dépots Proxmox sont tous no-subsription, sinon les désactive
 -----------------------------------
 21.1.10.1 Liaison série
 ^^^^^^^^^^^^^^^^^^^^^^^
+*liaison remplacée en 2925 par une liaison dirct PC-PC en SSH*
+
+voir le § :ref:`18.3 Liaison série Domoticz-PI`
 
 21.1.10.2 HTTP
 ^^^^^^^^^^^^^^
