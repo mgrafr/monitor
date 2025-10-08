@@ -3350,8 +3350,74 @@ Pour une application pratique voir le §  :ref:`18.3 Liaison série Domoticz-PI`
 
 21.19.3 SSH, Python-fabric
 --------------------------------
-21.19.3.1 SSH, sftp
+21.19.3.1 ssh, sftp
 ^^^^^^^^^^^^^^^^^^^
+un exemple de script qui s'execute lors d'un changement dans unr variable;
+
+**la variable : dans aldz.py**:
+
+.. code-block::
+
+   #!/usr/bin/env python3 -*- coding: utf-8 -*-
+   x=''
+
+**Exemple de modification de la variables dans un script LUA:
+
+|image1929|
+
+**le fichier connect.py contient les données de connexion**:
+
+.. code-block::
+
+   rpi5=['IP','USER','PASSWORD']
+
+**le script envoi.msg.py**:
+
+.. code-block::
+
+   #!/usr/bin/env python3 -*- coding: utf-8 -*-
+
+   import time ,json, os, shutil
+   import importlib
+   import aldz as b
+   import connect as rpi5
+   import paramiko
+   # variables de connect.py
+   server=rpi5.rpi5[0]
+   username=rpi5.rpi5[1]
+   password=rpi5.rpi5[2]
+   #
+   def envoi_sms(message):
+       bmessage = message.encode('utf-8')
+       ssh_client = paramiko.SSHClient()
+       # ajouter automatiquement les clés d'hôtes inconnues au magasin d'hôtes connus
+       ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+       ssh_client.connect(server, username=username, password=password)
+       stdin, stdout, stderr = ssh_client.exec_command('python3 /home/michel/send_sms.py'+' essai')
+   def com_dz(url):
+       response = requests.get(url)
+       if response.status_code == 200:
+           contenu = response.json()
+           message = contenu['title']
+           envoi_sms(message)
+       else:
+           print('URL absente')
+           envoi_sms('url_absente')
+   def raz_dz():
+       src=r'/opt/domoticz/scripts/python/aldz.bak.py'
+       des=r'/opt/domoticz/scripts/python/aldz.py'
+       shutil.copy(src, des)
+   #
+   while True:
+           b = importlib.reload(b)
+           message=b.x
+           if message != "0":
+               sms=message
+               print(sms)
+               envoi_sms(sms)
+               time.sleep(5)
+           raz_dz()
+           time.sleep(10)
 
 21.19.3.2 Fabric & fabric-ssh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4192,3 +4258,5 @@ Pour une application pratique voir le §  :ref:`18.3 Liaison série Domoticz-PI`
    :width: 700px
 .. |image1927| image:: ../img/image1927.webp
    :width: 700px
+.. |image1929| image:: ../img/image1929.webp
+   :width: 550px
