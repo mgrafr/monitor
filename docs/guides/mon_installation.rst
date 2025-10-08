@@ -3361,7 +3361,7 @@ Pour une application pratique voir le §  :ref:`18.3 Liaison série Domoticz-PI`
 --------------------------
 voir ce § :ref:`21.1.10 Liaison directe PROXMOX-PI5`
 
-21.19.3 Scripts SSH: bash, Python pout HTTP
+21.19.3 Scripts SSH: bash, Python pour HTTP
 -------------------------------------------
 21.19.3.1 Bash ssh
 ^^^^^^^^^^^^^^^^^^
@@ -3417,7 +3417,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
        # ajouter automatiquement les clés d'hôtes inconnues au magasin d'hôtes connus
        ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
        ssh_client.connect(server, username=username, password=password)
-       stdin, stdout, stderr = ssh_client.exec_command('python3 /home/michel/send_sms.py'+' essai')
+       stdin, stdout, stderr = ssh_client.exec_command('python3 /home/michel/send_sms.py '+message)
    def com_dz(url):
        response = requests.get(url)
        if response.status_code == 200:
@@ -3442,55 +3442,20 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
                time.sleep(5)
            raz_dz()
            time.sleep(10)
+**script systemd pour démarrage automatique**
 
-21.19.3.3 Fabric & fabric-ssh
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- **Fabric**
+.. code-block::
 
-   voir le §  :ref:`6.2 Dans Domoticz`
+   Unit]
+   Description=commande envoi message par sms
+   After=multi-user.target
+   [Service]
+   Type=idle
+   ExecStart=/usr/bin/python3 /opt/domoticz/scripts/python/envoi_msg.py > /home/michel/envoi_msg.log
+   [Install]
+   WantedBy=multi-user.target
 
-- **Fabric ssh python**
-
-   .. admonition:: **installer fabric ssh dans un enrironnement**
-
-      Chaque environnement a ses propres versions de bibliothèques, assurant qu’il n’y a pas de conflits entre les projets; j'utilise fabric3 pour l'enregistrement des données dans ma base sql et fabric ssh dépend de fabric V2.
-
-      **Créer un environnement python**:
-
-      .. code-block::
-
-         apt ubdate & ugrade
-         python3 --version
-
-      .. code-block::
-
-         apt install python3.11-venv
-         python3 -m venv <NOM de l'ENVIRONNEMENT>
-
-      |image1927| 
-
-      Activation de l'environnement
-
-      .. code-block::
-
-              source <NOM de l'ENVIRONNEMENT>/bin/activate
-
-      Installer Fabric: 
-
-      .. code-block::
-
-         apt install python-dev 
-         pip install fabric 
-         pip install paramiko
-
-     https://python.doctor/page-python-ssh-connect-host-distant-sftp-os-fabric-client
-
-     Pour lancer une commande sur un serveur distant :
-
-     .. code-block::
-
-        run(“python /scripts/script.py”)
-
+|image1927|
 
 .. |image1027| image:: ../media/image1027.webp
    :width: 425px
@@ -4281,7 +4246,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1926| image:: ../img/image1926.webp
    :width: 700px
 .. |image1927| image:: ../img/image1927.webp
-   :width: 700px
+   :width: 50px
 .. |image1928| image:: ../img/image1928.webp
    :width: 700px
 .. |image1929| image:: ../img/image1929.webp
