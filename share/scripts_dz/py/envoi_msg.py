@@ -16,7 +16,7 @@ def envoi_sms(message):
     # ajouter automatiquement les clés d'hôtes inconnues au magasin d'hôtes connus
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh_client.connect(server, username=username, password=password)
-    stdin, stdout, stderr = ssh_client.exec_command('python3 /home/michel/send_sms.py'+' essai')
+    stdin, stdout, stderr = ssh_client.exec_command('python3 /home/michel/send_sms.py '+message)
 def com_dz(url):
     response = requests.get(url)
     if response.status_code == 200:
@@ -40,4 +40,5 @@ while True:
             envoi_sms(sms)
             time.sleep(5)
         raz_dz()
+
         time.sleep(10)
