@@ -3361,9 +3361,31 @@ Pour une application pratique voir le §  :ref:`18.3 Liaison série Domoticz-PI`
 
 - **Fabric ssh python**
 
-   .. admonition:: **pour installer fabric ssh**
+   .. admonition:: **installer fabric ssh dans un enrironnement**
 
-      Installer : 
+      Chaque environnement a ses propres versions de bibliothèques, assurant qu’il n’y a pas de conflits entre les projets; j'utilise fabric3 pour l'enregistrement des données dans ma base sql et fabric ssh dépend de fabric V2.
+
+      **Créer un environnement python**:
+
+      .. code-block::
+
+         apt ubdate & ugrade
+         python3 --version
+
+      .. code-block::
+
+         apt install python3.11-venv
+         python3 -m venv <NOM de l'ENVIRONNEMENT>
+
+      |image1927| 
+
+      Activation de l'environnement
+
+      .. code-block::
+
+              source <NOM de l'ENVIRONNEMENT>/bin/activate
+
+      Installer Fabric: 
 
       .. code-block::
 
@@ -4167,4 +4189,6 @@ Pour une application pratique voir le §  :ref:`18.3 Liaison série Domoticz-PI`
 .. |image1925| image:: ../img/image1925.webp
    :width: 550px
 .. |image1926| image:: ../img/image1926.webp
+   :width: 700px
+.. |image1927| image:: ../img/image1927.webp
    :width: 700px
