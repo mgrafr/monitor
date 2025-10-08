@@ -63,7 +63,15 @@ Box en fin de fin qui devra être remplacée avant fin 2025
 
 21.0.3.2 Connexion  en IPv4
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-En cours
+Au premier démarrage, rendez-vous à l’adresse 192.168.8.1.
+
+|image1931|
+
+Modification du réseau
+
+|image1932|
+
+le Routeur va redémarrer
 
 21.0.3.3 Connexion  en IPv6
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
