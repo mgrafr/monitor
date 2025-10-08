@@ -3347,12 +3347,24 @@ Pour une application pratique voir le §  :ref:`18.3 Liaison série Domoticz-PI`
 
 21.19.2 Liaison HTTP PC-PC
 --------------------------
+voir ce § :ref:`21.1.10 Liaison directe PROXMOX-PI5`
 
-21.19.3 SSH, Python-fabric
---------------------------------
-21.19.3.1 ssh, sftp
-^^^^^^^^^^^^^^^^^^^
-un exemple de script qui s'execute lors d'un changement dans unr variable;
+21.19.3 Scripts SSH: bash, Python pout HTTP
+-------------------------------------------
+21.19.3.1 Bash ssh
+^^^^^^^^^^^^^^^^^^
+.. code-block::
+
+   sshpass -p mot_de_passe ssh michel@192.168.10.4 'python3 /home/michel/send_sms.py essai'
+
+|image1930|
+
+21.19.3.2 Python ssh, sftp
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+un exemple de script Python qui s'execute lors d'un changement dans une variable;Paramiko doit être installé:https://docs.paramiko.org/en/latest/api/client.html
+
+|image1928|
 
 **la variable : dans aldz.py**:
 
@@ -3419,7 +3431,7 @@ un exemple de script qui s'execute lors d'un changement dans unr variable;
            raz_dz()
            time.sleep(10)
 
-21.19.3.2 Fabric & fabric-ssh
+21.19.3.3 Fabric & fabric-ssh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Fabric**
 
@@ -4257,6 +4269,8 @@ un exemple de script qui s'execute lors d'un changement dans unr variable;
 .. |image1926| image:: ../img/image1926.webp
    :width: 700px
 .. |image1927| image:: ../img/image1927.webp
+   :width: 700px
+.. |image1928| image:: ../img/image1928.webp
    :width: 700px
 .. |image1929| image:: ../img/image1929.webp
    :width: 550px
