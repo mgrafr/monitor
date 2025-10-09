@@ -861,28 +861,36 @@ Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un ada
 
   Pour rendre persistante la route, créer un fichier systemd ::darkblue:`/etc/systemd/system/routes.service`
 
-.. code-block::
+  .. code-block::
 
-   Description=ROuTES persistantes service
-   After=network.target
-   StartLimitIntervalSec=0
-   [Service]
-   Type=simple
-   Restart=always
-   RestartSec=1
-   User=<USER>
-   ExecStart=<CHEMIN>/./<NOM_SCRIPT>.sh
+     Description=ROuTES persistantes service
+     After=network.target
+     StartLimitIntervalSec=0
+     [Service]
+     Type=simple
+     Restart=always
+     RestartSec=1
+     User=<USER>
+     ExecStart=<CHEMIN>/./<NOM_SCRIPT>.sh
 
-   [Install]
-   WantedBy=multi-user.target*
+     [Install]
+     WantedBy=multi-user.target*
 
-|image1939|
+  |image1939|
 
-|image1940|
+  |image1940|
 
-Le fichier contenant les IPROUTE: <CHEMIN>/routes.sh
+- Le fichier contenant les IPROUTE: <CHEMIN>/routes.sh
 
-|image1941|
+  |image1941|
+
+- Donner les autorisations au fichier ::darkblue:`routes.sh` : 
+
+  .. code-block::
+
+     sudo chmod +x <CHEMIN>/routes.sh
+
+  |image1942|
 
 21.1.10.2.b Ajouter l'interface dans PVE de Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -930,7 +938,7 @@ SAuver la règle dans le répertoire créer par iptables-persistent
 
 Pour rendre persistante la route, créer un fichier systemd ::darkblue:`/etc/systemd/system/routes.service`
 
-VOIR le § ci-dessus  ::darkblue:`21.1.10.2.ajouter l'interface sur le PI`
+VOIR le § ci-dessus  ::ref:`21.1.10.2.ajouter l'interface sur le PI`
 
 |image1937|
 
@@ -4277,13 +4285,13 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1913| image:: ../img/image1913.webp
    :width: 550px
 .. |image1914| image:: ../img/image1914.webp
-   :width: 500px
+   :width: 400px
 .. |image1915| image:: ../img/image1915.webp
    :width: 300px
 .. |image1916| image:: ../img/image1916.webp
    :width: 700px
 .. |image1917| image:: ../img/image1917.webp
-   :width: 450px
+   :width: 400px
 .. |image1918| image:: ../img/image1918.webp
    :width: 500px
 .. |image1919| image:: ../img/image1919.webp
@@ -4319,16 +4327,18 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1934| image:: ../img/image1934.webp
    :width: 600px
 .. |image1935| image:: ../img/image1935.webp
-   :width: 600px
-.. |image1936| image:: ../img/image1936.webp
-   :width: 580px
-.. |image1937| image:: ../img/image1937.webp
    :width: 500px
+.. |image1936| image:: ../img/image1936.webp
+   :width: 480px
+.. |image1937| image:: ../img/image1937.webp
+   :width: 400px
 .. |image1938| image:: ../img/image1938.webp
    :width: 450px
 .. |image1939| image:: ../img/image1939.webp
-   :width: 450px
+   :width: 380px
 .. |image1940| image:: ../img/image1940.webp
    :width: 700px
 .. |image1941| image:: ../img/image1941.webp
    :width: 450px
+.. |image1942| image:: ../img/image1942.webp
+   :width: 400px
