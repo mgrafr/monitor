@@ -813,6 +813,8 @@ Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un ada
 
 - Récupérer l'adresse MAC de l'interface pour changer son nom (pour plus de facilités)
 
+  |image1934|
+
   .. code-block::
 
       sudo nano /etc/systemd/network/10-persistent-net_lan.link
@@ -845,7 +847,7 @@ Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un ada
 
   |image1914|
 
-  Après avoir modifié ce fichier, appliquer la modification avec : *sysctl -p*
+  Après avoir modifié ce fichier, appliquer la modification avec : *sudo sysctl -p*
 
   |image1915|
 
@@ -853,7 +855,7 @@ Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un ada
 
   .. code-block::
 
-     sudo ip route add <IP LOCALE> via <IP DESTINATION> dev <INET>
+     sudo ip route add <IP DESTINATION> via <IP LOCALE> dev <INET>
   
   |image1916|
   
@@ -875,14 +877,52 @@ Création de l'interface bridge pour l'utiliser dans un conteneur LXC
 
 - Activation du routage IP: voir ci-dessus, *net.ipv4.ip_forward=1*
 
-- Créer une route vers le PI et ajoutez une règle NAT dans iptables pour acheminer le trafic provenant des machines virtuelles
+- Créer une route vers le PI et ajoutez une règle NAT dans iptables pour acheminer le trafic provenant des machines virtuelles;pour que la règle soit persistante , il faut installer:
+
+.. code-block::
+
+   apt install iptables-persistent
+
+|image1935|
 
   .. code-block::
 
-     ip route add <IP du PI> via <IP PVE PROXMOX> dev vmbr1
-     iptables -t nat -A POSTROUTING -s <RESEAU PC6PC/CIDR>-o eth0 -j MASQUERADE
+   iptables -t nat -A POSTROUTING -s <RESEAU PC6PC/CIDR>-o eth0 -j MASQUERADE  
 
-  |image1921|
+  .. code-block::
+
+   ip route add <IP du PI> via <IP PVE PROXMOX> dev vmbr1
+
+|image1921|
+
+SAuver la règle dans le répertoire créer par iptables-persistent
+
+.. code-block::
+
+   iptables-save >  /etc/iptables/rules.v4
+
+|image1936|
+
+Pour rendre persistante la route, créer un fichier systemd : routes.service
+
+.. code-block::
+
+   Description=ROutes persistantes service
+   After=network.target
+   StartLimitIntervalSec=0
+   [Service]
+   Type=simple
+   Restart=always
+   RestartSec=1
+   User=USER
+   ExecStart=/usr/local/sbin/./SCRIPT_NAME.sh
+
+   [Install]
+   WantedBy=multi-user.target
+
+Le fichier contenant les IPROUTE: routes.sh
+
+
 
 21.1.10.2.c Ajouter l'interface dans un conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4262,3 +4302,9 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 700px
 .. |image1933| image:: ../img/image1933.webp
    :width: 700px
+.. |image1934| image:: ../img/image1934.webp
+   :width: 600px
+.. |image1935| image:: ../img/image1935.webp
+   :width: 600px
+.. |image1936| image:: ../img/image1936.webp
+   :width: 580px
