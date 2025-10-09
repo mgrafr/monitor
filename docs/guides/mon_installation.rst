@@ -903,26 +903,28 @@ SAuver la règle dans le répertoire créer par iptables-persistent
 
 |image1936|
 
-Pour rendre persistante la route, créer un fichier systemd : routes.service
+Pour rendre persistante la route, créer un fichier systemd ::darkblue:`/etc/systemd/system/routes.service`
 
 .. code-block::
 
-   Description=ROutes persistantes service
+   Description=ROuTES persistantes service
    After=network.target
    StartLimitIntervalSec=0
    [Service]
    Type=simple
    Restart=always
    RestartSec=1
-   User=USER
-   ExecStart=/usr/local/sbin/./SCRIPT_NAME.sh
+   User=<USER>
+   ExecStart=<CHEMIN>/./<NOM_SCRIPT>.sh
 
    [Install]
    WantedBy=multi-user.target
 
-Le fichier contenant les IPROUTE: routes.sh
+|image1937|
 
+Le fichier contenant les IPROUTE: <CHEMIN>/routes.sh
 
+|image1938|
 
 21.1.10.2.c Ajouter l'interface dans un conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4308,3 +4310,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 600px
 .. |image1936| image:: ../img/image1936.webp
    :width: 580px
+.. |image1937| image:: ../img/image1937.webp
+   :width: 500px
+.. |image1937| image:: ../img/image1937.webp
+   :width: 450px
