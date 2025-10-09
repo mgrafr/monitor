@@ -858,7 +858,32 @@ Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un ada
      sudo ip route add <IP DESTINATION> via <IP LOCALE> dev <INET>
   
   |image1916|
-  
+
+  Pour rendre persistante la route, créer un fichier systemd ::darkblue:`/etc/systemd/system/routes.service`
+
+.. code-block::
+
+   Description=ROuTES persistantes service
+   After=network.target
+   StartLimitIntervalSec=0
+   [Service]
+   Type=simple
+   Restart=always
+   RestartSec=1
+   User=<USER>
+   ExecStart=<CHEMIN>/./<NOM_SCRIPT>.sh
+
+   [Install]
+   WantedBy=multi-user.target*
+
+|image1939|
+
+|image1940|
+
+Le fichier contenant les IPROUTE: <CHEMIN>/routes.sh
+
+|image1941|
+
 21.1.10.2.b Ajouter l'interface dans PVE de Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Création de l'interface bridge pour l'utiliser dans un conteneur LXC
@@ -905,20 +930,7 @@ SAuver la règle dans le répertoire créer par iptables-persistent
 
 Pour rendre persistante la route, créer un fichier systemd ::darkblue:`/etc/systemd/system/routes.service`
 
-.. code-block::
-
-   Description=ROuTES persistantes service
-   After=network.target
-   StartLimitIntervalSec=0
-   [Service]
-   Type=simple
-   Restart=always
-   RestartSec=1
-   User=<USER>
-   ExecStart=<CHEMIN>/./<NOM_SCRIPT>.sh
-
-   [Install]
-   WantedBy=multi-user.target
+VOIR le § ci-dessus  ::darkblue:`21.1.10.2.ajouter l'interface sur le PI`
 
 |image1937|
 
@@ -4312,5 +4324,11 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 580px
 .. |image1937| image:: ../img/image1937.webp
    :width: 500px
-.. |image1937| image:: ../img/image1937.webp
+.. |image1938| image:: ../img/image1938.webp
+   :width: 450px
+.. |image1939| image:: ../img/image1939.webp
+   :width: 450px
+.. |image1940| image:: ../img/image1940.webp
+   :width: 700px
+.. |image1941| image:: ../img/image1941.webp
    :width: 450px
