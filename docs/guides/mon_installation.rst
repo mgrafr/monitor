@@ -837,61 +837,6 @@ Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un ada
 
   |image1913|
 
-- Activation du routage IP
-
-  .. code-block::
-
-      sudo nano /etc/sysctl.conf
-
-  Décocher la ligne : *net.ipv4.ip_forward=1*
-
-  |image1914|
-
-  Après avoir modifié ce fichier, appliquer la modification avec : *sudo sysctl -p*
-
-  |image1915|
-
-- Créer une route:
-
-  .. code-block::
-
-     sudo ip route add <IP DESTINATION> via <IP LOCALE> dev <INET>
-  
-  |image1916|
-
-  Pour rendre persistante la route, créer un fichier systemd ::darkblue:`/etc/systemd/system/routes.service`
-
-  .. code-block::
-
-     Description=ROuTES persistantes service
-     After=network.target
-     StartLimitIntervalSec=0
-     [Service]
-     Type=simple
-     Restart=always
-     RestartSec=1
-     User=<USER>
-     ExecStart=<CHEMIN>/./<NOM_SCRIPT>.sh
-
-     [Install]
-     WantedBy=multi-user.target*
-
-  |image1939|
-
-  |image1940|
-
-- Le fichier contenant les IPROUTE: <CHEMIN>/routes.sh
-
-  |image1941|
-
-- Donner les autorisations au fichier ::darkblue:`routes.sh` : 
-
-  .. code-block::
-
-     sudo chmod +x <CHEMIN>/routes.sh
-
-  |image1942|
-
 21.1.10.2.b Ajouter l'interface dans PVE de Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Création de l'interface bridge pour l'utiliser dans un conteneur LXC
