@@ -853,7 +853,13 @@ Création de l'interface bridge pour l'utiliser dans un conteneur LXC
 
   |image1920|
 
-- Activation du routage IP: voir ci-dessus, *net.ipv4.ip_forward=1*
+- Activation du routage IP:  *net.ipv4.ip_forward=1* dans sysctl.conf
+
+  |image1914|
+
+  Pour éviter de redémarrer:
+
+  |image1915|
 
 - Ajoutez une règle NAT dans iptables pour acheminer le trafic provenant des machines virtuelles;pour que la règle soit persistante , il faut installer:
 
@@ -876,21 +882,6 @@ SAuver la règle dans le répertoire créer par iptables-persistent
    iptables-save >  /etc/iptables/rules.v4
 
 |image1936|
-
-Créer une route; avec IP route comme ci-dessous, elle ne sera pas persistante
-
-.. code-block::
-
-   ip route add <IP du PI> via <IP PVE PROXMOX> dev vmbr1
-
-Pour rendre persistante, ajouter les lignes ci-dessous dans /etc/network/interfaces
-
-.. code-block::
-
-   up ip route del <RESEAU> via <IP proxmox vmbr1> dev vmbr1
-   up ip route add <RESEAU> via <IP proxmox vmbr1> dev vmbr1
-
-|image1943|
 
 21.1.10.2.c Ajouter l'interface dans un conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4233,7 +4224,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1914| image:: ../img/image1914.webp
    :width: 400px
 .. |image1915| image:: ../img/image1915.webp
-   :width: 300px
+   :width: 320px
 .. |image1916| image:: ../img/image1916.webp
    :width: 700px
 .. |image1917| image:: ../img/image1917.webp
@@ -4276,17 +4267,3 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 500px
 .. |image1936| image:: ../img/image1936.webp
    :width: 480px
-.. |image1937| image:: ../img/image1937.webp
-   :width: 400px
-.. |image1938| image:: ../img/image1938.webp
-   :width: 450px
-.. |image1939| image:: ../img/image1939.webp
-   :width: 380px
-.. |image1940| image:: ../img/image1940.webp
-   :width: 700px
-.. |image1941| image:: ../img/image1941.webp
-   :width: 450px
-.. |image1942| image:: ../img/image1942.webp
-   :width: 400px
-.. |image1943| image:: ../img/image1943.webp
-   :width: 650px
