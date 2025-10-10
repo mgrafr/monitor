@@ -910,7 +910,7 @@ Création de l'interface bridge pour l'utiliser dans un conteneur LXC
 
 - Activation du routage IP: voir ci-dessus, *net.ipv4.ip_forward=1*
 
-- Créer une route vers le PI et ajoutez une règle NAT dans iptables pour acheminer le trafic provenant des machines virtuelles;pour que la règle soit persistante , il faut installer:
+- Ajoutez une règle NAT dans iptables pour acheminer le trafic provenant des machines virtuelles;pour que la règle soit persistante , il faut installer:
 
 .. code-block::
 
@@ -921,11 +921,7 @@ Création de l'interface bridge pour l'utiliser dans un conteneur LXC
   .. code-block::
 
    iptables -t nat -A POSTROUTING -s <RESEAU PC6PC/CIDR>-o eth0 -j MASQUERADE  
-
-  .. code-block::
-
-   ip route add <IP du PI> via <IP PVE PROXMOX> dev vmbr1
-
+  
 |image1921|
 
 SAuver la règle dans le répertoire créer par iptables-persistent
@@ -936,15 +932,20 @@ SAuver la règle dans le répertoire créer par iptables-persistent
 
 |image1936|
 
-Pour rendre persistante la route, créer un fichier systemd ::darkblue:`/etc/systemd/system/routes.service`
+Créer une route; avec IP route comme ci-dessous, elle ne sera pas persistante
 
-VOIR le § ci-dessus  ::ref:`21.1.10.2.ajouter l'interface sur le PI`
+.. code-block::
 
-|image1937|
+   ip route add <IP du PI> via <IP PVE PROXMOX> dev vmbr1
 
-Le fichier contenant les IPROUTE: <CHEMIN>/routes.sh
+Pour rendre persistante, ajouter les lignes ci-dessous dans /etc/network/interfaces
 
-|image1938|
+.. code-block::
+
+   up ip route del <RESEAU> via <IP proxmox vmbr1> dev vmbr1
+   up ip route add <RESEAU> via <IP proxmox vmbr1> dev vmbr1
+
+|image1943|
 
 21.1.10.2.c Ajouter l'interface dans un conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4342,3 +4343,5 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 450px
 .. |image1942| image:: ../img/image1942.webp
    :width: 400px
+.. |image1943| image:: ../img/image1943.webp
+   :width: 650px
