@@ -799,8 +799,12 @@ voir le § :ref:`18.3 Liaison série Domoticz-PI`
 
 21.1.10.2 HTTP
 ^^^^^^^^^^^^^^
-Mon mini PC est équipé de 2 cartes réseau, il me suffit donc d'ajouter un adaptateur usb-ethernet sur le Raspberry
+Liaison plus simple à mettre en oeuvre qu'une liaison série: 
 
+- coté PI, uniquemen un adaptateur USB-Ethernet, pas de connexion GPIO
+- coté mini PC,, pas d'adaptateur RS232 , uniquement comme pour le PI un adaptateur USB-Ethernet ou une 2eme carte réseau.
+  c'est le cas sur mon installation , la 2eme carte réseau est d'origine.
+  
 21.1.10.2.ajouter l'interface sur le PI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |image1907|
