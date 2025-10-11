@@ -871,6 +871,8 @@ Faire de même depuis le PI
 ~~~~~~~~~~~~~~~~~~~~~
 |image1923|
 
+|image1914|
+
 POUR UTILISER LE MOT DE PASSE, installation de :darkblue:`SSHPASS`
 
 |image1917|
@@ -4196,9 +4198,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1913| image:: ../img/image1913.webp
    :width: 550px
 .. |image1914| image:: ../img/image1914.webp
-   :width: 400px
-.. |image1915| image:: ../img/image1915.webp
-   :width: 320px
+   :width: 700px
 .. |image1916| image:: ../img/image1916.webp
    :width: 700px
 .. |image1917| image:: ../img/image1917.webp
@@ -4209,8 +4209,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 550px
 .. |image1920| image:: ../img/image1920.webp
    :width: 500px
-.. |image1921| image:: ../img/image1921.webp
-   :width: 700px
 .. |image1922| image:: ../img/image1922.webp
    :width: 500px
 .. |image1923| image:: ../img/image1923.webp
@@ -4237,7 +4235,4 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 700px
 .. |image1934| image:: ../img/image1934.webp
    :width: 600px
-.. |image1935| image:: ../img/image1935.webp
-   :width: 500px
-.. |image1936| image:: ../img/image1936.webp
-   :width: 480px
+
