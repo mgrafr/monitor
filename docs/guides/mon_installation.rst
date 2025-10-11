@@ -853,36 +853,6 @@ Création de l'interface bridge pour l'utiliser dans un conteneur LXC
 
   |image1920|
 
-- Activation du routage IP:  *net.ipv4.ip_forward=1* dans sysctl.conf
-
-  |image1914|
-
-  Pour éviter de redémarrer:
-
-  |image1915|
-
-- Ajoutez une règle NAT dans iptables pour acheminer le trafic provenant des machines virtuelles;pour que la règle soit persistante , il faut installer:
-
-.. code-block::
-
-   apt install iptables-persistent
-
-|image1935|
-
-  .. code-block::
-
-   iptables -t nat -A POSTROUTING -s <RESEAU PC6PC/CIDR>-o eth0 -j MASQUERADE  
-  
-|image1921|
-
-SAuver la règle dans le répertoire créer par iptables-persistent
-
-.. code-block::
-
-   iptables-save >  /etc/iptables/rules.v4
-
-|image1936|
-
 21.1.10.2.c Ajouter l'interface dans un conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  |image1924|
