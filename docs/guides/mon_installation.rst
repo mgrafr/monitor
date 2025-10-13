@@ -4248,6 +4248,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1934| image:: ../img/image1934.webp
    :width: 600px
 .. |image1935| image:: ../img/image1935.webp
-   :width: 320px
+   :width: 520px
 .. |image1936| image:: ../img/image1936.webp
-   :width: 550px
+   :width: 320px
