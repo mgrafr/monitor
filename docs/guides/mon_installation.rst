@@ -1187,6 +1187,18 @@ Envoi d'un SMS depuis la console d'un conteneur; le script : send_sms.py utilis√
  
 |image1041|
 
+.. admonition:: **changer port**
+
+   Pour remplacer le port 8091: dans le r√©pertoire d'installation, editer le fichier .env et ajouter le port choisi
+
+   |image1936|
+
+   |image1935|
+
+
+
+
+
 21.4 Zigbee & Matter
 ====================
 .. note::
@@ -4235,4 +4247,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 700px
 .. |image1934| image:: ../img/image1934.webp
    :width: 600px
-
+.. |image1935| image:: ../img/image1935.webp
+   :width: 320px
+.. |image1936| image:: ../img/image1936.webp
+   :width: 550px
