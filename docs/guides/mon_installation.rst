@@ -1177,7 +1177,7 @@ Envoi d'un SMS depuis la console d'un conteneur; le script : send_sms.py utilis�
 
 .. important::
 
-   Le 1er contrôleur  un Everspring et le 2emme un Aeotech5+ des images ci-dessus sont équipé d'ue puce utilisant le driver  Sigma UZB ZWave-Plus incompatble avec l'antenne SLZB-MR1U ci-dessous; par contre le 3eme controleur, un Zooz  ZST39, est compatble
+   Le 1er contrôleur  un Everspring et le 2emme un Aeotech5+ des images ci-dessus sont équipé d'ue puce Sigma UZB ZWave-Plus utilisant le driver RS232 ZW050x_USB_VCP_PC_Driver incompatble avec l'antenne SLZB-MR1U ci-dessous; par contre le 3eme controleur, un Zooz  ZST39, est compatble
 
 |image1937| 
 
