@@ -1173,13 +1173,9 @@ Envoi d'un SMS depuis la console d'un conteneur; le script : send_sms.py utilis�
 ==========
 21.3.1 Controleur
 -----------------
-|image1938| 
+|image1938|   |image1939|   |image1940| 
 
-|image1939| 
-
-|image1940| 
-
-
+Le 1er contrôleur  un Everspring et le 2emme un Aeotech5+ des images ci-dessus sont équipé d'u
 |image1937| 
 21.3.2 Installation de zwave-js-ui
 ----------------------------------
@@ -4262,10 +4258,10 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1936| image:: ../img/image1936.webp
    :width: 320px
 .. |image1937| image:: ../img/image1937.webp
-   :width: 320px
+   :width: 220px
 .. |image1938| image:: ../img/image1938.webp
-   :width: 320px
+   :width: 204px
 .. |image1939| image:: ../img/image1939.webp
-   :width: 320px
+   :width: 66px
 .. |image1940| image:: ../img/image1940.webp
    :width: 79px
