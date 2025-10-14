@@ -1173,10 +1173,14 @@ Envoi d'un SMS depuis la console d'un conteneur; le script : send_sms.py utilis�
 ==========
 21.3.1 Controleur
 -----------------
-|image1938|   |image1939|   |image1940| 
+|image1938|   |image1939|   |image1940|
 
-Le 1er contrôleur  un Everspring et le 2emme un Aeotech5+ des images ci-dessus sont équipé d'u
+.. important::
+
+   Le 1er contrôleur  un Everspring et le 2emme un Aeotech5+ des images ci-dessus sont équipé d'ue puce utilisant le driver  Sigma UZB ZWave-Plus incompatble avec l'antenne SLZB-MR1U ci-dessous; par contre le 3eme controleur, un Zooz  ZST39, est compatble
+
 |image1937| 
+
 21.3.2 Installation de zwave-js-ui
 ----------------------------------
 . dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
