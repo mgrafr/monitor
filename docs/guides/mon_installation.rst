@@ -1188,11 +1188,11 @@ SLZB-MR1U : |image1937|
 .. note::
 
    Les coordinateurs SLZBde la série U prennent en charge la connexion de tous les périphériques série sur les chipsets suivants :
-• CP210x
-• PL2303
-• CH340
-• CH341
-• CH9102
+   • CP210x
+   • PL2303
+   • CH340
+   • CH341
+   • CH9102
 
 21.3.2 Installation de zwave-js-ui
 ----------------------------------
