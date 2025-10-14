@@ -1173,10 +1173,14 @@ Envoi d'un SMS depuis la console d'un conteneur; le script : send_sms.py utilis√
 ==========
 21.3.1 Controleur
 -----------------
-|image1937| 
-
 |image1938| 
 
+|image1939| 
+
+|image1940| 
+
+
+|image1937| 
 21.3.2 Installation de zwave-js-ui
 ----------------------------------
 . dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
@@ -4261,3 +4265,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 320px
 .. |image1938| image:: ../img/image1938.webp
    :width: 320px
+.. |image1939| image:: ../img/image1939.webp
+   :width: 320px
+.. |image1940| image:: ../img/image1940.webp
+   :width: 79px
