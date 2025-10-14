@@ -1171,15 +1171,28 @@ Envoi d'un SMS depuis la console d'un conteneur; le script : send_sms.py utilis�
 
 21.3 Zwave
 ==========
-21.3.1 Controleur
------------------
+21.3.1 Controleurs & Adaptateur LAN
+-----------------------------------
+EverspringSA413-1, Aeotech gen5+, Zooz zst39
+
 |image1938|   |image1939|   |image1940|
 
 .. important::
 
-   Le 1er contrôleur  un Everspring et le 2emme un Aeotech5+ des images ci-dessus sont équipé d'ue puce Sigma UZB ZWave-Plus utilisant le driver RS232 ZW050x_USB_VCP_PC_Driver incompatble avec l'antenne SLZB-MR1U ci-dessous; par contre le 3eme controleur, un Zooz  ZST39, est compatble
+   Le 1er contrôleur un Everspring et le 2emme un Aeotech5+ sont équipés d'ue puce Sigma UZB ZWave-Plus utilisant le driver RS232 :darkblue:`ZW050x_USB_VCP_PC_Driver` incompatble avec l'antenne SLZB-MR1U ci-dessous; par contre le 3eme controleur, un Zooz  ZST39, est compatble
 
-|image1937| 
+**adaptateur Ethernet**
+
+SLZB-MR1U : |image1937| 
+
+.. note::
+
+   Les coordinateurs SLZBde la série U prennent en charge la connexion de tous les périphériques série sur les chipsets suivants :
+• CP210x
+• PL2303
+• CH340
+• CH341
+• CH9102
 
 21.3.2 Installation de zwave-js-ui
 ----------------------------------
