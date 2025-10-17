@@ -1185,6 +1185,8 @@ EverspringSA413-1, Aeotech gen5+, Zooz zst39
 
 SLZB-MR1U : |image1937| 
 
+L'avantage de cet adaptateur, en plus du réseau Zigbee, il permet au Zwave de s"affranchir des clés USB favorisant la disponibilité dans un cluster Proxmox; l'installation d'un conteneur non privilégié est aussi plus simple .
+
 .. note::
 
    Les coordinateurs SLZBde la série U prennent en charge la connexion de tous les périphériques série sur les chipsets suivants :
@@ -1196,9 +1198,17 @@ SLZB-MR1U : |image1937|
 
 21.3.2 Installation de zwave-js-ui
 ----------------------------------
-. dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/99
+. dans un conteneur LXC et clé Zwave: http://domo-site.fr/accueil/dossiers/99
 
-. sous Docker, avec Domoticz : http://domo-site.fr/accueil/dossiers/86
+. sous Docker, dans une VM, avec Domoticz : http://domo-site.fr/accueil/dossiers/86
+
+. dans un conteneur LXC et un contrôleur zwave ethernet 
+
+  .. code-block::
+
+     wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/zwave-js-ui.sh
+     chmod +x zwave-js-ui.sh
+     ./zwave-js-ui.sh
 
 - **Affichage dans monitor**
  
