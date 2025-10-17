@@ -1578,7 +1578,15 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 
 21.5 Asterisk (sip)
 ===================
-*Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
+- *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
+
+- *Installation dans un CT LXC* :
+
+.. code-block::
+
+     wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/asterisk.sh
+     chmod +x asterisk.sh
+     ./asterisk
 
 .. note:: *Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.*
 
