@@ -894,6 +894,15 @@ modifications en cours....
       sudo apt update
       sudo apt install $mod_py
       fi
+      fi
+      file=/www/monitor/custom/php/accueil.php
+      if [ -e $file ]; then mv /www/monitor/include/accueil.php /www/monitor/include/_accueil.bak; fi
+
+   .. note::
+
+      Si le fichier accueil.php a été placé dans **/custom/php**, le fichier original dans /include est renommé en **_accueil.bak**
+
+      |image1942|
 
    |image1671|
 
@@ -2623,3 +2632,5 @@ function mc(variable,id)
    :width: 700px
 .. |image1882| image:: ../img/image1882.webp
    :width: 700px
+.. |image1942| image:: ../img/image1942.webp
+   :width: 250px
