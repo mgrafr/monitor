@@ -11,6 +11,9 @@ cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
 cp -u index_loc.php /www/monitor/index_loc.php
 cp -u -R include/* /www/monitor/include/
+fi
+file=/www/monitor/custom/php/accueil.php
+if [ -e $file ]; then mv /www/monitor/include/accueil.php /www/monitor/include/_accueil.bak; fi
 cp -u css/* /www/monitor/css/
 cp -u js/* /www/monitor/js/
 cp -u api/* /www/monitor/api/
