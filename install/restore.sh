@@ -1,7 +1,4 @@
 #!/usr/bin/bash
-#variables
-PHP_VERSION=$(php -r "echo PHP_VERSION;")
-PHP_FPM=${PHP_VERSION:0:3} 
 #sur le nouveau serveur monitor 
 ip3=$(whiptail --title "IP de monitor à mettre à jour" --inputbox "ip de l'ancien CT TOUJOURS exécuté" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
@@ -63,7 +60,6 @@ cd /home/$mdir_maj/monitor
 sshpass -p $pass_sftp sftp $user_sftp@$ip3<<EOF
 get /var/www/monitor/index_loc.php
 get /var/www/monitor/c.txt
-get /var/www/monitor/version_php.txt
 lcd admin
 get -R /var/www/monitor/admin/* 
 lcd ..
@@ -87,7 +83,7 @@ lcd cron.d
 get /etc/cron.d/*
 lcd ..
 lcd systemd/system
-get /etc/systemd/system/*.service
+get /etc/systemd/system/*
 exit
 EOF
 if [[ "$lets" == "Avec les certificats déjà enregistrés" ]];then
@@ -120,14 +116,9 @@ EOF
 fi
 domaine=`grep $choix'domaine=' /var/www/monitor/admin/connect/connect.py | cut -f 2 -d '='`
 echo "domaine : " $domaine
-VER_PHP=$(while read line; do echo $line; done < /home/$mdir_maj/monitor/version_php.txt)
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/config.php 
 sed -i "s/.\///g"  /home/$mdir_maj/monitor/systemd/c.txt
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
-# si changement version PHP
-sed -i "s/php${VER_PHP}/php${PHP_FPM}/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
-sed -i "s/php${VER_PHP}/php${PHP_FPM}/g" /home/$mdir_maj/etc/nginx/conf.d/default.conf
-# ---------------------------
 sed -i "s/444/443/g" /home/$mdir_maj/etc/nginx/conf.d/monitor.conf
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.py
 sed -i "s/${ip3}/${ip4}/g" /home/$mdir_maj/monitor/admin/connect/connect.lua
@@ -184,7 +175,6 @@ cp /home/$mdir_maj/monitor/index_loc.php /var/www/monitor/index_loc.php
 cp /home/$mdir_maj/monitor/c.txt /var/www/monitor/c.txt
 cp -R /home/$mdir_maj/etc/systemd/system/* /etc/systemd/system/
 cp -R /home/$mdir_maj/monitor/custom/python/* /var/www/monitor/custom/python/
-chmod -R 766 /var/www/monitor/custom/python
 cp -R /home/$mdir_maj/monitor/custom/php/* /var/www/monitor/custom/php/
 cp -R /home/$mdir_maj/monitor/custom/images/* /var/www/monitor/custom/images/
 cp -R /home/$mdir_maj/monitor/custom/js/* /var/www/monitor/custom/js/
@@ -200,15 +190,14 @@ mysql -u root -p < dump.sql
 sudo apt install certbot python3-certbot-nginx -y
 cp  /home/$mdir_maj/etc/nginx/conf.d/* /etc/nginx/conf.d/
 cp  /home/$mdir_maj/etc/nginx/.htpasswd /etc/nginx/
-mkdir -p /etc/nginx/ssl
+mkdir /etc/nginx/ssl
 cp  /home/$mdir_maj/etc/nginx/ssl/* /etc/nginx/ssl/
 chmod -R 777 /etc/cron.d
 cp /home/$mdir_maj/etc/cron.d/* /etc/cron.d
 systemctl restart nginx
-mkdir -p /root/.ssl
 chmod -R 777 /root/.ssl
 cp /home/$mdir_maj/root/.ssh/* /root/.ssh
-#certbot update_symlinks
+certbot update_symlinks
 certbot renew --dry-run
 echo "fin de cerbot"
 sleep 1
@@ -224,3 +213,5 @@ then
 sudo apt update
 sudo apt install $mod_py
 fi
+file=/www/monitor/custom/php/accueil.php
+if [ -e $file ]; then mv /www/monitor/include/accueil.php /www/monitor/include/_accueil.bak; fi
