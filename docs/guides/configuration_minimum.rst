@@ -731,6 +731,14 @@ Le HTML:
 			<p class="text-centre">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
 			</div></div></div></div>
 
+.. IMPORTANT::
+
+   Pour ajouter des notifications, des icones perso, sur la page d'accueil, transférer la page vers :darkblue:`/custom/php/`
+
+   |image1941|
+
+   Pour faciliter les mises à jour, toutes les ajouts perso doivent se trouver dans le répertoire :darkblue:`/custom`
+
 1.3.5 les scripts JavaScript
 ----------------------------
 dans la page footer.php : https://raw.githubusercontent.com/mgrafr/monitor/main/include/footer.php
@@ -2574,3 +2582,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 450px
 .. |image1774| image:: ../img/image1774.webp
    :width: 550px
+.. |image1941| image:: ../img/image1941.webp
+   :width: 300px
