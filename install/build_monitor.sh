@@ -304,4 +304,5 @@ sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
 sed -i "s/MON_PASS/${mp}/g" $chemin/monitor/admin/config.php
 sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.lua
 sed -i "s/ip_monitor='/ip_monitor='${ip4}/g" $chemin/monitor/admin/connect/connect.py
+chmod 666 $chemin/monitor/admin/config.php
 ln /var/www/monitor/admin/config.php /var/www/monitor/api/conf.php
