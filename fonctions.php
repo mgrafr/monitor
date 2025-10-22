@@ -1231,8 +1231,9 @@ file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr
 	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>Les variables se nomment *****connect*****</p>";echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
 break;
 case "6" :
-$content=$idrep;
-		file_put_contents($file, $content);echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>fichiers sauvegardés';
+$content=$idrep;$verif_auth=substr(sprintf('%o', fileperms($file)), -4);
+	file_put_contents($file, $content);if (intval($verif_auth)<666) {echo $verif_auth."  vérifier autorisation: 666";}
+		echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>fichiers sauvegardés';
 return;
  break;		
 case "22":
