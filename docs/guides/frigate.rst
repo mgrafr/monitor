@@ -20,7 +20,7 @@
 - Indicateur de lumière:Indicateur de puissance bleu clair
 - Taille du corps:87*87*39.5MM
 - Poids corporel:397 grammes
-- Système d'exploitation:Windows 11 Pro Édition Professionnelle
+- Système d'exploitation:Windows 11 Pro Édition Professionnelle (non utilisé)
 
 22.1.1 Installation du module Pcie Coral
 ========================================
@@ -170,10 +170,10 @@ https://github.com/blakeblackshear/frigate
      jardin_cote_rue:
        ffmpeg:
          inputs:
-           - path: rtsp://michel:IdemIdem4546@192.168.1.107:554/cam/realmonitor?channel=1&subtype=0
+           - path: rtsp://michel:<MOT_PASSE>@192.168.1.107:554/cam/realmonitor?channel=1&subtype=0
              roles:
                - record
-           - path: rtsp://michel:IdemIdem4546@192.168.1.107:554/cam/realmonitor?channel=1&subtype=0
+           - path: rtsp://michel:<MOT_PASSE>@192.168.1.107:554/cam/realmonitor?channel=1&subtype=0
              roles:
                - detect
        detect:
@@ -550,6 +550,47 @@ https://github.com/mtrakal/ipc-vatilon
 
    les firmware sont à téléchage ici : https://www.vatilon.com/ipcrjxz
 
+22.13 Caméras IMOU CRUISER dual
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/blakeblackshear/frigate/discussions/11848
+
+ma config frigate:
+
+.. code-block::
+
+   go2rtc:
+     streams:
+       cruiser_pt:
+         - rtsp://admin:xxxxxxxx@192.168.1.7/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif
+       cruiser_pt_sub:
+         - ffmpeg:cruiser_pt#video=h264#width=1280#height=720#raw=-fpsmax 5#hardware=vaapi
+   cameras:
+     imou_cruiser_ptz:
+       onvif:
+         host: 192.168.1.7
+         port: 80
+         user: admin
+         password: xxxxxxxx
+       ffmpeg:
+         inputs:
+           - path: rtsp://127.0.0.1:8554/cruiser_pt
+             input_args: preset-rtsp-restream
+             roles:
+               - record
+           - path: rtsp://127.0.0.1:8554/cruiser_pt_sub
+             input_args: preset-rtsp-restream
+             roles:
+               - detect
+     imou_cruiser_fixed:
+       ffmpeg:
+         inputs:
+           - path: 
+               rtsp://admin:xxxxxxxx@192.168.1.7/cam/realmonitor?channel=2&subtype=0
+             roles:
+               - detect
+               - record
+   
+    
 
 .. |image1595| image:: ../img/image1595.webp
    :width: 400px
