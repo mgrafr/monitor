@@ -1228,7 +1228,9 @@ L'avantage de cet adaptateur, en plus du réseau Zigbee, il permet au Zwave de s
 
    |image1935|
 
+Firmware qui fonctionne correctement:
 
+https://github.com/mgrafr/monitor/blob/main/share/divers/SLZB-MR1U/v3.0.8.zip
 
 
 
