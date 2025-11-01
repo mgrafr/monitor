@@ -1586,13 +1586,22 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 ===================
 - *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/9
 
-- *Installation dans un CT LXC* :
-
+21..5.1 Installation dans un CT LXC
+-----------------------------------
 .. code-block::
 
      wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/asterisk.sh
      chmod +x asterisk.sh
      ./asterisk
+
+21.5.2 Installation sur un Raspberry
+------------------------------------
+*ici un pi5* 
+
+.. note::
+
+   . cette solution permet de rendre le portier vidéo plus indépendant de la domotique, le pi hébergeant SIP (et non une VM ou un CT Proxmox)
+   . Pour rappel, SIP permet d'acheminer les appels du portier vers un téléphone portable en wifi ou ou gsm (pour recevoir les appels en voiture par exemple)
 
 .. note:: *Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.*
 
