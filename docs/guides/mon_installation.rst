@@ -1189,15 +1189,25 @@ L'avantage de cet adaptateur, en plus du réseau Zigbee, il permet au Zwave de s
 
 .. note::
 
-   Les coordinateurs SLZBde la série U prennent en charge la connexion de tous les périphériques série sur les chipsets suivants :
+   Les coordinateurs SLZB de la série U prennent en charge la connexion de tous les périphériques série sur les chipsets suivants :
    • CP210x
    • PL2303
    • CH340
    • CH341
-   • CH9102
+   • CH9102 
 
 21.3.2 Installation de zwave-js-ui
 ----------------------------------
+depuis ocobre 2025, j'utilise l'antenne SLZB-MR1U avec une clé Zooz zst39 et un CT lxc Proxmox
+
+.. note::
+
+   Firmware qui fonctionne correctement:
+
+   https://github.com/mgrafr/monitor/blob/main/share/divers/SLZB-MR1U/v3.0.8.zip
+
+Différents chois d'installation: 
+
 . dans un conteneur LXC et clé Zwave: http://domo-site.fr/accueil/dossiers/99
 
 . sous Docker, dans une VM, avec Domoticz : http://domo-site.fr/accueil/dossiers/86
@@ -1227,12 +1237,6 @@ L'avantage de cet adaptateur, en plus du réseau Zigbee, il permet au Zwave de s
    |image1936|
 
    |image1935|
-
-Firmware qui fonctionne correctement:
-
-https://github.com/mgrafr/monitor/blob/main/share/divers/SLZB-MR1U/v3.0.8.zip
-
-
 
 21.4 Zigbee & Matter
 ====================
