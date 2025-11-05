@@ -3345,6 +3345,16 @@ Le script rec_sms_serie.py est modifié
 
 |image1821|
 
+21.17.3 UART sur le Raspberry
+-----------------------------
+config.txt
+
+|image1943|
+
+cmdline.txt
+
+|image1944|
+
 21.18 VM Windows 11
 ===================
 - Télécharger Windows 11: https://www.microsoft.com/fr-fr/software-download/windows11
@@ -4315,3 +4325,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 66px
 .. |image1940| image:: ../img/image1940.webp
    :width: 79px
+.. |image1943| image:: ../img/image1943.webp
+   :width: 305px
+.. |image1944| image:: ../img/image1944.webp
+   :width: 700px
