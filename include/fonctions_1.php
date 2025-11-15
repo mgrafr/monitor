@@ -1,7 +1,7 @@
 <?php
 
 function sql_plan($t1,$s="",$s1=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob;
-$n=0;$al_bat=0;$p=0;
+$n=0;$al_bat=0;$p=0;$idm_erreur=9000;
 //$row['nom_objet']=$s;return $row;					 
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
@@ -17,8 +17,12 @@ else if ($t1=='2') {
 	return $row;}
 else if ($t1=='1')  {
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$s' AND maj_js <> 'variable';";
-		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
-		$row = $result->fetch_assoc();
+		$result = $conn->query($sql);$nb_rows=$result->num_rows;
+		if ($nb_rows<1) {$row =  ['idx' => $s,
+								 'idm' => $idm_erreur,
+								 'Actif' => '9'
+								];$idm_erreur++;}
+		else $row = $result->fetch_assoc();
 	return $row;}
 else if ($t1=='0') {//$commande="On";
 if ($l_ha != ""){
