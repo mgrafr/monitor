@@ -138,7 +138,8 @@ Pour la restitution de l’historique :
 
 |image698|
 
-
+12.2 Logs Monitor
+^^^^^^^^^^^^^^^^^
 
 
 
