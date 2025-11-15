@@ -263,6 +263,7 @@ $.ajax({
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
    console.log('custom='+custom);
+   if (typeof pp[9000]['idx'] != 'undefined') {document.getElementById('erreur_dz').style.display="inline";}
     if (typeof custom != 'undefined') {
 		if (custom==1 & pp[0]['serveur_iob'] === true){custom_js(custom);}	
 	     }
@@ -568,6 +569,7 @@ function updateImage(camIndex)
 <?php if (ON_MUR==false) echo "*/";?>
 //--------------------------------------
 /*app diverses log , recettes -----*/
+var urllog="";
 $(".btn_appd").click(function () {
 	if (larg<768) {lwidth=400;lheight=520;}
 	else {lwidth=600;lheight=600;}
@@ -580,8 +582,14 @@ else if (logapp=="cuisine"){var table_sql = logapp;var numrecette = $(this).attr
 	urllog="ajax.php?app=sql&idx=4&variable="+table_sql+"&type=id&command="+numrecette;}	
 else if (logapp=="modes_emploi"){var table_sql = logapp;var nummode_e = $(this).attr('title');titre = $(this).attr('alt');
 	urllog="ajax.php?app=sql&idx=4&variable="+table_sql+"&type=id&command="+nummode_e;}		
-else {urllog="erreur";}
-  $.modalLink.open(urllog, {
+else if (logapp=="10"){var nummode_e = $(this).attr('title');titre = $(this).attr('alt');
+	var i=9000;www="";do {
+		if (pp[i]) www=www+nummode_e +':'+pp[i].idx+'\n';
+    i++;} while ( i >= 9000 && i< 9010 );
+alert(www);
+}
+else {alert("erreur");}
+if (urllog!="")  $.modalLink.open(urllog, {
   // options here
 	   height: lheight,
 	  width: lwidth,
