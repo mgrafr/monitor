@@ -510,7 +510,7 @@ $periph=sql_plan($t1,$s,$s1);
 	  if (($choix_Actif=="1" || $choix_Actif=="2") && $lect_device["serveur"]=="DZ")  {$choix_serveur="dz";}
 	  else if ($choix_Actif=="3" && $lect_device["serveur"]=="HA") {$choix_serveur="ha";}
 	  else if ($choix_Actif=="4" && $lect_device["serveur"]=="IOB") {$choix_serveur="iob";}
-	  else if ($choix_Actif=="9") {$choix_serveur="dz";}
+	  else if ($choix_Actif=="9") {$choix_serveur="dz";$lect_device['values']=$periph['values'];}
 	 		else $choix_serveur="2";  
 		 }
 //if ($periph) echo json_encode($periph);	
