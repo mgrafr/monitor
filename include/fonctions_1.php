@@ -20,9 +20,16 @@ else if ($t1=='1')  {
 		$result = $conn->query($sql);$nb_rows=$result->num_rows;
 		if ($nb_rows<1) {$row =  ['idx' => $s,
 								 'idm' => strval($idm_erreur),
-								 'Actif' => '9'
+								 'Actif' => '9',
+								 'values' => 'non enregitré'
 								];$idm_erreur++;}
-		else $row = $result->fetch_assoc();
+		else {$row = $result->fetch_assoc();
+			if ($row['idm']===NULL) {$row =  ['idx' => $s,
+								 'idm' => strval($idm_erreur),
+								 'Actif' => '9',
+								 'values' => 'enregitré sans idm'
+								];$idm_erreur++;}
+		}
 	return $row;}
 else if ($t1=='0') {//$commande="On";
 if ($l_ha != ""){

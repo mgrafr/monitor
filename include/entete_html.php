@@ -13,6 +13,7 @@
 		<link href="bootstrap/css/bootstrap4-toggle.min.css" rel="stylesheet">
 		<link href="css/mes_css.css?9" rel="stylesheet">
 		<link href="custom/css/styles.css?2" rel="stylesheet">
+		<link href="css/zebra_dialog.css?2" rel="stylesheet">
  		<link rel="stylesheet" href="css/jquery-ui-v1.13.2.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- icones  racine du site -->
