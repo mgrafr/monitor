@@ -140,9 +140,38 @@ Pour la restitution de l’historique :
 
 12.2 Logs Monitor
 ^^^^^^^^^^^^^^^^^
-|image1945|
+- Recherche d'erreurs dans :green:`include/fonctions_1.php`
 
-|image1946|
+  |image1947|
+
+- La commande pour afficher les érreurs
+
+  |image1946|
+
+  le code php dans :green:`include/app_diverses.php` :  
+
+  .. code-block::
+
+     <p class="txt_app"><input type="button" rel="10" style="margin-left: 60px;" class="btn_appd" title="idm manquant, idx Domoticz" value="idm  non enregistré">
+	    <span id="erreur_dz" style="display:none;margin-left:20px" >&#10060;</span></p>	
+
+  RQ: &#10060; la croix rouge
+
+- L'affichage des érreurs 
+
+  |image1945|
+
+  le code php dans :green:`include/footer.php` : 
+
+  |image1948| 
+
+  Le Javascript et les css de la boite de dialogue
+
+  .. code-block::
+
+     <script src="js/zebra_dialog.min.js"></script> 
+     <link href="css/zebra_dialog.css?2" rel="stylesheet">
+   
 
 
 .. |image679| image:: ../media/image679.webp
@@ -187,6 +216,8 @@ Pour la restitution de l’historique :
    :width: 350px
 .. |image1946| image:: ../img/image1946.webp
    :width: 200px
-
-
+.. |image1947| image:: ../img/image1947.webp
+   :width: 700px
+.. |image1948| image:: ../img/image1948.webp
+   :width: 700px
 
