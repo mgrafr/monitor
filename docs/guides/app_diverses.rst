@@ -140,7 +140,7 @@ Pour la restitution de l’historique :
 
 12.2 Logs Monitor
 ^^^^^^^^^^^^^^^^^
-
+|image1945|
 
 
 .. |image679| image:: ../media/image679.webp
@@ -181,6 +181,8 @@ Pour la restitution de l’historique :
    :width: 700px
 .. |image1711| image:: ../img/image1711.webp
    :width: 600px
+.. |image1945| image:: ../img/image1945.webp
+   :width: 350px
 
 
 
