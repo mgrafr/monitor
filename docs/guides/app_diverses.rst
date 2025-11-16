@@ -142,6 +142,8 @@ Pour la restitution de l’historique :
 ^^^^^^^^^^^^^^^^^
 |image1945|
 
+|image1946|
+
 
 .. |image679| image:: ../media/image679.webp
    :width: 639px
@@ -183,7 +185,8 @@ Pour la restitution de l’historique :
    :width: 600px
 .. |image1945| image:: ../img/image1945.webp
    :width: 350px
-
+.. |image1946| image:: ../img/image1946.webp
+   :width: 200px
 
 
 
