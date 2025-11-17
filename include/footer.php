@@ -588,9 +588,7 @@ else if (logapp=="10"){var nummode_e = $(this).attr('title');titre = $(this).att
 		if (pp[i]) www=www+'<i style="color:red">'+nummode_e +'</i> :'+pp[i].idx+','+pp[i].values+'<br>';
 		    i++;} while ( i >= 9000 && i< 9010 );
 	new $.Zebra_Dialog('<p style="position:relative;left:-90px;width:400px"><strong>Logs_Monitor</strong><br>'+www, {
-       
-    'title':    'Error'
-});
+    'title': 'Erreurs'});
 		
 //alert(www);
 }
