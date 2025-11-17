@@ -167,6 +167,8 @@ Pour la restitution de l’historique :
 
   Le Javascript et les css de la boite de dialogue
 
+  https://github.com/stefangabos/Zebra_Dialog
+
   .. code-block::
 
      <script src="js/zebra_dialog.min.js"></script> 
