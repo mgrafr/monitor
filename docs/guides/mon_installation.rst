@@ -2901,7 +2901,7 @@ Il suffit de copier les lignes concernées par cette liaison serie dans la confi
 ----------------------------------
 - avec l'interface graphique créer une sauvegarde
 - copier la sauvegarde située : /opt/iobroker/backups/ sur une autre partition avec filezilla 
-- |image1849|
+- |image1949|
 - sur la nouvelle installation copier la sauvegarde dans le dossier /opt/iobroker/backups/                       
 - restaurer avec la cli
 
