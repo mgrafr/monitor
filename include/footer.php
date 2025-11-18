@@ -17,7 +17,7 @@
 <script src="js/mes_js.js"></script>
 <script src="js/zebra_dialog.min.js"></script>
 <script src="js/jscolor.min.js"></script>
-<script src="custom/js/JS.js"></script>
+<script src="custom/js/JS.js?2"></script>
 <?php
 if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';include ('include/mqtt_js.php');}
 ?>
@@ -254,8 +254,8 @@ function pluie(idx){//var tc=TestConnection_js();
 /*----------------------------------------------------*/	
 var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
 var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
-pp=new Array();maj_devices(plan);
-worx=new Array();	
+pp=[];maj_devices(plan);
+worx=[];	
 function maj_devices(plan){
 $.ajax({
     type: "GET",
@@ -263,12 +263,12 @@ $.ajax({
     url: "ajax.php",
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
-   console.log('custom='+custom);
+   console.log('custom='+custom);//custom défini dans worx.php
    if (typeof pp[9000]['idx'] != 'undefined') {document.getElementById('erreur_dz').style.display="inline";}
     if (typeof custom != 'undefined') {
 		if (custom==1 & pp[0]['serveur_iob'] === true){custom_js(custom);}	
 	     }
-		//worx=pp[200].values;maj_worx(pp[200].Name,pp[200].Data);}
+		// executé dans JS.js  worx=pp[200].values;maj_worx(pp[200].Name,pp[200].Data);}
 		
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
 		if (val.maj_date=='0'){
