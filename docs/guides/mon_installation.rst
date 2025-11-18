@@ -2901,6 +2901,7 @@ Il suffit de copier les lignes concernées par cette liaison serie dans la confi
 ----------------------------------
 - avec l'interface graphique créer une sauvegarde
 - copier la sauvegarde située : /opt/iobroker/backups/ sur une autre partition avec filezilla 
+- |image1849|
 - sur la nouvelle installation copier la sauvegarde dans le dossier /opt/iobroker/backups/                       
 - restaurer avec la cli
 
@@ -4345,4 +4346,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1943| image:: ../img/image1943.webp
    :width: 305px
 .. |image1944| image:: ../img/image1944.webp
+   :width: 700px
+.. |image1949| image:: ../img/image1949.webp
    :width: 700px
