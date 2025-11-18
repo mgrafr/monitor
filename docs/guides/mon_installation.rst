@@ -2883,7 +2883,9 @@ mon site est hébergé chez IONOS (1and1) et l'adaptateur fonctionne correctemen
 
 21.13.4 Passer le port série à un 2eme CT non privilégié
 --------------------------------------------------------
-Sur mon installation Domoticz écoute sur le port serie , shell de pve:
+ce port série a été remplacé par uneliaison directe ethernet, voir ce § :ref:`21.19.2 Liaison HTTP PC-PC`
+
+Sur mon installation Domoticz écoutait sur le port serie , shell de pve:
 
 |image1517|
 
@@ -2894,6 +2896,21 @@ Il suffit de copier les lignes concernées par cette liaison serie dans la confi
 |image1518|
 
 |image1519|
+
+21.13.5 Sauvegarde et restauration
+----------------------------------
+- avec l'interface graphique créer une sauvegarde
+- copier la sauvegarde située : /opt/iobroker/backups/ sur une autre partition avec filezilla 
+- sur la nouvelle installation copier la sauvegarde dans le dossier /opt/iobroker/backups/                       
+- restaurer avec la cli
+
+.. code-block::
+
+   iob stop
+   iobroker restore <chemin de la sauvegarde>
+   iob start
+
+
 
 21.14 Robot tondeuse Landroid Worx
 ==================================
