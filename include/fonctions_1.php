@@ -15,7 +15,7 @@ else if ($t1=='2') {
 		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 		$row = $result->fetch_assoc();
 	return $row;}
-else if ($t1=='1')  {
+else if ($t1=='1')  {$error1=="";
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$s' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);$nb_rows=$result->num_rows;
 		if ($nb_rows<1) {$row =  ['idx' => $s,
@@ -23,11 +23,13 @@ else if ($t1=='1')  {
 								 'Actif' => '9',
 								 'values' => 'non enregitré'
 								];$idm_erreur++;}
-		else {$row = $result->fetch_assoc();
-			if ($row['idm']===NULL) {$row =  ['idx' => $s,
+		else {$row = $result->fetch_assoc();if ($row['idm']=="") $row['idm']=NULL;
+			if ($row['idm']===NULL) {$error1='enregitré sans idm';}
+			if ($row['car_max_id1']<1 || $row['car_max_id1']=='') {$error1='car_max_id1 qbsent';}
+			if ($error1!="") {$row =  ['idx' => $s,
 								 'idm' => strval($idm_erreur),
 								 'Actif' => '9',
-								 'values' => 'enregitré sans idm'
+								 'values' => $error1
 								];$idm_erreur++;}
 		}
 	return $row;}
