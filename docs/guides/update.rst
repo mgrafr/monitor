@@ -26,6 +26,7 @@ Version en developpement 4.0.1
 - pour faciliter la maj le fichier "include/accueil.php" s'il est modifier, il devra être placé dans "custom/php"
 - ajout test de vérification des autorisations pour modifications du fichier admin/config.php
 - ajout logs des erreurs dus à une différence entre la base de données de Domoticz et celle de Monitor 
+- correction bug concernant les variables dynamiques monitor: utilisation de eval avec JS dans footer.php
 
 Version 4.0.0 (septembre 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
