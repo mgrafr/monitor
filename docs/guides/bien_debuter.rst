@@ -1378,7 +1378,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
    
 . **ID**, identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp[XXX].values.xxxxxx
 
-     EXEMPLE DE VARIABLE MONITOR (faire F12 avec un navigateur) : pp est le nom du tablrau des variables dans monitor
+     EXEMPLE DE VARIABLE MONITOR (faire F12 avec un navigateur) : **pp** est le nom du tableau des variables dans monitor
 
       |image1950|
  
