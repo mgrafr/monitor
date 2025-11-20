@@ -680,6 +680,12 @@ Le script lua utilisé pour ouvrir ces fichiers:
 
 |image859|
 
+.. note:: 
+
+   **iob+** :voir aussi :ref:`0.3.2 Les Dispositifs`
+
+   |image1953|
+
 - **footer.php**
 
 |image860|
@@ -1023,3 +1029,5 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
    :width: 434px
 .. |image1576| image:: ../img/image1576.webp
    :width: 500px
+.. |image1953| image:: ../img/image1953.webp
+   :width: 700px
