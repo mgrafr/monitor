@@ -1576,11 +1576,12 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 .. important::
 
-   le chiffre 2 est à privilégier pour Domoticz, le chiffre 1 sera supprimé dans le futur
+   - Actif: le chiffre 2 est à privilégier pour Domoticz, le chiffre 1 sera supprimé dans le futur
+   - idm: iob+ concerne un dispositif io.Broker avec beaucoup d'ID, c'est le cas d'un robot tondeuse ou l'ID de l'appareil regroupe un nombre important d'IDs secondaires.
 
-   iobroker+ concerne un dispositif io.Broker avec beaucoup d'ID, c'est le cas d'un robot tondeuse ou l'ID de l'appareil regroupe un nombre important d'IDs secondaires.
+     |image1417|
 
-   |image1417|
+     |image1952|
 
 |image1325|
 
@@ -2642,3 +2643,5 @@ function mc(variable,id)
    :width: 250px
 .. |image1950| image:: ../img/image1950.webp
    :width: 350px
+.. |image1952| image:: ../img/image1952.webp
+   :width: 600px
