@@ -2644,4 +2644,4 @@ function mc(variable,id)
 .. |image1950| image:: ../img/image1950.webp
    :width: 350px
 .. |image1952| image:: ../img/image1952.webp
-   :width: 600px
+   :width: 500px
