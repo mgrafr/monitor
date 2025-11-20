@@ -135,10 +135,11 @@ Le fichier modifié par cerbot lors de la demande de certificat
 
    https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/
 
+9.5 utilisation directe avec monitor 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sans l'intermédiaire de Domoticz, Home Assistant ou Ipbroker
 
-
-
-
+en cours de développement
 
 
 .. |image653| image:: ../media/image653.webp
