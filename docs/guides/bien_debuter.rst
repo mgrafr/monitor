@@ -1376,8 +1376,12 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
    		ex : idx de Domoticz
      |image87|
    
-. **ID**, identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp(200).values.xxxxxx
+. **ID**, identity_id  (ha & iob & monitor) ; ex : Home Assistant, nom essai, ID input_text.essai;  ex : monitor : pp[XXX].values.xxxxxx
 
+     EXEMPLE DE VARIABLE MONITOR (faire F12 avec un navigateur) : pp est le nom du tablrau des variables dans monitor
+
+      |image1950|
+ 
    .. warning::
 
       **IMPORTANT** : le contenu de la variable texte ne doit pas dépasser 255 caractères en cas de dépassement possible, utiliser un message (voir ci-après)
@@ -2634,3 +2638,5 @@ function mc(variable,id)
    :width: 700px
 .. |image1942| image:: ../img/image1942.webp
    :width: 250px
+.. |image1950| image:: ../img/image1950.webp
+   :width: 500px
