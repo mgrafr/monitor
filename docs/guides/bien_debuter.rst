@@ -1381,6 +1381,8 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
      EXEMPLE DE VARIABLE MONITOR (faire F12 avec un navigateur) : **pp** est le nom du tableau des variables dans monitor
 
       |image1950|
+
+     voir ce paragraphe :ref:`0.13 Les fichiers JSON reçu par monitor
  
    .. warning::
 
