@@ -682,7 +682,7 @@ Le script lua utilisé pour ouvrir ces fichiers:
 
 .. note:: 
 
-   **iob+** :voir aussi :ref:`0.3.2 Les Dispositifs`
+   **idm & iob+** :voir aussi :ref:`0.3.2 Les Dispositifs`
 
    |image1953|
 
