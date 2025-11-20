@@ -141,7 +141,7 @@ PAGE ACCUEIL*/
 -------concerne les poubelles , la fosse septique , la page météo ------*/	
 var idx_idimg;
 service=new Array();
-maj_services(0);
+//maj_services(0);
 var time_maj=<?php echo TEMPSMAJSERVICES;?>;
 var time_maj_al=<?php echo TEMPSMAJSERVICESAL;?>;
 var int_maj=time_maj;
@@ -155,29 +155,34 @@ function maj_services(index){
 		if (html){int_maj=html[0].interval_maj;
 		var i, idw,idt,img_serv,txt_serv = "";
 		for (i = 1; i < count; i++) {//console.log("idx="+html[i].idx);
-	img_serv = html[i].image;
+	img_serv = html[i].image;actif_serv= html[i].actif;
 	//img_serv ? img_serv : "http://192.168.1.9/monitor/"+html[i].image;		
 	idw = html[i].ID_img;idt = html[i].ID_txt;exist = html[i].exist_id;name_var=html[i].Name;
 	if (exist=="oui"){
 		if (idw=="poubelle"){idx_idimg=html[i].Value;idx_ico=html[i].icone;}
 		if (idw=="#shell")  {id_var=html[i].idx;v_var=html[i].Value;
-			if (v_var!="0")  {					 
-		var type=2;
-		if (idt="dz") {var ipserv="<?php echo $IP_dz;?>";var userserv="<?php echo $USER_dz;?>";var pwdserv="<?php echo $PWD_dz;?>";}
-		if (idt="ha") {var ipserv="<?php echo $IP_ha;?>";var userserv="<?php echo $USER_ha;?>";var pwdserv="<?php echo $PWD_ha;?>";}		
-		else { var ipserv="<?php echo $IP_iob;?>";var userserv="<?php echo $USER_iob;?>";var pwdserv="<?php echo $PWD_iob;?>";}
+			if (v_var!="0")  {	//concerne BASH------------------------				 
+			var type=2;
+			if (idt=="dz") {var ipserv="<?php echo $IP_dz;?>";var userserv="<?php echo $USER_dz;?>";var pwdserv="<?php echo $PWD_dz;?>";}
+			if (idt=="ha") {var ipserv="<?php echo $IP_ha;?>";var userserv="<?php echo $USER_ha;?>";var pwdserv="<?php echo $PWD_ha;?>";}		
+			else { var ipserv="<?php echo $IP_iob;?>";var userserv="<?php echo $USER_iob;?>";var pwdserv="<?php echo $PWD_iob;?>";}
 		 					
 			$.get( "ajax.php?app=shell&variable="+ipserv+"&name="+userserv+"&table="+pwdserv+"&type=2&command="+v_var, function(datas) {
   				alert(datas);
-  
-  			});maj_variable(id_var,"BASH",0,2);
-			
-		
-		}	}
-	var myEle = document.getElementById(idt);	
-	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){document.getElementById(idt).innerHTML =html[i].Value;}
-	if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){document.getElementById(idt).innerHTML ="";}
-	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){document.getElementById(idt).innerHTML ="";}*/
+   			});maj_variable(id_var,"BASH",0,2);
+			}//----------------------------------------------------------------
+		}
+			var myEle = document.getElementById(idt);	
+	if (actif_serv=="5") {
+		var res="html[i].ID";myEle.innerHTML = eval(eval(res));
+		//let val_var=pp[200].values.batteryVoltage;myEle.innerHTML = val_var+" Volts";
+
+  }
+	else {
+		if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){myEle.innerHTML =html[i].Value;}
+		if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){myEle.innerHTML ="";}
+		}
+	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){myEle.innerHTML ="";}*/
 	
 		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
 			if (img_serv=="pas image"){document.getElementById(idw).style.display = "none";} 
@@ -186,12 +191,8 @@ function maj_services(index){
 		else {document.getElementById(not_piles).innerHTML =("erreur : "+idt);
 			  document.getElementById(not_piles_reset).style.display="block";}	
 					}
-					
-	
-	
-	}
-	
-		} } },
+		}
+			} } },
 error: function() {alert('La requête n\'a pas abouti');} 
   });if (int_maj>0){timemaj=time_maj_al;}	
 		else {timemaj=time_maj}	 
@@ -323,6 +324,7 @@ $.ajax({
 
 setTimeout(maj_devices, tempo_dev, plan); 
 }
+maj_services(0);
 /*--------------------------------------*/
 function class_name(cn,coul){
 var elements = document.getElementsByClassName(cn);
