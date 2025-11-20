@@ -1382,7 +1382,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
       |image1950|
 
-     voir ce paragraphe :ref:`0.13 Les fichiers JSON reçu par monitor
+     voir ce paragraphe :ref:`0.13 Les fichiers JSON reçu par monitor`
  
    .. warning::
 
