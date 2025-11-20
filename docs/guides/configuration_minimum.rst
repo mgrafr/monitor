@@ -855,6 +855,10 @@ substring(0, 11)=="Set Level
 
 - La fonction **maj_services** récupère les valeurs de toutes les variables.
 
+  utilisation de :reD:`eval` pour les variables monitor (Actif=5)
+
+  |image1951|
+
 - La fonction **maj_variable** modifie la valeur d’une variable.
 
 - La fonction **maj_devices(plan)** récupère les données des dispositifs 
@@ -2584,3 +2588,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 550px
 .. |image1941| image:: ../img/image1941.webp
    :width: 300px
+.. |image1951| image:: ../img/image1951.webp
+   :width: 550px
