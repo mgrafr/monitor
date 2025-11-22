@@ -176,7 +176,6 @@ function maj_services(index){
 	if (actif_serv=="5") {
 		var res="html[i].ID";myEle.innerHTML = eval(eval(res));
 		//let val_var=pp[200].values.batteryVoltage;myEle.innerHTML = val_var+" Volts";
-
   }
 	else {
 		if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){myEle.innerHTML =html[i].Value;}
@@ -184,12 +183,12 @@ function maj_services(index){
 		}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){myEle.innerHTML ="";}*/
 	
-		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
+	if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
 			if (img_serv=="pas image"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
-					}
-		else {document.getElementById(not_piles).innerHTML =("erreur : "+idt);
-			  document.getElementById(not_piles_reset).style.display="block";}	
+		}
+	//else {document.getElementById(not_piles).innerHTML =("erreur : "+idt);
+			  //document.getElementById(not_piles_reset).style.display="block";}	
 					}
 		}
 			} } },
@@ -304,7 +303,7 @@ $.ajax({
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
@@ -312,7 +311,7 @@ $.ajax({
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 				}}
 			
-			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
+			else if (val.ID1=="#" || val.ID1==""){document.getElementById('erreur').innerHTML ="erreur ID1_html   bd  idm="+val.idm +" nom:"+val.Name;}
 			//else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:...."+val.Name;}
 			else if (val.idx=="NULL" && val.ID=="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
 		}});
