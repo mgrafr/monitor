@@ -139,6 +139,15 @@ Le fichier modifié par cerbot lors de la demande de certificat
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 sans l'intermédiaire de Domoticz, Home Assistant ou Ipbroker
 
+9.5.1 Installation de la lirairie libmosquitto-dev
+""""""""""""""""""""""""""""""""""""""""""""""""""
+.. code-block::
+
+   apt install libmosquitto-dev
+
+9.5.2 envoyer et recevoir les messages
+""""""""""""""""""""""""""""""""""""""
+
 en cours de développement
 
 
