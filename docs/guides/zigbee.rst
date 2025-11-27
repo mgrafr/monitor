@@ -256,6 +256,6 @@ en cours de développement
 .. |image1956| image:: ../img/image1956.webp
    :width: 500px
 .. |image1957| image:: ../img/image1957.webp
-   :width: 700px
+   :width: 580px
 .. |image1958| image:: ../img/image1958.webp
    :width: 700px
