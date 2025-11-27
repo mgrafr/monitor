@@ -164,8 +164,71 @@ installé depuis composer; composer ne peut pas être installé en root
    sudo apt install composer
    composer require php-mqtt/client
 
-9.5.2 envoyer et recevoir les messages
+|image1956|
+
+9.5.3 envoyer et recevoir les messages
 """"""""""""""""""""""""""""""""""""""
+Le script est est exécuter dans le répertoire  d'installation de php-mqtt/client, ici dans /home/USER
+
+.. code-block::
+
+   <?php
+   require_once("/www/monitor/api/f_pour_api.php");
+   require('vendor/autoload.php');
+   require('/www/monitor/admin/config.php');
+   use \PhpMqtt\Client\MqttClient;
+   use \PhpMqtt\Client\ConnectionSettings;
+   //
+   $server   = MQTT_IP;
+   $port     = 1883;
+   $clientId = rand(5, 15);
+   $username = MQTT_USER;
+   $password = MQTT_PASS;
+   $clean_session = false;
+   $mqtt_version = MqttClient::MQTT_3_1_1;
+   //
+   $connectionSettings = (new ConnectionSettings)
+     ->setUsername($username)
+     ->setPassword($password)
+     ->setKeepAliveInterval(60)
+     ->setLastWillTopic('zigbee2mqtt/last-will')
+     ->setLastWillMessage('client disconnect')
+     ->setLastWillQualityOfService(1);
+   //
+   $mqtt = new MqttClient($server, $port, $clientId, $mqtt_version);
+   $mqtt->connect($connectionSettings, $clean_session);
+   printf("client connected\n");
+   $mqtt->subscribe('zigbee2mqtt/#', function ($topic, $message) {
+       printf("Received message on topic [%s]: %s\n", $topic, $message);
+   }, 0);
+   for ($i = 0; $i< 10; $i++) {
+     $payload = array(
+       'protocol' => 'tcp',
+       'date' => date('Y-m-d H:i:s'),
+       'url' => 'https://github.com/emqx/MQTT-Client-Examples'
+     );
+     $mqtt->publish(
+       // topic
+       'zigbee2mqtt/',
+       // payload
+       json_encode($payload),
+       // qos
+       0,
+       // retain
+       true
+     );
+     printf("msg $i send\n");
+     sleep(1);
+   }
+   $mqtt->loop(true);
+
+|image1957|
+
+9.5.4 Scripts concernés dans monitor
+""""""""""""""""""""""""""""""""""""
+.. admonition:: **fonctions.php & include/fonctions_1.php**
+
+    |image1958| 
 
 en cours de développement
 
@@ -192,3 +255,7 @@ en cours de développement
    :width: 700px
 .. |image1956| image:: ../img/image1956.webp
    :width: 500px
+.. |image1957| image:: ../img/image1957.webp
+   :width: 700px
+.. |image1958| image:: ../img/image1958.webp
+   :width: 700px
