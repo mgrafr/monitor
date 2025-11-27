@@ -139,11 +139,16 @@ Le fichier modifié par cerbot lors de la demande de certificat
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 sans l'intermédiaire de Domoticz, Home Assistant ou Ipbroker
 
-9.5.1 Installation de la lirairie libmosquitto-dev
-""""""""""""""""""""""""""""""""""""""""""""""""""
+9.5.1 Installation de php-mqtt/client
+"""""""""""""""""""""""""""""""""""""
+https://github.com/php-mqtt/client
+
+installé depuis composer; composer ne peut pas être installé en root
+
 .. code-block::
 
-   apt install libmosquitto-dev
+   sudo apt install composer
+   composer require php-mqtt/client
 
 9.5.2 envoyer et recevoir les messages
 """"""""""""""""""""""""""""""""""""""
