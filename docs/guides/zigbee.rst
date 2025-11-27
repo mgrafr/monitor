@@ -157,6 +157,10 @@ Ce fichier json contient les dernières valeurs de tous les dispositifs
 """""""""""""""""""""""""""""""""""""
 https://github.com/php-mqtt/client
 
+.. note::
+
+   Un autre choix existe : mosquitto client; le paquet pour Debian, libmosquitto-dev mais l’installation n’est pas aussi simple qu’avec php-mqtt/client
+
 installé depuis composer; composer ne peut pas être installé en root
 
 .. code-block::
