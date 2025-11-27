@@ -201,29 +201,16 @@ Le script est est exécuter dans le répertoire  d'installation de php-mqtt/clie
    //
    $mqtt = new MqttClient($server, $port, $clientId, $mqtt_version);
    $mqtt->connect($connectionSettings, $clean_session);
-   printf("client connected\n");
+   printf("client connecté\n");
+   //
    $mqtt->subscribe('zigbee2mqtt/#', function ($topic, $message) {
-       printf("Received message on topic [%s]: %s\n", $topic, $message);
+   if ($topic == "monitor") {sms($message);}
+   $str=explode("/",$topic);$id=$str[1];
+   $obj = json_decode($message);
+    if (isset($obj->state) && $obj->state!="online"){$ob=$obj->state;echo 'id='.$id.' state='.$ob."\n";maj($id,$ob);}
+    if (isset($obj->contact)) {$ob=$obj->contact;echo 'id='.$id.' state='.$ob."\n";maj($id,$ob);}
    }, 0);
-   for ($i = 0; $i< 10; $i++) {
-     $payload = array(
-       'protocol' => 'tcp',
-       'date' => date('Y-m-d H:i:s'),
-       'url' => 'https://github.com/emqx/MQTT-Client-Examples'
-     );
-     $mqtt->publish(
-       // topic
-       'zigbee2mqtt/',
-       // payload
-       json_encode($payload),
-       // qos
-       0,
-       // retain
-       true
-     );
-     printf("msg $i send\n");
-     sleep(1);
-   }
+   sleep(1);
    $mqtt->loop(true);
 
 |image1957|
