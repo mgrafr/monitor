@@ -139,7 +139,21 @@ Le fichier modifié par cerbot lors de la demande de certificat
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 sans l'intermédiaire de Domoticz, Home Assistant ou Ipbroker
 
-9.5.1 Installation de php-mqtt/client
+9.5.1 Créer un lien symbolique de state.json
+""""""""""""""""""""""""""""""""""""""""""""
+Ce fichier json contient les dernières valeurs de tous les dispositifs
+
+.. code-block::
+
+   ln -s /opt/zigbee2mqtt/data/state.json /opt/zigbee2mqtt/node_modules/zigbee2mqtt-windfront/dist/state.json
+
+.. note::
+
+   Ce lien permer de récutérer en http le contenu du fichier : http://IP_Z2M:8084:state.json
+
+   |image1955|
+
+9.5.2 Installation de php-mqtt/client
 """""""""""""""""""""""""""""""""""""
 https://github.com/php-mqtt/client
 
@@ -174,3 +188,7 @@ en cours de développement
    :width: 700px
 .. |image1143| image:: ../media/image1143.webp
    :width: 418px
+.. |image1955| image:: ../img/image1955.webp
+   :width: 700px
+.. |image1956| image:: ../img/image1956.webp
+   :width: 500px
