@@ -5,7 +5,12 @@ $n=0;$al_bat=0;$p=0;
 //$row['nom_objet']=$s;return $row;					 
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
- if ($t1=='3')  {
+if ($t1=='4')  {
+	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s."' AND Actif = '".$s1."' AND maj_js <> 'variable';";
+	$result = $conn->query($sql);$n=0;//$nb_rows=$result->num_rows;
+         $ligne = $result->fetch_assoc();
+        return $ligne;}
+ else if ($t1=='3')  {
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s1."' AND nom_objet = '".$s."' AND maj_js <> 'variable';";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
