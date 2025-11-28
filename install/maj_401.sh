@@ -2,8 +2,8 @@
 
 mkdir -p /www/monitor/tmp
 cd /www/monitor/tmp
-wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.0.0.tar.gz
-tar -xzf monitor-v4.0.0.tar.gz
+wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.0.1.tar.gz
+tar -xzf monitor-v4.0.1.tar.gz
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
 cp -u index_loc.php /www/monitor/index_loc.php
@@ -18,3 +18,9 @@ cp -u -R share/* /www/monitor/share/
 cp -u .version /www/monitor/.version
 cd ..
 rm -R tmp
+result()(mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'materiel';") 
+res=${result} 
+if [[ ${res:0:5} != 'Field' ]] 
+then 
+mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE materiel mat_json text;"
+fi
