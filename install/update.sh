@@ -26,7 +26,7 @@ if [ "$vermon" = "Version 401 ] && [ "$answer" -gt 324 ] && [ "$answer" -ne 401 
     chmod +x maj_401.sh 
     ./maj_401.sh
  elif [ "$vermon" =  "Version 4.0.1" ] && [ "$answer" -eq 324 ]; then 
-    echo "mise a jour vers 4.0.0"
+    echo "mise a jour vers 4.0.1"
     wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_324.sh
     dos2unix maj_324.sh
     chmod +x maj_324.sh 
