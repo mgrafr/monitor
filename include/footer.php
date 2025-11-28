@@ -303,7 +303,7 @@ $.ajax({
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
+			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
@@ -311,7 +311,7 @@ $.ajax({
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 				}}
 			
-			else if (val.ID1=="#" || val.ID1==""){document.getElementById('erreur').innerHTML ="erreur ID1_html   bd  idm="+val.idm +" nom:"+val.Name;}
+			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
 			//else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:...."+val.Name;}
 			else if (val.idx=="NULL" && val.ID=="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
 		}});
@@ -844,7 +844,7 @@ switch (choix) {
 	id2_html: $("#id2_html").val(),
 	coula : $("#coula").val(),
 	coulb : $("#coulb").val(),
-	type_mat :	$("input[name=type_mat]:checked").val(),
+	type_mat : $("input[name=type_mat]:checked").val()+'_'+$("#json").val(),
 	ls :	$("input[name=ls]:checked").val(),	
 	class : $("#class").val(),
 	coulc : $("#coulc").val(),
