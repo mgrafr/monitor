@@ -33,8 +33,14 @@ if [ "$vermon" = "Version 401 ] && [ "$answer" -gt 324 ] && [ "$answer" -ne 401 
     ./maj_324.sh
  elif [ "$vermon" =  "Version 4.0.1" ] && [ "$answer" -eq 401 ]; then  
      echo "deja a jour"
+ elif [ "$vermon" = "Version 4.0.1" ] && [ "$answer" -lt 324 ] && [ "$answer" -gt 322 ]; then 
+    echo "mise a jour vers 4.0.1"
+    wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_324.sh
+    dos2unix maj_324.sh
+    chmod +x maj_324.sh 
+    ./maj_324.sh
  elif [ "$vermon" = "Version en dev" ] && [ "$answer" -lt 324 ] && [ "$answer" -gt 322 ]; then  
-      echo "mettre à jour vers version 4.0.0" avant une mise à jour DEV     
+      echo "mettre à jour vers version 4.0.1" avant une mise à jour DEV     
  elif [ "$vermon" = "Version en dev" ] && [ "$answer" -gt 324 ]; then  
       echo "mise à jour vers version dev"  
       wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_dev.sh
