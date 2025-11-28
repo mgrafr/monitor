@@ -221,6 +221,22 @@ echo -e "${CM}${GN}  installation de dos2unix:${CL}"
 apt install dos2unix
 echo -e "${CM}${GN}  installation de Unzip:${CL}"
 apt install unzip
+client_mqtt=$(whiptail --title "installer le client php-mqtt ? " --radioli>
+"voulez vous installer php-mqtt/client ?\n necessaire pour utiliser zigbee2mqtt directement\n
+depuis monitor(sans utiliser Dz, Ha ou Iobroker)"
+"non" "par defaut " ON \
+"oui" "voir la doc" OFF 3>&1 1>&2 2>&3)
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi  : $client_mqtt"
+else
+echo "Vous avez annulé  "
+fi
+if [ "$client_mqtt" = "oui" ]
+then
+echo -e "${GN} installation de composer & php-mqtt/client${CL}"
+cd /home/$maria_name
+sudo apt install composer
+composer require php-mqtt/client
 echo -e "${BL}  installation de Monitor:${CL}"
 sleep 3
 xxx=$(hostname -I)
