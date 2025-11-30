@@ -233,10 +233,9 @@ function sql_variable($t,$ind){
 	if ($ind==0){$sql="SELECT * FROM `dispositifs` WHERE (idx='".$t."' AND maj_js='variable') ;" ;}
 	if ($ind==3){$sql="SELECT * FROM `dispositifs` WHERE (ID='".$t."' AND maj_js='variable') ;" ;}
 	if ($ind==2){$sql="SELECT * FROM `dispositifs` WHERE maj_js='variable';" ;}
-	//if ($ind==0){$sql="SELECT * FROM `variables` WHERE id_var='".$t."' ;" ;}
 	if ($ind==1){$sql="SELECT * FROM `text_image` WHERE texte ='".$t."' ;" ;}
 	if ($ind==4){$sql="SELECT * FROM `messages` ;" ;}
-	if ($ind==5){$sql="SELECT * FROM `dispositifs` WHERE idm!='';" ;}
+	if ($ind==5){$sql="SELECT * FROM `dispositifs` WHERE idm<>'' AND maj_js<>'variable'  ;";}
 	if ($ind==6){$sql="SELECT * FROM `dispositifs` WHERE (nom_objet='".$t."' AND maj_js='variable');" ;}
 	if ($ind==7){$sql="SELECT * FROM `dispositifs` WHERE (Actif='".$t."' AND maj_js='var_sql');" ;}
 	if ($ind==8){$sql="SELECT * FROM `dispositifs` WHERE (idm='".$t."' AND maj_js='var_sql');" ;}
@@ -266,12 +265,10 @@ function sql_variable($t,$ind){
 		}return $retour;}
 	elseif 	($ind==5){ $i=0;
 		while ($ligne = $result->fetch_assoc()) {$retour[$i]=new stdClass;
-			
-				if ($ligne['idx']!="" && $ligne['ID']=="") {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
-				elseif ($ligne['ID']!="" && $ligne['idx']=="") {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}
-				elseif ($ligne['ID']!="" && $ligne['idx']!="" && $ligne['Actif']==2) {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];}
-				elseif ($ligne['ID']!="" && $ligne['idx']!="" && ($ligne['Actif']==3 || $ligne['Actif']==4)) {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];}
-				else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}																 
+			$str=explode("/",$ligne['mat_json']);$json=$str[1];
+			if ($ligne['ID']!="" && $ligne['Actif']>2) {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];$retour[$i]->json = $json;}
+			elseif ($ligne['idx']!="" && $ligne['Actif']<3) {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];$retour[$i]->json = "";}
+			else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}																 
 			$i++;}
 	return $retour;}
 	elseif 	($ind==6) {//$n=1;
