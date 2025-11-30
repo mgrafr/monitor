@@ -103,10 +103,10 @@ define('PILES', array( //id var domoticz, nom var domoticz, %1 (moyen), %2 (faib
 ));
 define('NOTIFICATIONS_PILES','');// nom de la page default: interieur
 //---------------------------------------
-// Serveurs Domoticz ou HA ou iobroker
-define('DOMOTIC', '');//DZ ou HA ou IOB ou "" (non utlisé)
-define('DOMOTIC1', '');//DZ ou HA ou IOB ou ""
-define('DOMOTIC2', '');//DZ ou HA ou IOB ou ""
+// Serveurs Domoticz ou HA ou iobroker ou zigbee2mqtt
+define('DOMOTIC', '');//DZ ou HA ou IOB ou ZB ou ""  (non utlisé)
+define('DOMOTIC1', '');//DZ ou HA ou IOB ou ZB ou ""
+define('DOMOTIC2', '');//DZ ou HA ou IOB ou ZB ou ""
 // URL HTTPS
 define('URLDZ', 'https://domoticz.DOMAINE');
 define('URLHA', 'https://ha.DOMAINE');
@@ -231,5 +231,6 @@ if (str_contains($current, 'domaine')===false ){
 $current = $current."domaine='".URLMONITOR."'\n";
 file_put_contents($file, $current);}
 ?>
+
 
 
