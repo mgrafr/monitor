@@ -1,7 +1,7 @@
 <?php
 $idm_erreur=9000;
-function sql_plan($t1,$s="",$s1=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob,$idm_erreur;
-$n=0;$al_bat=0;$p=0;
+function sql_plan($t1,$s="",$s1=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob, $L_zb, $l_zb, $IP_dz,$IP_ha,$IP_iob,$IP_zb,$idm_erreur;
+$n=0;$al_bat=0;$p=0;$l_mo="";//$l_mo , en attente de update
 //$row['nom_objet']=$s;return $row;					 
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
@@ -38,23 +38,31 @@ else if ($t1=='1')  {$error1=="";
 								];$idm_erreur++;}
 		}
 	return $row;}
-else if ($t1=='0') {//$commande="On";
-if ($l_ha != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `ID` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 4);";
-	$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','ha');				  
-	}				  
-					 }
-if ($l_dz != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `idx` <> '' AND `Actif` <> 3 AND `Actif` <> 4);";
-	$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','dz');
+else if ($t1=='0') {
+	$sql1="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `Actif` = ";
+	if ($l_dz != "") {$u=2;
+	$sql=$sql1.$u.");";$result = $conn->query($sql);
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','dz');				  
+		}	
+	}
+    if ($l_ha != ""){$u=3;
+	$sql=$sql1.$u.");";$result = $conn->query($sql);
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','ha');
 		}
 	}
-if ($l_iob != ""){
-	$sql="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `maj_js` <> 'control' AND `nom_objet` <> '' AND `Actif` <> 1 AND `Actif` <> 2 AND `Actif` <> 3);";
-	$result = $conn->query($sql);
+if ($l_iob != ""){$u=4;
+	$sql=$sql1.$u.");";$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','iob');
+		}
+	}
+if ($l_mo != ""){$u=5;// en attente de mes
+	$sql=$sql1.$u.");";$result = $conn->query($sql);
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','mo');
+		}
+	}
+if ($l_zb != ""){$u=6;
+	$sql=$sql1.$u.");";$result = $conn->query($sql);
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','zb');
 		}
 	}
 return;}
@@ -66,15 +74,13 @@ if ($row['maj_js']=="on"  && $ser_dom=="dz"){$commande="group on";}
 if ($row['maj_js']=="on_level" && $ser_dom=="dz"){$commande="Set Level";}
 if ($row['maj_js']=="on="){$query=".";$f='var command=$(this).attr("rel");'.$f1;$commande="command";}
 else $f=$f1;
-
-if($ser_dom=="dz")$ser_dom=$row['idx'];
-if($ser_dom=="ha")$ser_dom=$row['ID'];
-if($ser_dom=="iob")$ser_dom=$row['ID'];		
+$id_dom=$row['ID'];$id_dom=str_replace("\r\n","",$id_dom);
+if($ser_dom=="dz"){$id_dom=$row['idx'];}
 if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("'.$query.$row["id1_html"];
 		if($row['id2_html']!=''){$s=$s.','.$query.$row['id2_html'];}
 		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
-       	if ($row['maj_js']=="on=") {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$ser_dom.'",command,"'.$row['pass'].'");});';}	
-		else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$ser_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
+       	if ($row['maj_js']=="on=") {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$id_dom.'",command,"'.$row['pass'].'");});';}	
+		else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$id_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
 		$s=$s.$sl;
 		echo $s."\r\n" ;}
 return;	

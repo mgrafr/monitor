@@ -46,7 +46,7 @@ switch (ind) {
 	case 0: 
 var id_m=null;
 for (attribute in maj_dev) {
-	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];console.log('idm='+id_m);}
+	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];json_m=maj_dev[attribute]['json'];console.log('idm='+id_m);}
 }
 if (id_m==null) {out_msg= 'id_m='+id_m;return;}
 		//var command=state.toString().toLowerCase();
@@ -362,13 +362,18 @@ rr=new Array();
 	case "4": var app="put";var type="state";var level=0;//console.log("relllll="+command);
 			if (command!="On"){ type="on=";}
 	break;
+	case "5": var app="0";
+	break;
+    case "6": var app="1";publish_mqtt()
+	break;	
 	default:
 	break;
 	}		
-	switchOnOff(app,idm,idx,command,type,level,pass="0")		
+	if (app=="1"){	publish_mqtt(idx,command);}
+	else {switchOnOff(app,idm,idx,command,type,level,pass="0");}
 		}
 	
-  function switchOnOff(app,idm,idx,command,type,level,pass){
+  function switchOnOff(app,idm,idx,command,type,level,pass){if (app=="0") {return "erreur dev en cours";}
 	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
 	  if (command=="On" || command=="on" || type=="on=" || command=="group on" || command=="Set Level") {
 	 if ((pp[idm]) && type!="on="){	
@@ -418,7 +423,12 @@ rr=new Array();
       }}); } 
   else alert("erreur");
   }
-	
+/*--------------mqtt publish-------------------*/
+ function publish_mqtt(){
+message = new Paho.MQTT.Message("Hello"); // message content as string
+message.destinationName = "World"; // MQTT topic
+client.send(message);
+ }
 /*-------NON UTILISE---------------------------*/
 function maj_switch(idx,command,level,idm){
 	pp[idm].Data=command;console.log(command);
