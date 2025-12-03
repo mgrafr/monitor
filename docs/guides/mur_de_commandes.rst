@@ -47,6 +47,9 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
 8.1.2 Commandes de changement d'état
 ====================================
+.. note::
+
+   pour zigbee2mqtt, le dialogue s'effectue en mqtt sous javacript
 
 .. admonition:: les fonctions PHP
 
@@ -156,7 +159,21 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
    |image1213|
 
-8.1.2.1 Commandes de changement de couleur des lampes
+8.1.2.1 client mqtt zigbee2mqtt
+"""""""""""""""""""""""""""""""
+voir aussi le paragrahe 8.2.6.3.2 avec MQTT  pour ajouter Paho js
+
+.. admonition:: **publier un message**
+
+   exemple pour l'allumage ou l'extinction d’une lampe d'éclairage 
+
+   ,, code-block::
+
+      
+
+
+
+8.1.2.2 Commandes de changement de couleur des lampes
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 le color picker jscolor.js est utilisé: https://jscolor.com/
 
