@@ -161,7 +161,8 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
 8.1.2.1 client mqtt zigbee2mqtt
 """""""""""""""""""""""""""""""
-voir aussi le paragrahe 8.2.6.3.2 avec MQTT  pour ajouter Paho js
+
+voir aussi le paragrahe ref:`8.2.6.3.2 avec MQTT`  pour ajouter Paho js
 
 .. admonition:: **publier un message**
 
@@ -169,8 +170,38 @@ voir aussi le paragrahe 8.2.6.3.2 avec MQTT  pour ajouter Paho js
 
    ,, code-block::
 
-      
-
+      <?php
+      require ($_SESSION["config"]);
+      echo "
+      <script>
+      function mqtt_pub(msg,topic) {
+      console.log('mqtt_pub');
+          let pahoConfig = {
+               hostname: '".MQTT_IP."',
+               port: '".MQTT_PORT."',
+               clientId: 'monitor'
+          }
+        client = new Paho.MQTT.Client(pahoConfig.hostname, Number(pahoConfig.po>
+        // set callback handlers
+        client.onConnectionLost = onConnectionLost;
+        client.onMessageArrived = onMessageArrived;
+        // connect the client
+        client.connect({ onSuccess: onConnect });
+      }  
+      // called when the client connects
+      function onConnect() {
+        console.log('onConnect');
+        client.subscribe(topic);
+        var message = new Paho.MQTT.Message(msg);
+        message.destinationName = topic;
+        client.send(message);
+      }
+      // called when the client loses its connection
+      function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+        console.log('onConnectionLost:' + responseObject.errorMessage);
+        }
+      }
 
 
 8.1.2.2 Commandes de changement de couleur des lampes
