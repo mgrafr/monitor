@@ -35,7 +35,7 @@ CREATE TABLE `dispositifs` (
   `ID` varchar(50) NOT NULL DEFAULT '',
   `idm` varchar(5) DEFAULT NULL,
   `Actif` varchar(1) NOT NULL DEFAULT '1',
-  `mat_json` text NOT NULL DEFAULT '',
+  `param` text NOT NULL DEFAULT '',
   `ls` varchar(1) NOT NULL DEFAULT '0',
   `maj_js` varchar(20) NOT NULL DEFAULT '',
   `id1_html` varchar(30) NOT NULL DEFAULT '#',
@@ -82,4 +82,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
