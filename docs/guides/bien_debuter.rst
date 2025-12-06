@@ -1585,8 +1585,10 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 |image1325|
 
-- Matériel : pour les types zwave ou Zigbee
+- param : pour le type d'appareil (zwave ou Zigbee) et le json pour les souscription et publication mqtt(pour z2m pour l'instant).
 
+	type matériel:payload de souscription:pyload de publication *ex: zigbee:state:hue,saturation* 
+ 
 - ls : lastseen, vu la dernière fois 1 si le dispositif est concerné plus d'infos : :ref:`1.8.2.1 Ecriture d’un script Dzvent(Dz) ou yaml(HA)`
 
 - maj_js : types de mise à jour java script
