@@ -20,30 +20,19 @@ function send_api_put_request($url, $parameters, $data) {
   // Make request via cURL.
   $curl = curl_init();
   curl_setopt($curl, CURLOPT_URL, $url);
-
-  // Handle authentication (you would need to implement this)
-  //_api_authentication($curl);
-
-  // Set options necessary for request.
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
   curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data)));
   curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
-
   curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
   // Send request
   $response = curl_exec($curl);
-
   return array(
     'code' => curl_getinfo($curl, CURLINFO_HTTP_CODE),
     'data' => $response,
   );
 }
-
-
-
-//
+//----------------------------------------------
 function file_http_curl($L,$mode,$post,$token){  
 /* set the content type json */
     $headers = [];
@@ -55,7 +44,6 @@ $ch = curl_init($L);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers   );
 if ($mode==1) {curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');}
 if ($mode==2) {curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');}
-
 curl_setopt($ch, CURLOPT_POSTFIELDS,$post); 	
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 //curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
@@ -63,7 +51,6 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
 return $result;
-	
 }
 // remplace file_get_contents qui ne fonctionne pas toujours
 function file_get_curl($L){	
@@ -145,8 +132,8 @@ $json_string1=explode(',',$json_string1);
   }
 //----------------------------------------
 if ($l_iob!=""){
-$rows=sql_variable(5,7);$na=0;// si Actif=5 ON R2CUP7RE LES VARIABLES DE MONITOR
-//                                  utilisées avec iobroker
+$rows=sql_variable(5,7);$na=0;// si Actif=5 on récupère LES VARIABLES DE MONITOR
+// utilisées avec iobroker
 while ($rows[$na]!=""){
 $iob[$na]=[
 	'idm' => $rows[$na]["idm"],
@@ -265,9 +252,10 @@ function sql_variable($t,$ind){
 		}return $retour;}
 	elseif 	($ind==5){ $i=0;
 		while ($ligne = $result->fetch_assoc()) {$retour[$i]=new stdClass;
-			$str=explode("/",$ligne['mat_json']);$json=$str[1];
+			if ($ligne['param']!=null) {$str=explode(":",$ligne['param']) ;$json=$str[1];if ($json==null){$json="no_zb";}}
+			else {$json="no_zb";}
 			if ($ligne['ID']!="" && $ligne['Actif']>2) {$retour[$i]->id = $ligne['ID'];$retour[$i]->idm = $ligne['idm'];$retour[$i]->json = $json;}
-			elseif ($ligne['idx']!="" && $ligne['Actif']<3) {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];$retour[$i]->json = "";}
+			elseif ($ligne['idx']!="" && $ligne['Actif']<3) {$retour[$i]->id = $ligne['idx'];$retour[$i]->idm = $ligne['idm'];$retour[$i]->json = $json;}
 			else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}																 
 			$i++;}
 	return $retour;}
@@ -289,7 +277,6 @@ function sql_variable($t,$ind){
 	else {$row = $result->fetch_assoc();
 		return $row;}
 	}
-
 //----POUR HA--------------------------------------
 function devices_zone($zone){global $L_ha,$Token_ha; 
 $mode=1;$L=$L_ha."api/states";$post="";
@@ -326,9 +313,8 @@ foreach ($lect_device as $xxx){
 	$ha[$n]['serveur'] ="HA";
 	$n++;
 }
-
 return $ha;}
-//
+//-----------------------------------------
 function devices_id($deviceid,$type,$value="",$pass=0){$post="";global $L_ha,$Token_ha; 
 //$type=$command
 $type= strtolower($type);
@@ -368,7 +354,7 @@ $data = json_decode($ha, true);
 $data['status']="OK";										
 $data['address_api']=$post;										
 return json_encode($data);}
-
+//---------------------------------
 function set_object($device,$type,$value,$pass=0){global $Token_iob,$port_api_iob,$IP_iob;
 //http://192.168.1.104:8093/v1/state/zigbee2mqtt.0.0xa4c13878aa747f7e.state?value=false		
 //http://192.168.1.162:8093/v1/command/setState?id=zigbee2mqtt.0.0xb40ecfd06e810000.color&state=%231BFF42											
@@ -573,6 +559,7 @@ else {$lect_device["values"]="";}
 if(array_key_exists('battery_state', $lect_device)==true) {$lect_device["BatteryLevel"]=$lect_device["battery_state"];}
 if(array_key_exists('battery_state', $lect_device)==true) {$lect_device["BatteryLevel"]=$lect_device["battery_state"];}
 if(array_key_exists('contact', $lect_device)==true) {$lect_device["Data"]=$lect_device["contact"];}
+if(array_key_exists('state', $lect_device)==true) {$lect_device["Data"]=$lect_device["state"];}
 	
 		case "dz" :
 		case "ha" :	
@@ -613,7 +600,7 @@ if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
    	'Update' => $lect_device["LastUpdate"],
 	'fx' => $lect_device["Fx"],			 
 	'idm' => $periph['idm'],
-	'mat_json' => $periph['mat/json'],
+	'param' => $periph['param'],
 	'lastseen' => $periph['ls'],			 
 	'maj_js' => $periph['maj_js'],	
 	'ID1' => $periph['id1_html'],
@@ -676,24 +663,39 @@ if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 return $data; 
 						 
  }
-function dimmable($idx,$valeur,$level){
+function dimmable($idx,$valeur,$lum,$level){
 $data_rgb = [
 	'command' => "13",
 	'ID1_html' => $idx
 			];
 	$rvb=mysql_app($data_rgb);
 	$majjs=$rvb['maj_js'];$idx=$rvb['idx'];$serveur=$rvb['Actif'];$ID=$rvb['ID'];$objet=$rvb['nom_objet'];
-// domoticz		
-	if ($majjs == "on_level" && $serveur=="2") {$id=$idx;$type=4;$result=switchOnOff_setpoint($id,$valeur,$type,$level,$pass="0");}
-// iobroker
-//http://192.168.1.162:8093/v1/command/setState?id=zigbee2mqtt.0.0xb40ecfd06e810000.color&state=%231BFF42
-	if ($majjs == "on_level" && $serveur=="4") {$type="command";$id=str_replace("state", "color", $ID);
+switch ($serveur) {
+	case 2: // domoticz		
+	if ($majjs == "on_level") {$id=$idx;$type=4;$result=switchOnOff_setpoint($id,$valeur,$type,$level,$pass="0");}
+	break;
+	case 4: // iobroker
+	//http://192.168.1.162:8093/v1/command/setState?id=zigbee2mqtt.0.0xb40ecfd06e810000.color&state=%231BFF42
+	if ($majjs == "on_level") {$type="command";$id=str_replace("state", "color", $ID);
 		$valeur=str_replace("#", "%23", $valeur);set_object($id,$type,$valeur,$pass=0);}
-// home assistant
-	if ($majjs == "on_level" && $serveur=="3") {$id=$ID;$type="4";$rgb=hex2rgb($valeur);$result=devices_id($id,$type,$rgb,$pass=0);}
-return $result;
-		}
-
+	break;
+	case 3: // home assistant
+	if ($majjs == "on_level") {$id=$ID;$type="4";$rgb=hextohsl($valeur)['color']['rgb'];$result=devices_id($id,$type,$rgb,$pass=0);}
+	break;
+	case 6: // zigbee2mqtt
+ 	if ($majjs == "on_level") {$hsl=hextohsl($valeur);
+	$ret = [
+		'ID' => $ID,
+		'serveur' => $serveur,
+		'ID1_html' => $data_rgb['ID1_html'],
+		'level' => $level,
+		'color' => $hsl,
+		'luminosité' => $lum
+        ];return $ret;
+	break;
+	}	}
+	return $result;
+	}
 function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;global $L_dz;
 // exemple : http://192.168.1.75:8082/json.htm?type=command&param=udevice&idx=84&nvalue=Off&svalue=2
 //  /json.htm?type=command&param=switchlight&idx=99&switchcmd=Set%20Level&level=6
@@ -710,8 +712,6 @@ if ($auth<3){$json2="json.htm?type=command&param=";
 	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
 	// $type=4 Réglez une lumière RVB dimmable
 	if ($type==4){
-	
-								
 	$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$idx.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
 	$json= $L_dz.$json2.$json1;
 	$json_string=file_get_curl($json);
@@ -1314,7 +1314,7 @@ $i=0;foreach($retour  as $R=>$D){
 	if ($key=="idm" ) $val_idm=$Value;
   	if ($key=="idx" ) $val_idx=$Value;	
 	if ($key=="Name" ) $val_name=$Value;
-	if ($key=="mat_json" ) $val_mat=$Value;
+	if ($key=="param" ) $val_mat=$Value;
     if ($key=="lastseen" ) $val_ls=$Value;  }
 
 if ($val_mat=="zigbee" || $val_mat=="zigbee3" || $val_mat=="zwave") {$i=$i+1;$lastseen=$lastseen."\n";$lastseen=$lastseen.'liste_ls['.$i.']={["idx"]=
@@ -1599,8 +1599,8 @@ break;
 		if ($data["pass"]=="alarme"){$data["pass"]="pwdalarm";}
 		elseif ($data["pass"]=="commandes"){$data["pass"]="pwdcommand";}
 		else $data["pass"]="0";
-$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `Actif`,`mat_json`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['nom_objet']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["actif"]."','".$data["type_mat"]."' , '".$data["ls"]."' , '".$data["maj_js"]."', '".$data["id1_html"]."', '".$data["car"]."', '".$data["fx"]."', '".$data["id2_html"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["class"]."', '".$data["coulc"]."', '".$data["could"]."', '".$data["pass"]."', '".$data["obs"]."');";		
-		echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>maj_js : '.$data["maj_js"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["nom_objet"].'<br>idm : '.$data["idm"].'<br>Actif : '.$data["actif"].'<br>ID : '.$data["ID"].'<br>ID1_html : '.$data["id1_html"].'<br>ID2_html : '.$data["id2_html"].'<br>coul_id1_id2_ON : '.$data["coula"].'<br>coul_id1_id2_OFF : '.$data["coulb"].'<br>type_mat : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class lampe : '.$data["class"].'<br>coul_lamp_ON : '.$data["coulc"].'<br>coul_lamp_OFF : '.$data["could"].'<br>mot_passe : '.$data["pass"].'<br>fx: '.$data["fx"].'<br>nb caractéres : '.$data["car"].'<br>Observations : '.$data["obs"].'<br><br>';
+$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `Actif`,`param`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['nom_objet']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["actif"]."','".$data["param"]."' , '".$data["ls"]."' , '".$data["maj_js"]."', '".$data["id1_html"]."', '".$data["car"]."', '".$data["fx"]."', '".$data["id2_html"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["class"]."', '".$data["coulc"]."', '".$data["could"]."', '".$data["pass"]."', '".$data["obs"]."');";		
+		echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>maj_js : '.$data["maj_js"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["nom_objet"].'<br>idm : '.$data["idm"].'<br>Actif : '.$data["actif"].'<br>ID : '.$data["ID"].'<br>ID1_html : '.$data["id1_html"].'<br>ID2_html : '.$data["id2_html"].'<br>coul_id1_id2_ON : '.$data["coula"].'<br>coul_id1_id2_OFF : '.$data["coulb"].'<br>param : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class lampe : '.$data["class"].'<br>coul_lamp_ON : '.$data["coulc"].'<br>coul_lamp_OFF : '.$data["could"].'<br>mot_passe : '.$data["pass"].'<br>fx: '.$data["fx"].'<br>nb caractéres : '.$data["car"].'<br>Observations : '.$data["obs"].'<br><br>';
 //
 maj_query($conn,$sql);			
 break;
@@ -1631,7 +1631,7 @@ case "7":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;		
-echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4,monitor=5,zb=6</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>mat_json : <input type="text" style="width:150px;margin-left:10px;" id="type_mat" value="'.$data["mat_json"].'"><em style="font-size:12px;margin-left:4px;">zwave, zigbee(_json), autres</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
+echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4,monitor=5,zb=6</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>param : <input type="text" style="width:150px;margin-left:10px;" id="param" value="'.$data["param"].'"><em style="font-size:12px;margin-left:4px;">zwave, zigbee(:json), autres</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
 //return $row; 
 break;
 case "8": 
@@ -1643,7 +1643,7 @@ nom_objet = '".$data['nom_objet']."',
 idx = '".$data['idx']."',
 ID= '".$data['ID'] ."',
 Actif = '".$data['actif'] ."',
-mat_json = '".$data['type_mat'] ."',
+param = '".$data['param'] ."',
 ls= '".$ls ."',
 maj_js = '".$data['maj_js'] ."',
 id1_html = '".$data['id1_html']."',
@@ -1743,18 +1743,26 @@ function reboot(){
 $output = shell_exec('ssh '.LOGIN_PASS_RPI.'@'.IPRPI.' -t bash "sudo reboot"  >> /home/michel/sms.log 2>&1');	
 	
 }
-function hex2rgb($hex) {
-	$hex = str_replace("#", "", $hex);
-	if(strlen($hex) == 3) {
-		$r = hexdec(substr($hex,0,1).substr($hex,0,1));
-		$g = hexdec(substr($hex,1,1).substr($hex,1,1));
-		$b = hexdec(substr($hex,2,1).substr($hex,2,1));
-	} else {
-		$r = hexdec(substr($hex,0,2));
-		$g = hexdec(substr($hex,2,2));
-		$b = hexdec(substr($hex,4,2));
-	}
-	$rgb = array($r, $g, $b);
-	return $rgb;
-}
+
+function hextohsl($hex){
+//require('vendor/autoload.php');
+require ('ColorConverter.php');
+//use ramazancetinkaya\ColorConverter;
+$converter = new ColorConverter();
+$color=[];
+// Convert HEX to RGB
+$rgb = $converter->hexToRgb($hex); // [255, 87, 51]
+// Convert HEX to HSL
+$hsl2 = $converter->hexToHsl($hex); // [10.59, 100, 60]
+$color=[
+   'R' => $rgb[0], 
+   'V' => $rgb[1],
+   'B' => $rgb[2],
+   'rgb' => $rgb,
+   'hsl' => $hsl2,
+   'Hue' => $hsl2[0],
+   'Saturation' => $hsl2[1], 
+   'luminosité' => $hsl2[2],
+    ];
+return $color;}
 ?>
