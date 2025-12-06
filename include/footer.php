@@ -8,10 +8,10 @@
 			</div>
 		</footer>
 <!-- footer end -->
-<!-- JavaScript files placées à la fin du document-->	
+<!-- JavaScript files placées à la fin du document-->
 <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery-ui-v1.13.2.js"></script>
-<script src="js/jquery.backstretch.min.js"></script>  
+<script src="js/jquery.backstretch.min.js"></script> 
 <script src="js/big-Slide.js"></script> 
 <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
 <script src="js/mes_js.js"></script>
@@ -19,7 +19,7 @@
 <script src="js/jscolor.min.js"></script>
 <script src="custom/js/JS.js?2"></script>
 <?php
-if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';include ('include/mqtt_js.php');}
+if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';include ('include/mqtt-js.php');}
 ?>
 
 <script>
@@ -33,28 +33,41 @@ function lire_cookie(name) {
 function popupCookie(page) {
   window.open(page);
 }
-function isInArray(array, search)
-{
-    return array.indexOf(search) >= 0;
-}	
+function isInArray(array, search){return array.indexOf(search) >= 0;}	
+function maj_html(majjs,id5,val5){
+// if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;;}
+// maj temp, hum; data (autres que on/off)----- id5=idhtml,val5= val(device) 
+switch (majjs) {
+	case 'temp':
+document.getElementById(id5).innerHTML=val5;
+break;
+}
+return;}
 function maj_mqtt(id_x,state,ind,level=0){
 if (!state) {console.log("erreur-state");return;}
-if (state=="true"){state="on";} //pour ioBroker	
-if (state=="false"){state="off";}	//pour ioBroker	
-console.log('id='+id_x+' state='+state);	
+if (state=="true"){state="on";} //pour ioBroker
+if (state=="false"){state="off";}	//pour ioBroke
+if (state=="ON"){state="on";} //pour Z2M
+if (state=="OFF"){state="off";}	//pour Z2M
+console.log('id='+id_x+' state='+state);
 switch (ind) {
 	case 0: 
-var id_m=null;
+var id_m=null;var json_m="";
 for (attribute in maj_dev) {
-	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];json_m=maj_dev[attribute]['json'];console.log('idm='+id_m);}
+	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];
+	json_m=maj_dev[attribute]['json'];console.log('id_m='+id_m+'..json_m'+json_m);}
+		if (json_m=='temperature'){json_m='temp';maj_html(json_m,pp[id_m].ID1,state);pp[id_m].temp=state;
+		if (pp[id_m].ID2!=""){maj_html(json_m,pp[id_m].ID2,state);}
+		return;}
 }
+console.log('json_m='+json_m);
 if (id_m==null) {out_msg= 'id_m='+id_m;return;}
 		//var command=state.toString().toLowerCase();
-var command=state.toString();console.log("command="+command+"pp_idm="+pp[id_m].Data);
+var command=state.toString();console.log("command="+command+"pp_idm avant="+pp[id_m].Data);
 //const PP=pp[id_m];if (PP.find(obj => obj.hasOwnProperty("Data"))) {alert("idx ou ID  n'existe pas");}
 pp[id_m].Data=command;
-console.log('command='+pp[id_m].Data);
-var fx=pp[id_m].fx; console.log(fx);if (fx=="lien_variable"){maj_services(0);}
+console.log('command pp apres='+pp[id_m].Data);
+var fx=pp[id_m].fx; console.log('fx='+fx);if (fx=="lien_variable"){maj_services(0);}
 var sid1=pp[id_m].ID1;;
 var sid2=pp[id_m].ID2;
 var scoul_on=pp[id_m].coul_ON;	
@@ -88,7 +101,6 @@ if (c_lamp!="" && scoull!="") {
 	}
 return;
 }
-
 /*-------connexion au serveur SSE---------*/	
 <?php
 //if (SSE==true) echo 'SSEconnect()';?>	
@@ -287,8 +299,8 @@ $.ajax({
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {if (val.Data) {pos_m=(val.Data).toString().toLowerCase();}
 				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
 				if (val.maj_js=="data" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.Data;}
-				if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;pos=val.temp;}
-				if (val.maj_js=="temp" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.temp;}																  
+				if (val.maj_js=="temp"){maj_html(val.maj_js,val.ID1,val.temp);}
+				if (val.maj_js=="temp" && val.ID2!=""){maj_html(val.maj_js,val.ID2,val.temp);}
 				//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
 											  // else {pos_m="off"; }}
 				if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
@@ -342,8 +354,7 @@ $('.closeBtn').on('click', function () {
 qq=new Array();	
 <?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	?>
 rr=new Array();
- 
-	function switches(server,idm,idx,command,pass="0"){
+function switches(server,idm,idx,command,pass="0"){
 	switch (server) {
 	case "1":
 	case "2": var app="OnOff";
@@ -354,28 +365,36 @@ rr=new Array();
 
 	  }
 	  else {type=1;}
-	break;				
+	break;
 	case "3": var app="turn";var type=0;var level=0;
 		if (command=="On") command ="on";
-		if (command=="Off") command ="off";	
+		if (command=="Off") command ="off";
 	break;
 	case "4": var app="put";var type="state";var level=0;//console.log("relllll="+command);
 			if (command!="On"){ type="on=";}
 	break;
 	case "5": var app="0";
 	break;
-    case "6": var app="1";publish_mqtt()
-	break;	
+     case "6": type="state";
+	   if (pp[idm].Data == "OFF" || pp[idm].Data == "off" ) {command="ON";}
+	   else {command="OFF";}
+	   console.log(pp[idm].Data);
+	 publish_mqtt(idx,type,command,level);maj_mqtt(idx,command,0,level);
+	 /*{
+    "state": "ON",
+    "brightness": 215,
+    "color_temp": 325
+}*/
+
+	 return;
+	break;
 	default:
 	break;
-	}		
-	if (app=="1"){	publish_mqtt(idx,command);}
-	else {switchOnOff(app,idm,idx,command,type,level,pass="0");}
+	}
+	switchOnOff(app,idm,idx,command,type,level,pass="0");
 		}
-	
   function switchOnOff(app,idm,idx,command,type,level,pass){if (app=="0") {return "erreur dev en cours";}
-	/*pos : inter avec 1 position (poussoir On/OFF=1 , inter avec 2 positions=2 , inter avec Set Level = 3*/ 
-	  if (command=="On" || command=="on" || type=="on=" || command=="group on" || command=="Set Level") {
+	 if (command=="On" || command=="on" || type=="on=" || command=="group on" || command=="Set Level") {
 	 if ((pp[idm]) && type!="on="){	
 	  if (pp[idm].Data == "off" ) {command="on";}
 		if (pp[idm].Data == "on" ) {command="off";} 
@@ -402,49 +421,20 @@ rr=new Array();
 			document.getElementById("d_btn_al").style.display = "block";}
 			if (pass=="pwdcommand") {document.getElementById("btn_c").style.display = "block";document.getElementById('txt_cmd').innerHTML ="mot de passe incorrect ou dépassé";
 			document.getElementById("txt_cmd").style.display = "block";}		
-					
 			}
-				
 			if (qq['status']=="OK" ) {maj_mqtt(idx,command,0,level);}
-			//if (qq['status']="OK" && app!="turn") {maj_mqtt(idx,command,0,level);}			
-			/*else {
-				$.ajax({
-    	type: "GET",
-    	dataType: "json",
-    	url: "ajax.php",
-    	data: "app=turn&device="+idx+"&command=etat&name="+pass,
-    	success: function(response){qq=response;
-		var level=0;command=qq.state;
-	    maj_mqtt(idx,state,0,level);									
-		}
-				
-				});
-			}*/}
+			}
       }}); } 
   else alert("erreur");
   }
 /*--------------mqtt publish-------------------*/
- function publish_mqtt(){
-message = new Paho.MQTT.Message("Hello"); // message content as string
-message.destinationName = "World"; // MQTT topic
-client.send(message);
+ function publish_mqtt(idx,type,command,level=0){
+// Publish a Message
+	msg='{ "'+ type+'":"'+ command+'"}';console.log(msg);
+	topic='zigbee2mqtt/'+idx+'/set';
+	mqtt_pub(msg,topic);return;
  }
-/*-------NON UTILISE---------------------------*/
-function maj_switch(idx,command,level,idm){
-	pp[idm].Data=command;console.log(command);
-	sid1=pp[idm].ID1;sid2=pp[idm].ID2;idm=pp[idm];
-		if (command=="On" || command=="on")  {scoul=idm.coul_ON;if (scoull=idm.coullamp_ON!="") scoull=idm.coullamp_ON;}
-		else if (command.substring(0, 9)=="Set Level")  {if (scoull=idm.coullamp_ON!="") scoul=idm.coul_ON;scoull=idm.coullamp_ON;}
-		else if  (command=="Off"  || command=="off" ) {scoul=idm.coul_OFF;if (scoull=idm.coullamp_OFF!="") scoull=idm.coullamp_OFF;}
-		else return;																			  
-	document.getElementById(sid1).style = scoul;
-	if (sid2) {document.getElementById(sid2).style = scoul;}
-	if (idm.class_lamp!="") {class_name(idm.class_lamp,scoull);}
-	if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
-	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));console.log("h="+h+parseInt((h*(level)/100)));}
-	
-	return; }
-/*--------------------------------*/	
+//------------------------------------------------------------
 $("#amount").click(function () {
 		var idx = $("#VR").attr('rel');
 		var idm = $("#VR").attr('title');
@@ -506,8 +496,6 @@ function appel_admin(choix_admin,fenetre){
                         } 
 }); 
 } 
-
-/*------------------------------------------------------------------------*/	
 /*graphiques---------------------------------------*/
 $('#btn_graph').on('click', function() { 
 var device = $('input[name=devices]:checked').val();
@@ -522,7 +510,6 @@ $("#btn_sc").trigger("click");
 //scenes(device,variable,"scenes");
         });
 /*--------------fin graphiques------------------------*/	
-	
 /*zoom*/
 <?php 
 if (ON_MUR==false || SRC_MUR=="fr") echo "/*";?>
@@ -531,7 +518,6 @@ $(".dimcam").on("click", function() {rel = $(this).attr('rel');
    $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
 	var zoomImg=document.getElementById('imagepreview');arret_zoom=1;updateZoom(rel);	
 });
-
 // total number of cams on the wall
 nbrCam=<?php echo NBCAM;?>;i=1;
 while (i <= nbrCam) {
@@ -554,8 +540,6 @@ if (document.getElementById('imagepreview').complete==true)
 	// call update for current camera in 100 ms
 	setTimeout(function() { updateZoom(camIndex); }, 100);
 }	
-
-
 function updateImage(camIndex)
 {if (arret_mur==0) return false;
 	// get cam image ID
@@ -665,17 +649,6 @@ function modalClose(bl) {
 	maj_services(0);bl=0;ch_idx="0";ch_ID="0";ch_name="";
 }
 /*------------------------------------------*/
-/*nagios("","#nagiosapp");
-function nagios(variable,id){
-  $.ajax({
-    type: "GET",
-    url: "ajax.php",
-    data: "app=app_nagios&variable="+variable,
-    success: function(data){
-            $(id).html(data);
-}
-});
- }	*/	
 $("#poubelle").click(function () {
 var date_poub=new Date();
 var jour_poub=date_poub.getDate();
@@ -715,10 +688,7 @@ var_sp(idsp);
 setTimeout(var_sp, tempo_devices, idsp); 	
 }';?>
 
-
 /*----------fin document-------------------------------*/
-	
-
 </script><script>
 /*----------------script pour svg---*/
 var nom;
@@ -757,10 +727,7 @@ var nom;
 			});         
 		} 
 	}
-
-
 </script>
-
  <style>
   #custom-handle {
     width: 3em;
@@ -792,20 +759,7 @@ $('#slider').slider({
 });
 
 $("#amount").val(sliderMin);
-	
-
-
 /*--------------------------------------------------*/
- 
-/*------------------------------------------*/
-	
-	
-	
-	
-	
-	</script>
-
-<script>
 $('.info_admin').click(function(){
 var rel=$(this).attr('rel');$('#affich_content_info').empty;var info_admin="";
 affich_info_admin(rel);
@@ -814,11 +768,7 @@ function affich_info_admin(rel){
 //console.log(rel);
 <?php echo "var info_admin = ". $js_info_admin . ";\n";?>
 document.getElementById("affich_content_info").innerHTML = info_admin[rel];
-
 }
-	
-	
-	
 function adby(choix) {var formData=new Array();
 switch (choix) {
 	case 1: $("#advf").css("display", "none");$("#adv_f").css("display", "none");
@@ -854,7 +804,7 @@ switch (choix) {
 	id2_html: $("#id2_html").val(),
 	coula : $("#coula").val(),
 	coulb : $("#coulb").val(),
-	type_mat : $("input[name=type_mat]:checked").val()+'_'+$("#json").val(),
+	type_mat : $("input[name=type_mat]:checked").val()+':'+$("#json").val(),
 	ls :	$("input[name=ls]:checked").val(),	
 	class : $("#class").val(),
 	coulc : $("#coulc").val(),
@@ -951,16 +901,20 @@ case 5:
 	icone : $("#icone").val(),
 	command : $("#command5").val(),
 	};
-     break;	
-	case 10: 
+    break;	
+	case 10: // couleur lampes
+	var lumin=get_brightness($("#val1").val());
+	//document.getElementById('val2').value =lumin;
+	$("#val2").val(lumin);
 	var formData = {
 	app : "dimm",
 	command : $("#val1").val(),
+	type : lumin,
 	device : $("#idhtml").val(),
 	name : "100"		
 	};fenetre='color_lampes';
-     break;		 
-	  default:
+	break;		 
+	default:
 	}
     $.ajax({
       type: "GET",
@@ -970,13 +924,28 @@ case 5:
 	success:function (data) {
 		$('#'+fenetre).empty();
 		if (choix !=10) {document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";}
-		   },
+		//if (data[sereur]==6)  
+		},
 		error: function() { 
                           alert('La requête n\'a pas abouti'); 
                         } 
     });
   }	
-</script><script>
+// Check color brightness
+// returns brightness value from 0 to 255
+// http://www.webmasterworld.com/forum88/9769.htm
+
+function get_brightness(hexCode) {
+// strip off any leading #
+hexCode = hexCode.replace('#', '');
+
+var c_r = parseInt(hexCode.substr(0, 2),16);
+var c_g = parseInt(hexCode.substr(2, 2),16);
+var c_b = parseInt(hexCode.substr(4, 2),16);
+
+return Math.round(((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000);
+}
+/*--------------------------------------------------------*/
 $('li.ww').click(function(){var ww1 = $(".www").attr('href');
 $(ww1).attr('display','block');
 });
@@ -996,11 +965,6 @@ if ($domaine==IPMONITOR) $lien="http://".SSE_IP.":".SSE_PORT."/events";
 	  maj_mqtt(id_x,state,0)
     };
   </script>";}
-	  
-
-
-
-
 
 if (SSE=='php') {echo "
 <script>
@@ -1011,9 +975,9 @@ var source = new EventSource('include/serveur_sse.php');
  
 source.addEventListener('message', function(e) {
 document.getElementById('messages').innerHTML = e.data ;
-donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;console.log(id_x,state);
+donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;
 maj_mqtt(id_x,state,0);
-$.get('ajax.php', { app:'maj', id:'', state: 'OK', command:'6'});
+$.get('ajax.php', { app:'maj', id:'', state: 'Ok', command:'6'});
 }, false);
 
 source.addEventListener('open', function(e) {
@@ -1025,12 +989,5 @@ if (e.readyState == EventSource.CLOSED) {
 document.getElementById('status').innerText='connexion fermée';
 }
 }, false);
-
-
-
- 
 };
-
-
-
 </script>";}?>

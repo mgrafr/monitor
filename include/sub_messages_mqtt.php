@@ -9,7 +9,7 @@ function id_name($nom_objet) {
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE nom_objet = '".$nom_objet."' AND Actif = '6' AND maj_js <> 'variable';";
 	$result = $conn->query($sql);$nb_rows=$result->num_rows;
          $row = $result->fetch_assoc();
-         if ($row!=null) {$ro=explode("_",$row['mat_json']) ;$rq=[];
+         if ($row!=null) {$ro=explode(":",$row['param']) ;$rq=[];
             $rq=['ID' => $row['ID'],
 				  'nom_objet' => $row['nom_objet'],
 				  'json' => $ro[1]
