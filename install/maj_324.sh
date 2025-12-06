@@ -11,7 +11,7 @@ result()(mysql --user="root" --password="Idem4546" --database="monitor" --execut
 res=${result} 
 if [[ ${res:0:5} != 'Field' ]] 
 then 
-mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE materiel mat_json text;"
+mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE materiel param text;"
 fi
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
