@@ -24,7 +24,7 @@ else if ($app=="devices_plan") {if (DECOUVERTE==true) {include('include/json_dem
 								else {$retour=devices_plan($variable);echo json_encode($retour); }}
 else if ($app=="turn") {$retour=devices_id($device,$command,$type,$name);echo $retour; }
 else if ($app=="OnOff") {$retour=switchOnOff_setpoint($device,$command,$type,$variable,$name);echo json_encode($retour); }
-else if ($app=="dimm") {$retour=dimmable($device,$command,$name);echo json_encode($retour); }
+else if ($app=="dimm") {$retour=dimmable($device,$command,$type,$name);echo json_encode($retour); }
 else if ($app=="put") {$retour=set_object($device,$type,$command,$name);echo json_encode($retour); }
 else if ($app=="meteo_concept") {if (DECOUVERTE==true) {include('include/json_demo/meteo_concept_json.php');return;}
 								else {echo $retour=meteo_concept($variable); }}
