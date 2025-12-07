@@ -31,14 +31,20 @@
   <input type="radio" name="type_mat" value="zigbee"> zigbee
   <input type="radio" name="type_mat" value="virtuel"> virtuel
 <input type="radio" name="type_mat" value="" checked> autres<br>
-<span style="margin-left: 10px;">param mqtt->sub :</span><select id="json" name="JSON">
+<span style="margin-left: 10px;">param mqtt->sub :</span><select id="json" name="json">
     <option value="">pas de mqtt</option>
     <option value="humidity">humidity</option>
     <option value="contact">contact</option>
     <option value="occupancy">occupancy</option>
     <option value="state">state</option>
     <option value="temperature">temperature</option></select><br>
-<span style="margin-left: 10px;">param mqtt->pub :</span><input type="text" style="width:160px;margin-left:9px;" name="json1" id="json1" value=" " >&nbsp;&nbsp;ex: hue, s, h, ...<br> 
+<span style="margin-left: 10px;">param mqtt->pub :</span>
+<select type=checkbox" name="json1" id="json1" >
+    <option value="">pas de mqtt</option>
+    <option value="hs">color->hs</option>
+    <option value="hue">color->hue</option>
+</select>pour colors dimmables
+    <option value="">pas de mqtt</option> <br>
 <span style="margin-left: 10px;">lastseen :</span> <input type="radio" name="ls" value="1"> oui	 
 <input type="radio" name="ls" value="0"> non<br>	 
 <span style="margin-left: 10px;">Class (lampes) : <input type="text" style="width:200px;margin-left:9px;" id="class"  value="" ><br>
