@@ -19,10 +19,12 @@
 <script src="js/jscolor.min.js"></script>
 <script src="custom/js/JS.js?2"></script>
 <?php
-if (MQTT==true) {echo '<script src="js/mqttws.min.31.js"></script>';include ('include/mqtt-js.php');}
+if (MQTT==true) {echo '<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>';
+include ('include/mqtt-js.php');}
 ?>
 
 <script>
+console.log(mqtt)	
 // cookies
 function lire_cookie(name) {
   let matches = document.cookie.match(new RegExp(
@@ -380,12 +382,6 @@ function switches(server,idm,idx,command,pass="0"){
 	   else {command="OFF";}
 	   console.log(pp[idm].Data);
 	 publish_mqtt(idx,type,command,level);maj_mqtt(idx,command,0,level);
-	 /*{
-    "state": "ON",
-    "brightness": 215,
-    "color_temp": 325
-}*/
-
 	 return;
 	break;
 	default:
@@ -430,9 +426,10 @@ function switches(server,idm,idx,command,pass="0"){
 /*--------------mqtt publish-------------------*/
  function publish_mqtt(idx,type,command,level=0){
 // Publish a Message
-	msg='{ "'+ type+'":"'+ command+'"}';console.log(msg);
-	topic='zigbee2mqtt/'+idx+'/set';
-	mqtt_pub(msg,topic);return;
+	const msg='{ "'+ type+'":"'+ command+'"}';console.log(msg);
+	const topic='zigbee2mqtt/'+idx+'/set';
+	//mqtt_pub(msg,topic);return;
+	client.publish(topic, msg);return;
  }
 //------------------------------------------------------------
 $("#amount").click(function () {
@@ -769,7 +766,7 @@ function affich_info_admin(rel){
 <?php echo "var info_admin = ". $js_info_admin . ";\n";?>
 document.getElementById("affich_content_info").innerHTML = info_admin[rel];
 }
-function adby(choix) {var formData=new Array();
+function adby(choix) {var formData=new Array();dType="html";
 switch (choix) {
 	case 1: $("#advf").css("display", "none");$("#adv_f").css("display", "none");
 	var fenetre="avb";
@@ -912,7 +909,7 @@ case 5:
 	type : lumin,
 	device : $("#idhtml").val(),
 	name : "100"		
-	};fenetre='color_lampes';
+	};fenetre='color_lampes';dType="json";
 	break;		 
 	default:
 	}
@@ -920,11 +917,14 @@ case 5:
       type: "GET",
       url: "ajax.php",
       data: formData,
-      dataType: "html",
+      dataType: dType,
 	success:function (data) {
 		$('#'+fenetre).empty();
 		if (choix !=10) {document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";}
-		//if (data[sereur]==6)  
+		else {
+			if (data['serveur']==6){ const msg=data['payload'];const topic=data['topic'];
+				client.publish(topic, msg);}  
+			}
 		},
 		error: function() { 
                           alert('La requête n\'a pas abouti'); 

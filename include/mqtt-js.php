@@ -1,44 +1,56 @@
-<?php
-require ($_SESSION["config"]);
-echo "
+<?php require_once('admin/config.php');?>
 <script>
-function mqtt_pub(msg,topic) {
-  console.log('mqtt_pub');
-    let pahoConfig = {
-         hostname: '".MQTT_IP."', 
-         port: '".MQTT_PORT."',
-         clientId: 'monitor'   
+     const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
+    const connectUrl = 'ws://<?php echo MQTT_IP.":".MQTT_PORT;?>'
+
+    const options = {
+      keepalive: 60,
+      clientId: clientId,
+      clean: true,
+      connectTimeout: 30 * 1000,
+      
+      username: '<?php echo MQTT_USER;?>',
+      password: '<?php echo MQTT_PASS;?>',
+      reconnectPeriod: 1000,
     }
-  client = new Paho.MQTT.Client(pahoConfig.hostname, Number(pahoConfig.port),pahoConfig.clientId + parseInt(Math.random() * 100, 10));
+    const topic = 'zigbee2mqtt'
+    const payload = ''
+    const qos = 0
 
-  // set callback handlers
-  client.onConnectionLost = onConnectionLost;
-  client.onMessageArrived = onMessageArrived;
+    console.log('connecting mqtt client')
+    const client = mqtt.connect(connectUrl, options)
 
-  // connect the client
-  client.connect({ onSuccess: onConnect });
-}
+    client.on('error', (err) => {
+      console.log('Connection error: ', err)
+      client.end()
+    })
 
-// called when the client connects
-function onConnect() {
-  // Once a connection has been made, make a subscription and send a message.
-  console.log('onConnect');
-  client.subscribe(topic);
-  var message = new Paho.MQTT.Message(msg);
-  message.destinationName = topic;
-  client.send(message);
-}
+    client.on('reconnect', () => {
+      console.log('Reconnecting...')
+    })
 
-// called when the client loses its connection
-function onConnectionLost(responseObject) {
-  if (responseObject.errorCode !== 0) {
-    console.log('onConnectionLost:' + responseObject.errorMessage);
-  }
-}
+    client.on('connect', () => {
+      console.log('Client connected:' + clientId)
 
-// called when a message arrives
-function onMessageArrived(message) {
-  console.log('onMessageArrived:'+ message.payloadString);
-}
-</script>"
-?>
+    client.subscribe(topic, { qos }, (error) => {
+        if (error) {
+          console.log('Subscribe error:', error)
+          return
+        }
+        console.log(`Subscribe to topic ${topic}`)
+      })
+
+      // publish message
+      client.publish(topic, payload, { qos }, (error) => {
+        if (error) {
+          console.error(error)
+        }
+      })
+    })
+
+    client.on('message', (topic, payload) => {
+      console.log(
+        'Received Message: ' + payload.toString() + '\nOn topic: ' + topic
+      )
+    })
+</script>
