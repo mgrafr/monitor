@@ -153,8 +153,8 @@ Ce fichier json contient les dernières valeurs de tous les dispositifs
 
    |image1955|
 
-9.5.2 Installation de php-mqtt/client
-"""""""""""""""""""""""""""""""""""""
+9.5.2 Installation de php-mqtt/client coté serveur
+""""""""""""""""""""""""""""""""""""""""""""""""""
 https://github.com/php-mqtt/client
 
 .. note::
@@ -170,8 +170,8 @@ installé depuis composer; composer ne peut pas être installé en root
 
 |image1956|
 
-9.5.3 envoyer et recevoir les messages
-""""""""""""""""""""""""""""""""""""""
+9.5.2.1 envoyer et recevoir les messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Le script est est exécuter dans le répertoire  d'installation de php-mqtt/client, ici dans /home/USER
 
 .. code-block::
@@ -215,14 +215,94 @@ Le script est est exécuter dans le répertoire  d'installation de php-mqtt/clie
 
 |image1957|
 
-9.5.4 Scripts concernés dans monitor
-""""""""""""""""""""""""""""""""""""
+9.5.2.2 Scripts concernés dans monitor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: **fonctions.php & include/fonctions_1.php**
 
     |image1958| 
 
-en cours de développement
+9.5.3 Installation de mqtt.JS coté client
+"""""""""""""""""""""""""""""""""""""""""
+|image1959| 
 
+https://github.com/mqttjs/MQTT.js
+
+.. code block::
+
+   if (MQTT==true) {echo '<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+';include ('include/mqtt-js.php');}
+
+|image1960| 
+
+9.5.3.1 Le javascript sur la page html
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+fichier include/mqtt-js.php
+
+.. code-block::
+    
+   <?php require_once('admin/config.php');?>
+   <script>
+     const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
+    const connectUrl = 'ws://<?php echo MQTT_IP.":".MQTT_PORT;?>'
+
+    const options = {
+      keepalive: 60,
+      clientId: clientId,
+      clean: true,
+      connectTimeout: 30 * 1000,
+      
+      username: '<?php echo MQTT_USER;?>',
+      password: '<?php echo MQTT_PASS;?>',
+      reconnectPeriod: 1000,
+      
+      username: 'michel',
+      password: 'Idem4546',
+      reconnectPeriod: 1000,
+    }
+    const topic = 'zigbee2mqtt'
+    const payload = ''
+    const qos = 0
+
+    console.log('connecting mqtt client')
+    const client = mqtt.connect(connectUrl, options)
+
+    client.on('error', (err) => {
+      console.log('Connection error: ', err)
+      client.end()
+    })
+
+    client.on('reconnect', () => {
+      console.log('Reconnecting...')
+    })
+
+    client.on('connect', () => {
+      console.log('Client connected:' + clientId)
+
+    client.subscribe(topic, { qos }, (error) => {
+        if (error) {
+          console.log('Subscribe error:', error)
+          return
+        }
+        console.log(`Subscribe to topic ${topic}`)
+      })
+
+      // publish message
+      client.publish(topic, payload, { qos }, (error) => {
+        if (error) {
+          console.error(error)
+        }
+      })
+    })
+
+    client.on('message', (topic, payload) => {
+      console.log(
+        'Received Message: ' + payload.toString() + '\nOn topic: ' + topic
+      )
+    })
+   </script>;
+
+|image1961| 
+   
 
 .. |image653| image:: ../media/image653.webp
    :width: 536px
@@ -250,3 +330,10 @@ en cours de développement
    :width: 580px
 .. |image1958| image:: ../img/image1958.webp
    :width: 700px
+.. |image1959| image:: ../img/image1959.webp
+   :width: 200px
+.. |image1960| image:: ../img/image1960.webp
+   :width: 700px
+.. |image1961| image:: ../img/image1961.webp
+   :width: 650px
+
