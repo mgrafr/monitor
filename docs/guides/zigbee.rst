@@ -227,7 +227,7 @@ Le script est est exécuter dans le répertoire  d'installation de php-mqtt/clie
 
 https://github.com/mqttjs/MQTT.js
 
-.. code block::
+.. code-block::
 
    if (MQTT==true) {echo '<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 ';include ('include/mqtt-js.php');}
