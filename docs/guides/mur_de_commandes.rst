@@ -210,30 +210,38 @@ le color picker jscolor.js est utilisé: https://jscolor.com/
 
 |image1409|
 
-Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie  (pour DZ ,IOB, HA)
+Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie  (pour DZ ,IOB, HA); pour Zigbee2mqtt la foncion envoie directement un message websocket
 
 .. code-block::
 
    function adby(choix) {var formData=new Array();
-    case 10: 
+    case 10: // couleur lampes
+	var lumin=get_brightness($("#val1").val());
+	//document.getElementById('val2').value =lumin;
+	$("#val2").val(lumin);
 	var formData = {
 	app : "dimm",
 	command : $("#val1").val(),
+	type : lumin,
 	device : $("#idhtml").val(),
 	name : "100"		
-	};fenetre='color_lampes';
-     break;		 
-	  default:
+	};fenetre='color_lampes';dType="json";
+	break;		 
+	default:
 	}
-      $.ajax({
+    $.ajax({
       type: "GET",
       url: "ajax.php",
       data: formData,
-      dataType: "html",
+      dataType: dType,
 	success:function (data) {
 		$('#'+fenetre).empty();
 		if (choix !=10) {document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";}
-		   },
+		else {
+			if (data['serveur']==6){ const msg=data['payload'];const topic=data['topic'];
+				client.publish(topic, msg);}  
+			}
+		},
 		error: function() { 
                           alert('La requête n\'a pas abouti'); 
                         } 
