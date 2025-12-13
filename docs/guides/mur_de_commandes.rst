@@ -206,6 +206,8 @@ voir aussi le paragrahe ref:`8.2.6.3.2 avec MQTT`  pour ajouter Paho js
 
 8.1.2.2 Commandes de changement de couleur des lampes
 """""""""""""""""""""""""""""""""""""""""""""""""""""
+le color picker jscolor.js est utilisé: https://jscolor.com/
+
 .. admonition:: explications concernant les couleurs des lampes zigbee
 
    les couleurs peuvent être modifiées par :
@@ -258,15 +260,13 @@ voir aussi le paragrahe ref:`8.2.6.3.2 avec MQTT`  pour ajouter Paho js
         ];
       return $color;}
 
- le color picker jscolor.js est utilisé: https://jscolor.com/
-
-|image1409|
+ |image1409|
 
 le fichier include/mur_inter.php
 
 |image1410|
 
-Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie  (pour DZ ,IOB, HA); pour Zigbee2mqtt la foncion envoie directement un message websocket
+Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie  (pour DZ ,IOB, HA); pour Zigbee2mqtt la fonction envoie directement un message websocket à z2m.
 
 .. code-block::
 
@@ -946,4 +946,4 @@ Comme pour DZ, on enregistre la commande dans la base de données; les données 
 .. |image1416| image:: ../img/image1416.webp
    :width: 700px
 .. |image1776| image:: ../img/image1776.webp
-   :width: 650px
+   :width: 700px
