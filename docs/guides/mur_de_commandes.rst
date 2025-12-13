@@ -206,9 +206,65 @@ voir aussi le paragrahe ref:`8.2.6.3.2 avec MQTT`  pour ajouter Paho js
 
 8.1.2.2 Commandes de changement de couleur des lampes
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-le color picker jscolor.js est utilisé: https://jscolor.com/
+.. admonition:: explications concernant les couleurs des lampes zigbee
+
+   les couleurs peuvent être modifiées par :
+
+   - le systeme hue huesat ( h & s + brigthness)
+   - le systeme de coordonnées xy (x & y + brightness)
+   - color_temp pour les différente couleurs de blancs(valeurs en mired( pour simplifier c'est l'inverse des ° Kelvin)
+
+   Scripts PHP utilisé pour la conversion Hex vers rgb,hs,xy et mired(1 000 000/Kelvin)
+
+   .. code-block::
+
+      function power($c){
+	  if ($c> 0.04045){$c = pow(($c + 0.055) / (1.0 + 0.055), 2.4);}
+	  else {$c = ($c/12.92);}
+	  return $c;}
+
+	  function hextohsl($hex,$lum){// ex: #FFFFFF , 255
+	  require ('ColorConverter.php');
+	  $converter = new ColorConverter();
+	  $color=[];
+	  // Convert HEX to RGB
+	  $rgb = $converter->hexToRgb($hex); // [255, 87, 51]
+	  // convert RGB to xy
+	  $red = power(($rgb[0]/255),2.4);$green=power(($rgb[1]/255),2.4);$blue=power(($rgb[2]/255),2.4);
+	  $X = ($red * 0.664511) + ($green * 0.154324) + ($blue * 0.162028);
+	  $Y = ($red * 0.283881) + ($green * 0.668433) + ($blue * 0.047685);
+	  $Z = ($red * 0.000088) + ($green * 0.072310) + ($blue * 0.986039);
+	  $x = $X/($X + $Y + $Z);$y = $Y/($X + $Y + $Z);// 0.1234  0.4567
+	  // convert xy to CCT (temp_color)
+	  $n = ($x-0.3320)/(0.1858-$y) ;
+	  $CCT = 437*pow($n,3) + 3601*pow($n,2) + 6861*$n + 5517;
+	  $mired=intval(1000000/$CCT);
+	  // Convert HEX to HSL
+	  $hsl2 = $converter->hexToHsl($hex); // [10.59, 100, 60]
+	  if ($lum>253) {$hsl2[0]=51;$hsl2[1]=100;$hsl2[2]=100;}
+	  $color=[
+	  	R' => $rgb[0], 
+ 	    V' => $rgb[1],
+   	   'B' => $rgb[2],
+       'rgb' => $rgb,
+       'hsl' => $hsl2,
+       'Hue' => $hsl2[0],
+       'Saturation' => $hsl2[1], 
+       'luminosité' => $hsl2[2],
+       'x' => round($x,4),
+       'y' => round($y,4),
+       'CCT' => $CCT,
+       'mired' => $mired
+        ];
+      return $color;}
+
+ le color picker jscolor.js est utilisé: https://jscolor.com/
 
 |image1409|
+
+le fichier include/mur_inter.php
+
+|image1410|
 
 Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, IOB) la couleur choisie  (pour DZ ,IOB, HA); pour Zigbee2mqtt la foncion envoie directement un message websocket
 
@@ -247,8 +303,6 @@ Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, I
                         } 
       });
      }	
-
-|image1410|
 
 Pour calculer la luninosité:
 
