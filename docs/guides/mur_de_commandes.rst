@@ -250,6 +250,21 @@ Dans include/footer.php la fonction suivante permet d'envoyer aux api (DZ, HA, I
 
 |image1410|
 
+Pour calculer la luninosité:
+
+.. code-block::
+
+   function get_brightness(hexCode) {
+   // strip off any leading #
+   hexCode = hexCode.replace('#', '');
+
+   var c_r = parseInt(hexCode.substr(0, 2),16);
+   var c_g = parseInt(hexCode.substr(2, 2),16);
+   var c_b = parseInt(hexCode.substr(4, 2),16);
+
+   return Math.round(((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000);
+   }
+
 Dans fonctions.php :
 
 |image1776|
