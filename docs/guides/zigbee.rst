@@ -302,6 +302,23 @@ fichier include/mqtt-js.php
    </script>;
 
 |image1961| 
+
+9.5.3.2 envoyer et recevoir les messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+   client.publish(topic, msg);} // topic , payload
+
+Exemples:
+
+|image1962| 
+
+Scripts concernés dans include/footer.php
+
+|image1963| 
+
+Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    
 
 .. |image653| image:: ../media/image653.webp
@@ -336,4 +353,8 @@ fichier include/mqtt-js.php
    :width: 700px
 .. |image1961| image:: ../img/image1961.webp
    :width: 650px
+.. |image1962| image:: ../img/image1962.webp
+   :width: 650px
+. |image1963| image:: ../img/image1962.webp
+   :width: 550px
 
