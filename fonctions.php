@@ -679,24 +679,29 @@ switch ($serveur) {	case 2: // domoticz
 		$valeur=str_replace("#", "%23", $valeur);set_object($id,$type,$valeur,$pass=0);}
 	break;
 	case 3: // home assistant
-	if ($majjs == "on_level") {$id=$ID;$type="4";$rgb=hextohsl($valeur)['color']['rgb'];$result=devices_id($id,$type,$rgb,$pass=0);}
+	if ($majjs == "on_level") {$id=$ID;$type="4";$rgb=hextohsl($valeur,$lum)['color']['rgb'];$result=devices_id($id,$type,$rgb,$pass=0);}
 	break;
 	case 6: // zigbee2mqtt
- 	if ($majjs == "on_level") {$hsl=hextohsl($valeur);$payload="";$str=explode(':',$param);$color_mode=$str[2];
+ 	if ($majjs == "on_level") {$hsl=hextohsl($valeur,$lum);$payload="";$str=explode(':',$param);$color_mode=$str[2];
+		$mired=$hsl['mired'];
 		switch ($color_mode) {
-		case 'hs':
+		case 'hs':$ct='';
 			$h=$hsl['hsl'][0]; $s=$hsl['hsl'][1];
     		$payload='{"color":{ "h" :'.$h.', "s":'.$s.'},"brightness":'.$lum.'}';
 		break;
-		case 'color_temp':
+		case 'xy':$x=$hsl['x'];$y=$hsl['y'];
+			$payload='{"color":{ "x" :'.$x.', "y":'.$y.'},"brightness":'.$lum.'}';
 		break;
-		default :	
 		}
+		if ($lum<256 && $lum>=250) {$lum=254;$payload='{"color_temp" : '.$mired.'}';}
+			
 	$ret = [
 		'ID' => $ID,
 		'serveur' => $serveur,
+		'color' => $hsl,
 		'topic' => 'zigbee2mqtt/'.$ID.'/set',
-		'payload' => $payload
+		'payload' => $payload,
+		'brigthness' => $lum
 		];return $ret;
 	}
 	break;
@@ -1750,18 +1755,30 @@ function reboot(){
 $output = shell_exec('ssh '.LOGIN_PASS_RPI.'@'.IPRPI.' -t bash "sudo reboot"  >> /home/michel/sms.log 2>&1');	
 	
 }
+function power($c){
+if ($c> 0.04045){$c = pow(($c + 0.055) / (1.0 + 0.055), 2.4);}
+else {$c = ($c/12.92);}
+return $c;}
 
-function hextohsl($hex){
-//require('vendor/autoload.php');
+function hextohsl($hex,$lum){
 require ('ColorConverter.php');
-//use ramazancetinkaya\ColorConverter;
 $converter = new ColorConverter();
 $color=[];
 // Convert HEX to RGB
 $rgb = $converter->hexToRgb($hex); // [255, 87, 51]
+// convert RGB to xy
+$red = power(($rgb[0]/255),2.4);$green=power(($rgb[1]/255),2.4);$blue=power(($rgb[2]/255),2.4);
+$X = ($red * 0.664511) + ($green * 0.154324) + ($blue * 0.162028);
+$Y = ($red * 0.283881) + ($green * 0.668433) + ($blue * 0.047685);
+$Z = ($red * 0.000088) + ($green * 0.072310) + ($blue * 0.986039);
+$x = $X/($X + $Y + $Z);$y = $Y/($X + $Y + $Z);
+// convert xy to CCT (temp_color)
+$n = ($x-0.3320)/(0.1858-$y) ;
+$CCT = 437*pow($n,3) + 3601*pow($n,2) + 6861*$n + 5517;
+$mired=intval(1000000/$CCT);
 // Convert HEX to HSL
 $hsl2 = $converter->hexToHsl($hex); // [10.59, 100, 60]
-if ($hex=='#FFFFFF') {$hsl2[0]=51;$hsl2[1]=100;}
+if ($lum>253) {$hsl2[0]=51;$hsl2[1]=100;$hsl2[2]=100;}
 $color=[
    'R' => $rgb[0], 
    'V' => $rgb[1],
@@ -1771,6 +1788,10 @@ $color=[
    'Hue' => $hsl2[0],
    'Saturation' => $hsl2[1], 
    'luminosité' => $hsl2[2],
+   'x' => round($x,4),
+   'y' => round($y,4),
+   'CCT' => $CCT,
+   'mired' => $mired
     ];
 return $color;}
 ?>
