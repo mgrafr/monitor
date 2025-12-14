@@ -215,13 +215,19 @@ Le script est est exécuter dans le répertoire  d'installation de php-mqtt/clie
 
 |image1957|
 
-9.5.2.2 Scripts concernés dans monitor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9.5.3 Scripts concernés dans monitor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: **fonctions.php & include/fonctions_1.php**
+
+   fonctions.php
 
     |image1958| 
 
-9.5.3 Installation de mqtt.JS coté client
+   include/fionctions_1.php
+
+    |image1964| 
+
+9.5.4 Installation de mqtt.JS coté client
 """""""""""""""""""""""""""""""""""""""""
 |image1959| 
 
@@ -234,7 +240,7 @@ https://github.com/mqttjs/MQTT.js
 
 |image1960| 
 
-9.5.3.1 Le javascript sur la page html
+9.5.4.1 Le javascript sur la page html
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 fichier include/mqtt-js.php
 
@@ -303,7 +309,7 @@ fichier include/mqtt-js.php
 
 |image1961| 
 
-9.5.3.2 envoyer et recevoir les messages
+9.5.4.2 envoyer et recevoir les messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
@@ -355,6 +361,8 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 650px
 .. |image1962| image:: ../img/image1962.webp
    :width: 650px
-. |image1963| image:: ../img/image1962.webp
+.. |image1963| image:: ../img/image1963.webp
    :width: 550px
+..|4image1964| image:: ../img/image1964.webp
+   :width: 6000px
 
