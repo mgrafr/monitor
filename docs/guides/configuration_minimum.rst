@@ -910,7 +910,7 @@ Le HTML :
 
    VOIR AUSSI CE § :ref:`9.5.4 Installation de mqtt.JS coté client`
 
-   |image1965|
+   |image1963|
 
 - la fonction **maj_services()**
 
@@ -2598,5 +2598,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 300px
 .. |image1951| image:: ../img/image1951.webp
    :width: 550px
-.. |image1965| image:: ../img/image1965.webp
+.. |image1963| image:: ../img/image1963.webp
    :width: 600px
