@@ -260,10 +260,6 @@ fichier include/mqtt-js.php
       username: '<?php echo MQTT_USER;?>',
       password: '<?php echo MQTT_PASS;?>',
       reconnectPeriod: 1000,
-      
-      username: 'michel',
-      password: 'Idem4546',
-      reconnectPeriod: 1000,
     }
     const topic = 'zigbee2mqtt'
     const payload = ''
