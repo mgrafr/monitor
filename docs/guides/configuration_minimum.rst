@@ -869,7 +869,7 @@ substring(0, 11)=="Set Level
 
 |image1750|
 
-- La fonction **json_idx_idm(command)** crée une table d'équivalence idm->idx ou ID
+- La fonction **json_idx_idm(command)** crée une table d'équivalence idm->idx ou ID avec en plus param[1] qui concerne ma mise à jour de z2m , voir ce § :ref:`9.5.4.2 envoyer et recevoir les messages`
 
 .. code-block::
 
@@ -904,7 +904,15 @@ Le HTML :
 
 |image163|
 
-- la fonction **maj_sevices()**
+- la fonction **publish_mqtt()**
+
+  pour publier les messages web socket avec le client MQTT.js, utiliser par monitor pour communiquer avec z2m
+
+   VOIR AUSSI CE § :ref:`9.5.4 Installation de mqtt.JS coté client`
+
+   |image1965|
+
+- la fonction **maj_services()**
 
   Copie d’écran le jour de l’entretien de la fosse septique
 
@@ -2485,7 +2493,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image1184| image:: ../media/image1184.webp
    :width: 700px 
 .. |image1185| image:: ../media/image1185.webp
-   :width: 214px
+   :width: 400px
 .. |image1186| image:: ../media/image1186.webp
    :width: 600px
 .. |image1187| image:: ../media/image1187.webp
@@ -2590,3 +2598,5 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 300px
 .. |image1951| image:: ../img/image1951.webp
    :width: 550px
+.. |image1965| image:: ../img/image1965.webp
+   :width: 600px
