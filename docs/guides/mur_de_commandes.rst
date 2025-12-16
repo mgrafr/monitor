@@ -161,9 +161,9 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
 8.1.2.1 client mqtt zigbee2mqtt
 """""""""""""""""""""""""""""""
-**Depuis la version monitor 4.1.0**: MQTT.js remplace Paho, voir ce § ref:`9.5.4 Installation de mqtt.JS coté client`
+**Depuis la version monitor 4.1.0**: MQTT.js remplace Paho, voir ce § :ref:`9.5.4 Installation de mqtt.JS coté client`
 
-voir le paragrahe ref:`8.2.6.3.2 avec Paho-MQTT`  pour utiliser Paho js
+voir le paragrahe :ref:`8.2.6.3.2 avec Paho-MQTT`  pour utiliser Paho js
 
 .. admonition:: **publier un message**
 
