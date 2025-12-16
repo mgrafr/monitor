@@ -219,8 +219,34 @@ Le script est est exécuter dans le répertoire  d'installation de php-mqtt/clie
 
 |image1957|
 
+9.5.2.2 démmarrage automatique systemd
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+le fichier php-mqtt.service
+
+.. code-block::
+
+   [Unit]
+   Description=cclient mqtt php
+   After=multi-user.target
+   [Service]
+   Type=idle
+   ExecStart=php /var/www/ws_z2m/sub_messages_mqtt.php > /home/michel/sub_mqtt.log 2>&1
+   [Install]
+   WantedBy=multi-user.target
+
+ |image1965| 
+
+Pour activer et démarrer le service :
+
+.. code-block::
+
+   Systemctl enable php-mqtt
+   systemctl start php-mqtt.service
+
+ |image1966| 
+
 9.5.3 Scripts concernés dans monitor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""""""""""
 .. admonition:: **fonctions.php & include/fonctions_1.php**
 
    fonctions.php
@@ -365,4 +391,8 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 550px
 .. |image1964| image:: ../img/image1964.webp
    :width: 600px
+.. |image1965| image:: ../img/image1965.webp
+   :width: 350px
+.. |image1966| image:: ../img/image1966.webp
+   :width: 700px
 
