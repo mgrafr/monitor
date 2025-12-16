@@ -19,7 +19,7 @@
 <script src="js/jscolor.min.js"></script>
 <script src="custom/js/JS.js?2"></script>
 <?php
-if (MQTT==true) {echo '<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>';
+if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';
 include ('include/mqtt-js.php');}
 ?>
 
@@ -51,9 +51,8 @@ if (state=="true"){state="on";} //pour ioBroker
 if (state=="false"){state="off";}	//pour ioBroke
 if (state=="ON"){state="on";} //pour Z2M
 if (state=="OFF"){state="off";}	//pour Z2M
-console.log('id='+id_x+' state='+state);
 switch (ind) {
-	case 0: 
+	case 0: console.log('0:  id='+id_x+' state='+state);
 var id_m=null;var json_m="";
 for (attribute in maj_dev) {
 	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];
@@ -90,7 +89,8 @@ if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).g
 	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));
 	console.log("h="+h+parseInt((h*(level)/100)));}
 break;
-case 1:scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
+case 1: console.log('1: id='+id_x+' state='+state);
+	scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
 break;
 default:
 break;	
@@ -317,14 +317,18 @@ $.ajax({
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
 							}}			
-			if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
-						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
+					 if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
-				}}
-			
+				}
+				if (val.actif=="6" && pp[val.idm]['param'][1]=="state") {var msg='{ "state" : "" }';
+					var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';
+					client.publish(topic,msg);console.log('actif 6: '+msg);
+				}
+			}	
 			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
 			//else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:...."+val.Name;}
 			else if (val.idx=="NULL" && val.ID=="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
@@ -426,8 +430,8 @@ function switches(server,idm,idx,command,pass="0"){
 /*--------------mqtt publish-------------------*/
  function publish_mqtt(idx,type,command,level=0){
 // Publish a Message
-	const msg='{ "'+ type+'":"'+ command+'"}';console.log(msg);
-	const topic='zigbee2mqtt/'+idx+'/set';
+	var msg='{ "'+ type+'":"'+ command+'"}';console.log(msg);
+	var topic='zigbee2mqtt/'+idx+'/set';
 	//mqtt_pub(msg,topic);return;
 	client.publish(topic, msg);return;
  }
