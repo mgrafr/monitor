@@ -141,7 +141,11 @@ sans l'intermédiaire de Domoticz, Home Assistant ou Ipbroker
 
 9.5.1 Créer un lien symbolique de state.json
 """"""""""""""""""""""""""""""""""""""""""""
-Ce fichier json contient les dernières valeurs de tous les dispositifs
+Ce fichier json contient les dernières valeurs de tous les dispositifs. il est mis à jour toutes les 5 minutes.
+
+.. note::
+
+   la mise à jour en temps réel n'est effective que pour les dispositifs affichant un état ON/OFF; en règle général la mise à jour des autres dispositifs s'effectue dans le delai indiqué dans include/admin/config.php TEMPO_DEVICES', 180000) pour DZ, HA, IOB ; il peut être judicieux , lors de l'utilisation de z2m directement par monitor d'armoniser cette mise à jour: 150 000 , 300 000, 450 000 milli secondes; pour une utilisation de seulement monitor + z2m , régler TEMPO_DEVICES sur 3000000.
 
 .. code-block::
 
