@@ -672,7 +672,7 @@ Mise à jour instantanée : on utilise la fonction qui met à jour dans monitor,
 ~~~~~~~~~~~~~~~~~~~~~~~~
 .. important::
 
-PHP-MQTT et MQTT.js plus faciles à utiliser, remplacent désormais Paho; :red`la solution ci-dessous n'est que pour information.`
+PHP-MQTT et MQTT.js plus faciles à utiliser, remplacent désormais Paho; :red:`la solution ci-dessous n'est que pour information` .
 
 **define('MQTT', true) de config.php fait référence  désormais à MQTT.js**
 
