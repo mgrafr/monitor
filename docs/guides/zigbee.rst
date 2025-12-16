@@ -230,7 +230,7 @@ le fichier php-mqtt.service
    After=multi-user.target
    [Service]
    Type=idle
-   ExecStart=php /var/www/ws_z2m/sub_messages_mqtt.php > /home/michel/sub_mqtt.log 2>&1
+   ExecStart=php /var/www/monitor/ws_z2m/sub_messages_mqtt.php > /home/michel/sub_mqtt.log 2>&1
    [Install]
    WantedBy=multi-user.target
 
