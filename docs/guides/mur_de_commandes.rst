@@ -161,48 +161,20 @@ voir le §  :ref:`0.3.2 Les Dispositifs`  *exemple des scripts générés automa
 
 8.1.2.1 client mqtt zigbee2mqtt
 """""""""""""""""""""""""""""""
+**Depuis la version monitor 4.1.0**: MQTT.js remplace Paho, voir ce § ref:`9.5.4 Installation de mqtt.JS coté client`
 
-voir aussi le paragrahe ref:`8.2.6.3.2 avec MQTT`  pour ajouter Paho js
+voir le paragrahe ref:`8.2.6.3.2 avec Paho-MQTT`  pour utiliser Paho js
 
 .. admonition:: **publier un message**
 
-   exemple pour l'allumage ou l'extinction d’une lampe d'éclairage 
+   ., code-block::
 
-   ,, code-block::
-
-      <?php
-      require ($_SESSION["config"]);
-      echo "
-      <script>
-      function mqtt_pub(msg,topic) {
-      console.log('mqtt_pub');
-          let pahoConfig = {
-               hostname: '".MQTT_IP."',
-               port: '".MQTT_PORT."',
-               clientId: 'monitor'
-          }
-        client = new Paho.MQTT.Client(pahoConfig.hostname, Number(pahoConfig.po>
-        // set callback handlers
-        client.onConnectionLost = onConnectionLost;
-        client.onMessageArrived = onMessageArrived;
-        // connect the client
-        client.connect({ onSuccess: onConnect });
-      }  
-      // called when the client connects
-      function onConnect() {
-        console.log('onConnect');
-        client.subscribe(topic);
-        var message = new Paho.MQTT.Message(msg);
-        message.destinationName = topic;
-        client.send(message);
+       function publish_mqtt(idx,type,command,level=0){
+       // Publish a Message
+      	var msg='{ "'+ type+'":"'+ command+'"}';console.log(msg);
+	    var topic='zigbee2mqtt/'+idx+'/set';
+	   client.publish(topic, msg);return;
       }
-      // called when the client loses its connection
-      function onConnectionLost(responseObject) {
-        if (responseObject.errorCode !== 0) {
-        console.log('onConnectionLost:' + responseObject.errorMessage);
-        }
-      }
-
 
 8.1.2.2 Commandes de changement de couleur des lampes
 """""""""""""""""""""""""""""""""""""""""""""""""""""
