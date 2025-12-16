@@ -234,7 +234,7 @@ le fichier php-mqtt.service
    [Install]
    WantedBy=multi-user.target
 
- |image1965| 
+|image1965| 
 
 Pour activer et démarrer le service :
 
@@ -243,7 +243,7 @@ Pour activer et démarrer le service :
    Systemctl enable php-mqtt
    systemctl start php-mqtt.service
 
- |image1966| 
+|image1966| 
 
 9.5.3 Scripts concernés dans monitor
 """"""""""""""""""""""""""""""""""""
