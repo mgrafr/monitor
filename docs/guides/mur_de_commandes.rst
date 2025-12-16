@@ -656,7 +656,7 @@ Ou suivant que les 100% soit pour l’ouverture ou la fermeture :
 
 8.2.6.3.1  avec Ajax et PHP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*amount=id pour input button* voir l'mage du § prec
+*amount=id pour input button* voir l'mage du § precédent
 
 |image643|
 
@@ -668,8 +668,14 @@ Mise à jour instantanée : on utilise la fonction qui met à jour dans monitor,
 
 |image645|
 
-8.2.6.3.2 avec MQTT
-~~~~~~~~~~~~~~~~~~~
+8.2.6.3.2 avec Paho-MQTT
+~~~~~~~~~~~~~~~~~~~~~~~~
+.. important::
+
+PHP-MQTT et MQTT.js plus faciles à utiliser, remplacent désormais Paho; :red`la solution ci-dessous n'est que pour information.`
+
+**define('MQTT', true) de config.php fait référence  désormais à MQTT.js**
+
 C’est une autre solution qui peut s’appliquer pour tout dispositifs non gérer par HA, DZ ou IOB ; c'est aussi la solution pour la maj en temps rél depuis IoBroker. Il faut installer la bibliothèque ci-dessous paho-mqtt voir le § :ref:`18.2 Installer Paho-mqtt`
 
 https://www.eclipse.org/paho/index.php?page=clients/js/index.php
