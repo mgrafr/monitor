@@ -582,7 +582,8 @@ if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
 if (!$lect_device['values']){$lect_device['values']="";}
 //if (!$lect_device['attributes']){$lect_device['attributes']="";}
-if (!$lect_device['Type']){$lect_device['Type']="inconnu";}		
+if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
+$str=explode(':',$periph['param']);	$param=$str;	
 	$data[$t] = ['serveur' => $lect_device["serveur"],			 
 	'idx' => $periph["idx"],
 	'deviceType' => $lect_device["Type"],	
@@ -600,7 +601,7 @@ if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
    	'Update' => $lect_device["LastUpdate"],
 	'fx' => $lect_device["Fx"],			 
 	'idm' => $periph['idm'],
-	'param' => $periph['param'],
+	'param' => $param,
 	'lastseen' => $periph['ls'],			 
 	'maj_js' => $periph['maj_js'],	
 	'ID1' => $periph['id1_html'],
@@ -693,8 +694,8 @@ switch ($serveur) {	case 2: // domoticz
 			$payload='{"color":{ "x" :'.$x.', "y":'.$y.'},"brightness":'.$lum.'}';
 		break;
 		}
+		// pour une lumière blanche et la température de couleur en mired
 		if ($lum<256 && $lum>=250) {$lum=254;$payload='{"color_temp" : '.$mired.'}';}
-			
 	$ret = [
 		'ID' => $ID,
 		'serveur' => $serveur,
