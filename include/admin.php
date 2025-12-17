@@ -45,7 +45,9 @@ require_once('admin/config.php');
         <a id="about"><img class="info_admin" src="images/about.svg" data-toggle="modal" data-target="#info-admin1" rel=8 alt="a Propos"/></a></p>
 		<?php
 		 if (SSE==true){echo '<p id="sse"><img style="width:30px;" src="images/mqtt.webp" />
-		<p id="status"></p> <p id="messages"></p>';}?>
+		<p id="status"></p> 
+    <p id="messages">
+    </p><p id="messages1"></p><p id="messages2"></p><p id="messages3"></p>';}?>
 		
 		<div id="reponse1"></div>
       <div id="reponse2" style="height:auto"></div>
