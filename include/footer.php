@@ -432,7 +432,6 @@ function switches(server,idm,idx,command,pass="0"){
 // Publish a Message
 	var msg='{ "'+ type+'":"'+ command+'"}';console.log(msg);
 	var topic='zigbee2mqtt/'+idx+'/set';
-	//mqtt_pub(msg,topic);return;
 	client.publish(topic, msg);return;
  }
 //------------------------------------------------------------
@@ -978,6 +977,12 @@ if (SSE=='php') {echo "
 var source = new EventSource('include/serveur_sse.php');
  
 source.addEventListener('message', function(e) {
+var dmsg=document.getElementById('messages2').innerText;
+document.getElementById('messages3').innerText = dmsg;
+var dmsg=document.getElementById('messages1').innerText;
+document.getElementById('messages2').innerText = dmsg;
+var dmsg=document.getElementById('messages').innerText;
+document.getElementById('messages1').innerText = dmsg;
 document.getElementById('messages').innerHTML = e.data ;
 donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;
 maj_mqtt(id_x,state,0);
