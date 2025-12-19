@@ -560,6 +560,7 @@ if(array_key_exists('battery_state', $lect_device)==true) {$lect_device["Battery
 if(array_key_exists('battery_state', $lect_device)==true) {$lect_device["BatteryLevel"]=$lect_device["battery_state"];}
 if(array_key_exists('contact', $lect_device)==true) {$lect_device["Data"]=$lect_device["contact"];}
 if(array_key_exists('state', $lect_device)==true) {$lect_device["Data"]=$lect_device["state"];}
+if(array_key_exists('temperature', $lect_device)==true) {$lect_device["Data"]=$lect_device["temperature"];}
 	
 		case "dz" :
 		case "ha" :	
