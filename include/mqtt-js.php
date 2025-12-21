@@ -13,7 +13,7 @@
       password: '<?php echo MQTT_PASS;?>',
       reconnectPeriod: 1000,
     }
-    const topic = 'zigbee2mqtt'
+    const topic = 'z2m'
     const payload = ''
     const qos = 0
 
@@ -37,8 +37,8 @@
           console.log('Subscribe error:', error)
           return
         }
-        console.log(`Subscribe to topic ${topic}`)
-      })
+        console.log(`Subscribe to topic ${topic}`);
+             })
 
       // publish message
       client.publish(topic, payload, { qos }, (error) => {
@@ -47,10 +47,9 @@
         }
       })
     })
-
     client.on('message', (topic, payload) => {
-      console.log(
-        'Received Message: ' + payload.toString() + '\nOn topic: ' + topic
-      )
+      console.log('Received Message: ' + payload.toString() + '\nOn topic: ' + topic);
+      if (payload!="") {msg=JSON.parse(payload);var id_x=msg.id;var state=msg.state;}
+      maj_mqtt(id_x,state,0) ;// fonction ds footer.php
     })
 </script>
