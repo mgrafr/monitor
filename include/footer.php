@@ -61,10 +61,10 @@ for (attribute in maj_dev) {
 		if (pp[id_m].ID2!=""){maj_html(json_m,pp[id_m].ID2,state);}
 		return;}
 }
-console.log('json_m='+json_m+'state='+state);
-if (id_m==null) {out_msg= 'id_m='+id_m;return;}
-		//var command=state.toString().toLowerCase();
-var command=state.toString();console.log("pp_idm avant="+pp[id_m].Data);
+//console.log('json_m='+json_m+'state='+state);
+if (id_m==null) {out_msg= 'id_m='+id_m;console.log(out_msg);return;}
+//var command=state.toString().toLowerCase();
+var command=state.toString();console.log('pp_idm avant='+pp[id_m].Data);
 pp[id_m].Data=command;
 console.log('command pp apres='+pp[id_m].Data);
 var fx=pp[id_m].fx; console.log('fx='+fx);if (fx=="lien_variable"){maj_services(0);}
@@ -191,7 +191,8 @@ function maj_services(index){
 		}
 			var myEle = document.getElementById(idt);	// ex uworx
 	if (actif_serv=="5") {	var val=html[i].ID;data=['field', 'key'];result = {};setValue(result, data, val);
-	 var res=result.field.key;result = eval(res);
+		 var res='return '+ result.field.key;result= new Function(res)();
+	    //console.log(result);
 		myEle.innerHTML = result;
 		//let val_var=pp[200].values.batteryVoltage;myEle.innerHTML = val_var+" Volts";
   	}
