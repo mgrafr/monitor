@@ -1,5 +1,5 @@
-<?php
-require_once("/www/monitor/api/f_pour_api.php");
+<?php // PHP-MQTT
+//require_once("/www/monitor/api/f_pour_api.php");
 require('vendor/autoload.php');
 require('/www/monitor/admin/config.php');
 
