@@ -57,15 +57,14 @@ var id_m=null;var json_m="";
 for (attribute in maj_dev) {
 	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];
 	json_m=maj_dev[attribute]['json'];console.log('id_m='+id_m+'..json_m'+json_m);}
-		if (json_m=='temperature'){json_m='temp';maj_html(json_m,pp[id_m].ID1,state);pp[id_m].temp=state;
+		if (json_m=='temperature'){json_m='temp';maj_html(json_m,pp[id_m].ID1,state);pp[id_m].Data=state;
 		if (pp[id_m].ID2!=""){maj_html(json_m,pp[id_m].ID2,state);}
 		return;}
 }
-console.log('json_m='+json_m);
+console.log('json_m='+json_m+'state='+state);
 if (id_m==null) {out_msg= 'id_m='+id_m;return;}
 		//var command=state.toString().toLowerCase();
-var command=state.toString();console.log("command="+command+"pp_idm avant="+pp[id_m].Data);
-//const PP=pp[id_m];if (PP.find(obj => obj.hasOwnProperty("Data"))) {alert("idx ou ID  n'existe pas");}
+var command=state.toString();console.log("pp_idm avant="+pp[id_m].Data);
 pp[id_m].Data=command;
 console.log('command pp apres='+pp[id_m].Data);
 var fx=pp[id_m].fx; console.log('fx='+fx);if (fx=="lien_variable"){maj_services(0);}
@@ -103,9 +102,6 @@ if (c_lamp!="" && scoull!="") {
 	}
 return;
 }
-/*-------connexion au serveur SSE---------*/	
-<?php
-//if (SSE==true) echo 'SSEconnect()';?>	
 /*-------affiche l'image de la page accueil---------------------------------------*/	
 var text1="";var larg = (document.body.clientWidth);
 var haut = (document.body.clientHeight);
@@ -130,7 +126,6 @@ var arret_mur;var arret_zoom;
 notpiles="<?php echo NOTIFICATIONS_PILES;?>";if (notpiles==""){notpiles="interieur";}	
 not_piles_reset="reset_erreur_"+notpiles;not_piles="erreur_"+notpiles;																	
 /*----------------------------------------------------*/
-
 /*commande onoff*/	
 $("#onoffmur").change(function() {	
 if (document.getElementById('onoffmur').checked==true) {arret_mur=1;updateImage(nbrCam);
@@ -147,6 +142,15 @@ $("#onoffdvr").change(function() {
 $('.menu-link').bigSlide({'easyClose': true});
 $(".zz").click(function(){
 		$(".menu-link").trigger("click");});
+//----------------------------------------------
+function setValue(object, keys, value) {
+    var last = keys.pop();
+    keys.reduce((o, k, i, a) =>
+        o[k] = o[k] || (isFinite(i + 1 in a ? a[i + 1] : last) ? [] : {}),
+        object
+    )[last] = value;
+    return object;
+}
 /*------------------------------------------------------------
 PAGE ACCUEIL*/
 /*-------------------------------------------------------------*/
@@ -155,7 +159,6 @@ PAGE ACCUEIL*/
 -------concerne les poubelles , la fosse septique , la page météo ------*/	
 var idx_idimg;
 service=new Array();
-//maj_services(0);
 var time_maj=<?php echo TEMPSMAJSERVICES;?>;
 var time_maj_al=<?php echo TEMPSMAJSERVICESAL;?>;
 var int_maj=time_maj;
@@ -186,18 +189,18 @@ function maj_services(index){
    			});maj_variable(id_var,"BASH",0,2);
 			}//----------------------------------------------------------------
 		}
-			var myEle = document.getElementById(idt);	
-	if (actif_serv=="5") {
-		var res="html[i].ID";myEle.innerHTML = eval(eval(res));
+			var myEle = document.getElementById(idt);	// ex uworx
+	if (actif_serv=="5") {	var val=html[i].ID;data=['field', 'key'];result = {};setValue(result, data, val);
+	 var res=result.field.key;result = eval(res);
+		myEle.innerHTML = result;
 		//let val_var=pp[200].values.batteryVoltage;myEle.innerHTML = val_var+" Volts";
-  }
+  	}
 	else {
 		if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value!="0")){myEle.innerHTML =html[i].Value;}
 		if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){myEle.innerHTML ="";}
 		}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){myEle.innerHTML ="";}*/
-	
-	if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
+		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
 			if (img_serv=="pas image"){document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 		}
@@ -236,7 +239,7 @@ function json_idx_idm(command){
 	 };	
 /*-----meteo France prev 1 H-------------------------------------------------------*/
 pluie("2");var echeance;var prev_pluie;var texte_pluie;//var tc=<?php echo $_SESSION["TC"];?>;
-function pluie(idx){//var tc=TestConnection_js();
+function pluie(idx){
   $.ajax({
     type: "GET",
     dataType: "json",
@@ -249,7 +252,6 @@ function pluie(idx){//var tc=TestConnection_js();
 		test_pluie = html.test_pluie;
 		if (html.img_pluie == null){ var img_pluie = "images/parapluie_ferme.svg";}
 		else var img_pluie = html.img_pluie;
-		//if (tc==0) img_pluie="images/panne_web.jpg";
 		if(test_pluie=="pas de pluie"){texte_pluie=titre; 
 									   document.getElementById("pluie").style.display = "block";document.getElementById('pluie').innerHTML ='<img src="'+img_pluie+'" alt="pluie">';
 									   document.getElementById("txt_pluie").style.display = "none";}
@@ -351,7 +353,6 @@ for (var i = 0; i < elements.length; i++) {
 }
 }
 /* volets roulants*/
-
 $('.closeBtn').on('click', function () {
       $('#popup_vr').hide();
     });
@@ -368,7 +369,6 @@ function switches(server,idm,idx,command,pass="0"){
 	  if ((command=="On")||(command=="Off")){type=2;}
 	  else if (command=="Set Level") {type=3;level=100;//var pourcent = command.split(" ");level=pourcent[2];
 				//if (level=="") level=100;
-
 	  }
 	  else {type=1;}
 	break;
@@ -408,8 +408,7 @@ function switches(server,idm,idx,command,pass="0"){
 		if (pp[idm].Data == "Off" && pp[idm].maj_js == "on_level" ) {level=100;command="On";} 
 		console.log("type"+type+"level"+level);
        	}
-		 
-	    $.ajax({
+		$.ajax({
     	type: "GET",
     	dataType: "json",
     	url: "ajax.php",
@@ -479,7 +478,6 @@ $(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert
 $(".admin1").click(function() {choix_admin =$(this).attr('rel');//console.log(choix_admin);
 fenetre =$(this).attr('title');
 appel_admin(choix_admin,fenetre);}) ;						   
-
 function appel_admin(choix_admin,fenetre){
 	$.ajax({ 
       type: 'GET', 
@@ -525,7 +523,6 @@ while (i <= nbrCam) {
   	camImg=document.getElementById(camImgId);
 	URL[i]=camImg.src;	
   i++;}	
-
 $('.modal').on('hide.bs.modal', function(){
   arret_zoom=0;
 });
@@ -553,12 +550,10 @@ function updateImage(camIndex)
 		if (camIndex > nbrCam) camIndex=1;
 		// update next cam URL to force refresh
 		camImgId="cam" + camIndex;
-	 
 		camImg=document.getElementById(camImgId);
 		camImgURL=camImg.src;console.log('gg'+camImgURL);
 		camImg.src=URL[camIndex]+now.getTime();
 	}
-
 // call update for current camera in 100 ms
 	setTimeout(function() { updateImage(camIndex); }, 100);
 }
@@ -584,7 +579,6 @@ else if (logapp=="10"){var nummode_e = $(this).attr('title');titre = $(this).att
 		    i++;} while ( i >= 9000 && i< 9010 );
 	new $.Zebra_Dialog('<p style="position:relative;left:-90px;width:400px"><strong>Logs_Monitor</strong><br>'+www, {
     'title': 'Erreurs'});
-		
 //alert(www);
 }
 else {alert("erreur");}
@@ -595,7 +589,6 @@ if (urllog!="")  $.modalLink.open(urllog, {
 	  title:titre,
 	  showTitle:true,
 	  showClose:true
-
   }); 
 });
 /*---popup boite_lettres---pression chaudière--médicaments-fosse septique-----------------------------*/
@@ -673,13 +666,12 @@ $("#zm").click(function () {
             }
         });
 		});
-<?php
+<?php // sera supprimé en 2026
 if (SSE==false) echo '
 tempo_devices='.TEMPO_DEVICES_D.';
 var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
 var_sp(idsp);
-
-	function var_sp(idsp){
+function var_sp(idsp){
   $.getJSON( "ajax.php?app=data_var&variable=29", function(data) {
   //console.log(data.var_dz);
   if (data.var_dz=="1"){maj_variable(29,"variable_sp",0,2);maj_devices(plan);maj_services(0);}
@@ -687,7 +679,6 @@ var_sp(idsp);
   });
 setTimeout(var_sp, tempo_devices, idsp); 	
 }';?>
-
 /*----------fin document-------------------------------*/
 </script><script>
 /*----------------script pour svg---*/
@@ -707,7 +698,6 @@ var nom;
 	"ID1_html :" +pp[nom].ID1+"<br>"+	
 	"ID2_html :" +pp[nom].ID2+"<br>"+	
 	"class_html :" +pp[nom].class_lamp;
-		
  $("#contenu").empty();$("#contenu").append(donnees);
 	$('#infos').modal('show');}
 		else {document.getElementById('erreur').innerHTML ="erreur BD";
@@ -757,7 +747,6 @@ $('#slider').slider({
     }
   }
 });
-
 $("#amount").val(sliderMin);
 /*--------------------------------------------------*/
 $('.info_admin').click(function(){
@@ -937,22 +926,19 @@ case 5:
 // Check color brightness
 // returns brightness value from 0 to 255
 // http://www.webmasterworld.com/forum88/9769.htm
-
 function get_brightness(hexCode) {
 // strip off any leading #
 hexCode = hexCode.replace('#', '');
-
 var c_r = parseInt(hexCode.substr(0, 2),16);
 var c_g = parseInt(hexCode.substr(2, 2),16);
 var c_b = parseInt(hexCode.substr(4, 2),16);
-
 return Math.round(((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000);
 }
 /*--------------------------------------------------------*/
 $('li.ww').click(function(){var ww1 = $(".www").attr('href');
 $(ww1).attr('display','block');
 });
-	</script>
+</script>
 <?php
 if (SSE=='node') {$domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien="https://".SSE_URL;
@@ -973,6 +959,7 @@ if (SSE=='php') {echo "
 <script>
 
     window.onload = function() {
+	
 	// établir un flux et enregistrer les réponses sur la console
 var source = new EventSource('include/serveur_sse.php');
  
