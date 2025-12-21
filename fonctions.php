@@ -173,11 +173,6 @@ else {$name="";$actif=$vardz;$num="num".$n;}
 $exist_id="oui";	 
 if ($actif=="2" & $type=="HA") {break;}
 if ($actif=="3" & (int)$type<5) {break;}	 
- // 0 = Integer, e.g. -1, 1, 0, 2, 10  
-// 1 = Float, e.g. -1.1, 1.2, 3.1
-// 2 = String e.g. On, Off, Hello
-// 3 = Date in format DD/MM/YYYY
-// 4 = Time in 24 hr format HH:MM	 
 $txtimg = sql_variable($value,1);
 	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
 	$icone = isset($txtimg['icone']) ? $txtimg['icone'] : '';
@@ -367,7 +362,6 @@ $L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
 break;
 	case "command" :
 $L=$IP_iob.':'.$port_api_iob.'/v1/command/setState?id='.$device.'&state='.$value;	
-//echo $L;return;
 break;
 default:
 }		
@@ -379,10 +373,8 @@ $data['valeur']=$iob['val'];
 $data['result']=$iob['result'];
 return $data;										
 }
-
 //-------POUR DZ- et HA -----------------------------------
 // pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
-//
 function devices_plan($plan){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$L_zb,$l_zb,$IP_dz,$IP_ha,$IP_iob,$IP_zb,$port_api_iob;
 $n=0;$al_bat=0;$p=0;$t1000=1000;$serveur_dz_on = false;	
 	if ($l_dz!=""){	$serveur_dz_on = true;
@@ -441,9 +433,7 @@ foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
 		'serveur' => "IOB"
 		];		
 		$values[$name] = $valeur -> {'val'};	
-			    
 		$n++;$jj++;$devi=$devic;}					 
-
 			$L2=$IP_iob.":".$port_api_iob."/v1/object/".$_id2;
 			$json1_string = file_get_curl($L2);
 			$iob_json1 = json_decode($json1_string,true);//return $iob_json1;	
@@ -463,7 +453,6 @@ foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
 	$ii++; }$count_iob=count($iob);
 	//$plan=99;	
 		$n=0;if ($plan==99){ $_SESSION['iob'] = json_encode($iob);return $iob;}// pour test iob 
-	
 while (isset($iob[$n])==true){
 	$parsed_json[$q]=$iob[$n];
 	$n++;$q++;}
@@ -509,7 +498,6 @@ $periph['idm']=1000;
 	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";}
 	if ($lect_device["serveur"]=='ZB') {$s=$lect_device["ID"];$t1="4";$s1="6";}
 	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="2";$s1=$lect_device["Name"];}
-
 $periph=sql_plan($t1,$s,$s1);
 if ($periph==null) {$choix_serveur="pas_ID";}
 $choix_Actif=$periph['Actif'];
@@ -529,11 +517,8 @@ if ($t=="") {$t=888;$choix_serveur="0";}}
 $lect_device["Name"] = $periph['nom_objet'];
 	switch ($choix_serveur) {
 		case "iob" :	
-
 //$lect_device["Data"]="";			
 if ($lect_device["value_iob"]=="1" ) {$lect_device['values'] = $valu[$device];}
-//if ($lect_device["value_iob"]="2") $lect_device['values'] = $values;
-			
 if (array_key_exists("values",$lect_device)){
 	$array=$lect_device["values"];
 	if (isset($array["state"]) ) {$lect_device["Data"]=$array["state"];}	
@@ -546,10 +531,6 @@ if (array_key_exists("values",$lect_device)){
 	if (isset($array['brightness'])) {$lect_device["attributes"]["brightness"] = $array["brightness"];}
 	if (isset($array['colortemp'])) {$lect_device["attributes"]["colortemp"] = $array["colortemp"];}
 	/*if(array_key_exists('emergency', $array)) {$lect_device["Data"]=$array["emergency"];}//pour IOB		
-	if(array_key_exists('state', $array)) {$lect_device["Data"]=$array["state"];*/
-	//if ($lect_device["Data"]==true) {$lect_device["Data"]="On";}
-	//if ($lect_device["Data"]==false) {$lect_device["Data"]="Off";}
-										 
 	/*
 	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}*/
 	if (str_contains($periph['idm'], "_")) {$lect_device['values'] = "";}
@@ -561,13 +542,11 @@ if(array_key_exists('battery_state', $lect_device)==true) {$lect_device["Battery
 if(array_key_exists('contact', $lect_device)==true) {$lect_device["Data"]=$lect_device["contact"];}
 if(array_key_exists('state', $lect_device)==true) {$lect_device["Data"]=$lect_device["state"];}
 if(array_key_exists('temperature', $lect_device)==true) {$lect_device["Data"]=$lect_device["temperature"];}
-	
 		case "dz" :
 		case "ha" :	
 if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
 if(array_key_exists('temperature', $lect_device)==true) {$lect_device["Temp"]=$lect_device["temperature"];}
 if(array_key_exists('occupancy', $lect_device)==true) {$lect_device["Data"]=$lect_device["occupancy"];}
-
 //if ($lect_device["Temp"]!=null && $lect_device["data"]==null) {$lect_device["Data"]=$lect_device["Temp"];}
 if(array_key_exists('humidity', $lect_device)==true) {$lect_device["Humidity"]=$lect_device["humidity"];}
 if(array_key_exists('description', $lect_device)) {$description=$lect_device["description"];}// pour IOB			
@@ -663,8 +642,7 @@ if ($al_bat==2) $abat="batterie_faible";
 $val_albat=val_variable(PILES[0]);
 if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 return $data; 
-						 
- }
+}
 function dimmable($idx,$valeur,$lum,$level){
 $data_rgb = [
 	'command' => "13",
@@ -734,7 +712,6 @@ if ($auth<3){$json2="json.htm?type=command&param=";
 else {$result['status']="acces interdit";}
 return $result ;
   }
-
 /*POUR METEO CONCEPT*/
 //-----------------------------------
 function meteo_concept($choix){
@@ -883,7 +860,7 @@ return json_encode($info);
 	case 2:// relevé temps réel station la pus proche (40Km)
 $url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&insee='.INSEE;
 //$url2 = 'https://api.meteo-concept.com/api/forecast/nextHours?token='.TOKEN_MC.'&insee='.INSEE;		
-$prevam = file_get_curl_token($url,TOKEN_MC);//echo $prevam;return;
+$prevam = file_get_curl_token($url,TOKEN_MC);
 $forecastam = json_decode($prevam);$info=array();
 		//$info['time']=$forecastam[0]->observation->time;
 		$info['temp']=$forecastam[0]->observation->temperature->value;
@@ -900,9 +877,7 @@ $resultat='<p>'.$info.'Le temps prévu pour cet après-midi  : '.$donnees[$info]
 break;
     case 1:		
 $url = 'https://api.meteo-concept.com/api/forecast/daily?token='.TOKEN_MC.'&insee='.INSEE;
-//$result=file_http_curl($url,1,'',TOKEN_MC);	
 $result=file_get_curl_token($url,TOKEN_MC);
-//$result = file_get_contents($url);
 $decoded = json_decode($result);
 	$city = $decoded->city;
 	$forecasts = $decoded->forecast;
@@ -937,8 +912,6 @@ $resultat=$resultat."</table>";
 break;
 }
 return $resultat;
-
-
 }
 function convertdate ($date)
 {
@@ -950,7 +923,6 @@ $timestamp = mktime (0, 0, 0, $mois, $jour, $annee);
 // affichage du jour de la semaine
 return $joursem[date("w",$timestamp)];
 }
-
 // --------------MOT de PASSE-----------------------------
 function mdp($mdp,$page_pass){// 1=commandes , 2=alarmes
 //if ($_SESSION["pec"]=="admin"){echo "azerty";$page_pass=3;}
@@ -971,7 +943,6 @@ $info=[
 		'type_pwd'=>$page_pass
 	];
 return $info;}
-
 //METEO FRANCE PLUIE previsions 1 heure
 function app_met($choix){
 $test ="pas de pluie"; $info=array();	
@@ -1015,8 +986,7 @@ return $info;
 }
 //fonction affichage images caméras
 function upload_img($idx){
-	//$domaine=$_SESSION["domaine"];
-	// SERVEUR SQL connexion
+// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
  	$sql="SELECT * FROM `cameras` WHERE `idx` = ".$idx ;
 	$result = $conn->query($sql);
@@ -1030,7 +1000,6 @@ $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 if ($octet<3) {
 shell_exec("wget '".$url."' -O /www/monitor/images/".$idx.".jpg");}
 		$lien_cam=$fichier;
-	
 	
 $datacam = array (
 'idx' => $row['idx'],
@@ -1070,8 +1039,6 @@ $cle=json_encode($zm_cle);
 file_put_contents('admin/token.json',$cle);
 return $token;
 }
-
-
 //Infos cameras
 function cam_config($marque,$type,$ip,$cam,$idzm){
 # ====================================================
@@ -1087,7 +1054,6 @@ $pass=DHPASSVTO;}
 //					
 	$action='GetVideoInOptionsConfig';
 # ====== Spécifiez les points de terminaison ======
-
 # configManager
 $configGet="configManager.cgi?action=getConfig&name=";
 $configSet="configManager.cgi?action=setConfig&name=";
@@ -1119,10 +1085,7 @@ $e['GetLocalsConfig']         =$configGet."Locales";
 $e['GetLanguageConfig']       =$configGet."Language";
 $e['GetAccessFilterConfig']   =$configGet."AccessFilter";
 $e['GetAutoMaintainConfig']   =$configGet."AutoMaintain";
-
-
 # ====  Main =====
-
    if(isset($e[$action])){
      $url="http://".$ip."/cgi-bin/".$e[$action];//echo $url;
    }else{
@@ -1130,17 +1093,12 @@ $e['GetAutoMaintainConfig']   =$configGet."AutoMaintain";
          "<pre>". print_r(array_keys($e), true). "</pre>";    
 die($message);
    }
-
 $options=build_options($url,$user,$pass);
 # exécuter l'appel curl
 $response=curl_call($options);
 $response=str_replace("table.VideoInOptions[0].","",$response);
-
-
 # quitter l'appel
 if ($marque==1) echo "<pre>$response</pre>";
-   
-
 }
 // cam autres que DAHUA infos avec zoneminder
 else {
@@ -1176,7 +1134,6 @@ function build_options($url,$user,$pass){
 function curl_call($options){
   $ch = curl_init();
   curl_setopt_array( $ch, $options);
-
   try {
     $raw_response  = curl_exec( $ch );
     // validate CURL status
@@ -1209,7 +1166,6 @@ $retour=curl_exec($curl);
 curl_setopt($curl,CURLOPT_POST,0);
 return $retour;
 }
-
 function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 , 6 , 11 ,16 = contenu textarea
 global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob,$USER_dz,$USER_ha,$USER_iob,$PWD_dz,$PWD_ha,$PWD_iob;	
 $height="490";$pawd=0;$test_iob=0;
@@ -1396,7 +1352,6 @@ else {
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
 $retour="Entrer votre mot de passe";echo $retour;}//include ('include/test_pass.php');return;}
 return ;
-
 }
 //----------------------------graph-------------------
 function graph($device,$periode){$champ="valeur";
@@ -1422,7 +1377,6 @@ function TimeCallback($aVal) {
 }
 // Mon tableau d'ordonnée contient mes valeurs en euros
 $datay=$yvaleur;
- 
 // Mon tableau d'abscisse contient les timestamps de mes valeurs en euros
 $datax=$xdate;
  // Création du graphique
@@ -1583,7 +1537,6 @@ $l_dev= explode(";",$l_device);$l_device=$l_dev[4]/1000;
 return $l_device;
 break;
 default:
-
 }				
 }
 //----------------------------------------
@@ -1761,7 +1714,6 @@ function power($c){
 if ($c> 0.04045){$c = pow(($c + 0.055) / (1.0 + 0.055), 2.4);}
 else {$c = ($c/12.92);}
 return $c;}
-
 function hextohsl($hex,$lum){
 require ('ColorConverter.php');
 $converter = new ColorConverter();
