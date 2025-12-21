@@ -36,15 +36,14 @@ $_SESSION["version"]=fgets($res, 10);
 $_SESSION["d_root"]=$_SERVER["DOCUMENT_ROOT"];
 $_SESSION["d_admin"]=$_SERVER["DOCUMENT_ROOT"]."/admin/";
 $_SESSION["d_include"]=$_SERVER["DOCUMENT_ROOT"]."/include/";
-
-
 //$_SESSION["domaine"]=$_SERVER['HTTP_HOST'];
 // ----------------------------------------------------
 // début du programme
-//$files_custom = scandir(custom/php);
-//$compteur = count($files_custom);
 include ("include/entete_html.php");// la partie <head de la page html
 include ("include/header.php");// l' affichage du menu de la page d'accueil
+$filename = 'custom/php/accueil.php';
+if (file_exists($filename)) {include ($filename);}// l' affichage page accueil
+ else {include ("include/accueil.php");}
 include ("include/accueil.php");// l' affichage page accueil
 if (ON_MET==true) include ("include/meteo.php");	// une page de prévision météo
 include ("include/interieur.php");// plan intérieur
