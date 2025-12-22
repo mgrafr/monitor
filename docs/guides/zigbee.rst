@@ -387,7 +387,7 @@ fichier include/mqtt-js.php
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - **publier**
 
-.   . code-block::
+  .. code-block::
 
       client.publish(topic, msg);} // topic , payload
 
