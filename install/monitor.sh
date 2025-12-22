@@ -4,7 +4,6 @@ whiptail --title "intallation de la locale " --msgbox "dpkg-reconfigure :\n
 - Configuration de la locale pour monitor\n\
      ...quand le conteneur sera crée" 15 60
 dpkg-reconfigure locales
-locale-gen fr_FR.UTF-8
 function header_info {
 clear
 cat <<"EOF"
