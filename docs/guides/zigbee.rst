@@ -393,7 +393,7 @@ fichier include/mqtt-js.php
 
  Exemples:
 
- image1962| 
+ |image1962| 
 
  Scripts concernés dans include/footer.php
 
