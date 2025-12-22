@@ -232,9 +232,12 @@ fi
 if [ "$clientmqtt" = "oui" ]
 then
 echo -e "${GN} installation de composer & php-mqtt/client${CL}"
-cd /home/$maria_name
+mkdir $chemin/monitor/ws_z2m
+cd $chemin/monitor/ws_z2m
 sudo apt install composer
 composer require php-mqtt/client
+fi
+echo -e "${CM}${GN} installation terminée de composer et PHP-MQTT${CL}"
 echo -e "${BL}  installation de Monitor:${CL}"
 sleep 3
 xxx=$(hostname -I)
