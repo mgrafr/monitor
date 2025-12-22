@@ -221,7 +221,7 @@ echo -e "${CM}${GN}  installation de dos2unix:${CL}"
 apt install dos2unix
 echo -e "${CM}${GN}  installation de Unzip:${CL}"
 apt install unzip
-client_mqtt=$(whiptail --title "installer le client php-mqtt ? " --radioli>
+client_mqtt=$(whiptail --title "installer le client php-mqtt ?" --radiolist \
 "voulez vous installer php-mqtt/client ?\n necessaire pour utiliser zigbee2mqtt directement\n
 depuis monitor(sans utiliser Dz, Ha ou Iobroker)"
 "non" "par defaut " ON \
