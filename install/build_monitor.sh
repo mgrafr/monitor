@@ -314,6 +314,10 @@ echo -e "${GN} nom de l'utilisateur mariadb & monitor = $maria_name"
 echo -e "${GN} la clé BlowfishSecret : $randomBlowfishSecret"
 echo -e "${GN} le chemin : $chemin"
 echo -e "${GN} le lien symbolique : /www/monitor"
+if [ "$clientmqtt" = "oui" ]
+then
+echo -e "${GN} php-mqtt/client a été installé dans ~/monitor/z2m${CL}"
+fi
 sed -i "s/ipmonitor/${ip4}/g" $chemin/monitor/admin/config.php 
 sed -i "s/USER_BD/${maria_name}/g" $chemin/monitor/admin/config.php
 sed -i "s/PASS_BD/${mp}/g" $chemin/monitor/admin/config.php
