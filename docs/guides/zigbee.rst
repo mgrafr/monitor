@@ -169,6 +169,8 @@ installé depuis composer; composer ne peut pas être installé en root
 
 .. code-block::
 
+   mkdir /www/monitor/ws_z2m
+   cd /www/monitor/ws_z2m
    sudo apt install composer
    composer require php-mqtt/client
 
@@ -176,17 +178,52 @@ installé depuis composer; composer ne peut pas être installé en root
 
 9.5.2.1 envoyer et recevoir les messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Le script est est exécuter dans le répertoire  d'installation de php-mqtt/client, ici dans /home/USER
+Le script est est exécuter dans le répertoire  d'installation de php-mqtt/client, ici dans ws_z2m
 
 .. code-block::
 
    <?php
-   require_once("/www/monitor/api/f_pour_api.php");
    require('vendor/autoload.php');
    require('/www/monitor/admin/config.php');
    use \PhpMqtt\Client\MqttClient;
    use \PhpMqtt\Client\ConnectionSettings;
    //
+   function publier($message){global $server,$port,$username,$password;
+   $topic="z2m";
+   $clientId = rand(6, 15);
+   $connectionSettings = (new ConnectionSettings)
+     ->setUsername($username)
+     ->setPassword($password);
+   $mqtt = new \PhpMqtt\Client\MqttClient($server, $port, $clientId);
+   $mqtt->connect($connectionSettings);
+   while (true) {
+    $iterationStartedAt = microtime(true);
+    $mqtt->publish('z2m', $message, 1,true);
+   echo "envoi msg:".$message;
+   // You can set a third optional parameter as a timeout
+   $mqtt->loopOnce();
+   $iterationDuration = microtime(true) - $iterationStartedAt;
+    if ($iterationDuration < 1) {
+        usleep((1 - $iterationDuration) * 1_000_000);
+    }
+   }
+   $mqtt->disconnect();
+   return;
+   }
+   function id_name($nom_objet) {
+    if ($nom_objet=="") {return ['ID' => '0'];}
+    $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
+	$sql="SELECT * FROM ".DISPOSITIFS." WHERE nom_objet = '".$nom_objet."' AND Actif = '6' AND maj_js <> 'variable';";
+	$result = $conn->query($sql);$nb_rows=$result->num_rows;
+         $row = $result->fetch_assoc();
+         if ($row!=null) {$ro=explode(":",$row['param']) ;$rq=[];
+            $rq=['ID' => $row['ID'],
+				  'nom_objet' => $row['nom_objet'],
+				  'json' => $ro[1]
+         ];
+         $rx=json_encode($rq);echo $rx;}
+         else {$rq=['ID' => '0'];}
+         return
    $server   = MQTT_IP;
    $port     = 1883;
    $clientId = rand(5, 15);
@@ -203,21 +240,32 @@ Le script est est exécuter dans le répertoire  d'installation de php-mqtt/clie
      ->setLastWillMessage('client disconnect')
      ->setLastWillQualityOfService(1);
    //
-   $mqtt = new MqttClient($server, $port, $clientId, $mqtt_version);
-   $mqtt->connect($connectionSettings, $clean_session);
-   printf("client connecté\n");
-   //
-   $mqtt->subscribe('zigbee2mqtt/#', function ($topic, $message) {
-   if ($topic == "monitor") {sms($message);}
-   $str=explode("/",$topic);$id=$str[1];
-   $obj = json_decode($message);
-    if (isset($obj->state) && $obj->state!="online"){$ob=$obj->state;echo 'id='.$id.' state='.$ob."\n";maj($id,$ob);}
-    if (isset($obj->contact)) {$ob=$obj->contact;echo 'id='.$id.' state='.$ob."\n";maj($id,$ob);}
-   }, 0);
-   sleep(1);
-   $mqtt->loop(true);
+   try {
+    $mqtt = new MqttClient($server, $port, $clientId, $mqtt_version);
+    $mqtt->connect($connectionSettings, $clean_session);
+    printf("client connecté\n");	
+    $mqtt->subscribe('zigbee2mqtt/#', function ($topic, $message) use ($mqtt,$msg) {
+    if ($topic == "monitor") {sms($message);}
+    $str=explode("/",$topic);$name=$str[1];$search_id=[];
+    $search_id=id_name($name);$id=$search_id['ID'];
+    if ($id!="0") {$json=$search_id['json'];$obj = json_decode($message);
+      if (isset($obj->state) && $obj->state=="offline"){$ob=$obj->state;$msg='{ "id" : "'.$id.'", "state" : "'.$ob.'" }';maj($id,$ob);}
+      if (isset($obj->$json)) {$ob=$obj->$json;$msg='{ "id" : "'.$id.'", "state" : "'.$ob.'" }';echo '------------'.$msg;
+      publier($msg);  
+      } }} );
+    $mqtt->loop();
+    $mqtt->disconnect();
+   }
+   catch (\Throwable $e) {
+    echo 'An exception occured: ' . $e->getMessage() . PHP_EOL;
+   }
 
 |image1957|
+
+|image1967|
+
+|image1968|
+
 
 9.5.2.2 démmarrage automatique systemd
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -394,5 +442,9 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
 .. |image1965| image:: ../img/image1965.webp
    :width: 350px
 .. |image1966| image:: ../img/image1966.webp
+   :width: 700px
+.. |image1967| image:: ../img/image1967.webp
+   :width: 700px
+.. |image1968| image:: ../img/image1968.webp
    :width: 700px
 
