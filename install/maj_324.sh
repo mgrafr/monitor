@@ -3,8 +3,8 @@
 cd /www/monitor
 mkdir tmp
 cd tmp
-wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.0.1.tar.gz
-tar -xzf monitor-v4.0.1.tar.gz
+wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.0.tar.gz
+tar -xzf monitor-v4.1.0.tar.gz
 sed -i "s/.DOMAINE\" ));/DOMAINE\",/g" admin/config.php
 sed -i "s/iobweb.DOMAINE",\iobweb.DOMAINE", 2 => \"false\"));/g" admin/config.php
 result()(mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'materiel';") 
@@ -27,3 +27,24 @@ cp -u -R share/* /www/monitor/share/
 cp -u .version /www/monitor/.version
 cd ..
 rm -R tmp
+clientmqtt=$(whiptail --title "installer le client php-mqtt ?" --radiolist \
+"voulez vous installer php-mqtt/client ?\n necessaire pour utiliser zigbee2mqtt directement\n
+depuis monitor(sans utiliser Dz, Ha ou Iobroker)" 15 60 4 \
+"non" "par defaut " ON \
+"oui" "voir la doc" OFF 3>&1 1>&2 2>&3)
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi  : $clientmqtt"
+else
+echo "Vous avez annulé  "
+fi
+if [ "$clientmqtt" = "oui" ]
+then
+echo "installation de composer & php-mqtt/client$"
+cd /www/monitor
+apt install composer
+composer require php-mqtt/client
+fi
+if [ ! -d "vendor/php-mqtt" ]; then
+mkdir ws_z2m
+cp -u ws_z2m/* /www/monitor/ws_z2m/
+fi
