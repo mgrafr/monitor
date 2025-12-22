@@ -245,8 +245,8 @@ fi
 if [ "$clientmqtt" = "oui" ]
 then
 echo -e "${GN} installation de composer & php-mqtt/client${CL}"
-mkdir $chemin/monitor/ws_z2m
-cd $chemin/monitor/ws_z2m
+# mkdir $chemin/monitor/ws_z2m
+cd $chemin/monitor
 sudo apt install composer
 composer require php-mqtt/client
 fi
