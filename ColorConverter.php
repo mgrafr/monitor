@@ -1,27 +1,6 @@
 <?php
 
-declare(strict_types=1);
 
-namespace ramazancetinkaya;
-
-/**
- * Class ColorConverter
- * 
- * A versatile and robust PHP library designed to handle color code 
- * conversions seamlessly between various color spaces, including RGB, 
- * HEX, and HSL.
- * 
- * This library is ideal for developers building tools requiring precise 
- * color manipulation, such as graphics editors, web design utilities, 
- * and data visualization platforms.
- * 
- * @category Library
- * @package  ColorConverter
- * @author   Ramazan Çetinkaya
- * @license  MIT License <https://opensource.org/licenses/MIT>
- * @version  1.0.0
- * @link     https://github.com/ramazancetinkaya/color-code-converter
- */
 class ColorConverter
 {
     /**
