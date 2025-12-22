@@ -374,10 +374,10 @@ fichier include/mqtt-js.php
       })
     })
 
-    client.on('message', (topic, payload) => {
-      console.log(
-        'Received Message: ' + payload.toString() + '\nOn topic: ' + topic
-      )
+     client.on('message', (topic, payload) => {
+      console.log('Received Message: ' + payload.toString() + '\nOn topic: ' + topic);
+      if (payload!="") {msg=JSON.parse(payload);var id_x=msg.id;var state=msg.state;}
+      maj_mqtt(id_x,state,0) ;// fonction ds footer.php
     })
    </script>;
 
@@ -385,19 +385,24 @@ fichier include/mqtt-js.php
 
 9.5.4.2 envoyer et recevoir les messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- **publier**
 
-.. code-block::
+.   . code-block::
 
-   client.publish(topic, msg);} // topic , payload
+      client.publish(topic, msg);} // topic , payload
 
-Exemples:
+  Exemples:
 
-|image1962| 
+  |image1962| 
 
-Scripts concernés dans include/footer.php
+  Scripts concernés dans include/footer.php
 
-|image1963| 
+  |image1963| 
 
+- **recevoir et mettre à jour les données**
+
+|image1969| 
+  
 Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    
 
@@ -447,4 +452,7 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 700px
 .. |image1968| image:: ../img/image1968.webp
    :width: 700px
+.. |image1969| image:: ../img/image1969.webp
+   :width: 700px
+
 
