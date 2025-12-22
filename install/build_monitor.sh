@@ -219,6 +219,19 @@ echo -e "${CM}${GN}  installation de dos2unix:${CL}"
 apt install dos2unix
 echo -e "${CM}${GN}  installation de Unzip:${CL}"
 apt install unzip
+echo -e "${BL}  installation de Monitor:${CL}"
+sleep 3
+xxx=$(hostname -I)
+ip4=$(echo $xxx | cut -d ' ' -f 1)
+if [ "$vermon" = "Version 3.2.4" ]
+then
+wget -O $chemin/monitor.zip https://github.com/mgrafr/monitor/archive/refs/tags/$dosmon.zip
+unzip $chemin/monitor.zip -d $chemin
+mv $chemin/monitor-$dosmon/ $chemin/monitor/
+rm $chemin/monitor.zip
+else
+git clone https://github.com/mgrafr/monitor.git $chemin/monitor
+fi
 clientmqtt=$(whiptail --title "installer le client php-mqtt ?" --radiolist \
 "voulez vous installer php-mqtt/client ?\n necessaire pour utiliser zigbee2mqtt directement\n
 depuis monitor(sans utiliser Dz, Ha ou Iobroker)" 15 60 4 \
@@ -238,20 +251,6 @@ sudo apt install composer
 composer require php-mqtt/client
 fi
 echo -e "${CM}${GN} installation terminée de composer et PHP-MQTT${CL}"
-echo -e "${BL}  installation de Monitor:${CL}"
-sleep 3
-xxx=$(hostname -I)
-ip4=$(echo $xxx | cut -d ' ' -f 1)
-if [ "$vermon" = "Version 3.2.4" ]
-then
-wget -O $chemin/monitor.zip https://github.com/mgrafr/monitor/archive/refs/tags/$dosmon.zip
-unzip $chemin/monitor.zip -d $chemin
-mv $chemin/monitor-$dosmon/ $chemin/monitor/
-rm $chemin/monitor.zip
-else
-git clone https://github.com/mgrafr/monitor.git $chemin/monitor
-fi
-# rm $chemin/monitor/install/maj*
 echo -e "${CM}${GN} importer les tables text_image dispositifs 2fa_token messages et sse${CL}" 
 sed -i "s/(1, 'user'/(1, '${maria_name}'/g" /var/www/monitor/bd_sql/2fa_token.sql
 mysql -root monitor < $chemin/monitor/bd_sql/text_image.sql
