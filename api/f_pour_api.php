@@ -36,7 +36,7 @@ $donnees=[
 	'date' => date("H:i:s", time()+3600)
     ];
 mysql_app1($donnees);
-return 'OK';
+return 'OKk';
 }
 function sms($contenu){
   $file="/www/monitor/python/aldz.py";
