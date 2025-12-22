@@ -20,8 +20,12 @@ Server version: 11.8.2
 
 19.4.1 Releases
 ===============
-Version en developpement 4.1.0
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+version en développement
+~~~~~~~~~~~~~~~~~~~~~~~~
+v 4.1.1
+
+Version 4.1.0 (décembre 2025)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Ajout popup pour revenir à la config par défaut pour l'écran concerné
 - pour faciliter la maj le fichier "include/accueil.php" s'il est modifier, il devra être placé dans "custom/php"
 - ajout test de vérification des autorisations pour modifications du fichier admin/config.php
