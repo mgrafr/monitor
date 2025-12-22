@@ -15,8 +15,6 @@ formatting
 echo -e "${CM}${GN} Démarrage du conteneur LXC ...${CL} "
 pct start $CTID
 echo -e "${CM} ${BL} Configuration de la locale  ${GN}fr_FR${CL}"
-locale-gen fr_FR.UTF-8
-update-locale
 dpkg-reconfigure locales
 echo -e "${CM} ${BL} Installation de LEMP... ${CL}" 
 whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script installe automatiquement LEMP fonctionnelle.\nUn serveur SSE-PHP est aussi installé\nVous devrez indiquer\n
