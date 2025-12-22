@@ -221,7 +221,7 @@ echo -e "${CM}${GN}  installation de Unzip:${CL}"
 apt install unzip
 clientmqtt=$(whiptail --title "installer le client php-mqtt ?" --radiolist \
 "voulez vous installer php-mqtt/client ?\n necessaire pour utiliser zigbee2mqtt directement\n
-depuis monitor(sans utiliser Dz, Ha ou Iobroker)"
+depuis monitor(sans utiliser Dz, Ha ou Iobroker)" 15 60 4 \
 "non" "par defaut " ON \
 "oui" "voir la doc" OFF 3>&1 1>&2 2>&3)
 if [ $exitstatus = 0 ]; then
