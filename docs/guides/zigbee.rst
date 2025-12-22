@@ -391,13 +391,13 @@ fichier include/mqtt-js.php
 
       client.publish(topic, msg);} // topic , payload
 
-  Exemples:
+ Exemples:
 
-  |image1962| 
+ image1962| 
 
-  Scripts concernés dans include/footer.php
+ Scripts concernés dans include/footer.php
 
-  |image1963| 
+ |image1963| 
 
 - **recevoir et mettre à jour les données**
 
