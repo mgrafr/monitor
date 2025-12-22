@@ -1,9 +1,5 @@
 #!/usr/bin/bash
 cd /www/monitor
-if [ ! -d "vendor/php-mqtt" ]; then
-apt install composer
-composer require php-mqtt/client
-fi
 mkdir tmp
 cd tmp
 wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.0.tar.gz
@@ -28,4 +24,24 @@ res=${result}
 if [[ ${res:0:5} != 'Field' ]] 
 then 
 mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE materiel param text;"
+fi
+clientmqtt=$(whiptail --title "installer le client php-mqtt ?" --radiolist \
+"voulez vous installer php-mqtt/client ?\n necessaire pour utiliser zigbee2mqtt directement\n
+depuis monitor(sans utiliser Dz, Ha ou Iobroker)" 15 60 4 \
+"non" "par defaut " ON \
+"oui" "voir la doc" OFF 3>&1 1>&2 2>&3)
+if [ $exitstatus = 0 ]; then
+   echo "Vous avez choisi  : $clientmqtt"
+else
+echo "Vous avez annulé  "
+fi
+if [ "$clientmqtt" = "oui" ]
+then
+echo "installation de composer & php-mqtt/client$"
+apt install composer
+composer require php-mqtt/client
+fi
+if [ ! -d "vendor/php-mqtt" ]; then
+mkdir ws_z2m
+cp -u ws_z2m/* /www/monitor/ws_z2m/
 fi
