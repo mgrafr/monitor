@@ -20,13 +20,16 @@ Server version: 11.8.2
 
 19.4.1 Releases
 ===============
-Version en developpement 4.0.1
+Version en developpement 4.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Ajout popup pour revenir à la config par défaut pour l'écran concerné
 - pour faciliter la maj le fichier "include/accueil.php" s'il est modifier, il devra être placé dans "custom/php"
 - ajout test de vérification des autorisations pour modifications du fichier admin/config.php
 - ajout logs des erreurs dus à une différence entre la base de données de Domoticz et celle de Monitor 
-- correction bug concernant les variables dynamiques monitor: utilisation de eval avec JS dans footer.php
+- correction bug concernant les variables dynamiques monitor: utilisation de Function-pour éviter eval) avec JS dans footer.php
+- après Domoticz, Home Assistant et Ip.Broker, Zigbee2mqtt peut être connecté directement à Monitor (parmi ces 4 serveurs, il faut en connecter au maximum 3).
+- PHP-MQTT doit être installé  pour z2m, choisir cette option lors de l'installation.
+- MQTT.js remplace Paho pour le client mqtt de javascript.
 
 Version 4.0.0 (septembre 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
