@@ -1,6 +1,5 @@
 <?php // PHP-MQTT
-//require_once("/www/monitor/api/f_pour_api.php");
-require('vendor/autoload.php');
+require('/www/monitor/vendor/autoload.php');
 require('/www/monitor/admin/config.php');
 
 use \PhpMqtt\Client\MqttClient;
@@ -16,14 +15,11 @@ $mqtt = new \PhpMqtt\Client\MqttClient($server, $port, $clientId);
 $mqtt->connect($connectionSettings);
 while (true) {
     $iterationStartedAt = microtime(true);
-//foreach ($this->getMessagesToPublish() as $messageToPublish) {
-        //$mqtt->publish($messageToPublish->topic, $messageToPublish->message, MqttClient::QOS_AT_MOST_ONCE);
-    //}
     $mqtt->publish('z2m', $message, 1,true);
-echo "envoi msg:".$message;
-// You can set a third optional parameter as a timeout
-$mqtt->loopOnce();
-$iterationDuration = microtime(true) - $iterationStartedAt;
+    echo "envoi msg:".$message;
+    // You can set a third optional parameter as a timeout
+    $mqtt->loopOnce();
+    $iterationDuration = microtime(true) - $iterationStartedAt;
     if ($iterationDuration < 1) {
         usleep((1 - $iterationDuration) * 1_000_000);
     }
