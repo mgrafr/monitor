@@ -37,7 +37,7 @@ https://dl.gl-inet.com/router/mt3000/open
 
 |image1851|
 
-21.0.2 BOX Free One
+21.0.2 BOX Free Pop
 -------------------
 |image1852|
 
