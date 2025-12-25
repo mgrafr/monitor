@@ -41,8 +41,6 @@ https://dl.gl-inet.com/router/mt3000/open
 -------------------
 |image1852|
 
-Box en fin de fin qui devra être remplacée avant fin 2025
-
 21.0.3 Installation du routeur
 ------------------------------
 .. admonition::  **accès ssh du routeur** 
