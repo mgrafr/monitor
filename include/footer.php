@@ -20,7 +20,7 @@
 <script src="custom/js/JS.js?2"></script>
 <?php
 if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';
-include ('include/mqtt-js.php');}
+}
 ?>
 
 <script>
@@ -45,26 +45,24 @@ document.getElementById(id5).innerHTML=val5;
 break;
 }
 return;}
-function maj_mqtt(id_x,state,ind,level=0){
+function maj_mqtt(id_x,state,ind,level,champ=''){
 if (!state) {console.log("erreur-state");return;}
 if (state=="true"){state="on";} //pour ioBroker
 if (state=="false"){state="off";}	//pour ioBroke
-if (state=="ON"){state="on";} //pour Z2M
-if (state=="OFF"){state="off";}	//pour Z2M
+console.log('ind='+ind);
 switch (ind) {
 	case 0: console.log('0:  id='+id_x+' state='+state);
 var id_m=null;var json_m="";
 for (attribute in maj_dev) {
 	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];
-	json_m=maj_dev[attribute]['json'];console.log('id_m='+id_m+'..json_m'+json_m);}
-		if (json_m=='temperature'){json_m='temp';maj_html(json_m,pp[id_m].ID1,state);pp[id_m].Data=state;
-		if (pp[id_m].ID2!=""){maj_html(json_m,pp[id_m].ID2,state);}
-		return;}
-}
-//console.log('json_m='+json_m+'state='+state);
+	}}
+case 2 :
+	if (ind==2){ id_m=id_x;	
+	if (state=="ON"){state="on";} //pour Z2M
+	if (state=="OFF"){state="off";}	//pour Z2M	
+	}
 if (id_m==null) {out_msg= 'id_m='+id_m;console.log(out_msg);return;}
-//var command=state.toString().toLowerCase();
-var command=state.toString();console.log('pp_idm avant='+pp[id_m].Data);
+var command=state.toString();var str=pp[id_m].Data;console.log('pp_idm avant='+str);
 pp[id_m].Data=command;
 console.log('command pp apres='+pp[id_m].Data);
 var fx=pp[id_m].fx; console.log('fx='+fx);if (fx=="lien_variable"){maj_services(0);}
@@ -90,6 +88,15 @@ if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).g
 break;
 case 1: console.log('1: id='+id_x+' state='+state);
 	scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
+break;
+case 3://id_x est egal à idm
+console.log('case3:'+id_x+''+pp[id_x].ID1);	
+//maj_html(champ,pp[id_x].ID1,state);
+ pp[id_x].Data=state;
+//		if (pp[id_m].ID2!=""){maj_html(champ,pp[id_x].ID2,state);}
+//		return;}
+	if (id_x) {pp[id_x].Data = state;
+console.log('Data_ap='+pp[id_x].Data);return;}
 break;
 default:
 break;	
@@ -271,9 +278,9 @@ function pluie(idx){
 /*----------------------------------------------------*/	
 var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
 var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
-pp=[];maj_devices(plan);
+nbact=0;pp=[];maj_devices(plan);
 worx=[];	
-function maj_devices(plan){
+function maj_devices(plan){if (nbact==289) {nbact=0;}
 $.ajax({
     type: "GET",
     dataType: "json",
@@ -306,20 +313,22 @@ $.ajax({
 				if (val.maj_js=="data" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.Data;}
 				if (val.maj_js=="temp"){maj_html(val.maj_js,val.ID1,val.temp);}
 				if (val.maj_js=="temp" && val.ID2!=""){maj_html(val.maj_js,val.ID2,val.temp);}
-				//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
+				if (val.actif!="6" || nbact==0){	
+					//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
 											  // else {pos_m="off"; }}
-				if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
+					if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
 											   else {pos_m="off"; }}									   
-				if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
+					if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
 											   else {pos_m="off"; }}							   
-				if ((val.maj_js=="onoff+stop") && ((pos_m.substring(0, 11)=="set level: ") || (pos_m=="open"))) {vol=1;pos_m="on";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level"  || val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
+					if ((val.maj_js=="onoff+stop") && ((pos_m.substring(0, 11)=="set level: ") || (pos_m=="open"))) {vol=1;pos_m="on";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
+					if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level"  || val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; }
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
 						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
 							var h=document.getElementById(val.ID1).getAttribute("h");
 							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
-							}}			
+							}}	
+				}					
 				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
@@ -327,10 +336,11 @@ $.ajax({
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 				}
-				if (val.actif=="6" && pp[val.idm]['param'][1]=="state") {var msg='{ "state" : "" }';
-					var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';
-					client.publish(topic,msg);console.log('actif 6: '+msg);
-				}
+				//if (val.actif=="6" && pp[val.idm]['param'][1]=="state") {var msg='{ "state" : "" }';
+					//var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';console.log('actif 6: '+topic+' -- '+msg);
+					//client.publish(topic,msg);
+					//publish_mqtt(pp[val.idm]['ID'],'state',"")
+				//}
 			}	
 			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
 			//else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:...."+val.Name;}
@@ -343,7 +353,7 @@ $.ajax({
 });
 
 setTimeout(maj_devices, tempo_dev, plan); 
-}
+nbact++;}
 maj_services(0);
 /*--------------------------------------*/
 function class_name(cn,coul){
@@ -386,7 +396,7 @@ function switches(server,idm,idx,command,pass="0"){
 	   if (pp[idm].Data == "OFF" || pp[idm].Data == "off" ) {command="ON";}
 	   else {command="OFF";}
 	   console.log(pp[idm].Data);
-	 publish_mqtt(idx,type,command,level);maj_mqtt(idx,command,0,level);
+	 publish_mqtt(idx,type,command,level);maj_mqtt(idx,command,0,level,2);
 	 return;
 	break;
 	default:
@@ -427,10 +437,14 @@ function switches(server,idm,idx,command,pass="0"){
       }}); } 
   else alert("erreur");
   }
-/*--------------mqtt publish-------------------*/
+ /*--------------mqtt publish--receive-----------------*/
+</script>
+<?php if (MQTT==true) {include ('include/mqtt-js.php');} ?>
+ <script>
+// *****************************************************
  function publish_mqtt(idx,type,command,level=0){
 // Publish a Message
-	var msg='{ "'+ type+'":"'+ command+'"}';console.log(msg);
+	var msg='{ "'+ type+'":"'+ command+'"}';
 	var topic='zigbee2mqtt/'+idx+'/set';
 	client.publish(topic, msg);return;
  }
@@ -952,7 +966,7 @@ if ($domaine==IPMONITOR) $lien="http://".SSE_IP.":".SSE_PORT."/events";
       const listElement = document.getElementById('messages').innerText = currentEvent.data;;
       console.log(currentEvent.data);donnees=JSON.parse(currentEvent.data);
 	  var id_x=donnees.id;var state=donnees.state;
-	  maj_mqtt(id_x,state,0)
+	  maj_mqtt(id_x,state,0,0)
     };
   </script>";}
 
@@ -973,7 +987,7 @@ var dmsg=document.getElementById('messages').innerText;
 document.getElementById('messages1').innerText = dmsg;
 document.getElementById('messages').innerHTML = e.data ;
 donnees=JSON.parse(e.data);var id_x=donnees.id;var state=donnees.state;
-maj_mqtt(id_x,state,0);
+maj_mqtt(id_x,state,0,0);
 $.get('ajax.php', { app:'maj', id:'', state: 'Ok', command:'6'});
 }, false);
 

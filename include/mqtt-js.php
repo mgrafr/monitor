@@ -1,5 +1,6 @@
 <?php require_once('admin/config.php');?>
 <script>
+
      const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
     const connectUrl = 'ws://<?php echo MQTT_IP.":".MQTT_PORT;?>'
 
@@ -13,10 +14,11 @@
       password: '<?php echo MQTT_PASS;?>',
       reconnectPeriod: 1000,
     }
-    const topic = 'z2m'
-    const payload = ''
+    const topic = 'z2m/#'
+    const payload = ""
     const qos = 0
-
+    var topic1="z2m"
+    var state=""
     console.log('connecting mqtt client')
     const client = mqtt.connect(connectUrl, options)
 
@@ -33,7 +35,7 @@
       console.log('Client connected:' + clientId)
 
     client.subscribe(topic, { qos }, (error) => {
-        if (error) {
+        if (error) {S
           console.log('Subscribe error:', error)
           return
         }
@@ -41,15 +43,19 @@
              })
 
       // publish message
-      client.publish(topic, payload, { qos }, (error) => {
+      client.publish(topic1, payload, { qos }, (error) => {
         if (error) {
           console.error(error)
         }
       })
     })
-    client.on('message', (topic, payload) => {
+    client.on('message', (topic, payload) => {if (payload!=""){
       console.log('Received Message: ' + payload.toString() + '\nOn topic: ' + topic);
-      if (payload!="") {msg=JSON.parse(payload);var id_x=msg.id;var state=msg.state;}
-      maj_mqtt(id_x,state,0) ;// fonction ds footer.php
-    })
+     msg=JSON.parse(payload);var idm=msg.idm;var state=msg.state;var champ=msg.champ;
+     var ind=4;if (champ=="Data") {ind=2;}
+     if (champ=="temp") {ind=3;}
+      maj_mqtt(idm,state,ind,0,champ) ;// fonction ds footer.php
+    }
+  })
+    
 </script>
