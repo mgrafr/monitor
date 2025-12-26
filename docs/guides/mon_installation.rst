@@ -57,9 +57,11 @@ https://dl.gl-inet.com/router/mt3000/open
 
 21.0.3.1 Connexion  à la Box internet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**mode** : « Bridge » (RQ:configuration de base=Routeur) 
+**mode** : « Routeur » (RQ:c'est la configuration de base) 
 
 |image1890|
+
+|image1970|
 
 |image1857|
 
@@ -4347,3 +4349,5 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 700px
 .. |image1949| image:: ../img/image1949.webp
    :width: 700px
+.. |image1970| image:: ../img/image1970.webp
+   :width: 400px
