@@ -40,14 +40,16 @@ require_once('admin/config.php');
         <a class="admin1" href="#admin" rel="18" title="reponse2" >Enregistrer ou modifier Dispositifs (dz,ha,iob) dans SQL&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=7 style="width:25px;display:inline;"></a><br>
 		<a class="admin1" href="#admin" rel="25" title="reponse2" >Enregistrer Message DZ( ou HA) dans SQL&nbsp;&nbsp;</a> <a><img class="info_admin" src="images/icon-info.svg" data-toggle="modal" data-target="#info-admin1" rel=9 style="width:25px;display:inline;"></a><br>  
         <br>
-       <a href="http://<?php echo PHPMYADMIN;?>" target="_blank"><img src="images/PhpMyAdmin_logo.svg" style="width:80px" alt=""/></a><br>
+       <a href="http://<?php echo PHPMYADMIN;?>" target="_blank"><img src="images/PhpMyAdmin_logo.svg" id="phpadmin" style="width:80px" alt=""/></a><br>
         <br>
         <a id="about"><img class="info_admin" src="images/about.svg" data-toggle="modal" data-target="#info-admin1" rel=8 alt="a Propos"/></a></p>
 		<?php
 		 if (SSE==true){echo '<p id="sse"><img style="width:30px;" src="images/mqtt.webp" />
 		<p id="status"></p> 
     <p id="messages">
-    </p><p id="messages1"></p><p id="messages2"></p><p id="messages3"></p>';}?>
+    </p><p id="messages1"></p><p id="messages2"></p><p id="messages3"></p>';}
+    if (MQTT==true){echo '<p id="ws-zb"><img style="width:30px;" src="images/mqtt_ws.webp" />
+    <p id="msg_zb"></p>';}?>
 		
 		<div id="reponse1"></div>
       <div id="reponse2" style="height:auto"></div>
