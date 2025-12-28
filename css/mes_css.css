@@ -633,7 +633,7 @@ left: 170px;width: 40px;}
 @media (max-width:480px) {#phpadmin{top: -30px;}#messages, #messages1, #messages2, #messages3 {left: 40px;}
 }
 /* Large devices (small desktops <460px) */
-@media (max-width:460px) {#sse{top:-360px}#messages, #messages1, #messages2, #messages3 {top: -430px;}#status{top: -410px;}
+@media (max-width:460px) {#sse{top:-340px}#messages, #messages1, #messages2, #messages3 {top: -410px;}#status{top: -390px;}
 #msg_zb {top: -440px;}#ws-zb {top:-390px;}
 }
 /* Large devices (Large desktops 768px and up) */
