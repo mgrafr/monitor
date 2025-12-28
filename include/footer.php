@@ -274,11 +274,11 @@ function pluie(idx){
  /*------lecture des indfos de l'alerte pluie----------------------------------------*/
  $("#txt_pluie").click( function() { alert(texte_pluie); });
 /*--------------------------------------------------------------------------*/
-/*--------------mise a jour dispositifs PLAN domoticz------*/	
-/*----------------------------------------------------*/	
+/*-------------mise a jour dispositifs PLAN domoticz ha iobroker z2m--------*/	
+/*--------------------------------------------------------------------------*/	
 var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
 var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
-nbact=0;pp=[];maj_devices(plan);
+nbact=0;pp=[];maj_devices(plan);//nbact nombre d'actualisation
 worx=[];	
 function maj_devices(plan){if (nbact==289) {nbact=0;}
 $.ajax({
@@ -313,7 +313,7 @@ $.ajax({
 				if (val.maj_js=="data" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.Data;}
 				if (val.maj_js=="temp"){maj_html(val.maj_js,val.ID1,val.temp);}
 				if (val.maj_js=="temp" && val.ID2!=""){maj_html(val.maj_js,val.ID2,val.temp);}
-				if (val.actif!="6" || nbact==0){	
+				if (val.actif!="6" || nbact==0){publish_mqtt(val.ID,'state','',level=0);	
 					//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
 											  // else {pos_m="off"; }}
 					if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
@@ -992,7 +992,7 @@ $.get('ajax.php', { app:'maj', id:'', state: 'Ok', command:'6'});
 }, false);
 
 source.addEventListener('open', function(e) {
-document.getElementById('status').innerText='connecté';
+document.getElementById('status').innerText='connecté ws dz,ha,iob';
 }, false);
 
 source.addEventListener('error', function(e) {
