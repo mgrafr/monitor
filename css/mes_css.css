@@ -381,7 +381,7 @@ height: auto;}
 #info_admin{margin-left:10px;display:block;}
 #d_btn_a , #d_btn_al{display:block;position: absolute;left: 50px;background-color: #4d4d4d;color:white;
 border-color: #e0e3e6;border-radius: 0.55rem}
-#d_btn_a{top: 140px;}#d_btn_al{top: 60px;}
+#d_btn_a{top: 150px;}#d_btn_al{top: 60px;}
 #ecran{margin-top: 50px}
 #pwdalarm{text-align: center;width: 200px;left:200px;margin: 0 auto;position: fixed;top: 500px;background-color: rgb(89, 89, 89);height: 180px;}
 .close_clavier{font-size: 24px;position: relative;top: 0px;left: 80px;color: white;} 
