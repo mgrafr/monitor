@@ -1,8 +1,13 @@
-<?php require_once('admin/config.php');?>
+<?php require_once('admin/config.php');
+$domaine=$_SESSION["domaine"];
+if ($domaine==URLMONITOR) {$lien_mqtt=MQTT_URL;$w='wss://';}
+if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP;$w='ws://';}
+?>
+
 <script>
 
      const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
-    const connectUrl = 'ws://<?php echo MQTT_IP.":".MQTT_PORT;?>'
+    const connectUrl = '<?php echo $w.$lien_mqtt.":".MQTT_PORT;?>'
 
     const options = {
       keepalive: 60,
@@ -51,6 +56,7 @@
     })
     client.on('message', (topic, payload) => {if (payload!=""){
       console.log('Received Message: ' + payload.toString() + '\nOn topic: ' + topic);
+      document.getElementById('msg_zb').innerText=payload;
      msg=JSON.parse(payload);var idm=msg.idm;var state=msg.state;var champ=msg.champ;
      var ind=4;if (champ=="Data") {ind=2;}
      if (champ=="temp") {ind=3;}
