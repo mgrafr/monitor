@@ -9,6 +9,8 @@ function id_name($nom_objet) {
 $zb_donnees=array();
 $zb_donnees = [
 	'state' => "Data",
+    'state_l2' => "Data",
+    'state_l1' => "Data",
 	'temperature' => "temp",
 	"contact" => "Data"
     ];   
@@ -52,9 +54,9 @@ $str=explode("/",$topic);$name=$str[1];$search_id=[];
 $search_id=id_name($name);$id=$search_id['ID'];
 if ($id!="0") {$idm=$search_id['idm'];$json=$search_id['json'];$champ=$search_id['champ'];$obj = json_decode($message);
     if (isset($obj->state) && $obj->state=="offline"){$ob=$obj->state;$msg='{ "id" : "'.$id.'", "objet" : "'.$name.'", "state" : "'.$ob.'" }';maj($id,$ob);}
-    if (isset($obj->$json)) {$ob=$obj->$json;$msg='{ "id" : "'.$id.'", "objet" : "'.$name.'","state" : "'.$ob.'", "champ" : "'.$champ.'", "idm" : '.$idm.'}';
+    if (isset($obj->$json)) {$ob=$obj->$json;$msg='{ "id" : "'.$id.'", "objet" : "'.$name.'","state" : "'.$ob.'", "champ1" : "'.$champ.'", "champ2" : "'.$json.'", "idm" : '.$idm.'}';
         echo '------------'.$msg;
-     $mqtt->publish('z2m', $msg, 0,false);$id="0";$str=[];
+     $mqtt->publish('z1m', $msg, 0,false);$id="0";$str=[];
     echo "envoi msg:".$msg; 
 } }} );
     $mqtt->loop();
