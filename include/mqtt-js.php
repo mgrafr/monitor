@@ -5,7 +5,6 @@ if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP;$w='ws://';}
 ?>
 
 <script>
-
      const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
     const connectUrl = '<?php echo $w.$lien_mqtt.":".MQTT_PORT;?>'
 
@@ -19,10 +18,10 @@ if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP;$w='ws://';}
       password: '<?php echo MQTT_PASS;?>',
       reconnectPeriod: 1000,
     }
-    const topic = 'z2m/#'
+    const topic = 'z1m/#'
     const payload = ""
     const qos = 0
-    var topic1="z2m"
+    var topic1="z1m"
     var state=""
     console.log('connecting mqtt client')
     const client = mqtt.connect(connectUrl, options)
@@ -57,7 +56,7 @@ if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP;$w='ws://';}
     client.on('message', (topic, payload) => {if (payload!=""){
       console.log('Received Message: ' + payload.toString() + '\nOn topic: ' + topic);
       document.getElementById('msg_zb').innerText=payload;
-     msg=JSON.parse(payload);var idm=msg.idm;var state=msg.state;var champ=msg.champ;
+     msg=JSON.parse(payload);var idm=msg.idm;var state=msg.state;var champ=msg.champ1;
      var ind=4;if (champ=="Data") {ind=2;}
      if (champ=="temp") {ind=3;}
       maj_mqtt(idm,state,ind,0,champ) ;// fonction ds footer.php
