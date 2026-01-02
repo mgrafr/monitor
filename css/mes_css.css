@@ -10,13 +10,12 @@ html, body {
     height: 100%;
 }.table td{border:0}
 #menu {width:17em;}
-#about, #about_iob{width: 300px;
+#about, #about_iob{width: 600px;
     position: relative;
-    left: 0px;
 }
-#about{top: -80px;}
-#about_iob{top: 0px;}
-#info-admin1{position: relative;top: -600px;padding-right: 15px;}
+#about{top: -170px;left: 300px;}
+#about_iob{top: 0px;left:0px;}
+#info-admin1{position: relative;top: -400px;padding-right: 15px;}
 
 #maison1{margin-top:12%;}
 .header {height: 150px;
@@ -396,19 +395,16 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 /*top: 480px;*/
 }
 /*SSE*/
-#sse{position:relative;top:-525px;}
-#messages, #messages1, #messages2, #messages3{position: relative;top:-575px;left:130px;display: block;}
+#sse{position:relative;top:-500px;height:100px;}
+#messages, #messages1, #messages2, #messages3{position: relative;top:-50px;left:130px;display: block;}
 #messages1,#messages2,#messages3{margin-top: -20px;}
-#status{position: relative;top: -560px;left:50px;}
+#status{position: relative;top: -30px;left:50px;}
 /*msg z2b phpmyadmin */
-#msg_zb{position: relative;top:-630px;left:35px}
-#ws-zb{position: relative;top:-590px;}
-#phpadmin{position: relative;
-    width: 80px;
-    top: -15px;
-    left: 100px;}
+#msg_zb,#msg_zb1{position: relative;top:-30px;left:35px}
+#msg_zb1{margin-top: -40px;}
+#ws-zb{position: relative;top:-500px;}
+#phpadmin{position:relative;top:-120px;left:50px}
 /*recettes*/
-
 .bg-recette {    background-color: #84d1b7;}
 .col-4{    margin-left: 5px;
        margin-top: 3px;}
