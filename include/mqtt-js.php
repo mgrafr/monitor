@@ -55,7 +55,10 @@ if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP;$w='ws://';}
     })
     client.on('message', (topic, payload) => {if (payload!=""){
       console.log('Received Message: ' + payload.toString() + '\nOn topic: ' + topic);
+      var emsg=document.getElementById('msg_zb').innerText;
+      document.getElementById('msg_zb1').innerText = emsg;
       document.getElementById('msg_zb').innerText=payload;
+
      msg=JSON.parse(payload);var idm=msg.idm;var state=msg.state;var champ=msg.champ1;
      var ind=4;if (champ=="Data") {ind=2;}
      if (champ=="temp") {ind=3;}
