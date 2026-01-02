@@ -74,6 +74,7 @@ if ($row['maj_js']=="on"  && $ser_dom=="dz"){$commande="group on";}
 if ($row['maj_js']=="on_level" && $ser_dom=="dz"){$commande="Set Level";}
 if ($row['maj_js']=="on="){$query=".";$f='var command=$(this).attr("rel");'.$f1;$commande="command";}
 else $f=$f1;
+if ($row['Actif']=="6"){$str=explode(':',$row['param']);$commande=$str[1];}
 $id_dom=$row['ID'];$id_dom=str_replace("\r\n","",$id_dom);
 if($ser_dom=="dz"){$id_dom=$row['idx'];}
 if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("'.$query.$row["id1_html"];
