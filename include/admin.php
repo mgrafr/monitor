@@ -46,7 +46,7 @@ require_once('admin/config.php');
 		<p id="status"></p> 
     <p id="messages"></p><p id="messages1"></p><p id="messages2"></p><p id="messages3"></p></div>';}
     if (MQTT==true){echo '<div id="ws-zb"><img style="width:30px;" src="images/mqtt_ws.webp" />
-    <p id="msg_zb"></p></div>';}?>
+    <p id="msg_zb"></p><p id="msg_zb1"></p></div>';}?>
 		
 		<div id="reponse1"></div>
       <div id="reponse2" style="height:auto"></div>
