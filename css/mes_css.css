@@ -10,11 +10,11 @@ html, body {
     height: 100%;
 }.table td{border:0}
 #menu {width:17em;}
-#about, #about_iob{width: 600px;
+#about, #about_iob,#about_p{width: 600px;
     position: relative;
 }
-#about{top: -170px;left: 300px;}
-#about_iob{top: 0px;left:0px;}
+#about{top: -170px;left: 230px;}
+#about_iob,#about_p{top: 0px;left:0px;}
 #info-admin1{position: relative;top: -400px;padding-right: 15px;}
 
 #maison1{margin-top:12%;}
