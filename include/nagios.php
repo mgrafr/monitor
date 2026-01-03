@@ -12,7 +12,7 @@ if ($domaine==IPMONITOR) $lien_nagios=IPNAGIOS;
 <div id="nagios" >
 	<div class="container">
 		<div class="col-md-12">
-	  <h1 id="about" class="title" style="position:relative;top:-30px;">Monitoring : <span style="color:blue">NAGIOS</span></h1>
+	  <h1 id="about_p" class="title" >Monitoring : <span style="color:blue">NAGIOS</span></h1>
 	  <div id="ping_pi4" title="Ping PI4"><?php include ("ping_pi4_svg.php");?></div>
 	  <iframe id="nagiosapp" src="<?php echo $lien_nagios;?>" frameborder="0" ></iframe>
 		       
