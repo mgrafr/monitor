@@ -590,11 +590,11 @@ left: 170px;width: 40px;}
 /* devices (small desktops <768) */
 @media (max-width:767px) {.modal_mur-dialog {width:500px;}.fosse_septique{left:400px;}
 	.fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}#th_ext_cuis {top: -700px;}
-#bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}
+#bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}#status{top:-40px;}
 #th_ext_cuis {top: -650px;}.sparkling-modal-frame {top:50%;}#vanne_eau{position: relative;top: -613px;left: 380px;}
 .sos {top: -600px;}#gd_portail {top: 740px;left: 300px;}.fosse_septique{left:420px;}#fosse{top:700px;}#porte_gar{top:740px;left:360px}
-.porte_veranda_sud{top:743px;}#pilule{top:730px;left:225px;}#status{top:-460px;}#sse{top:-425px;}
-#messages, #messages1, #messages2, #messages3 {top: -475px;}#msg_zb {top: -530px;}#ws-zb {top:-590px;}
+.porte_veranda_sud{top:743px;}#pilule{top:730px;left:225px;}#status{top:-460px;}#sse{top:-500px;}
+#messages, #messages1, #messages2, #messages3 {top: -60px;left:80px;}#msg_zb,#msg_z1 {top: -30px;}#ws-zb {top:-510px;}
 }
 /* Large devices (small desktops <601) */
 @media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}.choix_scenes{left:10px;width: 80%;}
@@ -606,9 +606,9 @@ left: 170px;width: 40px;}
 	.fosse_septique{left:380px;}#fosse{top:550px;}.aff_anni{bottom: 80px;}#pilule {top: 570px;}
 /*.aff_pluie{left: 390px;}*/
 .fond_date {right: 0px;top:0;}.aff_pluie {left: 300px;}.choix_scenes{left: 5px;width: 100%;}
-.menu-link {left: 240px;top: 10px;}.bl{top: 640px;}.sos {top: -450px;}#msg_zb {top: -480px;}#ws-zb {top:-530px;}
-	#sse{top:-400px}#messages, #messages1, #messages2, #messages3 {top: -470px;}#gd_portail {top: 580px;left: 300px;}#porte_gar{top:580px;left:360px}
-#status{top: -450px;}#vanne_eau{position: relative;top: -570px;left: 380px;}.porte_veranda_sud{top:583px;}	
+.menu-link {left: 240px;top: 10px;}.bl{top: 640px;}.sos {top: -450px;}
+#gd_portail {top: 580px;left: 300px;}#porte_gar{top:580px;left:360px}
+#vanne_eau{position: relative;top: -570px;left: 380px;}.porte_veranda_sud{top:583px;}	
 /*.fond_date {right: -60px;}*/
 #pression_chaud{width:50px}.pression_chaud{top: -305px;}
 .colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}#habridgeapp, #iobrokerapp{top:-10px;width: 480px;height: 600px;}
@@ -626,11 +626,11 @@ left: 170px;width: 40px;}
 .modal-dialog {width:450px;margin-top:50px}#bar_pression{top: -530px;left: 300px;width:80px}
 }
 /* Large devices (small desktops <480px) */
-@media (max-width:480px) {#phpadmin{top: -30px;}#messages, #messages1, #messages2, #messages3 {left: 40px;}
+@media (max-width:480px) {#messages, #messages1, #messages2, #messages3 {left: 35px;}
 }
 /* Large devices (small desktops <460px) */
-@media (max-width:460px) {#sse{top:-340px}#messages, #messages1, #messages2, #messages3 {top: -410px;}#status{top: -390px;}
-#msg_zb {top: -440px;}#ws-zb {top:-390px;}
+@media (max-width:460px) {#status{top: -390px;}
+#msg_zb,#msg_zb1 {top: -30px;}#status{top:-40px;}
 }
 /* Large devices (Large desktops 768px and up) */
 @media (min-width:768px) {img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{width: 450px;}
@@ -647,7 +647,7 @@ left: 170px;width: 40px;}
 #ping_rasp {bottom: 800px;}#voltage {top: 20px;right: -60px;width: 150px;}#bar_pression {top: -350px;left: 200px;width: 65px;}
 #linky {top: -180px;left: 210px;width:40px;}#th_ext_cuis {top: -415px;}.title_g{top:-50px;}.row_g{margin-top: -50px}
 .modal-title {line-height: 0.6;}.modal_param ,#graphic , #murcam, form2{line-height: 1;}.imrec{width:100px;height:75px;}
-.sparkling-modal-close{right:70px;}
+.sparkling-modal-close{right:70px;}#aout{left:240px}
 #pilule{top:570px;}.porte_veranda_sud {top: 530px;left: 360px;}
 }
 @media (max-width:384px) {#porte_gar{top:540px;left:320px}.porte_veranda_sud { top: 500px;left: 320px;}#gd_portail {top: 540px;left: 260px;}
