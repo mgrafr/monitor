@@ -254,8 +254,9 @@ Le script est est exécuter dans le répertoire  d'installation de php-mqtt/clie
 
 |image1967|
 
-|image1968|
+.. note::
 
+   Ne pas utiliser "z2m" pour le topic à publier car il est utilisé pour publier des erreurs de zigbee2mqtt; j'ai utilisé "z1m"
 
 9.5.2.2 démmarrage automatique systemd
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -439,8 +440,6 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
 .. |image1966| image:: ../img/image1966.webp
    :width: 700px
 .. |image1967| image:: ../img/image1967.webp
-   :width: 700px
-.. |image1968| image:: ../img/image1968.webp
    :width: 700px
 .. |image1969| image:: ../img/image1969.webp
    :width: 700px
