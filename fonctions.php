@@ -478,8 +478,8 @@ $parsed_json[$r]["ID"]=$id[$i];
 $parsed_json[$r]["attributes"]=$z2m;
 $r++;$i++;} // return $parsed_json;
  } 
-//----$r= somme devices de,ha,io,dz----------------------
-$n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;$nb_zb=0;
+//----$r= somme devices de,ha,iob,dz----------------------
+$n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;$nb_zb=0;$err_dz_idm=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
 //$description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
@@ -505,7 +505,7 @@ if (($choix_Actif=="1" || $choix_Actif=="2") && $lect_device["serveur"]=="DZ")  
 	  else if ($choix_Actif=="3" && $lect_device["serveur"]=="HA") {$choix_serveur="ha";}
 	  else if ($choix_Actif=="4" && $lect_device["serveur"]=="IOB") {$choix_serveur="iob";}
 	  else if ($choix_Actif=="6" && $lect_device["serveur"]=="ZB") {$choix_serveur="zb";}
-	  else if ($choix_Actif=="9") {$choix_serveur="dz";$lect_device['values']=$periph['values'];}
+	  else if ($choix_Actif=="9") {$choix_serveur="dz";$lect_device['values']=$periph['values'];$err_dz_idm=1;}
 	  else {$choix_serveur="2"; } 
 //if ($periph) echo json_encode($periph);	
 $bat="";
@@ -634,6 +634,7 @@ $data[0] = [
 'nb_dz' => $count_dz,
 'nb_zb' => $count_zb,
 'jour' => date('d'),
+'err_dz_idm' => $err_dz_idm,
 'maj_date' => '0'];
 $abat="0";
 if ($al_bat==0) $abat="batterie_forte";
@@ -818,6 +819,7 @@ $img_donnees = [
 	10 => "met_10_1.svg",
 	11 => "met07.9e2639ff.svg",
 	12 => "met_8_1.svg",
+	20 => "met_17_1.svg",
 	21 => "met_12_1.svg",
 	30 => "met_22_1.svg",
 	31 => "met_22.svg",
@@ -829,6 +831,8 @@ $img_donnees = [
 	45 => "met_16.svg",
 	47 => "met_15.svg",
 	48 => "met_16.svg",
+	60 => "met_27_5.svg",
+	61 => "met_27_1.svg",
 	70 => "met_23.svg",
 	71 => "met_23_1.svg",
 	100 => "met_12.svg",
