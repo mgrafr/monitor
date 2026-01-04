@@ -278,7 +278,7 @@ function pluie(idx){
 /*--------------------------------------------------------------------------*/	
 var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
 var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
-pp=[];maj_devices(plan);//nbact nombre d'actualisation
+pp=[];maj_devices(plan);
 worx=[];	
 function maj_devices(plan){
 $.ajax({
@@ -287,8 +287,9 @@ $.ajax({
     url: "ajax.php",
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
+		var err_dz_idm=pp[0].err_dz_idm; console.log('err_dz_idm:'+err_dz_idm);//0: pas erreur 1: erreur dz ou idm , idm >9000
    //console.log('custom='+custom);//custom défini dans worx.php
-   if (typeof pp[9000]['idx'] != 'undefined') {document.getElementById('erreur_dz').style.display="inline";}
+   if (err_dz_idm==1) {document.getElementById('erreur_dz').style.display="inline";}
     if (typeof custom != 'undefined') {
 		if (custom==1 & pp[0]['serveur_iob'] === true){custom_js(custom);}	
 	     }
