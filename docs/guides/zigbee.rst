@@ -318,62 +318,65 @@ fichier include/mqtt-js.php
 
 .. code-block::
     
-   <?php require_once('admin/config.php');?>
+   <?php require_once('admin/config.php');
+   $domaine=$_SESSION["domaine"];
+   if ($domaine==URLMONITOR) {$lien_mqtt=MQTT_URL;$w='wss://';}
+   if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP;$w='ws://';}
+   ?>
    <script>
-     const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
-    const connectUrl = 'ws://<?php echo MQTT_IP.":".MQTT_PORT;?>'
-
+       const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
+       const connectUrl = '<?php echo $w.$lien_mqtt.":".MQTT_PORT;?>'
     const options = {
       keepalive: 60,
       clientId: clientId,
       clean: true,
       connectTimeout: 30 * 1000,
-      
       username: '<?php echo MQTT_USER;?>',
       password: '<?php echo MQTT_PASS;?>',
       reconnectPeriod: 1000,
     }
-    const topic = 'zigbee2mqtt'
-    const payload = ''
+    const topic = 'z1m/#'
+    const payload = ""
     const qos = 0
-
+    var topic1="z1m"
+    var state=""
     console.log('connecting mqtt client')
     const client = mqtt.connect(connectUrl, options)
-
     client.on('error', (err) => {
       console.log('Connection error: ', err)
       client.end()
     })
-
     client.on('reconnect', () => {
       console.log('Reconnecting...')
     })
-
     client.on('connect', () => {
       console.log('Client connected:' + clientId)
-
     client.subscribe(topic, { qos }, (error) => {
-        if (error) {
+        if (error) {S
           console.log('Subscribe error:', error)
           return
         }
-        console.log(`Subscribe to topic ${topic}`)
-      })
-
+        console.log(`Subscribe to topic ${topic}`);
+             })
       // publish message
-      client.publish(topic, payload, { qos }, (error) => {
+      client.publish(topic1, payload, { qos }, (error) => {
         if (error) {
           console.error(error)
         }
       })
     })
-
-     client.on('message', (topic, payload) => {
+    client.on('message', (topic, payload) => {if (payload!=""){
       console.log('Received Message: ' + payload.toString() + '\nOn topic: ' + topic);
-      if (payload!="") {msg=JSON.parse(payload);var id_x=msg.id;var state=msg.state;}
-      maj_mqtt(id_x,state,0) ;// fonction ds footer.php
-    })
-   </script>;
+      var emsg=document.getElementById('msg_zb').innerText;
+      document.getElementById('msg_zb1').innerText = emsg;
+      document.getElementById('msg_zb').innerText=payload;
+     msg=JSON.parse(payload);var idm=msg.idm;var state=msg.state;var champ=msg.champ1;
+     var ind=4;if (champ=="Data") {ind=2;}
+     if (champ=="temp") {ind=3;}
+      maj_mqtt(idm,state,ind,0,champ) ;// fonction ds footer.php
+    }
+   })
+   </script>
 
 |image1961| 
 
@@ -429,9 +432,9 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
 .. |image1959| image:: ../img/image1959.webp
    :width: 200px
 .. |image1960| image:: ../img/image1960.webp
-   :width: 700px
+   :width: 550px
 .. |image1961| image:: ../img/image1961.webp
-   :width: 650px
+   :width: 550px
 .. |image1962| image:: ../img/image1962.webp
    :width: 650px
 .. |image1963| image:: ../img/image1963.webp
