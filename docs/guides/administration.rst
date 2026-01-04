@@ -824,11 +824,29 @@ Comme pour le reboot ci-dessus, le processus est le même mais plusieurs étapes
 
    |image873|
 
-14.10.2.1 exemple: mise à jour fichier de configuration du RPI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14.11 exemple: mise à jour fichier de configuration du RPI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 voir ce paragraphe :ref:`14.6.1.2 connect.py`
 
-14.11 A Propos
+14.12 Gestion des erreurs
+^^^^^^^^^^^^^^^^^^^^^^^^^
+14.12.1 Erreurs Domoticz et monitor
+===================================
+- **fonctions_1.php**
+
+   |image1972|
+
+- **fonctions.php**
+
+   |image1973|
+
+   |image1974|
+
+- **footer.php**
+
+   |image1975|
+
+14.13 A Propos
 ==============
 Affiche les numéros des versions de monitor, PHP et Jpgraph
 
@@ -1030,4 +1048,12 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
 .. |image1576| image:: ../img/image1576.webp
    :width: 500px
 .. |image1953| image:: ../img/image1953.webp
+   :width: 700px
+.. |image1972| image:: ../img/image1972.webp
+   :width: 700px
+.. |image1973| image:: ../img/image1973.webp
+   :width: 650px
+.. |image1974| image:: ../img/image1974.webp
+   :width: 480px
+.. |image1975| image:: ../img/image1975.webp
    :width: 700px
