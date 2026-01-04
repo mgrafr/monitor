@@ -304,10 +304,13 @@ https://github.com/mqttjs/MQTT.js
 
 .. code-block::
 
-   if (MQTT==true) {echo '<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-';include ('include/mqtt-js.php');}
+   if (MQTT==true) {echo '<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>';}
 
 |image1960| 
+
+- Ajout de MQTT.js à JS dans include/footer.php
+
+  |image1968| 
 
 9.5.4.1 Le javascript sur la page html
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -441,6 +444,8 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 700px
 .. |image1967| image:: ../img/image1967.webp
    :width: 700px
+.. |image1968| image:: ../img/image1968.webp
+   :width: 650px
 .. |image1969| image:: ../img/image1969.webp
    :width: 700px
 
