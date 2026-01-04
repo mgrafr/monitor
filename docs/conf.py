@@ -12,7 +12,7 @@ import sphinx_rtd_theme
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'monitor-domotique'
-copyright = '2025, Gravier'
+copyright = '2026, Gravier'
 author = 'Michel Gravier'
 release = '4.1.0'
 
