@@ -398,7 +398,9 @@ fichier include/mqtt-js.php
 
 - **recevoir et mettre à jour les données**
 
-|image1969| 
+|image1969|
+
+|image1976|
   
 Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    
@@ -451,5 +453,6 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 650px
 .. |image1969| image:: ../img/image1969.webp
    :width: 700px
-
+.. |image1976| image:: ../img/image1976.webp
+   :width: 650px
 
