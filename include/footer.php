@@ -314,7 +314,7 @@ $.ajax({
 				if (val.maj_js=="data" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.Data;}
 				if (val.maj_js=="temp"){maj_html(val.maj_js,val.ID1,val.temp);}
 				if (val.maj_js=="temp" && val.ID2!=""){maj_html(val.maj_js,val.ID2,val.temp);}
-				if (val.actif=="6"){publish_mqtt(val.ID,'state','',level=0);}	
+				if (val.actif=="6"  && (val.Data=="ON" || val.Data=="OFF")){publish_mqtt(val.ID,'state','','get');}	
 					//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
 											  // else {pos_m="off"; }}
 					if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
@@ -393,11 +393,11 @@ function switches(server,idm,idx,command,pass="0"){
 	break;
 	case "5": var app="0";
 	break;
-     case "6": type=command;
+     case "6": type=command;var level=0;
 	   if (pp[idm].Data == "OFF" || pp[idm].Data == "off" ) {command="ON";}
 	   else {command="OFF";}
 	   console.log(pp[idm].Data);
-	 publish_mqtt(idx,type,command,level);maj_mqtt(idm,command,2,level,"Data");
+	 publish_mqtt(idx,type,command,"set");maj_mqtt(idm,command,2,level,"Data");
 	 return;
 	break;
 	default:
@@ -443,10 +443,10 @@ function switches(server,idm,idx,command,pass="0"){
 <?php if (MQTT==true) {include ('include/mqtt-js.php');} ?>
  <script>
 // *****************************************************
- function publish_mqtt(idx,type,command,level=0){
+ function publish_mqtt(idx,type,command,setget){
 // Publish a Message
-	var msg='{ "'+ type+'":"'+ command+'"}';console.log('pub message:'+msg);
-	var topic='zigbee2mqtt/'+idx+'/set';
+	var msg='{ "'+ type+'":"'+ command+'"}';
+	var topic='zigbee2mqtt/'+idx+'/'+setget;console.log('pub message:'+topic+' : '+msg);
 	client.publish(topic, msg);return;
  }
 //------------------------------------------------------------
