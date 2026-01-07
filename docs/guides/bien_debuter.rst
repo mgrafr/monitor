@@ -1572,7 +1572,7 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - idx : celui de Domoticz
 
-- ID : entity_id de Home Assistant ou _id de Io.broker
+- ID : entity_id de Home Assistant ou _id de Io.broker ou de z2m
 
 - idm : idm de monitor peut-être le même que idx ; c’est utile pour l’affichage des infos concernant un dispositif ; de plus cela permet de retrouver facilement un dispositif dans l’image svg du plan en faisant une recherche ;dans l’image cet idm est indiqué par « rel=idm »
 	:darkblue:`Voir le paragraphe concernant les images svg`
