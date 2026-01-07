@@ -11,7 +11,8 @@ $zb_donnees = [
 	'state' => "Data",
     'state_l2' => "Data",
     'state_l1' => "Data",
-	'temperature' => "temp",
+	'temperature' => "temperature",
+    'soil_moisture' => "Data",
 	"contact" => "Data"
     ];   
     if ($nom_objet!="") {
