@@ -362,6 +362,7 @@ $L=$IP_iob.':'.$port_api_iob.'/v1/state/'.$device.'?value='.$value;
 break;
 	case "command" :
 $L=$IP_iob.':'.$port_api_iob.'/v1/command/setState?id='.$device.'&state='.$value;	
+//echo $L;return;
 break;
 default:
 }		
@@ -373,8 +374,10 @@ $data['valeur']=$iob['val'];
 $data['result']=$iob['result'];
 return $data;										
 }
+
 //-------POUR DZ- et HA -----------------------------------
 // pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
+//
 function devices_plan($plan){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$L_zb,$l_zb,$IP_dz,$IP_ha,$IP_iob,$IP_zb,$port_api_iob;
 $n=0;$al_bat=0;$p=0;$t1000=1000;$serveur_dz_on = false;	
 	if ($l_dz!=""){	$serveur_dz_on = true;
@@ -433,7 +436,9 @@ foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
 		'serveur' => "IOB"
 		];		
 		$values[$name] = $valeur -> {'val'};	
+			    
 		$n++;$jj++;$devi=$devic;}					 
+
 			$L2=$IP_iob.":".$port_api_iob."/v1/object/".$_id2;
 			$json1_string = file_get_curl($L2);
 			$iob_json1 = json_decode($json1_string,true);//return $iob_json1;	
@@ -453,6 +458,7 @@ foreach ($iob_json as $cle => $valeur){$d=$valeur -> {'val'};
 	$ii++; }$count_iob=count($iob);
 	//$plan=99;	
 		$n=0;if ($plan==99){ $_SESSION['iob'] = json_encode($iob);return $iob;}// pour test iob 
+	
 while (isset($iob[$n])==true){
 	$parsed_json[$q]=$iob[$n];
 	$n++;$q++;}
@@ -478,14 +484,13 @@ $parsed_json[$r]["ID"]=$id[$i];
 $parsed_json[$r]["attributes"]=$z2m;
 $r++;$i++;} // return $parsed_json;
  } 
-//----$r= somme devices de,ha,iob,dz----------------------
+//----$r= somme devices de,ha,io,dz----------------------
 $n=0;$s1="";$s2="";$nb_ha=0;$nb_iob=0;$nb_dz=0;$nb_zb=0;$err_dz_idm=0;
 while (isset($parsed_json[$n])==true) {
 $lect_device = $parsed_json[$n];
-//$description = isset($lect_device["Description"]) ? $lect_device["Description"] : '';
 $device = isset($lect_device["Device"]) ? $lect_device["Device"] : '';
 $N = isset($lect_device["N"]) ? $lect_device["N"] : '';
-$description = isset($lect_device["attributes"]) ? $lect_device["attributes"] : 'sans';
+//$description = isset($lect_device["attributes"]) ? $lect_device["attributes"] : 'sans';
 if ($lect_device["serveur"] == "DZ"){
 $lect_device["attributes"]["SubType"] = $lect_device["SubType"];
 $lect_device["attributes"]["SwitchType"] = $lect_device["SwitchType"] ;			
@@ -493,11 +498,13 @@ $lect_device["attributes"]["SwitchTypeVal"] = $lect_device["SwitchTypeVal"];
 $lect_device["attributes"]["Timers"] = $lect_device["Timers"];			
 $lect_device["attributes"]["Type"] = $lect_device["Type"];	 
 $lect_device["attributes"]["Color"] = $lect_device["Color"];	 }
+
 $periph['idm']=1000;
 	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";}
 	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";}
 	if ($lect_device["serveur"]=='ZB') {$s=$lect_device["ID"];$t1="4";$s1="6";}
 	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="2";$s1=$lect_device["Name"];}
+
 $periph=sql_plan($t1,$s,$s1);
 if ($periph==null) {$choix_serveur="pas_ID";}
 $choix_Actif=$periph['Actif'];
@@ -515,42 +522,45 @@ if ($periph['idm']) {$t=$periph['idm'];}
 if ($t=="") {$t=888;$choix_serveur="0";}}
 // debut analyse
 $lect_device["Name"] = $periph['nom_objet'];
+$str=explode(':',$periph['param']);$param=$str;
 	switch ($choix_serveur) {
 		case "iob" :	
-//$lect_device["Data"]="";			
 if ($lect_device["value_iob"]=="1" ) {$lect_device['values'] = $valu[$device];}
 if (array_key_exists("values",$lect_device)){
 	$array=$lect_device["values"];
 	if (isset($array["state"]) ) {$lect_device["Data"]=$array["state"];}	
 	if (isset($array["sendCommand"])) {$lect_device["attributes"]["sendCommand"]=$array["sendCommand"];}	
 	if (isset($array["pause"])) {$lect_device["attributes"]["pause"]=$array["pause"];}	
-	if (isset($array["air_temperature"])) {$lect_device["Data"]=$array["air_temperature"];}	
+	if (isset($array["air_temperature"])) {$lect_device["Data"]=$array["air_temperature"];$lect_device["temperature"]=$array["air_temperature"];}	
     if (isset($array["batteryState"]) && $lect_device["Data"]!=false ) {$lect_device["BatteryLevel"]=$array["batteryState"];}
-	if (isset($array["batteryTemperature"])) {$lect_device["Temp"]=$array["batteryTemperature"];}	
+	//if (isset($array["batteryTemperature"])) {$lect_device["Temp"]=$array["batteryTemperature"];}	
 	if (isset($array["color"]))  {$lect_device["attributes"]["Color"] = $array["color"];}
 	if (isset($array['brightness'])) {$lect_device["attributes"]["brightness"] = $array["brightness"];}
 	if (isset($array['colortemp'])) {$lect_device["attributes"]["colortemp"] = $array["colortemp"];}
 	/*if(array_key_exists('emergency', $array)) {$lect_device["Data"]=$array["emergency"];}//pour IOB		
-	/*
-	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}*/
+	if(array_key_exists('state', $array)) {$lect_device["Data"]=$array["state"];*/
+	//if ($lect_device["Data"]==true) {$lect_device["Data"]="On";}
+	//if ($lect_device["Data"]==false) {$lect_device["Data"]="Off";}
+	if(array_key_exists('link_quality', $array)) {$lect_device["attributes"]["link_quality"] = $array["link_quality"];}
 	if (str_contains($periph['idm'], "_")) {$lect_device['values'] = "";}
 }
 else {$lect_device["values"]="";}
         case "zb" :
-if(array_key_exists('battery_state', $lect_device)==true) {$lect_device["BatteryLevel"]=$lect_device["battery_state"];}
-if(array_key_exists('battery_state', $lect_device)==true) {$lect_device["BatteryLevel"]=$lect_device["battery_state"];}
-if(array_key_exists('contact', $lect_device)==true) {$lect_device["Data"]=$lect_device["contact"];}
-if(array_key_exists('state', $lect_device)==true) {$lect_device["Data"]=$lect_device["state"];}
-if(array_key_exists('temperature', $lect_device)==true) {$lect_device["Data"]=$lect_device["temperature"];}
+if (array_key_exists("attributes",$lect_device)){
+	$array=$lect_device["attributes"];$count_array=count($array);$i = 0;$c1=$param[1];
+	while ($i < $count_array ){
+	if (isset($array[$c1])) {$lect_device[zb_champ($C1)]=$array[$c1];}
+	$i++;}	
+}
 		case "dz" :
 		case "ha" :	
-if(array_key_exists('Temp', $lect_device)==false) {$lect_device["Temp"]="non concerné";}
-if(array_key_exists('temperature', $lect_device)==true) {$lect_device["Temp"]=$lect_device["temperature"];}
+
+if(array_key_exists('Temp', $lect_device)==true) {$lect_device["temperature"]=$lect_device["Temp"];}
+if(array_key_exists('temperature', $lect_device)==false) {$lect_device["temperature"]="non concerné";}
 if(array_key_exists('occupancy', $lect_device)==true) {$lect_device["Data"]=$lect_device["occupancy"];}
-//if ($lect_device["Temp"]!=null && $lect_device["data"]==null) {$lect_device["Data"]=$lect_device["Temp"];}
-if(array_key_exists('humidity', $lect_device)==true) {$lect_device["Humidity"]=$lect_device["humidity"];}
+if(array_key_exists('Humidity', $lect_device)==true) {$lect_device["humidity"]=$lect_device["Humidity"];}
 if(array_key_exists('description', $lect_device)) {$description=$lect_device["description"];}// pour IOB			
-if(array_key_exists('Humidity', $lect_device)==false) {$lect_device["Humidity"]="non concerné";}
+if(array_key_exists('humidity', $lect_device)==false) {$lect_device["humidity"]="non concerné";}
 if(array_key_exists('battery', $lect_device)==true) {$lect_device["BatteryLevel"]=$lect_device["battery"];}
 if (!$lect_device["BatteryLevel"]){ $lect_device["BatteryLevel"]=255;}			
 	if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
@@ -562,14 +572,13 @@ if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
 if (!$lect_device['values']){$lect_device['values']="";}
 //if (!$lect_device['attributes']){$lect_device['attributes']="";}
-if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
-$str=explode(':',$periph['param']);	$param=$str;	
+if (!$lect_device['Type']){$lect_device['Type']="inconnu";}		
 	$data[$t] = ['serveur' => $lect_device["serveur"],			 
 	'idx' => $periph["idx"],
 	'deviceType' => $lect_device["Type"],	
 	'emplacement' => $description,					 
-	'temp' => $lect_device["Temp"],
-	'hum'   => $lect_device["Humidity"],
+	'temperature' => $lect_device["temperature"],
+	'humidity'   => $lect_device["humidity"],
 	'bat' => $lect_device["BatteryLevel"],
 	'ID' => $lect_device["ID"],
 	'serveur' => $lect_device["serveur"],			 
@@ -596,11 +605,15 @@ $str=explode(':',$periph['param']);	$param=$str;
 	'values' => $lect_device['values'],			 
 	'alarm_bat' => $bat
 	];
-/*if (str_contains($periph['idm'], "_")==false  && $lect_device["serveur"]=="IOB") {
-	$data[$t] = [
-		//'Name' => $lect_device["Name"],
-		//'Data' => $lect_device["Data"],
-		'value' => $value];}*/			
+if ($periph['zbplus']>1){$idm=$t.'_1';$per=sql_plan('5',$idm);$data[$idm]=$data[$t];
+	$str=explode(':',$per['param']);$param=$str;$valeur=$data[$idm]["attributs"][$str[1]];
+	$data[$idm][zb_champ($str[1])]=$valeur;
+	$data[$idm]['idm']=$per['idm'];
+	$data[$idm]['param']=$champ;
+	$data[$idm]['maj_js']=$per['maj_js'];
+	$data[$idm]['ID1']=$per['id1_html'];
+	$data[$idm]['ID2']=$per['id2_html'];
+	;}		
 break;
 case "1":
 case "0" :$data[$t] = [
@@ -633,8 +646,8 @@ $data[0] = [
 'nb_ha' => $count_ha,
 'nb_dz' => $count_dz,
 'nb_zb' => $count_zb,
-'jour' => date('d'),
 'err_dz_idm' => $err_dz_idm,
+'jour' => date('d'),
 'maj_date' => '0'];
 $abat="0";
 if ($al_bat==0) $abat="batterie_forte";
@@ -643,7 +656,8 @@ if ($al_bat==2) $abat="batterie_faible";
 $val_albat=val_variable(PILES[0]);
 if ($abat != $val_albat) maj_variable(PILES[0],PILES[1],$abat,2);
 return $data; 
-}
+						 
+ }
 function dimmable($idx,$valeur,$lum,$level){
 $data_rgb = [
 	'command' => "13",
@@ -674,8 +688,8 @@ switch ($serveur) {	case 2: // domoticz
 			$payload='{"color":{ "x" :'.$x.', "y":'.$y.'},"brightness":'.$lum.'}';
 		break;
 		}
-		// pour une lumière blanche et la température de couleur en mired
 		if ($lum<256 && $lum>=250) {$lum=254;$payload='{"color_temp" : '.$mired.'}';}
+			
 	$ret = [
 		'ID' => $ID,
 		'serveur' => $serveur,
@@ -713,6 +727,7 @@ if ($auth<3){$json2="json.htm?type=command&param=";
 else {$result['status']="acces interdit";}
 return $result ;
   }
+
 /*POUR METEO CONCEPT*/
 //-----------------------------------
 function meteo_concept($choix){
@@ -864,7 +879,7 @@ return json_encode($info);
 	case 2:// relevé temps réel station la pus proche (40Km)
 $url = 'https://api.meteo-concept.com/api/observations/around?param=temperature&radius=40&insee='.INSEE;
 //$url2 = 'https://api.meteo-concept.com/api/forecast/nextHours?token='.TOKEN_MC.'&insee='.INSEE;		
-$prevam = file_get_curl_token($url,TOKEN_MC);
+$prevam = file_get_curl_token($url,TOKEN_MC);//echo $prevam;return;
 $forecastam = json_decode($prevam);$info=array();
 		//$info['time']=$forecastam[0]->observation->time;
 		$info['temp']=$forecastam[0]->observation->temperature->value;
@@ -881,7 +896,9 @@ $resultat='<p>'.$info.'Le temps prévu pour cet après-midi  : '.$donnees[$info]
 break;
     case 1:		
 $url = 'https://api.meteo-concept.com/api/forecast/daily?token='.TOKEN_MC.'&insee='.INSEE;
+//$result=file_http_curl($url,1,'',TOKEN_MC);	
 $result=file_get_curl_token($url,TOKEN_MC);
+//$result = file_get_contents($url);
 $decoded = json_decode($result);
 	$city = $decoded->city;
 	$forecasts = $decoded->forecast;
@@ -916,6 +933,8 @@ $resultat=$resultat."</table>";
 break;
 }
 return $resultat;
+
+
 }
 function convertdate ($date)
 {
@@ -927,6 +946,7 @@ $timestamp = mktime (0, 0, 0, $mois, $jour, $annee);
 // affichage du jour de la semaine
 return $joursem[date("w",$timestamp)];
 }
+
 // --------------MOT de PASSE-----------------------------
 function mdp($mdp,$page_pass){// 1=commandes , 2=alarmes
 //if ($_SESSION["pec"]=="admin"){echo "azerty";$page_pass=3;}
@@ -947,6 +967,7 @@ $info=[
 		'type_pwd'=>$page_pass
 	];
 return $info;}
+
 //METEO FRANCE PLUIE previsions 1 heure
 function app_met($choix){
 $test ="pas de pluie"; $info=array();	
@@ -990,7 +1011,8 @@ return $info;
 }
 //fonction affichage images caméras
 function upload_img($idx){
-// SERVEUR SQL connexion
+	//$domaine=$_SESSION["domaine"];
+	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
  	$sql="SELECT * FROM `cameras` WHERE `idx` = ".$idx ;
 	$result = $conn->query($sql);
@@ -1004,6 +1026,7 @@ $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 if ($octet<3) {
 shell_exec("wget '".$url."' -O /www/monitor/images/".$idx.".jpg");}
 		$lien_cam=$fichier;
+	
 	
 $datacam = array (
 'idx' => $row['idx'],
@@ -1043,6 +1066,8 @@ $cle=json_encode($zm_cle);
 file_put_contents('admin/token.json',$cle);
 return $token;
 }
+
+
 //Infos cameras
 function cam_config($marque,$type,$ip,$cam,$idzm){
 # ====================================================
@@ -1058,6 +1083,7 @@ $pass=DHPASSVTO;}
 //					
 	$action='GetVideoInOptionsConfig';
 # ====== Spécifiez les points de terminaison ======
+
 # configManager
 $configGet="configManager.cgi?action=getConfig&name=";
 $configSet="configManager.cgi?action=setConfig&name=";
@@ -1089,7 +1115,10 @@ $e['GetLocalsConfig']         =$configGet."Locales";
 $e['GetLanguageConfig']       =$configGet."Language";
 $e['GetAccessFilterConfig']   =$configGet."AccessFilter";
 $e['GetAutoMaintainConfig']   =$configGet."AutoMaintain";
+
+
 # ====  Main =====
+
    if(isset($e[$action])){
      $url="http://".$ip."/cgi-bin/".$e[$action];//echo $url;
    }else{
@@ -1097,12 +1126,17 @@ $e['GetAutoMaintainConfig']   =$configGet."AutoMaintain";
          "<pre>". print_r(array_keys($e), true). "</pre>";    
 die($message);
    }
+
 $options=build_options($url,$user,$pass);
 # exécuter l'appel curl
 $response=curl_call($options);
 $response=str_replace("table.VideoInOptions[0].","",$response);
+
+
 # quitter l'appel
 if ($marque==1) echo "<pre>$response</pre>";
+   
+
 }
 // cam autres que DAHUA infos avec zoneminder
 else {
@@ -1138,6 +1172,7 @@ function build_options($url,$user,$pass){
 function curl_call($options){
   $ch = curl_init();
   curl_setopt_array( $ch, $options);
+
   try {
     $raw_response  = curl_exec( $ch );
     // validate CURL status
@@ -1170,6 +1205,7 @@ $retour=curl_exec($curl);
 curl_setopt($curl,CURLOPT_POST,0);
 return $retour;
 }
+
 function admin($choix,$idrep){// idrep =ID affichage sauf pour 4 , 6 , 11 ,16 = contenu textarea
 global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$IP_dz,$IP_ha,$IP_iob,$USER_dz,$USER_ha,$USER_iob,$PWD_dz,$PWD_ha,$PWD_iob;	
 $height="490";$pawd=0;$test_iob=0;
@@ -1356,6 +1392,7 @@ else {
  //echo '<script>document.getElementById(d_btn_a).style.display = "block";</script>
 $retour="Entrer votre mot de passe";echo $retour;}//include ('include/test_pass.php');return;}
 return ;
+
 }
 //----------------------------graph-------------------
 function graph($device,$periode){$champ="valeur";
@@ -1381,6 +1418,7 @@ function TimeCallback($aVal) {
 }
 // Mon tableau d'ordonnée contient mes valeurs en euros
 $datay=$yvaleur;
+ 
 // Mon tableau d'abscisse contient les timestamps de mes valeurs en euros
 $datax=$xdate;
  // Création du graphique
@@ -1541,6 +1579,7 @@ $l_dev= explode(";",$l_device);$l_device=$l_dev[4]/1000;
 return $l_device;
 break;
 default:
+
 }				
 }
 //----------------------------------------
@@ -1718,6 +1757,7 @@ function power($c){
 if ($c> 0.04045){$c = pow(($c + 0.055) / (1.0 + 0.055), 2.4);}
 else {$c = ($c/12.92);}
 return $c;}
+
 function hextohsl($hex,$lum){
 require ('ColorConverter.php');
 $converter = new ColorConverter();
