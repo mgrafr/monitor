@@ -1546,6 +1546,10 @@ cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les
 =====================
 Comme pour les variables, la table fournie une correspondance entre les dispositifs dans Domoticz, HA ou Io.Broker et Monitor et une info sur le matériel (Zgbee, Zwave, et n° de nœud.) (Pour les dispositifs Domoticz n’enregistre pas le type de matériel)
 
+.. note::
+
+   En règ   En règle générale : un numéro(idm) par fonction sauf pour temerature, humidité,  % batterie rassemblés  dans le même dispositif
+
 **Table « dispositifs »**
  
 |image91| 
