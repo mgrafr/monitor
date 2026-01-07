@@ -993,8 +993,9 @@ Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce p
       - Domoticz
       - Home Assistant
       - Io Broker 
+	  - z2m
 
-Home Assistant et Domoticz sont quelque peu limités dans leurs options de personnalisation, le ioBroker VIS et vis2 peuvent être considérés comme très complexes d'où la création de monitor.
+Home Assistant, Domoticz et z2m sont quelque peu limités dans leurs options de personnalisation, le ioBroker VIS et vis2 peuvent être considérés comme très complexes d'où la création de monitor.
 
 La combinaison Monitor + Iobroker offre un affichage très agréable.
 
@@ -1004,7 +1005,7 @@ Il suffit de cliquer sur les lampes pour les allumer ou les éteindre.
 
 J'ai commencé par utiliser Domoticz et comme je ne suis pas fan des fichiers YAML, je préfère utilisé io.broker avec lequel il est facile d'utiliser également Blocky ou de convertir facilement les scripts Lua de Domoticz en Javascript.
 
-Par rapport à ioBroker, Home Assistant utilise moins de ressources, ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d'utiliser les 3 systèmes simultanément.
+Par rapport à ioBroker, Home Assistant utilise moins de ressources, Z2m en utilise encore moins ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d'utiliser les 4 systèmes simultanément.
 
 .. note::
 
@@ -1013,9 +1014,9 @@ Par rapport à ioBroker, Home Assistant utilise moins de ressources, ce qui est 
    .. code-block::
 
       // Domoticz ou HA ou iobroker
-      define('DOMOTIC', 'DZ');//DZ ou HA ou IOB ou "" (non utlisé)
-      define('DOMOTIC1', 'HA');//DZ ou HA ou IOB ou ""
-      define('DOMOTIC2', '');//DZ ou HA ou IOB ou ""
+      define('DOMOTIC', 'DZ');//DZ ou HA ou IOB ou ZB ou "" (non utlisé)
+      define('DOMOTIC1', 'HA');//DZ ou HA ou IOB ou ZB ou ""
+      define('DOMOTIC2', '');//DZ ou HA ou IOB ou ZB ou ""
 
    le Javascript reçoit ces informations:
 
@@ -1113,7 +1114,7 @@ La classe "text-centre" :
       
    lien Github du fichier avec les fonctions PHP : :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/main/fonctions.php` 
 
-   Appel, depuis Monitor, la fonction:c()  dans footer.php
+   exemple d'appel, depuis Monitor de la fonction PHP(fonctions.php) dans footer.php; cet exemple concerne la météo.
 
    .. code-block::
 
