@@ -7,8 +7,9 @@ $n=0;$al_bat=0;$p=0;$l_mo="";//$l_mo , en attente de update
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 if ($t1=='4')  {
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s."' AND Actif = '".$s1."' AND maj_js <> 'variable';";
-	$result = $conn->query($sql);$n=0;//$nb_rows=$result->num_rows;
-         $ligne = $result->fetch_assoc();
+	$result = $conn->query($sql);$n=0;$nb_rows=$result->num_rows;
+	    $ligne = $result->fetch_assoc();
+		$ligne['zbplus']=$nb_rows;
         return $ligne;}
  else if ($t1=='3')  {
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s1."' AND nom_objet = '".$s."' AND maj_js <> 'variable';";
@@ -28,7 +29,7 @@ else if ($t1=='1')  {$error1=="";
 								 'Actif' => '9',
 								 'values' => 'non enregitré'
 								];$idm_erreur++;}
-		else {$row = $result->fetch_assoc();if ($row['idm']=="") $row['idm']=NULL;
+		else {$row = $result->fetch_assoc();if ($row['idm']=="") {$row['idm']=NULL;}
 			if ($row['idm']===NULL) {$error1='enregitré sans idm';}
 			if ($row['car_max_id1']<1 || $row['car_max_id1']=='') {$error1='car_max_id1 qbsent';}
 			if ($error1!="") {$row =  ['idx' => $s,
@@ -38,6 +39,10 @@ else if ($t1=='1')  {$error1=="";
 								];$idm_erreur++;}
 		}
 	return $row;}
+else if ($t1=='5')  {
+	$sql="SELECT * FROM ".DISPOSITIFS." WHERE idm= '".$s."'";
+	$result = $conn->query($sql);$row = $result->fetch_assoc();return $row;
+	}
 else if ($t1=='0') {
 	$sql1="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `Actif` = ";
 	if ($l_dz != "") {$u=2;
@@ -85,5 +90,20 @@ if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("'.$query.$row["id1_htm
 		$s=$s.$sl;
 		echo $s."\r\n" ;}
 return;	
+}
+function zb_champ($champ){
+$zb_d=array();
+$zb_d = [
+	'state' => "Data",
+    'state_l2' => "Data",
+    'state_l1' => "Data",
+	'temperature' => "temperature",
+	'humidity' => "humidity",
+    'soil_moisture' => "Data",
+	'battery_state' => "BatteryLevel",
+	'contact' => "Data",
+	'occupancy' => "occupancy"
+    ];  
+return $zb_d[$champ];
 }
 ?>

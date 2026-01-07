@@ -37,8 +37,8 @@ function popupCookie(page) {
 }
 function isInArray(array, search){return array.indexOf(search) >= 0;}	
 function maj_html(majjs,id5,val5){
-// if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temp;;}
-// maj temp, hum; data (autres que on/off)----- id5=idhtml,val5= val(device) 
+// if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temperature;;}
+// maj temperature, humidity; data (autres que on/off)----- id5=idhtml,val5= val(device) 
 switch (majjs) {
 	case 'temp':
 document.getElementById(id5).innerHTML=val5;
@@ -312,8 +312,8 @@ $.ajax({
 			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {if (val.Data) {pos_m=(val.Data).toString().toLowerCase();}
 				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
 				if (val.maj_js=="data" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.Data;}
-				if (val.maj_js=="temp"){maj_html(val.maj_js,val.ID1,val.temp);}
-				if (val.maj_js=="temp" && val.ID2!=""){maj_html(val.maj_js,val.ID2,val.temp);}
+				if (val.maj_js=="temp"){maj_html(val.maj_js,val.ID1,val.temperature);}
+				if (val.maj_js=="temp" && val.ID2!=""){maj_html(val.maj_js,val.ID2,val.temperature);}
 				if (val.actif=="6"  && (val.Data=="ON" || val.Data=="OFF")){publish_mqtt(val.ID,'state','','get');}	
 					//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
 											  // else {pos_m="off"; }}
@@ -705,9 +705,9 @@ var nom;
 	"idx :" +pp[nom].idx+"<br>"+
 	"ID :" +(pp[nom].ID).substring(0, 32)+"<br>"+	
 	"Nom :" +pp[nom].Name+"<br>"+
-	"t° :"+pp[nom].temp+"<br>"+
+	"t° :"+pp[nom].temperature+"<br>"+
 	"batterie :" +pp[nom].bat+"<br>"+
-	"humidité :" +pp[nom].hum+"<br>"+
+	"humidité :" +pp[nom].humidity+"<br>"+
 	"update :" +pp[nom].update+"<br>"+
 	"serveur :" +pp[nom].serveur+"<br>"+	
 	"Data :" +pp[nom].Data+"<br>"+	
