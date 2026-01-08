@@ -2227,7 +2227,7 @@ function maj_devices(plan)
 
 |image1217|
 
-function maj_mqtt(id_x,state,ind,level=0)
+function maj_mqtt(id_x,state,ind,level,champ='') ; retour json pour une correspondance idm : idx ou id
 
 |image1218|
 
