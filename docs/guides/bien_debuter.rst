@@ -1582,9 +1582,11 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 .. important::
 
    - Actif: le chiffre 2 est à privilégier pour Domoticz, le chiffre 1 sera supprimé dans le futur. Le chiffre 6 concerne zigbee2mqtt (utilisé seul sans Dz, Ha ou Iob) , projet en cours de développement.
-   - idm: iob+ concerne un dispositif io.Broker avec beaucoup d'ID, c'est le cas d'un robot tondeuse ou l'ID de l'appareil regroupe un nombre important d'IDs secondaires.
+   - idm: iob+ concerne un dispositif io.Broker avec beaucoup d'ID, c'est le cas d'un robot tondeuse ou l'ID de l'appareil regroupe un nombre important d'IDs secondaires;c'est également le cas pour z2m: zb+.
 
      |image1417|
+
+     |image1977|
 
      |image1952|
 
@@ -2652,3 +2654,5 @@ function mc(variable,id)
    :width: 350px
 .. |image1952| image:: ../img/image1952.webp
    :width: 500px
+.. |image1977| image:: ../img/image1977.webp
+   :width: 600px
