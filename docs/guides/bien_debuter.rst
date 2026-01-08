@@ -1594,7 +1594,9 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - param : pour le type d'appareil (zwave ou Zigbee) et le json pour les souscription et publication mqtt(pour z2m pour l'instant).
 
-	type matériel:payload de souscription:pyload de publication *ex: zigbee:state:hue,saturation* 
+	type matériel:payload de souscription:pyload de publication *ex: zigbee:state:hue,saturation*    
+
+    |image1978|
  
 - ls : lastseen, vu la dernière fois 1 si le dispositif est concerné plus d'infos : :ref:`1.8.2.1 Ecriture d’un script Dzvent(Dz) ou yaml(HA)`
 
@@ -2655,4 +2657,6 @@ function mc(variable,id)
 .. |image1952| image:: ../img/image1952.webp
    :width: 500px
 .. |image1977| image:: ../img/image1977.webp
+   :width: 600px
+.. |image1978| image:: ../img/image1978.webp
    :width: 600px
