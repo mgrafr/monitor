@@ -258,8 +258,8 @@ Le script est est exécuter dans le répertoire  d'installation de php-mqtt/clie
 
    Ne pas utiliser "z2m" pour le topic à publier car il est utilisé pour publier des erreurs de zigbee2mqtt; j'ai utilisé "z1m"
 
-9.5.2.2 démmarrage automatique systemd
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9.5.2.2 démarrage automatique systemd
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 le fichier php-mqtt.service
 
 .. code-block::
@@ -292,9 +292,13 @@ Pour activer et démarrer le service :
 
     |image1958| 
 
+    |image1979| 
+
    include/fionctions_1.php
 
     |image1964| 
+
+    |image1980| 
 
 9.5.4 Installation de mqtt.JS coté client
 """""""""""""""""""""""""""""""""""""""""
@@ -455,4 +459,8 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 700px
 .. |image1976| image:: ../img/image1976.webp
    :width: 650px
+.. |image1979| image:: ../img/image1979.webp
+   :width: 700px
+.. |image1980| image:: ../img/image1980.webp
+   :width: 300px
 
