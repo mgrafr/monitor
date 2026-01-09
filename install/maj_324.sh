@@ -1,5 +1,6 @@
 #!/usr/bin/bash
-
+rm update.sh
+rm maj*
 cd /www/monitor
 mkdir -p tmp
 cd tmp
