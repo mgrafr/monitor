@@ -1,8 +1,7 @@
 #!/usr/bin/bash
 
 cd /www/monitor
-rm install/update.sh
-rm install/maj*
+rm maj*
 version=$(head -n 1 .version)
 echo $version
 vermon=$(whiptail --title "version de monitor" --radiolist \
