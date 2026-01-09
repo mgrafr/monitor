@@ -4,8 +4,9 @@ rm update.sh
 rm maj*
 mkdir -p tmp
 cd tmp
-wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.0.tar.gz
-tar -xzf monitor-v4.0.1.tar.gz
+wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.1.tar.gz
+tar -xzf monitor-v4.1.1.tar.gz
+cd monitor-monitor-v4.1.1
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
 cp -u ColorConverter.php /www/monitor/ColorConverter.php
@@ -27,7 +28,7 @@ cp -u -R install/* /www/monitor/install/
 cp -u -R bd_sql/* /www/monitor/bd_sql/
 cp -u -R share/* /www/monitor/share/
 cp -u .version /www/monitor/.version
-cd ..
+cd /www/monitor
 rm -R tmp
 result()(mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'materiel';") 
 res=${result} 
