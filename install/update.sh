@@ -21,7 +21,7 @@ echo $answer
 apt update
 apt install dos2unix
 apt install unzip
-if [ "$vermon" = "Version 410 ] && [ "$answer" -gt 324 ] && [ "$answer" -ne 410 ]; then
+if [ "$vermon" = "Version 410" ] && [ "$answer" -gt 324 ] && [ "$answer" -ne 410 ]; then
     echo "mise a jour vers 4.1.0"
     wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_410.sh
     dos2unix maj_410.sh
