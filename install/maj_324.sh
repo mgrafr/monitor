@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 cd /www/monitor
-mkdir tmp
+mkdir -p tmp
 cd tmp
 wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.0.tar.gz
 tar -xzf monitor-v4.1.0.tar.gz
