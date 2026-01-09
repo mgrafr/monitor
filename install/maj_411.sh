@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 cd /www/monitor
-rm install/update.sh
-rm install/maj*
+rm update.sh
+rm maj*
 mkdir -p tmp
 cd tmp
 wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.0.tar.gz
