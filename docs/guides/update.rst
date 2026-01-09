@@ -22,7 +22,11 @@ Server version: 11.8.2
 ===============
 version en développement
 ~~~~~~~~~~~~~~~~~~~~~~~~
-v 4.1.1
+v 4.1.2
+
+Version 4.1.1 (janvier 2026)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- correction bug sur l'ajout du serveur z2m
 
 Version 4.1.0 (décembre 2025)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
