@@ -4,8 +4,9 @@ rm maj*
 cd /www/monitor
 mkdir -p tmp
 cd tmp
-wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.0.tar.gz
-tar -xzf monitor-v4.1.0.tar.gz
+wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.1.tar.gz
+tar -xzf monitor-v4.1.1.tar.gz
+cd monitor-monitor-v4.1.1
 sed -i "s/.DOMAINE\" ));/DOMAINE\",/g" admin/config.php
 sed -i "s/iobweb.DOMAINE",\iobweb.DOMAINE", 2 => \"false\"));/g" admin/config.php
 result()(mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'materiel';") 
@@ -34,7 +35,7 @@ cp -u -R install/* /www/monitor/install/
 cp -u -R bd_sql/* /www/monitor/bd_sql/
 cp -u -R share/* /www/monitor/share/
 cp -u .version /www/monitor/.version
-cd ..
+cd /www/monitor
 rm -R tmp
 clientmqtt=$(whiptail --title "installer le client php-mqtt ?" --radiolist \
 "voulez vous installer php-mqtt/client ?\n necessaire pour utiliser zigbee2mqtt directement\n
