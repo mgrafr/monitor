@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 cd /www/monitor
+rm install/update.sh
+rm install/maj*
 mkdir tmp
 cd tmp
 wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.0.tar.gz
@@ -11,7 +13,7 @@ cp -u index_loc.php /www/monitor/index_loc.php
 echo "Entrer le nom du fichier php de l'image du plan si elle n'est pas installée dans custom/php:"
 echo "ou cliquer sur enter"
 read nom
-echo "Hello, $nom!"
+echo "FICHIER, $nom!"
 if  "$nom" != ""  then
 mv /www/monitor/include/accueil.php /www/monitor/custom/php/accueil.php
 mv /www/monitor/include/$nom /www/monitor/custom/php/$nom
