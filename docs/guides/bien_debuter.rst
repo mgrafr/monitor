@@ -521,11 +521,13 @@ modifications en cours....
 
    - avec le shell de PVE:
 
+   .. code-block::
+
       wget https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/update.sh
       chmod +×update.sh
       ./update.sh
-
-      |image3|
+    
+   |image3|
 
    voir le § :ref:`0.1.1 installation automatique d’un conteneur LXC +LEMP+ monitor`
 
