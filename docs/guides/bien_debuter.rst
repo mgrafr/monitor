@@ -521,9 +521,7 @@ modifications en cours....
 
    - avec le shell de PVE:
 
-   .. code-block::
-
-      wget https://raw.githubusercontent.com/mgrafr/monitor/refs
+      wget https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/update.sh
       chmod +×update.sh
       ./update.sh
 
@@ -964,8 +962,8 @@ Obtenir la dernière version de update.sh , avec la console :
  
 .. code-block::
 
-   cd /www/monitor/install
-   wget -N https://raw.githubusercontent.com/mgrafr/monitor/main/install/update.sh
+   cd /www/monitor
+   wget https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/update.sh
 
 Rendre éxécutable le fichier  et le lancer
 
