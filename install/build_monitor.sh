@@ -248,7 +248,9 @@ then
 echo -e "${GN} installation de composer & php-mqtt/client${CL}"
 # mkdir $chemin/monitor/ws_z2m
 cd $chemin/monitor
-sudo apt install composer
+wget -O composer-setup.php https://getcomposer.org/installer
+php composer-setup.php --install-dir=/www/monitor --filename=composer
+#sudo apt install composer
 composer require php-mqtt/client
 fi
 echo -e "${CM}${GN} installation terminée de composer et PHP-MQTT${CL}"
@@ -296,7 +298,7 @@ cp ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 fi
 echo -e "${CM}${GN} creer lien symbolique de phpMyAdmin vers /www${CL}"
 ln -s $chemin/monitor  /www/monitor
-eecho -e "${CM}${GN} Redemarrage NGINX une derniere fois...${CL}"
+echo -e "${CM}${GN} Redemarrage NGINX une derniere fois...${CL}"
 systemctl restart nginx
 chown -R $maria_name:$maria_name $chemin/monitor
 # chown -R www-data:www-data $chemin/monitor/admin/config.php
