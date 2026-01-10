@@ -24,10 +24,11 @@ whiptail --title "intallation de LEMP PMA et Monitor " --msgbox "Ce script insta
 - le mot de passe ROOT pour Maria DB\n\
 - si vous voulez créer un certificat auto-signé" 15 60
 # version à maj ----------------
-# dosmon=monitor-v3.2.4
+dosmon=monitor-v4.1.1
+echo -e "${GN} version de monitor:${YW} ${dosmon}${CL}"
 vermon=$(whiptail --title "version de monitor" --radiolist \
 "Quelle version voulez vous installer ?\n la version en développement\n ou la version LATEST " 15 60 4 \
-"Version 3.2.5" "par defaut " ON \
+"Version 4.1.1" "par defaut " ON \
 "Version en dev" "voir la doc" OFF 3>&1 1>&2 2>&3)
 # ------------------------------
 if [ $exitstatus = 0 ]; then
@@ -223,7 +224,7 @@ echo -e "${BL}  installation de Monitor:${CL}"
 sleep 3
 xxx=$(hostname -I)
 ip4=$(echo $xxx | cut -d ' ' -f 1)
-if [ "$vermon" = "Version 3.2.4" ]
+if [ "$vermon" = "Version 4.1.1" ]
 then
 wget -O $chemin/monitor.zip https://github.com/mgrafr/monitor/archive/refs/tags/$dosmon.zip
 unzip $chemin/monitor.zip -d $chemin
@@ -267,10 +268,10 @@ echo -e "${CM}${GN} LEMP : Creating a php-info page${CL}"
 echo '<?php phpinfo(); ?>' > /www/info.php
 echo "LEMP est installé${CL}"
 echo -e "${GN} installation de mysql-connector-python${CL}" 
-wget https://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-9.1.0-src.tar.gz
-gzip mysql-connector-python-9.1.0-src.tar.gz -d
-tar -x -f mysql-connector-python-9.1.0-src.tar
-cd mysql-connector-python-9.1.0-src
+wget https://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-9.5.0-src.tar.gz
+gzip mysql-connector-python-9.5.0-src.tar.gz -d
+tar -x -f mysql-connector-python-9.5.0-src.tar
+cd mysql-connector-python-9.5.0-src
 cd mysql-connector-python
 python3 setup.py build
 python3 setup.py install
