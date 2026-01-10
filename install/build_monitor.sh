@@ -277,6 +277,8 @@ cd mysql-connector-python-9.5.0-src
 cd mysql-connector-python
 python3 setup.py build
 python3 setup.py install
+cd $chemin/monitor
+rm -R mysql-connector-python-9.5.0-src
 echo -e "${CM}${GN}  mysql-connector-python installé${CL}" 
 choix_ssl=$(whiptail --title "certificat auto-signé" --radiolist \
 "voulez vous installer un certificat auto signé ?\n pour utiliser monitor en local en https" 15 60 4 \
