@@ -54,7 +54,7 @@ Télécharger depuis le Shell de PVE le fichier d’installation :darkblue:`moni
 
 .. code-block::
 
-   https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/build_monitor.sh
+   https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/install/monitor.sh
 
 Donner des autorisations au fichier « monitor.sh »
 
