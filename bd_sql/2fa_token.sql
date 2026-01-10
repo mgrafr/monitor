@@ -41,7 +41,7 @@ CREATE TABLE `2fa_token` (
 --
 
 INSERT INTO `2fa_token` (`num`, `user_id`, `token`, `sms`, `user_free`, `pass_free`) VALUES
-(1, '', '', 2, '', '');
+(1, 'user', '', 2, '', '');
 
 --
 -- Index pour les tables déchargées
