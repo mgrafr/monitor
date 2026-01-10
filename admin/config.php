@@ -77,7 +77,7 @@ define('MOTDEPASSE','PASS_BD');
 define('UTILISATEUR','USER_BD');
 define('DBASE','monitor');
 define('API','false'); // true ou false
-define('PHPMYADMIN',IPMONITOR.'/phpMyAdmin'); // adresse phpMyAdmin
+define('PHPMYADMIN',IPMONITOR.'/phpmyadmin'); // adresse phpMyAdmin
 define('BACKUP_DB','/var/www/html/monitor/DB_Backup');//chemin absolue sauvegarde de la BD
 //------Page  Alarmee & Administration------------
 // page Alarme
@@ -231,6 +231,7 @@ if (str_contains($current, 'domaine')===false ){
 $current = $current."domaine='".URLMONITOR."'\n";
 file_put_contents($file, $current);}
 ?>
+
 
 
 
