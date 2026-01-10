@@ -248,17 +248,17 @@ then
 echo -e "${GN} installation de composer & php-mqtt/client${CL}"
 cd $chemin/monitor
 wget -O composer-setup.php https://getcomposer.org/installer
-php composer-setup.php --filename=composer
-composer require php-mqtt/client
+php composer-setup.php --install-dir=$chemin/monitor --filename=composer
+php composer require php-mqtt/client
 fi
 echo -e "${CM}${GN} installation terminée de composer et PHP-MQTT${CL}"
 echo -e "${CM}${GN} importer les tables text_image dispositifs 2fa_token messages et sse${CL}" 
 sed -i "s/(1, 'user'/(1, '${maria_name}'/g" /var/www/monitor/bd_sql/2fa_token.sql
-mysql --user=root --password=${maria_name} monitor < $chemin/monitor/bd_sql/text_image.sql
-mysql --user=root --password=${maria_name} monitor < $chemin/monitor/bd_sql/dispositifs.sql
-mysql --user=root --password=${maria_name} monitor < $chemin/monitor/bd_sql/sse.sql
-mysql --user=root --password=${maria_name} monitor < $chemin/monitor/bd_sql/messages.sql
-mysql --user=root --password=${maria_name} monitor < $chemin/monitor/bd_sql/2fa_token.sql
+mysql --user=root --password=${root_pwd} monitor < $chemin/monitor/bd_sql/text_image.sql
+mysql --user=root --password=${root_pwd} monitor < $chemin/monitor/bd_sql/dispositifs.sql
+mysql --user=root --password=${root_pwd} monitor < $chemin/monitor/bd_sql/sse.sql
+mysql --user=root --password=${root_pwd} monitor < $chemin/monitor/bd_sql/messages.sql
+mysql --user=root --password=${root_pwd} monitor < $chemin/monitor/bd_sql/2fa_token.sql
 echo "LEMP : Configurer NGINX"
 echo "LEMP : Création de monitor.conf"
 cp $chemin/monitor/share/nginx/default.conf /etc/nginx/conf.d/
@@ -291,7 +291,7 @@ cp ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 #sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo -e "${CM}${GN} creer lien symbolique de monitor & phpMyAdmin vers /www${CL}"
-ln -s $chemin/monitor  /www
+ln -s $chemin/monitor  /www/monitor
 echo -e "${CM}${GN} Redemarrage NGINX une derniere fois...${CL}"
 systemctl restart nginx
 chown -R $maria_name:$maria_name $chemin/monitor
