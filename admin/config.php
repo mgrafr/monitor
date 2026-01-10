@@ -46,7 +46,7 @@ define('MQTT_IP', '192.168.1.x');//adresse IP mosquitto
 define('MQTT_PORT', 9001);// mqtt=1883 websockets: ws=9001 wss=9002 ou 9883
 define('MQTT_TOPIC', "monitor/ha");// topic (destinataire) monitor/dz, monitor/ha,...
 //--------------------------------------------------
-define('SSE','php');//  'false',  'node' ou 'php' si serveur SSE utilisé par monitor
+define('SSE','false');//  'false',  'node' ou 'php' si serveur SSE utilisé par monitor
 //pour SSE php
 define('SSE_SLEEP', 2);//raffraichissement en secondes
 // pour SSE node
@@ -231,6 +231,7 @@ if (str_contains($current, 'domaine')===false ){
 $current = $current."domaine='".URLMONITOR."'\n";
 file_put_contents($file, $current);}
 ?>
+
 
 
 
