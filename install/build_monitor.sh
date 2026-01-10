@@ -96,7 +96,7 @@ mysql -uroot  -e "flush privileges";
 root_pwd=$(whiptail --title "securiser MariaDB" --passwordbox "Entrer le mot de passe ROOT" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
-echo -e "${CM}${GN} Mot de passe root pour ${maria_name} enregistré${CL}"
+echo -e "${CM}${GN} Mot de passe root enregistré${CL}"
 fi
 echo -e "${BL} securisation de mariaDB${CL}"
 #mysql --user="root" --password="$root_pwd" --database="monitor" --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_pwd';"
@@ -246,11 +246,9 @@ fi
 if [ "$clientmqtt" = "oui" ]
 then
 echo -e "${GN} installation de composer & php-mqtt/client${CL}"
-# mkdir $chemin/monitor/ws_z2m
 cd $chemin/monitor
 wget -O composer-setup.php https://getcomposer.org/installer
 php composer-setup.php --install-dir=/www/monitor --filename=composer
-#sudo apt install composer
 composer require php-mqtt/client
 fi
 echo -e "${CM}${GN} installation terminée de composer et PHP-MQTT${CL}"
@@ -270,15 +268,6 @@ echo -e "${CM}${GN} LEMP : Creating a php-info page${CL}"
 echo '<?php phpinfo(); ?>' > /www/info.php
 echo "LEMP est installé${CL}"
 echo -e "${GN} installation de mysql-connector-python${CL}" 
-#wget https://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-9.5.0-src.tar.gz
-#gzip mysql-connector-python-9.5.0-src.tar.gz -d
-#tar -x -f mysql-connector-python-9.5.0-src.tar
-#cd mysql-connector-python-9.5.0-src
-#cd mysql-connector-python
-#python3 setup.py build
-#python3 setup.py install
-#cd $chemin/monitor
-#rm -R mysql-connector-python-9.5.0-src
 apt install python3.13-venv
 sudo python3 -m venv /www/monitor/venv
 /www/monitor/venv/bin/pip install mysql-connector-python
@@ -301,8 +290,8 @@ cp ssl/selfsigned.conf /etc/nginx/snippets/selfsigned.conf
 cp ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 #sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
-echo -e "${CM}${GN} creer lien symbolique de phpMyAdmin vers /www${CL}"
-ln -s $chemin/monitor  /www/monitor
+echo -e "${CM}${GN} creer lien symbolique de monitor & phpMyAdmin vers /www${CL}"
+ln -s $chemin/monitor  /www
 echo -e "${CM}${GN} Redemarrage NGINX une derniere fois...${CL}"
 systemctl restart nginx
 chown -R $maria_name:$maria_name $chemin/monitor
