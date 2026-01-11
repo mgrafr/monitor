@@ -45,7 +45,7 @@ if [ "$vermon" = "Version 411" ] && [ "$answer" -gt 324 ] && [ "$answer" -ne 411
     rm maj_324.sh
  elif [ "$vermon" = "Version en dev" ] && [ "$answer" -lt 324 ] && [ "$answer" -gt 322 ]; then  
       echo "mettre à jour vers version 4.1.1" avant une mise à jour DEV     
- elif [ "$vermon" = "Version en dev" ] && [ "$answer" -gt 324 ] && [ "$answer" -lt 411 ] ; then  
+ elif [ "$vermon" = "Version en dev" ] && [ "$answer" -gt 324 ] && [ "$answer" -lt 413 ] ; then  
       echo "mise à jour vers version dev"  
       wget https://raw.githubusercontent.com/mgrafr/monitor/main/install/maj_dev.sh
       dos2unix maj_dev.sh
