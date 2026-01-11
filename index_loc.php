@@ -66,11 +66,12 @@ if (ON_NAGIOS==true) include ("include/nagios.php");//monitoring
 if (ON_SPA==true) include ("include/spa.php");//spa
 if (ON_HABRIDGE==true) include ("include/habridge.php");//pont hue Alexa
 if (ON_RECETTES==true) include ("include/recettes.php");//monitoring
-if (URLIOB!="") include ("include/iobroker.php");//iobroker
+if (URLIOB[2]==true) include ("include/iobroker.php");//iobroker
 //include ("custom/php/modes_emploi.php");
 include ("include/footer.php");// fin de la page avec les scrpits JS
 
 
 ?>
 </body></html>
+
 
