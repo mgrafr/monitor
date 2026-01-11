@@ -24,6 +24,7 @@ if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';
 ?>
 
 <script>
+console.log(mqtt)	
 // cookies
 function lire_cookie(name) {
   let matches = document.cookie.match(new RegExp(
@@ -286,14 +287,15 @@ $.ajax({
     url: "ajax.php",
     data: "app=devices_plan&variable="+plan,
     success: function(response){pp=response;var al_bat="";
+	<?php if (DECOUVERTE==false){echo "
 		var err_dz_idm=pp[0].err_dz_idm; console.log('err_dz_idm:'+err_dz_idm);//0: pas erreur 1: erreur dz ou idm , idm >9000
    //console.log('custom='+custom);//custom défini dans worx.php
-   if (err_dz_idm==1) {document.getElementById('erreur_dz').style.display="inline";}
+   if (err_dz_idm==1) {document.getElementById('erreur_dz').style.display='inline'}
     if (typeof custom != 'undefined') {
 		if (custom==1 & pp[0]['serveur_iob'] === true){custom_js(custom);}	
 	     }
 		// executé dans JS.js  worx=pp[200].values;maj_worx(pp[200].Name,pp[200].Data);}
-		
+		";} ?>
 		$.each( pp, function( key, val ) {vol=0;pcent=0;
 		if (val.maj_date=='0'){
 			if (val.jour!=num_jour){aff_date();
