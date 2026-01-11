@@ -291,7 +291,7 @@ cp ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 #sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
 echo -e "${CM}${GN} creer lien symbolique de monitor & phpMyAdmin vers /www${CL}"
-ln -s $chemin/monitor  /www/monitor
+ln -s $chemin/monitor/  /www/monitor
 echo -e "${CM}${GN} Redemarrage NGINX une derniere fois...${CL}"
 systemctl restart nginx
 chown -R $maria_name:$maria_name $chemin/monitor
