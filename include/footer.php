@@ -24,7 +24,6 @@ if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';
 ?>
 
 <script>
-console.log(mqtt)	
 // cookies
 function lire_cookie(name) {
   let matches = document.cookie.match(new RegExp(
@@ -1004,3 +1003,4 @@ document.getElementById('status').innerText='connexion fermée';
 }, false);
 };
 </script>";}?>
+
