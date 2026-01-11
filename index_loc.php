@@ -44,7 +44,6 @@ include ("include/header.php");// l' affichage du menu de la page d'accueil
 $filename = 'custom/php/accueil.php';
 if (file_exists($filename)) {include ($filename);}// l' affichage page accueil
  else {include ("include/accueil.php");}
-include ("include/accueil.php");// l' affichage page accueil
 if (ON_MET==true) include ("include/meteo.php");	// une page de prévision météo
 include ("include/interieur.php");// plan intérieur
 include ("include/clavier_code.php");
@@ -52,7 +51,6 @@ if (ON_ALARM==true) include ("include/alarmes.php"); // alarmes absence et nuit
 if (ON_GRAPH==true) include ("include/graphiques.php");// édition de graphiques
 // autre pages disponibles à décommenter pour les inclure
 if (ON_EXT==true) include ("custom/php/exterieur.php");
-
 if (ON_ONOFF==true) include ("include/mur_inter.php");
 if (ON_APP==true) include ("include/app_diverses.php");
 // administration
@@ -73,5 +71,6 @@ include ("include/footer.php");// fin de la page avec les scrpits JS
 
 ?>
 </body></html>
+
 
 
