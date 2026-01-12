@@ -337,11 +337,12 @@ $.ajax({
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 				}
-				//if (val.actif=="6" && pp[val.idm]['param'][1]=="state") {var msg='{ "state" : "" }';
-					//var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';console.log('actif 6: '+topic+' -- '+msg);
-					//client.publish(topic,msg);
-					//publish_mqtt(pp[val.idm]['ID'],'state',"")
-				//}
+				if (val.actif=="6" && pp[val.idm]['param']!=null) {pp1=pp[val.idm]['param'][1];
+					if (pp1 =="state") {var msg='{ "state" : "" }';
+					var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';console.log('actif 6: '+topic+' -- '+msg);
+					client.publish(topic,msg);
+					publish_mqtt(pp[val.idm]['ID'],'state',"")
+				}}
 			}	
 			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
 			//else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:...."+val.Name;}
@@ -1003,4 +1004,3 @@ document.getElementById('status').innerText='connexion fermée';
 }, false);
 };
 </script>";}?>
-
