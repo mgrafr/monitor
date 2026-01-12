@@ -268,6 +268,7 @@ echo -e "${CM}${GN} LEMP : Creating a php-info page${CL}"
 echo '<?php phpinfo(); ?>' > /www/info.php
 echo "LEMP est installé${CL}"
 echo -e "${GN} installation de mysql-connector-python${CL}" 
+cd $chemin/monitor
 apt install python3.13-venv
 sudo python3 -m venv /www/monitor/venv
 /www/monitor/venv/bin/pip install mysql-connector-python
