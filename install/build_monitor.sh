@@ -196,11 +196,9 @@ find $chemin/phpmyadmin/ -type d -exec chmod 755 {} \;
 find $chemin/phpmyadmin/ -type f -exec chmod 644 {} \;
 rm /etc/nginx/sites-available/*
 rm /etc/nginx/sites-enabled/*
-# wget https://raw.githubusercontent.com/mgrafr/monitor/main/share/nginx/phpmyadmin.conf
-# mv phpmyadmin.conf /etc/nginx/conf.d/
 echo -e "${CM}${GN} creer lien symbolique de phpMyAdmin vers /www${CL}"
 mkdir /www
-ln -s $chemin/phpmyadmin  /www/phpmyadmin
+ln -s $chemin/phpmyadmin/  /www/phpmyadmin
 echo -e "${CM}${GN} phpMyAdmin installé.${CL}"
 echo -e "${CM}${GN} LEMP : redemarrage php${CL}"
 cd /etc/nginx
@@ -250,6 +248,7 @@ cd $chemin/monitor
 wget -O composer-setup.php https://getcomposer.org/installer
 php composer-setup.php --install-dir=$chemin/monitor --filename=composer
 php composer require php-mqtt/client
+rm composer-setup.php
 fi
 echo -e "${CM}${GN} installation terminée de composer et PHP-MQTT${CL}"
 echo -e "${CM}${GN} importer les tables text_image dispositifs 2fa_token messages et sse${CL}" 
@@ -268,10 +267,9 @@ echo -e "${CM}${GN} LEMP : Creating a php-info page${CL}"
 echo '<?php phpinfo(); ?>' > /www/info.php
 echo "LEMP est installé${CL}"
 echo -e "${GN} installation de mysql-connector-python${CL}" 
-cd $chemin/monitor
 apt install python3.13-venv
-sudo python3 -m venv /www/monitor/venv
-/www/monitor/venv/bin/pip install mysql-connector-python
+sudo python3 -m venv /www/venv
+/www/venv/bin/pip install mysql-connector-python
 echo -e "${CM}${GN}  mysql-connector-python installé${CL}" 
 choix_ssl=$(whiptail --title "certificat auto-signé" --radiolist \
 "voulez vous installer un certificat auto signé ?\n pour utiliser monitor en local en https" 15 60 4 \
@@ -291,10 +289,10 @@ cp ssl/selfsigned.conf /etc/nginx/snippets/selfsigned.conf
 cp ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 #sed -i "s/###//g" /etc/nginx/conf.d/monitor.conf
 fi
-echo -e "${CM}${GN} creer lien symbolique de monitor & phpMyAdmin vers /www${CL}"
+echo -e "${CM}${GN} creer lien symbolique de monitorvers /www${CL}"
 ln -s $chemin/monitor/  /www/monitor
 echo -e "${CM}${GN} Redemarrage NGINX une derniere fois...${CL}"
-systemctl restart nginx
+systemctl restart nginx 
 chown -R $maria_name:$maria_name $chemin/monitor
 # chown -R www-data:www-data $chemin/monitor/admin/config.php
 chmod -R 775 $chemin/monitor
