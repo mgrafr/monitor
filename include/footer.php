@@ -683,19 +683,6 @@ $("#zm").click(function () {
             }
         });
 		});
-<?php // sera supprimé en 2026
-if (SSE==false) echo '
-tempo_devices='.TEMPO_DEVICES_D.';
-var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
-var_sp(idsp);
-function var_sp(idsp){
-  $.getJSON( "ajax.php?app=data_var&variable=29", function(data) {
-  //console.log(data.var_dz);
-  if (data.var_dz=="1"){maj_variable(29,"variable_sp",0,2);maj_devices(plan);maj_services(0);}
-	 if (data.message!="0"){maj_variable("msg",data.message,0,0);maj_services(0);  }
-  });
-setTimeout(var_sp, tempo_devices, idsp); 	
-}';?>
 /*----------fin document-------------------------------*/
 </script><script>
 /*----------------script pour svg---*/
