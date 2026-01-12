@@ -179,7 +179,7 @@ function maj_services(index){
 		var i, idw,idt,img_serv,txt_serv = "";
 		for (i = 1; i < count; i++) {//console.log("idx="+html[i].idx);
 	img_serv = html[i].image;actif_serv= html[i].actif;
-	//img_serv ? img_serv : "http://192.168.1.9/monitor/"+html[i].image;		
+		//img_serv ? img_serv : "http://192.168.1.9/monitor/"+html[i].image;		
 	idw = html[i].ID_img;idt = html[i].ID_txt;exist = html[i].exist_id;name_var=html[i].Name;
 	if (exist=="oui"){
 		if (idw=="poubelle"){idx_idimg=html[i].Value;idx_ico=html[i].icone;}
@@ -208,7 +208,7 @@ function maj_services(index){
 		}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){myEle.innerHTML ="";}*/
 		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
-			if (img_serv=="pas image"){document.getElementById(idw).style.display = "none";} 
+			if (img_serv=="pas image" || img_serv=="none") {document.getElementById(idw).style.display = "none";} 
 			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
 		}
 	//else {document.getElementById(not_piles).innerHTML =("erreur : "+idt);
@@ -683,6 +683,19 @@ $("#zm").click(function () {
             }
         });
 		});
+<?php // sera supprimé en 2026
+if (SSE==false) echo '
+tempo_devices='.TEMPO_DEVICES_D.';
+var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
+var_sp(idsp);
+function var_sp(idsp){
+  $.getJSON( "ajax.php?app=data_var&variable=29", function(data) {
+  //console.log(data.var_dz);
+  if (data.var_dz=="1"){maj_variable(29,"variable_sp",0,2);maj_devices(plan);maj_services(0);}
+	 if (data.message!="0"){maj_variable("msg",data.message,0,0);maj_services(0);  }
+  });
+setTimeout(var_sp, tempo_devices, idsp); 	
+}';?>
 /*----------fin document-------------------------------*/
 </script><script>
 /*----------------script pour svg---*/
