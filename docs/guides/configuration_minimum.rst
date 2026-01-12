@@ -121,13 +121,15 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
 .. note::
    *TEMPO_DEVICES* pour tous les dispositifs
 
-   *TEMPO_DEVICES_D ou serveur SSE** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
+   *TEMPO_DEVICES_D :red:'SUPPRIMER dans la Version 4.1.3' ou serveur SSE** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
 
 1.1.3 maj en temps réel
 -----------------------
 2 solutions :
 
-- semi temps réel , monitor interroge une variable mis à jour par Dz ou Ha lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise à jour avec l'API des dispositifs et remet à 0 la variable.C'est la solution historique de monitor mais la solution SSE-php, incluse dans monitor est à privilégier.cette solution sera obsolète dans les prochaines versions
+.. admonition:: SUPPRIME à partir de  la  version 4.1.3
+
+   **semi temps réel** , monitor interroge une variable mis à jour par Dz ou Ha lors d'un changement de valeur d'un dispositif; si la variable est à 1 monitor fait une mise    à jour avec l'API des dispositifs et remet à 0 la variable.C'est la solution historique de monitor mais la solution SSE-php, incluse dans monitor est à        privilégier.cette solution sera obsolète dans les prochaines versions
 
 - temps réel, en recevant de Domoticz ou Home Assistant, par un message depuis un SSE(Server-sent Events) , les données du dispositifs qui ont changées de valeur 
 
