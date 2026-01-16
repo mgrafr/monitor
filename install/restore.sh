@@ -90,17 +90,17 @@ if [[ "$lets" == "Avec les certificats déjà enregistrés" ]];then
 echo $lets
 cd /home/$mdir_maj/etc/nginx/ssl
 sshpass -p $pass_sftp sftp $user_sftp@$ip3<<EOF
-get /etc/nginx/ssl/*
+get -p /etc/nginx/ssl/*
 lcd ..
 lcd ..
 lcd letsencrypt
-get -R /etc/letsencrypt/*
+get -pr /etc/letsencrypt/*
 lcd ..
 lcd ssl
-get -R /etc/ssl/*
+get -pr /etc/ssl/*
 lcd ..
 lcd ssh
-get -R /etc/ssh/*
+get -pr /etc/ssh/*
 exit
 EOF
 fi
@@ -110,7 +110,7 @@ cd /home/$mdir_maj/root/.ssh
 pass_root=$(whiptail --title "Mot de passe root" --inputbox "MOT DE PASSE POUR root" 10 60 3>&1 1>&2 2>&3)
 exitstatus=$?
 sshpass -p $pass_root  sftp root@$ip3<<EOF
-get -R /root/.ssl/*
+get -pr /root/.ssh/*
 exit
 EOF
 fi
@@ -147,19 +147,19 @@ vv=$(pip list --format=json)
 echo $vv
 cp  -R /home/$mdir_maj/etc/ssl/* /etc/ssl/
 cp  -R /home/$mdir_maj/etc/ssh/* /etc/ssh/
-mkdir /etc/letsencrypt
+mkdir -p /etc/letsencrypt
 cp -R /home/$mdir_maj/etc/letsencrypt/* /etc/letsencrypt/
 chmod -R 777 /etc/letsencrypt
 rm -R /etc/letsencrypt/live
 cd /etc/letsencrypt
-mkdir live
+mkdir -p live
 chmod -R 777 live
 cd archive
 for f in * ; do  echo $f;  done > /home/$mdir_maj/a.txt;
-while read l; do nb=$(ls /home/$mdir_maj/etc/letsencrypt/archive/$l | wc -l) ;
- a=$((($nb)/4)); echo $a; 
- mkdir /etc/letsencrypt/live/$l;
-chmod -R 777 /etc/letsencrypt/live/*;
+while read l; do nn=$(find /home/$mdir_maj/etc/letsencrypt/archive/$l -type f -printf '%T@ %p\n' | sort -n | tail -n 1 | cut -d' ' -f2-);
+nb=${nn##*/}; a=$(echo "$nb" | grep -Eo '[0-9]+(\.[0-9]+)?' | head -n 1); echo $a;
+mkdir -p /etc/letsencrypt/live/$l;
+chmod -R 777 /etc/letsencrypt/live/$l;
 ln -s /etc/letsencrypt/archive/$l/privkey$a.pem /etc/letsencrypt/live/$l/privkey.pem; 
 ln -s /etc/letsencrypt/archive/$l/fullchain$a.pem /etc/letsencrypt/live/$l/fullchain.pem; 
 ln -s /etc/letsencrypt/archive/$l/cert$a.pem /etc/letsencrypt/live/$l/cert.pem; 
@@ -183,19 +183,19 @@ cp -R /home/$mdir_maj/monitor/admin/* /var/www/monitor/admin/
 cp /var/www/monitor/admin/connect/connect.py /var/www/monitor/custom/python/
 chmod -R 777 /var/www/monitor/DB_Backup
 cp /home/$mdir_maj/monitor/DB_Backup/dump.sql.gz /var/www/monitor/DB_Backup/
-gunzip -c /var/www/monitor/DB_Backup/dump.sql.gz > dump.sql
-mysql -u root -p < dump.sql
+gunzip -c /var/www/monitor/DB_Backup/dump.sql.gz > /var/www/monitor/DB_Backup/dump.sql
+mysql --user=$user_sftp --password=$pass_sftp < dump.sql
 # ufw allow 444
 # systemctl restart ufw
 sudo apt install certbot python3-certbot-nginx -y
 cp  /home/$mdir_maj/etc/nginx/conf.d/* /etc/nginx/conf.d/
 cp  /home/$mdir_maj/etc/nginx/.htpasswd /etc/nginx/
-mkdir /etc/nginx/ssl
+mkdir -p /etc/nginx/ssl
 cp  /home/$mdir_maj/etc/nginx/ssl/* /etc/nginx/ssl/
 chmod -R 777 /etc/cron.d
 cp /home/$mdir_maj/etc/cron.d/* /etc/cron.d
 systemctl restart nginx
-chmod -R 777 /root/.ssl
+# chmod -R 777 /root/.ssl
 cp /home/$mdir_maj/root/.ssh/* /root/.ssh
 certbot update_symlinks
 certbot renew --dry-run
@@ -213,5 +213,5 @@ then
 sudo apt update
 sudo apt install $mod_py
 fi
-file=/www/monitor/custom/php/accueil.php
-if [ -e $file ]; then mv /www/monitor/include/accueil.php /www/monitor/include/_accueil.bak; fi
+#file=/home/$mdir_maj/monitor/custom/php/accueil.php
+#if [ -e $file ]; then mv /home/$mdir_maj/monitor/include/accueil.php /home/$mdir_maj/monitor/include/_accueil.bak; fi
