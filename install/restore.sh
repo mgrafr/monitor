@@ -213,5 +213,5 @@ then
 sudo apt update
 sudo apt install $mod_py
 fi
-#file=/home/$mdir_maj/monitor/custom/php/accueil.php
-#if [ -e $file ]; then mv /home/$mdir_maj/monitor/include/accueil.php /home/$mdir_maj/monitor/include/_accueil.bak; fi
+file=/www/monitor/custom/php/accueil.php
+if [ -e $file ]; then mv /www/monitor/include/accueil.php /www/monitor/include/_accueil.bak; fi
