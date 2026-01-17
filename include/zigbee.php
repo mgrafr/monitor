@@ -10,7 +10,7 @@ if ($domaine==IPMONITOR) $lien_zigbee=IPZIGBEE;
 	<div class="container">
 		<div class="col-md-12">
 	  <h1 id="about_p" class="title" >Dispositifs : <span style="color:blue">Zigbee</span></h1>
-	  <p style="margin-top: -40px;"><?php echo $lien_zigbee;?></p>
+	  <p><?php echo $lien_zigbee;?></p>
 		         <iframe id="zbmqtt" src="<?php echo $lien_zigbee;?>" frameborder="0" ></iframe>
 		<div class="modal" id="infos"></div>
 </div>
