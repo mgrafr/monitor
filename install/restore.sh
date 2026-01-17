@@ -215,3 +215,6 @@ sudo apt install $mod_py
 fi
 file=/www/monitor/custom/php/accueil.php
 if [ -e $file ]; then mv /www/monitor/include/accueil.php /www/monitor/include/_accueil.bak; fi
+echo "|-------------------------------------------------------------------------------------- |"
+echo "| Si PHP-MQTT ,client mqtt sur le serveur monitor, est utilisé VERIFIER QU'IL A DEMARRE |"
+echo "|---------------------------------------------------------------------------------------|"
