@@ -38,7 +38,7 @@
 
 	Pare-feu UFW, en option Fail2ban
 
--	Quelques programmes python utiles : pip, Paho-mqtt
+-	Quelques programmes python utiles : pip, PHP-mqtt
 
 -       Quelques utilitaires : dos2unix et unzip
 
@@ -69,6 +69,11 @@ Donner des autorisations au fichier « monitor.sh »
    convertir le fichier en UNIX
 
    voir le § :ref:`8.2.2 Problème de lecture de fichier`
+
+.. admonition:: Pour utiliser les scripts python inclus dans "share" 
+
+    - pour les liaisons séries: **pip install python-periphery**
+	- pour la base de données: **pip install mysql-connector-python**
 
 **Installation :**
 
