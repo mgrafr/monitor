@@ -22,7 +22,9 @@ Server version: 11.8.2
 ===============
 version en développement
 ~~~~~~~~~~~~~~~~~~~~~~~~
-v 4.1.2
+v 4.1.3
+- suppression de la mise à jour des dispositifs en semi-direct, le choix est un serveur sse php ou un serveur sse node js
+- modification de la mise a jour des certificats dans restore.sh(mise à jour complète de monitor)
 
 Version 4.1.1 (janvier 2026)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
