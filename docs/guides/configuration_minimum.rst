@@ -114,14 +114,14 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
    
 .. IMPORTANT:: 
 
-   Si define('SSE', true) = TEMP REEL ,  :red:'TEMPO_DEVICES_DZ est annulé'
+   Si define('SSE', true) = TEMP REEL ,  :red`'TEMPO_DEVICES_DZ est annulé`
 
    un serveur SSE doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
 
 .. note::
    *TEMPO_DEVICES* pour tous les dispositifs
 
-   *TEMPO_DEVICES_D :red:'SUPPRIMER dans la Version 4.1.3' ou serveur SSE** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
+   *TEMPO_DEVICES_D :red:`SUPPRIMER dans la Version 4.1.3` ou serveur SSE** pour les dispositifs qui doivent afficher leurs données en temps réel (voir le § suivant)
 
 1.1.3 maj en temps réel
 -----------------------
