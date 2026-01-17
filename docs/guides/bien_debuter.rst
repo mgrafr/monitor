@@ -890,6 +890,8 @@ modifications en cours....
 	  sudo apt update
 	  sudo apt install $mod_py
 	  fi
+	  file=/www/monitor/custom/php/accueil.php
+	  if [ -e $file ]; then mv /www/monitor/include/accueil.php /www/monitor/include/_accueil.bak; fi
 
 .. note::
 
