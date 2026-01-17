@@ -114,7 +114,7 @@ L’intervalle de mise à jour pour les services (poubelles, anniversaires,...) 
    
 .. IMPORTANT:: 
 
-   Si define('SSE', true) = TEMP REEL :  :red:'TEMPO_DEVICES_DZ est annulé'.
+   Si define('SSE', true) = TEMP REEL :  :red:'TEMPO_DEVICES_DZ est annulé'
 
    un serveur SSE doit etre installé ainsi qu'un script(léger)  dans DZ ou(et) HA  
 
