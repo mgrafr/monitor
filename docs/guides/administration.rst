@@ -233,7 +233,9 @@ voir également le § :ref:`1.1.3.2 Solution temps réel MQTT`
 
 |image807|
 
-|image1402|
+|image1981|
+
+|image807|
 
 |image808|
 
@@ -1056,4 +1058,6 @@ Affiche les numéros des versions de monitor, PHP et Jpgraph
 .. |image1974| image:: ../img/image1974.webp
    :width: 480px
 .. |image1975| image:: ../img/image1975.webp
+   :width: 700px
+.. |image1981| image:: ../img/image1981.webp
    :width: 700px
