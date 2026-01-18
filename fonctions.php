@@ -1253,7 +1253,7 @@ echo $file.'<br><em style="color:red">le fichier doit être autorisé en écritu
 	$button_enr="enregistrer";
 	if ($choix==23){$button_enr	= 'envoyer vers PI ';}
 	 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
-	<input type="button" value="'.$button_enr.'" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax(`enr`)"> ';
+	<input type="button" value="'.$button_enr.'" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="$(\'#reponse1\').hide()"> ';
 	 echo '</form></div>';
 return "sauvegarde OK";	 
 break;
@@ -1264,8 +1264,8 @@ echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="imag
 $retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
 break;
 case "16" :
-$content=$idrep;
-file_put_contents(TMPCONFIG."connect.py", $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);$content1=$content;
+$content=$idrep;$filename=TMPCONFIG."connect.py";chmod($filename, fileperms($filename) | 128 + 16 + 2);
+file_put_contents($filename, $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);$content1=$content;
 	$content=str_replace("/*JS*/","--  lua",$content1);$content=str_replace("[","{",$content);$content=str_replace("]","}",$content);
 	file_put_contents(TMPCONFIG."connect.lua", $content);$content=str_replace("/*JS*/","",$content1);$content=str_replace("=",": ",$content);
 	file_put_contents(TMPCONFIG."connect.yaml", $content);	$t_maj= "";
