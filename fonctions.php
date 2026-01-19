@@ -512,7 +512,7 @@ if (($choix_Actif=="1" || $choix_Actif=="2") && $lect_device["serveur"]=="DZ")  
 	  else if ($choix_Actif=="3" && $lect_device["serveur"]=="HA") {$choix_serveur="ha";}
 	  else if ($choix_Actif=="4" && $lect_device["serveur"]=="IOB") {$choix_serveur="iob";}
 	  else if ($choix_Actif=="6" && $lect_device["serveur"]=="ZB") {$choix_serveur="zb";}
-	  else if ($choix_Actif=="9") {$choix_serveur="dz";$lect_device['values']=$periph['values'];$err_dz_idm=1;}
+	  else if ($choix_Actif=="9") {$choix_serveur="dz1";$lect_device['values']=$periph['values'];$err_dz_idm=1;}
 	  else {$choix_serveur="2"; } 
 //if ($periph) echo json_encode($periph);	
 $bat="";
@@ -615,7 +615,8 @@ if ($periph['zbplus']>1){$idm=$t.'_1';$per=sql_plan('5',$idm);$data[$idm]=$data[
 	$data[$idm]['ID2']=$per['id2_html'];
 	;}		
 break;
-case "1":
+case "dz1" :$periph['idm']="pas de idx dans sql";
+case "1" :	
 case "0" :$data[$t] = [
 	'serveur' => $lect_device["serveur"],
 	'Name' => $lect_device["Name"],
@@ -1264,7 +1265,8 @@ echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="imag
 $retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
 break;
 case "16" :
-$content=$idrep;$filename=TMPCONFIG."connect.py";chmod($filename, fileperms($filename) | 128 + 16 + 2);
+$content=$idrep;
+$filename=TMPCONFIG."connect.py";chmod($filename, fileperms($filename) | 128 + 16 + 2);
 file_put_contents($filename, $content);$content=str_replace("#!/usr/bin/env python3 -*- coding: utf-8 -*-","/*JS*/",$content);file_put_contents(TMPCONFIG."connect.js", $content);$content1=$content;
 	$content=str_replace("/*JS*/","--  lua",$content1);$content=str_replace("[","{",$content);$content=str_replace("]","}",$content);
 	file_put_contents(TMPCONFIG."connect.lua", $content);$content=str_replace("/*JS*/","",$content1);$content=str_replace("=",": ",$content);
