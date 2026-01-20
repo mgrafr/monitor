@@ -36,13 +36,17 @@ function popupCookie(page) {
 }
 function isInArray(array, search){return array.indexOf(search) >= 0;}	
 function maj_html(majjs,id5,val5){
-// if (val.maj_js=="temp" ) {document.getElementById(val.ID1).innerHTML=val.temperature;;}
+// if (val.maj_js=="temperature" ) {document.getElementById(val.ID1).innerHTML=val.temperature;;}
 // maj temperature, humidity; data (autres que on/off)----- id5=idhtml,val5= val(device) 
 switch (majjs) {
-	case 'temp':
-document.getElementById(id5).innerHTML=val5;
+	case 'temperature':
+val5 = val5+"°";
+break;
+ case 'homidity':
+val5 = val5+"%";	
 break;
 }
+document.getElementById(id5).innerHTML=val5;
 return;}
 function maj_mqtt(id_x,state,ind,level,champ=''){
 if (!state) {console.log("erreur-state");return;}
@@ -90,12 +94,12 @@ case 1: console.log('1: id='+id_x+' state='+state);
 break;
 case 3://id_x est egal à idm
 console.log('case3:'+id_x+''+pp[id_x].ID1);	
-//maj_html(champ,pp[id_x].ID1,state);
- pp[id_x].Data=state;
+maj_html(champ,pp[id_x].ID1,state);
+//pp[id_x].temperature=state;
 //		if (pp[id_m].ID2!=""){maj_html(champ,pp[id_x].ID2,state);}
 //		return;}
-	if (id_x) {pp[id_x].Data = state;
-console.log('Data_ap='+pp[id_x].Data);return;}
+	//if (id_x) {pp[id_x].Data = state;
+//console.log('Data_ap='+pp[id_x].Data);return;
 break;
 default:
 break;	
@@ -341,7 +345,7 @@ $.ajax({
 					if (pp1 =="state") {var msg='{ "state" : "" }';
 					var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';console.log('actif 6: '+topic+' -- '+msg);
 					client.publish(topic,msg);
-					publish_mqtt(pp[val.idm]['ID'],'state',"")
+					//publish_mqtt(pp[val.idm]['ID'],'state',"")
 				}}
 			}	
 			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
