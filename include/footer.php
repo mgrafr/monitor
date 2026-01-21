@@ -43,6 +43,7 @@ switch (majjs) {
 val5 = val5+"°";
 break;
  case 'homidity':
+ case 'soil_moisture':	
 val5 = val5+"%";	
 break;
 }
@@ -93,18 +94,15 @@ case 1: console.log('1: id='+id_x+' state='+state);
 	scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
 break;
 case 3://id_x est egal à idm
-console.log('case3:'+id_x+''+pp[id_x].ID1);	
-maj_html(champ,pp[id_x].ID1,state);
-//pp[id_x].temperature=state;
-//		if (pp[id_m].ID2!=""){maj_html(champ,pp[id_x].ID2,state);}
-//		return;}
-	//if (id_x) {pp[id_x].Data = state;
-//console.log('Data_ap='+pp[id_x].Data);return;
+var id1=pp[id_x].ID1;var id2=pp[id_x].ID2;		
+console.log('case3:'+id_x+' '+id1+' '+id2);	
+if (id1!='#'){maj_html(champ,id1,state);}
+if (id2=""){maj_html(champ,id2,state);}
 break;
 default:
 break;	
 }
-if (c_lamp!="" && scoull!="") {
+if (c_lamp!="" && scoull!="" && ind!=3) {
 	var elements = document.getElementsByClassName(c_lamp);
 	for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
@@ -342,10 +340,10 @@ $.ajax({
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 				}
 				if (val.actif=="6" && pp[val.idm]['param']!=null) {pp1=pp[val.idm]['param'][1];
-					if (pp1 =="state") {var msg='{ "state" : "" }';
-					var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';console.log('actif 6: '+topic+' -- '+msg);
-					client.publish(topic,msg);
-					//publish_mqtt(pp[val.idm]['ID'],'state',"")
+					if (pp1 =="state") {//var msg='{ "state" : "" }';
+					//var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';console.log('actif 6: '+topic+' -- '+msg);
+					//client.publish(topic,msg);
+					publish_mqtt(pp[val.idm]['ID'],'state',"","get")
 				}}
 			}	
 			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
