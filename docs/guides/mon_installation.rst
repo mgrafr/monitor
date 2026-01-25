@@ -1984,7 +1984,7 @@ Login <user>
 
 Contrairement à la doc officielle les fichiers de configuration sont installés dans le répertoire */usr/local/etc* , les déplacer:
 
-..code-block::
+.. code-block::
 
    mv /usr/local/etc/* /etc/
 
@@ -2003,7 +2003,7 @@ Contrairement à la doc officielle les fichiers de configuration sont installés
     max_inflight_window = 2048
     max_awaiting_rel = 10s
     await_rel_timeout = 10s
--   }
+   }
    listeners.tcp {
     bind = "0.0.0.0:1884"
    }
@@ -2034,6 +2034,8 @@ Contrairement à la doc officielle les fichiers de configuration sont installés
         max_size = 32
         ttl = 1m
    }     }
+
+|image1984|
 
 21.7 Zoneminder
 ===============
@@ -4437,3 +4439,5 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 600px
 .. |image1983| image:: ../img/image1983.webp
    :width: 700px
+.. |image1984| image:: ../img/image1984.webp
+   :width: 550px
