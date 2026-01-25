@@ -1609,8 +1609,10 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 
 .. note:: *Il n’est pas utile de créer un hôte virtuel sur Nginx, les modifications, mises à jour,…peuvent se faire sur Proxmox.*
 
-21.6 MQTT (mosquito)
-====================
+21.6 MQTT (mosquito & nanomq)
+=============================
+21.6.1 Mosquitto
+----------------
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/47
 
 *Installation dans un CT Proxmox* , mon installation actuelle
@@ -1621,8 +1623,8 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 
 .. note:: *Si la mise à jour de monitor par MQTT-websockets n'est pas activée, comme pour Asterisk , il n’est pas utile de créer un hôte virtuel.*
 
-21.6.1 Certificats 
-------------------
+21.6.1.1 Certificats 
+^^^^^^^^^^^^^^^^^^^^
 
 .. admonition:: **Obtention de certificats pour websockets**
 
@@ -1950,15 +1952,25 @@ pour le créer (fichier:pass user:michel):
 
 *Mosquitto est alors configuré pour utiliser wws.*
 
-21.6.2 Javascripts et websockets 
---------------------------------
+21.6.1.2 Javascripts et websockets 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. seealso:: *https://fr.javascript.info/websocket*
 
-21.6.3 Effacement des messages conservés 
-----------------------------------------
+21.6.1.3 Effacement des messages conservés 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Voir ce § :ref:`1.1.3.3 Solution temps réel MQTT Websocket`
 
+21.6.2 Nanomq
+-------------
+|image1982|
 
+21.6.2.1 Installation de Nanomq 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+dans un conteneur lxc et Debian 13 :
+- apt update & upgrade
+- apt install sudo
+- adduser <USER>
+- 
 21.7 Zoneminder
 ===============
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/24
@@ -4357,3 +4369,5 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 400px
 .. |image1971| image:: ../img/image1971.webp
    :width: 400px
+.. |image1982| image:: ../img/image1982.webp
+   :width: 600px
