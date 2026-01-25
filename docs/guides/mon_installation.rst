@@ -1967,6 +1967,7 @@ Voir ce § :ref:`1.1.3.3 Solution temps réel MQTT Websocket`
 21.6.2.1 Installation de Nanomq 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 dans un conteneur lxc et Debian 13 :
+
 - apt update & upgrade
 - apt install sudo
 - adduser <USER>
@@ -1977,10 +1978,62 @@ dans un conteneur lxc et Debian 13 :
 
 Login <user>
 
-Installation: https://nanomq.io/docs/en/latest/installation/packages.html
+**Installation**: https://nanomq.io/docs/en/latest/installation/packages.html
 
 |image1983|
--
+
+Contrairement à la doc officielle les fichiers de configuration sont installés dans le répertoire */usr/local/etc* , les déplacer:
+
+..code-block::
+
+   mv /usr/local/etc/* /etc/
+
+**Configuration**
+
+- /etc/nanomq.conf
+
+.. code-block::
+
+   mqtt {
+    property_size = 32
+    max_packet_size = 256MB
+    max_mqueue_len = 2048
+    retry_interval = 10s
+    keepalive_multiplier = 1.25
+    max_inflight_window = 2048
+    max_awaiting_rel = 10s
+    await_rel_timeout = 10s
+-   }
+   listeners.tcp {
+    bind = "0.0.0.0:1884"
+   }
+   listeners.ssl {
+        bind = "0.0.0.0:8884"
+        keyfile = "/etc/certs/server.key"
+        certfile = "/etc/certs/server.pem"
+        cacertfile = "/etc/certs/ca.pem"
+        verify_peer = false
+        fail_if_no_peer_cert = false
+   }
+   listeners.ws {
+    bind = "0.0.0.0:9002/mqtt"
+   log {
+    to = [file, console]
+    level = warn
+    dir = "/tmp"
+    file = "nanomq.log"
+    rotation {
+        size = 10MB
+        count = 5
+    }  }
+   auth {
+    allow_anonymous = true
+    no_match = allow
+    deny_action = ignore
+    cache = {
+        max_size = 32
+        ttl = 1m
+   }     }
 
 21.7 Zoneminder
 ===============
