@@ -1970,7 +1970,18 @@ dans un conteneur lxc et Debian 13 :
 - apt update & upgrade
 - apt install sudo
 - adduser <USER>
-- 
+- sudo usermod -aG sudo <USER>
+- visudo -> <USER>   ALL=(ALL:ALL) ALL
+- apt install curl
+- exit
+
+Login <user>
+
+Installation: https://nanomq.io/docs/en/latest/installation/packages.html
+
+|image1983|
+-
+
 21.7 Zoneminder
 ===============
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/24
@@ -4371,3 +4382,5 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 400px
 .. |image1982| image:: ../img/image1982.webp
    :width: 600px
+.. |image1983| image:: ../img/image1983.webp
+   :width: 700px
