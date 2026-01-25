@@ -2039,7 +2039,7 @@ Contrairement à la doc officielle les fichiers de configuration sont installés
 
 |image1984|
 
-**µµDémarrage**
+**Démarrage**
 
 .. code-block::
 
@@ -2092,8 +2092,15 @@ https://nanomq.io/docs/en/latest/tutorial/SSL_TLS.html
    openssl genrsa -out server.key 2048
    # Créer une demande de signature de certificat pour le serveur
    openssl req -new -key server.key -out server.csr -config san.cnf
-   Emettre un certificat de serveur à l'aide d'un certificat d'autorité de certification auto-signé
+   # Emettre un certificat de serveur à l'aide d'un certificat d'autorité de certification auto-signé
    openssl x509 -req -in ./server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out server.pem -days 3650 -sha256 -extfile san.cnf -extensions v3_req 
+   #
+   # Générer la clé privée du client
+   openssl genrsa -out client-key.pem 2048
+   # Créer une demande de signature de certificat pour le client
+   openssl req -new -key client-key.pem -out client.csr
+   # Émettre un certificat client à l'aide du certificat d'autorité de certification auto-signé
+   openssl x509 -req -days 3650 -in client.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out client.
 
 21.6.2.3 Test avec MQTTX
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2105,6 +2112,8 @@ https://nanomq.io/docs/en/latest/tutorial/SSL_TLS.html
 
 21.6.2.4 Démarrage avec systend
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/manupawickramasinghe/NanoMQ-SystemD-service
+
 
 
 
