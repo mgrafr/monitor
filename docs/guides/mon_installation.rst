@@ -2069,12 +2069,12 @@ https://nanomq.io/docs/en/latest/tutorial/SSL_TLS.html
    subjectAltName = @alt_names
 
    [alt_names]
-   DNS.1 = la-truffiere.ovh
+   DNS.1 = xxxxxxxxxxxx.ovh
    DNS.2 = mqtt.xxxxxxxx.ovh
    IP.1 = 192.168.1.11
    IP.2 = 192.168.1.167
 
-**Créer des Certificats with SAN avec OpenSSL**
+**Créer des Certificats SAN avec OpenSSL**
 
 .. code-block::
 
