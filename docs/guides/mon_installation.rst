@@ -2037,6 +2037,54 @@ Contrairement à la doc officielle les fichiers de configuration sont installés
 
 |image1984|
 
+21.6.2.2 Certificats SSL TLS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://nanomq.io/docs/en/latest/tutorial/SSL_TLS.html
+
+.. note::
+
+   le tutorial nanomq ne tient pas compte de SAN , il faut donc créer un fichier san.cnf et modifier le script du tuto 
+
+**Configurez l’extension openssl x509 pour créer un certificat SAN**
+
+- le fichier san.cnf:
+
+.. code-block::
+
+   [req]
+   distinguished_name = req_distinguished_name
+   req_extensions = v3_req
+   prompt = no
+
+   [req_distinguished_name]
+   C = FR
+   ST = France
+   L = St Martin
+   O = XXXXXXXXX
+   CN = 191.168.1.11
+
+   [v3_req]
+   keyUsage = critical, digitalSignature, keyEncipherment
+   extendedKeyUsage = serverAuth
+   subjectAltName = @alt_names
+
+   [alt_names]
+   DNS.1 = la-truffiere.ovh
+   DNS.2 = mqtt.xxxxxxxx.ovh
+   IP.1 = 192.168.1.11
+   IP.2 = 192.168.1.167
+
+**Créer des Certificats with SAN avec OpenSSL**
+
+.. code-block::
+
+   # Générer une clé privée pour le serveur:
+   openssl genrsa -out server.key 2048
+   # Créer une demande de signature de certificat pour le serveur
+   openssl req -new -key server.key -out server.csr -config san.cnf
+   Emettre un certificat de serveur à l'aide d'un certificat d'autorité de certification auto-signé
+   openssl x509 -req -in ./server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out server.pem -days 3650 -sha256 -extfile san.cnf -extensions v3_req 
+
 21.7 Zoneminder
 ===============
 *Installation dans une VM* :  http://domo-site.fr/accueil/dossiers/24
