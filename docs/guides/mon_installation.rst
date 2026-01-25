@@ -1962,6 +1962,8 @@ Voir ce § :ref:`1.1.3.3 Solution temps réel MQTT Websocket`
 
 21.6.2 Nanomq
 -------------
+Serveur de messages MQTT léger et performant, de nouvelle génération conçu pour l'IoT  
+
 |image1982|
 
 21.6.2.1 Installation de Nanomq 
@@ -2037,6 +2039,14 @@ Contrairement à la doc officielle les fichiers de configuration sont installés
 
 |image1984|
 
+**µµDémarrage**
+
+.. code-block::
+
+   nanomq start --conf /etc/nanomq.conf
+
+|image1985|
+
 21.6.2.2 Certificats SSL TLS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://nanomq.io/docs/en/latest/tutorial/SSL_TLS.html
@@ -2084,6 +2094,19 @@ https://nanomq.io/docs/en/latest/tutorial/SSL_TLS.html
    openssl req -new -key server.key -out server.csr -config san.cnf
    Emettre un certificat de serveur à l'aide d'un certificat d'autorité de certification auto-signé
    openssl x509 -req -in ./server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out server.pem -days 3650 -sha256 -extfile san.cnf -extensions v3_req 
+
+21.6.2.3 Test avec MQTTX
+^^^^^^^^^^^^^^^^^^^^^^^^
+|image1987|
+
+|image1988|
+
+|image1986|
+
+21.6.2.4 Démarrage avec systend
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 21.7 Zoneminder
 ===============
@@ -4488,4 +4511,12 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1983| image:: ../img/image1983.webp
    :width: 700px
 .. |image1984| image:: ../img/image1984.webp
-   :width: 550px
+   :width: 450px
+.. |image1985| image:: ../img/image1985.webp
+   :width: 650px
+.. |image1986| image:: ../img/image1986.webp
+   :width: 700px
+.. |image1987| image:: ../img/image1987.webp
+   :width: 700px
+.. |image1988| image:: ../img/image1988.webp
+   :width: 700px
