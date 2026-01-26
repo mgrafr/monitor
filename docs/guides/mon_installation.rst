@@ -2047,6 +2047,8 @@ Contrairement à la doc officielle les fichiers de configuration sont installés
 
 |image1985|
 
+|image1990|
+
 21.6.2.2 Certificats SSL TLS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://nanomq.io/docs/en/latest/tutorial/SSL_TLS.html
@@ -4537,4 +4539,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1988| image:: ../img/image1988.webp
    :width: 700px
 .. |image1989| image:: ../img/image1989.webp
+   :width: 700px
+.. |image1990| image:: ../img/image1990.webp
    :width: 700px
