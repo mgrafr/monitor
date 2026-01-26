@@ -2114,7 +2114,14 @@ https://nanomq.io/docs/en/latest/tutorial/SSL_TLS.html
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://github.com/manupawickramasinghe/NanoMQ-SystemD-service
 
+.. code-block::
 
+   systemctl daemon-reload
+   systemctl enable nanomq
+   systemctl start nanomq
+   systemctl status nanomq
+
+|image1989|
 
 
 21.7 Zoneminder
@@ -4528,4 +4535,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1987| image:: ../img/image1987.webp
    :width: 700px
 .. |image1988| image:: ../img/image1988.webp
+   :width: 700px
+.. |image1989| image:: ../img/image1989.webp
    :width: 700px
