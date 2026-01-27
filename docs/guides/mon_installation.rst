@@ -1628,13 +1628,10 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 
 .. admonition:: **Obtention de certificats pour websockets**
 
-   Différents scripts existent, j'ai utilisé :   https://github.com/owntracks/tools/blob/master/TLS/generate-CA.sh
-
-   Sous debian 12 , ifconfig n'est pas installé par défaut, il faut installer net-tools:
+   Voir le paragraphe :ref:`21.6.2.2 Certificats SSL TLS`
 
    |image1230|
 
-  
    Les certificats obtenus:
 
    |image1231| 
