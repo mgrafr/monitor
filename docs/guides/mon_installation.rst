@@ -1634,311 +1634,31 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 
    |image1230|
 
-   .. note:: **paramètrage de generate-CA.sh**
-
-      .. code-block::
-
-         # Définissez les variables d’environnement facultatives suivantes avant l’appel
-	 # pour ajouter les adresses IP et/ou les noms d’hôte spécifiés à la liste subjAltName
-	 # Ceux-ci contiennent des valeurs séparées par des espaces
-   	 #
-	 #	IPLIST="172.13.14.15 192.168.1.1"
- 	 #	HOSTLIST="a.example.com b.example.com"
-
-	 IPLIST="192.168.1.9 192.168.1.26 192.168.1.5 192.168.1.76"
-	 HOSTLIST="monitor.xxxxxxxxx.ovh  mqtt.xxxxxxxx.ovh socket.xxxxxxxx.ovh"
-
-      Pour savoir lesquels sont pris en charge par votre version d’OpenSSL, lancez :
-
-      .. code-block::
-
-         openssl dgst -help
-
-      |image1234|
-
-      |image1235| 
-
-      Un Subject Alternative Name (SAN) ou Nom Alternatif du Sujet en français est une extension de la norme X.509. Cela permet d'ajouter des valeurs à un certificat en utilisant le champ subjectAltName.
-
-      Il est possible d'ajouter les valeurs suivantes : Adresses Mail, Adresses IP, URL, Noms de domaine, Directory Name (une alternative au Distinguished Names utilisée pour le sujet du certificat)
-
-      |image1236|
-
-      |image1237|  
-
-      |image1238|
-
-
-     .. code-block::
-
-	#!/usr/bin/env bash
-	#(@)generate-CA.sh - Create CA key-pair and server key-pair signed by CA
-
-	# Copyright (c) 2013-2020 Jan-Piet Mens <jpmens()gmail.com>
-	# All rights reserved.
-	set -e
-
-	export LANG=C
-	kind=server
-
-	if [ $# -ne 2 ]; then
-	kind=server
-	host=$(hostname -f)
-	if [ -n "$1" ]; then
-		host="$1"
-	fi
-	else
-	kind=client
-	CLIENT="$2"
-	fi
-
-	[ -z "$USER" ] && USER=root
-
-	DIR=${TARGET:='.'}
-	# A space-separated list of alternate hostnames (subjAltName)
-	# may be empty ""
-	ALTHOSTNAMES=${HOSTLIST}
-	ALTADDRESSES=${IPLIST}
-	CA_ORG='/O=OwnTracks.org/OU=generate-CA/emailAddress=nobody@example.net'
-	CA_DN="/CN=An MQTT broker${CA_ORG}"
-	CACERT=${DIR}/ca
-	SERVER="${DIR}/${host}"
-	SERVER_DN="/CN=${host}$CA_ORG"
-	keybits=4096
-	openssl=$(which openssl)
-	MOSQUITTOUSER=${MOSQUITTOUSER:=$USER}
-	# Signature Algorithm. To find out which are supported by your
-	# version of OpenSSL, run `openssl dgst -help` and set your
-	# signature algorithm here. For example:
-	#
-	#	defaultmd="-sha256"
-	#
-	defaultmd="-sha512"
-
-	function maxdays() {
-	nowyear=$(date +%Y)
-	years=$(expr 2032 - $nowyear)
-	days=$(expr $years '*' 365)
-
-	echo $days
-	}
-
-	function getipaddresses() {
-	/sbin/ifconfig |
-		grep -v tunnel |
-		sed -En '/inet6? /p' |
-		sed -Ee 's/inet6? (addr:)?//' |
-		awk '{print $1;}' |
-		sed -e 's/[%/].*//' |
-		egrep -v '(::1|127\.0\.0\.1)'	# omit loopback to add it later
-	}
-
-
-	function addresslist() {
-
-	ALIST=""
-	for a in $(getipaddresses); do
-		ALIST="${ALIST}IP:$a,"
-	done
-	ALIST="${ALIST}IP:127.0.0.1,IP:::1,"
-
-	for ip in $(echo ${ALTADDRESSES}); do
-		ALIST="${ALIST}IP:${ip},"
-	done
-	for h in $(echo ${ALTHOSTNAMES}); do
-		ALIST="${ALIST}DNS:$h,"
-	done
-	ALIST="${ALIST}DNS:${host},DNS:localhost"
-	echo $ALIST
-
-	}
-
-	days=$(maxdays)
-
-	server_days=825	# https://support.apple.com/en-us/HT210176
-
-	if [ -n "$CAKILLFILES" ]; then
-	rm -f $CACERT.??? $SERVER.??? $CACERT.srl
-	fi
-
-	if [ ! -f $CACERT.crt ]; then
-
-	#    ____    _    
-	#   / ___|  / \   
-	#  | |     / _ \  
-	#  | |___ / ___ \ 
-	#   \____/_/   \_\
-	#                 
-
-	# Create un-encrypted (!) key
-	$openssl req -newkey rsa:${keybits} -x509 -nodes $defaultmd -days $days -extensions v3_ca -keyout $CACERT.key -out $CACERT.crt -subj "${CA_DN}"
-	echo "Created CA certificate in $CACERT.crt"
-	$openssl x509 -in $CACERT.crt -nameopt multiline -subject -noout
-
-	chmod 400 $CACERT.key
-	chmod 444 $CACERT.crt
-	chown $MOSQUITTOUSER $CACERT.*
-	echo "Warning: the CA key is not encrypted; store it safely!"
-	fi
-
-
-	if [ $kind == 'server' ]; then
-
-	#   ____                           
-	#  / ___|  ___ _ ____   _____ _ __ 
-	#  \___ \ / _ \ '__\ \ / / _ \ '__|
-	#   ___) |  __/ |   \ V /  __/ |   
-	#  |____/ \___|_|    \_/ \___|_|   
-	#                                  
-
-	if [ ! -f $SERVER.key ]; then
-		echo "--- Creating server key and signing request"
-		$openssl genrsa -out $SERVER.key $keybits
-		$openssl req -new $defaultmd \
-			-out $SERVER.csr \
-			-key $SERVER.key \
-			-subj "${SERVER_DN}"
-		chmod 400 $SERVER.key
-		chown $MOSQUITTOUSER $SERVER.key
-	fi
-
-	if [ -f $SERVER.csr -a ! -f $SERVER.crt ]; then
-
-		# There's no way to pass subjAltName on the CLI so
-		# create a cnf file and use that.
-
-		CNF=`mktemp /tmp/cacnf.XXXXXXXX` || { echo "$0: can't create temp file" >&2; exit 1; }
-		sed -e 's/^.*%%% //' > $CNF <<\!ENDconfig
-		%%% [ JPMextensions ]
-		%%% basicConstraints        = critical,CA:false
-		%%% nsCertType              = server
-		%%% keyUsage                = nonRepudiation, digitalSignature, keyEncipherment
-		%%% extendedKeyUsage        = serverAuth
-		%%% nsComment               = "Broker Certificate"
-		%%% subjectKeyIdentifier    = hash
-		%%% authorityKeyIdentifier  = keyid,issuer:always
-		%%% subjectAltName          = $ENV::SUBJALTNAME
-		%%% # issuerAltName           = issuer:copy
-		%%% ## nsCaRevocationUrl       = http://mqttitude.org/carev/
-		%%% ## nsRevocationUrl         = http://mqttitude.org/carev/
-		%%% certificatePolicies     = ia5org,@polsection
-		%%% 
-		%%% [polsection]
-		%%% policyIdentifier	    = 1.3.5.8
-		%%% CPS.1		    = "http://localhost"
-		%%% userNotice.1	    = @notice
-		%%% 
-		%%% [notice]
-		%%% explicitText            = "This CA is for a local MQTT broker installation only"
-		%%% organization            = "OwnTracks"
-		%%% noticeNumbers           = 1
-
-	!ENDconfig
-
-		SUBJALTNAME="$(addresslist)"
-		export SUBJALTNAME		# Use environment. Because I can. ;-)
-
-		echo "--- Creating and signing server certificate"
-		$openssl x509 -req $defaultmd \
-			-in $SERVER.csr \
-			-CA $CACERT.crt \
-			-CAkey $CACERT.key \
-			-CAcreateserial \
-			-CAserial "${DIR}/ca.srl" \
-			-out $SERVER.crt \
-			-days $server_days \
-			-extfile ${CNF} \
-			-extensions JPMextensions
-
-		rm -f $CNF
-		chmod 444 $SERVER.crt
-		chown $MOSQUITTOUSER $SERVER.crt
-	fi
-	else
-	#    ____ _ _            _   
-	#   / ___| (_) ___ _ __ | |_ 
-	#  | |   | | |/ _ \ '_ \| __|
-	#  | |___| | |  __/ | | | |_ 
-	#   \____|_|_|\___|_| |_|\__|
-	#                            
-
-	if [ ! -f $CLIENT.key ]; then
-		echo "--- Creating client key and signing request"
-		$openssl genrsa -out $CLIENT.key $keybits
-
-		CNF=`mktemp /tmp/cacnf-req.XXXXXXXX` || { echo "$0: can't create temp file" >&2; exit 1; }
-		# Mosquitto's use_identity_as_username takes the CN attribute
-		# so we're populating that with the client's name
-		sed -e 's/^.*%%% //' > $CNF <<!ENDClientconfigREQ
-		%%% [ req ]
-		%%% distinguished_name	= req_distinguished_name
-		%%% prompt			= no
-		%%% output_password		= secret
-		%%% 
-		%%% [ req_distinguished_name ]
-		%%% # O                       = OwnTracks
-		%%% # OU                      = MQTT
-		%%% # CN                      = Suzie Smith
-		%%% CN                        = $CLIENT
-		%%% # emailAddress            = $CLIENT
-	!ENDClientconfigREQ
-
-		$openssl req -new $defaultmd \
-			-out $CLIENT.csr \
-			-key $CLIENT.key \
-			-config $CNF
-		chmod 400 $CLIENT.key
-	fi
-
-	if [ -f $CLIENT.csr -a ! -f $CLIENT.crt ]; then
-
-		CNF=`mktemp /tmp/cacnf-cli.XXXXXXXX` || { echo "$0: can't create temp file" >&2; exit 1; }
-		sed -e 's/^.*%%% //' > $CNF <<\!ENDClientconfig
-		%%% [ JPMclientextensions ]
-		%%% basicConstraints        = critical,CA:false
-		%%% subjectAltName          = email:copy
-		%%% nsCertType              = client,email
-		%%% extendedKeyUsage        = clientAuth,emailProtection
-		%%% keyUsage                = digitalSignature, keyEncipherment, keyAgreement
-		%%% nsComment               = "Client Broker Certificate"
-		%%% subjectKeyIdentifier    = hash
-		%%% authorityKeyIdentifier  = keyid,issuer:always
-
-	!ENDClientconfig
-
-		SUBJALTNAME="$(addresslist)"
-		export SUBJALTNAME		# Use environment. Because I can. ;-)
-
-		echo "--- Creating and signing client certificate"
-		$openssl x509 -req $defaultmd \
-			-in $CLIENT.csr \
-			-CA $CACERT.crt \
-			-CAkey $CACERT.key \
-			-CAcreateserial \
-			-CAserial "${DIR}/ca.srl" \
-			-out $CLIENT.crt \
-			-days $days \
-			-extfile ${CNF} \
-			-extensions JPMclientextensions
-
-		rm -f $CNF
-		chmod 444 $CLIENT.crt
-		fi
-	fi 
-
-   Lancer /etc/mosquitto/certs/generate-CA.sh (renommé ici generate-CA_mqtt.sh) 
-
-   |image1239| 
-
-   |image1240| 
-
+  
    Les certificats obtenus:
 
    |image1231| 
 
 Le fichier de configuration de mosquitto dans /etc/mosquitto/conf.d :
 
-|image1232|
+.. code-block::
+
+   listener 1883
+   #allow_anonymous true
+   password_file /etc/mosquitto/pass.txt
+   # Plain WebSockets configuration
+   #websockets over TLS/SSL
+   listener 9001
+   protocol websockets
+
+   listener 8883
+   use_identity_as_username true
+   cafile /etc/mosquitto/certs/ca.pem
+   certfile /etc/mosquitto/certs/server.crt
+   keyfile /etc/mosquitto/certs/server.key
+   tls_version tlsv1.2
+   require_certificate true
+   allow_anonymous false
 
 Le fichier de mots de passe:
 
@@ -3834,20 +3554,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 405px
 .. |image1233| image:: ../img/image1233.webp
    :width: 496px
-.. |image1234| image:: ../img/image1234.webp
-   :width: 700px
-.. |image1235| image:: ../img/image1235.webp
-   :width: 450px
-.. |image1236| image:: ../img/image1236.webp
-   :width: 695px
-.. |image1237| image:: ../img/image1237.webp
-   :width: 602px
-.. |image1238| image:: ../img/image1238.webp
-   :width: 464px
-.. |image1239| image:: ../img/image1239.webp
-   :width: 512px
-.. |image1240| image:: ../img/image1240.webp
-   :width: 581px
 .. |image1241| image:: ../img/image1241.webp
    :width: 530px
 .. |image1242| image:: ../img/image1242.webp
