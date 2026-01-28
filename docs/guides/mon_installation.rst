@@ -1649,7 +1649,7 @@ Le fichier de configuration de mosquitto dans /etc/mosquitto/conf.d :
    listener 8883
    use_identity_as_username true
    cafile /etc/mosquitto/certs/ca.pem
-   certfile /etc/mosquitto/certs/server.crt
+   certfile /etc/mosquitto/certs/server.pem
    keyfile /etc/mosquitto/certs/server.key
    tls_version tlsv1.2
    require_certificate true
@@ -3542,7 +3542,7 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1210| image:: ../img/image1210.webp
    :width: 358px
 .. |image1231| image:: ../img/image1231.webp
-   :width: 288px
+   :width: 350px
 .. |image1232| image:: ../img/image1232.webp
    :width: 405px
 .. |image1233| image:: ../img/image1233.webp
