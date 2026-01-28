@@ -4,11 +4,17 @@
 
 9.1 Démarrage automatique
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-- **Pour une installation classique node.js**
+.. IMPORTANT::
+
+   Z2m n'envoie plus de messages: 
+
+   le souci vient de Z2M et du driver **ember** : à la moindre interruption du courter mqtt, il faut redémarrer Zém
+- 
+**Pour une installation classique node.js**
 
 Démarrage auto : avec PM2 , Voir la page domo-site : http://domo-site.fr/accueil/dossiers/74 
 
-[image658|
+|image658|
 
 |image659|
 
