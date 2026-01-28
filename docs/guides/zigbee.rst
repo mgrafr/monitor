@@ -6,11 +6,11 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. IMPORTANT::
 
-   Z2m n'envoie plus de messages: 
+   Si Z2m n'envoie plus de messages: 
 
    le souci vient de Z2M et du driver **ember** : à la moindre interruption du courter mqtt, il faut redémarrer Zém
-- 
-**Pour une installation classique node.js**
+
+- **Pour une installation classique node.js**
 
 Démarrage auto : avec PM2 , Voir la page domo-site : http://domo-site.fr/accueil/dossiers/74 
 
@@ -19,6 +19,24 @@ Démarrage auto : avec PM2 , Voir la page domo-site : http://domo-site.fr/accuei
 |image659|
 
 - **Pour une installation sous Docker**, le démarrage sera automatique.
+
+- **Pour un démarrage avec systemg** zigbee2mqtt.service
+
+.. code-block::
+
+   [Unit]
+   Description=zigbee2mqtt
+   After=network.target
+   [Service]
+   Environment=NODE_ENV=production
+   ExecStart=/usr/bin/pnpm start
+   WorkingDirectory=/opt/zigbee2mqtt
+   StandardOutput=inherit
+   StandardError=inherit
+   Restart=always
+   User=root
+   [Install]
+   WantedBy=multi-user.target
 
 9.2 Le fronted
 ^^^^^^^^^^^^^^
