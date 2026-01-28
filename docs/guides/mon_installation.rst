@@ -1630,8 +1630,6 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 
    Voir le paragraphe :ref:`21.6.2.2 Certificats SSL TLS`
 
-   |image1230|
-
    Les certificats obtenus:
 
    |image1231| 
@@ -3543,8 +3541,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 650px
 .. |image1210| image:: ../img/image1210.webp
    :width: 358px
-.. |image1230| image:: ../img/image1230.webp
-   :width: 431px
 .. |image1231| image:: ../img/image1231.webp
    :width: 288px
 .. |image1232| image:: ../img/image1232.webp
