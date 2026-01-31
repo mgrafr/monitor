@@ -471,7 +471,7 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
 .. |image1143| image:: ../media/image1143.webp
    :width: 418px
 .. |image1225| image:: ../img/image1980.webp
-   :width: 650px
+   :width: 500px
 .. |image1955| image:: ../img/image1955.webp
    :width: 700px
 .. |image1956| image:: ../img/image1956.webp
