@@ -364,6 +364,12 @@ Extrait du fichieru :darkblue:`admin/mqtt_js.php` & de la fonction & :darkblue:`
   
    |image1772|
 
+1.1.3.4 Solution temps réel MQTT Z2m
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Voir le paragraphe :ref:`9.5 utilisation directe avec monitor`
+
+La mise à jour est directe entre monitor et Zigbee2mqtt
+
 1.1.4 Autres données
 --------------------
 Choisir Idx de Domoticz ou idm de monitor ? 
