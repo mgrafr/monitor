@@ -255,8 +255,15 @@ Le script est est exécuter dans le répertoire **ws_z2m**
      ->setKeepAliveInterval(60)
      ->setLastWillTopic('monitor/last-will')
      ->setLastWillMessage('client mqtt déconnecté')
-     ->setLastWillQualityOfService(1);
+     ->setLastWillQualityOfService(1)
+	 ->setReconnectAutomatically(true)
+     ->setMaxReconnectAttempts(3)
+     ->setDelayBetweenReconnectAttempts(0);
    try {
+   debut:
+   // Boucle d’attente de connexion
+    $maxWait = 30; // secondes max d’attente
+    $start = time();  
     $mqtt = new MqttClient($server, $port, $clientId, $mqtt_version);
     $mqtt->connect($connectionSettings, $clean_session);
     printf("client connecté\n");	
@@ -268,7 +275,7 @@ Le script est est exécuter dans le répertoire **ws_z2m**
     $id=$search['ID'];$idm=$search['idm'];$json=$search['json'];$champ=$search['champ'];$obj = json_decode($message);
     if (isset($obj->state) && $obj->state=="offline"){$ob=$obj->state;$msg='{ "id" : "'.$id.'", "objet" : "'.$name.'", "state" : "'.$ob.'" }';maj($id,$ob);}
     if (isset($obj->$json)) {$ob=$obj->$json;$msg='{ "id" : "'.$id.'", "objet" : "'.$name.'","state" : "'.$ob.'", "champ1" : "'.$champ.'", "champ2" : "'.$json.'", "idm" : "'.$idm.'"}';
-       // echo '------------'.$msg;
+     // echo '------------'.$msg;
      $mqtt->publish('z1m', $msg, 0,false);$id="0";$str=[];
     echo "envoi msg:".$msg; 
    } $i++;}}} );
@@ -277,11 +284,18 @@ Le script est est exécuter dans le répertoire **ws_z2m**
    }
    catch (\Throwable $e) {
     echo 'An exception occured: ' . $e->getMessage() . PHP_EOL;
-   }
+    while (time() - $start <= $maxWait) {
+        usleep(1000000); // pause 1000ms pour éviter de saturer le CPU
+        echo ".";}
+        goto debut;  
+    //$mqtt->disconnect();   
+    }
 
 |image1957|
 
 |image1967|
+
+|image1225|
 
 .. note::
 
@@ -456,6 +470,8 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 700px
 .. |image1143| image:: ../media/image1143.webp
    :width: 418px
+.. |image1225| image:: ../img/image1980.webp
+   :width: 650px
 .. |image1955| image:: ../img/image1955.webp
    :width: 700px
 .. |image1956| image:: ../img/image1956.webp
@@ -490,6 +506,8 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 650px
 .. |image1979| image:: ../img/image1979.webp
    :width: 700px
+.. |image1980| image:: ../img/image1980.webp
+   :width: 300px
 .. |image1980| image:: ../img/image1980.webp
    :width: 300px
 
