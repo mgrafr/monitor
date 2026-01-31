@@ -1397,6 +1397,14 @@ Ce contrôleur LAN est intéressant car en cas de problème sur le conteneur LXC
 
 |image1891| 
 
+.. admonition:: Remplacer le firware par un firmware alternatif
+
+   https://github.com/Nerivec/silabs-firmware-builder
+
+   |image1226| 
+
+   CHOISIR LE FIRMWARE DANS LE R2PERTOIRE /manifests/smlight
+
 21.4.5.1 remplacer un controleur à base du CC2652P 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 le SLZB-06M est équipé d'une puce Silicon Labs EFR32(elle a la particularité de prendre en charge à la fois le Zigbee et Thread), donc compatible matter mais l'inconvénient est qu'il faut réactiver tous les dispositifs; pour faciliter le transfert, il suffit pour cela de concerver provisoirement l'ancien contrôleur et de créer un nouveau réseau avec le nouveau contrôleur; pour simplifier le transfert j'ai crée un nouveau conteneur LXC à partir de la sauvegarde deu conteneur zigbee2mqtt existant.
@@ -3541,6 +3549,8 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 650px
 .. |image1210| image:: ../img/image1210.webp
    :width: 358px
+.. |image1226| image:: ../img/image1226.webp
+   :width: 600px
 .. |image1231| image:: ../img/image1231.webp
    :width: 350px
 .. |image1232| image:: ../img/image1232.webp
