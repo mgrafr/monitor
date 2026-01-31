@@ -45,11 +45,18 @@ $mqtt_version = MqttClient::MQTT_3_1_1;
 $connectionSettings = (new ConnectionSettings)
   ->setUsername($username)
   ->setPassword($password)
-  ->setKeepAliveInterval(60)
+  ->setKeepAliveInterval(3600)
   ->setLastWillTopic('monitor/last-will')
   ->setLastWillMessage('client mqtt déconnecté')
-  ->setLastWillQualityOfService(1);
-try {
+  ->setLastWillQualityOfService(1)
+  ->setReconnectAutomatically(true)
+  ->setMaxReconnectAttempts(3)
+  ->setDelayBetweenReconnectAttempts(0);
+debut:
+  try {
+    // Boucle d’attente de connexion
+    $maxWait = 30; // secondes max d’attente
+    $start = time();   
     $mqtt = new MqttClient($server, $port, $clientId, $mqtt_version);
     $mqtt->connect($connectionSettings, $clean_session);
     printf("client connecté\n");	
@@ -65,11 +72,16 @@ if ($id!="0") {$n=$search_id[0]['nb'];$i=0;while($i<$n){$search=$search_id[$i];e
      $mqtt->publish('z1m', $msg, 0,false);$id="0";$str=[];
     echo "envoi msg:".$msg; 
 } $i++;}}} );
-    $mqtt->loop();
-    $mqtt->disconnect();
+    $mqtt->loop(true);
+    //$mqtt->disconnect();
 }
 catch (\Throwable $e) {
     echo 'An exception occured: ' . $e->getMessage() . PHP_EOL;
+    while (time() - $start <= $maxWait) {
+        usleep(1000000); // pause 1000ms pour éviter de saturer le CPU
+        echo ".";}
+        goto debut;  
+    //$mqtt->disconnect();   
 }
 
 
