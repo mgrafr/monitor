@@ -6,9 +6,9 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. IMPORTANT::
 
-   Si Z2m n'envoie plus de messages: 
+   Si Z2m n'envoie plus de messages à Domoticz ou Home assistant: 
 
-   le souci vient de Z2M et du driver **ember** : à la moindre interruption du courter mqtt, il faut redémarrer Zém
+   le souci vient de Z2M et du driver **ember** : à la moindre interruption du courter mqtt, il faut redémarrer Z2m
 
 - **Pour une installation classique node.js**
 
