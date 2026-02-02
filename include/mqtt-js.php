@@ -1,7 +1,7 @@
 <?php require_once('admin/config.php');
 $domaine=$_SESSION["domaine"];
-if ($domaine==URLMONITOR) {$lien_mqtt=MQTT_URL.':'.MQTT_PORT;$w='wss://';}
-if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP.':'.MQTT_PORT;$w='ws://';}
+if ($domaine==URLMONITOR) {$lien_mqtt=MQTT_URL.':'.MQTT_PORTS["wss"];$w='wss://';}
+if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP.':'.MQTT_PORTS["ws"];$w='ws://';}
 ?>
 
 <script>
@@ -17,8 +17,9 @@ if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP.':'.MQTT_PORT;$w='ws://';}
       username: '<?php echo MQTT_USER;?>',
       password: '<?php echo MQTT_PASS;?>',
       reconnectPeriod: 1000,
-      //key: ('certs/server_key.pem'),
-      //cert: ('certs/server_cert.pem'),
+      <?php
+      if ($domaine==URLMONITOR) {echo "key: 'certs/client-key.pem',
+      cert: 'certs/client.pem',";} ?>
     }
     const topic = 'z1m/#'
     const payload = ""
