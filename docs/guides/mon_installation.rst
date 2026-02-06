@@ -1633,6 +1633,15 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 
 21.6.1.1 Certificats 
 ^^^^^^^^^^^^^^^^^^^^
+.. IMPORTANT::
+
+   La connexion WebSocket commence par une connexion HTTP ou HTnormale puis passe au protocole WebSocket. Lorsque la page est accessible via HTTP, vous pouvez utiliser WS mais lorsque votre page est chargée via HTTPS, vous ne pouvez utiliser que WSS – les navigateurs ne permettent pas de « rétrograder » la sécurité.
+
+   Si le certificat nest pas émis par une autorité de certification publique (par exemple LetsEncrypt), la plupart des navigateur refuseront la connexion auusi pour utiliser Monitor en HTTPS, le courtier MQTT doit utiliser le certificat déjà émis pour NGINX.
+
+   |image1234| 
+
+    image1235| 
 
 .. admonition:: **Obtention de certificats pour websockets**
 
@@ -3557,6 +3566,10 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 405px
 .. |image1233| image:: ../img/image1233.webp
    :width: 496px
+.. |image1234| image:: ../img/image1234.webp
+   :width: 700px
+.. |image1235| image:: ../img/image1235.webp
+   :width: 700px
 .. |image1241| image:: ../img/image1241.webp
    :width: 530px
 .. |image1242| image:: ../img/image1242.webp
