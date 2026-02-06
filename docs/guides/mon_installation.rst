@@ -1635,15 +1635,17 @@ Pour cet exemple j'ai du diviser par 10 la valeur de la température:
 ^^^^^^^^^^^^^^^^^^^^
 .. IMPORTANT::
 
-   La connexion WebSocket commence par une connexion HTTP ou HTnormale puis passe au protocole WebSocket. Lorsque la page est accessible via HTTP, vous pouvez utiliser WS mais lorsque votre page est chargée via HTTPS, vous ne pouvez utiliser que WSS – les navigateurs ne permettent pas de « rétrograder » la sécurité.
+   La connexion WebSocket commence par une connexion HTTP ou HTTPS normale puis passe au protocole WebSocket. Lorsque la page est accessible via HTTP, vous pouvez utiliser WS mais lorsque votre page est chargée via HTTPS, vous ne pouvez utiliser que WSS – les navigateurs ne permettent pas de « rétrograder » la sécurité.
 
-   Si le certificat nest pas émis par une autorité de certification publique (par exemple LetsEncrypt), la plupart des navigateur refuseront la connexion auusi pour utiliser Monitor en HTTPS, le courtier MQTT doit utiliser le certificat déjà émis pour NGINX.
+   Si le certificat n'est pas émis par une autorité de certification publique (par exemple LetsEncrypt), la plupart des navigateurs refuseront la connexion aussi pour utiliser Monitor en HTTPS, le courtier MQTT doit utiliser le certificat déjà émis pour NGINX.
 
    |image1234| 
 
-    image1235| 
+   mqtt.conf de Nginx pour l'appel distant https
 
-.. admonition:: **Obtention de certificats pour websockets**
+   |image1235| 
+
+.. admonition:: **Obtention de certificats auto-signés pour websockets**
 
    Voir le paragraphe :ref:`21.6.2.2 Certificats SSL TLS`
 
