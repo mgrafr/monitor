@@ -2224,6 +2224,54 @@ sms: 0=pas de sms, 1=sms par GSM, 2=sms par API Free Mobile
 
 |image1664|
 
+1.9.1.4 Websockets wws
+^^^^^^^^^^^^^^^^^^^^^^
+voir aussi:
+- :ref:`9.5.4.1 Le javascript sur la page html`
+- :ref:`21.6.1.1 Certificats`
+
+1.9.1.4.A mqtt.conf de nginx
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+   upstream mqtt {
+   server 192.168.1.42:9002;
+	}
+	map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+	}
+	server {
+ 	server_name mqtt.xxxxxxxxx.ovh;
+   	location /{
+     proxy_http_version 1.1;    
+     proxy_pass http://mqtt;
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "upgrade";   
+     proxy_set_header Host $host;
+     proxy_read_timeout 300 ;
+	  }
+    #auth_basic "Mot de Passe Obligatoire";
+	#auth_basic_user_file /etc/nginx/.htpasswd;
+    listen 443  ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/xxxxxxxxx.ovh/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/xxxxxxxxx.ovh/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+	}
+	server {
+    if ($host = mqtt.xxxxxxxxx.ovh) {
+        return 301 https://$host$request_uri;
+    }
+    listen       80;
+    server_name  mqtt.xxxxxxxxx.ovh;
+    return 404;
+	}
+
+Configuration wws dans monitor: port 443
+
+|image1227|
 
 1.9.2 Accès VPN
 ----------------
@@ -2518,6 +2566,8 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 482px
 .. |image1222| image:: ../img/image1222.webp
    :width: 660px
+.. |image1227| image:: ../img/image1227.webp
+   :width: 600px
 .. |image1328| image:: ../img/image1328.webp
    :width: 700px
 .. |image1413| image:: ../img/image1413.webp
