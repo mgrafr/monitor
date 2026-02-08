@@ -43,7 +43,13 @@ define('MQTT_USER', "<user>");//user et mot passe dans Mosquitto
 define('MQTT_PASS', "<mot de passe>");
 define('MQTT_URL', 'mqtt.<DOMAINE>');//ex: mqtt.xxxxxx.ovh
 define('MQTT_IP', '192.168.1.x');//adresse IP mosquitto
-define('MQTT_PORT', 9001);// mqtt=1883 websockets: ws=9001 wss=9002 ou 9883
+define('MQTT_PORT', 9001);// mqtt=1883 websockets=9001   pour anciennes versions de Monitor
+define('MQTT_PORTS', array(
+    "mqtt" => "1883", //MQTT
+    "ws" => "9001", // Websocket
+    "mqtts" => "8883", // MQTTS
+    "wss" => "443")); // WSS pour Letsencrypt laisser 443, 
+    // COURTIER ET NGINX DOIVENT ECOUTER LE MEME PORT ex:9002
 define('MQTT_TOPIC', "monitor/ha");// topic (destinataire) monitor/dz, monitor/ha,...
 //--------------------------------------------------
 define('SSE','false');//  'false',  'node' ou 'php' si serveur SSE utilisé par monitor
@@ -231,6 +237,7 @@ if (str_contains($current, 'domaine')===false ){
 $current = $current."domaine='".URLMONITOR."'\n";
 file_put_contents($file, $current);}
 ?>
+
 
 
 
