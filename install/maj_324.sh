@@ -8,7 +8,7 @@ wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.1.tar.gz
 tar -xzf monitor-v4.1.1.tar.gz
 cd monitor-monitor-v4.1.1
 sed -i "s/.DOMAINE\" ));/DOMAINE\",/g" admin/config.php
-sed -i "s/iobweb.DOMAINE",\iobweb.DOMAINE", 2 => \"false\"));/g" admin/config.php
+sed -i "s/iobweb.DOMAINE",/iobweb.DOMAINE", 2 => \"false\"));/g" admin/config.php
 result()(mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'materiel';") 
 res=${result} 
 if [[ ${res:0:5} != 'Field' ]] 
