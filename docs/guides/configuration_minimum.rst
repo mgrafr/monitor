@@ -2116,7 +2116,7 @@ Pour HTTPS, voir cette page web : http://domo-site.fr/accueil/dossiers/3
     return 404; # managed by Certbot
    }
 
-.. note:: ce fichier est pour un accès en https, avec PHP 8.2
+.. note:: ce fichier est pour un accès en https, avec PHP 8.2 (pour 8.X REMPLACER 8.2 par la version de php installée)
 
    *un nom de domaine doit être demandé auprès d'un fournisseur*
 
@@ -2224,9 +2224,9 @@ sms: 0=pas de sms, 1=sms par GSM, 2=sms par API Free Mobile
 
 |image1664|
 
-1.9.1.4 Websockets wws
+1.9.1.4 Websockets wss
 ^^^^^^^^^^^^^^^^^^^^^^
-voir aussi:
+.. seealso::
 - :ref:`9.5.4.1 Le javascript sur la page html`
 - :ref:`21.6.1.1 Certificats`
 
