@@ -450,7 +450,23 @@ fichier include/mqtt-js.php
 |image1976|
   
 Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
-   
+
+9.5.5 Automatisations
+"""""""""""""""""""""
+9.5.5.1 Le plugin Zigbee2MQTT-automations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|image1228| https://github.com/Luligu/zigbee2mqtt-automations
+
+**Installation**
+
+.. code-block::
+
+   cd /opt/zigbee2mqtt/data
+   mkdir external_extensions
+   cd external_extensions
+   wget https://github.com/Luligu/zigbee2mqtt-automations/blob/master/dist/automations.js
+
+|image1229|
 
 .. |image653| image:: ../media/image653.webp
    :width: 536px
@@ -472,6 +488,10 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 418px
 .. |image1225| image:: ../img/image1225.webp
    :width: 500px
+.. |image1228| image:: ../img/image1228.webp
+   :width: 90px
+.. |image1229| image:: ../img/image1229.webp
+   :width: 650px
 .. |image1955| image:: ../img/image1955.webp
    :width: 700px
 .. |image1956| image:: ../img/image1956.webp
