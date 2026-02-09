@@ -2231,10 +2231,10 @@ sms: 0=pas de sms, 1=sms par GSM, 2=sms par API Free Mobile
    WebSocket est un protocole de communication bidirectionnel qui peut envoyer les données du client au serveur ou du serveur au client en réutilisant le canal de connexion établi. La connexion est maintenue tant qu’elle n'est pas terminée par le client ou le serveur.
    Toutes les applications en temps réel utilisent WebSocket pour recevoir les données.
 
-.. see also::
+.. seealso::
 
-- :ref:`9.5.4.1 Le javascript sur la page html`
-- :ref:`21.6.1.1 Certificats`
+   - :ref:`9.5.4.1 Le javascript sur la page html`
+   - :ref:`21.6.1.1 Certificats`
 
 1.9.1.4.A mqtt.conf de nginx
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
