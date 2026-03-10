@@ -897,6 +897,8 @@ Les solutions:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 https://github.com/JakronIT/Proxmox-backup-tool
 
+|image1992|
+
 21.1.11.2 ProxSave
 ^^^^^^^^^^^^^^^^^^
 https://proxsave.dev/guide/automation-and-scheduling/
@@ -4280,4 +4282,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1990| image:: ../img/image1990.webp
    :width: 700px
 .. |image1991| image:: ../img/image1991.webp
+   :width: 700px
+.. |image1992| image:: ../img/image1992.webp
    :width: 700px
