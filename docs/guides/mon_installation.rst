@@ -889,6 +889,19 @@ Envoi d'un SMS depuis la console d'un conteneur; le script : send_sms.py utilis√
 
 |image1925|
 
+21.1.11 Sauvegarde des noeuds
+-----------------------------
+Les solutions:
+
+21.1.11.1 Proxmox-backup-tool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+https://github.com/JakronIT/Proxmox-backup-tool
+
+21.1.11.2 ProxSave
+^^^^^^^^^^^^^^^^^^
+https://proxsave.dev/guide/automation-and-scheduling/
+
+|image1991|
 
 21.2 Domoticz
 =============
@@ -4265,4 +4278,6 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1989| image:: ../img/image1989.webp
    :width: 700px
 .. |image1990| image:: ../img/image1990.webp
+   :width: 700px
+. |image1991| image:: ../img/image1991.webp
    :width: 700px
