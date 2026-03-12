@@ -487,13 +487,12 @@ Exemple d'une première automation : dans /opt/zigbee2mqtt/data/automations.yaml
        state: ON
      action:
        entity: lampe_jardin
-       attribute: state_I2
-       payload: turn_on
+       payload: { state_I2: "ON" }
        turn_off_after: 240
-       payload_off: { state_I2: "OFF" }
+       payload: { state_I2: "OFF" }
        logger: info
 
-Dans le frontend, allez dans Extensions. Sélectionne automation.js et enregistrer; automations.yaml et scenes.yaml (si il existe) sont rechargés.
+Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; automations.yaml et scenes.yaml (si il existe) sont rechargés.
 
 |image1996|
 
