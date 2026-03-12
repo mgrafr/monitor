@@ -465,8 +465,16 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    mkdir external_extensions
    cd external_extensions
    wget https://github.com/Luligu/zigbee2mqtt-automations/blob/master/dist/automations.js
+   systemctl stop zigbee2mqtt
+   systemctl start zigbee2mqtt
 
 |image1229|
+
+|image1994|
+
+Après le redémarrage, automations.js est pris en compte par le fronted
+
+|image1995|
 
 .. |image653| image:: ../media/image653.webp
    :width: 536px
@@ -528,4 +536,5 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
    :width: 700px
 .. |image1980| image:: ../img/image1980.webp
    :width: 300px
-
+.. |image1994| image:: ../img/image1994.webp
+   :width: 280px
