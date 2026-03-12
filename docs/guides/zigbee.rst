@@ -476,6 +476,27 @@ Après le redémarrage, automations.js est pris en compte par le fronted
 
 |image1995|
 
+Exemple d'une première automation : dans /opt/zigbee2mqtt/data/automations.yaml
+
+.. code-block::
+
+   Allumage lampes jardin 4mn  depuis contact lampe_ porche:
+     active: true
+     trigger:
+       entity: lampe_terrasse_nord
+       state: ON
+     action:
+       entity: lampe_jardin
+       attribute: state_I2
+       payload: turn_on
+       turn_off_after: 240
+       payload_off: { state_I2: "OFF" }
+       logger: info
+
+Dans le frontend, allez dans Extensions. Sélectionne automation.js et enregistrer; automations.yaml et scenes.yaml (si il existe) sont rechargés.
+
+|image1996|
+
 .. |image653| image:: ../media/image653.webp
    :width: 536px
 .. |image654| image:: ../media/image654.webp
@@ -538,3 +559,7 @@ Après le redémarrage, automations.js est pris en compte par le fronted
    :width: 300px
 .. |image1994| image:: ../img/image1994.webp
    :width: 280px
+.. |image1995| image:: ../img/image1995.webp
+   :width: 500px
+.. |image1996| image:: ../img/image1996.webp
+   :width: 550px
