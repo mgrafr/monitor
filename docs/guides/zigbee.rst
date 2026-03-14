@@ -491,7 +491,7 @@ Exemple d'une première automation : dans /opt/zigbee2mqtt/data/automations.yaml
            state_l2: ON
          turn_off_after: 120
          payload_off:
-           state_l2: OFF
+         logger: info
 
 Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; automations.yaml et scenes.yaml (si il existe) sont rechargés.
 
