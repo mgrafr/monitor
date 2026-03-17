@@ -18,6 +18,7 @@
 <script src="js/zebra_dialog.min.js"></script>
 <script src="js/jscolor.min.js"></script>
 <script src="custom/js/JS.js?2"></script>
+<!--<script src="js/require.js"></script>-->
 <?php
 if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';
 }
