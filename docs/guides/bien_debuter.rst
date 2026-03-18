@@ -34,15 +34,17 @@
 
 -	Nginx, PHP 8.4, PHP8.4-gd, PHP8.4-ssh2
 
-	maria db 11.8.2, phpMyAdmin 5.2+snapshot, monitor
+-	maria db 11.8.2, phpMyAdmin 5.2+snapshot, monitor
 
-	Pare-feu UFW, en option Fail2ban
+-   Bootstrap v4.5.2 (css & js)
+
+-	Pare-feu UFW, en option Fail2ban
 
 -	Quelques programmes python utiles : pip, PHP-mqtt
 
--       Quelques utilitaires : dos2unix et unzip
+-   Quelques utilitaires : dos2unix et unzip
 
--       Un serveur SSE en PHP (en option SSE NodeJS)
+-   Un serveur SSE en PHP (en option SSE NodeJS)
 
 -	Un utilisateur système est crée
 
