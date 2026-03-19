@@ -497,6 +497,20 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 
 |image1996|
 
+9.5.5.2 Script d'aide pour automations.yaml de monitor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|image1997|
+
+- **UTILISATION:**
+
+   . indiquer le nom de l'automation
+   . choisir un declencheur
+
+   |image1998|
+
+
+   
+
 .. |image653| image:: ../media/image653.webp
    :width: 536px
 .. |image654| image:: ../media/image654.webp
@@ -563,3 +577,7 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
    :width: 500px
 .. |image1996| image:: ../img/image1996.webp
    :width: 550px
+.. |image1997| image:: ../img/image1997.webp
+   :width: 700px
+.. |image1998| image:: ../img/image1998.webp
+   :width: 600px
