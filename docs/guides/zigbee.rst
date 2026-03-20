@@ -515,8 +515,18 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 
    |image2000|
 
-   . 
+   . choisir  une condition si il y a lieu, choisir une action
+
+   |image2001|
+
+   |image2002|
    
+   |image2003|
+
+   |image2004|
+
+   |image2004|
+
 
 .. |image653| image:: ../media/image653.webp
    :width: 536px
@@ -591,4 +601,14 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 .. |image1999| image:: ../img/image1999.webp
    :width: 550px
 .. |image2000| image:: ../pict/image2000.webp
+   :width: 500px
+.. |image2001| image:: ../pict/image2001.webp
+   :width: 500px
+.. |image2002| image:: ../pict/image2002.webp
+   :width: 500px
+.. |image2003| image:: ../pict/image2003.webp
+   :width: 500px
+.. |image2004| image:: ../pict/image2004.webp
+   :width: 500px
+.. |image2005| image:: ../pict/image2005.webp
    :width: 500px
