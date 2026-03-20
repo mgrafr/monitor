@@ -503,14 +503,19 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 
 - **UTILISATION:**
 
-   . indiquer le nom de l'automation,
-   . choisir un declencheur
-
-   |image1998|
-
    . pour obtenir de l'aide
 
    |image1999|
+
+   . indiquer le nom de l'automation,
+   . choisir de l'activer ou non 
+   . choisir un déclenchement
+
+   |image1998|
+
+   |image2000|
+
+   . 
    
 
 .. |image653| image:: ../media/image653.webp
@@ -582,6 +587,8 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 .. |image1997| image:: ../img/image1997.webp
    :width: 700px
 .. |image1998| image:: ../img/image1998.webp
-   :width: 600px
+   :width: 500px
 .. |image1999| image:: ../img/image1999.webp
-   :width: 650px
+   :width: 550px
+.. |image2000| image:: ../pict/image2000.webp
+   :width: 500px
