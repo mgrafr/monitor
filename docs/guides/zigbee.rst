@@ -525,8 +525,15 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 
    |image2004|
 
-   |image2004|
+   |image2005|
 
+   . POUR TERMINER APPUYER sur Envoyer
+
+   |image2006|
+
+   . et sur COPY pour récupérer le script
+
+     |image2007|
 
 .. |image653| image:: ../media/image653.webp
    :width: 536px
@@ -612,3 +619,7 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
    :width: 500px
 .. |image2005| image:: ../pict/image2005.webp
    :width: 500px
+.. |image2006| image:: ../pict/image2006.webp
+   :width: 550px
+.. |image2007| image:: ../pict/image2006.webp
+   :width: 450px
