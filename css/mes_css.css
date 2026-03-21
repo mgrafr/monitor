@@ -505,14 +505,15 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 #nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
 #nagiosapp{width: 750px;height: 700px;position: relative;
 top: -70px;}
+#automat{display:none;width:90%;height:auto;background-color: beige;position: relative;top:-610px;left:4%}
+#console {background: #111;color: #0f0;padding: 10px;height: 200px;width:500px;overflow-y: auto;white-space: pre-wrap;
+border: 1px solid #444;margin-left: 10px;}
+ #btn_console{position: relative;top:-28px;}   
+ #aide_aut{background-color: beige;height: 40px;} 
 /*ha-bridge-------------------*/
 #habridgeapp, #iobrokerapp{width: 700px;height: 800px;position: relative;top: 10px;}
 /*mur cam  pour 9 caméras*/
-img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{
-	max-width: 100%;
-    width: 300px;
-    height: auto;
-}
+img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{max-width: 100%;width: 300px;height: auto;}
 /*mur inter*/
 #sw12, #sw23{margin-left:15px;}
 #sw11{background-color:none}
