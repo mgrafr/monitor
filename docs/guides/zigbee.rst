@@ -535,6 +535,10 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 
      |image2007|
 
+.. note::
+
+   la console est affichée par un textarea html et l'indentation peut être quelquefois modifiée mais la copie crée dans le presse papier est correcte et peut être ajoutée dans automations.yaml.
+
 .. |image653| image:: ../media/image653.webp
    :width: 536px
 .. |image654| image:: ../media/image654.webp
@@ -602,7 +606,7 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 .. |image1996| image:: ../img/image1996.webp
    :width: 550px
 .. |image1997| image:: ../img/image1997.webp
-   :width: 700px
+   :width: 600px
 .. |image1998| image:: ../img/image1998.webp
    :width: 500px
 .. |image1999| image:: ../img/image1999.webp
