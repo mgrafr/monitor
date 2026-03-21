@@ -531,13 +531,19 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 
    |image2006|
 
-   . et sur COPY pour récupérer le script
+   . et sur COPY pour récupérer le script et l'ajouter à :green:`automations.yaml'
 
      |image2007|
 
 .. note::
 
-   la console est affichée par un textarea html et l'indentation peut être quelquefois modifiée mais la copie crée dans le presse papier est correcte et peut être ajoutée dans automations.yaml.
+   la console est affichée par un textarea html et l'indentation peut être quelquefois modifiée mais la copie crée dans le presse papier est correcte et peut être ajoutée dans :green:`automations.yaml`.
+
+   La copie dans le presse papier est réalisée par clipboard.js : https://clipboardjs.com/
+
+   |image2008|
+
+
 
 .. |image653| image:: ../media/image653.webp
    :width: 536px
@@ -626,4 +632,6 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 .. |image2006| image:: ../pict/image2006.webp
    :width: 550px
 .. |image2007| image:: ../pict/image2007.webp
-   :width: 450px
+   :width: 550px
+.. |image2008| image:: ../pict/image2008.webp
+   :width: 650px
