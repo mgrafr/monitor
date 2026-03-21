@@ -501,6 +501,10 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |image1997|
 
+- **le SCRIPT**
+
+   |image2009|  
+
 - **UTILISATION:**
 
    . pour obtenir de l'aide
@@ -635,3 +639,5 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
    :width: 550px
 .. |image2008| image:: ../pict/image2008.webp
    :width: 650px
+.. |image2009| image:: ../pict/image2009.webp
+   :width:7000px
