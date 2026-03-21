@@ -20,11 +20,13 @@
 <script src="custom/js/JS.js?2"></script>
 <!--<script src="js/require.js"></script>-->
 <?php
-if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';
-}
+if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';}
+if (ON_ZIGBEE==true) {echo '<script src="js/clipboard.min.js"></script>';}
+
 ?>
 
 <script>
+new ClipboardJS('.btn');	
 // cookies
 function lire_cookie(name) {
   let matches = document.cookie.match(new RegExp(
