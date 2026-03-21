@@ -640,4 +640,4 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 .. |image2008| image:: ../pict/image2008.webp
    :width: 650px
 .. |image2009| image:: ../pict/image2009.webp
-   :width:7000px
+   :width:700px
