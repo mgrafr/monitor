@@ -307,7 +307,7 @@ $.ajax({
 			mc(1,"#meteo_concept");}}
 		else {//console.log('ok_deb');
 			var myEle = document.getElementById("cercle_"+val.idm);	
-			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , ";
+			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , "+val.Name;
 				if (myEle){
 					if (val.alarm_bat=="alarme") {myEle.style = "fill-opacity: 1;fill: #b58585";}
 					else {myEle.style = "fill-opacity: 1;fill: red";}}}
