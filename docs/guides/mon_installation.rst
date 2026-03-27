@@ -1895,7 +1895,8 @@ https://github.com/manupawickramasinghe/NanoMQ-SystemD-service
 
 21.8 Plex
 =========
-*Installation*
+21.8.1 Installation
+-------------------
 
 . dans un conteneur LXC : http://domo-site.fr/accueil/dossiers/95
 
@@ -1910,6 +1911,15 @@ https://github.com/manupawickramasinghe/NanoMQ-SystemD-service
 - **Configuration de l’hôte virtuel Nginx pour accès distant**
  
 |image1047|
+
+21.8.2 Mise à jour
+------------------
+Activer la mise à jour des dépôts:
+
+.. code-block::
+
+   curl -LsSf https://repo.plex.tv/scripts/setupRepo.sh | bash
+
 
 21.9 Raspberry PI5
 ==================
