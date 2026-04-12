@@ -14,7 +14,7 @@ if ($ff==1)echo '<br>';
 //
 echo '<p style="position: relative;top: 5px;text-align: center;font-size: 20px;">AUTOMATIONS</p><p id="aide_aut"></p><textarea id="console"></textarea>
 <button type="button" id="btn_console" class="btn btn-primary btn-sm" data-clipboard-action="copy" data-clipboard-target="#console">COPY</button><br>';
- $doc1=0;echo 'NOM Automation:<input type="text" style="width:400px;margin-left:10px;" id="nom" value="" ><input type="button" value="info" onClick="test(0,'.$doc1.')">'; 
+ $doc1=0;echo 'NOM Automation:<input type="text" style="width:400px;margin-left:10px;" id="nom_aut" value="" ><input type="button" value="info" onClick="test(0,'.$doc1.')">'; 
 $arrayGeneral = array(
     'active',
     'execute_once'   
@@ -153,7 +153,7 @@ document.getElementById("console").textContent=arrayEx[c];
 //document.getElementById("xz").innerText=arrayEx[c];
 }
 function data_yaml(mData) {var aa;
-	aa=$("#nom").val()+':\n';
+	aa=$("#nom_aut").val()+':\n';
 	list_select.forEach((Id, index) =>  {//console.log(list_select[0]);
   selectElmt = mData[Id];
  if (!selectElmt) {
