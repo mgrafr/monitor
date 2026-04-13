@@ -83,9 +83,9 @@ if ($row['Actif']=="6"){$str=explode(':',$row['param']);$commande=$str[1];}
 $id_dom=$row['ID'];$id_dom=str_replace("\r\n","",$id_dom);
 if($ser_dom=="dz"){$id_dom=$row['idx'];}
 if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("'.$query.$row["id1_html"];
-		if($row['id2_html']!=''){$s=$s.','.$query.$row['id2_html'];}
+	if($row['id2_html']!=''){$s=$s.','.$query.$row['id2_html'];}
 		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
-       	if ($row['maj_js']=="on=") {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$id_dom.'",command,"'.$row['pass'].'");});';}	
+		else if ($row['maj_js']=="on=") {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$id_dom.'",command,"'.$row['pass'].'");});';}	
 		else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$id_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
 		$s=$s.$sl;
 		echo $s."\r\n" ;}
