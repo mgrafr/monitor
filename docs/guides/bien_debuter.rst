@@ -196,7 +196,7 @@ http://<IP MONITOR>/monitor,  la page affichée devrait ressembler à ceci:
 
 |image1272|
 
-- connecter un serveur domotique (max 2); Enlever la découverte.
+- connecter un serveur domotique (max 3, Domoticz, HomeAssistant, IoBroker, Zigbee2mqtt); **Enlever la découverte**.
 
 .. code-block:: 
 
@@ -206,7 +206,7 @@ http://<IP MONITOR>/monitor,  la page affichée devrait ressembler à ceci:
 
 Ce message sera présent tant qu'il n'y aura pas de correspondance entre le serveur et la BD
 
-- ajouter les dispositifs et variables à la base de données, voir ce § :ref:`0.2 La page d’accueil et connexion avec Domoticz ou HA`
+- ajouter les dispositifs et variables à la base de données, voir ce § :ref:`0.2 La page d’accueil et connexion avec un serveur domotique`
 
 .. admonition:: Vérifications en cas de problèmes :
 
