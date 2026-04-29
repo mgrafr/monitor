@@ -36,7 +36,9 @@
 
 -	maria db 11.8.2, phpMyAdmin 5.2+snapshot, monitor
 
--   Bootstrap v4.5.2 (css & js)
+-   Bulma v1.0.4 (css)
+
+-   JQuery v 4.0.0 & JQuery UI v 1.14.2
 
 -	Pare-feu UFW, en option Fail2ban
 
