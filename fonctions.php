@@ -61,7 +61,7 @@ curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_HTTPHEADER, array(
 	 'accept: application/json',
-  'authorization: Basic bWljaGVsOklkZW00NTQ2'
+  'authorization: Basic bWljaGVsOklkZW1JZGVtMDA0NTQ2Jg=='
 ));
 $retour=curl_exec($curl);
 curl_close($curl);
@@ -467,7 +467,7 @@ $periph=array();$r=$q;	//$q somme devices dz+ha+iob
 //-----------------zb--------------------------
 $serveur_zb_on = false;
 if ($l_zb!=""){$serveur_zb_on = true;
-$L_zb="http://192.168.1.21:8084/";
+//$L_zb="http://192.168.1.21:8084/";
 $L=$L_zb."state.json";
 $json_string = file_get_curl($L);
 $str=explode('"0x',$json_string,3);
@@ -498,14 +498,14 @@ $lect_device["attributes"]["SwitchTypeVal"] = $lect_device["SwitchTypeVal"];
 $lect_device["attributes"]["Timers"] = $lect_device["Timers"];			
 $lect_device["attributes"]["Type"] = $lect_device["Type"];	 
 $lect_device["attributes"]["Color"] = $lect_device["Color"];	 }
-
-$periph['idm']=1000;
-	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";}
-	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";}
+// questionnement BD SQL -------------------
+$periph['idm']=1000;$s2="";
+	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";$s1="2";}
+	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";$s1="3";}
 	if ($lect_device["serveur"]=='ZB') {$s=$lect_device["ID"];$t1="4";$s1="6";}
-	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="2";$s1=$lect_device["Name"];}
-
-$periph=sql_plan($t1,$s,$s1);
+	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="3";$s1="4";$s2=$lect_device["Name"];}
+$periph=sql_plan($t1,$s,$s1,$s2);
+//---------------------------------------------
 if ($periph==null) {$choix_serveur="pas_ID";}
 $choix_Actif=$periph['Actif'];
 if (($choix_Actif=="1" || $choix_Actif=="2") && $lect_device["serveur"]=="DZ")  {$choix_serveur="dz";}
@@ -605,7 +605,7 @@ if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
 	'values' => $lect_device['values'],			 
 	'alarm_bat' => $bat
 	];
-if ($periph['zbplus']>1){$idm=$t.'_1';$per=sql_plan('5',$idm);$data[$idm]=$data[$t];
+if ($periph['zbplus']>1){$idm=$t.'_1';$per=sql_plan('5',$idm,"","");$data[$idm]=$data[$t];
 	$str=explode(':',$per['param']);$param=$str;$valeur=$data[$idm]["attributs"][$str[1]];
 	$data[$idm][zb_champ($str[1])]=$valeur;
 	$data[$idm]['idm']=$per['idm'];
@@ -711,22 +711,24 @@ function switchOnOff_setpoint($idx,$valeur,$type,$level,$pass="0"){$auth=9;globa
 if ($pass=="0") {$auth=0;}
 if ((($pass==NOM_PASS_CM)&&($_SESSION['passwordc']==PWDCOMMAND))&&($_SESSION['timec']>time())) {$auth=1;}
 if (($pass==NOM_PASS_AL)&&($_SESSION['passworda']==PWDALARM)&&($_SESSION['time']>time())) {$auth=2;}
-if ($auth<3){$json2="json.htm?type=command&param=";
+if ($auth<3){$json2="json.htm?param=";$json3="&type=command";
 	// $type=1 .....
 	if ($type==1){$json1='udevice&idx='.$idx.'&nvalue=group%20on&svalue=2';}
 	// $type=2 .....ON/OFF
-	if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
+	else if ($type==2){$json1='switchlight&idx='.$idx.'&switchcmd='.$valeur;}
 	// $type=3 Réglez une lumière dimmable/stores/sélecteur à un certain niveau
-	if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.$level;}
+	else if ($type==3){$json1='switchlight&idx='.$idx.'&switchcmd=Set%20Level&level='.intval($level);}
 	// $type=4 Réglez une lumière RVB dimmable
-	if ($type==4){
+	else if ($type==4){
 	$hex=substr($valeur,1,6);$json1='setcolbrightnessvalue&idx='.$idx.'&hex='.$hex.'&brightness='.$level.'&iswhite=false';}		 
-	$json= $L_dz.$json2.$json1;
+	$json= $L_dz.$json2.$json1.$json3;//$L_dz.$json2.$json1.$json3;
+	//$params = array('foo' => 'bar');
+	//$url = $endpoint . '?' . http_build_query($params);
 	$json_string=file_get_curl($json);
 	$result = json_decode($json_string, true);
 	}
 else {$result['status']="acces interdit";}
-return $result ;
+return $result;
   }
 
 /*POUR METEO CONCEPT*/
@@ -893,7 +895,7 @@ $prevam = file_get_curl_token($url,TOKEN_MC);
 $forecastam = json_decode($prevam)->forecast;$info=$forecastam->weather;
 if (isset($img_donnees[$info])){$imgtemps=$img_donnees[$info];}
 else {$imgtemps="met_interdit_vert.svg";}
-$resultat='<p>'.$info.'Le temps prévu pour cet après-midi  : '.$donnees[$info].'<img class="meteo_concept_am" src="images/'.$imgtemps.'" alt=""></p>';
+$resultat='<p>Le temps prévu pour cet après-midi  :<span style="color: #cfedac">'.$donnees[$info].'</span><img class="meteo_concept_am" src="images/'.$imgtemps.'" alt=""></p>';
 break;
     case 1:		
 $url = 'https://api.meteo-concept.com/api/forecast/daily?token='.TOKEN_MC.'&insee='.INSEE;
@@ -1226,8 +1228,6 @@ if ($choix==22 ) {$file= MSMTPRC_LOC_PATH."msmtprc"; }
 if ($choix==23 ) {$file=TMPCONFIG."connect.py"; echo "copy de connect.py";$rel="24";}	
 if ($choix==24 ) {$file=SSH_MONITOR_PATH."connect.py"; }
 if ($choix==28 ) {$file=MOD_PYTHON_FILE;}	
-if (($choix!=4) && ($choix!=6) && ($choix!=8) && ($choix!=10) && ($choix!=11) && ($choix!=15) && ($choix!=16) && ($choix!=22) && ($choix!=24) && ($choix!=29)) {echo '<p id="btclose"><img id="bouton_close" onclick="yajax('.$idrep.')"  
-src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';}	
 if ($choix==12){echo "//*******création fichier noms/idx******* <br>";}
 if ($choix==13){echo "//*******création table LUA zigbee******* <br>";}
 switch ($choix) {
@@ -1254,13 +1254,14 @@ echo $file.'<br><em style="color:red">le fichier doit être autorisé en écritu
 	$button_enr="enregistrer";
 	if ($choix==23){$button_enr	= 'envoyer vers PI ';}
 	 echo '<textarea id="adm1" style="height: auto;max-height: 200px;min-height: 400px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>
-	<input type="button" value="'.$button_enr.'" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="$(\'#reponse1\').hide()"> ';
+	<input type="button" value="'.$button_enr.'" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /> ';
+	//<input type="button" id="annuler" value="Annuler" onclick="$(\'#reponse1\').hide()">
 	 echo '</form></div>';
 return "sauvegarde OK";	 
 break;
 case "4" :
 $content=$idrep;$x=file_put_contents(VARTAB,$content);
-echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>'.$x.'fichiers sauvegardés';		
+echo $x.'fichiers sauvegardés';		
 // mise à jour par domoticz
 $retour=maj_variable("22","upload","1","2");echo "variable Dz à jour : ".$retour['status'];
 break;
@@ -1275,21 +1276,21 @@ file_put_contents($filename, $content);$content=str_replace("#!/usr/bin/env pyth
 	if ($upload['idx']!='') {$retour=maj_variable($upload["idx"],"upload","connect","2");$t_maj=$upload["idx"].$t_maj."----->dz";}
 	if ($upload['ID']!='') {$retour=devices_id($upload["ID"],"value","connect",0);$t_maj=$t_maj.$upload["ID"]."----->ha";}
 	//if ($upload['ID']!='') {$t_maj="----->iob";}
-	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>Les variables se nomment *****connect*****</p>";echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';		
+	echo $t_maj."<br>  Logins , mots de passe ou IPs mis à jour <br>Les variables se nomment *****connect*****</p>";		
 break;
 case "6" :
 $content=$idrep;$verif_auth=substr(sprintf('%o', fileperms($file)), -4);
 	file_put_contents($file, $content);if (intval($verif_auth)<666) {echo $verif_auth."  vérifier autorisation: 666";}
-		echo '<p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>fichiers sauvegardés';
+		echo 'fichiers sauvegardés';
 return;
  break;		
 case "22":
 case "24":		
  $content=$idrep;
  if ($choix==22){$mode="scp_s";$ip=IPRPI;$remote_file_name="/etc/msmtprc";$file_name="msmtprc";$local_path=MSMTPRC_LOC_PATH;
-				include ('include/ssh_scp.php');echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/>maj config msmtprc</p>';}	
+				include ('include/ssh_scp.php');echo 'maj config msmtprc';}	
 if ($choix==24){$ip=IPRPI;$remote_file_name="/home/michel/connect.py";$file_name="connect.py";$local_path=$file;	
-		$mode="scp_s";include ('include/ssh_scp.php'); echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "copy de  connect.py";}		
+		$mode="scp_s";include ('include/ssh_scp.php');echo "copy de  connect.py";}		
  return;
  break;
 case "8" :
@@ -1304,10 +1305,12 @@ return ;
 break;
 case "9" : echo "<img src='images/serveur-sql.svg' style='width:25px;height:auto;' alt='dz'>";return; 
 break;
-case "10" : $content=sql_app(2,"cameras","modect",1,$icone='');file_put_contents(CONF_MODECT.'.bak.'.$time, $content);echo CONF_MODECT.'<BR><textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>'.CONF_MODECT.'<br>
-	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' /><input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
+case "10" : $content=sql_app(2,"cameras","modect",1,$icone='');file_put_contents(CONF_MODECT.'.bak.'.$time, $content);
+echo CONF_MODECT.'<BR><textarea id="adm1" style="height:'.$height.'px;" name="command" >' . htmlspecialchars($content) . '</textarea><br>'.CONF_MODECT.'<br>
+	<input type="button" value="enregistrer" id="enr" onclick=\'wajax($("#adm1").val(),'.$rel.');\' />';
+	//<input type="button" id="annuler" value="Annuler" onclick="yajax('.$idrep.')"> ';
 	 echo '</form></div>';return "sauvegarde ".CONF_MODECT."OK";	
-case "11" :$content=$idrep;$height="100";echo $idrep.'<br><p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';
+case "11" :$content=$idrep;$height="100";echo $idrep;
 file_put_contents(CONF_MODECT, $content);
 // mise à jour par domoticz met à 2 upload
 //$retour=maj_variable("22","upload","2","2");echo  '<textarea id="adm1" style="height:'.$height.'px;" name="command" >variable Dz à jour : '.$retour["status"].'</textarea>'; return;
@@ -1367,7 +1370,7 @@ case "19" : $retour=sql_variable("",2) ;$n=0;
 					$n++;}
 		return;	
 break;
-case "20" :$ip=IPRPI;$type=1;include ('include/ssh_scp.php');  echo '<p id="btclose"><img id="bouton_close" onclick="yajax(\'#reponse1\')" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';echo "reboot Raspberry";
+case "20" :$ip=IPRPI;$type=1;include ('include/ssh_scp.php');echo "reboot Raspberry";
 return;	
 break;
 case "25" :include ('include/ajout_msg_bd.php');
@@ -1382,7 +1385,7 @@ echo "enregistré dans :".$file."<br><br>".$output;
 file_put_contents($file, $output);
 return;
 break;
-case "29" :$file = "admin/iob.json";file_put_contents($file, $_SESSION['iob']);echo "enregistré dans :".$file.'<br><p id="btclose"><img id="bouton_close" onclick="yajax(reponse1)" src="images/bouton-fermer.svg" style="width:30px;height:30px;"/></p>';
+case "29" :$file = "admin/iob.json";file_put_contents($file, $_SESSION['iob']);echo "enregistré dans :".$file;
 return;	
 break;	
 case "40" :
@@ -1643,7 +1646,7 @@ case "7":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;		
-echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4,monitor=5,zb=6</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>param : <input type="text" style="width:260px;margin-left:10px;" id="param" value="'.$data["param"].'"><em style="font-size:12px;margin-left:4px;">zb, voir doc</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button type="button" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
+echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4,monitor=5,zb=6</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>param : <input type="text" style="width:260px;margin-left:10px;" id="param" value="'.$data["param"].'"><em style="font-size:12px;margin-left:4px;">zb, voir doc</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button class="button is-black is" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
 //return $row; 
 break;
 case "8": 
@@ -1677,7 +1680,7 @@ case "9":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;	
-echo '<form3><input type="hidden"id="app" value="var_bd"><input type="hidden"id="num" value="'.$data["num"].'"><input type="hidden" id="command3"  value="10"><em>valeurs enregistrées</em><br>'.'idm : <input type="text" style="width:45px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>'.'idx : <input type="text" style="width:45px;margin-left:15px;" id="idx" value="'.$data["idx"].'"><br>ID : <input type="text" style="width:315Zpx;margin-left:17px;" id="ha_id" value="'.$data["ID"].'"><br>id="nom_objet" <input type="text" style="width:250px;margin-left:5px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>id_image : <input type="text" style="width:150px;margin-left:10px;" id="id_img" value="'.$data["id1_html"].'"><br>id_texte   : <input type="text" style="width:150px;margin-left:17px;" id="id_txt" value="'.$data["id2_html"].'"><br><br><button type="button" onclick="adby(7)" style="width:50px;height:30px">Envoi</button> <form3>';			
+echo '<form3><input type="hidden"id="app" value="var_bd"><input type="hidden"id="num" value="'.$data["num"].'"><input type="hidden" id="command3"  value="10"><em>valeurs enregistrées</em><br>'.'idm : <input type="text" style="width:45px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>'.'idx : <input type="text" style="width:45px;margin-left:15px;" id="idx" value="'.$data["idx"].'"><br>ID : <input type="text" style="width:315Zpx;margin-left:17px;" id="ha_id" value="'.$data["ID"].'"><br>id="nom_objet" <input type="text" style="width:250px;margin-left:5px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>id_image : <input type="text" style="width:150px;margin-left:10px;" id="id_img" value="'.$data["id1_html"].'"><br>id_texte   : <input type="text" style="width:150px;margin-left:17px;" id="id_txt" value="'.$data["id2_html"].'"><br><br><button class="button is-black" onclick="adby(7)" style="width:50px;height:30px">Envoi</button> <form3>';			
 break;
 case "10": 
 $sql="UPDATE ".DISPOSITIFS." SET 
@@ -1695,7 +1698,7 @@ case "11":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;	
-echo '<form4><input type="hidden" id="app" value="var_bd"><input type="hidden" id="command5"  value="12"><em>valeurs enregistrées</em><br>num : <input type="text" style="width:30px;margin-left:10px;" id="num" value="'.$data["num"].'"><br>texte : <input type="text" style="width:300px;margin-left:10px;" id="texte" value="'.$data["texte"].'"><br>image : <input type="text" style="width:300px;margin-left:5px;" id="image" value="'.$data["image"].'"><br>Icone : <input type="text" style="width:300px;margin-left:5px;" id="icone" value="'.$data["icone"].'"><br><br><br><button type="button" onclick="adby(9)" style="width:50px;height:30px">Envoi</button> </form4>';			
+echo '<form4><input type="hidden" id="app" value="var_bd"><input type="hidden" id="command5"  value="12"><em>valeurs enregistrées</em><br>num : <input type="text" style="width:30px;margin-left:10px;" id="num" value="'.$data["num"].'"><br>texte : <input type="text" style="width:300px;margin-left:10px;" id="texte" value="'.$data["texte"].'"><br>image : <input type="text" style="width:300px;margin-left:5px;" id="image" value="'.$data["image"].'"><br>Icone : <input type="text" style="width:300px;margin-left:5px;" id="icone" value="'.$data["icone"].'"><br><br><br><button class="button is-black" onclick="adby(9)" style="width:50px;height:30px">Envoi</button> </form4>';			
 break;
 case "12": 
 $sql="UPDATE text_image SET 
