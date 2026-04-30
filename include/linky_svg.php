@@ -1,4 +1,4 @@
-<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="Linky" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 162.2 321.9" style="enable-background:new 0 0 162.2 321.9;" xml:space="preserve">
 <style type="text/css">
 	.linky0{fill:#BAC174;}

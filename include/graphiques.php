@@ -5,25 +5,31 @@ error_reporting(-1);
 <!-- section graphiques start -->
 <!-- ================ -->
 		<div id="graphiques" class="graphiques">
-			<div class="container">
-				<div class="title_g">
+			<div class="dpb container">
+				<div class="column">
 	  <h1> Graphiques<br><span>de températures, pression, ..</span></h1></div>
-			 <div class="row row_g">
+		
 			<!-- Button to Open the Modal -->
-  <div><button type="button" id="btn_g" class="btn btn-primary" data-toggle="modal" data-target="#choix_graph">
+  <div><button type="button" id="btn_g" class="button is-primary" >
+    <a onclick="openModal('choix_graph');" >
     Choisir paramètres
-  </button></div><div id="graphic" ></div>
+</a></button></div><div id="graphic" ></div>
 	</div>	  
   </div>     
  </div>
-</div> 
+
  <!-- modal parametres-->
 <div class="modal" id="choix_graph">
-  <div class="modal-dialog" style="height:auto">
-    <div class="modal-content modal_param">
-      
-        <h4 class="modal-title">choix des paramètres</h4>
-	
+ 	<div class="modal-background"></div>
+    <div class = "modal-card">
+    <header class = "modal-card-head">
+      <p class = "modal-card-title">choix des paramètres</p>
+            <button id="btn_g_close" class = "delete" aria-label = "close"></button>
+    </header>
+    <section class = "modal-card-body">
+      <div class = "content">
+  	
+  
 Merci de cocher vos préférences:<br><ul style="background-color: aquamarine;">
 <li><input type="radio" checked="checked" name="devices" value="temp_salon"> temp salon</li>
 <li><input type="radio" name="devices" value="temp_cuisine"> temp cuisine</li>
@@ -41,10 +47,12 @@ Merci de cocher vos préférences:<br><ul style="background-color: aquamarine;">
 <li><input type="radio" name="variables" value="31"> dernier mois</li>
 <li><input type="radio" name="variables" value="365"> derniere année</li><br>
 <li><input type="radio" name="variables" value="infos_bd">20 dernieres valeurs(ou 14 jours)</li><br>
-<li><input type="button" id="btn_graph" value="OK" /></li></ul>
-     	 </div>
+<li><input type="button" id="btn_graph"  value="OK" /></li></ul>
+     	 </div></section>
      </div>
-  </div>     
+    </div>
+    </div>
+   
 <!-- section graphiquesfin-->
 <script>
 function graph(device,variable,idgraph){

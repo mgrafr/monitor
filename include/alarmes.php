@@ -1,24 +1,32 @@
 <!-- section Alarmes start -->
 <!-- ================ -->
-		<div id="alarmes" class="alarmes" >
-				<div class="container">
-		<div class="col-md-12">
-	  <h1 id="titre_alarme" class="title text-center">Alarme</span></h1>
-		<div id="ecran">
-		 <div id="d_btn_al" ><a class="btn btn-primary"  data-toggle="modal" data-target="#pwdalarm">
-Entrer votre mot de passe 
-</a></div>		
-			  <?php
-					//include('test_pass.php');
-					include ("alarmes_svg.php");
-			  ?>
-				</div>
-				</div>
- </div><svg version="1.1" id="svg-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1024 1024" style="width: 4em; height: 4em;margin-left:120px;vertical-align: middle;fill: currentColor;overflow: hidden;" >
-<style type="text/css">
-	.ic0{fill:#6DE5E8;stroke:#000000;stroke-miterlimit:10;}
-</style>
+		<div id="alarmes" class="alarmes">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <h1 id="titre_alarme" class="title has-text-centered">Alarme</h1>
+        <div id="ecran">
+          <div id="d_btn_al">
+            <a class="button is-primary btn_appd" rel="passwd">
+              Entrer votre mot de passe
+            </a>
+          </div>
+          <?php
+            include("alarmes_svg.php");
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<svg version="1.1" id="svg-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 1024" style="width: 4em; height: 4em; margin-left: 120px; vertical-align: middle; fill: currentColor; overflow: hidden;">
+  <style type="text/css">
+    .ic0 {
+      fill: #6DE5E8;
+      stroke: #000000;
+      stroke-miterlimit: 10;
+    }
+  </style>
 <a id="zm" href="#alarmes"><rect y="36.3" class="ic0" width="1024" height="987.7"/>
 <path d="M615.2,583.3c-12.6-20.1-17.5-64.1,30.8-159.8c6.7-13.3,3.3-29.4-8.1-38.9c-0.4-0.4-1-0.5-1.4-0.8c1.2,0,2.4,0.4,3.6,0.4
 	c88.2,0,160-71.8,160-160S728.2,64,640,64s-160,71.8-160,160c0,76.2,53.6,139.8,125,155.9c-2.4,1-4.8,2-6.9,3.6l-219,164.4

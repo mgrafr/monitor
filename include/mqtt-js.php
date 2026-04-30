@@ -4,22 +4,16 @@ if ($domaine==URLMONITOR) {$lien_mqtt=MQTT_URL.':'.MQTT_PORTS["wss"];$w='wss://'
 if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP.':'.MQTT_PORTS["ws"];$w='ws://';}
 ?>
 
-<script>
-     const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
+    const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
     const connectUrl = '<?php echo $w.$lien_mqtt;?>'
-
-    const options = {
+      const options = {
       keepalive: 60,
       clientId: clientId,
       clean: true,
       connectTimeout: 30 * 1000,
-      
       username: '<?php echo MQTT_USER;?>',
       password: '<?php echo MQTT_PASS;?>',
       reconnectPeriod: 1000,
-      <?php
-      if ($domaine==URLMONITOR) {echo "key: 'certs/client-key.pem',
-      cert: 'certs/client.pem',";} ?>
     }
     const topic = 'z1m/#'
     const payload = ""
@@ -65,8 +59,6 @@ if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP.':'.MQTT_PORTS["ws"];$w='ws://';}
      msg=JSON.parse(payload);var idm=msg.idm;var state=msg.state;var champ=msg.champ1;
      var ind=4;if (champ=="Data") {ind=2;}
      if (champ=="temperature" || champ=="humidity" || champ=="soil_moisture") {ind=3;}
-      maj_mqtt(idm,state,ind,0,champ) ;// fonction ds footer.php
+    maj_mqtt(idm,state,ind,0,champ) ;// fonction ds footer.php
     }
   })
-    
-</script>
