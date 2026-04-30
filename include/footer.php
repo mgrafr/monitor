@@ -560,13 +560,13 @@ let $el2 = $("#btn_confirm_close");$el2.attr("id", "btn_confirm_close-al");
 
 
 $(".btn_appd").click(function () {var log_name="";var urllog="";
-var logapp = $(this).attr('rel');
+var logapp = $(this).attr('rel');classe="modal";
 if (logapp=="passwd"){openModal("pwdmo");}
 else if (logapp=="scenes"){var titre=$(this).attr('data-titre');modale_id="scenes";
 	contenu='<a href="#murinter"><img id="sc1" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="40" height="auto" alt=""/>toutes les lampes</a>';open_modale(modale_id,titre,contenu,'0','3');}
-else if (logapp=="admin"){var numero = $(this).attr('title');var titre=$(this).attr('data-titre');
+else if (logapp=="admin"){var numero = $(this).attr('title');var titre=$(this).attr('data-titre');var classe=$(this).attr('data-class');
 	urllog="ajax.php?app=admin&variable="+numero;modale_id="logapp";}
-else if (logapp=="info_adm"){var numero = $(this).attr('title');var titre=$(this).attr('data-titre');
+else if (logapp=="info_adm"){var numero = $(this).attr('title');var titre=$(this).attr('data-titre');if (title="7") {classe=$(this).attr('data-titre');}
 	contenu = info_admin[numero];modale_id="adm";
 	open_modale(modale_id,titre,contenu,'0','3');}
 else if (logapp=="domoticz"){var numero=$(this).attr('title');
@@ -587,16 +587,17 @@ else if (logapp=="10"){var nummode_e = $(this).attr('title');titre = $(this).att
 }
 else {alert("erreur");}
 if (urllog!="") {$.get(urllog, function(response){
-  	open_modale(modale_id,titre+log_name,response,'0','3');});} 
+  	open_modale(modale_id,titre+log_name,response,'0','3',classe);});} 
 });
 /*---modale boite_lettres---pression chaudière--médicaments-fosse septique-----------------------------*/
 // Affichage boîte de confirmation
-function open_modale(id_modale,titre,Contenu,ch,mod_ext){
+function open_modale(id_modale,titre,Contenu,ch,mod_ext,classe="modal"){
 var modalContainer = document.createElement('div');
 modalContainer.setAttribute('id', id_modale);
-modalContainer.setAttribute('class', 'modal');
+modalContainer.setAttribute('class', classe);
 document.body.appendChild(modalContainer);
-modalB='<div class="modal-background"></div><div class = "modal-card"><header class = "modal-card-head"><p id="modal-card-title" class = "modal-card-title"></p><button id="btn_confirm_close" class = "delete" aria-label = "close"></button></header><section class = "modal-card-body"><div id="confirm_content" class = "content"></div></section>';
+modalA='<div class="modal-background">';
+modalB='</div><div class = "modal-card"><header class = "modal-card-head"><p id="modal-card-title" class = "modal-card-title"></p><button id="btn_confirm_close" class = "delete" aria-label = "close"></button></header><section class = "modal-card-body"><div id="confirm_content" class = "content"></div></section>';
 modalC='<input type="button" id="btn_bl"  value="OK" /></div></div>';
 if (mod_ext!="3" && mod_ext!="4" && mod_ext!="5") {modalContainer.innerHTML = modalB+modalC+"</div></div>";
 	document.getElementById('btn_bl').addEventListener('click', function() {modal_extensions(id_modale,mod_ext,ch);});				

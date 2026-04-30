@@ -20,7 +20,7 @@ require_once('admin/config.php');
       include( "include/test_pass.php" ); // verif du mot de passe
       ?>
       <p id="admin2" style="display:<?php echo $style1;//voir test_pass.php?>"> <img src="images/logo.webp" style="position:relative;top:-30px;left:-20px;width:50px" alt="logo"/>
-      <button type="button" id="admin1" class="button is-danger btn_appd" title="7" rel="admin">CHANGER de MOT de PASSE</button><br>
+      <button type="button" id="admin1" class="button is-danger btn_appd" title="7" rel="admin" data-titre="Changer mot de passe" data-class="modal chang_mdp">CHANGER de MOT de PASSE</button><br>
       <P class="top-30"><button type="button" id="admin3" class="button is-link is-light btn_appd" rel="admin" title="5" data-titre="Configuration Monitor" >Configuation monitor</button><img class="btn_appd space5" src="images/icon-info.svg" rel="info_adm" title="1" data-titre="Configuration Monitor" style="width:35px;">
       </p>
       <p id="admin4"><img  class="logo_dz" src="images/dz.webp" alt="logo"/>

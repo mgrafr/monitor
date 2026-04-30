@@ -6,11 +6,11 @@ error_reporting(-1);
 <!-- ================ -->
 		<div id="graphiques" class="graphiques">
 			<div class="dpb container">
-				<div class="column">
+				<div class="column title">
 	  <h1> Graphiques<br><span>de températures, pression, ..</span></h1></div>
 		
 			<!-- Button to Open the Modal -->
-  <div><button type="button" id="btn_g" class="button is-primary" >
+  <div><button type="button" id="btn_g" class="button is-primary title" >
     <a onclick="openModal('choix_graph');" >
     Choisir paramètres
 </a></button></div><div id="graphic" ></div>
