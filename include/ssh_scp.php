@@ -17,7 +17,7 @@ break;
 if (!@ssh2_scp_recv($connection,$remote_file_name, $local_path.$file_name))
 {   $errors= error_get_last(); 
     echo "<br>TEST ERROR: ".$errors['type'];
-    echo "<br />\n".$errors['message'].'<br>';} 
+    echo "<br>\n".$errors['message'].'<br>';} 
 break;
 case "scp_s" :
 if (!@ssh2_scp_send($connection, $local_path.$file_name, $remote_file_name, 0777))	

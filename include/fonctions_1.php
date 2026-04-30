@@ -1,78 +1,86 @@
 <?php
 $idm_erreur=9000;
-function sql_plan($t1,$s="",$s1=""){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob, $L_zb, $l_zb, $IP_dz,$IP_ha,$IP_iob,$IP_zb,$idm_erreur;
+//ATTENTION aux arguments sql_plan est aussi lancé par footer.php
+function sql_plan($t1,$s,$s1,$s2){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob, $L_zb, $l_zb, $IP_dz,$IP_ha,$IP_iob,$IP_zb,$idm_erreur;
 $n=0;$al_bat=0;$p=0;$l_mo="";//$l_mo , en attente de update
 //$row['nom_objet']=$s;return $row;					 
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
-if ($t1=='4')  {
+switch ($t1) {
+	case "4" :  
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s."' AND Actif = '".$s1."' AND maj_js <> 'variable';";
 	$result = $conn->query($sql);$n=0;$nb_rows=$result->num_rows;
-	    $ligne = $result->fetch_assoc();
-		$ligne['zbplus']=$nb_rows;
-        return $ligne;}
- else if ($t1=='3')  {
-	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s1."' AND nom_objet = '".$s."' AND maj_js <> 'variable';";
+	    $row = $result->fetch_assoc();
+		$row['zbplus']=$nb_rows;
+        return $row;
+	break;
+	case "3" :
+	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s."' AND Actif = '".$s1."' AND nom_objet = '".$s2."' AND maj_js <> 'variable';";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
-	  return $row;}
-else if ($t1=='2') {
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$s' AND maj_js <> 'variable';";
+	return $row;
+	break; 
+	case "2" :
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$s' AND Actif = '".$s1."' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 		$row = $result->fetch_assoc();
-	return $row;}
-else if ($t1=='1')  {$error1=="";
-	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$s' AND maj_js <> 'variable';";
+	return $row;
+	break;
+	case "1" :$error1=="";
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$s' AND Actif = '".$s1."' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);$nb_rows=$result->num_rows;
-		if ($nb_rows<1) {$row =  ['idx' => $s,
-								 'idm' => strval($idm_erreur),
-								 'Actif' => '9',
-								 'values' => 'non enregitré'
-								];$idm_erreur++;}
-		else {$row = $result->fetch_assoc();if ($row['idm']=="") {$row['idm']=NULL;}
+		if ($nb_rows>0) {$row = $result->fetch_assoc();
+			if ($row['idm']=="") {$row['idm']=NULL;}
 			if ($row['idm']===NULL) {$error1='enregitré sans idm';}
-			if ($row['car_max_id1']<1 || $row['car_max_id1']=='') {$error1='car_max_id1 qbsent';}
+			if ($row['car_max_id1']<1 || $row['car_max_id1']=='') {$error1='car_max_id1 absent';}
+			if ($row['idx'] != $s) {$error1='Les idx sont différents:'.$row['idx']." ".$s;}
 			if ($error1!="") {$row =  ['idx' => $s,
+								 'nom' => $row['nom_objet'],
 								 'idm' => strval($idm_erreur),
 								 'Actif' => '9',
 								 'values' => $error1
 								];$idm_erreur++;}
 		}
-	return $row;}
-else if ($t1=='5')  {
+	return $row;
+	break;
+	case "5" :
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE idm= '".$s."'";
-	$result = $conn->query($sql);$row = $result->fetch_assoc();return $row;
-	}
-else if ($t1=='0') {
+	$result = $conn->query($sql);$row = $result->fetch_assoc();
+	return $row;
+	break;
+	case "0" :
 	$sql1="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `Actif` = ";
 	if ($l_dz != "") {$u=2;
 	$sql=$sql1.$u.");";$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','dz');				  
 		}	
 	}
-    if ($l_ha != ""){$u=3;
+    else if ($l_ha != ""){$u=3;
 	$sql=$sql1.$u.");";$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','ha');
 		}
 	}
-if ($l_iob != ""){$u=4;
+	else if ($l_iob != ""){$u=4;
 	$sql=$sql1.$u.");";$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','iob');
 		}
 	}
-if ($l_mo != ""){$u=5;// en attente de mes
+	else if ($l_mo != ""){$u=5;// en attente de mes
 	$sql=$sql1.$u.");";$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','mo');
 		}
 	}
-if ($l_zb != ""){$u=6;
+	else if ($l_zb != ""){$u=6;
 	$sql=$sql1.$u.");";$result = $conn->query($sql);
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','zb');
 		}
 	}
-return;}
-else echo "pas de serveur";
-}
+	return;
+	break;
+	default :
+	echo "pas de serveur";
+	break;
+} }
 function sql_1($row,$f1,$ser_dom){
 $commande="On";$query="#";
 if ($row['maj_js']=="on"  && $ser_dom=="dz"){$commande="group on";}
@@ -84,8 +92,8 @@ $id_dom=$row['ID'];$id_dom=str_replace("\r\n","",$id_dom);
 if($ser_dom=="dz"){$id_dom=$row['idx'];}
 if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("'.$query.$row["id1_html"];
 	if($row['id2_html']!=''){$s=$s.','.$query.$row['id2_html'];}
-		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){$("#popup_vr").fadeIn(300);document.getElementById("VR").setAttribute("title","'.$row['idm'].'");document.getElementById("VR").setAttribute("rel","'.$row['idx'].'");})';}
-		else if ($row['maj_js']=="on=") {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$id_dom.'",command,"'.$row['pass'].'");});';}	
+		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){let c_rel=$(this).attr("rel");switches("'.$row['Actif'].'","'.$row['idm'].'","'.$row['idx'].'",c_rel,pass="0")});';}
+       	else if ($row['maj_js']=="on=") {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$id_dom.'",command,"'.$row['pass'].'");});';}	
 		else {$sl='").click(function(){'.$f.'("'.$row['Actif'].'","'.$row['idm'].'","'.$id_dom.'","'.$commande.'","'.$row['pass'].'");});';}		
 		$s=$s.$sl;
 		echo $s."\r\n" ;}

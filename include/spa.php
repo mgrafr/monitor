@@ -1,16 +1,17 @@
 <!-- section SPA start -->
 <!-- ================ -->
 		<div id="spa" class="spa">
-			<div class="container">
-		<div class="col-md-12"><p>
-	  <h1 class="title_ext text-center">SPA<span style="margin-left:20px;font-size: 20px;"> contrôle qualité</span></h1><br>
-		</p>
-			
-		   <?php include ("ph-redox_svg.php");?>
-</div>
-</div>
-
+  <div class="container">
+    <div class="columns">
+      <div class="column is-12">
+        <p>
+          <h1 class="title is-1 has-text-centered">SPA<span style="margin-left:20px;font-size: 20px;"> contrôle qualité</span></h1><br>
+        </p>
+        <?php include ("ph-redox_svg.php");?>
+      </div>
+    </div>
   </div>
+</div>
 
 <script>
 num_ecran=0;nb_ecran=<?php echo NB_ECRAN_SPA;?>;

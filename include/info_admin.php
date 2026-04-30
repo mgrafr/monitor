@@ -19,17 +19,13 @@ $js_info_admin = json_encode($info_admin);
 ?>
 
 <div class="modal" id="info-admin1">
-  <div class="modal-dialog" style="height:auto;width: 350px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Infos</h3>
-		 </div>
-
-<div id="affich_content_info"></div>
-		
-			 
-    </div>
-     
-	 </div>
-     </div>	
-
+  <div class="modal-background"></div>
+  <div class="modal-card" style="height:auto;width: 350px;">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Infos</p>
+    </header>
+    <section class="modal-card-body">
+      <div id="affich_content_info"></div>
+    </section>
+  </div>
+</div>

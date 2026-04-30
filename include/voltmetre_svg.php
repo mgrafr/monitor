@@ -1,5 +1,5 @@
 <!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="Voltmetre" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
 <style type="text/css">
 	.sat0{fill:#FFCC80;}
@@ -165,8 +165,6 @@
 	<path class="sat15" d="M292.7,277.8c1.9,0.9,3.4,2.4,4.3,4.3l0.6-0.5l0.7,0.8l-0.8,0.7c0.4,1,0.6,2.1,0.6,3.3c0,0.3,0,0.5,0,0.7
 		l1.2,0.1l-0.1,1l-1.2-0.1c-0.3,1.4-0.9,2.8-1.7,3.9l0.2,0.3l-0.8,0.7l-0.1-0.1c-0.8,0.9-1.7,1.6-2.8,2.1c4.3-0.5,7.6-4.2,7.6-8.6
 		S296.9,278.3,292.7,277.8z"/>
-</g>
-<g id="voltmetre">
 </g>
 <text id="volts" transform="matrix(2.1129 0 0 1 205 130)" class="sat33 sat35">volts</text>
 </svg>

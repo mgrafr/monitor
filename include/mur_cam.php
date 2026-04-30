@@ -1,14 +1,23 @@
 <!-- ================ -->
-<div id="murcam" class="mur_cam" >
-  <div class="container">
-		<div class="col-md-12 colmur">
-	  <h4 id="titre_mur" class="title text-center">Mur<span> des caméras</span></h4>
-	  <?php 
-    if (SRC_MUR != "fr") {echo ' '.NOMMUR.' - '.NBCAM.'<br><input id="onoffmur" type="checkbox" data-toggle="toggle" ><div id="aqw">Vidéo inactive'; } 
-    else {echo  " ".NOMMUR."<br>";}
-	 ?> 
-	  </div>
-  </div>
+<div id="murcam" class="mur_cam">
+  <div class="columns">
+    <div class="column is-full">
+      <p id="titre_mur" class="title">Mur<span> des caméras</span></p>
+        <?php 
+          if (SRC_MUR != "fr") {
+            echo '<h4>'.NOMMUR.' - '.NBCAM.'<br> '; 
+          } else {
+            echo " ".NOMMUR."<br>";
+          }
+        ?>
+      <div class="toggle-outer">
+			  <div class="toggle-inner">
+				  <input type="checkbox" id="toggle">
+			  </div>
+       
+		  </div>
+		  <div id="result"> </div>
+   <label id="toggleLabel" for="toggle">Vidéo inactive</label>
 
 <?php
 if (SRC_MUR != "fr") {echo '<div id="message1" class="space">cliquer sur une image pour activer le zoom video de l\'image</div><table class="cam">
@@ -32,20 +41,18 @@ if (SRC_MUR=="fr") {$domaine=$_SESSION["domaine"];
 ?>		
 </div>
 </div>
-<!-- Creates the bootstrap modal where the image will appear -->
-<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caméra en direct</h4>
-      </div>
-      <div class="modal-body">
-        <img src="" id="imagepreview" style="width: 400px; height: 264px;" >
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="close_cam" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+<!-- Creates the modal where the image will appear -->
+<div class="modal" id="imagemodal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caméra en direct</p>
+      <button id="btn_confirm_close_cam" class = "delete" aria-label = "close" onclick="closeModal('imagemodal');arret_zoom=0;"></button>
+   
+    </header>
+    <section class="modal-card-body">
+      <img src="" id="imagepreview" style="width: 400px; height: 264px;">
+    </section>
+    
   </div>
-</div>			
+</div>

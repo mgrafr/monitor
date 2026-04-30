@@ -1,5 +1,6 @@
 
-<div id="adbf" style="line-height: normal;font-size: 14px;"><form><p style="width:350px;background-color: aquamarine; margin-left: 10px;"><strong>Si mise à jour, idm: :</strong><input type="text" style="width:40px;margin-left:10px;" id="majidm" value=""  ><input type="hidden" id="command1"  value="7"><input type="hidden" id="appli"  value="dev_bd"><button id="bouton_maj" type="button" onclick="adby(4)" style="width:50px;margin-left:10px;height:30px">Envoi</button></p></form></div>
+<div id="adbf" style="line-height: normal;font-size: 14px;"><form><p style="width:350px;background-color: aquamarine; margin-left: 10px;"><strong>Si mise à jour, idm: :</strong><input type="text" style="width:40px;margin-left:10px;" id="majidm" value=""  ><input type="hidden" id="command1"  value="7"><input type="hidden" id="appli"  value="dev_bd">
+<button id="bouton_maj" class="button is-link" onclick="adby(4)" style="width:50px;margin-left:10px;height:30px">Envoi</button></p></form></div>
 <div id="adb" style="line-height: normal;font-size: 14px;"><form>
 	<p><span style="margin-left: 10px;"><strong>Nom de l' Appareil :</strong> </span><input type="text" style="width:200px;margin-left:10px;" id="nom" value=""  ><br><span style="margin-left: 10px;color:red">*</span>champ requis&nbsp;&nbsp;<span style="color:green">*</span>choisir au moins 1 champ (si Actif coché)</p>	
 <p style="margin-left: 10px;font-size:14px"> <em>type de mise à jour JS</em><span style="color:red">&nbsp;&nbsp;* </span><br>
@@ -55,7 +56,7 @@
 <input type="radio" name="mot_pass" value"non" checked> NON<br>
 `	<span style="margin-left: 10px;">f() : <input type="number" style="width:30px;margin-left:9px;" id="fx"  value="0" ><em style="color:red">&nbsp;&nbsp;-1 réservé </em>, car max :	<input type="text" style="width:30px;margin-left:9px;" id="car"  value="99"><em style="color:red">&nbsp;&nbsp;max 2 car </em><br><span style="margin-left: 10px;">Observations :<input type="text" style="width:290px;margin-left:9px;" id="obs"  value="">
 		<br><br>
-<button type="button" onclick="adby(2)" style="width:50px;height:30px">Envoi</button>  
+<button class="button is-success" onclick="adby(2)" style="width:50px;height:30px">Envoi</button>  
 </form1>	</div>
 
 

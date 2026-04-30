@@ -1,4 +1,4 @@
-<svg version="1.1" id="Elements" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="volet_bur" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1500 225" xml:space="preserve">
 <style type="text/css">
 	.vrst0{fill:#47AC34;}
@@ -12,6 +12,6 @@
 	 M193,52.1H32v-5.7h161V52.1z M204.8,220H198V46.5h6.7V220H204.8z M206.3,41.5H18.7l-9.4-8H3c2.7-0.1,6.3,0,6.3,0h6h2.5h2.5h184.5
 	h2.5h2.5h6L206.3,41.5z M26.7,13.3c0-1.4,1.1-2.5,2.5-2.5h19c1.4,0,2.5,1.1,2.5,2.5s-1.1,2.5-2.5,2.5h-19
 	C27.8,15.8,26.7,14.7,26.7,13.3z"/>
-<rect id="volet_bureau" x="32" y="46.4" class="volet_bureau" width="161" h="158" height="158"/>
-<rect id="volet_bureau1" fill-opacity="0" x="32" y="46.4"  width="161"  height="158"/>
+<rect id="volet_bureau1" x="32" y="46.4" rel="" width="161" h="158" height="158"/>
+<rect id="volet_bureau" fill-opacity="0" x="32" y="46.4" rel="" class="volet_bureau" width="161"  height="158"/>
 </svg>

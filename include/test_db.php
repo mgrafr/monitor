@@ -1,6 +1,7 @@
+
+<textarea id="adm1" style="height:<?php echo $height; ?>px;" name="command">
+test....BD: 
 <?php
-echo '<textarea id="adm1" style="height:'.$height.'px;" name="command" >';
-echo "test....BD: ";
 // Create connection
 $con = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE);
 // Check connection
@@ -10,5 +11,4 @@ $conn = new mysqli(SERVEUR, UTILISATEUR, MOTDEPASSE, DBASE);
 if ($conn->connect_error) { die("Verifier le nom de la BD: " . $conn->connect_error);$_SESSION["exeption_db"]="pas de connexion à la BD";}
 echo " connection à la BD OK , ..";$_SESSION["exeption_db"]="";
 echo "connexion terminée , ..";
-?>
-</textarea>
+?></textarea>

@@ -9,23 +9,22 @@ if ($domaine==IPMONITOR) {$lien_iobroker='http://'.$IP_iob.':'.$port_webui_iob;
 ?>
 <!-- section io.broker start -->
 <!-- ================ -->
-<div id="iobroker" >
-	<div class="container">
-		<div class="col-md-12">
-	  <h1 id="about_iob" class="title" >IO BROKER :
-		  <span style="color:blue">io.broker</span></h1>
-			<input type="button" value="refresh" onclick="refreshIframe()"/>
-			<p><a href="<?php echo $lien_iobroker1;?>" target="_blank" title="io.broker">
-				<?php echo $lien_iobroker1;?></a><br>
-			<a href="<?php echo $lien_iobroker2;?>" target="_blank" title="io.broker">
-				<?php echo $lien_iobroker2;?></a><br>	
-			<a href="<?php echo $lien_iobroker;?>" target="_blank" title="io.broker">
-				<?php echo $lien_iobroker;?></a></p> 
-<iframe id="iobrokerapp" src="<?php echo $lien_iobroker;?>" frameborder="0" ></iframe>
-	
+<div id="iobroker">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h1 id="about_iob" class="title">IO BROKER : <span style="color:blue">io.broker</span></h1>
+        <button class="button refresh_iob" onclick="refreshIframe()">refresh</button>
+        <p>
+          <a class="left-10" href="<?php echo $lien_iobroker1;?>" target="_blank" title="io.broker"><?php echo $lien_iobroker1;?></a><br>
+          <a class="left-10" href="<?php echo $lien_iobroker2;?>" target="_blank" title="io.broker"><?php echo $lien_iobroker2;?></a><br>
+          <a class="left-10" href="<?php echo $lien_iobroker;?>" target="_blank" title="io.broker"><?php echo $lien_iobroker;?></a>
+        </p>
+        <iframe id="iobrokerapp" src="<?php echo $lien_iobroker;?>" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
 </div>
-	</div>
-		</div> 	
 <script type="text/javascript">
 	function refreshIframe(){
     var iframe = document.getElementById('iobrokerapp'); 

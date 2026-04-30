@@ -9,16 +9,11 @@
 		</footer>
 <!-- footer end -->
 <!-- JavaScript files placées à la fin du document-->
-<script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery-ui-v1.13.2.js"></script>
-<script src="js/jquery.backstretch.min.js"></script> 
-<script src="js/big-Slide.js"></script> 
-<script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
+<script src="js/jquery-4.0.0.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="js/mes_js.js"></script>
-<script src="js/zebra_dialog.min.js"></script>
 <script src="js/jscolor.min.js"></script>
 <script src="custom/js/JS.js?2"></script>
-<!--<script src="js/require.js"></script>-->
 <?php
 if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';}
 if (ON_ZIGBEE==true) {echo '<script src="js/clipboard.min.js"></script>';}
@@ -26,6 +21,94 @@ if (ON_ZIGBEE==true) {echo '<script src="js/clipboard.min.js"></script>';}
 ?>
 
 <script>
+/*-------------mise a jour dispositifs PLAN domoticz ha iobroker z2m--------*/	
+/*--------------------------------------------------------------------------*/	
+var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
+var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
+var pp=[];maj_devices(plan);
+var worx=[];	
+function maj_devices(plan){
+$.ajax({
+    type: "GET",
+    dataType: "json",
+    url: "ajax.php",
+    data: "app=devices_plan&variable="+plan,
+    success: function(response){pp=response;var al_bat="";
+	<?php if (DECOUVERTE==false){echo "
+		var err_dz_idm=pp[0].err_dz_idm; console.log('err_dz_idm:'+err_dz_idm);//0: pas erreur 1: erreur dz ou idm , idm >9000
+   //console.log('custom='+custom);//custom défini dans worx.php
+   if (err_dz_idm==1) {document.getElementById('erreur_dz').style.display='inline'}
+    if (typeof custom != 'undefined') {
+		if (custom==1 & pp[0]['serveur_iob'] === true){worx=pp[200].values;console.log(worx['batteryVoltage']);maj_worx(worx,pp[200].Data);}	
+	     }
+		// executé dans JS.js  worx=pp[200].values;maj_worx(pp[200].Name,pp[200].Data);}
+		";} ?>
+		$.each( pp, function( key, val ) {vol=0;pcent=0;
+		if (val.maj_date=='0'){
+			if (val.jour!=num_jour){aff_date();
+			<?php if (DECOUVERTE==false){ echo "document.getElementById('tspan7024').innerHTML=jour;" ;}?>
+			mc(1,"#meteo_concept");}}
+		else {//console.log('ok_deb');
+			var myEle = document.getElementById("cercle_"+val.idm);	
+			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , "+val.Name;
+				if (myEle){
+					if (val.alarm_bat=="alarme") {myEle.style = "fill-opacity: 1;fill: #b58585";}
+					else {myEle.style = "fill-opacity: 1;fill: red";}}}
+			else 
+				if (myEle) {myEle.style = "fill-opacity: 0";}
+			document.getElementById('erreur').innerHTML ="";
+			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {if (val.Data) {pos_m=(val.Data).toString().toLowerCase();}
+				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
+				if (val.maj_js=="data" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.Data;}
+				if (val.maj_js=="temp"){maj_html(val.maj_js,val.ID1,val.temperature);}
+				if (val.maj_js=="temp" && val.ID2!=""){maj_html(val.maj_js,val.ID2,val.temperature);}
+				if (val.actif=="6"  && (val.Data=="ON" || val.Data=="OFF")){publish_mqtt(val.ID,'state','','get');}	
+					//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
+											  // else {pos_m="off"; }}
+					if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
+											   else {pos_m="off"; }}									   
+					if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
+											   else {pos_m="off"; }}							   
+					if ((val.maj_js=="onoff+stop") && ((pos_m.substring(0, 11)=="set level: ") || (pos_m=="open"))) {vol=1;pos_m="on";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
+					if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level"  || val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
+						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; }
+						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
+						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
+							var h=document.getElementById(val.ID2).getAttribute("h");
+							document.getElementById(val.ID2).setAttribute("height",parseInt((h*(pcent)/100)));}
+							}}	
+								
+				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
+						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
+						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
+					 if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
+				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
+				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
+				}
+				if (val.actif=="6" && pp[val.idm]['param']!=null) {pp1=pp[val.idm]['param'][1];
+					if (pp1 =="state") {//var msg='{ "state" : "" }';
+					//var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';console.log('actif 6: '+topic+' -- '+msg);
+					//client.publish(topic,msg);
+					publish_mqtt(pp[val.idm]['ID'],'state',"","get")
+				}}
+			}	
+			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
+			//else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:...."+val.Name;}
+			else if (val.idx=="NULL" && val.ID=="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
+		}});
+				if (al_bat!="" ){document.getElementById(not_piles).innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;
+				document.getElementById(not_piles_reset).style.display="block";}
+					}
+	
+});
+
+setTimeout(maj_devices, tempo_dev, plan); 
+}
+
+$("#volet_bureau").attr("rel","Set Level: 0");	
+$('ul#zz li').click(function(){
+  $("#mobile-menu").trigger("click");
+});		
 new ClipboardJS('.btn');	
 // cookies
 function lire_cookie(name) {
@@ -68,8 +151,9 @@ case 2 :
 	if (state=="ON"){state="on";} //pour Z2M
 	if (state=="OFF"){state="off";}	//pour Z2M	
 	}
-if (id_m==null) {out_msg= 'id_m='+id_m;console.log(out_msg);return;}
-var command=state.toString();var str=pp[id_m].Data;console.log('pp_idm avant='+str);
+if (id_m==null || pp[id_m].Data==null) {out_msg= 'id_m='+id_m;console.log(out_msg);return;}
+var command=state.toString();console.log(id_m);
+var str=pp[id_m].Data;console.log('pp_idm avant='+str);
 pp[id_m].Data=command;
 console.log('command pp apres='+pp[id_m].Data);
 var fx=pp[id_m].fx; console.log('fx='+fx);if (fx=="lien_variable"){maj_services(0);}
@@ -115,15 +199,15 @@ return;
 }
 /*-------affiche l'image de la page accueil---------------------------------------*/	
 var text1="";var larg = (document.body.clientWidth);
-var haut = (document.body.clientHeight);
+var haut = (window.innerHeight );
 document.getElementById('largeur').innerHTML =larg;	
 document.getElementById('hauteur').innerHTML =haut;	
-$(".banner-image").backstretch({ width: 768, url: "<?php echo IMAGEACCUEIL?>" },
-            { width: 534, url: "<?php echo IMAGEACCUEILSMALL;?>" });
+/* mot passe */
+
 $('.close_clavier').click(function(){
   $("#btn_a").trigger("click");
 });	
-
+/*-----------------------------------*/
 cookie_config=lire_cookie("userpref");
 if (cookie_config!="admin/config.php"){var resp = window.prompt("conserver cette configuration:(O ou N)\n"+cookie_config);
 	if (resp=="N"){
@@ -137,22 +221,25 @@ var arret_mur;var arret_zoom;
 notpiles="<?php echo NOTIFICATIONS_PILES;?>";if (notpiles==""){notpiles="interieur";}	
 not_piles_reset="reset_erreur_"+notpiles;not_piles="erreur_"+notpiles;																	
 /*----------------------------------------------------*/
-/*commande onoff*/	
-$("#onoffmur").change(function() {	
-if (document.getElementById('onoffmur').checked==true) {arret_mur=1;updateImage(nbrCam);
-														document.getElementById('aqw').innerHTML=" Vidéo active sur toutes les caméras";}
-	else {arret_mur=0;document.getElementById('aqw').innerHTML="Vidéo inactive";}
-});		
+/*commande toggle switch mur cameras*/	
+$('.toggle-outer').click(function(){
+	$(this).toggleClass('checked');
+	const res = $('#result');
+	if(res.css('display') === 'none'){
+	$('#toggle').attr('checked', true);
+	arret_mur=0;$('#toggleLabel').text('Vidéo inactive');}
+	else{
+	$('#toggle').attr('checked', false);
+	arret_mur=1;updateImage(nbrCam);
+	$('#toggleLabel').text('Vidéo active sur toutes les caméras')
+				}
+	res.toggle();				 
+});
 /*-----------------------------------*/
 $("#onoffdvr").change(function() {
   if ($(this).prop("checked")==true) {$('#agent_dvr').attr('src',liendvr);}
 	else {$('#agent_dvr').attr('src','');}
 	});	
-//---------------------------------------------------------------		
-	/* on place ici l'exécution des scripts	*/			
-$('.menu-link').bigSlide({'easyClose': true});
-$(".zz").click(function(){
-		$(".menu-link").trigger("click");});
 //----------------------------------------------
 function setValue(object, keys, value) {
     var last = keys.pop();
@@ -201,9 +288,9 @@ function maj_services(index){
 			}//----------------------------------------------------------------
 		}
 			var myEle = document.getElementById(idt);	// ex uworx
-	if (actif_serv=="5") {	var val=html[i].ID;data=['field', 'key'];result = {};setValue(result, data, val);
+	if (actif_serv=="7") {	var val=html[i].ID;data=['field', 'key'];result = {};setValue(result, data, val);
 		 var res='return '+ result.field.key;result= new Function(res)();
-	    //console.log(result);
+	    console.log(result);
 		myEle.innerHTML = result;
 		//let val_var=pp[200].values.batteryVoltage;myEle.innerHTML = val_var+" Volts";
   	}
@@ -278,89 +365,6 @@ function pluie(idx){
  /*------lecture des indfos de l'alerte pluie----------------------------------------*/
  $("#txt_pluie").click( function() { alert(texte_pluie); });
 /*--------------------------------------------------------------------------*/
-/*-------------mise a jour dispositifs PLAN domoticz ha iobroker z2m--------*/	
-/*--------------------------------------------------------------------------*/	
-var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
-var tempo_dev=<?php echo TEMPO_DEVICES;?>;// temps entre 2 mises à jour
-pp=[];maj_devices(plan);
-worx=[];	
-function maj_devices(plan){
-$.ajax({
-    type: "GET",
-    dataType: "json",
-    url: "ajax.php",
-    data: "app=devices_plan&variable="+plan,
-    success: function(response){pp=response;var al_bat="";
-	<?php if (DECOUVERTE==false){echo "
-		var err_dz_idm=pp[0].err_dz_idm; console.log('err_dz_idm:'+err_dz_idm);//0: pas erreur 1: erreur dz ou idm , idm >9000
-   //console.log('custom='+custom);//custom défini dans worx.php
-   if (err_dz_idm==1) {document.getElementById('erreur_dz').style.display='inline'}
-    if (typeof custom != 'undefined') {
-		if (custom==1 & pp[0]['serveur_iob'] === true){custom_js(custom);}	
-	     }
-		// executé dans JS.js  worx=pp[200].values;maj_worx(pp[200].Name,pp[200].Data);}
-		";} ?>
-		$.each( pp, function( key, val ) {vol=0;pcent=0;
-		if (val.maj_date=='0'){
-			if (val.jour!=num_jour){aff_date();
-			<?php if (DECOUVERTE==false){ echo "document.getElementById('tspan7024').innerHTML=jour;" ;}?>
-			mc(1,"#meteo_concept");}}
-		else {//console.log('ok_deb');
-			var myEle = document.getElementById("cercle_"+val.idm);	
-			if (val.alarm_bat=="alarme" || val.alarm_bat=="alarme_low") {al_bat=al_bat+val.idx+" , "+val.Name;
-				if (myEle){
-					if (val.alarm_bat=="alarme") {myEle.style = "fill-opacity: 1;fill: #b58585";}
-					else {myEle.style = "fill-opacity: 1;fill: red";}}}
-			else 
-				if (myEle) {myEle.style = "fill-opacity: 0";}
-			document.getElementById('erreur').innerHTML ="";
-			if ((val.ID1)&&(val.ID1!="#")){if (document.getElementById(val.ID1)) {if (val.Data) {pos_m=(val.Data).toString().toLowerCase();}
-				if ( val.maj_js=="data") {document.getElementById(val.ID1).innerHTML=val.Data;}
-				if (val.maj_js=="data" && val.ID2!=""){document.getElementById(val.ID2).innerHTML=val.Data;}
-				if (val.maj_js=="temp"){maj_html(val.maj_js,val.ID1,val.temperature);}
-				if (val.maj_js=="temp" && val.ID2!=""){maj_html(val.maj_js,val.ID2,val.temperature);}
-				if (val.actif=="6"  && (val.Data=="ON" || val.Data=="OFF")){publish_mqtt(val.ID,'state','','get');}	
-					//if ( val.maj_js=="onoff_rgb" && val.actif==2) {if (Number(pos_m.substring(12, 14))>0 ) { pos_m="on";}
-											  // else {pos_m="off"; }}
-					if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
-											   else {pos_m="off"; }}									   
-					if ( val.maj_js=="on_level" && val.actif==2) {if (pos_m != "off") { pos_m="on";}
-											   else {pos_m="off"; }}							   
-					if ((val.maj_js=="onoff+stop") && ((pos_m.substring(0, 11)=="set level: ") || (pos_m=="open"))) {vol=1;pos_m="on";if ( (val.Data).substring(0, 11)=="Set Level: "){var pourcent = (val.Data).split(" ");pcent=pourcent[2];}}
-					if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level"  || val.maj_js=="on") && (pos_m=="on" || pos_m=="open" )){
-						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_ON; }
-						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_ON;}
-						if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_ON,1,0);if (vol==1){
-							var h=document.getElementById(val.ID1).getAttribute("h");
-							document.getElementById(val.ID1).setAttribute("height",parseInt((h*(pcent)/100)));}
-							}}	
-								
-				if ((val.maj_js=="control" || val.maj_js=="onoff" || val.maj_js=="onoff+stop" || val.maj_js=="on_level" || val.maj_js=="on") && (pos_m=="off" || pos_m=="closed" )){//console.log(val.ID1,val.idm);
-						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
-						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
-					 if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
-				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
-				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
-				}
-				if (val.actif=="6" && pp[val.idm]['param']!=null) {pp1=pp[val.idm]['param'][1];
-					if (pp1 =="state") {//var msg='{ "state" : "" }';
-					//var topic='zigbee2mqtt/'+pp[val.idm]['ID']+'/get';console.log('actif 6: '+topic+' -- '+msg);
-					//client.publish(topic,msg);
-					publish_mqtt(pp[val.idm]['ID'],'state',"","get")
-				}}
-			}	
-			else if (val.ID1!="#"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
-			//else if (val.idm!="NULL" ){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:...."+val.Name;}
-			else if (val.idx=="NULL" && val.ID=="NULL"){document.getElementById('erreur').innerHTML ="erreur ID1_html   BD  idm="+val.idm +" nom:"+val.Name;}
-		}});
-				if (al_bat!="" ){document.getElementById(not_piles).innerHTML="batterie(s) faible(s) ou moyenne(s) : "+al_bat;
-				document.getElementById(not_piles_reset).style.display="block";}
-					}
-	
-});
-
-setTimeout(maj_devices, tempo_dev, plan); 
-}
 maj_services(0);
 /*--------------------------------------*/
 function class_name(cn,coul){
@@ -370,23 +374,21 @@ for (var i = 0; i < elements.length; i++) {
     element.style=coul;
 }
 }
-/* volets roulants*/
-$('.closeBtn').on('click', function () {
-      $('#popup_vr').hide();
-    });
 /* switchOnOff*  
 	rgb :  "Color": "{\"b\":214,\"cw\":0,\"g\":86,\"m\":4,\"r\":254,\"t\":0,\"ww\":0}" */
 qq=new Array();	
-<?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0');}	?>
+<?php if ($_SESSION["exeption_db"]=="" &&  DECOUVERTE==false)   {sql_plan('0',"","","");}	?>
 rr=new Array();
 function switches(server,idm,idx,command,pass="0"){
+	if (command.includes(":")) {const myArray=command.split(":");
+	command=myArray[0];level=myArray[1];}
+	console.log("xxxx "+server);	
 	switch (server) {
 	case "1":
-	case "2": var app="OnOff";
-	  var type;var level;
+	case "2": var app="OnOff";var type=0;
 	  if ((command=="On")||(command=="Off")){type=2;}
-	  else if (command=="Set Level") {type=3;level=100;//var pourcent = command.split(" ");level=pourcent[2];
-				//if (level=="") level=100;
+	  else if (command=="Set Level") {type=3;
+				if (level=="") level=100;
 	  }
 	  else {type=1;}
 	break;
@@ -442,13 +444,12 @@ function switches(server,idm,idx,command,pass="0"){
 			if (qq['status']=="OK" ) {maj_mqtt(idx,command,0,level);}
 			}
       }}); } 
-  else alert("erreur");
+  else alert("erreur_switchonoff");
   }
- /*--------------mqtt publish--receive-----------------*/
-</script>
-<?php if (MQTT==true) {include ('include/mqtt-js.php');} ?>
- <script>
-// *****************************************************
+  <?php 
+//--------------mqtt publish--receive-----------------
+if (MQTT==true) {include('include/mqtt-js.php');} ?>
+ // *****************************************************
  function publish_mqtt(idx,type,command,setget){
 // Publish a Message
 	var msg='{ "'+ type+'":"'+ command+'"}';
@@ -456,13 +457,6 @@ function switches(server,idm,idx,command,pass="0"){
 	client.publish(topic, msg);return;
  }
 //------------------------------------------------------------
-$("#amount").click(function () {
-		var idx = $("#VR").attr('rel');
-		var idm = $("#VR").attr('title');
-	    var command=$("#amount").attr('name');//console.log(idx," ",idm,"",command);
-		switchOnOff(idm,idx,command);
-	});
-//
 /*PAGE METEO----Méteo Concept----------------------------------------------
 maj manuelle-MC------------------*/
 $(".maj_mconcept").click(function () {
@@ -485,47 +479,22 @@ function mc(variable,id){
 //setTimeout(mc, 1800000, 3,"#temp_ext");//pour la T° locale tt 30mn	
  };
  /*-------------------------------------*/
-$(".btn_cam").click(function () {if (zoneminder==null && dahua=='generic'){alert("Zoneminder non installé");}
-  else {$.modalLink.open("ajax.php?app=upload_conf_img&name="+dahua+"&command="+dahua_type+"&variable="+ip_cam+"&idx="+idx_cam+"&type="+zoneminder,{
-  // options here
-	   height: 400,
-	  width: 400,
-	  title:"configuration de la caméra",
-	  showTitle:true,
-	  showClose:true
+ function inf_cam() {
+	var titre='info cam';modale_id="inf_cam";
+	var donnees_img="idx :" +idx_cam+"<br>adresse :"+urlimg+"<br>id_zm :"+zoneminder+"<br>marque :"+dahua+"<br>type :"+dahua_type+"<br>ip :"+ip_cam;
+	if ($('#visu_cam').length) document.getElementById('visu_cam').remove();if ($('#visu_cam').length) return;open_modale(modale_id,'info',donnees_img,'0','5');
+}
 
-  }); }
-});
-/*-----administration-------------------------------- */
-$(".admin1").click(function() {choix_admin =$(this).attr('rel');//console.log(choix_admin);
-fenetre =$(this).attr('title');
-appel_admin(choix_admin,fenetre);}) ;						   
-function appel_admin(choix_admin,fenetre){
-	$.ajax({ 
-      type: 'GET', 
-      url: 'ajax.php', 
-      dataType: 'text', 
-	  data: "app=admin&variable="+choix_admin+"&command="+fenetre,
-      success: function(data) {$(fenetre).empty();
-		document.getElementById(fenetre).innerHTML = data;document.getElementById(fenetre).style.display = "block";
-		if (data.indexOf("Entrer votre mot de passe") >0) {document.getElementById("d_btn_a").style.display = "block";
-		document.getElementById("d_btn_al").style.display = "block";}
-							},
-	  error: function() { 
-                          alert('La requête n\'a pas abouti'); 
-                        } 
-}); 
-} 
 /*graphiques---------------------------------------*/
 $('#btn_graph').on('click', function() { 
 var device = $('input[name=devices]:checked').val();
 var variable = $('input[name=variables]:checked').val();
-$("#btn_g").trigger("click");
+$("#btn_g_close").trigger("click");
 graph(device,variable,"graphic");
         });
 /*--------------fin graphiques------------------------*/
 /*scenes---------------------------------------*/
-$('#btn_scenes').on('click', function() { 
+/*$('#btn_scenes').on('click', function() { 
 $("#btn_sc").trigger("click");
 //scenes(device,variable,"scenes");
         });
@@ -535,7 +504,7 @@ $("#btn_sc").trigger("click");
 if (ON_MUR==false || SRC_MUR=="fr") echo "/*";?>
 $(".dimcam").on("click", function() {rel = $(this).attr('rel');
    $('#imagepreview').attr('src',this.src); // here asign the image to the modal when the user click the enlarge link
-   $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+   openModal('imagemodal'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
 	var zoomImg=document.getElementById('imagepreview');arret_zoom=1;updateZoom(rel);	
 });
 // total number of cams on the wall
@@ -582,89 +551,92 @@ function updateImage(camIndex)
 <?php if (ON_MUR==false) echo "*/";?>
 //--------------------------------------
 /*app diverses log , recettes -----*/
-var urllog="";
-$(".btn_appd").click(function () {
-	if (larg<768) {lwidth=400;lheight=520;}
-	else {lwidth=600;lheight=600;}
+<?php echo "var info_admin = ". $js_info_admin . ";\n";?>
+aff_clavier='<form class="form_al"><span style="margin-left: 30px;"><input type="radio" name="alco" value="1" /></span><span style="color:white;margin-left: 10px;">commande</span><br><input type="radio" name="alco" checked value="2" /><span style="color:white;margin-left: 10px;">alarme</span><br><input type="password" style="max-width: 140px;" id="password" /><br><input type="button" value="1" id="1" class="pinButton calc" /><input type="button" value="2" id="2" class="pinButton calc" /><input type="button" value="3" id="3" class="pinButton calc" /><br><input type="button" value="4" id="4" class="pinButton calc" /><input type="button" value="5" id="5" class="pinButton calc" /><input type="button" value="6" id="6" class="pinButton calc" /><br><input type="button" value="7" id="7" class="pinButton calc" /><input type="button" value="8" id="8" class="pinButton calc" /><input type="button" value="9" id="9" class="pinButton calc" /><br><input type="button" value="raz" id="clear" class="pinButton clear" /><input type="button" value="0" id="0 " class="pinButton calc" /><input type="button" value="envoi" id="enter" class="pinButton enter" />  </form>';
+open_modale("pwdmo","clavier",aff_clavier,"0","4");// mod_ext=4 modal permanente
+let $el = $("#confirm_content");$el.attr("id", "content_clavier");
+let $el1 = $("#modal-card-title");$el1.attr("id", "modal-card-title-al");
+let $el2 = $("#btn_confirm_close");$el2.attr("id", "btn_confirm_close-al");
+
+
+$(".btn_appd").click(function () {var log_name="";var urllog="";
 var logapp = $(this).attr('rel');
-if ((logapp.length)<2){urllog="ajax.php?app=log_dz&variable="+logapp;titre="log domoticz";}
-else if (logapp=="hostlist"){urllog="ajax.php?app=infos_nagios&variable="+logapp;titre="Hosts Nagios";}
+if (logapp=="passwd"){openModal("pwdmo");}
+else if (logapp=="scenes"){var titre=$(this).attr('data-titre');modale_id="scenes";
+	contenu='<a href="#murinter"><img id="sc1" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="40" height="auto" alt=""/>toutes les lampes</a>';open_modale(modale_id,titre,contenu,'0','3');}
+else if (logapp=="admin"){var numero = $(this).attr('title');var titre=$(this).attr('data-titre');
+	urllog="ajax.php?app=admin&variable="+numero;modale_id="logapp";}
+else if (logapp=="info_adm"){var numero = $(this).attr('title');var titre=$(this).attr('data-titre');
+	contenu = info_admin[numero];modale_id="adm";
+	open_modale(modale_id,titre,contenu,'0','3');}
+else if (logapp=="domoticz"){var numero=$(this).attr('title');
+	if (numero=="1") {log_name=" normal";}
+	else if (numero=="2") {log_name=" statut";}
+	else if (numero=="4") {log_name=" erreur";}
+	urllog="ajax.php?app=log_dz&variable="+numero;titre="log domoticz";modale_id="domoticz";}
 else if (logapp=="sql"){var table_sql = $(this).attr('title');
-	urllog="ajax.php?app=sql&idx=1&variable="+table_sql+"&type=&command=";titre="historique poubelles";}
-else if (logapp=="cuisine"){var table_sql = logapp;var numrecette = $(this).attr('title');titre = $(this).attr('alt');
+	urllog="ajax.php?app=sql&idx=1&variable="+table_sql+"&type=&command=";titre="historique poubelles";modale_id="poubelles";}
+else if (logapp=="cuisine"){var table_sql = logapp;var numrecette = $(this).attr('title');titre = $(this).attr('alt');modale_id="rec_cuis";
 	urllog="ajax.php?app=sql&idx=4&variable="+table_sql+"&type=id&command="+numrecette;}	
-else if (logapp=="modes_emploi"){var table_sql = logapp;var nummode_e = $(this).attr('title');titre = $(this).attr('alt');
+else if (logapp=="modes_emploi"){var table_sql = logapp;var nummode_e = $(this).attr('title');titre = $(this).attr('alt');modale_id="manuel";
 	urllog="ajax.php?app=sql&idx=4&variable="+table_sql+"&type=id&command="+nummode_e;}		
-else if (logapp=="10"){var nummode_e = $(this).attr('title');titre = $(this).attr('alt');
-	var i=9000;www="";do {
-		if (pp[i]) www=www+'<i style="color:red">'+nummode_e +'</i> :'+pp[i].idx+','+pp[i].values+'<br>';
-		    i++;} while ( i >= 9000 && i< 9010 );
-	new $.Zebra_Dialog('<p style="position:relative;left:-90px;width:400px"><strong>Logs_Monitor</strong><br>'+www, {
-    'title': 'Erreurs'});
-//alert(www);
+else if (logapp=="10"){var nummode_e = $(this).attr('title');titre = $(this).attr('alt');modale_id="erreurs_mo";
+	var i=9000;errmon="";do {
+		if (pp[i]) errmon=errmon+'<i style="color:red">'+nummode_e +'</i> :'+pp[i].ID+','+pp[i].values+'<br>';
+		    i++;} while ( i >= 9000 && i< 9010 );open_modale(modale_id,nummode_e,errmon,'0','3');
 }
 else {alert("erreur");}
-if (urllog!="")  $.modalLink.open(urllog, {
-  // options here
-	   height: lheight,
-	  width: lwidth,
-	  title:titre,
-	  showTitle:true,
-	  showClose:true
-  }); 
+if (urllog!="") {$.get(urllog, function(response){
+  	open_modale(modale_id,titre+log_name,response,'0','3');});} 
 });
-/*---popup boite_lettres---pression chaudière--médicaments-fosse septique-----------------------------*/
-var bl=0;ch_idx="0";ch_ID="0";ch_name="";var modalContainer = document.createElement('div');
-modalContainer.setAttribute('id', 'modal_bl');
-var customBox = document.createElement('div');
-customBox.className = 'custom-box';
+/*---modale boite_lettres---pression chaudière--médicaments-fosse septique-----------------------------*/
 // Affichage boîte de confirmation
-	$(".confirm a").click(function(){ 
-    var title_confirm=$(this).attr('title');ch=$(this).attr('rel');
-	var nb = Object.keys(service).length;
-		for (i = 1; i < nb; i++) {//console.log(ch+'...'+service[i].ID);
-		if (service[i].idm==ch) {		
-			var content_modal=service[i].contenu;ch_idx=service[i].idx;ch_ID=service[i].ID;ch_name=service[i].Name;
+function open_modale(id_modale,titre,Contenu,ch,mod_ext){
+var modalContainer = document.createElement('div');
+modalContainer.setAttribute('id', id_modale);
+modalContainer.setAttribute('class', 'modal');
+document.body.appendChild(modalContainer);
+modalB='<div class="modal-background"></div><div class = "modal-card"><header class = "modal-card-head"><p id="modal-card-title" class = "modal-card-title"></p><button id="btn_confirm_close" class = "delete" aria-label = "close"></button></header><section class = "modal-card-body"><div id="confirm_content" class = "content"></div></section>';
+modalC='<input type="button" id="btn_bl"  value="OK" /></div></div>';
+if (mod_ext!="3" && mod_ext!="4" && mod_ext!="5") {modalContainer.innerHTML = modalB+modalC+"</div></div>";
+	document.getElementById('btn_bl').addEventListener('click', function() {modal_extensions(id_modale,mod_ext,ch);});				
+}
+else {modalContainer.innerHTML = modalB+"</div></div>";}
+document.getElementById('modal-card-title').innerHTML=titre;
+document.getElementById('confirm_content').innerHTML=Contenu;
+if (mod_ext=="4") {document.getElementById('btn_confirm_close').addEventListener('click', function() {closeModal(id_modale);});}
+else {document.getElementById('btn_confirm_close').addEventListener('click', function() {closeModal(id_modale);document.getElementById(id_modale).remove();});
+openModal(id_modale);}
+}
+$(".confirm a").click(function(){ 
+ var ch=0;
+var title_confirm=$(this).attr('title');ch=$(this).attr('rel');var mod_nom=$("img",this).attr("id");
+var nb = Object.keys(service).length;
+	for (i = 1; i < nb; i++) {//console.log(ch+'...'+service[i].ID);
+		if (service[i].idm==ch) {ch=i;i=nb;	}
 	}
-		}
-	customBox.innerHTML = '<p>'+title_confirm+'</p><p>'+content_modal+'</p>';
-    customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
-    customBox.innerHTML += '<button id="modal-close">Annuler</button>';
-   modalShow();
- //console.log(bl);
-});		
-function modalShow() {
-    modalContainer.appendChild(customBox);
-    document.body.appendChild(modalContainer);
-    document.getElementById('modal-close').addEventListener('click', function() {
-        modalClose();
-    });
-    if (document.getElementById('modal-confirm')) {
-        document.getElementById('modal-confirm').addEventListener('click', function () {
-           bl=1; 
-           modalClose(bl);
-        });
-    } else if (document.getElementById('modal-submit')) {
-        document.getElementById('modal-submit').addEventListener('click', function () {
-            //console.log(document.getElementById('modal-prompt').value);
-            bl=0;modalClose(bl);
-        });
-    }
+switch (mod_nom) {
+	case "lastseen":
+	Content=service[ch].contenu;mod_ext="1";
+	break;
+	case "poubelle":
+	mod_ext="2";Content="cliquer sur OK pour enregistrer la date \n du ramassage dans la base de données";
+	break;
+	case "fosse":
+	case "pression_chaud":
+	case "pilule":
+	case "ping_rasp":
+	case "bl":			
+	Content="confirmer la notification\nelle va être supprimée";mod_ext="1";	
+	break;		
+	default:
+	break;
 }
-function modalClose(bl) {
-    while (modalContainer.hasChildNodes()) {
-        modalContainer.removeChild(modalContainer.firstChild);
-    }
-    document.body.removeChild(modalContainer);
-	 if (bl==1) {console.log("azerty="+ch_idx);
-		 if (ch_idx.length >0) {
-			maj_variable(ch_idx,ch_name,"0",2);} 
-		 else{var substr = ch_ID.split('.');ch_ID = "input_boolean."+substr[1];//console.log(ch);
-			 turnonoff("",ch_ID,"on",pass="0");} }  
-	maj_services(0);bl=0;ch_idx="0";ch_ID="0";ch_name="";
-}
-/*------------------------------------------*/
-$("#poubelle").click(function () {
+open_modale('confirm',title_confirm,Content,ch,mod_ext);		
+});	   
+function modal_extensions(id_modale,mod_ext,ch=0){
+switch (mod_ext) {
+case "2": //pour notification poubelles
 var date_poub=new Date();
 var jour_poub=date_poub.getDate();
 var an_poub=date_poub.getFullYear();
@@ -677,8 +649,25 @@ var date_poub=jour_poub+' '+mois_poub+" "+an_poub;
 			 date_poub+"&name="+idx_ico,
             }).done(function() {
              alert('date ramassage enregigistrée:'  +date_poub);
-            });
-        });
+            });$("#"+ch_ID_img).hide();
+case "1": // pour notification depuis variable dz ha 
+	var i=ch;
+ ch_idx=service[i].idx;ch_ID=service[i].ID;ch_name=service[i].Name;ch_ID_img=service[i].ID_img;
+			if (ch_idx.length >0) {//pour dz
+				maj_variable(ch_idx,ch_name,"0",2);} 
+			else{var substr = ch_ID.split('.');//pour ha
+			ch_ID = "input_boolean."+substr[1];
+				turnonoff("",ch_ID,"on",pass="0");} 
+	maj_services(0);bl=0;ch_idx="0";ch_ID="0";ch_name="";	
+break;
+case "3": //pour notification sans réponse
+
+break;	
+}
+document.getElementById(id_modale).remove();
+}
+
+/*----------------------------------------*/
 $("#zm").click(function () {
           $.ajax({
              url: "ajax.php",
@@ -688,21 +677,8 @@ $("#zm").click(function () {
             }
         });
 		});
-<?php // sera supprimé en 2026
-if (SSE==false) echo '
-tempo_devices='.TEMPO_DEVICES_D.';
-var idsp=1;if (tempo_devices>30000)	tempo_devices=30000;
-var_sp(idsp);
-function var_sp(idsp){
-  $.getJSON( "ajax.php?app=data_var&variable=29", function(data) {
-  //console.log(data.var_dz);
-  if (data.var_dz=="1"){maj_variable(29,"variable_sp",0,2);maj_devices(plan);maj_services(0);}
-	 if (data.message!="0"){maj_variable("msg",data.message,0,0);maj_services(0);  }
-  });
-setTimeout(var_sp, tempo_devices, idsp); 	
-}';?>
+
 /*----------fin document-------------------------------*/
-</script><script>
 /*----------------script pour svg---*/
 var nom;
 	function popup_device(nom) {
@@ -720,8 +696,8 @@ var nom;
 	"ID1_html :" +pp[nom].ID1+"<br>"+	
 	"ID2_html :" +pp[nom].ID2+"<br>"+	
 	"class_html :" +pp[nom].class_lamp;
- $("#contenu").empty();$("#contenu").append(donnees);
-	$('#infos').modal('show');}
+ 	open_modale('infos_devices','dispoitifs',donnees,'0','3');
+	}
 		else {document.getElementById('erreur').innerHTML ="erreur BD";
 								document.getElementById('erreur_interieur').innerHTML ="erreur pas d'enregistrement BD pour "+nom;}
 	}
@@ -733,27 +709,15 @@ var nom;
 	dataType: 'json',
     success: function(html) {
 		urlimg=html['url']+"?"+Date.now()/1000;zoneminder=html['id_zm'];dahua=html['marque'];
-		ip_cam=html['ip'];idx_cam=html['idx'];dahua_type=html['type'];//console.log(dahua_type);
-		if (nom<10010){$('#cam').attr('src',urlimg); $('#camera').modal('show');} 
-		else {$('#cam_ext').attr('src',urlimg); $('#camera_ext').modal('show');} }
-			});         
+		ip_cam=html['ip'];idx_cam=html['idx'];dahua_type=html['type'];console.log(urlimg);
+		open_modale('visu_cam','Image caméra<button onclick="inf_cam();" style="margin-left:100px" class="button is-blue" >Config</button>','<img src="'+urlimg+'" alt="cam">','0','3'); 
+		 }
+			} );        
 		} 
 	}
-</script>
- <style>
-  #custom-handle {
-    width: 3em;
-    height: 1.6em;
-    top: 50%;
-    margin-top: -.8em;
-    text-align: center;
-    line-height: 1.6em;
-  }
-  </style>
-<script>
+	
 var sliderMin = 0,
   sliderMax = 100;
-
 $('#slider').slider({
   step: 1,
   min: 0,
@@ -764,12 +728,11 @@ $('#slider').slider({
     if (amount < sliderMin || amount > sliderMax) {
       return false;
     } else {
-      $("#amount").attr("name","Set Level: "+amount);
+      $("#volet_bureau").attr("rel","Set Level: "+amount);
 	 $("#level_vr").html("Set Level: "+amount+"%");
     }
   }
 });
-$("#amount").val(sliderMin);
 /*--------------------------------------------------*/
 $('.info_admin').click(function(){
 var rel=$(this).attr('rel');$('#affich_content_info').empty;var info_admin="";
