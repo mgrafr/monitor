@@ -1,624 +1,311 @@
 body {
-    font-size: 15px;
-    line-height: 1.50;
-    color: #333333;
-    /*background-image: url('/images/sky_clouds.jpg');*/
-    position: relative;
-	font-family: 'Open Sans', sans-serif;
-}
-html, body {
-    height: 100%;
-}.table td{border:0}
-#menu {width:17em;}
-#about, #about_iob,#about_p{width: 600px;
-    position: relative;
-}
-#about{top: -170px;left: 230px;}
-#about_iob,#about_p{top: 0px;left:0px;}
-#info-admin1{position: relative;top: -400px;padding-right: 15px;}
-
-#maison1{margin-top:12%;}
-.header {height: 150px;
-	color: #ffffff;
-	background-color: rgba(8, 55, 70, 0.7);
-	padding: 10px 0;
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	-ms-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
-	position: relative;
-top: 0;
-width: 100%;
-}
-ul {
-list-style-type: none;
-}
-.cam  th, .cam td {text-align: center;
-	padding: 0.15rem;border: 5px solid #dee2e6;
-vertical-align: middle;}
-.cam{margin-left: 15px;}
-.colmur{top:-20px;}
-.poubelles{
-position:relative;
-left:550px;
-top: -600px;
-width:100px}
-.fosse_septique{
-position:absolute;
-left:450px;
-TOP:790px;
-width:100px}
-.porte_veranda_sud{width:40px;height:auto;position:absolute;top:823px;
-	left:440px}
-/* vers custom    #porte_ent_ver_sud_O{width:30px;height:50px;position:absolute;top:815px;
-	left:300px}
-   ---------------------------------------------------------------------*/    
-#gd_portail{width:60px;height:45px;position:absolute;top:820px;
-	left:330px}
-#porte_gar{width:45px;height:45px;position:absolute;top:820px;
-        left:390px}   
-/* ERREURS*/
-#erreur{position: absolute;
-    top: 150px;
-    left: 100px;
-    color: white;
-}
- #erreur_interieur, #erreur_exterieur{
-position: absolute;
-top: 200px;
-left: 90px;
- color: #ce1c1c;}
-#reset_erreur_interieur, #reset_erreur_exterieur{position: absolute;
-    top: 190px;
-    display: none;
-    width: 40px;
-    left: 40px;}
-
- /*----------------------------*/
-
-.text-center{
-	margin-right: 2px;
-	margin-left: 2px;
-	margin-bottom: 2px;
-	display: inline-block;
-	float: none;
-}
-.fond_date {color:#fff;
-width: 90px;height: 80px; 
-background-image: url(../images/date.svg);
-font-family: Arial;font-size: 18px;
-line-height: 1;text-align: center;
-position: relative;
-top: 20px;right: -270px;
-}
-/*exterieur*/
-.txt_ext{position:relative;top:20px;left:20px;}
-.lj1{fill:#a29e9e;}
-.lj2{fill:#a29e9e;}
-
-/* pour bigSlide*/
-.panel {
-    position: fixed;z-index:30;
-    left: -15.625em; /*left or right and the width of your navigation panel*/
-    width: 15.625em; /*should match the above value*/
-}
-.wrap {
-    position: relative;
-}
-/*----------------------
-commandes-------------------*/
-#passe{top:50px;}
-#thermostat{top: 100px;}
-#d_btn_c{margin-left: 50px;}
-/*------------------*/
-.site-nom {position: relative;
-top: 25px;
-left:0px;
-	font-size: 36px;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-.site-nom a {
-	color: #ffffff;
-}
-.site-nom a:hover {
-	text-decoration: none;
-}
-.site-slogan {
-	font-size: 16px;margin-left: 100px;
-margin-top: 70px;
-}
-.logo,
-.site-nom{
-	float: left;
-}
-.taille18{font-size: 18px;}
+    font-size: 18px;line-height: 1.50;color: #333333;position: relative;height: 100%;
+	font-family: 'Open Sans', sans-serif;max-width: 1023px;margin: auto 0;}
+/* ecran 769 à 1023px */
+nav{max-width: 1023px;}
+.banner-image {vertical-align: middle;min-height: 100%;width: 100%;}    
+ /*texte table*/
 .txtcenter{text-align: center;}
-.text-centre {
-    margin-right: 2px;
-    margin-left: 2px;
-    margin-bottom: 2px;
-    display: block;
-    float: none;
-}
-#btn_cam{position: relative;
-top: 100px;
-left: -80px;}
-.banner::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.55);
-    content: "";
-}
-.banner {
-    max-width: 100%;
-    height: 1120px;
-    min-height: 100%;
-    position: relative;
-    color: #fff;z-index:-10;
-}
-.banner-image {
-	vertical-align: middle;
-	min-height: 100%;
-	width: 100%;
-}
-.nav {margin-top: 10px;
-background-color: black;
-height: 295px;
-padding-top: 20px;
-font-size: large;}
-.menu-link:link, .menu-link:visited {
-    color: #fff;
-    background: rgba(0, 0, 0, .4);
-    border-radius: 4px;
-    padding: .2em .4em;
-}
+h1 {font-size:200%}
+h2 {font-size:110%}  
+h3 {font-size:110%;font-weight: bolder;} 
+h4{margin-left:20px;font-size:18px;margin-top: -30pX;}
+.dpb {display:block}
+.text-center{margin-right: 2px;margin-left: 2px;margin-bottom: 2px;display: inline-block;float: none;}  
+.text-c{display:block;margin-left: 20px;}
+.table-responsive{width: 97%;overflow-x: auto;}
+.table1 {width: 100%;margin-bottom: 1rem;color: #212529;background: #f3f0eb;}
+.table td{border:0}
+.top-30{margin-top:-30px}
+.left-10{margin-left:10px}
+/* header */
+.logo{float: left;}
+.content ul  {list-style-type: none;}
+.title{margin-left: 10px;font-size: 25px;}
+[popover] {position: fixed;left: -70dvw;top: 0;height:44dvh;width: 27dvw;transition: transform .2s ease-out, opacity .2s ease-out,
+    display .2s ease-out;transition-behavior: allow-discrete;
+  /*POPOVER EN ETAT FERMÉ*/
+    opacity: 0;transform: translateX(-50px);}
+@starting-style {[popover]:popover-open {
+  /*POPOVER AVANT L'ENTREE DANS LE CHAMP*/
+      opacity: 0;transform: translateX(-50px);}}
+  /*POPOVER EN ETAT OUVERT*/
+[popover]:popover-open {opacity: 1;transform: translateX(0px);  }
+ /*POPOVER EN ETAT FERME*/  
+[popover]:not(:popover-open) {opacity: 0;transform: translateX(-50px);}
+.menu-h {position: fixed;
+        font-size: 1.5em;z-index:30;top: 40px;left:500px;} 
+#zz li a {color:white;background-color:#909090;}
+/* toutes les pages */
+#interieur, #meteo, #alarmes,#commandes,#murcam,#murinter,#app_diverses,
+#graphiques,#administration, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes,
+#habridge, #modes_emploi, #iobroker{
+max-width: 100%;height: 1200px;padding: 80px 0;min-height: 100%;
+position: relative;color: #000;top: 350px;z-index:1;overflow: auto;
+background-color: aquamarine;}
 
-a:link, a:visited {
-    color: #486660;
-}
-.btn-primary a:link, a:visited {
-    color: inherit;
-}
-.menu-link {
-    position: fixed;left:300px;
-    font-size: 1.5em;z-index:30;top: 10px;
-}
-.modal-dialog {width:650px;margin: 0 auto;margin-top:50px}
-#Calque_1 {margin-left: 7%;position: relative;top: -40px;}
-#interieur, #meteo, #alarmes,#commandes,#murcam ,
-#murinter,#app_diverses,#graphiques,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{
-    max-width: 100%;
-    height: 1120px;padding: 80px 0;
-    min-height: 100%;
-    position: relative;
-    color: #000;
-    top: 350px;z-index:-20;overflow: auto;
-}
-#interieur,#alarmes,#commandes,#murcam ,#murinter,
-#app_diverses,#admin, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes, #habridge, #modes_emploi, #iobroker{
-    background-color: aquamarine;}
-#meteo {
-	background-color: #4f9ff4;}
-#retour{top:200px;}
-.sos {position:absolute;top: 740px;left: 50px;width:40px;}
-.navbar-right{margin-right: 0;}
-
-.banner-caption h1 {
-	font-size: 20px;
-}
-.banner-caption h1,
-.banner-caption h2,
-.banner-caption h3,
-.banner-caption h4,
-.banner-caption h5,
-.banner-caption h6 {
-	color: #ffffff;
-}
-.banner-caption {
-	position: absolute;
-	top: 30%;
-	width: 100%;
-	z-index: 2;
-}
-.zz{margin-left: 10px;}
-/*interieur*/
-#vanne_eau{position: relative;top: -796px;left: 540px;width:48px;}
-#linky{position: relative;top: -200px;
-    left: 600px;
-    width: 60px;}
-#th_ext_cuis{position: relative;
-    top: -850px;
-    left: 170px;
-	width: 50px;}
-#temp_ext_cuisine{font-size: 25px;
-    color: black;}
-#voltage{position: absolute;
-top: -30px;
-right: -20px;
-width: 200px;}
-.meteo_concept_am  {display: inline;width: 150px;margin-left: -20px;}
-#meteo_concept_am{position: relative;
-top: 20px;margin-left: -20px;}
-#meteo_concept{position: relative;
-top: 10px;}
-.image_met{width:80px;margin-left: -15px;}
-.icone_vent{width: 40px;margin-left: 0;margin-top: -20px;}
-.vvent{font-family: Arial;font-size: 15px;margin-left: 0;
-position: relative;
-top: -40px;}
-.vtemp{font-family: Arial;font-size: 15px;margin-left: 0;
-position: relative;
-top: -50px;}
-.maj_met{width:60px;height:auto;
-margin: -15px 0 0 50px;}
-.modal-header{background-color:cyan;}
-.modal-backdrop {z-index: -1040;}
-/*.modal-dialog {margin: 40px;}*/
-/*----------------------------------*/
-/* css page accueil*/
-.aff_dim_ecran{    width: 50px;
-    height: 50px;
-    position: absolute;
-    Top: 820px;
-    left: 50px;
-}
-.aff_pluie{position: absolute;
-    top: 150px;
-    width: 100px;
-    height: auto;
-    left: 600px;}
-#pluie img{width:80px;}
-#txt_pluie{position: relative;
-top: -70px;color:red;
-left: 0px;}
-#txt_pluie a{color:red;}
-/*affichage anniversaires*/
-#aff_anni{display:none;}
-.aff_anni{position: absolute;
-width: 70px;
-right: 140px;height: auto;
-bottom: 130px;
-left: 220px;}
-#aff_anni{width: 70px;}
-#prenom{color: #f0e8e8;}
-/*pression chaudière*/
-#bar_pression {
-    position: relative;
-    top: -770px;
-    width: 100px;
-    left: 500px;
-}
+/*---------------------------------------------------------------*/
+#meteo {	background-color: #4f9ff4;}
+/*DATE accueil? HEADER*/
+/*          ERREURS*/
+#erreur{position: absolute;top: 150px;left: 100px;color: white;}
+/*          lexique*/
+.lex_txt{margin-left:10px;margin-bottom:0.3rem}
+.fond_date {color:#fff;width: 90px;height: 80px;background-image: url(../images/date.svg);
+font-family: Arial;font-size: 18px;Line-height: 1;text-align: center;
+position: relative;top: 40px;right:50px;}
+.header {height: 150px;	color: #ffffff;background-color: rgba(8, 55, 70, 0.7);
+padding: 10px 0;transition: all 0.2s ease-in-out;position: relative;
+top: 0;width: 100%;}
+.icones_not{position: relative;top:-190px;background-color: #2e333d;height: 130px;}
+.temp_accueil{position: relative;top: -150px;left: 290px;width: 420px;}
+.coultemp{color: #fffe2f;}
+/*pression chaudière, medoc, fosse, porte veranda S, gd portail, porte gar */
+#bar_pression {position: relative;top: -910px;width: 100px;left: 500px;}
 #pression_chaud{width:60px}
-.pression_chaud{position: relative;
-top: -460px;
-left: 220px;}
-/*medoc*/
-/*#pilule{width:60px}*/
-#pilule{position: absolute;width: 70px;left:225px;height: auto;
-top: 800px;}
-/*lastseem*/
-.lastseen, .lastseen1{width: 150px;
-    height: 50px;
-    position: absolute;
-    Top: 200px;}
-.lastseen{left: 50px;}
-.lastseen1{left: 120px;}
-/*portail*/
-.portail{position: relative;top:0;}
-#gportail{width:40px;}
-/*ping PI4*/
-#ping_pi4{position: relative;top: -85px;
-left: 410px;
-width: 50px;
-height: 50px;}
-#ping_rasp{position: relative;
-bottom: 700px;display: none;
-left: 320px;width:40px}
-/*aff batterie */
-.aff_bat{position: absolute;
-top: 810px;
-left: 120px;}
+.pression_chaud{position: absolute;width: 60px;left: 555px;height: auto;top: 3px;}
+.fosse_septique{position: absolute;left: 435px;top: 5px;width: 70px;}
+.porte_veranda_sud{width:40px;height: auto;position: absolute;top: 20px;left: 617px;}
+#gd_portail{width:60px;height:45px;position:absolute;top:20px;	left:330px}
+#porte_gar{width:45px;height:45px;position:absolute;top:20px;left:390px}
+.poubelles{position:relative;left:130px;top:-300px;width:100px} 
+/* pluie, affichage anniversaires, alarme nuit,batteries, SOS*/
+.aff_pluie{position: absolute;top:-600px;width: 100px;height: auto;left:120px;}
+#pluie img{width:80px;}
+#txt_pluie{position: relative;top: -70px;color:red;left: 0px;}
+#txt_pluie a{color:red;}
+.aff_anni{position: absolute;width: 70px;height: auto;top: 60px;left: 220px;display: block;}
+#prenom{color: #f0e8e8;}
+#alarme_nuit{position:absolute;top:20px;left: 170px;width: 40px;}
+.aff_bat{position: absolute;top: 20px;left: 120px;}
 #batterie{width: 30px;height: auto;}
-.cercle{
-   animation-duration: .8s;
-   animation-name: clignoter;
-   animation-iteration-count: infinite;
-   transition: none;
-}
-.bl{position: absolute;
-top: 870px;
-left: 115px;}
-#bl{width: 40px;display:none;
-height: auto;}
-.custom-box {
-    border: 2px solid grey;
-    text-align: center;
-    padding: 10px;
-    width: fit-content;
-    background-color: #e5c666;
-    margin: auto;
-}
-#modal_bl {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-/* fin notifications page accueil*/	
-	
-}
+.sos {position:absolute;top: -20px;left: 65px;width:40px;}
+#SOS {margin-top:45px}
+/* ping raspi, boite lettres, lastseen, info */
+#ping_rasp{position: absolute;top: -180px;display: none;left: 150px;width:40px}
+.bl{position: absolute;top: 20px;left: 620px;}
+#bl{width: 40px;display:none;height: auto;}
+.lastseen, .lastseen1{width: 140px;height: 50px;position: absolute;Top:5px;left: 185px;}
+.lastseen1{top: 60px;}
+.aff_info{width: 50px;height: 50px;top:55px;left:10px;position: absolute}
+/*meteo */
+
+.meteo_concept_am  {display: inline;width: 150px;margin-left: 20px;vertical-align: middle;}
+#meteo_concept_am{position: relative;top: 40px;font-size: larger;margin-left: 15px;}
+#meteo_concept{position: relative;top: 30px;left:7px;}
+.image_met{width:80px;margin-left:15px;}
+.icone_vent{width: 40px;margin-left: 0;margin-top: -20px;}
+.vvent{font-family: Arial;font-size: 15px;margin-left: 15px;position: relative;top: -40px;}
+.vtemp{font-family: Arial;font-size: 15px;margin-left: 15px;position: relative;top: -50px;}
+.maj_met{width:60px;height:auto;margin: 15px 0 0 50px;}
+#titre_meteo_concept{font-size: larger;margin-left: 15px;}
+/*admin et alarme mot passe*/
+#d_btn_a , #d_btn_al{display:block;position: absolute;left: 90px;background-color: #4d4d4d;color:white;
+border-color: #e0e3e6;border-radius: 0.55rem}
+#d_btn_a{top: 190px;left: 220px;}
+#d_btn_al{top: 60px;}
+/*alarme admin*/
+#avb{display: block;background-color: #F5F5DC;width: 400px;position: relative;
+    top: -10px;left: 5px;}
+/*graphiques-------*/
+#graphic{color:white;}
+.graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
+.graphiques{background-color: green;}
+
+/* Interieur*/
+/*      aff batterie */
 @keyframes clignoter {
   0%   { opacity:1; }
   40%   {opacity:0; }
   100% { opacity:1; }
 }
-/*@keyframes change {
-    from { fill: red ;}
-    to   { fill: #00FFFF; }
-}*/
-/*alarme admin*/
-#avb{display: block;
-    background-color: #F5F5DC;
-    /*height: 450px;*/
-    width: 400px;
-    position: relative;
-    top: -10px;
-    left: 5px;
+.cercle{animation-duration: .8s;animation-name: clignoter;animation-iteration-count: infinite;
+   transition: none;}
+#about_interieur{width: 400px;position: relative;left: 10px;top: 30px;
+}   
+#Voltmetre {margin-left: 7%;position: relative;top: -40px;}
+#maison1{margin-top:0;}
+#voltage{position: absolute;top: 70px;right: -20px;width: 200px;}
+#vanne_eau{position: relative;top: -959px;left: 600px;width:48px;}
+#linky{position: relative;top:-290px;left: 600px;width: 60px;}
+#th_ext_cuis{position: relative;top: -850px;left: 170px;width: 50px;}
+#temp_ext_cuisine{font-size: 25px;color: black;}
+#erreur_interieur{position: absolute;top: 200px;left: 90px; color: #ce1c1c;}
+#reset_erreur_interieur{position: absolute;top: 190px;display: none;width: 40px;left: 40px;}
+/* Bulma */
+:root {
+--bulma-body-background-color: #909090;
+--bulma-column-gap: 0;
 }
+.modal{--bulma-modal-background-background-color: rgba(0, 0, 0, 0.1);}
+#lexique.modal {--bulma-modal-content-width: 20rem;}
+#admin.modal {--bulma-modal-content-width: 33rem;}
+#adm.modal {--bulma-modal-content-width: 32rem;}
+#erreurs_mo.modal {--bulma-modal-content-width: 32rem;}
+#infos_devices.modal {--bulma-modal-content-width: 20rem; }
+.modal-card-body {border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;}
+/* alarme */
+#zm{position:relative;top:10px;left:20px}
+.zminder{margin-left: 10px;}
+#ecran{margin-top: 70px}
+/*clavier mdp */
+#pwdalarm{text-align: center;width: 200px;left:200px;margin: 0 auto;position: relative;top: 500px;background-color: rgb(89, 89, 89);height: 180px;}
+.close_clavier{font-size: 24px;position: relative;top: 0px;left: 80px;color: white;} 
+.form_al {width: 280px;background: #595959;text-align: center;position: relative;font-size: 16px;}
+#pwdmo .modal-card .modal-card-body{background-color: hsl(0deg 0% 34.9%);}
+#pwdmo .modal-card .modal-card-head .modal-card-title{font-size: 20px;}
+#pwdmo .modal-card .modal-card-head {background-color: hsl(151.64deg 67.43% 50.52%);}
+#pwdmo {--bulma-modal-content-width: 20rem; }
+#logapp {--bulma-modal-content-width: 32rem; }
+.pinButton{width: 50px;height: 40px; border-radius: 5px;}
+/*administration*/
 #reponse1 {background-color: beige;position:relative;top:-1000px;display:none;left:0;height:auto;width:480px}
 #reponse2 {background-color: beige;position: relative;top: -900px;left: 5px;display:block;line-height: 0.2;height:500px;width: 430px;}
 #info_admin{margin-left:10px;display:block;}
-#d_btn_a , #d_btn_al{display:block;position: absolute;left: 50px;background-color: #4d4d4d;color:white;
-border-color: #e0e3e6;border-radius: 0.55rem}
-#d_btn_a{top: 150px;}#d_btn_al{top: 60px;}
-#ecran{margin-top: 50px}
-#pwdalarm{text-align: center;width: 200px;left:200px;margin: 0 auto;position: fixed;top: 500px;background-color: rgb(89, 89, 89);height: 180px;}
-.close_clavier{font-size: 24px;position: relative;top: 0px;left: 80px;color: white;} 
-.form_al {
-  width: 200px;
-  margin: 5px auto;
-  background: #595959;
-  padding: 10px 25px;
-  text-align: center;
-  box-shadow: 0px 5px 5px -0px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;position: fixed;
-/*top: 480px;*/
-}
-/*SSE*/
-#sse{position:relative;top:-500px;height:100px;}
-#messages, #messages1, #messages2, #messages3{position: relative;top:-50px;left:130px;display: block;}
+.info_admin{margin-left:0px;}
+#adm1{width:475px;}
+#admin1{margin-left:-30px;margin-top:-30px;}
+#admin2{margin-top: 50px;}
+#admin3{margin-left: 25px;width:250px;margin-top: -5px;height: 35px;}
+#admin4{margin-top: -10px;}
+.logo_dz{position: relative;top: 0px;left: -15px;width: 35px;}
+.but1,.but6,.but7{margin-left: -10px;width: 250px;height: 35px;margin-top: 5px;}
+.but2,.but3,.but5,.but8,.but9{margin-left:20px;width:300px;height: 35px;}
+.but3{margin-top: -5px;}
+.but4{margin-top: -10px;}
+.but5{margin-top: -27px;}
+.but6{margin-top: -20px;}
+.but7{margin-top: -32px;}
+.but8{margin-top: -40px;}
+.but9{margin-top: -30px;}
+.space5{margin-top: -5px;}
+.space30{margin-top: -30px;}
+.but10,.but11,.but12{width: 400px;margin-top: -17px;height:35px;margin-left:20px;}
+.but11{margin-top:-7px}
+.but10{margin-top:-13px;}
+.logo_rpi,.logo_iob,.logo_sql{position: relative;top: -20px;left: -15px;width: 30px;}
+.logo_sse{position: relative;top: -160px;left: -15px;width: 30px;}
+#phpadmin{position: relative;top: -500px;left: 500px;width:120px}
+.phpmyadmin{width:100px}
+#about{width: 120px;position: relative;left: 500px;top:-450px;}
+#ws-zb{position: relative;top: -100px;left: -15px}
+/*---------------SSE*/
+#status{position: relative;top:-190px;left:50px;} /*sse*/
+#messages, #messages1, #messages2, #messages3{position: relative;top:-475px;left:130px;display: block;}
 #messages1,#messages2,#messages3{margin-top: -20px;}
-#status{position: relative;top: -30px;left:50px;}
-/*msg z2b phpmyadmin */
-#msg_zb,#msg_zb1{position: relative;top:-30px;left:35px}
-#msg_zb1{margin-top: -20px;}
-#ws-zb{position: relative;top:-500px;}
-#phpadmin{position:relative;top:-120px;left:50px}
-/*recettes*/
-.bg-recette {    background-color: #84d1b7;}
-.col-4{    margin-left: 5px;
-       margin-top: 3px;}
-/*bigslide*/
-.push{height:150px;}
-/*graphiques-------*/
-#graphic{color:white;}
-.graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
-.title_g{position: relative;top:10px;margin-bottom: 0;}
-.row_g{margin-top:10px;}
-.graphiques{background-color: green;}
-.modal_param{background-color: #3fca76;top: 160px;}
-/*app diverses --------*/
-.log{width:650px;max-width:90%}
-/*popup iframe*/
-
-
-/*.sparkling-modal-container{}*/
-
-.sparkling-modal-overlay {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.sparkling-modal-frame {
-    background: #fff;
-    border: 0px solid #000;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px;
-    -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px;
-	left:35%;top:60%;
-}
-
-.sparkling-modal-title {
-    background: #f5f3ef;
-    position: relative;
-}
-
-.sparkling-modal-title span {
-	font-size: 20px;
-	padding: 20px;
-	float: left;
-	line-height: 20px;
-}
-
-.sparkling-modal-close {
-    /*padding: 20px 30px;*/
-	/*line-height: 20px;*/
-	/*float: right;*/
-    /*font-size: 20px;*/
-    
-	cursor: pointer;
-    height: 100%;
-    width: 75px;
-    position: absolute;
-    right: 0px;
-    
-    -webkit-transition: background 0.2s;
-    -moz-transition: background 0.2s;
-    -ms-transition: background 0.2s;
-    -o-transition: background 0.2s;
-    transition: background 0.2s;
-}
-
-.sparkling-modal-close:hover { background: #e0ddd6; }
-
-.sparkling-modal-content { padding: 20px; }
-
-.i-close {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotate(45deg);
-}
-
-.i-close-h {
-    position: relative;
-    height: 1px;
-    width: 19px;
-    background: #777;
-    top: 50%;
-    left: 50%;
-    margin-left: -9px;
-}
-
-
-.i-close-v {
-    position: relative;
-    height: 19px;
-    width: 1px;
-    background: #777;
-    top: 50%;
-    margin-top: -10px;
-    left: 50%;
-}
-
-/*zigbee2mqtt zwavejs2mqtt frigate & ngiosmobile   -*/
-#zbmqtt,#zwmqtt,#frigate, #iobroker {margin-top: 0px;width: 100%;height: 800px;}
-#nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
-#nagiosapp{width: 750px;height: 700px;position: relative;
-top: -70px;}
-#automat{display:none;width:90%;height:auto;background-color: beige;position: relative;top:-610px;left:4%}
-#console {background: #111;color: #0f0;padding: 10px;height: 200px;width:500px;overflow-y: auto;white-space: pre-wrap;
-border: 1px solid #444;margin-left: 10px;}
- #btn_console{position: relative;top:-28px;}   
- #aide_aut{background-color: beige;height: 40px;} 
-/*ha-bridge-------------------*/
-#habridgeapp, #iobrokerapp{width: 700px;height: 800px;position: relative;top: 10px;}
-/*mur cam  pour 9 caméras*/
-img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{max-width: 100%;width: 300px;height: auto;}
-/*mur inter*/
-#sw12, #sw23{margin-left:15px;}
+/* Mur inter */
+.liste_inter{margin-left:20px}
+#btn_scenes{margin-top: 20px;margin-left: 20px;}
+#idhtml1{margin-left:20px}
 #sw11{background-color:none}
 #sw10{margin-left:50px;}
-/*-alarme--------------*/
-#zm{position:relative;top:10px;left:20px}
-.zminder{margin-left: 10px;}
-#alarme_nuit{position:absolute;top:815px;
-left: 170px;width: 40px;}
-/*#gsm{animation: change 3s step-end both;}*/
-/*popup volet roulant */
-
-#slider {
-  width: 80%;
-  margin: 1em;
+#sw12, #sw23{margin-left:15px;}
+.txt_inter{position:relative;left:20px;} 
+#volet_bur{width:420px}
+#slider{width: 40%;margin: 1em;top: -50px;left: 50px;width:40%}
+#level_vr{position: relative;top: -104px;left: 250px;}
+#clic_vr{top:-40px;display:inline;margin-left:-350px;position:relative;}
+/* Monitoring */
+/*ping PI4*/
+#ping_pi4{position: relative;top: -85px;left: 410px;width: 50px;height: 50px;}
+#nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
+#nagiosapp{width: 750px;height: 700px;position: relative;
+top: -60px;left:15px}
+/*zigbee2mqtt zwavejs2mqtt frigate & ngiosmobile   -*/
+#zbmqtt,#zwmqtt,#frigate{margin-top: 0px;width: 100%;height: 800px;}
+/*ha-bridge-------------------*/
+#habridgeapp, #iobrokerapp{width: 700px;height: 800px;position: relative;top: 10px;left:20px}
+#about_iob{position: relative;left: 10px;top:10px;}
+.refresh_iob{margin-left:20px}
+/*recettes*/
+#about_rec{ width: 300px;position: relative;left: 50px;top: 30px;}
+.imrec{padding:5px;width:90%;}
+.col_rec{display:flex}
+/* Mur Cameras */
+/*       toggle switch */
+.toggle-outer{height: 30px;width: 60px;border-radius: 20px;border: 1px solid #ccc;background-color: #f4f4f4;margin: auto;position: relative;transition: all 0.3s ease-in;
+			cursor: auto;top:0px;left:-250px;display:block}
+.toggle-outer.checked{background-color: blue;		}
+.toggle-inner{height: 30px;width: 30px;border-radius: 50%;position: absolute;left: 0;background-color: #fff;border: 1px solid #ccc;transition: all 0.3s ease-in;}
+.toggle-outer.checked .toggle-inner{left: 30px;}
+input[type="checkbox"]{display: none;}
+#toggleLabel{cursor: pointer;}
+#titre_mur{margin-left:20px;}
+.cam  th, .cam td {text-align: center;
+	padding: 0.15rem;border: 5px solid #dee2e6;
+vertical-align: middle;}
+.cam{margin-left: 15px;}
+.colmur{top:-20px;}
+#btn_cam{position: relative;
+top: 100px;
+left: -80px;}
+/*               mur cam  pour 9 caméras*/
+img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{
+	max-width: 100%;
+    width: 300px;
+    height: auto;
 }
-.popup {
-    position: relative;
-    top: -600px;
-    left: 0;
-    background: rgba(0, 0, 0, 0.58);
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
- 
-  /* Popup inner div */
-  .popup-content {
-    width: 250px;
-    margin: 0 auto;
-    padding: 40px;
-    margin-top: 100px;
-    border-radius: 3px;
-    background: #fff;
-    position: relative;font-size: 12px
-  }
- 
-  /* Popup close button */
-  .closeBtn {
-    position: absolute;
-    top: 5px;
-    right: 12px;
-    font-size: 17px;
-    color: #7c7575;
-    text-decoration: none;
-  }
-.popup_rgb {
-    position: relative;
-    top: -640px;
-   /* left: 100px;*/
-   margin-left: 350px;
-    width: 70px;
-    background: rgb(12 12 1 / 58%);
-   /* width: 300px;
-    height: 20px;*/
-    display: none;
-	color:white;
-  }
 /*agent dvr ------------------*/
 .title_dvr {font-size: 1.5rem;}
 #agent_dvr{width:500px;height: 700px;margin-left: -15px;margin-top: -20px;}
 #dvr .switch {top: -40px;}
-/*admin*/
-#adm1{width:475px;}
-.admin1{color:vert;margin-left:70px}
-#admin3{position: relative;top: -80px;}
-#admin4{position: relative;
-    top: -100px;}
-/*lexique*/
-.lex_txt{margin-left:10px;margin-bottom:0.3rem}
-
+/* autres dim ecran */
+/* Large devices (Desktop >1023px ) */
+@media (min-width:1024px) {
+nav{max-width: 1200px;}    
+}  
 @media (max-width:360px) {
 	#pwdalarm{left:15px;top:100px}
 }
-/* devices (small desktops <768) */
-@media (max-width:767px) {.modal_mur-dialog {width:500px;}.fosse_septique{left:400px;}
-	.fond_date {right: -70px;}.aff_pluie {left: 400px;}#linky {left: 450px;}#th_ext_cuis {top: -700px;}
-#bar_pression {top: -570px;left: 280px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 740px;}#status{top:-40px;}
-#th_ext_cuis {top: -650px;}.sparkling-modal-frame {top:50%;}#vanne_eau{position: relative;top: -613px;left: 380px;}
-.sos {top: -600px;}#gd_portail {top: 740px;left: 300px;}.fosse_septique{left:420px;}#fosse{top:700px;}#porte_gar{top:740px;left:360px}
-.porte_veranda_sud{top:743px;}#pilule{top:730px;left:225px;}#sse{top:-500px;}
-#messages, #messages1, #messages2, #messages3 {top: -60px;left:80px;}#msg_zb,#msg_z1 {top: -30px;}#ws-zb {top:-510px;}
-}
-/* Large devices (small desktops <601) */
-@media (max-width:600px) {.fond_date {right: -70px;}.poubelles{left:450px;}.choix_scenes{left:10px;width: 80%;}
-}
+/* devices (tablet <769 */
+@media (max-width:768px) {
+.temp_accueil {top: -185px;} 
+.banner-image {height: 650px}
+.title_met{margin-top:-50px;margin-left:20px}
+.meteo_concept_am {width: 60px;}
+.poubelles{left:108px;top: -210px;} 
+.menu-h {left: 400px;}
+#linky {left: 530px;top:-350px}
+#th_ext_cuis {top: -650px;}
+.icones_not {height: 300px;}
 
+}
+/* Large devices (small mobile <601) */
+@media (max-width:600px) {
+.fond_date {right: -70px;}
+.poubelles{left:450px;}
+.menu-h {top: 80px;left: 200px;}
+}
 /* Large devices (small desktops <535) */
-@media (max-width:534px) {#zbmqtt{width:480px;}#alarme_nuit{top:580px;}#nagiosmobile{width:480px;}
-.poubelles{left:400px;top:-400px}.aff_dim_ecran{top: 580px;}.aff_bat {top: 575px;}.aff_not1{top: 450px;}
-	.fosse_septique{left:380px;}#fosse{top:550px;}.aff_anni{bottom: 80px;}#pilule {top: 570px;}
-/*.aff_pluie{left: 390px;}*/
-.fond_date {right: 0px;top:0;}.aff_pluie {left: 300px;}.choix_scenes{left: 5px;width: 100%;}
-.menu-link {left: 240px;top: 10px;}.bl{top: 640px;}.sos {top: -450px;}
-#gd_portail {top: 580px;left: 300px;}#porte_gar{top:580px;left:360px}
-#vanne_eau{position: relative;top: -570px;left: 380px;}.porte_veranda_sud{top:583px;}	
+@media (max-width:534px) {
+.porte_veranda_sud{top:583px;}	
+#porte_gar{top:580px;left:360px} 
+.poubelles{left:400px;top:-400px}  
+.fond_date {right: 0px;top:0;}
+.aff_pluie {left: 300px;}
+.fosse_septique{left:380px;top:550px;}
+.aff_anni{bottom: 80px;}
+#pilule {top: 570px;}
+#alarme_nuit{top:580px;}
+.aff_info{top: 580px;}
+.aff_bat {top: 575px;}
+.sos {top: -450px;}
+#gd_portail {top: 580px;left: 300px;}
+.image_met{width:50px;margin-left: 0;}
+.icone_vent {width: 40px;margin-left: 10px;margin-top: -60px;}
+#txt_pluie{left: -20px;}
+
+ #zbmqtt{width:480px;}#nagiosmobile{width:480px;}
+.aff_not1{top: 450px;}
+.menu-h {left: 240px;top: 10px;}.bl{top: 640px;}
+	#sse{top:-400px}#messages{top: -440px;}
+#status{top: -450px;}#vanne_eau{position: relative;top: -570px;left: 380px;}
 /*.fond_date {right: -60px;}*/
 #pression_chaud{width:50px}.pression_chaud{top: -305px;}
 .colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}#habridgeapp, #iobrokerapp{top:-10px;width: 480px;height: 600px;}
 	.banner {height:724px;}h1, .h1 {font-size: 2rem;}
 	.banner-caption {top: 25%;}#linky{top: -220px;left: 380px;}
-.image_met{width:50px;margin-left: 0;}
-.icone_vent {width: 40px;
-    margin-left: 10px;
-    margin-top: -60px;}#txt_pluie{left: -20px;}
+
 .vvent {margin-left: 15px;top: -50px;}
 	.vtemp {margin-left: 15px;top: -70px;}#th_ext_cuis{top: -650px;left: 90px;}
     
@@ -626,30 +313,22 @@ left: 170px;width: 40px;}
 #meteo_concept_am img{width: 50px;margin-left: 30px;}
 .modal-dialog {width:450px;margin-top:50px}#bar_pression{top: -530px;left: 300px;width:80px}
 }
-/* Large devices (small desktops <480px) */
-@media (max-width:480px) {#messages, #messages1, #messages2, #messages3 {left: 35px;}
-}
-/* Large devices (small desktops <460px) */
-@media (max-width:460px) {#status{top: -390px;}
-#msg_zb,#msg_zb1 {top: -30px;}#status{top:-40px;}
-}
-/* Large devices (Large desktops 768px and up) */
-@media (min-width:768px) {img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9{width: 450px;}
-	.modal-lg {width: 740px;}.cam {margin-left: 100px;}
-	.fond_date {right: -270px;}body {max-width: 768px;margin: 0 auto;background-color: #79afbf;}
-.menu-link {left: 50%;top: 50px;}#bar_pression{top: -750px;left: 450px;}
-	.txt_ext{left:100px;}.modal {left: -100px;}
-	.modal_param {left: 200px;}
-	.modal-dialog {width:740px;}
-}
-@media (max-width:415px){.fond_date{top:50px;}.aff_dim_ecran, .aff_bat, #alarme_nuit{top: 500px;}.choix_scenes{left: 10px;width: 88%;}
-#fosse {bottom: 495px;left:280px;}.fosse_septique {width: 70px;}.poubelles {left: 210px;top: -460px;width:60px;}.aff_anni {bottom: 55px;left:45px;}
-.aff_pluie {left: 30px;}#ping_rasp {left: 275px;}.pression_chaud {top: -460px;left: 120px;}.banner-caption {top: 15%;}
-#ping_rasp {bottom: 800px;}#voltage {top: 20px;right: -60px;width: 150px;}#bar_pression {top: -350px;left: 200px;width: 65px;}
-#linky {top: -180px;left: 210px;width:40px;}#th_ext_cuis {top: -415px;}.title_g{top:-50px;}.row_g{margin-top: -50px}
-.modal-title {line-height: 0.6;}.modal_param ,#graphic , #murcam, form2{line-height: 1;}.imrec{width:100px;height:75px;}
-.sparkling-modal-close{right:70px;}#aout{left:240px}
-#pilule{top:570px;}.porte_veranda_sud {top: 530px;left: 360px;}
+@media (max-width:415px){
+.porte_veranda_sud {top: 530px;left: 360px;}
+.poubelles {left: 210px;top: -460px;width:60px;}   
+.fond_date{top:50px;}
+.aff_pluie {left: 30px;}
+.aff_info, .aff_bat, #alarme_nuit{top: 500px;}
+.fosse_septique{bottom: 495px;left:280px;width:70px}
+.aff_anni {bottom: 55px;left:45px;}
+#ping_rasp {left: 275px;bottom: 800px;}
+#pilule{top:570px;}
+
+.pression_chaud {top: -460px;left: 120px;}.banner-caption {top: 15%;}
+#voltage {top: 20px;right: -60px;width: 150px;}#bar_pression {top: -350px;left: 200px;width: 65px;}
+#linky {top: -180px;left: 210px;width:40px;}#th_ext_cuis {top: -415px;}.row_g{margin-top: -50px}
+#graphic , #murcam, form2{line-height: 1;}.imrec{width:100px;height:75px;}
+/*.sparkling-modal-close{right:70px;}*/
 }
 @media (max-width:384px) {#porte_gar{top:540px;left:320px}.porte_veranda_sud { top: 500px;left: 320px;}#gd_portail {top: 540px;left: 260px;}
 }
