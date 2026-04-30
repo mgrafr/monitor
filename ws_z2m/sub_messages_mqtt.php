@@ -36,7 +36,7 @@ $zb_donnees = [
     return $rq;}
  
 $server   = MQTT_IP;
-$port     = 1883;
+$port     = MQTT_PORTS["mqtt"];
 $clientId = rand(5, 15);
 $username = MQTT_USER;
 $password = MQTT_PASS;
