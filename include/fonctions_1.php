@@ -7,26 +7,26 @@ $n=0;$al_bat=0;$p=0;$l_mo="";//$l_mo , en attente de update
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 switch ($t1) {
-	case "4" :  
-	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s."' AND Actif = '".$s1."' AND maj_js <> 'variable';";
+	case "zb" :
+	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$s' AND Actif = '".$s1."' AND maj_js <> 'variable';";	
 	$result = $conn->query($sql);$n=0;$nb_rows=$result->num_rows;
 	    $row = $result->fetch_assoc();
 		$row['zbplus']=$nb_rows;
         return $row;
 	break;
-	case "3" :
+	case "iob" :
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s."' AND Actif = '".$s1."' AND nom_objet = '".$s2."' AND maj_js <> 'variable';";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
 	return $row;
 	break; 
-	case "2" :
+	case "ha" :
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE ID = '$s' AND Actif = '".$s1."' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 		$row = $result->fetch_assoc();
 	return $row;
 	break;
-	case "1" :$error1=="";
+	case "dz" :$error1=="";
 	$sql="SELECT * FROM `".DISPOSITIFS."` WHERE idx = '$s' AND Actif = '".$s1."' AND maj_js <> 'variable';";
 		$result = $conn->query($sql);$nb_rows=$result->num_rows;
 		if ($nb_rows>0) {$row = $result->fetch_assoc();
@@ -43,51 +43,28 @@ switch ($t1) {
 		}
 	return $row;
 	break;
-	case "5" :
+	case "mo" :
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE idm= '".$s."'";
 	$result = $conn->query($sql);$row = $result->fetch_assoc();
 	return $row;
 	break;
 	case "0" :
-	$sql1="SELECT * FROM dispositifs WHERE (`maj_js` LIKE '%on%' AND `Actif` = ";
-	if ($l_dz != "") {$u=2;
-	$sql=$sql1.$u.");";$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','dz');				  
-		}	
-	}
-    else if ($l_ha != ""){$u=3;
-	$sql=$sql1.$u.");";$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','ha');
-		}
-	}
-	else if ($l_iob != ""){$u=4;
-	$sql=$sql1.$u.");";$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','iob');
-		}
-	}
-	else if ($l_mo != ""){$u=5;// en attente de mes
-	$sql=$sql1.$u.");";$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','mo');
-		}
-	}
-	else if ($l_zb != ""){$u=6;
-	$sql=$sql1.$u.");";$result = $conn->query($sql);
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches','zb');
-		}
-	}
+	$sql="SELECT * FROM dispositifs WHERE `maj_js` LIKE 'on%' ";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){sql_1($row,'switches');}
 	return;
 	break;
 	default :
 	echo "pas de serveur";
 	break;
 } }
-function sql_1($row,$f1,$ser_dom){
-$commande="On";$query="#";
-if ($row['maj_js']=="on"  && $ser_dom=="dz"){$commande="group on";}
-if ($row['maj_js']=="on_level" && $ser_dom=="dz"){$commande="Set Level";}
+function sql_1($row,$f1){
+$commande="On";$query="#";$u=$row['Actif'];
+if ($row['maj_js']=="on"  && $u=="2"){$commande="group on";}
+if ($row['maj_js']=="on_level" && $u=="2"){$commande="Set Level";}
 if ($row['maj_js']=="on="){$query=".";$f='var command=$(this).attr("rel");'.$f1;$commande="command";}
 else $f=$f1;
-if ($row['Actif']=="6"){$str=explode(':',$row['param']);$commande=$str[1];}
+if ($u=="6"){$str=explode(':',$row['param']);$commande=$str[1];}
 $id_dom=$row['ID'];$id_dom=str_replace("\r\n","",$id_dom);
 if($ser_dom=="dz"){$id_dom=$row['idx'];}
 if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("'.$query.$row["id1_html"];

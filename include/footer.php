@@ -15,12 +15,124 @@
 <script src="js/jscolor.min.js"></script>
 <script src="custom/js/JS.js?2"></script>
 <?php
-if (MQTT==true) {echo '<script src="js/mqtt.min.js"></script>';}
+if ($l_zb!="") {echo '<script src="js/mqtt.min.js"></script>';}
 if (ON_ZIGBEE==true) {echo '<script src="js/clipboard.min.js"></script>';}
 
 ?>
 
 <script>
+var mqttjs="0";
+
+$("#volet_bureau").attr("rel","Set Level: 0");	
+$('ul#zz li').click(function(){
+  $("#mobile-menu").trigger("click");
+});		
+new ClipboardJS('.btn');	
+// cookies
+function lire_cookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+function popupCookie(page) {
+  window.open(page);
+}
+function isInArray(array, search){return array.indexOf(search) >= 0;}	
+function maj_html(majjs,id5,val5){
+// if (val.maj_js=="temperature" ) {document.getElementById(val.ID1).innerHTML=val.temperature;;}
+// maj temperature, humidity; data (autres que on/off)----- id5=idhtml,val5= val(device) 
+switch (majjs) {
+	case 'temperature':
+val5 = val5+"°";
+break;
+ case 'homidity':
+ case 'soil_moisture':	
+val5 = val5+"%";	
+break;
+}
+document.getElementById(id5).innerHTML=val5;
+return;}
+function arrayFromArrayObjects(a) {//conversion json en tableau
+  var b = a.length,c = [];
+  for (var i = 0; i < b; i++) {
+    for (var k in a[i]) {
+      if (c.indexOf(k) === -1) {
+        c.push(k);
+      } }  }
+  var d = c.length,
+      e = [c];
+  for (var i = 0; i < b; i++) {
+    var f = [];
+    for (var j = 0; j < d; j++) {
+      f.push(a[i][c[j]] ? a[i][c[j]] : '');
+    } e.push(f);
+  }  return e;}
+function maj_mqtt(id_x,state,ind,level,champ=''){
+if (!state) {console.log("erreur-state");return;}
+if (state=="true"){state="on";} //pour ioBroker
+if (state=="false"){state="off";}	//pour ioBroke
+console.log('ind='+ind);
+switch (ind) {
+	case 0: console.log('0:  id='+id_x+' state='+state);
+var id_m=null;var json_m="";
+for (attribute in maj_dev) {
+	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];
+	}}
+case 2 :
+	if (ind==2){ id_m=id_x;	
+	if (state=="ON"){state="on";} //pour Z2M
+	if (state=="OFF"){state="off";}	//pour Z2M	
+	}
+//(Array.isArray(PP)) {
+//if (!PP.includes(id_m)) {console.log('erreur'+id_m);$('#annul_notif1').text('erreur idm (voir absent du plan dz ?): '+id_m);return;}	}
+qq=pp[id_m];
+if (id_m==null || qq.Data==null) {out_msg= 'id_m='+id_m;console.log(out_msg);return;}
+var command=state.toString();console.log(id_m);
+var str=qq.Data;console.log('pp_idm avant='+str);
+qq.Data=command;
+console.log('command pp apres='+pp[id_m].Data);
+var fx=pp[id_m].fx; console.log('fx='+fx);if (fx=="lien_variable"){maj_services(0);}
+var sid1=pp[id_m].ID1;;
+var sid2=pp[id_m].ID2;
+var scoul_on=pp[id_m].coul_ON;	
+var scoul_off=pp[id_m].coul_OFF;
+var c_l_on=pp[id_m].coullamp_ON
+var c_l_off=pp[id_m].coullamp_OFF
+var scoul="";var scoull="";	
+if (command=="on" || command=="On" || command=="open")  {scoul=scoul_on;scoull=c_l_on;}
+else if (command.substring(0, 9)=="set level")  {scoull=scoull=c_l_on;}
+else if  (command=="off" || command=="Off" || command=="closed" ) {scoul=scoul_off;scoull=c_l_off;}
+else if  (command=="group on" ) {scoul=scoul_on;scoull=c_l_on;}		
+else return;	
+console.log('sid1='+sid1+'..'+scoul);
+		document.getElementById(sid1).style = scoul;
+if (sid2) {document.getElementById(sid2).style = scoul;}
+var c_lamp= pp[id_m].class_lamp	;console.log("c_lamp="+c_lamp);		
+if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
+	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));
+	console.log("h="+h+parseInt((h*(level)/100)));}
+break;
+case 1: console.log('1: id='+id_x+' state='+state);
+	scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
+break;
+case 3://id_x est egal à idm
+var id1=pp[id_x].ID1;var id2=pp[id_x].ID2;		
+console.log('case3:'+id_x+' '+id1+' '+id2);	
+if (id1!='#'){maj_html(champ,id1,state);}
+if (id2=""){maj_html(champ,id2,state);}
+break;
+default:
+break;	
+}
+if (c_lamp!="" && scoull!="" && ind!=3) {
+	var elements = document.getElementsByClassName(c_lamp);
+	for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    element.style=scoull;}
+	}
+return;
+}
 /*-------------mise a jour dispositifs PLAN domoticz ha iobroker z2m--------*/	
 /*--------------------------------------------------------------------------*/	
 var plan=<?php echo NUMPLAN;?>;// suivant le N° du plan qui contient tous les dispositifs
@@ -103,99 +215,6 @@ $.ajax({
 });
 
 setTimeout(maj_devices, tempo_dev, plan); 
-}
-
-$("#volet_bureau").attr("rel","Set Level: 0");	
-$('ul#zz li').click(function(){
-  $("#mobile-menu").trigger("click");
-});		
-new ClipboardJS('.btn');	
-// cookies
-function lire_cookie(name) {
-  let matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-  ));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
-}
-function popupCookie(page) {
-  window.open(page);
-}
-function isInArray(array, search){return array.indexOf(search) >= 0;}	
-function maj_html(majjs,id5,val5){
-// if (val.maj_js=="temperature" ) {document.getElementById(val.ID1).innerHTML=val.temperature;;}
-// maj temperature, humidity; data (autres que on/off)----- id5=idhtml,val5= val(device) 
-switch (majjs) {
-	case 'temperature':
-val5 = val5+"°";
-break;
- case 'homidity':
- case 'soil_moisture':	
-val5 = val5+"%";	
-break;
-}
-document.getElementById(id5).innerHTML=val5;
-return;}
-function maj_mqtt(id_x,state,ind,level,champ=''){
-if (!state) {console.log("erreur-state");return;}
-if (state=="true"){state="on";} //pour ioBroker
-if (state=="false"){state="off";}	//pour ioBroke
-console.log('ind='+ind);
-switch (ind) {
-	case 0: console.log('0:  id='+id_x+' state='+state);
-var id_m=null;var json_m="";
-for (attribute in maj_dev) {
-	if (maj_dev[attribute]['id']==id_x){ id_m=maj_dev[attribute]['idm'];
-	}}
-case 2 :
-	if (ind==2){ id_m=id_x;	
-	if (state=="ON"){state="on";} //pour Z2M
-	if (state=="OFF"){state="off";}	//pour Z2M	
-	}
-if (id_m==null || pp[id_m].Data==null) {out_msg= 'id_m='+id_m;console.log(out_msg);return;}
-var command=state.toString();console.log(id_m);
-var str=pp[id_m].Data;console.log('pp_idm avant='+str);
-pp[id_m].Data=command;
-console.log('command pp apres='+pp[id_m].Data);
-var fx=pp[id_m].fx; console.log('fx='+fx);if (fx=="lien_variable"){maj_services(0);}
-var sid1=pp[id_m].ID1;;
-var sid2=pp[id_m].ID2;
-var scoul_on=pp[id_m].coul_ON;	
-var scoul_off=pp[id_m].coul_OFF;
-var c_l_on=pp[id_m].coullamp_ON
-var c_l_off=pp[id_m].coullamp_OFF
-var scoul="";var scoull="";	
-if (command=="on" || command=="On" || command=="open")  {scoul=scoul_on;scoull=c_l_on;}
-else if (command.substring(0, 9)=="set level")  {scoull=scoull=c_l_on;}
-else if  (command=="off" || command=="Off" || command=="closed" ) {scoul=scoul_off;scoull=c_l_off;}
-else if  (command=="group on" ) {scoul=scoul_on;scoull=c_l_on;}		
-else return;	
-console.log('sid1='+sid1+'..'+scoul);
-		document.getElementById(sid1).style = scoul;
-if (sid2) {document.getElementById(sid2).style = scoul;}
-var c_lamp= pp[id_m].class_lamp	;console.log("c_lamp="+c_lamp);		
-if (command.substring(0, 9)=="Set Level") {var h=document.getElementById(sid1).getAttribute("h");
-	document.getElementById(sid1).setAttribute("height",parseInt((h*(level)/100)));
-	console.log("h="+h+parseInt((h*(level)/100)));}
-break;
-case 1: console.log('1: id='+id_x+' state='+state);
-	scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
-break;
-case 3://id_x est egal à idm
-var id1=pp[id_x].ID1;var id2=pp[id_x].ID2;		
-console.log('case3:'+id_x+' '+id1+' '+id2);	
-if (id1!='#'){maj_html(champ,id1,state);}
-if (id2=""){maj_html(champ,id2,state);}
-break;
-default:
-break;	
-}
-if (c_lamp!="" && scoull!="" && ind!=3) {
-	var elements = document.getElementsByClassName(c_lamp);
-	for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-    element.style=scoull;}
-	}
-return;
 }
 /*-------affiche l'image de la page accueil---------------------------------------*/	
 var text1="";var larg = (document.body.clientWidth);
@@ -448,7 +467,8 @@ function switches(server,idm,idx,command,pass="0"){
   }
   <?php 
 //--------------mqtt publish--receive-----------------
-if (MQTT==true) {include('include/mqtt-js.php');} ?>
+
+if ($l_zb!="")  {include('include/mqtt-js.php');} ?>
  // *****************************************************
  function publish_mqtt(idx,type,command,setget){
 // Publish a Message
@@ -631,6 +651,7 @@ switch (mod_nom) {
 	Content="confirmer la notification\nelle va être supprimée";mod_ext="1";	
 	break;		
 	default:
+	Content="mod_nom:"+mod_nom;
 	break;
 }
 open_modale('confirm',title_confirm,Content,ch,mod_ext);		
