@@ -37,7 +37,7 @@
         <div class="columns is-mobile">
             <div class="column">
                     <figure class="logo">
-                        <img src="<?php echo IMGLOGO;?>" style="width:141px;height:auto" alt="">
+                        <img src="<?php echo IMGLOGO;?>" alt="logo">
                     </figure>
                 
                     <h1 class="title"><?php echo NOMSITE;?></h1>
@@ -47,9 +47,9 @@
         
 <!-- debut affichage date -->							
 <div  class="text-center fond_date">
-<p style="margin:4px 0 0 0" id="jj">jj</p>
-<p style="margin: 10px 0 0 0;" id="numero">numero</p>
-<p style="margin:0 0 0 0" id="mm">mm</p></div>
+<p id="jj">jj</p>
+<p id="numero">numero</p>
+<p id="mm">mm</p></div>
 </div>
     <script type="text/javascript">
         aff_date();
