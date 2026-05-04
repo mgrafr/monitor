@@ -500,10 +500,10 @@ $lect_device["attributes"]["Type"] = $lect_device["Type"];
 $lect_device["attributes"]["Color"] = $lect_device["Color"];	 }
 // questionnement BD SQL -------------------
 $periph['idm']=1000;$s2="";
-	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="1";$s1="2";}
-	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="2";$s1="3";}
-	if ($lect_device["serveur"]=='ZB') {$s=$lect_device["ID"];$t1="4";$s1="6";}
-	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="3";$s1="4";$s2=$lect_device["Name"];}
+	if ($lect_device["serveur"]=='DZ') {$s=$lect_device["idx"];$t1="dz";$s1="2";}
+	if ($lect_device["serveur"]=='HA') {$s=$lect_device["ID"];$t1="ha";$s1="3";}
+	if ($lect_device["serveur"]=='ZB') {$s=$lect_device["ID"];$t1="zb";$s1="6";}
+	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="iob";$s1="4";$s2=$lect_device["Name"];}
 $periph=sql_plan($t1,$s,$s1,$s2);
 //---------------------------------------------
 if ($periph==null) {$choix_serveur="pas_ID";}
@@ -550,6 +550,7 @@ if (array_key_exists("attributes",$lect_device)){
 	$array=$lect_device["attributes"];$count_array=count($array);$i = 0;$c1=$param[1];
 	while ($i < $count_array ){
 	if (isset($array[$c1])) {$lect_device[zb_champ($C1)]=$array[$c1];}
+	if (isset($array['state']) && $lect_device["values"]=="") {$lect_device['Data']=$array['state'];}
 	$i++;}	
 }
 		case "dz" :
@@ -605,7 +606,7 @@ if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
 	'values' => $lect_device['values'],			 
 	'alarm_bat' => $bat
 	];
-if ($periph['zbplus']>1){$idm=$t.'_1';$per=sql_plan('5',$idm,"","");$data[$idm]=$data[$t];
+if ($periph['zbplus']>1){$idm=$t.'_1';$per=sql_plan('mo',$idm,"","");$data[$idm]=$data[$t];
 	$str=explode(':',$per['param']);$param=$str;$valeur=$data[$idm]["attributs"][$str[1]];
 	$data[$idm][zb_champ($str[1])]=$valeur;
 	$data[$idm]['idm']=$per['idm'];
