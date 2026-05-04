@@ -12,23 +12,21 @@ h3 {font-size:110%;font-weight: bolder;}
 h4{margin-left:20px;font-size:18px;margin-top: -30pX;}
 .dpb {display:block}
 .text-center{margin-right: 2px;margin-left: 2px;margin-bottom: 2px;display: inline-block;float: none;}  
-.text-c{display:block;margin-left: 20px;}
+.text-c{display:block;}
 .table-responsive{width: 97%;overflow-x: auto;}
 .table1 {width: 100%;margin-bottom: 1rem;color: #212529;background: #f3f0eb;}
 .table td{border:0}
 .top-30{margin-top:-30px}
 .left-10{margin-left:10px}
 /* header */
-.logo{float: left;}
+.logo{float: left;width:140px;height:auto;}
 .content ul  {list-style-type: none;}
 .title{margin-left: 10px;font-size: 25px;}
 [popover] {position: fixed;left: -70dvw;top: 0;height:44dvh;width: 27dvw;transition: transform .2s ease-out, opacity .2s ease-out,
     display .2s ease-out;transition-behavior: allow-discrete;
   /*POPOVER EN ETAT FERMÉ*/
     opacity: 0;transform: translateX(-50px);}
-@starting-style {[popover]:popover-open {
-  /*POPOVER AVANT L'ENTREE DANS LE CHAMP*/
-      opacity: 0;transform: translateX(-50px);}}
+
   /*POPOVER EN ETAT OUVERT*/
 [popover]:popover-open {opacity: 1;transform: translateX(0px);  }
  /*POPOVER EN ETAT FERME*/  
@@ -43,7 +41,6 @@ h4{margin-left:20px;font-size:18px;margin-top: -30pX;}
 max-width: 100%;height: 1200px;padding: 80px 0;min-height: 100%;
 position: relative;color: #000;top: 350px;z-index:1;overflow: auto;
 background-color: aquamarine;}
-
 /*---------------------------------------------------------------*/
 #meteo {	background-color: #4f9ff4;}
 /*DATE accueil? HEADER*/
@@ -51,7 +48,10 @@ background-color: aquamarine;}
 #erreur{position: absolute;top: 150px;left: 100px;color: white;}
 /*          lexique*/
 .lex_txt{margin-left:10px;margin-bottom:0.3rem}
-.fond_date {color:#fff;width: 90px;height: 80px;background-image: url(../images/date.svg);
+.fond_date {color:#fff;width: 90px;height: 80px;margin:20px 30px 0 0;background-image: url(../images/date.svg);}
+#jj {margin:2px 0 0 0;text-align: center;}
+#numero {margin: 0 0 0 0;text-align: center;}
+#mm{margin: 0 0 0 0;text-align: center;}
 font-family: Arial;font-size: 18px;Line-height: 1;text-align: center;
 position: relative;top: 40px;right:50px;}
 .header {height: 150px;	color: #ffffff;background-color: rgba(8, 55, 70, 0.7);
@@ -59,7 +59,7 @@ padding: 10px 0;transition: all 0.2s ease-in-out;position: relative;
 top: 0;width: 100%;}
 .icones_not{position: relative;top:-190px;background-color: #2e333d;height: 130px;}
 .temp_accueil{position: relative;top: -150px;left: 290px;width: 420px;}
-.coultemp{color: #fffe2f;}
+.coultemp{color: #e7e793;}
 /*pression chaudière, medoc, fosse, porte veranda S, gd portail, porte gar */
 #bar_pression {position: relative;top: -910px;width: 100px;left: 500px;}
 #pression_chaud{width:60px}
@@ -74,22 +74,22 @@ top: 0;width: 100%;}
 #pluie img{width:80px;}
 #txt_pluie{position: relative;top: -70px;color:red;left: 0px;}
 #txt_pluie a{color:red;}
-.aff_anni{position: absolute;width: 70px;height: auto;top: 60px;left: 220px;display: block;}
+.aff_anni{position: absolute;width: 70px;height: auto;top: 0;left: 220px;display: block;}
 #prenom{color: #f0e8e8;}
 #alarme_nuit{position:absolute;top:20px;left: 170px;width: 40px;}
 .aff_bat{position: absolute;top: 20px;left: 120px;}
 #batterie{width: 30px;height: auto;}
-.sos {position:absolute;top: -20px;left: 65px;width:40px;}
-#SOS {margin-top:45px}
+.sos {position:absolute;top: 25px;left: 65px;width:40px;}
 /* ping raspi, boite lettres, lastseen, info */
 #ping_rasp{position: absolute;top: -180px;display: none;left: 150px;width:40px}
 .bl{position: absolute;top: 20px;left: 620px;}
 #bl{width: 40px;display:none;height: auto;}
-.lastseen, .lastseen1{width: 140px;height: 50px;position: absolute;Top:5px;left: 185px;}
+.lastseen, .lastseen1{width: 140px;height: autopx;position: absolute;Top:5px;left: 185px;}
 .lastseen1{top: 60px;}
-.aff_info{width: 50px;height: 50px;top:55px;left:10px;position: absolute}
+.aff_info{width: 50px;height: auto;top:55px;left:10px;position: absolute}
+.notif1{color:white;margin-top: 70px;margin-left: 180px;}
+a#annul_notif1{color:white}
 /*meteo */
-
 .meteo_concept_am  {display: inline;width: 150px;margin-left: 20px;vertical-align: middle;}
 #meteo_concept_am{position: relative;top: 40px;font-size: larger;margin-left: 15px;}
 #meteo_concept{position: relative;top: 30px;left:7px;}
@@ -108,10 +108,9 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 #avb{display: block;background-color: #F5F5DC;width: 400px;position: relative;
     top: -10px;left: 5px;}
 /*graphiques-------*/
-#graphic{color:white;}
+#graphic{color:black;margin-left:20px}
 .graphique_img{max-width:700px;margin:0 1px 0 1px,;width:100%;}
 .graphiques{background-color: green;}
-
 /* Interieur*/
 /*      aff batterie */
 @keyframes clignoter {
@@ -139,8 +138,10 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 }
 .modal{--bulma-modal-background-background-color: rgba(0, 0, 0, 0.1);}
 #lexique.modal {--bulma-modal-content-width: 20rem;}
+#choix_graph.modal {--bulma-modal-content-width: 30rem;}
 #admin.modal {--bulma-modal-content-width: 33rem;}
 #adm.modal {--bulma-modal-content-width: 32rem;}
+#inf_cam.modal {--bulma-modal-content-width: 28rem;}
 #erreurs_mo.modal {--bulma-modal-content-width: 32rem;}
 #infos_devices.modal {--bulma-modal-content-width: 20rem; }
 .modal-card-body {border-bottom-left-radius: 12px;border-bottom-right-radius: 12px;}
@@ -188,11 +189,11 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 #phpadmin{position: relative;top: -500px;left: 500px;width:120px}
 .phpmyadmin{width:100px}
 #about{width: 120px;position: relative;left: 500px;top:-450px;}
-#ws-zb{position: relative;top: -100px;left: -15px}
+#ws-zb{position: relative;top: -180px;left: -15px}
+.chang_mdp{width: 400px;margin-left: 50px;}
 /*---------------SSE*/
 #status{position: relative;top:-190px;left:50px;} /*sse*/
-#messages, #messages1, #messages2, #messages3{position: relative;top:-475px;left:130px;display: block;}
-#messages1,#messages2,#messages3{margin-top: -20px;}
+#messages, #messages1, #messages2, #messages3{position: relative;top:-190px;left:50px;width: 600px;display: block;}
 /* Mur inter */
 .liste_inter{margin-left:20px}
 #btn_scenes{margin-top: 20px;margin-left: 20px;}
@@ -250,17 +251,22 @@ img#cam1,img#cam2,img#cam3,img#cam4,img#cam5,img#cam6,img#cam7,img#cam8,img#cam9
 #agent_dvr{width:500px;height: 700px;margin-left: -15px;margin-top: -20px;}
 #dvr .switch {top: -40px;}
 /* autres dim ecran */
+/****************************************************************************/
 /* Large devices (Desktop >1023px ) */
 @media (min-width:1024px) {
 nav{max-width: 1200px;}    
 }  
-@media (max-width:360px) {
-	#pwdalarm{left:15px;top:100px}
-}
 /* devices (tablet <769 */
 @media (max-width:768px) {
+#lexique.modal {--bulma-modal-content-width: 20rem;}
+#choix_graph.modal {--bulma-modal-content-width: 30rem;}
+#admin.modal {--bulma-modal-content-width: 33rem;}
+#adm.modal {--bulma-modal-content-width: 32rem;}
+#inf_cam.modal {--bulma-modal-content-width: 28rem;}
+#erreurs_mo.modal {--bulma-modal-content-width: 32rem;}
+#infos_devices.modal {--bulma-modal-content-width: 20rem; }   
 .temp_accueil {top: -185px;} 
-.banner-image {height: 650px}
+.banner-image {height:750px}
 .title_met{margin-top:-50px;margin-left:20px}
 .meteo_concept_am {width: 60px;}
 .poubelles{left:108px;top: -210px;} 
@@ -268,15 +274,15 @@ nav{max-width: 1200px;}
 #linky {left: 530px;top:-350px}
 #th_ext_cuis {top: -650px;}
 .icones_not {height: 300px;}
-
+.aff_anni{width: 50px;height: auto;top: 10px;left: 220px;display: block;}
 }
 /* Large devices (small mobile <601) */
-@media (max-width:600px) {
+/* @media (max-width:600px) {
 .fond_date {right: -70px;}
 .poubelles{left:450px;}
 .menu-h {top: 80px;left: 200px;}
 }
-/* Large devices (small desktops <535) */
+Large devices (small desktops <535) 
 @media (max-width:534px) {
 .porte_veranda_sud{top:583px;}	
 #porte_gar{top:580px;left:360px} 
@@ -300,7 +306,7 @@ nav{max-width: 1200px;}
 .menu-h {left: 240px;top: 10px;}.bl{top: 640px;}
 	#sse{top:-400px}#messages{top: -440px;}
 #status{top: -450px;}#vanne_eau{position: relative;top: -570px;left: 380px;}
-/*.fond_date {right: -60px;}*/
+
 #pression_chaud{width:50px}.pression_chaud{top: -305px;}
 .colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}#habridgeapp, #iobrokerapp{top:-10px;width: 480px;height: 600px;}
 	.banner {height:724px;}h1, .h1 {font-size: 2rem;}
@@ -313,27 +319,36 @@ nav{max-width: 1200px;}
 #meteo_concept_am img{width: 50px;margin-left: 30px;}
 .modal-dialog {width:450px;margin-top:50px}#bar_pression{top: -530px;left: 300px;width:80px}
 }
-@media (max-width:415px){
-.porte_veranda_sud {top: 530px;left: 360px;}
-.poubelles {left: 210px;top: -460px;width:60px;}   
-.fond_date{top:50px;}
-.aff_pluie {left: 30px;}
-.aff_info, .aff_bat, #alarme_nuit{top: 500px;}
-.fosse_septique{bottom: 495px;left:280px;width:70px}
-.aff_anni {bottom: 55px;left:45px;}
-#ping_rasp {left: 275px;bottom: 800px;}
-#pilule{top:570px;}
+*/
 
-.pression_chaud {top: -460px;left: 120px;}.banner-caption {top: 15%;}
-#voltage {top: 20px;right: -60px;width: 150px;}#bar_pression {top: -350px;left: 200px;width: 65px;}
-#linky {top: -180px;left: 210px;width:40px;}#th_ext_cuis {top: -415px;}.row_g{margin-top: -50px}
-#graphic , #murcam, form2{line-height: 1;}.imrec{width:100px;height:75px;}
-/*.sparkling-modal-close{right:70px;}*/
+@media (max-width:360px) {
+#pwdalarm{left:15px;top:100px}
+button {font-size: 0.7em;}
+ul {font-size: small;}
+.temp_accueil {top: -425px;left:-70px} 
+.banner-image {height:750px;}
+.text-c {margin-left: 40px;font-size: smaller}
+.text-center {font-size: smaller;}
+.logo{width:80px;}
+.menu-h {left: 200px;top: 30px;}
+#jj {margin: 12px 0 0 2px;line-height: normal;}
+#numero {margin: 0 0 0 2px;font: icon;line-height: normal;}
+#mm{margin: 0 0 0 2px;line-height: normal;}
+.title {font-size: 18px;}
+.subtitle{font-size: small;}
+.fond_date {top: 20px;width: 80px;height: 70px;background-image: url(../images/datemin.svg);}
+.icones_not {position: relative;top: -435px;}
+#batterie {width: 20px;}
+.aff_info,.aff_anni {width: 35px}
+#prenom {font-size: 12px;}
+.porte_veranda_sud{ width: 25px; height: 25px;}
+#gd_portail {width: 35px;top: 50px;left: 280px;height: 25px;}
+#porte_gar {width: 25px;height: 25px;top: 50px;left: 315px;}
+.sos {width: 25px;height: 25px;}
+.lastseen, .lastseen1 {width: 90px;left: 145px;}
+.aff_pluie {top: -400px;left: 70px;}
+
 }
-@media (max-width:384px) {#porte_gar{top:540px;left:320px}.porte_veranda_sud { top: 500px;left: 320px;}#gd_portail {top: 540px;left: 260px;}
-}
-@media (max-width:360px) {#porte_gar{top:530px;left:310px}.porte_veranda_sud { top: 500px;left: 260px;}
-}
-/*DECOUVERTE*/
+	/*DECOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
 
