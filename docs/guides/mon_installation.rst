@@ -987,13 +987,13 @@ https://proxsave.dev/guide/automation-and-scheduling/
 
    |image1813|
 
-   définir une variable d’environnement pour utiliser un environnement python local.
+   définir une variable d’environnement pour utiliser un environnement python local.Indiquer votre USER dans home.
 
    .. code-block::
 
-      sudo nano /home/michel/domoticz.env
+      sudo nano /home/<USER>/domoticz.env
       # insérer:
-      PYTHONPATH="/home/michel/Domoticz_Python_Environment/:$PYTHONPATH"
+      PYTHONPATH="/home<USER>/Domoticz_Python_Environment/:$PYTHONPATH"
 
    |image1814|
 
