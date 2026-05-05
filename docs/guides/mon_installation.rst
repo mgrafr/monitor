@@ -909,13 +909,9 @@ https://proxsave.dev/guide/automation-and-scheduling/
 
 21.2 Domoticz
 =============
-*Installation depuis la version 2025 beta dans un conteneur LCX*
+*Installation depuis la version 2026-1 beta dans un conteneur LCX*
 
-.. admonition:: **Installation de la version beta dans un conteneur LXC Debian 12** 
-
-   .. warning::
-
-      **installation de la version stable 2025 non possible sur Debian 12 qui utilise Openssl 3.0 car Domoticz utilise encore openssl 1.1.1 et la Libssl 1.1.** ; par contre depuis mai 2025 la version beta est installable sur debian 12
+.. admonition:: **Installation de la version beta dans un conteneur LXC Debian 13** 
 
    Le conteneur est crée , sudo, le pare-feu sont installés; on ajoute l'utlisateur ;pour les clés USB connectés au conteneur, il suffit de faire une copy du conteneur domoticz existant.
 
@@ -927,7 +923,7 @@ https://proxsave.dev/guide/automation-and-scheduling/
 
    |image1808|
 
-   Créer un répertoire "domoticz" dans /opt, récupérer le lien de téléchargement de la version beta, télécharger et décompresser le fichier,=et le supprimer
+   Créer un répertoire "domoticz" dans /opt, récupérer le lien de téléchargement et lancer l'installation
 
    |image1809|
 
@@ -935,19 +931,11 @@ https://proxsave.dev/guide/automation-and-scheduling/
 
       sudo mkdir /opt/domodicz
       cd /opt/domoticz
-	  sudo wget <LIEN DE TELECHARGEMENT VERSION BETA>
-      sudo tar -xzf <nom_archive.tar.gz>
-      sudo rm <nom_archive.tar.gz>
+	  sudo bash -c "$(curl -sSfL https://install.domoticz.com)"
 
+   Répondre à quelques questions concernant http, le port, ...
+   
    |image1810|
-
-   Installer cette librairie:
-
-   .. code-block::
-
-      sudo apt install libusb-0.1-4
-
-   |image1811|
 
    Installer systemd pour le démarrage automatique
 
@@ -4040,11 +4028,9 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
 .. |image1808| image:: ../img/image1808.webp
    :width: 400px
 .. |image1809| image:: ../img/image1809.webp
-   :width: 650px
+   :width: 700px
 .. |image1810| image:: ../img/image1810.webp
    :width: 700px
-.. |image1811| image:: ../img/image1811.webp
-   :width: 600px
 .. |image1812| image:: ../img/image1812.webp
    :width: 500px
 .. |image1813| image:: ../img/image1813.webp
