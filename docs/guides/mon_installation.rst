@@ -927,13 +927,15 @@ https://proxsave.dev/guide/automation-and-scheduling/
 
    |image1808|
 
-   Récupérer le lien de téléchargement de la version beta, télécharger et décompresser le fichier,=et le supprimer
+   Créer un répertoire "domoticz" dans /opt, récupérer le lien de téléchargement de la version beta, télécharger et décompresser le fichier,=et le supprimer
 
    |image1809|
 
    .. code-block::
 
-      sudo wget <LIEN DE TELECHARGEMENT VERSION BETA>
+      sudo mkdir /opt/domodicz
+      cd /opt/domoticz
+	  sudo wget <LIEN DE TELECHARGEMENT VERSION BETA>
       sudo tar -xzf <nom_archive.tar.gz>
       sudo rm <nom_archive.tar.gz>
 
