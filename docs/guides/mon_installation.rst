@@ -909,11 +909,19 @@ https://proxsave.dev/guide/automation-and-scheduling/
 
 21.2 Domoticz
 =============
-*Installation depuis la version 2026-1 beta dans un conteneur LCX*
+*Installation de la version 2026-1 beta dans un conteneur LCX*
 
-.. admonition:: **Installation de la version beta dans un conteneur LXC Debian 13** 
+:red:`OpenSSL 3.0 implique Debian 12 ou supérieur`
+
+.. admonition:: **Installation dans un conteneur LXC Debian 13** 
 
    Le conteneur est crée , sudo, le pare-feu sont installés; on ajoute l'utlisateur ;pour les clés USB connectés au conteneur, il suffit de faire une copy du conteneur domoticz existant.
+
+   .. seealso::
+
+      voir, pour plus de détails pour une première installation, le paragraphe suivant:
+
+      *Installation dans un conteneur LXC Debian 11*
 
    |image1807| 
 
