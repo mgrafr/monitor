@@ -1,9 +1,9 @@
 body {
     font-size: 18px;line-height: 1.50;color: #333333;position: relative;height: 100%;
-	font-family: 'Open Sans', sans-serif;max-width: 1023px;margin: auto 0;}
+	width:100%;font-family: 'Open Sans', sans-serif;max-width: 1023px;margin: auto 0;}
 /* ecran 769 à 1023px */
 nav{max-width: 1023px;}
-.banner-image {vertical-align: middle;min-height: 100%;width: 100%;}    
+.banner-image {vertical-align: middle;min-height: 100%;width: 100%;    height: 850px;}    
  /*texte table*/
 .txtcenter{text-align: center;}
 h1 {font-size:200%}
@@ -60,6 +60,7 @@ top: 0;width: 100%;}
 .icones_not{position: relative;top:-190px;background-color: #2e333d;height: 130px;}
 .temp_accueil{position: relative;top: -150px;left: 290px;width: 420px;}
 .coultemp{color: #e7e793;}
+#temp_ext{color: black;font-size: 20px;}
 /*pression chaudière, medoc, fosse, porte veranda S, gd portail, porte gar */
 #bar_pression {position: relative;top: -910px;width: 100px;left: 500px;}
 #pression_chaud{width:60px}
@@ -137,8 +138,8 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 --bulma-column-gap: 0;
 }
 .modal{--bulma-modal-background-background-color: rgba(0, 0, 0, 0.1);}
-#lexique.modal {--bulma-modal-content-width: 20rem;}
-#choix_graph.modal {--bulma-modal-content-width: 30rem;}
+#lexique.modal {width: 20rem;}
+#choix_graph.modal {margin-left: 40px;width: 30rem;}
 #admin.modal {--bulma-modal-content-width: 33rem;}
 #adm.modal {--bulma-modal-content-width: 32rem;}
 #inf_cam.modal {--bulma-modal-content-width: 28rem;}
@@ -210,7 +211,7 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 /*ping PI4*/
 #ping_pi4{position: relative;top: -85px;left: 410px;width: 50px;height: 50px;}
 #nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
-#nagiosapp{width: 750px;height: 700px;position: relative;
+#nagiosapp{width: 750px;height: 700px;position: relative;z-index: -1;
 top: -60px;left:15px}
 /*zigbee2mqtt zwavejs2mqtt frigate & ngiosmobile   -*/
 #zbmqtt,#zwmqtt,#frigate{margin-top: 0px;width: 100%;height: 800px;}
@@ -262,7 +263,7 @@ nav{max-width: 1200px;}
 #choix_graph.modal {--bulma-modal-content-width: 30rem;}
 #admin.modal {--bulma-modal-content-width: 33rem;}
 #adm.modal {--bulma-modal-content-width: 32rem;}
-#inf_cam.modal {--bulma-modal-content-width: 28rem;}
+#inf_cam .modal-card {width: 400px;}
 #erreurs_mo.modal {--bulma-modal-content-width: 32rem;}
 #infos_devices.modal {--bulma-modal-content-width: 20rem; }   
 .temp_accueil {top: -185px;} 
