@@ -618,7 +618,7 @@ modalContainer.setAttribute('class', classe);
 document.body.appendChild(modalContainer);
 modalA='<div class="modal-background">';
 modalB='</div><div class = "modal-card"><header class = "modal-card-head"><p id="modal-card-title" class = "modal-card-title"></p><button id="btn_confirm_close" class = "delete" aria-label = "close"></button></header><section class = "modal-card-body"><div id="confirm_content" class = "content"></div></section>';
-modalC='<input type="button" id="btn_bl"  value="OK" /></div></div>';
+modalC='<input type="button" id="btn_bl" style="width:100px;margin:0 auto" class="button is-green" value="OK" /></div></div>';
 if (mod_ext!="3" && mod_ext!="4" && mod_ext!="5") {modalContainer.innerHTML = modalB+modalC+"</div></div>";
 	document.getElementById('btn_bl').addEventListener('click', function() {modal_extensions(id_modale,mod_ext,ch);});				
 }
@@ -945,6 +945,9 @@ return Math.round(((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000);
 $('li.ww').click(function(){var ww1 = $(".www").attr('href');
 $(ww1).attr('display','block');
 });
+<?php
+//if ($l_zb!="") {echo 'if (mqttjs=="1") {start_mqttjs();}';}
+?>
 </script>
 <?php
 if (SSE=='node') {$domaine=$_SESSION["domaine"];

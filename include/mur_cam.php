@@ -42,7 +42,7 @@ if (SRC_MUR=="fr") {$domaine=$_SESSION["domaine"];
 </div>
 </div>
 <!-- Creates the modal where the image will appear -->
-<div class="modal" id="imagemodal">
+ <div class="modal" id="imagemodal">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
@@ -53,6 +53,6 @@ if (SRC_MUR=="fr") {$domaine=$_SESSION["domaine"];
     <section class="modal-card-body">
       <img src="" id="imagepreview" style="width: 400px; height: 264px;">
     </section>
-    
   </div>
+ </div>
 </div>
