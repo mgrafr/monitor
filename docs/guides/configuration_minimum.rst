@@ -626,7 +626,9 @@ Fichier mes_css.css , extrait :
      });
      .......
 
-.. admonition:: **fenêtre modale modallink**
+   |image1236|  
+
+.. admonition:: **fenêtre modale BULMA**
 
    |image145|
 
@@ -2323,7 +2325,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image144| image:: ../media/image144.webp
    :width: 400px  
 .. |image145| image:: ../media/image145.webp
-   :width: 479px  
+   :width: 650px  
 .. |image146| image:: ../media/image146.webp
    :width: 700px  
 .. |image147| image:: ../media/image147.webp
@@ -2574,6 +2576,8 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 660px
 .. |image1227| image:: ../img/image1227.webp
    :width: 600px
+.. |image1236| image:: ../img/image1236.webp
+   :width: 300px
 .. |image1328| image:: ../img/image1328.webp
    :width: 700px
 .. |image1413| image:: ../img/image1413.webp
