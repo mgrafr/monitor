@@ -994,10 +994,10 @@ Pour modifier l’image, les titres et slogan de la page d’accueil : voir ce p
 ====================================
 3 serveurs possibles:
 
-      - Domoticz
-      - Home Assistant
-      - Io Broker
-	  - z2m
+   - Domoticz
+   - Home Assistant
+   - IoBroker
+   - z2m
 
 Home Assistant, Domoticz et z2m sont quelque peu limités dans leurs options de personnalisation, le ioBroker vis et vis2 peuvent être considérés comme très complexes d'où la création de monitor.
 
