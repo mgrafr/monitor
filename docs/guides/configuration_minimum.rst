@@ -757,19 +757,15 @@ Extrait:
 
 .. code-block::
 
-   <?php
-   require("fonctions.php");
-   ?>	
-   <!-- footer start -->
-	<footer id="footer">
-	<div class="footer section">
-	<div class="container">
-	</div></div></footer>
-   <!-- footer end -->
-   <!-- JavaScript files placées à la fin du document-->	
-   <script src="js/jquery-3.6.3.min.js"></script><script src="bootstrap/js/bootstrap.min.js"></script>
+   <!-- JavaScript files placées à la fin du document-->
+   <script src="js/jquery-4.0.0.min.js"></script>
    <script src="js/jquery-ui.min.js"></script>
-   <script src="js/jquery.backstretch.min.js"></script>
+   <script src="js/mes_js.js"></script>
+   <script src="js/jscolor.min.js"></script>
+   <script src="custom/js/JS.js?2"></script>
+   <?php
+   if ($l_zb!="") {echo '<script src="js/mqtt.min.js"></script>';}
+   if (ON_ZIGBEE==true) {echo '<script src="js/clipboard.min.js"></script>';}
 
 1.3.5.1 rafraîchissements des données
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
