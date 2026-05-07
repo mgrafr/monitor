@@ -651,10 +651,10 @@ https://raw.githubusercontent.com/mgrafr/monitor/main/include/entete_html.php
 		<!-- Favicon  racine du site -->
 		<link rel="shortcut icon" href="<?php if (substr($_SERVER['HTTP_HOST'], 0, 7)=="192.168") echo '/monitor'.FAVICON;else echo FAVICON; ?>">
 		<!-- mes css  dossier css -->
-		<link href="bootstrap/css/bootstrap.css?2" rel="stylesheet">
-		<link href="bootstrap/bootstrap-switch-button.css" rel="stylesheet">
-		<link href="css/mes_css.css?8" rel="stylesheet">
-		
+		<link href="bulma/css/bulma.min.css" rel="stylesheet">
+		<link href="css/mes_css.css?9" rel="stylesheet">
+		<link href="custom/css/styles.css?4" rel="stylesheet">
+		<link rel="stylesheet" href="css/jquery-ui.min.css">
 		<!-- icones  racine du site -->
 		<link rel="apple-touch-icon" href="iphone-icon.png"/>
 		<link rel="icon" sizes="196x196" href="logo_t.png">
