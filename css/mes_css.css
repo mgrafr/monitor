@@ -3,7 +3,7 @@ body {
 	width:100%;font-family: 'Open Sans', sans-serif;max-width: 1023px;margin: auto 0;}
 /* ecran 769 à 1023px */
 nav{max-width: 1023px;}
-.banner-image {vertical-align: middle;min-height: 100%;width: 100%;    height: 850px;}    
+.banner-image {vertical-align: middle;min-height: 100%;width: 100%;    height: 830px;background-image: url(images/truffiere.jpg);}    
  /*texte table*/
 .txtcenter{text-align: center;}
 h1 {font-size:200%}
@@ -39,7 +39,7 @@ h4{margin-left:20px;font-size:18px;margin-top: -30pX;}
 #graphiques,#administration, #zigbee, #zwave, #dvr, #nagios,#spa,#recettes,
 #habridge, #modes_emploi, #iobroker{
 max-width: 100%;height: 1200px;padding: 80px 0;min-height: 100%;
-position: relative;color: #000;top: 350px;z-index:-1;overflow: auto;
+position: relative;color: #000;top: 350px;z-index:1;overflow: auto;
 background-color: aquamarine;}
 /*---------------------------------------------------------------*/
 #meteo {	background-color: #4f9ff4;}
@@ -60,7 +60,7 @@ top: 0;width: 100%;}
 .icones_not{position: relative;top:-190px;background-color: #2e333d;height: 130px;}
 .temp_accueil{position: relative;top: -150px;left: 290px;width: 420px;}
 .coultemp{color: #e7e793;}
-#temp_ext{color: black;font-size: 20px;}
+#temp_ext{color: rgb(255, 254, 254);font-size: 25px;}
 /*pression chaudière, medoc, fosse, porte veranda S, gd portail, porte gar */
 #bar_pression {position: relative;top: -910px;width: 100px;left: 500px;}
 #pression_chaud{width:60px}
@@ -140,6 +140,7 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 .modal{--bulma-modal-background-background-color: rgba(0, 0, 0, 0.1);}
 #lexique.modal {width: 20rem;}
 #choix_graph.modal {margin-left: 40px;width: 30rem;}
+#choix_graph .modal-card {width: 30rem;}
 #admin.modal {--bulma-modal-content-width: 33rem;}
 #adm.modal {--bulma-modal-content-width: 32rem;}
 #inf_cam.modal {--bulma-modal-content-width: 28rem;}
@@ -191,7 +192,7 @@ border-color: #e0e3e6;border-radius: 0.55rem}
 .phpmyadmin{width:100px}
 #about{width: 120px;position: relative;left: 500px;top:-450px;}
 #ws-zb{position: relative;top: -180px;left: -15px}
-.chang_mdp{width: 400px;margin-left: 50px;}
+.chang_mdp{margin-left: 50px;}
 /*---------------SSE*/
 #status{position: relative;top:-190px;left:50px;} /*sse*/
 #messages, #messages1, #messages2, #messages3{position: relative;top:-190px;left:50px;width: 600px;display: block;}
@@ -321,8 +322,11 @@ Large devices (small desktops <535)
 .modal-dialog {width:450px;margin-top:50px}#bar_pression{top: -530px;left: 300px;width:80px}
 }
 */
+@media (max-width: 823px) {
+    .banner-image {background-image: url(images/truffiere_823.jpg); } }    
 
 @media (max-width:360px) {
+.banner-image {background-image: url(images/truffiere_823.jpg); }
 #pwdalarm{left:15px;top:100px}
 button {font-size: 0.7em;}
 ul {font-size: small;}
