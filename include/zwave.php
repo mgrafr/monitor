@@ -12,7 +12,7 @@ echo'
         <h2 class="title">Dispositifs : <span style="color:blue">Zwave</span></h2>
         <a href="'.$lien_zwave.'#" target="_blank">'.$lien_zwave.'</a>
         <iframe id="zwmqtt" src="'.$lien_zwave.'" frameborder="0"></iframe>
-        <div class="modal" id="infos"></div>
+       
       </div>
     </div>
   </div>

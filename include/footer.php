@@ -7,7 +7,6 @@
 				</div>
 			</div>
 		</footer>
-<!-- footer end -->
 <!-- JavaScript files placées à la fin du document-->
 <script src="js/jquery-4.0.0.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
@@ -997,3 +996,4 @@ document.getElementById('status').innerText='connexion fermée';
 }, false);
 };
 </script>";}?>
+<!-- footer end -->

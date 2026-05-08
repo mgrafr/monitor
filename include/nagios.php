@@ -16,7 +16,7 @@ if ($domaine==IPMONITOR) $lien_nagios=IPNAGIOS;
                 <h1 class="title">Monitoring : <span style="color:blue">NAGIOS</span></h1>
                 <div id="ping_pi4" title="Ping PI4"><?php include("ping_pi4_svg.php");?></div>
                 <iframe id="nagiosapp" src="<?php echo $lien_nagios;?>" frameborder="0"></iframe>
-                <div class="modal" id="infos"></div>
+               
             </div>
         </div>
     </div>
