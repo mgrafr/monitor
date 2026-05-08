@@ -697,24 +697,29 @@ Extrait:
 
 .. code-block::
 
-   <ul class="nav navbar-nav navbar-right" style="color: #adafb1;">
-	<li class="zz active"><a href="#header">Accueil</a></li> 
-	<?php if (ON_MET==true) echo '<li class="zz"><a href="#meteo">Météo</a></li>';?>
-	<li class="zz"><a href="#interieur">Intérieur</a></li>
-	<?php if (ON_EXT==true) echo '<li class="zz"><a href="#exterieur">Extérieur</a></li>';?>
-	<?php if (ON_ALARM==true) echo '<li class="zz"><a href="#alarmes">Alarmes</a></li>';?>
-	<?php if (ON_GRAPH==true) echo '<li class="zz"><a href="#graphiques">Graphiques</a></li>';?>
-	<?php if (ON_ONOFF==true) echo '<li class="zz"><a href="#murinter">Mur On/Off</a></li>';?>
-	<?php if (ON_ZIGBEE==true) echo '<li class="zz"><a href="#zigbee">Zigbee2mqtt</a></li>';?>
-	<?php if (ON_ZWAVE==true) echo '<li class="zz"><a href="#zwave">Zwavejs2mqtt</a></li>';?>
-	...
-
-Pour modifier la largeur, Du menu :
+   <!-- header start -->
+		<!-- ================ --> 
+		<header id="header" class="header hero is-primary" >
+         <!-- debut-navigation  -->
+	<button popovertarget="mobile-navigation" popovertargetaction="show" class="menu-h"><img src="images/menu-alt.svg" style="width:30px;position:fixed" alt="menu"/>          </button>
+	<nav popover id="mobile-navigation" style="font-size: large;background-color:black;">
+	<button  popovertarget="mobile-navigation" popovertargetaction="hide"></button>	
+        <button  popovertarget="mobile-navigation" style="color:white" id="mobile-menu">X</button>
+		<ul id="zz">
+			<li class="is-active"><a href="#header" >Accueil</a>
+			<?php if (ON_MET==true) echo '<a href="#meteo">Météo</a></li>';?>
+			<li><a href="#interieur">Intérieur</a></li>
+			<?php if (ON_EXT==true) echo '<li><a href="#exterieur">Extérieur</a>';?>
+									<a href="#alarmes" >Alarmes</a></li>
+									<?php if (ON_GRAPH==true) echo '<li><a href="#graphiques">Graphiques</a>';?>
+									<?php if (ON_ONOFF==true) echo '<a href="#murinter">Mur On/Off</a></li>';?>
+									<?php if (ON_ZIGBEE==true) echo '<li><a href="#zigbee">Zigbee2mqtt</a>';?>
+									<?php if (ON_ZWAVE==true) echo '<a href="#zwave">Zwavejs2mqtt</a></li>';?>
+									<?php if (ON_MUR==true) echo '<li><a href="#murcam">Mur cameras</a></li>';?>echo '<li class="zz"><a href="#graphiques">Graphiques</a>         	...
 
 |image150|
 
 |image151|
-
 
 1.3.4   la page d’accueil avec les notifications , accueil.php 
 --------------------------------------------------------------
