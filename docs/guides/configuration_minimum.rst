@@ -823,7 +823,7 @@ la variable:
    
    .. seealso:: 
 
-      Voir le § :ref:`21.12.2.1 Depuis Domoticz`
+      Voir le § :red:`21.12.2.1 Depuis Domoticz`
 
 .. admonition:: **Dans Home Assistant**
 
@@ -2352,7 +2352,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image152| image:: ../media/image152.webp
    :width: 700px  
 .. |image153| image:: ../media/image153.webp
-   :width: 498px  
+   :width: 650px  
 .. |image154| image:: ../media/image154.webp
    :width: 250px  
 .. |image155| image:: ../media/image155.webp
