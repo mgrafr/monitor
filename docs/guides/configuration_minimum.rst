@@ -1025,7 +1025,11 @@ Le script pour récupérer les informations: contenues dans le HTML,  rel, data-
 
    mod_ext 3,4,5 sont équivalent dans la fonction modal_extensions(id_modale,mod_ext,ch=0); 
    
-   n'ont une valeur que pour une création différente de la Modale
+   n'ont une valeur que pour une création différente de la Modal
+
+*la fonction modal_extensions(id_modale,mod_ext,ch=0)*
+
+|image1239|
 
 1.4 Le lexique et la température extérieure
 ===========================================
@@ -2609,6 +2613,8 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 300px
 .. |image1237| image:: ../img/image1237.webp
    :width: 700px
+.. |image1239| image:: ../img/image1239.webp
+   :width: 650px
 .. |image1238| image:: ../img/image1238.webp
    :width: 650px
 .. |image1328| image:: ../img/image1328.webp
