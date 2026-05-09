@@ -1009,6 +1009,14 @@ Le HTML :
    
 |image172|
 
+1.3.5.2.a Fenêtres modal Bulma
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+la majorité des modal sont éphémères, elles sont crées en Javascript; voir le § :ref:`1.3.4 la page d’accueil avec les notifications , accueil.php`  concernant le HTMML;
+
+Le script pour récupérer les informations: contenues dans le HTML,  rel, data-titre, data-class, title, alt
+
+|image1237|
+
 1.4 Le lexique et la température extérieure
 ===========================================
 1.4.1 Le lexique
@@ -2589,6 +2597,8 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 600px
 .. |image1236| image:: ../img/image1236.webp
    :width: 300px
+.. |image1237| image:: ../img/image1237.webp
+   :width: 700px
 .. |image1328| image:: ../img/image1328.webp
    :width: 700px
 .. |image1413| image:: ../img/image1413.webp
