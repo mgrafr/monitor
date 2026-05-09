@@ -710,12 +710,13 @@ Extrait:
 			<?php if (ON_MET==true) echo '<a href="#meteo">Météo</a></li>';?>
 			<li><a href="#interieur">Intérieur</a></li>
 			<?php if (ON_EXT==true) echo '<li><a href="#exterieur">Extérieur</a>';?>
-									<a href="#alarmes" >Alarmes</a></li>
-									<?php if (ON_GRAPH==true) echo '<li><a href="#graphiques">Graphiques</a>';?>
-									<?php if (ON_ONOFF==true) echo '<a href="#murinter">Mur On/Off</a></li>';?>
-									<?php if (ON_ZIGBEE==true) echo '<li><a href="#zigbee">Zigbee2mqtt</a>';?>
-									<?php if (ON_ZWAVE==true) echo '<a href="#zwave">Zwavejs2mqtt</a></li>';?>
-									<?php if (ON_MUR==true) echo '<li><a href="#murcam">Mur cameras</a></li>';?>echo '<li class="zz"><a href="#graphiques">Graphiques</a>         	...
+				<a href="#alarmes" >Alarmes</a></li>
+				<?php if (ON_GRAPH==true) echo '<li><a href="#graphiques">Graphiques</a>';?>
+				<?php if (ON_ONOFF==true) echo '<a href="#murinter">Mur On/Off</a></li>';?>
+				<?php if (ON_ZIGBEE==true) echo '<li><a href="#zigbee">Zigbee2mqtt</a>';?>
+				<?php if (ON_ZWAVE==true) echo '<a href="#zwave">Zwavejs2mqtt</a></li>';?>
+				<?php if (ON_MUR==true) echo '<li><a href="#murcam">Mur cameras</a></li>';?>echo '<li class="zz"><a href="#graphiques">Graphiques</a>         
+   ...
 
 |image150|
 
@@ -733,18 +734,23 @@ Le HTML:
 
 .. code-block::
 
-   <!--accueil start -->
-	<!-- image de la page d'accueuil déclarée dans admin/config.php -->
-	<div id="accueil" class="text-white banner">
-	  <div class="banner-image"></div>
-	    <div class="banner-caption">
-		<div class="container">
-		   <div class="row">
-			<div class="txtcenter col-md-12" >
-			<h2 class="text-centre">Température<span style="color:cyan"> Extérieure</span></h2>
-			<p class="taille18 text-centre">En ce moment , il fait :<span id="temp_ext" ></span></p>
-			<p class="text-centre">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
-			</div></div></div></div>
+   <section id="accueil" class="hero is-fullheight is-dark">
+	<div class="banner-image"></div>
+		<div class="columns temp_accueil">
+			<div class="column is-11 has-text-centered" >
+				<h3 class="text-c">Température<span style="color:cyan"> Extérieure</span></h3>
+				<p class="text-c coultemp">En ce moment , il fait :<span id="temp_ext" ></span></p>
+				<p class="text-center">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
+			</div>
+		</div>
+   <?php $domaine=$_SESSION["domaine"];
+   if ($domaine==URLMONITOR) $lien_img="/";
+   if ($domaine==IPMONITOR) $lien_img="/monitor/";
+   ?>
+   <div class="icones_not">
+    <button type="button"  class="aff_info">
+        <a href="javascript:void(0);" onclick="openModal('lexique');" >
+   ...
 
 .. IMPORTANT::
 
