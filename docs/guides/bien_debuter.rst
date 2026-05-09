@@ -2026,8 +2026,10 @@ Le Javascript dans footer.php
 
 |image1882| 
 
-0.5 Le Framework Bootstrap
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+0.5 Le Framework BULMA
+^^^^^^^^^^^^^^^^^^^^^^
+Remplace Bootstrap depuis la version 4.1.3 
+
 Pour des mises en page faciles, des fenêtres modales ,…..
  
 |image107|
