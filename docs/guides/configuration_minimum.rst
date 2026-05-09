@@ -784,6 +784,10 @@ voir dans ce même chapitre le § :ref:`1.1.3 maj en temps réel`
 
 1.3.5.1.a rafrichissement de la page avec une variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. IMPORTANT::
+
+   :ref:`Obsolète sdepuis la version 4.1.3`
+
 La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif, une variable est mise à « 1 » ; 
 
 monitor qui scrute en permanence cette valeur importe les données de tous les dispositifs si cette variable est à 1.
@@ -2344,7 +2348,7 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image150| image:: ../media/image150.webp
    :width: 700px  
 .. |image151| image:: ../media/image151.webp
-   :width: 500px  
+   :width: 650px  
 .. |image152| image:: ../media/image152.webp
    :width: 700px  
 .. |image153| image:: ../media/image153.webp
