@@ -1011,11 +1011,21 @@ Le HTML :
 
 1.3.5.2.a Fenêtres modal Bulma
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-la majorité des modal sont éphémères, elles sont crées en Javascript; voir le § :ref:`1.3.4 la page d’accueil avec les notifications , accueil.php`  concernant le HTMML;
+la majorité des modal sont éphémères, elles sont crées en Javascript; voir le § :ref:`1.3.4 la page d’accueil avec les notifications , accueil.php`  concernant le HTML.
 
 Le script pour récupérer les informations: contenues dans le HTML,  rel, data-titre, data-class, title, alt
 
 |image1237|
+
+**Création de la Modal** 
+
+|image1238|
+
+.. note::
+
+   mod_ext 3,4,5 sont équivalent dans la fonction modal_extensions(id_modale,mod_ext,ch=0); 
+   
+   n'ont une valeur que pour une création différente de la Modale
 
 1.4 Le lexique et la température extérieure
 ===========================================
@@ -2599,6 +2609,8 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 300px
 .. |image1237| image:: ../img/image1237.webp
    :width: 700px
+.. |image1238| image:: ../img/image1238.webp
+   :width: 650px
 .. |image1328| image:: ../img/image1328.webp
    :width: 700px
 .. |image1413| image:: ../img/image1413.webp
