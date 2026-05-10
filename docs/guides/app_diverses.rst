@@ -10,9 +10,13 @@ La page existe, il suffit dans admin/config.php de la déclarer TRUE
 
 12.2 Ajout d'une page avec diverses App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Les scripts pour afficher des données sur d’autres pages peuvent être sur ce modèle, avec l’utilisation de modalink pour afficher ces données : https://github.com/dmhendricks/jquery-modallink
+Les scripts pour afficher des données sur d’autres pages peuvent être sur ce modèle, avec l’utilisation de mmodal Bulma éphémères : 
+
+*Donner un nom à l'App* et l'indiquer danss le bouton, l'image, ..ce nom avec rel=<NOM>
 
 |image679| 
+
+|image1232| 
 
 |image680| 
 
@@ -210,6 +214,8 @@ Pour la restitution de l’historique :
    :width: 649px
 .. |image698| image:: ../media/image698.webp
    :width: 439px
+.. |image1232| image:: ../img/image1232.webp
+   :width: 700px
 .. |image1710| image:: ../img/image1710.webp
    :width: 700px
 .. |image1711| image:: ../img/image1711.webp
