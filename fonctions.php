@@ -1495,7 +1495,7 @@ $n=$n+1;}
 return ;
 }
 //nagios
-function api_nagios($choix){$n=0;
+/*function api_nagios($choix){$n=0;
 $URL="http://".NAUSER.":".NAPASS."@".IPNAGIOS."/cgi-bin/objectjson.cgi?query=".$choix;   
 
 $json_string = file_get_curl($URL);
@@ -1511,13 +1511,13 @@ $result=$parsed_json['data']['host'];
 echo $host." : ".$result['plugin_output']."<br>";
  $n=$n+1; }
 return ;  
-}
-function app_nagios($app){
+}*/
+/*function app_nagios($app){
 $URL="http://nagiosadmin:Idem4546@192.168.1.8/nagios/map.php?host=all";
 $a= file_get_curl($URL);
 echo $a;
 return ; 
-}
+}*/
 function sql_app($choix,$table,$valeur,$date,$icone='',$val_bd1='',$val_bd2=''){
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
