@@ -12,11 +12,16 @@ La page existe, il suffit dans admin/config.php de la déclarer TRUE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Les scripts pour afficher des données sur d’autres pages peuvent être sur ce modèle, avec l’utilisation de mmodal Bulma éphémères : 
 
-*Donner un nom à l'App* et l'indiquer danss le bouton, l'image, ..ce nom avec rel=<NOM>
+*Donner un nom à l'App* 
+
+- l'indiquer dans le bouton, l'image, ..ce nom avec rel=<NOM>
+- indiquer le titre dans title
 
 |image679| 
 
 |image1232| 
+
+Voir aussi le § :ref:`1.3.5.2.a Fenêtres modal Bulma`
 
 |image680| 
 
@@ -40,11 +45,13 @@ Les scripts pour afficher des données sur d’autres pages peuvent être sur ce
    if ($domaine==URLMONITOR) $lien_img="";
    if ($domaine==IPMONITOR) $lien_img="/monitor";
    ?><!-- section App diverses start -->
-		<div id="app_diverses" class="app_div">
-			<div class="container">
-		<div class="col-md-12">
-	   <h1 class="title_ext text-center">App<span>  diverses</span></h1><br>
-	   <img src="<?php echo $lien_img;?>/images/dz.webp" style="width:50px;height:auto;margin:10px 0 10px 120px" alt="dz">
+	<div id="app_diverses" class="app_div">
+    <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <h1 class="title is-1 has-text-centered">App<span>  diverses</span></h1><br>
+        <img src="images/dz.webp" style="width:50px;height:auto;margin:10px 0 10px 120px" alt="dz">
+        IP: <?php echo $lien_dz;?>
 		<form2>
 		<p class="txt_app"><input type="button" rel="1" style="margin-left: 60px;" class="btn_appd" value="afficher fichier log normal"></p>	
 		<p class="txt_app"><input type="button" rel="2" style="margin-left: 60px;" class="btn_appd" value="afficher fichier log statut"></p>
