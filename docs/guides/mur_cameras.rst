@@ -129,11 +129,24 @@ les styles css:
 
  |image1387|
 
-- **Le script du bouton On/Off** , dans footer , ajouter cette ligne:
+- **Le script du bouton On/Off** ,ajouter ces lignes:
 
 .. code-block:: 
 
-   <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
+   /*commande toggle switch mur cameras*/	
+   $('.toggle-outer').click(function(){
+	$(this).toggleClass('checked');
+	const res = $('#result');
+	if(res.css('display') === 'none'){
+	$('#toggle').attr('checked', true);
+	arret_mur=0;$('#toggleLabel').text('Vidéo inactive');}
+	else{
+	$('#toggle').attr('checked', false);
+	arret_mur=1;updateImage(nbrCam);
+	$('#toggleLabel').text('Vidéo active sur toutes les caméras')
+	}
+	res.toggle();				 
+    });
 
 |image565|
 
@@ -233,9 +246,9 @@ Il suffit d’indiquer dans admin/config.php le nb de caméras
 .. |image561| image:: ../media/image561.webp
    :width: 570px
 .. |image565| image:: ../media/image565.webp
-   :width: 581px
+   :width: 500px
 .. |image566| image:: ../media/image566.webp
-   :width: 700px
+   :width: 600px
 .. |image569| image:: ../media/image569.webp
    :width: 602px
 .. |image571| image:: ../media/image571.webp
