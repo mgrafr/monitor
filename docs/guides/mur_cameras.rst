@@ -259,7 +259,7 @@ Il suffit d’indiquer dans admin/config.php le nb de caméras
    :width: 566px
 .. |image1240| image:: ../media/image1240.webp
    :width: 500px
-.. |image1317| image:: ../media/image1317.webp
+.. |image1317| image:: ../img/image1317.webp
    :width: 700px
 .. |image1387| image:: ../img/image1387.webp
    :width: 700px
