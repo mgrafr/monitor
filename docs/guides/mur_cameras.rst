@@ -95,20 +95,32 @@ Ici la mémoire sera libérée des données cache et tampon tous les jours à 12
 
  |image561|
 
-- **entete_html.php et footer.php** , pour le switch ajouter ces lignes 
+- **entete_html.php et mes_css.css** , pour le switch ajouter ces lignes 
 
-.. warning:: modification depuis la version 3.1.3 (la précédente version du switch ne fonctionne plus)
+ |image1240|
 
 .. code-block:: 
 
-   <!-- entetete.php  -->
-   <link href="bootstrap/css/bootstrap4-toggle.min.css" rel="stylesheet">
-    <!-- footer.php  -->
-   <script src="bootstrap/js/bootstrap4-toggle.min.js"></script>
+   <div class="toggle-outer">
+		<div class="toggle-inner">
+		<input type="checkbox" id="toggle">
+		</div>
+   </div>
 
-.. note:: 
+les styles css:
 
-   https://gitbrent.github.io/bootstrap4-toggle/
+.. code-block::
+
+   /*       toggle switch */
+   .toggle-outer{height: 30px;width: 60px;border-radius: 20px;border: 1px solid #ccc;background-color: #f4f4f4;
+			margin: auto;position: relative;transition: all 0.3s ease-in;
+			cursor: auto;top:0px;left:-250px;display:block}
+   .toggle-outer.checked{background-color: blue;		}
+   .toggle-inner{height: 30px;width: 30px;border-radius: 50%;position: absolute;left: 0;background-color: #fff;
+			border: 1px solid #ccc;transition: all 0.3s ease-in;}
+   .toggle-outer.checked .toggle-inner{left: 30px;}
+   input[type="checkbox"]{display: none;}
+   #toggleLabel{cursor: pointer;}
 
 7.2- la page de monitor 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -230,6 +242,8 @@ Il suffit d’indiquer dans admin/config.php le nb de caméras
    :width: 538px
 .. |image572| image:: ../media/image572.webp
    :width: 566px
+.. |image1240| image:: ../media/image1240.webp
+   :width: 500px
 .. |image1387| image:: ../img/image1387.webp
    :width: 700px
 .. |image1388| image:: ../img/image1388.webp
