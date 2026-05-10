@@ -72,10 +72,6 @@ Voir aussi le § :ref:`1.3.5.2.a Fenêtres modal Bulma`
 
 |image684|
 
-|image685|
-
-|image686|
-
 12.3 Ajout de donnée MySQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 12.3.1 Edition de l’historique du ramassage des poubelles
@@ -94,7 +90,7 @@ Voir aussi le § :ref:`1.3.5.2.a Fenêtres modal Bulma`
 
 - **Le fichier app_diverses.php**
 
-   Une icône est téléchargée ou celle du fichier image (celle-ci-dessus) est utilisée
+   Une icône est téléchargée ou celle du fichier image (celle-ci-dessous) est utilisée
 
 |image689|
 
@@ -197,12 +193,8 @@ Pour la restitution de l’historique :
    :width: 567px
 .. |image684| image:: ../media/image684.webp
    :width: 650px
-.. |image685| image:: ../media/image685.webp
-   :width: 585px
-.. |image686| image:: ../media/image686.webp
-   :width: 532px
 .. |image687| image:: ../media/image687.webp
-   :width: 411px
+   :width: 400px
 .. |image688| image:: ../media/image688.webp
    :width: 465px
 .. |image689| image:: ../media/image689.webp
