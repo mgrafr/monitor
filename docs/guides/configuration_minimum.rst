@@ -1567,23 +1567,13 @@ pour afficher l’historique des dates, voir le paragraphe  :ref:`12.1.1 Edition
 
 1.7 Ajuster le menu au nombre de pages
 ======================================
-Au-delà de 12 pages il faut étendre en largeur le menu ; il faut aussi le descendre de 50 px 
-pour ne pas cacher le menu hamburger
+Popover est utilisé pour le menu (pas de JS)
 
 |image219|
 
-*Modification à apporter au fichier : /js/big-Slide.js :*
+*Modification à apporter au css
 
 |image220|
-
-Pour descendre le menu : modifier la class .nav dans css/mes_css.css
-
-|image221|
-
-On peut aussi augmenter la hauteur:
-
-|image1182|  |image1183|
-
 
 1.8 Complément pour les notifications sur l'écran d'accueil
 ===========================================================
@@ -2480,11 +2470,9 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image218| image:: ../media/image218.webp
    :width: 526px 
 .. |image219| image:: ../media/image219.webp
-   :width: 526px 
+   :width: 250px 
 .. |image220| image:: ../media/image220.webp
-   :width: 316px 
-.. |image221| image:: ../media/image221.webp
-   :width: 338px 
+   :width: 600px 
 .. |image249| image:: ../media/image249.webp
    :width: 700px 
 .. |image259| image:: ../media/image259.webp
@@ -2583,10 +2571,6 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 530px 
 .. |image1181| image:: ../media/image1181.webp
    :width: 650px 
-.. |image1182| image:: ../media/image1182.webp
-   :width: 292px 
-.. |image1183| image:: ../media/image1183.webp
-   :width: 138px 
 .. |image1184| image:: ../media/image1184.webp
    :width: 700px 
 .. |image1185| image:: ../media/image1185.webp
