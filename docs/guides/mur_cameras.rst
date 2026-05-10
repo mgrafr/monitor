@@ -185,14 +185,16 @@ Extrait de mur_cam.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **NE CONCERNE PAS FRIGATE**
 
-Le Zoom Bootstrap :
+Le Zoom , la modal Bulma:
 
 |image569|
 
+|image1317|
 
 .. important:: **Rafraichissement des images** 
 
    Pour limiter l’utilisation de la bande passante, le rafraichissement des images n’a lieu que si le bouton est sur ON ; par contre même sur OFF le zoom d’une caméra est opérationnel
+
    La fonction updateImage() dans footer.php
 
   .. code-block:: 
@@ -257,6 +259,8 @@ Il suffit d’indiquer dans admin/config.php le nb de caméras
    :width: 566px
 .. |image1240| image:: ../media/image1240.webp
    :width: 500px
+.. |image1317| image:: ../media/image1317.webp
+   :width: 700px
 .. |image1387| image:: ../img/image1387.webp
    :width: 700px
 .. |image1388| image:: ../img/image1388.webp
