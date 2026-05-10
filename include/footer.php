@@ -533,9 +533,9 @@ while (i <= nbrCam) {
   	camImg=document.getElementById(camImgId);
 	URL[i]=camImg.src;	
   i++;}	
-$('.modal').on('hide.bs.modal', function(){
+/*$('.modal').on('hide.bs.modal', function(){
   arret_zoom=0;
-});
+});*/
 function updateZoom(camIndex){
 if (arret_zoom==0) return false;
 if (document.getElementById('imagepreview').complete==true) 
@@ -682,7 +682,8 @@ case "1": // pour notification depuis variable dz ha
 	maj_services(0);bl=0;ch_idx="0";ch_ID="0";ch_name="";	
 break;
 case "3": //pour notification sans réponse
-
+case "4":
+case "5":	
 break;	
 }
 document.getElementById(id_modale).remove();
