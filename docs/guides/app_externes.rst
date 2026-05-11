@@ -414,7 +414,7 @@ Elle est ajoutée à **interieur.php** (ci-dessous)  et **accueil.php** (ci-dess
 
    .. important:: **Une variable doit être créée dans Domoticz**, *voir le paragraphe suivant*
 
-_ **L’image SVG**
+_ **L’image SVG** dans include/chaudiere_svg.php
 
 .. code-block::
 
@@ -452,7 +452,10 @@ _ **L’image SVG**
    </g>text id="text_chaudiere" transform="matrix(1 0 0 1 7 55)" class="st33 st36a">tmp</text>
    </svg>
 
-.. warning:: **Pour la notification (chaudière rouge en page d’accueil) supprimer les dernières lignes <rect et <text et modifier les ID (les id doivent être uniques)**
+.. warning:: **Pour la notification (chaudière rouge en page d’accueil) :
+   - créer la même image mais avec l'extension "svg" au lieu de "php" 
+   - supprimer les dernières lignes <rect et <text
+   - modifier les ID (les id doivent être uniques)**
 
    |image746|
 
@@ -1213,7 +1216,7 @@ Lancer jupyter notebook:
 .. |image743| image:: ../media/image743.webp
    :width: 500px
 .. |image745| image:: ../media/image745.webp
-   :width: 700px
+   :width: 550px
 .. |image746| image:: ../media/image746.webp
    :width: 352px
 .. |image747| image:: ../media/image747.webp
