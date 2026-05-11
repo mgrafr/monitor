@@ -168,7 +168,7 @@ Pour la restitution de l’historique :
 
   |image1945|
 
-  le code php dans :green:`include/footer.php` : 
+  le script JS dans :green:`include/footer.php` : 
 
   |image1948| 
 
