@@ -240,42 +240,33 @@ Voir la page consacrée à la réalisation et la programmation de l’ESP pour u
 
 .. code-block::
 
-   /*---popup boite_lettres-----------------------------------*/
-   var bl=0;var modalContainer = document.createElement('div');
-   modalContainer.setAttribute('id', 'modal_bl');
-   var customBox = document.createElement('div');
-   customBox.className = 'custom-box';
-   // Affichage boîte de confirmation
-   document.getElementById('confirm-box').addEventListener('click', function() {
-    customBox.innerHTML = '<p>Confirmation de la relève du courrier</p>';
-    customBox.innerHTML += '<button style="margin-right: 20px;" id="modal-confirm">Confirmer</button>';
-    customBox.innerHTML += '<button id="modal-close">Annuler</button>';
-    modalShow();
-   console.log(bl);
-   });
-   function modalShow() {
-    modalContainer.appendChild(customBox);
-    document.body.appendChild(modalContainer);
-    document.getElementById('modal-close').addEventListener('click', function() {
-        modalClose();
-    });
-    if (document.getElementById('modal-confirm')) {
-        document.getElementById('modal-confirm').addEventListener('click', function () {
-           console.log('Confirmé !');bl=1; 
-           modalClose(bl);
-        });
-    } else if (document.getElementById('modal-submit')) {
-        document.getElementById('modal-submit').addEventListener('click', function () {
-            console.log(document.getElementById('modal-prompt').value);
-            bl=0;modalClose(bl);
-        });       }   }
-   function modalClose(bl) {
-    while (modalContainer.hasChildNodes()) {
-        modalContainer.removeChild(modalContainer.firstChild);
-    }
-    document.body.removeChild(modalContainer);
-	 console.log(bl);if (bl==1) {maj_variable(19,"boite_lettres","0",2);maj_services(0);bl=0;}  
-   }
+   $(".confirm a").click(function(){ 
+ 	var ch=0;
+	var title_confirm=$(this).attr('title');ch=$(this).attr('rel');var mod_nom=$("img",this).attr("id");
+	var nb = Object.keys(service).length;
+	for (i = 1; i < nb; i++) {//console.log(ch+'...'+service[i].ID);
+		if (service[i].idm==ch) {ch=i;i=nb;	}
+	}
+	switch (mod_nom) {
+	case "lastseen":
+	Content=service[ch].contenu;mod_ext="1";
+	break;
+	case "poubelle":
+	mod_ext="2";Content="cliquer sur OK pour enregistrer la date \n du ramassage dans la base de données";
+	break;
+	case "fosse":
+	case "pression_chaud":
+	case "pilule":
+	case "ping_rasp":
+	case "bl":			
+	Content="confirmer la notification\nelle va être supprimée";mod_ext="1";	
+	break;		
+	default:
+	Content="mod_nom:"+mod_nom;
+	break;
+	}
+	open_modale('confirm',title_confirm,Content,ch,mod_ext);		
+	});	
 
 |image725|
 
