@@ -236,7 +236,7 @@ Voir la page consacrée à la réalisation et la programmation de l’ESP pour u
 
    <div class="confirm bl" ><a href="#" id="confirm-box" rel="19" title="courrier récupéré"><img id="bl" src="images/boite_lettres.svg" alt="boite_lettres" /></a></div>
 
-- **Le fichier footer.php** , *le script pour afficher une demande de confirmation de la relève du courrier*
+- **Le fichier footer.php** , *le script pour afficher une demande de confirmation de la relève du courrier ou d'autres notifications*
 
 .. code-block::
 
@@ -258,7 +258,7 @@ Voir la page consacrée à la réalisation et la programmation de l’ESP pour u
 	case "pression_chaud":
 	case "pilule":
 	case "ping_rasp":
-	case "bl":			
+	case "bl": // boite aux lettres			
 	Content="confirmer la notification\nelle va être supprimée";mod_ext="1";	
 	break;		
 	default:
@@ -274,16 +274,19 @@ Un clique sur la BL fait apparaitre le popup de confirmation
 
 |image726|
 
-- **Les styles css**
+- **Les styles css pour les notifications tel que la boite aux lettres**
 
 .. code-block::
 
-   .bl{position: absolute;top: 870px;left: 115px;}
-   #bl{width: 40px;height: auto;}
-   .custom-box {border: 2px solid grey;text-align: center;padding: 10px;
-    width: fit-content;background-color: #e5c666;margin: auto;}
-   #modal_bl {position: absolute;top: 0;left: 0;display: flex;
-    width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.5);}
+   /* ping raspi, boite lettres, lastseen, info */
+	#ping_rasp{position: absolute;top: -180px;display: none;left: 150px;width:40px}
+	.bl{position: absolute;top: 20px;left: 620px;}
+	#bl{width: 40px;display:none;height: auto;}
+	.lastseen, .lastseen1{width: 140px;height: autopx;position: absolute;Top:5px;left: 185px;}
+	.lastseen1{top: 60px;}
+	.aff_info{width: 50px;height: auto;top:55px;left:10px;position: absolute}
+	.notif1{color:white;margin-top: 70px;margin-left: 180px;}
+	a#annul_notif1{color:white}
 
 - **La variable Domoticz**
 
