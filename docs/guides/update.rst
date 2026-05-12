@@ -16,17 +16,18 @@ Server version: 11.8.2
 
 19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle sous debian 13 est 4.0.0**
+**La version stable actuelle sous debian 13 est 4.1.1**
 
 19.4.1 Releases
 ===============
-version en développement v 4.1.3
+version en développement v 4.2.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - suppression de la mise à jour des dispositifs en semi-direct, le choix est un serveur sse php ou un serveur sse node js
 - modification de la mise a jour des certificats dans restore.sh(mise à jour complète de monitor)
 - Ajout dans "ZB" de la mise à jour temps réel pour les températures et humidités
 - intégration du plugins zigbee2mqtt-automations dans monitor avec l'ajout d'une aide pour l'écriture de l'automation.
+- Utilisation de Bulma en remplacement de Bootstrap
 
 Version 4.1.1 (janvier 2026)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
