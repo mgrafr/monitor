@@ -639,7 +639,12 @@ case "pas_ID" :
 break;
 	}
 $n=$n+1;}
+$i=1;$i1=1;$idm_libre="";
+while ($i < ($n +2) && $i1<4){if (!isset($data[$i])) {$idm_libre=$idm_libre." ".$i;$i1++;}
+  $i++;}
+
 $data[0] = [
+	'idm_libre' => $idm_libre,
 'serveur_iob' => $serveur_iob_on,
 'serveur_ha' => $serveur_ha_on,
 'serveur_dz' => $serveur_dz_on,
@@ -1494,30 +1499,6 @@ echo '<p style="font-size:smaller">'.$lect_device["message"].'</p>';
 $n=$n+1;}
 return ;
 }
-//nagios
-/*function api_nagios($choix){$n=0;
-$URL="http://".NAUSER.":".NAPASS."@".IPNAGIOS."/cgi-bin/objectjson.cgi?query=".$choix;   
-
-$json_string = file_get_curl($URL);
-$parsed_json = json_decode($json_string, true);
-$json=$parsed_json['data'][$choix];
-$n=0;
-while ($json[$n]!=""){
-$host=$json[$n];
-$URL_cam=$URL="http://".NAUSER.":".NAPASS."@".IPNAGIOS."/cgi-bin/statusjson.cgi?query=host&hostname=".$json[$n];
-$json_string = file_get_curl($URL_cam);
-$parsed_json = json_decode($json_string, true);
-$result=$parsed_json['data']['host'];
-echo $host." : ".$result['plugin_output']."<br>";
- $n=$n+1; }
-return ;  
-}*/
-/*function app_nagios($app){
-$URL="http://nagiosadmin:Idem4546@192.168.1.8/nagios/map.php?host=all";
-$a= file_get_curl($URL);
-echo $a;
-return ; 
-}*/
 function sql_app($choix,$table,$valeur,$date,$icone='',$val_bd1='',$val_bd2=''){
 	// SERVEUR SQL connexion
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
