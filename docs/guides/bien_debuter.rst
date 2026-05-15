@@ -2039,7 +2039,13 @@ Pour des mises en page faciles, des fenêtres modales ,…..
 ^^^^^^^^^^^^^^^^^^^
 |image108| 
 
-Un extrait :
+.. note::
+
+   le fichier styles.php concerne des styles modifiable par php, par exemple l'iamge d'accueil
+
+   |image1230| 
+
+Un extrait de mes_css.css :
 
 .. code-block::
 
@@ -2466,6 +2472,8 @@ function mc(variable,id)
 .. |image1221| image:: ../img/image1221.webp
    :width: 407px 
 .. |image1224| image:: ../img/image1224.webp
+   :width: 600px 
+.. |image1230| image:: ../img/image1230.webp
    :width: 600px 
 .. |image1268| image:: ../img/image1268.webp
    :width: 700px 
