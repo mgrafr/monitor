@@ -2041,7 +2041,7 @@ Pour des mises en page faciles, des fenêtres modales ,…..
 
 .. note::
 
-   le fichier styles.php concerne des styles modifiable par php, par exemple l'iamge d'accueil
+   le fichier styles.php concerne des styles modifiableS par php, par exemple l'image d'accueil
 
    |image1230| 
 
