@@ -576,14 +576,13 @@ open_modale("pwdmo","clavier",aff_clavier,"0","4");// mod_ext=4 modal permanente
 let $el = $("#confirm_content");$el.attr("id", "content_clavier");
 let $el1 = $("#modal-card-title");$el1.attr("id", "modal-card-title-al");
 let $el2 = $("#btn_confirm_close");$el2.attr("id", "btn_confirm_close-al");
-
-
+NUM="";
 $(".btn_appd").click(function () {var log_name="";var urllog="";
 var logapp = $(this).attr('rel');classe="modal";
 if (logapp=="passwd"){openModal("pwdmo");}
 else if (logapp=="scenes"){var titre=$(this).attr('data-titre');modale_id="scenes";
 	contenu='<a href="#murinter"><img id="sc1" src="<?php echo $lien_img;?>images/lampe_jardin.svg" width="40" height="auto" alt=""/>toutes les lampes</a>';open_modale(modale_id,titre,contenu,'0','3');}
-else if (logapp=="admin"){var numero = $(this).attr('title');var titre=$(this).attr('data-titre');var classe=$(this).attr('data-class');
+else if (logapp=="admin"){numero = $(this).attr('title');NUM=numero;var titre=$(this).attr('data-titre');var classe=$(this).attr('data-class');
 	urllog="ajax.php?app=admin&variable="+numero;modale_id="logapp";}
 else if (logapp=="info_adm"){var numero = $(this).attr('title');var titre=$(this).attr('data-titre');if (title="7") {classe=$(this).attr('data-titre');}
 	contenu = info_admin[numero];modale_id="adm";
@@ -594,7 +593,8 @@ else if (logapp=="domoticz"){var numero=$(this).attr('title');
 	else if (numero=="4") {log_name=" erreur";}
 	urllog="ajax.php?app=log_dz&variable="+numero;titre="log domoticz";modale_id="domoticz";}
 else if (logapp=="sql"){var table_sql = $(this).attr('title');
-	urllog="ajax.php?app=sql&idx=1&variable="+table_sql+"&type=&command=";titre="historique poubelles";modale_id="poubelles";}
+	urllog="ajax.php?app=sql&idx=1&variable="+table_sql+"&type=&command=";
+	titre="historique poubelles";modale_id="poubelles";}
 else if (logapp=="cuisine"){var table_sql = logapp;var numrecette = $(this).attr('title');titre = $(this).attr('alt');modale_id="rec_cuis";
 	urllog="ajax.php?app=sql&idx=4&variable="+table_sql+"&type=id&command="+numrecette;}	
 else if (logapp=="modes_emploi"){var table_sql = logapp;var nummode_e = $(this).attr('title');titre = $(this).attr('alt');modale_id="manuel";
@@ -626,6 +626,7 @@ document.getElementById('modal-card-title').innerHTML=titre;
 document.getElementById('confirm_content').innerHTML=Contenu;
 if (mod_ext=="4") {document.getElementById('btn_confirm_close').addEventListener('click', function() {closeModal(id_modale);});}
 else {document.getElementById('btn_confirm_close').addEventListener('click', function() {closeModal(id_modale);document.getElementById(id_modale).remove();});
+if (NUM="18") {$("#idm_a").html(pp["0"].idm_libre);}
 openModal(id_modale);}
 }
 $(".confirm a").click(function(){ 
