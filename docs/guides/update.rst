@@ -16,13 +16,15 @@ Server version: 11.8.2
 
 19.4 UPDATE Monitor
 ^^^^^^^^^^^^^^^^^^^
-**La version stable actuelle sous debian 13 est 4.1.1**
+**La version stable actuelle sous debian 13 est 4.2.0**
 
 19.4.1 Releases
 ===============
-version en développement v 4.2.0
+version en développement v 4.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Version 4.2.0 (mai 2026)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - suppression de la mise à jour des dispositifs en semi-direct, le choix est un serveur sse php ou un serveur sse node js
 - modification de la mise a jour des certificats dans restore.sh(mise à jour complète de monitor)
 - Ajout dans "ZB" de la mise à jour temps réel pour les températures et humidités
@@ -170,23 +172,6 @@ Version 2.2.0
 - suite à la modification de l’API Domoticz (devices remplacé par getdevices),   ……………………..mise à jour de fonctions.php
 
 - accès shell Domoticz-Docker avec SSH2
-
-Version 2.1.0
-~~~~~~~~~~~~~
-- début de l’adaptabilité à Home Assistant, l’affichages des valeurs des dispositifs, l’utilisation des variables et la commande de switches virtuels sont opérationnelles.
-
-- ajout certificat auto-signé pour Nginx
-
-- ajout reboot serveur distant et scp pour fichiers distants
-
-- maj automatique des IP lors de changements de serveurs
-
-- scripts automatiques d’installation
-
-- 3 scripts différents d’installation et version 2.1 (update vers Debian 12)
-
-- explication concernant l’envoi par Domoticz de SMS
-
 
 19.5 Version de JPGRAPH
 ^^^^^^^^^^^^^^^^^^^^^^^
