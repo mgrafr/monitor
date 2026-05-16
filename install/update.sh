@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 cd /www/monitor
-rm maj*
+rm -f maj*
 version=$(head -n 1 .version)
 echo $version
 vermon=$(whiptail --title "version de monitor" --radiolist \
