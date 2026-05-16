@@ -1,6 +1,6 @@
 0. Infos pour bien débuter
 --------------------------
-*Cette application offre un affichage convivial pour les serveurs domotique Domoticz, Home Assistant & ioBroker et bien plus encore.*
+*Cette application offre un affichage convivial pour les serveurs domotique Domoticz, Home Assistant, ioBroker & Zigbee2mqtt.*
 
 |image1775|
 
