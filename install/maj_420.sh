@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 cd /www/monitor
 rm update.sh
-# rm maj*
+rm -f maj*
 mkdir -p tmp
 cd tmp
 wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.2.0.tar.gz
