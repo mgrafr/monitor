@@ -10,6 +10,13 @@
 .notif2{left: 120px;display:none}
 .notif3{left: 190px;display:none}
 .notif4{left: 260px;display:none}*/
+/*exterieur*/
+#exterieur_route{margin: auto 10px;}
+#reset_erreur_exterieur{position: absolute;top: 190px;display: none;width: 40px;left: 40px;}
+#erreur_exterieur{position: absolute;top: 200px;left: 90px; color: #ce1c1c;}
+.txt_ext{position:relative;top:20px;left:20px;}
+.lj1{fill:#a29e9e;}
+.column.is-11 {margin-left:4%;}
 .btn-worx {
     color: white;
 	background-color: red; 
@@ -19,17 +26,21 @@
 	left: -120px;}
 #worx{
     background-color:#dff9df;}
-#worx1{position: relative;top: 30px;width:400px;}
+#worx1{position: relative;top: 30px;width:400px;font-size: larger;left: 4%;}
 #img_worx{ top:0px;
     position: relative;
     left: 100px;width:250px
 }
-
+.fa_worx{ margin-left: 50px;width: 40px;}
+#etat_general{margin-left:20px}
+/* jardin.php */
+#uworx{display:block;}
 #etat_bat{margin-left: 10px}
+.main-buttons{position: relative;top: 30px;left:4%;font-size: larger;} 
+/* mode emploi*/
+.mode_empl{width:240px}
 /* Large devices (small desktops <535) */
-@media (max-width:534px) {
-#img_worx{left:0px}.inclinaison{top: -10px;left: 150px;}
-}
+
 /*commun page*/
 #exterieur,#worx{
     width: 100%;
@@ -37,7 +48,21 @@
     min-height: 100%;
     position: relative;
     color: #000;
-    top: 350px;z-index:-20;overflow: auto;
+    top: 350px;z-index:3;overflow: auto;
 }
 #worx, #exterieur{
     background-color: aquamarine;}
+#porte_ent_ver_sud_O{width:30px;height:50px;position:absolute;top:15px;
+	left:300px}   
+@media (max-width: 768px) {
+    #porte_ent_ver_sud_O {top: 15px;}
+}
+@media (max-width:534px) {
+#img_worx{left:0px}.inclinaison{top: -10px;left: 150px;}
+}
+@media (max-width:360px) {
+    #porte_ent_ver_sud_O {width: 20px;height: 30px;top: 10px;} 
+    #reset_erreur_exterieur {top: 590px;}
+#erreur_exterieur {top: 600px;}
+
+}  
