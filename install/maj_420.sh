@@ -15,7 +15,8 @@ echo "Entrer le nom du fichier php de l'image du plan si elle n'est pas install√
 echo "ou cliquer sur enter"
 read nom
 echo "FICHIER, $nom!"
-if  "$nom" != ""  then
+if  "$nom" != ""  
+then
 mv /www/monitor/include/accueil.php /www/monitor/custom/php/accueil.php
 mv /www/monitor/include/$nom /www/monitor/custom/php/$nom
 fi
