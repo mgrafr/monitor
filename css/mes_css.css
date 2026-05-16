@@ -3,8 +3,7 @@ body {
 	width:100%;font-family: 'Open Sans', sans-serif;max-width: 1023px;margin: auto 0;}
 /* ecran 769 à 1023px */
 nav{max-width: 1023px;}
-/*.banner-image {vertical-align: middle;min-height: 100%;width: 100%;    height: 830px;background-image: url(images/truffiere.jpg);} */   
- /*texte table*/
+/*texte table*/
 .txtcenter{text-align: center;}
 h1 {font-size:200%}
 h2 {font-size:110%}  
@@ -31,6 +30,7 @@ h4{margin-left:20px;font-size:18px;margin-top: -30pX;}
 [popover]:popover-open {opacity: 1;transform: translateX(0px);  }
  /*POPOVER EN ETAT FERME*/  
 [popover]:not(:popover-open) {opacity: 0;transform: translateX(-50px);}
+#mobile-navigation{font-size: large;background-color:black;}
 .menu-h {position: fixed;
         font-size: 1.5em;z-index:30;top: 40px;left:500px;} 
 #zz li a {color:white;background-color:#909090;}
@@ -268,7 +268,7 @@ nav{max-width: 1200px;}
 #erreurs_mo.modal {--bulma-modal-content-width: 32rem;}
 #infos_devices.modal {--bulma-modal-content-width: 20rem; }   
 .temp_accueil {top: -185px;} 
-/*.banner-image {height:750px}*/
+
 .title_met{margin-top:-50px;margin-left:20px}
 .meteo_concept_am {width: 60px;}
 .poubelles{left:108px;top: -210px;} 
@@ -279,11 +279,8 @@ nav{max-width: 1200px;}
 .aff_anni{width: 50px;height: auto;top: 10px;left: 220px;display: block;}
 }
 
-/*@media (max-width: 823px) {
-    .banner-image {background-image: url(images/truffiere_823.jpg); } }    
-*/
 @media (max-width:360px) {
-/*.banner-image {background-image: url(images/truffiere_823.jpg); }*/
+.toggle-outer {left:-140px}
 #pwdalarm{left:15px;top:100px}
 button {font-size: 0.7em;}
 ul {font-size: small;}
@@ -308,8 +305,19 @@ ul {font-size: small;}
 .sos {width: 25px;height: 25px;}
 .lastseen, .lastseen1 {width: 90px;left: 145px;}
 .aff_pluie {top: -400px;left: 70px;}
-
-}
-	/*DECOUVERTE*/
+#voltage {top: 470px;}
+#linky {left: 180px;top: -230px;}
+#about_interieur {left: -90px;top: 30px;}
+#ecran { margin-top: 90px;}
+#choix_graph.modal {margin-left: 0px;}
+.text-c {font-size: x-large; }
+#ping_pi4 {left: 250px;}
+#nagiosapp {width: 100%;}
+#about_rec {left: 0px;top: 0px;}
+[popover] {left: -30dvw;width: 66dvw;height:34dvh;}
+#d_btn_a {top: 163px; left: 120px;}
+#phpadmin {top: -920px;left: 100px;}
+#about {left: 240px;top: -985px;}
+	/*DCOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
 
