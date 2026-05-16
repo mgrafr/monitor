@@ -969,14 +969,14 @@ Rendre éxécutable le fichier  et le lancer
 
 .. code-block::
    
-   chmod +x update.sh
-   ./update.sh
+   sudo chmod +x update.sh
+   sudo ./update.sh
 
 |image51|
 
 |image1818|
 
-En cas de problème avec le chemin de bash:
+En cas de problème avec le chemin de bash en root:
 
 .. code-block::
 
