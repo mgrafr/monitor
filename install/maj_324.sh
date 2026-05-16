@@ -4,16 +4,19 @@ rm maj*
 cd /www/monitor
 mkdir -p tmp
 cd tmp
-wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.1.1.tar.gz
-tar -xzf monitor-v4.1.1.tar.gz
-cd monitor-monitor-v4.1.1
+wget https://github.com/mgrafr/monitor/archive/refs/tags/monitor-v4.2.0.tar.gz
+tar -xzf monitor-v4.2.0.tar.gz
+cd monitor-monitor-v4.2.0
 sed -i "s/.DOMAINE\" ));/DOMAINE\",/g" admin/config.php
 sed -i "s/iobweb.DOMAINE",/iobweb.DOMAINE", 2 => \"false\"));/g" admin/config.php
-result()(mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'materiel';") 
+echo "Entrer mot passe root de msqql"
+read passe
+echo "MOT PASSE, $passe "
+result()(mysql --user="root" --password="$passe" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'materiel';") 
 res=${result} 
 if [[ ${res:0:5} != 'Field' ]] 
 then 
-mysql --user="root" --password="Idem4546" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE materiel param text;"
+mysql --user="root" --password="$passe" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE materiel param text;"
 fi
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
