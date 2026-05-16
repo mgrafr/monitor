@@ -5,7 +5,7 @@
 		<header id="header" class="header hero is-primary" >
          <!-- debut-navigation  -->
 	<button popovertarget="mobile-navigation" popovertargetaction="show" class="menu-h"><img src="images/menu-alt.svg" style="width:30px;position:fixed" alt="menu"/></button>
-	<nav popover id="mobile-navigation" style="font-size: large;background-color:black;">
+	<nav popover id="mobile-navigation" >
 	<button  popovertarget="mobile-navigation" popovertargetaction="hide"></button>	
         <button  popovertarget="mobile-navigation" style="color:white" id="mobile-menu">X</button>
 		<ul id="zz">
