@@ -3,7 +3,7 @@ body {
 	width:100%;font-family: 'Open Sans', sans-serif;max-width: 1023px;margin: auto 0;}
 /* ecran 769 à 1023px */
 nav{max-width: 1023px;}
-.banner-image {vertical-align: middle;min-height: 100%;width: 100%;    height: 830px;background-image: url(images/truffiere.jpg);}    
+/*.banner-image {vertical-align: middle;min-height: 100%;width: 100%;    height: 830px;background-image: url(images/truffiere.jpg);} */   
  /*texte table*/
 .txtcenter{text-align: center;}
 h1 {font-size:200%}
@@ -268,7 +268,7 @@ nav{max-width: 1200px;}
 #erreurs_mo.modal {--bulma-modal-content-width: 32rem;}
 #infos_devices.modal {--bulma-modal-content-width: 20rem; }   
 .temp_accueil {top: -185px;} 
-.banner-image {height:750px}
+/*.banner-image {height:750px}*/
 .title_met{margin-top:-50px;margin-left:20px}
 .meteo_concept_am {width: 60px;}
 .poubelles{left:108px;top: -210px;} 
@@ -278,60 +278,16 @@ nav{max-width: 1200px;}
 .icones_not {height: 300px;}
 .aff_anni{width: 50px;height: auto;top: 10px;left: 220px;display: block;}
 }
-/* Large devices (small mobile <601) */
-/* @media (max-width:600px) {
-.fond_date {right: -70px;}
-.poubelles{left:450px;}
-.menu-h {top: 80px;left: 200px;}
-}
-Large devices (small desktops <535) 
-@media (max-width:534px) {
-.porte_veranda_sud{top:583px;}	
-#porte_gar{top:580px;left:360px} 
-.poubelles{left:400px;top:-400px}  
-.fond_date {right: 0px;top:0;}
-.aff_pluie {left: 300px;}
-.fosse_septique{left:380px;top:550px;}
-.aff_anni{bottom: 80px;}
-#pilule {top: 570px;}
-#alarme_nuit{top:580px;}
-.aff_info{top: 580px;}
-.aff_bat {top: 575px;}
-.sos {top: -450px;}
-#gd_portail {top: 580px;left: 300px;}
-.image_met{width:50px;margin-left: 0;}
-.icone_vent {width: 40px;margin-left: 10px;margin-top: -60px;}
-#txt_pluie{left: -20px;}
 
- #zbmqtt{width:480px;}#nagiosmobile{width:480px;}
-.aff_not1{top: 450px;}
-.menu-h {left: 240px;top: 10px;}.bl{top: 640px;}
-	#sse{top:-400px}#messages{top: -440px;}
-#status{top: -450px;}#vanne_eau{position: relative;top: -570px;left: 380px;}
-
-#pression_chaud{width:50px}.pression_chaud{top: -305px;}
-.colmur{top:-30px;}#nagiosapp{width: 450px;height: 600px;}#habridgeapp, #iobrokerapp{top:-10px;width: 480px;height: 600px;}
-	.banner {height:724px;}h1, .h1 {font-size: 2rem;}
-	.banner-caption {top: 25%;}#linky{top: -220px;left: 380px;}
-
-.vvent {margin-left: 15px;top: -50px;}
-	.vtemp {margin-left: 15px;top: -70px;}#th_ext_cuis{top: -650px;left: 90px;}
-    
-#meteo_concept_am {top: -100px;display: inline;width: 50px;}
-#meteo_concept_am img{width: 50px;margin-left: 30px;}
-.modal-dialog {width:450px;margin-top:50px}#bar_pression{top: -530px;left: 300px;width:80px}
-}
-*/
-@media (max-width: 823px) {
+/*@media (max-width: 823px) {
     .banner-image {background-image: url(images/truffiere_823.jpg); } }    
-
+*/
 @media (max-width:360px) {
-.banner-image {background-image: url(images/truffiere_823.jpg); }
+/*.banner-image {background-image: url(images/truffiere_823.jpg); }*/
 #pwdalarm{left:15px;top:100px}
 button {font-size: 0.7em;}
 ul {font-size: small;}
 .temp_accueil {top: -425px;left:-70px} 
-.banner-image {height:750px;}
 .text-c {margin-left: 40px;font-size: smaller}
 .text-center {font-size: smaller;}
 .logo{width:80px;}
