@@ -105,6 +105,7 @@ a#annul_notif1{color:white}
 border-color: #e0e3e6;border-radius: 0.55rem}
 #d_btn_a{top: 190px;left: 220px;}
 #d_btn_al{top: 60px;}
+img.btn_appd{width:35px;}
 /*alarme admin*/
 #avb{display: block;background-color: #F5F5DC;width: 400px;position: relative;
     top: -10px;left: 5px;}
@@ -318,6 +319,12 @@ ul {font-size: small;}
 #d_btn_a {top: 163px; left: 120px;}
 #phpadmin {top: -920px;left: 100px;}
 #about {left: 240px;top: -985px;}
+.aff_pluie {left: 120px;}
+.btn_appd{font-size:12px;width:250px;height:30px}
+.logo_dz {width: 30px;}
+#status {top: -170px;}
+.logo_sse {top: -140px;}
+}
 	/*DCOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
 
