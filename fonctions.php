@@ -1235,7 +1235,7 @@ if ($choix==23 ) {$file=TMPCONFIG."connect.py"; echo "copy de connect.py";$rel="
 if ($choix==24 ) {$file=SSH_MONITOR_PATH."connect.py"; }
 if ($choix==28 ) {$file=MOD_PYTHON_FILE;}	
 if ($choix==12){echo "//*******création fichier noms/idx******* <br>";}
-if ($choix==13){echo "//*******création table LUA zigbee******* <br>";}
+if ($choix==13){$file=TMPCONFIG."table_zb_zw.lua";echo "//*******création table LUA zigbee******* <br>";}
 switch ($choix) {
     case "1":
 // disponoible
@@ -1329,13 +1329,14 @@ foreach($retour  as $R=>$D){
 }
 echo "fin";return;
 break;
-case "13" : $retour=devices_plan(2) ;$lastseen="liste_ls={}";$lastseen=$lastseen."\n";
+case "13" : $retour=devices_plan(2) ;
+$lastseen="liste_ls={}";$lastseen=$lastseen."\n";
 $i=0;foreach($retour  as $R=>$D){
   foreach($D as $key=>$Value){
 	if ($key=="idm" ) $val_idm=$Value;
   	if ($key=="idx" ) $val_idx=$Value;	
 	if ($key=="Name" ) $val_name=$Value;
-	if ($key=="param" ) $val_mat=$Value;
+	if ($key=="param" ) $val_mat=$Value[0];
     if ($key=="lastseen" ) $val_ls=$Value;  }
 
 if ($val_mat=="zigbee" || $val_mat=="zigbee3" || $val_mat=="zwave") {$i=$i+1;$lastseen=$lastseen."\n";$lastseen=$lastseen.'liste_ls['.$i.']={["idx"]=
@@ -1343,7 +1344,7 @@ if ($val_mat=="zigbee" || $val_mat=="zigbee3" || $val_mat=="zwave") {$i=$i+1;$la
 	}
 $lastseen=$lastseen."\n";$lastseen=$lastseen.'nombre_enr='.$i;
 //$lastseen=$lastseen."}";
-		file_put_contents(TMPCONFIG, $lastseen);
+		file_put_contents($file, $lastseen);
 $retour=maj_variable("22","upload","4","2");echo "Mise à jour Table Zigbee  : ".$retour['status'];		
 break;
 case "14" :
