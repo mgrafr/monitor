@@ -22,6 +22,7 @@ Server version: 11.8.2
 ===============
 version en développement v 4.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- correction bug concernant la liste lastseen
 
 Version 4.2.0 (mai 2026)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
