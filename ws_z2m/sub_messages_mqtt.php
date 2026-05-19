@@ -20,15 +20,15 @@ $zb_donnees = [
     $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
 	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ( nom_objet = '".$nom_objet."' AND Actif = '6' AND maj_js <> 'variable');";
 	$result = $conn->query($sql);$nb_rows=$result->num_rows;
-        if ($nb_rows>0) {$i=0;//$row = $result->fetch_assoc();echo $row['ID'];
-            while($row = $result->fetch_array(MYSQLI_ASSOC)){
+        if ($nb_rows>0) {$i=0;//$row = $result->fetch_assoc();echo $row['ID'];   
+        while($row = $result->fetch_array(MYSQLI_ASSOC)){
         $ro=explode(":",$row['param']) ;
             $rq[$i]=['ID' => $row['ID'],
                  'idm' => $row['idm'],
                  'champ' => $zb_donnees[$ro[1]],
                  'nb' => $nb_rows,
 				 'json' => $ro[1]
-         ];}
+         ];$i++;}
          //$rx=json_encode($rq);echo $rx;
          }
         else { $rq[0]=['ID' => '0'];}}
@@ -64,8 +64,14 @@ debut:
 //if ($topic == "monitor") {sms($message);}
 $str=explode("/",$topic);$name=$str[1];$search_id=[];
 $search_id=id_name($name);$id=$search_id[0]['ID'];
-if ($id!="0") {$n=$search_id[0]['nb'];$i=0;while($i<$n){$search=$search_id[$i];echo "----->".$n."  ".$i;
-    $id=$search['ID'];$idm=$search['idm'];$json=$search['json'];$champ=$search['champ'];$obj = json_decode($message);
+if ($id!="0") {$n=$search_id[0]['nb'];$i=0;
+while($i<$n){
+    $search=$search_id[$i];echo "----->".$n."  ".$i;
+    $id=$search['ID'];
+    $idm=$search['idm'];
+    $json=$search['json'];
+    $champ=$search['champ'];
+    $obj = json_decode($message);
     if (isset($obj->state) && $obj->state=="offline"){$ob=$obj->state;$msg='{ "id" : "'.$id.'", "objet" : "'.$name.'", "state" : "'.$ob.'" }';maj($id,$ob);}
     if (isset($obj->$json)) {$ob=$obj->$json;$msg='{ "id" : "'.$id.'", "objet" : "'.$name.'","state" : "'.$ob.'", "champ1" : "'.$champ.'", "champ2" : "'.$json.'", "idm" : "'.$idm.'"}';
        // echo '------------'.$msg;
