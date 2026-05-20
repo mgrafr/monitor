@@ -957,9 +957,9 @@ https://proxsave.dev/guide/automation-and-scheduling/
 
    .. note::
 
-      *le domoticz.service du wiki de domopticz ne fonctionne pas*
+      *le domoticz.service du wiki de domoticz ne fonctionne pas*
 
-      Pour installer  démarage manuellement:
+      Pour installer le démarage manuellement:
 
       .. code-block::
 
@@ -972,7 +972,7 @@ https://proxsave.dev/guide/automation-and-scheduling/
           After=network.target
          [Service]
           Environment=NODE_ENV=production
-          ExecStart=/opt/domoticz/domoticz -www 8087 -sslwww 443
+          ExecStart=/opt/domoticz/domoticz -www <PORT> -sslwww 443
           EnvironmentFile=/home/michel/domoticz.env
           #
           StandardError=inherit
