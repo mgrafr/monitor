@@ -4001,6 +4001,8 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 600px
 .. |image1760| image:: ../img/image1760.webp
    :width: 700px
+.. |image1761| image:: ../img/image1761.webp
+   :width: 500px
 .. |image1762| image:: ../img/image1762.webp
    :width: 437px
 .. |image1763| image:: ../img/image1763.webp
