@@ -945,43 +945,53 @@ https://proxsave.dev/guide/automation-and-scheduling/
    
    |image1810|
 
-   Installer systemd pour le démarrage automatique
+   Systemd pour le démarrage automatique : il est normalement installé; 
+
+   Pour changer le port:
+
+   .. code-block::
+
+      nano /etc/init.d/domoticz.sh
+
+   |image1761|
 
    .. note::
 
       *le domoticz.service du wiki de domopticz ne fonctionne pas*
 
-   .. code-block::
+      Pour installer  démarage manuellement:
 
-      sudo nano /etc/systemd/system/domoticz.service
+      .. code-block::
 
-   .. code-block::
+         sudo nano /etc/systemd/system/domoticz.service
 
-      [Unit]
-       Description=domoticz
-       After=network.target
-      [Service]
-       Environment=NODE_ENV=production
-       ExecStart=/opt/domoticz/domoticz -www 8087 -sslwww 443
-       EnvironmentFile=/home/michel/domoticz.env
-       #
-       StandardError=inherit
-       Restart=10s
-       RestartSec=always
-       user=michel
-      [Install]
-       WantedBy=multi-user.target
+      .. code-block::
 
-   |image1812|
+         [Unit]
+          Description=domoticz
+          After=network.target
+         [Service]
+          Environment=NODE_ENV=production
+          ExecStart=/opt/domoticz/domoticz -www 8087 -sslwww 443
+          EnvironmentFile=/home/michel/domoticz.env
+          #
+          StandardError=inherit
+          Restart=10s
+         RestartSec=always
+          user=michel
+         [Install]
+          WantedBy=multi-user.target
 
-   mettre en service systemd
+      |image1812|
 
-   .. code-block::
+      mettre en service systemd
 
-      sudo systemctl daemon-reload
-      sudo systemctl enable domoticz.service
+      .. code-block::
 
-   |image1813|
+         sudo systemctl daemon-reload
+         sudo systemctl enable domoticz.service
+
+      |image1813|
 
    définir une variable d’environnement pour utiliser un environnement python local.Indiquer votre USER dans home.
 
