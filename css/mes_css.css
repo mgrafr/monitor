@@ -60,7 +60,7 @@ top: 0;width: 100%;}
 .icones_not{position: relative;top:-190px;background-color: #2e333d;height: 130px;}
 .temp_accueil{position: relative;top: -150px;left: 290px;width: 420px;}
 .coultemp{color: #e7e793;}
-#temp_ext{color: rgb(255, 254, 254);font-size: 25px;}
+#temp_ext{color: rgb(255, 254, 254);font-size: 20px;}
 /*pression chaudière, medoc, fosse, porte veranda S, gd portail, porte gar */
 #bar_pression {position: relative;top: -910px;width: 100px;left: 500px;}
 #pression_chaud{width:60px}
@@ -80,6 +80,7 @@ top: 0;width: 100%;}
 #alarme_nuit{position:absolute;top:20px;left: 170px;width: 40px;}
 .aff_bat{position: absolute;top: 20px;left: 120px;}
 #batterie{width: 30px;height: auto;}
+img#pilule{top: 15px;width: 55px;position: absolute;left: 160px;}
 .sos {position:absolute;top: 25px;left: 65px;width:40px;}
 /* ping raspi, boite lettres, lastseen, info */
 #ping_rasp{position: absolute;top: -180px;display: none;left: 150px;width:40px}
@@ -105,7 +106,7 @@ a#annul_notif1{color:white}
 border-color: #e0e3e6;border-radius: 0.55rem}
 #d_btn_a{top: 190px;left: 220px;}
 #d_btn_al{top: 60px;}
-img.btn_appd{width:35px;}
+img.space5, img.space30, img.space10 {width:35px;}
 /*alarme admin*/
 #avb{display: block;background-color: #F5F5DC;width: 400px;position: relative;
     top: -10px;left: 5px;}
@@ -182,11 +183,14 @@ img.btn_appd{width:35px;}
 .but7{margin-top: -32px;}
 .but8{margin-top: -40px;}
 .but9{margin-top: -30px;}
+.but13{margin-bottom: 10px;}
 .space5{margin-top: -5px;}
+..space30{margin-top: -10px;}
 .space30{margin-top: -30px;}
 .but10,.but11,.but12{width: 400px;margin-top: -17px;height:35px;margin-left:20px;}
 .but11{margin-top:-7px}
 .but10{margin-top:-13px;}
+.but14{margin-top: -7px;}
 .logo_rpi,.logo_iob,.logo_sql{position: relative;top: -20px;left: -15px;width: 30px;}
 .logo_sse{position: relative;top: -160px;left: -15px;width: 30px;}
 #phpadmin{position: relative;top: -500px;left: 500px;width:120px}
@@ -213,7 +217,7 @@ img.btn_appd{width:35px;}
 /*ping PI4*/
 #ping_pi4{position: relative;top: -85px;left: 410px;width: 50px;height: 50px;}
 #nagiosmobile {width:750px;margin-top:-50px;height: 700px;}
-#nagiosapp{width: 750px;height: 700px;position: relative;z-index: -1;
+#nagiosapp{width: 750px;height: 700px;position: relative;z-index: 1;
 top: -60px;left:15px}
 /*zigbee2mqtt zwavejs2mqtt frigate & ngiosmobile   -*/
 #zbmqtt,#zwmqtt,#frigate{margin-top: 0px;width: 100%;height: 800px;}
@@ -287,7 +291,7 @@ button {font-size: 0.7em;}
 ul {font-size: small;}
 .temp_accueil {top: -425px;left:-70px} 
 .text-c {margin-left: 40px;font-size: smaller}
-.text-center {font-size: smaller;}
+.text-center {font-size: larger;}
 .logo{width:80px;}
 .menu-h {left: 200px;top: 30px;}
 #jj {margin: 12px 0 0 2px;line-height: normal;}
@@ -296,7 +300,7 @@ ul {font-size: small;}
 .title {font-size: 18px;}
 .subtitle{font-size: small;}
 .fond_date {top: 20px;width: 80px;height: 70px;background-image: url(../images/datemin.svg);}
-.icones_not {position: relative;top: -435px;}
+.icones_not {position: relative;top: -415px;}
 #batterie {width: 20px;}
 .aff_info,.aff_anni {width: 35px}
 #prenom {font-size: 12px;}
@@ -311,19 +315,20 @@ ul {font-size: small;}
 #about_interieur {left: -90px;top: 30px;}
 #ecran { margin-top: 90px;}
 #choix_graph.modal {margin-left: 0px;}
-.text-c {font-size: x-large; }
+.text-c {font-size: large; }
 #ping_pi4 {left: 250px;}
 #nagiosapp {width: 100%;}
 #about_rec {left: 0px;top: 0px;}
-[popover] {left: -30dvw;width: 66dvw;height:34dvh;}
-#d_btn_a {top: 163px; left: 120px;}
+[popover] {left: -30dvw;width: 66dvw;height:55dvh;}
+#d_btn_a {top: 163px; left: 90px;}
 #phpadmin {top: -920px;left: 100px;}
 #about {left: 240px;top: -985px;}
 .aff_pluie {left: 120px;}
-.btn_appd{font-size:12px;width:250px;height:30px}
+.btn_appd{font-size:12px;width:250px;}
 .logo_dz {width: 30px;}
 #status {top: -170px;}
 .logo_sse {top: -140px;}
+.porte_veranda_sud {top: 15px;left: 323px;}
 }
 	/*DCOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
