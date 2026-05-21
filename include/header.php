@@ -46,7 +46,7 @@
                 </div>
         
 <!-- debut affichage date -->							
-<div  class="text-center fond_date">
+<div  class="fond_date">
 <p id="jj">jj</p>
 <p id="numero">numero</p>
 <p id="mm">mm</p></div>
