@@ -13,7 +13,7 @@ elseif(DOMOTIC2=='DZ') {$lien_dz= IPDOMOTIC2; }
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-12">
-        <h1 class="title is-1 has-text-centered">App<span>  diverses</span></h1><br>
+        <h1 class="title has-text-centered">App<span>  diverses</span></h1><br>
         <img src="images/dz.webp" style="width:50px;height:auto;margin:10px 0 10px 120px" alt="dz">
         IP: <?php echo $lien_dz;?>
         <form2>

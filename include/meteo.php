@@ -3,7 +3,7 @@
 		<div id="meteo" class="meteo">
 		<div class="columns">
   <div class="column is-full">
-	  <h1 class="title_met text-center">Prévisions<span>  météo</span></h1>
+	  <h1 class="title_met">Prévisions<span>  météo</span></h1>
 	   <a href="#meteo" class="maj_mconcept"><svg version="1.1" id="refresh" class="maj_met" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 496.2 496.2" xml:space="preserve">
 <style type="text/css">
