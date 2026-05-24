@@ -290,14 +290,14 @@ nav{max-width: 1200px;}
 button {font-size: 0.7em;}
 ul {font-size: small;}
 .temp_accueil {top: -425px;left:-70px} 
-.text-c {margin-left: 40px;font-size: smaller}
+.text-c {margin-left: 40px;font-size: larger}
 .text-center {font-size: larger;}
 .logo{width:80px;}
 .menu-h {left: 200px;top: 30px;}
-#jj {margin: 12px 0 0 2px;line-height: normal;}
+#jj {margin: 12px 0 0 2px;line-height: normal;font-size: 13px;}
 #numero {margin: 0 0 0 2px;font: icon;line-height: normal;}
-#mm{margin: 0 0 0 2px;line-height: normal;}
-.title {font-size: 18px;}
+#mm{margin: 0 0 0 2px;line-height: normal;font-size: 13px;}
+.title {font-size: 20px;}
 .subtitle{font-size: small;}
 .fond_date {top: 20px;width: 80px;height: 70px;background-image: url(../images/datemin.svg);}
 .icones_not {position: relative;top: -415px;}
@@ -315,7 +315,7 @@ ul {font-size: small;}
 #about_interieur {left: -90px;top: 30px;}
 #ecran { margin-top: 90px;}
 #choix_graph.modal {margin-left: 0px;}
-.text-c {font-size: large; }
+.text-c {font-size: larger; }
 #ping_pi4 {left: 250px;}
 #nagiosapp {width: 100%;}
 #about_rec {left: 0px;top: 0px;}
@@ -329,6 +329,7 @@ ul {font-size: small;}
 #status {top: -170px;}
 .logo_sse {top: -140px;}
 .porte_veranda_sud {top: 15px;left: 323px;}
+h1 {font-size: 120%;}
 }
 	/*DCOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
