@@ -2044,7 +2044,7 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 21.10 Home Assistant
 ====================
-installation dans un Conteneur LXC, *c'est mon installation actuelle*
+installation dans un Conteneur LXC et Docker, *c'est mon installation actuelle*
 
 |image1826|
 
@@ -2052,9 +2052,9 @@ installation dans un Conteneur LXC, *c'est mon installation actuelle*
 -----------------------------
 .. code-block::
 
-   wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/docker.sh
-   chmod +x docker.sh
-   ./docker.sh
+   wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/homeassistant.sh
+   chmod +x homeassistant.sh
+   ./homeassistant.sh
 
 |image1833|
 
@@ -2076,9 +2076,9 @@ installation dans un Conteneur LXC, *c'est mon installation actuelle*
 
 |image1314|
 
-j'ai choisi de ne pas installer Portainer
-
 |image1315|
+
+|image1558|
 
 21.10.2 Installer Home Assistant
 --------------------------------
@@ -3809,6 +3809,8 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 700px
 .. |image1535| image:: ../img/image1535.webp
    :width: 600px
+.. |image1558| image:: ../img/image1558.webp
+   :width: 650px
 .. |image1569| image:: ../img/image1569.webp
    :width: 500px
 .. |image1577| image:: ../img/image1577.webp
