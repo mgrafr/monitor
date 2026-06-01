@@ -2048,8 +2048,8 @@ installation dans un Conteneur LXC et Docker, *c'est mon installation actuelle*
 
 |image1826|
 
-21.10.1 Création du conteneur
------------------------------
+21.10.1 Création du conteneur HomeAssistant
+-------------------------------------------
 .. code-block::
 
    wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/homeassistant.sh
@@ -2080,12 +2080,8 @@ installation dans un Conteneur LXC et Docker, *c'est mon installation actuelle*
 
 |image1558|
 
-21.10.2 Installer Home Assistant
---------------------------------
-**Avec Docker compose**
-
-Création de compose.yaml:
-
+21.10.2 HA, fichier Docker compose
+----------------------------------
 .. code-block::
 
    cd /opt
