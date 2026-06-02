@@ -2044,12 +2044,21 @@ Si votre Raspberry Pi (RPI) ne démarre pas et affiche "Impossible d'ouvrir l'ac
 
 21.10 Home Assistant
 ====================
-installation dans un Conteneur LXC et Docker, *c'est mon installation actuelle*
+installation dans une machine virtuelle Proxmox( HA est difficilement installable sur un CT LXC), *c'est mon installation actuelle*
 
 |image1826|
 
-21.10.1 Création du conteneur HomeAssistant
--------------------------------------------
+.. note::
+
+   Désormais Home Assistant ne propose que deux types d'installation différents:
+   - Système d'exploitation Home Assistant 
+   - Home Assistant Container(Docker)
+   L'installation recommandée est celle utilisant le système d'exploitation Home Assistant.Les installations Home Assistant Container n'ont pas accès aux applications.
+
+   |image1705|
+
+21.10.1 Installation de HomeAssistant
+-------------------------------------
 .. code-block::
 
    wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/homeassistant.sh
@@ -3937,6 +3946,8 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 400px
 .. |image1701| image:: ../img/image1701.webp
    :width: 550px
+.. |image1705| image:: ../img/image1705.webp
+   :width: 600px
 .. |image1712| image:: ../img/image1712.webp
    :width: 420px
 .. |image1716| image:: ../img/image1716.webp
