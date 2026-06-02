@@ -2061,9 +2061,9 @@ installation dans une machine virtuelle Proxmox( HA est difficilement installabl
 -------------------------------------
 .. code-block::
 
-   wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/homeassistant.sh
-   chmod +x homeassistant.sh
-   ./homeassistant.sh
+   wget https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/vm/haos-vm.sh
+   chmod +x haos-vm.sh
+   ./haos-vm.sh
 
 |image1833|
 
