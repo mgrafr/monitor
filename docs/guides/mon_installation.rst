@@ -2067,6 +2067,8 @@ installation dans une machine virtuelle Proxmox( HA est difficilement installabl
 
 |image1833|
 
+|image1909|
+
 |image1827|
 
 |image1828|
@@ -4224,6 +4226,8 @@ un exemple de script Python qui s'execute lors d'un changement dans une variable
    :width: 200px
 .. |image1908| image:: ../img/image1908.webp
    :width: 600px
+.. |image1909| image:: ../img/image1909.webp
+   :width: 550px
 .. |image1910| image:: ../img/image1910.webp
    :width: 500px
 .. |image1911| image:: ../img/image1911.webp
