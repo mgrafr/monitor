@@ -2091,39 +2091,13 @@ installation dans une machine virtuelle Proxmox( HA est difficilement installabl
 
 |image1558|
 
-21.10.2 HA, fichier Docker compose
-----------------------------------
-.. code-block::
-
-   cd /opt
-   mkdir ha
-   cd ha
-   nano compose.yaml
-
-le fichier compose.yaml:
-
-.. code-block::
-
-   services:
-     homeassistant:
-       container_name: homeassistant
-       image: "ghcr.io/home-assistant/home-assistant:stable"
-       volumes:
-         - /opt/ha/config:/config
-         - /etc/localtime:/etc/localtime:ro
-         - /run/dbus:/run/dbus:ro
-       restart: unless-stopped
-       privileged: true
-       network_mode: host
+21.10.2 Dans un Navigateur
+--------------------------
+L'adresse IP dans Proxmox:
 
 |image1309| 
 
 Lancer Home assistant:
-
-.. code-block::
-
-   docker compose -d
-   http://IP_CONTENEUR:8123
 
 |image1308|
 
@@ -2133,12 +2107,7 @@ Le cas échéant, restauration de la sauvegarde
 
 21.10.2.1 Mise à jour de Home Assistant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block::
-
-   cd /opt/ha
-   docker compose pull
-
-|image1569|
+en cours 
 
 21.10.3 Installation de HACS, Pyscript, etc
 -------------------------------------------
