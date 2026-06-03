@@ -2113,6 +2113,10 @@ en cours
 
 21.10.3 Installation de HACS, Pyscript, etc
 -------------------------------------------
+.. IMPORTANT::
+
+   Pour la version container avec laquelle les modules complémentaires ne peuvent être importés depuis l'application.
+
 Téléchagement dans le répertoire :darkblue:`/opt/ha/congfig` :
 
 .. code-block::
