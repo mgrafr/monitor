@@ -2051,8 +2051,10 @@ installation dans une machine virtuelle Proxmox( HA est difficilement installabl
 .. note::
 
    Désormais Home Assistant ne propose que deux types d'installation différents:
+  
    - Système d'exploitation Home Assistant 
    - Home Assistant Container(Docker)
+  
    L'installation recommandée est celle utilisant le système d'exploitation Home Assistant.Les installations Home Assistant Container n'ont pas accès aux applications.
 
    |image1705|
