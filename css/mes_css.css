@@ -308,7 +308,7 @@ ul {font-size: small;}
 #gd_portail {width: 35px;top: 50px;left: 280px;height: 25px;}
 #porte_gar {width: 25px;height: 25px;top: 50px;left: 315px;}
 .sos {width: 25px;height: 25px;}
-.lastseen, .lastseen1 {width: 90px;left: 145px;}
+.lastseen, .lastseen1 {width: 90px;left: 160px;}
 .aff_pluie {top: -400px;left: 70px;}
 #voltage {top: 470px;}
 #linky {left: 180px;top: -230px;}
@@ -330,6 +330,8 @@ ul {font-size: small;}
 .logo_sse {top: -140px;}
 .porte_veranda_sud {top: 15px;left: 323px;}
 h1 {font-size: 120%;}
+img#pilule {width: 40px;left: 140px;}
+}
 }
 	/*DCOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
