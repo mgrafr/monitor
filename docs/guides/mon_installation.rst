@@ -742,6 +742,16 @@ Si vous utilisez un système de fichiers ext4 avec EFI, donc vous utilisez GRUB,
 
    pvecm delnode pve
 
+21.1.8.8 Failed to set wall message, ignoring: 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Transport endpoint is not connected
+
+Reboot est impossible, pour le forcer:
+
+.. code-block::
+
+   systemctl --force --force reboot
+
 21.1.9 Update Proxmox
 ---------------------
 https://rdr-it.com/comment-migrer-proxmox-ve-8-vers-9/
