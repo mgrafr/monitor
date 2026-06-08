@@ -1009,7 +1009,7 @@ Il suffit de cliquer sur les lampes pour les allumer ou les éteindre.
 
 J'ai commencé par utiliser Domoticz et comme je ne suis pas fan des fichiers YAML, je préfère utilisé io.broker avec lequel il est facile d'utiliser également Blocky ou de convertir facilement les scripts Lua de Domoticz en Javascript.
 
-Par rapport à ioBroker, Home Assistant utilise moins de ressources, Z2m en utilise encore moins ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d'utiliser les 4 systèmes simultanément.
+Par rapport à ioBroker, Home Assistant utilise moins de ressources en CT LXC mais la version Docker n'est plus conseillée aussi l'utilisation en VM demande plus de mémoire , Z2m en utilise encore moins ce qui est un avantage sur les systèmes les plus légers.Avec un mini PC il est possible avec Proxmox d'utiliser les 4 systèmes simultanément.
 
 .. note::
 
@@ -1025,6 +1025,10 @@ Par rapport à ioBroker, Home Assistant utilise moins de ressources, Z2m en util
    le Javascript reçoit ces informations:
 
    |image1537| 
+
+   **Il est possible de recevoir sur ioBoker l'état des dispositifs gérés par Home Assistant; voir l'exemple de l'imprimante Brother gérées par HA , non gérée par Domoticz et gérée difficilement (Adaptateur SNMP)  par Io Broker.
+
+   |image2010| 
  
 0.2.3. Premier dispositif
 =========================
@@ -2711,3 +2715,5 @@ function mc(variable,id)
    :width: 600px
 .. |image1978| image:: ../img/image1978.webp
    :width: 600px
+.. |image2010| image:: ../pict/imageéà&à.webp
+   :width: 650px
