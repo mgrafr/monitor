@@ -2650,6 +2650,8 @@ Pour réupérer des informations ou envoyer une commande Io.broker est plus faci
 
 J'ai installé io.broker pour créer une page sur monitor cncernant mon robot tondeuse Worx Landroid: voir ce § :ref:`21.14 Robot tondeuse Landroid Worx`
 
+J'utilise l'adaptateur Home Assistant pour certains dispositifs; pour ne pas surcharger Monitor je crée un Alias pour chaque dispositif concerné afin de n'inerrogé que les appareils déjà enregistrés dans la base SQL de monitor, voir ce § :ref:`21.13.6 Adaptateur Home Assistant`
+
 |image1425|
 
 **configuration du courtier io**
@@ -2843,7 +2845,8 @@ Il suffit de copier les lignes concernées par cette liaison serie dans la confi
    iobroker restore <chemin de la sauvegarde>
    iob start
 
-
+21.13.6 Adaptateur Home Assistant
+---------------------------------
 
 21.14 Robot tondeuse Landroid Worx
 ==================================
