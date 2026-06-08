@@ -15,7 +15,7 @@ switch ($t1) {
         return $row;
 	break;
 	case "iob" :
-	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s."' AND Actif = '".$s1."' AND nom_objet = '".$s2."' AND maj_js <> 'variable';";
+	$sql="SELECT * FROM ".DISPOSITIFS." WHERE ID = '".$s."' AND Actif = '".$s1."' AND maj_js <> 'variable';";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
 	return $row;
