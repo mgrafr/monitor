@@ -566,9 +566,12 @@ if(array_key_exists('battery', $lect_device)==true) {$lect_device["BatteryLevel"
 if (!$lect_device["BatteryLevel"]){ $lect_device["BatteryLevel"]=255;}			
 	if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
     if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
-if ($periph['F()']>0) {$nc=$periph['F()'];$lect_device["Data"]=pour_data($nc,$lect_device["Data"]);$lect_device["Fx"]=$periph['F()'];}
-if ($periph['F()']==0) {$lect_device["Fx"]=$periph['F()'];}
-if ($periph['F()']==-1) {$lect_device["Fx"]="lien_variable";}			
+    $str=explode(':',$periph['F']);if ($str[0]>0) {$nc=$str[0];$lect_device["notification"]=pour_data($nc,$lect_device["Data"],$periph['idm']);
+		//$str=explode(':',$lect_device["Data"]);$count_str=count($str);
+			//if ($count_str>1){$lect_device["Data"]=$str[1];}	
+		$lect_device["Fx"]=$periph['F'];}
+if ($periph['F']==0) {$lect_device["Fx"]=$periph['F'];}
+if ($periph['F']==-1) {$lect_device["Fx"]="lien_variable";}			
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
 if (!$lect_device['values']){$lect_device['values']="";}
@@ -584,6 +587,7 @@ if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
 	'ID' => $lect_device["ID"],
 	'serveur' => $lect_device["serveur"],			 
 	'Data' => $lect_device["Data"],
+	'notification' => $lect_device["notification"],
 	'Name_alias' => $lect_device["N"],			 
 	'device' => $device,
 	'attributs' => $lect_device["attributes"],			 
@@ -1560,14 +1564,25 @@ $conn->close();
 return $content;
 }
 
-function pour_data($nc,$l_device){
+function pour_data($nc,$l_device,$l_idm=""){
 switch ($nc) {
     case 1:	
 $l_dev= explode(";",$l_device);$l_device=$l_dev[4]/1000;
 return $l_device;
 break;
+    case 2:	
+$conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
+$sql="SELECT inf($l_idm,$l_device)";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+// Get result set and fetch all rows
+$result = $stmt->get_result();
+$data = $result->fetch_all(MYSQLI_ASSOC);
+$stmt->close();
+$conn->close();
+return implode(":", $data[0]);
+break;
 default:
-
 }				
 }
 //----------------------------------------
@@ -1597,7 +1612,7 @@ break;
 		if ($data["pass"]=="alarme"){$data["pass"]="pwdalarm";}
 		elseif ($data["pass"]=="commandes"){$data["pass"]="pwdcommand";}
 		else $data["pass"]="0";
-$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `Actif`,`param`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F()`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['nom_objet']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["actif"]."','".$data["param"]."' , '".$data["ls"]."' , '".$data["maj_js"]."', '".$data["id1_html"]."', '".$data["car"]."', '".$data["fx"]."', '".$data["id2_html"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["class"]."', '".$data["coulc"]."', '".$data["could"]."', '".$data["pass"]."', '".$data["obs"]."');";		
+$sql="INSERT INTO `dispositifs` (`num`, `nom_appareil`, `nom_objet`, `idx`, `ID`, `idm`, `Actif`,`param`, `ls`, `maj_js`, `id1_html`, `car_max_id1`, `F`, `id2_html`, `coul_id1_id2_ON`, `coul_id1_id2_OFF`, `class_lamp`, `coul_lamp_ON`, `coul_lamp_OFF`, `pass`, `observations`) VALUES (NULL, '".$data['nom']."', '".$data['nom_objet']."', '".$data["idx"]."', '".$data["ID"]."', '".$data["idm"]."', '".$data["actif"]."','".$data["param"]."' , '".$data["ls"]."' , '".$data["maj_js"]."', '".$data["id1_html"]."', '".$data["car"]."', '".$data["fx"]."', '".$data["id2_html"]."', '".$data["coula"]."', '".$data["coulb"]."', '".$data["class"]."', '".$data["coulc"]."', '".$data["could"]."', '".$data["pass"]."', '".$data["obs"]."');";		
 		echo '<em>valeurs enregistrées</em><br>'.'nom appareil: '.$data["nom"].'<br>maj_js : '.$data["maj_js"].'<br>idx : '.$data["idx"].'<br>nom : '.$data["nom_objet"].'<br>idm : '.$data["idm"].'<br>Actif : '.$data["actif"].'<br>ID : '.$data["ID"].'<br>ID1_html : '.$data["id1_html"].'<br>ID2_html : '.$data["id2_html"].'<br>coul_id1_id2_ON : '.$data["coula"].'<br>coul_id1_id2_OFF : '.$data["coulb"].'<br>param : '.$data["table"].'<br>lastseen : '.$data["ls"].'<br>class lampe : '.$data["class"].'<br>coul_lamp_ON : '.$data["coulc"].'<br>coul_lamp_OFF : '.$data["could"].'<br>mot_passe : '.$data["pass"].'<br>fx: '.$data["fx"].'<br>nb caractéres : '.$data["car"].'<br>Observations : '.$data["obs"].'<br><br>';
 //
 maj_query($conn,$sql);			
@@ -1629,7 +1644,7 @@ case "7":
 $result = $conn->query($sql);//if ($result === FALSE) {echo "pas id";return "";}
 $row = $result->fetch_assoc();
 $data=$row;		
-echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4,monitor=5,zb=6</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>param : <input type="text" style="width:260px;margin-left:10px;" id="param" value="'.$data["param"].'"><em style="font-size:12px;margin-left:4px;">zb, voir doc</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F()"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button class="button is-black is" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
+echo '<form2><input type="hidden"id="app" value="dev_bd"><input type="hidden" id="command"  value="8"><em>valeurs enregistrées</em><br>'.'nom appareil : <input type="text" style="width:250px;margin-left:10px;" id="nom" value="'.$data["nom_appareil"].'"><br>maj_js : <input type="text" style="width:70px;margin-left:5px;" id="maj_js" value="'.$data["maj_js"].'"><em style="font-size:12px;margin-left:4px;">control,etat,onoff,temp,data,onoff+stop,on,popup</em><br>idx : <input type="text" style="width:50px;margin-left:10px;" id="idx" value="'.$data["idx"].'"><br>nom_objet : <input type="text" style="width:250px;margin-left:10px;" id="nom_objet" value="'.$data["nom_objet"].'"><br>idm : <input type="text" style="width:50px;margin-left:10px;" id="idm" value="'.$data["idm"].'"><br>Actif : <input type="text" style="width:30px;margin-left:10px;" id="actif" value="'.$data["Actif"].'"><em style="font-size:12px;margin-left:4px;">actif: inactif=0,dz=1 ou 2,ha=3,iobroker=4,monitor=5,zb=6</em><br>ID : <input type="text" style="width:250px;margin-left:10px;" id="ha_id" value="'.$data["ID"].'"><br>id1_html : <input type="text" style="width:250px;margin-left:10px;" id="id1_html" value="'.$data["id1_html"].'"><br>id2_html : <input type="text" style="width:250px;margin-left:10px;" id="id2_html" value="'.$data["id2_html"].'"><br>coul_id1_id2_ON : <input type="text" style="width:250px;margin-left:10px;" id="coula" value="'.$data["coul_id1_id2_ON"].'"><br>coul_id1_id2_OFF : <input type="text" style="width:250px;margin-left:10px;" id="coulb" value="'.$data["coul_id1_id2_OFF"].'"><br>param : <input type="text" style="width:260px;margin-left:10px;" id="param" value="'.$data["param"].'"><em style="font-size:12px;margin-left:4px;">zb, voir doc</em><br>lastseen : <input type="text" style="width:20px;margin-left:10px;" id="ls" value="'.$data["ls"].'"><em style="font-size:12px;margin-left:4px;">lastseen=1 sinon=0</em><br>class lampe: <input type="text" style="width:250px;margin-left:10px;" id="class" value="'.$data["class_lamp"].'"><br>coul_lamp_ON : <input type="text" style="width:250px;margin-left:10px;" id="coulc" value="'.$data["coul_lamp_ON"].'"><br>coul_lamp_OFF : <input type="text" style="width:250px;margin-left:10px;" id="could" value="'.$data["coul_lamp_OFF"].'"><br>mot_passe : <input type="text" style="width:130px;margin-left:10px;" id="pass" value="'.$data["pass"].'"><em style="font-size:12px;margin-left:4px;">pwdalarme, pwdcommand ou 0</em><br>fx: <input type="text" style="width:30px;margin-left:10px;" id="fx" value="'.$data["F"].'"><br>nb car_max_id1 : <input type="text" style="width:40px;margin-left:10px;" id="car" value="'.$data["car_max_id1"].'"><br>Observations : <input type="text" style="width:290px;margin-left:10px;" id="obs" value="'.$data["observations"].'"><br><br><button class="button is-black is" onclick="adby(5)" style="width:50px;height:30px">Envoi</button> <form2>';	
 //return $row; 
 break;
 case "8": 
@@ -1646,7 +1661,7 @@ ls= '".$ls ."',
 maj_js = '".$data['maj_js'] ."',
 id1_html = '".$data['id1_html']."',
 car_max_id1 = '".$data['car'] ."',
-`F()` = ".intval($data['fx']) .",
+`F` = ".intval($data['fx']) .",
 id2_html= '".$data['id2_html'] ."',
 coul_id1_id2_ON = '".$data['coula'] ."',
 coul_id1_id2_OFF= '".$data['coulb'] ."',
