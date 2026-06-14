@@ -13,6 +13,9 @@ sed -i "s/=> '9001',/=> '9001',\/\/ Websocket/" admin/config.php
 sed -i "s/=> '8883',/=> '8883',\/\/ MQTTS/" admin/config.php
 sed -i "s/=> '443'));/'443'));\/\/ WSS pour Letsencrypt laisser 443,/" admin/config.php
 sed -i "/pour Letsencrypt laisser 443/a \ \/\/ COURTIER ET NGINX DOIVENT ECOUTER LE MEME PORT ex:9002" admin/config.php
+echo "Entrer mot passe root de msqql"
+read passe
+echo "MOT PASSE, $passe "
 result()(mysql --user="root" --password="$passe" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'F()';") 
 res=${result} 
 if [[ ${res:0:5} != 'Field' ]] 
