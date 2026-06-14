@@ -18,6 +18,12 @@ if [[ ${res:0:5} != 'Field' ]]
 then 
 mysql --user="root" --password="$passe" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE materiel param text;"
 fi
+result()(mysql --user="root" --password="$passe" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'F()';") 
+res=${result} 
+if [[ ${res:0:5} != 'Field' ]] 
+then 
+mysql --user="root" --password="$passe" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE F() F text;"
+fi
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
 cp -u index_loc.php /www/monitor/index_loc.php
