@@ -5,7 +5,7 @@ mkdir -p tmp
 cd tmp
 git clone https://github.com/mgrafr/monitor.git
 cd monitor
-# maj 4.1.3
+# maj 4.2.0
 sed -i "s/: ws=9001 wss=9002 ou 9883/=9001   pour anciennes versions de Monitor***/" admin/config.php
 sed -i "/pour anciennes versions de Monitor/a \define('MQTT_PORTS', array(\n'mqtt' => '1883', \n'ws' => '9001', \n'mqtts' => '8883',\n'wss' => '443'));" admin/config.php
 sed -i "s/=> '1883',/=> '1883',\/\/ MQTT/" admin/config.php
@@ -13,6 +13,12 @@ sed -i "s/=> '9001',/=> '9001',\/\/ Websocket/" admin/config.php
 sed -i "s/=> '8883',/=> '8883',\/\/ MQTTS/" admin/config.php
 sed -i "s/=> '443'));/'443'));\/\/ WSS pour Letsencrypt laisser 443,/" admin/config.php
 sed -i "/pour Letsencrypt laisser 443/a \ \/\/ COURTIER ET NGINX DOIVENT ECOUTER LE MEME PORT ex:9002" admin/config.php
+result()(mysql --user="root" --password="$passe" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'F()';") 
+res=${result} 
+if [[ ${res:0:5} != 'Field' ]] 
+then 
+mysql --user="root" --password="$passe" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE F() F text;"
+fi
 # -----------------------------------
 cp -u ajax.php /www/monitor/ajax.php
 cp -u fonctions.php /www/monitor/fonctions.php
