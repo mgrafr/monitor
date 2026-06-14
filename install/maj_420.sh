@@ -40,6 +40,12 @@ if [[ ${res:0:5} != 'Field' ]]
 then 
 mysql --user="root" --password="$passe" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE materiel param text;"
 fi
+result()(mysql --user="root" --password="$passe" --database="monitor" --execute= -e "SHOW COLUMNS FROM dispositifs LIKE 'F()';") 
+res=${result} 
+if [[ ${res:0:5} != 'Field' ]] 
+then 
+mysql --user="root" --password="$passe" --database="monitor" --execute= -e "ALTER TABLE dispositifs CHANGE F() F text;"
+fi
 clientmqtt=$(whiptail --title "installer le client php-mqtt ?" --radiolist \
 "voulez vous installer php-mqtt/client ?\n necessaire pour utiliser zigbee2mqtt directement\n
 depuis monitor(sans utiliser Dz, Ha ou Iobroker)" 15 60 4 \
