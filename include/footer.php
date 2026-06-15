@@ -193,6 +193,10 @@ $.ajax({
 						if (val.ID1) {document.getElementById(val.ID1).style = val.coul_OFF;}
 						if (val.ID2) {document.getElementById(val.ID2).style = val.coul_OFF;}
 					 if (val.class_lamp) { maj_mqtt(val.class_lamp,val.coullamp_OFF,1,0);}}	
+				
+				
+			    if (val.maj_js=="control" && val.notification !==null) {document.getElementById(val.ID1).style.display = "block";}
+				
 				if ((val.maj_js=="etat") && (val.Data=="Open")){document.getElementById(val.ID1).style = val.coul_ON;}
 				if ((val.maj_js=="etat") && (val.Data=="Closed")){document.getElementById(val.ID1).style = val.coul_OFF;}	
 				}
