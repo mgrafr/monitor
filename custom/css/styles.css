@@ -53,16 +53,18 @@
 #worx, #exterieur{
     background-color: aquamarine;}
 #porte_ent_ver_sud_O{width:30px;height:50px;position:absolute;top:15px;
-	left:300px}   
+	left:300px} 
+#brother{display: block;width: 40px;position: relative;left: 300px;top: -60px;}     
 @media (max-width: 768px) {
     #porte_ent_ver_sud_O {top: 15px;}
 }
 @media (max-width:534px) {
 #img_worx{left:0px}.inclinaison{top: -10px;left: 150px;}
+#brother{width: 30px;top: 70px;}
 }
 @media (max-width:360px) {
     #porte_ent_ver_sud_O {width: 20px;height: 30px;top: 10px;} 
     #reset_erreur_exterieur {top: 590px;}
 #erreur_exterieur {top: 600px;}
-
+#brother{width: 25px;left: 250px;top: 46px;}
 }  
