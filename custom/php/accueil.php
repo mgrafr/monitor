@@ -1,12 +1,6 @@
 <!--accueil start -->
-<!-- image de la page d'accueuil déclarée dans admin/config.php -->
-<style>
- .banner-image {background-image: url(images/truffiere.jpg);}   
-@media (max-width: 823px) {
-    .banner-image {background-image: url(images/truffiere_823.jpg); } }    
-@media (max-width: 360px) {
-    .banner-image {background-image: url(images/truffieremin.jpg); } }  
-</style>
+<!-- image principale de la page d'accueuil déclarée dans admin/config.php -->
+<?php include("css/styles.php");?>
 <section id="accueil" class="hero is-fullheight is-dark">
 	<div class="banner-image"></div>
 		<div class="columns temp_accueil">
@@ -15,7 +9,6 @@
 					<p class="text-c coultemp">En ce moment , il fait :<span id="temp_ext" ></span></p>
 					<p class="text-center">T° ressentie :<span id="temp_ressentie" style="color:#ffc107;"></span></p>
 				</div>
-			
 		</div>
 <?php $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) $lien_img="/";
@@ -62,7 +55,7 @@ else include("include/lexique_no.php");
 <div class="confirm bl" ><a href="#" id="confirm-box" rel="1018" title="courrier récupéré"><img id="bl" src="images/boite_lettres.svg" alt="boite_lettres" /></a></div>
 <div class="confirm lastseen"><a href="#" id="annul_lastseen" rel="1014" title="Annulation de l'alerte lastseen"><img id="lastseen" src=""/></a></div>
 <div class="confirm lastseen1"><a href="#" id="annul_lastseen1" rel="input_text.essai" title="Annulation de l'alerte lastseen"><img id="lastseen1" src=""/></a></div>
-
+<div id="brother" style="display:none"/><img src="images/tonner.svg" alt="tonner_imp"></div>
 <!-- nofifications disponibles-->
 <div class="confirm notif1"><a href="#" id="annul_notif1" rel="30" title="Annulation de l'alerte notif1"><img id="notif1" src=""/></a></div>
 <div class="confirm notif2"><a href="#" id="annul_notif2" rel="30" title="Annulation de l'alerte notif2"><img id="notif2" src=""/></a></div>
