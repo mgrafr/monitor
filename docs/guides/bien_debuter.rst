@@ -1278,8 +1278,10 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 **Ajout à la base de données des données fournie par Domoticz**
 
-0.3.1 Les Tables "dispositifs(variables)", "text-image", "messages" & "sse"
-===========================================================================
+0.3.1 Les Tables, les Procédures
+================================
+|image2011|
+
 Ces tables sont installées lors de l'installation automatique.
 
 	La correspondance entre les variables Domoticz , HA, IoBroker ou monitor  ou des applications tierces et l’affichage sur les pages perso se fait par l’intermédiaire de la BD « monitor » ;
@@ -2715,5 +2717,7 @@ function mc(variable,id)
    :width: 600px
 .. |image1978| image:: ../img/image1978.webp
    :width: 600px
-.. |image2010| image:: ../pict/imageéà&à.webp
+.. |image2010| image:: ../pict/image2010.webp
    :width: 650px
+.. |image2011| image:: ../pict/image2011.webp
+   :width: 250px
