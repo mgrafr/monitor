@@ -39,8 +39,6 @@
 .main-buttons{position: relative;top: 30px;left:4%;font-size: larger;} 
 /* mode emploi*/
 .mode_empl{width:240px}
-/* Large devices (small desktops <535) */
-
 /*commun page*/
 #exterieur,#worx{
     width: 100%;
@@ -54,9 +52,10 @@
     background-color: aquamarine;}
 #porte_ent_ver_sud_O{width:30px;height:50px;position:absolute;top:15px;
 	left:300px} 
-#brother{display: block;width: 40px;position: relative;left: 300px;top: -60px;}     
+#brother{display: block;width: 35px;position: relative;left: 300px;top: 70px;}     
 @media (max-width: 768px) {
     #porte_ent_ver_sud_O {top: 15px;}
+ #brother{width: 30px;top: 70px;}   
 }
 @media (max-width:534px) {
 #img_worx{left:0px}.inclinaison{top: -10px;left: 150px;}
