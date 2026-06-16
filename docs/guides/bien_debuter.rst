@@ -1648,15 +1648,15 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 
 - car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
 
-- F() N° case(1à99) de la fonction « pour_data() » , fichier :darkblue:`fonctions.php` 
+- F nom de la fonction SQL  , voir le fichier :darkblue:`fonctions.php` 
 	
       . :red:`-1` : indique qu'un lien existe avec une variable à mettre à jour en temps réel; concerne des textes de notification comme pour l'alarme "activer ou désactiver"
 
 	|image1348|
 
-      . :red:`>0` : N° de la fonction à exécuter
+      . :red:  Nom de la fonction SQL à exécuter
 
-      . :red:`0 ou null` : pas de fonction
+      . :red:`null` : pas de fonction
 
         |image1538|
 
