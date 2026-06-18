@@ -566,12 +566,14 @@ if(array_key_exists('battery', $lect_device)==true) {$lect_device["BatteryLevel"
 if (!$lect_device["BatteryLevel"]){ $lect_device["BatteryLevel"]=255;}			
 	if(intval($lect_device["BatteryLevel"])<PILES[2]) {$bat="alarme";if ($al_bat==0) {$al_bat=1;} }
     if(intval($lect_device["BatteryLevel"])<PILES[3]) {$bat="alarme_low";if ($al_bat<2) {$al_bat=2;} }
-    $str=explode(':',$periph['F']);if ($str[0]>0) {$nc=$str[0];$lect_device["notification"]=pour_data($nc,$lect_device["Data"],$periph['idm']);
-		//$str=explode(':',$lect_device["Data"]);$count_str=count($str);
-			//if ($count_str>1){$lect_device["Data"]=$str[1];}	
-		$lect_device["Fx"]=$periph['F'];}
-if ($periph['F']==0) {$lect_device["Fx"]=$periph['F'];}
-if ($periph['F']==-1) {$lect_device["Fx"]="lien_variable";}			
+if (strlen($periph["F"]) >2) {  
+	$str=explode(':',$periph['F']);$nc=$str[0];$r=$lect_device["Data"];
+			$r=pour_data($nc,$lect_device["Data"],$periph['idm']);
+		if ($periph['maj_js']=="control"){$lect_device["notification"]=$r;}
+		if ($periph['maj_js']=="data"){$lect_device["Data"]=$r;}}
+	$lect_device["Fx"]=$periph['F'];
+if ($periph['F']==0) {$lect_device["F"]=$periph['F'];}
+if ($periph['F']==-1) {$lect_device["F"]="lien_variable";}			
 if ($periph['car_max_id1']<10) {$lect_device["Data"]=substr ($lect_device["Data"] , 0, $periph['car_max_id1']);}
 if ($periph['ls']==1) {$periph['ls']="oui";}else {$periph['ls']="non";}	
 if (!$lect_device['values']){$lect_device['values']="";}
@@ -1564,15 +1566,9 @@ $conn->close();
 return $content;
 }
 
-function pour_data($nc,$l_device,$l_idm=""){
-switch ($nc) {
-    case 1:	
-$l_dev= explode(";",$l_device);$l_device=$l_dev[4]/1000;
-return $l_device;
-break;
-    case 2:	
+function pour_data($nc,$l_device,$l_idm){
 $conn = new mysqli(SERVEUR,UTILISATEUR,MOTDEPASSE,DBASE);
-$sql="SELECT inf($l_idm,$l_device)";
+$sql="SELECT $nc($l_idm,'".$l_device."')";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 // Get result set and fetch all rows
@@ -1581,9 +1577,6 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
 $conn->close();
 return implode(":", $data[0]);
-break;
-default:
-}				
 }
 //----------------------------------------
 function mysql_app($data){
@@ -1661,7 +1654,7 @@ ls= '".$ls ."',
 maj_js = '".$data['maj_js'] ."',
 id1_html = '".$data['id1_html']."',
 car_max_id1 = '".$data['car'] ."',
-`F` = ".intval($data['fx']) .",
+`F` = '".$data['fx']."',
 id2_html= '".$data['id2_html'] ."',
 coul_id1_id2_ON = '".$data['coula'] ."',
 coul_id1_id2_OFF= '".$data['coulb'] ."',
