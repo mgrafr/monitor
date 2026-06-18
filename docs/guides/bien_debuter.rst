@@ -1563,7 +1563,7 @@ Comme pour les variables, la table fournie une correspondance entre les disposit
 
 .. note::
 
-   En règ   En règle générale : un numéro(idm) par fonction sauf pour temerature, humidité,  % batterie rassemblés  dans le même dispositif
+   En règ   En règle générale : un numéro(idm) par fonction sauf pour température, humidité,  % batterie rassemblés  dans le même dispositif
 
 **Table « dispositifs »**
  
@@ -1655,12 +1655,17 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
 - car_max_id1 : nb de caractères maximum affichés (concerne Data avec plusieurs données (T°,%hum)
 
 - F nom de la fonction SQL  , voir le fichier :darkblue:`fonctions.php` 
+
+  .. note::   
+
+     le nom de la fonction doit comporter au moins 3 caractères
+     exemple: inf:30 , inf: nom de la fonction sql,  30 seuil max
 	
       . :red:`-1` : indique qu'un lien existe avec une variable à mettre à jour en temps réel; concerne des textes de notification comme pour l'alarme "activer ou désactiver"
 
 	|image1348|
 
-      . :red:  Nom de la fonction SQL à exécuter
+      . :red:  `Nom` de la fonction SQL à exécuter
 
       . :red:`null` : pas de fonction
 
