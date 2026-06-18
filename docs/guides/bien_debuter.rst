@@ -1278,8 +1278,8 @@ Elles ont été créées lors de l’installation automatique, pour l’installa
 
 **Ajout à la base de données des données fournie par Domoticz**
 
-0.3.1 Les Tables, les Procédures
-================================
+0.3.1 Les Tables, les Procédures, les fonctions
+===============================================
 |image2011|
 
 Ces tables sont installées lors de l'installation automatique.
@@ -1524,7 +1524,11 @@ Table avec un enregistrement unique utilisé par l'API monitor
 
 |image1303|
 
-0.3.1.5 Pourquoi une correspondance ?
+0.3.1.5 Fontions et procédures SQL
+""""""""""""""""""""""""""""""""""
+|image2012|
+
+0.3.1.6 Pourquoi une correspondance ?
 """""""""""""""""""""""""""""""""""""
 cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
 
@@ -2721,3 +2725,5 @@ function mc(variable,id)
    :width: 650px
 .. |image2011| image:: ../pict/image2011.webp
    :width: 250px
+.. |image2012| image:: ../pict/image2012.webp
+   :width: 650px
