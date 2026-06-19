@@ -1528,6 +1528,8 @@ Table avec un enregistrement unique utilisé par l'API monitor
 """"""""""""""""""""""""""""""""""
 |image2012|
 
+voir le § :ref:`0.3.2 Les Dispositifs`
+
 0.3.1.6 Pourquoi une correspondance ?
 """""""""""""""""""""""""""""""""""""
 cela évite, lors d’une modification dans Domoticz ou HA, de modifier tous les ID (idm) dans monitor
@@ -1659,7 +1661,36 @@ La table permet en plus de gérer et modifier si besoin l’affichage de tous le
   .. note::   
 
      le nom de la fonction doit comporter au moins 3 caractères
-     exemple: inf:30 , inf: nom de la fonction sql,  30 seuil max
+
+     exemple: inf:30 , inf: nom de la fonction sql,  30 seuil max, concerne des tonner d'imprimante
+
+     |image2013|
+
+     la fonction dans la base de données Monitor:
+
+     .. code-block::
+
+        DELIMITER $$
+		CREATE DEFINER=`michel`@`%` FUNCTION `inf`(`id` VARCHAR(3) CHARSET utf8mb3, `val` VARCHAR(3) CHARSET utf8mb3) RETURNS varchar(50) CHARSET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci
+		    MODIFIES SQL DATA
+		    DETERMINISTIC
+		BEGIN
+		DECLARE res VARCHAR(30);
+		SELECT F INTO res 
+		FROM dispositifs 
+		WHERE idm=id COLLATE utf8_unicode_ci ;-- COLLATE added ;
+		SELECT SUBSTRING_INDEX(res, ':', -1) INTO res;
+		IF val < res
+		THEN SET res='tonner à remplacer';
+		ELSE SET res='';
+		END IF;
+		return res;
+		END$$
+		DELIMITER ;
+
+    Avec PhpMyAdmin :
+
+    |image2014|  
 	
       . :red:`-1` : indique qu'un lien existe avec une variable à mettre à jour en temps réel; concerne des textes de notification comme pour l'alarme "activer ou désactiver"
 
@@ -2732,3 +2763,7 @@ function mc(variable,id)
    :width: 250px
 .. |image2012| image:: ../pict/image2012.webp
    :width: 650px
+.. |image2013| image:: ../pict/image2013.webp
+   :width: 650px
+.. |image2014| image:: ../pict/image2014.webp
+   :width: 700px
