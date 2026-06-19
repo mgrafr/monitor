@@ -792,7 +792,34 @@ le fichier sms_mo.service , pour un démarrage automatique:
   :darkblue:`https://raw.githubusercontent.com/mgrafr/monitor/refs/heads/main/share/python/sms_mo.service`
 
 
-18.13 Glossaire
+18.13 Exemple de fonction SQL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18.13.1  linky
+==============
+pour récupérer la puissance depuis le Data de Domoticz : **26504.0;0;0;0;2941.0;0**
+
+.. code-block::
+
+   DELIMITER $$
+	CREATE DEFINER=`michel`@`%` FUNCTION `linky`(`id` VARCHAR(3) CHARSET utf8mb3, `val` VARCHAR(50) CHARSET utf8mb3) RETURNS varchar(50) CHARSET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci
+    	MODIFIES SQL DATA
+    	DETERMINISTIC
+	BEGIN
+	DECLARE res VARCHAR(30);
+
+	SELECT F INTO res 
+	FROM dispositifs 
+	WHERE idm=id COLLATE utf8_unicode_ci ;-- COLLATE added ;
+	SELECT SUBSTRING_INDEX(res, ':', -1) INTO res;
+	SELECT SUBSTRING_INDEX(val, ";", 5) into val;
+	SELECT SUBSTRING_INDEX(val, ";", -1) into val;
+	SET res = val/res;
+	RETURN res;
+	END$$
+	DELIMITER ;
+
+
+18.14 Glossaire
 ^^^^^^^^^^^^^^^
 
 .. admonition:: **Points de données ou data points**
