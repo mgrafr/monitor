@@ -66,7 +66,7 @@ if ($row['maj_js']=="on="){$query=".";$f='var command=$(this).attr("rel");'.$f1;
 else $f=$f1;
 if ($u=="6"){$str=explode(':',$row['param']);$commande=$str[1];}
 $id_dom=$row['ID'];$id_dom=str_replace("\r\n","",$id_dom);
-if($ser_dom=="dz"){$id_dom=$row['idx'];}
+if($u=="2"){$id_dom=$row['idx'];}
 if($row['id1_html']!='' && $row['id1_html']!='#' ){$s='$("'.$query.$row["id1_html"];
 	if($row['id2_html']!=''){$s=$s.','.$query.$row['id2_html'];}
 		if ($row['maj_js']=="onoff+stop") {$sl='").on("click", function (){let c_rel=$(this).attr("rel");switches("'.$row['Actif'].'","'.$row['idm'].'","'.$row['idx'].'",c_rel,pass="0")});';}
