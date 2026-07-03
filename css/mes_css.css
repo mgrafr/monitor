@@ -331,8 +331,9 @@ ul {font-size: small;}
 .porte_veranda_sud {top: 15px;left: 323px;}
 h1 {font-size: 120%;}
 img#pilule {width: 40px;left: 140px;}
+.fosse_septique {left: 230px;top: 35px;width: 50px;}
 }
-}
+
 	/*DCOUVERTE*/
 #decouv_int{position: relative;top:-100px;}
 
