@@ -11,6 +11,7 @@ $cle=array_search('DZ',$L0);if ($cle!==false) {$l_dz=$L0[$cle];$L_dz=$L0[$cle+1]
 $cle=array_search('HA',$L0);if ($cle!==false) {$l_ha=$L0[$cle];$L_ha=$L0[$cle+1];$IP_ha=$L0[$cle+2];$USER_ha=$L0[$cle+3];$PWD_ha=$L0[$cle+4];$Token_ha=$L0[$cle+5];$port_api_ha=$L0[$cle+6];$port_webui_ha=$L0[$cle+7];}
 $cle=array_search('IOB',$L0);if ($cle!==false) {$l_iob=$L0[$cle];$L_iob=$L0[$cle+1];$IP_iob=$L0[$cle+2];$USER_iob=$L0[$cle+3];$PWD_iob=$L0[$cle+4];$Token_iob=$L0[$cle+5];$port_api_iob=$L0[$cle+6];$port_webui_iob=$L0[$cle+7];}
 $cle=array_search('ZB',$L0);if ($cle!==false) {$l_zb=$L0[$cle];$L_zb=$L0[$cle+1];$IP_zb=$L0[$cle+2];$USER_zb=$L0[$cle+3];$PWD_zb=$L0[$cle+4];$Token_zb=$L0[$cle+5];$port_api_zb=$L0[$cle+6];$port_webui_zb=$L0[$cle+7];}
+$cle=array_search('MO',$L0);if ($cle!==false) {$l_mo=$L0[$cle];$L_mo=$L0[$cle+1];$IP_mo=$L0[$cle+2];$USER_mo=$L0[$cle+3];$PWD_mo=$L0[$cle+4];$Token_mo=$L0[$cle+5];$port_api_mo=$L0[$cle+6];$port_webui_mo=$L0[$cle+7];}
 include ("include/fonctions_1.php");//fonction sql_plan
 //
 function send_api_put_request($url, $parameters, $data) {
@@ -102,7 +103,8 @@ return $msg;
 /*utilisée pour lire les variables de domoticz
 cette fonction permet egalement suivant le contenu de la variable de
 determiner une image qui peut être afficher (poubelles,fosse septique,...*/
-function status_variables($xx){global $l_dz,$L_dz,$token_dz,$L_ha,$l_ha,$token_ha,$L_iob,$l_iob,$token_iob;
+function status_variables($xx){global $l_dz,$L_dz,$token_dz,$L_ha,$l_ha,$token_ha,$L_iob,$l_iob,$token_iob,$l_mo,$token_mo,$l_zb,$token_zb;
+atmo();// mesure Qualité de l'AIR
 $p=0;$n=0;$L0=array();
 if($l_dz != ""){
 $L=$L_dz."json.htm?type=command&param=getuservariables";
@@ -131,20 +133,21 @@ $json_string1=explode(',',$json_string1);
 	$n++;$p++;}
   }
 //----------------------------------------
-if ($l_iob!=""){
+if ($l_iob!="" || $l_mo!="" || $l_zb!=""){
 $rows=sql_variable(5,7);$na=0;// si Actif=5 on récupère LES VARIABLES DE MONITOR
 // utilisées avec iobroker
-while ($rows[$na]!=""){
+while (isset($rows[$na])==true){
 $iob[$na]=[
 	'idm' => $rows[$na]["idm"],
 	'Type'=> 'SQL',
 	'ID' => $rows[$na]["ID"],
+	'Value' => $rows[$na]["Value"]
 	];
 $result[$p]=$iob[$na];
 //-----------------------------------------
 	$na++;$p++;} }
-if (API=="true"){
-$lect_msg=sql_variable($p,4);//return $lect_msg;
+if (API=="true"){$p++;
+$lect_msg=sql_variable($p+1,4);//return $lect_msg;
 while ($lect_msg[$p]!=""	){
 $result[$p]=$lect_msg[$p];
 	$p++;	} 
@@ -162,17 +165,20 @@ $value = $lect_var['Value'];$content="";
 	if (str_contains($value, '#')) {$tab = explode("#", $value);
 	$value = $tab[0];$content=$tab[1];}
 if ($value=="msg") {$content=$result[$n]['contenu'];
-$id_m_txt = $result[$n]['ID_txt'];$id_m_img="";}
+	$id_m_txt = $result[$n]['ID_txt'];$id_m_img="";}
  else {	
 $type = $lect_var['Type'];
 if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,3);}
-else if ($type=="SQL") {$a='idm';$vardz = sql_variable($$a,8);}	 
+//
+else if ($type=="SQL") {$a='idm';$vardz = sql_variable($idm,8);}	 
 else {$a='idx';$vardz = sql_variable($$a,0);}
 if ($vardz!=null){$name=$vardz['nom_objet'];$actif=$vardz['Actif'];$idm=$vardz['idm'];$num=$vardz['num'];$id_m_txt=$vardz['id2_html'];$id_m_img=$vardz['id1_html'];} 
 else {$name="";$actif=$vardz;$num="num".$n;}
-$exist_id="oui";	 
+$exist_id="oui";
+//test	 
 if ($actif=="2" & $type=="HA") {break;}
-if ($actif=="3" & (int)$type<5) {break;}	 
+if ($actif=="3" & (int)$type<5) {break;}
+//	 
 $txtimg = sql_variable($value,1);
 	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
 	$icone = isset($txtimg['icone']) ? $txtimg['icone'] : '';
@@ -225,7 +231,7 @@ function sql_variable($t,$ind){
 	$result = $conn->query($sql);
 	$row_cnt = $result->num_rows;
 	if ($row_cnt==0) {return  null;}
-	if 	($ind==2) {$n=0;
+	if 	($ind==2) {$n=0;$ligne=[];
 		while ($ligne = $result->fetch_assoc()) {
 			$retour[$n]['num'] = $ligne['num'];
 			$retour[$n]['idm'] = $ligne['idm'];
@@ -236,7 +242,7 @@ function sql_variable($t,$ind){
 			$retour[$n]['id_txt'] = $ligne['id2_html'];
 			$n++;
 		}return $retour;}
-	elseif 	($ind==4) {//$n=1;
+	elseif 	($ind==4) {$ligne=[];//$n=1;
 		while ($ligne = $result->fetch_assoc()) {
 			$retour[$t]['Name'] = $ligne['nom'];
 			$retour[$t]['ID_txt'] = $ligne['id1_html'];
@@ -245,7 +251,7 @@ function sql_variable($t,$ind){
 			$retour[$t]['Value'] = "msg";
 			$t++;
 		}return $retour;}
-	elseif 	($ind==5){ $i=0;
+	elseif 	($ind==5){ $i=0;$ligne=[];
 		while ($ligne = $result->fetch_assoc()) {$retour[$i]=new stdClass;
 			if ($ligne['param']!=null) {$str=explode(":",$ligne['param']) ;$json=$str[1];if ($json==null){$json="no_zb";}}
 			else {$json="no_zb";}
@@ -254,19 +260,20 @@ function sql_variable($t,$ind){
 			else {$retour[$i]->id = "err";$retour[$i]->idm = $ligne['idm'];}																 
 			$i++;}
 	return $retour;}
-	elseif 	($ind==6) {//$n=1;
+	elseif 	($ind==6) { $ligne=[];//$n=1;
 		$ligne = $result->fetch_assoc();
 			$retour['Name'] = $ligne['nom_objet'];
 			$retour['ID'] = $ligne['ID'];
 			$retour['idx'] = $ligne['idx'];
 			$retour['Actif'] = $ligne['Actif'];
 			return $retour;}
-	elseif ($ind==7) {$n=0;
+	elseif ($ind==7) {$n=0;$ligne=[];
 		while ($ligne = $result->fetch_assoc()) {
 			$retour[$n]['num'] = $ligne['num'];
 			$retour[$n]['idm'] = $ligne['idm'];
 			$retour[$n]['Actif'] = $ligne['idx'];
 			$retour[$n]['ID'] = $ligne['ID'];
+			$retour[$n]['Value'] = $ligne['param'];
 			$n++;
 		}return $retour;}
 	else {$row = $result->fetch_assoc();
@@ -742,7 +749,24 @@ if ($auth<3){$json2="json.htm?param=";$json3="&type=command";
 else {$result['status']="acces interdit";}
 return $result;
   }
-
+// Pollution
+// https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454
+// <div id="widget-needle" class="c-gauge-needle" style="transform: rotate(-52deg);"></div>  moyen
+function atmo(){
+$L="https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454";
+$chaine=file_get_curl($L);
+$rec='<p class="text-center">';$rec1="</p>";
+$resultat = explode($rec, $chaine);
+$resultat =explode($rec1,$resultat[1]);
+$encode=$resultat[0];
+$data = [
+	"command" => 16,
+	"nom_objet" => "atmo",
+	"value" => "atmo_".$encode
+         ];
+mysql_app($data);
+return $encode;
+}
 /*POUR METEO CONCEPT*/
 //-----------------------------------
 function meteo_concept($choix){
@@ -1259,7 +1283,7 @@ case "21" :
 case "23" :			
 echo $file.'<br><em style="color:red">le fichier doit être autorisé en écriture (666)</em><br><div id="result"><form >';
      $content = file_get_contents($file);
-	 if($choix==3){ file_put_contents(VARTAB.'.bak.'.$time, $content);}	 
+	 if($choix==3){ echo '<em style="color:green">le propriétaire du fichier: www-data';file_put_contents(VARTAB.'.bak.'.$time, $content);}	 
 	 else {file_put_contents($file.'.bak.'.$time, $content);}
 	 if($choix==7){$_SESSION["contenu"]=$content; $find="PWDALARM','";$tab = explode($find, $content);$tab=$tab[1];$tab = explode("'", $tab);$content=$tab[0];
 		$_SESSION["mdpass"]=$find.$content;$height="30";}
@@ -1710,6 +1734,11 @@ return $row;
 break;	
 case "15":
 	$sql="UPDATE 2fa_token SET token = '".$data['token']."' WHERE user_id = '".USERMONITOR."';";
+	$retour=maj_query($conn,$sql,"6");
+	//echo $retour;
+break;	
+case "16":
+	$sql="UPDATE dispositifs SET param = '".$data['value']."' WHERE nom_objet = '".$data['nom_objet']."';";
 	$retour=maj_query($conn,$sql,"6");
 	//echo $retour;
 break;	
