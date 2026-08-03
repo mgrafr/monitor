@@ -24,6 +24,7 @@ version en développement v 4.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction bug concernant la liste lastseen
 - Changer nom champ F() en F (pour utiliser les fonctions et procédures mysql)
+- Ajout qualité de l'air depuis ATMO
 
 Version 4.2.0 (mai 2026)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
