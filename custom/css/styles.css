@@ -52,7 +52,9 @@
     background-color: aquamarine;}
 #porte_ent_ver_sud_O{width:30px;height:50px;position:absolute;top:15px;
 	left:300px} 
-#brother{display: block;width: 35px;position: relative;left: 300px;top: 70px;}     
+#brother{display: block;width: 35px;position: relative;left: 300px;top: 70px;}  
+#pollution{position: absolute;top: -480px;left: 120px;color: black;}
+#atmo{position: absolute;top: 30px;width: 100px;left: 5px;}   
 @media (max-width: 768px) {
     #porte_ent_ver_sud_O {top: 15px;}
  #brother{width: 30px;top: 70px;}   
