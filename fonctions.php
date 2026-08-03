@@ -1615,8 +1615,7 @@ switch ($choix) {
 //$nom=$data['nom'];
 $nom_objet=$data['nom_objet'];$idm=$data['idm'];$actif=$data['actif'];$idx=$data['idx'];$ID=$data["ID"];$id_img=$data['id_img'];$id_txt=$data['id_txt'];
 if ($actif=="2" || $actif=="3") {$maj_js="variable";}
-if ($actif=="5") {$maj_js="var_sql";}
-if ($actif=="4") {$maj_js="var_sqlite";}
+if ($actif=="4" || $actif=="5" || $actif=="6") {$maj_js="var_sql";}
 else $maj_js="erreur";
 $sql="INSERT INTO dispositifs (nom_objet, idm , Actif, idx, ID, maj_js, id1_html, id2_html) VALUES ('$nom_objet',  '$idm', '$actif', '$idx', '$ID', '$maj_js', '$id_img', '$id_txt');";
 $result = $conn->query($sql);
