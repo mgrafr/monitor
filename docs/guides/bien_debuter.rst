@@ -1374,7 +1374,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
 . **Nom appareil** : non obligatoire
 
-. **nom_objet** : nom de la variable du serveur domotique (dz, ha ou iob); 
+. **nom_objet** : nom de la variable du serveur domotique (dz, ha, mon pour (iob, zb, mon); 
 	mot réservé: BASH, commande Bash; sous Docker l’accès au Shell du serveur n’est pas possible, la parade consiste à passer par monitor; voir ci-après un exemple de commande bash.
 
    .. warning::
@@ -1405,9 +1405,9 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
     |image1384| 
 
-. **Actif** , 2=domoticz, 3=home assistant, 4=iobroker, 5=monitor
+. **Actif** , 2=domoticz, 3=home assistant, 4=iobroker, 5=monitor(iob zb mon si les variables utilise MariaDB de monitor)
 
-. **maj_js** : variable= variables dz ou ha,   var_sql= variables monitor
+. **maj_js** : **variable** = variables dz ou ha,   **var_sql** = variables monitor
 
 . **Id1_html** : ID de l’image dans la page ou #shell (voir ci-dessous)
 
