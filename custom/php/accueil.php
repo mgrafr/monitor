@@ -47,6 +47,7 @@ else include("include/lexique_no.php");
 <div class="confirm poubelles"><a href="#" id="annul_poubelle" rel="1012" title="Annulation de l'\alerte Poubelles"><img id="poubelle" style="display:none" src=""/></a></div>
 <div class="aff_pluie" >
 	<div id="pluie" style="display:none"><img id="pl" src="" alt="pluie" /></div><div id="txt_pluie"></div>  </div>
+ <div id="pollution">Qualité AIR<img id="atmo" src="" alt="pollution" /></div><div id="txt_atmo"></div>  
 <div class="aff_anni" ><img id="aff_anni" src="" alt="anni" /><div id="prenom"></div></div>
 <div class="aff_al" ><img id="alarme_nuit" src="images/alarme_auto.svg" alt="alarme" /></div>
 <?php if (ON_SOS==true) echo '<div class="sos" ><img id="SOS" src="images/sos.svg" width="40" alt="" /></div>';?>
