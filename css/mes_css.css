@@ -283,7 +283,9 @@ nav{max-width: 1200px;}
 .icones_not {height: 300px;}
 .aff_anni{width: 50px;height: auto;top: 10px;left: 220px;display: block;}
 }
-
+@media (max-width:534px) {
+.temp_accueil {top: -200px;left:10px} 
+}
 @media (max-width:360px) {
 .toggle-outer {left:-140px}
 #pwdalarm{left:15px;top:100px}
