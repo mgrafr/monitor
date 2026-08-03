@@ -26,7 +26,7 @@ echo '<div class="container is-fluid">
     <strong>Monitor</strong>
     <input type="hidden" id="app1" value="var_bd">
     <input type="hidden" id="command" value="1">
-    <span class="ml-3">Idm : <input type="text" class="input is-small" style="width: 50px; margin-left: 10px;" value="" id="idm"></span>
+    <span class="ml-3">Idm (nombre >= 1000: <input type="text" class="input is-small" style="width: 50px; margin-left: 10px;" value="" id="idm"></span>
     <span class="has-text-danger">&nbsp;&nbsp;* </span>
     <strong>Domoticz</strong>
     <span class="ml-3">Idx : <input type="text" class="input is-small" style="width: 50px; margin-left: 10px;" value="" id="idx"></span>
@@ -45,15 +45,15 @@ echo '<div class="container is-fluid">
   <span class="has-text-danger">&nbsp;&nbsp;* </span>
   <br>
   <br>
-  <span class="has-text-danger">&nbsp;&nbsp;&nbsp;Actif </span>:&nbsp;&nbsp;
+  <span class="has-text-danger">&nbsp;&nbspActif </span>:&nbsp;
   <input type="radio" name="actif" value="0">
   <span class="has-text-black">Inactif</span>:
   <input type="radio" name="actif" value="2">
-  <span class="has-text-info">Dz </span>&nbsp;&nbsp;
+  <span class="has-text-info">Dz </span>&nbsp;
   <input type="radio" name="actif" value="3">
-  <span class="has-text-success">Ha</span>&nbsp;&nbsp;
+  <span class="has-text-success">Ha</span>&nbsp;
   <input type="radio" name="actif" value="4">
-  <span class="has-text-purple">Iob</span>&nbsp;&nbsp;
+  <span class="has-text-purple">Iob</span>&nbsp;
   <input type="radio" name="actif" value="5">
   <span class="has-text-warning">Mon</span>
   <br>
