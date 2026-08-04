@@ -56,10 +56,10 @@
     <img class="btn_appd imrec" rel="cuisine" src="images/lasagnes_p_douce.webp" href="#recettes" data-toggle="modal" data-target="#recette" title="13" alt="lasagnes patate douce">
   </div>
 <div class="column">
-    <img class="btn_appd imrec" rel="cuisine" src="images/libre.png" href="#recettes" data-toggle="modal" data-target="#recette" title="14" alt="libre">
+    <img class="btn_appd imrec" rel="cuisine" src="images/gratin_courgettes.webp" href="#recettes" data-toggle="modal" data-target="#recette" title="14" alt="Gratin de courgettes">
   </div>
 </div>
-		
+	<!-- libre.png-->	
 		
    </div>
   </div>
