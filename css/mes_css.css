@@ -140,6 +140,7 @@ img.space5, img.space30, img.space10 {width:35px;}
 --bulma-column-gap: 0;
 }
 .modal{--bulma-modal-background-background-color: rgba(0, 0, 0, 0.1);}
+.modal-card{text-align:center;}
 #lexique.modal {width: 20rem;}
 #choix_graph.modal {margin-left: 40px;width: 30rem;}
 #choix_graph .modal-card {width: 30rem;}
