@@ -653,7 +653,10 @@ switch (mod_nom) {
 	case "ping_rasp":
 	case "bl":			
 	Content="confirmer la notification\nelle va être supprimée";mod_ext="1";	
-	break;		
+	break;
+	case "atmo": //case widget
+  	Content = "<iframe style='height:450px;' src='https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454'></iframe>";	mod_ext="3"	;
+	break;
 	default:
 	Content="mod_nom:"+mod_nom;
 	break;
