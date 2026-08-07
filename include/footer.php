@@ -635,11 +635,13 @@ openModal(id_modale);}
 }
 $(".confirm a").click(function(){ 
  var ch=0;
-var title_confirm=$(this).attr('title');ch=$(this).attr('rel');var mod_nom=$("img",this).attr("id");
+var title_confirm=$(this).attr('title');url=$(this).attr('data-url');ch=$(this).attr('rel');var mod_nom=$("img",this).attr("id");
 var nb = Object.keys(service).length;
 	for (i = 1; i < nb; i++) {//console.log(ch+'...'+service[i].ID);
 		if (service[i].idm==ch) {ch=i;i=nb;	}
 	}
+	if (url!=undefined) {mod_id=mod_nom;mod_nom="widget";}
+	console.log('mod='+mod_nom);
 switch (mod_nom) {
 	case "lastseen":
 	Content=service[ch].contenu;mod_ext="1";
@@ -654,8 +656,8 @@ switch (mod_nom) {
 	case "bl":			
 	Content="confirmer la notification\nelle va être supprimée";mod_ext="1";	
 	break;
-	case "atmo": //case widget
-  	Content = "<iframe style='height:450px;' src='https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454'></iframe>";	mod_ext="3"	;
+	case "widget": //case widget
+  	Content = "<iframe style='height:450px;' src='"+url+"'></iframe>";	mod_ext="3"	;
 	break;
 	default:
 	Content="mod_nom:"+mod_nom;
