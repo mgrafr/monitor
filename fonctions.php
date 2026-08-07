@@ -3,6 +3,7 @@ session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 $config=$_SESSION["config"];
 require_once($config);
+require_once("custom/php/services.php");
 $L0=array();$l_dz="";$l_ha="";$l_iob="";$l_z="";
 if (DOMOTIC!=""){$L0[0]=DOMOTIC;$L0[1]=URLDOMOTIC;$L0[2]=IPDOMOTIC;$L0[3]=USERDOMOTIC;$L0[4]=PWDDOMOTIC;$L0[5]=TOKEN_DOMOTIC;$L0[6]=PORT_API_DOMO;$L0[7]=PORT_WEBUI_DOMO;}
 if (DOMOTIC1!=""){$L0[8]=DOMOTIC1;$L0[9]=URLDOMOTIC1;$L0[10]=IPDOMOTIC1;$L0[11]=USERDOMOTIC1;$L0[12]=PWDDOMOTIC1;$L0[13]=TOKEN_DOMOTIC1;$L0[14]=PORT_API_DOMO1;$L0[15]=PORT_WEBUI_DOMO1;}
@@ -749,24 +750,7 @@ if ($auth<3){$json2="json.htm?param=";$json3="&type=command";
 else {$result['status']="acces interdit";}
 return $result;
   }
-// Pollution
-// https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454
-// <div id="widget-needle" class="c-gauge-needle" style="transform: rotate(-52deg);"></div>  moyen
-function atmo(){
-$L="https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454";
-$chaine=file_get_curl($L);
-$rec='<p class="text-center">';$rec1="</p>";
-$resultat = explode($rec, $chaine);
-$resultat =explode($rec1,$resultat[1]);
-$encode=$resultat[0];
-$data = [
-	"command" => 16,
-	"nom_objet" => "atmo",
-	"value" => "atmo_".$encode
-         ];
-mysql_app($data);
-return $encode;
-}
+
 /*POUR METEO CONCEPT*/
 //-----------------------------------
 function meteo_concept($choix){
