@@ -105,7 +105,7 @@ return $msg;
 cette fonction permet egalement suivant le contenu de la variable de
 determiner une image qui peut être afficher (poubelles,fosse septique,...*/
 function status_variables($xx){global $l_dz,$L_dz,$token_dz,$L_ha,$l_ha,$token_ha,$L_iob,$l_iob,$token_iob,$l_mo,$token_mo,$l_zb,$token_zb;
-atmo();// mesure Qualité de l'AIR
+atmo();pollen();// mesure Qualité de l'AIR & pollen
 $p=0;$n=0;$L0=array();
 if($l_dz != ""){
 $L=$L_dz."json.htm?type=command&param=getuservariables";
@@ -184,6 +184,7 @@ $txtimg = sql_variable($value,1);
 	$image = isset($txtimg['image']) ? $txtimg['image'] : '';
 	$icone = isset($txtimg['icone']) ? $txtimg['icone'] : '';
  }
+ if (str_contains($value, ":")==true){ $val=explode(":", $value);$value=$val[1];}
 if ($id_m_img=="#" || $id_m_img=="" || $image=="none" || $image=="") {$image="pas image";$id_m_img=="";}
 if ($name!=""){$j=$j+1;
 $data[$j] = [	
