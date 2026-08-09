@@ -78,9 +78,18 @@ _ **Les css : en plus du style pour la page**
 
 |image378|
 
-3.2 La Météo à 1 heure de Météo France
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3.2 La Météo à 1 heure 
+^^^^^^^^^^^^^^^^^^^^^^
+2 options:
+
+- Météo France
+- Météo agricole
+
 Ne fait pas partie de la page météo : affichage sur la page d’accueil
+
+.. IMPORTANT::
+
+   Aout 2026: depuis quelques semaines l'API de Météo France ne répond plus, UTILISER l'option 1 (Météo agricole)
 
 |image379|
 
