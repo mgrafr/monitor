@@ -47,9 +47,11 @@ else include("include/lexique_no.php");
 <div class="confirm poubelles"><a href="#" id="annul_poubelle" rel="1012" title="Annulation de l'\alerte Poubelles"><img id="poubelle" style="display:none" src=""/></a></div>
 <div class="aff_pluie" >
 	<div id="pluie" style="display:none"><img id="pl" src="" alt="pluie" /></div><div id="txt_pluie"></div>  </div>
- <div class="confirm pollution">Qualité AIR<a href="#" id="annul_atmo" data-url="https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454" rel="1020" title="Widget mon air"><img id="atmo" src="" alt="pollution" /></div><div id="txt_atmo"></div>  
-
- <div class="aff_anni" ><img id="aff_anni" src="" alt="anni" /><div id="prenom"></div></div>
+ <div class="confirm pollution">Qualité AIR<a href="#" id="annul_atmo" data-url="https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454" rel="1020" title="Widget mon air"><img id="atmo" src="" alt="pollution" /></a></div>
+ <div id="txt_atmo"></div>  
+<div id="pol" style="display:block" ><img id="pollen" src="" alt="pollen" /></div>
+ <div id="txt_pollen"></div> 
+<div class="aff_anni" ><img id="aff_anni" src="" alt="anni" /><div id="prenom"></div></div>
 <div class="aff_al" ><img id="alarme_nuit" src="images/alarme_auto.svg" alt="alarme" /></div>
 <?php if (ON_SOS==true) echo '<div class="sos" ><img id="SOS" src="images/sos.svg" width="40" alt="" /></div>';?>
 <div class="aff_bat" ><img id="batterie" src="images/batterie_faible.svg" alt="batterie" /></div>
