@@ -190,6 +190,8 @@ Informations issues du site : https://www.atmo-nouvelleaquitaine.org/
 """"""""""""""""""""""
 affichage d'une notification et affichage d'une modale( iframe site web ou widget) par un clic sur l'image.
 
+|image2018|
+
 **la page** custom/php/accueil.php 
 
 on ajoute 2 <div> pour l'image et le texte:
@@ -272,5 +274,8 @@ Affichage uniquement d'une notification
    :width: 650px
 .. |image2017| image:: ../pict/image2017.webp
    :width: 650px
+.. |image2018| image:: ../pict/image2018.webp
+   :width: 450px
+
 
 
