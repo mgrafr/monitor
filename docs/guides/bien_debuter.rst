@@ -1405,7 +1405,11 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
     |image1384| 
 
-. **Actif** , 2=domoticz, 3=home assistant, 4=iobroker, 5=monitor(iob zb mon si les variables utilise MariaDB de monitor)
+. **Actif** , 2=domoticz, 3=home assistant, 4=iobroker, 5=monitor(iob zb mon si les variables utilisent MariaDB de monitor)
+
+. **param** , contient la valeur mise à jour de la variable :ref:`si Actif=5` ; les 2 points servent de séparateur de texte, seule la 2eme partie est affichée par le html.
+
+    voir ce § :ref:`1.8.2.1.4 Io.Broker, Z2M, Monitor`
 
 . **maj_js** : **variable** = variables dz ou ha,   **var_sql** = variables monitor
 
@@ -1565,7 +1569,7 @@ Comme pour les variables, la table fournie une correspondance entre les disposit
 
 .. note::
 
-   En règ   En règle générale : un numéro(idm) par fonction sauf pour température, humidité,  % batterie rassemblés  dans le même dispositif
+   En règle générale : un numéro(idm) par fonction sauf pour température, humidité,  % batterie rassemblés  dans le même dispositif
 
 **Table « dispositifs »**
  
