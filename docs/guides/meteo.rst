@@ -178,7 +178,7 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Informations issues du site : https://www.atmo-nouvelleaquitaine.org/
 
-.. info::
+.. note::
 
    Ici le site utilisé est ATMO, il est possible de récupérer le HTML de la plupart des sites web et en PHP, avec explode, d'isoler la valeur à utiliser; c'est ce qui est réalisé dans les 2 exemples ci-dessous.
 
