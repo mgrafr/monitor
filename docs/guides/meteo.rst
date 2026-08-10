@@ -188,11 +188,41 @@ Informations issues du site : https://www.atmo-nouvelleaquitaine.org/
 
 3.4.1 Qualité de l'air
 """"""""""""""""""""""
+affichage d'une notification et affichage d'une modale( iframe site web ou widget) par un clic sur l'image.
 
+**la page** custom/php/accueil.php 
 
+on ajoute 2 <div> pour l'image et le texte:
+
+.. code-block::
+
+  <div class="confirm pollution">Qualité AIR<a href="#" id="annul_atmo" 
+     data-url="https://www.atmo-nouvelleaquitaine.org/widget-mon-air/widget/commune/24454" 
+     rel="1020" title="Widget mon air"><img id="atmo" src="" alt="pollution" /></a></div>
+  <div id="txt_atmo"></div>  
+
+*Les attributs utilisés* :
+
+   - id & class : pour css
+   - data-url : url pour l'afficage dans une modale
+   - rel : idm de la variable
+   - title : titre de la modale
+  
+Voir leur utilisation dans include/footer.php
 
 3.4.2 Pollens
 """""""""""""
+Affichage uniquement d'une notification
+
+.. code-block::
+
+   <div id="pol" style="display:block" ><img id="pollen" src="" alt="pollen" /></div>
+   <div id="txt_pollen"></div> 
+
+*Les attributs utilisés* :
+
+   - id & class : pour css
+  
 
 .. |image366| image:: ../media/image366.webp
    :width: 605px    
