@@ -1957,7 +1957,23 @@ Créer 2 automatisations :
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Les variables utilisables sont celles de la base de données de Monitor
 
-en cours de rédaction
+Dans la base de données, le champ "Actif"= 5
+
+|image2019|
+
+.. note::
+
+   Comme la valeur de la variable sert aussi à définir l'images d'une notification dansla table "txt_image", cette table ne peut contenir plusieurs textes identiques;
+
+   pour y remédier, il suffit de séparer le texte par ":" ,la 1ere partie étant ignorée lors de l'affichage du html.
+
+   Dans l'image ci-dessus les valeurs du champ "param" affichées seront Moyen et Faible.
+
+Extrait de la fonction "status_variables()" dans fonctions.php concernant cette variable:
+
+|image2020|
+
+|image2021|
 
 1.8.2.2  La page d'accueil de monitor : include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2694,3 +2710,9 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
    :width: 550px
 .. |image1963| image:: ../img/image1963.webp
    :width: 600px
+.. |image2019| image:: ../pict/image2019.webp
+   :width: 700px
+.. |image2020| image:: ../pict/image2020.webp
+   :width: 450px
+.. |image2021| image:: ../pict/image2021.webp
+   :width: 700px
