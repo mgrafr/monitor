@@ -760,7 +760,7 @@ Le HTML:
 
    Pour faciliter les mises à jour, toutes les ajouts perso doivent se trouver dans le répertoire :darkblue:`/custom`
 
-Des exemples de notifications :ref:`3. Météo & Qualité de l’air`
+Des exemples de notifications :ref:`3.Météo & Qualité de l’air`
 
 1.3.5 les scripts JavaScript
 ----------------------------
