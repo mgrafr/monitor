@@ -287,6 +287,11 @@ nav{max-width: 1200px;}
 @media (max-width:534px) {
 .temp_accueil {top: -200px;left:10px} 
 }
+@media (max-width:384px) {
+ .menu-h {left: 200px;top:80px;} 
+ .logo {width: 130px;}
+#porte_gar {top: 70px;left: 340px;}
+
 @media (max-width:360px) {
 .toggle-outer {left:-140px}
 #pwdalarm{left:15px;top:100px}
