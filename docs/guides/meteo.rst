@@ -1,10 +1,11 @@
-3. Météo
---------
-2 affichages :
+3. Météo & Qualité de l'air
+---------------------------
+4 affichages :
 
 - Une page de prévision à 14 jours de Météo Concept
-
 - Une alerte pluie imminent (à 1 h de météo France)
+- Un affichage de la qualité de l'air avec une modale du site ATMO
+- Un affichage des pollens
 
 3.1 Page météo
 ^^^^^^^^^^^^^^^
@@ -173,6 +174,26 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
 
 |image392|
 
+3.4 Qualité de l'air & Pollens
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Informations issues du site : https://www.atmo-nouvelleaquitaine.org/
+
+|image2015|
+
+**Scripts PHP** dans custom/php/services.php
+
+|image2016|
+
+|image2017|
+
+3.4.1 Qualité de l'air
+""""""""""""""""""""""
+
+
+
+3.4.2 Pollens
+"""""""""""""
+
 .. |image366| image:: ../media/image366.webp
    :width: 605px    
 .. |image367| image:: ../media/image367.webp
@@ -215,6 +236,11 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
    :width: 601px
 .. |image392| image:: ../media/image392.webp
    :width: 554px
-
+.. |image2015| image:: ../pict/image2015.webp
+   :width: 150px
+.. |image2016| image:: ../pict/image2016.webp
+   :width: 650px
+.. |image2017| image:: ../pict/image2017.webp
+   :width: 650px
 
 
