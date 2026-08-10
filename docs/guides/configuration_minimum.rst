@@ -760,7 +760,7 @@ Le HTML:
 
    Pour faciliter les mises à jour, toutes les ajouts perso doivent se trouver dans le répertoire :darkblue:`/custom`
 
-Des exemples de notifications: :ref:`3. Météo & Qualité de l’air`
+Des exemples de notifications :ref:`3. Météo & Qualité de l’air`
 
 1.3.5 les scripts JavaScript
 ----------------------------
@@ -788,7 +788,7 @@ voir dans ce même chapitre le § :ref:`1.1.3 maj en temps réel`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. IMPORTANT::
 
-   :ref:`Obsolète sdepuis la version 4.1.3`
+   Obsolète sdepuis la version 4.1.3
 
 La fonction pour le rafraichissement des données : à partir d’un changement d’état d’un dispositif, une variable est mise à « 1 » ; 
 
