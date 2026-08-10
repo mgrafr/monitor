@@ -2236,6 +2236,10 @@ la fonction custom_js est réservée; elle est appelée si besoin dans la foncti
 
 voir également les § :ref:`21.14.4 Le Javascript concerné` et :ref:`1.3.5.2 Quelques infos supplémentaires`
 
+0.11.2 Fonctions php d'une page perso
+=====================================
+Elles doivent être installées dans le fichier :darkblue:`services.php`
+
 0.12 API de monitor
 ^^^^^^^^^^^^^^^^^^^
 Pour l'utiliser, dans admin/config.php: :darkblue:`mettre sur true`
