@@ -760,7 +760,7 @@ Le HTML:
 
    Pour faciliter les mises à jour, toutes les ajouts perso doivent se trouver dans le répertoire :darkblue:`/custom`
 
-Des exemples de notifications dans le §  :ref:`3.4 Qualité de l’air & Pollens`
+Des exemples de notifications dans le §  :ref:`3.4 Qualité de l’air & Pollens`
 
 1.3.5 les scripts JavaScript
 ----------------------------
@@ -1953,8 +1953,9 @@ Créer 2 automatisations :
 
 |image157|
 
-1.8.2.1.4 Io.Broker
-~~~~~~~~~~~~~~~~~~~
+1.8.2.1.4 Io.Broker, Z2M, Monitor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Les variables utilisables sont celles de la base de données de Monitor
 
 en cours de rédaction
 
