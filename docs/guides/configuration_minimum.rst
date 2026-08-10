@@ -760,7 +760,7 @@ Le HTML:
 
    Pour faciliter les mises à jour, toutes les ajouts perso doivent se trouver dans le répertoire :darkblue:`/custom`
 
-Des exemples de notifications dans le §  :ref:`3.4 Qualité de l’air & Pollens`
+Des exemples de notifications: dans le § :ref:`3.4 Qualité de l’air & Pollens`
 
 1.3.5 les scripts JavaScript
 ----------------------------
