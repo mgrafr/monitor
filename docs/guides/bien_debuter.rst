@@ -2470,7 +2470,7 @@ function mc(variable,id)
 .. |image101| image:: ../media/image101.webp
    :width: 205px 
 .. |image102| image:: ../media/image102.webp
-   :width: 284px 
+   :width: 400px 
 .. |image103| image:: ../media/image103.webp
    :width: 334px 
 .. |image106| image:: ../media/image106.webp
