@@ -1148,6 +1148,16 @@ Avec le projet Github Cron/Cron : https://github.com/cron/cron
 
 Cette application est utilisée en combinaison avec le système de tâches cron de Linux. Elle permet de configurer en arrière-plan les tâches en PHP
 
+.. admonition:: Syntaxe de Crontab
+
+   * * * * * /chemin vers le commandement
+   | | | | |
+   | | | | +-- Jour de la semaine (0-7, où 0 et 7 sont le dimanche)
+   | | | +---- Mois (1-12)
+   | | +------ Jour du mois (1-31)
+   | +-------- Heure (0-23)
+   +---------- Minute (0-59)
+
 - **Installation de Cron/Cron**
 
  .. code-block::
@@ -1156,9 +1166,10 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
   |image2023|
 
-- **Modification du fichier :darkblue:`crontab`**
+- **Modification du fichier** :darkblue:`crontab`
 
-  |image2024|  
+  |image2024| 
+
 
 - Configuration des taches dans le fichier :darkblue:`cron.php`
 
