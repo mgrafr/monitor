@@ -1160,9 +1160,9 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
 - **Installation de Cron/Cron**
 
- .. code-block::
+  .. code-block::
 
-    composer require cron/cron
+     composer require cron/cron
 
   |image2023|
 
@@ -1394,6 +1394,6 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 .. |image2022| image:: ../pict/image2022.webp
    :width: 700px
 .. |image2023| image:: ../pict/image2023.webp
-   :width: 450px
+   :width: 400px
 .. |image2024| image:: ../pict/image2024.webp
-   :width: 580px
+   :width: 500px
