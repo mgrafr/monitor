@@ -1140,6 +1140,12 @@ Lancer jupyter notebook:
 
 |image1207|
 
+13.10 Taches Cron en PHP
+^^^^^^^^^^^^^^^^^^^^^^^^
+Avec le projet Github Cron/Cron
+
+|image2022|
+
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
@@ -1357,3 +1363,5 @@ Lancer jupyter notebook:
    :width: 568px
 .. |image1207| image:: ../img/image1207.webp
    :width: 650px
+.. |image2022| image:: ../img/image2022.webp
+   :width: 700px
