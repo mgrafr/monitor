@@ -1142,9 +1142,26 @@ Lancer jupyter notebook:
 
 13.10 Taches Cron en PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Avec le projet Github Cron/Cron
+Avec le projet Github Cron/Cron : https://github.com/cron/cron
 
 |image2022|
+
+Cette application est utilisée en combinaison avec le système de tâches cron de Linux. Elle permet de configurer en arrière-plan les tâches en PHP
+
+- **Installation de Cron/Cron**
+
+ .. code-block::
+
+    composer require cron/cron
+
+  |image2023|
+
+- **Modification du fichier :darkblue:`crontab`**
+
+  |image2024|  
+
+- Configuration des taches dans le fichier :darkblue:`cron.php`
+
 
 
 .. |image256| image:: ../media/image256.webp
@@ -1363,5 +1380,9 @@ Avec le projet Github Cron/Cron
    :width: 568px
 .. |image1207| image:: ../img/image1207.webp
    :width: 650px
-.. |image2022| image:: ../img/image2022.webp
+.. |image2022| image:: ../pict/image2022.webp
    :width: 700px
+.. |image2023| image:: ../pict/image2023.webp
+   :width: 450px
+.. |image2024| image:: ../pict/image2024.webp
+   :width: 580px
