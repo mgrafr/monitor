@@ -359,7 +359,7 @@ function json_idx_idm(command){
   });
 	 };	
 /*-----meteo France prev 1 H-------------------------------------------------------*/
-pluie("2");var echeance;var prev_pluie;var texte_pluie;//var tc=<?php echo $_SESSION["TC"];?>;
+pluie("1");var echeance;var prev_pluie;var texte_pluie;//var tc=<?php echo $_SESSION["TC"];?>;
 function pluie(idx){
   $.ajax({
     type: "GET",
