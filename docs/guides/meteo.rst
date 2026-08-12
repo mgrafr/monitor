@@ -88,10 +88,6 @@ _ **Les css : en plus du style pour la page**
 
 Ne fait pas partie de la page météo : affichage sur la page d’accueil
 
-.. IMPORTANT::
-
-   Aout 2026: depuis quelques semaines l'API de Météo France ne répond plus, UTILISER l'option 1 (Météo agricole)
-
 |image379|
 
 |image380|
@@ -123,12 +119,12 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
 
    2 Choix :
 
-   .   (1) en HTML sur le site https://www.lameteoagricole.net/index_pluie-dans-heure.php
-       https://www.lameteoagricole.net/meteo-a-10-jours/Saint-Martin-De-Gurson-24610.html
+   .   (2) en HTML sur le site https://www.lameteoagricole.net/index_pluie-dans-heure.php
+       https://www.lameteoagricole.net/meteo-a-10-jours/<nom ville-cp>.html
 
        Indiquer Commune-Code postal
 
-   .   (2) par météo France et son API avec un Token
+   .   (1) par météo France et son API avec un Token, ex: https://webservice.meteofrance.com/v3/rain?lat=44.952602&lon=0.107691&token=".TOKEN_MF
 
    |image388|
 
