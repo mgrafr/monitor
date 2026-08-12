@@ -1180,9 +1180,21 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
   .. code-block::
 
-     $displayDate = new atmojob();
-     $displayDate->setCommand('cd /app && /usr/local/bin/php cron/updateDisplayDate.php');
-     $displayDate->setSchedule(new CrontabSchedule('* * * * */5'));
+     <?php
+     require_once __DIR__ . '/vendor/autoload.php';
+
+     $job1 = new \Cron\Job\AtmoJob();
+     $job1->setCommand('/usr.bin/php /www/monitor/custom/php/services.php');
+     $job1->setSchedule(new \Cron\Schedule\CrontabSchedule('*/20 * * * *'));
+
+     $resolver = new \Cron\Resolver\ArrayResolver();
+     $resolver->addJob($job1);
+
+     $cron = new \Cron\Cron();
+     $cron->setExecutor(new \Cron\Executor\Executor());
+     $cron->setResolver($resolver);
+
+     $cron->run();
 
 
 .. |image256| image:: ../media/image256.webp
