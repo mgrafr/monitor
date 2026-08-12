@@ -1150,7 +1150,7 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
 .. admonition:: Syntaxe de Crontab
 
-   \*\*\*\* \*     /chemin vers le commandement
+   \* \* \* \* \*     /chemin vers le commandement
 
    | | | | | |
 
