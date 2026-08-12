@@ -1151,11 +1151,11 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 .. admonition:: Syntaxe de Crontab
 
    \* \* \* \* \*     /chemin vers le commandement
-   | | | | | 
-   | | | | +----- Jour de la semaine (0-7, où 0 et 7 sont le dimanche)
-   | | | +---------- Mois (1-12)
-   | | +--------------- Jour du mois (1-31)
-   | +-------------------- Heure (0-23)
+   \| \| \| \| \| 
+   \| \| \| \| +----- Jour de la semaine (0-7, où 0 et 7 sont le dimanche)
+   \| \| \| +---------- Mois (1-12)
+   \| \| +--------------- Jour du mois (1-31)
+   \| +-------------------- Heure (0-23)
    +------------------------- Minute (0-59)
 
 - **Installation de Cron/Cron**
