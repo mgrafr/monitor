@@ -124,7 +124,9 @@ Les icones svg « pluie imminente » et « pas de pluie » disponibles
 
        Indiquer Commune-Code postal
 
-   .   (1) par météo France et son API avec un Token, ex: https://webservice.meteofrance.com/v3/rain?lat=44.952602&lon=0.107691&token=".TOKEN_MF
+   .   (1) par météo France et son API avec un Token, ex: 
+
+        https://webservice.meteofrance.com/v3/rain?lat=44.952602&lon=0.107691&token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__
 
    |image388|
 
