@@ -1150,7 +1150,7 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
 .. admonition:: Syntaxe de Crontab
 
-   *    *    *    *    *     /chemin vers le commandement
+   * * * * *     /chemin vers le commandement
    | | | | | 
    | | | | +----- Jour de la semaine (0-7, où 0 et 7 sont le dimanche)
    | | | +---------- Mois (1-12)
@@ -1170,9 +1170,13 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
   |image2024| 
 
-
 - Configuration des taches dans le fichier :darkblue:`cron.php`
 
+  .. code-block::
+
+     $displayDate = new atmojob();
+     $displayDate->setCommand('cd /app && /usr/local/bin/php cron/updateDisplayDate.php');
+     $displayDate->setSchedule(new CrontabSchedule('* * * * */5'));
 
 
 .. |image256| image:: ../media/image256.webp
