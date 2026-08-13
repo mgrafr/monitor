@@ -996,7 +996,7 @@ return $info;}
 function app_met($choix){
 $test ="pas de pluie"; $info=array();	
 switch ($choix) {
-    case "1"://----ce n' est plus du Json mais du HTML-----------------------------------------------------
+    case "2"://----ce n' est plus du Json mais du HTML-----------------------------------------------------
 		$url="https://www.lameteoagricole.net/meteo-heure-par-heure/Saint-Martin-de-Gurson-24610.html";
 		$strResult = implode("",file($url));
 		$maj = explode('<div class="fond2"',$strResult);$t=$maj[1];$maj = explode('Dernière',$t);$t=$maj[1];$maj = explode('</i>',$t);
@@ -1011,8 +1011,8 @@ switch ($choix) {
 		$info['titre']=$maj[0]; $txtimg = sql_variable($im,1);$info['img_pluie']=$txtimg['image'];
 		$info['maj']=$date;$info['jour']=$jour;$info['pourcent']=$pourcent;$info['temp']=$temp;$info['mm']=$pluiemm;
 	break;
-    case "2":
-		$url="https://rpcache-aa.meteofrance.com/internet2018client/2.0/nowcast/rain?lat=44.952602&lon=-0.107691&token=".TOKEN_MF;
+    case "1":    $url= "https://webservice.meteofrance.com/v3/rain?lat=44.952602&lon=0.107691&token=".TOKEN_MF;
+		// $url="https://rpcache-aa.meteofrance.com/internet2018client/2.0/nowcast/rain?lat=44.952602&lon=-0.107691&token=".TOKEN_MF;
 		$json_string = file_get_curl($url);$result = json_decode($json_string,true);
 		$info['maj']=substr($result['update_time'],11,8);
 		$json=$result['properties']['forecast'];
