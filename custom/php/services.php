@@ -5,7 +5,7 @@
 // https://www.atmo-nouvelleaquitaine.org/air-commune/SaintMartindeGurson/24454/indice-atmo?adresse=Saint-Martin-de-Gurson+(24610)&date=2026-08-06
 // https://www.atmo-nouvelleaquitaine.org/air-commune/SaintMartindeGurson/24454/pollen?adresse=Saint-Martin-de-Gurson+(24610)
 function connect_db($data){
-$conn = new mysqli('localhost','michel','Idem4546','monitor');
+$conn = new mysqli('localhost','michel','xzApjgd34j9h_23&','monitor');
 if ($conn -> connect_errno) {
   echo "Failed to connect to MySQL: " . $conn -> connect_error;
   exit();}	
