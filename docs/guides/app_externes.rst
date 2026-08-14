@@ -1176,22 +1176,23 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
   |image2024| 
 
-- Configuration des taches dans le fichier :darkblue:`cron.php`
+- Configuration des taches dans le fichier :darkblue:`$scheduler.php` à la racine de monitor
 
-  Exemple de planification d'une fonction atmo() , voir le §
+   Exemple de planification des fonctions atmo() ² pollen() , voir le § :ref:`3.4 Qualité de l’air & Pollens`
 
   .. code-block::
 
-     <?php
      <?php require_once __DIR__.'/vendor/autoload.php';
 
      use GO\Scheduler;
-
      // Create a new scheduler
      $scheduler = new Scheduler();
-
-     // ... configure the scheduled jobs (see below) ...
-
+	 // ... configure the scheduled jobs (see below) ...
+     $scheduler->php(
+         '/www/monitor/custom/php/services.php', // The script to execute
+         '/usr/bin/php', // The PHP bin
+         'custom_services'
+     )->everyMinute(5);// pour essais  ->hourly
      // Let the scheduler execute jobs which are due.
      $scheduler->run();
     
