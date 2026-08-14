@@ -3,7 +3,7 @@ session_start();
 /*fonctions pour la page ACCUEIL,INTERIEUR,METEO*/
 $config=$_SESSION["config"];
 require_once($config);
-require_once("custom/php/services.php");
+//require_once("custom/php/services.php");
 $L0=array();$l_dz="";$l_ha="";$l_iob="";$l_z="";
 if (DOMOTIC!=""){$L0[0]=DOMOTIC;$L0[1]=URLDOMOTIC;$L0[2]=IPDOMOTIC;$L0[3]=USERDOMOTIC;$L0[4]=PWDDOMOTIC;$L0[5]=TOKEN_DOMOTIC;$L0[6]=PORT_API_DOMO;$L0[7]=PORT_WEBUI_DOMO;}
 if (DOMOTIC1!=""){$L0[8]=DOMOTIC1;$L0[9]=URLDOMOTIC1;$L0[10]=IPDOMOTIC1;$L0[11]=USERDOMOTIC1;$L0[12]=PWDDOMOTIC1;$L0[13]=TOKEN_DOMOTIC1;$L0[14]=PORT_API_DOMO1;$L0[15]=PORT_WEBUI_DOMO1;}
@@ -105,7 +105,7 @@ return $msg;
 cette fonction permet egalement suivant le contenu de la variable de
 determiner une image qui peut être afficher (poubelles,fosse septique,...*/
 function status_variables($xx){global $l_dz,$L_dz,$token_dz,$L_ha,$l_ha,$token_ha,$L_iob,$l_iob,$token_iob,$l_mo,$token_mo,$l_zb,$token_zb;
-atmo();pollen();// mesure Qualité de l'AIR & pollen
+//atmo();pollen();// mesure Qualité de l'AIR & pollen
 $p=0;$n=0;$L0=array();
 if($l_dz != ""){
 $L=$L_dz."json.htm?type=command&param=getuservariables";
