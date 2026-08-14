@@ -188,6 +188,12 @@ Informations issues du site : https://www.atmo-nouvelleaquitaine.org/
 
 |image2017|
 
+.. NOTE::
+
+   Le rafraichissement des données est effectué directement par le serveur avec CRON en PHP/
+
+   voir le § :ref:`13.10 Taches Cron en PHP`
+
 3.4.1 Qualité de l'air
 """"""""""""""""""""""
 affichage d'une notification et affichage d'une modale( iframe site web ou widget) par un clic sur l'image.
