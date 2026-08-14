@@ -1183,13 +1183,17 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
   .. code-block::
 
      <?php
-     require_once __DIR__ . '/vendor/autoload.php';
+     <?php require_once __DIR__.'/vendor/autoload.php';
 
-     $scheduler->call(
-     function ($firstName, $lastName) {
-        return implode(' ', [$firstName, $lastName]);
-     }
-     );
+     use GO\Scheduler;
+
+     // Create a new scheduler
+     $scheduler = new Scheduler();
+
+     // ... configure the scheduled jobs (see below) ...
+
+     // Let the scheduler execute jobs which are due.
+     $scheduler->run();
     
 
 .. |image256| image:: ../media/image256.webp
