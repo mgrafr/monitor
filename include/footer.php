@@ -382,7 +382,7 @@ function pluie(idx){
 			document.getElementById('txt_pluie').innerHTML ='<a href="#accueil">'+maj+':'+titre+'</a>';
 			document.getElementById("txt_pluie").style.display = "block";}
 	}  } });
-	 setTimeout(pluie, 3600000, 2);   
+	 setTimeout(pluie, 3600000, 1);   
  };	
  /*------lecture des indfos de l'alerte pluie----------------------------------------*/
  $("#txt_pluie").click( function() { alert(texte_pluie); });
