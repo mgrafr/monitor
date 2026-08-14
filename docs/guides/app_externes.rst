@@ -1142,7 +1142,7 @@ Lancer jupyter notebook:
 
 13.10 Taches Cron en PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Avec le projet Github Cron/Cron : https://github.com/cron/cron
+Avec le projet Github "PHP Cron Scheduler" : https://github.com/peppeocchi/php-cron-scheduler
 
 |image2022|
 
@@ -1164,11 +1164,11 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
    | +------------------------- Minute (0-59)
 
-- **Installation de Cron/Cron**
+- **Installation de php-cron-scheduler**
 
   .. code-block::
 
-     composer require cron/cron
+     composer require peppeocchi/php-cron-scheduler
 
   |image2023|
 
@@ -1178,24 +1178,19 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
 - Configuration des taches dans le fichier :darkblue:`cron.php`
 
+  Exemple de planification d'une fonction atmo() , voir le §
+
   .. code-block::
 
      <?php
      require_once __DIR__ . '/vendor/autoload.php';
 
-     $job1 = new \Cron\Job\AtmoJob();
-     $job1->setCommand('/usr.bin/php /www/monitor/custom/php/services.php');
-     $job1->setSchedule(new \Cron\Schedule\CrontabSchedule('*/20 * * * *'));
-
-     $resolver = new \Cron\Resolver\ArrayResolver();
-     $resolver->addJob($job1);
-
-     $cron = new \Cron\Cron();
-     $cron->setExecutor(new \Cron\Executor\Executor());
-     $cron->setResolver($resolver);
-
-     $cron->run();
-
+     $scheduler->call(
+     function ($firstName, $lastName) {
+        return implode(' ', [$firstName, $lastName]);
+     }
+     );
+    
 
 .. |image256| image:: ../media/image256.webp
    :width: 433px
