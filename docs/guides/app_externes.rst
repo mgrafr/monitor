@@ -1178,7 +1178,7 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
 - Configuration des taches dans le fichier :darkblue:`$scheduler.php` à la racine de monitor
 
-   Exemple de planification des fonctions atmo() ² pollen() , voir le § :ref:`3.4 Qualité de l’air & Pollens`
+   Exemple de planification des fonctions atmo() & pollen() , voir le § :ref:`3.4 Qualité de l’air & Pollens`
 
   .. code-block::
 
