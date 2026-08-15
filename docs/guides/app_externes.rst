@@ -1166,6 +1166,8 @@ Cette application est utilisée en combinaison avec le système de tâches cron 
 
 - **Installation de php-cron-scheduler**
 
+  IMPORTANT: pour un utilisateur, non en root, à la racine de monitor.
+
   .. code-block::
 
      composer require peppeocchi/php-cron-scheduler
