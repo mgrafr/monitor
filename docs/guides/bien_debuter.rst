@@ -2238,7 +2238,13 @@ voir également les § :ref:`21.14.4 Le Javascript concerné` et :ref:`1.3.5.2 Q
 
 0.11.2 Fonctions php d'une page perso
 =====================================
-Elles doivent être installées dans le fichier :darkblue:`services.php`
+Elles doivent être installées dans le fichier :darkblue:`services.php`;d'autres fichiers "services" peuvent être ajoutés dans "custom/php".
+
+L'exécution de services.php est progammée dans un script Cron PHP, voir ce § :ref:`13.10 Taches Cron en PHP`
+
+.. admonition:: Le principe
+
+   le script PHP , en retour, met à jour une variable mysql , toutes les variables sont gérèes, pour la mise à jour de monitor, par la fonction :ref:`maj_services(index)` dans include/footer.php; s'inspirer des scripts atmo() et pollen(), inclus dans services.php
 
 0.12 API de monitor
 ^^^^^^^^^^^^^^^^^^^
