@@ -24,7 +24,8 @@ version en développement v 4.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - correction bug concernant la liste lastseen
 - Changer nom champ F() en F (pour utiliser les fonctions et procédures mysql)
-- Ajout qualité de l'air depuis ATMO
+- Ajout qualité de l'air & pollens depuis ATMO, notifications installées dans custom/php/services.php pour servir de modèle à d'autres notiications personnelles
+  l'exécution de services.php est commandée par php-cron-scheduler
 
 Version 4.2.0 (mai 2026)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
