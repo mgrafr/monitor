@@ -6,17 +6,19 @@ import aldz as b
 import connect as rpi5
 import paramiko
 # variables de connect.py
-server=rpi5.rpi5[0]
-username=rpi5.rpi5[1]
-password=rpi5.rpi5[2]
+hostname = rpi5.rpi5[0]
+port = 22
+username = rpi5.rpi5[1]
+password = rpi5.rpi5[2]
 #
 def envoi_sms(message):
     bmessage = message.encode('utf-8')
-    ssh_client = paramiko.SSHClient()
+    client = paramiko.SSHClient()
     # ajouter automatiquement les clés d'hôtes inconnues au magasin d'hôtes connus
-    ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh_client.connect(server, username=username, password=password)
-    stdin, stdout, stderr = ssh_client.exec_command('python3 /home/michel/send_sms.py '+message)
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(hostname, port, username, password, timeout=5)
+    # ssh_client.connect(serveur, nom, motpasse)
+    stdin, stdout, stderr = client.exec_command('python3 /home/michel/send_sms.py '+message)
 def com_dz(url):
     response = requests.get(url)
     if response.status_code == 200:
@@ -38,7 +40,6 @@ while True:
             sms=message
             print(sms)
             envoi_sms(sms)
-            time.sleep(5)
+            time.sleep(2)
         raz_dz()
-
         time.sleep(10)
