@@ -1,0 +1,10 @@
+[Unit]
+Description=commande envoi message par sms
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /opt/domoticz/scripts/python/envoi_msg.py > /home/michel/envoi_msg.log 2>&1
+
+[Install]
+WantedBy=multi-user.target
