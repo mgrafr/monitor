@@ -374,6 +374,10 @@ voir ce § :ref:`14.6.1.1 connect.lua`
 
        |image1279|
 
+   -    Pour les icones perso sauvées dans /opt/domoticz/www , faire une sauvegarde de :darkblue:`switch_icons.txt` et des icone dans *www/images*
+
+       |image2025|
+
 .. admonition:: **Exemple migration vers un conteneur LXC .**
 
    Si aucune clés Zwave ou Zigbee ne sont installés sur le conteneur (Zigbee2mqtt et Zwave-JS-UI sont installés dans des conteneurs séparés), l'installation se résume à installer Curl et à lancer la commande bash:
@@ -965,3 +969,5 @@ pour récupérer la puissance depuis le Data de Domoticz : **26504.0;0;0;0;2941.
    :width: 600px
 .. |image1748| image:: ../img/image1748.webp
    :width: 500px
+.. |image2025| image:: ../pict/image2025.webp
+   :width: 350px
