@@ -2327,6 +2327,14 @@ Configuration wws dans monitor: port 443
 ----------------
 voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 
+1.9.3 Vérifier Ping
+-------------------
+Vérifier que l'IP publiquene répond pas à un ping:
+
+**https://ping.eu/ping/**
+
+|image2026|
+
 
 .. |image117| image:: ../media/image117.webp
    :width: 531px 
@@ -2715,4 +2723,6 @@ voir le § :ref:`21.16 VPN Wireguard dans un CT LXC`
 .. |image2020| image:: ../pict/image2020.webp
    :width: 450px
 .. |image2021| image:: ../pict/image2021.webp
+   :width: 700px
+.. |image2026| image:: ../pict/image2026.webp
    :width: 700px
