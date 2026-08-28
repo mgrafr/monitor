@@ -3,7 +3,8 @@ $domaine=$_SESSION["domaine"];
 if ($domaine==URLMONITOR) {$lien_mqtt=MQTT_URL.':'.MQTT_PORTS["wss"];$w='wss://';}
 if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP.':'.MQTT_PORTS["ws"];$w='ws://';}
 ?>
-
+var mqttjs="0";
+//function start_mqttjs() {
     const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
     const connectUrl = '<?php echo $w.$lien_mqtt;?>'
       const options = {
@@ -22,6 +23,7 @@ if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP.':'.MQTT_PORTS["ws"];$w='ws://';}
     var state=""
     console.log('connecting mqtt client')
     const client = mqtt.connect(connectUrl, options)
+    reconnectPeriod: 1000
 
     client.on('error', (err) => {
       console.log('Connection error: ', err)
@@ -57,8 +59,13 @@ if ($domaine==IPMONITOR) {$lien_mqtt=MQTT_IP.':'.MQTT_PORTS["ws"];$w='ws://';}
       document.getElementById('msg_zb').innerText=payload;
 
      msg=JSON.parse(payload);var idm=msg.idm;var state=msg.state;var champ=msg.champ1;
-     var ind=4;if (champ=="Data") {ind=2;}
-     if (champ=="temperature" || champ=="humidity" || champ=="soil_moisture") {ind=3;}
-    maj_mqtt(idm,state,ind,0,champ) ;// fonction ds footer.php
+     if (idm!=""){
+      var ind=4;
+      if (champ=="Data") {ind=2;}
+      if (champ=="Ping") {ind=5;}
+      if (champ=="temperature" || champ=="humidity" || champ=="soil_moisture") {ind=3;}
+      maj_mqtt(idm,state,ind,0,champ) ;// fonction ds footer.php
+    }
     }
   })
+//}

@@ -73,11 +73,12 @@ if (state=="true"){state="on";} //pour ioBroker
 if (state=="false"){state="off";}	//pour ioBroke
 console.log('ind='+ind);
 switch (ind) {
-    case 5: 
+    case 5: if (id_x=="") {break;}
 	for (attribute in service) {
-	if (service[attribute]['idm']==id_x){ ID_img=service[attribute]['ID_img'];console.log(id_x,ID_img);
+	if (service[attribute]['idm']==id_x){ ID_img=service[attribute]['ID_img'];
+	image=service[attribute]['image'];console.log(id_x,ID_img,image);
+	if (ID_img!=""){$('#'+ID_img).attr('src', image);document.getElementById(ID_img).style.display = "block";}
 	}}
-	//$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";
 	break;
 	case 0: console.log('0:  id='+id_x+' state='+state);
 var id_m=null;var json_m="";
