@@ -73,6 +73,12 @@ if (state=="true"){state="on";} //pour ioBroker
 if (state=="false"){state="off";}	//pour ioBroke
 console.log('ind='+ind);
 switch (ind) {
+    case 5: 
+	for (attribute in service) {
+	if (service[attribute]['idm']==id_x){ id1_html=service[attribute]['id1_html'];console.log(id_x,id1_html);
+	}}
+	//$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";
+	break;
 	case 0: console.log('0:  id='+id_x+' state='+state);
 var id_m=null;var json_m="";
 for (attribute in maj_dev) {
@@ -116,6 +122,7 @@ case 1: console.log('1: id='+id_x+' state='+state);
 	scoull=state;c_lamp=id_x;console.log("c_lamp="+c_lamp);	
 break;
 case 3://id_x est egal à idm
+console.log('case3:'+id_x);
 var id1=pp[id_x].ID1;var id2=pp[id_x].ID2;		
 console.log('case3:'+id_x+' '+id1+' '+id2);	
 if (id1!='#'){maj_html(champ,id1,state);}
