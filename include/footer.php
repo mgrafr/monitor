@@ -75,7 +75,7 @@ console.log('ind='+ind);
 switch (ind) {
     case 5: 
 	for (attribute in service) {
-	if (service[attribute]['idm']==id_x){ id1_html=service[attribute]['id1_html'];console.log(id_x,id1_html);
+	if (service[attribute]['idm']==id_x){ ID_img=service[attribute]['ID_img'];console.log(id_x,ID_img);
 	}}
 	//$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";
 	break;
