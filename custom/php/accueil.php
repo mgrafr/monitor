@@ -44,6 +44,7 @@ else include("include/lexique_no.php");
 <div id="porte_ent_ver_sud_O" style="display:block"/></div>
 <div id="gd_portail" style="display:block"/></div>
 <div id="porte_gar" style="display:block"/></div>
+<div id="proxmox" style="display:block"/><img id="proxmox_img" src="" alt="proxmox" /></div>
 <div class="confirm poubelles"><a href="#" id="annul_poubelle" rel="1012" title="Annulation de l'\alerte Poubelles"><img id="poubelle" style="display:none" src=""/></a></div>
 <div class="aff_pluie" >
 	<div id="pluie" style="display:none"><img id="pl" src="" alt="pluie" /></div><div id="txt_pluie"></div>  </div>
