@@ -1413,7 +1413,9 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
 . **maj_js** : **variable** = variables dz ou ha,   **var_sql** = variables monitor
 
-. **Id1_html** : ID de l’image dans la page ou #shell (voir ci-dessous)
+. **Id1_html** : ID(s) de l’image dans la page ou #shell (voir ci-dessous)
+
+	si plusieurs ID le 2emme doit commencer par # , ainsi que les suivants |image2027| 
 
 . **Id2_html** : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
 
@@ -2781,3 +2783,5 @@ function mc(variable,id)
    :width: 650px
 .. |image2014| image:: ../pict/image2014.webp
    :width: 700px
+.. |image2027| image:: ../pict/image2027.webp
+   :width: 150px
