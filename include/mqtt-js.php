@@ -14,7 +14,7 @@ var mqttjs="0";
       connectTimeout: 30 * 1000,
       username: '<?php echo MQTT_USER;?>',
       password: '<?php echo MQTT_PASS;?>',
-      reconnectPeriod: 1000,
+      reconnectPeriod: 2000,
     }
     const topic = 'z1m/#'
     const payload = ""
