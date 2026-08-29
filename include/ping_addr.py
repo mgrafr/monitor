@@ -16,7 +16,7 @@ CLIENT_ID = f"python_client_{random.randint(1000, 9999)}"    # ID client MQTT
 USERNAME = m.user_mqtt            # Si authentification : "user"
 PASSWORD = m.mot_passe_mqtt       # Si authentification : "pass"
 connection_params = m.connection_db
-IPS = ["192.168.1.91","192.168.1.140"]  # Liste des IP à surveiller
+IPS=m.ip_ping # Liste des IP à surveiller
 PING_INTERVAL = 180  # secondes entre chaque ping
 
 # ---------------------------
@@ -72,8 +72,11 @@ if __name__ == "__main__":
     client.loop_start()
 
     try:
-        while True:
-            for ip in IPS:
+        while True: 
+            for i in range(len(IPS)):
+                ip = IPS[i][0]
+                idm = IPS[i][1]
+                objet = IPS[i][2]
                 status = ping_host(ip)
                 if status : 
                     val="online"
@@ -81,16 +84,15 @@ if __name__ == "__main__":
                     val="offline"
                 payload = json.dumps({
                     "id": ip,
-                    "objet": "",
+                    "objet": objet,
                     "state": val,
                     "champ1": "Ping",
                     "champ2": time.strftime("%Y-%m-%d %H:%M:%S"),
-                    "idm": m.proxmox_media[1]
+                    "idm": idm
                 })
-                              
                 with mysql.connector.connect(**connection_params) as db :
                     with db.cursor() as c:
-                        request = "UPDATE dispositifs SET param = '"+val+"'WHERE idm ='"+m.proxmox_media[1]+"'"
+                        request = "UPDATE dispositifs SET param = '"+objet+":"+val+"' WHERE idm ='"+idm+"'"
                         c.execute(request)
                         db.commit()
             

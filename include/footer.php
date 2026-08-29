@@ -77,7 +77,8 @@ switch (ind) {
 	for (attribute in service) {
 	if (service[attribute]['idm']==id_x){ ID_img=service[attribute]['ID_img'];
 	image=service[attribute]['image'];console.log(id_x,ID_img,image);
-	if (ID_img!=""){$('#'+ID_img).attr('src', image);document.getElementById(ID_img).style.display = "block";}
+	if (ID_img!="" && image!="pas image"){$('#'+ID_img).attr('src', image);$('#'+ID_img).css('display', 'block');}
+	else {$('#'+ID_img).attr('src', "");$('#'+ID_img).css('display', 'none');}
 	}}
 	break;
 	case 0: console.log('0:  id='+id_x+' state='+state);
@@ -330,8 +331,8 @@ function maj_services(index){
 		}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){myEle.innerHTML ="";}*/
 		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
-			if (img_serv=="pas image" || img_serv=="none") {document.getElementById(idw).style.display = "none";} 
-			else {$('#'+idw).attr('src', img_serv);document.getElementById(idw).style.display = "block";} 
+			if (img_serv=="pas image" || img_serv=="none") {$('#'+idw).css('display', 'none');}
+			else {$('#'+idw).attr('src', img_serv);$('#'+idw).css('display', 'block');} 
 		}
 	//else {document.getElementById(not_piles).innerHTML =("erreur : "+idt);
 			  //document.getElementById(not_piles_reset).style.display="block";}	
