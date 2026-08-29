@@ -388,7 +388,7 @@ return $data;
 // pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
 //
 function devices_plan($plan){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$L_zb,$l_zb,$IP_dz,$IP_ha,$IP_iob,$IP_zb,$port_api_iob;
-$n=0;$al_bat=0;$p=0;$t1000=1000;$serveur_dz_on = false;	
+$n=0;$al_bat=0;$p=0;$t1000=1000;$serveur_dz_on = false;	$nb_Actif_0=0;
 	if ($l_dz!=""){	$serveur_dz_on = true;
 $L=$L_dz."json.htm?type=command&param=getdevices&plan=".$plan;
 $json_string = file_get_curl($L);
@@ -515,7 +515,7 @@ $periph['idm']=1000;$s2="";
 	if ($lect_device["serveur"]=='IOB') {$s=$lect_device["ID"];$t1="iob";$s1="4";$s2=$lect_device["Name"];}
 $periph=sql_plan($t1,$s,$s1,$s2);
 //---------------------------------------------
-if ($periph==null) {$choix_serveur="pas_ID";}
+if ($periph['Actif']==0) {$choix_serveur="Actif_0";$nb_Actif_0++;}
 $choix_Actif=$periph['Actif'];
 if (($choix_Actif=="1" || $choix_Actif=="2") && $lect_device["serveur"]=="DZ")  {$choix_serveur="dz";}
 	  else if ($choix_Actif=="3" && $lect_device["serveur"]=="HA") {$choix_serveur="ha";}
@@ -652,7 +652,12 @@ case "pas_ID" :
 	'ID' => $lect_device["ID"],
 	'idm' => $periph['idm']];		
 break;
-	}
+case "Actif_0" :
+	$data['300'] = [
+	'nb_Actif 0' => $nb_Actif_0
+	];
+	break;
+}
 $n=$n+1;}
 $i=1;$i1=1;$idm_libre="";
 while ($i < ($n +2) && $i1<4){if (!isset($data[$i])) {$idm_libre=$idm_libre." ".$i;$i1++;}
