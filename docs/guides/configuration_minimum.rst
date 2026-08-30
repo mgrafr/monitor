@@ -2843,5 +2843,5 @@ Vérifier que l'IP publiquene répond pas à un ping:
    :width: 700px
 .. |image2028| image:: ../pict/image2028.webp
    :width: 650px
-.. |image2029| image:: ../pict/image2028.webp
+.. |image2029| image:: ../pict/image2029.webp
    :width: 700px
