@@ -1975,8 +1975,9 @@ Extrait de la fonction "status_variables()" dans fonctions.php concernant cette 
 
 |image2021|
 
-1.8.2.1.4.a Exemple script python
-"""""""""""""""""""""""""""""""""
+1.8.2.1.5 Exemple script Python pour monitor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Ce cscipt concerne une commande "Ping pour surveiller un CT Proxmox et un Raspberry.
 
 .. code-block::
@@ -1989,21 +1990,21 @@ Ce cscipt concerne une commande "Ping pour surveiller un CT Proxmox et un Raspbe
 	import connect as m
 	import random
 	import mysql.connector
-	# ---------------------------
+	# -------------
 	# CONFIGURATION
-	# ---------------------------
+	# -------------
 	BROKER = m.ip_mqtt # Adresse du broker MQTT
 	PORT =  m.port_mqtt       # Port MQTT
 	TOPIC = "z1m/pingpi"           # Sujet MQTT
 	CLIENT_ID = f"python_client_{random.randint(1000, 9999)}"    # ID client MQTT
 	USERNAME = m.user_mqtt            # Si authentification : "user"
-	PASSWORD = m.mot_passe_mqtt       # Si authentification : "pass"
+	PASSWORD = m.mot_passe_mqtt       # Si authentification : "mot passe"
 	connection_params = m.connection_db
 	IPS=m.ip_ping # Liste des IP à surveiller
 	PING_INTERVAL = 180  # secondes entre chaque ping
-	# ---------------------------
-	# FONCTIONS
-	# ---------------------------
+	# -----------------------
+	# FONCTIONS POUR VERSION2
+	# -----------------------
 	def ping_host(host):
     	"""
     	Retourne True si le ping réussit, False sinon.
@@ -2020,7 +2021,7 @@ Ce cscipt concerne une commande "Ping pour surveiller un CT Proxmox et un Raspbe
 		except Exception as e:
        	 	print(f"[ERREUR] Ping vers {host} impossible : {e}")
        	 	return False
-	def on_connect(client, userdata, flags, reason_code, properties):
+	def on_connect(client, userdata, flags, reason_code, properties): #VERSION2
    		if reason_code == 0:
         	print("[MQTT] Connecté au broker.")
  		else:
@@ -2031,9 +2032,9 @@ Ce cscipt concerne une commande "Ping pour surveiller un CT Proxmox et un Raspbe
        		print(f"[MQTT] Publié sur {topic} : {payload}")
     	except Exception as e:
       		print(f"[ERREUR MQTT] {e}")
-	# ---------------------------
-	# PROGRAMME PRINCIPAL
-	# ---------------------------
+	# -----------------------
+	# PROGRAMME PAHO VERSION2
+	# -----------------------
 	if __name__ == "__main__":
 		# Connexion MQTT
 	    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
@@ -2079,6 +2080,8 @@ Ce cscipt concerne une commande "Ping pour surveiller un CT Proxmox et un Raspbe
     	finally:
         	client.loop_stop()
        	 client.disconnect()
+
+|image2028|
 
 1.8.2.2  La page d'accueil de monitor : include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2832,3 +2835,5 @@ Vérifier que l'IP publiquene répond pas à un ping:
    :width: 700px
 .. |image2026| image:: ../pict/image2026.webp
    :width: 700px
+.. |image2028| image:: ../pict/image2028.webp
+   :width: 650px
