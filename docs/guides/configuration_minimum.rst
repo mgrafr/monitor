@@ -2022,6 +2022,8 @@ Extrait de la fonction "status_variables()" dans fonctions.php concernant cette 
 		except Exception as e:
        	 	print(f"[ERREUR] Ping vers {host} impossible : {e}")
        	 	return False
+	def on_disconnect(client, userdata, reason_code):
+  		print("Déconnexion détectée (code : " + str(reason-code) + "). Reconnexion en cours...")
 	def on_connect(client, userdata, flags, reason_code, properties): #VERSION2
    		if reason_code == 0:
         	print("[MQTT] Connecté au broker.")
