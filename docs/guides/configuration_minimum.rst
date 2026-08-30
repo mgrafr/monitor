@@ -1977,8 +1977,9 @@ Extrait de la fonction "status_variables()" dans fonctions.php concernant cette 
 
 1.8.2.1.5 Exemple script Python pour monitor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
 
-Ce cscipt concerne une commande "Ping pour surveiller un CT Proxmox et un Raspberry.
+   Ce cscipt concerne une commande "Ping pour surveiller un CT Proxmox et un Raspberry; il fait les ping vers les différentes IPs, il met à jour le resultat dans la base mySQL,il envoie le resultat au broker MQTT pour informer Monitor, il indique les opératons faites au fichier log.Un fichier annexe "connect.py" contient les variables de configuration.
 
 .. code-block::
 
@@ -2082,6 +2083,8 @@ Ce cscipt concerne une commande "Ping pour surveiller un CT Proxmox et un Raspbe
        	 client.disconnect()
 
 |image2028|
+
+|image2029|
 
 1.8.2.2  La page d'accueil de monitor : include/accueil.php
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2837,3 +2840,5 @@ Vérifier que l'IP publiquene répond pas à un ping:
    :width: 700px
 .. |image2028| image:: ../pict/image2028.webp
    :width: 650px
+.. |image2029| image:: ../pict/image2028.webp
+   :width: 700px
