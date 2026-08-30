@@ -1590,13 +1590,13 @@ Domoticz met à jour une variable et HA met à jour un dispositifs virtuel;monit
 
 1.8.2 Mode d'emploi pour ajouter une notification
 -------------------------------------------------
-1.8.2.1 Ecriture d'un script Dzvent ou yaml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-l'ajout concerne "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jour" (LastUpdate) des dispositifs
+1.8.2.1 Ecriture d'un script Dzvent, yaml, python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+les scripts concernant Domoticz et Home Assistant concernent "Vu pour la dernière fois" (lastSeen) et "Dernière mise à jour" (LastUpdate) des dispositifs
 
 .. warning::
 
-   Domotiz et Home assistant n'affiche pas ces 2 paramètres , ZwaveJsMqtt et Zigbee2mqtt ne les envoient pas de la même façon, c'est très difficile de trouver les bonnes informations.
+   Domotiz et Home assistant n'affiche pas ces 2 paramètres( lors de la rédaction de ce document) , ZwaveJsMqtt et Zigbee2mqtt ne les envoient pas de la même façon, c'est très difficile de trouver les bonnes informations.
 
    Un exemple concret dans Domoticz et Home Assistant avec Zigbee2mqtt et un interrupteur de volet roulant Tuya:
 
@@ -1957,13 +1957,13 @@ Créer 2 automatisations :
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Les variables utilisables sont celles de la base de données de Monitor
 
-Dans la base de données, le champ "Actif"= 5
+Dans la base de données, le champ "Actif"= 5, le champ "maj_js"= var_sql
 
 |image2019|
 
 .. note::
 
-   Comme la valeur de la variable sert aussi à définir l'images d'une notification dansla table "txt_image", cette table ne peut contenir plusieurs textes identiques;
+   Comme la valeur de la variable sert aussi à définir l'images d'une notification dans la table "txt_image", cette table ne peut contenir plusieurs textes identiques;
 
    pour y remédier, il suffit de séparer le texte par ":" ,la 1ere partie étant ignorée lors de l'affichage du html.
 
@@ -1982,9 +1982,9 @@ Extrait de la fonction "status_variables()" dans fonctions.php concernant cette 
 
 Soit un emplacement disponible est utilisé (voir le § suivant), soit on définit un emplacement:
 
-- on indique l'idx de Domoticz ou l'ID de HA ( utilisé pour l'effacement de la notification)
+- on indique l'idx de Domoticz, l'ID de HA ( utilisé pour l'effacement de la notification): rel="XX"
 
-- on indique l'ID de l'image
+- on indique l'ID de l'image 
 
 - on indique la class de la <div si besoin, en  plus de la class "confirm" 
 
