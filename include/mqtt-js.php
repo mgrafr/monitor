@@ -8,7 +8,7 @@ var mqttjs="0";
     const clientId = 'mqttjs_' + Math.random().toString(16).substring(2, 8)
     const connectUrl = '<?php echo $w.$lien_mqtt;?>'
       const options = {
-      keepalive: 60,
+      keepalive: 90,
       clientId: clientId,
       clean: true,
       connectTimeout: 30 * 1000,
@@ -21,6 +21,7 @@ var mqttjs="0";
     const qos = 0
     var topic1="z1m"
     var state=""
+    var retryTimes=0
     console.log('connecting mqtt client')
     const client = mqtt.connect(connectUrl, options)
     reconnectPeriod: 1000
@@ -31,6 +32,8 @@ var mqttjs="0";
     })
 
     client.on('reconnect', () => {
+          retryTimes += 1
+            console.log("Retrying connection")
       console.log('Reconnecting...')
     })
 
