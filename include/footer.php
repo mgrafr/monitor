@@ -78,7 +78,12 @@ switch (ind) {
 	if (service[attribute]['idm']==id_x){ ID_img=service[attribute]['ID_img'];
 	image=service[attribute]['image'];console.log(id_x,ID_img,image);
 	if (ID_img!="" && image!="pas image"){$('#'+ID_img).attr('src', image);$('#'+ID_img).css('display', 'block');}
-	else {$('#'+ID_img).attr('src', "");$('#'+ID_img).css('display', 'none');}
+	else {tab = idw.split(",");lentab=tab.length;
+	 	$('#'+tab[0]).attr('src', img_serv);$('#'+tab[0]).css('display', 'block');
+		if (lentab>1){
+		for (let i = 1; i < lentab; i++) {
+			$('#'+tab[i]).attr('src', img_serv);$('#'+tab[i]).css('display', 'block');}}
+		}
 	}}
 	break;
 	case 0: console.log('0:  id='+id_x+' state='+state);
@@ -330,9 +335,14 @@ function maj_services(index){
 		if ((myEle) && (idt!="")&&(idt!="0")&&(html[i].Value=="0")){myEle.innerHTML ="";}
 		}
 	/*if (((idt=="")||(idt=="0"))&&(html[i].Value!="0")){myEle.innerHTML ="";}*/
-		if (idw!="" && idw!="#shell"){if (document.getElementById(idw)){
-			if (img_serv=="pas image" || img_serv=="none") {$('#'+idw).css('display', 'none');}
-			else {$('#'+idw).attr('src', img_serv);$('#'+idw).css('display', 'block');} 
+	if (idw!="" && idw!="#shell"){tab = idw.split(",");lentab=tab.length;console.log("llll"+lentab);
+		if (document.getElementById(tab[0])){
+			if (img_serv=="pas image" || img_serv=="none") {$('#'+tab[0]).css('display', 'none');}
+			else {$('#'+tab[0]).attr('src', img_serv);$('#'+tab[0]).css('display', 'block');
+				if (lentab>1){
+				for (let i = 1; i < lentab; i++) {
+					$('#'+tab[i]).attr('src', img_serv);$('#'+tab[i]).css('display', 'block');}}
+			} 
 		}
 	//else {document.getElementById(not_piles).innerHTML =("erreur : "+idt);
 			  //document.getElementById(not_piles_reset).style.display="block";}	
