@@ -535,7 +535,7 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
 
    |image2006|
 
-   . et sur COPY pour récupérer le script et l'ajouter à :green:`automations.yaml'
+   . et sur COPY pour récupérer le script et l'ajouter à :green:`automations.yaml`
 
      |image2007|
 
