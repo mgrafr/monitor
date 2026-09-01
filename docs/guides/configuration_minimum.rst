@@ -2155,6 +2155,10 @@ les ID étant soit notif1, notif2, notif3 ou notif4
 
 |image1158|
 
+  Exemple de 2 ID(s) : Pafge accueil et page Monitoring(Nagios), voir aussi le § :ref:`0.3.1.2 Table dispositifs pour les variables`
+
+|image2030|
+
 - *Avec PhpMyAdmin*: les tables :darkblue:`text-image`text-image` et :green:`dispositifs`
 
 |image1159|
@@ -2845,3 +2849,5 @@ Vérifier que l'IP publiquene répond pas à un ping:
    :width: 650px
 .. |image2029| image:: ../pict/image2029.webp
    :width: 700px
+.. |image2030| image:: ../pict/image2030.webp
+   :width: 450px
