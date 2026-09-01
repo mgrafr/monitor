@@ -1415,7 +1415,7 @@ A l'installation de la table une variable "upload" est préinstallée; elle perm
 
 . **Id1_html** : ID(s) de l’image dans la page ou #shell (voir ci-dessous)
 
-	si plusieurs ID le 2emme doit commencer par # , ainsi que les suivants |image2027| 
+	si plusieurs ID, ils doivent être séparés par une virgule |image2027| 
 
 . **Id2_html** : ID du texte dans la page, concerne surtout l’alarme mais peut afficher d’autres notifications ; 
 
