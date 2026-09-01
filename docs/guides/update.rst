@@ -26,6 +26,7 @@ version en développement v 4.2.1
 - Changer nom champ F() en F (pour utiliser les fonctions et procédures mysql)
 - Ajout qualité de l'air & pollens depuis ATMO, notifications installées dans custom/php/services.php pour servir de modèle à d'autres notiications personnelles
   l'exécution de services.php est commandée par php-cron-scheduler
+- Ajout possibilité de plusieurs ID(s) pour les notifications de variables.
 
 Version 4.2.0 (mai 2026)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
