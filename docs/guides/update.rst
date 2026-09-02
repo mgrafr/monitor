@@ -6,6 +6,8 @@ Version Dev sous debian 13
 ^^^^^^^^^^^^^^^^^^^
 *La version actuelle est 8.4*
 
+la version Dev est 8.5
+
 19.2 Version de SSH
 ^^^^^^^^^^^^^^^^^^^
 version : php8.4-ssh2 pour Debian 13
@@ -22,6 +24,7 @@ Server version: 11.8.2
 ===============
 version en développement v 4.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- version PHP : 8.5
 - correction bug concernant la liste lastseen
 - Changer nom champ F() en F (pour utiliser les fonctions et procédures mysql)
 - Ajout qualité de l'air & pollens depuis ATMO, notifications installées dans custom/php/services.php pour servir de modèle à d'autres notiications personnelles
