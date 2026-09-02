@@ -158,21 +158,21 @@ fi
 apt -y install sshpass
 echo -e "${GN} \e[1;92m SSHPASS a été installé.${CL}"
 sleep 2
-echo -e "${BL} Installation de  php8.4${CL}"
+echo -e "${BL} Installation de  php8.5${CL}"
 sleep 3
 # Add the packages.sury.org/php repository.
-apt-get install -y lsb-release ca-certificates apt-transport-https curl
-curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb
-dpkg -i /tmp/debsuryorg-archive-keyring.deb
-sh -c 'echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-apt-get update
+apt install curl -y
+apt install ca-certificates gnupg lsb-release -y
+curl -fsSL https://packages.sury.org/php/apt.gpg -o /usr/share/keyrings/sury-php.gpg
+echo "deb [signed-by=/usr/share/keyrings/sury-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+apt update
 echo -e "${CM}${GN}  Dépendances installées.${CL}"
-echo -e "${CM}${GN} Installation de PHP 8.4${CL}"
+echo -e "${CM}${GN} Installation de PHP 8.5${CL}"
 # Install PHP.
-apt-get install -y php8.4 php8.4-fpm php8.4-cli php8.4-mysql php8.4-curl
+apt install -y php8.5 php8.5-fpm php8.5-cli php8.5-mysql php8.5-curl
 echo -e "${CM}${GN} Activer le demarrage de PHP ${CL}"
-systemctl enable php8.4-fpm --now
-echo -e "${CM}${GN}  PHP8.4 installé.${CL}"
+systemctl enable php8.5-fpm --now
+echo -e "${CM}${GN}  PHP8.5 installé.${CL}"
 sleep 3
 echo -e "${BL} Installation de PHPMYADMIN${CL}"
 sleep 3
@@ -204,16 +204,16 @@ echo -e "${CM}${GN} LEMP : redemarrage php${CL}"
 cd /etc/nginx
 nginx -t
 sleep 3
-systemctl restart php8.4-fpm 
+systemctl restart php8.5-fpm 
 systemctl restart nginx
 if [ "$ssh2" = "PHP avec SSH2" ]
 then
 echo -e "${BL} installation de php-ssh2${CL}"
-apt install php8.4-ssh2
-echo -e "${CM}${GN} installation terminée de php8.4-ssh2${CL}"
+apt install php8.5-ssh2
+echo -e "${CM}${GN} installation terminée de php8.5-ssh2${CL}"
 fi
 echo -e "${CM}${GN} installation de PHP-gd:${CL}"
-apt install php8.4-gd
+apt install php8.5-gd
 echo -e "${CM}${GN}  installation de dos2unix:${CL}"
 apt install dos2unix
 echo -e "${CM}${GN}  installation de Unzip:${CL}"
