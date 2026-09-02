@@ -33,13 +33,13 @@ echo '<div class="container is-fluid">
     <span class="has-text-danger">&nbsp;&nbsp;* </span>
   </p>
   <p class="is-size-6">
-    <strong>Home Assistant ioBroker Monitor</strong>
+    <strong>Home Assistant ioBroker Monitor zigbee2mqtt</strong>
   </p>
   <span class="ml-3">ID : <input type="text" class="input is-small" style="width: 200px; margin-left: 10px;" value="" id="ha_id"></span>
   <span class="has-text-danger">&nbsp;&nbsp;* </span>
   <br>
   <p class="is-size-6">
-    <strong>Domoticz, Home Assistant, IoBroker, Monitor</strong>
+    <strong>Domoticz, Home Assistant, Monitor(iob zb)</strong>
   </p>
   <span class="ml-3">nom_objet : <input type="text" class="input is-small" style="width: 200px; margin-left: 3px;" id="nom_objet" value=""></span>
   <span class="has-text-danger">&nbsp;&nbsp;* </span>
@@ -51,14 +51,12 @@ echo '<div class="container is-fluid">
   <input type="radio" name="actif" value="2">
   <span class="has-text-info">Dz </span>&nbsp;
   <input type="radio" name="actif" value="3">
-  <span class="has-text-success">Ha</span>&nbsp;
-  <input type="radio" name="actif" value="4">
-  <span class="has-text-purple">Iob</span>&nbsp;
+  <span class="has-text-succes">Ha</span>&nbsp;
   <input type="radio" name="actif" value="5">
-  <span class="has-text-warning">Mon</span>
+  <span class="has-text-warning">Mon(iob zb)</span>
   <br>
   <br>
-  <span class="ml-3">Id Image : <input type="text" class="input is-small" style="width: 120px;" id="id_img" value=""></span>
+  <span class="ml-3">Id(s) Image (séparés par une virgule): <input type="text" class="input is-small" style="width: 180px;" id="id_img" value=""></span>
   <br>
   <span class="ml-3">Id Texte : <input type="text" class="input is-small" style="width: 120px; margin-left: 10px;" id="id_txt" value=""></span>
   <br>
@@ -66,8 +64,8 @@ echo '<div class="container is-fluid">
     <strong>Table text_image</strong>&nbsp;&nbsp;
     <em>texte -> image</em>
   </p>
-  <span class="ml-3">Texte : <input type="text" class="input is-small" style="width: 200px; margin-left: 10px;" id="texte_bd" value=""></span>
-  <br>
+  <span class="ml-3">Texte : <input type="text" class="input is-small" style="width: 240px; margin-left: 10px;" id="texte_bd" value=""></span>
+  <br><span style="font-size:8px">séparé par 2 points si param est utilisé comme valeur</span><br>
   <span class="ml-3">Image : <input type="text" class="input is-small" style="width: 200px; margin-left: 9px;" id="image_bd" value=""></span>
   <br>
   <span class="ml-3">Icone : <input type="text" class="input is-small" style="width: 200px; margin-left: 9px;" id="icone_bd" value=""></span>
