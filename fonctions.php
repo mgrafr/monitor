@@ -4,7 +4,7 @@ session_start();
 $config=$_SESSION["config"];
 require_once($config);
 require_once("custom/php/services.php");
-$L0=array();$l_dz="";$l_ha="";$l_iob="";$l_z="";
+$L0=array();$l_dz="";$l_ha="";$l_iob="";$l_zb="";$l_mo="";
 if (DOMOTIC!=""){$L0[0]=DOMOTIC;$L0[1]=URLDOMOTIC;$L0[2]=IPDOMOTIC;$L0[3]=USERDOMOTIC;$L0[4]=PWDDOMOTIC;$L0[5]=TOKEN_DOMOTIC;$L0[6]=PORT_API_DOMO;$L0[7]=PORT_WEBUI_DOMO;}
 if (DOMOTIC1!=""){$L0[8]=DOMOTIC1;$L0[9]=URLDOMOTIC1;$L0[10]=IPDOMOTIC1;$L0[11]=USERDOMOTIC1;$L0[12]=PWDDOMOTIC1;$L0[13]=TOKEN_DOMOTIC1;$L0[14]=PORT_API_DOMO1;$L0[15]=PORT_WEBUI_DOMO1;}
 if (DOMOTIC2!=""){$L0[16]=DOMOTIC2;$L0[17]=URLDOMOTIC2;$L0[18]=IPDOMOTIC2;$L0[19]=USERDOMOTIC2;$L0[20]=PWDDOMOTIC2;$L0[21]=TOKEN_DOMOTIC2;$L0[22]=PORT_API_DOMO2;$L0[23]=PORT_WEBUI_DOMO2;}
@@ -128,7 +128,7 @@ $json_string1=explode(',',$json_string1);
 	    $ha=[
 		'ID' => $varha[0],
 		'Value'=> $varha[1],
-		'Type'=> 'HA',
+		'serveur'=> 'HA',
 	];
 	$result[$p]=$ha;
 	$n++;$p++;}
@@ -138,16 +138,10 @@ if ($l_iob!="" || $l_mo!="" || $l_zb!=""){
 $rows=sql_variable(5,7);$na=0;// si Actif=5 on récupère LES VARIABLES DE MONITOR
 // utilisées avec iobroker
 while (isset($rows[$na])==true){
-$iob[$na]=[
-	'idm' => $rows[$na]["idm"],
-	'Type'=> 'SQL',
-	'ID' => $rows[$na]["ID"],
-	'Value' => $rows[$na]["Value"]
-	];
-$result[$p]=$iob[$na];
+$result[$p]=$rows[$na];
 //-----------------------------------------
 	$na++;$p++;} }
-if (API=="true"){$p++;
+if (API=="true"){//$p++;
 $lect_msg=sql_variable($p+1,4);//return $lect_msg;
 while ($lect_msg[$p]!=""	){
 $result[$p]=$lect_msg[$p];
@@ -169,10 +163,11 @@ if ($value=="msg") {$content=$result[$n]['contenu'];
 	$id_m_txt = $result[$n]['ID_txt'];$id_m_img="";}
  else {	
 $type = $lect_var['Type'];
-if ($type=="HA") {$a='ID';$vardz = sql_variable($$a,3);}
+$serveur=$lect_var['serveur'];
+if ($serveur=="HA") {$a='ID';$vardz = sql_variable($$a,3);}
 //
-else if ($type=="SQL") {$a='idm';$vardz = sql_variable($idm,8);}	 
-else {$a='idx';$vardz = sql_variable($$a,0);}
+else if ($serveur=="SQL") {$vardz = sql_variable($idm,8);}	 
+else {$a='idx';$serveur="DZ";$vardz = sql_variable($$a,0);}
 if ($vardz!=null){$name=$vardz['nom_objet'];$actif=$vardz['Actif'];$idm=$vardz['idm'];$num=$vardz['num'];$id_m_txt=$vardz['id2_html'];$id_m_img=$vardz['id1_html'];} 
 else {$name="";$actif=$vardz;$num="num".$n;}
 $exist_id="oui";
@@ -192,6 +187,7 @@ $data[$j] = [
 	    'idm' => $idm,
 		'ID' => $ID,
 		'Type' => $type,
+		'Serveur' => $serveur,
 	    'actif' => $actif,
 		'Name' => $name,
 		'Value' => $value,
@@ -271,15 +267,13 @@ function sql_variable($t,$ind){
 			return $retour;}
 	elseif ($ind==7) {$n=0;$ligne=[];
 		while ($ligne = $result->fetch_assoc()) {
-			$retour[$n]['num'] = $ligne['num'];
 			$retour[$n]['idm'] = $ligne['idm'];
-			$retour[$n]['Actif'] = $ligne['idx'];
-			$retour[$n]['ID'] = $ligne['ID'];
 			$retour[$n]['Value'] = $ligne['param'];
+			$retour[$n]['serveur'] = "SQL";
 			$n++;
 		}return $retour;}
-	else {$row = $result->fetch_assoc();
-		return $row;}
+	else {$retour= $result->fetch_assoc();
+		return $retour;}
 	}
 //----POUR HA--------------------------------------
 function devices_zone($zone){global $L_ha,$Token_ha; 
@@ -387,7 +381,7 @@ return $data;
 //-------POUR DZ- et HA -----------------------------------
 // pour DZ specific IDX : /json.htm?type=command&param=getdevices&rid=IDX
 //
-function devices_plan($plan){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$L_zb,$l_zb,$IP_dz,$IP_ha,$IP_iob,$IP_zb,$port_api_iob;
+function devices_plan($plan){global $L_dz, $l_dz, $L_ha, $l_ha,$L_iob, $l_iob,$L_zb,$l_zb,$IP_dz,$IP_ha,$IP_iob,$IP_zb,$port_api_iob,$port_api_zb;
 $n=0;$al_bat=0;$p=0;$t1000=1000;$serveur_dz_on = false;	$nb_Actif_0=0;
 	if ($l_dz!=""){	$serveur_dz_on = true;
 $L=$L_dz."json.htm?type=command&param=getdevices&plan=".$plan;
@@ -477,8 +471,9 @@ $periph=array();$r=$q;	//$q somme devices dz+ha+iob
 $serveur_zb_on = false;
 if ($l_zb!=""){$serveur_zb_on = true;
 //$L_zb="http://192.168.1.21:8084/";
-$L=$L_zb."state.json";
+$L=$IP_zb.":".$port_api_zb;
 $json_string = file_get_curl($L);
+//$json_string = readlink($L);
 $str=explode('"0x',$json_string,3);
 $json_string = '{  "0x'.$str[1].'"0x'.$str[2];
 $ssr=explode('"0x','0x'.$str[1].'"0x'.$str[2]);
@@ -618,7 +613,7 @@ if (!$lect_device['Type']){$lect_device['Type']="inconnu";}
 	'coullamp_OFF' => $periph['coul_lamp_OFF']	,
 	'type_pass' => $periph['pass'],
 	'actif' => $periph['Actif'],
-	'values' => $lect_device['values'],			 
+	'values' => $lect_device['values'],	
 	'alarm_bat' => $bat
 	];
 if ($periph['zbplus']>1){$idm=$t.'_1';$per=sql_plan('mo',$idm,"","");$data[$idm]=$data[$t];
