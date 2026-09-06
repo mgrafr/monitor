@@ -167,7 +167,7 @@ sans l'intermédiaire de Domoticz, Home Assistant ou Ipbroker
 """"""""""""""""""""""""""""""""""""""""""""
 Ce fichier json (dans le Rep /opt/zigbee2mqtt/data) contient les dernières valeurs de tous les dispositifs. il est mis à jour toutes les 5 minutes.
  
-Depuis les dernières versions de z2m, trop de liens symboliques existent por accéder à state.json si on place le lien symbolique est lacé sur le serveur web de z2m auusi 2 solutions existent:
+Depuis les dernières versions de z2m, trop de liens symboliques existent (créant des difficultés le  d'accès) pour lire state.json si on place son lien symbolique sur le serveur web de z2m auusi 2 solutions existent:
   - on crée un petit scrip qui copie state.json sur le serveur http de z2m
   - soit on crée un crée un serveur web node.js qui héberge le lien symbolique de state.json, c'est la solution la plus pérenne , peu de cnance que data/state.json soit déplacé dans les futures versions de z2m
 
@@ -260,6 +260,17 @@ Création d'un réperoire et un sous répertoire dans /opt
  	     console.log(`Server is running on http://${host}:${port}`);
 	     console.log(`Serving static files from: ${publicDir}`);
 	 });
+
+**Le fichier systemd pour le démarrage automatique:**
+
+dans /etc/systemd/system
+
+|image2031|
+
+.. code-block::
+
+   systemctl enable serveur-node.service
+   systemctl start serveur-node.service
 
 .. note::
 
@@ -735,3 +746,5 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
    :width: 650px
 .. |image2009| image:: ../pict/image2009.webp
    :width: 700px
+.. |image2031| image:: ../pict/image2031.webp
+   :width: 400px
