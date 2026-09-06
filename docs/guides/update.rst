@@ -30,6 +30,7 @@ version en développement v 4.2.1
 - Ajout qualité de l'air & pollens depuis ATMO, notifications installées dans custom/php/services.php pour servir de modèle à d'autres notiications personnelles
   l'exécution de services.php est commandée par php-cron-scheduler
 - Ajout possibilité de plusieurs ID(s) pour les notifications de variables.
+- Modification du lien symbolique pour le fichier state.json: depuis un serveur node aulieu du serveur http de z2m(pour l'utilisation de z2m drectement par monitor)
 
 Version 4.2.0 (mai 2026)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
