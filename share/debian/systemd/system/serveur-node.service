@@ -1,0 +1,15 @@
+[Unit]
+Description=serveur node
+After=network.target
+
+[Service]
+Environment=NODE_ENV=production
+ExecStart=node /opt/server/serveur.js
+WorkingDirectory=/opt/server
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
