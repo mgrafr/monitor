@@ -167,19 +167,21 @@ sans l'intermédiaire de Domoticz, Home Assistant ou Ipbroker
 """"""""""""""""""""""""""""""""""""""""""""
 Ce fichier json (dans le Rep /opt/zigbee2mqtt/data) contient les dernières valeurs de tous les dispositifs. il est mis à jour toutes les 5 minutes.
  
-Depuis les dernières versions de z2m, trop de liens symboliques existent (créant des difficultés le  d'accès) pour lire state.json si on place son lien symbolique sur le serveur web de z2m auusi 2 solutions existent:
+Depuis les dernières versions de z2m, trop de liens symboliques existent (créant des difficultés le  d'accès) pour lire state.json si on place son lien symbolique sur le serveur web de z2m aussi 2 solutions existent:
   - on crée un petit scrip qui copie state.json sur le serveur http de z2m
-  - soit on crée un crée un serveur web node.js qui héberge le lien symbolique de state.json, c'est la solution la plus pérenne , peu de cnance que data/state.json soit déplacé dans les futures versions de z2m
+  - soit on crée un crée un serveur web node.js qui héberge le lien symbolique de state.json, c'est la solution la plus pérenne , peu de chance que data/state.json soit déplacé dans les futures versions de z2m
 
 9.5.1.1 Serveur http node.js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Création d'un réperoire et un sous répertoire dans /opt
+inspiré par https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module
+
+**Création d'un réperoire et un sous répertoire dans /opt**
 
 .. code-block::
 
    mkdir /opt/server
    cd server
-   mkdir public // reçoit le lien symbolique et d'autres fichier si besoin
+   mkdir public // reçoit le lien symbolique et d'autres fichiers si besoin
 
 **Script pour créer le serveur http**
 
