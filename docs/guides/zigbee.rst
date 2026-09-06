@@ -1,4 +1,4 @@
-9. Dispositifs Zigbee
+	9. Dispositifs Zigbee
 ---------------------
 **Avec zigbee2mqtt**
 
@@ -165,7 +165,101 @@ sans l'intermédiaire de Domoticz, Home Assistant ou Ipbroker
 
 9.5.1 Créer un lien symbolique de state.json
 """"""""""""""""""""""""""""""""""""""""""""
-Ce fichier json contient les dernières valeurs de tous les dispositifs. il est mis à jour toutes les 5 minutes.
+Ce fichier json (dans le Rep /opt/zigbee2mqtt/data) contient les dernières valeurs de tous les dispositifs. il est mis à jour toutes les 5 minutes.
+ 
+Depuis les dernières versions de z2m, trop de liens symboliques existent por accéder à state.json si on place le lien symbolique est lacé sur le serveur web de z2m auusi 2 solutions existent:
+  - on crée un petit scrip qui copie state.json sur le serveur http de z2m
+  - soit on crée un crée un serveur web node.js qui héberge le lien symbolique de state.json, c'est la solution la plus pérenne , peu de cnance que data/state.json soit déplacé dans les futures versions de z2m
+
+9.5.1.1 Serveur http node.js
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Création d'un réperoire et un sous répertoire dans /opt
+
+.. code-block::
+
+   mkdir /opt/server
+   cd server
+   mkdir public // reçoit le lien symbolique et d'autres fichier si besoin
+
+**Script pour créer le serveur http**
+
+.. code-block::
+
+    const http = require("http");
+	const fs = require("fs");
+	const path = require("path");
+
+	const host = '0.0.0.0';
+	const port = 8001;
+
+	const mimeTypes = {
+  		'.html': 'text/html',
+  		'.css': 'text/css',
+ 		 '.js': 'application/javascript',
+ 		 '.json': 'application/json',
+ 		 '.png': 'image/png',
+ 		 '.jpg': 'image/jpeg',
+  		'.jpeg': 'image/jpeg',
+ 		 '.gif': 'image/gif',
+		  '.svg': 'image/svg+xml',
+ 		 '.ico': 'image/x-icon',
+ 		 '.pdf': 'application/pdf'
+		};
+
+	 const publicDir = path.resolve(__dirname, 'public');
+
+	 const requestListener = (req, res) => {
+ 	 // Normalise le chemin de la requête
+ 	 let reqPath = req.url === '/' ? '/index.html' : req.url;
+  
+  	 // Supprimer la chaîne de requête - ?id=123 ne devrait pas affecter le chemin du fichier
+  	 reqPath = reqPath.split('?')[0];
+  
+     // Résoudre le chemin et vérifier qu'il reste dans publicDir
+     // Le préfixe '.' empêche les chemins absolus d'être résolus incorrectement
+	 const safePath = path.resolve(publicDir, '.' + reqPath);
+  
+     // Vérification de sécurité critique : assurez-vous que le chemin résolu se trouve dans publicDir
+     if (!safePath.startsWith(publicDir)) {
+     res.writeHead(403, { 'X-Content-Type-Options': 'nosniff' });
+     res.end('Forbidden');
+     return;
+     }
+  
+     // Vérifie si le fichier existe et est bien un fichier (pas un dossier)
+     fs.stat(safePath, (err, stat) => {
+       if (err || !stat.isFile()) {
+   		   res.writeHead(404, { 'X-Content-Type-Options': 'nosniff' });
+    	   res.end('File not found');
+       return;
+     }
+    
+     // Déterminer le type MIME à partir de l'extension de fichier
+     const ext = path.extname(safePath).toLowerCase();
+     const contentType = mimeTypes[ext] || 'application/octet-stream';
+    
+     res.setHeader("Content-Type", contentType);
+     res.setHeader("X-Content-Type-Options", "nosniff"); // Prevents MIME sniffing attacks
+     res.writeHead(200);
+    
+     // Diffuser le fichier au lieu de le charger en mémoire
+     // Essentiel pour les gros fichiers - ne consommera pas toute la mémoire
+     const stream = fs.createReadStream(safePath);
+     stream.pipe(res);
+    
+     stream.on('error', () => {
+      // Le fichier pourrait être supprimé entre stat() et createReadStream()
+      res.writeHead(500, { 'X-Content-Type-Options': 'nosniff' });
+      res.end('Server error');
+     });
+     });
+	 };
+
+	 const server = http.createServer(requestListener);
+	 server.listen(port, host, () => {
+ 	     console.log(`Server is running on http://${host}:${port}`);
+	     console.log(`Serving static files from: ${publicDir}`);
+	 });
 
 .. note::
 
@@ -173,11 +267,11 @@ Ce fichier json contient les dernières valeurs de tous les dispositifs. il est 
 
 .. code-block::
 
-   ln -s /opt/zigbee2mqtt/data/state.json /opt/zigbee2mqtt/node_modules/zigbee2mqtt-windfront/dist/state.json
+   ln -s /opt/zigbee2mqtt/data/state.json /opt/server/public/state.json
 
 .. note::
 
-   Ce lien permer de récutérer en http le contenu du fichier : http://IP_Z2M:8084:state.json
+   Ce lien permer de récutérer en http le contenu du fichier : http://IP_Z2M:8001:state.json
 
    |image1955|
 
