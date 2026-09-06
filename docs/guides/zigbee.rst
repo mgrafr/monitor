@@ -560,6 +560,14 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
 
 9.5.5 Automatisations
 """""""""""""""""""""
+à partir de la version 2.11.0, modifier configuration.yaml en ajoutant :
+
+.. code-block::
+
+   enable_external_js: true
+
+|image2032|
+
 9.5.5.1 Le plugin Zigbee2MQTT-automations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |image1228| https://github.com/Luligu/zigbee2mqtt-automations
@@ -750,3 +758,5 @@ Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; aut
    :width: 700px
 .. |image2031| image:: ../pict/image2031.webp
    :width: 400px
+.. |image2032| image:: ../pict/image2032.webp
+   :width: 300px
