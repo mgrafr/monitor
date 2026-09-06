@@ -560,7 +560,7 @@ Voir aussi le § :ref:`8.1.2.2 Commandes de changement de couleur des lampes`
 
 9.5.5 Automatisations
 """""""""""""""""""""
-à partir de la version 2.11.0, modifier configuration.yaml en ajoutant :
+à partir de la version 2.11.0 de z2m, modifier configuration.yaml en ajoutant :
 
 .. code-block::
 
