@@ -1,4 +1,4 @@
-	9. Dispositifs Zigbee
+9. Dispositifs Zigbee
 ---------------------
 **Avec zigbee2mqtt**
 
@@ -595,18 +595,18 @@ Exemple d'une première automation : dans /opt/zigbee2mqtt/data/automations.yaml
 
 .. code-block::
 
-   Allumage lampes jardin 2mn  depuis contact lampe_ porche:
-     active: true
-     trigger:
-       entity: lampe_terrasse_nord
-       state: ON
-     action:
-       - entity: lampe_jardin
-         payload:
-           state_l2: ON
-         turn_off_after: 120
-         payload_off:
-         logger: info
+   Allumage lampes jardin W:
+   active: true
+   trigger:
+     entity: lampe_porche
+     state: ON
+   action:
+     - entity: lampe_jardin
+       payload:
+         state_l2: ON
+       turn_off_after: 10
+       payload_off:
+         state_l2: OFF
 
 Dans le frontend -> Extensions: Sélectionner automations.js et sauvegarder; automations.yaml et scenes.yaml (si il existe) sont rechargés.
 
