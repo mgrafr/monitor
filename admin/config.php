@@ -126,7 +126,9 @@ define('USERDOMOTIC', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC', 'http://192.168.1.76:8086/');//url
 define('TOKEN_DOMOTIC', '');//TOKEN ou BEARER
-define('PORT_API_DOMO','');//port de l'API éventuel
+define('PORT_API_DOMO','');//port de l'API éventuel ou chemin du lien de state.jon si ZB
+// exemple "1234" (IOB) , "8001/state.json" si serveur node, "8084/state.json(serveur ZB)
+define('PORT_WEBUI_DOMO','');//port web UI et dossier éventuel
 define('PORT_WEBUI_DOMO','');//port web UI et dossier éventuel
 //
 define('IPDOMOTIC1', '');//ip 2emme serveur Domotique ex:192.168.1.5
@@ -134,15 +136,18 @@ define('USERDOMOTIC1', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC1', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC1', '');//url ex:http://192.168.1.5:8123/
 define('TOKEN_DOMOTIC1', '');//TOKEN ou BEARER
-define('PORT_API_DOMO1','');//port de l'API éventuel
+define('PORT_API_DOMO1','');//port de l'API éventuel ou chemin du lien de state.jon si ZB
+// exemple "1234" (IOB) , "8001/state.json" si serveur node, "8084/state.json(serveur ZB)
+define('PORT_WEBUI_DOMO','');//port web UI et dossier éventuel
 define('PORT_WEBUI_DOMO1','');//port web UI ou vis 2 et dossier éventuel
 //
 define('IPDOMOTIC2', '');//ip 2emme serveur Domotique ex:192.168.1.5
 define('USERDOMOTIC2', '<user>');//user du serveur,répertoire :home/user
 define('PWDDOMOTIC2', '<mot passe>');//mot passe serveur
 define('URLDOMOTIC2', '');//url ex:http://192.168.1.104:8081/
-define('TOKEN_DOMOTIC2', '');//TOKEN ou BEARER
-define('PORT_API_DOMO2','');//port de l'API éventuel
+define('TOKEN_DOMOTIC2', '');//TOKEN ou BEARER//port de l'API éventuel ou chemin du lien de state.jon si ZB
+// exemple "1234" (IOB) , "8001/state.json" si serveur node, "8084/state.json(serveur ZB)
+define('PORT_WEBUI_DOMO','');//port web UI et dossier éventuel//port de l'API éventuel
 define('PORT_WEBUI_DOMO2','');//port web UI et dossier éventuel ex: 8082/vis-2/index.html
 // ****modules et constantes  complémentaires pour Domoticz
 define('NUMPLAN','2');//DZ uniquement: n° du plan regroupant tous les capteurs
