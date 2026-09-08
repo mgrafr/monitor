@@ -65,7 +65,7 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
 
      PCT ENTER <NUMERO DU CT>
 
-   |image1116|
+ |image1116|
 
  - mettre à jour et installer des utiliaires:
 
@@ -73,6 +73,8 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
 
      apt update & upgrade
      apt install sudo,nano,openssh-server
+
+  |image1118|
 
  - Créer un utilisateur et lui donner des droits
 
