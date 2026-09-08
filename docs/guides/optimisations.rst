@@ -41,39 +41,65 @@ exécution de l'image Docker de Gladys dans un CT LXC Proxmox(images OCI), versi
 
   |image1112|
 
+  Cliquez sur Télécharger pour extraire l'image
+  
+  |image1114|
+
+  Le modèle est ajouté au stockage
+
+  |image1113|
+
+ - Création du conteneur 
+
+23.2.2 Démarrage du conteneur
+=============================
+la console affiche :
+
+ |image1115|
+
+Elle ne peut être utilisée, la solution pour contourner le problème:
+
+- utiliser le shell du noeuds
+
+  .. code-block::
+
+     PCT ENTER <NUMERO DU CT>
+
+   |image1116|
+
+ - mettre à jour et installer des utiliaires:
+
+  .. code-block::
+
+     apt update & upgrade
+     apt install sudo,nano,openssh-server
+
+ - Créer un utilisateur et lui donner des droits
 
 
-23.2.2 Installation et configuration de Leon
-============================================
-23.2.2.1 INSTALLATION
+
+23.2.2.1 
 """""""""""""""""""""
 
-23.2.3 Installation de STT et TTS
-=================================
-23.2.3.1 Installation de STT
-""""""""""""""""""""""""""""
-
-23.2.3.2 Installation de TTS
-""""""""""""""""""""""""""""
 
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
 .. |image1112| image:: ../media/image1112.webp
    :width: 650px
-
 .. |image1113| image:: ../media/image1113.webp
-   :width: 439px
+   :width: 500px
 .. |image1114| image:: ../media/image1114.webp
-   :width: 544px
+   :width: 650px
 .. |image1115| image:: ../media/image1115.webp
-   :width: 600px
+   :width: 650px
 .. |image1116| image:: ../media/image1116.webp
    :width: 309px
 .. |image1117| image:: ../media/image1117.webp
    :width: 50px
 .. |image1118| image:: ../media/image1118.webp
-   :width: 700px
+   :width: 600px
+
 .. |image1119| image:: ../media/image1119.webp
    :width: 600px
 .. |image1120| image:: ../media/image1120.webp
