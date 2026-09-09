@@ -30,6 +30,8 @@
 
 23.2 Essai de Gladys Assistant dans un CT LXC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ |image1120|
+
 exécution de l'image Docker de Gladys dans un CT LXC Proxmox(images OCI), version de proxmox minimum 9.1
 
 23.2.1 Création du conteneur
@@ -59,11 +61,11 @@ la console affiche :
 
 Elle ne peut être utilisée, la solution pour contourner le problème:
 
-- utiliser le shell du noeuds
+- utiliser le shell du noeud
 
   .. code-block::
 
-     PCT ENTER <NUMERO DU CT>
+     pct enter <NUMERO DU CT>
 
  |image1116|
 
@@ -78,6 +80,16 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
 
  - Créer un utilisateur et lui donner des droits
 
+  .. code-block::
+
+     adduser <UTILISATER>
+     usermod -G sudo <UTILISATEUR>
+
+23.2.2 Accés depuis le navigateur
+=================================
+http://gladysassistant.local ou <IP du SERVEUR>
+
+ |image1121|
 
 
 23.2.2.1 
@@ -96,18 +108,18 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
 .. |image1115| image:: ../media/image1115.webp
    :width: 650px
 .. |image1116| image:: ../media/image1116.webp
-   :width: 309px
+   :width: 650px
 .. |image1117| image:: ../media/image1117.webp
-   :width: 50px
+   :width: 500px
 .. |image1118| image:: ../media/image1118.webp
    :width: 600px
-
 .. |image1119| image:: ../media/image1119.webp
    :width: 600px
 .. |image1120| image:: ../media/image1120.webp
-   :width: 615px
+   :width: 60px
 .. |image1121| image:: ../media/image1121.webp
-   :width: 588px
+   :width: 350px
+
 .. |image1122| image:: ../media/image1122.webp
    :width: 600px
 
