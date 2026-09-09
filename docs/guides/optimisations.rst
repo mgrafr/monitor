@@ -101,7 +101,11 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
 =================================
 http://gladysassistant.local ou <IP du SERVEUR>
 
- |image1121|
+|image1121|
+
+Les appareils apres l'ajout de l'intégration Zigbee2mqtt
+
+|image1123|
 
 
 23.2.2.1 
