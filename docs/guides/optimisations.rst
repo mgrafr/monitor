@@ -53,6 +53,10 @@ exécution de l'image Docker de Gladys dans un CT LXC Proxmox(images OCI), versi
 
  - **Création du conteneur** 
 
+   |image1125|
+
+  d'après l'image docker et les infos fournies lors de la création du CT
+
     |image1122|
 
 23.2.2 Démarrage du conteneur
@@ -97,7 +101,13 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
    - SQLite : pour les données générales (utilisateurs, configuration, appareils et états de base).
    - DuckDB : une base de données analytique dédiée aux données temporelles (historique des capteurs)
 
-23.2.2 Accés depuis le navigateur
+23.2.2 Modification de configuration
+====================================
+- Changer le port HTTP:
+
+  |image1124|
+
+23.2.3 Accés depuis le navigateur
 =================================
 http://gladysassistant.local ou <IP du SERVEUR>
 
@@ -137,13 +147,13 @@ Les appareils apres l'ajout de l'intégration Zigbee2mqtt
    :width: 350px
 .. |image1122| image:: ../media/image1122.webp
    :width: 700px
-
 .. |image1123| image:: ../media/image1123.webp
-   :width: 600px
+   :width: 700px
 .. |image1124| image:: ../media/image1124.webp
-   :width: 485px
+   :width: 650px
 .. |image1125| image:: ../media/image1125.webp
    :width: 700px
+
 .. |image1126| image:: ../media/image1126.webp
    :width: 700px
 .. |image1127| image:: ../media/image1127.webp
