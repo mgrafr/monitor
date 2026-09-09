@@ -86,7 +86,7 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
 
   |image1118|
 
-  |image1127|
+  |image1128|
 
 
  - Créer un utilisateur et lui donner des droits
