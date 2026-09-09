@@ -117,6 +117,15 @@ Les appareils apres l'ajout de l'intégration Zigbee2mqtt
 
 |image1123|
 
+L'activité en direct
+
+|image1126|
+
+l'accueil 
+
+|image1127|
+
+
 
 23.2.2.1 
 """""""""""""""""""""
@@ -153,11 +162,11 @@ Les appareils apres l'ajout de l'intégration Zigbee2mqtt
    :width: 650px
 .. |image1125| image:: ../media/image1125.webp
    :width: 700px
-
 .. |image1126| image:: ../media/image1126.webp
    :width: 700px
 .. |image1127| image:: ../media/image1127.webp
-   :width: 358px
+   :width: 700px
+
 .. |image1128| image:: ../media/image1128.webp
    :width: 383px
 .. |image1129| image:: ../media/image1129.webp
