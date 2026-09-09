@@ -51,7 +51,9 @@ exécution de l'image Docker de Gladys dans un CT LXC Proxmox(images OCI), versi
 
   |image1113|
 
- - Création du conteneur 
+ - **Création du conteneur** 
+
+    |image1122|
 
 23.2.2 Démarrage du conteneur
 =============================
@@ -85,6 +87,16 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
      adduser <UTILISATER>
      usermod -G sudo <UTILISATEUR>
 
+- Affichage du contenu du serveur dans filezilla en sftp et l'utilisateur crée
+
+   |image1119|
+
+.. note::
+
+   Gladys Assistant utilise deux types de bases de données en local selon les infos stockées : 
+   - SQLite : pour les données générales (utilisateurs, configuration, appareils et états de base).
+   - DuckDB : une base de données analytique dédiée aux données temporelles (historique des capteurs)
+
 23.2.2 Accés depuis le navigateur
 =================================
 http://gladysassistant.local ou <IP du SERVEUR>
@@ -94,9 +106,7 @@ http://gladysassistant.local ou <IP du SERVEUR>
 
 23.2.2.1 
 """""""""""""""""""""
-Gladys Assistant utilise deux types de bases de données en local selon la nature des informations stockées : 
-- SQLite : pour les données générales de l'application (utilisateurs, configuration, appareils et états de base).
-- DuckDB : une base de données de type OLAP (analytique) dédiée au stockage optimisé des données temporelles (time-series ou historiques de capteurs)
+
 
 
 .. |image1064| image:: ../media/image1064.webp
@@ -121,9 +131,8 @@ Gladys Assistant utilise deux types de bases de données en local selon la natur
    :width: 60px
 .. |image1121| image:: ../media/image1121.webp
    :width: 350px
-
 .. |image1122| image:: ../media/image1122.webp
-   :width: 600px
+   :width: 700px
 
 .. |image1123| image:: ../media/image1123.webp
    :width: 600px
