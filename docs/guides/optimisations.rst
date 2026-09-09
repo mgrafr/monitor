@@ -75,14 +75,19 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
 
  |image1116|
 
- - mettre à jour et installer des utiliaires:
+ - mettre à jour et installer la locale :darkblue:`fr_FR.UTF-8 UTF-8` & des utiliaires:
 
   .. code-block::
 
      apt update & upgrade
      apt install sudo,nano,openssh-server
+     apt install locales
+     dpkg-reconfigure locales
 
   |image1118|
+
+  |image1127|
+
 
  - Créer un utilisateur et lui donner des droits
 
@@ -166,9 +171,9 @@ l'accueil
    :width: 700px
 .. |image1127| image:: ../media/image1127.webp
    :width: 700px
-
 .. |image1128| image:: ../media/image1128.webp
-   :width: 383px
+   :width: 600px
+
 .. |image1129| image:: ../media/image1129.webp
    :width: 600px
 .. |image1130| image:: ../media/image1130.webp
