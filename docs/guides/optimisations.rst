@@ -94,7 +94,9 @@ http://gladysassistant.local ou <IP du SERVEUR>
 
 23.2.2.1 
 """""""""""""""""""""
-
+Gladys Assistant utilise deux types de bases de données en local selon la nature des informations stockées : 
+- SQLite : pour les données générales de l'application (utilisateurs, configuration, appareils et états de base).
+- DuckDB : une base de données de type OLAP (analytique) dédiée au stockage optimisé des données temporelles (time-series ou historiques de capteurs)
 
 
 .. |image1064| image:: ../media/image1064.webp
