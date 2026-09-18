@@ -28,11 +28,19 @@
 
 |image1064|
 
-23.2 Essai de Gladys Assistant dans un CT LXC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23.2 Essai de Gladys Assistant dans un CT LXC sans DOCKER
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  |image1120|
 
 exécution de l'image Docker de Gladys dans un CT LXC Proxmox(images OCI), version de proxmox minimum 9.1
+
+.. IMPORTANT:: 
+
+   C'est une solution uniquement pour décovrir Gladys, tout fonctionne correctement mais impossible d'ajouter les exensions de la communauté car elle fonctionnent toutes dans des conteneurs Docker; c'est le mode de fonctionnement choisi par gladys et difficile sans des modifications importantes à ffectuer pour chacune des esxtensions.
+
+   Par contre le fonctionnement de Gladys est correcte sous Docker installé dans un CT LXC; 
+
+   |image1132|   
 
 23.2.1 Création du conteneur
 ============================
@@ -181,7 +189,7 @@ l'accueil
 .. |image1131| image:: ../media/image1131.webp
    :width: 600px
 .. |image1132| image:: ../media/image1132.webp
-   :width: 314px
+   :width: 700px
 .. |image1133| image:: ../media/image1133.webp
    :width: 295px
 .. |image1134| image:: ../media/image1134.webp
