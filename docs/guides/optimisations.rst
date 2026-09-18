@@ -28,17 +28,21 @@
 
 |image1064|
 
-23.2 Essai de Gladys Assistant dans un CT LXC sans DOCKER
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- |image1120|
+23.2 Découverte de Gladys Assistant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23.2.1 Essai de Gladys Assistant dans un CT LXC sans DOCKER
+===========================================================
+|image1120|
 
 exécution de l'image Docker de Gladys dans un CT LXC Proxmox(images OCI), version de proxmox minimum 9.1
 
 .. IMPORTANT:: 
 
-   C'est une solution uniquement pour décovrir Gladys, tout fonctionne correctement mais impossible d'ajouter les exensions de la communauté car elle fonctionnent toutes dans des conteneurs Docker; c'est le mode de fonctionnement choisi par gladys et difficile sans des modifications importantes à ffectuer pour chacune des esxtensions.
+   C'est une solution uniquement pour décovrir Gladys, tout fonctionne correctement mais impossible d'ajouter les exensions de la communauté car elle fonctionnent toutes dans des conteneurs Docker; c'est le mode de fonctionnement choisi par gladys et difficile, sans des modifications importantes des esxtensions, de les exécuier.
 
-   Par contre le fonctionnement de Gladys est correcte sous Docker installé dans un CT LXC; 
+   Par contre le fonctionnement de Gladys est correcte sous Docker installé dans un CT LXC (cf le § :ref:`23.2.2 Installer Gladys Assistant dans un CT LXC & Docker`) avec un avantage important concernant l'utilisation de la mémore et du processeur;les copieS d'ecran suivantes ont été réalisées sur une VM et un CT ayant la même configuration de Gladys.
+
+   la VM fonctionne sous Ubuntu, (impossible le lancer Gladys sous docker et debian13), le CT fonctionne correctement sous debian Trixie ???
 
    |image1132|   
 
@@ -138,11 +142,61 @@ l'accueil
 
 |image1127|
 
+23.2.2 Installer Gladys Assistant dans un CT LXC & Docker
+=========================================================
+https://tutozine.fr/installation-docker-engine-docker-compose-sur-debian-13-trixie/
 
+Pré requis: 1 CT Debian 13(ISO minimale debian-13.2.0-amd64-netinst.iso) & les paquets SUDOn CURL µ
 
-23.2.2.1 
-"""""""""""""""""""""
+.. code-block::
 
+   apt update && apt upgrade -y
+   apt install sudo -y & apt install ca-certificates curl 
+
+23.2.2.1 créer un utilisateur
+"""""""""""""""""""""""""""""
+.. code-block::
+
+   adduser <USER>
+   usermod -aG sudo <USER>
+   exit
+
+23.2.2.2 Installation de Docker
+"""""""""""""""""""""""""""""""
+l'utilisateur créer se connecte à la console:
+
+Ajout de la clé de sécurité pour garantir l’authenticité des paquets :
+
+.. code-block::
+
+   sudo install -m 0755 -d /etc/apt/keyrings
+   sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+   sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+création d'un fichier de configuration pour apt (format .sources ) 
+
+.. code-block::
+
+   sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+   Types: deb
+   URIs: https://download.docker.com/linux/debian
+   Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+   Components: stable
+   Signed-By: /etc/apt/keyrings/docker.asc
+   EOF
+
+Installation de Docker & Docker compose
+
+.. code-block::
+
+   sudo apt update
+   sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+Vérification et Premier Conteneur
+
+.. code-block::
+
+   docker run hello-world
 
 
 .. |image1064| image:: ../media/image1064.webp
