@@ -100,30 +100,6 @@ Elle ne peut être utilisée, la solution pour contourner le problème:
 
   |image1128|
 
-
- - Créer un utilisateur et lui donner des droits
-
-  .. code-block::
-
-     adduser <UTILISATER>
-     usermod -G sudo <UTILISATEUR>
-
-- Affichage du contenu du serveur dans filezilla en sftp et l'utilisateur crée
-
-   |image1119|
-
-.. note::
-
-   Gladys Assistant utilise deux types de bases de données en local selon les infos stockées : 
-   - SQLite : pour les données générales (utilisateurs, configuration, appareils et états de base).
-   - DuckDB : une base de données analytique dédiée aux données temporelles (historique des capteurs)
-
-23.2.2 Modification de configuration
-====================================
-- Changer le port HTTP:
-
-  |image1124|
-
 23.2.3 Accés depuis le navigateur
 =================================
 http://gladysassistant.local ou <IP du SERVEUR>
@@ -197,6 +173,32 @@ Vérification et Premier Conteneur
 .. code-block::
 
    docker run hello-world
+
+23.2.2.3 Installation de Gladys
+"""""""""""""""""""""""""""""""
+23.2.2.3.1 Modification de configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Changer le port HTTP:
+
+  |image1124|
+
+en cours de rédaction
+
+23.2.2.3.1 communication sftp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Affichage du contenu du serveur dans filezilla 
+
+   |image1119|
+
+.. note::
+
+   Gladys Assistant utilise deux types de bases de données en local selon les infos stockées : 
+   - SQLite : pour les données générales (utilisateurs, configuration, appareils et états de base).
+   - DuckDB : une base de données analytique dédiée aux données temporelles (historique des capteurs)
+
+23.2.2.4 Sauvegarde et restauration
+"""""""""""""""""""""""""""""""""""
+en cours de rédaction
 
 
 .. |image1064| image:: ../media/image1064.webp
