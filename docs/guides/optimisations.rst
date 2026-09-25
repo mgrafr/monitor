@@ -364,5 +364,5 @@ Pour lancer les tests d'un seul service, placez vous dans le dossier server, et 
    :width: 700px
 .. |image1137| image:: ../media/image1137.webp
    :width: 533px
-.. |image2034| image:: ../media/image12034webp
+.. |image2034| image:: ../pict/image12034webp
    :width: 700px
