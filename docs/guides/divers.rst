@@ -587,6 +587,10 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
     |image1748|
 
+18.9.5 Commandes Docker
+=======================
+ |image2033|
+
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliserons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
