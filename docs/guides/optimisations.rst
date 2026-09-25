@@ -215,17 +215,11 @@ Le backend est un serveur Node.js.
 
   |image2034|
 
-•	sqlite3 
+•	sqlite3 1 & openssl
 
    .. code-block::
 
-      sudo apt install sqlite3 
-
-•	Openssl 
-
-  .. code-block::
-
-     sudo apt install openssl 
+      sudo apt install sqlite3 openssl
 
 ** Cloner le repo Gladys**
 
@@ -370,3 +364,5 @@ Pour lancer les tests d'un seul service, placez vous dans le dossier server, et 
    :width: 700px
 .. |image1137| image:: ../media/image1137.webp
    :width: 533px
+.. |image2034| image:: ../media/image12034webp
+   :width: 700px
