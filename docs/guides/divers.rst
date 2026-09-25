@@ -975,3 +975,5 @@ pour récupérer la puissance depuis le Data de Domoticz : **26504.0;0;0;0;2941.
    :width: 500px
 .. |image2025| image:: ../pict/image2025.webp
    :width: 350px
+.. |image2033| image:: ../pict/image2033.webp
+   :width:700px
