@@ -198,7 +198,121 @@ en cours de rédaction
 
 23.2.2.4 Sauvegarde et restauration
 """""""""""""""""""""""""""""""""""
-en cours de rédaction
+
+23.2.3 MISE en place d'un environnement de développement 
+========================================================
+.. note::
+
+   Si l’installation se fait sur une VM, préférer putty comme console
+
+23.2.3.1 Le backend
+"""""""""""""""""""
+Le backend est un serveur Node.js.
+
+**Installer les dépendances systèmes nécessaires**
+
+•	Node.js 24 , pour le télécharger et l'installer :	https://nodejs.org/en/download/
+
+  |image2034|
+
+•	sqlite3 
+
+   .. code-block::
+
+      sudo apt install sqlite3 
+
+•	Openssl 
+
+  .. code-block::
+
+     sudo apt install openssl 
+
+** Cloner le repo Gladys**
+
+.. code-block::
+
+   git clone https://github.com/GladysAssistant/Gladys gladys && cd gladys
+
+**Installer les dépendances NPM serveurs**
+
+  .. code-block::
+
+     cd server
+
+  .. note::
+
+     Pour ne pas installer toutes les dépendances, y compris celles des intégrations,créer un fichier .env dans le dossier server avec le contenu suivant :
+
+     .. code-block::
+
+        echo "INSTALL_SERVICES_SILENT_FAIL=true" > .env
+
+     et lancer:
+
+     .. code-block::
+
+        npm install
+
+**Lancer la migration de la BD
+
+.. code-block::
+
+    npm run db-migrate:dev
+
+**Démarrer le serveur**
+
+.. code-block::
+
+   npm start
+
+Le serveur devrait être accessible à *http://localhost:1443*.
+
+23.2.3.1 Le frontend
+""""""""""""""""""""
+:red:`Ouvrir une 2eme console`
+
+**Installer les dépendances**
+
+.. code-block::
+
+   npm install
+
+créer un fichier .env avec le contenu suivant : (ip du serveur gladys)
+
+.. code-block::
+
+   LOCAL_API_URL=http://192.168.xxx.xxx:1443
+   WEBSOCKET_URL=ws://192.168.xxx.xxx:1443
+
+**Démarrer le frontend**
+
+.. code-block::
+
+   npm start
+
+Le frontend devrait être accessible à http://localhost:1444.
+
+**Lancer les tests serveurs**
+
+*Placez vous dans le dossier server* et lancez :
+
+.. code-block::
+
+   npm test
+
+Ce qui va lancer les tests mochas.(framework de test JavaScript. Il est utilisé pour valider le bon fonctionnement du code côté serveur ou côté client).
+
+Pour faire tourner le linter : Le linting ("linter") est une pratique qui vise à améliorer la qualité du code:
+
+.. code-block::
+
+   npm run eslint
+
+Pour lancer les tests d'un seul service, placez vous dans le dossier server, et lancez la commande :
+
+.. code-block::
+
+   npm run test-service --service=tasmota
 
 
 .. |image1064| image:: ../media/image1064.webp
