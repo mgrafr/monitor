@@ -199,14 +199,16 @@ en cours de rédaction
 23.2.2.4 Sauvegarde et restauration
 """""""""""""""""""""""""""""""""""
 
-23.2.3 MISE en place d'un environnement de développement 
-========================================================
+23.2.3 Créer une intégration
+============================
+23.2.3.1 Mise en place d'un environnement de développement 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 .. note::
 
    Si l’installation se fait sur une VM, préférer putty comme console
 
-23.2.3.1 Le backend
-"""""""""""""""""""
+23.2.3.1.a Le backend
+~~~~~~~~~~~~~~~~~~~~~
 Le backend est un serveur Node.js.
 
 **Installer les dépendances systèmes nécessaires**
@@ -261,8 +263,8 @@ Le backend est un serveur Node.js.
 
 Le serveur devrait être accessible à *http://localhost:1443*.
 
-23.2.3.1 Le frontend
-""""""""""""""""""""
+23.2.3.1.b Le frontend
+~~~~~~~~~~~~~~~~~~~~~~
 :red:`Ouvrir une 2eme console`
 
 **Installer les dépendances**
@@ -308,6 +310,19 @@ Pour lancer les tests d'un seul service, placez vous dans le dossier server, et 
 
    npm run test-service --service=tasmota
 
+23.2.3.2 Le référentiel sur github 
+""""""""""""""""""""""""""""""""""
+23.2.3.2.a Exporter sur Github l'App
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exemple pour une app nodejs "server-api"
+
+|image2035|
+
+|image2036|
+
+https://github.com/GladysAssistant/integration-template-js
+
+|image2037|
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -364,5 +379,11 @@ Pour lancer les tests d'un seul service, placez vous dans le dossier server, et 
    :width: 700px
 .. |image1137| image:: ../media/image1137.webp
    :width: 533px
-.. |image2034| image:: ../pict/image2034webp
+.. |image2034| image:: ../pict/image2034.webp
    :width: 700px
+.. |image2035| image:: ../pict/image2035.webp
+   :width: 450px
+.. |image2036| image:: ../pict/image2036.webp
+   :width:500px
+.. |image2037| image:: ../pict/image2037.webp
+   :width:700px
