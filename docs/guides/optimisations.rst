@@ -314,16 +314,26 @@ Pour lancer les tests d'un seul service, placez vous dans le dossier server, et 
 """"""""""""""""""""""""""""""""""
 23.2.3.2.a Exporter sur Github l'App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Exemple pour une app nodejs "server-api"
+Exemple pour une app nodejs "server-api" **qui fonctionne correctement dans uneimage Docker**
 
 |image2035|
 
-|image2036|
+.. note:: 
 
-https://github.com/GladysAssistant/integration-template-js
+   les modules nodejs seront installés à la lecture des fichiers .json
+
+Créer une branche de ce dépots https://github.com/GladysAssistant/integration-template-js sur votre compte Github
+
+|image2036|
 
 |image2037|
 
+**importer sur ce nouveau dépot les 2 fichiers json de votre app.
+
+|image1137|
+
+23.2.3.2.b Adapter le fichier gladys-assistant-integration.json
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |image2038|
 
 |image2039|
@@ -364,7 +374,6 @@ https://github.com/GladysAssistant/integration-template-js
    :width: 700px
 .. |image1128| image:: ../media/image1128.webp
    :width: 600px
-
 .. |image1129| image:: ../media/image1129.webp
    :width: 600px
 .. |image1130| image:: ../media/image1130.webp
@@ -382,16 +391,16 @@ https://github.com/GladysAssistant/integration-template-js
 .. |image1136| image:: ../media/image1136.webp
    :width: 700px
 .. |image1137| image:: ../media/image1137.webp
-   :width: 533px
+   :width: 500px
 .. |image2034| image:: ../pict/image2034.webp
    :width: 700px
 .. |image2035| image:: ../pict/image2035.webp
    :width: 450px
 .. |image2036| image:: ../pict/image2036.webp
-   :width:500px
+   :width: 500px
 .. |image2037| image:: ../pict/image2037.webp
-   :width:700px
+   :width: 700px
 .. |image2038| image:: ../pict/image2038.webp
-   :width:700px
+   :width: 700px
 .. |image2039 image:: ../pict/image2039.webp
-   :width:700px
+   :width: 700px
