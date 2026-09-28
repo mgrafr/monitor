@@ -314,7 +314,7 @@ Pour lancer les tests d'un seul service, placez vous dans le dossier server, et 
 """"""""""""""""""""""""""""""""""
 23.2.3.2.a Exporter sur Github l'App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Exemple pour une app nodejs "server-api" **qui fonctionne correctement dans uneimage Docker**
+Exemple pour une app nodejs "server-api" **qui fonctionne correctement dans une image Docker**
 
 |image2035|
 
@@ -324,9 +324,7 @@ Exemple pour une app nodejs "server-api" **qui fonctionne correctement dans unei
 
 Créer une branche de ce dépots https://github.com/GladysAssistant/integration-template-js sur votre compte Github
 
-|image2036|
-
-|image2037|
+|image2037||
 
 **importer sur ce nouveau dépot les 2 fichiers json de votre app.
 
@@ -337,6 +335,8 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 |image2038|
 
 |image2039|
+
+
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -402,5 +402,5 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
    :width: 700px
 .. |image2038| image:: ../pict/image2038.webp
    :width: 700px
-.. |image2039 image:: ../pict/image2039.webp
+.. |image2039| image:: ../pict/image2039.webp
    :width: 700px
