@@ -340,6 +340,24 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 
 |image2036|
 
+23.2.3.2.C créer l'imamge du conteneur
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: sur Github
+
+   .. code-block::
+
+      npx github:GladysAssistant/integration-store .
+
+
+.. admonition:: avec la cli
+
+   nstallez le SDK dans votre projet :
+
+   .. code-block::
+
+      npm install @gladysassistant/integration-sdk
+
+   
 
 
 .. |image1064| image:: ../media/image1064.webp
