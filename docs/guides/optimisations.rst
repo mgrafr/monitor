@@ -324,6 +324,10 @@ https://github.com/GladysAssistant/integration-template-js
 
 |image2037|
 
+|image2038|
+
+|image2039|
+
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
 .. |image1112| image:: ../media/image1112.webp
@@ -386,4 +390,8 @@ https://github.com/GladysAssistant/integration-template-js
 .. |image2036| image:: ../pict/image2036.webp
    :width:500px
 .. |image2037| image:: ../pict/image2037.webp
+   :width:700px
+.. |image2038| image:: ../pict/image2038.webp
+   :width:700px
+.. |image2039 image:: ../pict/image2039.webp
    :width:700px
