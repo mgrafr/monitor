@@ -324,7 +324,7 @@ Exemple pour une app nodejs "server-api" **qui fonctionne correctement dans une 
 
 Créer une branche de ce dépots https://github.com/GladysAssistant/integration-template-js sur votre compte Github
 
-|image2037||
+|image2037|
 
 **importer sur ce nouveau dépot les 2 fichiers json de votre app.
 
