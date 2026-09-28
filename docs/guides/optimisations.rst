@@ -336,17 +336,27 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 
 |image2039|
 
-|image2040|
-
 |image2036|
+
+|image2040|
 
 23.2.3.2.C créer l'imamge du conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: sur Github
 
+   le template fournit un workflow Build que vous pouvez lancer : allez dans l'onglet Actions, sélectionnez Build, cliquez sur Run workflow, et définissez éventuellement un tag d'image
+
+   |image2041|
+
+   |image2042|
+
+   Pour verifier le fichier d'intregration:
+
    .. code-block::
 
       npx github:GladysAssistant/integration-store .
+
+   |image2043|
 
 
 .. admonition:: avec la cli
@@ -428,3 +438,9 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
    :width: 700px
 .. |image2040| image:: ../pict/image2040.webp
    :width: 500px
+.. |image2041| image:: ../pict/image2041.webp
+   :width: 700px
+.. |image2042| image:: ../pict/image2042.webp
+   :width: 700px
+.. |image2043| image:: ../pict/image2043.webp
+   :width: 700px
