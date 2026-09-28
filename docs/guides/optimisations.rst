@@ -336,6 +336,10 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 
 |image2039|
 
+|image2040|
+
+|image2036|
+
 
 
 .. |image1064| image:: ../media/image1064.webp
@@ -397,10 +401,12 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 .. |image2035| image:: ../pict/image2035.webp
    :width: 450px
 .. |image2036| image:: ../pict/image2036.webp
-   :width: 500px
+   :width: 600px
 .. |image2037| image:: ../pict/image2037.webp
    :width: 700px
 .. |image2038| image:: ../pict/image2038.webp
    :width: 700px
 .. |image2039| image:: ../pict/image2039.webp
    :width: 700px
+.. |image2040| image:: ../pict/image2040.webp
+   :width: 500px
