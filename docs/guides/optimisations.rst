@@ -440,7 +440,7 @@ avecun navgateur sur http://<IP de developpement>:1444
 .. |image2035| image:: ../pict/image2035.webp
    :width: 450px
 .. |image2036| image:: ../pict/image2036.webp
-   :width:450px
+   :width: 450px
 .. |image2037| image:: ../pict/image2037.webp
    :width: 700px
 .. |image2038| image:: ../pict/image2038.webp
@@ -455,3 +455,5 @@ avecun navgateur sur http://<IP de developpement>:1444
    :width: 700px
 .. |image2043| image:: ../pict/image2043.webp
    :width: 700px
+.. |image2044| image:: ../pict/image2044.webp
+   :width: 550px
