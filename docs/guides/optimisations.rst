@@ -332,6 +332,11 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 
 23.2.3.2.b Adapter le fichier gladys-assistant-integration.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
+
+   . Le plus facile est d'utiliser VSCODE pour éviter les erreur de syntaxe json.
+   . Il est possible aussi d'utiliser VSCODE en cominaison avec GIT pour mettre à jour automatiquement le dépot.
+
 |image2038|
 
 |image2039|
@@ -340,8 +345,8 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 
 |image2040|
 
-23.2.3.2.C créer l'imamge du conteneur
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+23.2.3.2.C créer l'image du conteneur
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: sur Github
 
    le template fournit un workflow Build que vous pouvez lancer : allez dans l'onglet Actions, sélectionnez Build, cliquez sur Run workflow, et définissez éventuellement un tag d'image
