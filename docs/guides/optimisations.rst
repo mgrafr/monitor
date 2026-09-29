@@ -345,6 +345,15 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 
 |image2040|
 
+ ** Pour verifier le fichier d'intregration**:
+
+   .. code-block::
+
+      npx github:GladysAssistant/integration-store .
+
+   |image2044|
+
+
 23.2.3.2.C créer l'image du conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: sur Github
@@ -354,15 +363,12 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
    |image2041|
 
    |image2042|
+ 
+**Essai d'importation de l'intégration externe**
 
-   Pour verifier le fichier d'intregration:
+avecun navgateur sur http://<IP de developpement>:1444
 
-   .. code-block::
-
-      npx github:GladysAssistant/integration-store .
-
-   |image2043|
-
+ |image2043|
 
 .. admonition:: avec la cli
 
@@ -434,7 +440,7 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 .. |image2035| image:: ../pict/image2035.webp
    :width: 450px
 .. |image2036| image:: ../pict/image2036.webp
-   :width: 600px
+   :width:450px
 .. |image2037| image:: ../pict/image2037.webp
    :width: 700px
 .. |image2038| image:: ../pict/image2038.webp
@@ -442,7 +448,7 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 .. |image2039| image:: ../pict/image2039.webp
    :width: 700px
 .. |image2040| image:: ../pict/image2040.webp
-   :width: 500px
+   :width: 600px
 .. |image2041| image:: ../pict/image2041.webp
    :width: 700px
 .. |image2042| image:: ../pict/image2042.webp
