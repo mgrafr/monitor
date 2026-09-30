@@ -466,6 +466,6 @@ avecun navgateur sur http://<IP de developpement>:1444
 .. |image2044| image:: ../pict/image2044.webp
    :width: 550px
 .. |image2045| image:: ../pict/image2045.webp
-   :width: 700p
+   :width: 700px
 .. |image2046| image:: ../pict/image2046.webp
    :width: 700px
