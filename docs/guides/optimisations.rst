@@ -362,6 +362,13 @@ Avec cette premiere modification du manifest , dans l'app GLADYS DEV /
 l'original
 
  |image2046|
+
+ |image2047|
+
+ |image2048|
+
+ |image2049|
+
 23.2.3.2.d créer l'image du conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: sur Github
@@ -468,4 +475,10 @@ avecun navgateur sur http://<IP de developpement>:1444
 .. |image2045| image:: ../pict/image2045.webp
    :width: 700px
 .. |image2046| image:: ../pict/image2046.webp
+   :width: 600px
+.. |image2047| image:: ../pict/image2047.webp
+   :width: 700px
+.. |image2048| image:: ../pict/image2048.webp
+   :width: 700px
+.. |image2049| image:: ../pict/image2049.webp
    :width: 700px
