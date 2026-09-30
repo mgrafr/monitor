@@ -345,6 +345,10 @@ la nouvelle branche, ce nouveau dépot "serveur-api" après un changement de nom
 
 |image2040|
 
+Avec cette premiere modification du manifest , dans l'app GLADYS DEV /
+
+|image2045|
+
  ** Pour verifier le fichier d'intregration**:
 
    .. code-block::
@@ -353,8 +357,12 @@ la nouvelle branche, ce nouveau dépot "serveur-api" après un changement de nom
 
    |image2044|
 
+23.2.3.2.c Le fichier index.js
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+l'original
 
-23.2.3.2.C créer l'image du conteneur
+ |image2046|
+23.2.3.2.d créer l'image du conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: sur Github
 
@@ -457,3 +465,7 @@ avecun navgateur sur http://<IP de developpement>:1444
    :width: 700px
 .. |image2044| image:: ../pict/image2044.webp
    :width: 550px
+.. |image2045| image:: ../pict/image2045.webp
+   :width: 700p
+.. |image2046| image:: ../pict/image2046.webp
+   :width: 700px
