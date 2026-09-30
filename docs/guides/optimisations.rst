@@ -326,7 +326,7 @@ Créer une branche de ce dépots https://github.com/GladysAssistant/integration-
 
 |image2037|
 
-**importer sur ce nouveau dépot les 2 fichiers json de votre app.
+la nouvelle branche, ce nouveau dépot "serveur-api" après un changement de nom.
 
 |image1137|
 
