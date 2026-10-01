@@ -330,7 +330,8 @@ la nouvelle branche, ce nouveau dépot "serveur-api" après un changement de nom
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Si il a été, comme dans cet exemple, enregistré sur Docker-Hub
 
-- authentifier auprès de GitHub Container Registry  |image1134|
+- authentifier auprès de GitHub Container Registry
+
 - .. code-bloc::
 
      docker login ghcr.io -u YOUR_GITHUB_USERNAME
