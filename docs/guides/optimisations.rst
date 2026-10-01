@@ -318,10 +318,6 @@ Exemple pour une app nodejs "server-api" **qui fonctionne correctement dans une 
 
 |image2035|
 
-.. note:: 
-
-   les modules nodejs seront installés à la lecture des fichiers .json
-
 Créer une branche de ce dépots https://github.com/GladysAssistant/integration-template-js sur votre compte Github
 
 |image2037|
@@ -363,13 +359,7 @@ l'original
 
  |image2046|
 
- |image2047|
-
- |image2048|
-
- |image2049|
-
-23.2.3.2.d créer l'image du conteneur
+ 23.2.3.2.d créer l'image du conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: sur Github
 
