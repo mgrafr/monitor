@@ -326,6 +326,8 @@ la nouvelle branche, ce nouveau dépot "serveur-api" après un changement de nom
 
 |image1137|
 
+|image1134|
+
 23.2.3.2.b Shéma de l'intégration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |image1130|
@@ -436,9 +438,9 @@ avecun navgateur sur http://<IP de developpement>:1444
    :width: 700px
 .. |image1133| image:: ../media/image1133.webp
    :width: 295px
-
 .. |image1134| image:: ../media/image1134.webp
-   :width: 492px
+   :width: 600px
+
 .. |image1135| image:: ../media/image1135.webp
    :width: 492px
 .. |image1136| image:: ../media/image1136.webp
