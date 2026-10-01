@@ -326,13 +326,42 @@ la nouvelle branche, ce nouveau dépot "serveur-api" après un changement de nom
 
 |image1137|
 
-|image1134|
+23.2.3.2.b transféer sur Github le conteneur
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Si il a été, comme dans cet exemple, enregistré sur Docker-Hub
 
-23.2.3.2.b Shéma de l'intégration
+- authentifier auprès de GitHub Container Registry  |image1134|
+- .. code-bloc::
+
+     docker login ghcr.io -u YOUR_GITHUB_USERNAME
+
+- |image1134|
+
+- Récupérez votre image depuis Docker Hub
+
+- .. code-block::
+
+     docker pull your-dockerhub-username/your-image-name:latest
+
+-  Réétiqueter l’image pour GHCR
+
+- - .. code-block::
+
+     docker tag your-dockerhub-username/your-image-name:latest ghcr.io/your-github-username/your-new-image-name:latest
+
+- ransférer l’image vers GHCR
+
+- .. code-block::
+
+      - docker push ghcr.io/your-github-username/your-new-image-name:latest
+
+  - |image1135|        
+
+23.2.3.2.c Shéma de l'intégration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |image1130|
 
-23.2.3.2.c Adapter le fichier gladys-assistant-integration.json
+23.2.3.2.d Adapter le fichier gladys-assistant-integration.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. note::
 
@@ -440,9 +469,9 @@ avecun navgateur sur http://<IP de developpement>:1444
    :width: 295px
 .. |image1134| image:: ../media/image1134.webp
    :width: 600px
-
 .. |image1135| image:: ../media/image1135.webp
-   :width: 492px
+   :width: 650px
+
 .. |image1136| image:: ../media/image1136.webp
    :width: 700px
 .. |image1137| image:: ../media/image1137.webp
