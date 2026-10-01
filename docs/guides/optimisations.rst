@@ -326,7 +326,11 @@ la nouvelle branche, ce nouveau dépot "serveur-api" après un changement de nom
 
 |image1137|
 
-23.2.3.2.b Adapter le fichier gladys-assistant-integration.json
+23.2.3.2.b Shéma de l'intégration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|image1130|
+
+23.2.3.2.c Adapter le fichier gladys-assistant-integration.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. note::
 
@@ -353,13 +357,13 @@ Avec cette premiere modification du manifest , dans l'app GLADYS DEV /
 
    |image2044|
 
-23.2.3.2.c Le fichier index.js
+23.2.3.2.d Le fichier index.js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 l'original
 
  |image2046|
 
- 23.2.3.2.d créer l'image du conteneur
+ 23.2.3.2.e créer l'image du conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. admonition:: sur Github
 
@@ -425,13 +429,14 @@ avecun navgateur sur http://<IP de developpement>:1444
 .. |image1129| image:: ../media/image1129.webp
    :width: 600px
 .. |image1130| image:: ../media/image1130.webp
-   :width: 446px
+   :width: 700px
 .. |image1131| image:: ../media/image1131.webp
    :width: 600px
 .. |image1132| image:: ../media/image1132.webp
    :width: 700px
 .. |image1133| image:: ../media/image1133.webp
    :width: 295px
+
 .. |image1134| image:: ../media/image1134.webp
    :width: 492px
 .. |image1135| image:: ../media/image1135.webp
@@ -465,7 +470,9 @@ avecun navgateur sur http://<IP de developpement>:1444
 .. |image2045| image:: ../pict/image2045.webp
    :width: 700px
 .. |image2046| image:: ../pict/image2046.webp
-   :width: 600px
+   :width: 700px
+
+
 .. |image2047| image:: ../pict/image2047.webp
    :width: 700px
 .. |image2048| image:: ../pict/image2048.webp
