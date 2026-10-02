@@ -373,6 +373,10 @@ Si il a été, comme dans cet exemple, enregistré sur Docker-Hub
 
 |image2039|
 
+Le fichier modifié pour inclure l'app qui se trouve dans l'image docker "server-api"
+
+|image2047|
+
 |image2036|
 
 |image2040|
@@ -387,13 +391,17 @@ Avec cette premiere modification du manifest , dans l'app GLADYS DEV /
 
       npx github:GladysAssistant/integration-store .
 
-   |image2044|
+ |image2044|
 
 23.2.3.2.d Le fichier index.js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 l'original
 
  |image2046|
+
+Le fichier modifié
+
+ |image2048|
 
  23.2.3.2.e créer l'image du conteneur
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -503,11 +511,10 @@ avecun navgateur sur http://<IP de developpement>:1444
    :width: 700px
 .. |image2046| image:: ../pict/image2046.webp
    :width: 700px
-
-
 .. |image2047| image:: ../pict/image2047.webp
-   :width: 700px
+   :width: 400px
 .. |image2048| image:: ../pict/image2048.webp
-   :width: 700px
+   :width: 600px
+
 .. |image2049| image:: ../pict/image2049.webp
    :width: 700px
