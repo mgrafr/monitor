@@ -587,8 +587,25 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
     |image1748|
 
+.. admonition:: Node.js v24 & npm installation commandes pour Debian.
+
+   sudo apt update && \
+   sudo apt install -y curl && \
+   curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash - && \
+   sudo apt install -y nodejs
+
 18.9.5 Commandes Docker
 =======================
+**Build des images**
+
+à partir d'un fichier Dockerfile : nepas oublier le point en fin de command (espace .)
+
+.. code-block::
+
+   docker build -t <mon_app> .
+
+**login & push**
+
  |image2033|
 
 18.10 Serveur SSE installé dans Monitor
@@ -596,7 +613,7 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliserons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
 
 .. code block::
-
+block::
    CREATE TABLE `sse` (
   `num` int(1) NOT NULL,
   `id` varchar(20) NOT NULL,
