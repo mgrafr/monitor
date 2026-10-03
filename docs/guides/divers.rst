@@ -612,7 +612,7 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
    docker tag <mon_app mon_compte/mon_app>:latest
    docker push <mon_compte/mon_app>:latest
 
- |image2033|
+|image2033|
 
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
