@@ -604,7 +604,13 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
    docker build -t <mon_app> .
 
-**login & push**
+**login, tag & push**
+
+.. code-block::
+
+   docker login
+   docker tag <mon_app mon_compte/mon_app>:latest
+   docker push <mon_compte/mon_app>:latest
 
  |image2033|
 
