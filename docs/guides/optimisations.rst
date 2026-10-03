@@ -356,7 +356,11 @@ Si il a été, comme dans cet exemple, enregistré sur Docker-Hub
 
       - docker push ghcr.io/your-github-username/your-new-image-name:latest
 
-  - |image1135|        
+  - |image1135|  
+
+.. IMPORTANT::
+
+   VERIFIER que l'image es bien PUBLIQUE
 
 23.2.3.2.c Shéma de l'intégration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
