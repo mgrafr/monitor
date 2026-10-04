@@ -614,6 +614,14 @@ Exemple : :darkblue:`binary_sensor.pir_salon` --> :green:`pir_salon`
 
 |image2033|
 
+**Exécuter un shell interactif dans le conteneur en cours d'exécution**
+
+.. code-block::
+
+   docker exec -it < container_id > bash
+
+|image2050|
+
 18.10 Serveur SSE installé dans Monitor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 pour communiquer entre les diverses applications (Domoticz, Home Assistant, les Clients et le serveur Web) nous utiliserons la base de données SQL; nous créons une nouvelle table avec un enregistrement:
@@ -1000,3 +1008,5 @@ pour récupérer la puissance depuis le Data de Domoticz : **26504.0;0;0;0;2941.
    :width: 350px
 .. |image2033| image:: ../pict/image2033.webp
    :width: 700px
+.. |image2050| image:: ../pict/image2050.webp
+   :width: 550px
