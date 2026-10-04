@@ -139,41 +139,11 @@ Pré requis: 1 CT Debian 13(ISO minimale debian-13.2.0-amd64-netinst.iso) & les 
 
 23.2.2.2 Installation de Docker
 """""""""""""""""""""""""""""""
-l'utilisateur créer se connecte à la console:
-
-Ajout de la clé de sécurité pour garantir l’authenticité des paquets :
-
 .. code-block::
 
-   sudo install -m 0755 -d /etc/apt/keyrings
-   sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-   sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-création d'un fichier de configuration pour apt (format .sources ) 
-
-.. code-block::
-
-   sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-   Types: deb
-   URIs: https://download.docker.com/linux/debian
-   Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
-   Components: stable
-   Signed-By: /etc/apt/keyrings/docker.asc
-   EOF
-
-Installation de Docker & Docker compose
-
-.. code-block::
-
-   sudo apt update
-   sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-Vérification et Premier Conteneur
-
-.. code-block::
-
-   docker run hello-world
-
+   apt update
+   curl -sSL https://get.docker.com | sh
+    
 23.2.2.3 Installation de Gladys
 """""""""""""""""""""""""""""""
 23.2.2.3.1 Modification de configuration
