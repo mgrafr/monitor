@@ -288,6 +288,8 @@ Exemple pour une app nodejs "server-api" **qui fonctionne correctement dans une 
 
 |image2035|
 
+|image2051|
+
 Créer une branche de ce dépots https://github.com/GladysAssistant/integration-template-js sur votre compte Github
 
 |image2037|
@@ -491,4 +493,6 @@ avecun navgateur sur http://<IP de developpement>:1444
    :width: 600px
 
 .. |image2049| image:: ../pict/image2049.webp
+   :width: 700px
+.. |image2051| image:: ../pict/image2051.webp
    :width: 700px
