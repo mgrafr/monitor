@@ -486,11 +486,16 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 |image2057|
 
+23.2.4.3 Page web de OpenRouter
+"""""""""""""""""""""""""""""""
+
 |image2059|
 
 **Aide pour effectuer une requète:https://openrouter.ai/request-builder
 
 |image2058|
+
+
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
