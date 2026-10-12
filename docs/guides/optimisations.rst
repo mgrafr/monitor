@@ -450,7 +450,7 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
    export ANTHROPIC_API_KEY="" # Important: si c'est openrouter qui est utilisé : doit être VIDE
    # export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1 # Optional: enables
 
- |image2054|
+|image2054|
 
 **Pour openrouter ajouter dans le projet:**
 
@@ -471,18 +471,20 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 **Première diffusion**
 
-  Commencez à l’intérieur d’un répertoire de projet
+  Commencez à l’intérieur du répertoire de projet
 
 .. code-block::
 
-   cd my-project
+   cd <PROJET>
    claude
 
- |image2052|
+|image2052|
 
- |image2053|
+|image2053|
 
-Sortir pour continuer la cofiguration vers OpenRouter
+|image2056|
+
+|image2057|
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -582,3 +584,7 @@ Sortir pour continuer la cofiguration vers OpenRouter
    :width: 650px
 .. |image2055| image:: ../pict/image2055.webp
    :width: 700px
+.. |image2056| image:: ../pict/image2056.webp
+   :width: 700px
+.. |image2057| image:: ../pict/image2057.webp
+   :width: 500px
