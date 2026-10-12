@@ -486,6 +486,8 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 |image2057|
 
+|image2059|
+
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
 .. |image1112| image:: ../media/image1112.webp
@@ -588,3 +590,5 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
    :width: 700px
 .. |image2057| image:: ../pict/image2057.webp
    :width: 500px
+.. |image2059| image:: ../pict/image2059.webp
+   :width: 700px
