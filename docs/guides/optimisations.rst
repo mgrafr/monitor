@@ -405,8 +405,8 @@ avecun navgateur sur http://<IP de developpement>:1444
 
 23.2.4 Créer code avec l'IA
 ===========================
-23.2.'.1 APP Claude Code & OpenRouter
-"""""""""""""""""""""""""""""""""""""
+23.2.4.1 Installer Claude Code
+""""""""""""""""""""""""""""""
 **Installation ans debian** , Ajoutez le dépôt signé d’Anthropic :
 
 .. code-block::
@@ -419,6 +419,12 @@ avecun navgateur sur http://<IP de developpement>:1444
    sudo apt update
    sudo apt install claude-code
 
+**Créer un répertoire "<PROJET>"**
+
+.. code-block::
+
+   mkdir <PROJET> & cd <PROJET>
+
 **verification**
 
 .. code-block::
@@ -426,6 +432,57 @@ avecun navgateur sur http://<IP de developpement>:1444
    claude --version
    claude doctor
 
+23.2.4.2 Configurer Claude Code
+"""""""""""""""""""""""""""""""
+exit, si vous ètes en root;
+
+Créer un utilisateur 'si ce n'est pas déjà fait', et se connecter
+
+Ajouter les variales d'environnement ci-dessous dans votre profile shell :
+
+.. code-block::
+
+   nano /home/<USER>/.bashrc 
+   # Ajouter ces lignes :
+   export OPENROUTER_API_KEY="<your-openrouter-api-key>" # si c'est openrouter qui est utilisé
+   export ANTHROPIC_BASE_URL="https://openrouter.ai/api" # ou url claude 
+   export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY" # si c'est openrouter qui est utilisé
+   export ANTHROPIC_API_KEY="" # Important: si c'est openrouter qui est utilisé : doit être VIDE
+   # export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1 # Optional: enables
+
+ |image2054|
+
+**Pour openrouter ajouter dans le projet:**
+
+.. code-block::
+
+   nano /home/<USER>/<PROJET>.claude/settings.json
+   # Ajouter ces lignes :
+   {
+     "env": {
+       "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+       "ANTHROPIC_AUTH_TOKEN": "<sk-or-v1-........votre_cle_openrouter>",
+       "ANTHROPIC_API_KEY": "",
+       "ANTHROPIC_MODEL": "stepfun/step-3.5-flash:free" # modèle gratuit
+     }
+   }
+
+|image2055|
+
+**Première diffusion**
+
+  Commencez à l’intérieur d’un répertoire de projet
+
+.. code-block::
+
+   cd my-project
+   claude
+
+ |image2052|
+
+ |image2053|
+
+Sortir pour continuer la cofiguration vers OpenRouter
 
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
@@ -516,4 +573,12 @@ avecun navgateur sur http://<IP de developpement>:1444
 .. |image2049| image:: ../pict/image2049.webp
    :width: 700px
 .. |image2051| image:: ../pict/image2051.webp
+   :width: 700px
+.. |image2052| image:: ../pict/image2052.webp
+   :width: 500px
+.. |image2053| image:: ../pict/image2053.webp
+   :width: 550px
+.. |image2054| image:: ../pict/image2054.webp
+   :width: 650px
+.. |image2055| image:: ../pict/image2055.webp
    :width: 700px
