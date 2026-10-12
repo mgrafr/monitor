@@ -488,6 +488,10 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 |image2059|
 
+**Aide pour effectuer une requète:https://openrouter.ai/request-builder
+
+|image2058|
+
 .. |image1064| image:: ../media/image1064.webp
    :width: 696px
 .. |image1112| image:: ../media/image1112.webp
@@ -590,5 +594,7 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
    :width: 700px
 .. |image2057| image:: ../pict/image2057.webp
    :width: 500px
+.. |image2058| image:: ../pict/image2058.webp
+   :width: 700px
 .. |image2059| image:: ../pict/image2059.webp
    :width: 700px
