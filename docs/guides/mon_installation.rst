@@ -752,6 +752,20 @@ Reboot est impossible, pour le forcer:
 
    systemctl --force --force reboot
 
+21.1.8.9 Suppression des nœuds de cluster: 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**cluster non prêt - pas de quorum**
+
+Vous devez définir le nombre de votes attendus :
+
+.. code-block::
+
+   pvecm expected x # x = nb de noeuds valides
+   pvecm delnode <nom-node> # pour supprimer un noeud
+
+# pvecm expected 2
+
+
 21.1.9 Update Proxmox
 ---------------------
 https://rdr-it.com/comment-migrer-proxmox-ve-8-vers-9/
@@ -798,6 +812,10 @@ Si aucune erreur bloquante n'est détectée.
    apt dist-upgrade
 
 |image1867|
+
+.. IMPORTANT::
+
+   ne pas faire apt upgrade -> apt dist-upgrade
 
 Vérifier que les dépots Proxmox sont tous no-subsription, sinon les désactiver
 
