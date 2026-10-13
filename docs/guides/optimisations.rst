@@ -407,7 +407,17 @@ avecun navgateur sur http://<IP de developpement>:1444
 ===========================
 23.2.4.1 Installer Claude Code
 """"""""""""""""""""""""""""""
-**Installation ans debian** , Ajoutez le dépôt signé d’Anthropic :
+**Installation standard**
+
+.. code-block::
+
+   curl -fsSL https://claude.ai/install.sh | bash
+   exec $SHELL -l
+   claude --version
+   # 2.1.211 (Claude Code)
+   claude doctor
+
+**Installation dans debian** , Ajoutez le dépôt signé d’Anthropic :
 
 .. code-block::
 
@@ -486,7 +496,19 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 |image2057|
 
-23.2.4.3 Page web de OpenRouter
+23.2.4.4 Mise à jour de claude
+""""""""""""""""""""""""""""""
+.. note::
+
+   Avec l'installation standard, la mise à jour est automatique
+
+**Sur debian**
+
+.. code-block::
+
+   sudo apt update && sudo apt upgrade claude-code
+
+23.2.4.4 Page web de OpenRouter
 """""""""""""""""""""""""""""""
 
 |image2059|
