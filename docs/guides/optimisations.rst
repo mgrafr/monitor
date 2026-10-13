@@ -504,7 +504,24 @@ Tapez / pour voir les commandes disponibles ou / suivi de lettres pour filtrer
 
 |image2057|
 
-23.2.4.4 Mise à jour de claude
+
+23.2.4.4 Première session dans un dépôt
+"""""""""""""""""""""""""""""""""""""""
+**/init pour générer un CLAUDE.md**
+
+|image2060|
+
+**/memory pour créer CLAUDE.md
+
+|image2061|
+
+C’est la constitution du projet. Vous l’écrivez, vous la maintenez, vous la versionnez avec Git. CLAUDE.md est chargé intégralement au démarrage de chaque session.
+
+CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l’auto-memory ( règles, conventions, interdictions).
+
+|image2062|
+
+23.2.4.5 Mise à jour de claude
 """"""""""""""""""""""""""""""
 .. note::
 
@@ -516,7 +533,7 @@ Tapez / pour voir les commandes disponibles ou / suivi de lettres pour filtrer
 
    sudo apt update && sudo apt upgrade claude-code
 
-23.2.4.5 Page web de OpenRouter
+23.2.4.6 Page web de OpenRouter
 """""""""""""""""""""""""""""""
 
 |image2059|
@@ -632,5 +649,7 @@ Tapez / pour voir les commandes disponibles ou / suivi de lettres pour filtrer
    :width: 700px
 .. |image2059| image:: ../pict/image2059.webp
    :width: 700px
-.. |image2060| image:: ../pict/image2060.webp
-   :width: 650px
+.. |image2061| image:: ../pict/image2061.webp
+   :width: 7000px
+.. |image2062| image:: ../pict/image2062.webp
+   :width: 350px
