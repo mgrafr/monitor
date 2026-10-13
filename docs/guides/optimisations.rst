@@ -521,7 +521,7 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
 
 |image2062|
 
-**/mcp pour configurer les serveurs dont le projet a besoin**
+**/mcp pour lister les serveurs dont le projet a besoin**
 
 .. admonition::  Ajouter le serveur MCP
 
@@ -530,6 +530,12 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
    .. code-block::
 
       claude mcp add --transport http claude-code-docs https://code.claude.com/docs/mcp
+
+   |image2063|
+
+|image2064|
+
+
       
    . Les parties de la commande :
       claude mcp add : enregistre un serveur avec Claude Code.
@@ -669,3 +675,7 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
    :width: 7000px
 .. |image2062| image:: ../pict/image2062.webp
    :width: 350px
+.. |image2063| image:: ../pict/image2063.webp
+   :width: 700px
+.. |image2064| image:: ../pict/image2064.webp
+   :width: 600px
