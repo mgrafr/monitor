@@ -496,7 +496,7 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 |image2057|
 
-23.2.4.4 Mise à jour de claude
+23.2.4.3 Mise à jour de claude
 """"""""""""""""""""""""""""""
 .. note::
 
