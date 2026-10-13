@@ -511,7 +511,7 @@ Tapez / pour voir les commandes disponibles ou / suivi de lettres pour filtrer
 
 |image2060|
 
-**/memory pour créer CLAUDE.md
+**/memory pour cONFIGURER CLAUDE.md**, limite de 200 lignes.
 
 |image2061|
 
