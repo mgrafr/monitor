@@ -492,11 +492,19 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 |image2053|
 
+23.2.4.3 Commandes claude
+"""""""""""""""""""""""""
+Tapez / pour voir les commandes disponibles ou / suivi de lettres pour filtrer
+
+|image2058|
+
+/status !
+
 |image2056|
 
 |image2057|
 
-23.2.4.3 Mise à jour de claude
+23.2.4.4 Mise à jour de claude
 """"""""""""""""""""""""""""""
 .. note::
 
@@ -508,18 +516,13 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
    sudo apt update && sudo apt upgrade claude-code
 
-23.2.4.4 Page web de OpenRouter
+23.2.4.5 Page web de OpenRouter
 """""""""""""""""""""""""""""""
 
 |image2059|
 
-**Aide pour effectuer une requète:https://openrouter.ai/request-builder
 
-|image2058|
 
-Choisir le modèle:
-
-|image2060|
 
 
 
