@@ -521,6 +521,28 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
 
 |image2062|
 
+**/mcp pour configurer les serveurs dont le projet a besoin**
+
+.. admonition:: configuration d'un serveur MCP sur GitHub
+
+   **Installation** : disponible pour tous les utilisateurs de GitHub, que ce soit pour les abonnements gratuits ou payants. 
+
+   **Configuration** : iil peut être onfiguré  dans Visual Studio Code via le fichier .vscode/mcp.json. 
+
+   **Fonctionnalités** : permet d'interagir avec GitHub pour rechercher des fichiers, gérer des issues et des pull requests, et surveiller les exécutions de flux de travail CI/C
+
+
+
+.. admonition::  Ajouter le serveur MCP
+
+   Enregistrez le serveur avec Claude Code. Exécutez ceci dans votre terminal, pas à l’intérieur d’une session claude : vous configurez le serveur avant de démarrer une conversation.
+     claude mcp add --transport http claude-code-docs https://code.claude.com/docs/mcp
+      Les parties de la commande :
+   claude mcp add : enregistre un serveur avec Claude Code.
+   --transport http : le serveur est hébergé à une URL plutôt que d’être exécuté en tant que processus local.
+   claude-code-docs : un nom que vous inventez. Appeler le même serveur docs fonctionnerait de manière identique. Claude Code utilise le nom que vous choisissez pour étiqueter       les outils du serveur dans la sortie de Claude et pour faire référence au serveur dans des commandes comme claude mcp remove.
+     https://code.claude.com/docs/mcp : l’URL où le serveur est hébergé.
+
 23.2.4.5 Mise à jour de claude
 """"""""""""""""""""""""""""""
 .. note::
