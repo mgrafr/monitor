@@ -503,7 +503,7 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 23.2.4.3 Commandes claude
 """""""""""""""""""""""""
-Tapez / pour voir les commandes disponibles ou / suivi de lettres pour filtrer
+Tapez **/** pour voir les commandes disponibles ou **/** suivi de lettres pour filtrer
 
 |image2058|
 
@@ -512,6 +512,18 @@ Tapez / pour voir les commandes disponibles ou / suivi de lettres pour filtrer
 |image2056|
 
 |image2057|
+
+**/permissions  gère ses autorisations via des modes de permission, des règles de filtrage 
+
+|image2071|
+
+**/plan bascule en mode plan avant une modification importante**
+
+**/diff affiche ce qui a changé**
+
+**/rewind restaure le code et la conversation à un point de contrôle**
+
+https://code.claude.com/docs/fr/commands
 
 
 23.2.4.4 Première session dans un dépôt
@@ -715,3 +727,6 @@ Passage en mode plan , ma requète: nettoyer le  code, et corriger l'affichage d
    :width: 700px
 .. |image2070| image:: ../pict/image2070.webp
    :width: 700px
+.. |image2071| image:: ../pict/image2071.webp
+   :width: 250px
+
