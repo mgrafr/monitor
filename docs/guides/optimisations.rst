@@ -539,10 +539,10 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
    |image2063|
 
    Les parties de la commande :
-    . claude mcp add : enregistre un serveur 
-    . --transport http : le serveur est hébergé à une URL plutôt que d’être exécuté en tant que processus local.
-    . claude-code-docs : Claude Code utilise le nom que vous choisissez(même s'il est identique au serveur) pour faire référence au serveur dans les commandes.
-    . https://code.claude.com/docs/mcp : l’URL où le serveur est hébergé.
+    -   claude mcp add : enregistre un serveur 
+    -   --transport http : le serveur est hébergé à une URL plutôt que d’être exécuté en tant que processus local.
+    -   claude-code-docs : Claude Code utilise le nom que vous choisissez(même s'il est identique au serveur) pour faire référence au serveur dans les commandes.
+    -   https://code.claude.com/docs/mcp : l’URL où le serveur est hébergé.
 
 |image2064|
 
