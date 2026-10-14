@@ -484,6 +484,10 @@ Ajouter les variales d'environnement ci-dessous dans votre profile shell :
 
 |image2055|
 
+.. note::
+
+   certains modèles gratuits ne fonctionnent pas gratuitement avec Claude Code, laisser openrouteur choisir : "openrouteur/free"
+
 **Première diffusion**
 
   Commencez à l’intérieur du répertoire de projet
