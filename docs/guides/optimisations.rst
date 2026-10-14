@@ -689,6 +689,6 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
 .. |image2064| image:: ../pict/image2064.webp
    :width: 600px
 .. |image2065| image:: ../pict/image2065.webp
-   :width:400px
+   :width: 400px
 .. |image2066| image:: ../pict/image2066.webp
-   :width:280px
+   :width: 280px
