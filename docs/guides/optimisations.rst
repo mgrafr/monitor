@@ -405,6 +405,7 @@ avecun navgateur sur http://<IP de developpement>:1444
 
 23.2.4 Créer code avec l'IA
 ===========================
+
 23.2.4.1 Installer Claude Code
 """"""""""""""""""""""""""""""
 **Installation standard**
@@ -441,6 +442,10 @@ avecun navgateur sur http://<IP de developpement>:1444
 
    claude --version
    claude doctor
+
+**télécharger le repo depuis github dans le répetoire récemment crée(avec git ou wget):
+
+|image2065| |image2066|
 
 23.2.4.2 Configurer Claude Code
 """""""""""""""""""""""""""""""
@@ -683,3 +688,7 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
    :width: 700px
 .. |image2064| image:: ../pict/image2064.webp
    :width: 600px
+.. |image2065| image:: ../pict/image2065.webp
+   :width:400px
+.. |image2066| image:: ../pict/image2066.webp
+   :width:280px
