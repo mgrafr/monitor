@@ -511,7 +511,7 @@ Tapez / pour voir les commandes disponibles ou / suivi de lettres pour filtrer
 
 |image2060|
 
-**/memory pour cONFIGURER CLAUDE.md**, limite de 200 lignes.
+**/memory pour configurer CLAUDE.md**, limite de 200 lignes.
 
 |image2061|
 
@@ -533,15 +533,17 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
 
    |image2063|
 
+   Les parties de la commande :
+    . claude mcp add : enregistre un serveur 
+    . --transport http : le serveur est hébergé à une URL plutôt que d’être exécuté en tant que processus local.
+    . claude-code-docs : Claude Code utilise le nom que vous choisissez(même s'il est identique au serveur) pour faire référence au serveur dans les commandes.
+    . https://code.claude.com/docs/mcp : l’URL où le serveur est hébergé.
+
 |image2064|
 
 
       
-   . Les parties de la commande :
-      claude mcp add : enregistre un serveur avec Claude Code.
-      --transport http : le serveur est hébergé à une URL plutôt que d’être exécuté en tant que processus local.
-      claude-code-docs : un nom que vous inventez. Appeler le même serveur docs fonctionnerait de manière identique. Claude Code utilise le nom que vous choisissez pour      étiqueter les outils du serveur dans la sortie de Claude et pour faire référence au serveur dans des commandes comme claude mcp remove.
-      https://code.claude.com/docs/mcp : l’URL où le serveur est hébergé.
+  
 
 23.2.4.5 Mise à jour de claude
 """"""""""""""""""""""""""""""
@@ -670,6 +672,8 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
 .. |image2058| image:: ../pict/image2058.webp
    :width: 700px
 .. |image2059| image:: ../pict/image2059.webp
+   :width: 700px
+.. |image2060| image:: ../pict/image2060.webp
    :width: 700px
 .. |image2061| image:: ../pict/image2061.webp
    :width: 7000px
