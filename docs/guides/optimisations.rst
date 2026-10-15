@@ -577,7 +577,10 @@ Réponse:
 Passage en mode plan , ma requète: nettoyer le  code, et corriger l'affichage dans un widget
 
 |image2070|
-  
+
+|image2072|
+
+|image2073|
 
 23.2.4.6 Mise à jour de claude
 """"""""""""""""""""""""""""""
@@ -729,4 +732,8 @@ Passage en mode plan , ma requète: nettoyer le  code, et corriger l'affichage d
    :width: 700px
 .. |image2071| image:: ../pict/image2071.webp
    :width: 250px
+.. |image2072| image:: ../pict/image2072.webp
+   :width: 700px
+.. |image2073| image:: ../pict/image2073.webp
+   :width: 700px
 
