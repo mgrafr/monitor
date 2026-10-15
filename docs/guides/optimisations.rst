@@ -403,9 +403,8 @@ avecun navgateur sur http://<IP de developpement>:1444
 
       npm install @gladysassistant/integration-sdk
 
-23.2.4 Créer code avec l'IA
-===========================
-
+23.2.4 Créer le code de l'i,tégrayion avec l'IA
+===============================================
 23.2.4.1 Installer Claude Code
 """"""""""""""""""""""""""""""
 **Installation standard**
@@ -449,6 +448,8 @@ avecun navgateur sur http://<IP de developpement>:1444
 
 23.2.4.2 Configurer Claude Code
 """""""""""""""""""""""""""""""
+**Pour Anthropic et OpenRouter**
+
 exit, si vous ètes en root;
 
 Créer un utilisateur 'si ce n'est pas déjà fait', et se connecter
@@ -578,7 +579,11 @@ Passage en mode plan , ma requète: nettoyer le  code, et corriger l'affichage d
 
 |image2070|
 
+Avec un modèle gratuit si la conversation prend trop de temps, elle est interrompue:
+
 |image2072|
+
+Afin d'éviter des probèmes d'autorisation, préférer appliquer des droits **chown** & **chmod** avant d'utliser claude code
 
 |image2073|
 
