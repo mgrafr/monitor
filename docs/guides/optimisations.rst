@@ -567,7 +567,7 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
 """"""""""""""""""""""""""""""""""""""""""""
 .. important::
 
-    node js doit être installé : voir ce § :res:`23.2.3.1.a Le backend`
+    node js doit être installé : voir ce § :ref:`23.2.3.1.a Le backend`
 
 envoi de la requête
 
