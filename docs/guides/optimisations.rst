@@ -565,6 +565,12 @@ CLAUDE.md a la priorité la plus haute dans la résolution des conflits avec l�
 
 23.2.4.5 Première requête concernant le repo
 """"""""""""""""""""""""""""""""""""""""""""
+.. important::
+
+    node js doit être installé : voir ce § :res:`23.2.3.1.a Le backend`
+
+envoi de la requête
+
 .. code-block::
 
    >explique-moi la structure de ce projet
